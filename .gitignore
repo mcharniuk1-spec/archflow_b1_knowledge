@@ -1,0 +1,35 @@
+.DS_Store
+*.log
+*.tmp
+*.bak
+*.pyc
+__pycache__/
+.venv/
+venv/
+node_modules/
+dist/
+build/
+
+# Secrets and local machine state
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+private/
+local/
+
+# Generated indexes and runtime artifacts
+rag_index/
+vector_store/
+runs/*/raw/
+runs/*/private/
+exports/private/
+tmp/
+
+# Do not publish copied personal workspaces or raw third-party exports.
+raw/
+source_exports/

@@ -1,0 +1,94 @@
+name: archflow_block1_crew
+status: configured_not_installed
+runtime: crewai_python
+official_docs_checked:
+  - https://docs.crewai.com/en/concepts/crews
+
+purpose: >
+  Organize the Block 1 agents as a named team. CrewAI owns role clarity,
+  task sequence, expected outputs, and per-task accountability.
+
+process: sequential
+manager_mode: codex_operator_supervised
+memory: false
+cache: true
+planning: false
+output_log_file: project/outputs/crew-log.json
+max_rpm: null
+
+agents:
+  af_tools:
+    role: Source and tooling analyst
+    goal: Verify available sources, providers, and safe boundaries before work starts.
+    skills:
+      - public-source-inventory
+      - provider-readiness-check
+      - ollama-local-check
+      - git-publication-check
+  af_context:
+    role: Context analyst
+    goal: Convert approved inputs into structured English facts, interpretations, hypotheses, and gaps.
+    skills:
+      - notion-spec-to-implementation
+      - notion-knowledge-capture
+      - english-public-summary
+      - fact-interpretation-hypothesis-gap
+  af_manager:
+    role: PRD and execution manager
+    goal: Produce the PRD, task matrix, milestones, and acceptance criteria.
+    skills:
+      - prd-from-dialogue
+      - responsibility-assignment-extraction
+      - milestone-planning
+      - acceptance-criteria-writing
+  af_knowledge:
+    role: Knowledge-base maintainer
+    goal: Turn accepted outputs into reusable KB updates and public-safe history.
+    skills:
+      - knowledge-base-update
+      - sanitized-history-writing
+      - source-boundary-control
+      - agent-memory-candidate-writing
+  af_review:
+    role: Safety and evidence reviewer
+    goal: Approve, revise, or block outputs before publication.
+    skills:
+      - public-safety-review
+      - secret-and-path-scan
+      - english-only-check
+      - claim-status-check
+  af_publisher:
+    role: Public release operator
+    goal: Prepare Git-ready public releases using Codex-authenticated publication.
+    skills:
+      - git-clean-repo-publication
+      - github-remote-publication
+      - publication-review-reporting
+
+tasks:
+  - id: source_inventory
+    agent: af_tools
+    expected_output: project/outputs/templates/source-inventory.md
+  - id: context_digest
+    agent: af_context
+    expected_output: project/outputs/templates/context-digest.md
+  - id: prd
+    agent: af_manager
+    expected_output: project/outputs/templates/prd.md
+  - id: task_matrix
+    agent: af_manager
+    expected_output: project/outputs/templates/responsibility-matrix.md
+  - id: kb_update
+    agent: af_knowledge
+    expected_output: project/outputs/templates/knowledge-base-update.md
+  - id: review_report
+    agent: af_review
+    expected_output: project/outputs/templates/review-report.md
+  - id: publication_summary
+    agent: af_publisher
+    expected_output: project/runs/<date>-<run-name>.md
+
+current_limitations:
+  - CrewAI is not installed in this public project yet.
+  - This file is the implementation contract for the later CrewAI package setup.
+  - Codex is the active execution layer until the package is installed.

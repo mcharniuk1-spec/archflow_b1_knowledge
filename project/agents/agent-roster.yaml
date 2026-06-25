@@ -1,0 +1,96 @@
+agents:
+  af_tools:
+    title: AF Tools
+    provider: codex_operator
+    local_model: gemma4:e4b
+    intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
+    skills:
+      - public-source-inventory
+      - provider-readiness-check
+      - ollama-local-check
+      - git-publication-check
+    outputs:
+      - source_inventory
+      - tool_readiness_report
+      - provider_status
+
+  af_context:
+    title: AF Context
+    provider: codex_operator
+    local_model: gemma4:e4b
+    skills:
+      - notion-spec-to-implementation
+      - notion-knowledge-capture
+      - english-public-summary
+      - fact-interpretation-hypothesis-gap
+    outputs:
+      - context_digest
+      - translated_plan
+      - gaps
+
+  af_manager:
+    title: AF Manager
+    provider: codex_operator
+    local_model: gemma4:e4b
+    skills:
+      - prd-from-dialogue
+      - responsibility-assignment-extraction
+      - milestone-planning
+      - acceptance-criteria-writing
+    outputs:
+      - prd
+      - task_matrix
+      - milestone_plan
+
+  af_knowledge:
+    title: AF Knowledge
+    provider: codex_operator
+    local_model: gemma4:e4b
+    skills:
+      - knowledge-base-update
+      - sanitized-history-writing
+      - source-boundary-control
+      - agent-memory-candidate-writing
+    outputs:
+      - kb_update_packet
+      - public_history_summary
+      - memory_candidates
+
+  af_review:
+    title: AF Review
+    provider: codex_operator
+    local_model: gemma4:e4b
+    skills:
+      - public-safety-review
+      - secret-and-path-scan
+      - english-only-check
+      - claim-status-check
+    outputs:
+      - approval_status
+      - blocked_items
+      - required_edits
+
+  af_publisher:
+    title: AF Publisher
+    provider: codex_operator
+    local_model: none
+    skills:
+      - git-clean-repo-publication
+      - github-remote-publication
+      - publication-review-reporting
+    outputs:
+      - git_status
+      - publication_review
+      - release_notes
+
+automation:
+  evening_skill_registry_update:
+    schedule: daily_evening
+    provider: codex_operator
+    skills:
+      - evening-skill-registry-update
+      - daily-public-project-review
+    target_files:
+      - project/agents/skills-by-agent.md
+      - project/agents/agent-roster.yaml
+      - skills/skills-used.md

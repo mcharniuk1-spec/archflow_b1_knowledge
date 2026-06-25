@@ -1,0 +1,91 @@
+name: archflow_block1_langgraph_controller
+status: configured_not_installed
+runtime: langgraph_python
+official_docs_checked:
+  - https://docs.langchain.com/oss/python/langgraph/overview
+
+purpose: >
+  Control the reasoning path for Block 1. LangGraph owns state,
+  conditional routing, review loops, and human approval gates.
+
+state_schema:
+  run_id: string
+  source_packet: object
+  source_boundary_status: pass_or_fail
+  retrieved_context: list
+  context_digest_path: string
+  prd_path: string
+  task_matrix_path: string
+  kb_update_path: string
+  review_report_path: string
+  approval_status: approved_revise_or_blocked
+  gaps: list
+
+nodes:
+  intake_validate:
+    owner_agent: af_tools
+    purpose: validate source packet, language, public boundary, and requested output.
+    output: source_boundary_status
+  retrieve_context:
+    owner_agent: af_context
+    purpose: call bounded LlamaIndex retrieval over approved public corpus.
+    output: retrieved_context
+  write_context_digest:
+    owner_agent: af_context
+    purpose: separate facts, interpretations, hypotheses, and gaps.
+    output: project/outputs/templates/context-digest.md
+  run_crew_prd:
+    owner_agent: af_manager
+    purpose: run the CrewAI-style PRD and task planning sequence.
+    output:
+      - project/outputs/templates/prd.md
+      - project/outputs/templates/responsibility-matrix.md
+  write_kb_update:
+    owner_agent: af_knowledge
+    purpose: convert accepted outputs into an agent-readable KB update packet.
+    output: project/outputs/templates/knowledge-base-update.md
+  review_gate:
+    owner_agent: af_review
+    purpose: check safety, support, English-only output, and unsupported claims.
+    output: project/outputs/templates/review-report.md
+  publish_or_revise:
+    owner_agent: af_publisher
+    purpose: either prepare public-safe publication or route back for repair.
+    output: project/runs/<date>-<run-name>.md
+
+edges:
+  - from: START
+    to: intake_validate
+  - from: intake_validate
+    to: retrieve_context
+    condition: source_boundary_status == "pass"
+  - from: intake_validate
+    to: review_gate
+    condition: source_boundary_status == "fail"
+  - from: retrieve_context
+    to: write_context_digest
+  - from: write_context_digest
+    to: run_crew_prd
+  - from: run_crew_prd
+    to: write_kb_update
+  - from: write_kb_update
+    to: review_gate
+  - from: review_gate
+    to: publish_or_revise
+    condition: approval_status == "approved"
+  - from: review_gate
+    to: write_context_digest
+    condition: approval_status == "revise"
+  - from: review_gate
+    to: END
+    condition: approval_status == "blocked"
+  - from: publish_or_revise
+    to: END
+
+current_parameters:
+  checkpointer: none_for_now
+  human_approval_required_before_publication: true
+  max_revision_loops: 2
+  final_runtime_owner: codex_operator
+  local_minor_task_model: gemma4:e4b
+  primary_publication_auth: codex_github_connector

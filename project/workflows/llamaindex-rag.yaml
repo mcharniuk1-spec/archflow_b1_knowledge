@@ -1,0 +1,62 @@
+name: archflow_block1_rag
+status: configured_not_installed
+runtime: llamaindex_python
+official_docs_checked:
+  - https://developers.llamaindex.ai/python/framework/getting_started/concepts/
+
+purpose: >
+  Connect agents and LLMs to approved project data. LlamaIndex owns bounded
+  loading, indexing, retrieval, and source-grounded answers.
+
+approved_corpus:
+  include:
+    - project/
+    - history/
+    - skills/
+  exclude:
+    - .git/
+    - project/.env.local
+    - project/local/
+    - raw/
+    - source_exports/
+    - secrets/
+    - private/
+    - tmp/
+
+indexing_parameters:
+  loader: simple_directory_reader
+  document_language: english
+  chunk_size: 800
+  chunk_overlap: 120
+  metadata_fields:
+    - source_path
+    - document_type
+    - public_safety_status
+    - updated_at
+  persist_dir: project/local/rag_index
+  persist_dir_git_status: ignored
+
+retrieval_parameters:
+  query_engine: vector_query_engine
+  similarity_top_k: 5
+  response_mode: compact
+  require_source_paths: true
+  refuse_on_private_source: true
+
+model_routing:
+  primary_operator: codex_operator
+  local_background_llm: gemma4:e4b
+  intended_local_llm_after_repair: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
+  embedding_model: nomic-embed-text
+  cloud_llm: not_configured
+
+outputs:
+  retrieval_log: project/outputs/templates/retrieval-log.md
+  source_inventory: project/outputs/templates/source-inventory.md
+  context_digest: project/outputs/templates/context-digest.md
+
+current_limitations:
+  - LlamaIndex is not installed in this public project yet.
+  - No vector index has been generated.
+  - Only sanitized public files are approved for indexing by default.
+
