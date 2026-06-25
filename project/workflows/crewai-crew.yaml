@@ -15,7 +15,7 @@ cache: true
 planning: false
 output_log_file: project/outputs/crew-log.json
 max_rpm: null
-observability: langsmith_configured_awaiting_api_key
+observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted
 model_execution: ollama_local_qwythos
 
 agents:

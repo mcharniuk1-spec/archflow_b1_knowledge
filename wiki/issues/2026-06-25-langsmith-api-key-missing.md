@@ -1,21 +1,25 @@
 # Issue - LangSmith API Key Missing
 
 Date: 2026-06-25
-Status: open
+Status: closed
 
 ## Issue
 
-LangSmith tracing is configured, but the API key is not present.
+LangSmith tracing was configured before the local API key was added.
 
 ## Impact
 
-LangGraph, CrewAI, or LlamaIndex runtime traces cannot be sent to LangSmith yet.
+Resolved for smoke tracing. LangGraph, CrewAI, and LlamaIndex runtime traces still require those runtime packages to be installed and wired into a proof workflow.
 
 ## Resolution
 
-Add the real key to:
+The real key was added locally to:
 
 `project/.env.langsmith.local`
 
 Do not commit the key.
 
+Verification:
+
+- The local env file is ignored by Git.
+- A sanitized LangSmith smoke trace was submitted.

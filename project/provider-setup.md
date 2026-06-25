@@ -19,7 +19,7 @@ As of 2026-06-25:
 - `gemma4:e4b` remains the fallback model.
 - Codex is available as the operator runtime.
 - Codex auth should not be treated as an exportable API key.
-- LangSmith tracing is configured but awaiting an API key in an ignored local env file.
+- LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.
 
 ## Recommended Mode
 
@@ -60,7 +60,8 @@ LangSmith is configured for tracing only.
 - Public example: `project/config/langsmith.env.example`.
 - Project name: `ArchFlow`.
 - Project ID: `057edf33-a328-4186-9425-3306186149ef`.
-- API key status: not present, waiting for manual insertion.
+- API key status: present only in ignored local env.
+- Smoke trace status: submitted with sanitized Ollama-only metadata.
 - Model execution: Ollama only.
 
 ## Qwythos Status

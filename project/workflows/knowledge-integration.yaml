@@ -1,0 +1,93 @@
+name: archflow_combined_knowledge_operations
+status: configured
+
+purpose: >
+  Define how public WikiLLM, optional Obsidian/Second Brain mirror, future
+  Graphify output, future Nexus bridge, LlamaIndex RAG, CrewAI, LangGraph,
+  LangSmith, and Codex operate together.
+
+operator:
+  primary: codex_operator
+  responsibilities:
+    - approve_sensitive_actions
+    - run_public_safety_scan
+    - edit_public_files
+    - publish_to_git
+    - record_wikillm_runs
+
+knowledge_layers:
+  wikillm_public:
+    status: active
+    root: wiki/
+    role: canonical_public_agent_memory
+    writes:
+      - runs
+      - decisions
+      - issues
+      - memory
+      - insights
+
+  obsidian_second_brain:
+    status: planned_sanitized_mirror_only
+    root: project/reference/obsidian/
+    role: human_strategy_and_semantic_notes
+    rule: export_or_summarize_public_safe_notes_only
+
+  graphify:
+    status: planned_after_runtime_code_exists
+    root: project/reference/graphify/
+    role: generated_structure_map
+    rule: graph_public_repo_only
+
+  nexus:
+    status: planned_after_vault_target_is_clear
+    role: live_obsidian_bridge
+    rule: discover_schema_before_use_and_never_write_secrets
+
+runtime_layers:
+  langgraph:
+    status: contract_configured_runtime_missing
+    role: workflow_state_controller
+    config: project/workflows/langgraph-controller.yaml
+
+  llamaindex:
+    status: contract_configured_runtime_missing
+    role: approved_corpus_retrieval
+    config: project/workflows/llamaindex-rag.yaml
+
+  crewai:
+    status: contract_configured_runtime_missing
+    role: agent_role_execution
+    config: project/workflows/crewai-crew.yaml
+
+  langsmith:
+    status: configured_key_present_local_sdk_installed_smoke_trace_submitted
+    role: trace_observability
+    project_id: 057edf33-a328-4186-9425-3306186149ef
+    local_env_file: project/.env.langsmith.local
+
+  ollama:
+    status: active
+    role: local_model_execution
+    active_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
+    fallback_model: gemma4:e4b
+
+execution_path:
+  - codex_reads_wikillm
+  - codex_checks_public_safety_boundary
+  - langgraph_validates_source_packet
+  - llamaindex_retrieves_approved_context
+  - crewai_generates_role_outputs
+  - langgraph_runs_review_gate
+  - langsmith_records_trace_for_public_safe_runs
+  - af_knowledge_updates_wikillm
+  - codex_runs_pre_push_safety_scan
+  - codex_pushes_to_git
+
+hard_rules:
+  - ignored_env_files_must_not_be_tracked
+  - no_api_keys_in_git
+  - no_private_links_in_git
+  - no_local_absolute_paths_in_git
+  - no_raw_private_inputs_in_git
+  - graphify_and_llamaindex_use_public_or_sanitized_corpus_only

@@ -53,7 +53,7 @@ providers:
       - OPENAI_BASE_URL
 
   langsmith_observability:
-    status: configured_awaiting_api_key
+    status: configured_key_present_local_ignored_smoke_trace_submitted
     role: tracing_only_not_model_provider
     project_name: ArchFlow
     project_id: 057edf33-a328-4186-9425-3306186149ef

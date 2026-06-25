@@ -1,6 +1,6 @@
 # LangSmith Setup
 
-Status: configured, awaiting API key.
+Status: configured; local ignored API key present; sanitized smoke trace submitted.
 
 ## Current Parameters
 
@@ -15,9 +15,9 @@ Status: configured, awaiting API key.
 | Local env file | `project/.env.langsmith.local` |
 | Public example | `project/config/langsmith.env.example` |
 
-## Env File To Edit
+## Local Env File
 
-Add the API key only in:
+Store the API key only in:
 
 `project/.env.langsmith.local`
 
@@ -48,6 +48,13 @@ LANGSMITH_TRACE_PUBLIC_SAFE_ONLY=true
 ## Operation Rule
 
 LangSmith receives traces only after public-safety filtering. Do not send raw private transcripts, private links, local paths, secrets, or unreviewed source material to LangSmith.
+
+## Current Check
+
+- `project/.env.langsmith.local` exists locally and is ignored by Git.
+- The real API key value is not stored in tracked files.
+- A sanitized `archflow_public_smoke_trace` was submitted through the local project runtime.
+- LangGraph, LlamaIndex, and CrewAI are still workflow contracts until their packages are installed in the ignored local runtime.
 
 ## References
 

@@ -31,12 +31,25 @@ ArchFlow Block 1 is the first public solution:
 - Endpoint: `https://eu.api.smith.langchain.com`.
 - Local editable env: `project/.env.langsmith.local`.
 - Public example env: `project/config/langsmith.env.example`.
-- API key status: missing until manually inserted.
+- API key status: present only in ignored local env.
+- Smoke trace status: submitted with sanitized Ollama-only metadata.
 
 ## Workflow Memory
 
 - LangGraph controls path/state/review gates.
 - CrewAI organizes named agents and expected outputs.
 - LlamaIndex connects agents to bounded public-safe retrieval.
-- LangSmith will trace workflow execution after the API key is added.
+- LangSmith can trace sanitized workflow execution; full workflow traces wait for LangGraph, LlamaIndex, and CrewAI package installation.
 
+## Safety Hook Memory
+
+- Public pushes must run `.githooks/pre-push`.
+- The hook runs `scripts/public_safety_scan.py`.
+- The hook blocks publishable secrets, local paths, private links, tracked env files, tracked runtime files, and unsafe metadata.
+- The local LangSmith key belongs only in ignored `project/.env.langsmith.local`.
+
+## LangSmith Trace Memory
+
+- LangSmith SDK is installed only inside ignored `project/local/venv`.
+- A sanitized smoke trace was submitted with Ollama-only metadata.
+- Remaining runtime packages are LangGraph, LlamaIndex, and CrewAI.

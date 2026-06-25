@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -eu
+
+echo "Running ArchFlow public safety pre-push scan..."
+HOOK_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+REPO_ROOT=$(CDPATH= cd -- "$HOOK_DIR/.." && pwd)
+cd "$REPO_ROOT"
+python3 scripts/public_safety_scan.py

@@ -49,7 +49,7 @@ model_routing:
   fallback_local_llm: gemma4:e4b
   embedding_model: nomic-embed-text
   cloud_llm: not_configured
-  observability: langsmith_configured_awaiting_api_key
+  observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted
 
 outputs:
   retrieval_log: project/outputs/templates/retrieval-log.md

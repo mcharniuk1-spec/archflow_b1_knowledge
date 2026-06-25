@@ -32,3 +32,4 @@ Rules:
 - Ollama is only for local minor/background tasks unless later approved.
 - Provider actions that start local services, create env files, install packages, repair models, or connect external API credentials require explicit approval.
 - Record substantial public-safe work in `wiki/runs/` and append `wiki/log.md`.
+- Before pushing, run `scripts/public_safety_scan.py`; the tracked pre-push hook also runs it automatically.

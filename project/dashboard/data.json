@@ -1,0 +1,846 @@
+{
+  "generated_at": "2026-06-25T14:58:10.142096+00:00",
+  "project": {
+    "name": "ArchFlow Block 1 Knowledge",
+    "mode": "phase_2_local_dashboard",
+    "operator": "Codex",
+    "memory_layer": "WikiLLM files",
+    "dashboard_rule": "control panel, not primary brain"
+  },
+  "status_cards": [
+    {
+      "label": "LangGraph",
+      "value": "configured_not_installed",
+      "tone": "warn"
+    },
+    {
+      "label": "CrewAI",
+      "value": "configured_not_installed",
+      "tone": "warn"
+    },
+    {
+      "label": "LlamaIndex",
+      "value": "configured_not_installed",
+      "tone": "warn"
+    },
+    {
+      "label": "WikiLLM files",
+      "value": "10 files",
+      "tone": "ok"
+    },
+    {
+      "label": "Activity files",
+      "value": "15",
+      "tone": "ok"
+    },
+    {
+      "label": "Local dashboard",
+      "value": "static_read_only",
+      "tone": "ok"
+    }
+  ],
+  "langgraph": {
+    "path": "project/workflows/langgraph-controller.yaml",
+    "status": "configured_not_installed",
+    "runtime": "langgraph_python",
+    "purpose": "Control the reasoning path for Block 1. LangGraph owns state,",
+    "nodes": [
+      {
+        "id": "intake_validate",
+        "owner": "af_tools",
+        "purpose": "validate source packet, language, public boundary, and requested output.",
+        "output": "source_boundary_status"
+      },
+      {
+        "id": "retrieve_context",
+        "owner": "af_context",
+        "purpose": "call bounded LlamaIndex retrieval over approved public corpus.",
+        "output": "retrieved_context"
+      },
+      {
+        "id": "write_context_digest",
+        "owner": "af_context",
+        "purpose": "separate facts, interpretations, hypotheses, and gaps.",
+        "output": "project/outputs/templates/context-digest.md"
+      },
+      {
+        "id": "run_crew_prd",
+        "owner": "af_manager",
+        "purpose": "run the CrewAI-style PRD and task planning sequence.",
+        "output": [
+          "project/outputs/templates/prd.md",
+          "project/outputs/templates/responsibility-matrix.md"
+        ]
+      },
+      {
+        "id": "write_kb_update",
+        "owner": "af_knowledge",
+        "purpose": "convert accepted outputs into an agent-readable KB update packet.",
+        "output": "project/outputs/templates/knowledge-base-update.md"
+      },
+      {
+        "id": "review_gate",
+        "owner": "af_review",
+        "purpose": "check safety, support, English-only output, and unsupported claims.",
+        "output": "project/outputs/templates/review-report.md"
+      },
+      {
+        "id": "publish_or_revise",
+        "owner": "af_publisher",
+        "purpose": "either prepare public-safe publication or route back for repair.",
+        "output": "project/runs/<date>-<run-name>.md"
+      }
+    ],
+    "edges": [
+      {
+        "from": "START",
+        "to": "intake_validate"
+      },
+      {
+        "from": "intake_validate",
+        "to": "retrieve_context",
+        "condition": "source_boundary_status == \"pass\""
+      },
+      {
+        "from": "intake_validate",
+        "to": "review_gate",
+        "condition": "source_boundary_status == \"fail\""
+      },
+      {
+        "from": "retrieve_context",
+        "to": "write_context_digest"
+      },
+      {
+        "from": "write_context_digest",
+        "to": "run_crew_prd"
+      },
+      {
+        "from": "run_crew_prd",
+        "to": "write_kb_update"
+      },
+      {
+        "from": "write_kb_update",
+        "to": "review_gate"
+      },
+      {
+        "from": "review_gate",
+        "to": "publish_or_revise",
+        "condition": "approval_status == \"approved\""
+      },
+      {
+        "from": "review_gate",
+        "to": "write_context_digest",
+        "condition": "approval_status == \"revise\""
+      },
+      {
+        "from": "review_gate",
+        "to": "END",
+        "condition": "approval_status == \"blocked\""
+      },
+      {
+        "from": "publish_or_revise",
+        "to": "END"
+      }
+    ],
+    "params": {
+      "checkpointer": "none_for_now",
+      "observability": "langsmith_configured_key_present_local_ignored_smoke_trace_submitted",
+      "max_revision_loops": "2",
+      "human_approval_required_before_publication": "true"
+    }
+  },
+  "crewai": {
+    "path": "project/workflows/crewai-crew.yaml",
+    "status": "configured_not_installed",
+    "runtime": "crewai_python",
+    "process": "sequential",
+    "memory": "false",
+    "cache": "true",
+    "planning": "false",
+    "agents": [
+      {
+        "id": "af_tools",
+        "role": "Source and tooling analyst",
+        "goal": "Verify available sources, providers, and safe boundaries before work starts.",
+        "skills": [
+          "public-source-inventory",
+          "provider-readiness-check",
+          "ollama-local-check",
+          "git-publication-check"
+        ]
+      },
+      {
+        "id": "af_context",
+        "role": "Context analyst",
+        "goal": "Convert approved inputs into structured English facts, interpretations, hypotheses, and gaps.",
+        "skills": [
+          "notion-spec-to-implementation",
+          "notion-knowledge-capture",
+          "english-public-summary",
+          "fact-interpretation-hypothesis-gap"
+        ]
+      },
+      {
+        "id": "af_manager",
+        "role": "PRD and execution manager",
+        "goal": "Produce the PRD, task matrix, milestones, and acceptance criteria.",
+        "skills": [
+          "prd-from-dialogue",
+          "responsibility-assignment-extraction",
+          "milestone-planning",
+          "acceptance-criteria-writing"
+        ]
+      },
+      {
+        "id": "af_knowledge",
+        "role": "Knowledge-base maintainer",
+        "goal": "Turn accepted outputs into reusable KB updates and public-safe history.",
+        "skills": [
+          "knowledge-base-update",
+          "sanitized-history-writing",
+          "source-boundary-control",
+          "agent-memory-candidate-writing"
+        ]
+      },
+      {
+        "id": "af_review",
+        "role": "Safety and evidence reviewer",
+        "goal": "Approve, revise, or block outputs before publication.",
+        "skills": [
+          "public-safety-review",
+          "secret-and-path-scan",
+          "english-only-check",
+          "claim-status-check"
+        ]
+      },
+      {
+        "id": "af_publisher",
+        "role": "Public release operator",
+        "goal": "Prepare Git-ready public releases using Codex-operated publication.",
+        "skills": [
+          "git-clean-repo-publication",
+          "github-remote-publication",
+          "publication-review-reporting"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source_inventory",
+        "agent": "af_tools",
+        "expected_output": "project/outputs/templates/source-inventory.md"
+      },
+      {
+        "id": "context_digest",
+        "agent": "af_context",
+        "expected_output": "project/outputs/templates/context-digest.md"
+      },
+      {
+        "id": "prd",
+        "agent": "af_manager",
+        "expected_output": "project/outputs/templates/prd.md"
+      },
+      {
+        "id": "task_matrix",
+        "agent": "af_manager",
+        "expected_output": "project/outputs/templates/responsibility-matrix.md"
+      },
+      {
+        "id": "kb_update",
+        "agent": "af_knowledge",
+        "expected_output": "project/outputs/templates/knowledge-base-update.md"
+      },
+      {
+        "id": "review_report",
+        "agent": "af_review",
+        "expected_output": "project/outputs/templates/review-report.md"
+      },
+      {
+        "id": "publication_summary",
+        "agent": "af_publisher",
+        "expected_output": "project/runs/<date>-<run-name>.md"
+      }
+    ],
+    "limitations": [
+      "CrewAI is not installed in this public project yet.",
+      "This file is the implementation contract for the later CrewAI package setup.",
+      "Codex is the active execution layer until the package is installed."
+    ]
+  },
+  "llamaindex": {
+    "path": "project/workflows/llamaindex-rag.yaml",
+    "status": "configured_not_installed",
+    "runtime": "llamaindex_python",
+    "include": [
+      "project/",
+      "history/",
+      "skills/"
+    ],
+    "exclude": [
+      ".git/",
+      "project/.env.local",
+      "project/local/",
+      "raw/",
+      "source_exports/",
+      "secrets/",
+      "private/",
+      "tmp/"
+    ],
+    "chunk_size": "800",
+    "chunk_overlap": "120",
+    "similarity_top_k": "5",
+    "persist_dir": "project/local/rag_index",
+    "limitations": [
+      "LlamaIndex is not installed in this public project yet.",
+      "No vector index has been generated.",
+      "Only sanitized public files are approved for indexing by default."
+    ]
+  },
+  "env": [
+    {
+      "name": "Provider example",
+      "path": "project/config/providers.env.example",
+      "status": "tracked_example"
+    },
+    {
+      "name": "LangSmith example",
+      "path": "project/config/langsmith.env.example",
+      "status": "tracked_example"
+    },
+    {
+      "name": "Local provider env",
+      "path": "project/.env.local",
+      "status": "present_ignored"
+    },
+    {
+      "name": "Local LangSmith env",
+      "path": "project/.env.langsmith.local",
+      "status": "key_present_ignored"
+    },
+    {
+      "name": "Runtime package project",
+      "path": "project/pyproject.toml",
+      "status": "missing_not_installed"
+    },
+    {
+      "name": "Local RAG index",
+      "path": "project/local/rag_index",
+      "status": "not_generated"
+    }
+  ],
+  "packages": [
+    {
+      "module": "langgraph",
+      "label": "LangGraph runtime",
+      "status": "not_installed",
+      "runtime": "project_local_venv"
+    },
+    {
+      "module": "crewai",
+      "label": "CrewAI runtime",
+      "status": "not_installed",
+      "runtime": "project_local_venv"
+    },
+    {
+      "module": "llama_index",
+      "label": "LlamaIndex runtime",
+      "status": "not_installed",
+      "runtime": "project_local_venv"
+    },
+    {
+      "module": "langsmith",
+      "label": "LangSmith SDK",
+      "status": "installed",
+      "runtime": "project_local_venv"
+    },
+    {
+      "module": "streamlit",
+      "label": "Streamlit dashboard runtime",
+      "status": "not_installed",
+      "runtime": "project_local_venv"
+    },
+    {
+      "module": "fastapi",
+      "label": "FastAPI dashboard runtime",
+      "status": "not_installed",
+      "runtime": "project_local_venv"
+    }
+  ],
+  "activity": [
+    {
+      "kind": "wiki_issue",
+      "path": "wiki/issues/2026-06-25-langsmith-api-key-missing.md",
+      "title": "Issue - LangSmith API Key Missing",
+      "modified": "2026-06-25T14:56:44.899373+00:00",
+      "size": 538
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-25-integrated-knowledge-and-safety-hook.md",
+      "title": "Run - Integrated Knowledge And Safety Hook",
+      "modified": "2026-06-25T14:52:35.402269+00:00",
+      "size": 1215
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-25-integrated-knowledge-and-safety-hook.md",
+      "title": "Run - Integrated Knowledge And Safety Hook",
+      "modified": "2026-06-25T14:52:29.778431+00:00",
+      "size": 881
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-25-e1-block1-subtask-execution-plan.pdf",
+      "title": "2026-06-25-e1-block1-subtask-execution-plan.pdf",
+      "modified": "2026-06-25T10:11:09.369588+00:00",
+      "size": 11952
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-25-current-setup-methods-and-agent-plan.md",
+      "title": "Run - Current Setup Methods And Agent Plan",
+      "modified": "2026-06-25T09:46:45.386554+00:00",
+      "size": 743
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+      "title": "Current Setup Methods And Agent Plan",
+      "modified": "2026-06-25T09:46:45.297119+00:00",
+      "size": 16682
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-25-langsmith-wikillm-setup.md",
+      "title": "Run - LangSmith And Public WikiLLM Setup",
+      "modified": "2026-06-25T09:16:59.467144+00:00",
+      "size": 1179
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
+      "title": "Decision - Codex, Ollama, And LangSmith Boundary",
+      "modified": "2026-06-25T09:16:59.131606+00:00",
+      "size": 1063
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-25-langsmith-wikillm-setup.md",
+      "title": "Run - LangSmith And WikiLLM Setup",
+      "modified": "2026-06-25T09:16:07.284019+00:00",
+      "size": 913
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-25-chat-execution-report.md",
+      "title": "Chat Execution Report",
+      "modified": "2026-06-25T09:16:07.195288+00:00",
+      "size": 2079
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-25-layer-setup-report.md",
+      "title": "Layer Setup Report",
+      "modified": "2026-06-25T09:16:07.108913+00:00",
+      "size": 5559
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-25-codex-main-agentic-workflow.md",
+      "title": "Run - Codex Main Agentic Workflow Setup",
+      "modified": "2026-06-25T08:54:13.141254+00:00",
+      "size": 1326
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-25-provider-github-automation.md",
+      "title": "Run - Provider, GitHub, And Automation Setup",
+      "modified": "2026-06-25T08:37:55.178337+00:00",
+      "size": 1521
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-25-clean-public-resetup.md",
+      "title": "Run - Clean Public Resetup",
+      "modified": "2026-06-25T08:28:22.941450+00:00",
+      "size": 2392
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/README.md",
+      "title": "Runs",
+      "modified": "2026-06-25T08:26:38.292641+00:00",
+      "size": 266
+    }
+  ],
+  "wiki": {
+    "index_path": "wiki/index.md",
+    "memory_path": "wiki/memory.md",
+    "insights_path": "wiki/insights.md",
+    "file_count": 10,
+    "files": [
+      {
+        "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
+        "title": "Decision - Codex, Ollama, And LangSmith Boundary",
+        "excerpt": "# Decision - Codex, Ollama, And LangSmith Boundary  Date: 2026-06-25  ## Decision  Use Codex as the primary operator, Ollama/Qwythos as the local model execution layer, and LangSmith as tracing only.  ## Rationale  Codex authentication is not an exportable API key for frameworks.  Ollama can run local models without cloud model credentials.  LangSmith can observe and debug future LangGraph/CrewAI/LlamaIndex runs afte"
+      },
+      {
+        "path": "wiki/index.md",
+        "title": "ArchFlow Public WikiLLM",
+        "excerpt": "# ArchFlow Public WikiLLM  This is the public WikiLLM layer for the ArchFlow Block 1 knowledge project.  It stores durable public-safe project memory, decisions, run records, issues, insights, and operating rules.  ## Read Order  1. `../README.md` 2. `../AGENTS.md` 3. `../project/README.md` 4. `../project/operating-rules.md` 5. `../project/config/model-routing.yaml` 6. `memory.md` 7. `insights.md` 8. `rules/public-wi"
+      },
+      {
+        "path": "wiki/insights.md",
+        "title": "Insights",
+        "excerpt": "# Insights  ## Public System Design  The safest current architecture separates three concerns:  - Codex supervises work and publication. - Ollama runs local models. - LangSmith observes traces after public-safety filtering.  This avoids mixing operator authentication, model credentials, and observability credentials.  ## Block 1 Execution Insight  The project should prove one internal workflow before adding customer-"
+      },
+      {
+        "path": "wiki/issues/2026-06-25-langsmith-api-key-missing.md",
+        "title": "Issue - LangSmith API Key Missing",
+        "excerpt": "# Issue - LangSmith API Key Missing  Date: 2026-06-25 Status: closed  ## Issue  LangSmith tracing was configured before the local API key was added.  ## Impact  Resolved for smoke tracing. LangGraph, CrewAI, and LlamaIndex runtime traces still require those runtime packages to be installed and wired into a proof workflow.  ## Resolution  The real key was added locally to:  `project/.env.langsmith.local`  Do not commi"
+      },
+      {
+        "path": "wiki/log.md",
+        "title": "Log",
+        "excerpt": "# Log  ## 2026-06-25  - Public project was created and published. - Codex was set as primary operator layer. - Ollama was connected as local model execution layer. - Qwythos was verified as present and generating text. - LangSmith tracing env was configured with project ID `057edf33-a328-4186-9425-3306186149ef`. - Public WikiLLM structure was created inside the repository. - Educational setup summary and agent plan w"
+      },
+      {
+        "path": "wiki/memory.md",
+        "title": "Memory",
+        "excerpt": "# Memory  ## Stable Project Direction  ArchFlow Block 1 is the first public solution:  `dialogue/chat/meeting material -> structured context -> PRD -> responsibility plan -> agent-ready knowledge base`  ## Current Runtime Decisions  - Codex is the primary operator, review, file-edit, and publication layer. - Codex authentication is not exported as an API key. - Ollama is the only model execution provider for now. - Q"
+      },
+      {
+        "path": "wiki/rules/public-wikillm-contract.md",
+        "title": "Public WikiLLM Contract",
+        "excerpt": "# Public WikiLLM Contract  ## Purpose  This folder is the durable public memory layer for the ArchFlow Block 1 repository.  ## Required Files  - `index.md` - `memory.md` - `insights.md` - `log.md` - `rules/` - `runs/` - `decisions/` - `issues/`  ## Write Rules  For substantial work:  1. Add a run file under `runs/`. 2. Append `log.md`. 3. Add or update `memory.md` only for stable future-use facts. 4. Add or update `i"
+      },
+      {
+        "path": "wiki/runs/2026-06-25-current-setup-methods-and-agent-plan.md",
+        "title": "Run - Current Setup Methods And Agent Plan",
+        "excerpt": "# Run - Current Setup Methods And Agent Plan  Date: 2026-06-25  ## Task  Create a full educational summary of the current ArchFlow setup methods, tools, technical details, agent structure, implementation options, plan, and source list.  ## Outputs  - `project/reports/2026-06-25-current-setup-methods-and-agent-plan.md`  ## Summary  The project currently uses Codex as the operator, Ollama/Qwythos for local model execut"
+      },
+      {
+        "path": "wiki/runs/2026-06-25-integrated-knowledge-and-safety-hook.md",
+        "title": "Run - Integrated Knowledge And Safety Hook",
+        "excerpt": "# Run - Integrated Knowledge And Safety Hook  Date: 2026-06-25  ## Task  Record the integration plan for WikiLLM, Obsidian mirror, Graphify, Nexus, LangGraph, CrewAI, LlamaIndex, LangSmith, Ollama, and Codex. Add a Git pre-push safety gate.  ## Outputs  - `project/integration-plan.md` - `project/workflows/knowledge-integration.yaml` - `scripts/public_safety_scan.py` - `.githooks/pre-push` - `project/runs/2026-06-25-i"
+      },
+      {
+        "path": "wiki/runs/2026-06-25-langsmith-wikillm-setup.md",
+        "title": "Run - LangSmith And Public WikiLLM Setup",
+        "excerpt": "# Run - LangSmith And Public WikiLLM Setup  Date: 2026-06-25  ## Task  Configure LangSmith tracing using project ID `057edf33-a328-4186-9425-3306186149ef`, keep execution on Ollama only, and set up WikiLLM inside the public project.  ## Inputs  - User-provided LangSmith project ID. - Existing public ArchFlow project structure. - Current Ollama/Qwythos local model state.  ## Outputs  - `project/config/langsmith.env.ex"
+      }
+    ]
+  },
+  "graphify": {
+    "status": "planned_not_generated",
+    "paths": [],
+    "recommended_next": "Generate Graphify after runtime code exists, then link the graph report here."
+  },
+  "corpus": [
+    {
+      "path": "project/README.md",
+      "title": "Current Project",
+      "text": "# Current Project  This is the active ArchFlow project after the 2026-06-24 reset.  ## Mission  Build a repeatable public-safe system that converts messy work material into execution assets:  1. Source material: dialogue, chat, meeting notes, transcript, or planning note. 2. Structured context: facts, interpretations, hypotheses, gaps. 3. PRD: goal, scope, inputs, outputs, acceptance criteria. 4. Task plan: owners, responsibilities, timeline, blockers. 5. Knowledge base update: reusable project memory and decisions. 6. Review gate: public-safety, evidence, and next-action check.  ## Active Folders  | Folder | Purpose | |---|---| | `config/` | Public-safe provider and model configuration templates. | | `workflows/` | LangGraph, CrewAI, and LlamaIndex workflow contracts. | | `outputs/` | Output document templates for proof runs. | | `reports/` | Setup and review reports by layer. | | `prompts/` | Reusable public-safe prompts. | | `scripts/` | Public-safe helper scripts. | | `runs/` | Future public-safe run summaries. |  ## Current Status  The plan has been imported from the private project board as an English public-safe summary. Codex authentication is the main operator and publicat"
+    },
+    {
+      "path": "project/agentic-stack.md",
+      "title": "Agentic Stack",
+      "text": "# Agentic Stack  ## Layer Decision  Use this structure:  ```text Codex-authenticated operator prompt   -> LangGraph path and state controller   -> LlamaIndex bounded retrieval   -> CrewAI named team tasks   -> LangGraph review gate   -> public-safe project outputs ```  ## Tool Responsibilities  | Tool | Responsibility | Public Project Use | |---|---|---| | Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. | | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. | | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Manager, AF Knowledge, AF Review. | | LlamaIndex | Bounded retrieval and RAG. | Search only approved public-safe project and sanitized history. | | Ollama | Local model serving. | Minor/background tasks only; active model is Qwythos and fallback is `gemma4:e4b`. | | LangSmith | Observability and trace review. | Configured for tracing only; waits for manual API key insertion. |  ## Agent Hooks  | Hook | Use | |---|---| | AF Graph | Full controlled workflow. | | AF RAG | Source-grounded retrieval over approved corpus. | | AF Crew | Team-mode work split by role. | |"
+    },
+    {
+      "path": "project/agents/README.md",
+      "title": "Agents",
+      "text": "# Agents  This folder defines only the agents and skills used or explicitly set up for the public ArchFlow project.  It does not publish the operator's full private skill library.  ## Agent Team  | Agent | Purpose | |---|---| | AF Tools | Source and tool inventory. | | AF Context | Structured context extraction. | | AF Manager | PRD, backlog, responsibility, and success criteria. | | AF Knowledge | Knowledge-base update packets. | | AF Review | Public-safety and evidence review. | | AF Publisher | Git/public project publishing. |  See `skills-by-agent.md` and `agent-roster.yaml`.  Workflow contracts:  - `../workflows/langgraph-controller.yaml` - `../workflows/crewai-crew.yaml` - `../workflows/llamaindex-rag.yaml`"
+    },
+    {
+      "path": "project/agents/agent-roster.yaml",
+      "title": "agent-roster.yaml",
+      "text": "agents:   af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check     outputs:       - source_inventory       - tool_readiness_report       - provider_status    af_context:     title: AF Context     provider: codex_operator     local_model: gemma4:e4b     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap     outputs:       - context_digest       - translated_plan       - gaps    af_manager:     title: AF Manager     provider: codex_operator     local_model: gemma4:e4b     skills:       - prd-from-dialogue       - responsibility-assignment-extraction       - milestone-planning       - acceptance-criteria-writing     outputs:       - prd       - task_matrix       - milestone_plan    af_knowledge:     title: AF Knowledge     provider: codex_operator     local_model: gemma4:e4b     skills:       - knowledge-base-update       - sanit"
+    },
+    {
+      "path": "project/agents/skills-by-agent.md",
+      "title": "Skills By Agent",
+      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - prd-from-dialogue - responsibility-assignment-extraction - milestone-planning - acceptance-criteria-writing  ## AF Knowledge  Purpose: write reusable KB updates and keep public history clean.  Skills set up:  - knowledge-base-update - sanitized-history-writing - source-boundary-control - agent-memory-candidate-writing  ## AF Review  Purpose: block unsafe or unsupported outputs before handoff."
+    },
+    {
+      "path": "project/config/model-routing.yaml",
+      "title": "model-routing.yaml",
+      "text": "provider_mode: codex_auth_main  providers:   codex_operator:     status: active_as_primary_operator_runtime     mode: codex_app     auth_scope: codex_app_authenticated_tools     exports_api_key: false     use_for:       - file_edits       - approvals       - public_safety_review       - orchestration       - final_outputs       - github_publication     github_publication:       repository: mcharniuk1-spec/archflow_b1_knowledge       verified_method: codex_operated_git_ssh       local_https_push_status: blocked_missing_git_credentials       ssh_push_status: verified    ollama_local:     status: service_started_qwythos_loads     role: local_minor_background_tasks     base_url_env: OLLAMA_BASE_URL     chat_model_env: OLLAMA_CHAT_MODEL     fallback_chat_model_env: OLLAMA_FALLBACK_CHAT_MODEL     embedding_model_env: OLLAMA_EMBED_MODEL     task_scope_env: OLLAMA_TASK_SCOPE     default_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     active_background_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     fallback_chat_model: gemma4:e4b     default_embedding_model: nomic-embed-text     allowed_tasks:       - draft_cleanup       - public_text_sum"
+    },
+    {
+      "path": "project/dashboard/README.md",
+      "title": "Local Operator Dashboard",
+      "text": "# Local Operator Dashboard  This is the Phase 2 local dashboard for ArchFlow Block 1.  It is a read-only control panel generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## What It Shows  - Overview and recent activity. - WikiLLM memory, decisions, issues, and runs. - Graphify status and future graph links. - LangGraph nodes, routing, review gates, and stop logic. - LlamaIndex-style local query test over approved public files. - CrewAI agents, roles, tasks, and expected outputs. - LangSmith tracing readiness and safe trace rules. - Env/config and runtime package status.  ## Boundary  The dashboard reads public-safe files and ignored local env presence only. It must not display real API keys, raw private transcripts, private workspace links, or local absolute paths."
+    },
+    {
+      "path": "project/future-actions-and-parameters.md",
+      "title": "Future Actions And Parameters",
+      "text": "# Future Actions And Parameters  This file lists the next implementation choices and the parameters that should be reviewed before changing the setup.  ## Immediate Actions  1. Keep the public project synchronized with GitHub.    - Current verified route: Codex-operated Git SSH push.    - Alternative: configure local GitHub CLI auth, then push over HTTPS.    - Do not store tokens in this repository.  2. Repair or replace Qwythos.    - Option A: re-pull the configured Qwythos model.    - Option B: keep Qwythos as intended model and use `gemma4:e4b` until repaired.    - Option C: replace Qwythos with a smaller supported local model.    - Current optimal: keep Codex as main and use `gemma4:e4b` only for minor/background local tasks.  3. Run the first proof workflow.    - Input: sanitized dialogue or project context summary.    - Output: fill all templates in `project/outputs/templates/`.    - Review: AF Review must approve before anything is published.  4. Decide whether to install runtime packages.    - LangGraph: install when graph execution needs to be automated.    - CrewAI: install when role/task execution needs to run as code.    - LlamaIndex: install when RAG indexing and query"
+    },
+    {
+      "path": "project/integration-plan.md",
+      "title": "Integrated Knowledge Operations Plan",
+      "text": "# Integrated Knowledge Operations Plan  Status: configured as public project contract.  ## Goal  Operate ArchFlow as one coordinated system while keeping each knowledge layer responsible for a different job.  ## How The Layers Work Together  ```text Codex   -> WikiLLM public memory   -> public-safety scan   -> LangGraph state workflow   -> LlamaIndex approved retrieval   -> CrewAI role outputs   -> LangGraph review gate   -> LangSmith trace   -> WikiLLM run/decision/issue updates   -> Git pre-push safety hook   -> GitHub ```  ## Current Execution Status  | Layer | Status | |---|---| | Codex | Active operator. | | WikiLLM | Active under `wiki/`. | | Ollama/Qwythos | Active local model. | | LangSmith | Key present locally; SDK installed in ignored local runtime; smoke trace submitted. | | LangGraph | Contract configured; runtime missing. | | CrewAI | Contract configured; runtime missing. | | LlamaIndex | Contract configured; runtime missing. | | Graphify | Planned after runtime code exists. | | Obsidian mirror | Planned as sanitized mirror only. | | Nexus | Planned after target vault and live schema are clear. |  ## Seven Task Execution Status  1. LangSmith key handling: complete. Th"
+    },
+    {
+      "path": "project/langsmith-setup.md",
+      "title": "LangSmith Setup",
+      "text": "# LangSmith Setup  Status: configured; local ignored API key present; sanitized smoke trace submitted.  ## Current Parameters  | Parameter | Value | |---|---| | Purpose | Observability and tracing only. | | Model execution | Ollama local only. | | Cloud model keys | Not configured. | | Project name | `ArchFlow` | | Project ID | `057edf33-a328-4186-9425-3306186149ef` | | Endpoint | `https://eu.api.smith.langchain.com` | | Local env file | `project/.env.langsmith.local` | | Public example | `project/config/langsmith.env.example` |  ## Local Env File  Store the API key only in:  `project/.env.langsmith.local`  Keep this line blank in Git-tracked files:  ```env LANGSMITH_API_KEY= ```  ## Active Env Block  ```env LANGSMITH_TRACING=true LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com LANGSMITH_PROJECT=ArchFlow LANGSMITH_PROJECT_ID=057edf33-a328-4186-9425-3306186149ef LANGSMITH_API_KEY= LANGGRAPH_CONTROL_MODE=codex_supervised LANGGRAPH_LLM_PROVIDER=ollama_local OLLAMA_BASE_URL=http://127.0.0.1:11434 OLLAMA_CHAT_MODEL=hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M OLLAMA_FALLBACK_CHAT_MODEL=gemma4:e4b OLLAMA_EMBED_MODEL=nomic-embed-text LANGSMITH_RUN_TAGS=archflow,block1,o"
+    },
+    {
+      "path": "project/operating-rules.md",
+      "title": "Operating Rules",
+      "text": "# Operating Rules  ## Language Rule  All project knowledge, prompts, summaries, inputs, and outputs in this public folder must be in English.  If a source is in another language, translate it into English and store only the translated public-safe summary.  ## Public-Safety Rule  Do not store:  - Personal names or private identities. - API keys, tokens, cookies, passwords, private credentials, or credential values. - Local absolute paths. - User IDs, workspace IDs, account IDs, project IDs, deployment IDs, or private Notion page URLs. - Raw private Notion exports, emails, transcripts, browser logs, screenshots, PDFs, office documents, or database dumps. - Claims that imply paying customers, production outcomes, or validated ROI unless supported by public evidence.  ## Folder Rule  All current project work goes under `project/`.  Pre-reset history goes under `history/` as summaries, timelines, and sanitized inventories only.  ## Source Rule  Private sources can be read for understanding, but public files must contain only:  - English summaries. - Public-safe task names. - Public-safe dates and status. - Tool names and non-secret model names. - Repo-relative file references.  ## Agent"
+    },
+    {
+      "path": "project/outputs/README.md",
+      "title": "Output Documents",
+      "text": "# Output Documents  This folder defines the documents produced by the Block 1 workflow.  Current status: templates exist, but the first real proof run has not been completed yet.  ## Expected Run Output Set  Each full run should produce:  - `source-inventory.md` - `retrieval-log.md` - `context-digest.md` - `prd.md` - `responsibility-matrix.md` - `knowledge-base-update.md` - `review-report.md` - `run-summary.md`  ## Rule  Do not store raw private transcripts, private board exports, credentials, local paths, or private links in output documents."
+    },
+    {
+      "path": "project/outputs/templates/context-digest.md",
+      "title": "Context Digest",
+      "text": "# Context Digest  Run: Date: Agent: AF Context  ## FACT  -   ## INTERPRETATION  -   ## HYPOTHESIS  -   ## GAP  -   ## Source Notes  | Claim | Source Path | Confidence | |---|---|---| "
+    },
+    {
+      "path": "project/outputs/templates/knowledge-base-update.md",
+      "title": "Knowledge Base Update",
+      "text": "# Knowledge Base Update  Run: Date: Agent: AF Knowledge  ## What Changed  -   ## Durable Facts  -   ## Reusable Decisions  -   ## Memory Candidates  -   ## Links To Output Documents  -  "
+    },
+    {
+      "path": "project/outputs/templates/prd.md",
+      "title": "Product Requirements Document",
+      "text": "# Product Requirements Document  Run: Date: Agent: AF Manager  ## Problem   ## Target User   ## Goal   ## Non-Goals   ## Workflow  1.   ## Requirements  | ID | Requirement | Priority | Acceptance Criteria | |---|---|---|---|  ## Risks And Open Questions  -  "
+    },
+    {
+      "path": "project/outputs/templates/responsibility-matrix.md",
+      "title": "Responsibility Matrix",
+      "text": "# Responsibility Matrix  Run: Date: Agent: AF Manager  | Task | Owner Agent | Input | Output | Due | Acceptance Criteria | |---|---|---|---|---|---|  ## Dependencies  -   ## Blockers  - "
+    },
+    {
+      "path": "project/outputs/templates/retrieval-log.md",
+      "title": "Retrieval Log",
+      "text": "# Retrieval Log  Run: Date: Agent: AF Context  ## Query   ## Retrieval Parameters  - corpus: - top_k: - response_mode:  ## Retrieved Public-Safe Context  | Source Path | Why Retrieved | Used In Output | |---|---|---|  ## Rejected Context  | Source | Reason | |---|---| "
+    },
+    {
+      "path": "project/outputs/templates/review-report.md",
+      "title": "Review Report",
+      "text": "# Review Report  Run: Date: Agent: AF Review  ## Status  Approval status: pending  ## Checks  | Check | Status | Evidence | |---|---|---| | English-only | pending | | | No secrets | pending | | | No local paths | pending | | | No private links | pending | | | Source-grounded claims | pending | | | Unsupported claims removed | pending | |  ## Required Edits  -   ## Final Decision  "
+    },
+    {
+      "path": "project/outputs/templates/run-summary.md",
+      "title": "Run Summary",
+      "text": "# Run Summary  Run: Date: Operator:  ## Task   ## Inputs  -   ## Outputs  -   ## Checks  -   ## Remaining Gaps  -  "
+    },
+    {
+      "path": "project/outputs/templates/source-inventory.md",
+      "title": "Source Inventory",
+      "text": "# Source Inventory  Run: Date: Agent: AF Tools  ## Approved Sources  | Source | Type | Public Safety Status | Notes | |---|---|---|---|  ## Excluded Sources  | Source | Reason | |---|---|  ## Gaps  -  "
+    },
+    {
+      "path": "project/project-plan.md",
+      "title": "Project Plan",
+      "text": "# Project Plan  Source: private project board reviewed on 2026-06-25.  This file is an English public-safe translation and synthesis. It does not include private page URLs, user IDs, owner names, or raw source content.  Latest detailed E1 breakdown: [`reports/2026-06-25-e1-block1-subtask-execution-plan.pdf`](reports/2026-06-25-e1-block1-subtask-execution-plan.pdf).  ## Epic Timeline  | Epic | Public English Name | Status | Window | |---|---|---|---| | E1 | Build the knowledge base on ourselves | Active | 2026-06-24 to 2026-07-04 | | E5 | Analytics and ROI method | Active | 2026-06-24 to 2026-07-07 | | E4 | Content | Active | 2026-06-24 to 2026-08-01 | | E3 | Website and positioning | Not started | 2026-07-01 to 2026-07-14 | | E2 | Research engine to ICP | Not started | 2026-07-01 to 2026-07-11 | | E6 | Outreach | Not started | 2026-07-14 to 2026-07-28 | | E7 | Payment test to verdict | Not started | 2026-07-15 to 2026-08-01 |  ## Current Execution Logic  1. Prove the knowledge-base and PRD workflow internally. 2. Turn internal proof into a repeatable method. 3. Use the method to research the first ICP. 4. Build positioning, a solution page, a diagnostic form, and analytics. 5. Publ"
+    },
+    {
+      "path": "project/prompts/af-graph.md",
+      "title": "AF Graph Prompt",
+      "text": "# AF Graph Prompt  Use this prompt for a full controlled workflow.  ```md AF Graph  Objective:  Sources:  Allowed actions:  Do not:  Target output:  Provider mode: ollama_local | codex_operator | cloud_api_pending_approval  Sensitivity: public | internal_summary | private_do_not_store  Human gates: source approval, PRD approval, memory approval, publish approval ```"
+    },
+    {
+      "path": "project/prompts/af-review.md",
+      "title": "AF Review Prompt",
+      "text": "# AF Review Prompt  ```md AF Review  Review target:  Check for: - public safety - English-only content - no personal names or private IDs - no local absolute paths - no secrets - no unsupported customer or ROI claims - clear next action  Output: - approved or blocked - issues - required edits - final public-safe summary ```"
+    },
+    {
+      "path": "project/provider-setup.md",
+      "title": "Provider Setup",
+      "text": "# Provider Setup  This project supports two provider concepts:  1. Ollama local model provider. 2. Codex operator authentication.  They are not the same thing.  ## Current Verified State  As of 2026-06-25:  - Ollama CLI is installed. - Ollama server is started through the local Homebrew service. - Local Ollama manifests include a Qwythos model: `Qwythos-9B-Claude-Mythos-5-1M-GGUF` with `Q4_K_M` quantization. - Qwythos appears in `ollama list`, but the smoke test failed at model load time with an Ollama 500 error. - Qwythos now loads and generates text through Ollama. - `gemma4:e4b` remains the fallback model. - Codex is available as the operator runtime. - Codex auth should not be treated as an exportable API key. - LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.  ## Recommended Mode  Use Codex authentication as the main project operator and publication path. Use Ollama only for local minor/background tasks:  - `ARCHFLOW_PROVIDER_MODE=codex_auth_main` - `CODEX_OPERATOR_MODE=codex_app` - `CODEX_AUTH_EXPORTS_API_KEY=false` - `CODEX_GITHUB_PUBLICATION=codex_operated_git_ssh` - `OLLAMA_CHAT_MOD"
+    },
+    {
+      "path": "project/reports/2026-06-25-chat-execution-report.md",
+      "title": "Chat Execution Report",
+      "text": "# Chat Execution Report  Date: 2026-06-25 Scope: public project folder  ## User Request  Configure LangSmith using project ID `057edf33-a328-4186-9425-3306186149ef`, create an env file for manual API key insertion, keep model execution on Ollama only, report current LangSmith setup, save the run to the public WikiLLM layer, and make sure WikiLLM is configured inside the public project.  ## Actions Completed  - Added a public LangSmith env example. - Added an ignored local LangSmith env file for the API key. - Updated model routing to include LangSmith as tracing only. - Verified local Ollama inventory. - Confirmed Qwythos now loads and generates text through Ollama. - Updated LangGraph workflow config with LangSmith trace fields and project ID. - Added/updated provider documentation. - Added a public WikiLLM layer inside the repository.  ## Provider Status  FACT: Codex remains the primary operator and publication layer.  FACT: Ollama is the only model execution provider for now.  FACT: Qwythos is present and generates text through Ollama.  FACT: `gemma4:e4b` remains configured as fallback.  FACT: LangSmith is configured for tracing only and is waiting for the API key.  ## LangSmith"
+    },
+    {
+      "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+      "title": "Current Setup Methods And Agent Plan",
+      "text": "# Current Setup Methods And Agent Plan  Date: 2026-06-25 Status: educational summary for the public ArchFlow Block 1 project  ## 1. Executive Summary  ArchFlow is currently set up as a public-safe knowledge project for Block 1:  `dialogue/chat/meeting material -> structured context -> PRD -> responsibility plan -> agent-ready knowledge base`  The current setup separates four concerns:  | Concern | Current Tool | Purpose | |---|---|---| | Operator and approvals | Codex | Edits files, reviews safety, runs checks, publishes to GitHub. | | Local model execution | Ollama with Qwythos | Runs local minor/background model work without cloud model keys. | | Workflow control | LangGraph contract | Defines state, nodes, edges, gates, and revision loops. | | Agent team structure | CrewAI contract | Defines roles, tasks, expected outputs, and accountability. | | Retrieval/RAG | LlamaIndex contract | Defines approved corpus, indexing, retrieval, source paths, and private-source refusal. | | Observability | LangSmith | Traces future workflow runs after API key insertion. | | Durable memory | public WikiLLM | Stores project rules, memory, insights, decisions, runs, and issues. |  Important current"
+    },
+    {
+      "path": "project/reports/2026-06-25-layer-setup-report.md",
+      "title": "Layer Setup Report",
+      "text": "# Layer Setup Report  Date: 2026-06-25 Status: public setup completed locally and published to GitHub.  ## 1. Public Repository Layer  FACT: The public project root is this repository folder.  Parameters:  - Active folder: repo root. - Active work folder: `project/`. - Public history folder: `history/`. - Skill registry folder: `skills/`. - Ignored local config: `project/.env.local`. - Ignored runtime state: `project/local/`.  Status:  - Public files are English-only. - Local paths, private links, credentials, raw private source exports, and personal identifiers are excluded. - A local Git commit exists.  ## 2. Authentication And Runtime Layer  FACT: Codex is the primary operator runtime. GitHub publication is operated from Codex through verified Git SSH transport.  Parameters:  - `ARCHFLOW_PROVIDER_MODE=codex_auth_main` - `CODEX_OPERATOR_MODE=codex_app` - `CODEX_AUTH_EXPORTS_API_KEY=false` - `CODEX_GITHUB_PUBLICATION=codex_operated_git_ssh`  Interpretation:  - Codex auth is used to operate this setup. - GitHub publication uses the working Git SSH remote. - Codex auth is not an exportable API key for Python frameworks. - If direct OpenAI API use is needed later, a separate approved"
+    },
+    {
+      "path": "project/runs/2026-06-25-clean-public-resetup.md",
+      "title": "Run - Clean Public Resetup",
+      "text": "# Run - Clean Public Resetup  Date: 2026-06-25 Scope: public project folder  ## Task  Create a clean public-safe project folder for the ArchFlow reset. Translate the private project board into English. Keep prior work as sanitized history. Prepare provider setup templates for Ollama local mode and Codex operator mode without storing secrets.  ## Inputs Reviewed  - Existing resetup package from 2026-06-24. - Private project board epics and tasks. - Existing local provider state. - Current public-safety requirements.  ## Outputs Created  - `README.md` - `AGENTS.md` - `CLAUDE.md` - `project/README.md` - `project/operating-rules.md` - `project/project-plan.md` - `project/agentic-stack.md` - `project/provider-setup.md` - `project/config/providers.env.example` - `project/config/model-routing.yaml` - `project/scripts/check-ollama.sh` - `project/scripts/smoke-test-ollama-qwythos.sh` - `project/prompts/af-graph.md` - `project/prompts/af-review.md` - `history/previous-work-summary.md` - `history/legacy-file-inventory.md` - `history/resetup-summary-2026-06-24.md` - `history/notion-plan-ingest-2026-06-25.md` - `skills/skills-used.md` - `PUBLICATION_REVIEW.md` - `CHANGELOG.md`  ## Checks  - Pub"
+    },
+    {
+      "path": "project/runs/2026-06-25-codex-main-agentic-workflow.md",
+      "title": "Run - Codex Main Agentic Workflow Setup",
+      "text": "# Run - Codex Main Agentic Workflow Setup  Date: 2026-06-25 Scope: public project folder  ## Task  Set Codex authentication as the main setup and publication path, keep Ollama for local minor/background tasks, and make the LangGraph, CrewAI, LlamaIndex, agent, and output-document layers explicit.  ## Outputs  - `project/config/model-routing.yaml` - `project/config/providers.env.example` - `project/provider-setup.md` - `project/agentic-stack.md` - `project/workflows/langgraph-controller.yaml` - `project/workflows/crewai-crew.yaml` - `project/workflows/llamaindex-rag.yaml` - `project/outputs/` - `project/reports/2026-06-25-layer-setup-report.md` - `project/future-actions-and-parameters.md`  ## Status  FACT: Codex is the primary operator layer.  FACT: GitHub publication is configured through a verified Git SSH remote operated from Codex.  FACT: Ollama is connected for local minor/background tasks.  FACT: Qwythos remains installed but not loadable in the current smoke test.  FACT: `gemma4:e4b` is the verified local fallback model.  INTERPRETATION: The public project is now structured enough to run the first proof workflow, but LangGraph, CrewAI, and LlamaIndex are not installed as runt"
+    },
+    {
+      "path": "project/runs/2026-06-25-integrated-knowledge-and-safety-hook.md",
+      "title": "Run - Integrated Knowledge And Safety Hook",
+      "text": "# Run - Integrated Knowledge And Safety Hook  Date: 2026-06-25  ## Task  Integrate the public knowledge-operation layers, protect the local LangSmith API key, add an automatic pre-push safety hook, and prepare the project for future LangGraph, LlamaIndex, CrewAI, Graphify, Obsidian, and Nexus operation.  ## Actions  - Confirmed `LANGSMITH_API_KEY` is set only in ignored `project/.env.langsmith.local`. - Confirmed `langgraph`, `llama_index`, and `crewai` Python packages are not installed yet. - Installed the LangSmith SDK into ignored `project/local/venv`. - Submitted one sanitized LangSmith smoke trace with Ollama-only metadata. - Added `scripts/public_safety_scan.py`. - Added `.githooks/pre-push`. - Added `project/workflows/knowledge-integration.yaml`. - Added `project/integration-plan.md`.  ## Status  FACT: The LangSmith key is local and ignored.  FACT: LangGraph, LlamaIndex, and CrewAI runtime packages are not installed yet.  FACT: LangSmith SDK is installed only in the ignored local runtime folder.  FACT: A sanitized LangSmith smoke trace was submitted.  FACT: The pre-push hook is configured to block dangerous public pushes.  GAP: LangGraph, LlamaIndex, and CrewAI runtimes are "
+    },
+    {
+      "path": "project/runs/2026-06-25-langsmith-wikillm-setup.md",
+      "title": "Run - LangSmith And WikiLLM Setup",
+      "text": "# Run - LangSmith And WikiLLM Setup  Date: 2026-06-25 Scope: public project folder  ## Task  Configure LangSmith tracing for the public ArchFlow project with project ID `057edf33-a328-4186-9425-3306186149ef`, keep model execution on Ollama only, update current reports, and set up WikiLLM inside the public project.  ## Outputs  - `project/config/langsmith.env.example` - `project/.env.langsmith.local` - `project/langsmith-setup.md` - `project/config/model-routing.yaml` - `project/workflows/langgraph-controller.yaml` - `project/reports/2026-06-25-chat-execution-report.md` - `wiki/`  ## Status  FACT: LangSmith is configured for tracing only.  FACT: The API key is not stored in Git.  FACT: Qwythos now loads and generates text through Ollama.  FACT: LangGraph remains a configured workflow contract, not an installed runtime.  GAP: No trace has been sent to LangSmith yet because the API key is not present. "
+    },
+    {
+      "path": "project/runs/2026-06-25-provider-github-automation.md",
+      "title": "Run - Provider, GitHub, And Automation Setup",
+      "text": "# Run - Provider, GitHub, And Automation Setup  Date: 2026-06-25 Scope: public project folder  ## Task  Start Ollama, run Qwythos checks, create `.env.local`, update the public project for GitHub publication, publish only used and set-up skills by agent, and set up an evening automation to keep the registry current.  ## Provider Actions  FACT: Ollama was started through the Homebrew service.  FACT: `ollama list` found the Qwythos model identifier used by this project.  FACT: Qwythos metadata is readable.  FACT: Qwythos failed to load during a public-safe smoke test with an Ollama 500 model-load error.  FACT: `gemma4:e4b` loaded and produced the expected public-safe fallback smoke-test response.  INTERPRETATION: Ollama is connected, but the configured Qwythos artifact needs repair before it can be the active local model.  ## Files Updated  - `project/.env.local` created as ignored local configuration. - `project/config/providers.env.example` - `project/config/model-routing.yaml` - `project/provider-setup.md` - `project/agents/README.md` - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `PUBLICATION_REVIEW.md`  ## Current Provider "
+    },
+    {
+      "path": "project/runs/README.md",
+      "title": "Runs",
+      "text": "# Runs  Store future public-safe run summaries here.  Rules:  - Do not store raw private inputs. - Store sanitized source summaries only. - Keep filenames date-prefixed. - Keep all content in English. - Each run must include checks, outputs, gaps, and next actions."
+    },
+    {
+      "path": "project/workflows/crewai-crew.yaml",
+      "title": "crewai-crew.yaml",
+      "text": "name: archflow_block1_crew status: configured_not_installed runtime: crewai_python official_docs_checked:   - https://docs.crewai.com/en/concepts/crews  purpose: >   Organize the Block 1 agents as a named team. CrewAI owns role clarity,   task sequence, expected outputs, and per-task accountability.  process: sequential manager_mode: codex_operator_supervised memory: false cache: true planning: false output_log_file: project/outputs/crew-log.json max_rpm: null observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted model_execution: ollama_local_qwythos  agents:   af_tools:     role: Source and tooling analyst     goal: Verify available sources, providers, and safe boundaries before work starts.     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check   af_context:     role: Context analyst     goal: Convert approved inputs into structured English facts, interpretations, hypotheses, and gaps.     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap   af_manager:     role: PRD and e"
+    },
+    {
+      "path": "project/workflows/knowledge-integration.yaml",
+      "title": "knowledge-integration.yaml",
+      "text": "name: archflow_combined_knowledge_operations status: configured  purpose: >   Define how public WikiLLM, optional Obsidian/Second Brain mirror, future   Graphify output, future Nexus bridge, LlamaIndex RAG, CrewAI, LangGraph,   LangSmith, and Codex operate together.  operator:   primary: codex_operator   responsibilities:     - approve_sensitive_actions     - run_public_safety_scan     - edit_public_files     - publish_to_git     - record_wikillm_runs  knowledge_layers:   wikillm_public:     status: active     root: wiki/     role: canonical_public_agent_memory     writes:       - runs       - decisions       - issues       - memory       - insights    obsidian_second_brain:     status: planned_sanitized_mirror_only     root: project/reference/obsidian/     role: human_strategy_and_semantic_notes     rule: export_or_summarize_public_safe_notes_only    graphify:     status: planned_after_runtime_code_exists     root: project/reference/graphify/     role: generated_structure_map     rule: graph_public_repo_only    nexus:     status: planned_after_vault_target_is_clear     role: live_obsidian_bridge     rule: discover_schema_before_use_and_never_write_secrets  runtime_layers:   langgr"
+    },
+    {
+      "path": "project/workflows/langgraph-controller.yaml",
+      "title": "langgraph-controller.yaml",
+      "text": "name: archflow_block1_langgraph_controller status: configured_not_installed runtime: langgraph_python official_docs_checked:   - https://docs.langchain.com/oss/python/langgraph/overview  purpose: >   Control the reasoning path for Block 1. LangGraph owns state,   conditional routing, review loops, and human approval gates.  state_schema:   run_id: string   source_packet: object   source_boundary_status: pass_or_fail   retrieved_context: list   context_digest_path: string   prd_path: string   task_matrix_path: string   kb_update_path: string   review_report_path: string   langsmith_trace_id: string   langsmith_trace_url: string   approval_status: approved_revise_or_blocked   gaps: list  nodes:   intake_validate:     owner_agent: af_tools     purpose: validate source packet, language, public boundary, and requested output.     output: source_boundary_status   retrieve_context:     owner_agent: af_context     purpose: call bounded LlamaIndex retrieval over approved public corpus.     output: retrieved_context   write_context_digest:     owner_agent: af_context     purpose: separate facts, interpretations, hypotheses, and gaps.     output: project/outputs/templates/context-digest.md   "
+    },
+    {
+      "path": "project/workflows/llamaindex-rag.yaml",
+      "title": "llamaindex-rag.yaml",
+      "text": "name: archflow_block1_rag status: configured_not_installed runtime: llamaindex_python official_docs_checked:   - https://developers.llamaindex.ai/python/framework/getting_started/concepts/  purpose: >   Connect agents and LLMs to approved project data. LlamaIndex owns bounded   loading, indexing, retrieval, and source-grounded answers.  approved_corpus:   include:     - project/     - history/     - skills/   exclude:     - .git/     - project/.env.local     - project/local/     - raw/     - source_exports/     - secrets/     - private/     - tmp/  indexing_parameters:   loader: simple_directory_reader   document_language: english   chunk_size: 800   chunk_overlap: 120   metadata_fields:     - source_path     - document_type     - public_safety_status     - updated_at   persist_dir: project/local/rag_index   persist_dir_git_status: ignored  retrieval_parameters:   query_engine: vector_query_engine   similarity_top_k: 5   response_mode: compact   require_source_paths: true   refuse_on_private_source: true  model_routing:   primary_operator: codex_operator   local_background_llm: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M   fallback_local_llm: gemma4:e4b   embedding_mo"
+    },
+    {
+      "path": "history/README.md",
+      "title": "History",
+      "text": "# History  This folder records ArchFlow work before and around the 2026-06-24 reset.  It is summary-only. Raw historical files are not copied here because they may contain private paths, private workspace links, screenshots, metadata, account IDs, or unpublished documents.  Use this folder to understand context without importing legacy risk into the public project."
+    },
+    {
+      "path": "history/legacy-file-inventory.md",
+      "title": "Legacy File Inventory",
+      "text": "# Legacy File Inventory  This is a sanitized inventory of legacy file categories. It is not a raw copy of legacy files.  | Category | Public Handling | |---|---| | Static website HTML/CSS/JS | Not copied. Review separately before public release. | | API route files | Not copied. May contain deployment assumptions or private integration details. | | Deployment metadata | Not copied. May contain project/account metadata. | | Screenshots and QA images | Not copied. May contain visual state, metadata, or private context. | | Source PDFs and office documents | Not copied. May contain private authorship, metadata, or unpublished strategy. | | Workflow reports | Summarized only. Raw reports may contain local paths or private source references. | | Browser automation logs | Not copied. May contain local runtime or page state. | | Figma sync artifacts | Not copied. May contain private workspace references. |  To make any legacy file public, run a separate public-safety review first."
+    },
+    {
+      "path": "history/notion-plan-ingest-2026-06-25.md",
+      "title": "Project Board Ingest - 2026-06-25",
+      "text": "# Project Board Ingest - 2026-06-25  This file summarizes the private project board in English.  ## Database Reviewed  A private epics database was reviewed. It contains seven epics:  1. Build the knowledge base on ourselves. 2. Research engine to ICP. 3. Website and positioning. 4. Content. 5. Analytics and ROI method. 6. Outreach. 7. Payment test to verdict.  ## Important Dates  - 2026-06-24: Reset and active work begins. - 2026-07-04: Knowledge-base proof should be complete. - 2026-07-11: ICP research should produce outreach targets. - 2026-07-14: Website should be ready for traffic. - 2026-07-28: Outreach waves should be complete. - 2026-08-01: Payment-test verdict should be recorded.  ## Public Translation Rule  The original board uses mixed-language task titles and private workspace metadata. Only English summaries and public-safe task translations are stored here."
+    },
+    {
+      "path": "history/previous-work-summary.md",
+      "title": "Previous Work Summary",
+      "text": "# Previous Work Summary  This is a public-safe English summary of prior ArchFlow activity.  ## Legacy STR Website Track  ArchFlow previously focused on a short-term rental and property-management automation website.  Public-safe summary:  - A static marketing website was built. - A diagnostic quiz was added. - The positioning centered on owner trust, maintenance coordination, compliance and payout evidence, revenue/listing workflows, and operator reporting. - The website used a branded visual system with arc-based assets. - Deployment and design-sync workflows existed, but deployment metadata and design workspace details are not included in this public folder.  ## AutoFin Research Track  A separate finance automation research track was explored.  Public-safe summary:  - The track focused on source-backed finance evidence packs. - It was treated as adjacent to ArchFlow but not the current company-level reset. - It remains historical context only.  ## June 24 Reset  The current company-level reset moved the focus to a broader AI-native service entry.  Current first solution:  `dialogue/chat/meeting material -> PRD -> tasks/responsibilities -> agent-ready knowledge base`  Key implicat"
+    },
+    {
+      "path": "history/resetup-summary-2026-06-24.md",
+      "title": "Resetup Summary - 2026-06-24",
+      "text": "# Resetup Summary - 2026-06-24  The resetup created a clearer operating model for the project.  ## Accepted Direction  The active solution is the knowledge-base and PRD engine:  1. Intake dialogue, chat, meeting notes, or transcript. 2. Summarize into structured context. 3. Produce a PRD. 4. Extract tasks, responsibilities, metrics, and blockers. 5. Update the knowledge base. 6. Review for evidence, public safety, and next action.  ## Agentic Stack  | Layer | Role | |---|---| | LangGraph | Controls reasoning path, state, and approval gates. | | CrewAI | Organizes agents as a team. | | LlamaIndex | Connects agents to bounded data and RAG. | | Codex | Operates locally, edits files, verifies outputs, and handles approvals. | | Ollama | Local model provider after approval. |  ## Public Project Rule  All new active work goes under `public/project`. Prior work is represented under `public/history` as summaries only."
+    },
+    {
+      "path": "skills/archflow-task-breakdown/SKILL.md",
+      "title": "ArchFlow Task Breakdown",
+      "text": "--- name: archflow-task-breakdown description: Break ArchFlow epics, tasks, and Notion initiatives into staged subtasks with execution order, gates, acceptance criteria, and public-safe reporting. Use for Block 1 knowledge-base work, LangGraph/CrewAI/LlamaIndex runtime planning, Notion task updates, agent-system architecture, and any ArchFlow task that must be decomposed without installing or changing everything at once. ---  # ArchFlow Task Breakdown  ## Purpose  Use this skill to turn an ArchFlow epic or task into a reliable execution structure that a human, Codex, Claude, Cursor, LangGraph, or CrewAI team can follow. The output should be Notion-ready and should preserve the current ArchFlow global goal:  `dialogue/chat/meeting material -> structured context -> PRD -> responsibility plan -> agent-ready knowledge base -> review gate -> ICP/research/outreach/payment test`  ## Required Context  Before decomposing work, read the active ArchFlow routing files when available:  - `AGENTS.md` - `public/project/project-plan.md` - `public/project/agentic-stack.md` - `workflow/13_resetup/README.md` - `workflow/13_resetup/agents/agent5_final_resetup_prompt.md` - `workflow/13_resetup/agents/a"
+    },
+    {
+      "path": "skills/archflow-task-breakdown/agents/openai.yaml",
+      "title": "openai.yaml",
+      "text": "interface:   display_name: \"ArchFlow Task Breakdown\"   short_description: \"Plan ArchFlow epics into safe staged subtasks\"   default_prompt: \"Use $archflow-task-breakdown to decompose this ArchFlow epic into staged tasks, subtasks, checks, and Notion-ready outputs.\""
+    },
+    {
+      "path": "skills/skills-used.md",
+      "title": "Skills And Methods Used",
+      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. | | Public-safety review | Keep public files free of secrets, personal data, local paths, and private IDs. | | Ollama local check | Start local Ollama, list models, and run public-safe smoke tests. | | Git publication flow | Initialize and publish only the public project folder. |  ## Planned For Execution  | Skill or Method | Use | |---|---| | AF Graph | Run controlled Block 1 workflows. | | AF RAG | Query approved project knowledge. | | AF Crew | Split work across named agent roles. | | AF Review | Approve or block output before handoff. |  ## Agent Roles  | Role | Output | |---|---| | Tools Analyzer | Source inventory, extraction plan, tool gaps. | | Context Analyzer | Context digest, facts, interpretations, hypotheses, gaps. | | Manager / PRD Ag"
+    },
+    {
+      "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
+      "title": "Decision - Codex, Ollama, And LangSmith Boundary",
+      "text": "# Decision - Codex, Ollama, And LangSmith Boundary  Date: 2026-06-25  ## Decision  Use Codex as the primary operator, Ollama/Qwythos as the local model execution layer, and LangSmith as tracing only.  ## Rationale  Codex authentication is not an exportable API key for frameworks.  Ollama can run local models without cloud model credentials.  LangSmith can observe and debug future LangGraph/CrewAI/LlamaIndex runs after the API key is added, without changing model execution.  ## Parameters  - Codex mode: `codex_app` - Ollama model: `hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M` - Ollama fallback: `gemma4:e4b` - LangSmith project: `ArchFlow` - LangSmith project ID: `057edf33-a328-4186-9425-3306186149ef` - LangSmith endpoint: `https://eu.api.smith.langchain.com`  ## Consequences  - No OpenAI, Anthropic, or other cloud model keys are needed for current execution. - LangSmith traces cannot be sent until the API key is manually inserted into the ignored local env file. - Future runtime package installation remains a separate approval step. "
+    },
+    {
+      "path": "wiki/index.md",
+      "title": "ArchFlow Public WikiLLM",
+      "text": "# ArchFlow Public WikiLLM  This is the public WikiLLM layer for the ArchFlow Block 1 knowledge project.  It stores durable public-safe project memory, decisions, run records, issues, insights, and operating rules.  ## Read Order  1. `../README.md` 2. `../AGENTS.md` 3. `../project/README.md` 4. `../project/operating-rules.md` 5. `../project/config/model-routing.yaml` 6. `memory.md` 7. `insights.md` 8. `rules/public-wikillm-contract.md` 9. latest file in `runs/` 10. open files in `issues/` 11. latest files in `decisions/`  ## Project Identity  | Field | Value | |---|---| | Project | ArchFlow Block 1 Knowledge | | Public repository | `mcharniuk1-spec/archflow_b1_knowledge` | | Active work folder | `project/` | | Public history folder | `history/` | | Skill registry | `skills/` | | WikiLLM folder | `wiki/` |  ## Active Layers  | Layer | Status | |---|---| | Public repository | Published. | | Codex operator | Primary operator and review layer. | | Ollama | Local model execution only. | | Qwythos | Active local model after load verification. | | LangSmith | Tracing configured, awaiting API key. | | LangGraph | Workflow contract configured, runtime not installed. | | CrewAI | Crew contrac"
+    },
+    {
+      "path": "wiki/insights.md",
+      "title": "Insights",
+      "text": "# Insights  ## Public System Design  The safest current architecture separates three concerns:  - Codex supervises work and publication. - Ollama runs local models. - LangSmith observes traces after public-safety filtering.  This avoids mixing operator authentication, model credentials, and observability credentials.  ## Block 1 Execution Insight  The project should prove one internal workflow before adding customer-facing claims:  1. Take a sanitized source summary. 2. Produce context digest. 3. Produce PRD. 4. Produce responsibility matrix. 5. Produce KB update. 6. Produce review report. 7. Publish only approved public-safe outputs.  ## LangSmith Insight  LangSmith should receive structured run metadata and trace spans, not raw private material. The first useful trace should be a synthetic or sanitized proof run, not an unfiltered private transcript.  ## Implementation Sequencing Insight  The lowest-risk order is: verify LangSmith trace with a sanitized run, install LangGraph runtime, add LlamaIndex retrieval, then add CrewAI execution. This keeps workflow control and public-safety gates stable before adding team automation."
+    },
+    {
+      "path": "wiki/issues/2026-06-25-langsmith-api-key-missing.md",
+      "title": "Issue - LangSmith API Key Missing",
+      "text": "# Issue - LangSmith API Key Missing  Date: 2026-06-25 Status: closed  ## Issue  LangSmith tracing was configured before the local API key was added.  ## Impact  Resolved for smoke tracing. LangGraph, CrewAI, and LlamaIndex runtime traces still require those runtime packages to be installed and wired into a proof workflow.  ## Resolution  The real key was added locally to:  `project/.env.langsmith.local`  Do not commit the key.  Verification:  - The local env file is ignored by Git. - A sanitized LangSmith smoke trace was submitted."
+    },
+    {
+      "path": "wiki/log.md",
+      "title": "Log",
+      "text": "# Log  ## 2026-06-25  - Public project was created and published. - Codex was set as primary operator layer. - Ollama was connected as local model execution layer. - Qwythos was verified as present and generating text. - LangSmith tracing env was configured with project ID `057edf33-a328-4186-9425-3306186149ef`. - Public WikiLLM structure was created inside the repository. - Educational setup summary and agent plan were added under `project/reports/`. - Integrated knowledge-operation plan and Git pre-push public-safety hook were added. - LangSmith SDK was installed locally in ignored runtime and a sanitized smoke trace was submitted."
+    },
+    {
+      "path": "wiki/memory.md",
+      "title": "Memory",
+      "text": "# Memory  ## Stable Project Direction  ArchFlow Block 1 is the first public solution:  `dialogue/chat/meeting material -> structured context -> PRD -> responsibility plan -> agent-ready knowledge base`  ## Current Runtime Decisions  - Codex is the primary operator, review, file-edit, and publication layer. - Codex authentication is not exported as an API key. - Ollama is the only model execution provider for now. - Qwythos is the active local model after the latest smoke test generated text. - `gemma4:e4b` remains the local fallback. - LangSmith is tracing only, not a model provider. - No cloud model credentials are configured.  ## Public Repo Rules  - All active project work goes under `project/`. - Sanitized previous history goes under `history/`. - Public WikiLLM memory goes under `wiki/`. - Used/setup skills only go under `skills/` and `project/agents/`. - Env files with real keys stay ignored.  ## LangSmith Memory  - Project name: `ArchFlow`. - Project ID: `057edf33-a328-4186-9425-3306186149ef`. - Endpoint: `https://eu.api.smith.langchain.com`. - Local editable env: `project/.env.langsmith.local`. - Public example env: `project/config/langsmith.env.example`. - API key status: "
+    },
+    {
+      "path": "wiki/rules/public-wikillm-contract.md",
+      "title": "Public WikiLLM Contract",
+      "text": "# Public WikiLLM Contract  ## Purpose  This folder is the durable public memory layer for the ArchFlow Block 1 repository.  ## Required Files  - `index.md` - `memory.md` - `insights.md` - `log.md` - `rules/` - `runs/` - `decisions/` - `issues/`  ## Write Rules  For substantial work:  1. Add a run file under `runs/`. 2. Append `log.md`. 3. Add or update `memory.md` only for stable future-use facts. 4. Add or update `insights.md` only for reusable reasoning or design meaning. 5. Add a decision file when a durable choice is made. 6. Add an issue file when a blocker remains.  ## Safety Rules  - Do not store real API keys. - Do not store private links. - Do not store local absolute paths. - Do not store raw private source material. - Keep content English-only. - Keep paths repo-relative.  ## Layer Rules  - Codex is the primary operator. - Ollama is local model execution. - LangSmith is tracing only. - LangGraph is workflow control. - CrewAI is role/task organization. - LlamaIndex is bounded retrieval. "
+    },
+    {
+      "path": "wiki/runs/2026-06-25-current-setup-methods-and-agent-plan.md",
+      "title": "Run - Current Setup Methods And Agent Plan",
+      "text": "# Run - Current Setup Methods And Agent Plan  Date: 2026-06-25  ## Task  Create a full educational summary of the current ArchFlow setup methods, tools, technical details, agent structure, implementation options, plan, and source list.  ## Outputs  - `project/reports/2026-06-25-current-setup-methods-and-agent-plan.md`  ## Summary  The project currently uses Codex as the operator, Ollama/Qwythos for local model execution, LangSmith for future tracing, LangGraph as the workflow controller contract, CrewAI as the agent-team contract, LlamaIndex as the RAG contract, and public WikiLLM as durable memory.  ## Remaining Gaps  - Runtime packages are not installed. - LangSmith API key is not inserted. - No first proof-run output set exists. "
+    },
+    {
+      "path": "wiki/runs/2026-06-25-integrated-knowledge-and-safety-hook.md",
+      "title": "Run - Integrated Knowledge And Safety Hook",
+      "text": "# Run - Integrated Knowledge And Safety Hook  Date: 2026-06-25  ## Task  Record the integration plan for WikiLLM, Obsidian mirror, Graphify, Nexus, LangGraph, CrewAI, LlamaIndex, LangSmith, Ollama, and Codex. Add a Git pre-push safety gate.  ## Outputs  - `project/integration-plan.md` - `project/workflows/knowledge-integration.yaml` - `scripts/public_safety_scan.py` - `.githooks/pre-push` - `project/runs/2026-06-25-integrated-knowledge-and-safety-hook.md`  ## Durable Facts  - WikiLLM is active inside `wiki/`. - Obsidian, Graphify, and Nexus are planned but not active runtime layers. - LangSmith API key is local and ignored. - LangSmith SDK is installed in ignored local runtime. - A sanitized LangSmith smoke trace was submitted. - LangGraph, LlamaIndex, and CrewAI runtime packages are still missing. - Pre-push safety scanning is now part of the public repository setup."
+    },
+    {
+      "path": "wiki/runs/2026-06-25-langsmith-wikillm-setup.md",
+      "title": "Run - LangSmith And Public WikiLLM Setup",
+      "text": "# Run - LangSmith And Public WikiLLM Setup  Date: 2026-06-25  ## Task  Configure LangSmith tracing using project ID `057edf33-a328-4186-9425-3306186149ef`, keep execution on Ollama only, and set up WikiLLM inside the public project.  ## Inputs  - User-provided LangSmith project ID. - Existing public ArchFlow project structure. - Current Ollama/Qwythos local model state.  ## Outputs  - `project/config/langsmith.env.example` - `project/.env.langsmith.local` - `project/langsmith-setup.md` - `project/config/model-routing.yaml` - `project/workflows/langgraph-controller.yaml` - `project/reports/2026-06-25-chat-execution-report.md` - `wiki/index.md` - `wiki/memory.md` - `wiki/insights.md` - `wiki/log.md` - `wiki/rules/public-wikillm-contract.md` - `wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md` - `wiki/issues/2026-06-25-langsmith-api-key-missing.md`  ## Checks  - Ollama inventory found Qwythos. - Qwythos generated text through Ollama. - Real LangSmith API key was not stored. - Cloud model keys were not added.  ## Remaining Gaps  - LangSmith API key must be added manually. - Runtime packages are not installed. - No trace has been sent to LangSmith yet. "
+    }
+  ],
+  "sources": [
+    {
+      "label": "LangGraph overview",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview"
+    },
+    {
+      "label": "LangGraph Studio / LangSmith Studio",
+      "url": "https://docs.langchain.com/langsmith/studio"
+    },
+    {
+      "label": "LangSmith observability",
+      "url": "https://docs.langchain.com/langsmith/observability"
+    },
+    {
+      "label": "CrewAI crews",
+      "url": "https://docs.crewai.com/en/concepts/crews"
+    },
+    {
+      "label": "LlamaIndex concepts",
+      "url": "https://developers.llamaindex.ai/python/framework/getting_started/concepts/"
+    },
+    {
+      "label": "Ollama API",
+      "url": "https://docs.ollama.com/api/introduction"
+    },
+    {
+      "label": "NVIDIA NeMo Agent Toolkit",
+      "url": "https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html"
+    }
+  ]
+}
