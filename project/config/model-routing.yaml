@@ -20,7 +20,7 @@ providers:
       ssh_push_status: verified
 
   ollama_local:
-    status: service_started_with_qwythos_load_error
+    status: service_started_qwythos_loads
     role: local_minor_background_tasks
     base_url_env: OLLAMA_BASE_URL
     chat_model_env: OLLAMA_CHAT_MODEL
@@ -28,7 +28,8 @@ providers:
     embedding_model_env: OLLAMA_EMBED_MODEL
     task_scope_env: OLLAMA_TASK_SCOPE
     default_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
-    active_background_chat_model: gemma4:e4b
+    active_background_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
+    fallback_chat_model: gemma4:e4b
     default_embedding_model: nomic-embed-text
     allowed_tasks:
       - draft_cleanup
@@ -38,12 +39,11 @@ providers:
     checks:
       service_started: true
       inventory_contains_qwythos: true
-      qwythos_loads: false
+      qwythos_loads: true
+      qwythos_generates_text: true
       fallback_model_loads: true
-    next_repair_options:
-      - re_pull_qwythos_model
-      - replace_qwythos_with_supported_local_model
-      - route_private_drafts_to_fallback_until_qwythos_is_fixed
+    notes:
+      - qwythos_smoke_test_required_manual_stop_after_verbose_generation
 
   cloud_api:
     status: not_configured
@@ -51,12 +51,25 @@ providers:
     env_names:
       - OPENAI_API_KEY
       - OPENAI_BASE_URL
-      - LANGSMITH_API_KEY
+
+  langsmith_observability:
+    status: configured_awaiting_api_key
+    role: tracing_only_not_model_provider
+    project_name: ArchFlow
+    project_id: 057edf33-a328-4186-9425-3306186149ef
+    endpoint_env: LANGSMITH_ENDPOINT
+    tracing_env: LANGSMITH_TRACING
+    api_key_env: LANGSMITH_API_KEY
+    api_key_storage: project/.env.langsmith.local
+    public_example: project/config/langsmith.env.example
+    model_execution: ollama_local_only
+    cloud_model_keys_allowed: false
 
 routing:
   orchestration: codex_operator
   repository_publication: codex_operated_git_ssh
+  observability: langsmith_observability
   public_safe_review: codex_operator
   final_client_output: codex_operator
-  minor_background_tasks: ollama_local_fallback_until_qwythos_fixed
+  minor_background_tasks: ollama_local_qwythos
   future_high_quality_llm: cloud_api

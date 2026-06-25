@@ -13,3 +13,6 @@
 - Added output document templates for the first proof run.
 - Added layer setup report and future actions/parameter file.
 - Added evening automation for used/setup skill registry review.
+- Added LangSmith tracing env setup for project ID `057edf33-a328-4186-9425-3306186149ef`.
+- Verified Qwythos now loads and generates through Ollama.
+- Added public WikiLLM layer under `wiki/`.

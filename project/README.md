@@ -30,6 +30,7 @@ Build a repeatable public-safe system that converts messy work material into exe
 The plan has been imported from the private project board as an English public-safe summary.
 Codex authentication is the main operator and publication path for this setup.
 Ollama is connected for local minor/background tasks.
-Qwythos is installed but failed the current model-load smoke test.
-`gemma4:e4b` is the verified local fallback model.
+Qwythos is installed and now generates text through Ollama.
+`gemma4:e4b` remains the verified local fallback model.
+LangSmith tracing is configured for project ID `057edf33-a328-4186-9425-3306186149ef` and awaits the API key in an ignored local env file.
 LangGraph, CrewAI, and LlamaIndex are configured as workflow contracts, but their runtime packages are not installed yet.

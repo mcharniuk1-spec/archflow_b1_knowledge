@@ -57,13 +57,13 @@ Status:
 - Ollama service started.
 - Qwythos is present in the local model inventory.
 - Qwythos metadata is readable.
-- Qwythos failed to load in the smoke test.
-- `gemma4:e4b` passed the fallback smoke test.
+- Qwythos now loads and generates text through Ollama.
+- `gemma4:e4b` remains the fallback model.
 
 Operational decision:
 
 - Codex handles orchestration, final review, and publication.
-- Ollama handles only minor/background local tasks until Qwythos is repaired.
+- Ollama handles minor/background local tasks with Qwythos as the active local model.
 
 ## 4. LangGraph Layer
 
@@ -87,6 +87,26 @@ Status:
 - Configured as a workflow contract.
 - Runtime package is not installed yet.
 - No LangGraph execution trace exists yet.
+- LangSmith tracing is configured but awaiting the API key.
+
+## 4A. LangSmith Layer
+
+Purpose: trace LangGraph/CrewAI/LlamaIndex execution without changing model provider.
+
+Parameters:
+
+- project name: `ArchFlow`
+- project id: `057edf33-a328-4186-9425-3306186149ef`
+- endpoint: `https://eu.api.smith.langchain.com`
+- local env file: `project/.env.langsmith.local`
+- public example: `project/config/langsmith.env.example`
+- API key status: waiting for manual insertion
+- model execution: Ollama only
+
+Status:
+
+- Configured.
+- Not tested against LangSmith because no API key is present.
 
 ## 5. CrewAI Layer
 

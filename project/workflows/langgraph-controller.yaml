@@ -18,6 +18,8 @@ state_schema:
   task_matrix_path: string
   kb_update_path: string
   review_report_path: string
+  langsmith_trace_id: string
+  langsmith_trace_url: string
   approval_status: approved_revise_or_blocked
   gaps: list
 
@@ -84,8 +86,11 @@ edges:
 
 current_parameters:
   checkpointer: none_for_now
+  observability: langsmith_configured_awaiting_api_key
   human_approval_required_before_publication: true
   max_revision_loops: 2
   final_runtime_owner: codex_operator
-  local_minor_task_model: gemma4:e4b
+  local_minor_task_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
   primary_publication_auth: codex_operated_git_ssh
+  model_execution_provider: ollama_local_only
+  langsmith_project_id: 057edf33-a328-4186-9425-3306186149ef

@@ -15,6 +15,9 @@ Read:
 9. `project/workflows/llamaindex-rag.yaml`
 10. `project/reports/2026-06-25-layer-setup-report.md`
 11. `project/future-actions-and-parameters.md`
+12. `wiki/index.md`
+13. `wiki/memory.md`
+14. `wiki/rules/public-wikillm-contract.md`
 
 Rules:
 
@@ -28,3 +31,4 @@ Rules:
 - Codex authentication is the main operator/publication path.
 - Ollama is only for local minor/background tasks unless later approved.
 - Provider actions that start local services, create env files, install packages, repair models, or connect external API credentials require explicit approval.
+- Record substantial public-safe work in `wiki/runs/` and append `wiki/log.md`.

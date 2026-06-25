@@ -45,10 +45,11 @@ retrieval_parameters:
 
 model_routing:
   primary_operator: codex_operator
-  local_background_llm: gemma4:e4b
-  intended_local_llm_after_repair: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
+  local_background_llm: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
+  fallback_local_llm: gemma4:e4b
   embedding_model: nomic-embed-text
   cloud_llm: not_configured
+  observability: langsmith_configured_awaiting_api_key
 
 outputs:
   retrieval_log: project/outputs/templates/retrieval-log.md
@@ -59,4 +60,3 @@ current_limitations:
   - LlamaIndex is not installed in this public project yet.
   - No vector index has been generated.
   - Only sanitized public files are approved for indexing by default.
-

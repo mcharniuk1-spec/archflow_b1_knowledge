@@ -25,6 +25,7 @@ Rules:
 | `project/` | Current post-reset project, operating rules, plan, agent stack, provider setup. |
 | `history/` | Public-safe summaries and inventories of pre-reset ArchFlow work. |
 | `skills/` | Skills and agent hooks used for this project. |
+| `wiki/` | Public WikiLLM memory layer for project instructions, runs, decisions, issues, and insights. |
 
 ## Current Project Direction
 

@@ -25,14 +25,20 @@ This file lists the next implementation choices and the parameters that should b
    - CrewAI: install when role/task execution needs to run as code.
    - LlamaIndex: install when RAG indexing and query engines are needed.
 
+5. Activate LangSmith tracing after manual API key insertion.
+   - Add the key only to `project/.env.langsmith.local`.
+   - Run a sanitized proof workflow.
+   - Confirm the trace appears in the `ArchFlow` project.
+   - Do not send raw private material to LangSmith.
+
 ## Provider Options
 
 | Provider | Best Use | Current Status | Approval Needed |
 |---|---|---|---|
 | Codex operator auth | Main execution, review, edits, and supervised publication. | Active. | No new approval for normal project work. |
-| Ollama local | Minor/background local tasks. | Started; fallback works. | Approval needed for repair/re-pull or new model install. |
+| Ollama local | Minor/background local tasks. | Started; Qwythos works; fallback remains. | Approval needed for new model install. |
 | OpenAI API | Direct framework calls from LangGraph, CrewAI, or LlamaIndex. | Not configured. | Explicit API key setup approval required. |
-| LangSmith | Tracing and debugging LangGraph runs. | Not configured. | Explicit account/key approval required. |
+| LangSmith | Tracing and debugging LangGraph runs. | Configured, awaiting API key. | Manual key insertion required. |
 
 ## LangGraph Parameters To Review
 
@@ -43,6 +49,7 @@ This file lists the next implementation choices and the parameters that should b
 | human_approval_required_before_publication | true | Keeps public release gated. |
 | state fields | defined in workflow YAML | Makes every handoff explicit. |
 | review gate | required | Blocks unsafe or unsupported outputs. |
+| LangSmith project ID | 057edf33-a328-4186-9425-3306186149ef | Routes traces to the selected project after API key insertion. |
 
 ## CrewAI Parameters To Review
 
@@ -82,3 +89,4 @@ This file lists the next implementation choices and the parameters that should b
 - No public file contains secrets, private links, or local paths.
 - First proof run produces the full output set.
 - Review report explicitly approves or blocks publication.
+- WikiLLM run log is updated under `wiki/runs/`.

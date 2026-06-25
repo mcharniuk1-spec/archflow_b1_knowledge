@@ -57,9 +57,11 @@ Date: 2026-06-25
 - Ollama service started.
 - `ollama list` found Qwythos.
 - Qwythos metadata is readable.
-- Qwythos load failed during smoke test.
-- `gemma4:e4b` fallback smoke test succeeded.
+- Qwythos now loads and generates text through Ollama.
+- `gemma4:e4b` remains configured as fallback.
 - `.env.local` created and ignored by Git.
+- `.env.langsmith.local` created and ignored by Git.
+- LangSmith API key is not stored in Git.
 
 ## GitHub Publication Status
 

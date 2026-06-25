@@ -21,7 +21,8 @@ Codex-authenticated operator prompt
 | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. |
 | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Manager, AF Knowledge, AF Review. |
 | LlamaIndex | Bounded retrieval and RAG. | Search only approved public-safe project and sanitized history. |
-| Ollama | Local model serving. | Minor/background tasks only; active fallback is `gemma4:e4b` until Qwythos is repaired. |
+| Ollama | Local model serving. | Minor/background tasks only; active model is Qwythos and fallback is `gemma4:e4b`. |
+| LangSmith | Observability and trace review. | Configured for tracing only; waits for manual API key insertion. |
 
 ## Agent Hooks
 
@@ -69,6 +70,8 @@ Required outputs:
 - `workflows/langgraph-controller.yaml`
 - `workflows/crewai-crew.yaml`
 - `workflows/llamaindex-rag.yaml`
+- `langsmith-setup.md`
+- `../wiki/index.md`
 
 ## Output Documents
 
