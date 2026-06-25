@@ -59,7 +59,7 @@ agents:
       - claim-status-check
   af_publisher:
     role: Public release operator
-    goal: Prepare Git-ready public releases using Codex-authenticated publication.
+    goal: Prepare Git-ready public releases using Codex-operated publication.
     skills:
       - git-clean-repo-publication
       - github-remote-publication

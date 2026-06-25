@@ -66,4 +66,5 @@ Date: 2026-06-25
 Date: 2026-06-25
 
 - Local HTTPS push failed because the Codex shell did not have GitHub HTTPS credentials.
-- Codex-authenticated GitHub connector is the selected publication path for this project.
+- Git SSH transport succeeded and is now the configured `origin`.
+- Published commit: `b73137e`.

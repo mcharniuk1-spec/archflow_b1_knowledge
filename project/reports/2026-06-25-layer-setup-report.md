@@ -1,7 +1,7 @@
 # Layer Setup Report
 
 Date: 2026-06-25
-Status: public setup completed locally; remote publication uses Codex-authenticated GitHub connector.
+Status: public setup completed locally and published to GitHub.
 
 ## 1. Public Repository Layer
 
@@ -24,18 +24,19 @@ Status:
 
 ## 2. Authentication And Runtime Layer
 
-FACT: Codex is the primary operator runtime and authenticated publication channel.
+FACT: Codex is the primary operator runtime. GitHub publication is operated from Codex through verified Git SSH transport.
 
 Parameters:
 
 - `ARCHFLOW_PROVIDER_MODE=codex_auth_main`
 - `CODEX_OPERATOR_MODE=codex_app`
 - `CODEX_AUTH_EXPORTS_API_KEY=false`
-- `CODEX_GITHUB_PUBLICATION=connector_preferred`
+- `CODEX_GITHUB_PUBLICATION=codex_operated_git_ssh`
 
 Interpretation:
 
-- Codex auth is used to operate this setup and publish through the GitHub connector.
+- Codex auth is used to operate this setup.
+- GitHub publication uses the working Git SSH remote.
 - Codex auth is not an exportable API key for Python frameworks.
 - If direct OpenAI API use is needed later, a separate approved API key flow is required.
 
@@ -199,11 +200,11 @@ Checks run:
 Known gap:
 
 - Remote publication through plain local HTTPS Git is blocked by missing GitHub credentials in the shell.
-- Codex-authenticated GitHub connector is the selected publication path.
+- Git SSH transport is verified and configured as the local `origin`.
+- Published commit: `b73137e`.
 
 ## References Checked
 
 - LangGraph official overview: https://docs.langchain.com/oss/python/langgraph/overview
 - CrewAI crews documentation: https://docs.crewai.com/en/concepts/crews
 - LlamaIndex concepts documentation: https://developers.llamaindex.ai/python/framework/getting_started/concepts/
-

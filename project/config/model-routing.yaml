@@ -15,8 +15,9 @@ providers:
       - github_publication
     github_publication:
       repository: mcharniuk1-spec/archflow_b1_knowledge
-      preferred_method: codex_github_connector
+      verified_method: codex_operated_git_ssh
       local_https_push_status: blocked_missing_git_credentials
+      ssh_push_status: verified
 
   ollama_local:
     status: service_started_with_qwythos_load_error
@@ -54,7 +55,7 @@ providers:
 
 routing:
   orchestration: codex_operator
-  repository_publication: codex_github_connector
+  repository_publication: codex_operated_git_ssh
   public_safe_review: codex_operator
   final_client_output: codex_operator
   minor_background_tasks: ollama_local_fallback_until_qwythos_fixed

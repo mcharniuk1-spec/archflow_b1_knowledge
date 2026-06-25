@@ -26,12 +26,14 @@ Use Codex authentication as the main project operator and publication path. Use 
 - `ARCHFLOW_PROVIDER_MODE=codex_auth_main`
 - `CODEX_OPERATOR_MODE=codex_app`
 - `CODEX_AUTH_EXPORTS_API_KEY=false`
-- `CODEX_GITHUB_PUBLICATION=connector_preferred`
+- `CODEX_GITHUB_PUBLICATION=codex_operated_git_ssh`
 - `OLLAMA_CHAT_MODEL=hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M`
 - `OLLAMA_FALLBACK_CHAT_MODEL=gemma4:e4b`
 - `OLLAMA_TASK_SCOPE=minor_background_tasks`
 
 Codex authentication is not an API key for LangGraph, CrewAI, LlamaIndex, or other frameworks. It is the authenticated operator channel in this workspace. If direct framework API calls are needed later, they require separately approved provider credentials stored outside public files.
+
+GitHub publication is operated from Codex through the verified Git SSH transport. HTTPS push was blocked by missing shell credentials; no token is stored in this repository.
 
 ## Approval Needed
 

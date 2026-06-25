@@ -22,7 +22,9 @@ Set Codex authentication as the main setup and publication path, keep Ollama for
 
 ## Status
 
-FACT: Codex is the primary operator and publication layer.
+FACT: Codex is the primary operator layer.
+
+FACT: GitHub publication is configured through a verified Git SSH remote operated from Codex.
 
 FACT: Ollama is connected for local minor/background tasks.
 
@@ -33,4 +35,3 @@ FACT: `gemma4:e4b` is the verified local fallback model.
 INTERPRETATION: The public project is now structured enough to run the first proof workflow, but LangGraph, CrewAI, and LlamaIndex are not installed as runtime packages yet.
 
 GAP: The first proof-run output documents have templates but no completed source-grounded run content yet.
-

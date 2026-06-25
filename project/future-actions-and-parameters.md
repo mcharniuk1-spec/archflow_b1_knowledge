@@ -4,9 +4,9 @@ This file lists the next implementation choices and the parameters that should b
 
 ## Immediate Actions
 
-1. Publish the public project through the Codex-authenticated GitHub connector.
-   - Recommended: use connector-based commit/update.
-   - Alternative: configure local GitHub CLI auth, then push over HTTPS or SSH.
+1. Keep the public project synchronized with GitHub.
+   - Current verified route: Codex-operated Git SSH push.
+   - Alternative: configure local GitHub CLI auth, then push over HTTPS.
    - Do not store tokens in this repository.
 
 2. Repair or replace Qwythos.
@@ -29,7 +29,7 @@ This file lists the next implementation choices and the parameters that should b
 
 | Provider | Best Use | Current Status | Approval Needed |
 |---|---|---|---|
-| Codex operator auth | Main execution, review, edits, GitHub connector publication. | Active. | No new approval for normal project work. |
+| Codex operator auth | Main execution, review, edits, and supervised publication. | Active. | No new approval for normal project work. |
 | Ollama local | Minor/background local tasks. | Started; fallback works. | Approval needed for repair/re-pull or new model install. |
 | OpenAI API | Direct framework calls from LangGraph, CrewAI, or LlamaIndex. | Not configured. | Explicit API key setup approval required. |
 | LangSmith | Tracing and debugging LangGraph runs. | Not configured. | Explicit account/key approval required. |
@@ -82,4 +82,3 @@ This file lists the next implementation choices and the parameters that should b
 - No public file contains secrets, private links, or local paths.
 - First proof run produces the full output set.
 - Review report explicitly approves or blocks publication.
-

@@ -88,4 +88,4 @@ current_parameters:
   max_revision_loops: 2
   final_runtime_owner: codex_operator
   local_minor_task_model: gemma4:e4b
-  primary_publication_auth: codex_github_connector
+  primary_publication_auth: codex_operated_git_ssh
