@@ -83,10 +83,16 @@ Tasks:
 | Task | Status | Type | Due | Public Output |
 |---|---|---|---|---|
 | E2.1 Define sources and connect data | Backlog | Research | 2026-07-04 | Source list and connected segment data. |
-| E2.2 Competitor and pain research for PRD segment | Backlog | Research | 2026-07-06 | Competitor positioning and open pain summary. |
+| E2.2 Competitor and pain research for PRD segment | Backlog | Research | 2026-07-06 | Competitor positioning, open pain summary, and dashboard plan for monitoring research/workflow evidence. |
 | E2.3 Synthesize customer profile and ICP | To Do | Research | 2026-07-08 | One-page ICP card for outreach. |
 | E2.4 Split solution by sub-audiences | Backlog | Research | 2026-07-09 | Main ICP plus future audience notes. |
 | E2.5 Build 10 to 15 target names for outreach | Backlog | Research | 2026-07-11 | Outreach target table handed to E6. |
+
+E2.2 now includes dashboard planning as a supporting operating task:
+
+1. E2.2.1 dashboard plan and local operator UI review: keep Phase 1 surfaces as Codex, GitHub, LangSmith, Obsidian, and WikiLLM; use the Phase 2 local dashboard for read-only monitoring; defer a full control panel until one full proof workflow exists.
+2. Monitor LangGraph nodes, CrewAI roles, LlamaIndex corpus boundaries, LangSmith readiness, env/config status, and WikiLLM run history without making the dashboard the project brain.
+3. Use `project/dashboard/` and `project/reports/2026-06-25-dashboard-setup-and-operation-report.md` as the public-safe implementation and operation reference.
 
 ## E3 - Website And Positioning
 

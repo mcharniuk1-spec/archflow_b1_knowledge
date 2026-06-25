@@ -30,6 +30,17 @@ http://127.0.0.1:8765/project/dashboard/
 - LangSmith tracing readiness and safe trace rules.
 - Env/config and runtime package status.
 
+## Change Config
+
+- LangGraph nodes and routing: `project/workflows/langgraph-controller.yaml`
+- CrewAI roles and task outputs: `project/workflows/crewai-crew.yaml`
+- LlamaIndex corpus and retrieval parameters: `project/workflows/llamaindex-rag.yaml`
+- Model routing: `project/config/model-routing.yaml`
+- Dashboard data extraction: `project/scripts/generate-dashboard-data.py`
+- Dashboard UI: `project/dashboard/app.js` and `project/dashboard/styles.css`
+
+Regenerate `project/dashboard/data.json` after changing any workflow, config, WikiLLM, report, or run file.
+
 ## Boundary
 
 The dashboard reads public-safe files and ignored local env presence only. It must not display real API keys, raw private transcripts, private workspace links, or local absolute paths.

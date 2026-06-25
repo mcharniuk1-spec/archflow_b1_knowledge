@@ -192,6 +192,10 @@ a {
   overflow-wrap: anywhere;
 }
 
+.topbar p span {
+  display: inline;
+}
+
 .topbar-actions {
   display: flex;
   align-items: center;
@@ -538,5 +542,9 @@ button.primary:hover {
 
   .node {
     min-width: 148px;
+  }
+
+  .topbar p span {
+    display: block;
   }
 }

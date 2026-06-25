@@ -11,3 +11,4 @@
 - Educational setup summary and agent plan were added under `project/reports/`.
 - Integrated knowledge-operation plan and Git pre-push public-safety hook were added.
 - LangSmith SDK was installed locally in ignored runtime and a sanitized smoke trace was submitted.
+- Phase 2 local dashboard was added for read-only monitoring of WikiLLM, LangGraph, CrewAI, LlamaIndex, LangSmith, env/config, and project activity.

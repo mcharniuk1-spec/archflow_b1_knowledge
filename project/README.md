@@ -19,6 +19,7 @@ Build a repeatable public-safe system that converts messy work material into exe
 |---|---|
 | `config/` | Public-safe provider and model configuration templates. |
 | `workflows/` | LangGraph, CrewAI, and LlamaIndex workflow contracts. |
+| `dashboard/` | Phase 2 local read-only operator dashboard. |
 | `outputs/` | Output document templates for proof runs. |
 | `reports/` | Setup and review reports by layer. |
 | `prompts/` | Reusable public-safe prompts. |
@@ -34,3 +35,17 @@ Qwythos is installed and now generates text through Ollama.
 `gemma4:e4b` remains the verified local fallback model.
 LangSmith tracing is configured for project ID `057edf33-a328-4186-9425-3306186149ef` and awaits the API key in an ignored local env file.
 LangGraph, CrewAI, and LlamaIndex are configured as workflow contracts, but their runtime packages are not installed yet.
+
+## Local Dashboard
+
+The local dashboard is a read-only Phase 2 control panel, not the primary project brain.
+It reads public project files and ignored local env presence, then displays WikiLLM memory, recent run/report activity, LangGraph nodes, CrewAI roles, LlamaIndex corpus boundaries, LangSmith readiness, and env/package status.
+
+Run it from the repository root:
+
+```bash
+python3 project/scripts/generate-dashboard-data.py
+python3 -m http.server 8765
+```
+
+Open `http://127.0.0.1:8765/project/dashboard/`.
