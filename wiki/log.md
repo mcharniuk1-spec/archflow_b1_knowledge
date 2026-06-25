@@ -8,4 +8,4 @@
 - Qwythos was verified as present and generating text.
 - LangSmith tracing env was configured with project ID `057edf33-a328-4186-9425-3306186149ef`.
 - Public WikiLLM structure was created inside the repository.
-
+- Educational setup summary and agent plan were added under `project/reports/`.

@@ -26,3 +26,6 @@ The project should prove one internal workflow before adding customer-facing cla
 
 LangSmith should receive structured run metadata and trace spans, not raw private material. The first useful trace should be a synthetic or sanitized proof run, not an unfiltered private transcript.
 
+## Implementation Sequencing Insight
+
+The lowest-risk order is: verify LangSmith trace with a sanitized run, install LangGraph runtime, add LlamaIndex retrieval, then add CrewAI execution. This keeps workflow control and public-safety gates stable before adding team automation.
