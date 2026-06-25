@@ -4,6 +4,8 @@ Source: private project board reviewed on 2026-06-25.
 
 This file is an English public-safe translation and synthesis. It does not include private page URLs, user IDs, owner names, or raw source content.
 
+Latest detailed E1 breakdown: [`reports/2026-06-25-e1-block1-subtask-execution-plan.pdf`](reports/2026-06-25-e1-block1-subtask-execution-plan.pdf).
+
 ## Epic Timeline
 
 | Epic | Public English Name | Status | Window |
@@ -34,11 +36,17 @@ Tasks:
 
 | Task | Status | Type | Due | Public Output |
 |---|---|---|---|---|
-| E1.1 Set up a separate KB project from scratch | To Do | Docs | 2026-06-26 | Working KB workspace and structure. |
+| E1.1 Set up a separate KB project from scratch | In Progress | Docs | 2026-06-26 | Working KB workspace and structure. |
 | E1.2 Run cycle: dialogue to summary to PRD | To Do | Docs | 2026-06-28 | One finished PRD from a reproducible workflow and a tool list. |
 | E1.3 Record the PRD and agent history in the KB | To Do | Docs | 2026-06-30 | Populated KB that an agent can read back. |
 | E1.4 Write the KB update principle | Backlog | Docs | 2026-07-03 | One to two page method for building and updating the KB. |
 | E1.5 Document the process for case study and content | Backlog | Docs | 2026-07-04 | Public-safe process package for content and site proof. |
+
+E1.1 through E1.3 now have a finer staged sequence:
+
+1. E1.1 setup order: Git safety, env/config, Ollama, LangSmith, LangGraph, Pydantic/YAML validation, LlamaIndex, CrewAI, observability/provenance.
+2. E1.2 proof order: source packet, source inventory, context digest, PRD, responsibility matrix, provenance log, review gate.
+3. E1.3 KB order: approved PRD write, agent history, source registry, retrieval metadata, readback test, memory candidates, E1.4/E2 handoff.
 
 ## E5 - Analytics And ROI Method
 

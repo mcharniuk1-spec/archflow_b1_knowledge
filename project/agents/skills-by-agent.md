@@ -30,6 +30,7 @@ Purpose: convert context into PRD, milestones, owners, and execution tasks.
 
 Skills set up:
 
+- [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports.
 - prd-from-dialogue
 - responsibility-assignment-extraction
 - milestone-planning

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ArchFlow Task Breakdown"
+  short_description: "Plan ArchFlow epics into safe staged subtasks"
+  default_prompt: "Use $archflow-task-breakdown to decompose this ArchFlow epic into staged tasks, subtasks, checks, and Notion-ready outputs."
