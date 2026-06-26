@@ -49,3 +49,7 @@ For public operational reports, streaming should mean observable graph state and
 ## E1.2 Agent Configuration Insight
 
 The first production-like agent setup should keep AF Tools, AF Review, and AF Publisher deterministic; allow only modest variance for AF Context, AF Manager, AF Knowledge, and technical trend analysis; and keep CrewAI LLM task execution behind LangGraph until one artifact-generating run passes review.
+
+## E1.2 To E1.3 Handoff Insight
+
+The correct transition gate is owner acceptance plus KB readback, not more artifact generation. E1.3 should prove that the approved PRD and agent history can be written into public-safe memory and retrieved by a future agent before Obsidian mirror expansion, Nexus live writes, or broader research layers are activated.

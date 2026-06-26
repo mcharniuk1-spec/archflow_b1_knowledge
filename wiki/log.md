@@ -28,3 +28,4 @@
 - E1.2 full-test graph ran and produced the PRD, streaming report, system report, task matrix, KB update, review report, and agent handout.
 - Tracked public files now mask operational project identifiers.
 - The approved LlamaIndex corpus now explicitly includes public WikiLLM files under `wiki/`.
+- E1.2 Notion status sync prepared the owner next-steps document, report links, and evidence-backed state map: E1.2 parent in Review, E1.2.1 through E1.2.7 Done, and E1.3 ready after owner acceptance.

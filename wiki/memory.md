@@ -84,6 +84,8 @@ ArchFlow Block 1 is the first public solution:
 - Public streaming reports store node events, state summaries, and decisions; they do not store hidden chain-of-thought.
 - Public files mask operational project identifiers; real values belong only in ignored local env or external systems.
 - The approved LlamaIndex public corpus explicitly includes `project/`, `history/`, `skills/`, and `wiki/`.
+- After Notion sync, E1.2 should remain in `Review` until owner acceptance even though E1.2.1 through E1.2.7 are evidence-backed `Done`.
+- E1.3 should start with public-safe KB writeback and readback proof, not broad private ingestion, live Nexus writes, or CrewAI LLM execution.
 
 ## Dashboard Memory
 
