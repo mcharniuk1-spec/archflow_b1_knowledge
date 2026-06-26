@@ -69,6 +69,7 @@ agents:
       - git-clean-repo-publication
       - github-remote-publication
       - publication-review-reporting
+      - task-handout
 
 tasks:
   - id: source_inventory
@@ -92,6 +93,9 @@ tasks:
   - id: publication_summary
     agent: af_publisher
     expected_output: project/runs/<date>-<run-name>.md
+  - id: task_handout
+    agent: af_publisher
+    expected_output: project/runs/<date>-<run-name>/agent-handout.md
 
 current_limitations:
   - CrewAI imports and config validation pass.

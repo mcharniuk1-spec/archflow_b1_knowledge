@@ -13,6 +13,7 @@ approved_corpus:
     - project/
     - history/
     - skills/
+    - wiki/
   exclude:
     - .git/
     - project/.env.local

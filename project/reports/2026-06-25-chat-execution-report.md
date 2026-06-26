@@ -5,7 +5,7 @@ Scope: public project folder
 
 ## User Request
 
-Configure LangSmith using project ID `057edf33-a328-4186-9425-3306186149ef`, create an env file for manual API key insertion, keep model execution on Ollama only, report current LangSmith setup, save the run to the public WikiLLM layer, and make sure WikiLLM is configured inside the public project.
+Configure LangSmith using project ID `masked_langsmith_project_id`, create an env file for manual API key insertion, keep model execution on Ollama only, report current LangSmith setup, save the run to the public WikiLLM layer, and make sure WikiLLM is configured inside the public project.
 
 ## Actions Completed
 
@@ -35,7 +35,7 @@ FACT: LangSmith is configured for tracing only and is waiting for the API key.
 | Parameter | Value |
 |---|---|
 | Project name | `ArchFlow` |
-| Project ID | `057edf33-a328-4186-9425-3306186149ef` |
+| Project ID | `masked_langsmith_project_id` |
 | Endpoint | `https://eu.api.smith.langchain.com` |
 | API key file | `project/.env.langsmith.local` |
 | Public example | `project/config/langsmith.env.example` |

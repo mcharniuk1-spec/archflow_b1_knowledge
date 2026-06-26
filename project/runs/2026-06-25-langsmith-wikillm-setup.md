@@ -5,7 +5,7 @@ Scope: public project folder
 
 ## Task
 
-Configure LangSmith tracing for the public ArchFlow project with project ID `057edf33-a328-4186-9425-3306186149ef`, keep model execution on Ollama only, update current reports, and set up WikiLLM inside the public project.
+Configure LangSmith tracing for the public ArchFlow project with project ID `masked_langsmith_project_id`, keep model execution on Ollama only, update current reports, and set up WikiLLM inside the public project.
 
 ## Outputs
 

@@ -33,11 +33,12 @@ Codex authentication is the main operator and publication path for this setup.
 Ollama is connected for local minor/background tasks.
 Qwythos is installed and now generates text through Ollama.
 `gemma4:e4b` remains the verified local fallback model.
-LangSmith tracing is configured for project ID `057edf33-a328-4186-9425-3306186149ef`; keys stay only in ignored local env files.
+LangSmith tracing is configured for project ID `masked_langsmith_project_id`; keys stay only in ignored local env files.
 LangGraph is installed and has passed a sanitized smoke workflow.
 LlamaIndex is installed and has passed approved-corpus retrieval over public files.
 CrewAI is installed and has passed config/import validation without LLM task execution.
 Graphify output exists for the public repository.
+E1.2 full-test artifacts exist under `project/runs/E1.2/2026-06-26-full-test/`, including the PRD, streaming report, system report, task matrix, KB update, review report, and agent handout.
 
 ## Local Dashboard
 

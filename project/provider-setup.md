@@ -32,7 +32,7 @@ Use Codex authentication as the main project operator and publication path. Use 
 - `OLLAMA_CHAT_MODEL=hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M`
 - `OLLAMA_FALLBACK_CHAT_MODEL=gemma4:e4b`
 - `OLLAMA_TASK_SCOPE=minor_background_tasks`
-- `LANGSMITH_PROJECT_ID=057edf33-a328-4186-9425-3306186149ef`
+- `LANGSMITH_PROJECT_ID=masked_langsmith_project_id`
 - `LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com`
 
 Codex authentication is not an API key for LangGraph, CrewAI, LlamaIndex, or other frameworks. It is the authenticated operator channel in this workspace. If direct framework API calls are needed later, they require separately approved provider credentials stored outside public files.
@@ -59,7 +59,7 @@ LangSmith is configured for tracing only.
 - Local editable file: `project/.env.langsmith.local`.
 - Public example: `project/config/langsmith.env.example`.
 - Project name: `ArchFlow`.
-- Project ID: `057edf33-a328-4186-9425-3306186149ef`.
+- Project ID: `masked_langsmith_project_id`.
 - API key status: present only in ignored local env.
 - Smoke trace status: submitted with sanitized Ollama-only metadata.
 - Model execution: Ollama only.

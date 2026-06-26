@@ -30,7 +30,7 @@ ArchFlow Block 1 is the first public solution:
 ## LangSmith Memory
 
 - Project name: `ArchFlow`.
-- Project ID: `057edf33-a328-4186-9425-3306186149ef`.
+- Project ID: `masked_langsmith_project_id`.
 - Endpoint: `https://eu.api.smith.langchain.com`.
 - Local editable env: `project/.env.langsmith.local`.
 - Public example env: `project/config/langsmith.env.example`.
@@ -55,6 +55,14 @@ ArchFlow Block 1 is the first public solution:
 - The runtime guard validates workflow YAML, LangGraph smoke, LlamaIndex approved-corpus retrieval, CrewAI config, and saved project skills.
 - CrewAI guard checks must keep runtime storage inside ignored project-local storage and disable CrewAI telemetry/tracking.
 
+## Task Handout Hook Memory
+
+- `.codex/hooks.json` checks every submitted prompt for task handout triggers.
+- The prompt hook runs `project/scripts/task-handout-hook.py` and does not store raw prompt text.
+- `skills/task-handout/SKILL.md` is mandatory when the hook triggers, when one or more agent roles are used, or when one or more subtasks are solved or changed.
+- The hook only marks that the handout skill is required; the executing agent must create or update `agent-handout.md` after outputs and checks exist.
+- The ignored local marker is written under `project/local/task-handout-hook/`.
+
 ## LangSmith Trace Memory
 
 - LangSmith SDK is installed only inside ignored `project/local/venv`.
@@ -67,6 +75,15 @@ ArchFlow Block 1 is the first public solution:
 - The source supports starting E1.2 as a controlled dialogue-to-summary-to-PRD proof cycle.
 - Speaker-specific ownership remains inferred; public outputs use role labels.
 - Market research, web research, ICP validation, content tests, and customer-facing claims are downstream of the first E1.2 proof.
+
+## E1.2 Full Test Memory
+
+- E1.2 full-test graph ran with a sanitized source packet and reached approved status.
+- The graph saved observable stream events and final state in `project/runs/E1.2/2026-06-26-full-test/`.
+- E1.2 report PDFs were generated for the PRD, streaming report, and system report.
+- Public streaming reports store node events, state summaries, and decisions; they do not store hidden chain-of-thought.
+- Public files mask operational project identifiers; real values belong only in ignored local env or external systems.
+- The approved LlamaIndex public corpus explicitly includes `project/`, `history/`, `skills/`, and `wiki/`.
 
 ## Dashboard Memory
 

@@ -141,7 +141,7 @@ Current env:
 LANGSMITH_TRACING=true
 LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com
 LANGSMITH_PROJECT=ArchFlow
-LANGSMITH_PROJECT_ID=057edf33-a328-4186-9425-3306186149ef
+LANGSMITH_PROJECT_ID=masked_langsmith_project_id
 LANGSMITH_API_KEY=
 LANGSMITH_RUN_TAGS=archflow,block1,ollama,qwythos,public-safe
 LANGSMITH_TRACE_PUBLIC_SAFE_ONLY=true
@@ -296,6 +296,7 @@ Approved corpus:
 - `project/`
 - `history/`
 - `skills/`
+- `wiki/`
 
 Excluded corpus:
 
@@ -617,4 +618,3 @@ Approve Phase 1: add LangSmith API key locally and run one sanitized LangSmith t
 ```
 
 Do not install LangGraph, CrewAI, or LlamaIndex until the trace path is verified.
-

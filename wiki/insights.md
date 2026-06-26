@@ -41,3 +41,11 @@ CrewAI imports can create app-data storage by default. In this project, CrewAI g
 ## Dashboard Sequencing Insight
 
 The dashboard should lag the proof workflow, not lead it. A read-only readiness dashboard is useful now because it exposes config health and memory activity without freezing early assumptions. A full control panel should wait until LangGraph, LlamaIndex, CrewAI, WikiLLM writes, and LangSmith traces have produced at least one complete proof run.
+
+## E1.2 Streaming Insight
+
+For public operational reports, streaming should mean observable graph state and progress: node names, state deltas, artifact paths, tool results, warnings, and review decisions. It should not mean saving hidden reasoning text. This keeps debugging useful without weakening the public-safety boundary.
+
+## E1.2 Agent Configuration Insight
+
+The first production-like agent setup should keep AF Tools, AF Review, and AF Publisher deterministic; allow only modest variance for AF Context, AF Manager, AF Knowledge, and technical trend analysis; and keep CrewAI LLM task execution behind LangGraph until one artifact-generating run passes review.

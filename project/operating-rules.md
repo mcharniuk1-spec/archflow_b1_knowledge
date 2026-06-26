@@ -43,6 +43,18 @@ Use this layering:
 - Codex remains the local operator and approval boundary.
 - Ollama is the local model provider once approved and started.
 
+## Task Handout Hook Rule
+
+The project prompt hook checks every submitted prompt for handout triggers. If it emits `TASK_HANDOUT_HOOK_TRIGGER=required`, the active agent must read `skills/task-handout/SKILL.md` before continuing.
+
+The skill is mandatory when:
+
+- A prompt directly asks for a handout, handoff, continuation prompt, or hook trigger.
+- The work uses one or more AF agents, agent roles, reviewer/helper agents, LangGraph plus CrewAI routing, or parallel/multi-agent execution.
+- The work solves, updates, creates, reviews, or starts one or more subtasks.
+
+The hook does not store raw prompt text and does not create handouts automatically. It writes only an ignored local trigger marker. The executing agent creates or updates `agent-handout.md` beside the relevant run artifacts after outputs and checks exist.
+
 ## Approval Rule
 
 Ask for approval before:

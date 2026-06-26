@@ -96,7 +96,7 @@ Purpose: trace LangGraph/CrewAI/LlamaIndex execution without changing model prov
 Parameters:
 
 - project name: `ArchFlow`
-- project id: `057edf33-a328-4186-9425-3306186149ef`
+- project id: `masked_langsmith_project_id`
 - endpoint: `https://eu.api.smith.langchain.com`
 - local env file: `project/.env.langsmith.local`
 - public example: `project/config/langsmith.env.example`
@@ -148,6 +148,7 @@ Current approved corpus:
 - `project/`
 - `history/`
 - `skills/`
+- `wiki/`
 
 Current excluded corpus:
 

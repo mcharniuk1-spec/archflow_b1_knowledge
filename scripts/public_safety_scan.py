@@ -81,8 +81,13 @@ def build_patterns() -> list[tuple[str, re.Pattern[str]]]:
 
     raw_patterns = [
         ("local_home_path", re.escape(home_path)),
+        ("local_private_tmp_path", r"/private/(?:tmp|var)/"),
         ("local_owner_token", re.escape(local_owner)),
         ("private_notion_url", re.escape(private_notion)),
+        (
+            "uuid_like_operational_id",
+            r"\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b",
+        ),
         ("github_token", r"gh[pousr]_[A-Za-z0-9_]{20,}"),
         ("openai_key", r"sk-(?:proj-)?[A-Za-z0-9_-]{20,}"),
         ("langsmith_key", r"ls(?:v2|__)[A-Za-z0-9_.-]{20,}"),

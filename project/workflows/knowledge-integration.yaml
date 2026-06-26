@@ -63,7 +63,7 @@ runtime_layers:
   langsmith:
     status: configured_key_present_local_sdk_installed_smoke_trace_submitted
     role: trace_observability
-    project_id: 057edf33-a328-4186-9425-3306186149ef
+    project_id: masked_langsmith_project_id
     local_env_file: project/.env.langsmith.local
 
   ollama:

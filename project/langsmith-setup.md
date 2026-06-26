@@ -10,7 +10,7 @@ Status: configured; local ignored API key present; sanitized smoke trace submitt
 | Model execution | Ollama local only. |
 | Cloud model keys | Not configured. |
 | Project name | `ArchFlow` |
-| Project ID | `057edf33-a328-4186-9425-3306186149ef` |
+| Project ID | `masked_langsmith_project_id` |
 | Endpoint | `https://eu.api.smith.langchain.com` |
 | Local env file | `project/.env.langsmith.local` |
 | Public example | `project/config/langsmith.env.example` |
@@ -33,7 +33,7 @@ LANGSMITH_API_KEY=
 LANGSMITH_TRACING=true
 LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com
 LANGSMITH_PROJECT=ArchFlow
-LANGSMITH_PROJECT_ID=057edf33-a328-4186-9425-3306186149ef
+LANGSMITH_PROJECT_ID=masked_langsmith_project_id
 LANGSMITH_API_KEY=
 LANGGRAPH_CONTROL_MODE=codex_supervised
 LANGGRAPH_LLM_PROVIDER=ollama_local

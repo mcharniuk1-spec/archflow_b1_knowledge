@@ -20,7 +20,7 @@ LangSmith can observe and debug future LangGraph/CrewAI/LlamaIndex runs after th
 - Ollama model: `hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M`
 - Ollama fallback: `gemma4:e4b`
 - LangSmith project: `ArchFlow`
-- LangSmith project ID: `057edf33-a328-4186-9425-3306186149ef`
+- LangSmith project ID: `masked_langsmith_project_id`
 - LangSmith endpoint: `https://eu.api.smith.langchain.com`
 
 ## Consequences

@@ -6,7 +6,7 @@
 - Codex was set as primary operator layer.
 - Ollama was connected as local model execution layer.
 - Qwythos was verified as present and generating text.
-- LangSmith tracing env was configured with project ID `057edf33-a328-4186-9425-3306186149ef`.
+- LangSmith tracing env was configured with project ID `masked_langsmith_project_id`.
 - Public WikiLLM structure was created inside the repository.
 - Educational setup summary and agent plan were added under `project/reports/`.
 - Integrated knowledge-operation plan and Git pre-push public-safety hook were added.
@@ -23,3 +23,8 @@
 - The saved `archflow-e1-runtime-guard` skill was added and connected to the Git pre-push hook.
 - The pre-push runtime guard passed: workflow validation, LangGraph smoke, LlamaIndex corpus, and CrewAI config.
 - A sanitized E1.2 preparation packet was created under `project/runs/2026-06-26-june24-next-steps-proof/`.
+- A reusable `task-handout` skill was added, and the E1.1/E1.2 execution received an agent-readable handout with human summary, continuation prompt, decisions, validation, and next actions.
+- The `task-handout` skill was connected to a prompt hook and workflow rule for prompts or executions that use one or more agents or solve one or more subtasks.
+- E1.2 full-test graph ran and produced the PRD, streaming report, system report, task matrix, KB update, review report, and agent handout.
+- Tracked public files now mask operational project identifiers.
+- The approved LlamaIndex corpus now explicitly includes public WikiLLM files under `wiki/`.

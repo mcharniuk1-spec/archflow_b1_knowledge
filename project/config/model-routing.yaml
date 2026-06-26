@@ -56,7 +56,7 @@ providers:
     status: configured_key_present_local_ignored_smoke_trace_submitted
     role: tracing_only_not_model_provider
     project_name: ArchFlow
-    project_id: 057edf33-a328-4186-9425-3306186149ef
+    project_id: masked_langsmith_project_id
     endpoint_env: LANGSMITH_ENDPOINT
     tracing_env: LANGSMITH_TRACING
     api_key_env: LANGSMITH_API_KEY

@@ -10,6 +10,7 @@ This project uses the following skills and methods.
 | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. |
 | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. |
 | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. |
+| [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. |
 | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. |
 | Public-safety review | Keep public files free of secrets, personal data, local paths, and private IDs. |
 | Ollama local check | Start local Ollama, list models, and run public-safe smoke tests. |
@@ -35,6 +36,7 @@ This project uses the following skills and methods.
 | Knowledge Agent | KB update packet and memory candidates. |
 | Reviewer | Final approval or blocked status. |
 | Evening registry automation | Skill registry refresh, validation, and run-note upkeep. |
+| Task handout | Agent-readable handoff prompt and human execution summary after large runs. |
 
 ## Per-Agent Skill Registry
 

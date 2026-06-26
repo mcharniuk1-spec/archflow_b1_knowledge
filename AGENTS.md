@@ -18,6 +18,7 @@ Read:
 12. `wiki/index.md`
 13. `wiki/memory.md`
 14. `wiki/rules/public-wikillm-contract.md`
+15. `skills/task-handout/SKILL.md` when the prompt hook asks for it, when using one or more agents, or when solving one or more subtasks.
 
 Rules:
 
@@ -32,4 +33,6 @@ Rules:
 - Ollama is only for local minor/background tasks unless later approved.
 - Provider actions that start local services, create env files, install packages, repair models, or connect external API credentials require explicit approval.
 - Record substantial public-safe work in `wiki/runs/` and append `wiki/log.md`.
+- If `.codex/hooks.json` emits `TASK_HANDOUT_HOOK_TRIGGER=required`, read `skills/task-handout/SKILL.md` and maintain a run handout before final response.
+- Any execution that uses one or more agent roles or solves one or more subtasks must create or update `agent-handout.md` beside the run artifacts.
 - Before pushing, run `scripts/public_safety_scan.py`; the tracked pre-push hook also runs it automatically.

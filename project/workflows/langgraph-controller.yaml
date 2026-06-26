@@ -18,6 +18,7 @@ state_schema:
   task_matrix_path: string
   kb_update_path: string
   review_report_path: string
+  task_handout_path: string
   langsmith_trace_id: string
   langsmith_trace_url: string
   approval_status: approved_revise_or_blocked
@@ -54,6 +55,10 @@ nodes:
     owner_agent: af_publisher
     purpose: either prepare public-safe publication or route back for repair.
     output: project/runs/<date>-<run-name>.md
+  write_task_handout:
+    owner_agent: af_publisher
+    purpose: create or update the agent-readable handout when the run uses one or more agents or solves one or more subtasks, including approved and blocked terminal states.
+    output: project/runs/<date>-<run-name>/agent-handout.md
 
 edges:
   - from: START
@@ -79,9 +84,11 @@ edges:
     to: write_context_digest
     condition: approval_status == "revise"
   - from: review_gate
-    to: END
+    to: write_task_handout
     condition: approval_status == "blocked"
   - from: publish_or_revise
+    to: write_task_handout
+  - from: write_task_handout
     to: END
 
 current_parameters:
@@ -93,6 +100,6 @@ current_parameters:
   local_minor_task_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
   primary_publication_auth: codex_operated_git_ssh
   model_execution_provider: ollama_local_only
-  langsmith_project_id: 057edf33-a328-4186-9425-3306186149ef
+  langsmith_project_id: masked_langsmith_project_id
   smoke_script: project/scripts/langgraph-smoke-run.py
   last_smoke_result: langgraph_smoke_ok_approval_approved

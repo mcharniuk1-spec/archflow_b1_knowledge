@@ -49,7 +49,7 @@ This file lists the next implementation choices and the parameters that should b
 | human_approval_required_before_publication | true | Keeps public release gated. |
 | state fields | defined in workflow YAML | Makes every handoff explicit. |
 | review gate | required | Blocks unsafe or unsupported outputs. |
-| LangSmith project ID | 057edf33-a328-4186-9425-3306186149ef | Routes traces to the selected project after API key insertion. |
+| LangSmith project ID | masked_langsmith_project_id | Routes traces to the selected project after API key insertion. |
 
 ## CrewAI Parameters To Review
 
@@ -66,7 +66,7 @@ This file lists the next implementation choices and the parameters that should b
 
 | Parameter | Current Value | Options |
 |---|---|---|
-| approved corpus | project, history, skills | add docs only after public-safety review. |
+| approved corpus | project, history, skills, wiki | add other docs only after public-safety review. |
 | chunk_size | 800 | tune smaller for precise source citation, larger for narrative docs. |
 | chunk_overlap | 120 | tune if answers lose context across chunks. |
 | similarity_top_k | 5 | raise for research, lower for focused answering. |

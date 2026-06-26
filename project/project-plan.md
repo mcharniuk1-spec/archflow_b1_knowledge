@@ -37,7 +37,7 @@ Tasks:
 | Task | Status | Type | Due | Public Output |
 |---|---|---|---|---|
 | E1.1 Set up a separate KB project from scratch | In Progress | Docs | 2026-06-26 | Working KB workspace and structure. |
-| E1.2 Run cycle: dialogue to summary to PRD | To Do | Docs | 2026-06-28 | One finished PRD from a reproducible workflow and a tool list. |
+| E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | PRD, streaming report, system report, task matrix, KB update, review report, and PDFs from the first reproducible proof. |
 | E1.3 Record the PRD and agent history in the KB | To Do | Docs | 2026-06-30 | Populated KB that an agent can read back. |
 | E1.4 Write the KB update principle | Backlog | Docs | 2026-07-03 | One to two page method for building and updating the KB. |
 | E1.5 Document the process for case study and content | Backlog | Docs | 2026-07-04 | Public-safe process package for content and site proof. |

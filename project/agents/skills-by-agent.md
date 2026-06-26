@@ -32,6 +32,7 @@ Purpose: convert context into PRD, milestones, owners, and execution tasks.
 Skills set up:
 
 - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports.
+- [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent.
 - prd-from-dialogue
 - responsibility-assignment-extraction
 - milestone-planning
@@ -44,6 +45,7 @@ Purpose: write reusable KB updates and keep public history clean.
 Skills set up:
 
 - knowledge-base-update
+- [`task-handout`](../../skills/task-handout/SKILL.md) - records human-readable run context, decisions, artifacts, checks, and next actions.
 - sanitized-history-writing
 - source-boundary-control
 - agent-memory-candidate-writing
@@ -68,6 +70,7 @@ Skills set up:
 - git-clean-repo-publication
 - github-remote-publication
 - publication-review-reporting
+- [`task-handout`](../../skills/task-handout/SKILL.md) - prepares the public-safe handout that future operators can use after publication or review.
 
 ## Automation
 
@@ -78,3 +81,4 @@ Skills set up:
 - evening-skill-registry-update
 - daily-public-project-review
 - archflow-e1-runtime-guard
+- task-handout

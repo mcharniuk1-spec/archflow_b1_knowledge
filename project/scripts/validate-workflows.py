@@ -149,10 +149,19 @@ def main() -> int:
 
     skill = ROOT / "skills" / "archflow-task-breakdown" / "SKILL.md"
     guard_skill = ROOT / "skills" / "archflow-e1-runtime-guard" / "SKILL.md"
+    handout_skill = ROOT / "skills" / "task-handout" / "SKILL.md"
+    handout_hook = ROOT / ".codex" / "hooks.json"
+    handout_script = PROJECT / "scripts" / "task-handout-hook.py"
     if not skill.exists():
         raise SystemExit("missing required skill: skills/archflow-task-breakdown/SKILL.md")
     if not guard_skill.exists():
         raise SystemExit("missing required skill: skills/archflow-e1-runtime-guard/SKILL.md")
+    if not handout_skill.exists():
+        raise SystemExit("missing required skill: skills/task-handout/SKILL.md")
+    if not handout_hook.exists():
+        raise SystemExit("missing required hook config: .codex/hooks.json")
+    if not handout_script.exists():
+        raise SystemExit("missing required hook script: project/scripts/task-handout-hook.py")
 
     print("workflow_validation=ok")
     for rel_path in ok:

@@ -4,7 +4,7 @@ Date: 2026-06-25
 
 ## Task
 
-Configure LangSmith tracing using project ID `057edf33-a328-4186-9425-3306186149ef`, keep execution on Ollama only, and set up WikiLLM inside the public project.
+Configure LangSmith tracing using project ID `masked_langsmith_project_id`, keep execution on Ollama only, and set up WikiLLM inside the public project.
 
 ## Inputs
 

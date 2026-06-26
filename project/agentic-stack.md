@@ -40,6 +40,7 @@ Allowed by default:
 - `project/`
 - `history/`
 - `skills/`
+- `wiki/`
 
 Not allowed by default:
 
