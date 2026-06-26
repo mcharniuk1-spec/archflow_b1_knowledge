@@ -12,6 +12,7 @@ Skills set up:
 - provider-readiness-check
 - ollama-local-check
 - git-publication-check
+- [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.
 
 ## AF Context
 
@@ -76,3 +77,4 @@ Skills set up:
 
 - evening-skill-registry-update
 - daily-public-project-review
+- archflow-e1-runtime-guard

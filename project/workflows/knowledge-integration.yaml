@@ -46,17 +46,17 @@ knowledge_layers:
 
 runtime_layers:
   langgraph:
-    status: contract_configured_runtime_missing
+    status: runtime_installed_smoke_passed
     role: workflow_state_controller
     config: project/workflows/langgraph-controller.yaml
 
   llamaindex:
-    status: contract_configured_runtime_missing
+    status: runtime_installed_approved_corpus_smoke_passed
     role: approved_corpus_retrieval
     config: project/workflows/llamaindex-rag.yaml
 
   crewai:
-    status: contract_configured_runtime_missing
+    status: runtime_installed_config_import_passed
     role: agent_role_execution
     config: project/workflows/crewai-crew.yaml
 

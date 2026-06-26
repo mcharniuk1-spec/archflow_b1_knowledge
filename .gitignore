@@ -25,6 +25,8 @@ local/
 # Generated indexes and runtime artifacts
 rag_index/
 vector_store/
+graphify-out/cache/
+graphify-out/.graphify_root
 runs/*/raw/
 runs/*/private/
 exports/private/

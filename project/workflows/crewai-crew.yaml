@@ -1,5 +1,5 @@
 name: archflow_block1_crew
-status: configured_not_installed
+status: runtime_installed_config_import_passed
 runtime: crewai_python
 official_docs_checked:
   - https://docs.crewai.com/en/concepts/crews
@@ -17,6 +17,9 @@ output_log_file: project/outputs/crew-log.json
 max_rpm: null
 observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted
 model_execution: ollama_local_qwythos
+storage_boundary: project/local/home
+telemetry_for_guard_runs: disabled
+config_check_script: project/scripts/crewai-config-check.py
 
 agents:
   af_tools:
@@ -91,6 +94,6 @@ tasks:
     expected_output: project/runs/<date>-<run-name>.md
 
 current_limitations:
-  - CrewAI is not installed in this public project yet.
-  - This file is the implementation contract for the later CrewAI package setup.
-  - Codex is the active execution layer until the package is installed.
+  - CrewAI imports and config validation pass.
+  - No CrewAI LLM task execution has been run yet.
+  - Codex remains the active execution layer until the first approved LangGraph-wrapped CrewAI proof.

@@ -1,6 +1,6 @@
 # Integrated Knowledge Operations Plan
 
-Status: configured as public project contract.
+Status: configured and partially runtime-verified as the public project contract.
 
 ## Goal
 
@@ -30,10 +30,10 @@ Codex
 | WikiLLM | Active under `wiki/`. |
 | Ollama/Qwythos | Active local model. |
 | LangSmith | Key present locally; SDK installed in ignored local runtime; smoke trace submitted. |
-| LangGraph | Contract configured; runtime missing. |
-| CrewAI | Contract configured; runtime missing. |
-| LlamaIndex | Contract configured; runtime missing. |
-| Graphify | Planned after runtime code exists. |
+| LangGraph | Runtime installed; sanitized smoke workflow passed. |
+| CrewAI | Runtime installed; config/import check passed without LLM execution. |
+| LlamaIndex | Runtime installed; approved-corpus retrieval proof passed. |
+| Graphify | Public repo graph generated and linked from dashboard. |
 | Obsidian mirror | Planned as sanitized mirror only. |
 | Nexus | Planned after target vault and live schema are clear. |
 
@@ -41,10 +41,10 @@ Codex
 
 1. LangSmith key handling: complete. The key is present only in the ignored local env file.
 2. LangSmith trace test: complete. A sanitized smoke trace was submitted with Ollama-only metadata.
-3. LangGraph runtime: not installed; contract is ready.
-4. LlamaIndex approved corpus: contract is ready; runtime index not built.
-5. First proof run: pending runtime or Codex-supervised manual run.
-6. Graphify public repo: planned after runtime files exist.
+3. LangGraph runtime: installed and smoke-tested.
+4. LlamaIndex approved corpus: installed and keyword retrieval proof passed.
+5. First proof run: E1.2 preparation packet exists; full graph-wrapped generation is next.
+6. Graphify public repo: generated from public-only source copy.
 7. Obsidian/Nexus integration: planned after sanitized vault target is explicit.
 
 ## Why Not Push The API Key
@@ -70,6 +70,7 @@ That hook runs:
 
 ```text
 scripts/public_safety_scan.py
+project/scripts/pre-push-runtime-guard.py
 ```
 
 The scan blocks:
@@ -83,17 +84,11 @@ The scan blocks:
 - local runtime files
 - `.DS_Store`
 
-## Next Approval Needed
+## Next Execution Needed
 
-To continue execution, approve installing the remaining runtime packages in the ignored local environment:
+The next run should:
 
-```text
-Approve installing LangGraph, LlamaIndex, and CrewAI in the ignored local Python environment for the public project.
-```
-
-After that, the next run should:
-
-1. Implement a minimal LangGraph graph.
-2. Build an approved-corpus LlamaIndex.
-3. Wire CrewAI role outputs inside the graph.
-4. Run one manual or automated proof workflow.
+1. Expand the minimal LangGraph graph into the full E1.2 proof path.
+2. Use LlamaIndex retrieval over the approved public corpus.
+3. Wire CrewAI role outputs inside the graph without exposing raw private input.
+4. Run one graph-wrapped proof workflow and review gate.

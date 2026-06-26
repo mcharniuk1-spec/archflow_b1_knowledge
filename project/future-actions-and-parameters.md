@@ -20,10 +20,10 @@ This file lists the next implementation choices and the parameters that should b
    - Output: fill all templates in `project/outputs/templates/`.
    - Review: AF Review must approve before anything is published.
 
-4. Decide whether to install runtime packages.
-   - LangGraph: install when graph execution needs to be automated.
-   - CrewAI: install when role/task execution needs to run as code.
-   - LlamaIndex: install when RAG indexing and query engines are needed.
+4. Expand the installed runtime packages into the first full proof workflow.
+   - LangGraph: expand the smoke graph into the E1.2 proof graph.
+   - CrewAI: keep config/import proof complete; run LLM tasks only inside the approved graph path.
+   - LlamaIndex: keep approved-corpus retrieval source-path grounded.
 
 5. Activate LangSmith tracing after manual API key insertion.
    - Add the key only to `project/.env.langsmith.local`.
@@ -38,7 +38,7 @@ This file lists the next implementation choices and the parameters that should b
 | Codex operator auth | Main execution, review, edits, and supervised publication. | Active. | No new approval for normal project work. |
 | Ollama local | Minor/background local tasks. | Started; Qwythos works; fallback remains. | Approval needed for new model install. |
 | OpenAI API | Direct framework calls from LangGraph, CrewAI, or LlamaIndex. | Not configured. | Explicit API key setup approval required. |
-| LangSmith | Tracing and debugging LangGraph runs. | Configured, awaiting API key. | Manual key insertion required. |
+| LangSmith | Tracing and debugging LangGraph runs. | Configured; sanitized traces submitted. | No new approval for sanitized traces. |
 
 ## LangGraph Parameters To Review
 
@@ -84,7 +84,6 @@ This file lists the next implementation choices and the parameters that should b
 
 ## Done Criteria For Next Implementation Step
 
-- Runtime package choice is approved.
 - `.env.local` remains ignored.
 - No public file contains secrets, private links, or local paths.
 - First proof run produces the full output set.

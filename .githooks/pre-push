@@ -6,3 +6,5 @@ HOOK_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$HOOK_DIR/.." && pwd)
 cd "$REPO_ROOT"
 python3 scripts/public_safety_scan.py
+echo "Running ArchFlow E1 runtime pre-push guard..."
+python3 project/scripts/pre-push-runtime-guard.py

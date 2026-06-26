@@ -8,6 +8,8 @@ This project uses the following skills and methods.
 |---|---|
 | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. |
 | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. |
+| [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. |
+| [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. |
 | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. |
 | Public-safety review | Keep public files free of secrets, personal data, local paths, and private IDs. |
 | Ollama local check | Start local Ollama, list models, and run public-safe smoke tests. |
@@ -21,6 +23,7 @@ This project uses the following skills and methods.
 | AF RAG | Query approved project knowledge. |
 | AF Crew | Split work across named agent roles. |
 | AF Review | Approve or block output before handoff. |
+| E1 runtime guard | Pre-push runtime validation for workflow YAML, LangGraph, LlamaIndex, CrewAI, and saved skills. |
 
 ## Agent Roles
 
@@ -31,6 +34,7 @@ This project uses the following skills and methods.
 | Manager / PRD Agent | PRD, backlog, owner matrix, metrics. |
 | Knowledge Agent | KB update packet and memory candidates. |
 | Reviewer | Final approval or blocked status. |
+| Evening registry automation | Skill registry refresh, validation, and run-note upkeep. |
 
 ## Per-Agent Skill Registry
 

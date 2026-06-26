@@ -1,0 +1,447 @@
+{
+  ".githooks/pre-push": {
+    "mtime": 1782469247.0,
+    "ast_hash": "bfb6a03a3480ef73d5cf4d1a2b8c6ed4",
+    "semantic_hash": ""
+  },
+  "project/dashboard/data.json": {
+    "mtime": 1782470373.0,
+    "ast_hash": "9d65ff22d3d092fabf030629241d1018",
+    "semantic_hash": ""
+  },
+  "project/dashboard/app.js": {
+    "mtime": 1782470354.0,
+    "ast_hash": "f0dce558de020e47301c8e56f88beee5",
+    "semantic_hash": ""
+  },
+  "project/scripts/validate-workflows.py": {
+    "mtime": 1782470214.0,
+    "ast_hash": "940ccec053bb7186ef21f91e2f92e82d",
+    "semantic_hash": ""
+  },
+  "project/scripts/langsmith-smoke-trace.py": {
+    "mtime": 1782399574.0,
+    "ast_hash": "782aecb6839c1edfcafbcc0970c65e20",
+    "semantic_hash": ""
+  },
+  "project/scripts/llamaindex-approved-corpus.py": {
+    "mtime": 1782470214.0,
+    "ast_hash": "95bb8f2f3072b457b3f2d2be1f77ac9e",
+    "semantic_hash": ""
+  },
+  "project/scripts/smoke-test-ollama-qwythos.sh": {
+    "mtime": 1782375997.0,
+    "ast_hash": "45cea1fdc5071f9a19ca56aca57b7218",
+    "semantic_hash": ""
+  },
+  "project/scripts/check-ollama.sh": {
+    "mtime": 1782375997.0,
+    "ast_hash": "2aee753a0750d558ead3d8cc3bd4c98f",
+    "semantic_hash": ""
+  },
+  "project/scripts/langgraph-smoke-run.py": {
+    "mtime": 1782469246.0,
+    "ast_hash": "488c00f60ccc6ba57da581b8e0f27765",
+    "semantic_hash": ""
+  },
+  "project/scripts/pre-push-runtime-guard.py": {
+    "mtime": 1782469593.0,
+    "ast_hash": "f82bf16327ba8fba07631bd5c79f066f",
+    "semantic_hash": ""
+  },
+  "project/scripts/generate-dashboard-data.py": {
+    "mtime": 1782470363.0,
+    "ast_hash": "bd61fb5f812d7abfd133ff9f588f9602",
+    "semantic_hash": ""
+  },
+  "project/scripts/crewai-config-check.py": {
+    "mtime": 1782469593.0,
+    "ast_hash": "38559835ebb272f29d96f8565492e672",
+    "semantic_hash": ""
+  },
+  "scripts/public_safety_scan.py": {
+    "mtime": 1782399045.0,
+    "ast_hash": "de4fbb9ed7bc7f18b8687dcad8eb8f0b",
+    "semantic_hash": ""
+  },
+  "CHANGELOG.md": {
+    "mtime": 1782379043.0,
+    "ast_hash": "d4e8737f5a9bb2b93bce3d6104ae2225",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1782379018.0,
+    "ast_hash": "2bc4248552dae463845ee050a1274c57",
+    "semantic_hash": ""
+  },
+  "PUBLICATION_REVIEW.md": {
+    "mtime": 1782379043.0,
+    "ast_hash": "d50cb7329df0b503969c1c23146d4020",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1782399014.0,
+    "ast_hash": "7d68bfb80e73546708502c16eb370e2d",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1782375996.0,
+    "ast_hash": "d3d3887cd88b8d1e875d410a1f857816",
+    "semantic_hash": ""
+  },
+  "wiki/insights.md": {
+    "mtime": 1782469899.0,
+    "ast_hash": "9c87a42a1a1f077dde3863f5bd9e698b",
+    "semantic_hash": ""
+  },
+  "wiki/log.md": {
+    "mtime": 1782469899.0,
+    "ast_hash": "14efd7cea5928c30cc2ba2a5576b394d",
+    "semantic_hash": ""
+  },
+  "wiki/memory.md": {
+    "mtime": 1782469899.0,
+    "ast_hash": "f301b411eade26ff4de2785f8f79ba8f",
+    "semantic_hash": ""
+  },
+  "wiki/index.md": {
+    "mtime": 1782469899.0,
+    "ast_hash": "0087150b5b482c555bfb621963788744",
+    "semantic_hash": ""
+  },
+  "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md": {
+    "mtime": 1782379019.0,
+    "ast_hash": "849895ccb6fbc1521c6ec6ea48fb8ca1",
+    "semantic_hash": ""
+  },
+  "wiki/decisions/2026-06-26-e1-runtime-guard-and-agent-stack.md": {
+    "mtime": 1782469912.0,
+    "ast_hash": "365a127f608205e9bfc8ee4e09b10001",
+    "semantic_hash": ""
+  },
+  "wiki/rules/public-wikillm-contract.md": {
+    "mtime": 1782379018.0,
+    "ast_hash": "5fa73cea9c2668c838299654097e97f9",
+    "semantic_hash": ""
+  },
+  "wiki/issues/2026-06-25-langsmith-api-key-missing.md": {
+    "mtime": 1782469899.0,
+    "ast_hash": "7f5b999ee3a4324adaeac392410ddf69",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-25-current-setup-methods-and-agent-plan.md": {
+    "mtime": 1782380805.0,
+    "ast_hash": "bb8d01e491150a49a76e035e0607fb00",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-25-dashboard-setup-and-operation.md": {
+    "mtime": 1782399980.0,
+    "ast_hash": "268cc75b0f499f0b92307fcf6bd189c8",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-25-integrated-knowledge-and-safety-hook.md": {
+    "mtime": 1782399149.0,
+    "ast_hash": "a44af2a3dd171e941698a00fadd3546c",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-25-langsmith-wikillm-setup.md": {
+    "mtime": 1782379019.0,
+    "ast_hash": "fa59a920336fd6e80698374f997ff22a",
+    "semantic_hash": ""
+  },
+  "project/integration-plan.md": {
+    "mtime": 1782470353.0,
+    "ast_hash": "3e130346ae60a8f6827a858ef15000be",
+    "semantic_hash": ""
+  },
+  "project/project-plan.md": {
+    "mtime": 1782399979.0,
+    "ast_hash": "f65ef8d95246fb1c3c562c28e2ce7202",
+    "semantic_hash": ""
+  },
+  "project/future-actions-and-parameters.md": {
+    "mtime": 1782470353.0,
+    "ast_hash": "2695af29ef8b1e42a4f5d28fb8980016",
+    "semantic_hash": ""
+  },
+  "project/langsmith-setup.md": {
+    "mtime": 1782399394.0,
+    "ast_hash": "6dace79bf39524d09789c3d63c42c2a1",
+    "semantic_hash": ""
+  },
+  "project/README.md": {
+    "mtime": 1782470353.0,
+    "ast_hash": "62ada9bf86e70032efb8695dd8f00738",
+    "semantic_hash": ""
+  },
+  "project/agentic-stack.md": {
+    "mtime": 1782379044.0,
+    "ast_hash": "2311baa4e9e8f180ce0ecb663658c799",
+    "semantic_hash": ""
+  },
+  "project/provider-setup.md": {
+    "mtime": 1782399388.0,
+    "ast_hash": "d14c1c2cbbfd4e62ab8c5f688aa195f7",
+    "semantic_hash": ""
+  },
+  "project/operating-rules.md": {
+    "mtime": 1782375996.0,
+    "ast_hash": "52b1eefc90d7ae7ca04a087532878b7c",
+    "semantic_hash": ""
+  },
+  "project/config/model-routing.yaml": {
+    "mtime": 1782399362.0,
+    "ast_hash": "7ca45de6808ed1f78e972b87b3615213",
+    "semantic_hash": ""
+  },
+  "project/workflows/crewai-crew.yaml": {
+    "mtime": 1782469664.0,
+    "ast_hash": "96e762c669c9269e89669a3a96a6cdc2",
+    "semantic_hash": ""
+  },
+  "project/workflows/langgraph-controller.yaml": {
+    "mtime": 1782469663.0,
+    "ast_hash": "dea4b0fa920b42567c3a08598b42b175",
+    "semantic_hash": ""
+  },
+  "project/workflows/knowledge-integration.yaml": {
+    "mtime": 1782469664.0,
+    "ast_hash": "d160c759e770ed7e7c527a5c8d018b0a",
+    "semantic_hash": ""
+  },
+  "project/workflows/llamaindex-rag.yaml": {
+    "mtime": 1782469664.0,
+    "ast_hash": "161a6b529d9bd32fd440f22a69984181",
+    "semantic_hash": ""
+  },
+  "project/agents/skills-by-agent.md": {
+    "mtime": 1782469247.0,
+    "ast_hash": "c35eec3a95c0965ba2b6cd6b2e8c6e5b",
+    "semantic_hash": ""
+  },
+  "project/agents/README.md": {
+    "mtime": 1782377304.0,
+    "ast_hash": "124a7bd47f6f82bd62154f0096b727ad",
+    "semantic_hash": ""
+  },
+  "project/agents/agent-roster.yaml": {
+    "mtime": 1782469247.0,
+    "ast_hash": "9141e62f577cf4b937c88550126f803a",
+    "semantic_hash": ""
+  },
+  "project/dashboard/index.html": {
+    "mtime": 1782400050.0,
+    "ast_hash": "b3bf5481ee0af0b6d795ea28e1cc5f0a",
+    "semantic_hash": ""
+  },
+  "project/dashboard/README.md": {
+    "mtime": 1782399979.0,
+    "ast_hash": "84200b00a744cd8ce9997297cea9173d",
+    "semantic_hash": ""
+  },
+  "project/prompts/af-graph.md": {
+    "mtime": 1782375997.0,
+    "ast_hash": "0ad5335aee47d006a0d036f860be8b9b",
+    "semantic_hash": ""
+  },
+  "project/prompts/af-review.md": {
+    "mtime": 1782375998.0,
+    "ast_hash": "f7ee7a37f3aefa1629cd6d9637ba1c99",
+    "semantic_hash": ""
+  },
+  "project/outputs/README.md": {
+    "mtime": 1782377331.0,
+    "ast_hash": "4b4b10b880def543311b2ba6c4f4faf4",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/prd.md": {
+    "mtime": 1782377277.0,
+    "ast_hash": "fbbfa9a1e3c29a8b575d37f969a71b2e",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/review-report.md": {
+    "mtime": 1782377278.0,
+    "ast_hash": "d78034e39025548a6a0389f4611a63f3",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/run-summary.md": {
+    "mtime": 1782377278.0,
+    "ast_hash": "41978475717a6a9f2fc131d057a79871",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/retrieval-log.md": {
+    "mtime": 1782377277.0,
+    "ast_hash": "6aecb117c9fe60f7d911cad7db6ab7b6",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/source-inventory.md": {
+    "mtime": 1782377277.0,
+    "ast_hash": "c5fe6297cd9f62efc4e810b8c394942f",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/knowledge-base-update.md": {
+    "mtime": 1782377278.0,
+    "ast_hash": "69243e7a8acb76ef6efac202c5a0acc5",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/responsibility-matrix.md": {
+    "mtime": 1782377331.0,
+    "ast_hash": "9e7438d4b23fc24adf08f876b5efe144",
+    "semantic_hash": ""
+  },
+  "project/outputs/templates/context-digest.md": {
+    "mtime": 1782377277.0,
+    "ast_hash": "8cb762a54f2906f2384da32c6ddcac68",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-25-integrated-knowledge-and-safety-hook.md": {
+    "mtime": 1782399155.0,
+    "ast_hash": "913616b057d545b82947df95f7ad5053",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-25-provider-github-automation.md": {
+    "mtime": 1782376675.0,
+    "ast_hash": "f0ac9aa972f0f4c9bf20dbef2a0244eb",
+    "semantic_hash": ""
+  },
+  "project/runs/README.md": {
+    "mtime": 1782375998.0,
+    "ast_hash": "f9b8bc9c747a9dcb72f657bec21462d7",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-25-evening-skill-registry-refresh.md": {
+    "mtime": 1782414046.0,
+    "ast_hash": "a1da7c1fd68baa9d0844982caa292cde",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-25-clean-public-resetup.md": {
+    "mtime": 1782376102.0,
+    "ast_hash": "b108f397b1d05f71e320485b35d230fa",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-25-codex-main-agentic-workflow.md": {
+    "mtime": 1782377653.0,
+    "ast_hash": "24ee5a70082ed1fff099b9990d1a42da",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-25-langsmith-wikillm-setup.md": {
+    "mtime": 1782378967.0,
+    "ast_hash": "702c149d405a0da3ab5ee4d70d96d5f3",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/prd.md": {
+    "mtime": 1782469808.0,
+    "ast_hash": "daf289f7325fd4caa0de95c2c809e900",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/review-report.md": {
+    "mtime": 1782469809.0,
+    "ast_hash": "7e08ac98c9fdccf06c31dea899cc8eea",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/run-summary.md": {
+    "mtime": 1782469809.0,
+    "ast_hash": "bf73dc57e49c116474f552bce06cdc61",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/summary.md": {
+    "mtime": 1782469808.0,
+    "ast_hash": "0223ffbc71b11eb51f9f98d017181776",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/retrieval-log.md": {
+    "mtime": 1782469808.0,
+    "ast_hash": "a903bbf01d4f68346f35def308fe9da8",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/source-inventory.md": {
+    "mtime": 1782469808.0,
+    "ast_hash": "2ab9ea3da7587bec7641b1afb9b6c2df",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/knowledge-base-update.md": {
+    "mtime": 1782469808.0,
+    "ast_hash": "9aa8b3033f0eda310523c475bd5df7fd",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/responsibility-matrix.md": {
+    "mtime": 1782469808.0,
+    "ast_hash": "d66d1c72f267926a8b489bf0002d7fc1",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/context-digest.md": {
+    "mtime": 1782469808.0,
+    "ast_hash": "b935249227ae3db803a69fded419e9fc",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md": {
+    "mtime": 1782380805.0,
+    "ast_hash": "572cad34193cf1fba7564b7d7adc295e",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-25-chat-execution-report.md": {
+    "mtime": 1782378967.0,
+    "ast_hash": "8e2432e9798bebb5c8e4d640b67f68d6",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-25-dashboard-setup-and-operation-report.md": {
+    "mtime": 1782399979.0,
+    "ast_hash": "716ffdbaef90c8765c4dfd0dd15e8f8b",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-25-layer-setup-report.md": {
+    "mtime": 1782378967.0,
+    "ast_hash": "c75ae2316bf080ea0ddef870f4a79986",
+    "semantic_hash": ""
+  },
+  "history/legacy-file-inventory.md": {
+    "mtime": 1782375998.0,
+    "ast_hash": "f7567d4fb3122d5c223f487f099ac8b5",
+    "semantic_hash": ""
+  },
+  "history/resetup-summary-2026-06-24.md": {
+    "mtime": 1782375998.0,
+    "ast_hash": "e0fd967b3a18508a555cd797888cecb5",
+    "semantic_hash": ""
+  },
+  "history/notion-plan-ingest-2026-06-25.md": {
+    "mtime": 1782375999.0,
+    "ast_hash": "f04c50eda1039febb9d133bb9d46d631",
+    "semantic_hash": ""
+  },
+  "history/README.md": {
+    "mtime": 1782375998.0,
+    "ast_hash": "3abcb1d1efb36a1f8a6eed7bc239258b",
+    "semantic_hash": ""
+  },
+  "history/previous-work-summary.md": {
+    "mtime": 1782375998.0,
+    "ast_hash": "e39a6ca9f107db07bc097aa7d4814371",
+    "semantic_hash": ""
+  },
+  "skills/skills-used.md": {
+    "mtime": 1782469247.0,
+    "ast_hash": "c9eb13b74d6e65baeef1276661ffaa7e",
+    "semantic_hash": ""
+  },
+  "skills/archflow-e1-runtime-guard/SKILL.md": {
+    "mtime": 1782469540.0,
+    "ast_hash": "0bdeac3d347bde1a4de67642dee7d244",
+    "semantic_hash": ""
+  },
+  "skills/archflow-task-breakdown/SKILL.md": {
+    "mtime": 1782381959.0,
+    "ast_hash": "795f0899864eba3743fb314074b74e2f",
+    "semantic_hash": ""
+  },
+  "skills/archflow-task-breakdown/agents/openai.yaml": {
+    "mtime": 1782381934.0,
+    "ast_hash": "a718b50f8a8c989ac248444d2fa63dd8",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-25-e1-block1-subtask-execution-plan.pdf": {
+    "mtime": 1782382269.0,
+    "ast_hash": "2281f702407dd86d0e2acc0f88769c67",
+    "semantic_hash": ""
+  }
+}

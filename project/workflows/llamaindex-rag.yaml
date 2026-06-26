@@ -1,5 +1,5 @@
 name: archflow_block1_rag
-status: configured_not_installed
+status: runtime_installed_approved_corpus_smoke_passed
 runtime: llamaindex_python
 official_docs_checked:
   - https://developers.llamaindex.ai/python/framework/getting_started/concepts/
@@ -37,7 +37,7 @@ indexing_parameters:
   persist_dir_git_status: ignored
 
 retrieval_parameters:
-  query_engine: vector_query_engine
+  query_engine: approved_corpus_keyword_smoke_first
   similarity_top_k: 5
   response_mode: compact
   require_source_paths: true
@@ -55,8 +55,10 @@ outputs:
   retrieval_log: project/outputs/templates/retrieval-log.md
   source_inventory: project/outputs/templates/source-inventory.md
   context_digest: project/outputs/templates/context-digest.md
+  smoke_summary_local: project/local/rag_index/approved-corpus-summary.json
+  smoke_script: project/scripts/llamaindex-approved-corpus.py
 
 current_limitations:
-  - LlamaIndex is not installed in this public project yet.
-  - No vector index has been generated.
+  - Vector embeddings are not generated yet.
+  - First proof uses deterministic local keyword retrieval over LlamaIndex documents.
   - Only sanitized public files are approved for indexing by default.

@@ -30,6 +30,14 @@ LangSmith should receive structured run metadata and trace spans, not raw privat
 
 The lowest-risk order is: verify LangSmith trace with a sanitized run, install LangGraph runtime, add LlamaIndex retrieval, then add CrewAI execution. This keeps workflow control and public-safety gates stable before adding team automation.
 
+## E1.2 Proof Insight
+
+The first full proof should not start as a market research task. It should start as a controlled source-to-artifact workflow: source inventory, context digest, sole summary, PRD, responsibility matrix, KB update, retrieval log, and review report. Market and web research become useful after this proof defines explicit questions.
+
+## CrewAI Boundary Insight
+
+CrewAI imports can create app-data storage by default. In this project, CrewAI guard checks must override runtime storage to ignored project-local storage and disable telemetry/tracking. CrewAI should organize roles while LangGraph controls routing, revision loops, and approval gates.
+
 ## Dashboard Sequencing Insight
 
 The dashboard should lag the proof workflow, not lead it. A read-only readiness dashboard is useful now because it exposes config health and memory activity without freezing early assumptions. A full control panel should wait until LangGraph, LlamaIndex, CrewAI, WikiLLM writes, and LangSmith traces have produced at least one complete proof run.

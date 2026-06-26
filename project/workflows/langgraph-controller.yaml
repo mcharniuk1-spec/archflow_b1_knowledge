@@ -1,5 +1,5 @@
 name: archflow_block1_langgraph_controller
-status: configured_not_installed
+status: runtime_installed_smoke_passed
 runtime: langgraph_python
 official_docs_checked:
   - https://docs.langchain.com/oss/python/langgraph/overview
@@ -86,7 +86,7 @@ edges:
 
 current_parameters:
   checkpointer: none_for_now
-  observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted
+  observability: langsmith_configured_langgraph_smoke_trace_submitted
   human_approval_required_before_publication: true
   max_revision_loops: 2
   final_runtime_owner: codex_operator
@@ -94,3 +94,5 @@ current_parameters:
   primary_publication_auth: codex_operated_git_ssh
   model_execution_provider: ollama_local_only
   langsmith_project_id: 057edf33-a328-4186-9425-3306186149ef
+  smoke_script: project/scripts/langgraph-smoke-run.py
+  last_smoke_result: langgraph_smoke_ok_approval_approved

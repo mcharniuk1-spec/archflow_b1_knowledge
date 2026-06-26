@@ -37,10 +37,10 @@ It stores durable public-safe project memory, decisions, run records, issues, in
 | Codex operator | Primary operator and review layer. |
 | Ollama | Local model execution only. |
 | Qwythos | Active local model after load verification. |
-| LangSmith | Tracing configured, awaiting API key. |
-| LangGraph | Workflow contract configured, runtime not installed. |
-| CrewAI | Crew contract configured, runtime not installed. |
-| LlamaIndex | RAG contract configured, runtime not installed. |
+| LangSmith | Tracing configured; sanitized smoke traces submitted. |
+| LangGraph | Runtime installed; smoke workflow passed. |
+| CrewAI | Runtime installed; config/import check passed with no LLM execution. |
+| LlamaIndex | Runtime installed; approved-corpus retrieval proof passed. |
 | WikiLLM | Public project memory configured in this folder. |
 
 ## Safety Boundary
@@ -52,4 +52,3 @@ This wiki must not contain:
 - Local absolute paths.
 - Raw private transcripts or exports.
 - Personal identifiers not needed for public project operation.
-

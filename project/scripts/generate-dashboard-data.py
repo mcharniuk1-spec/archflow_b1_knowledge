@@ -368,7 +368,9 @@ def graphify_status() -> dict:
     return {
         "status": "available" if existing else "planned_not_generated",
         "paths": existing,
-        "recommended_next": "Generate Graphify after runtime code exists, then link the graph report here.",
+        "recommended_next": "Regenerate Graphify after code or workflow changes."
+        if existing
+        else "Generate Graphify after runtime code exists, then link the graph report here.",
     }
 
 
@@ -401,9 +403,9 @@ def main() -> None:
             "dashboard_rule": "control panel, not primary brain",
         },
         "status_cards": [
-            {"label": "LangGraph", "value": langgraph["status"], "tone": "warn"},
-            {"label": "CrewAI", "value": crewai["status"], "tone": "warn"},
-            {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "warn"},
+            {"label": "LangGraph", "value": langgraph["status"], "tone": "ok"},
+            {"label": "CrewAI", "value": crewai["status"], "tone": "ok"},
+            {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "ok"},
             {"label": "WikiLLM files", "value": f"{wiki_summary()['file_count']} files", "tone": "ok"},
             {"label": "Activity files", "value": str(len(activity_items())), "tone": "ok"},
             {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},

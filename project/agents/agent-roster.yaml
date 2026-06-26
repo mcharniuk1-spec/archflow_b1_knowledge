@@ -9,6 +9,7 @@ agents:
       - provider-readiness-check
       - ollama-local-check
       - git-publication-check
+      - archflow-e1-runtime-guard
     outputs:
       - source_inventory
       - tool_readiness_report
@@ -33,6 +34,7 @@ agents:
     provider: codex_operator
     local_model: gemma4:e4b
     skills:
+      - archflow-task-breakdown
       - prd-from-dialogue
       - responsibility-assignment-extraction
       - milestone-planning
@@ -90,6 +92,7 @@ automation:
     skills:
       - evening-skill-registry-update
       - daily-public-project-review
+      - archflow-e1-runtime-guard
     target_files:
       - project/agents/skills-by-agent.md
       - project/agents/agent-roster.yaml

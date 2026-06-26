@@ -9,7 +9,7 @@ LangSmith tracing was configured before the local API key was added.
 
 ## Impact
 
-Resolved for smoke tracing. LangGraph, CrewAI, and LlamaIndex runtime traces still require those runtime packages to be installed and wired into a proof workflow.
+Resolved for smoke tracing. LangGraph runtime tracing has also been smoke-tested. CrewAI and LlamaIndex are installed, but a full LangGraph-wrapped CrewAI proof run has not executed yet.
 
 ## Resolution
 
@@ -23,3 +23,4 @@ Verification:
 
 - The local env file is ignored by Git.
 - A sanitized LangSmith smoke trace was submitted.
+- A sanitized LangGraph smoke trace was submitted.

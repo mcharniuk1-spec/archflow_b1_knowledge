@@ -27,7 +27,7 @@ function escapeHtml(value) {
 function badge(status) {
   const text = String(status || "unknown");
   const lower = text.toLowerCase();
-  const tone = lower.includes("active") || lower.includes("present") || lower.includes("ok") || lower.includes("tracked") || lower.includes("static") || lower.includes("files") || lower.includes("submitted")
+  const tone = lower.includes("active") || lower.includes("present") || lower.includes("ok") || lower.includes("tracked") || lower.includes("static") || lower.includes("files") || lower.includes("submitted") || lower.includes("installed") || lower.includes("passed") || lower.includes("available")
     ? "ok"
     : lower.includes("missing") || lower.includes("not_installed") || lower.includes("not_generated") || lower.includes("awaiting") || lower.includes("configured_not_installed")
       ? "warn"
@@ -101,7 +101,7 @@ function renderOverview(data) {
           `).join("")}
         </div>
         <div class="callout">
-          LangGraph is configured as the workflow spine, but runtime packages are not installed in this public project yet. This dashboard tracks contracts and files until the first proof workflow exists.
+          LangGraph is installed and the smoke workflow passes. The next step is expanding this spine into the full E1.2 proof workflow with parallel analysis, document generation, and review gates.
         </div>
       </section>
       <section class="panel">
@@ -151,13 +151,13 @@ function renderGraphify(data) {
   view.innerHTML = `
     <div class="grid cols-2">
       ${card({ label: "Graphify status", value: data.graphify.status, note: "Generated structure reference", tone: hasGraph ? "ok" : "warn" })}
-      ${card({ label: "Recommended next", value: "After runtime code", note: data.graphify.recommended_next, tone: "warn" })}
+      ${card({ label: "Recommended next", value: "After code changes", note: data.graphify.recommended_next, tone: hasGraph ? "ok" : "warn" })}
     </div>
     <section class="panel" style="margin-top:16px">
       <h2 class="section-title">Graphify Links</h2>
       ${hasGraph
         ? `<div class="list">${data.graphify.paths.map((p) => `<div class="row">${pathLink(p)}</div>`).join("")}</div>`
-        : `<div class="callout">No Graphify output is present in this public project yet. Generate it after LangGraph dashboard/runtime code exists so the graph reflects the real implementation.</div>`
+        : `<div class="callout">No Graphify output is present in this public project yet. Generate it after runtime code exists so the graph reflects the real implementation.</div>`
       }
     </section>
   `;
