@@ -49,5 +49,6 @@
 - `project/workflows/market-research-engine.yaml` was added for E2 account evidence, signal extraction, ICP scoring, role verification, and reviewed outreach handoff.
 - The agent roster now includes AF Research and AF Copy roles.
 - Cognee, turbovec, and Mistral were documented as gated future layers, not activated runtime dependencies.
-- The plan now treats product/software/AI service agencies as the first ICP hypothesis and Client Discovery-to-Backlog Pack as the first offer hypothesis.
+- The plan initially used a broader service-company hypothesis, then the partner answer corrected the current first ICP to product teams inside B2B SaaS scaleups and reframed the offer as a Product Discovery-to-Production PRD Pack.
+- Product-team ICP correction was applied to the project plan, market engine, workflow YAML, dashboard data, and selected Notion E1/E2/E3/E6 rows.
 - Targeted Notion E2 updates were applied after product-owner verification: E2 parent and related E2.1/E2.2/E2.3/E2.5 pages received append-only notes, and three Backlog research tasks were added.

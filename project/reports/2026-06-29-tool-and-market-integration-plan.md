@@ -19,11 +19,11 @@ The June 29 reports strengthen the current E1-E7 plan instead of replacing it. E
 
 ## Market Decisions
 
-FACT: First ICP hypothesis is product/software/AI service agencies and adjacent service firms.
+FACT: First ICP hypothesis is one vertical: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed.
 
-INTERPRETATION: The first sellable pain is not "make a PRD"; it is reducing ambiguity, PM/BA cleanup, rework, scope creep, weak handoffs, and lost decision memory.
+INTERPRETATION: The first sellable pain is not "make a PRD"; it is reducing product-team ambiguity, customer-research loss, PRD rework, weak handoffs, roadmap conflict, and lost decision memory.
 
-HYPOTHESIS: The first entry offer should be a Client Discovery-to-Backlog Pack.
+HYPOTHESIS: The first entry offer should be a Product Discovery-to-Production PRD Pack: raw product-team material becomes a reviewed PRD/backlog/KB handoff in days, not weeks.
 
 GAP: No external buyer demand is validated yet.
 

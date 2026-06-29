@@ -2,21 +2,20 @@
 
 ## Primary ICP
 
-Product/software/AI service agencies and adjacent service firms.
+Product teams inside B2B SaaS scaleups: Series B-D, roughly 50-500 employees, 2-5 PMs, with a Director or VP of Product accountable for PRD quality, research synthesis, and delivery handoff speed.
 
 ## Subaudiences
 
-1. Agency founders, partners, delivery directors, heads of product, solution architects.
-2. AI automation consultancies and AI-native service firms.
-3. Product-led B2B SaaS scaleups with Product Ops, PM, CS, roadmap, or feedback overload signals.
-4. Founder-led B2B startups as proof and fast iteration lane.
-5. Enterprise product ops/transformation later, unless warm intro exists.
+1. Director or VP of Product in B2B SaaS with multiple PMs and repeated PRD/research handoff pressure.
+2. Head of Product or Product Ops lead with customer-interview, feedback, roadmap, and documentation overload.
+3. Senior PM leader responsible for turning research and stakeholder dialogue into sprint-ready PRDs.
+4. Agencies, founders, market-research teams, operations teams, and enterprise product ops stay later or adjacent lanes unless a warm proof opportunity appears.
 
 ## First Offer Hypothesis
 
-Client Discovery-to-Backlog Pack:
+Product Discovery-to-Production PRD Pack:
 
-`messy client source packet -> context digest -> PRD -> backlog -> acceptance criteria -> decision log -> KB/update handoff`
+`raw product-team material -> context digest -> production-ready PRD -> backlog -> acceptance criteria -> decision log -> KB/update handoff`
 
 ## Evidence Engine
 

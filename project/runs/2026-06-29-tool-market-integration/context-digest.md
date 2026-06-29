@@ -8,7 +8,7 @@ Run: 2026-06-29-tool-market-integration
 - E1.3 is the next technical gate: write approved PRD/history to KB, add source registry and retrieval metadata, then run readback.
 - Loop Engineering is useful immediately as an operating contract, not a separate product.
 - Cognee, turbovec, and Mistral are not current default runtime dependencies.
-- The strongest first ICP hypothesis is product/software/AI service agencies.
+- The strongest first ICP hypothesis is one vertical: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed.
 
 ## INTERPRETATION
 
@@ -18,7 +18,7 @@ Run: 2026-06-29-tool-market-integration
 
 ## HYPOTHESIS
 
-- A Client Discovery-to-Backlog Pack will be easier to sell to agencies than a generic PRD generator or AI automation service.
+- A Product Discovery-to-Production PRD Pack will be easier to sell than a generic PRD generator or AI automation service if it shows clear reduction in research loss, PRD rework, weak handoffs, and decision-memory gaps.
 - Cognee will become useful after the curated WikiLLM readback baseline exists.
 - turbovec will become useful when E2 creates enough approved source cards to justify dense retrieval and filters.
 - Mistral Small/Medium can improve normalized research and final wording after facts are locked.

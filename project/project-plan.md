@@ -41,11 +41,11 @@ The June 29 tool and market reports do not replace the E1-E7 path. They make it 
 - Mistral models are optional future quality-pass models for sanitized PRDs, research synthesis, and final text after credentials, budget, model metadata logging, and AF Review gates exist.
 - E2 becomes a B2B evidence engine, not a loose browsing task: universe builder, signal collector, social-language miner, review miner, company parser, ICP scorer, and fact-check gate.
 
-FACT: The first ICP hypothesis is product/software/AI service agencies and closely related service firms.
+FACT: The first ICP hypothesis is one vertical: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed.
 
-INTERPRETATION: Agencies feel the discovery-to-PRD pain repeatedly, can monetize cleaner scope in client delivery, and have lighter procurement than enterprise product-ops teams.
+INTERPRETATION: The positioning should move from a general AI-native agency/service story to a specific product-team workflow: raw product material becomes a production-ready PRD through a connected knowledge-base and multi-agent execution/review loop.
 
-HYPOTHESIS: The first paid entry offer should be a Client Discovery-to-Backlog Pack: one messy client source packet becomes a reviewed context digest, PRD, backlog, acceptance criteria, decision log, and KB/update handoff.
+HYPOTHESIS: The first paid entry offer should be a Product Discovery-to-Production PRD Pack: product-team dialogues, customer research, interviews, notes, and docs become a reviewed context digest, production-ready PRD, backlog, acceptance criteria, decision log, and KB/update handoff in days, not weeks.
 
 GAP: Directory counts, job counts, social posts, named company samples, and internal proof are research signals only. Demand is not validated until a real buyer risks time, source material, authority, or money.
 
@@ -104,7 +104,7 @@ Tasks:
 E4 content update:
 
 1. Prioritize category education and proof over founder-build narration.
-2. Content angles: messy-source transformations, agency scope creep, PRD quality checklist, job-post signal breakdowns, why meeting assistants stop too early, and how review gates protect AI-assisted work.
+2. Content angles: messy-source transformations, product discovery cleanup, PRD quality checklist, job-post signal breakdowns, why meeting assistants stop too early, and how review gates protect AI-assisted work.
 3. Weekly review must separate content attention from demand signals such as source-packet willingness, paid diagnostic interest, proposal requests, and budget-owner referrals.
 
 ## E2 - Research Engine To ICP
@@ -118,13 +118,13 @@ Tasks:
 | E2.0 Reset research engine for integrated API/tool approach | Backlog | Research | 2026-07-02 | Tool/API plan, source boundaries, extraction schema, and loop-readiness gate for market research. |
 | E2.1 Define sources, APIs, and connectable data | Backlog | Research | 2026-07-04 | Source list, allowed acquisition methods, corpus boundaries, and segment data model. |
 | E2.2 Competitor, job-signal, company, social-language, and pain research for PRD segment | Backlog | Research | 2026-07-06 | Competitor positioning, public pain summary, account evidence-card schema, and dashboard plan for monitoring research/workflow evidence. |
-| E2.3 Synthesize customer profile and ICP | To Do | Research | 2026-07-08 | One-page agency-first ICP card for outreach, with secondary ICP notes. |
+| E2.3 Synthesize customer profile and ICP | To Do | Research | 2026-07-08 | One-page product-team ICP card for B2B SaaS Series B-D outreach, with later-lane notes kept separate. |
 | E2.4 Split solution by sub-audiences | Backlog | Research | 2026-07-09 | Main ICP plus future audience notes. |
 | E2.5 Build 10 to 15 verified targets for outreach | Backlog | Research | 2026-07-11 | Outreach target table with source grade, role verification status, pain hypothesis, and message angle handed to E6. |
 
 E2.0 adds the required reset to a full integrated research/tool approach:
 
-1. Start with a single ICP hypothesis and exclusion rules: product/software/AI service agencies first; SaaS scaleups, AI consultancies, founder-led B2B startups, and enterprise product ops are secondary or later lanes.
+1. Start with a single ICP hypothesis and exclusion rules: product teams inside B2B SaaS scaleups first; agencies, AI consultancies, founder-led B2B startups, market-research teams, and enterprise product ops are later lanes unless a warm proof opportunity appears.
 2. Define allowed acquisition methods before collection: public directories, company websites, job pages, authorized LinkedIn/company views, reviews, product launches, and approved search APIs.
 3. Treat Tavily, Exa, SerpAPI, Google Custom Search, Firecrawl, Apify, Playwright, Browserless, Clay, Apollo, Cognism, Clearbit, and People Data Labs as gated tools. Use them only when legal, source boundaries, storage rules, and rate limits are clear.
 4. Use public social signals for language and hypotheses only. Do not treat LinkedIn/X/Reddit/Product Hunt posts as proof without triangulation.
@@ -156,8 +156,8 @@ Tasks:
 
 E3 positioning update:
 
-1. Primary message should narrow around `messy client/customer source -> reviewed PRD/backlog/KB pack`.
-2. The agency-first solution page should show before/after artifact proof, redaction/source-boundary rules, review gates, and existing-tool handoff.
+1. Primary message should narrow around `raw product-team material -> reviewed production-ready PRD/backlog/KB pack`.
+2. The product-team solution page should show before/after artifact proof, redaction/source-boundary rules, review gates, and existing-tool handoff.
 3. The diagnostic form should ask for segment, trigger event, current tools, source-packet willingness, privacy concerns, budget-owner path, and preferred output destination.
 
 ## E6 - Outreach
@@ -176,7 +176,7 @@ Tasks:
 
 E6 first-wave targeting update:
 
-1. Start with roughly 6 to 8 product/software agencies, 2 to 3 AI consultancies, 3 to 4 product-led SaaS firms, and 1 to 2 founder-led B2B startups.
+1. Start with 10 to 15 people in the same ICP: Directors or VPs of Product, Heads of Product, Product Ops leads, or senior PM leaders inside B2B SaaS companies with roughly 50-500 employees and 2-5 PMs.
 2. Every message must cite one public signal, name one pain hypothesis, offer one concrete artifact, and use one low-friction CTA.
 3. Do not send generic AI automation pitches.
 

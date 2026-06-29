@@ -9,7 +9,7 @@ FACT: The June 29 reports support the current E1-E7 path. They do not require re
 
 INTERPRETATION: The right change is to make E2 a market evidence engine, make E1.3 use a report-only loop/readback gate, and keep E3-E7 downstream of verified market evidence.
 
-HYPOTHESIS: The first ICP to validate is B2B product, software, and AI service agencies with 10-250 people that already sell discovery, MVP, product strategy, AI automation, or custom software.
+HYPOTHESIS: The first ICP to validate is one vertical: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed.
 
 GAP: Live demand is not validated until prospects show paid diagnostic intent, prepayment, approved paid start, or comparable firm paid intent with source packet, timeline, scope, and budget owner.
 
@@ -18,7 +18,7 @@ GAP: Live demand is not validated until prospects show paid diagnostic intent, p
 1. Append a June 29 integration note to the E2 parent task.
 2. Add or update E2.0 as: "Reset research engine for integrated API/tool approach".
 3. Add or update an E2 market-evidence task covering account evidence cards, signal scoring, source grading, and review gate.
-4. Append the agency-first ICP hypothesis and validation rule to the relevant ICP or shortlist task.
+4. Append the product-team-first ICP hypothesis and validation rule to the relevant ICP or shortlist task.
 5. Append that Tavily/search APIs are gated research inputs, not default truth sources.
 
 ## Guardrails
@@ -48,7 +48,7 @@ Changes applied:
 - E2.2.4 was created as a Backlog research task.
 - E2.1 received the source/API reset note.
 - E2.2 received the market evidence engine note.
-- E2.3 received the agency-first ICP and demand-validation note.
+- E2.3 received the original June 29 ICP note and is corrected by the June 29 partner-answer update below.
 - E2.5 received the shortlist readiness rule.
 - The Tavily connector decision received the gated-connector boundary note.
 
@@ -86,4 +86,10 @@ Done means:
 
 ### ICP / Shortlist Append
 
-June 29 ICP update: the first validation audience is B2B product, software, and AI service agencies, especially 10-250 person teams selling MVP, discovery, product strategy, AI automation, or custom software. Validate by finding evidence of ambiguity, PM/BA bottlenecks, weak handoffs, repeated discovery effort, rework, roadmap conflicts, or paid external delivery pressure. Counts, posts, job ads, and named accounts are not demand by themselves.
+June 29 ICP correction: the first validation audience is not several ICPs and not agency-first. It is product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed. Validate by finding evidence of customer-research overload, weak PRD handoffs, repeated interview synthesis, roadmap ambiguity, rework, product-to-engineering translation loss, and decision-memory gaps. Counts, posts, job ads, and named accounts are not demand by themselves.
+
+### Partner Answer To Record In E1.3
+
+Positioning: ArchFlow is an AI-native service that turns product-team raw material, such as dialogues, research, and docs, into a production-ready PRD in days, not weeks, on a connected knowledge-base engine that stores, structures, tasks, reviews, and monitors work under multi-agent oversight.
+
+Client: Product teams in B2B SaaS, Series B-D, 50-500 employees, 2-5 PMs, where a Director or VP of Product owns PRD quality and speed.

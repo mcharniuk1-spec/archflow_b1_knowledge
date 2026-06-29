@@ -22,7 +22,7 @@ Integrate the June 29 tool and market reports into the active E1-E7 plan, withou
 - E1.3 remains the next KB/readback gate.
 - Loop Engineering is adopted as report-only operating discipline.
 - E2 now has a structured market evidence engine.
-- First ICP hypothesis is product/software/AI service agencies.
+- First ICP hypothesis is corrected by the later 2026-06-29 partner answer: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed.
 - Cognee, turbovec, and Mistral are gated future layers.
 - Notion E2 updates were create-missing-or-append-only.
 

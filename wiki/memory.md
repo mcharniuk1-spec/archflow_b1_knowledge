@@ -103,6 +103,8 @@ ArchFlow Block 1 is the first public solution:
 - Cognee is a candidate long-term memory/knowledge-graph layer after E1.3 readback proves public-safe KB writeback. It must not replace WikiLLM.
 - turbovec is a candidate local vector store under LlamaIndex after vector embeddings, stable source IDs, and retrieval metadata are active.
 - Mistral models are optional quality-pass models for sanitized PRDs, research synthesis, and final text after explicit credential, source-boundary, budget, and review approval.
-- E2 first ICP hypothesis is product/software/AI service agencies. Secondary lanes are AI consultancies, product-led B2B SaaS scaleups, founder-led B2B startups, and later enterprise product ops.
+- E2 first ICP hypothesis is one vertical: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed.
+- Agencies, AI consultancies, founder-led B2B startups, market-research teams, operations teams, and enterprise product ops are later or adjacent lanes unless E2 evidence changes the hypothesis.
+- First offer hypothesis is a Product Discovery-to-Production PRD Pack: product-team dialogues, customer research, interviews, notes, and docs become a reviewed context digest, production-ready PRD, backlog, acceptance criteria, decision log, and KB/update handoff in days, not weeks.
 - E2 must use account evidence cards, source grades, role verification status, and at least two independent public signals before outreach.
 - Directory counts, job counts, social posts, named sample accounts, internal proof, and content engagement are research signals only, not validated demand.

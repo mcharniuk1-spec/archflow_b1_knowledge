@@ -7,13 +7,14 @@ purpose: >
   message synthesis, learning loop, and AF Review.
 
 primary_icp_hypothesis:
-  segment: product_software_ai_service_agencies
-  profile: "10-250 person B2B agencies and consultancies selling MVP, product discovery, product strategy, AI automation, or custom software"
-  first_offer: client_discovery_to_backlog_pack
-  secondary_segments:
-    - product_led_b2b_saas_scaleups
+  segment: b2b_saas_product_teams
+  profile: "Series B-D B2B SaaS companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed"
+  first_offer: product_discovery_to_production_prd_pack
+  later_or_adjacent_segments:
+    - product_software_ai_service_agencies
     - ai_automation_consultancies
     - founder_led_b2b_startups
+    - market_research_teams
     - enterprise_product_ops_later
 
 stages:
@@ -67,9 +68,9 @@ account_card_schema:
   job_signal_score: integer_0_to_20
   linkedin_signal_summary: authorized_summary_only
   social_signal_summary: hypothesis_only
-  pain_type: ambiguity_memory_roadmap_delivery_trust_customer_feedback_ai_adoption_hiring_gap
+  pain_type: customer_research_overload_prd_rework_roadmap_ambiguity_handoff_loss_decision_memory_gap
   decision_roles: role_names_and_currentness_status
-  offer_fit: diagnostic_prd_sprint_agency_delivery_pack_product_ops_retainer_ai_workflow_review
+  offer_fit: product_discovery_to_production_prd_pack_product_ops_workflow_review_ai_kb_handoff
   evidence_grade: a_b_c_d
   risk_notes: string
   next_action: exclude_monitor_enrich_verify_people_draft_outreach_interview
@@ -118,6 +119,6 @@ done_criteria:
   e2_0: tool_api_plan_source_boundaries_extraction_schema_loop_gate
   e2_1: approved_source_list_and_segment_data_model
   e2_2: evidence_cards_and_competitor_pain_map
-  e2_3: agency_first_icp_card
-  e2_4: subaudience_split
+  e2_3: product_team_icp_card
+  e2_4: primary_icp_and_later_lanes
   e2_5: ten_to_fifteen_verified_targets_for_e6
