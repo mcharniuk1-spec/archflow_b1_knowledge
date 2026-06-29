@@ -29,3 +29,25 @@
 - Tracked public files now mask operational project identifiers.
 - The approved LlamaIndex corpus now explicitly includes public WikiLLM files under `wiki/`.
 - E1.2 Notion status sync prepared the owner next-steps document, report links, and evidence-backed state map: E1.2 parent in Review, E1.2.1 through E1.2.7 Done, and E1.3 ready after owner acceptance.
+- The evening skill refresh corrected stale current-state proof-run wording in `project/agentic-stack.md`, confirmed the public skill registries already matched the configured skills, and recorded the automation pass under `project/runs/` and `wiki/runs/`.
+
+## 2026-06-27
+
+- The evening skill audit confirmed the public skill registries still matched the current saved skills and workflow setup.
+- Lightweight validation found non-ASCII generated glyphs in `graphify-out/GRAPH_REPORT.md`; the report was normalized to ASCII-safe punctuation and the maintenance pass was recorded under `project/runs/` and `wiki/runs/`.
+
+## 2026-06-28
+
+- The evening status refresh confirmed the public skill registries still matched the current saved skills and workflow setup, so no registry edits were needed.
+- The maintenance pass refreshed stale current-state wording in the June 25 setup and dashboard reports so they now match the saved runtime validation and proof artifacts.
+- `project/dashboard/data.json` was regenerated after the report refresh, and lightweight YAML, public-safety, ASCII, and ignored-path checks passed on the public project scope.
+
+## 2026-06-29
+
+- The June 29 tool and market reports were integrated into the current E1-E7 plan.
+- Loop Engineering was added as the L1 report-only operating contract under `project/loops/`.
+- `project/workflows/market-research-engine.yaml` was added for E2 account evidence, signal extraction, ICP scoring, role verification, and reviewed outreach handoff.
+- The agent roster now includes AF Research and AF Copy roles.
+- Cognee, turbovec, and Mistral were documented as gated future layers, not activated runtime dependencies.
+- The plan now treats product/software/AI service agencies as the first ICP hypothesis and Client Discovery-to-Backlog Pack as the first offer hypothesis.
+- Targeted Notion E2 updates were applied after product-owner verification: E2 parent and related E2.1/E2.2/E2.3/E2.5 pages received append-only notes, and three Backlog research tasks were added.

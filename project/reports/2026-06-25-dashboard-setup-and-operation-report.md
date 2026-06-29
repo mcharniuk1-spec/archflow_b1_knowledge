@@ -7,17 +7,17 @@ Scope: E2.2 dashboard planning and local operator visibility for the ArchFlow Bl
 
 The project now has a Phase 2 local dashboard under `project/dashboard/`. It is intentionally read-only. It monitors the public project state, WikiLLM memory, configured LangGraph nodes, CrewAI agent roles, LlamaIndex corpus boundaries, LangSmith readiness, and local env/package status.
 
-The dashboard is not the knowledge base and not the workflow runner. WikiLLM remains the durable curated memory. Codex remains the primary operator. LangSmith remains the trace and observability surface. LangGraph, CrewAI, and LlamaIndex are still configured as contracts, but their runtime packages are not yet installed in the public project runtime.
+The dashboard is not the knowledge base and not the workflow runner. WikiLLM remains the durable curated memory. Codex remains the primary operator. LangSmith remains the trace and observability surface. LangGraph, CrewAI, and LlamaIndex now have runtime proof or validation evidence, but the dashboard remains a read-only monitor rather than a control layer.
 
 ## Current Local Status
 
-- LangGraph: configured as the workflow spine in `project/workflows/langgraph-controller.yaml`.
-- CrewAI: configured as the role/task crew in `project/workflows/crewai-crew.yaml`.
-- LlamaIndex: configured as the bounded retrieval layer in `project/workflows/llamaindex-rag.yaml`.
+- LangGraph: configured as the workflow spine in `project/workflows/langgraph-controller.yaml`, with a sanitized smoke workflow already passed.
+- CrewAI: configured as the role/task crew in `project/workflows/crewai-crew.yaml`, with config/import validation already passed.
+- LlamaIndex: configured as the bounded retrieval layer in `project/workflows/llamaindex-rag.yaml`, with approved-corpus retrieval proof already passed.
 - LangSmith: configured for sanitized tracing; SDK is installed in the ignored local runtime.
 - Streamlit/FastAPI: not installed; the current dashboard is static HTML/CSS/JS generated from repo files.
-- Graphify: not generated yet; it should be created after runtime code exists.
-- LlamaIndex vector index: not generated yet; the dashboard query is only a lexical test over approved public files.
+- Graphify: generated reference output exists under `graphify-out/`.
+- LlamaIndex vector index: not generated yet; the dashboard query remains a lexical test over approved public files.
 
 ## Dashboard Plan
 
@@ -170,4 +170,4 @@ NVIDIA NeMo Agent Toolkit is worth tracking as a later runtime shell because it 
 4. Add CrewAI execution inside the LangGraph `run_crew_prd` node.
 5. Save every proof run back to `wiki/runs/` and `project/runs/`.
 6. Generate Graphify after runtime code exists.
-7. Upgrade the dashboard from readiness monitor to control panel only after proof data exists.
+7. Upgrade the dashboard from readiness monitor to control panel only after repeated proof data exists.

@@ -38,6 +38,19 @@ Skills set up:
 - milestone-planning
 - acceptance-criteria-writing
 
+## AF Research
+
+Purpose: turn approved market sources into account evidence cards, pain maps, ICP scoring, and target shortlists.
+
+Skills set up:
+
+- market-structure-analysis
+- research-source-triage
+- account-evidence-card-writing
+- job-signal-analysis
+- review-mining
+- icp-scoring
+
 ## AF Knowledge
 
 Purpose: write reusable KB updates and keep public history clean.
@@ -49,6 +62,18 @@ Skills set up:
 - sanitized-history-writing
 - source-boundary-control
 - agent-memory-candidate-writing
+
+## AF Copy
+
+Purpose: draft positioning, content, proposal, and outreach copy only from approved evidence.
+
+Skills set up:
+
+- source-grounded-copywriting
+- positioning-synthesis
+- content-planning
+- outreach-message-drafting
+- claim-status-check
 
 ## AF Review
 

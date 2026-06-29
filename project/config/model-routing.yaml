@@ -51,6 +51,30 @@ providers:
     env_names:
       - OPENAI_API_KEY
       - OPENAI_BASE_URL
+      - MISTRAL_API_KEY
+    optional_mistral_quality_pass:
+      status: disabled_until_credentials_source_approval_and_budget
+      draft_batch_model: mistral_small_current
+      final_strategy_model: mistral_medium_current
+      ocr_model: preflight_required_before_use
+      allowed_inputs:
+        - approved_context_digest
+        - sanitized_research_summary
+        - draft_prd_without_raw_private_sources
+        - reviewed_task_matrix
+        - approved_copy_brief
+      forbidden_inputs:
+        - raw_private_transcript
+        - private_notion_export
+        - credentials_or_env_files
+        - unsanitized_client_material
+        - private_profile_data
+      required_metadata:
+        - model_id
+        - prompt_version
+        - source_ids_used
+        - budget_status
+        - review_required
 
   langsmith_observability:
     status: configured_key_present_local_ignored_smoke_trace_submitted
@@ -73,3 +97,4 @@ routing:
   final_client_output: codex_operator
   minor_background_tasks: ollama_local_qwythos
   future_high_quality_llm: cloud_api
+  future_sanitized_mistral_quality_pass: cloud_api_after_explicit_approval

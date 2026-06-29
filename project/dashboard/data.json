@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T11:39:42.343023+00:00",
+  "generated_at": "2026-06-29T15:50:48.063530+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,12 +25,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "14 files",
+      "value": "20 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "49",
+      "value": "78",
       "tone": "ok"
     },
     {
@@ -95,6 +95,12 @@
         "owner": "af_publisher",
         "purpose": "create or update the agent-readable handout when the run uses one or more agents or solves one or more subtasks, including approved and blocked terminal states.",
         "output": "project/runs/<date>-<run-name>/agent-handout.md"
+      },
+      {
+        "id": "run_market_research_engine",
+        "owner": "af_research",
+        "purpose": "run E2 account-evidence, signal extraction, pain scoring, and ICP synthesis only after E1.3 handoff.",
+        "output": "project/workflows/market-research-engine.yaml"
       }
     ],
     "edges": [
@@ -385,6 +391,230 @@
   ],
   "activity": [
     {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-29-tool-and-market-integration.md",
+      "title": "Run - Tool And Market Integration",
+      "modified": "2026-06-29T15:49:31.728036+00:00",
+      "size": 1208
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/run-summary.md",
+      "title": "Run Summary",
+      "modified": "2026-06-29T15:49:18.287708+00:00",
+      "size": 541
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/review-report.md",
+      "title": "Review Report",
+      "modified": "2026-06-29T15:49:08.210927+00:00",
+      "size": 723
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/notion-update-plan.md",
+      "title": "Notion Update Plan",
+      "modified": "2026-06-29T15:48:50.022984+00:00",
+      "size": 4307
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-06-29-tool-memory-model-routing.md",
+      "title": "Decision - Tool Memory And Model Routing",
+      "modified": "2026-06-29T15:35:45.538219+00:00",
+      "size": 1331
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/agent-handout.md",
+      "title": "Agent Handout",
+      "modified": "2026-06-29T15:33:18.212509+00:00",
+      "size": 1042
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/anti-looping-review.md",
+      "title": "Anti-Looping Review",
+      "modified": "2026-06-29T15:33:18.039134+00:00",
+      "size": 611
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/memory-architecture.md",
+      "title": "Memory Architecture",
+      "modified": "2026-06-29T15:33:17.950413+00:00",
+      "size": 746
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/model-routing-recommendation.md",
+      "title": "Model Routing Recommendation",
+      "modified": "2026-06-29T15:33:17.862569+00:00",
+      "size": 994
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/market-engine.md",
+      "title": "Market Engine",
+      "modified": "2026-06-29T15:33:17.777527+00:00",
+      "size": 1180
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/tool-role-map.md",
+      "title": "Tool Role Map",
+      "modified": "2026-06-29T15:33:17.690816+00:00",
+      "size": 1152
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/context-digest.md",
+      "title": "Context Digest",
+      "modified": "2026-06-29T15:33:17.605877+00:00",
+      "size": 1538
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-29-tool-market-integration/source-inventory.md",
+      "title": "Source Inventory",
+      "modified": "2026-06-29T15:33:17.520823+00:00",
+      "size": 1061
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-29-tool-and-market-integration-plan.md",
+      "title": "Tool And Market Integration Plan",
+      "modified": "2026-06-29T15:33:17.435405+00:00",
+      "size": 2200
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-28-evening-status-refresh.md",
+      "title": "Run Note: Evening Status Refresh",
+      "modified": "2026-06-29T06:42:16.013801+00:00",
+      "size": 1053
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-28-evening-status-refresh/agent-handout.md",
+      "title": "2026-06-28 Evening Status Refresh Handout",
+      "modified": "2026-06-29T06:42:15.917744+00:00",
+      "size": 7093
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-28-evening-status-refresh/run-summary.md",
+      "title": "2026-06-28 Evening Status Refresh",
+      "modified": "2026-06-29T06:42:15.824078+00:00",
+      "size": 1708
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-25-dashboard-setup-and-operation-report.md",
+      "title": "Dashboard Setup And Operation Report",
+      "modified": "2026-06-29T06:42:15.681964+00:00",
+      "size": 8129
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+      "title": "Current Setup Methods And Agent Plan",
+      "modified": "2026-06-29T06:42:15.596932+00:00",
+      "size": 17280
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-25-layer-setup-report.md",
+      "title": "Layer Setup Report",
+      "modified": "2026-06-29T06:42:15.513963+00:00",
+      "size": 6106
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-27-evening-skill-audit.md",
+      "title": "2026-06-27 Evening Skill Audit",
+      "modified": "2026-06-28T14:13:43.394706+00:00",
+      "size": 901
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-27-evening-skill-audit/agent-handout.md",
+      "title": "2026-06-27 Evening Skill Audit Handout",
+      "modified": "2026-06-28T14:13:43.309882+00:00",
+      "size": 5684
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-27-evening-skill-audit/run-summary.md",
+      "title": "2026-06-27 Evening Skill Audit",
+      "modified": "2026-06-28T14:13:43.224923+00:00",
+      "size": 1467
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-26-evening-skill-refresh.md",
+      "title": "2026-06-26 Evening Skill Refresh",
+      "modified": "2026-06-26T18:03:27.209942+00:00",
+      "size": 1159
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-26-evening-skill-refresh/agent-handout.md",
+      "title": "Evening Skill Refresh Handout",
+      "modified": "2026-06-26T18:03:27.120597+00:00",
+      "size": 4755
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-26-evening-skill-refresh/run-summary.md",
+      "title": "Evening Skill Refresh",
+      "modified": "2026-06-26T18:03:27.037621+00:00",
+      "size": 1097
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.pdf",
+      "title": "next-steps-e1-2.pdf",
+      "modified": "2026-06-26T12:26:42.042979+00:00",
+      "size": 11174
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-06-26-e1-2-next-steps.pdf",
+      "title": "2026-06-26-e1-2-next-steps.pdf",
+      "modified": "2026-06-26T12:26:42.042979+00:00",
+      "size": 11174
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-26-e1-2-notion-sync.md",
+      "title": "Run - E1.2 Notion Status Sync And Owner Next Steps",
+      "modified": "2026-06-26T12:26:31.472599+00:00",
+      "size": 1288
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md",
+      "title": "E1.2 Next Steps For Owner Acceptance And E1.3 Start",
+      "modified": "2026-06-26T12:26:31.394019+00:00",
+      "size": 8095
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-06-26-notion-sync/agent-handout.md",
+      "title": "E1.2 Notion Sync Agent Handout",
+      "modified": "2026-06-26T12:25:26.887967+00:00",
+      "size": 2472
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-06-26-notion-sync/run-summary.md",
+      "title": "Run Summary",
+      "modified": "2026-06-26T12:25:26.803816+00:00",
+      "size": 1246
+    },
+    {
       "kind": "project_run",
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.pdf",
       "title": "E1.2_System_report.pdf",
@@ -516,20 +746,6 @@
       "title": "Source Inventory",
       "modified": "2026-06-26T11:37:40.695731+00:00",
       "size": 1988
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
-      "title": "Current Setup Methods And Agent Plan",
-      "modified": "2026-06-26T11:34:00.006940+00:00",
-      "size": 16682
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-06-25-layer-setup-report.md",
-      "title": "Layer Setup Report",
-      "modified": "2026-06-26T11:33:59.923613+00:00",
-      "size": 5560
     },
     {
       "kind": "wiki_decision",
@@ -665,13 +881,6 @@
       "size": 1097
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-06-25-dashboard-setup-and-operation-report.md",
-      "title": "Dashboard Setup And Operation Report",
-      "modified": "2026-06-25T15:06:19.611901+00:00",
-      "size": 7976
-    },
-    {
       "kind": "project_run",
       "path": "project/runs/2026-06-25-integrated-knowledge-and-safety-hook.md",
       "title": "Run - Integrated Knowledge And Safety Hook",
@@ -732,7 +941,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 14,
+    "file_count": 20,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -743,6 +952,11 @@
         "path": "wiki/decisions/2026-06-26-e1-runtime-guard-and-agent-stack.md",
         "title": "Decision - E1 Runtime Guard And Agent Stack",
         "excerpt": "# Decision - E1 Runtime Guard And Agent Stack  Date: 2026-06-26 Status: accepted  ## Context  E1.1 needs to be repeatable before E1.2 starts. The project now uses LangGraph, LlamaIndex, CrewAI, LangSmith, WikiLLM, and a local dashboard, but these layers must not blur responsibilities or leak private inputs.  ## Decision  Use LangGraph as the workflow spine, LlamaIndex as approved-corpus retrieval, CrewAI as the role/"
+      },
+      {
+        "path": "wiki/decisions/2026-06-29-tool-memory-model-routing.md",
+        "title": "Decision - Tool Memory And Model Routing",
+        "excerpt": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, Wiki"
       },
       {
         "path": "wiki/index.md",
@@ -800,9 +1014,34 @@
         "excerpt": "# Run - E1.2 Full Public-Safe Proof Test  Date: 2026-06-26  ## Task  Run E1.2 as a full internal proof package and produce PRD, streaming, and system-report PDFs with LangGraph output, agent role division, runtime review, KB review, Graphify/Nexus/vault posture, and latest technical tendency review.  ## Outputs  - `project/runs/E1.2/2026-06-26-full-test/` - `project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.pdf` - `pro"
       },
       {
+        "path": "wiki/runs/2026-06-26-e1-2-notion-sync.md",
+        "title": "Run - E1.2 Notion Status Sync And Owner Next Steps",
+        "excerpt": "# Run - E1.2 Notion Status Sync And Owner Next Steps  Date: 2026-06-26  ## Task  Align Notion task states with the completed E1.2 proof package, add report links to the E1.2 task, mark E1.2 staged checklist items as complete, and produce an owner-facing next-steps document for accepting E1.2 and starting E1.3.  ## Inputs  - E1.2 full-test proof package. - WikiLLM memory and insights. - Existing E1/E1.2 Notion task st"
+      },
+      {
+        "path": "wiki/runs/2026-06-26-evening-skill-refresh.md",
+        "title": "2026-06-26 Evening Skill Refresh",
+        "excerpt": "# 2026-06-26 Evening Skill Refresh  ## Goal  Review the public ArchFlow project and refresh only public-safe current-state files. Update the public skill registries only if the actual used or configured skill set changed.  ## Inputs  - Current public project routing files and workflow contracts. - Public WikiLLM files. - Current skill registries and public skill folders. - Existing public run artifacts under `project"
+      },
+      {
         "path": "wiki/runs/2026-06-26-task-handout-skill.md",
         "title": "Run Note: Task Handout Skill",
         "excerpt": "# Run Note: Task Handout Skill  ## Task  Add a reusable handout process for substantial ArchFlow executions and produce a handout for the completed E1.1 runtime setup plus E1.2 dialogue proof preparation.  ## Outputs  - Added `skills/task-handout/SKILL.md`. - Added `project/runs/2026-06-26-june24-next-steps-proof/agent-handout.md`. - Updated the skill registry and agent skill routing. - Added a prompt hook contract t"
+      },
+      {
+        "path": "wiki/runs/2026-06-27-evening-skill-audit.md",
+        "title": "2026-06-27 Evening Skill Audit",
+        "excerpt": "# 2026-06-27 Evening Skill Audit  ## Goal  Review the public ArchFlow project, refresh only public-safe files, and change the skill registries only if the actual public setup changed.  ## Result  - The public skill registries already matched the current saved skills and workflow setup. - A tracked generated file, `graphify-out/GRAPH_REPORT.md`, was normalized to ASCII-safe punctuation after the validation pass found "
+      },
+      {
+        "path": "wiki/runs/2026-06-28-evening-status-refresh.md",
+        "title": "Run Note: Evening Status Refresh",
+        "excerpt": "# Run Note: Evening Status Refresh  ## Task  Refresh only public-safe current-state files in the ArchFlow public repository and update the skill registries only if the actual used or configured skills changed.  ## Outputs  - Confirmed no changes were needed in `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, or `skills/skills-used.md`. - Refreshed stale current-state wording in the June 25 pub"
+      },
+      {
+        "path": "wiki/runs/2026-06-29-tool-and-market-integration.md",
+        "title": "Run - Tool And Market Integration",
+        "excerpt": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `pro"
       }
     ]
   },
@@ -817,12 +1056,12 @@
     {
       "path": "project/README.md",
       "title": "Current Project",
-      "text": "# Current Project  This is the active ArchFlow project after the 2026-06-24 reset.  ## Mission  Build a repeatable public-safe system that converts messy work material into execution assets:  1. Source material: dialogue, chat, meeting notes, transcript, or planning note. 2. Structured context: facts, interpretations, hypotheses, gaps. 3. PRD: goal, scope, inputs, outputs, acceptance criteria. 4. Task plan: owners, responsibilities, timeline, blockers. 5. Knowledge base update: reusable project memory and decisions. 6. Review gate: public-safety, evidence, and next-action check.  ## Active Folders  | Folder | Purpose | |---|---| | `config/` | Public-safe provider and model configuration templates. | | `workflows/` | LangGraph, CrewAI, and LlamaIndex workflow contracts. | | `dashboard/` | Phase 2 local read-only operator dashboard. | | `outputs/` | Output document templates for proof runs. | | `reports/` | Setup and review reports by layer. | | `prompts/` | Reusable public-safe prompts. | | `scripts/` | Public-safe helper scripts. | | `runs/` | Future public-safe run summaries. |  ## Current Status  The plan has been imported from the private project board as an English public-safe "
+      "text": "# Current Project  This is the active ArchFlow project after the 2026-06-24 reset.  ## Mission  Build a repeatable public-safe system that converts messy work material into execution assets:  1. Source material: dialogue, chat, meeting notes, transcript, or planning note. 2. Structured context: facts, interpretations, hypotheses, gaps. 3. PRD: goal, scope, inputs, outputs, acceptance criteria. 4. Task plan: owners, responsibilities, timeline, blockers. 5. Knowledge base update: reusable project memory and decisions. 6. Review gate: public-safety, evidence, and next-action check.  ## Active Folders  | Folder | Purpose | |---|---| | `config/` | Public-safe provider and model configuration templates. | | `workflows/` | LangGraph, CrewAI, and LlamaIndex workflow contracts. | | `loops/` | Loop Engineering contract, state schema, budget, run log, and readiness review. | | `dashboard/` | Phase 2 local read-only operator dashboard. | | `outputs/` | Output document templates for proof runs. | | `reports/` | Setup and review reports by layer. | | `prompts/` | Reusable public-safe prompts. | | `scripts/` | Public-safe helper scripts. | | `runs/` | Future public-safe run summaries. |  ## Curre"
     },
     {
       "path": "project/agentic-stack.md",
       "title": "Agentic Stack",
-      "text": "# Agentic Stack  ## Layer Decision  Use this structure:  ```text Codex-authenticated operator prompt   -> LangGraph path and state controller   -> LlamaIndex bounded retrieval   -> CrewAI named team tasks   -> LangGraph review gate   -> public-safe project outputs ```  ## Tool Responsibilities  | Tool | Responsibility | Public Project Use | |---|---|---| | Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. | | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. | | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Manager, AF Knowledge, AF Review. | | LlamaIndex | Bounded retrieval and RAG. | Search only approved public-safe project and sanitized history. | | Ollama | Local model serving. | Minor/background tasks only; active model is Qwythos and fallback is `gemma4:e4b`. | | LangSmith | Observability and trace review. | Configured for tracing only; waits for manual API key insertion. |  ## Agent Hooks  | Hook | Use | |---|---| | AF Graph | Full controlled workflow. | | AF RAG | Source-grounded retrieval over approved corpus. | | AF Crew | Team-mode work split by role. | |"
+      "text": "# Agentic Stack  ## Layer Decision  Use this structure:  ```text Codex-authenticated operator prompt   -> LangGraph path and state controller   -> Loop Engineering run contract   -> LlamaIndex bounded retrieval   -> CrewAI named team tasks   -> LangGraph review gate   -> public-safe project outputs ```  ## Tool Responsibilities  | Tool | Responsibility | Public Project Use | |---|---|---| | Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. | | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. | | Loop Engineering | State, attempt caps, budget, maker/checker split, stop conditions. | L1 report-only loop contract under `project/loops/`. | | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Research, AF Manager, AF Knowledge, AF Copy, AF Review, AF Publisher. | | LlamaIndex | Bounded retrieval and RAG. | Search only approved public-safe project and sanitized history. | | turbovec | Future local vector store under LlamaIndex. | Deferred until stable source IDs, embeddings, metadata, and benchmark exist. | | WikiLLM | Canonical curated memory. | Source of truth for approved "
     },
     {
       "path": "project/agents/README.md",
@@ -832,12 +1071,12 @@
     {
       "path": "project/agents/agent-roster.yaml",
       "title": "agent-roster.yaml",
-      "text": "agents:   af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     outputs:       - source_inventory       - tool_readiness_report       - provider_status    af_context:     title: AF Context     provider: codex_operator     local_model: gemma4:e4b     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap     outputs:       - context_digest       - translated_plan       - gaps    af_manager:     title: AF Manager     provider: codex_operator     local_model: gemma4:e4b     skills:       - archflow-task-breakdown       - task-handout       - prd-from-dialogue       - responsibility-assignment-extraction       - milestone-planning       - acceptance-criteria-writing     outputs:       - prd       - task_matrix       - milestone_plan    af_knowledge:     title: AF Knowledge     provider: codex_opera"
+      "text": "agents:   af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     outputs:       - source_inventory       - tool_readiness_report       - provider_status    af_context:     title: AF Context     provider: codex_operator     local_model: gemma4:e4b     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap     outputs:       - context_digest       - translated_plan       - gaps    af_manager:     title: AF Manager     provider: codex_operator     local_model: gemma4:e4b     skills:       - archflow-task-breakdown       - task-handout       - prd-from-dialogue       - responsibility-assignment-extraction       - milestone-planning       - acceptance-criteria-writing     outputs:       - prd       - task_matrix       - milestone_plan    af_research:     title: AF Research     provider: codex_operato"
     },
     {
       "path": "project/agents/skills-by-agent.md",
       "title": "Skills By Agent",
-      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - prd-from-dialogue - responsibility-assignment-extraction - milestone-planning - acceptance-criteria-writing  ## AF Knowledge  "
+      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - prd-from-dialogue - responsibility-assignment-extraction - milestone-planning - acceptance-criteria-writing  ## AF Research  P"
     },
     {
       "path": "project/config/model-routing.yaml",
@@ -863,6 +1102,31 @@
       "path": "project/langsmith-setup.md",
       "title": "LangSmith Setup",
       "text": "# LangSmith Setup  Status: configured; local ignored API key present; sanitized smoke trace submitted.  ## Current Parameters  | Parameter | Value | |---|---| | Purpose | Observability and tracing only. | | Model execution | Ollama local only. | | Cloud model keys | Not configured. | | Project name | `ArchFlow` | | Project ID | `masked_langsmith_project_id` | | Endpoint | `https://eu.api.smith.langchain.com` | | Local env file | `project/.env.langsmith.local` | | Public example | `project/config/langsmith.env.example` |  ## Local Env File  Store the API key only in:  `project/.env.langsmith.local`  Keep this line blank in Git-tracked files:  ```env LANGSMITH_API_KEY= ```  ## Active Env Block  ```env LANGSMITH_TRACING=true LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com LANGSMITH_PROJECT=ArchFlow LANGSMITH_PROJECT_ID=masked_langsmith_project_id LANGSMITH_API_KEY= LANGGRAPH_CONTROL_MODE=codex_supervised LANGGRAPH_LLM_PROVIDER=ollama_local OLLAMA_BASE_URL=http://127.0.0.1:11434 OLLAMA_CHAT_MODEL=hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M OLLAMA_FALLBACK_CHAT_MODEL=gemma4:e4b OLLAMA_EMBED_MODEL=nomic-embed-text LANGSMITH_RUN_TAGS=archflow,block1,ollama,qwythos,publ"
+    },
+    {
+      "path": "project/loops/LOOP.md",
+      "title": "ArchFlow Loop Operating Contract",
+      "text": "# ArchFlow Loop Operating Contract  Status: L1 report-only by default  Purpose: make ArchFlow agent runs bounded, reviewable, and stoppable before they write memory, change external systems, publish content, or influence outreach.  ## Scope  Applies to E1-E7 workflows that use one or more agent roles, solve one or more subtasks, perform research, update memory, prepare public output, or create outreach/copy.  ## Current Loop Level  | Level | Meaning | ArchFlow status | |---|---|---| | L0 | Draft-only one-off run | Allowed for low-risk notes. | | L1 | Report-only loop with state, review, and handout | Default for E1, E2, E4, E5, E6, and E7. | | L2 | Assisted local file changes after review | Allowed for public-safe repo docs/configs. | | L3 | Unattended automation | Not allowed before payment verdict and explicit approval. |  ## Required State  Every loop run needs:  - `run_id` - `task_id` - source IDs and allowed corpus - phase - attempt count - max attempts - maker agent - verifier agent - files read - files written - unsupported claims - gaps - approval status - blocked reason when blocked - next human action  ## Attempt Caps  - `max_revision_loops`: 2 - `max_attempts_per_item`: "
+    },
+    {
+      "path": "project/loops/loop-budget.md",
+      "title": "Loop Budget",
+      "text": "# Loop Budget  Status: active for planning; no cloud model execution enabled by default.  ## Defaults  | Resource | Default cap | Rule | |---|---:|---| | Revision loops | 2 | Stop after second revision route and escalate. | | Item retries | 3 | Stop per item after three failed attempts. | | Parallel branches | 5 | Use only for independent extraction/review tasks. | | Cloud model spend | 0 | Cloud models are disabled until credentials, budget, and source boundary are approved. | | Mistral Medium passes | 0 | Enable only for final sanitized strategy/copy passes after approval. | | Mistral Small passes | 0 | Enable only for sanitized batch/draft normalization after approval. |  ## Local Model Rule  Ollama/Qwythos may be used for bounded local minor/background tasks when the server is running. `gemma4:e4b` remains the fallback.  ## Escalation  Pause and write budget status when:  - a cloud model is requested - a run would exceed the retry cap - a broad research crawl is requested - a persistent memory layer would ingest new source material "
+    },
+    {
+      "path": "project/loops/loop-readiness-review.md",
+      "title": "Loop Readiness Review",
+      "text": "# Loop Readiness Review  Date: 2026-06-29  ## Verdict  FACT: ArchFlow can run L1 report-only loops for E1.3 and E2 planning.  INTERPRETATION: The project is not ready for unattended loops, write-enabled external connectors, broad crawling, or automatic publication.  HYPOTHESIS: L2 assisted local file changes are safe for public project docs/configs after AF Review, public-safety checks, and handout creation.  GAP: E1.3 readback, Cognee sandbox, turbovec benchmark, Mistral credential/model preflight, and E7 payment verdict are not complete.  ## Gate Checklist  | Gate | Status | Required before next level | |---|---|---| | Source boundary | partial | Every run must include source IDs and public/private status. | | State schema | added | Use per loop run. | | Attempt caps | added | Enforce in LangGraph/config and handoffs. | | Maker/checker split | active contract | AF Review remains separate. | | Memory promotion | active contract | WikiLLM first; Cognee deferred. | | External writes | blocked by default | Need explicit approval and schema discovery. | | Cloud model use | blocked by default | Need credentials, source approval, budget, and model metadata logging. |  ## Allowed Now  - "
+    },
+    {
+      "path": "project/loops/loop-run-log.md",
+      "title": "Loop Run Log",
+      "text": "# Loop Run Log  Append one entry per meaningful loop run. Keep entries short; detailed artifacts belong in `project/runs/`.  ## 2026-06-29  | Run | Task | Level | Status | Notes | |---|---|---|---|---| | 2026-06-29-tool-market-integration | E1.3/E2 planning | L1 report-only | approved-for-local-plan | Added loop contract, market research engine, model/memory gates, and Notion-ready task changes. | "
+    },
+    {
+      "path": "project/loops/loop-state.schema.yaml",
+      "title": "loop-state.schema.yaml",
+      "text": "name: archflow_loop_state_schema status: active_contract purpose: >   Required state fields for ArchFlow report-only and assisted loops.  required_fields:   run_id: string   task_id: string   source_ids: list   corpus_boundary: string   phase: intake_digest_draft_review_memory_write_readback_blocked_done   attempt_number: integer   max_attempts_per_item: integer   max_revision_loops: integer   maker_agent: string   verifier_agent: string   verifier_same_as_maker: boolean   files_read: list   files_written: list   unsupported_claims: list   gaps: list   approval_status: pending_approved_revise_blocked   blocked_reason: string   next_human_action: string   last_run_at: iso_datetime   prune_status: completed_or_skipped_with_reason  defaults:   max_attempts_per_item: 3   max_revision_loops: 2   verifier_same_as_maker: false  terminal_states:   done: approved output, run log, handout, and memory decision exist   blocked: blocked reason and next human action are written   skipped: no new evidence or no actionable item "
     },
     {
       "path": "project/operating-rules.md",
@@ -917,7 +1181,7 @@
     {
       "path": "project/project-plan.md",
       "title": "Project Plan",
-      "text": "# Project Plan  Source: private project board reviewed on 2026-06-25.  This file is an English public-safe translation and synthesis. It does not include private page URLs, user IDs, owner names, or raw source content.  Latest detailed E1 breakdown: [`reports/2026-06-25-e1-block1-subtask-execution-plan.pdf`](reports/2026-06-25-e1-block1-subtask-execution-plan.pdf).  ## Epic Timeline  | Epic | Public English Name | Status | Window | |---|---|---|---| | E1 | Build the knowledge base on ourselves | Active | 2026-06-24 to 2026-07-04 | | E5 | Analytics and ROI method | Active | 2026-06-24 to 2026-07-07 | | E4 | Content | Active | 2026-06-24 to 2026-08-01 | | E3 | Website and positioning | Not started | 2026-07-01 to 2026-07-14 | | E2 | Research engine to ICP | Not started | 2026-07-01 to 2026-07-11 | | E6 | Outreach | Not started | 2026-07-14 to 2026-07-28 | | E7 | Payment test to verdict | Not started | 2026-07-15 to 2026-08-01 |  ## Current Execution Logic  1. Prove the knowledge-base and PRD workflow internally. 2. Turn internal proof into a repeatable method. 3. Use the method to research the first ICP. 4. Build positioning, a solution page, a diagnostic form, and analytics. 5. Publ"
+      "text": "# Project Plan  Source: private project board reviewed on 2026-06-25.  This file is an English public-safe translation and synthesis. It does not include private page URLs, user IDs, owner names, or raw source content.  Latest detailed E1 breakdown: [`reports/2026-06-25-e1-block1-subtask-execution-plan.pdf`](reports/2026-06-25-e1-block1-subtask-execution-plan.pdf).  Latest tool and market integration plan: [`reports/2026-06-29-tool-and-market-integration-plan.md`](reports/2026-06-29-tool-and-market-integration-plan.md).  ## Epic Timeline  | Epic | Public English Name | Status | Window | |---|---|---|---| | E1 | Build the knowledge base on ourselves | Active | 2026-06-24 to 2026-07-04 | | E5 | Analytics and ROI method | Active | 2026-06-24 to 2026-07-07 | | E4 | Content | Active | 2026-06-24 to 2026-08-01 | | E3 | Website and positioning | Not started | 2026-07-01 to 2026-07-14 | | E2 | Research engine to ICP | Not started | 2026-07-01 to 2026-07-11 | | E6 | Outreach | Not started | 2026-07-14 to 2026-07-28 | | E7 | Payment test to verdict | Not started | 2026-07-15 to 2026-08-01 |  ## Current Execution Logic  1. Prove the knowledge-base and PRD workflow internally. 2. Turn internal"
     },
     {
       "path": "project/prompts/af-graph.md",
@@ -947,12 +1211,17 @@
     {
       "path": "project/reports/2026-06-25-dashboard-setup-and-operation-report.md",
       "title": "Dashboard Setup And Operation Report",
-      "text": "# Dashboard Setup And Operation Report  Date: 2026-06-25 Scope: E2.2 dashboard planning and local operator visibility for the ArchFlow Block 1 system.  ## Summary  The project now has a Phase 2 local dashboard under `project/dashboard/`. It is intentionally read-only. It monitors the public project state, WikiLLM memory, configured LangGraph nodes, CrewAI agent roles, LlamaIndex corpus boundaries, LangSmith readiness, and local env/package status.  The dashboard is not the knowledge base and not the workflow runner. WikiLLM remains the durable curated memory. Codex remains the primary operator. LangSmith remains the trace and observability surface. LangGraph, CrewAI, and LlamaIndex are still configured as contracts, but their runtime packages are not yet installed in the public project runtime.  ## Current Local Status  - LangGraph: configured as the workflow spine in `project/workflows/langgraph-controller.yaml`. - CrewAI: configured as the role/task crew in `project/workflows/crewai-crew.yaml`. - LlamaIndex: configured as the bounded retrieval layer in `project/workflows/llamaindex-rag.yaml`. - LangSmith: configured for sanitized tracing; SDK is installed in the ignored local run"
+      "text": "# Dashboard Setup And Operation Report  Date: 2026-06-25 Scope: E2.2 dashboard planning and local operator visibility for the ArchFlow Block 1 system.  ## Summary  The project now has a Phase 2 local dashboard under `project/dashboard/`. It is intentionally read-only. It monitors the public project state, WikiLLM memory, configured LangGraph nodes, CrewAI agent roles, LlamaIndex corpus boundaries, LangSmith readiness, and local env/package status.  The dashboard is not the knowledge base and not the workflow runner. WikiLLM remains the durable curated memory. Codex remains the primary operator. LangSmith remains the trace and observability surface. LangGraph, CrewAI, and LlamaIndex now have runtime proof or validation evidence, but the dashboard remains a read-only monitor rather than a control layer.  ## Current Local Status  - LangGraph: configured as the workflow spine in `project/workflows/langgraph-controller.yaml`, with a sanitized smoke workflow already passed. - CrewAI: configured as the role/task crew in `project/workflows/crewai-crew.yaml`, with config/import validation already passed. - LlamaIndex: configured as the bounded retrieval layer in `project/workflows/llamainde"
     },
     {
       "path": "project/reports/2026-06-25-layer-setup-report.md",
       "title": "Layer Setup Report",
-      "text": "# Layer Setup Report  Date: 2026-06-25 Status: public setup completed locally and published to GitHub.  ## 1. Public Repository Layer  FACT: The public project root is this repository folder.  Parameters:  - Active folder: repo root. - Active work folder: `project/`. - Public history folder: `history/`. - Skill registry folder: `skills/`. - Ignored local config: `project/.env.local`. - Ignored runtime state: `project/local/`.  Status:  - Public files are English-only. - Local paths, private links, credentials, raw private source exports, and personal identifiers are excluded. - A local Git commit exists.  ## 2. Authentication And Runtime Layer  FACT: Codex is the primary operator runtime. GitHub publication is operated from Codex through verified Git SSH transport.  Parameters:  - `ARCHFLOW_PROVIDER_MODE=codex_auth_main` - `CODEX_OPERATOR_MODE=codex_app` - `CODEX_AUTH_EXPORTS_API_KEY=false` - `CODEX_GITHUB_PUBLICATION=codex_operated_git_ssh`  Interpretation:  - Codex auth is used to operate this setup. - GitHub publication uses the working Git SSH remote. - Codex auth is not an exportable API key for Python frameworks. - If direct OpenAI API use is needed later, a separate approved"
+      "text": "# Layer Setup Report  Date: 2026-06-25 Status: initial layer report refreshed through the 2026-06-26 public runtime and proof evidence.  ## 1. Public Repository Layer  FACT: The public project root is this repository folder.  Parameters:  - Active folder: repo root. - Active work folder: `project/`. - Public history folder: `history/`. - Skill registry folder: `skills/`. - Ignored local config: `project/.env.local`. - Ignored runtime state: `project/local/`.  Status:  - Public files are English-only. - Local paths, private links, credentials, raw private source exports, and personal identifiers are excluded. - A local Git commit exists.  ## 2. Authentication And Runtime Layer  FACT: Codex is the primary operator runtime. GitHub publication is operated from Codex through verified Git SSH transport.  Parameters:  - `ARCHFLOW_PROVIDER_MODE=codex_auth_main` - `CODEX_OPERATOR_MODE=codex_app` - `CODEX_AUTH_EXPORTS_API_KEY=false` - `CODEX_GITHUB_PUBLICATION=codex_operated_git_ssh`  Interpretation:  - Codex auth is used to operate this setup. - GitHub publication uses the working Git SSH remote. - Codex auth is not an exportable API key for Python frameworks. - If direct OpenAI API use is "
+    },
+    {
+      "path": "project/reports/2026-06-29-tool-and-market-integration-plan.md",
+      "title": "Tool And Market Integration Plan",
+      "text": "# Tool And Market Integration Plan  Date: 2026-06-29 Status: accepted as planning update; gated tools not activated  ## Summary  The June 29 reports strengthen the current E1-E7 plan instead of replacing it. E1 still proves the internal KB/PRD workflow. E2 becomes a market evidence engine. E3-E4 convert approved evidence into positioning and content. E5 measures funnel and ROI quality. E6-E7 test real demand through conversations and payment or firm paid intent.  ## Tool Decisions  | Tool | Decision | Gate | |---|---|---| | Loop Engineering | Adopt now as operating discipline. | L1 report-only, state schema, attempt caps, maker/checker split. | | Cognee | Defer to sandbox after E1.3 readback. | Approved artifacts only; compare recall against WikiLLM. | | turbovec | Defer to vector pilot after metadata exists. | Stable source IDs, embeddings, 20-query benchmark, ignored local index. | | Mistral | Optional future quality pass. | Credentials, sanitized inputs, budget cap, model metadata logging, AF Review. | | Ollama/Qwythos | Continue as local minor/background model path. | Server running and bounded prompts; `gemma4:e4b` fallback. |  ## Market Decisions  FACT: First ICP hypothesis i"
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -983,6 +1252,16 @@
       "path": "project/runs/2026-06-25-provider-github-automation.md",
       "title": "Run - Provider, GitHub, And Automation Setup",
       "text": "# Run - Provider, GitHub, And Automation Setup  Date: 2026-06-25 Scope: public project folder  ## Task  Start Ollama, run Qwythos checks, create `.env.local`, update the public project for GitHub publication, publish only used and set-up skills by agent, and set up an evening automation to keep the registry current.  ## Provider Actions  FACT: Ollama was started through the Homebrew service.  FACT: `ollama list` found the Qwythos model identifier used by this project.  FACT: Qwythos metadata is readable.  FACT: Qwythos failed to load during a public-safe smoke test with an Ollama 500 model-load error.  FACT: `gemma4:e4b` loaded and produced the expected public-safe fallback smoke-test response.  INTERPRETATION: Ollama is connected, but the configured Qwythos artifact needs repair before it can be the active local model.  ## Files Updated  - `project/.env.local` created as ignored local configuration. - `project/config/providers.env.example` - `project/config/model-routing.yaml` - `project/provider-setup.md` - `project/agents/README.md` - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `PUBLICATION_REVIEW.md`  ## Current Provider "
+    },
+    {
+      "path": "project/runs/2026-06-26-evening-skill-refresh/agent-handout.md",
+      "title": "Evening Skill Refresh Handout",
+      "text": "# Evening Skill Refresh Handout  ## Title And Purpose  This handout covers the 2026-06-26 public evening skill refresh. Use it when reviewing what the automation changed, what it intentionally left alone, and how to continue the next public-safe maintenance pass without rechecking the entire repository.  ## Human Summary  This pass reviewed the current public ArchFlow project against the repo contract, the public WikiLLM layer, the skill registries, and the latest run artifacts. The goal was narrow: refresh only current public-safe files and only touch the skill registries if the actual used or configured skill set had changed.  The main finding was a stale statement in `project/agentic-stack.md`. The live project already contains completed proof folders for the sanitized preparation run and the E1.2 full-test package, but the stack overview still said that no finished first proof-run output existed. That statement is now corrected so the current-facing stack document matches the present public repo state.  The skill registries were reviewed but not edited. `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, and `skills/skills-used.md` already match the configu"
+    },
+    {
+      "path": "project/runs/2026-06-26-evening-skill-refresh/run-summary.md",
+      "title": "Evening Skill Refresh",
+      "text": "# Evening Skill Refresh  Date: 2026-06-26 Automation: ArchFlow public evening skill update Status: completed  ## Scope  Review the public project, refresh only public-safe current-state files, and validate the skill registry boundary.  ## What Changed  - Updated `project/agentic-stack.md` to reflect that public-safe proof runs now exist under `project/runs/`. - Left `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, and `skills/skills-used.md` unchanged because the configured and used skill set did not change during this pass. - Added this run summary and an agent handout for the automation record.  ## Validation  - YAML parsing passed for the workflow contracts and `project/agents/agent-roster.yaml`. - ASCII and public-safety checks passed for the touched public files. - Ignored-file checks confirmed that local env and runtime paths remain untracked. - `git status --short` showed only the expected public project changes from this pass.  ## Notes  - No network operations, package installs, service starts, credential edits, or provider changes were performed."
     },
     {
       "path": "project/runs/2026-06-26-june24-next-steps-proof/agent-handout.md",
@@ -1033,6 +1312,81 @@
       "path": "project/runs/2026-06-26-june24-next-steps-proof/summary.md",
       "title": "Sole Summary Document",
       "text": "# Sole Summary Document  ## Executive Summary  The June 24 discussion defines ArchFlow as a company workflow that turns messy strategic dialogue into structured execution. The immediate priority is not a public marketing push or a broad framework stack. The immediate priority is to prove the internal operating cycle: sanitize an input, extract context, produce a PRD, divide work by agent role, update the knowledge base, review the output, and only then prepare later research and market-facing actions.  The discussion has two operating positions. The builder/operator position focuses on creating the system: knowledge base, automation, LangGraph routing, agent roles, runtime checks, and durable memory. The market/content position focuses on the external path: audience, positioning, content, website structure, lead generation, and proof of willingness to pay. The best next move is to make these positions collaborate through a controlled proof workflow.  ## Key Bullet Points  - Build the company by first building the internal system on itself. - Convert meeting material into structured summaries, PRDs, task plans, and reusable knowledge. - Keep the knowledge base as durable memory, whi"
+    },
+    {
+      "path": "project/runs/2026-06-27-evening-skill-audit/agent-handout.md",
+      "title": "2026-06-27 Evening Skill Audit Handout",
+      "text": "# 2026-06-27 Evening Skill Audit Handout  ## Title and Purpose  This handout covers the June 27 public-maintenance audit for the ArchFlow repository. Use it when the next operator needs a quick status check on the public skill registries, validation results, and the exact boundary for further cleanup.  ## Human Summary  This run reviewed the public ArchFlow project under the public-only maintenance rules. The goal was not to refresh files broadly, but to confirm whether the public skill registries had real setup drift and whether lightweight validation still passed on the tracked public files.  The review confirmed that the three skill registry files already matched the current saved skills and workflow setup. No registry churn was introduced. The only new issue found by validation was a small ASCII failure in the generated `graphify-out/GRAPH_REPORT.md` file, where several non-ASCII glyphs had been preserved from generated output.  That issue was corrected with a punctuation-only normalization so the generated report stays public-safe and consistent with the repo's lightweight ASCII checks. Because this produced a meaningful public-safe file change, the run is recorded here and in"
+    },
+    {
+      "path": "project/runs/2026-06-27-evening-skill-audit/run-summary.md",
+      "title": "2026-06-27 Evening Skill Audit",
+      "text": "# 2026-06-27 Evening Skill Audit  ## Goal  Review the public ArchFlow project, refresh only public-safe files, and update the skill registries only if the actual used or configured skill set changed.  ## Inputs  - Public project routing and workflow files. - Public WikiLLM files and prior run notes. - Current public skill registries and saved skill files. - Generated reference files covered by lightweight validation.  ## Outcome  - Confirmed that `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, and `skills/skills-used.md` already match the current public skill setup and did not need edits. - Normalized `graphify-out/GRAPH_REPORT.md` to ASCII-safe punctuation after validation found a small number of non-ASCII generated glyphs. - Added this run summary, a handout, and a public WikiLLM run/log note for the maintenance pass.  ## Validation  - YAML parsing passed for the workflow contracts and `project/agents/agent-roster.yaml`. - `scripts/public_safety_scan.py` passed. - ASCII check passed for tracked text files after the graph report normalization. - Ignored local env and runtime paths remained ignored. - `git status --short` still showed the prior uncommitted "
+    },
+    {
+      "path": "project/runs/2026-06-28-evening-status-refresh/agent-handout.md",
+      "title": "2026-06-28 Evening Status Refresh Handout",
+      "text": "# 2026-06-28 Evening Status Refresh Handout  ## Title and Purpose  This handout covers the June 28 public-maintenance refresh for the ArchFlow repository. Use it when the next operator needs the exact boundary between unchanged skill registries and refreshed current-state project reports.  ## Human Summary  This run reviewed the public ArchFlow repository under the same narrow nightly maintenance contract used on the previous evenings. The registry check came first: the saved public skills, workflow references, and the three registry files were compared so the automation would not introduce routine churn where no setup drift exists.  That comparison showed no registry drift again. The meaningful public-safe drift was elsewhere: several status-heavy reports still described the pre-runtime and pre-proof state even though the public LangGraph smoke run, LlamaIndex retrieval proof, CrewAI config validation, and E1.2 proof artifacts already exist in the repository.  The maintenance pass refreshed only those stale report sections and then regenerated the local dashboard data so the dashboard excerpts match the corrected public files. No provider credentials, network actions, local env fi"
+    },
+    {
+      "path": "project/runs/2026-06-28-evening-status-refresh/run-summary.md",
+      "title": "2026-06-28 Evening Status Refresh",
+      "text": "# 2026-06-28 Evening Status Refresh  ## Goal  Review the public ArchFlow project, refresh only public-safe files, and update the skill registries only if the actual used or configured skill set changed.  ## Inputs  - Public project routing, workflow, and report files. - Public WikiLLM files and recent maintenance artifacts. - Current public skill registries and saved skill files. - Generated dashboard data and lightweight validation outputs.  ## Outcome  - Confirmed that `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, and `skills/skills-used.md` still match the current public skill setup, so no registry edits were needed. - Refreshed stale current-state wording in:   - `project/reports/2026-06-25-layer-setup-report.md`   - `project/reports/2026-06-25-current-setup-methods-and-agent-plan.md`   - `project/reports/2026-06-25-dashboard-setup-and-operation-report.md` - Regenerated `project/dashboard/data.json` so the dashboard excerpts reflect the refreshed public reports. - Added this run summary, a handout, and a public WikiLLM run/log note for the maintenance pass.  ## Validation  - YAML parsing passed for the workflow contracts and `project/agents/agent-rost"
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/agent-handout.md",
+      "title": "Agent Handout",
+      "text": "# Agent Handout  ## Goal  Continue ArchFlow E1-E7 after the June 29 tool and market integration.  ## Current Status  The local plan now treats Loop Engineering as the run-control contract, E2 as a market evidence engine, and Cognee/turbovec/Mistral as gated later integrations.  ## Read First  1. `project/project-plan.md` 2. `project/agentic-stack.md` 3. `project/loops/LOOP.md` 4. `project/workflows/market-research-engine.yaml` 5. `wiki/memory.md` 6. Latest run folder: `project/runs/2026-06-29-tool-market-integration/`  ## Do Not  - Do not ingest broad private sources. - Do not use social posts as proof. - Do not send outreach automatically. - Do not activate Mistral/Cognee/turbovec without the gates. - Do not claim validated demand before E7.  ## Next Actions  1. Complete E1.3 KB/readback using the loop state contract. 2. Add or update Notion E2 subtasks for integrated API/tool research engine. 3. Build E2 account evidence-card schema and 300-account target table. 4. Narrow to 30 verified accounts and 10-15 outreach targets. "
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/anti-looping-review.md",
+      "title": "Anti-Looping Review",
+      "text": "# Anti-Looping Review  ## Adopted Controls  - L1 report-only default. - State schema added under `project/loops/`. - `max_revision_loops` remains 2. - Item retry cap set to 3. - Maker/checker split required. - External writes blocked by default. - Cloud model use blocked by default.  ## Parallel Execution Rule  Allowed in E2:  - account universe collection - company website parsing - job-signal extraction - review mining - social-language mining - competitor gap mapping  Sequential only:  - synthesis - role verification - message approval - memory promotion - Notion updates - outreach - payment verdict "
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/context-digest.md",
+      "title": "Context Digest",
+      "text": "# Context Digest  Run: 2026-06-29-tool-market-integration  ## FACT  - E1-E7 remains the active MVP path. - E1.3 is the next technical gate: write approved PRD/history to KB, add source registry and retrieval metadata, then run readback. - Loop Engineering is useful immediately as an operating contract, not a separate product. - Cognee, turbovec, and Mistral are not current default runtime dependencies. - The strongest first ICP hypothesis is product/software/AI service agencies.  ## INTERPRETATION  - E2 should be treated as an evidence engine with account cards and scoring, not as broad market browsing. - Social signals are useful for language and hypotheses, but company pages, jobs, reviews, and direct conversations carry more evidentiary weight. - Parallel execution is useful for source extraction, but not for final synthesis, review, memory promotion, or outreach handoff.  ## HYPOTHESIS  - A Client Discovery-to-Backlog Pack will be easier to sell to agencies than a generic PRD generator or AI automation service. - Cognee will become useful after the curated WikiLLM readback baseline exists. - turbovec will become useful when E2 creates enough approved source cards to justify den"
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/market-engine.md",
+      "title": "Market Engine",
+      "text": "# Market Engine  ## Primary ICP  Product/software/AI service agencies and adjacent service firms.  ## Subaudiences  1. Agency founders, partners, delivery directors, heads of product, solution architects. 2. AI automation consultancies and AI-native service firms. 3. Product-led B2B SaaS scaleups with Product Ops, PM, CS, roadmap, or feedback overload signals. 4. Founder-led B2B startups as proof and fast iteration lane. 5. Enterprise product ops/transformation later, unless warm intro exists.  ## First Offer Hypothesis  Client Discovery-to-Backlog Pack:  `messy client source packet -> context digest -> PRD -> backlog -> acceptance criteria -> decision log -> KB/update handoff`  ## Evidence Engine  Use `project/workflows/market-research-engine.yaml`.  Minimum pre-outreach evidence:  - account evidence card - at least two independent public signals - source grade - role currentness status - pain hypothesis - offer fit - one specific outreach angle  ## Not Demand  Directory counts, job counts, social posts, named sample accounts, competitor features, internal E1 proof, content engagement, compliments, replies, and \"interesting\" feedback are not validated demand. "
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/memory-architecture.md",
+      "title": "Memory Architecture",
+      "text": "# Memory Architecture  ## Authority Order  1. Project plan and public WikiLLM. 2. Run folders and review reports. 3. LlamaIndex retrieval over approved corpus. 4. Future Cognee operational recall. 5. Future vector indexes such as turbovec.  ## Promotion Path  `source -> inventory -> digest -> draft output -> review -> memory candidates -> WikiLLM -> retrieval rebuild -> optional Cognee remember -> readback`  ## Cognee Rule  Cognee must not replace WikiLLM. It can only remember approved summaries, PRDs, decisions, research cards, and source registry facts after AF Review.  ## turbovec Rule  turbovec is a local retrieval acceleration layer under LlamaIndex. It is not a source of truth and should store no public repo artifact by default. "
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/model-routing-recommendation.md",
+      "title": "Model Routing Recommendation",
+      "text": "# Model Routing Recommendation  ## Current Default  Codex is the operator and reviewer. Ollama is the local model execution layer for bounded minor/background work. Qwythos is the intended local model and `gemma4:e4b` remains fallback.  ## Future Mistral Gate  Mistral is disabled by default until:  - credentials are approved and stored outside public files - input packet is sanitized - model ID and prompt version are logged - budget cap is set - AF Review runs after output  ## Suggested Future Roles  | Model family | Role | |---|---| | Mistral Small | Batch normalization, extraction schema filling, draft ICP/copy variants. | | Mistral Medium | Final strategy, PRD, ICP, proposal, or website-copy quality pass after evidence is fixed. | | Mistral OCR | Document preparation only after a live model-name/privacy preflight. |  ## Forbidden Inputs  - raw private transcripts - private Notion exports - credentials or env files - unsanitized client material - private LinkedIn/profile data "
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/notion-update-plan.md",
+      "title": "Notion Update Plan",
+      "text": "# Notion Update Plan  Date: 2026-06-29 Scope: minimal Notion task updates for the June 29 tool and market integration.  ## Conclusive Changes  FACT: The June 29 reports support the current E1-E7 path. They do not require replacing it.  INTERPRETATION: The right change is to make E2 a market evidence engine, make E1.3 use a report-only loop/readback gate, and keep E3-E7 downstream of verified market evidence.  HYPOTHESIS: The first ICP to validate is B2B product, software, and AI service agencies with 10-250 people that already sell discovery, MVP, product strategy, AI automation, or custom software.  GAP: Live demand is not validated until prospects show paid diagnostic intent, prepayment, approved paid start, or comparable firm paid intent with source packet, timeline, scope, and budget owner.  ## Proposed Notion Changes  1. Append a June 29 integration note to the E2 parent task. 2. Add or update E2.0 as: \"Reset research engine for integrated API/tool approach\". 3. Add or update an E2 market-evidence task covering account evidence cards, signal scoring, source grading, and review gate. 4. Append the agency-first ICP hypothesis and validation rule to the relevant ICP or shortlist "
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/review-report.md",
+      "title": "Review Report",
+      "text": "# Review Report  Run: 2026-06-29-tool-market-integration  ## Verdict  Approved for local plan and public-safe repository update.  ## Product Owner Verification  Approved before Notion update.  Required changes before Notion: none.  Constraint applied: Notion changes were create-missing-or-append-only. Existing statuses, owners, and page bodies were preserved.  ## Checks  - No credentials added. - No private Notion URLs added. - No private lead data added. - No cloud model activation. - No Cognee or turbovec installation. - No outreach automation. - Demand claims remain hypotheses until E7.  ## Required Next Review  Before E2 collection starts, verify the source/API matrix, account-card schema, and AF Review gate."
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/run-summary.md",
+      "title": "Run Summary",
+      "text": "# Run Summary  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the current ArchFlow E1-E7 plan.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `project/runs/2026-06-29-tool-market-integration/` - public WikiLLM updates - targeted Notion E2 task updates  ## Status  Local plan, public WikiLLM, Graphify, and targeted Notion E2 task updates completed."
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/source-inventory.md",
+      "title": "Source Inventory",
+      "text": "# Source Inventory  Run: 2026-06-29-tool-market-integration  ## Inputs  | Source ID | Source | Status | Use | |---|---|---|---| | SRC-2906-TOOL | June 29 tool integration report | reviewed | Tool roles, loop, memory, model routing, roadmap. | | SRC-2906-MARKET-STACK | June 29 market research tools stack | reviewed | E2 evidence engine and research tools. | | SRC-2906-RULES | June 29 market analysis rules/theory | reviewed | Evidence discipline, buyer behavior, B2B research rules. | | SRC-2906-PRD | June 29 PRD market analysis | reviewed | PRD service wedge, personas, packaging, validation plan. | | SRC-2906-ICP | June 29 ICP market analysis | reviewed | First ICP, subaudiences, target-table logic, demand rule. | | SRC-PROJECT-PLAN | Current public project plan | reviewed and updated | E1-E7 staging. | | SRC-AGENTIC-STACK | Current public agentic stack docs | reviewed and updated | Runtime boundaries and model/memory roles. |  ## Boundary  No private Notion URLs, raw lead data, credentials, or private profile content were added to public files. "
+    },
+    {
+      "path": "project/runs/2026-06-29-tool-market-integration/tool-role-map.md",
+      "title": "Tool Role Map",
+      "text": "# Tool Role Map  | Tool | ArchFlow role | Current status | |---|---|---| | Codex | Operator, editor, verifier, approval boundary. | Active. | | LangGraph | Control plane for state, routing, retries, and review gates. | Active runtime smoke passed. | | Loop Engineering | Operating contract for loops, state, budgets, attempt caps, and maker/checker separation. | Added as L1 report-only contract. | | CrewAI | Role/task organization inside graph-controlled runs. | Config/import check exists; no autonomous LLM execution. | | LlamaIndex | Retrieval abstraction over approved corpus. | Active deterministic/keyword proof. | | turbovec | Future local vector store under LlamaIndex. | Deferred. | | WikiLLM | Canonical curated memory. | Active. | | Cognee | Future operational recall and graph memory. | Deferred until E1.3 readback. | | Ollama/Qwythos | Local minor/background model execution. | Configured; server state must be checked per run. | | Mistral | Future sanitized quality pass for PRD/research/copy. | Disabled until approval and credentials. | | LangSmith | Sanitized observability. | Configured with local ignored key and smoke traces. | "
     },
     {
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
@@ -1095,6 +1449,21 @@
       "text": "# E1.2 Sole Summary  Date: 2026-06-26 Status: internal proof approved for public-safe repository publication  E1.2 proves the first full internal dialogue-to-PRD workflow package on sanitized public project material. It does not prove external demand, customer willingness to pay, or a live client workflow. Its value is operational: it shows that ArchFlow can take a bounded source packet, route it through a LangGraph-controlled process, split the analysis into expert roles, produce a PRD and system reports, review the output, and write durable public memory.  The current architecture is coherent. Codex is the operator and publication boundary. LangGraph controls path, state, fan-out, merge, review, and terminal status. LlamaIndex retrieves approved public context with source paths. CrewAI defines the role structure for AF Tools, AF Context, AF Manager, AF Knowledge, AF Review, and AF Publisher. WikiLLM is the public memory layer. Graphify is generated structural reference. Obsidian and Nexus remain planned layers until the vault target and schemas are verified.  The E1.2 full-test graph ran with a sanitized source packet and reached approved status. It emitted observable stream even"
     },
     {
+      "path": "project/runs/E1.2/2026-06-26-notion-sync/agent-handout.md",
+      "title": "E1.2 Notion Sync Agent Handout",
+      "text": "# E1.2 Notion Sync Agent Handout  ## Purpose  This handout covers the E1.2 status sync, report-link attachment, and owner next-steps package. Use it before starting E1.3 or before changing E1.2 task states again.  ## Human Summary  E1.2 technical execution is complete. The PRD, streaming report, system report, LangGraph state outputs, responsibility matrix, KB update, review report, and handout already exist from the full-test proof package. The Notion status layer needed a cleanup pass because several subtasks still showed `Review` or `In Progress` even though the evidence-backed work was complete.  The correct state after this sync is: E1.1 Done, E1.2 parent Review, E1.2.1 through E1.2.7 Done, E1.3 To Do, and later E1 tasks left in their existing future states. E1.2 should not move to Done until the owner accepts the three report PDFs or requests revisions.  ## Continuation Prompt  ```text Continue ArchFlow E1 after the E1.2 Notion sync.  Read: - project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md - project/runs/E1.2/2026-06-26-full-test/run-summary.md - project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md - project/runs/E1.2/2026-06-26-full-test/review-report.md - wiki/mem"
+    },
+    {
+      "path": "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md",
+      "title": "E1.2 Next Steps For Owner Acceptance And E1.3 Start",
+      "text": "# E1.2 Next Steps For Owner Acceptance And E1.3 Start  Date: 2026-06-26 Scope: E1 Build the Knowledge Base on Ourselves Status: E1.2 proof package complete; owner acceptance needed before E1.3 is marked active.  ## Current State  E1.2 produced the requested internal proof package: PRD PDF, streaming report PDF, system report PDF, role/task split, LangGraph stage outputs, current runtime review, KB review, and agent handoff. The repository state was committed and pushed at commit `865c97d`.  The E1.2 parent task should now be in `Review`, not `In Progress`, because the technical execution is complete but owner acceptance is still required before the system writes the approved PRD and agent history into the KB under E1.3.  ## Report Package  | Report | Repository link | |---|---| | E1.2 PRD | https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/reports/2026-06-26-e1-2-prd.pdf | | E1.2 Streaming report | https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/reports/2026-06-26-e1-2-streaming-report.pdf | | E1.2 System report | https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/reports/2026-06-26-e1-2-system-report.pdf |"
+    },
+    {
+      "path": "project/runs/E1.2/2026-06-26-notion-sync/run-summary.md",
+      "title": "Run Summary",
+      "text": "# Run Summary  Date: 2026-06-26 Run: E1.2 Notion status sync and owner next-steps package  ## Task  Review the current E1/E1.2 status against the completed proof package, update task states and checklist evidence in Notion, attach the three E1.2 report PDFs as stable repository links, and create a clear owner action document for accepting E1.2 and starting E1.3.  ## Outputs  - `next-steps-e1-2.md` - `next-steps-e1-2.pdf` - `agent-handout.md` - `wiki/runs/2026-06-26-e1-2-notion-sync.md` - `project/reports/2026-06-26-e1-2-next-steps.pdf`  ## Status Logic  - E1.1 is complete based on the runtime setup, proof artifacts, committed files, and passing guards. - E1.2 subtasks E1.2.1 through E1.2.7 are complete based on the full-test run artifacts. - E1.2 parent remains `Review` until owner acceptance. - E1.3 remains `To Do` and is the recommended next active work after E1.2 acceptance.  ## Report Links Added To Notion  - E1.2 PRD PDF. - E1.2 Streaming report PDF. - E1.2 System report PDF. - E1.2 Next steps PDF.  ## Remaining Owner Inputs  The owner must approve or request edits to the E1.2 report package, confirm whether E1.2 can be marked `Done`, and confirm whether E1.3 should start with"
+    },
+    {
       "path": "project/runs/README.md",
       "title": "Runs",
       "text": "# Runs  Store future public-safe run summaries here.  Rules:  - Do not store raw private inputs. - Store sanitized source summaries only. - Keep filenames date-prefixed. - Keep all content in English. - Each run must include checks, outputs, gaps, and next actions."
@@ -1107,17 +1476,22 @@
     {
       "path": "project/workflows/knowledge-integration.yaml",
       "title": "knowledge-integration.yaml",
-      "text": "name: archflow_combined_knowledge_operations status: configured  purpose: >   Define how public WikiLLM, optional Obsidian/Second Brain mirror, future   Graphify output, future Nexus bridge, LlamaIndex RAG, CrewAI, LangGraph,   LangSmith, and Codex operate together.  operator:   primary: codex_operator   responsibilities:     - approve_sensitive_actions     - run_public_safety_scan     - edit_public_files     - publish_to_git     - record_wikillm_runs  knowledge_layers:   wikillm_public:     status: active     root: wiki/     role: canonical_public_agent_memory     writes:       - runs       - decisions       - issues       - memory       - insights    obsidian_second_brain:     status: planned_sanitized_mirror_only     root: project/reference/obsidian/     role: human_strategy_and_semantic_notes     rule: export_or_summarize_public_safe_notes_only    graphify:     status: planned_after_runtime_code_exists     root: project/reference/graphify/     role: generated_structure_map     rule: graph_public_repo_only    nexus:     status: planned_after_vault_target_is_clear     role: live_obsidian_bridge     rule: discover_schema_before_use_and_never_write_secrets  runtime_layers:   langgr"
+      "text": "name: archflow_combined_knowledge_operations status: configured  purpose: >   Define how public WikiLLM, optional Obsidian/Second Brain mirror, future   Graphify output, future Nexus bridge, LlamaIndex RAG, CrewAI, LangGraph,   LangSmith, and Codex operate together.  operator:   primary: codex_operator   responsibilities:     - approve_sensitive_actions     - run_public_safety_scan     - edit_public_files     - publish_to_git     - record_wikillm_runs  knowledge_layers:   wikillm_public:     status: active     root: wiki/     role: canonical_public_agent_memory     writes:       - runs       - decisions       - issues       - memory       - insights    obsidian_second_brain:     status: planned_sanitized_mirror_only     root: project/reference/obsidian/     role: human_strategy_and_semantic_notes     rule: export_or_summarize_public_safe_notes_only    graphify:     status: planned_after_runtime_code_exists     root: project/reference/graphify/     role: generated_structure_map     rule: graph_public_repo_only    loop_engineering:     status: active_contract     root: project/loops/     role: loop_state_attempt_caps_budget_maker_checker_and_stop_conditions     rule: default_l1_repor"
     },
     {
       "path": "project/workflows/langgraph-controller.yaml",
       "title": "langgraph-controller.yaml",
-      "text": "name: archflow_block1_langgraph_controller status: runtime_installed_smoke_passed runtime: langgraph_python official_docs_checked:   - https://docs.langchain.com/oss/python/langgraph/overview  purpose: >   Control the reasoning path for Block 1. LangGraph owns state,   conditional routing, review loops, and human approval gates.  state_schema:   run_id: string   source_packet: object   source_boundary_status: pass_or_fail   retrieved_context: list   context_digest_path: string   prd_path: string   task_matrix_path: string   kb_update_path: string   review_report_path: string   task_handout_path: string   langsmith_trace_id: string   langsmith_trace_url: string   approval_status: approved_revise_or_blocked   gaps: list  nodes:   intake_validate:     owner_agent: af_tools     purpose: validate source packet, language, public boundary, and requested output.     output: source_boundary_status   retrieve_context:     owner_agent: af_context     purpose: call bounded LlamaIndex retrieval over approved public corpus.     output: retrieved_context   write_context_digest:     owner_agent: af_context     purpose: separate facts, interpretations, hypotheses, and gaps.     output: project/outp"
+      "text": "name: archflow_block1_langgraph_controller status: runtime_installed_smoke_passed runtime: langgraph_python official_docs_checked:   - https://docs.langchain.com/oss/python/langgraph/overview  purpose: >   Control the reasoning path for Block 1. LangGraph owns state,   conditional routing, review loops, and human approval gates.  state_schema:   run_id: string   source_packet: object   source_boundary_status: pass_or_fail   retrieved_context: list   context_digest_path: string   prd_path: string   task_matrix_path: string   kb_update_path: string   review_report_path: string   task_handout_path: string   loop_state_path: string   loop_attempt_number: integer   max_attempts_per_item: integer   maker_agent: string   verifier_agent: string   market_research_packet_path: string   langsmith_trace_id: string   langsmith_trace_url: string   approval_status: approved_revise_or_blocked   gaps: list  nodes:   intake_validate:     owner_agent: af_tools     purpose: validate source packet, language, public boundary, and requested output.     output: source_boundary_status   retrieve_context:     owner_agent: af_context     purpose: call bounded LlamaIndex retrieval over approved public corpus."
     },
     {
       "path": "project/workflows/llamaindex-rag.yaml",
       "title": "llamaindex-rag.yaml",
       "text": "name: archflow_block1_rag status: runtime_installed_approved_corpus_smoke_passed runtime: llamaindex_python official_docs_checked:   - https://developers.llamaindex.ai/python/framework/getting_started/concepts/  purpose: >   Connect agents and LLMs to approved project data. LlamaIndex owns bounded   loading, indexing, retrieval, and source-grounded answers.  approved_corpus:   include:     - project/     - history/     - skills/     - wiki/   exclude:     - .git/     - project/.env.local     - project/local/     - raw/     - source_exports/     - secrets/     - private/     - tmp/  indexing_parameters:   loader: simple_directory_reader   document_language: english   chunk_size: 800   chunk_overlap: 120   metadata_fields:     - source_path     - document_type     - public_safety_status     - updated_at   persist_dir: project/local/rag_index   persist_dir_git_status: ignored  retrieval_parameters:   query_engine: approved_corpus_keyword_smoke_first   similarity_top_k: 5   response_mode: compact   require_source_paths: true   refuse_on_private_source: true  model_routing:   primary_operator: codex_operator   local_background_llm: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K"
+    },
+    {
+      "path": "project/workflows/market-research-engine.yaml",
+      "title": "market-research-engine.yaml",
+      "text": "name: archflow_e2_market_research_engine status: planned_report_only runtime: langgraph_controlled_research_workflow purpose: >   Convert the E2 market-research phase into a bounded evidence engine:   account universe, public signals, pain scoring, role verification,   message synthesis, learning loop, and AF Review.  primary_icp_hypothesis:   segment: product_software_ai_service_agencies   profile: \"10-250 person B2B agencies and consultancies selling MVP, product discovery, product strategy, AI automation, or custom software\"   first_offer: client_discovery_to_backlog_pack   secondary_segments:     - product_led_b2b_saas_scaleups     - ai_automation_consultancies     - founder_led_b2b_startups     - enterprise_product_ops_later  stages:   hypothesis:     owner_agent: af_research     output: hypothesis_memo_and_exclusion_rules     mode: sequential   account_universe:     owner_agent: af_tools     output: deduplicated_account_table     mode: parallel_allowed   public_signal_pass:     owner_agent: af_research     output: company_evidence_cards     mode: parallel_allowed     parallel_branches:       - company_website_parser       - job_signal_collector       - review_miner       - so"
     },
     {
       "path": "history/README.md",
@@ -1162,7 +1536,7 @@
     {
       "path": "skills/skills-used.md",
       "title": "Skills And Methods Used",
-      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. | | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. | | Public-safety review | Keep public files free of secrets, personal data, local paths, and private IDs. | | Ollama local check | Start local Ollama, list models, and run public-safe smoke tests. | | Git publication flow | Initialize and publish only the public project folder."
+      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. | | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. | | Loop Engineering operating contract | Keep agent workflows bounded with state, attempt caps, budget, maker/checker separation, and stop conditions. | | Market evidence engine | Turn E2 into account universe, public-signal extraction, scoring, role verification, and reviewed "
     },
     {
       "path": "skills/task-handout/SKILL.md",
@@ -1178,6 +1552,11 @@
       "path": "wiki/decisions/2026-06-26-e1-runtime-guard-and-agent-stack.md",
       "title": "Decision - E1 Runtime Guard And Agent Stack",
       "text": "# Decision - E1 Runtime Guard And Agent Stack  Date: 2026-06-26 Status: accepted  ## Context  E1.1 needs to be repeatable before E1.2 starts. The project now uses LangGraph, LlamaIndex, CrewAI, LangSmith, WikiLLM, and a local dashboard, but these layers must not blur responsibilities or leak private inputs.  ## Decision  Use LangGraph as the workflow spine, LlamaIndex as approved-corpus retrieval, CrewAI as the role/task layer, LangSmith as sanitized trace observability, and WikiLLM as durable public memory.  The Git pre-push hook must run both:  - `scripts/public_safety_scan.py` - `project/scripts/pre-push-runtime-guard.py`  The hook validates the current setup but does not install packages, run broad indexing, write to private workspaces, deploy, or publish customer-facing claims.  ## Rationale  - LangGraph controls state, routing, revision loops, review gates, and approve/revise/block logic. - CrewAI clarifies who does what, but should not own the workflow path. - LlamaIndex helps agents find relevant public project text, but WikiLLM remains the durable memory source. - LangSmith traces sanitized workflow runs, not raw private material. - A pre-push guard makes breakage visible "
+    },
+    {
+      "path": "wiki/decisions/2026-06-29-tool-memory-model-routing.md",
+      "title": "Decision - Tool Memory And Model Routing",
+      "text": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, WikiLLM memory, Ollama local model routing, and LangSmith tracing.  INTERPRETATION: Adding another active brain or vector layer before E1.3 readback would increase failure modes. The missing near-term layer is loop discipline: state, stop conditions, review, and memory promotion.  HYPOTHESIS: Cognee and turbovec will become valuable after E1.3/E2 create enough approved artifacts and source metadata to test recall and dense retrieval.  GAP: Mistral credentials, live model preflight, OCR model selection, Cognee sandbox, turbovec benchmark, and E7 demand verdict are not complete.  ## Consequences  - Loop artifacts live under `project/loops/`. - E2 market research uses `project/workflows/market-research-engine.yaml`. - Mistral is disabled by default and only allowed on sanitize"
     },
     {
       "path": "wiki/index.md",
@@ -1235,9 +1614,34 @@
       "text": "# Run - E1.2 Full Public-Safe Proof Test  Date: 2026-06-26  ## Task  Run E1.2 as a full internal proof package and produce PRD, streaming, and system-report PDFs with LangGraph output, agent role division, runtime review, KB review, Graphify/Nexus/vault posture, and latest technical tendency review.  ## Outputs  - `project/runs/E1.2/2026-06-26-full-test/` - `project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.pdf` - `project/runs/E1.2/2026-06-26-full-test/E1.2_Streaming_report.pdf` - `project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.pdf` - `project/reports/2026-06-26-e1-2-prd.pdf` - `project/reports/2026-06-26-e1-2-streaming-report.pdf` - `project/reports/2026-06-26-e1-2-system-report.pdf`  ## Status  E1.2 full-test graph reached approved status. The package is approved as an internal public-safe proof, not as customer demand validation.  ## Durable Facts  - Observable stream events and final state were saved. - Hidden reasoning was not stored. - Public files now mask the LangSmith project identifier. - `wiki/` is explicitly part of the approved public LlamaIndex corpus. - CrewAI LLM execution remains deferred until a LangGraph-wrapped artifact-generating proof.  ## Next Step "
     },
     {
+      "path": "wiki/runs/2026-06-26-e1-2-notion-sync.md",
+      "title": "Run - E1.2 Notion Status Sync And Owner Next Steps",
+      "text": "# Run - E1.2 Notion Status Sync And Owner Next Steps  Date: 2026-06-26  ## Task  Align Notion task states with the completed E1.2 proof package, add report links to the E1.2 task, mark E1.2 staged checklist items as complete, and produce an owner-facing next-steps document for accepting E1.2 and starting E1.3.  ## Inputs  - E1.2 full-test proof package. - WikiLLM memory and insights. - Existing E1/E1.2 Notion task state.  ## Outputs  - `project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md` - `project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.pdf` - `project/runs/E1.2/2026-06-26-notion-sync/agent-handout.md` - `project/reports/2026-06-26-e1-2-next-steps.pdf`  ## Status  The evidence-backed task state is:  - E1.1: Done. - E1.2 parent: Review until owner acceptance. - E1.2.1 through E1.2.7: Done. - E1.3: To Do and ready after owner acceptance.  ## Durable Conclusion  E1.2 is technically complete but should remain in Review until the owner accepts the report package. The next controlled step is E1.3 public-safe KB writeback and readback, not broad ingestion or live Nexus writes.  ## Next Step  After owner acceptance, run E1.3 and prove that the KB can return the E1.2 PRD,"
+    },
+    {
+      "path": "wiki/runs/2026-06-26-evening-skill-refresh.md",
+      "title": "2026-06-26 Evening Skill Refresh",
+      "text": "# 2026-06-26 Evening Skill Refresh  ## Goal  Review the public ArchFlow project and refresh only public-safe current-state files. Update the public skill registries only if the actual used or configured skill set changed.  ## Inputs  - Current public project routing files and workflow contracts. - Public WikiLLM files. - Current skill registries and public skill folders. - Existing public run artifacts under `project/runs/`.  ## Outcome  - Updated `project/agentic-stack.md` to reflect that public-safe proof runs already exist. - Confirmed that `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, and `skills/skills-used.md` already match the configured public skills and did not need edits. - Added a concise project run summary and handout for the automation pass.  ## Validation  - YAML parsing passed. - ASCII/public-safety checks passed. - Ignored local env/runtime paths remained untracked. - Git status matched the expected public-file edits from this run.  ## Next Step  Keep future evening refreshes focused on real current-state drift and treat dated reports as historical records unless a rewrite is explicitly requested."
+    },
+    {
       "path": "wiki/runs/2026-06-26-task-handout-skill.md",
       "title": "Run Note: Task Handout Skill",
       "text": "# Run Note: Task Handout Skill  ## Task  Add a reusable handout process for substantial ArchFlow executions and produce a handout for the completed E1.1 runtime setup plus E1.2 dialogue proof preparation.  ## Outputs  - Added `skills/task-handout/SKILL.md`. - Added `project/runs/2026-06-26-june24-next-steps-proof/agent-handout.md`. - Updated the skill registry and agent skill routing. - Added a prompt hook contract through `.codex/hooks.json`. - Added `project/scripts/task-handout-hook.py` to detect prompts and executions that require the skill without storing raw prompt text.  ## Decision  Future substantial runs should produce a readable handout beside the run artifacts. The handout must include a human summary, a copy-ready continuation prompt, current state, decisions, artifacts, validation evidence, next actions, and safety boundary.  The handout skill is now mandatory when a prompt hook triggers, when one or more agent roles are used, or when one or more subtasks are solved or changed.  ## Status  Ready for future agents to use after large executions or handoffs."
+    },
+    {
+      "path": "wiki/runs/2026-06-27-evening-skill-audit.md",
+      "title": "2026-06-27 Evening Skill Audit",
+      "text": "# 2026-06-27 Evening Skill Audit  ## Goal  Review the public ArchFlow project, refresh only public-safe files, and change the skill registries only if the actual public setup changed.  ## Result  - The public skill registries already matched the current saved skills and workflow setup. - A tracked generated file, `graphify-out/GRAPH_REPORT.md`, was normalized to ASCII-safe punctuation after the validation pass found a few non-ASCII glyphs. - The run added a concise project run summary and handout because the graph report fix created a meaningful public-safe maintenance change.  ## Validation  - YAML parse passed. - Public safety scan passed. - Tracked-text ASCII check passed after the graph report normalization. - Ignored local env and runtime paths stayed ignored.  ## Follow-Up  Leave future evening refreshes focused on real drift or validation findings and avoid routine registry churn."
+    },
+    {
+      "path": "wiki/runs/2026-06-28-evening-status-refresh.md",
+      "title": "Run Note: Evening Status Refresh",
+      "text": "# Run Note: Evening Status Refresh  ## Task  Refresh only public-safe current-state files in the ArchFlow public repository and update the skill registries only if the actual used or configured skills changed.  ## Outputs  - Confirmed no changes were needed in `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, or `skills/skills-used.md`. - Refreshed stale current-state wording in the June 25 public setup and dashboard reports. - Regenerated `project/dashboard/data.json` after the report refresh. - Added `project/runs/2026-06-28-evening-status-refresh/run-summary.md`. - Added `project/runs/2026-06-28-evening-status-refresh/agent-handout.md`.  ## Decision  Skill registry edits remain conditional on real setup drift. When the public runtime and proof evidence already exists, nightly maintenance should prefer small report corrections over registry churn.  ## Status  Completed. The public project reports now match the already saved runtime and proof artifacts, and the dashboard excerpts were refreshed to the same state."
+    },
+    {
+      "path": "wiki/runs/2026-06-29-tool-and-market-integration.md",
+      "title": "Run - Tool And Market Integration",
+      "text": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `project/runs/2026-06-29-tool-market-integration/` - `wiki/decisions/2026-06-29-tool-memory-model-routing.md` - targeted Notion E2 updates after product-owner verification  ## Durable Facts  - E1.3 remains the next KB/readback gate. - Loop Engineering is adopted as report-only operating discipline. - E2 now has a structured market evidence engine. - First ICP hypothesis is product/software/AI service agencies. - Cognee, turbovec, and Mistral are gated future layers. - Notion E2 updates were create-missing-or-append-only.  ## Next Steps  1. Complete E1.3 readback before activating Cognee or turbovec. 2. Approve E2.0 source/API matrix and account-card schema before broad market collection. 3. Run E2 market research as report-only loops with AF Research drafting and AF Review "
     }
   ],
   "sources": [

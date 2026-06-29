@@ -19,6 +19,12 @@ state_schema:
   kb_update_path: string
   review_report_path: string
   task_handout_path: string
+  loop_state_path: string
+  loop_attempt_number: integer
+  max_attempts_per_item: integer
+  maker_agent: string
+  verifier_agent: string
+  market_research_packet_path: string
   langsmith_trace_id: string
   langsmith_trace_url: string
   approval_status: approved_revise_or_blocked
@@ -59,6 +65,10 @@ nodes:
     owner_agent: af_publisher
     purpose: create or update the agent-readable handout when the run uses one or more agents or solves one or more subtasks, including approved and blocked terminal states.
     output: project/runs/<date>-<run-name>/agent-handout.md
+  run_market_research_engine:
+    owner_agent: af_research
+    purpose: run E2 account-evidence, signal extraction, pain scoring, and ICP synthesis only after E1.3 handoff.
+    output: project/workflows/market-research-engine.yaml
 
 edges:
   - from: START
@@ -96,6 +106,9 @@ current_parameters:
   observability: langsmith_configured_langgraph_smoke_trace_submitted
   human_approval_required_before_publication: true
   max_revision_loops: 2
+  max_attempts_per_item: 3
+  default_loop_level: l1_report_only
+  verifier_same_as_maker_allowed: false
   final_runtime_owner: codex_operator
   local_minor_task_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
   primary_publication_auth: codex_operated_git_ssh

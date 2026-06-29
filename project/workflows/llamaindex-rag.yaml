@@ -63,3 +63,15 @@ current_limitations:
   - Vector embeddings are not generated yet.
   - First proof uses deterministic local keyword retrieval over LlamaIndex documents.
   - Only sanitized public files are approved for indexing by default.
+
+future_vector_store:
+  candidate: turbovec
+  integration_rule: use_under_llamaindex_adapter_only
+  status: deferred_until_source_ids_embeddings_and_metadata_exist
+  required_before_pilot:
+    - stable_source_id_doc_id_chunk_id
+    - fixed_embedding_model_and_dimensions
+    - public_private_allowlist_filters
+    - twenty_query_retrieval_benchmark
+    - ignored_local_persist_dir
+  fallback: existing_llamaindex_store

@@ -136,6 +136,7 @@ def main() -> int:
         (PROJECT / "workflows" / "llamaindex-rag.yaml", LlamaIndexWorkflow),
         (PROJECT / "workflows" / "crewai-crew.yaml", CrewWorkflow),
         (PROJECT / "workflows" / "knowledge-integration.yaml", KnowledgeIntegration),
+        (PROJECT / "workflows" / "market-research-engine.yaml", NamedYaml),
         (PROJECT / "config" / "model-routing.yaml", ModelRouting),
     ]
     ok: list[str] = []

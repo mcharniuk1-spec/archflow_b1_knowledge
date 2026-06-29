@@ -158,8 +158,8 @@ Tracked public example:
 Current status:
 
 - configured
-- API key missing
-- no live trace sent yet
+- API key present only in ignored local env
+- sanitized smoke traces submitted
 - not a model provider
 
 Operating rule:
@@ -177,8 +177,9 @@ Current file:
 Current status:
 
 - configured as contract
-- runtime package not installed
-- no graph execution trace exists yet
+- runtime package installed in the ignored project runtime
+- LangGraph smoke workflow passed with approved status
+- sanitized LangGraph trace submitted
 
 LangGraph state fields:
 
@@ -224,7 +225,7 @@ Current graph logic:
 Current graph parameters:
 
 - checkpointer: none for now
-- observability: LangSmith configured, awaiting API key
+- observability: LangSmith configured; sanitized traces verified
 - max revision loops: 2
 - human approval before publication: true
 - model execution provider: Ollama only
@@ -241,8 +242,9 @@ Current file:
 Current status:
 
 - configured as contract
-- runtime package not installed
-- Codex is active execution layer until installed
+- runtime package installed in the ignored project runtime
+- config/import validation passes without LLM execution
+- Codex remains the active execution and review layer
 
 Current process:
 
@@ -288,8 +290,9 @@ Current file:
 Current status:
 
 - configured as contract
-- runtime package not installed
-- no vector index generated
+- runtime package installed in the ignored project runtime
+- approved-corpus retrieval proof passed
+- persisted runtime summary stays in ignored local storage
 
 Approved corpus:
 
@@ -375,9 +378,9 @@ Current output templates:
 - `review-report.md`
 - `run-summary.md`
 
-No completed first proof-run document set exists yet.
+Completed proof folders now exist under `project/runs/2026-06-26-june24-next-steps-proof/` and `project/runs/E1.2/2026-06-26-full-test/`.
 
-The first proof run should use sanitized source material and produce a full output folder.
+The next proof work should focus on E1.3 KB writeback and readback, not on re-proving the initial document set.
 
 ## 11. Agent Structure Options
 
@@ -469,6 +472,10 @@ Done:
 - LangSmith env prepared
 - WikiLLM public memory installed
 - LangGraph/CrewAI/LlamaIndex contracts written
+- LangGraph runtime smoke passed
+- LlamaIndex approved-corpus retrieval proof passed
+- CrewAI config/import check passed
+- first public-safe proof runs saved under `project/runs/`
 
 ### Phase 1: API Key And Trace Readiness
 

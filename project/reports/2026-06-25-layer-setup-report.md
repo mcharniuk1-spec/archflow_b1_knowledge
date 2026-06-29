@@ -1,7 +1,7 @@
 # Layer Setup Report
 
 Date: 2026-06-25
-Status: public setup completed locally and published to GitHub.
+Status: initial layer report refreshed through the 2026-06-26 public runtime and proof evidence.
 
 ## 1. Public Repository Layer
 
@@ -85,9 +85,10 @@ Current nodes:
 Status:
 
 - Configured as a workflow contract.
-- Runtime package is not installed yet.
-- No LangGraph execution trace exists yet.
-- LangSmith tracing is configured but awaiting the API key.
+- Runtime package is installed in the ignored project runtime.
+- LangGraph smoke workflow passed with approved status.
+- A sanitized LangGraph smoke trace was submitted.
+- LangSmith tracing is configured; the API key remains only in the ignored local env file.
 
 ## 4A. LangSmith Layer
 
@@ -100,13 +101,14 @@ Parameters:
 - endpoint: `https://eu.api.smith.langchain.com`
 - local env file: `project/.env.langsmith.local`
 - public example: `project/config/langsmith.env.example`
-- API key status: waiting for manual insertion
+- API key status: present only in ignored local env
 - model execution: Ollama only
 
 Status:
 
 - Configured.
-- Not tested against LangSmith because no API key is present.
+- A sanitized smoke trace was submitted with Ollama-only metadata.
+- LangGraph smoke tracing has also been verified.
 
 ## 5. CrewAI Layer
 
@@ -134,8 +136,9 @@ Process:
 Status:
 
 - Configured as a crew contract.
-- Runtime package is not installed yet.
-- No CrewAI execution output exists yet.
+- Runtime package is installed in the ignored project runtime.
+- Config and import validation pass.
+- CrewAI LLM task execution is still deferred.
 
 ## 6. LlamaIndex RAG Layer
 
@@ -173,8 +176,9 @@ Parameters:
 Status:
 
 - Configured as a RAG contract.
-- Runtime package is not installed yet.
-- No vector index exists yet.
+- Runtime package is installed in the ignored project runtime.
+- Approved-corpus retrieval proof passed and returned source paths.
+- A persisted runtime summary exists only under ignored local storage.
 
 ## 7. Output Document Layer
 
@@ -194,7 +198,8 @@ Templates exist for:
 Status:
 
 - Output documents are defined.
-- First proof-run documents are not completed yet.
+- First proof-run documents are completed under `project/runs/2026-06-26-june24-next-steps-proof/`.
+- E1.2 full-test outputs are completed under `project/runs/E1.2/2026-06-26-full-test/`.
 
 ## 8. Automation Layer
 

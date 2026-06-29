@@ -53,3 +53,15 @@ The first production-like agent setup should keep AF Tools, AF Review, and AF Pu
 ## E1.2 To E1.3 Handoff Insight
 
 The correct transition gate is owner acceptance plus KB readback, not more artifact generation. E1.3 should prove that the approved PRD and agent history can be written into public-safe memory and retrieved by a future agent before Obsidian mirror expansion, Nexus live writes, or broader research layers are activated.
+
+## Loop And Memory Architecture Insight
+
+Loop Engineering should wrap the current LangGraph/CrewAI/LlamaIndex stack rather than replace it. The reliable pattern is state plus stop conditions: source boundary, attempt caps, maker/checker separation, budget, run log, review, handout, and memory promotion. WikiLLM remains the truth layer; Cognee and turbovec are useful only when they are fed approved artifacts and can be rebuilt or reset.
+
+## Market Engine Insight
+
+The first sellable market wedge is not generic AI productivity or "make a PRD." It is reducing ambiguity, PM/BA cleanup time, rework, weak handoffs, scope creep, and lost decision memory for service companies that repeatedly convert client/customer conversations into buildable work. E2 should therefore produce account-level evidence cards and ICP scores before content or outreach claims.
+
+## Demand Validation Insight
+
+Validated demand requires buyer risk: paid diagnostic, prepayment, approved paid start, source packet plus timeline/scope, budget-owner referral, or proposal request. Attention, compliments, category counts, social interest, and internal proof do not validate demand.

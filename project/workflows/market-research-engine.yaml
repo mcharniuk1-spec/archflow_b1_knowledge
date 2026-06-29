@@ -1,0 +1,123 @@
+name: archflow_e2_market_research_engine
+status: planned_report_only
+runtime: langgraph_controlled_research_workflow
+purpose: >
+  Convert the E2 market-research phase into a bounded evidence engine:
+  account universe, public signals, pain scoring, role verification,
+  message synthesis, learning loop, and AF Review.
+
+primary_icp_hypothesis:
+  segment: product_software_ai_service_agencies
+  profile: "10-250 person B2B agencies and consultancies selling MVP, product discovery, product strategy, AI automation, or custom software"
+  first_offer: client_discovery_to_backlog_pack
+  secondary_segments:
+    - product_led_b2b_saas_scaleups
+    - ai_automation_consultancies
+    - founder_led_b2b_startups
+    - enterprise_product_ops_later
+
+stages:
+  hypothesis:
+    owner_agent: af_research
+    output: hypothesis_memo_and_exclusion_rules
+    mode: sequential
+  account_universe:
+    owner_agent: af_tools
+    output: deduplicated_account_table
+    mode: parallel_allowed
+  public_signal_pass:
+    owner_agent: af_research
+    output: company_evidence_cards
+    mode: parallel_allowed
+    parallel_branches:
+      - company_website_parser
+      - job_signal_collector
+      - review_miner
+      - social_language_miner
+      - competitor_gap_mapper
+  pain_scoring:
+    owner_agent: af_research
+    output: scored_shortlist
+    mode: sequential_merge
+  role_verification:
+    owner_agent: af_tools
+    output: verified_role_map
+    mode: sequential_reviewed
+  message_synthesis:
+    owner_agent: af_copy
+    output: personalized_outreach_drafts
+    mode: sequential_reviewed
+  fact_check_gate:
+    owner_agent: af_review
+    output: approved_or_blocked_research_packet
+    mode: sequential_blocking
+  learning_loop:
+    owner_agent: af_knowledge
+    output: response_and_objection_log_update
+    mode: report_only
+
+account_card_schema:
+  account_id: stable_domain_id
+  company_name: string
+  domain: string
+  segment_primary: string
+  segment_secondary: string
+  source_seed: string
+  website_signal: string
+  job_signal_score: integer_0_to_20
+  linkedin_signal_summary: authorized_summary_only
+  social_signal_summary: hypothesis_only
+  pain_type: ambiguity_memory_roadmap_delivery_trust_customer_feedback_ai_adoption_hiring_gap
+  decision_roles: role_names_and_currentness_status
+  offer_fit: diagnostic_prd_sprint_agency_delivery_pack_product_ops_retainer_ai_workflow_review
+  evidence_grade: a_b_c_d
+  risk_notes: string
+  next_action: exclude_monitor_enrich_verify_people_draft_outreach_interview
+
+scoring_model:
+  pain_intensity: 25
+  budget_proxy: 15
+  trigger_event: 15
+  strategic_fit: 15
+  reachability: 10
+  differentiation_gap: 10
+  risk_penalty: -20
+
+evidence_rules:
+  minimum_independent_signals_before_outreach: 2
+  social_only_claims: hypothesis
+  decision_maker_currentness: verify_live_before_outreach
+  private_profile_scraping: forbidden
+  raw_private_lead_data_in_public_repo: forbidden
+
+tool_policy:
+  allowed_now:
+    - public_directories
+    - company_websites
+    - public_job_pages
+    - public_reviews
+    - authorized_linkedin_views
+    - approved_search_queries
+  gated_later:
+    - tavily
+    - exa
+    - serpapi
+    - google_custom_search
+    - firecrawl
+    - apify
+    - playwright
+    - browserless
+    - clay
+    - apollo
+    - cognism
+    - clearbit
+    - people_data_labs
+  rule: "Use only when legal, source boundaries, storage, rate limits, and AF Review approval are clear."
+
+done_criteria:
+  e2_0: tool_api_plan_source_boundaries_extraction_schema_loop_gate
+  e2_1: approved_source_list_and_segment_data_model
+  e2_2: evidence_cards_and_competitor_pain_map
+  e2_3: agency_first_icp_card
+  e2_4: subaudience_split
+  e2_5: ten_to_fifteen_verified_targets_for_e6

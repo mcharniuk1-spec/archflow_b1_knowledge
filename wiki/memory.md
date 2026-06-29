@@ -94,3 +94,15 @@ ArchFlow Block 1 is the first public solution:
 - The dashboard is read-only and is a control panel, not the primary brain.
 - WikiLLM remains the canonical durable memory layer.
 - The dashboard monitors configured contracts, runtime package readiness, run files, and public-safe corpus status.
+
+## Tool And Market Integration Memory - 2026-06-29
+
+- Current MVP path remains E1 KB proof -> E2 research/ICP -> E3 website/positioning -> E4 content -> E5 analytics/ROI -> E6 outreach -> E7 payment verdict.
+- Loop Engineering is adopted as an operating discipline for anti-looping, state, maker/checker separation, run logs, budgets, and human gates.
+- Default loop level is L1 report-only. L3 unattended loops are blocked before payment verdict and explicit approval.
+- Cognee is a candidate long-term memory/knowledge-graph layer after E1.3 readback proves public-safe KB writeback. It must not replace WikiLLM.
+- turbovec is a candidate local vector store under LlamaIndex after vector embeddings, stable source IDs, and retrieval metadata are active.
+- Mistral models are optional quality-pass models for sanitized PRDs, research synthesis, and final text after explicit credential, source-boundary, budget, and review approval.
+- E2 first ICP hypothesis is product/software/AI service agencies. Secondary lanes are AI consultancies, product-led B2B SaaS scaleups, founder-led B2B startups, and later enterprise product ops.
+- E2 must use account evidence cards, source grades, role verification status, and at least two independent public signals before outreach.
+- Directory counts, job counts, social posts, named sample accounts, internal proof, and content engagement are research signals only, not validated demand.

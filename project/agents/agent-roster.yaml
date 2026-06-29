@@ -45,6 +45,24 @@ agents:
       - task_matrix
       - milestone_plan
 
+  af_research:
+    title: AF Research
+    provider: codex_operator
+    local_model: gemma4:e4b
+    skills:
+      - market-structure-analysis
+      - research-source-triage
+      - account-evidence-card-writing
+      - job-signal-analysis
+      - review-mining
+      - icp-scoring
+    outputs:
+      - account_evidence_cards
+      - competitor_gap_matrix
+      - pain_map
+      - icp_scorecard
+      - target_shortlist
+
   af_knowledge:
     title: AF Knowledge
     provider: codex_operator
@@ -59,6 +77,22 @@ agents:
       - kb_update_packet
       - public_history_summary
       - memory_candidates
+
+  af_copy:
+    title: AF Copy
+    provider: codex_operator
+    local_model: gemma4:e4b
+    skills:
+      - source-grounded-copywriting
+      - positioning-synthesis
+      - content-planning
+      - outreach-message-drafting
+      - claim-status-check
+    outputs:
+      - positioning_variants
+      - content_angles
+      - outreach_drafts
+      - proposal_copy
 
   af_review:
     title: AF Review

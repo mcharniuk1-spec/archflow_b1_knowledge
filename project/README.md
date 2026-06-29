@@ -19,6 +19,7 @@ Build a repeatable public-safe system that converts messy work material into exe
 |---|---|
 | `config/` | Public-safe provider and model configuration templates. |
 | `workflows/` | LangGraph, CrewAI, and LlamaIndex workflow contracts. |
+| `loops/` | Loop Engineering contract, state schema, budget, run log, and readiness review. |
 | `dashboard/` | Phase 2 local read-only operator dashboard. |
 | `outputs/` | Output document templates for proof runs. |
 | `reports/` | Setup and review reports by layer. |
@@ -39,6 +40,7 @@ LlamaIndex is installed and has passed approved-corpus retrieval over public fil
 CrewAI is installed and has passed config/import validation without LLM task execution.
 Graphify output exists for the public repository.
 E1.2 full-test artifacts exist under `project/runs/E1.2/2026-06-26-full-test/`, including the PRD, streaming report, system report, task matrix, KB update, review report, and agent handout.
+The June 29 tool and market integration adds L1 report-only loop controls and an E2 market-research engine workflow. Cognee, turbovec, and Mistral remain gated future layers, not active runtime dependencies.
 
 ## Local Dashboard
 

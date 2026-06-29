@@ -1,447 +1,762 @@
 {
   ".githooks/pre-push": {
-    "mtime": 1782469247.0,
+    "mtime": 1782469247.3471162,
     "ast_hash": "bfb6a03a3480ef73d5cf4d1a2b8c6ed4",
     "semantic_hash": ""
   },
   "project/dashboard/data.json": {
-    "mtime": 1782470373.0,
-    "ast_hash": "9d65ff22d3d092fabf030629241d1018",
+    "mtime": 1782748248.8806813,
+    "ast_hash": "0ab2917d72fba86d3f94a8ed98abf713",
     "semantic_hash": ""
   },
   "project/dashboard/app.js": {
-    "mtime": 1782470354.0,
+    "mtime": 1782470354.005318,
     "ast_hash": "f0dce558de020e47301c8e56f88beee5",
     "semantic_hash": ""
   },
   "project/scripts/validate-workflows.py": {
-    "mtime": 1782470214.0,
-    "ast_hash": "940ccec053bb7186ef21f91e2f92e82d",
+    "mtime": 1782747278.2719438,
+    "ast_hash": "f174b746d26d4994edb4e28a61eb7491",
     "semantic_hash": ""
   },
   "project/scripts/langsmith-smoke-trace.py": {
-    "mtime": 1782399574.0,
+    "mtime": 1782399574.457375,
     "ast_hash": "782aecb6839c1edfcafbcc0970c65e20",
     "semantic_hash": ""
   },
   "project/scripts/llamaindex-approved-corpus.py": {
-    "mtime": 1782470214.0,
+    "mtime": 1782470214.595657,
     "ast_hash": "95bb8f2f3072b457b3f2d2be1f77ac9e",
     "semantic_hash": ""
   },
   "project/scripts/smoke-test-ollama-qwythos.sh": {
-    "mtime": 1782375997.0,
+    "mtime": 1782375997.701219,
     "ast_hash": "45cea1fdc5071f9a19ca56aca57b7218",
     "semantic_hash": ""
   },
   "project/scripts/check-ollama.sh": {
-    "mtime": 1782375997.0,
+    "mtime": 1782375997.5654552,
     "ast_hash": "2aee753a0750d558ead3d8cc3bd4c98f",
     "semantic_hash": ""
   },
   "project/scripts/langgraph-smoke-run.py": {
-    "mtime": 1782469246.0,
+    "mtime": 1782469246.6906085,
     "ast_hash": "488c00f60ccc6ba57da581b8e0f27765",
     "semantic_hash": ""
   },
   "project/scripts/pre-push-runtime-guard.py": {
-    "mtime": 1782469593.0,
+    "mtime": 1782469593.7614925,
     "ast_hash": "f82bf16327ba8fba07631bd5c79f066f",
     "semantic_hash": ""
   },
   "project/scripts/generate-dashboard-data.py": {
-    "mtime": 1782470363.0,
+    "mtime": 1782470363.080121,
     "ast_hash": "bd61fb5f812d7abfd133ff9f588f9602",
     "semantic_hash": ""
   },
   "project/scripts/crewai-config-check.py": {
-    "mtime": 1782469593.0,
+    "mtime": 1782469593.6160796,
     "ast_hash": "38559835ebb272f29d96f8565492e672",
     "semantic_hash": ""
   },
   "scripts/public_safety_scan.py": {
-    "mtime": 1782399045.0,
-    "ast_hash": "de4fbb9ed7bc7f18b8687dcad8eb8f0b",
+    "mtime": 1782474090.606289,
+    "ast_hash": "d976fca8b14eb42d4f2e18b81461dc5e",
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1782379043.0,
-    "ast_hash": "d4e8737f5a9bb2b93bce3d6104ae2225",
+    "mtime": 1782474090.5215316,
+    "ast_hash": "d35844c4b157583c99484550056d71aa",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1782379018.0,
+    "mtime": 1782379018.2265348,
     "ast_hash": "2bc4248552dae463845ee050a1274c57",
     "semantic_hash": ""
   },
   "PUBLICATION_REVIEW.md": {
-    "mtime": 1782379043.0,
+    "mtime": 1782379043.8054287,
     "ast_hash": "d50cb7329df0b503969c1c23146d4020",
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1782399014.0,
-    "ast_hash": "7d68bfb80e73546708502c16eb370e2d",
+    "mtime": 1782472759.140187,
+    "ast_hash": "83f8245183b906bd5f90100e06761f0f",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1782375996.0,
+    "mtime": 1782375996.1993515,
     "ast_hash": "d3d3887cd88b8d1e875d410a1f857816",
     "semantic_hash": ""
   },
   "wiki/insights.md": {
-    "mtime": 1782469899.0,
-    "ast_hash": "9c87a42a1a1f077dde3863f5bd9e698b",
+    "mtime": 1782747345.3680847,
+    "ast_hash": "e96fb51d4beb81c1a4342106f0777825",
     "semantic_hash": ""
   },
   "wiki/log.md": {
-    "mtime": 1782469899.0,
-    "ast_hash": "14efd7cea5928c30cc2ba2a5576b394d",
+    "mtime": 1782748184.5760565,
+    "ast_hash": "fec8ed4be4f62ee5519ec64595e68fcf",
     "semantic_hash": ""
   },
   "wiki/memory.md": {
-    "mtime": 1782469899.0,
-    "ast_hash": "f301b411eade26ff4de2785f8f79ba8f",
+    "mtime": 1782747345.2790778,
+    "ast_hash": "e541933a7ff4a9760c8b716dbcb60e18",
     "semantic_hash": ""
   },
   "wiki/index.md": {
-    "mtime": 1782469899.0,
+    "mtime": 1782469899.1374426,
     "ast_hash": "0087150b5b482c555bfb621963788744",
     "semantic_hash": ""
   },
   "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md": {
-    "mtime": 1782379019.0,
-    "ast_hash": "849895ccb6fbc1521c6ec6ea48fb8ca1",
+    "mtime": 1782473617.875404,
+    "ast_hash": "43286f40ced225052ffbd1ae44de277f",
     "semantic_hash": ""
   },
   "wiki/decisions/2026-06-26-e1-runtime-guard-and-agent-stack.md": {
-    "mtime": 1782469912.0,
+    "mtime": 1782469912.3463817,
     "ast_hash": "365a127f608205e9bfc8ee4e09b10001",
     "semantic_hash": ""
   },
   "wiki/rules/public-wikillm-contract.md": {
-    "mtime": 1782379018.0,
+    "mtime": 1782379018.9556592,
     "ast_hash": "5fa73cea9c2668c838299654097e97f9",
     "semantic_hash": ""
   },
   "wiki/issues/2026-06-25-langsmith-api-key-missing.md": {
-    "mtime": 1782469899.0,
+    "mtime": 1782469899.6742513,
     "ast_hash": "7f5b999ee3a4324adaeac392410ddf69",
     "semantic_hash": ""
   },
   "wiki/runs/2026-06-25-current-setup-methods-and-agent-plan.md": {
-    "mtime": 1782380805.0,
+    "mtime": 1782380805.3865542,
     "ast_hash": "bb8d01e491150a49a76e035e0607fb00",
     "semantic_hash": ""
   },
   "wiki/runs/2026-06-25-dashboard-setup-and-operation.md": {
-    "mtime": 1782399980.0,
+    "mtime": 1782399980.0272415,
     "ast_hash": "268cc75b0f499f0b92307fcf6bd189c8",
     "semantic_hash": ""
   },
   "wiki/runs/2026-06-25-integrated-knowledge-and-safety-hook.md": {
-    "mtime": 1782399149.0,
+    "mtime": 1782399149.7784307,
     "ast_hash": "a44af2a3dd171e941698a00fadd3546c",
     "semantic_hash": ""
   },
   "wiki/runs/2026-06-25-langsmith-wikillm-setup.md": {
-    "mtime": 1782379019.0,
-    "ast_hash": "fa59a920336fd6e80698374f997ff22a",
+    "mtime": 1782473617.8730512,
+    "ast_hash": "43d8b4ac91348ae3b284425bbf3d30a1",
     "semantic_hash": ""
   },
   "project/integration-plan.md": {
-    "mtime": 1782470353.0,
+    "mtime": 1782470353.7309248,
     "ast_hash": "3e130346ae60a8f6827a858ef15000be",
     "semantic_hash": ""
   },
   "project/project-plan.md": {
-    "mtime": 1782399979.0,
-    "ast_hash": "f65ef8d95246fb1c3c562c28e2ce7202",
+    "mtime": 1782747050.7315621,
+    "ast_hash": "968db168e6ea5b7190f45822cfae78d3",
     "semantic_hash": ""
   },
   "project/future-actions-and-parameters.md": {
-    "mtime": 1782470353.0,
-    "ast_hash": "2695af29ef8b1e42a4f5d28fb8980016",
+    "mtime": 1782473639.8387823,
+    "ast_hash": "04b201f0b873c998703a3c3cbec236e3",
     "semantic_hash": ""
   },
   "project/langsmith-setup.md": {
-    "mtime": 1782399394.0,
-    "ast_hash": "6dace79bf39524d09789c3d63c42c2a1",
+    "mtime": 1782473617.8767796,
+    "ast_hash": "80f2df843de18b515f192322978ae8aa",
     "semantic_hash": ""
   },
   "project/README.md": {
-    "mtime": 1782470353.0,
-    "ast_hash": "62ada9bf86e70032efb8695dd8f00738",
+    "mtime": 1782747309.9158607,
+    "ast_hash": "d3bc205a4b1d750fba50e9e5c52ac37f",
     "semantic_hash": ""
   },
   "project/agentic-stack.md": {
-    "mtime": 1782379044.0,
-    "ast_hash": "2311baa4e9e8f180ce0ecb663658c799",
+    "mtime": 1782747223.3860152,
+    "ast_hash": "24919cef8e6aee45e9425be13fb6c576",
     "semantic_hash": ""
   },
   "project/provider-setup.md": {
-    "mtime": 1782399388.0,
-    "ast_hash": "d14c1c2cbbfd4e62ab8c5f688aa195f7",
+    "mtime": 1782473617.8756115,
+    "ast_hash": "4dab0e3ac6581f38beb93af5a1e19a32",
     "semantic_hash": ""
   },
   "project/operating-rules.md": {
-    "mtime": 1782375996.0,
-    "ast_hash": "52b1eefc90d7ae7ca04a087532878b7c",
+    "mtime": 1782472759.2320335,
+    "ast_hash": "662a16a4139c36cef94d8b3616e4daf5",
     "semantic_hash": ""
   },
   "project/config/model-routing.yaml": {
-    "mtime": 1782399362.0,
-    "ast_hash": "7ca45de6808ed1f78e972b87b3615213",
+    "mtime": 1782747294.4499714,
+    "ast_hash": "3a03db74830a6ab7bc806fd46ff76fcc",
     "semantic_hash": ""
   },
   "project/workflows/crewai-crew.yaml": {
-    "mtime": 1782469664.0,
-    "ast_hash": "96e762c669c9269e89669a3a96a6cdc2",
+    "mtime": 1782472759.4164944,
+    "ast_hash": "06976ef1e4d67c7b59f78ebb731ee724",
     "semantic_hash": ""
   },
   "project/workflows/langgraph-controller.yaml": {
-    "mtime": 1782469663.0,
-    "ast_hash": "dea4b0fa920b42567c3a08598b42b175",
+    "mtime": 1782747278.0057316,
+    "ast_hash": "c033d1bacf06246937bd208b52dc36bb",
     "semantic_hash": ""
   },
   "project/workflows/knowledge-integration.yaml": {
-    "mtime": 1782469664.0,
-    "ast_hash": "d160c759e770ed7e7c527a5c8d018b0a",
+    "mtime": 1782747278.1824615,
+    "ast_hash": "ec7841aeedd14ce26716f581e0a2d90e",
     "semantic_hash": ""
   },
   "project/workflows/llamaindex-rag.yaml": {
-    "mtime": 1782469664.0,
-    "ast_hash": "161a6b529d9bd32fd440f22a69984181",
+    "mtime": 1782747278.0941224,
+    "ast_hash": "75156979731e812e1050a7ac86a899c9",
     "semantic_hash": ""
   },
   "project/agents/skills-by-agent.md": {
-    "mtime": 1782469247.0,
-    "ast_hash": "c35eec3a95c0965ba2b6cd6b2e8c6e5b",
+    "mtime": 1782747239.4494553,
+    "ast_hash": "90cedebb9797a8ab50431fb09cd0a6ff",
     "semantic_hash": ""
   },
   "project/agents/README.md": {
-    "mtime": 1782377304.0,
+    "mtime": 1782377304.0441766,
     "ast_hash": "124a7bd47f6f82bd62154f0096b727ad",
     "semantic_hash": ""
   },
   "project/agents/agent-roster.yaml": {
-    "mtime": 1782469247.0,
-    "ast_hash": "9141e62f577cf4b937c88550126f803a",
+    "mtime": 1782747239.3590343,
+    "ast_hash": "c495f625b16fe15d327a32733c613513",
     "semantic_hash": ""
   },
   "project/dashboard/index.html": {
-    "mtime": 1782400050.0,
+    "mtime": 1782400050.834799,
     "ast_hash": "b3bf5481ee0af0b6d795ea28e1cc5f0a",
     "semantic_hash": ""
   },
   "project/dashboard/README.md": {
-    "mtime": 1782399979.0,
+    "mtime": 1782399979.7749586,
     "ast_hash": "84200b00a744cd8ce9997297cea9173d",
     "semantic_hash": ""
   },
   "project/prompts/af-graph.md": {
-    "mtime": 1782375997.0,
+    "mtime": 1782375997.9259803,
     "ast_hash": "0ad5335aee47d006a0d036f860be8b9b",
     "semantic_hash": ""
   },
   "project/prompts/af-review.md": {
-    "mtime": 1782375998.0,
+    "mtime": 1782375998.0629106,
     "ast_hash": "f7ee7a37f3aefa1629cd6d9637ba1c99",
     "semantic_hash": ""
   },
   "project/outputs/README.md": {
-    "mtime": 1782377331.0,
+    "mtime": 1782377331.0180233,
     "ast_hash": "4b4b10b880def543311b2ba6c4f4faf4",
     "semantic_hash": ""
   },
   "project/outputs/templates/prd.md": {
-    "mtime": 1782377277.0,
+    "mtime": 1782377277.864107,
     "ast_hash": "fbbfa9a1e3c29a8b575d37f969a71b2e",
     "semantic_hash": ""
   },
   "project/outputs/templates/review-report.md": {
-    "mtime": 1782377278.0,
+    "mtime": 1782377278.3006642,
     "ast_hash": "d78034e39025548a6a0389f4611a63f3",
     "semantic_hash": ""
   },
   "project/outputs/templates/run-summary.md": {
-    "mtime": 1782377278.0,
+    "mtime": 1782377278.4479632,
     "ast_hash": "41978475717a6a9f2fc131d057a79871",
     "semantic_hash": ""
   },
   "project/outputs/templates/retrieval-log.md": {
-    "mtime": 1782377277.0,
+    "mtime": 1782377277.5731893,
     "ast_hash": "6aecb117c9fe60f7d911cad7db6ab7b6",
     "semantic_hash": ""
   },
   "project/outputs/templates/source-inventory.md": {
-    "mtime": 1782377277.0,
+    "mtime": 1782377277.426248,
     "ast_hash": "c5fe6297cd9f62efc4e810b8c394942f",
     "semantic_hash": ""
   },
   "project/outputs/templates/knowledge-base-update.md": {
-    "mtime": 1782377278.0,
+    "mtime": 1782377278.15484,
     "ast_hash": "69243e7a8acb76ef6efac202c5a0acc5",
     "semantic_hash": ""
   },
   "project/outputs/templates/responsibility-matrix.md": {
-    "mtime": 1782377331.0,
+    "mtime": 1782377331.2556915,
     "ast_hash": "9e7438d4b23fc24adf08f876b5efe144",
     "semantic_hash": ""
   },
   "project/outputs/templates/context-digest.md": {
-    "mtime": 1782377277.0,
+    "mtime": 1782377277.7192276,
     "ast_hash": "8cb762a54f2906f2384da32c6ddcac68",
     "semantic_hash": ""
   },
   "project/runs/2026-06-25-integrated-knowledge-and-safety-hook.md": {
-    "mtime": 1782399155.0,
+    "mtime": 1782399155.4022694,
     "ast_hash": "913616b057d545b82947df95f7ad5053",
     "semantic_hash": ""
   },
   "project/runs/2026-06-25-provider-github-automation.md": {
-    "mtime": 1782376675.0,
+    "mtime": 1782376675.1783369,
     "ast_hash": "f0ac9aa972f0f4c9bf20dbef2a0244eb",
     "semantic_hash": ""
   },
   "project/runs/README.md": {
-    "mtime": 1782375998.0,
+    "mtime": 1782375998.2926414,
     "ast_hash": "f9b8bc9c747a9dcb72f657bec21462d7",
     "semantic_hash": ""
   },
   "project/runs/2026-06-25-evening-skill-registry-refresh.md": {
-    "mtime": 1782414046.0,
+    "mtime": 1782414046.8279505,
     "ast_hash": "a1da7c1fd68baa9d0844982caa292cde",
     "semantic_hash": ""
   },
   "project/runs/2026-06-25-clean-public-resetup.md": {
-    "mtime": 1782376102.0,
+    "mtime": 1782376102.9414496,
     "ast_hash": "b108f397b1d05f71e320485b35d230fa",
     "semantic_hash": ""
   },
   "project/runs/2026-06-25-codex-main-agentic-workflow.md": {
-    "mtime": 1782377653.0,
+    "mtime": 1782377653.1412542,
     "ast_hash": "24ee5a70082ed1fff099b9990d1a42da",
     "semantic_hash": ""
   },
   "project/runs/2026-06-25-langsmith-wikillm-setup.md": {
-    "mtime": 1782378967.0,
-    "ast_hash": "702c149d405a0da3ab5ee4d70d96d5f3",
+    "mtime": 1782473617.8748786,
+    "ast_hash": "a48d26174a372cf28f90172a3227363d",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/prd.md": {
-    "mtime": 1782469808.0,
+    "mtime": 1782469808.4846675,
     "ast_hash": "daf289f7325fd4caa0de95c2c809e900",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/review-report.md": {
-    "mtime": 1782469809.0,
+    "mtime": 1782469809.0249197,
     "ast_hash": "7e08ac98c9fdccf06c31dea899cc8eea",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/run-summary.md": {
-    "mtime": 1782469809.0,
+    "mtime": 1782469809.1606808,
     "ast_hash": "bf73dc57e49c116474f552bce06cdc61",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/summary.md": {
-    "mtime": 1782469808.0,
+    "mtime": 1782469808.347688,
     "ast_hash": "0223ffbc71b11eb51f9f98d017181776",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/retrieval-log.md": {
-    "mtime": 1782469808.0,
+    "mtime": 1782469808.8896894,
     "ast_hash": "a903bbf01d4f68346f35def308fe9da8",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/source-inventory.md": {
-    "mtime": 1782469808.0,
+    "mtime": 1782469808.0747828,
     "ast_hash": "2ab9ea3da7587bec7641b1afb9b6c2df",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/knowledge-base-update.md": {
-    "mtime": 1782469808.0,
+    "mtime": 1782469808.754689,
     "ast_hash": "9aa8b3033f0eda310523c475bd5df7fd",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/responsibility-matrix.md": {
-    "mtime": 1782469808.0,
+    "mtime": 1782469808.619755,
     "ast_hash": "d66d1c72f267926a8b489bf0002d7fc1",
     "semantic_hash": ""
   },
   "project/runs/2026-06-26-june24-next-steps-proof/context-digest.md": {
-    "mtime": 1782469808.0,
+    "mtime": 1782469808.2115316,
     "ast_hash": "b935249227ae3db803a69fded419e9fc",
     "semantic_hash": ""
   },
   "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md": {
-    "mtime": 1782380805.0,
-    "ast_hash": "572cad34193cf1fba7564b7d7adc295e",
+    "mtime": 1782715335.5969322,
+    "ast_hash": "120b59c6fbeab544b1b76bb54ccd5c0d",
     "semantic_hash": ""
   },
   "project/reports/2026-06-25-chat-execution-report.md": {
-    "mtime": 1782378967.0,
-    "ast_hash": "8e2432e9798bebb5c8e4d640b67f68d6",
+    "mtime": 1782473617.8739426,
+    "ast_hash": "bdae561909fd87ca9cf2ff47b625658d",
     "semantic_hash": ""
   },
   "project/reports/2026-06-25-dashboard-setup-and-operation-report.md": {
-    "mtime": 1782399979.0,
-    "ast_hash": "716ffdbaef90c8765c4dfd0dd15e8f8b",
+    "mtime": 1782715335.6819637,
+    "ast_hash": "c6c91bb03d806add3aa14f75c2ac408a",
     "semantic_hash": ""
   },
   "project/reports/2026-06-25-layer-setup-report.md": {
-    "mtime": 1782378967.0,
-    "ast_hash": "c75ae2316bf080ea0ddef870f4a79986",
+    "mtime": 1782715335.5139632,
+    "ast_hash": "e571716d5544ae0a18f2cf4825fa6d7c",
     "semantic_hash": ""
   },
   "history/legacy-file-inventory.md": {
-    "mtime": 1782375998.0,
+    "mtime": 1782375998.7930753,
     "ast_hash": "f7567d4fb3122d5c223f487f099ac8b5",
     "semantic_hash": ""
   },
   "history/resetup-summary-2026-06-24.md": {
-    "mtime": 1782375998.0,
+    "mtime": 1782375998.9344923,
     "ast_hash": "e0fd967b3a18508a555cd797888cecb5",
     "semantic_hash": ""
   },
   "history/notion-plan-ingest-2026-06-25.md": {
-    "mtime": 1782375999.0,
+    "mtime": 1782375999.070771,
     "ast_hash": "f04c50eda1039febb9d133bb9d46d631",
     "semantic_hash": ""
   },
   "history/README.md": {
-    "mtime": 1782375998.0,
+    "mtime": 1782375998.521167,
     "ast_hash": "3abcb1d1efb36a1f8a6eed7bc239258b",
     "semantic_hash": ""
   },
   "history/previous-work-summary.md": {
-    "mtime": 1782375998.0,
+    "mtime": 1782375998.6577873,
     "ast_hash": "e39a6ca9f107db07bc097aa7d4814371",
     "semantic_hash": ""
   },
   "skills/skills-used.md": {
-    "mtime": 1782469247.0,
-    "ast_hash": "c9eb13b74d6e65baeef1276661ffaa7e",
+    "mtime": 1782747255.8723223,
+    "ast_hash": "3914f5d785bd7a373a27cf292227f55d",
     "semantic_hash": ""
   },
   "skills/archflow-e1-runtime-guard/SKILL.md": {
-    "mtime": 1782469540.0,
+    "mtime": 1782469540.28824,
     "ast_hash": "0bdeac3d347bde1a4de67642dee7d244",
     "semantic_hash": ""
   },
   "skills/archflow-task-breakdown/SKILL.md": {
-    "mtime": 1782381959.0,
+    "mtime": 1782381959.8515325,
     "ast_hash": "795f0899864eba3743fb314074b74e2f",
     "semantic_hash": ""
   },
   "skills/archflow-task-breakdown/agents/openai.yaml": {
-    "mtime": 1782381934.0,
+    "mtime": 1782381934.309827,
     "ast_hash": "a718b50f8a8c989ac248444d2fa63dd8",
     "semantic_hash": ""
   },
   "project/reports/2026-06-25-e1-block1-subtask-execution-plan.pdf": {
-    "mtime": 1782382269.0,
+    "mtime": 1782382269.3695884,
     "ast_hash": "2281f702407dd86d0e2acc0f88769c67",
+    "semantic_hash": ""
+  },
+  "project/scripts/task-handout-hook.py": {
+    "mtime": 1782472758.9578261,
+    "ast_hash": "9f9a87d41105b62a4b6615e8df265c68",
+    "semantic_hash": ""
+  },
+  "project/scripts/e1_2_full_test.py": {
+    "mtime": 1782473505.7525382,
+    "ast_hash": "bc275e457ecb5df85c1fe860be327498",
+    "semantic_hash": ""
+  },
+  "project/scripts/render-e1-2-next-steps-pdf.py": {
+    "mtime": 1782476727.0536256,
+    "ast_hash": "c83358f5502ef3a276e328ef75ec1ced",
+    "semantic_hash": ""
+  },
+  "project/scripts/render-e1-2-pdfs.py": {
+    "mtime": 1782473948.6271896,
+    "ast_hash": "424dddc29ff60dab65e9279c7fceb89c",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/e1_2_langgraph_output.json": {
+    "mtime": 1782473982.820918,
+    "ast_hash": "d1acafa9fa9327e9523b9999e6926f46",
+    "semantic_hash": ""
+  },
+  ".codex/hooks.json": {
+    "mtime": 1782472758.8691125,
+    "ast_hash": "5f5aa45289e5507529a0d2d0b30018b7",
+    "semantic_hash": ""
+  },
+  "wiki/decisions/2026-06-29-tool-memory-model-routing.md": {
+    "mtime": 1782747345.5382192,
+    "ast_hash": "746009f58349e214ae6b1aca6c9cf204",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-26-task-handout-skill.md": {
+    "mtime": 1782472759.6921127,
+    "ast_hash": "6337a6f34e6cfcb1a863d6c4c018656b",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-26-e1-2-notion-sync.md": {
+    "mtime": 1782476791.472599,
+    "ast_hash": "26ac32c9cd8729fcc26561b43073e739",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-27-evening-skill-audit.md": {
+    "mtime": 1782656023.394706,
+    "ast_hash": "5fd9e39d6f31c4afc1799270836594d4",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-28-evening-status-refresh.md": {
+    "mtime": 1782715336.013801,
+    "ast_hash": "f6f4096ca85931f79e5fcbbcb6ea5795",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-26-evening-skill-refresh.md": {
+    "mtime": 1782497007.2099419,
+    "ast_hash": "49c56d4332c01d221e6b37af627ea184",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-26-e1-2-full-test.md": {
+    "mtime": 1782473861.6964824,
+    "ast_hash": "269463234cd24e954fa81f68cf5f95ed",
+    "semantic_hash": ""
+  },
+  "wiki/runs/2026-06-29-tool-and-market-integration.md": {
+    "mtime": 1782748171.7280357,
+    "ast_hash": "497d7878680aba7dedb3a776d09525d7",
+    "semantic_hash": ""
+  },
+  "project/workflows/market-research-engine.yaml": {
+    "mtime": 1782747129.5471275,
+    "ast_hash": "277be6a4e7a04a204bff9103510e8423",
+    "semantic_hash": ""
+  },
+  "project/loops/LOOP.md": {
+    "mtime": 1782747129.1178203,
+    "ast_hash": "0aa80456875c234f3b159c811c4cf3c4",
+    "semantic_hash": ""
+  },
+  "project/loops/loop-run-log.md": {
+    "mtime": 1782747129.292121,
+    "ast_hash": "f6725e3ffe1ee8a3862ab51e8cdc4e5a",
+    "semantic_hash": ""
+  },
+  "project/loops/loop-readiness-review.md": {
+    "mtime": 1782747129.4625819,
+    "ast_hash": "30cfc36d39bf7a7fe64e85b2550fdef8",
+    "semantic_hash": ""
+  },
+  "project/loops/loop-budget.md": {
+    "mtime": 1782747129.377403,
+    "ast_hash": "eed9e363e38610fcc41d0e4dbb553a5a",
+    "semantic_hash": ""
+  },
+  "project/loops/loop-state.schema.yaml": {
+    "mtime": 1782747129.2052207,
+    "ast_hash": "000d3cf9c4b3deb1dde86504cc324914",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-27-evening-skill-audit/run-summary.md": {
+    "mtime": 1782656023.2249234,
+    "ast_hash": "dc69e204b2062efc11760824f5050f46",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-27-evening-skill-audit/agent-handout.md": {
+    "mtime": 1782656023.309882,
+    "ast_hash": "88e9a35390bceef7778de5227a0222f7",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/market-engine.md": {
+    "mtime": 1782747197.7775273,
+    "ast_hash": "37ce13693c3de0535e33565e1fe638da",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/review-report.md": {
+    "mtime": 1782748148.2109275,
+    "ast_hash": "4c29500a89f1e51d549fd6f0416e4750",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/run-summary.md": {
+    "mtime": 1782748158.2877076,
+    "ast_hash": "a0f424d6535a54735ccae563909109d2",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/anti-looping-review.md": {
+    "mtime": 1782747198.0391343,
+    "ast_hash": "8c5915c5e6660283c57e6619a2370d90",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/source-inventory.md": {
+    "mtime": 1782747197.5208232,
+    "ast_hash": "7a4e6da4dc052f71d0242b63d683e8d2",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/memory-architecture.md": {
+    "mtime": 1782747197.9504135,
+    "ast_hash": "e197f391710df8fa37942d3bd2c7c4c0",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/model-routing-recommendation.md": {
+    "mtime": 1782747197.8625689,
+    "ast_hash": "bbe32a04f47cc51d207d5fdc8bf5d0de",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/tool-role-map.md": {
+    "mtime": 1782747197.690816,
+    "ast_hash": "efd868e6e0e10d96966866e91af89d91",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/context-digest.md": {
+    "mtime": 1782747197.605877,
+    "ast_hash": "35ba0fcbc023c41c6fce24fb32eeef0c",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/agent-handout.md": {
+    "mtime": 1782747198.2125087,
+    "ast_hash": "059612a55969f1e1808e3916d0ee7514",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-notion-sync/run-summary.md": {
+    "mtime": 1782476726.8038163,
+    "ast_hash": "9cc458e63cde4ce1898b88ec10934f5c",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-notion-sync/agent-handout.md": {
+    "mtime": 1782476726.8879666,
+    "ast_hash": "d363b180fd761461a5044303e9f9317e",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md": {
+    "mtime": 1782476791.3940194,
+    "ast_hash": "fbf001124ab613dd444b7afd4aad5872",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/E1.2_Streaming_report.md": {
+    "mtime": 1782473861.1109362,
+    "ast_hash": "24efe808c00c33a8b48817b61e415cbe",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/review-report.md": {
+    "mtime": 1782473861.4463692,
+    "ast_hash": "a87794572f5c8982bfc2379cdd85c414",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/run-summary.md": {
+    "mtime": 1782473861.5281413,
+    "ast_hash": "39d47003543785fdc2588e7a3824192d",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md": {
+    "mtime": 1782473861.0267832,
+    "ast_hash": "93d1da0eba51f825d65014f386e2cf7a",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/summary.md": {
+    "mtime": 1782473860.944026,
+    "ast_hash": "ff2fb2dffd11783744177b1bdca3b090",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/kb-update.md": {
+    "mtime": 1782473861.3626242,
+    "ast_hash": "a13ecd5914072efa189060e6dd6bdff7",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/retrieval-log.md": {
+    "mtime": 1782473860.7803519,
+    "ast_hash": "990a7fdeb167dee8528cdf63f64a630a",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/source-inventory.md": {
+    "mtime": 1782473860.6957312,
+    "ast_hash": "de242bab653e859724056ed52a69bec1",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/responsibility-matrix.md": {
+    "mtime": 1782473861.2796805,
+    "ast_hash": "3c51e4f869b0d0d717c5296a4141533f",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/context-digest.md": {
+    "mtime": 1782473860.8624384,
+    "ast_hash": "8e23cc2c3b3e79c5bb3a96fb1aebfc8e",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/agent-handout.md": {
+    "mtime": 1782473861.610415,
+    "ast_hash": "5a6f96f782bc7e352610ed17b06c20de",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.md": {
+    "mtime": 1782473861.1949182,
+    "ast_hash": "39a43aad60927187af65e7271de7ba54",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-june24-next-steps-proof/agent-handout.md": {
+    "mtime": 1782472787.5371807,
+    "ast_hash": "ed5d6c1ec750975735a9128e0af2578c",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-28-evening-status-refresh/run-summary.md": {
+    "mtime": 1782715335.8240778,
+    "ast_hash": "9fd18a38e4cc86079e66038ee85b34eb",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-28-evening-status-refresh/agent-handout.md": {
+    "mtime": 1782715335.9177444,
+    "ast_hash": "00865d6e4c7bd8c5570e65910bbe271a",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-evening-skill-refresh/run-summary.md": {
+    "mtime": 1782497007.037621,
+    "ast_hash": "578042b3fb8ad8839c69a6c52771815a",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-26-evening-skill-refresh/agent-handout.md": {
+    "mtime": 1782497007.120597,
+    "ast_hash": "22ddac364eb0f1abd033c2dd199538d6",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-29-tool-and-market-integration-plan.md": {
+    "mtime": 1782747197.4354055,
+    "ast_hash": "f86429712d4de19941b79e7cd3e60830",
+    "semantic_hash": ""
+  },
+  "skills/task-handout/SKILL.md": {
+    "mtime": 1782472759.0479512,
+    "ast_hash": "6ad7c7d7b74172bf4efcee07b5d3ebfa",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.pdf": {
+    "mtime": 1782476802.0429788,
+    "ast_hash": "931a8b90599969e73ba5ed66404d556e",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.pdf": {
+    "mtime": 1782473956.0288014,
+    "ast_hash": "77d24565152317a9fdce8f0cd8a73a29",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.pdf": {
+    "mtime": 1782473956.0495377,
+    "ast_hash": "1b5bc2856841e75d5048f9945825ef4f",
+    "semantic_hash": ""
+  },
+  "project/runs/E1.2/2026-06-26-full-test/E1.2_Streaming_report.pdf": {
+    "mtime": 1782473956.0375946,
+    "ast_hash": "324b1710c63436fdc894179898833d4a",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-26-e1-2-prd.pdf": {
+    "mtime": 1782473956.0288014,
+    "ast_hash": "77d24565152317a9fdce8f0cd8a73a29",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-26-e1-2-system-report.pdf": {
+    "mtime": 1782473956.0495377,
+    "ast_hash": "1b5bc2856841e75d5048f9945825ef4f",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-26-e1-2-streaming-report.pdf": {
+    "mtime": 1782473956.0375946,
+    "ast_hash": "324b1710c63436fdc894179898833d4a",
+    "semantic_hash": ""
+  },
+  "project/reports/2026-06-26-e1-2-next-steps.pdf": {
+    "mtime": 1782476802.0429788,
+    "ast_hash": "931a8b90599969e73ba5ed66404d556e",
+    "semantic_hash": ""
+  },
+  "project/runs/2026-06-29-tool-market-integration/notion-update-plan.md": {
+    "mtime": 1782748130.0229836,
+    "ast_hash": "7fc635c48c657afe031212bf1e83dc7f",
     "semantic_hash": ""
   }
 }

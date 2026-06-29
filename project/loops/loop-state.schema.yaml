@@ -1,0 +1,36 @@
+name: archflow_loop_state_schema
+status: active_contract
+purpose: >
+  Required state fields for ArchFlow report-only and assisted loops.
+
+required_fields:
+  run_id: string
+  task_id: string
+  source_ids: list
+  corpus_boundary: string
+  phase: intake_digest_draft_review_memory_write_readback_blocked_done
+  attempt_number: integer
+  max_attempts_per_item: integer
+  max_revision_loops: integer
+  maker_agent: string
+  verifier_agent: string
+  verifier_same_as_maker: boolean
+  files_read: list
+  files_written: list
+  unsupported_claims: list
+  gaps: list
+  approval_status: pending_approved_revise_blocked
+  blocked_reason: string
+  next_human_action: string
+  last_run_at: iso_datetime
+  prune_status: completed_or_skipped_with_reason
+
+defaults:
+  max_attempts_per_item: 3
+  max_revision_loops: 2
+  verifier_same_as_maker: false
+
+terminal_states:
+  done: approved output, run log, handout, and memory decision exist
+  blocked: blocked reason and next human action are written
+  skipped: no new evidence or no actionable item

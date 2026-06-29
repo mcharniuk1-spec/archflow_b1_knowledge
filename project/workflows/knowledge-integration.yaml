@@ -39,6 +39,12 @@ knowledge_layers:
     role: generated_structure_map
     rule: graph_public_repo_only
 
+  loop_engineering:
+    status: active_contract
+    root: project/loops/
+    role: loop_state_attempt_caps_budget_maker_checker_and_stop_conditions
+    rule: default_l1_report_only
+
   nexus:
     status: planned_after_vault_target_is_clear
     role: live_obsidian_bridge
@@ -72,8 +78,24 @@ runtime_layers:
     active_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
     fallback_model: gemma4:e4b
 
+  cognee:
+    status: deferred_until_e1_3_readback
+    role: optional_operational_recall_and_knowledge_graph
+    rule: approved_artifacts_only_and_never_replace_wikillm
+
+  turbovec:
+    status: deferred_until_vector_metadata_exists
+    role: optional_local_vector_store_under_llamaindex
+    rule: ignored_local_index_with_source_filters_and_fallback
+
+  mistral:
+    status: disabled_until_credentials_source_approval_and_budget
+    role: optional_quality_pass_for_sanitized_prd_research_and_copy
+    rule: no_raw_private_inputs_and_af_review_after_output
+
 execution_path:
   - codex_reads_wikillm
+  - codex_reads_loop_contract
   - codex_checks_public_safety_boundary
   - langgraph_validates_source_packet
   - llamaindex_retrieves_approved_context
