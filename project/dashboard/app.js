@@ -21,6 +21,7 @@ const storageKeys = {
   voiceOutput: "archflow.jarvis.voiceOutput",
   promptConfig: "archflow.jarvis.promptConfig",
   chatHistory: "archflow.jarvis.chatHistory",
+  blockSchema: "archflow.jarvis.blockSchema",
   packets: "archflow.jarvis.localPackets",
   events: "archflow.jarvis.events",
 };
@@ -33,6 +34,10 @@ let voiceOutputEnabled = localStorage.getItem(storageKeys.voiceOutput) === "true
 let dataSignature = "";
 let refreshTimer = null;
 let localPackets = loadJson(storageKeys.packets, []);
+let blockSchema = normalizeBlockSchema(loadJson(storageKeys.blockSchema, defaultBlockSchema()));
+let blockSchemaConnectSource = null;
+let blockSchemaDrag = null;
+let voiceFallbackDraft = "";
 let chatHistory = loadJson(storageKeys.chatHistory, [
   {
     id: "welcome",
@@ -91,6 +96,139 @@ function defaultPromptConfig() {
 
 let promptConfig = loadJson(storageKeys.promptConfig, defaultPromptConfig());
 
+function defaultBlockSchema() {
+  return {
+    version: "0.2",
+    title: "Jarvis PRD-to-ICP Operating Graph",
+    selectedNodeId: "intake",
+    connectSourceId: null,
+    queue: [],
+    nodes: [
+      schemaNode("intake", "start", "Voice/chat intake", 60, 80, "Owner + Jarvis", "Capture typed command, voice transcript, file metadata, or correction.", "One sanitized command packet; raw audio and raw transcript storage stay off."),
+      schemaNode("classify", "router", "Classify request", 350, 80, "Jarvis router", "Separate status, interview, research, config, block-schema, and approval requests.", "Route key plus fact/interpretation/hypothesis/gap label."),
+      schemaNode("codex", "agent", "Codex development response", 650, 54, "Codex operator", "Read current files, edit review branch only, run checks, and report evidence.", "Reviewed branch diff and local run note."),
+      schemaNode("monitor", "agent", "Graph monitor", 650, 270, "LangGraph monitor", "Track state, blockers, approvals, attempts, and branch outputs.", "Trace packet for LangGraph/CrewAI/LangSmith surfaces."),
+      schemaNode("parallel", "parallel", "Parallel agent fork", 960, 80, "Lead integrator", "Split work across John, safety, stack, product, and delivery reviewers.", "Branch reports with contradictions marked as gaps."),
+      schemaNode("john-review", "agent", "John checker review", 1260, 40, "John checker", "Verify browser behavior, claims, safety boundaries, and user-visible proof before acceptance.", "Checker verdict with passed checks and gaps."),
+      schemaNode("safety-review", "agent", "Safety and source review", 1260, 280, "Safety reviewer", "Check public/private boundary, unsupported claims, secrets, and exact source links.", "Safety verdict and required corrections."),
+      schemaNode("merge", "merge", "Integrator merge", 1560, 160, "Lead integrator", "Merge branch outputs, preserve source links, and reject unsupported claims.", "Single accepted handoff with checks."),
+      schemaNode("approval", "approval", "Writeback approval", 1860, 160, "Owner approval", "Approve or reject Notion, GitHub, WikiLLM, Telegram, model, or capture writeback.", "Approved packet or blocked issue."),
+      schemaNode("output", "output", "Durable output", 2160, 160, "Publisher", "Create run note, decision, issue, dashboard data update, or review branch.", "Linked artifact and dashboard status.")
+    ],
+    edges: [
+      schemaEdge("e1", "intake", "classify", "input", "Always after explicit user action.", "normal"),
+      schemaEdge("e2", "classify", "codex", "development", "Code or dashboard implementation is requested.", "conditional"),
+      schemaEdge("e3", "classify", "monitor", "trace", "Every task emits safe state and blocker metadata.", "conditional"),
+      schemaEdge("e4", "codex", "parallel", "review fork", "Implementation needs checker/safety/product review.", "parallel"),
+      schemaEdge("e5", "monitor", "parallel", "status fork", "State should be visible to each reviewer.", "parallel"),
+      schemaEdge("e6", "parallel", "john-review", "checker branch", "John validates browser behavior and product proof.", "parallel"),
+      schemaEdge("e7", "parallel", "safety-review", "safety branch", "Safety reviewer checks public/private and source boundaries.", "parallel"),
+      schemaEdge("e8", "john-review", "merge", "checker verdict", "John returns facts, gaps, checks, and status.", "merge"),
+      schemaEdge("e9", "safety-review", "merge", "safety verdict", "Safety reviewer returns public-safe corrections.", "merge"),
+      schemaEdge("e10", "merge", "approval", "needs writeback", "Any durable write, provider, capture, or external send needs approval.", "approval"),
+      schemaEdge("e11", "approval", "output", "approved output", "Approved output is recorded and linked.", "normal")
+    ]
+  };
+}
+
+function schemaNode(id, type, title, x, y, owner, prompt, output) {
+  return {
+    id,
+    type,
+    title,
+    x,
+    y,
+    w: type === "parallel" || type === "router" ? 260 : 230,
+    h: 150,
+    owner,
+    status: "planned",
+    prompt,
+    comments: "Starter template comment; replace with reviewer/operator notes during execution.",
+    requirements: "No secrets, raw recordings, raw transcripts, private document bodies, or unapproved provider calls.",
+    files: ["pending: assign during execution"],
+    questions: [`What does ${title} need to prove?`, "Which source file or artifact supports it?"],
+    possibleOutputs: ["run_note", "decision", "issue", "review_branch", "dashboard_packet"],
+    outputLinks: ["pending: created after execution"],
+    finalOutput: output,
+    config: {
+      modelProvider: "none",
+      requiresApproval: ["approval", "output"].includes(type),
+      traceTarget: ["router", "parallel", "merge"].includes(type) ? "LangGraph/LangSmith metadata" : "dashboard packet"
+    }
+  };
+}
+
+function schemaEdge(id, from, to, label, condition, mode) {
+  return { id, from, to, label, condition, mode };
+}
+
+function normalizeBlockSchema(schema) {
+  const fallback = defaultBlockSchema();
+  const source = schema && Array.isArray(schema.nodes) && Array.isArray(schema.edges) ? schema : fallback;
+  return {
+    version: source.version || "0.2",
+    title: source.title || fallback.title,
+    selectedNodeId: source.selectedNodeId || source.nodes?.[0]?.id || null,
+    connectSourceId: null,
+    queue: Array.isArray(source.queue) ? source.queue : [],
+    nodes: source.nodes.map((node) => ({
+      ...schemaNode(node.id || makeId("node"), node.type || "agent", node.title || "Untitled node", Number(node.x) || 80, Number(node.y) || 80, node.owner || "Unassigned", node.prompt || "", node.finalOutput || "Pending output"),
+      ...node,
+      files: Array.isArray(node.files) ? node.files : String(node.files || "pending: assign during execution").split(/\n+/).filter(Boolean),
+      questions: Array.isArray(node.questions) ? node.questions : String(node.questions || "").split(/\n+/).filter(Boolean),
+      possibleOutputs: Array.isArray(node.possibleOutputs) ? node.possibleOutputs : String(node.possibleOutputs || "").split(/\n+/).filter(Boolean),
+      outputLinks: Array.isArray(node.outputLinks) ? node.outputLinks : String(node.outputLinks || "").split(/\n+/).filter(Boolean),
+      config: typeof node.config === "object" && node.config ? node.config : { modelProvider: "none" }
+    })),
+    edges: source.edges.map((edge) => ({ ...schemaEdge(edge.id || makeId("edge"), edge.from, edge.to, edge.label || "next", edge.condition || "", edge.mode || "normal"), ...edge }))
+  };
+}
+
+function saveBlockSchema() {
+  saveJson(storageKeys.blockSchema, blockSchema);
+}
+
+function getSchemaNode(id) {
+  return blockSchema.nodes.find((node) => node.id === id);
+}
+
+function getSchemaEdge(id) {
+  return blockSchema.edges.find((edge) => edge.id === id);
+}
+
+function outgoingSchemaEdges(id) {
+  return blockSchema.edges.filter((edge) => edge.from === id);
+}
+
+function incomingSchemaEdges(id) {
+  return blockSchema.edges.filter((edge) => edge.to === id);
+}
+
+function listFromTextarea(value) {
+  return String(value || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+}
+
+function textareaFromList(value) {
+  return Array.isArray(value) ? value.join("\n") : "";
+}
+
+function schemaCenter(node) {
+  return { x: node.x + node.w / 2, y: node.y + node.h / 2 };
+}
+
+function schemaTypeLabel(type) {
+  const labels = {
+    start: "Start",
+    agent: "Agent",
+    router: "Router",
+    parallel: "Parallel",
+    merge: "Merge",
+    approval: "Approval",
+    output: "Output"
+  };
+  return labels[type] || type;
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -112,6 +250,12 @@ function makeId(prefix) {
 function setLiveStatus(text, tone = "ok") {
   liveStatus.textContent = text;
   liveStatus.className = `pill live-pill ${tone}`;
+}
+
+function isEditingControlActive() {
+  const element = document.activeElement;
+  if (!element) return false;
+  return ["INPUT", "TEXTAREA", "SELECT"].includes(element.tagName) || element.isContentEditable;
 }
 
 function appendEvent(title, detail, tone = "ok") {
@@ -216,6 +360,10 @@ async function loadDashboardData(reason = "initial load", silent = false) {
 function startLiveRefresh() {
   if (refreshTimer) window.clearInterval(refreshTimer);
   refreshTimer = window.setInterval(() => {
+    if (isEditingControlActive()) {
+      setLiveStatus("Live polling paused while editing", "warn");
+      return;
+    }
     loadDashboardData("scheduled live poll", true).catch(() => {
       setLiveStatus("Static data only", "warn");
     });
@@ -479,10 +627,19 @@ function renderJarvis(data) {
         <div class="jarvis-orb" aria-hidden="true">JV</div>
         <h2>Jarvis Command Center</h2>
         <p class="muted">Ask for status, refresh, checks, content packets, or interview mode. Voice and file checks stay local until backend writeback exists.</p>
+        <form class="voice-fallback" id="voiceFallbackForm" data-testid="voice-fallback-form" aria-label="Manual voice transcript fallback">
+          <label for="voiceFallbackInput">Manual transcript fallback</label>
+          <div>
+            <input id="voiceFallbackInput" data-testid="voice-fallback-input" type="text" value="${escapeHtml(voiceFallbackDraft)}" placeholder="Type what you said if microphone recognition fails" />
+            <button class="button" id="voiceFallbackSubmit" data-testid="voice-fallback-submit" type="button">Use transcript</button>
+          </div>
+          <p class="form-status" id="voiceFallbackStatus" aria-live="polite">Fallback uses the same visible chat path as the bottom composer.</p>
+        </form>
         <div class="jarvis-actions">
           <button class="primary" id="jarvisRefresh" type="button">Refresh data</button>
           <button class="button" id="voiceToggle" type="button">${voiceAuthorized ? "Start voice" : "Authorize voice"}</button>
           <button class="button" id="voiceOutputToggle" type="button">${voiceOutputEnabled ? "Mute replies" : "Speak replies"}</button>
+          <button class="button" id="voiceTestOutput" type="button">Test speaker</button>
           <label class="button file-button">
             Attach file
             <input id="fileInput" type="file" multiple />
@@ -582,12 +739,44 @@ function renderJarvis(data) {
     appendEvent("Voice output changed", voiceOutputEnabled ? "Jarvis replies will use browser speech synthesis." : "Jarvis speech output muted.", voiceOutputEnabled ? "ok" : "warn");
     render();
   });
+  document.querySelector("#voiceTestOutput")?.addEventListener("click", () => {
+    voiceOutputEnabled = true;
+    localStorage.setItem(storageKeys.voiceOutput, "true");
+    const text = "Jarvis speaker test. Browser speech synthesis is working if you hear this sentence.";
+    appendEvent("Speaker test requested", "Browser speech synthesis test started from the Jarvis panel.", "ok");
+    speakText(text);
+    const state = document.querySelector("#voiceState");
+    if (state) state.textContent = speechSynthesisAvailable()
+      ? "Speaker test started. If there is no sound, check system output, browser audio permission, and available speech voices."
+      : "Speech synthesis is unavailable in this browser. Use text mode or an approved provider-backed voice runtime later.";
+  });
+  const fallbackForm = view.querySelector("#voiceFallbackForm");
+  const fallbackSubmit = view.querySelector("#voiceFallbackSubmit");
+  const fallbackInput = view.querySelector("#voiceFallbackInput");
+  fallbackInput?.addEventListener("input", () => {
+    voiceFallbackDraft = fallbackInput.value;
+  });
+  fallbackForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitVoiceFallback();
+  });
+  fallbackSubmit?.addEventListener("click", submitVoiceFallback);
   document.querySelector("#exportChat")?.addEventListener("click", exportChatHistory);
   document.querySelector("#clearChat")?.addEventListener("click", clearChatHistory);
   document.querySelector("#fileInput")?.addEventListener("change", handleFiles);
   view.querySelectorAll(".packet-download").forEach((button) => {
     button.addEventListener("click", () => downloadPacket(button.dataset.packet));
   });
+}
+
+function submitVoiceFallback() {
+  const input = view.querySelector("#voiceFallbackInput");
+  const transcript = (input?.value || voiceFallbackDraft).trim();
+  if (!transcript) return;
+  appendEvent("Manual transcript submitted", "Manual fallback used the Jarvis chat processing path.", "ok");
+  handleGlobalSubmit(transcript, "manual transcript fallback");
+  voiceFallbackDraft = "";
+  if (input) input.value = "";
 }
 
 function startVoice() {
@@ -602,7 +791,7 @@ function startVoice() {
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SpeechRecognition) {
-    state.textContent = "Speech recognition is not available in this browser. Use the bottom input field.";
+    state.textContent = "Speech recognition is not available in this browser. Use the manual transcript fallback or the bottom input field.";
     appendEvent("Voice unavailable", "Browser speech recognition API is not available.", "warn");
     return;
   }
@@ -612,21 +801,52 @@ function startVoice() {
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
   state.textContent = "Listening. Speak one command or one interview answer.";
+  recognition.onstart = () => {
+    setLiveStatus("Jarvis listening", "ok");
+    state.textContent = "Listening. Speak one command or one interview answer.";
+  };
   recognition.onresult = (event) => {
     const transcript = event.results?.[0]?.[0]?.transcript || "";
     state.textContent = `Heard: ${transcript}`;
     handleGlobalSubmit(transcript, "authorized browser voice transcript");
   };
+  recognition.onnomatch = () => {
+    state.textContent = "No clear speech was detected. Use manual transcript fallback or try again.";
+    appendEvent("Voice no match", "Speech recognition ended without a confident transcript.", "warn");
+  };
   recognition.onerror = (event) => {
-    state.textContent = `Voice error: ${event.error || "unknown"}`;
-    appendEvent("Voice error", event.error || "unknown", "warn");
+    const message = voiceErrorMessage(event.error);
+    state.textContent = message;
+    setLiveStatus("Voice fallback ready", "warn");
+    appendEvent("Voice fallback ready", message, "warn");
   };
   recognition.onend = () => {
     if (state.textContent === "Listening. Speak one command or one interview answer.") {
-      state.textContent = "Voice stopped without a transcript.";
+      state.textContent = "Voice stopped without a transcript. Use manual transcript fallback or try again.";
     }
+    setLiveStatus("Live polling active", "warn");
   };
-  recognition.start();
+  try {
+    recognition.start();
+  } catch (error) {
+    const message = voiceErrorMessage(error?.message || "start failed");
+    state.textContent = message;
+    setLiveStatus("Voice fallback ready", "warn");
+    appendEvent("Voice start failed", message, "warn");
+  }
+}
+
+function voiceErrorMessage(errorCode) {
+  const code = String(errorCode || "unknown");
+  const messages = {
+    network: "Voice recognition network service is unavailable in this browser. Use manual transcript fallback now; no audio was stored.",
+    "not-allowed": "Microphone permission was denied. Enable browser microphone access or use manual transcript fallback.",
+    "service-not-allowed": "The browser blocked the speech recognition service. Use manual transcript fallback or an approved local/provider voice runtime later.",
+    "audio-capture": "No microphone input was captured. Check the selected device or use manual transcript fallback.",
+    "no-speech": "No speech was detected. Try again or type the transcript manually.",
+    aborted: "Voice recognition was stopped. Use manual transcript fallback if this was unintended."
+  };
+  return messages[code] || `Voice recognition failed (${code}). Use manual transcript fallback or text input; no raw audio is stored.`;
 }
 
 function handleFiles(event) {
@@ -679,50 +899,396 @@ function renderHistory() {
 }
 
 function renderSchema(data) {
-  const directFlow = [
-    ["1", "Operator input", "Typed command, voice transcript, file metadata, or approval/correction."],
-    ["2", "Jarvis shell", "Classifies the request into status, interview, research/check, content, plan, schema, config, or approval packet."],
-    ["3", "Codex operator", "Reviews the packet, reads source files, edits only approved targets, and runs checks."],
-    ["4", "Review branch", "Implementation changes land on a review branch or local artifact before main-branch promotion."],
-    ["5", "Memory/report", "Run notes, issues, decisions, Project Desire summaries, Notion sync, and dashboard data update after review."],
-  ];
-  const graphFlow = [
-    ["Intake", "LangGraph state", "Capture task, source ids, allowed corpus, mode, approval status, and stop condition."],
-    ["Route", "Conditional edges", "Normal answer, interview question, E2 research, report generation, config change, or blocked action."],
-    ["Parallel work", "CrewAI-style lanes", "Research/ICP, Knowledge/RAG, Dashboard/reporting, Safety/review, Integrator."],
-    ["Merge", "Reviewer gate", "Resolve contradictions, label fact/interpretation/hypothesis/gap, and prepare owner approval."],
-    ["Publish", "Memory cascade", "GitHub branch, WikiLLM/Obsidian/Notion summaries, dashboard snapshot, and open blockers."],
-  ];
+  const selected = getSchemaNode(blockSchema.selectedNodeId) || blockSchema.nodes[0];
+  const validation = validateBlockSchema();
+  const canvasWidth = Math.max(2160, ...blockSchema.nodes.map((node) => node.x + node.w + 80));
+  const canvasHeight = Math.max(780, ...blockSchema.nodes.map((node) => node.y + node.h + 80));
+  const edgeSvg = renderBlockSchemaEdges(canvasWidth, canvasHeight);
+
   view.innerHTML = `
-    <div class="grid cols-2">
-      <section class="panel">
-        <h2 class="section-title">Direct Development Response</h2>
-        <p class="muted">How the operator interacts with Codex/Jarvis before a durable write happens.</p>
-        ${table(["Step", "Block", "What happens"], directFlow.map((row) => row.map(escapeHtml)))}
-      </section>
-      <section class="panel">
-        <h2 class="section-title">Graph Monitor Structure</h2>
-        <p class="muted">How the response becomes monitored graph work after intake.</p>
-        ${table(["Stage", "Layer", "Output"], graphFlow.map((row) => row.map(escapeHtml)))}
-      </section>
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Current LangGraph Contract Nodes</h2>
-      ${table(["Node", "Owner", "Purpose"], data.langgraph.nodes.map((node) => [
-        `<strong>${escapeHtml(node.id)}</strong>`,
-        badge(node.owner),
-        escapeHtml(node.purpose),
-      ]))}
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">PRD-to-ICP Operating Chain</h2>
-      <div class="node-flow">
-        ${["Voice/chat intake", "Summary candidate", "Task extraction", "Research queue", "Evidence card", "ICP profile", "Executive report", "Decision/memory review"].map((label) => `
-          <div class="node"><strong>${escapeHtml(label)}</strong><span>Approval-gated before persistence or external sync.</span></div>
-        `).join("")}
+    <section class="panel schema-shell">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Operable Block Schema</h2>
+          <p class="muted">Drag blocks, connect routes, edit prompts/comments, validate the graph, and export a review packet. Browser edits are local until reviewed.</p>
+        </div>
+        <div class="row-actions">
+          <button class="button schema-add" data-type="agent" type="button">Agent</button>
+          <button class="button schema-add" data-type="router" type="button">Router</button>
+          <button class="button schema-add" data-type="parallel" type="button">Parallel</button>
+          <button class="button schema-add" data-type="approval" type="button">Approval</button>
+          <button class="button" id="schemaConnect" type="button">${blockSchemaConnectSource ? "Cancel connect" : "Connect blocks"}</button>
+          <button class="button" id="schemaLayout" type="button">Auto layout</button>
+          <button class="primary" id="schemaExport" type="button">Export review packet</button>
+        </div>
+      </div>
+
+      <div class="schema-status">
+        <span>${badge(validation.errors.length ? "blocked" : validation.warnings.length ? "needs review" : "valid")}</span>
+        <span>${escapeHtml(blockSchemaConnectSource ? `Connect mode: source is ${getSchemaNode(blockSchemaConnectSource)?.title || "unknown"}. Choose target.` : "Click a block to inspect. Drag selected blocks to reposition.")}</span>
+      </div>
+
+      <div class="schema-workspace">
+        <div class="schema-canvas-wrap">
+          <div class="schema-canvas" id="schemaCanvas" style="width:${canvasWidth}px;height:${canvasHeight}px">
+            <svg class="schema-edge-layer" width="${canvasWidth}" height="${canvasHeight}" viewBox="0 0 ${canvasWidth} ${canvasHeight}" aria-hidden="true">${edgeSvg}</svg>
+            ${blockSchema.nodes.map((node) => renderSchemaNode(node)).join("")}
+          </div>
+        </div>
+
+        <aside class="schema-inspector">
+          <div class="schema-tabs">
+            <button class="active" type="button">Node</button>
+            <button type="button" id="schemaValidateFocus">Validation</button>
+            <button type="button" id="schemaLangSmithFocus">Tracing</button>
+          </div>
+          ${selected ? renderSchemaInspector(selected) : `<div class="callout">Select or add a block to edit it.</div>`}
+        </aside>
       </div>
     </section>
+
+    <div class="grid cols-2" style="margin-top:16px">
+      <section class="panel">
+        <h2 class="section-title">Validation And Review Queue</h2>
+        <ul class="schema-validation" id="schemaValidation">
+          ${validation.errors.map((item) => `<li class="blocker">ERROR: ${escapeHtml(item)}</li>`).join("")}
+          ${validation.warnings.map((item) => `<li>WARNING: ${escapeHtml(item)}</li>`).join("")}
+          ${!validation.errors.length && !validation.warnings.length ? `<li class="ok">OK: graph is ready for review export.</li>` : ""}
+        </ul>
+        <div class="row-actions">
+          <button class="button" id="schemaQueueSelected" type="button">Queue selected node</button>
+          <button class="button" id="schemaReset" type="button">Reset local schema</button>
+        </div>
+      </section>
+      <section class="panel">
+        <h2 class="section-title">LangGraph / CrewAI / LangSmith Trace Prep</h2>
+        ${table(["Layer", "Traceable state", "Boundary"], [
+          ["LangGraph", "node id, route key, approval state, blocker, output link", "No raw private prompts or recordings"],
+          ["CrewAI", "agent role, task, status, handoff file, reviewer verdict", "No autonomous writeback"],
+          ["LangSmith", "sanitized run metadata, node names, trace URL placeholder", "LANGSMITH_API_KEY not exposed or activated here"],
+          ["Codex", "review branch, changed files, checks, run note", "Local operator/editor only"],
+        ].map((row) => row.map(escapeHtml)))}
+      </section>
+    </div>
   `;
+
+  bindSchemaEditor();
+}
+
+function renderBlockSchemaEdges(width, height) {
+  const defs = `
+    <defs>
+      <marker id="schemaArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6673"></path>
+      </marker>
+    </defs>
+  `;
+  const paths = blockSchema.edges.map((edge) => {
+    const from = getSchemaNode(edge.from);
+    const to = getSchemaNode(edge.to);
+    if (!from || !to) return "";
+    const a = schemaCenter(from);
+    const b = schemaCenter(to);
+    const mid = (a.x + b.x) / 2;
+    const d = `M ${a.x} ${a.y} C ${mid} ${a.y}, ${mid} ${b.y}, ${b.x} ${b.y}`;
+    const labelX = mid;
+    const labelY = (a.y + b.y) / 2 - 8;
+    return `
+      <path d="${d}" fill="none" stroke="#5b6673" stroke-width="2.2" marker-end="url(#schemaArrow)"></path>
+      <text x="${labelX}" y="${labelY}" text-anchor="middle" class="schema-edge-label">${escapeHtml(edge.label || edge.mode || "route")}</text>
+    `;
+  }).join("");
+  return `${defs}<rect width="${width}" height="${height}" fill="transparent"></rect>${paths}`;
+}
+
+function renderSchemaNode(node) {
+  const selected = node.id === blockSchema.selectedNodeId;
+  const inCount = incomingSchemaEdges(node.id).length;
+  const outCount = outgoingSchemaEdges(node.id).length;
+  return `
+    <article class="schema-node ${escapeHtml(node.type)} ${selected ? "selected" : ""}" data-node-id="${escapeHtml(node.id)}" style="transform:translate(${node.x}px, ${node.y}px);width:${node.w}px;height:${node.h}px">
+      <div class="schema-node-head">
+        <strong>${escapeHtml(node.title)}</strong>
+        <span>${escapeHtml(schemaTypeLabel(node.type))}</span>
+      </div>
+      <p>${escapeHtml(node.prompt || "No prompt configured.").slice(0, 150)}</p>
+      <div class="schema-node-meta">
+        <span>${escapeHtml(node.owner || "Unassigned")}</span>
+        <span>${inCount} in / ${outCount} out</span>
+      </div>
+      <div class="schema-node-output">${escapeHtml(node.finalOutput || "Pending output").slice(0, 110)}</div>
+    </article>
+  `;
+}
+
+function renderSchemaInspector(node) {
+  return `
+    <form class="schema-form" id="schemaNodeForm">
+      <label>Title<input id="schemaTitleInput" value="${escapeHtml(node.title)}" /></label>
+      <label>Type<select id="schemaTypeInput">
+        ${["start", "agent", "router", "parallel", "merge", "approval", "output"].map((type) => `<option value="${type}" ${node.type === type ? "selected" : ""}>${schemaTypeLabel(type)}</option>`).join("")}
+      </select></label>
+      <label>Owner / agent<input id="schemaOwnerInput" value="${escapeHtml(node.owner || "")}" /></label>
+      <label>Status<select id="schemaStatusInput">
+        ${["planned", "active", "waiting", "blocked", "done"].map((status) => `<option value="${status}" ${node.status === status ? "selected" : ""}>${status}</option>`).join("")}
+      </select></label>
+      <label>Prompt<textarea id="schemaPromptInput" rows="3">${escapeHtml(node.prompt || "")}</textarea></label>
+      <label>Comments<textarea id="schemaCommentsInput" rows="3">${escapeHtml(node.comments || "")}</textarea></label>
+      <label>Requirements<textarea id="schemaRequirementsInput" rows="3">${escapeHtml(node.requirements || "")}</textarea></label>
+      <label>Files owned/touched<textarea id="schemaFilesInput" rows="3">${escapeHtml(textareaFromList(node.files))}</textarea></label>
+      <label>Questions covered<textarea id="schemaQuestionsInput" rows="3">${escapeHtml(textareaFromList(node.questions))}</textarea></label>
+      <label>Final output<textarea id="schemaFinalOutputInput" rows="2">${escapeHtml(node.finalOutput || "")}</textarea></label>
+      <label>Possible outputs<textarea id="schemaPossibleOutputsInput" rows="2">${escapeHtml(textareaFromList(node.possibleOutputs))}</textarea></label>
+      <label>Output links<textarea id="schemaOutputLinksInput" rows="2">${escapeHtml(textareaFromList(node.outputLinks))}</textarea></label>
+      <label>Config JSON<textarea id="schemaConfigInput" rows="5" spellcheck="false">${escapeHtml(JSON.stringify(node.config || {}, null, 2))}</textarea></label>
+      <div class="schema-move-controls" aria-label="Move selected node">
+        <button class="button schema-move" type="button" data-dx="0" data-dy="-40">Up</button>
+        <button class="button schema-move" type="button" data-dx="-40" data-dy="0">Left</button>
+        <button class="button schema-move" type="button" data-dx="40" data-dy="0">Right</button>
+        <button class="button schema-move" type="button" data-dx="0" data-dy="40">Down</button>
+      </div>
+      <div class="row-actions">
+        <button class="primary" type="submit">Save node</button>
+        <button class="button" id="schemaDuplicateNode" type="button">Duplicate</button>
+        <button class="button" id="schemaDeleteNode" type="button">Delete</button>
+      </div>
+    </form>
+  `;
+}
+
+function bindSchemaEditor() {
+  view.querySelectorAll(".schema-node").forEach((element) => {
+    element.addEventListener("pointerdown", (event) => {
+      const node = getSchemaNode(element.dataset.nodeId);
+      if (!node) return;
+      blockSchema.selectedNodeId = node.id;
+      blockSchemaDrag = {
+        id: node.id,
+        startX: event.clientX,
+        startY: event.clientY,
+        nodeX: node.x,
+        nodeY: node.y,
+        moved: false
+      };
+      element.setPointerCapture?.(event.pointerId);
+    });
+    element.addEventListener("click", () => {
+      const node = getSchemaNode(element.dataset.nodeId);
+      if (!node || blockSchemaDrag?.moved) return;
+      if (blockSchemaConnectSource && blockSchemaConnectSource !== node.id) {
+        blockSchema.edges.push(schemaEdge(makeId("schema-edge"), blockSchemaConnectSource, node.id, "next", "Selected in dashboard editor.", "normal"));
+        blockSchemaConnectSource = null;
+        appendEvent("Schema blocks connected", "A local block-schema connection was added.", "ok");
+      } else if (blockSchemaConnectSource === node.id) {
+        blockSchemaConnectSource = null;
+      } else {
+        blockSchema.selectedNodeId = node.id;
+      }
+      saveBlockSchema();
+      render();
+    });
+  });
+
+  window.onpointermove = (event) => {
+    if (!blockSchemaDrag) return;
+    const node = getSchemaNode(blockSchemaDrag.id);
+    if (!node) return;
+    const dx = event.clientX - blockSchemaDrag.startX;
+    const dy = event.clientY - blockSchemaDrag.startY;
+    blockSchemaDrag.moved = Math.abs(dx) + Math.abs(dy) > 2;
+    node.x = Math.max(0, blockSchemaDrag.nodeX + dx);
+    node.y = Math.max(0, blockSchemaDrag.nodeY + dy);
+    const block = view.querySelector(`[data-node-id="${CSS.escape(node.id)}"]`);
+    if (block) block.style.transform = `translate(${node.x}px, ${node.y}px)`;
+  };
+
+  window.onpointerup = () => {
+    if (!blockSchemaDrag) return;
+    saveBlockSchema();
+    blockSchemaDrag = null;
+    render();
+  };
+
+  view.querySelectorAll(".schema-add").forEach((button) => {
+    button.addEventListener("click", () => {
+      const type = button.dataset.type || "agent";
+      const count = blockSchema.nodes.length + 1;
+      const node = schemaNode(makeId(`schema-${type}`), type, `${schemaTypeLabel(type)} ${count}`, 120 + count * 28, 120 + count * 22, schemaTypeLabel(type), `Define the ${schemaTypeLabel(type).toLowerCase()} prompt and owner.`, "Pending review output.");
+      blockSchema.nodes.push(node);
+      blockSchema.selectedNodeId = node.id;
+      saveBlockSchema();
+      render();
+    });
+  });
+
+  view.querySelector("#schemaConnect")?.addEventListener("click", () => {
+    blockSchemaConnectSource = blockSchemaConnectSource ? null : blockSchema.selectedNodeId;
+    render();
+  });
+
+  view.querySelector("#schemaLayout")?.addEventListener("click", () => {
+    blockSchema.nodes.forEach((node, index) => {
+      node.x = 60 + (index % 4) * 310;
+      node.y = 80 + Math.floor(index / 4) * 230;
+    });
+    saveBlockSchema();
+    render();
+  });
+
+  view.querySelector("#schemaExport")?.addEventListener("click", exportBlockSchemaPacket);
+  view.querySelector("#schemaQueueSelected")?.addEventListener("click", queueSelectedSchemaNode);
+  view.querySelector("#schemaReset")?.addEventListener("click", () => {
+    blockSchema = normalizeBlockSchema(defaultBlockSchema());
+    saveBlockSchema();
+    appendEvent("Block schema reset", "Local schema reset to the Jarvis PRD-to-ICP operating graph.", "warn");
+    render();
+  });
+
+  view.querySelector("#schemaNodeForm")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    saveSchemaNodeForm();
+  });
+  view.querySelectorAll(".schema-move").forEach((button) => {
+    button.addEventListener("click", () => {
+      moveSelectedSchemaNode(Number(button.dataset.dx || 0), Number(button.dataset.dy || 0));
+    });
+  });
+  view.querySelector("#schemaDuplicateNode")?.addEventListener("click", duplicateSchemaNode);
+  view.querySelector("#schemaDeleteNode")?.addEventListener("click", deleteSchemaNode);
+  view.querySelector("#schemaValidateFocus")?.addEventListener("click", () => view.querySelector("#schemaValidation")?.scrollIntoView({ behavior: "smooth", block: "center" }));
+  view.querySelector("#schemaLangSmithFocus")?.addEventListener("click", () => handleGlobalSubmit("Explain LangSmith trace setup for this block schema", "schema trace button"));
+}
+
+function moveSelectedSchemaNode(dx, dy) {
+  const node = getSchemaNode(blockSchema.selectedNodeId);
+  if (!node) return;
+  node.x = Math.max(0, node.x + dx);
+  node.y = Math.max(0, node.y + dy);
+  saveBlockSchema();
+  appendEvent("Schema node moved", `${node.title} moved to x=${node.x}, y=${node.y}.`, "ok");
+  render();
+}
+
+function saveSchemaNodeForm() {
+  const node = getSchemaNode(blockSchema.selectedNodeId);
+  if (!node) return;
+  let config = {};
+  try {
+    config = JSON.parse(view.querySelector("#schemaConfigInput")?.value || "{}");
+  } catch (error) {
+    appendEvent("Schema config invalid", error.message, "block");
+    return;
+  }
+  node.title = view.querySelector("#schemaTitleInput")?.value.trim() || node.title;
+  node.type = view.querySelector("#schemaTypeInput")?.value || node.type;
+  node.owner = view.querySelector("#schemaOwnerInput")?.value.trim() || "Unassigned";
+  node.status = view.querySelector("#schemaStatusInput")?.value || "planned";
+  node.prompt = view.querySelector("#schemaPromptInput")?.value.trim() || "";
+  node.comments = view.querySelector("#schemaCommentsInput")?.value.trim() || "";
+  node.requirements = view.querySelector("#schemaRequirementsInput")?.value.trim() || "";
+  node.files = listFromTextarea(view.querySelector("#schemaFilesInput")?.value);
+  node.questions = listFromTextarea(view.querySelector("#schemaQuestionsInput")?.value);
+  node.finalOutput = view.querySelector("#schemaFinalOutputInput")?.value.trim() || "";
+  node.possibleOutputs = listFromTextarea(view.querySelector("#schemaPossibleOutputsInput")?.value);
+  node.outputLinks = listFromTextarea(view.querySelector("#schemaOutputLinksInput")?.value);
+  node.config = config;
+  saveBlockSchema();
+  appendEvent("Schema node saved", `${node.title} was saved locally in browser storage.`, "ok");
+  render();
+}
+
+function duplicateSchemaNode() {
+  const node = getSchemaNode(blockSchema.selectedNodeId);
+  if (!node) return;
+  const copy = JSON.parse(JSON.stringify(node));
+  copy.id = makeId("schema-copy");
+  copy.title = `${node.title} copy`;
+  copy.x += 40;
+  copy.y += 40;
+  blockSchema.nodes.push(copy);
+  blockSchema.selectedNodeId = copy.id;
+  saveBlockSchema();
+  render();
+}
+
+function deleteSchemaNode() {
+  const node = getSchemaNode(blockSchema.selectedNodeId);
+  if (!node) return;
+  blockSchema.nodes = blockSchema.nodes.filter((item) => item.id !== node.id);
+  blockSchema.edges = blockSchema.edges.filter((edge) => edge.from !== node.id && edge.to !== node.id);
+  blockSchema.selectedNodeId = blockSchema.nodes[0]?.id || null;
+  saveBlockSchema();
+  render();
+}
+
+function validateBlockSchema() {
+  const errors = [];
+  const warnings = [];
+  const ids = new Set(blockSchema.nodes.map((node) => node.id));
+  if (!blockSchema.nodes.some((node) => node.type === "start")) errors.push("At least one Start block is required.");
+  if (!blockSchema.nodes.some((node) => node.type === "approval")) warnings.push("Add an Approval block before writeback or provider actions.");
+  blockSchema.edges.forEach((edge) => {
+    if (!ids.has(edge.from)) errors.push(`Edge ${edge.label || edge.id} has missing source.`);
+    if (!ids.has(edge.to)) errors.push(`Edge ${edge.label || edge.id} has missing target.`);
+  });
+  blockSchema.nodes.forEach((node) => {
+    if (!node.title?.trim()) errors.push(`${node.id} needs a title.`);
+    if (!node.owner?.trim()) warnings.push(`${node.title} needs an owner/agent.`);
+    if (!node.prompt?.trim()) errors.push(`${node.title} needs a prompt.`);
+    if (!node.comments?.trim()) warnings.push(`${node.title} has no reviewer/operator comments yet.`);
+    if (!node.finalOutput?.trim()) errors.push(`${node.title} needs a final output contract.`);
+    if (!node.files?.length) warnings.push(`${node.title} needs owned/touched files or an explicit pending marker.`);
+    if (!node.questions?.length) warnings.push(`${node.title} needs questions covered.`);
+    if (!node.possibleOutputs?.length) warnings.push(`${node.title} needs possible outputs.`);
+    if (node.type !== "start" && incomingSchemaEdges(node.id).length === 0) warnings.push(`${node.title} has no incoming route.`);
+    if (!["output", "approval"].includes(node.type) && outgoingSchemaEdges(node.id).length === 0) warnings.push(`${node.title} has no outgoing route.`);
+    if (node.type === "parallel" && outgoingSchemaEdges(node.id).length < 2) errors.push(`${node.title} needs at least two outgoing branch routes.`);
+    if (node.type === "merge" && incomingSchemaEdges(node.id).length < 2) errors.push(`${node.title} should merge at least two incoming routes.`);
+  });
+  return { errors, warnings };
+}
+
+function queueSelectedSchemaNode() {
+  const node = getSchemaNode(blockSchema.selectedNodeId);
+  if (!node) return;
+  blockSchema.queue = [
+    {
+      id: makeId("schema-queue"),
+      created_at: nowIso(),
+      node_id: node.id,
+      node_title: node.title,
+      owner: node.owner,
+      prompt: node.prompt,
+      comments: node.comments,
+      files: node.files,
+      requirements: node.requirements,
+      final_output: node.finalOutput,
+      possible_outputs: node.possibleOutputs,
+      output_links: node.outputLinks,
+      config: node.config,
+      write_gate: "Codex review required before any durable writeback."
+    },
+    ...(blockSchema.queue || [])
+  ].slice(0, 20);
+  saveBlockSchema();
+  appendEvent("Schema node queued", `${node.title} queued for Codex review packet export.`, "ok");
+  render();
+}
+
+function exportBlockSchemaPacket() {
+  const validation = validateBlockSchema();
+  const packet = createLocalPacket("block-schema-review-packet", "dashboard block-schema editor", "Export current Jarvis PRD-to-ICP operating graph for Codex review.", {
+    extra: {
+      block_schema: blockSchema,
+      validation,
+      langsmith_preparation: {
+        enabled_now: false,
+        next_step: "Add sanitized LangGraph run metadata and trace URLs after LANGSMITH_TRACING/LANGSMITH_API_KEY policy is approved.",
+        blocked_data: ["raw transcripts", "raw recordings", "secrets", "private document bodies"]
+      }
+    }
+  });
+  downloadPacket(packet.id);
 }
 
 function savePromptConfigFromForm() {
@@ -1125,16 +1691,28 @@ globalComposer.addEventListener("submit", (event) => {
 });
 
 window.addEventListener("focus", () => {
-  loadDashboardData("window focus").catch(() => {
-    setLiveStatus("Static data only", "warn");
-  });
+  window.setTimeout(() => {
+    if (isEditingControlActive()) {
+      setLiveStatus("Live polling paused while editing", "warn");
+      return;
+    }
+    loadDashboardData("window focus").catch(() => {
+      setLiveStatus("Static data only", "warn");
+    });
+  }, 250);
 });
 
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) {
-    loadDashboardData("tab visible").catch(() => {
-      setLiveStatus("Static data only", "warn");
-    });
+    window.setTimeout(() => {
+      if (isEditingControlActive()) {
+        setLiveStatus("Live polling paused while editing", "warn");
+        return;
+      }
+      loadDashboardData("tab visible").catch(() => {
+        setLiveStatus("Static data only", "warn");
+      });
+    }, 250);
   }
 });
 
