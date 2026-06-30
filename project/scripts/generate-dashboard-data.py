@@ -389,10 +389,67 @@ def corpus() -> list[dict]:
     return docs
 
 
+
+def e13_gate_status() -> dict:
+    run_dir = PROJECT / "runs" / "E1.3" / "2026-06-30-kb-readback"
+    required = [
+        run_dir / "source-registry.md",
+        run_dir / "kb-writeback-report.md",
+        run_dir / "kb-readback-report.md",
+        run_dir / "review-report.md",
+        run_dir / "run-summary.md",
+        run_dir / "agent-handout.md",
+        run_dir / "e1_3_readback_results.json",
+        WIKI / "runs" / "2026-06-30-e1-3-kb-readback.md",
+    ]
+    evidence = [{"path": rel(path), "status": "present" if path.exists() else "missing"} for path in required]
+    results_path = run_dir / "e1_3_readback_results.json"
+    result_status = "missing"
+    passed_count = 0
+    assertion_count = 0
+    if results_path.exists():
+        try:
+            loaded = json.loads(read(results_path))
+            result_status = str(loaded.get("status", "unknown"))
+            passed_count = int(loaded.get("passed_count", 0))
+            assertion_count = int(loaded.get("assertion_count", 0))
+        except (json.JSONDecodeError, ValueError):
+            result_status = "invalid_json"
+    if all(item["status"] == "present" for item in evidence) and result_status == "passed":
+        derived = "readback_passed"
+    elif any(item["status"] == "present" for item in evidence):
+        derived = "in_progress"
+    else:
+        derived = "not_started"
+    return {
+        "label": "E1.3 KB writeback/readback",
+        "source": "project/project-plan.md",
+        "planned_status": "Review" if derived == "readback_passed" else "To Do",
+        "derived_status": derived,
+        "readback_status": result_status,
+        "passed_count": passed_count,
+        "assertion_count": assertion_count,
+        "required_evidence": evidence,
+        "readback_assertions": [
+            "current mission",
+            "next step",
+            "forbidden actions",
+            "existing outputs",
+            "open gaps",
+            "agent roles",
+            "LangGraph route",
+            "ICP boundary",
+            "dashboard and voice gate",
+            "public reporting gate",
+        ],
+    }
+
+
 def main() -> None:
     langgraph = parse_langgraph()
     crewai = parse_crewai()
     llamaindex = parse_llamaindex()
+    e13_gate = e13_gate_status()
     data = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "project": {
@@ -409,6 +466,7 @@ def main() -> None:
             {"label": "WikiLLM files", "value": f"{wiki_summary()['file_count']} files", "tone": "ok"},
             {"label": "Activity files", "value": str(len(activity_items())), "tone": "ok"},
             {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},
+            {"label": "E1.3 readback", "value": e13_gate["derived_status"], "tone": "ok" if e13_gate["derived_status"] == "readback_passed" else "warn"},
         ],
         "langgraph": langgraph,
         "crewai": crewai,
@@ -418,6 +476,7 @@ def main() -> None:
         "activity": activity_items(),
         "wiki": wiki_summary(),
         "graphify": graphify_status(),
+        "gates": {"e1_3": e13_gate},
         "corpus": corpus(),
         "sources": [
             {"label": "LangGraph overview", "url": "https://docs.langchain.com/oss/python/langgraph/overview"},

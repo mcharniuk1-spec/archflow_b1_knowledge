@@ -96,6 +96,21 @@ agents:
       - outreach_drafts
       - proposal_copy
 
+  af_gloomylord:
+    title: GloomyLord
+    provider: codex_operator
+    local_model: none
+    mode: internal_visual_reporting_sidecar
+    skills:
+      - public-reporting-gate
+      - carousel-structure-design
+      - evidence-labeling
+      - dashboard-proof-card-design
+    outputs:
+      - reporting_template_pack
+      - carousel_outline
+      - visual_proof_cards
+
   af_review:
     title: AF Review
     provider: codex_operator

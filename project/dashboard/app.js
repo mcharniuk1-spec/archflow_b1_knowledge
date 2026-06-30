@@ -7,6 +7,7 @@ const tabs = [
   { id: "crewai", label: "CrewAI Outputs", glyph: "CR" },
   { id: "langsmith", label: "LangSmith", glyph: "LS" },
   { id: "env", label: "Env Config", glyph: "EN" },
+  { id: "gates", label: "Gates", glyph: "GT" },
 ];
 
 let dashboardData = null;
@@ -101,7 +102,7 @@ function renderOverview(data) {
           `).join("")}
         </div>
         <div class="callout">
-          LangGraph is installed and the smoke workflow passes. The next step is expanding this spine into the full E1.2 proof workflow with parallel analysis, document generation, and review gates.
+          E1.3 readback status: ${escapeHtml(data.gates.e1_3.derived_status.replaceAll("_", " "))}. The dashboard derives this from run and wiki artifacts; it does not store decisions or become memory.
         </div>
       </section>
       <section class="panel">
@@ -327,6 +328,30 @@ function renderEnv(data) {
   `;
 }
 
+
+function renderGates(data) {
+  const gate = data.gates.e1_3;
+  view.innerHTML = `
+    <div class="grid cols-3">
+      ${card({ label: "E1.3 derived status", value: gate.derived_status, note: "Read-only status from artifacts", tone: gate.derived_status === "readback_passed" ? "ok" : "warn" })}
+      ${card({ label: "Readback", value: `${gate.passed_count}/${gate.assertion_count}`, note: gate.readback_status, tone: gate.readback_status === "passed" ? "ok" : "warn" })}
+      ${card({ label: "Source", value: gate.source, note: "Authority remains in project files", tone: "ok" })}
+    </div>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">Required Evidence</h2>
+      ${table(["Path", "Status"], gate.required_evidence.map((item) => [
+        pathLink(item.path),
+        badge(item.status),
+      ]))}
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">Readback Assertions</h2>
+      <div class="chips">${gate.readback_assertions.map((item) => `<span class="badge ok">${escapeHtml(item)}</span>`).join("")}</div>
+      <div class="callout" style="margin-top:14px">This gate is display-only. Update source files and rerun the dashboard generator to change status.</div>
+    </section>
+  `;
+}
+
 function render() {
   renderNav();
   const data = dashboardData;
@@ -339,6 +364,7 @@ function render() {
   if (activeTab === "crewai") renderCrew(data);
   if (activeTab === "langsmith") renderLangSmith(data);
   if (activeTab === "env") renderEnv(data);
+  if (activeTab === "gates") renderGates(data);
 }
 
 fetch("./data.json")

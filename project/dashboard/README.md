@@ -29,6 +29,7 @@ http://127.0.0.1:8765/project/dashboard/
 - CrewAI agents, roles, tasks, and expected outputs.
 - LangSmith tracing readiness and safe trace rules.
 - Env/config and runtime package status.
+- E1.3 KB writeback/readback derived gate status and evidence links.
 
 ## Change Config
 

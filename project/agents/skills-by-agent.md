@@ -77,6 +77,20 @@ Skills set up:
 - outreach-message-drafting
 - claim-status-check
 
+
+## GloomyLord
+
+Purpose: internal visual/reporting sidecar for public-safe process reports, dashboard proof cards, and carousel template structures.
+
+Skills set up:
+
+- public-reporting-gate
+- carousel-structure-design
+- evidence-labeling
+- dashboard-proof-card-design
+
+Boundary: internal by default; public-facing branding, post copy, and carousel publication require AF Review and owner approval.
+
 ## AF Review
 
 Purpose: block unsafe or unsupported outputs before handoff.

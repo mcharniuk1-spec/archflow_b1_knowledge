@@ -57,3 +57,4 @@
 
 - Executed the Onyx/live-dashboard/voice/hosting planning baseline by creating private Notion tasks, adding the public `outquestions` skill, updating the public skill registries, and recording a public run and decision note.
 - The plan keeps ArchFlow as the workflow brain, starts dashboard hosting with a static Vercel path, reserves Railway for live API/worker/voice services, and requires decision-question closeouts after substantial runs.
+- 2026-06-30: Executed E1.3 public-safe KB writeback/readback proof, added dashboard-derived E1.3 gate status, and started E1.5 as a public-reporting gate with GloomyLord kept internal by default.

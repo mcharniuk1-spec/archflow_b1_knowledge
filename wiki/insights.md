@@ -69,3 +69,12 @@ Validated demand requires buyer risk: paid diagnostic, prepayment, approved paid
 ## Execution Report Insight
 
 ArchFlow now needs decision-question closeouts because tasks span workflow design, Notion, GitHub, dashboard hosting, voice, Onyx, and public content. The failure risk is moving to the next stage while key owner decisions remain implicit. The `outquestions` skill solves this by turning every substantial run into a short report with blocking decisions, optional refinements, next-stage gates, and risks.
+
+
+## Insight - E1.3 Readback Before Content And Live Services
+
+- Observation: E1.3 only becomes useful when a future agent can recover the mission, gates, outputs, gaps, and next actions from artifacts rather than from chat context.
+- Interpretation: readback proof is the real transition from document generation to an agent-ready operating KB.
+- Why it matters: this prevents dashboard, voice, Onyx, vector retrieval, and public reporting from becoming competing systems before the core memory loop is reliable.
+- Where applicable: E1.4 KB principle, E1.5 reporting gate, E2 evidence engine, hosted dashboard planning, and future turbovec benchmark.
+- Limitations: the current proof is deterministic lexical readback; vector retrieval still needs source IDs, chunk IDs, embeddings, and a benchmark.

@@ -123,3 +123,14 @@ ArchFlow Block 1 is the first public solution:
 - `skills/outquestions/SKILL.md` is the closeout skill for substantial execution.
 - Use it after dashboard, voice, hosting, Onyx, Notion, GitHub, multi-agent, and public-reporting work.
 - It must report what changed, artifacts, blocking questions, optional questions, next-stage gate, risks, and gaps.
+
+
+## E1.3 Readback Memory - 2026-06-30
+
+- E1.3 public-safe KB writeback/readback proof exists under `project/runs/E1.3/2026-06-30-kb-readback/`.
+- E1.3 readback assertions cover current mission, next step, forbidden actions, existing outputs, open gaps, agent roles, graph route, ICP boundary, dashboard/voice gate, and public-reporting gate.
+- E1.2 remains Review until owner acceptance; E1.3 can be in Review based on readback evidence without marking E1.2 Done.
+- E1.5 has started only as a public-reporting gate under `project/runs/E1.5/2026-06-30-public-reporting-gate/`; no public posting is approved.
+- GloomyLord is an internal visual/reporting sidecar by default, not public-facing branding unless separately approved.
+- First hosted dashboard default remains static/read-only first. Vercel is preferred for that static step; Railway waits for live API, background worker, queue, websocket/SSE, or voice-service requirements.
+- Voice commands start read-only/status only; write actions require human approval and AF Review.

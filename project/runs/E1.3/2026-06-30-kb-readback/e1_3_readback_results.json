@@ -1,0 +1,443 @@
+{
+  "generated_at": "2026-06-30T12:05:38.486612+00:00",
+  "status": "passed",
+  "assertion_count": 10,
+  "passed_count": 10,
+  "source_boundary": "approved public files only",
+  "results": [
+    {
+      "id": "current_mission",
+      "question": "What is the current mission?",
+      "required_terms": [
+        "dialogue",
+        "prd",
+        "knowledge",
+        "readback"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 32,
+          "path": "project/project-plan.md",
+          "title": "Project Plan"
+        },
+        {
+          "score": 32,
+          "path": "project/runs/2026-06-26-june24-next-steps-proof/agent-handout.md",
+          "title": "Agent Handout: E1.1 Runtime Setup And E1.2 Dialogue Proof Preparation"
+        },
+        {
+          "score": 29,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
+          "title": "E1.2 PRD - Dialogue-To-PRD Full Test"
+        },
+        {
+          "score": 26,
+          "path": "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md",
+          "title": "E1.2 Next Steps For Owner Acceptance And E1.3 Start"
+        },
+        {
+          "score": 23,
+          "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+          "title": "Current Setup Methods And Agent Plan"
+        },
+        {
+          "score": 22,
+          "path": "wiki/memory.md",
+          "title": "Memory"
+        }
+      ]
+    },
+    {
+      "id": "next_step",
+      "question": "What is the next execution step after E1.3?",
+      "required_terms": [
+        "E1.4",
+        "principle",
+        "E2",
+        "evidence"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 22,
+          "path": "project/runs/2026-06-29-tool-market-integration/notion-update-plan.md",
+          "title": "Notion Update Plan"
+        },
+        {
+          "score": 20,
+          "path": "project/project-plan.md",
+          "title": "Project Plan"
+        },
+        {
+          "score": 20,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+          "title": "E1.3 KB Writeback Report"
+        },
+        {
+          "score": 17,
+          "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md",
+          "title": "E1.5 Public Reporting Gate"
+        },
+        {
+          "score": 14,
+          "path": "wiki/insights.md",
+          "title": "Insights"
+        },
+        {
+          "score": 12,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/run-summary.md",
+          "title": "Run: E1.3 KB Writeback And Readback"
+        }
+      ]
+    },
+    {
+      "id": "forbidden_actions",
+      "question": "What actions remain forbidden before later gates?",
+      "required_terms": [
+        "raw",
+        "private",
+        "Nexus",
+        "unattended",
+        "outreach"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 24,
+          "path": "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md",
+          "title": "E1.2 Next Steps For Owner Acceptance And E1.3 Start"
+        },
+        {
+          "score": 23,
+          "path": "project/project-plan.md",
+          "title": "Project Plan"
+        },
+        {
+          "score": 20,
+          "path": "project/runs/E1.2/2026-06-26-full-test/agent-handout.md",
+          "title": "E1.2 Agent Handout"
+        },
+        {
+          "score": 19,
+          "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+          "title": "Current Setup Methods And Agent Plan"
+        },
+        {
+          "score": 19,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
+          "title": "E1.2 PRD - Dialogue-To-PRD Full Test"
+        },
+        {
+          "score": 19,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+          "title": "E1.3 KB Writeback Report"
+        }
+      ]
+    },
+    {
+      "id": "existing_outputs",
+      "question": "What E1.2 outputs already exist?",
+      "required_terms": [
+        "PRD",
+        "streaming",
+        "system",
+        "responsibility",
+        "matrix"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 34,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
+          "title": "E1.2 PRD - Dialogue-To-PRD Full Test"
+        },
+        {
+          "score": 30,
+          "path": "project/project-plan.md",
+          "title": "Project Plan"
+        },
+        {
+          "score": 30,
+          "path": "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md",
+          "title": "E1.2 Next Steps For Owner Acceptance And E1.3 Start"
+        },
+        {
+          "score": 25,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+          "title": "E1.3 KB Writeback Report"
+        },
+        {
+          "score": 22,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.md",
+          "title": "E1.2 System Report"
+        },
+        {
+          "score": 22,
+          "path": "project/runs/E1.2/2026-06-26-full-test/agent-handout.md",
+          "title": "E1.2 Agent Handout"
+        }
+      ]
+    },
+    {
+      "id": "open_gaps",
+      "question": "What gaps remain after E1.3?",
+      "required_terms": [
+        "owner",
+        "CrewAI",
+        "vector",
+        "Nexus"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 29,
+          "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+          "title": "Current Setup Methods And Agent Plan"
+        },
+        {
+          "score": 25,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.md",
+          "title": "E1.2 System Report"
+        },
+        {
+          "score": 23,
+          "path": "project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md",
+          "title": "E1.2 Next Steps For Owner Acceptance And E1.3 Start"
+        },
+        {
+          "score": 21,
+          "path": "wiki/insights.md",
+          "title": "Insights"
+        },
+        {
+          "score": 20,
+          "path": "project/reports/2026-06-25-dashboard-setup-and-operation-report.md",
+          "title": "Dashboard Setup And Operation Report"
+        },
+        {
+          "score": 19,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
+          "title": "E1.2 PRD - Dialogue-To-PRD Full Test"
+        }
+      ]
+    },
+    {
+      "id": "agent_roles",
+      "question": "Which agents cooperated in the Block 1 flow?",
+      "required_terms": [
+        "AF Tools",
+        "AF Context",
+        "AF Manager",
+        "AF Knowledge",
+        "AF Review"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 15,
+          "path": "project/agentic-stack.md",
+          "title": "Agentic Stack"
+        },
+        {
+          "score": 15,
+          "path": "project/agents/README.md",
+          "title": "Agents"
+        },
+        {
+          "score": 15,
+          "path": "project/agents/agent-roster.yaml",
+          "title": "agent-roster.yaml"
+        },
+        {
+          "score": 15,
+          "path": "project/agents/skills-by-agent.md",
+          "title": "Skills By Agent"
+        },
+        {
+          "score": 15,
+          "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+          "title": "Current Setup Methods And Agent Plan"
+        },
+        {
+          "score": 15,
+          "path": "project/reports/2026-06-25-dashboard-setup-and-operation-report.md",
+          "title": "Dashboard Setup And Operation Report"
+        }
+      ]
+    },
+    {
+      "id": "langgraph_route",
+      "question": "What route did the E1.2 graph prove?",
+      "required_terms": [
+        "intake_validate",
+        "retrieve_context",
+        "review_gate",
+        "publish_or_record"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 23,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
+          "title": "E1.2 PRD - Dialogue-To-PRD Full Test"
+        },
+        {
+          "score": 20,
+          "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_Streaming_report.md",
+          "title": "E1.2 Streaming Report"
+        },
+        {
+          "score": 19,
+          "path": "project/workflows/langgraph-controller.yaml",
+          "title": "langgraph-controller.yaml"
+        },
+        {
+          "score": 12,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+          "title": "E1.3 KB Writeback Report"
+        },
+        {
+          "score": 9,
+          "path": "project/reports/2026-06-25-current-setup-methods-and-agent-plan.md",
+          "title": "Current Setup Methods And Agent Plan"
+        },
+        {
+          "score": 9,
+          "path": "project/reports/2026-06-25-dashboard-setup-and-operation-report.md",
+          "title": "Dashboard Setup And Operation Report"
+        }
+      ]
+    },
+    {
+      "id": "icp_boundary",
+      "question": "What is the active ICP boundary?",
+      "required_terms": [
+        "product",
+        "B2B",
+        "SaaS",
+        "Director",
+        "VP"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 34,
+          "path": "project/project-plan.md",
+          "title": "Project Plan"
+        },
+        {
+          "score": 29,
+          "path": "project/runs/2026-06-29-tool-market-integration/notion-update-plan.md",
+          "title": "Notion Update Plan"
+        },
+        {
+          "score": 25,
+          "path": "project/runs/2026-06-29-tool-market-integration/market-engine.md",
+          "title": "Market Engine"
+        },
+        {
+          "score": 22,
+          "path": "project/runs/2026-06-29-product-team-icp-correction/run-summary.md",
+          "title": "Run - Product-Team ICP Correction"
+        },
+        {
+          "score": 19,
+          "path": "wiki/memory.md",
+          "title": "Memory"
+        },
+        {
+          "score": 17,
+          "path": "project/reports/2026-06-29-tool-and-market-integration-plan.md",
+          "title": "Tool And Market Integration Plan"
+        }
+      ]
+    },
+    {
+      "id": "dashboard_voice_gate",
+      "question": "What is the dashboard and voice boundary?",
+      "required_terms": [
+        "Vercel",
+        "Railway",
+        "voice",
+        "read-only"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 28,
+          "path": "project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
+          "title": "Run: Onyx Dashboard Voice Hosting Execution Plan"
+        },
+        {
+          "score": 22,
+          "path": "wiki/memory.md",
+          "title": "Memory"
+        },
+        {
+          "score": 20,
+          "path": "wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md",
+          "title": "Decision: Live Dashboard Voice Hosting And Onyx Boundary"
+        },
+        {
+          "score": 18,
+          "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
+          "title": "Run: Onyx Dashboard Voice Hosting Execution"
+        },
+        {
+          "score": 15,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+          "title": "E1.3 KB Writeback Report"
+        },
+        {
+          "score": 14,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/outquestions.md",
+          "title": "Outquestions: E1.3 Readback And E1.5 Gate"
+        }
+      ]
+    },
+    {
+      "id": "public_reporting_gate",
+      "question": "What is required before public carousel reporting?",
+      "required_terms": [
+        "GloomyLord",
+        "AF Review",
+        "owner",
+        "carousel"
+      ],
+      "passed": true,
+      "results": [
+        {
+          "score": 21,
+          "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md",
+          "title": "E1.5 Public Reporting Gate"
+        },
+        {
+          "score": 19,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+          "title": "E1.3 KB Writeback Report"
+        },
+        {
+          "score": 18,
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/outquestions.md",
+          "title": "Outquestions: E1.3 Readback And E1.5 Gate"
+        },
+        {
+          "score": 16,
+          "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/agent-handout.md",
+          "title": "Agent Handout: E1.5 Public Reporting Gate"
+        },
+        {
+          "score": 16,
+          "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md",
+          "title": "GloomyLord Internal Reporting Brief"
+        },
+        {
+          "score": 13,
+          "path": "project/agents/skills-by-agent.md",
+          "title": "Skills By Agent"
+        }
+      ]
+    }
+  ]
+}

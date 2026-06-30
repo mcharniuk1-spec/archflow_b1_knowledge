@@ -57,11 +57,11 @@ Tasks:
 
 | Task | Status | Type | Due | Public Output |
 |---|---|---|---|---|
-| E1.1 Set up a separate KB project from scratch | In Progress | Docs | 2026-06-26 | Working KB workspace and structure. |
+| E1.1 Set up a separate KB project from scratch | Done | Docs | 2026-06-26 | Working KB workspace and structure. |
 | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | PRD, streaming report, system report, task matrix, KB update, review report, and PDFs from the first reproducible proof. |
-| E1.3 Record the PRD and agent history in the KB | To Do | Docs | 2026-06-30 | Populated KB that an agent can read back. |
+| E1.3 Record the PRD and agent history in the KB | Review | Docs | 2026-06-30 | Public-safe KB writeback, source registry, and readback proof. |
 | E1.4 Write the KB update principle | Backlog | Docs | 2026-07-03 | One to two page method for building and updating the KB. |
-| E1.5 Document the process for case study and content | Backlog | Docs | 2026-07-04 | Public-safe process package for content and site proof. |
+| E1.5 Document the process for case study and content | In Progress | Docs | 2026-07-04 | Public-reporting gate and GloomyLord internal visual/reporting brief started. |
 
 E1.1 through E1.3 now have a finer staged sequence:
 
@@ -69,6 +69,20 @@ E1.1 through E1.3 now have a finer staged sequence:
 2. E1.2 proof order: source packet, source inventory, context digest, PRD, responsibility matrix, provenance log, review gate.
 3. E1.3 KB order: approved PRD write, agent history, source registry, retrieval metadata, loop state, readback test, memory candidates, E1.4/E2 handoff.
 4. E1.3 loop rule: keep the loop at L1 report-only until readback proves the KB can answer current mission, next step, forbidden actions, existing outputs, and open gaps from memory.
+
+E1.3 review update on 2026-06-30:
+
+| Subtask | Status | Evidence |
+|---|---|---|
+| Approved PRD writeback | Review | `project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md` |
+| Agent history writeback | Review | `project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md` |
+| Source registry and retrieval metadata | Review | `project/runs/E1.3/2026-06-30-kb-readback/source-registry.md` |
+| Readback assertions | Review | `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md` |
+| Dashboard E1.3 status | Review | `project/dashboard/data.json` generated from run evidence |
+| Dashboard/voice/hosting plan | Review | static dashboard first, Railway and voice writes gated |
+| GloomyLord reporting package | In Progress | starts under E1.5 public-reporting gate |
+
+E1.3 review caveat: E1.2 remains in Review until owner acceptance. The E1.3 readback proof can pass without marking E1.2 Done.
 
 ## E5 - Analytics And ROI Method
 

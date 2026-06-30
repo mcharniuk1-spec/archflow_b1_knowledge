@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T11:36:13.942685+00:00",
+  "generated_at": "2026-06-30T12:06:02.669849+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,17 +25,22 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "22 files",
+      "value": "24 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "83",
+      "value": "98",
       "tone": "ok"
     },
     {
       "label": "Local dashboard",
       "value": "static_read_only",
+      "tone": "ok"
+    },
+    {
+      "label": "E1.3 readback",
+      "value": "readback_passed",
       "tone": "ok"
     }
   ],
@@ -390,6 +395,111 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-coordination-stream.md",
+      "title": "E1.3 Agent Coordination Stream",
+      "modified": "2026-06-30T12:05:38.941307+00:00",
+      "size": 1524
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-handout.md",
+      "title": "Agent Handout: E1.3 KB Readback",
+      "modified": "2026-06-30T12:05:38.941235+00:00",
+      "size": 1396
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/run-summary.md",
+      "title": "Run: E1.3 KB Writeback And Readback",
+      "modified": "2026-06-30T12:05:38.941163+00:00",
+      "size": 1764
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/review-report.md",
+      "title": "E1.3 Review Report",
+      "modified": "2026-06-30T12:05:38.941076+00:00",
+      "size": 1321
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md",
+      "title": "E1.3 KB Readback Report",
+      "modified": "2026-06-30T12:05:38.940984+00:00",
+      "size": 2166
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+      "title": "E1.3 KB Writeback Report",
+      "modified": "2026-06-30T12:05:38.487669+00:00",
+      "size": 4728
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/source-registry.md",
+      "title": "E1.3 Source Registry",
+      "modified": "2026-06-30T12:05:38.487482+00:00",
+      "size": 2848
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/outquestions.md",
+      "title": "Outquestions: E1.3 Readback And E1.5 Gate",
+      "modified": "2026-06-30T12:03:41.137252+00:00",
+      "size": 3629
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/validation-report.md",
+      "title": "E1.3 Validation Report",
+      "modified": "2026-06-30T12:03:41.137143+00:00",
+      "size": 1081
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md",
+      "title": "Decision: E1.3 Readback And E1.5 Public Reporting Gates",
+      "modified": "2026-06-30T11:59:28.092513+00:00",
+      "size": 1430
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-30-e1-3-kb-readback.md",
+      "title": "Run: E1.3 KB Writeback And Readback",
+      "modified": "2026-06-30T11:59:28.092427+00:00",
+      "size": 1712
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/agent-handout.md",
+      "title": "Agent Handout: E1.5 Public Reporting Gate",
+      "modified": "2026-06-30T11:59:28.092308+00:00",
+      "size": 769
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/run-summary.md",
+      "title": "Run: E1.5 Public Reporting Gate Start",
+      "modified": "2026-06-30T11:59:28.092152+00:00",
+      "size": 727
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md",
+      "title": "GloomyLord Internal Reporting Brief",
+      "modified": "2026-06-30T11:59:28.092079+00:00",
+      "size": 1716
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md",
+      "title": "E1.5 Public Reporting Gate",
+      "modified": "2026-06-30T11:59:28.092005+00:00",
+      "size": 3577
+    },
     {
       "kind": "wiki_decision",
       "path": "wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md",
@@ -976,7 +1086,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 22,
+    "file_count": 24,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -992,6 +1102,11 @@
         "path": "wiki/decisions/2026-06-29-tool-memory-model-routing.md",
         "title": "Decision - Tool Memory And Model Routing",
         "excerpt": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, Wiki"
+      },
+      {
+        "path": "wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md",
+        "title": "Decision: E1.3 Readback And E1.5 Public Reporting Gates",
+        "excerpt": "# Decision: E1.3 Readback And E1.5 Public Reporting Gates  Date: 2026-06-30 Status: accepted as execution baseline  ## Decision  E1.3 is complete enough for Review when the repo contains public-safe KB writeback artifacts and a readback proof that future agents can recover the current mission, next step, forbidden actions, outputs, gaps, agent roles, graph route, ICP boundary, dashboard/voice gate, and public-reporti"
       },
       {
         "path": "wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md",
@@ -1084,6 +1199,11 @@
         "excerpt": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `pro"
       },
       {
+        "path": "wiki/runs/2026-06-30-e1-3-kb-readback.md",
+        "title": "Run: E1.3 KB Writeback And Readback",
+        "excerpt": "# Run: E1.3 KB Writeback And Readback  Date: 2026-06-30 Status: readback passed, review gate active  ## Summary  E1.3 recorded the approved E1.2 PRD summary, agent history, source registry, retrieval metadata, loop state, memory candidates, and E1.4/E2 handoff into the public-safe KB layer.  The deterministic readback proof verifies that future agents can retrieve current mission, next step, forbidden actions, existi"
+      },
+      {
         "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
         "title": "Run: Onyx Dashboard Voice Hosting Execution",
         "excerpt": "# Run: Onyx Dashboard Voice Hosting Execution  Date: 2026-06-30 Status: planned and recorded  ## Summary  The June 30 plan was converted into a public-safe execution baseline. ArchFlow remains the workflow brain; Onyx is a later optional portal/search layer. The dashboard should go live in stages, beginning with the current static read-only dashboard and only adding Railway/live workers when the project needs a long-"
@@ -1096,6 +1216,63 @@
       "graphify-out"
     ],
     "recommended_next": "Regenerate Graphify after code or workflow changes."
+  },
+  "gates": {
+    "e1_3": {
+      "label": "E1.3 KB writeback/readback",
+      "source": "project/project-plan.md",
+      "planned_status": "Review",
+      "derived_status": "readback_passed",
+      "readback_status": "passed",
+      "passed_count": 10,
+      "assertion_count": 10,
+      "required_evidence": [
+        {
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/source-registry.md",
+          "status": "present"
+        },
+        {
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+          "status": "present"
+        },
+        {
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md",
+          "status": "present"
+        },
+        {
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/review-report.md",
+          "status": "present"
+        },
+        {
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/run-summary.md",
+          "status": "present"
+        },
+        {
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-handout.md",
+          "status": "present"
+        },
+        {
+          "path": "project/runs/E1.3/2026-06-30-kb-readback/e1_3_readback_results.json",
+          "status": "present"
+        },
+        {
+          "path": "wiki/runs/2026-06-30-e1-3-kb-readback.md",
+          "status": "present"
+        }
+      ],
+      "readback_assertions": [
+        "current mission",
+        "next step",
+        "forbidden actions",
+        "existing outputs",
+        "open gaps",
+        "agent roles",
+        "LangGraph route",
+        "ICP boundary",
+        "dashboard and voice gate",
+        "public reporting gate"
+      ]
+    }
   },
   "corpus": [
     {
@@ -1131,7 +1308,7 @@
     {
       "path": "project/dashboard/README.md",
       "title": "Local Operator Dashboard",
-      "text": "# Local Operator Dashboard  This is the Phase 2 local dashboard for ArchFlow Block 1.  It is a read-only control panel generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## What It Shows  - Overview and recent activity. - WikiLLM memory, decisions, issues, and runs. - Graphify status and future graph links. - LangGraph nodes, routing, review gates, and stop logic. - LlamaIndex-style local query test over approved public files. - CrewAI agents, roles, tasks, and expected outputs. - LangSmith tracing readiness and safe trace rules. - Env/config and runtime package status.  ## Change Config  - LangGraph nodes and routing: `project/workflows/langgraph-controller.yaml` - CrewAI roles and task outputs: `project/workflows/crewai-crew.yaml` - LlamaIndex corpus and retrieval parameters: `project/workflows/llamaindex-rag.yaml` - Model routing: `project/config/model-routing.yaml` - Dashboard data extraction: `project/scrip"
+      "text": "# Local Operator Dashboard  This is the Phase 2 local dashboard for ArchFlow Block 1.  It is a read-only control panel generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## What It Shows  - Overview and recent activity. - WikiLLM memory, decisions, issues, and runs. - Graphify status and future graph links. - LangGraph nodes, routing, review gates, and stop logic. - LlamaIndex-style local query test over approved public files. - CrewAI agents, roles, tasks, and expected outputs. - LangSmith tracing readiness and safe trace rules. - Env/config and runtime package status. - E1.3 KB writeback/readback derived gate status and evidence links.  ## Change Config  - LangGraph nodes and routing: `project/workflows/langgraph-controller.yaml` - CrewAI roles and task outputs: `project/workflows/crewai-crew.yaml` - LlamaIndex corpus and retrieval parameters: `project/workflows/llamaindex-rag.yaml` - Model routing: `project/c"
     },
     {
       "path": "project/future-actions-and-parameters.md",
@@ -1524,6 +1701,71 @@
       "text": "# Run Summary  Date: 2026-06-26 Run: E1.2 Notion status sync and owner next-steps package  ## Task  Review the current E1/E1.2 status against the completed proof package, update task states and checklist evidence in Notion, attach the three E1.2 report PDFs as stable repository links, and create a clear owner action document for accepting E1.2 and starting E1.3.  ## Outputs  - `next-steps-e1-2.md` - `next-steps-e1-2.pdf` - `agent-handout.md` - `wiki/runs/2026-06-26-e1-2-notion-sync.md` - `project/reports/2026-06-26-e1-2-next-steps.pdf`  ## Status Logic  - E1.1 is complete based on the runtime setup, proof artifacts, committed files, and passing guards. - E1.2 subtasks E1.2.1 through E1.2.7 are complete based on the full-test run artifacts. - E1.2 parent remains `Review` until owner acceptance. - E1.3 remains `To Do` and is the recommended next active work after E1.2 acceptance.  ## Report Links Added To Notion  - E1.2 PRD PDF. - E1.2 Streaming report PDF. - E1.2 System report PDF. - E1.2 Next steps PDF.  ## Remaining Owner Inputs  The owner must approve or request edits to the E1.2 report package, confirm whether E1.2 can be marked `Done`, and confirm whether E1.3 should start with"
     },
     {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-coordination-stream.md",
+      "title": "E1.3 Agent Coordination Stream",
+      "text": "# E1.3 Agent Coordination Stream  Date: 2026-06-30 Status: recorded public-safe sidecar coordination  ## Main Operator Stream  Codex kept the critical path local: inspect current E1.2 evidence, implement E1.3 writeback/readback, update dashboard status, start E1.5 gate, validate, then report.  ## Sidecar Assignments  | Sidecar | Assignment | Result | |---|---|---| | AF Review sidecar | Read-only E1.2 proof integrity review | Confirmed E1.2 was actually executed and identified owner acceptance as the remaining state gate. | | AF Knowledge/Dashboard sidecar | Read-only E1.3 and dashboard-readback requirements | Confirmed E1.3 was not complete and recommended a derived dashboard gate object. | | AF Copy/GloomyLord sidecar | Read-only public-reporting and visual gate review | Recommended LinkedIn-first product-team category education, GloomyLord as internal sidecar by default, and AF Review plus owner copy approval. |  ## Integration Decisions  FACT: E1.2 proof exists and is technically approved as an internal proof.  FACT: E1.3 required a new run folder, writeback report, readback report, review report, wiki run/log update, and dashboard-derived gate status.  INTERPRETATION: E1.5 shou"
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-handout.md",
+      "title": "Agent Handout: E1.3 KB Readback",
+      "text": "# Agent Handout: E1.3 KB Readback  Use this handout before changing E1.3, dashboard status, E1.5 public reporting, or the E2 evidence engine.  ## Current State  E1.3 has been executed as a public-safe writeback/readback proof. The readback report verifies the core KB questions from approved public artifacts.  E1.2 remains Review until owner acceptance. Do not mark E1.2 Done without explicit acceptance or requested edits being completed.  ## Required Read Order  1. `project/runs/E1.3/2026-06-30-kb-readback/run-summary.md` 2. `project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md` 3. `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md` 4. `project/runs/E1.3/2026-06-30-kb-readback/review-report.md` 5. `wiki/runs/2026-06-30-e1-3-kb-readback.md` 6. `project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md`  ## Safe Next Actions  - Regenerate dashboard data after any run/wiki/plan change. - Keep dashboard read-only. - Keep voice read-only/status until a command taxonomy and approval flow pass. - Keep Railway deferred until a live API/worker/queue/voice bridge exists. - Keep public reporting behind AF Review and owner approval.  ## Blocked Actions "
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md",
+      "title": "E1.3 KB Readback Report",
+      "text": "# E1.3 KB Readback Report  Date: 2026-06-30 Status: passed  ## Method  The proof queries approved public files after the E1.3 writeback report and source registry are generated. It verifies that a future agent can retrieve the core E1.2/E1.3 operating facts from repository artifacts without relying on the current chat.  ## Assertions  | Assertion | Status | Top evidence | Question | |---|---|---|---| | current_mission | pass | `project/project-plan.md` | What is the current mission? | | next_step | pass | `project/runs/2026-06-29-tool-market-integration/notion-update-plan.md` | What is the next execution step after E1.3? | | forbidden_actions | pass | `project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md` | What actions remain forbidden before later gates? | | existing_outputs | pass | `project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md` | What E1.2 outputs already exist? | | open_gaps | pass | `project/reports/2026-06-25-current-setup-methods-and-agent-plan.md` | What gaps remain after E1.3? | | agent_roles | pass | `project/agentic-stack.md` | Which agents cooperated in the Block 1 flow? | | langgraph_route | pass | `project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md` | Wh"
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md",
+      "title": "E1.3 KB Writeback Report",
+      "text": "# E1.3 KB Writeback Report  Date: 2026-06-30 Status: writeback completed, readback required  ## FACT  E1.2 was executed as a deterministic public-safe internal proof. The run state records approval status `unknown`, source boundary `unknown`, and `11` stream events.  E1.2 produced the PRD, streaming report, system report, responsibility matrix, KB update note, review report, state JSON, stream log, and next-steps package under the E1.2 run folders.  E1.2 remains in Review until owner acceptance. This does not block E1.3 readback proof, but it blocks marking E1.2 as Done.  The active ICP hypothesis is one vertical: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed.  ## INTERPRETATION  The E1.2 proof shows that ArchFlow can turn sanctioned source material into structured context, PRD outputs, agent role outputs, KB update candidates, and reviewed public-safe artifacts. E1.3 must prove that this knowledge can be read back without re-opening the original chat.  Company-count and market-universe analysis are useful for E2 sourcing, but counts are not proof of deman"
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/outquestions.md",
+      "title": "Outquestions: E1.3 Readback And E1.5 Gate",
+      "text": "# Outquestions: E1.3 Readback And E1.5 Gate  Date: 2026-06-30 Status: completed closeout questions and defaults  ## What Changed  E1.3 moved from missing evidence to a public-safe KB writeback/readback proof. The repo now contains the approved E1.2 summary, agent history, source registry, retrieval metadata, loop state, readback report, review report, validation report, and dashboard-derived gate status.  E1.5 started only as a public-reporting gate. No public post, carousel, or demand claim is approved yet. The gate defines what must be true before process proof becomes public content.  The dashboard now exposes E1.3 status as a derived, read-only gate. It does not store decisions and does not replace WikiLLM.  ## Artifacts  - `project/runs/E1.3/2026-06-30-kb-readback/` - `project/runs/E1.5/2026-06-30-public-reporting-gate/` - `project/scripts/e1_3_kb_readback.py` - `project/dashboard/data.json` - `project/dashboard/app.js` - `wiki/runs/2026-06-30-e1-3-kb-readback.md` - `wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md`  ## Blocking Questions And Defaults  1. Should the first hosted dashboard be public, hidden-link, or auth-gated?    Default: hidden-link stati"
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/review-report.md",
+      "title": "E1.3 Review Report",
+      "text": "# E1.3 Review Report  Date: 2026-06-30 Status: approved_for_review  ## Review Verdict  FACT: E1.3 KB writeback artifacts now exist and the readback assertion set passes.  FACT: E1.2 owner acceptance is still required before E1.2 can move from Review to Done.  INTERPRETATION: E1.3 can move to Review because the repo now contains the approved PRD summary, agent history, source registry, retrieval metadata, loop state, readback proof, memory candidates, and E1.4/E2 handoff.  HYPOTHESIS: Starting E1.5 with a public-reporting gate is safe because it does not publish claims; it only defines evidence, review, visual, and approval requirements.  ## Blocked From This Review  - Marking E1.2 Done without owner acceptance. - Publishing public carousels before AF Review and owner copy approval. - Creating Railway service infrastructure before live API/worker/voice requirements exist. - Enabling voice write actions before read-only command proof and approval gates. - Activating Onyx, Cognee, turbovec, Nexus writes, or broad APIs before their gates.  ## Checks Required Before Git Push  - Run `python3 scripts/public_safety_scan.py`. - Run `project/local/venv/bin/python project/scripts/validate-wor"
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/run-summary.md",
+      "title": "Run: E1.3 KB Writeback And Readback",
+      "text": "# Run: E1.3 KB Writeback And Readback  Date: 2026-06-30 Status: readback passed, E1.3 ready for review  ## Task  Execute E1.3 by recording the approved E1.2 PRD and agent history into the public-safe KB layer, adding source/retrieval metadata, and proving readback from approved artifacts.  ## What Changed  E1.3 now has a public-safe run folder with a source registry, KB writeback report, readback report, review report, run summary, agent handout, and machine-readable readback results.  The writeback records E1.2 proof status, agent cooperation, LangGraph route, loop state, current ICP, dashboard/voice gates, and public-reporting gates without raw private source material.  The readback proof verifies that future agents can retrieve the current mission, next step, forbidden actions, existing outputs, open gaps, agent roles, graph route, ICP boundary, dashboard/voice gate, and public-reporting gate.  ## Outputs  - `project/runs/E1.3/2026-06-30-kb-readback/source-registry.md` - `project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/review-report.md` - `project/runs/"
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/source-registry.md",
+      "title": "E1.3 Source Registry",
+      "text": "# E1.3 Source Registry  Date: 2026-06-30 Status: generated public-safe registry  ## Purpose  This registry declares the approved input packet for E1.3 KB writeback/readback. It uses repo-relative paths only and does not include raw private source material.  ## Source Packet Status  - E1.2 graph approval status: `unknown` - E1.2 source boundary status: `unknown` - E1.2 stream event count: `11` - E1.2 owner acceptance gate: `review_pending_owner_acceptance` - Generated at: `2026-06-30T12:05:38.486612+00:00`  ## Sources  | Source ID | Path | Status | Boundary | |---|---|---|---| | routing_contract | `AGENTS.md` | present | public-safe approved artifact | | project_readme | `project/README.md` | present | public-safe approved artifact | | operating_rules | `project/operating-rules.md` | present | public-safe approved artifact | | e1_2_run_summary | `project/runs/E1.2/2026-06-26-full-test/run-summary.md` | present | public-safe approved artifact | | e1_2_prd | `project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md` | present | public-safe approved artifact | | e1_2_system_report | `project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.md` | present | public-safe approved artifact | | e"
+    },
+    {
+      "path": "project/runs/E1.3/2026-06-30-kb-readback/validation-report.md",
+      "title": "E1.3 Validation Report",
+      "text": "# E1.3 Validation Report  Date: 2026-06-30 Status: passed  ## Checks Performed  | Check | Command | Result | |---|---|---| | E1.3 readback proof | `project/local/venv/bin/python project/scripts/e1_3_kb_readback.py` | `e1_3_readback=ok`, 10/10 assertions | | Dashboard JSON | parse `project/dashboard/data.json` | `json_ok`, E1.3 derived status `readback_passed` | | Dashboard JavaScript | `node --check project/dashboard/app.js` | passed | | Public safety | `python3 scripts/public_safety_scan.py` | passed | | Workflow config | `project/local/venv/bin/python project/scripts/validate-workflows.py` | passed | | Runtime guard | `project/local/venv/bin/python project/scripts/pre-push-runtime-guard.py` | passed |  ## Evidence  - `project/runs/E1.3/2026-06-30-kb-readback/e1_3_readback_results.json` - `project/dashboard/data.json` - `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md`  ## Remaining Gates  - E1.2 owner acceptance before E1.2 can move from Review to Done. - Private task-board sync after repo validation. - Git commit and push after final diff review."
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/agent-handout.md",
+      "title": "Agent Handout: E1.5 Public Reporting Gate",
+      "text": "# Agent Handout: E1.5 Public Reporting Gate  Use this before drafting public content, carousel text, or GloomyLord visuals.  ## Current State  E1.5 has started as a gate. No public content has been approved or published.  ## Rules  - LinkedIn-first category education is the safest default. - Audience is B2B SaaS product leaders unless changed by owner decision. - GloomyLord is internal by default. - AF Copy drafts only from approved public-safe artifacts. - AF Review plus owner approval are required before publishing. - Demand, ROI, market-validation, and customer claims remain blocked until E6/E7 proof exists.  ## Next Agent Task  Create a template pack only after owner answers the dashboard visibility, GloomyLord branding, approval path, and CTA questions."
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md",
+      "title": "GloomyLord Internal Reporting Brief",
+      "text": "# GloomyLord Internal Reporting Brief  Date: 2026-06-30 Status: initial brief  ## Role  GloomyLord is the internal visual/reporting sidecar for ArchFlow process proof. It prepares report templates, carousel structures, dashboard-friendly cards, and public-safe visual systems from approved artifacts.  ## First Work Package  1. PRD for public reporting templates. 2. Research-template set for account evidence cards and process proof cards. 3. Daily and weekly monitoring templates. 4. Backlog of report ideas tied to E1-E7. 5. One-slide to six-slide carousel structure for LinkedIn-first reporting. 6. Dashboard-friendly status-card and proof-card layout rules.  ## Visual Rules  - Use product-system and research-lab discipline. - Use readable mobile typography. - Use evidence labels, redaction bars, source-status chips, and simple process diagrams. - Prefer artifact before/after blocks over abstract AI visuals. - Do not use private screenshots, raw Notion screenshots, fake live dashboards, customer logos, or named target accounts. - Do not turn internal proof into demand proof.  ## Default Slide Pattern  1. Problem: messy product material or PRD handoff bottleneck. 2. Input boundary: what"
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md",
+      "title": "E1.5 Public Reporting Gate",
+      "text": "# E1.5 Public Reporting Gate  Date: 2026-06-30 Status: started, gate defined, publishing blocked until approval  ## Purpose  E1.5 starts by defining the public-safe process for case-study and content reporting. This is not public posting yet. It is the gate that decides what can become a carousel, report, or post.  ## Audience Default  FACT: The current public-facing audience is product leaders in B2B SaaS scaleups: Directors or VPs of Product, Heads of Product, Product Ops leads, and senior PM leaders in companies with roughly 50-500 employees and 2-5 PMs.  INTERPRETATION: Public reporting should educate that audience about source-grounded PRD workflow quality, not present a founder diary or generic AI automation content.  ## Post Identity Default  HYPOTHESIS: Posts should default to ArchFlow company content, not personal build-in-public content, until the owner explicitly chooses a personal voice lane.  ## GloomyLord Boundary  GloomyLord is an internal visual/reporting sidecar by default. It can design report templates, carousel structures, dashboard-friendly visual systems, and proof cards. It is not public-facing branding unless separately approved.  Visual style default: produ"
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/run-summary.md",
+      "title": "Run: E1.5 Public Reporting Gate Start",
+      "text": "# Run: E1.5 Public Reporting Gate Start  Date: 2026-06-30 Status: started, publishing blocked  ## Task  Start E1.5 by defining the case-study/content gate before any public carousel or post is generated.  ## What Changed  The public-reporting gate now defines the audience default, post identity default, GloomyLord boundary, carousel eligibility rules, channel default, CTA default, and blocking questions.  The GloomyLord brief defines the internal visual/reporting sidecar role and the first template package without making it a public persona or publishing lane.  ## Next Gate  Write the E1.4 KB update principle and get owner answers to the blocking questions before public copy generation or dashboard-linked publishing."
+    },
+    {
       "path": "project/runs/README.md",
       "title": "Runs",
       "text": "# Runs  Store future public-safe run summaries here.  Rules:  - Do not store raw private inputs. - Store sanitized source summaries only. - Keep filenames date-prefixed. - Keep all content in English. - Each run must include checks, outputs, gaps, and next actions."
@@ -1624,6 +1866,11 @@
       "text": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, WikiLLM memory, Ollama local model routing, and LangSmith tracing.  INTERPRETATION: Adding another active brain or vector layer before E1.3 readback would increase failure modes. The missing near-term layer is loop discipline: state, stop conditions, review, and memory promotion.  HYPOTHESIS: Cognee and turbovec will become valuable after E1.3/E2 create enough approved artifacts and source metadata to test recall and dense retrieval.  GAP: Mistral credentials, live model preflight, OCR model selection, Cognee sandbox, turbovec benchmark, and E7 demand verdict are not complete.  ## Consequences  - Loop artifacts live under `project/loops/`. - E2 market research uses `project/workflows/market-research-engine.yaml`. - Mistral is disabled by default and only allowed on sanitize"
     },
     {
+      "path": "wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md",
+      "title": "Decision: E1.3 Readback And E1.5 Public Reporting Gates",
+      "text": "# Decision: E1.3 Readback And E1.5 Public Reporting Gates  Date: 2026-06-30 Status: accepted as execution baseline  ## Decision  E1.3 is complete enough for Review when the repo contains public-safe KB writeback artifacts and a readback proof that future agents can recover the current mission, next step, forbidden actions, outputs, gaps, agent roles, graph route, ICP boundary, dashboard/voice gate, and public-reporting gate.  E1.2 remains Review until owner acceptance. E1.3 readback can proceed without pretending E1.2 is Done.  E1.5 starts with a public-reporting gate. It does not start with public posting.  ## Rationale  The project needs durable memory and readback reliability before content, outreach, vector retrieval, live dashboard workers, or external connectors add complexity.  Company-universe and ICP analysis improve E2 sourcing, but the public and outreach standard is account-level evidence: source grade, role verification, pain hypothesis, and at least two independent public signals.  ## Consequences  - Dashboard may display E1.3 derived status, but it does not become memory. - Railway waits for live API, worker, queue, websocket/SSE, or voice-service requirements. - Voi"
+    },
+    {
       "path": "wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md",
       "title": "Decision: Live Dashboard Voice Hosting And Onyx Boundary",
       "text": "# Decision: Live Dashboard Voice Hosting And Onyx Boundary  Date: 2026-06-30 Status: accepted planning baseline  ## Decision  ArchFlow remains the workflow brain and canonical memory system. Onyx may be tested later as a read-only portal/search/connector layer over approved artifacts after readback and retrieval benchmarks exist.  The first implementation target is a hosted static dashboard. Vercel is preferred for that first stage because the current dashboard is static, generated, and read-only. Railway is reserved for live service needs such as API state, background workers, queues, websocket/SSE streams, and voice-service orchestration.  Voice starts local and read-only. Any write action, deployment, external connector change, outreach action, or memory promotion requires human approval and AF Review.  ## Rationale  The current project risk is not lack of platform power. The risk is losing source boundaries, creating unreviewed memory, leaking credentials, or activating live writes before the workflow is proven.  The staged path keeps each layer accountable:  - Dashboard: visibility and status. - LangGraph and Loop Engineering: control and stop conditions. - WikiLLM: durable me"
@@ -1712,6 +1959,11 @@
       "path": "wiki/runs/2026-06-29-tool-and-market-integration.md",
       "title": "Run - Tool And Market Integration",
       "text": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `project/runs/2026-06-29-tool-market-integration/` - `wiki/decisions/2026-06-29-tool-memory-model-routing.md` - targeted Notion E2 updates after product-owner verification  ## Durable Facts  - E1.3 remains the next KB/readback gate. - Loop Engineering is adopted as report-only operating discipline. - E2 now has a structured market evidence engine. - First ICP hypothesis is corrected by the later 2026-06-29 partner answer: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed. - Cognee, turbovec, and Mistral are gated future layers. - Notion E2 updates were create-missing-or-append-only.  ## Next Steps  1. Complete E1.3 readback before activating Cognee or turbovec. 2"
+    },
+    {
+      "path": "wiki/runs/2026-06-30-e1-3-kb-readback.md",
+      "title": "Run: E1.3 KB Writeback And Readback",
+      "text": "# Run: E1.3 KB Writeback And Readback  Date: 2026-06-30 Status: readback passed, review gate active  ## Summary  E1.3 recorded the approved E1.2 PRD summary, agent history, source registry, retrieval metadata, loop state, memory candidates, and E1.4/E2 handoff into the public-safe KB layer.  The deterministic readback proof verifies that future agents can retrieve current mission, next step, forbidden actions, existing outputs, open gaps, agent roles, graph route, ICP boundary, dashboard/voice gate, and public-reporting gate from approved artifacts.  ## Artifacts  - `project/runs/E1.3/2026-06-30-kb-readback/source-registry.md` - `project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/review-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/e1_3_readback_results.json` - `project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md`  ## Decisions  FACT: E1.2 is executed and approved as internal public-safe proof, but owner acceptance remains required before marking E1.2 Done.  FACT: E1.3 can move to Review because writeback and readback evidence"
     },
     {
       "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
