@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T12:06:02.669849+00:00",
+  "generated_at": "2026-06-30T13:22:34.044418+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,12 +25,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "24 files",
+      "value": "27 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "98",
+      "value": "109",
       "tone": "ok"
     },
     {
@@ -395,6 +395,83 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
+      "title": "Run: June 30 Integrator Review",
+      "modified": "2026-06-30T13:22:18.278153+00:00",
+      "size": 3044
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-30-evening-skill-hook-audit.md",
+      "title": "2026-06-30 Evening Skill And Hook Audit",
+      "modified": "2026-06-30T13:20:31.483073+00:00",
+      "size": 1444
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-evening-skill-hook-audit/agent-handout.md",
+      "title": "2026-06-30 Evening Skill And Hook Audit Handout",
+      "modified": "2026-06-30T13:20:31.482470+00:00",
+      "size": 7186
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-evening-skill-hook-audit/run-summary.md",
+      "title": "2026-06-30 Evening Skill And Hook Audit",
+      "modified": "2026-06-30T13:20:31.481762+00:00",
+      "size": 2147
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Decision: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-06-30T13:14:22.757419+00:00",
+      "size": 2081
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Run: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-06-30T13:14:22.649833+00:00",
+      "size": 1739
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md",
+      "title": "Agent Handout: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-06-30T13:14:22.541334+00:00",
+      "size": 2583
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md",
+      "title": "Coordination Stream: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-06-30T13:14:22.343046+00:00",
+      "size": 2079
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md",
+      "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
+      "modified": "2026-06-30T13:14:22.237867+00:00",
+      "size": 6434
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-content-agent-templates/agent-handout.md",
+      "title": "Agent Handout: E1.5 Content Agent Templates",
+      "modified": "2026-06-30T12:40:25.845424+00:00",
+      "size": 4495
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-content-agent-templates/run-summary.md",
+      "title": "Run: E1.5 Content Agent Templates",
+      "modified": "2026-06-30T12:40:25.741446+00:00",
+      "size": 3478
+    },
     {
       "kind": "project_run",
       "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-coordination-stream.md",
@@ -1086,7 +1163,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 24,
+    "file_count": 27,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -1102,6 +1179,11 @@
         "path": "wiki/decisions/2026-06-29-tool-memory-model-routing.md",
         "title": "Decision - Tool Memory And Model Routing",
         "excerpt": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, Wiki"
+      },
+      {
+        "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
+        "title": "Decision: Dashboard Jarvis Vercel Shell",
+        "excerpt": "# Decision: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: accepted for first hosted dashboard  ## Decision  Use a Vercel preview as the first hosted dashboard target. The dashboard is public-safe and read-only at the hosted data layer, with a browser-local Jarvis command shell for normal/interview mode, current-session voice transcript commands, file metadata packet preparation, and local packet downloads. "
       },
       {
         "path": "wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md",
@@ -1199,9 +1281,19 @@
         "excerpt": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `pro"
       },
       {
+        "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
+        "title": "Run: Dashboard Jarvis Vercel Shell",
+        "excerpt": "# Run: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Summary  The public dashboard was extended from a static read-only status board into a Jarvis-first command shell for Vercel preview. The shell adds normal/interview modes, a bottom command input, manual and timed refresh, browser-local voice authorization, metadata-only file packet"
+      },
+      {
         "path": "wiki/runs/2026-06-30-e1-3-kb-readback.md",
         "title": "Run: E1.3 KB Writeback And Readback",
         "excerpt": "# Run: E1.3 KB Writeback And Readback  Date: 2026-06-30 Status: readback passed, review gate active  ## Summary  E1.3 recorded the approved E1.2 PRD summary, agent history, source registry, retrieval metadata, loop state, memory candidates, and E1.4/E2 handoff into the public-safe KB layer.  The deterministic readback proof verifies that future agents can retrieve current mission, next step, forbidden actions, existi"
+      },
+      {
+        "path": "wiki/runs/2026-06-30-evening-skill-hook-audit.md",
+        "title": "2026-06-30 Evening Skill And Hook Audit",
+        "excerpt": "# 2026-06-30 Evening Skill And Hook Audit  ## Task  Run the updated public evening maintenance workflow and verify public skill registries, hook contracts, hook script readiness, and lightweight validation status.  ## Result  - The public skill registries already matched the current saved skills and workflow setup, so no registry edits were needed. - The prompt hook contract remained aligned across `.codex/hooks.json"
       },
       {
         "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
@@ -1306,9 +1398,44 @@
       "text": "provider_mode: codex_auth_main  providers:   codex_operator:     status: active_as_primary_operator_runtime     mode: codex_app     auth_scope: codex_app_authenticated_tools     exports_api_key: false     use_for:       - file_edits       - approvals       - public_safety_review       - orchestration       - final_outputs       - github_publication     github_publication:       repository: mcharniuk1-spec/archflow_b1_knowledge       verified_method: codex_operated_git_ssh       local_https_push_status: blocked_missing_git_credentials       ssh_push_status: verified    ollama_local:     status: service_started_qwythos_loads     role: local_minor_background_tasks     base_url_env: OLLAMA_BASE_URL     chat_model_env: OLLAMA_CHAT_MODEL     fallback_chat_model_env: OLLAMA_FALLBACK_CHAT_MODEL     embedding_model_env: OLLAMA_EMBED_MODEL     task_scope_env: OLLAMA_TASK_SCOPE     default_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     active_background_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     fallback_chat_model: gemma4:e4b     default_embedding_model: nomic-embed-text     allowed_tasks:       - draft_cleanup       - public_text_sum"
     },
     {
+      "path": "project/content/templates/README.md",
+      "title": "ArchFlow Content Template Library",
+      "text": "# ArchFlow Content Template Library  Status: active template library Default ICP: B2B SaaS product leaders for the Product Discovery-to-Production PRD Pack Default channel: LinkedIn first, then adapted excerpts for X and Threads after review Default voice: ArchFlow company content first Default visual style: product-system and research-lab  ## Purpose  These templates turn executed ArchFlow work into public-safe content planning assets. They are not publish-ready copy by themselves. Each execution still needs artifact evidence, evidence labels, AF Review, and owner approval before publication.  ## Template Set  | Template | Use after | Output | |---|---|---| | `carousel-template.md` | A proof run, review gate, or method step has artifact evidence | LinkedIn carousel plan with slide copy, visual notes, and approval gate | | `implementation-proof-post-template.md` | A task produces a working artifact, validation result, or reviewed process proof | Company post showing what was implemented and how it was checked | | `dashboard-update-template.md` | Dashboard status, read-only evidence, or reporting surface changes | Public-safe dashboard update without private state or fake live claim"
+    },
+    {
+      "path": "project/content/templates/after-execution-report-template.md",
+      "title": "After-Execution Report Template",
+      "text": "# After-Execution Report Template  Use after any executed task, review state, content draft, research check, dashboard update, or implementation proof. This is the durable report that future agents and reviewers can read without chat history.  ## Template Metadata  - Run title: - Date: - Epic/task: - Agent role: - Source run folder: - Status: completed / review / blocked / deferred - Publication status: not drafted / drafted / AF Review / owner approval / published / blocked  ## Required Report Structure  ```md # Run: <title>  Date: Status: Epic/task: Agent role:  ## Task  What was executed, reviewed, or created?  ## Inputs  - Public-safe input 1: - Public-safe input 2: - Source boundary:  ## Outputs  | Output | Path | Purpose | Status | |---|---|---|---| |  |  |  |  |  ## Proof  FACT: INTERPRETATION: HYPOTHESIS: GAP:  ## Allowed Screenshots/Data  - Approved: - Blocked: - Needs owner approval:  ## Review And Approval  - AF Review: - Owner approval: - Publication state:  ## Checks  | Check | Result | Notes | |---|---|---| | Public safety scan |  |  | | English-only/ASCII review |  |  | | Link/path review |  |  | | Evidence-label review |  |  |  ## Next Actions  1.  2.  3.   ## Save "
+    },
+    {
+      "path": "project/content/templates/carousel-template.md",
+      "title": "Carousel Template",
+      "text": "# Carousel Template  Use after a task or review state has public-safe artifacts and can teach the product-team ICP something concrete about PRD production, source boundaries, or review gates.  ## Template Metadata  - Working title: - Epic/task: - Source run folder: - Intended channel: LinkedIn carousel first - ICP lane: B2B SaaS product leaders for Product Discovery-to-Production PRD Pack - Content identity: ArchFlow company content - Visual style: product-system and research-lab - Status: draft / AF Review / owner approval / ready / blocked  ## Eligible Subtopics  - Messy product source material becoming structured context. - Context digest to PRD transformation. - PRD quality checklist and acceptance-criteria proof. - KB writeback/readback proof from E1.3. - Source registry and evidence-label discipline. - Review gate workflow: AF Review, owner approval, claim downgrade. - Dashboard as read-only proof surface. - Why meeting assistants stop before production-ready PRD handoff.  ## Proof Required  | Proof item | Required evidence | Evidence label | |---|---|---| | Task executed | Run summary or report path | FACT | | Artifact exists | Repo-relative artifact path | FACT | | Claim ab"
+    },
+    {
+      "path": "project/content/templates/dashboard-update-template.md",
+      "title": "Dashboard Update Template",
+      "text": "# Dashboard Update Template  Use when dashboard status, read-only monitoring, hosted-view readiness, or dashboard-adjacent reporting changes. This template must not modify dashboard code or imply live control when the dashboard is read-only.  ## Template Metadata  - Working title: - Dashboard surface: - Source run folder: - Related epic/task: - Status: draft / AF Review / owner approval / ready / blocked - Public state: local read-only / hosted read-only / hidden-link / auth-gated / blocked  ## Eligible Subtopics  - E1.3 dashboard status generated from run evidence. - Read-only operator dashboard as proof surface. - Dashboard/voice/hosting gate status. - What dashboard cards can show publicly. - Why dashboards should not create live-state claims before runtime proof.  ## Proof Required  | Claim | Required proof | Evidence label | |---|---|---| | Dashboard data changed | Generated data artifact or run summary | FACT | | Dashboard is read-only | Dashboard documentation or gate report | FACT | | Hosted dashboard is available | Hosting proof and approved visibility setting | FACT | | Dashboard proves workflow reliability | Review report plus repeatable run evidence | INTERPRETATION | |"
+    },
+    {
+      "path": "project/content/templates/implementation-proof-post-template.md",
+      "title": "Implementation Proof Post Template",
+      "text": "# Implementation Proof Post Template  Use when an executed task produced a working artifact, validation result, review decision, or process proof. The post must show implementation evidence, not a generic progress summary.  ## Template Metadata  - Working title: - Epic/task: - Source run folder: - Primary artifact: - Validation artifact: - Review status: - Intended channel: LinkedIn post first - ICP lane: B2B SaaS product leaders for Product Discovery-to-Production PRD Pack  ## Eligible Subtopics  - E1.3 KB writeback/readback proof. - E1.5 public-reporting gate and content approval system. - Source registry, retrieval metadata, and readback assertions. - Review gate blocking unsupported claims. - Dashboard read-only status as operator proof. - Implementation of reusable templates, PRD assets, or source-boundary rules.  ## Proof Required  - `FACT`: exact repo-relative artifact paths, run summary, check output, review verdict. - `INTERPRETATION`: why the proof matters for PRD quality or agent reliability. - `HYPOTHESIS`: how the same method may help the product-team ICP. - `GAP`: what is still blocked, unapproved, or awaiting E6/E7 demand proof.  ## Copy Blocks  ### Opening  ```text "
+    },
+    {
+      "path": "project/content/templates/research-check-task-template.md",
+      "title": "Research And Check Task Template",
+      "text": "# Research And Check Task Template  Use for E2 research, ICP checks, market-signal review, account-evidence cards, or any task where a claim must be separated into fact, interpretation, hypothesis, and gap before it informs content or outreach.  ## Template Metadata  - Task: - Epic: - Research/check owner: - Source run folder: - Target audience: B2B SaaS product leaders - Offer frame: Product Discovery-to-Production PRD Pack - Status: planned / executed / AF Review / blocked / promoted  ## Eligible Subtopics  - Product-team PRD bottlenecks. - Job-post signal breakdowns for product documentation, product operations, or delivery handoff. - Competitor positioning around product discovery, AI PRD generation, meeting assistants, and product ops. - Public social-language themes as hypothesis only. - Account evidence cards for future E6 outreach. - Claim downgrade when evidence is weak or stale.  ## Source Boundary  Allowed sources:  - Public company websites. - Public job pages. - Public product pages and case studies. - Public reviews and directories. - Approved search API summaries when legal and source boundaries are documented. - Authorized public social views for language hypotheses"
+    },
+    {
+      "path": "project/content/templates/review-gate-template.md",
+      "title": "Review Gate Template",
+      "text": "# Review Gate Template  Use whenever AF Review, owner approval, or another gate decides whether an executed task, carousel, post, dashboard update, or research check can move forward.  ## Template Metadata  - Review target: - Source run folder: - Reviewer role: AF Review / owner / implementation reviewer / research reviewer - Status: approved / approved with edits / blocked / needs owner decision - Date:  ## Review Inputs  - Draft artifact: - Evidence artifact: - Source registry or inventory: - Validation result: - Screenshot/data checklist: - Prior gate, if any:  ## Review Checks  | Check | Pass/Fail | Required evidence or edit | |---|---|---| | English-only content |  |  | | Public-safe text |  |  | | No private links, local paths, personal identifiers, IDs, or secrets |  |  | | No raw transcripts or private source material |  |  | | Evidence labels are present |  |  | | Claims match evidence strength |  |  | | No demand, ROI, customer, revenue, or market-validation overclaim |  |  | | Allowed screenshots/data only |  |  | | ICP fit: B2B SaaS product leaders |  |  | | ArchFlow company voice |  |  | | Owner approval required before publication |  |  |  ## Verdict Blocks  ### Appro"
+    },
+    {
       "path": "project/dashboard/README.md",
       "title": "Local Operator Dashboard",
-      "text": "# Local Operator Dashboard  This is the Phase 2 local dashboard for ArchFlow Block 1.  It is a read-only control panel generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## What It Shows  - Overview and recent activity. - WikiLLM memory, decisions, issues, and runs. - Graphify status and future graph links. - LangGraph nodes, routing, review gates, and stop logic. - LlamaIndex-style local query test over approved public files. - CrewAI agents, roles, tasks, and expected outputs. - LangSmith tracing readiness and safe trace rules. - Env/config and runtime package status. - E1.3 KB writeback/readback derived gate status and evidence links.  ## Change Config  - LangGraph nodes and routing: `project/workflows/langgraph-controller.yaml` - CrewAI roles and task outputs: `project/workflows/crewai-crew.yaml` - LlamaIndex corpus and retrieval parameters: `project/workflows/llamaindex-rag.yaml` - Model routing: `project/c"
+      "text": "# Local Operator Dashboard  This is the Phase 2 dashboard for ArchFlow Block 1.  It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## Vercel Preview  Deploy from the public repository root:  ```bash python3 project/scripts/generate-dashboard-data.py npx vercel --yes ```  The preview should be opened at:  ```text https://<deployment>/project/dashboard/ ```  The root `vercel.json` sets `noindex` headers and disables cache for dashboard files and `data.json`. This does not authenticate the page.  ## What It Shows  - Overview and recent activity. - WikiLLM memory, decisions, issues, and runs. - Gra"
     },
     {
       "path": "project/future-actions-and-parameters.md",
@@ -1621,6 +1748,21 @@
       "text": "# Tool Role Map  | Tool | ArchFlow role | Current status | |---|---|---| | Codex | Operator, editor, verifier, approval boundary. | Active. | | LangGraph | Control plane for state, routing, retries, and review gates. | Active runtime smoke passed. | | Loop Engineering | Operating contract for loops, state, budgets, attempt caps, and maker/checker separation. | Added as L1 report-only contract. | | CrewAI | Role/task organization inside graph-controlled runs. | Config/import check exists; no autonomous LLM execution. | | LlamaIndex | Retrieval abstraction over approved corpus. | Active deterministic/keyword proof. | | turbovec | Future local vector store under LlamaIndex. | Deferred. | | WikiLLM | Canonical curated memory. | Active. | | Cognee | Future operational recall and graph memory. | Deferred until E1.3 readback. | | Ollama/Qwythos | Local minor/background model execution. | Configured; server state must be checked per run. | | Mistral | Future sanitized quality pass for PRD/research/copy. | Disabled until approval and credentials. | | LangSmith | Sanitized observability. | Configured with local ignored key and smoke traces. |"
     },
     {
+      "path": "project/runs/2026-06-30-evening-skill-hook-audit/agent-handout.md",
+      "title": "2026-06-30 Evening Skill And Hook Audit Handout",
+      "text": "# 2026-06-30 Evening Skill And Hook Audit Handout  ## Title and Purpose  This handout covers the June 30 public-maintenance audit for the updated evening skill and hook workflow. Use it when the next operator needs the exact proof for skill-registry status, hook-trigger readiness, validation results, and the remaining maintenance boundary.  ## Human Summary  This run executed the updated public evening maintenance workflow after the automation prompt was expanded to cover hook contracts and validation readiness, not just registry drift. The review started from the existing public contract, the saved skills, the hook configuration, and the prior maintenance memory so the audit could stay narrow.  The public skill registries already matched the current saved public skills and workflow setup, so no registry churn was introduced. The hook side also matched: `.codex/hooks.json` still calls `project/scripts/task-handout-hook.py`, the `task-handout` skill documents the same contract, and a direct execution probe still returned `TASK_HANDOUT_HOOK_TRIGGER=required` for a subtask-oriented maintenance prompt.  The only validation failure was not a registry or hook mismatch. The tracked ASCII "
+    },
+    {
+      "path": "project/runs/2026-06-30-evening-skill-hook-audit/run-summary.md",
+      "title": "2026-06-30 Evening Skill And Hook Audit",
+      "text": "# 2026-06-30 Evening Skill And Hook Audit  ## Goal  Run the updated public evening maintenance workflow, including skill-registry drift, hook-contract drift, hook-script readiness, and lightweight validation checks.  ## Inputs  - Public project routing, workflow, and maintenance files. - Public skill registries and saved skill files under `skills/`. - Hook contract files: `.codex/hooks.json`, `skills/task-handout/SKILL.md`, and `project/scripts/task-handout-hook.py`. - Current tracked generated files covered by lightweight validation.  ## Outcome  - Confirmed that `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, and `skills/skills-used.md` still match the current public skill setup, so no registry edits were needed. - Confirmed that the prompt hook contract, the `task-handout` skill, and the hook script remain aligned and that the execution trigger still resolves to `TASK_HANDOUT_HOOK_TRIGGER=required` for subtask-oriented maintenance prompts. - Normalized tracked non-ASCII punctuation in `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html` after the validation pass found two generated glyphs. - Added this run summary, a handout, and a public WikiLLM"
+    },
+    {
+      "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
+      "title": "Run: June 30 Integrator Review",
+      "text": "# Run: June 30 Integrator Review  Date: 2026-06-30 Status: completed, ready for public Git review  ## Task  Review the combined June 30 public repository diff after the dashboard/Jarvis/Vercel lane, E1.5 content-template lane, and evening skill/hook audit lane.  ## Included Lanes  - Dashboard/Jarvis/Vercel shell under `project/dashboard/`. - Vercel config and ignored local Vercel metadata. - E1.5 content-template library under `project/content/templates/`. - Dashboard and content run notes under `project/runs/E1.5/`. - Evening skill/hook audit run notes under `project/runs/2026-06-30-evening-skill-hook-audit/`. - Wiki run, decision, memory, insights, and log updates. - `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html` ASCII punctuation normalization.  ## Decisions  FACT: The stable review alias currently resolves to a Ready Preview deployment:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  FACT: Unauthenticated requests to the dashboard route and `data.json` route redirect to Vercel SSO.  FACT: One older production-target Vercel deployment still exists:  - `https://public-j333ecdc8-mcharniuk1-4994s-projects.vercel.app`  INTER"
+    },
+    {
       "path": "project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
       "title": "Run: Onyx Dashboard Voice Hosting Execution Plan",
       "text": "# Run: Onyx Dashboard Voice Hosting Execution Plan  Date: 2026-06-30 Status: planned, task-created, repo-updated  ## Task  Turn the June 30 Onyx, live dashboard, voice layer, and hosting plan into executable project structure:  - create Notion tasks for the dashboard/voice/hosting plan - create a separate GloomyLord task for PRD, research templates, monitoring templates, backlog, ideas summary, and visual social report design - add a reusable `outquestions` skill for execution reports and next-stage decision questions - update the public GitHub project with a public-safe run record and decision baseline  ## Execution Summary  The plan remains staged. ArchFlow stays the workflow brain; Onyx is not promoted into the core runtime. The next implementation path is a hosted read-only dashboard first, then a live API/worker service only when the state model, auth boundary, and secret policy are explicit. Voice starts local and read-only before any command can write to files, Notion, GitHub, deployments, outreach, or memory.  The dashboard direction follows the current project shape. The existing dashboard is static and generated from public project files, so the first live step is Vercel/"
@@ -1746,6 +1888,31 @@
       "text": "# E1.3 Validation Report  Date: 2026-06-30 Status: passed  ## Checks Performed  | Check | Command | Result | |---|---|---| | E1.3 readback proof | `project/local/venv/bin/python project/scripts/e1_3_kb_readback.py` | `e1_3_readback=ok`, 10/10 assertions | | Dashboard JSON | parse `project/dashboard/data.json` | `json_ok`, E1.3 derived status `readback_passed` | | Dashboard JavaScript | `node --check project/dashboard/app.js` | passed | | Public safety | `python3 scripts/public_safety_scan.py` | passed | | Workflow config | `project/local/venv/bin/python project/scripts/validate-workflows.py` | passed | | Runtime guard | `project/local/venv/bin/python project/scripts/pre-push-runtime-guard.py` | passed |  ## Evidence  - `project/runs/E1.3/2026-06-30-kb-readback/e1_3_readback_results.json` - `project/dashboard/data.json` - `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md`  ## Remaining Gates  - E1.2 owner acceptance before E1.2 can move from Review to Done. - Private task-board sync after repo validation. - Git commit and push after final diff review."
     },
     {
+      "path": "project/runs/E1.5/2026-06-30-content-agent-templates/agent-handout.md",
+      "title": "Agent Handout: E1.5 Content Agent Templates",
+      "text": "# Agent Handout: E1.5 Content Agent Templates  ## Title And Purpose  This handout covers the E1.5 content-template agent pass. It is for the next ArchFlow agent that needs to turn E1.3, E1.5, or GloomyLord process proof into public-safe content drafts.  ## Human Summary  The run created a reusable content-template library under `project/content/templates/`. The library covers carousel planning, implementation proof posts, dashboard updates, research/check tasks, review gates, and after-execution reports.  The templates are implementation-focused. They require artifact paths, proof labels, allowed screenshot/data boundaries, copy blocks, review states, approval checklists, and save locations. They are not summary-only and they do not approve any public post by themselves.  The templates preserve the current ArchFlow defaults: one ICP lane for B2B SaaS product leaders, Product Discovery-to-Production PRD Pack positioning, ArchFlow company voice, product-system/research-lab visual style, AF Review, and owner approval before publication.  ## Current State  - Task status: completed. - Publication status: blocked until AF Review and owner approval. - Main artifacts: `project/content/temp"
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-content-agent-templates/run-summary.md",
+      "title": "Run: E1.5 Content Agent Templates",
+      "text": "# Run: E1.5 Content Agent Templates  Date: 2026-06-30 Status: completed, publication still blocked Agent role: content-template agent  ## Task  Create practical public-safe content templates for executed task and review states, especially E1.3, E1.5, and GloomyLord reporting work.  ## Inputs  - `project/project-plan.md` - `project/runs/E1.3/2026-06-30-kb-readback/run-summary.md` - `project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md` - `project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md` - `project/prompts/af-review.md`  ## Outputs  | Output | Path | Purpose | |---|---|---| | Template index | `project/content/templates/README.md` | Defines defaults, safety boundary, and save locations | | Carousel template | `project/content/templates/carousel-template.md` | Turns proof runs into reviewed LinkedIn-first carousel plans | | Implementation proof post template | `project/content/templates/implementation-proof-post-template.md` | Turns executed artifacts into implementation-focused company posts | | Dashboard update template | `project/content/templates/dashboard-update-template.md` | Documents public-safe dashboard status without touching das"
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md",
+      "title": "Agent Handout: Dashboard Jarvis Vercel Shell",
+      "text": "# Agent Handout: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: continue from review, commit, and private task sync  ## Summary  The dashboard is now a Jarvis-first static command shell for Vercel preview. It supports live in-page refresh of deployed `data.json`, normal/interview mode, browser-local voice authorization, browser-local file metadata packet creation, and downloadable research/check/content packets.  This is not a backend. Durable writes still require Codex or a future Railway/API layer.  Canonical review route:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  Use only the explicit preview deployment for review. An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; keep it out of review and keep future deploy commands explicit with `--target preview`.  ## Changed Files  - `project/dashboard/index.html` - `project/dashboard/app.js` - `project/dashboard/styles.css` - `project/dashboard/README.md` - `project/dashboard/data.json` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-content-agent-templates/` - `project/runs/E1.5/2026-06-30-"
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md",
+      "title": "Coordination Stream: Dashboard Jarvis Vercel Shell",
+      "text": "# Coordination Stream: Dashboard Jarvis Vercel Shell  Date: 2026-06-30  ## Parallel Agents  Content agent:  - Created the E1.5 content-template package under `project/content/templates/`. - Added a content-template run summary and handout. - Did not touch dashboard code.  Deployment/access sidecar:  - Confirmed current dashboard is static HTML/CSS/JS with generated `data.json`. - Recommended deploying from the public repo root so `/project/dashboard/` links keep working. - Confirmed Vercel hidden-link is acceptable only for public-safe read-only data. - Confirmed Railway should wait for live API, SSE/websocket, voice execution, uploads, workers, private state, or durable writes.  Parallel integration thread:  - Reported that a local Mistral key exists in protected private files. - Instruction applied: do not read, expose, copy, commit, or deploy secret-bearing files. - Requested current E1.3/E1.4/E1.5/E2/E5 status and changed-file/blocker report before merge.  ## Main Executor Work  - Added Jarvis dashboard shell. - Added Vercel headers and deploy ignore file. - Added root rewrites for `/` and `/dashboard`. - Changed browser packets/events to session-only storage. - Changed file in"
+    },
+    {
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md",
+      "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
+      "text": "# Run: E1.5 Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Task  Extend the existing static dashboard into a Vercel-ready Jarvis command shell while the content-template agent creates E1.5/GloomyLord templates and the deployment sidecar audits Vercel/Railway boundaries.  ## Decisions Applied  FACT: The first hosted dashboard target is Vercel static preview with Vercel authentication active on the preview.  FACT: Hidden link is not security. This preview currently receives Vercel SSO redirects for unauthenticated requests, which is acceptable for this review pass. Future shared/private state still needs a deliberate platform or server-side auth policy.  FACT: Railway is deferred until live API, Google auth, SSE/websocket events, voice execution, uploads, background workers, durable writes, queues, or private state are required.  FACT: Jarvis can prepare session-only research/check packets from typed input or an explicitly authorized browser voice transcript. File intake captures metadata only; it does not read or store document bodies.  INTERPRETATION: The correct first implementation is a dashboard s"
+    },
+    {
       "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/agent-handout.md",
       "title": "Agent Handout: E1.5 Public Reporting Gate",
       "text": "# Agent Handout: E1.5 Public Reporting Gate  Use this before drafting public content, carousel text, or GloomyLord visuals.  ## Current State  E1.5 has started as a gate. No public content has been approved or published.  ## Rules  - LinkedIn-first category education is the safest default. - Audience is B2B SaaS product leaders unless changed by owner decision. - GloomyLord is internal by default. - AF Copy drafts only from approved public-safe artifacts. - AF Review plus owner approval are required before publishing. - Demand, ROI, market-validation, and customer claims remain blocked until E6/E7 proof exists.  ## Next Agent Task  Create a template pack only after owner answers the dashboard visibility, GloomyLord branding, approval path, and CTA questions."
@@ -1866,6 +2033,11 @@
       "text": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, WikiLLM memory, Ollama local model routing, and LangSmith tracing.  INTERPRETATION: Adding another active brain or vector layer before E1.3 readback would increase failure modes. The missing near-term layer is loop discipline: state, stop conditions, review, and memory promotion.  HYPOTHESIS: Cognee and turbovec will become valuable after E1.3/E2 create enough approved artifacts and source metadata to test recall and dense retrieval.  GAP: Mistral credentials, live model preflight, OCR model selection, Cognee sandbox, turbovec benchmark, and E7 demand verdict are not complete.  ## Consequences  - Loop artifacts live under `project/loops/`. - E2 market research uses `project/workflows/market-research-engine.yaml`. - Mistral is disabled by default and only allowed on sanitize"
     },
     {
+      "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Decision: Dashboard Jarvis Vercel Shell",
+      "text": "# Decision: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: accepted for first hosted dashboard  ## Decision  Use a Vercel preview as the first hosted dashboard target. The dashboard is public-safe and read-only at the hosted data layer, with a browser-local Jarvis command shell for normal/interview mode, current-session voice transcript commands, file metadata packet preparation, and local packet downloads.  Railway remains deferred until the system needs server-side auth, live APIs, event streams, durable uploads, background workers, persistent state, model-provider calls, or write actions.  ## Rationale  The current dashboard is static and already uses generated public-safe `data.json`. Vercel can host that safely if the data remains public-safe and no secrets/private state are emitted. A hidden link helps review but is not authentication; Vercel preview authentication is acceptable for this first review pass.  Canonical review route:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is th"
+    },
+    {
       "path": "wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md",
       "title": "Decision: E1.3 Readback And E1.5 Public Reporting Gates",
       "text": "# Decision: E1.3 Readback And E1.5 Public Reporting Gates  Date: 2026-06-30 Status: accepted as execution baseline  ## Decision  E1.3 is complete enough for Review when the repo contains public-safe KB writeback artifacts and a readback proof that future agents can recover the current mission, next step, forbidden actions, outputs, gaps, agent roles, graph route, ICP boundary, dashboard/voice gate, and public-reporting gate.  E1.2 remains Review until owner acceptance. E1.3 readback can proceed without pretending E1.2 is Done.  E1.5 starts with a public-reporting gate. It does not start with public posting.  ## Rationale  The project needs durable memory and readback reliability before content, outreach, vector retrieval, live dashboard workers, or external connectors add complexity.  Company-universe and ICP analysis improve E2 sourcing, but the public and outreach standard is account-level evidence: source grade, role verification, pain hypothesis, and at least two independent public signals.  ## Consequences  - Dashboard may display E1.3 derived status, but it does not become memory. - Railway waits for live API, worker, queue, websocket/SSE, or voice-service requirements. - Voi"
@@ -1961,9 +2133,19 @@
       "text": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `project/runs/2026-06-29-tool-market-integration/` - `wiki/decisions/2026-06-29-tool-memory-model-routing.md` - targeted Notion E2 updates after product-owner verification  ## Durable Facts  - E1.3 remains the next KB/readback gate. - Loop Engineering is adopted as report-only operating discipline. - E2 now has a structured market evidence engine. - First ICP hypothesis is corrected by the later 2026-06-29 partner answer: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed. - Cognee, turbovec, and Mistral are gated future layers. - Notion E2 updates were create-missing-or-append-only.  ## Next Steps  1. Complete E1.3 readback before activating Cognee or turbovec. 2"
     },
     {
+      "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Run: Dashboard Jarvis Vercel Shell",
+      "text": "# Run: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Summary  The public dashboard was extended from a static read-only status board into a Jarvis-first command shell for Vercel preview. The shell adds normal/interview modes, a bottom command input, manual and timed refresh, browser-local voice authorization, metadata-only file packet creation, current-session event history, and packet downloads.  The implementation keeps the public boundary clear: static Vercel can stage session packets and refresh deployed `data.json`, but durable writes wait for Codex or a future Railway/backend service. Unauthenticated smoke checks currently redirect to Vercel SSO.  Canonical review route:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the only approved review target.  ## Artifacts  - `project/dashboard/` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/"
+    },
+    {
       "path": "wiki/runs/2026-06-30-e1-3-kb-readback.md",
       "title": "Run: E1.3 KB Writeback And Readback",
       "text": "# Run: E1.3 KB Writeback And Readback  Date: 2026-06-30 Status: readback passed, review gate active  ## Summary  E1.3 recorded the approved E1.2 PRD summary, agent history, source registry, retrieval metadata, loop state, memory candidates, and E1.4/E2 handoff into the public-safe KB layer.  The deterministic readback proof verifies that future agents can retrieve current mission, next step, forbidden actions, existing outputs, open gaps, agent roles, graph route, ICP boundary, dashboard/voice gate, and public-reporting gate from approved artifacts.  ## Artifacts  - `project/runs/E1.3/2026-06-30-kb-readback/source-registry.md` - `project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/review-report.md` - `project/runs/E1.3/2026-06-30-kb-readback/e1_3_readback_results.json` - `project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md`  ## Decisions  FACT: E1.2 is executed and approved as internal public-safe proof, but owner acceptance remains required before marking E1.2 Done.  FACT: E1.3 can move to Review because writeback and readback evidence"
+    },
+    {
+      "path": "wiki/runs/2026-06-30-evening-skill-hook-audit.md",
+      "title": "2026-06-30 Evening Skill And Hook Audit",
+      "text": "# 2026-06-30 Evening Skill And Hook Audit  ## Task  Run the updated public evening maintenance workflow and verify public skill registries, hook contracts, hook script readiness, and lightweight validation status.  ## Result  - The public skill registries already matched the current saved skills and workflow setup, so no registry edits were needed. - The prompt hook contract remained aligned across `.codex/hooks.json`, `skills/task-handout/SKILL.md`, and `project/scripts/task-handout-hook.py`. - A direct execution probe still returned `TASK_HANDOUT_HOOK_TRIGGER=required` for a subtask-oriented maintenance prompt. - Two tracked generated files, `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html`, were normalized to ASCII-safe punctuation after the validation pass found non-ASCII glyphs. - The run added a concise project run summary and handout because the `graphify-out/` fix created a meaningful public-safe maintenance change.  ## Validation  - Workflow validation passed. - Hook trigger probe passed. - Ignored local env and runtime paths stayed ignored. - Tracked-text ASCII check passed after the punctuation normalization. - Public safety scan passed in the final combined-t"
     },
     {
       "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",

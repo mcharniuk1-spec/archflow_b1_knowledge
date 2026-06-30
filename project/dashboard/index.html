@@ -20,7 +20,7 @@
         <div class="sidebar-status">
           <div class="status-dot"></div>
           <div>
-            <strong>Local read-only mode</strong>
+            <strong>Vercel-ready read-only mode</strong>
             <span>Generated from public project files.</span>
           </div>
         </div>
@@ -30,15 +30,22 @@
         <header class="topbar">
           <div>
             <h1>Operator Dashboard</h1>
-            <p><span>Track LangGraph, CrewAI, and LlamaIndex.</span> <span>Monitor WikiLLM, LangSmith, and config health.</span></p>
+            <p><span>Jarvis command center with live E1-E7 state.</span> <span>Static Vercel first; Railway and Google auth next.</span></p>
           </div>
           <div class="topbar-actions">
+            <span class="pill live-pill" id="liveStatus">Live bridge starting</span>
             <span class="pill" id="generatedAt">Loading data</span>
+            <button class="button" id="refreshData" type="button">Refresh</button>
             <a class="button" href="../project-plan.md">Project plan</a>
           </div>
         </header>
 
         <section id="view" class="view" aria-live="polite"></section>
+
+        <form id="globalComposer" class="global-composer" aria-label="Jarvis command input">
+          <input id="globalInput" type="text" autocomplete="off" placeholder="Ask Jarvis, run a check, or type refresh" aria-label="Jarvis command" />
+          <button class="primary" type="submit">Send</button>
+        </form>
       </main>
     </div>
 

@@ -1,12 +1,12 @@
 # Graph Report - .  (2026-06-29)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- cluster-only mode -- file stats not available
 
 ## Summary
-- 1198 nodes · 1252 edges · 144 communities (130 shown, 14 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
-- Token cost: 0 input · 0 output
+- 1198 nodes | 1252 edges | 144 communities (130 shown, 14 thin omitted)
+- Extraction: 100% EXTRACTED | 0% INFERRED | 0% AMBIGUOUS | INFERRED: 2 edges (avg confidence: 0.8)
+- Token cost: 0 input | 0 output
 
 ## Graph Freshness
 - Built from commit: `f111fa92`
@@ -169,9 +169,9 @@
 
 ## Surprising Connections (you probably didn't know these)
 - `parse_table()` --calls--> `table()`  [INFERRED]
-  project/scripts/render-e1-2-next-steps-pdf.py → project/dashboard/app.js
+  project/scripts/render-e1-2-next-steps-pdf.py -> project/dashboard/app.js
 - `parse_table()` --calls--> `table()`  [INFERRED]
-  project/scripts/render-e1-2-pdfs.py → project/dashboard/app.js
+  project/scripts/render-e1-2-pdfs.py -> project/dashboard/app.js
 
 ## Communities (144 total, 14 thin omitted)
 
@@ -681,8 +681,8 @@ Nodes (4): graphify, paths, recommended_next, status
 
 ## Knowledge Gaps
 - **710 isolated node(s):** `generated_at`, `name`, `mode`, `operator`, `memory_layer` (+705 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have <=1 connection - possible missing edges or undocumented components.
+- **14 thin communities (<3 nodes) omitted from report** -- run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

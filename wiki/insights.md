@@ -78,3 +78,11 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: this prevents dashboard, voice, Onyx, vector retrieval, and public reporting from becoming competing systems before the core memory loop is reliable.
 - Where applicable: E1.4 KB principle, E1.5 reporting gate, E2 evidence engine, hosted dashboard planning, and future turbovec benchmark.
 - Limitations: the current proof is deterministic lexical readback; vector retrieval still needs source IDs, chunk IDs, embeddings, and a benchmark.
+
+## Insight - Static Jarvis Shell Versus Durable Execution
+
+- Observation: A static Vercel dashboard can make the operating system easier to use before the backend exists, but it cannot safely own durable writes or private state.
+- Interpretation: the reliable split is browser-local preparation first, then Codex or Railway-backed writeback after explicit approval.
+- Why it matters: this lets Jarvis accept typed, voice, and file inputs now without pretending that static JavaScript can update the KB, Notion, GitHub, or local files.
+- Where applicable: dashboard hosting, voice mode, file checks, E1.5 content templates, E2 research packets, and future Railway API design.
+- Limitation: true live state, Google auth, SSE/websocket events, background jobs, provider model calls, and durable memory writes require a backend.

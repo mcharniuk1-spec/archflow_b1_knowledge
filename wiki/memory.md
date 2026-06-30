@@ -134,3 +134,13 @@ ArchFlow Block 1 is the first public solution:
 - GloomyLord is an internal visual/reporting sidecar by default, not public-facing branding unless separately approved.
 - First hosted dashboard default remains static/read-only first. Vercel is preferred for that static step; Railway waits for live API, background worker, queue, websocket/SSE, or voice-service requirements.
 - Voice commands start read-only/status only; write actions require human approval and AF Review.
+
+## Dashboard Jarvis Vercel Memory - 2026-06-30
+
+- The dashboard now has a Jarvis-first command shell under `project/dashboard/`.
+- The first hosted dashboard target is hidden-link Vercel preview with public-safe static data only.
+- Hidden link is not authentication; Google auth, server-side access control, and protected private state remain future gates.
+- The dashboard can refresh deployed `data.json` without a page reload through manual refresh, focus/visibility refresh, command refresh, and timed polling.
+- Static Jarvis can create browser-local packets from typed commands, authorized browser voice transcripts, and local text files, but cannot write to GitHub, Notion, WikiLLM, Obsidian, or local files.
+- Railway remains deferred until the project needs API state, SSE/websocket events, voice execution, uploads, background workers, queues, model-provider calls, or durable writeback.
+- The E1.5 content-template library now lives under `project/content/templates/` and turns reviewed executions into practical content plans; publication still requires AF Review and owner approval.

@@ -1,0 +1,15 @@
+.git
+.vercel
+.env
+.env.*
+**/.env
+**/.env.*
+node_modules
+project/local
+project/.env.local
+project/.env.langsmith.local
+raw
+source_exports
+secrets
+private
+tmp

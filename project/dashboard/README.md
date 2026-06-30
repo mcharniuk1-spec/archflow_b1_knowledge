@@ -1,8 +1,10 @@
 # Local Operator Dashboard
 
-This is the Phase 2 local dashboard for ArchFlow Block 1.
+This is the Phase 2 dashboard for ArchFlow Block 1.
 
-It is a read-only control panel generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.
+It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.
+
+Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.
 
 ## Run
 
@@ -19,6 +21,23 @@ Open:
 http://127.0.0.1:8765/project/dashboard/
 ```
 
+## Vercel Preview
+
+Deploy from the public repository root:
+
+```bash
+python3 project/scripts/generate-dashboard-data.py
+npx vercel --yes
+```
+
+The preview should be opened at:
+
+```text
+https://<deployment>/project/dashboard/
+```
+
+The root `vercel.json` sets `noindex` headers and disables cache for dashboard files and `data.json`. This does not authenticate the page.
+
 ## What It Shows
 
 - Overview and recent activity.
@@ -30,6 +49,9 @@ http://127.0.0.1:8765/project/dashboard/
 - LangSmith tracing readiness and safe trace rules.
 - Env/config and runtime package status.
 - E1.3 KB writeback/readback derived gate status and evidence links.
+- Jarvis normal/interview mode shell.
+- Browser-local voice command placeholder and local file metadata packet creation.
+- In-page refresh: manual button, Jarvis refresh command, focus refresh, and timed polling of `data.json`.
 
 ## Change Config
 
@@ -41,6 +63,29 @@ http://127.0.0.1:8765/project/dashboard/
 - Dashboard UI: `project/dashboard/app.js` and `project/dashboard/styles.css`
 
 Regenerate `project/dashboard/data.json` after changing any workflow, config, WikiLLM, report, or run file.
+
+On Vercel, the dashboard can update in-page without reloading the page after a new `data.json` has been deployed. It cannot observe local file changes, write to GitHub/Notion/WikiLLM, process private uploads, or run live voice execution without a backend.
+
+## Jarvis Boundary
+
+Allowed in the static preview:
+
+- status/readback answers from deployed `data.json`;
+- manual refresh and polling without page reload;
+- browser-local voice transcript command during the current browser session when the user authorizes voice;
+- browser-local file metadata packet creation without reading document bodies;
+- downloadable local packets for later Codex/Railway writeback.
+
+Deferred to Vercel server/auth or Railway backend:
+
+- Google account auth;
+- durable file uploads;
+- raw transcript storage;
+- Notion/GitHub/WikiLLM writes;
+- SSE/websocket live events;
+- background workers and queues;
+- OpenAI/Mistral/Ollama provider calls;
+- any private dashboard state.
 
 ## Boundary
 

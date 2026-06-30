@@ -61,7 +61,7 @@ Tasks:
 | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | PRD, streaming report, system report, task matrix, KB update, review report, and PDFs from the first reproducible proof. |
 | E1.3 Record the PRD and agent history in the KB | Review | Docs | 2026-06-30 | Public-safe KB writeback, source registry, and readback proof. |
 | E1.4 Write the KB update principle | Backlog | Docs | 2026-07-03 | One to two page method for building and updating the KB. |
-| E1.5 Document the process for case study and content | In Progress | Docs | 2026-07-04 | Public-reporting gate and GloomyLord internal visual/reporting brief started. |
+| E1.5 Document the process for case study and content | In Progress | Docs | 2026-07-04 | Public-reporting gate, GloomyLord brief, content templates, and Jarvis dashboard shell started. |
 
 E1.1 through E1.3 now have a finer staged sequence:
 
@@ -79,8 +79,9 @@ E1.3 review update on 2026-06-30:
 | Source registry and retrieval metadata | Review | `project/runs/E1.3/2026-06-30-kb-readback/source-registry.md` |
 | Readback assertions | Review | `project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md` |
 | Dashboard E1.3 status | Review | `project/dashboard/data.json` generated from run evidence |
-| Dashboard/voice/hosting plan | Review | static dashboard first, Railway and voice writes gated |
-| GloomyLord reporting package | In Progress | starts under E1.5 public-reporting gate |
+| Dashboard/voice/hosting plan | Review | static Vercel dashboard first, Railway and voice writes gated |
+| Jarvis dashboard shell | In Progress | `project/dashboard/` supports normal/interview mode, browser-local packets, and in-page refresh |
+| GloomyLord reporting package | In Progress | starts under E1.5 public-reporting gate and `project/content/templates/` |
 
 E1.3 review caveat: E1.2 remains in Review until owner acceptance. The E1.3 readback proof can pass without marking E1.2 Done.
 
