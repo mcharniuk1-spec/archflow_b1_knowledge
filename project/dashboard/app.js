@@ -1,5 +1,9 @@
 const tabs = [
   { id: "jarvis", label: "Jarvis", glyph: "JV" },
+  { id: "history", label: "Chat History", glyph: "CH" },
+  { id: "schema", label: "Block Schema", glyph: "BS" },
+  { id: "config", label: "Config", glyph: "CF" },
+  { id: "plan", label: "Project Plan", glyph: "PL" },
   { id: "overview", label: "Overview", glyph: "OV" },
   { id: "wikillm", label: "WikiLLM Memory", glyph: "WK" },
   { id: "graphify", label: "Graphify", glyph: "GF" },
@@ -14,17 +18,30 @@ const tabs = [
 const storageKeys = {
   mode: "archflow.jarvis.mode",
   voiceAuthorized: "archflow.jarvis.voiceAuthorized",
+  voiceOutput: "archflow.jarvis.voiceOutput",
+  promptConfig: "archflow.jarvis.promptConfig",
+  chatHistory: "archflow.jarvis.chatHistory",
   packets: "archflow.jarvis.localPackets",
   events: "archflow.jarvis.events",
 };
 
 let dashboardData = null;
-let activeTab = "jarvis";
+let activeTab = window.location.hash?.replace(/^#/, "") || "jarvis";
 let jarvisMode = localStorage.getItem(storageKeys.mode) || "normal";
 let voiceAuthorized = localStorage.getItem(storageKeys.voiceAuthorized) === "true";
+let voiceOutputEnabled = localStorage.getItem(storageKeys.voiceOutput) === "true";
 let dataSignature = "";
 let refreshTimer = null;
 let localPackets = loadJson(storageKeys.packets, []);
+let chatHistory = loadJson(storageKeys.chatHistory, [
+  {
+    id: "welcome",
+    role: "assistant",
+    source: "system",
+    time: new Date().toISOString(),
+    text: "Jarvis is ready. Use chat, voice, interview mode, block schema, config, or project plan. Writes stay approval-gated.",
+  },
+]);
 let liveEvents = loadJson(storageKeys.events, [
   {
     id: "boot",
@@ -43,8 +60,10 @@ const refreshDataButton = document.querySelector("#refreshData");
 const globalComposer = document.querySelector("#globalComposer");
 const globalInput = document.querySelector("#globalInput");
 
+if (!tabs.some((tab) => tab.id === activeTab)) activeTab = "jarvis";
+
 function storageForKey(key) {
-  return key === storageKeys.packets || key === storageKeys.events ? sessionStorage : localStorage;
+  return key === storageKeys.packets || key === storageKeys.events || key === storageKeys.chatHistory ? sessionStorage : localStorage;
 }
 
 function loadJson(key, fallback) {
@@ -58,6 +77,19 @@ function loadJson(key, fallback) {
 function saveJson(key, value) {
   storageForKey(key).setItem(key, JSON.stringify(value));
 }
+
+function defaultPromptConfig() {
+  return {
+    chain_name: "PRD-to-ICP dashboard chain",
+    model_policy: "MODEL_PROVIDER=none until approved per task; OpenAI is configured for approved local checks only.",
+    memory_policy: "Summaries and candidates only; no raw transcript, raw recording, or private document persistence by default.",
+    normal_prompt: "Answer from verified dashboard state, explain blockers, prepare approval packets, and avoid scope expansion.",
+    interview_prompt: "Ask one question at a time, classify answers as fact, preference, hypothesis, gap, decision, or task candidate.",
+    review_prompt: "Check public/private boundary, source links, owner approval, and whether claims are backed by current files.",
+  };
+}
+
+let promptConfig = loadJson(storageKeys.promptConfig, defaultPromptConfig());
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -94,6 +126,58 @@ function appendEvent(title, detail, tone = "ok") {
     ...liveEvents,
   ].slice(0, 30);
   saveJson(storageKeys.events, liveEvents);
+}
+
+function appendChat(role, text, source = "typed command") {
+  chatHistory = [
+    ...chatHistory,
+    {
+      id: makeId(`chat-${role}`),
+      role,
+      source,
+      time: nowIso(),
+      text: String(text || "").slice(0, 1600),
+    },
+  ].slice(-80);
+  saveJson(storageKeys.chatHistory, chatHistory);
+}
+
+function clearChatHistory() {
+  chatHistory = [];
+  saveJson(storageKeys.chatHistory, chatHistory);
+  appendEvent("Chat history cleared", "Current-session Jarvis chat history was cleared locally.", "warn");
+  render();
+}
+
+function exportChatHistory() {
+  const packet = createLocalPacket("jarvis-chat-history-export", "current browser session", "Export current Jarvis chat history for Codex review.", {
+    extra: {
+      chat_history: chatHistory,
+      persistence: "session-only until downloaded and reviewed",
+    },
+  });
+  downloadPacket(packet.id);
+}
+
+function speechSynthesisAvailable() {
+  return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+}
+
+function speakText(text) {
+  if (!voiceOutputEnabled || !speechSynthesisAvailable()) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(String(text || "").slice(0, 900));
+  utterance.rate = 0.96;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+  const voices = window.speechSynthesis.getVoices?.() || [];
+  const preferred = voices.find((voice) => /en/i.test(voice.lang) && /samantha|ava|alloy|natural|premium|enhanced/i.test(voice.name))
+    || voices.find((voice) => /en/i.test(voice.lang))
+    || voices[0];
+  if (preferred) utterance.voice = preferred;
+  utterance.onstart = () => setLiveStatus("Jarvis speaking", "ok");
+  utterance.onend = () => setLiveStatus("Live polling active", "warn");
+  window.speechSynthesis.speak(utterance);
 }
 
 function addPacket(packet) {
@@ -162,7 +246,7 @@ function pathLink(path) {
 function renderNav() {
   nav.innerHTML = tabs
     .map((tab) => `
-      <button type="button" class="${tab.id === activeTab ? "active" : ""}" data-tab="${tab.id}">
+      <button type="button" class="${tab.id === activeTab ? "active" : ""}" data-tab="${tab.id}" aria-current="${tab.id === activeTab ? "page" : "false"}">
         <span class="glyph">${tab.glyph}</span>
         <span>${tab.label}</span>
       </button>
@@ -172,6 +256,7 @@ function renderNav() {
   nav.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       activeTab = button.dataset.tab;
+      window.history.replaceState(null, "", `#${activeTab}`);
       render();
     });
   });
@@ -202,7 +287,8 @@ function systemCards(data) {
     { label: "Access", value: "hidden link", note: "Google auth planned after Vercel v1", tone: "warn" },
     { label: "Refresh", value: "live polling", note: "Manual, focus, command, and 15s checks", tone: "ok" },
     { label: "Jarvis", value: jarvisMode, note: "Normal or interview command mode", tone: "ok" },
-    { label: "Voice", value: voiceAuthorized ? "authorized" : "requires approval", note: "Browser speech API, no raw audio storage", tone: voiceAuthorized ? "ok" : "warn" },
+    { label: "Voice input", value: voiceAuthorized ? "authorized" : "requires approval", note: "Browser speech recognition only; no raw audio storage", tone: voiceAuthorized ? "ok" : "warn" },
+    { label: "Voice output", value: voiceOutputEnabled ? "speech enabled" : "muted", note: "Browser speech synthesis; human voice depends on installed browser voices", tone: voiceOutputEnabled ? "ok" : "warn" },
     { label: "E1.3", value: e13?.derived_status || "unknown", note: e13 ? `${e13.passed_count}/${e13.assertion_count} readback` : "No gate data", tone: e13?.readback_status === "passed" ? "ok" : "warn" },
     { label: "Railway", value: "deferred", note: "Use for backend, SSE, auth, workers, durable writes", tone: "warn" },
   ];
@@ -332,6 +418,28 @@ function jarvisReply(input, source = "typed command") {
     return `Current status: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard is static/read-only with live polling. Hidden-link Vercel comes first; Railway, Google auth, durable voice/file writes, and model-provider calls are later gates.`;
   }
 
+  if (lower.includes("voice") || lower.includes("speak") || lower.includes("sound")) {
+    activeTab = "jarvis";
+    return speechSynthesisAvailable()
+      ? "Voice input uses the browser speech recognition API when available. Voice output uses browser speech synthesis when you enable Speak replies. Raw audio and raw transcript persistence remain off by default."
+      : "This browser does not expose speech synthesis or speech recognition reliably. Use the text composer here; live voice remains a local/provider-gated implementation task.";
+  }
+
+  if (lower.includes("schema") || lower.includes("block") || lower.includes("graph")) {
+    activeTab = "schema";
+    return "Opening the block-schema page. It separates direct operator-to-Codex interaction from the downstream graph, reviewer, memory, and dashboard-monitor structure.";
+  }
+
+  if (lower.includes("config") || lower.includes("subprompt") || lower.includes("prompt")) {
+    activeTab = "config";
+    return "Opening the configuration page. Edits are browser-local and can be exported as a packet for Codex review; they do not change GitHub, Notion, or runtime prompts directly.";
+  }
+
+  if (lower.includes("project plan") || lower.includes("plan structure") || lower.includes("prd")) {
+    activeTab = "plan";
+    return "Opening the project plan view. It shows the E1-E7 spine, PRD-to-ICP flow, and source links from the committed dashboard data.";
+  }
+
   if (jarvisMode === "interview") {
     const packet = createLocalPacket("interview-memory-candidate", source, text, {
       extra: {
@@ -348,9 +456,14 @@ function jarvisReply(input, source = "typed command") {
 function handleGlobalSubmit(value, source = "typed command") {
   const input = String(value || "").trim();
   if (!input) return;
+  const previousTab = activeTab;
+  appendChat("user", input, source);
   const reply = jarvisReply(input, source);
+  appendChat("assistant", reply, "Jarvis static command shell");
   appendEvent("Jarvis command", `${input.slice(0, 120)} -> ${reply.slice(0, 160)}`, "ok");
-  if (activeTab !== "jarvis") activeTab = "jarvis";
+  speakText(reply);
+  if (activeTab === previousTab && activeTab !== "jarvis") activeTab = "jarvis";
+  window.history.replaceState(null, "", `#${activeTab}`);
   render();
 }
 
@@ -369,12 +482,13 @@ function renderJarvis(data) {
         <div class="jarvis-actions">
           <button class="primary" id="jarvisRefresh" type="button">Refresh data</button>
           <button class="button" id="voiceToggle" type="button">${voiceAuthorized ? "Start voice" : "Authorize voice"}</button>
+          <button class="button" id="voiceOutputToggle" type="button">${voiceOutputEnabled ? "Mute replies" : "Speak replies"}</button>
           <label class="button file-button">
             Attach file
             <input id="fileInput" type="file" multiple />
           </label>
         </div>
-        <div id="voiceState" class="callout compact">${voiceAuthorized ? "Voice is authorized in this browser. Raw audio is not stored." : "Voice requires explicit browser-level authorization before use."}</div>
+        <div id="voiceState" class="callout compact">${voiceAuthorized ? "Voice input is authorized in this browser. Raw audio is not stored." : "Voice input requires explicit browser-level authorization before use."} ${voiceOutputEnabled ? "Speech output is enabled for Jarvis replies." : "Speech output is muted."}</div>
       </section>
 
       <aside class="panel">
@@ -389,6 +503,27 @@ function renderJarvis(data) {
     </div>
 
     <div class="grid cols-6" style="margin-top:16px">${systemCards(data).map((item) => card(item)).join("")}</div>
+
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Jarvis Chat</h2>
+          <p class="muted">Current-session chat history. It stays in browser session storage until exported.</p>
+        </div>
+        <div class="row-actions">
+          <button class="button" id="exportChat" type="button">Export chat packet</button>
+          <button class="button" id="clearChat" type="button">Clear history</button>
+        </div>
+      </div>
+      <div class="chat-thread" id="chatThread">
+        ${chatHistory.length ? chatHistory.slice(-14).map((message) => `
+          <article class="chat-message ${escapeHtml(message.role)}">
+            <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleTimeString()}</div>
+            <p>${escapeHtml(message.text)}</p>
+          </article>
+        `).join("") : `<div class="callout">No current-session messages. Use the bottom composer or voice input.</div>`}
+      </div>
+    </section>
 
     <div class="split" style="margin-top:16px">
       <section class="panel">
@@ -441,6 +576,14 @@ function renderJarvis(data) {
   });
 
   document.querySelector("#voiceToggle")?.addEventListener("click", startVoice);
+  document.querySelector("#voiceOutputToggle")?.addEventListener("click", () => {
+    voiceOutputEnabled = !voiceOutputEnabled;
+    localStorage.setItem(storageKeys.voiceOutput, String(voiceOutputEnabled));
+    appendEvent("Voice output changed", voiceOutputEnabled ? "Jarvis replies will use browser speech synthesis." : "Jarvis speech output muted.", voiceOutputEnabled ? "ok" : "warn");
+    render();
+  });
+  document.querySelector("#exportChat")?.addEventListener("click", exportChatHistory);
+  document.querySelector("#clearChat")?.addEventListener("click", clearChatHistory);
   document.querySelector("#fileInput")?.addEventListener("change", handleFiles);
   view.querySelectorAll(".packet-download").forEach((button) => {
     button.addEventListener("click", () => downloadPacket(button.dataset.packet));
@@ -506,6 +649,177 @@ function handleFiles(event) {
   });
   render();
   event.target.value = "";
+}
+
+function renderHistory() {
+  view.innerHTML = `
+    <section class="panel">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Chat History</h2>
+          <p class="muted">Current browser-session conversation with Jarvis. Export before closing the tab if it should become a Codex-reviewed packet.</p>
+        </div>
+        <div class="row-actions">
+          <button class="primary" id="historyExport" type="button">Export chat packet</button>
+          <button class="button" id="historyClear" type="button">Clear history</button>
+        </div>
+      </div>
+      <div class="chat-thread expanded">
+        ${chatHistory.length ? chatHistory.map((message) => `
+          <article class="chat-message ${escapeHtml(message.role)}">
+            <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleString()}</div>
+            <p>${escapeHtml(message.text)}</p>
+          </article>
+        `).join("") : `<div class="callout">No chat history in this browser session.</div>`}
+      </div>
+    </section>
+  `;
+  document.querySelector("#historyExport")?.addEventListener("click", exportChatHistory);
+  document.querySelector("#historyClear")?.addEventListener("click", clearChatHistory);
+}
+
+function renderSchema(data) {
+  const directFlow = [
+    ["1", "Operator input", "Typed command, voice transcript, file metadata, or approval/correction."],
+    ["2", "Jarvis shell", "Classifies the request into status, interview, research/check, content, plan, schema, config, or approval packet."],
+    ["3", "Codex operator", "Reviews the packet, reads source files, edits only approved targets, and runs checks."],
+    ["4", "Review branch", "Implementation changes land on a review branch or local artifact before main-branch promotion."],
+    ["5", "Memory/report", "Run notes, issues, decisions, Project Desire summaries, Notion sync, and dashboard data update after review."],
+  ];
+  const graphFlow = [
+    ["Intake", "LangGraph state", "Capture task, source ids, allowed corpus, mode, approval status, and stop condition."],
+    ["Route", "Conditional edges", "Normal answer, interview question, E2 research, report generation, config change, or blocked action."],
+    ["Parallel work", "CrewAI-style lanes", "Research/ICP, Knowledge/RAG, Dashboard/reporting, Safety/review, Integrator."],
+    ["Merge", "Reviewer gate", "Resolve contradictions, label fact/interpretation/hypothesis/gap, and prepare owner approval."],
+    ["Publish", "Memory cascade", "GitHub branch, WikiLLM/Obsidian/Notion summaries, dashboard snapshot, and open blockers."],
+  ];
+  view.innerHTML = `
+    <div class="grid cols-2">
+      <section class="panel">
+        <h2 class="section-title">Direct Development Response</h2>
+        <p class="muted">How the operator interacts with Codex/Jarvis before a durable write happens.</p>
+        ${table(["Step", "Block", "What happens"], directFlow.map((row) => row.map(escapeHtml)))}
+      </section>
+      <section class="panel">
+        <h2 class="section-title">Graph Monitor Structure</h2>
+        <p class="muted">How the response becomes monitored graph work after intake.</p>
+        ${table(["Stage", "Layer", "Output"], graphFlow.map((row) => row.map(escapeHtml)))}
+      </section>
+    </div>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">Current LangGraph Contract Nodes</h2>
+      ${table(["Node", "Owner", "Purpose"], data.langgraph.nodes.map((node) => [
+        `<strong>${escapeHtml(node.id)}</strong>`,
+        badge(node.owner),
+        escapeHtml(node.purpose),
+      ]))}
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">PRD-to-ICP Operating Chain</h2>
+      <div class="node-flow">
+        ${["Voice/chat intake", "Summary candidate", "Task extraction", "Research queue", "Evidence card", "ICP profile", "Executive report", "Decision/memory review"].map((label) => `
+          <div class="node"><strong>${escapeHtml(label)}</strong><span>Approval-gated before persistence or external sync.</span></div>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function savePromptConfigFromForm() {
+  promptConfig = {
+    chain_name: document.querySelector("#cfgChain")?.value || "",
+    model_policy: document.querySelector("#cfgModel")?.value || "",
+    memory_policy: document.querySelector("#cfgMemory")?.value || "",
+    normal_prompt: document.querySelector("#cfgNormal")?.value || "",
+    interview_prompt: document.querySelector("#cfgInterview")?.value || "",
+    review_prompt: document.querySelector("#cfgReview")?.value || "",
+  };
+  saveJson(storageKeys.promptConfig, promptConfig);
+  appendEvent("Config saved locally", "Prompt/subprompt configuration was saved in browser localStorage only.", "ok");
+  render();
+}
+
+function exportPromptConfig() {
+  const packet = createLocalPacket("jarvis-subprompt-config-candidate", "dashboard config page", "Export browser-local Jarvis chain and subprompt config for Codex review.", {
+    extra: {
+      prompt_config: promptConfig,
+      persistence: "localStorage only until exported and reviewed",
+    },
+  });
+  downloadPacket(packet.id);
+}
+
+function renderConfig() {
+  view.innerHTML = `
+    <section class="panel">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Chain Configuration And Subprompting</h2>
+          <p class="muted">Edit browser-local prompt candidates. Export creates a review packet; it does not mutate GitHub, Notion, WikiLLM, or runtime services.</p>
+        </div>
+        <div class="row-actions">
+          <button class="primary" id="cfgSave" type="button">Save locally</button>
+          <button class="button" id="cfgExport" type="button">Export config packet</button>
+        </div>
+      </div>
+      <div class="config-grid">
+        <label>Chain name<input id="cfgChain" value="${escapeHtml(promptConfig.chain_name)}" /></label>
+        <label>Model policy<textarea id="cfgModel">${escapeHtml(promptConfig.model_policy)}</textarea></label>
+        <label>Memory policy<textarea id="cfgMemory">${escapeHtml(promptConfig.memory_policy)}</textarea></label>
+        <label>Normal mode subprompt<textarea id="cfgNormal">${escapeHtml(promptConfig.normal_prompt)}</textarea></label>
+        <label>Interview mode subprompt<textarea id="cfgInterview">${escapeHtml(promptConfig.interview_prompt)}</textarea></label>
+        <label>Reviewer subprompt<textarea id="cfgReview">${escapeHtml(promptConfig.review_prompt)}</textarea></label>
+      </div>
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">Agent Chain Links</h2>
+      ${table(["Chain link", "Role", "Persistence"], [
+        ["Jarvis intake", "Collect text, voice transcript, file metadata, and explicit approval.", "session/local packet"],
+        ["Context analyzer", "Summarize and classify fact, interpretation, hypothesis, gap, decision, task.", "review packet"],
+        ["Research/ICP agent", "Create source-backed evidence cards and market questions.", "run note after review"],
+        ["Manager/PRD agent", "Convert accepted context into tasks, owners, PRD deltas, deadlines.", "Notion candidates"],
+        ["Knowledge/RAG agent", "Promote reviewed summaries into Project Desire, WikiLLM, Obsidian.", "approval-gated"],
+        ["Reviewer/integrator", "Verify safety, source links, status claims, and merge order.", "decision/run/issue"],
+      ].map((row) => row.map(escapeHtml)))}
+    </section>
+  `;
+  document.querySelector("#cfgSave")?.addEventListener("click", savePromptConfigFromForm);
+  document.querySelector("#cfgExport")?.addEventListener("click", exportPromptConfig);
+}
+
+function renderPlan(data) {
+  const eCards = [
+    ["E1", "Knowledge base on ourselves", "Partly complete; E1.3 readback passed and review gate is active."],
+    ["E2", "Evidence engine and PRD-to-ICP", "Readiness/source visibility only; production evidence cards still missing."],
+    ["E3", "Positioning", "Depends on E2 evidence; do not claim ready."],
+    ["E4", "Content direction", "Planning/reporting gate only; publishing needs proof and approval."],
+    ["E5", "Analytics and ROI", "Dashboard visibility shell exists; ROI methodology and metrics remain future work."],
+    ["E6", "Outreach", "Not started; blocked until E2-E4 proof."],
+    ["E7", "Payment verdict", "Not started; needs demand/conversion evidence."],
+  ];
+  view.innerHTML = `
+    <div class="grid cols-3">
+      ${card({ label: "Current lane", value: "B2B SaaS product teams", note: "One ICP lane unless the owner expands scope", tone: "ok" })}
+      ${card({ label: "Dashboard mode", value: "protected static preview", note: "Not a live control plane", tone: "warn" })}
+      ${card({ label: "Next safe step", value: "E2.0 dry run", note: "No model/provider calls by default", tone: "ok" })}
+    </div>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">E1-E7 Project Plan</h2>
+      ${table(["Epic", "Scope", "Current status"], eCards.map((row) => row.map(escapeHtml)))}
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">Recent Source Links</h2>
+      <div class="list">
+        ${(data.activity || []).slice(0, 10).map((item) => `
+          <article class="row">
+            ${badge(item.kind)}
+            <span class="row-title">${escapeHtml(item.title)}</span>
+            <div class="row-meta">${pathLink(item.path)}</div>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
 }
 
 function renderOverview(data) {
@@ -782,6 +1096,10 @@ function render() {
   const data = dashboardData;
   generatedAt.textContent = `Generated ${new Date(data.generated_at).toLocaleString()}`;
   if (activeTab === "jarvis") renderJarvis(data);
+  if (activeTab === "history") renderHistory(data);
+  if (activeTab === "schema") renderSchema(data);
+  if (activeTab === "config") renderConfig(data);
+  if (activeTab === "plan") renderPlan(data);
   if (activeTab === "overview") renderOverview(data);
   if (activeTab === "wikillm") renderWiki(data);
   if (activeTab === "graphify") renderGraphify(data);
@@ -818,6 +1136,13 @@ document.addEventListener("visibilitychange", () => {
       setLiveStatus("Static data only", "warn");
     });
   }
+});
+
+window.addEventListener("hashchange", () => {
+  const nextTab = window.location.hash?.replace(/^#/, "") || "jarvis";
+  if (!tabs.some((tab) => tab.id === nextTab)) return;
+  activeTab = nextTab;
+  render();
 });
 
 loadDashboardData("initial load")

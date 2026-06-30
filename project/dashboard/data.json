@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T14:29:01.029251+00:00",
+  "generated_at": "2026-06-30T14:49:30.710336+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,7 +30,7 @@
     },
     {
       "label": "Activity files",
-      "value": "113",
+      "value": "115",
       "tone": "ok"
     },
     {
@@ -395,6 +395,20 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/agent-handout.md",
+      "title": "Agent Handout: Jarvis Voice Dashboard Review Branch",
+      "modified": "2026-06-30T14:49:17.801196+00:00",
+      "size": 1441
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/run-summary.md",
+      "title": "Run: Jarvis Voice Dashboard Review Branch",
+      "modified": "2026-06-30T14:49:17.701104+00:00",
+      "size": 2310
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-06-30-dashboard-reliability-sync/agent-handout.md",
@@ -1468,7 +1482,7 @@
     {
       "path": "project/dashboard/README.md",
       "title": "Local Operator Dashboard",
-      "text": "# Local Operator Dashboard  This is the Phase 2 dashboard for ArchFlow Block 1.  It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  Current stable protected review route:  ```text https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/ ```  Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## Vercel Preview  Deploy from the public repository root:  ```bash python3 project/scripts/generate-dashboard-data.py npx vercel --yes --target preview ```  The preview should be opened at:  ```text https://<deployment>/project/dashboard/ ```  The root `vercel.json` sets `noindex` headers and disables cache for dashboard files "
+      "text": "# Local Operator Dashboard  This is the Phase 2 dashboard for ArchFlow Block 1.  It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  Current stable protected review route:  ```text https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/ ```  Review-branch local deep links:  ```text http://127.0.0.1:8765/project/dashboard/#jarvis http://127.0.0.1:8765/project/dashboard/#history http://127.0.0.1:8765/project/dashboard/#schema http://127.0.0.1:8765/project/dashboard/#config http://127.0.0.1:8765/project/dashboard/#plan ```  Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## Vercel Preview  Deploy from the public rep"
     },
     {
       "path": "project/future-actions-and-parameters.md",
@@ -1809,6 +1823,16 @@
       "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
       "title": "Run: June 30 Integrator Review",
       "text": "# Run: June 30 Integrator Review  Date: 2026-06-30 Status: completed, ready for public Git review  ## Task  Review the combined June 30 public repository diff after the dashboard/Jarvis/Vercel lane, E1.5 content-template lane, and evening skill/hook audit lane.  ## Included Lanes  - Dashboard/Jarvis/Vercel shell under `project/dashboard/`. - Vercel config and ignored local Vercel metadata. - E1.5 content-template library under `project/content/templates/`. - Dashboard and content run notes under `project/runs/E1.5/`. - Evening skill/hook audit run notes under `project/runs/2026-06-30-evening-skill-hook-audit/`. - Wiki run, decision, memory, insights, and log updates. - `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html` ASCII punctuation normalization.  ## Decisions  FACT: The stable review alias currently resolves to a Ready Preview deployment:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  FACT: Unauthenticated requests to the dashboard route and `data.json` route redirect to Vercel SSO.  FACT: One older production-target Vercel deployment still exists:  - `https://public-j333ecdc8-mcharniuk1-4994s-projects.vercel.app`  INTER"
+    },
+    {
+      "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/agent-handout.md",
+      "title": "Agent Handout: Jarvis Voice Dashboard Review Branch",
+      "text": "# Agent Handout: Jarvis Voice Dashboard Review Branch  Use this handout before continuing the dashboard work.  ## Current Branch  `review-jarvis-voice-dashboard-20260630`  ## Changed Areas  - `project/dashboard/app.js` - `project/dashboard/styles.css` - `project/dashboard/README.md` - `project/dashboard/data.json` - `project/runs/2026-06-30-jarvis-voice-dashboard-review/`  ## What To Review  - Jarvis chat history and export behavior. - Speech output toggle and browser speech synthesis behavior. - Voice input recognition behavior in an interactive browser. - `#schema` page flow for owner-to-Codex and graph/review/memory stages. - `#config` page browser-local prompt/subprompt editing and export packet behavior. - `#plan` page E1-E7 status clarity. - Mobile layout for the expanded navigation and Jarvis chat.  ## Do Not Claim Yet  - Do not claim production voice is working until physical mic/speaker behavior is tested. - Do not claim backend writeback, Railway, model-provider execution, screen capture, or live Codex bridge is enabled. - Do not merge to `main` without review and final approval.  ## Suggested Next Check  Run an interactive browser test on the local device:  1. Open `/pro"
+    },
+    {
+      "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/run-summary.md",
+      "title": "Run: Jarvis Voice Dashboard Review Branch",
+      "text": "# Run: Jarvis Voice Dashboard Review Branch  Date: 2026-06-30 Status: review branch, not merged to main  ## Summary  The dashboard review branch extends the static Jarvis shell without enabling backend writes or provider execution.  ## Implemented On Review Branch  - Added hash-addressable dashboard views:   - `#jarvis`   - `#history`   - `#schema`   - `#config`   - `#plan` - Added current-session Jarvis chat history with export and clear controls. - Added browser-local speech output toggle using Web Speech synthesis where supported. - Kept browser-local voice input through Web Speech recognition where supported. - Added a block-schema page showing the owner-to-Codex interaction flow and downstream graph/review/memory flow. - Added a configuration/subprompting page with browser-local prompt candidates and exportable review packets. - Added a project-plan page showing the E1-E7 spine and current source links. - Updated the dashboard README with the new page links and voice verification boundary. - Regenerated dashboard data from public-safe source files.  ## Boundaries  - Static dashboard JavaScript still cannot write to GitHub, Notion, WikiLLM, or local files. - Voice input and out"
     },
     {
       "path": "project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",

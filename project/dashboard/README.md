@@ -10,6 +10,16 @@ Current stable protected review route:
 https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/
 ```
 
+Review-branch local deep links:
+
+```text
+http://127.0.0.1:8765/project/dashboard/#jarvis
+http://127.0.0.1:8765/project/dashboard/#history
+http://127.0.0.1:8765/project/dashboard/#schema
+http://127.0.0.1:8765/project/dashboard/#config
+http://127.0.0.1:8765/project/dashboard/#plan
+```
+
 Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.
 
 ## Run
@@ -56,7 +66,13 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 - Env/config and runtime package status.
 - E1.3 KB writeback/readback derived gate status and evidence links.
 - Jarvis normal/interview mode shell.
-- Browser-local voice command placeholder and local file metadata packet creation.
+- Current-session Jarvis chat history with export/clear controls.
+- Browser-local voice input through Web Speech recognition where supported.
+- Browser-local speech output through Web Speech synthesis where supported.
+- Block-schema page for direct owner-to-Codex flow and downstream graph/review/memory flow.
+- Config/subprompting page for browser-local prompt candidates and exportable review packets.
+- Project Plan page for the E1-E7 spine and current source links.
+- Browser-local file metadata packet creation.
 - In-page refresh: manual button, Jarvis refresh command, focus refresh, and timed polling of `data.json`.
 
 ## Change Config
@@ -91,9 +107,17 @@ Allowed in the static preview:
 
 - status/readback answers from deployed `data.json`;
 - manual refresh and polling without page reload;
-- browser-local voice transcript command during the current browser session when the user authorizes voice;
+- current-session Jarvis chat history in browser session storage;
+- browser-local voice transcript command during the current browser session when the user authorizes voice and the browser supports recognition;
+- browser-local speech output when the user enables spoken replies and the browser exposes speech synthesis voices;
 - browser-local file metadata packet creation without reading document bodies;
 - downloadable local packets for later Codex/Railway writeback.
+
+Voice verification boundary:
+
+- Headless checks can verify that the voice controls render and JavaScript syntax passes.
+- A real microphone/speaker test requires the owner's interactive browser permission on the local device.
+- Browser speech voices are device/browser dependent. The dashboard can request a natural English voice when one is installed, but it cannot guarantee a specific human voice without an approved voice provider or local TTS runtime.
 
 Deferred to Vercel server/auth or Railway backend:
 

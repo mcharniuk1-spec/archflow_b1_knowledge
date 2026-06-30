@@ -620,6 +620,97 @@ a {
   gap: 6px;
 }
 
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.section-header .muted {
+  margin: 4px 0 0;
+}
+
+.section-header .row-actions {
+  margin-top: 0;
+}
+
+.chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 340px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.chat-thread.expanded {
+  max-height: 620px;
+}
+
+.chat-message {
+  width: min(760px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: var(--panel-soft);
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #e7f0ff;
+  border-color: #bfd4ff;
+}
+
+.chat-message.assistant {
+  align-self: flex-start;
+}
+
+.chat-meta {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.chat-message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.config-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.config-grid input,
+.config-grid textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 11px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+}
+
+.config-grid textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -729,8 +820,13 @@ button.primary:hover {
   .jarvis-layout,
   .grid.cols-2,
   .grid.cols-3,
-  .grid.cols-6 {
+  .grid.cols-6,
+  .config-grid {
     grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
   }
 
   .global-composer {
@@ -927,6 +1023,19 @@ button.primary:hover {
 
   .topbar-actions {
     grid-template-columns: 1fr;
+  }
+
+  .section-header .row-actions {
+    width: 100%;
+  }
+
+  .section-header .row-actions > * {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .chat-thread {
+    max-height: 460px;
   }
 
   .global-composer {
