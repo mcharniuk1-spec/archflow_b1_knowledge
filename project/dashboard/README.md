@@ -4,6 +4,12 @@ This is the Phase 2 dashboard for ArchFlow Block 1.
 
 It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.
 
+Current verified protected preview:
+
+```text
+https://public-bcif6kcct-mcharniuk1-4994s-projects.vercel.app/project/dashboard/
+```
+
 Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.
 
 ## Run
@@ -65,6 +71,19 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 Regenerate `project/dashboard/data.json` after changing any workflow, config, WikiLLM, report, or run file.
 
 On Vercel, the dashboard can update in-page without reloading the page after a new `data.json` has been deployed. It cannot observe local file changes, write to GitHub/Notion/WikiLLM, process private uploads, or run live voice execution without a backend.
+
+## Reliability Sync
+
+After each substantial dashboard/Jarvis execution:
+
+1. Write a public-safe run note under `project/runs/`.
+2. Append the durable memory summary under `wiki/runs/`, `wiki/memory.md`, and `wiki/log.md`.
+3. Regenerate `project/dashboard/data.json`.
+4. Run the public safety, workflow, dashboard JSON, JavaScript, and runtime guard checks.
+5. Commit and push the tracked source update.
+6. Update Notion append-only with the protected preview URL, GitHub commit, verification status, and remaining gated work.
+
+The web view is reliable only for deployed public-safe source state. It does not provide always-on execution, writeback, model calls, or local Codex availability until a backend/local bridge is explicitly approved and implemented.
 
 ## Jarvis Boundary
 

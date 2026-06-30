@@ -144,3 +144,10 @@ ArchFlow Block 1 is the first public solution:
 - Static Jarvis can create browser-local packets from typed commands, authorized browser voice transcripts, and local text files, but cannot write to GitHub, Notion, WikiLLM, Obsidian, or local files.
 - Railway remains deferred until the project needs API state, SSE/websocket events, voice execution, uploads, background workers, queues, model-provider calls, or durable writeback.
 - The E1.5 content-template library now lives under `project/content/templates/` and turns reviewed executions into practical content plans; publication still requires AF Review and owner approval.
+
+## Dashboard Reliability Sync Memory - 2026-06-30
+
+- The current reliable web-view mode is protected static Vercel preview backed by committed public-safe source state.
+- The dashboard README now records the verified preview URL and the reliability-sync procedure.
+- Reliable dashboard updates require a run note, KB/log update, regenerated `project/dashboard/data.json`, safety/workflow/runtime checks, GitHub push, append-only Notion sync, and a web-view status check.
+- Always-on execution is not active yet. Railway/API, OpenAI/Mistral runtime, live Codex bridge, persistent uploads, voice persistence, and browser writeback remain separate approval-gated work.
