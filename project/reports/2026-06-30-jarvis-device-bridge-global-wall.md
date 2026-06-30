@@ -13,7 +13,7 @@ This wall does not enable live capture, model calls, deployments, or write actio
 ## Facts
 
 - The current dashboard is a Vercel/static or static-enhanced visibility surface, not a live control plane.
-- Codex is currently the local operator/editor/reviewer when Max runs it on his device.
+- Codex is currently the local operator/editor/reviewer when the owner runs it on the owner's device.
 - Codex app authorization is not an application API key and should not be copied into hosted services.
 - OpenAI API use for application code requires an approved API key stored in a secret store or local private environment file.
 - Voice and screen capture are private input channels and should default to transient processing plus reviewed summaries.
@@ -23,7 +23,7 @@ This wall does not enable live capture, model calls, deployments, or write actio
 Jarvis should separate three states in the dashboard:
 
 1. Static summary available: the dashboard can display last generated public-safe status.
-2. Local bridge connected: Max's device is running an approved local bridge that can publish heartbeat/status and receive approved task packets.
+2. Local bridge connected: the owner's device is running an approved local bridge that can publish heartbeat/status and receive approved task packets.
 3. Hosted model/backend active: a server-side backend and model provider are configured with approved secrets, policy, logging, and access control.
 
 If Codex is not running locally, the dashboard must not pretend Codex is actively responding. It should show `offline`, `not connected`, or `last seen`.
@@ -48,7 +48,7 @@ Acceptance criteria:
 
 ### JDB-2 - Local Codex/Jarvis Bridge Contract
 
-Define a local-only bridge that can run on Max's device when explicitly started.
+Define a local-only bridge that can run on the owner's device when explicitly started.
 
 Required fields:
 
@@ -111,7 +111,7 @@ Acceptance criteria:
 - API key is created through the secure setup flow.
 - Key is stored only in an approved local/private environment or provider secret store.
 - `MODEL_PROVIDER=none` remains default until a task explicitly enables OpenAI.
-- Provider calls over raw private capture are blocked unless Max approves the data class.
+- Provider calls over raw private capture are blocked unless the owner approves the data class.
 
 ### JDB-6 - Notion And Knowledge-System Sync
 
