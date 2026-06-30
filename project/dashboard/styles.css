@@ -758,16 +758,39 @@ button.primary:hover {
 }
 
 @media (max-width: 640px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .app-shell,
+  .sidebar,
+  .workspace,
+  .view,
+  .panel,
+  .jarvis-layout,
+  .jarvis-main,
+  .global-composer {
+    max-width: 100%;
+  }
+
+  .app-shell *,
+  .global-composer * {
+    min-width: 0;
+  }
+
   .workspace {
-    padding-bottom: 138px;
+    padding-bottom: 0;
   }
 
   .sidebar,
   .view,
   .topbar {
     width: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .nav {
@@ -824,6 +847,16 @@ button.primary:hover {
     font-size: 20px;
   }
 
+  .panel {
+    max-width: calc(100vw - 24px);
+    padding: 14px;
+    overflow-x: hidden;
+  }
+
+  .jarvis-layout {
+    gap: 14px;
+  }
+
   .node {
     min-width: 148px;
   }
@@ -831,12 +864,13 @@ button.primary:hover {
   .jarvis-main {
     min-height: 340px;
     padding-top: 64px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow: hidden;
   }
 
   .jarvis-main h2 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .topbar p,
@@ -844,6 +878,21 @@ button.primary:hover {
   .jarvis-main h2,
   .jarvis-main p {
     max-width: 100%;
+    min-width: 0;
+  }
+
+  .jarvis-main h2,
+  .jarvis-main p,
+  .jarvis-actions {
+    width: 100%;
+    max-width: min(100%, 286px);
+    justify-self: center;
+  }
+
+  .jarvis-main p,
+  .callout.compact {
+    font-size: 13px;
+    line-height: 1.45;
   }
 
   .jarvis-orb {
@@ -863,15 +912,29 @@ button.primary:hover {
     width: 100%;
   }
 
+  .callout.compact {
+    box-sizing: border-box;
+    justify-self: center;
+    width: 100%;
+    max-width: min(100%, 286px);
+    margin-left: 0;
+    margin-right: 0;
+    white-space: normal;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
   .topbar-actions {
     grid-template-columns: 1fr;
   }
 
   .global-composer {
+    position: static;
     grid-template-columns: 1fr;
-    left: 12px;
-    right: 12px;
-    bottom: 10px;
+    width: auto;
+    max-width: calc(100vw - 24px);
+    margin: 0 12px 12px;
   }
 
   .topbar p span {

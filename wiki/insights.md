@@ -60,7 +60,7 @@ Loop Engineering should wrap the current LangGraph/CrewAI/LlamaIndex stack rathe
 
 ## Market Engine Insight
 
-The first sellable market wedge is not generic AI productivity or "make a PRD." It is reducing ambiguity, PM/BA cleanup time, rework, weak handoffs, scope creep, and lost decision memory for service companies that repeatedly convert client/customer conversations into buildable work. E2 should therefore produce account-level evidence cards and ICP scores before content or outreach claims.
+The first sellable market wedge is not generic AI productivity or "make a PRD." It is reducing ambiguity, PM/BA cleanup time, rework, weak handoffs, scope creep, and lost decision memory for B2B SaaS product teams that repeatedly convert product discovery and customer conversations into buildable work. E2 should therefore produce account-level evidence cards and ICP scores before content or outreach claims.
 
 ## Demand Validation Insight
 

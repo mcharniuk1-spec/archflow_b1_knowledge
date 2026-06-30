@@ -27,7 +27,7 @@ Deploy from the public repository root:
 
 ```bash
 python3 project/scripts/generate-dashboard-data.py
-npx vercel --yes
+npx vercel --yes --target preview
 ```
 
 The preview should be opened at:
