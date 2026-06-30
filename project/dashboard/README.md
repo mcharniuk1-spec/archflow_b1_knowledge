@@ -4,10 +4,10 @@ This is the Phase 2 dashboard for ArchFlow Block 1.
 
 It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.
 
-Current verified protected preview:
+Current stable protected review route:
 
 ```text
-https://public-bcif6kcct-mcharniuk1-4994s-projects.vercel.app/project/dashboard/
+https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/
 ```
 
 Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.
