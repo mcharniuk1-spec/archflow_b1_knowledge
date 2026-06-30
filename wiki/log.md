@@ -52,3 +52,8 @@
 - The plan initially used a broader service-company hypothesis, then the partner answer corrected the current first ICP to product teams inside B2B SaaS scaleups and reframed the offer as a Product Discovery-to-Production PRD Pack.
 - Product-team ICP correction was applied to the project plan, market engine, workflow YAML, dashboard data, and selected Notion E1/E2/E3/E6 rows.
 - Targeted Notion E2 updates were applied after product-owner verification: E2 parent and related E2.1/E2.2/E2.3/E2.5 pages received append-only notes, and three Backlog research tasks were added.
+
+## 2026-06-30
+
+- Executed the Onyx/live-dashboard/voice/hosting planning baseline by creating private Notion tasks, adding the public `outquestions` skill, updating the public skill registries, and recording a public run and decision note.
+- The plan keeps ArchFlow as the workflow brain, starts dashboard hosting with a static Vercel path, reserves Railway for live API/worker/voice services, and requires decision-question closeouts after substantial runs.

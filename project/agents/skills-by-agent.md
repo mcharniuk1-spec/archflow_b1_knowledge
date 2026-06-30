@@ -33,6 +33,7 @@ Skills set up:
 
 - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports.
 - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent.
+- [`outquestions`](../../skills/outquestions/SKILL.md) - reports execution outcomes and the questions/gates needed before moving to the next stage.
 - prd-from-dialogue
 - responsibility-assignment-extraction
 - milestone-planning
@@ -59,6 +60,7 @@ Skills set up:
 
 - knowledge-base-update
 - [`task-handout`](../../skills/task-handout/SKILL.md) - records human-readable run context, decisions, artifacts, checks, and next actions.
+- [`outquestions`](../../skills/outquestions/SKILL.md) - turns completed work into decision questions, risk notes, and next-stage gates.
 - sanitized-history-writing
 - source-boundary-control
 - agent-memory-candidate-writing
@@ -85,6 +87,7 @@ Skills set up:
 - secret-and-path-scan
 - english-only-check
 - claim-status-check
+- [`outquestions`](../../skills/outquestions/SKILL.md) - verifies unanswered decisions are visible before approval.
 
 ## AF Publisher
 
@@ -96,6 +99,7 @@ Skills set up:
 - github-remote-publication
 - publication-review-reporting
 - [`task-handout`](../../skills/task-handout/SKILL.md) - prepares the public-safe handout that future operators can use after publication or review.
+- [`outquestions`](../../skills/outquestions/SKILL.md) - closes publication work with decision questions and next-stage gates.
 
 ## Automation
 
@@ -107,3 +111,4 @@ Skills set up:
 - daily-public-project-review
 - archflow-e1-runtime-guard
 - task-handout
+- outquestions

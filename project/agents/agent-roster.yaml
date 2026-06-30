@@ -36,6 +36,7 @@ agents:
     skills:
       - archflow-task-breakdown
       - task-handout
+      - outquestions
       - prd-from-dialogue
       - responsibility-assignment-extraction
       - milestone-planning
@@ -70,6 +71,7 @@ agents:
     skills:
       - knowledge-base-update
       - task-handout
+      - outquestions
       - sanitized-history-writing
       - source-boundary-control
       - agent-memory-candidate-writing
@@ -103,6 +105,7 @@ agents:
       - secret-and-path-scan
       - english-only-check
       - claim-status-check
+      - outquestions
     outputs:
       - approval_status
       - blocked_items
@@ -117,6 +120,7 @@ agents:
       - github-remote-publication
       - publication-review-reporting
       - task-handout
+      - outquestions
     outputs:
       - git_status
       - publication_review
@@ -131,6 +135,7 @@ automation:
       - daily-public-project-review
       - archflow-e1-runtime-guard
       - task-handout
+      - outquestions
     target_files:
       - project/agents/skills-by-agent.md
       - project/agents/agent-roster.yaml

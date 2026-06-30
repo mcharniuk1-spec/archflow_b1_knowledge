@@ -65,3 +65,7 @@ The first sellable market wedge is not generic AI productivity or "make a PRD." 
 ## Demand Validation Insight
 
 Validated demand requires buyer risk: paid diagnostic, prepayment, approved paid start, source packet plus timeline/scope, budget-owner referral, or proposal request. Attention, compliments, category counts, social interest, and internal proof do not validate demand.
+
+## Execution Report Insight
+
+ArchFlow now needs decision-question closeouts because tasks span workflow design, Notion, GitHub, dashboard hosting, voice, Onyx, and public content. The failure risk is moving to the next stage while key owner decisions remain implicit. The `outquestions` skill solves this by turning every substantial run into a short report with blocking decisions, optional refinements, next-stage gates, and risks.

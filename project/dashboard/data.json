@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T16:40:28.230010+00:00",
+  "generated_at": "2026-06-30T11:36:13.942685+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,12 +25,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "20 files",
+      "value": "22 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "80",
+      "value": "83",
       "tone": "ok"
     },
     {
@@ -361,7 +361,7 @@
     {
       "module": "crewai",
       "label": "CrewAI runtime",
-      "status": "not_installed",
+      "status": "installed",
       "runtime": "project_local_venv"
     },
     {
@@ -390,6 +390,27 @@
     }
   ],
   "activity": [
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md",
+      "title": "Decision: Live Dashboard Voice Hosting And Onyx Boundary",
+      "modified": "2026-06-30T11:33:16.816266+00:00",
+      "size": 1924
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
+      "title": "Run: Onyx Dashboard Voice Hosting Execution",
+      "modified": "2026-06-30T11:33:16.709681+00:00",
+      "size": 1492
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
+      "title": "Run: Onyx Dashboard Voice Hosting Execution Plan",
+      "modified": "2026-06-30T11:33:16.602458+00:00",
+      "size": 4184
+    },
     {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-06-29-tool-and-market-integration.md",
@@ -955,7 +976,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 20,
+    "file_count": 22,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -971,6 +992,11 @@
         "path": "wiki/decisions/2026-06-29-tool-memory-model-routing.md",
         "title": "Decision - Tool Memory And Model Routing",
         "excerpt": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, Wiki"
+      },
+      {
+        "path": "wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md",
+        "title": "Decision: Live Dashboard Voice Hosting And Onyx Boundary",
+        "excerpt": "# Decision: Live Dashboard Voice Hosting And Onyx Boundary  Date: 2026-06-30 Status: accepted planning baseline  ## Decision  ArchFlow remains the workflow brain and canonical memory system. Onyx may be tested later as a read-only portal/search/connector layer over approved artifacts after readback and retrieval benchmarks exist.  The first implementation target is a hosted static dashboard. Vercel is preferred for t"
       },
       {
         "path": "wiki/index.md",
@@ -1056,6 +1082,11 @@
         "path": "wiki/runs/2026-06-29-tool-and-market-integration.md",
         "title": "Run - Tool And Market Integration",
         "excerpt": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `pro"
+      },
+      {
+        "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
+        "title": "Run: Onyx Dashboard Voice Hosting Execution",
+        "excerpt": "# Run: Onyx Dashboard Voice Hosting Execution  Date: 2026-06-30 Status: planned and recorded  ## Summary  The June 30 plan was converted into a public-safe execution baseline. ArchFlow remains the workflow brain; Onyx is a later optional portal/search layer. The dashboard should go live in stages, beginning with the current static read-only dashboard and only adding Railway/live workers when the project needs a long-"
       }
     ]
   },
@@ -1085,12 +1116,12 @@
     {
       "path": "project/agents/agent-roster.yaml",
       "title": "agent-roster.yaml",
-      "text": "agents:   af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     outputs:       - source_inventory       - tool_readiness_report       - provider_status    af_context:     title: AF Context     provider: codex_operator     local_model: gemma4:e4b     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap     outputs:       - context_digest       - translated_plan       - gaps    af_manager:     title: AF Manager     provider: codex_operator     local_model: gemma4:e4b     skills:       - archflow-task-breakdown       - task-handout       - prd-from-dialogue       - responsibility-assignment-extraction       - milestone-planning       - acceptance-criteria-writing     outputs:       - prd       - task_matrix       - milestone_plan    af_research:     title: AF Research     provider: codex_operato"
+      "text": "agents:   af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     outputs:       - source_inventory       - tool_readiness_report       - provider_status    af_context:     title: AF Context     provider: codex_operator     local_model: gemma4:e4b     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap     outputs:       - context_digest       - translated_plan       - gaps    af_manager:     title: AF Manager     provider: codex_operator     local_model: gemma4:e4b     skills:       - archflow-task-breakdown       - task-handout       - outquestions       - prd-from-dialogue       - responsibility-assignment-extraction       - milestone-planning       - acceptance-criteria-writing     outputs:       - prd       - task_matrix       - milestone_plan    af_research:     title: AF Research     pr"
     },
     {
       "path": "project/agents/skills-by-agent.md",
       "title": "Skills By Agent",
-      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - prd-from-dialogue - responsibility-assignment-extraction - milestone-planning - acceptance-criteria-writing  ## AF Research  P"
+      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - [`outquestions`](../../skills/outquestions/SKILL.md) - reports execution outcomes and the questions/gates needed before moving"
     },
     {
       "path": "project/config/model-routing.yaml",
@@ -1413,6 +1444,11 @@
       "text": "# Tool Role Map  | Tool | ArchFlow role | Current status | |---|---|---| | Codex | Operator, editor, verifier, approval boundary. | Active. | | LangGraph | Control plane for state, routing, retries, and review gates. | Active runtime smoke passed. | | Loop Engineering | Operating contract for loops, state, budgets, attempt caps, and maker/checker separation. | Added as L1 report-only contract. | | CrewAI | Role/task organization inside graph-controlled runs. | Config/import check exists; no autonomous LLM execution. | | LlamaIndex | Retrieval abstraction over approved corpus. | Active deterministic/keyword proof. | | turbovec | Future local vector store under LlamaIndex. | Deferred. | | WikiLLM | Canonical curated memory. | Active. | | Cognee | Future operational recall and graph memory. | Deferred until E1.3 readback. | | Ollama/Qwythos | Local minor/background model execution. | Configured; server state must be checked per run. | | Mistral | Future sanitized quality pass for PRD/research/copy. | Disabled until approval and credentials. | | LangSmith | Sanitized observability. | Configured with local ignored key and smoke traces. |"
     },
     {
+      "path": "project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
+      "title": "Run: Onyx Dashboard Voice Hosting Execution Plan",
+      "text": "# Run: Onyx Dashboard Voice Hosting Execution Plan  Date: 2026-06-30 Status: planned, task-created, repo-updated  ## Task  Turn the June 30 Onyx, live dashboard, voice layer, and hosting plan into executable project structure:  - create Notion tasks for the dashboard/voice/hosting plan - create a separate GloomyLord task for PRD, research templates, monitoring templates, backlog, ideas summary, and visual social report design - add a reusable `outquestions` skill for execution reports and next-stage decision questions - update the public GitHub project with a public-safe run record and decision baseline  ## Execution Summary  The plan remains staged. ArchFlow stays the workflow brain; Onyx is not promoted into the core runtime. The next implementation path is a hosted read-only dashboard first, then a live API/worker service only when the state model, auth boundary, and secret policy are explicit. Voice starts local and read-only before any command can write to files, Notion, GitHub, deployments, outreach, or memory.  The dashboard direction follows the current project shape. The existing dashboard is static and generated from public project files, so the first live step is Vercel/"
+    },
+    {
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
       "title": "E1.2 PRD - Dialogue-To-PRD Full Test",
       "text": "# E1.2 PRD - Dialogue-To-PRD Full Test  Date: 2026-06-26 Status: approved internal public-safe proof Owner roles: AF Manager with AF Tools, AF Context, AF Knowledge, AF Review, and AF Publisher  ## Product  ArchFlow Block 1 Dialogue-to-PRD Knowledge Engine.  ## Problem  Strategic conversations and setup runs produce useful execution knowledge, but the material is easy to lose, repeat, or publish unsafely. ArchFlow needs a reproducible internal workflow that converts a sanitized source packet into PRD, task division, knowledge-base updates, review evidence, and a handout for the next agent.  ## Goal  Complete one full E1.2 proof package that demonstrates:  - public-safe source intake; - approved-corpus retrieval; - LangGraph-controlled parallel and sequential workflow stages; - role-based CrewAI-style task division; - PRD, streaming report, and system report generation; - WikiLLM writeback; - public-safety and runtime validation; - Git commit and push readiness.  ## Users  | User | Need | |---|---| | Founder/operator | Convert messy planning context into execution assets without repeating discovery. | | Product manager | Get a PRD, task matrix, acceptance criteria, and risks from a "
@@ -1558,9 +1594,14 @@
       "text": "interface:   display_name: \"ArchFlow Task Breakdown\"   short_description: \"Plan ArchFlow epics into safe staged subtasks\"   default_prompt: \"Use $archflow-task-breakdown to decompose this ArchFlow epic into staged tasks, subtasks, checks, and Notion-ready outputs.\""
     },
     {
+      "path": "skills/outquestions/SKILL.md",
+      "title": "Outquestions",
+      "text": "--- name: outquestions description: Use this skill after each substantial ArchFlow execution, planning pass, Notion task update, GitHub update, dashboard/voice/hosting step, or multi-agent run to produce an execution report with the critical open questions, decisions, owner choices, and next-stage gates needed to move reliably. metadata:   short-description: Report execution outcomes and next-stage decision questions ---  # Outquestions  Use this skill when an ArchFlow run needs more than a status note. It turns completed work into a compact execution report plus the questions that must be answered before the next stage starts.  ## Trigger  Run this skill after:  - a Notion task or GitHub update - a dashboard, voice, hosting, Onyx, or agent workflow planning pass - a multi-agent or sidecar-agent run - a public-facing content/reporting task - any execution where the next stage depends on owner decisions  ## Output Shape  Write these sections:  1. **What changed**    - 2-5 plain paragraphs.    - Explain the action, why it matters, and what is now easier or safer.  2. **Artifacts**    - List created or updated files, pages, tasks, reports, or commits.    - Use repo-relative paths for "
+    },
+    {
       "path": "skills/skills-used.md",
       "title": "Skills And Methods Used",
-      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. | | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. | | Loop Engineering operating contract | Keep agent workflows bounded with state, attempt caps, budget, maker/checker separation, and stop conditions. | | Market evidence engine | Turn E2 into account universe, public-signal extraction, scoring, role verification, and reviewed "
+      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. | | [`outquestions`](outquestions/SKILL.md) | Report what changed after each substantial execution and list the decision questions required before the next stage. | | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. | | Loop Engineering operating contract | Keep agent workflows bounded with state, attempt caps, budget, maker/check"
     },
     {
       "path": "skills/task-handout/SKILL.md",
@@ -1581,6 +1622,11 @@
       "path": "wiki/decisions/2026-06-29-tool-memory-model-routing.md",
       "title": "Decision - Tool Memory And Model Routing",
       "text": "# Decision - Tool Memory And Model Routing  Date: 2026-06-29  ## Decision  Use Loop Engineering now as the operating contract. Keep WikiLLM as canonical memory. Keep LlamaIndex as the retrieval abstraction. Defer Cognee, turbovec, and Mistral until their gates pass.  ## Rationale  FACT: The current public project already has Codex as operator, LangGraph as controller, CrewAI role contracts, LlamaIndex retrieval, WikiLLM memory, Ollama local model routing, and LangSmith tracing.  INTERPRETATION: Adding another active brain or vector layer before E1.3 readback would increase failure modes. The missing near-term layer is loop discipline: state, stop conditions, review, and memory promotion.  HYPOTHESIS: Cognee and turbovec will become valuable after E1.3/E2 create enough approved artifacts and source metadata to test recall and dense retrieval.  GAP: Mistral credentials, live model preflight, OCR model selection, Cognee sandbox, turbovec benchmark, and E7 demand verdict are not complete.  ## Consequences  - Loop artifacts live under `project/loops/`. - E2 market research uses `project/workflows/market-research-engine.yaml`. - Mistral is disabled by default and only allowed on sanitize"
+    },
+    {
+      "path": "wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md",
+      "title": "Decision: Live Dashboard Voice Hosting And Onyx Boundary",
+      "text": "# Decision: Live Dashboard Voice Hosting And Onyx Boundary  Date: 2026-06-30 Status: accepted planning baseline  ## Decision  ArchFlow remains the workflow brain and canonical memory system. Onyx may be tested later as a read-only portal/search/connector layer over approved artifacts after readback and retrieval benchmarks exist.  The first implementation target is a hosted static dashboard. Vercel is preferred for that first stage because the current dashboard is static, generated, and read-only. Railway is reserved for live service needs such as API state, background workers, queues, websocket/SSE streams, and voice-service orchestration.  Voice starts local and read-only. Any write action, deployment, external connector change, outreach action, or memory promotion requires human approval and AF Review.  ## Rationale  The current project risk is not lack of platform power. The risk is losing source boundaries, creating unreviewed memory, leaking credentials, or activating live writes before the workflow is proven.  The staged path keeps each layer accountable:  - Dashboard: visibility and status. - LangGraph and Loop Engineering: control and stop conditions. - WikiLLM: durable me"
     },
     {
       "path": "wiki/index.md",
@@ -1666,6 +1712,11 @@
       "path": "wiki/runs/2026-06-29-tool-and-market-integration.md",
       "title": "Run - Tool And Market Integration",
       "text": "# Run - Tool And Market Integration  Date: 2026-06-29  ## Task  Integrate the June 29 tool and market reports into the active E1-E7 plan, without activating gated tools or publishing private source material.  ## Outputs  - `project/project-plan.md` - `project/agentic-stack.md` - `project/loops/` - `project/workflows/market-research-engine.yaml` - `project/reports/2026-06-29-tool-and-market-integration-plan.md` - `project/runs/2026-06-29-tool-market-integration/` - `wiki/decisions/2026-06-29-tool-memory-model-routing.md` - targeted Notion E2 updates after product-owner verification  ## Durable Facts  - E1.3 remains the next KB/readback gate. - Loop Engineering is adopted as report-only operating discipline. - E2 now has a structured market evidence engine. - First ICP hypothesis is corrected by the later 2026-06-29 partner answer: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed. - Cognee, turbovec, and Mistral are gated future layers. - Notion E2 updates were create-missing-or-append-only.  ## Next Steps  1. Complete E1.3 readback before activating Cognee or turbovec. 2"
+    },
+    {
+      "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
+      "title": "Run: Onyx Dashboard Voice Hosting Execution",
+      "text": "# Run: Onyx Dashboard Voice Hosting Execution  Date: 2026-06-30 Status: planned and recorded  ## Summary  The June 30 plan was converted into a public-safe execution baseline. ArchFlow remains the workflow brain; Onyx is a later optional portal/search layer. The dashboard should go live in stages, beginning with the current static read-only dashboard and only adding Railway/live workers when the project needs a long-running API, queue, or voice bridge.  Two private Notion tasks were created for the next work: one for the live dashboard/voice/hosting/Onyx path and one for GloomyLord to prepare the PRD, research templates, monitoring templates, backlog, ideas summary, and public visual report system.  ## Outputs  - Added `skills/outquestions/SKILL.md`. - Updated the public skill registry and agent skill map. - Added public run note `project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md`. - Added public decision record `wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md`.  ## Decision  Vercel is the first dashboard target because the current dashboard is static and read-only. Railway is reserved for live API, worker, queue, websocket/SSE, or voice-service needs"
     }
   ],
   "sources": [

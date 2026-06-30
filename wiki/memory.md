@@ -108,3 +108,18 @@ ArchFlow Block 1 is the first public solution:
 - First offer hypothesis is a Product Discovery-to-Production PRD Pack: product-team dialogues, customer research, interviews, notes, and docs become a reviewed context digest, production-ready PRD, backlog, acceptance criteria, decision log, and KB/update handoff in days, not weeks.
 - E2 must use account evidence cards, source grades, role verification status, and at least two independent public signals before outreach.
 - Directory counts, job counts, social posts, named sample accounts, internal proof, and content engagement are research signals only, not validated demand.
+
+## Dashboard Voice Hosting Memory - 2026-06-30
+
+- ArchFlow remains the workflow brain and canonical memory system.
+- Onyx is a future optional portal/search/connector layer after readback and retrieval benchmark gates; it is not the primary control plane.
+- The first live dashboard step should be static/read-only hosting, with Vercel as the preferred first target because the current dashboard is generated static UI.
+- Railway is reserved for live API, background worker, queue, websocket/SSE, or voice-service needs.
+- Voice starts local and read-only; write actions, deployments, external connector changes, outreach, and memory promotion require human approval and AF Review.
+- GitHub stores source and public-safe examples only. Real credentials belong in provider secret stores or ignored local files.
+
+## Outquestions Memory - 2026-06-30
+
+- `skills/outquestions/SKILL.md` is the closeout skill for substantial execution.
+- Use it after dashboard, voice, hosting, Onyx, Notion, GitHub, multi-agent, and public-reporting work.
+- It must report what changed, artifacts, blocking questions, optional questions, next-stage gate, risks, and gaps.
