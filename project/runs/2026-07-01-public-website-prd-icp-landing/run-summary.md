@@ -1,7 +1,7 @@
 # Run Summary: Minimal Public PRD/ICP Services Landing
 
 Date: 2026-07-01
-Status: deployed and synced; Git/source alignment remains a review gate
+Status: deployed, synced, and source-aligned in the public worktree
 
 ## Task
 
@@ -27,6 +27,7 @@ Production route behavior:
 - `/` serves the minimal three-block PRD/ICP landing.
 - `/quiz` serves the diagnostic route.
 - `/quiz.html` redirects to `/quiz` through Vercel clean URLs.
+- `/dashboard` serves the static operator dashboard.
 
 The landing now has only three public blocks:
 
@@ -44,6 +45,14 @@ The diagnostic remains the deeper subpage for package selection, knowledgebase r
 - root `hover-depth.js`
 - root `quiz.html`
 - root `site.webmanifest`
+- root `dashboard.html`
+- `assets/archflow-mark.svg`
+- `assets/favicon-32.png`
+- `assets/apple-touch-icon.png`
+- `assets/icon-192.png`
+- `assets/icon-512.png`
+- `assets/3d-arcs/archflow-3d-arc-05-offset-twin-frames.webp`
+- `assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp`
 - `workflow/automation/latest-figma-sync.json`
 - `public/project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md`
 - `public/project/live/communication/agent-communication-log.md`
@@ -97,6 +106,9 @@ Primary ICP remains B2B SaaS scaleups, roughly 50-500 employees, 2-5 PMs, and a 
 - Vercel production deploy completed.
 - `https://archflowautomate.vercel.app/`: HTTP 200 and headless Chrome DOM verified.
 - `https://archflowautomate.vercel.app/quiz?step=4`: HTTP 200 and headless Chrome DOM verified.
+- Final public-source deployment completed from the public Git worktree.
+- Vercel SSO protection was disabled for the public project so the live alias is publicly reachable.
+- Final live route checks passed: `/`, `/quiz?step=4`, `/quiz.html`, `/dashboard`, and `/project/dashboard/data.json`.
 
 ## Notion
 
@@ -104,7 +116,7 @@ Notion task updated:
 
 - `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout`
 
-The Notion task records the public URL, diagnostic route, changed files, checks, Figma nodes, and guardrails. It remains in Review until final Git/source alignment and active-lane closeout are complete.
+The Notion task records the public URL, diagnostic route, changed files, checks, Figma nodes, and guardrails. It can move to Done after the final Git commit/push records the source alignment.
 
 ## Guardrails
 
@@ -118,4 +130,4 @@ The Notion task records the public URL, diagnostic route, changed files, checks,
 
 ## Remaining Gap
 
-The public website is deployed and synced, but final Git/source alignment and active multi-agent closeout remain for Messi/Jesus/LOL coordination.
+Provider-backed Jarvis, Railway/local bridge, live Nexus, durable writeback, owner-device voice proof, and real E2.0A customer artifacts remain future gated work. They are not part of this public website deployment closeout.

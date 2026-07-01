@@ -1,10 +1,21 @@
 {
   "name": "ArchFlow",
   "short_name": "ArchFlow",
-  "description": "PRD, ICP, and governed agent-orchestra systems.",
+  "description": "Controlled PRD and ICP operating systems for product teams with scattered product context.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ede7d9",
-  "theme_color": "#202727",
-  "icons": []
+  "background_color": "#faf3ef",
+  "theme_color": "#151211",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }

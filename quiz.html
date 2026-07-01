@@ -1,101 +1,312 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>ArchFlow Diagnostic</title>
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArchFlow PRD Workflow Diagnostic</title>
+    <meta
+      name="description"
+      content="Map the first ArchFlow service wedge for source-backed PRDs, ICP evidence, acceptance criteria, task handoff, and approval-gated agent workflows."
+    />
+    <meta name="theme-color" content="#151211" />
+    <link rel="canonical" href="https://archflowautomate.vercel.app/quiz.html" />
+    <link rel="icon" type="image/png" href="assets/favicon-32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260701-minimal" />
   </head>
-  <body class="diagnostic-page">
-    <header class="site-header compact">
-      <a class="brand" href="/" aria-label="ArchFlow home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>ArchFlow</span>
+  <body class="quiz-page">
+    <a class="skip-link" href="#quiz-main">Skip to diagnostic</a>
+
+    <header class="site-header quiz-header">
+      <a class="brand-lockup" href="index.html" aria-label="Back to ArchFlow landing page">
+        <img src="assets/archflow-mark.svg" alt="" class="brand-mark" />
+        <span>
+          <strong>ArchFlow</strong>
+          <small>Workflow diagnostic</small>
+        </span>
       </a>
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
-      </nav>
-      <a class="header-action" href="/">Back To Site</a>
+      <a class="header-cta" href="index.html#services">View services</a>
     </header>
 
-    <main class="diagnostic-shell">
-      <section class="diagnostic-hero" aria-labelledby="diagnosticTitle">
-        <h1 id="diagnosticTitle">PRD/ICP<wbr> Readiness Diagnostic</h1>
+    <main class="quiz-shell" id="quiz-main">
+      <div class="arc-field quiz-arc-field" aria-hidden="true" data-arch-field="quiz">
+        <img class="arc-object arc-quiz-main" data-arch-layer data-speed="0.68" data-drift="28" data-rotate="-12" src="assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp" alt="" />
+      </div>
+      <aside class="quiz-context">
+        <p class="eyebrow">Five-step diagnostic</p>
+        <h1>Find the first ArchFlow wedge: <span data-sidebar-service>Source-to-PRD Packet</span></h1>
         <p>
-          Answer five short questions. The result estimates the safest first ArchFlow package
-          and names the evidence gaps to resolve before automation or public claims.
+          Answer a short set of questions. The result maps the first service package, knowledgebase readiness, agent-readiness gates, and a conservative planning estimate.
         </p>
-      </section>
+        <div class="quiz-side-card">
+          <span>Result includes</span>
+          <ul>
+            <li>Recommended first package</li>
+            <li>Knowledgebase readiness score</li>
+            <li>Agent execution readiness score</li>
+            <li>Estimated recoverable product-work value</li>
+            <li>Approval gates and first action</li>
+          </ul>
+        </div>
+        <div class="quiz-side-card quiz-question-map">
+          <span>Full question map</span>
+          <ol>
+            <li>Team profile and PRD ownership.</li>
+            <li>Knowledge sources and current tool stack.</li>
+            <li>Product bottlenecks and first improvement target.</li>
+            <li>Workload, rework, budget, and readiness.</li>
+            <li>Result preview and follow-up packet.</li>
+          </ol>
+        </div>
+        <div class="quiz-side-card quiz-method-card">
+          <span>Boundary</span>
+          <p>
+            This diagnostic produces planning estimates. It does not claim guaranteed ROI, live provider execution, backend writeback, or validated demand.
+          </p>
+        </div>
+      </aside>
 
-      <section class="diagnostic-panel" aria-live="polite">
-        <div class="progress-line">
-          <span id="stepLabel">Step 1 of 5</span>
-          <div class="progress-track"><span id="progressFill"></span></div>
+      <section class="quiz-card" aria-label="PRD and ICP workflow diagnostic">
+        <div class="quiz-progress-wrap">
+          <div>
+            <span class="step-label" data-step-label>Step 1 of 5</span>
+            <strong data-step-title>Team profile</strong>
+          </div>
+          <div class="quiz-progress" aria-hidden="true">
+            <span data-quiz-progress></span>
+          </div>
         </div>
 
-        <form id="diagnosticForm">
-          <fieldset class="diagnostic-step is-active" data-step="1">
-            <legend>Where is product context scattered today?</legend>
-            <label><input type="checkbox" name="sources" value="calls" /> Customer and stakeholder calls</label>
-            <label><input type="checkbox" name="sources" value="tickets" /> Tickets, specs, and backlog notes</label>
-            <label><input type="checkbox" name="sources" value="research" /> Research, competitor notes, and market signals</label>
-            <label><input type="checkbox" name="sources" value="decisions" /> Decision logs and leadership chat</label>
-          </fieldset>
+        <form class="quiz-form" data-quiz-form novalidate>
+          <section class="quiz-step is-active" data-step="0" data-title="Team profile">
+            <h2>Team profile</h2>
+            <label class="range-field">
+              <span>How many people touch product requirements?</span>
+              <input type="range" min="1" max="30" value="7" name="productPeople" />
+              <output data-quiz-output="productPeople">7 people</output>
+            </label>
 
-          <fieldset class="diagnostic-step" data-step="2">
-            <legend>What breaks most often before delivery?</legend>
-            <label><input type="radio" name="breakage" value="prd" checked /> PRDs are vague or incomplete</label>
-            <label><input type="radio" name="breakage" value="icp" /> ICP and buyer evidence are weak</label>
-            <label><input type="radio" name="breakage" value="handoff" /> Engineering handoff loses context</label>
-            <label><input type="radio" name="breakage" value="memory" /> Knowledge is not reusable after the project</label>
-          </fieldset>
+            <fieldset class="choice-field" data-required-group="ownerRole">
+              <legend>Who owns PRD quality today?</legend>
+              <label><input type="radio" name="ownerRole" value="vp-product" /> Director or VP Product</label>
+              <label><input type="radio" name="ownerRole" value="pm-lead" /> PM lead or senior PM</label>
+              <label><input type="radio" name="ownerRole" value="founder" /> Founder or business owner</label>
+              <label><input type="radio" name="ownerRole" value="shared" /> Shared product and engineering ownership</label>
+              <label class="other-choice">
+                <span><input type="radio" name="ownerRole" value="other" /> Other</span>
+                <input class="other-choice-input" type="text" name="ownerRoleOther" data-other-for="ownerRole" placeholder="Describe the owner" />
+              </label>
+            </fieldset>
+          </section>
 
-          <fieldset class="diagnostic-step" data-step="3">
-            <legend>How reliable is the current knowledgebase?</legend>
-            <label>Source labels <input type="range" name="sourceLabels" min="1" max="5" value="2" /></label>
-            <label>Decision trace <input type="range" name="decisionTrace" min="1" max="5" value="2" /></label>
-            <label>Task readiness <input type="range" name="taskReadiness" min="1" max="5" value="3" /></label>
-          </fieldset>
+          <section class="quiz-step" data-step="1" data-title="Knowledge sources" hidden>
+            <h2>Knowledge sources</h2>
+            <fieldset class="choice-field chip-choices" data-required-group="sources">
+              <legend>Which sources contain product context today?</legend>
+              <label><input type="checkbox" name="sources" value="calls" /> Customer calls or meeting notes</label>
+              <label><input type="checkbox" name="sources" value="chats" /> Slack or team chats</label>
+              <label><input type="checkbox" name="sources" value="docs" /> Product docs or research docs</label>
+              <label><input type="checkbox" name="sources" value="tickets" /> Jira, Linear, or issue trackers</label>
+              <label><input type="checkbox" name="sources" value="analytics" /> Product analytics or usage evidence</label>
+              <label><input type="checkbox" name="sources" value="sales" /> Sales, success, or CRM notes</label>
+              <label><input type="checkbox" name="sources" value="github" /> GitHub or technical docs</label>
+              <label class="other-choice">
+                <span><input type="checkbox" name="sources" value="other" /> Other</span>
+                <input class="other-choice-input" type="text" name="sourcesOther" data-other-for="sources" placeholder="Add sources" />
+              </label>
+            </fieldset>
 
-          <fieldset class="diagnostic-step" data-step="4">
-            <legend>What should agents be allowed to do first?</legend>
-            <label><input type="radio" name="agentScope" value="draft" checked /> Draft and organize only</label>
-            <label><input type="radio" name="agentScope" value="review" /> Draft plus review-gate support</label>
-            <label><input type="radio" name="agentScope" value="writeback" /> Writeback after approval</label>
-            <label><input type="radio" name="agentScope" value="provider" /> Provider-backed orchestration</label>
-          </fieldset>
+            <fieldset class="choice-field" data-required-group="sourceStructure">
+              <legend>How structured is this knowledge today?</legend>
+              <label><input type="radio" name="sourceStructure" value="low" /> Mostly scattered and recreated manually</label>
+              <label><input type="radio" name="sourceStructure" value="medium" /> Some structure, but many gaps and duplicates</label>
+              <label><input type="radio" name="sourceStructure" value="high" /> Clear source-of-truth with linked decisions</label>
+              <label class="other-choice">
+                <span><input type="radio" name="sourceStructure" value="other" /> Other</span>
+                <input class="other-choice-input" type="text" name="sourceStructureOther" data-other-for="sourceStructure" placeholder="Describe the source state" />
+              </label>
+            </fieldset>
+          </section>
 
-          <fieldset class="diagnostic-step" data-step="5">
-            <legend>Which outcome matters most in the next 30 days?</legend>
-            <label><input type="radio" name="outcome" value="prd" checked /> A production-ready PRD</label>
-            <label><input type="radio" name="outcome" value="icp" /> A sharper ICP and evidence base</label>
-            <label><input type="radio" name="outcome" value="system" /> A reusable knowledgebase and agent-control system</label>
-            <label><input type="radio" name="outcome" value="team" /> Clear task ownership and delivery sequence</label>
-          </fieldset>
+          <section class="quiz-step" data-step="2" data-title="Bottlenecks" hidden>
+            <h2>Product bottlenecks</h2>
+            <fieldset class="choice-field chip-choices" data-required-group="bottlenecks" data-max-select="3">
+              <legend>Select up to 3 pressure points.</legend>
+              <label><input type="checkbox" name="bottlenecks" value="prd-rework" /> PRDs are rewritten too often</label>
+              <label><input type="checkbox" name="bottlenecks" value="weak-evidence" /> Decisions lack source-backed evidence</label>
+              <label><input type="checkbox" name="bottlenecks" value="task-ambiguity" /> Tasks are ambiguous for engineering</label>
+              <label><input type="checkbox" name="bottlenecks" value="icp-unclear" /> ICP or buyer logic is unclear</label>
+              <label><input type="checkbox" name="bottlenecks" value="context-loss" /> Context is lost between discovery and delivery</label>
+              <label><input type="checkbox" name="bottlenecks" value="agent-control" /> AI agents lack clear approval gates</label>
+              <label class="other-choice">
+                <span><input type="checkbox" name="bottlenecks" value="other" /> Other</span>
+                <input class="other-choice-input" type="text" name="bottlenecksOther" data-other-for="bottlenecks" placeholder="Add another pressure point" />
+              </label>
+            </fieldset>
 
-          <div class="diagnostic-actions">
-            <button class="button button-ghost dark" type="button" id="prevStep">Back</button>
-            <button class="button button-primary" type="button" id="nextStep">Next</button>
+            <fieldset class="choice-field" data-required-group="firstGoal">
+              <legend>Which improvement should happen first?</legend>
+              <label><input type="radio" name="firstGoal" value="prd" /> Produce a stronger PRD packet</label>
+              <label><input type="radio" name="firstGoal" value="icp" /> Clarify ICP and evidence</label>
+              <label><input type="radio" name="firstGoal" value="tasks" /> Create executable tasks and ownership</label>
+              <label><input type="radio" name="firstGoal" value="agents" /> Set up an agent-control dashboard</label>
+              <label class="other-choice">
+                <span><input type="radio" name="firstGoal" value="other" /> Other</span>
+                <input class="other-choice-input" type="text" name="firstGoalOther" data-other-for="firstGoal" placeholder="Describe the first improvement target" />
+              </label>
+            </fieldset>
+          </section>
+
+          <section class="quiz-step" data-step="3" data-title="Workload and readiness" hidden>
+            <h2>Workload and readiness</h2>
+            <label class="range-field">
+              <span>Weekly hours spent on PRD, research, task shaping, and stakeholder updates</span>
+              <input type="range" min="5" max="180" value="48" name="weeklyHours" />
+              <output data-quiz-output="weeklyHours">48 hours</output>
+            </label>
+            <label class="range-field">
+              <span>Blended hourly cost</span>
+              <input type="range" min="30" max="220" step="5" value="95" name="hourlyCost" />
+              <output data-quiz-output="hourlyCost">EUR 95</output>
+            </label>
+            <label class="range-field">
+              <span>Rework/context-loss share</span>
+              <input type="range" min="5" max="60" value="28" name="wasteShare" />
+              <output data-quiz-output="wasteShare">28%</output>
+            </label>
+            <label class="range-field">
+              <span>Recoverable share with a structured ArchFlow setup</span>
+              <input type="range" min="10" max="65" value="35" name="recoverableShare" />
+              <output data-quiz-output="recoverableShare">35%</output>
+            </label>
+            <div class="economics-grid" role="group" aria-label="Readiness scores">
+              <label class="range-field">
+                <span>Evidence quality</span>
+                <input type="range" min="1" max="10" value="5" name="evidenceQuality" />
+                <output data-quiz-output="evidenceQuality">5 / 10</output>
+              </label>
+              <label class="range-field">
+                <span>Approval maturity</span>
+                <input type="range" min="1" max="10" value="6" name="approvalMaturity" />
+                <output data-quiz-output="approvalMaturity">6 / 10</output>
+              </label>
+            </div>
+            <label class="select-field">
+              <span>Likely setup plus support budget</span>
+              <select name="budget" required>
+                <option value="">Select budget band</option>
+                <option value="5000">Under EUR 7,500</option>
+                <option value="12500">EUR 7,500-17,500</option>
+                <option value="25000">EUR 17,500-35,000</option>
+                <option value="45000">EUR 35,000+</option>
+                <option value="14500">Not sure yet</option>
+                <option value="custom">Other</option>
+              </select>
+            </label>
+            <label class="text-field other-budget-field" data-budget-other hidden>
+              <span>Other budget detail</span>
+              <input type="text" name="budgetOther" placeholder="Example: EUR 15,000 pilot cap" />
+            </label>
+          </section>
+
+          <section class="quiz-step" data-step="4" data-title="Result preview" hidden>
+            <h2 data-result-headline>Your strongest first package: Source-to-PRD Packet</h2>
+            <p data-result-explanation>
+              Based on your answers, ArchFlow should start by structuring product sources into a PRD packet.
+            </p>
+
+            <div class="quiz-result-grid">
+              <article>
+                <span>Knowledgebase readiness</span>
+                <strong data-result-kb>62 / 100</strong>
+              </article>
+              <article>
+                <span>Agent readiness</span>
+                <strong data-result-agent>58 / 100</strong>
+              </article>
+              <article>
+                <span>Monthly value estimate</span>
+                <strong data-result-value>EUR 0</strong>
+              </article>
+              <article>
+                <span>Payback estimate</span>
+                <strong data-result-payback>Planning</strong>
+              </article>
+            </div>
+
+            <div class="result-block">
+              <h3>Likely inputs</h3>
+              <div class="chip-list" data-result-tools></div>
+            </div>
+            <div class="result-block">
+              <h3>Approval gates</h3>
+              <ul class="plain-list" data-result-gates></ul>
+            </div>
+            <div class="result-block">
+              <h3>Suggested next action</h3>
+              <p data-result-next-action></p>
+            </div>
+
+            <label class="text-field">
+              <span>What should a successful 30-day diagnostic prove?</span>
+              <textarea name="success30" rows="4" placeholder="Example: we can produce one source-backed PRD and task matrix from current project knowledge."></textarea>
+            </label>
+
+            <div class="contact-capture">
+              <h3>Optional follow-up</h3>
+              <p>
+                Save this assessment for ArchFlow review. If the backend is not configured, use the email fallback.
+              </p>
+              <label class="text-field hp-field" aria-hidden="true">
+                <span>Website</span>
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+              <div class="contact-grid">
+                <label class="text-field">
+                  <span>Name</span>
+                  <input type="text" name="contactName" autocomplete="name" />
+                </label>
+                <label class="text-field">
+                  <span>Email</span>
+                  <input type="email" name="contactEmail" autocomplete="email" />
+                </label>
+                <label class="text-field">
+                  <span>Company</span>
+                  <input type="text" name="contactCompany" autocomplete="organization" />
+                </label>
+              </div>
+              <label class="consent-row">
+                <input type="checkbox" name="consent" />
+                <span>I agree that ArchFlow may use this assessment to prepare a follow-up recommendation.</span>
+              </label>
+              <div class="submit-actions">
+                <button class="btn primary full" type="button" data-submit-assessment>
+                  Save assessment to ArchFlow
+                </button>
+                <a class="btn secondary full" data-mailto-link href="mailto:hello@archflow.ai?subject=ArchFlow%20PRD%20ICP%20diagnostic">
+                  Email fallback
+                </a>
+              </div>
+              <p class="submit-status" data-submit-status aria-live="polite"></p>
+            </div>
+          </section>
+
+          <p class="form-error" data-form-error role="alert" aria-live="polite"></p>
+
+          <div class="quiz-actions">
+            <button class="btn secondary" type="button" data-prev-step>Back</button>
+            <button class="btn primary" type="button" data-next-step>Next</button>
           </div>
         </form>
       </section>
-
-      <section class="diagnostic-result" id="diagnosticResult" hidden>
-        <div>
-          <span class="result-label">Recommended first package</span>
-          <h2 id="resultTitle">PRD rescue and evidence map</h2>
-          <p id="resultCopy">
-            Start by turning scattered context into a source-backed PRD and evidence map before
-            adding provider-backed automation.
-          </p>
-        </div>
-        <div class="result-stack" id="resultStack"></div>
-      </section>
     </main>
 
-    <script src="/quiz.js" defer></script>
+    <script src="quiz.js?v=20260701-minimal" defer></script>
+    <script src="hover-depth.js?v=20260701-mobilepress" defer></script>
   </body>
 </html>

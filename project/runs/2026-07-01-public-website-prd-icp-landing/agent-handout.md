@@ -2,7 +2,7 @@
 
 Date: 2026-07-01
 Owner lane: Ronaldo
-Status: deployed, Figma-synced, Notion-updated, pending final Git/source alignment review
+Status: deployed, Figma-synced, Notion-updated, source-aligned in public worktree
 
 ## Current State
 
@@ -15,6 +15,10 @@ The diagnostic route is:
 - `https://archflowautomate.vercel.app/quiz?step=4`
 
 Vercel clean URLs redirect `/quiz.html` to `/quiz`.
+
+The operator dashboard is live at:
+
+- `https://archflowautomate.vercel.app/dashboard`
 
 ## Positioning
 
@@ -60,6 +64,8 @@ Subpage:
 - root `quiz.html`
 - root `quiz.js`
 - root `site.webmanifest`
+- root `dashboard.html`
+- public brand/icons/arch assets under `assets/`
 - `workflow/automation/latest-figma-sync.json`
 - `public/project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md`
 - this run handout and matching run/wiki notes
@@ -90,6 +96,8 @@ Provider/backend/runtime work remains out of scope:
 - Vercel production deploy.
 - Custom alias `archflowautomate.vercel.app` repointed.
 - Deployed homepage and diagnostic DOM verified with headless Chrome.
+- Final public-source deployment verified `/`, `/quiz?step=4`, `/quiz.html`, `/dashboard`, and dashboard data route.
+- Vercel SSO protection was disabled for the public project so the live alias is publicly reachable.
 
 ## Figma
 
@@ -110,7 +118,7 @@ Updated task:
 
 - `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout`
 
-Status remains Review because final Git/source alignment and active-lane closeout are still pending.
+Status can move to Done after the final Git commit/push records the aligned public source.
 
 ## Guardrails
 
@@ -124,4 +132,4 @@ Status remains Review because final Git/source alignment and active-lane closeou
 
 ## Next Safe Action
 
-Messi should use the Notion update and this handout for PM review. LOL/Jesus can continue dashboard work without touching the root website lane. Final branch/source alignment should happen after active lanes close or hand off.
+Messi should commit/push the aligned public source and update Notion. LOL/Jesus can continue future dashboard/runtime work without touching the completed public website deployment unless a new owner instruction opens that scope.

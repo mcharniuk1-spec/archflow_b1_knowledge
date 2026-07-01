@@ -1,31 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ArcFlow Automate | Product-Work Operating Systems</title>
     <meta
       name="description"
-      content="ArchFlow turns scattered product context into source-backed PRDs, ICP evidence, task matrices, and governed agent-workflow setup."
+      content="ArcFlow Automate turns scattered product context into source-backed PRDs, ICP evidence, task matrices, and approval-gated agent workflows."
     />
-    <meta name="robots" content="noindex,nofollow,noarchive" />
-    <title>ArchFlow - PRD, ICP, And Agent-Orchestra Systems</title>
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="/styles.css" />
+    <meta name="theme-color" content="#f4efe3" />
+    <link rel="canonical" href="https://archflowautomate.vercel.app/" />
+    <link rel="icon" type="image/png" href="assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650;6..72,750&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260701-blue" />
   </head>
-  <body>
-    <header class="site-header" data-elevates>
-      <a class="brand" href="/" aria-label="ArchFlow home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>ArchFlow</span>
+  <body class="site-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-site-header>
+      <a class="brand-lockup" href="#top" aria-label="ArcFlow Automate home">
+        <img src="assets/archflow-mark.svg" alt="" class="brand-mark" />
+        <span>
+          <strong>ArcFlow Automate</strong>
+          <small>PRD/ICP operating systems</small>
+        </span>
       </a>
-      <nav class="main-nav" aria-label="Primary navigation">
+
+      <nav class="site-nav" aria-label="Primary navigation">
         <a href="#outputs">Outputs</a>
         <a href="#system">System</a>
+        <a href="#readiness">Readiness</a>
         <a href="#process">Process</a>
         <a href="/dashboard">Dashboard</a>
       </nav>
-      <a class="header-action" href="/quiz.html">Run Diagnostic</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileNav">
+
+      <a class="header-cta" href="/quiz.html">Run diagnostic</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle navigation">
         <span></span>
         <span></span>
       </button>
@@ -34,225 +52,250 @@
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
       <a href="#outputs">Outputs</a>
       <a href="#system">System</a>
+      <a href="#readiness">Readiness</a>
       <a href="#process">Process</a>
       <a href="/dashboard">Dashboard</a>
-      <a href="/quiz.html">Run Diagnostic</a>
+      <a href="/quiz.html">Run diagnostic</a>
     </nav>
 
-    <main>
-      <section class="hero" aria-labelledby="heroTitle">
-        <img
-          class="hero-image"
-          src="/assets/archflow-system-map.png"
-          alt="Layered arches and workflow nodes representing PRD evidence and agent orchestration."
-        />
-        <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-content">
-          <h1 id="heroTitle">ArchFlow</h1>
-          <p class="hero-copy">
-            We turn calls, notes, tickets, decisions, and research into source-backed PRDs,
-            ICP evidence, executable task matrices, and governed agent workflows.
-          </p>
-          <div class="hero-actions" aria-label="Primary actions">
-            <a class="button button-primary" href="/quiz.html">Run PRD/ICP Diagnostic</a>
-            <a class="button button-ghost" href="/dashboard">Open Internal Dashboard</a>
-          </div>
-        </div>
-        <div class="hero-console" aria-label="Current system boundary">
-          <div class="console-row">
-            <span>Public offer</span>
-            <strong>PRD/ICP packet</strong>
-          </div>
-          <div class="console-row">
-            <span>Control layer</span>
-            <strong>Agent orchestra</strong>
-          </div>
-          <div class="console-row">
-            <span>Runtime</span>
-            <strong>Static review</strong>
-          </div>
-          <div class="console-row">
-            <span>Providers</span>
-            <strong>Server-side gated</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="section intro-band" aria-label="ArchFlow operating promise">
-        <div class="section-inner split">
-          <p class="lead">
-            ArchFlow is built for product teams that already have enough information, but not
-            enough structure. The service converts fragmented product knowledge into decisions,
-            tasks, and controlled automation that engineering can actually use.
-          </p>
-          <div class="status-list" aria-label="Current proof state">
-            <div><span>Current proof</span><strong>Internal KB and dashboard slice</strong></div>
-            <div><span>Next proof</span><strong>Evidence-led ICP and public examples</strong></div>
-            <div><span>Not claimed</span><strong>Autonomous execution or guaranteed ROI</strong></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="outputs" aria-labelledby="outputsTitle">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="outputsTitle">What A Product Team Gets</h2>
-            <p>
-              The first offer is a controlled delivery package, not an open-ended AI assistant.
-              Every output is tied to sources, decisions, responsibilities, and unresolved gaps.
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="heroTitle">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">ArcFlow Automate for B2B SaaS product teams</p>
+            <h1 id="heroTitle">Source-backed product work, not loose AI output.</h1>
+            <p class="hero-lede">
+              We convert calls, notes, tickets, docs, research, and decisions into PRDs, ICP evidence, task matrices, and governed agent workflows with explicit proof gates.
             </p>
-          </div>
-          <div class="output-grid">
-            <article class="output-card">
-              <span class="card-index">01</span>
-              <h3>Source-Backed PRD</h3>
-              <p>Problem, users, scope, requirements, acceptance criteria, and risks with explicit evidence labels.</p>
-            </article>
-            <article class="output-card">
-              <span class="card-index">02</span>
-              <h3>ICP Evidence Cards</h3>
-              <p>Buyer role, pain, trigger, current alternative, barriers, and confidence level from reviewed sources.</p>
-            </article>
-            <article class="output-card">
-              <span class="card-index">03</span>
-              <h3>Executable Task Matrix</h3>
-              <p>Owner-ready tasks, dependencies, review gates, acceptance criteria, and implementation order.</p>
-            </article>
-            <article class="output-card">
-              <span class="card-index">04</span>
-              <h3>Knowledgebase Readiness</h3>
-              <p>What can be used by agents now, what must stay private, and what needs a source or approval gate.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section dark-section" id="system" aria-labelledby="systemTitle">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="systemTitle">Two Lanes, One Operating Model</h2>
-            <p>
-              The customer-facing lane creates product clarity. The control-system lane keeps
-              agent work reviewable, bounded, and reproducible.
-            </p>
-          </div>
-          <div class="lane-board">
-            <article class="lane">
-              <div class="lane-top">
-                <span class="lane-number">1</span>
-                <h3>PRD/ICP Service Product</h3>
+            <div class="hero-actions" aria-label="Primary actions">
+              <a class="btn btn-primary" href="/quiz.html">Run workflow diagnostic</a>
+              <a class="btn btn-secondary" href="/dashboard">Open dashboard</a>
+            </div>
+            <dl class="hero-proof">
+              <div>
+                <dt>Current scope</dt>
+                <dd>Static, public-safe PRD/ICP workflow and dashboard proof</dd>
               </div>
+              <div>
+                <dt>Gated until verified</dt>
+                <dd>Provider-backed Jarvis, Railway runtime, voice, and writeback</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero-system" aria-label="ArcFlow Automate system map">
+            <img
+              class="system-map"
+              src="assets/archflow-system-map.png"
+              alt="Teal architectural arch system showing raw sources moving through synthesis, PRD ICP packet, orchestration, and action-ready outcome."
+              data-system-map
+            />
+            <aside class="diagnostic-panel" aria-label="Embedded readiness diagnostic">
+              <p>Readiness diagnostic</p>
+              <strong>PRD/ICP packet first</strong>
+              <div class="diagnostic-meter" aria-hidden="true"><span></span></div>
+              <ul>
+                <li><span>Sources</span><b>Docs, calls, tickets</b></li>
+                <li><span>Output</span><b>PRD + tasks</b></li>
+                <li><span>Gate</span><b>Owner approval</b></li>
+              </ul>
+              <a href="/quiz.html">Map your wedge</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="Operating promise">
+        <div class="section-inner intro-layout">
+          <p class="lead">
+            Product teams do not need another chat window. They need a reliable way to turn fragmented knowledge into reviewed decisions, scoped work, and agent-safe execution plans.
+          </p>
+          <div class="status-list" aria-label="Current proof boundaries">
+            <div><span>Working now</span><strong>Public-safe static site, diagnostic, and dashboard surface</strong></div>
+            <div><span>Service focus</span><strong>Source packet, PRD/ICP evidence, and task handoff</strong></div>
+            <div><span>Not claimed</span><strong>Guaranteed ROI, live provider execution, or autonomous writeback</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light" id="outputs" aria-labelledby="outputsTitle">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Service-output rail</p>
+            <h2 id="outputsTitle">The package is a controlled product-work spine.</h2>
+            <p>
+              Every deliverable separates facts, interpretation, hypotheses, and gaps before anything becomes a public claim or implementation task.
+            </p>
+          </div>
+
+          <div class="output-rail">
+            <article class="output-card">
+              <span>01</span>
+              <h3>Source inventory</h3>
+              <p>Approved calls, notes, tickets, docs, research, decisions, and constraints are labeled by source type and confidence.</p>
+            </article>
+            <article class="output-card">
+              <span>02</span>
+              <h3>PRD/ICP packet</h3>
+              <p>Problem, user, scope, buyer evidence, requirements, acceptance criteria, and unresolved gaps stay connected.</p>
+            </article>
+            <article class="output-card">
+              <span>03</span>
+              <h3>Task matrix</h3>
+              <p>Engineering-ready tasks get owners, dependencies, review gates, acceptance states, and implementation order.</p>
+            </article>
+            <article class="output-card">
+              <span>04</span>
+              <h3>Agent gate map</h3>
+              <p>Provider, memory, browser, and writeback actions remain reviewable and blocked until explicitly approved.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="system-section" id="system" aria-labelledby="systemTitle">
+        <div class="section-inner">
+          <div class="section-heading dark-heading">
+            <p class="eyebrow">Two-lane operating system</p>
+            <h2 id="systemTitle">Service outputs and automation control stay separate.</h2>
+            <p>
+              The customer-facing lane creates product clarity. The control lane keeps agent work bounded, replayable, and safe before stronger runtime claims are made.
+            </p>
+          </div>
+
+          <div class="lane-diagram" aria-label="Two-lane ArchFlow system diagram">
+            <article class="lane-card">
+              <span class="lane-number">1</span>
+              <h3>PRD/ICP service product</h3>
               <ul>
                 <li>Context intake and source inventory</li>
-                <li>JTBD and stakeholder job synthesis</li>
-                <li>PRD, report, task, and ICP packet</li>
+                <li>Buyer, problem, and job synthesis</li>
+                <li>PRD, task, and ICP evidence packet</li>
                 <li>Owner review before external use</li>
               </ul>
             </article>
-            <article class="lane">
-              <div class="lane-top">
-                <span class="lane-number">2</span>
-                <h3>Reliable Development System</h3>
-              </div>
+
+            <div class="lane-bridge" aria-hidden="true">
+              <span>review gates</span>
+              <i></i>
+              <span>proof logs</span>
+            </div>
+
+            <article class="lane-card">
+              <span class="lane-number">2</span>
+              <h3>Agent-control layer</h3>
               <ul>
-                <li>Codex operator and Git review gates</li>
+                <li>Codex operator with Git review gates</li>
                 <li>LangGraph-style state and routing</li>
-                <li>WikiLLM memory, Graphify structure, dashboard proof</li>
-                <li>Provider and writeback actions gated server-side</li>
+                <li>Dashboard proof and public-safe memory</li>
+                <li>Provider and writeback actions gated</li>
               </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section calculator-section" aria-labelledby="calcTitle">
-        <div class="section-inner calculator-layout">
+      <section class="readiness-section" id="readiness" aria-labelledby="readinessTitle">
+        <div class="section-inner readiness-layout">
           <div>
-            <h2 id="calcTitle">Readiness Snapshot</h2>
+            <p class="eyebrow">Calculator and readiness section</p>
+            <h2 id="readinessTitle">Estimate the first useful wedge.</h2>
             <p>
-              Estimate whether the fastest next step is PRD cleanup, ICP evidence review,
-              knowledgebase structuring, or agent-orchestra setup. This is a planning estimate,
-              not a performance guarantee.
+              This browser-local calculator picks a planning direction from source quality, decision clarity, and delivery pressure. It is not a performance guarantee.
             </p>
-            <a class="button button-dark" href="/quiz.html">Open Full Diagnostic</a>
+            <div class="readiness-actions">
+              <a class="btn btn-primary" href="/quiz.html">Open full diagnostic</a>
+              <a class="btn btn-secondary" href="/dashboard">Review dashboard</a>
+            </div>
           </div>
-          <form class="mini-calc" id="miniCalc">
+
+          <form class="mini-calc" data-mini-calc aria-label="ArcFlow readiness calculator">
             <label>
-              Source quality
+              <span>Source quality</span>
               <input type="range" name="sources" min="1" max="5" value="3" />
             </label>
             <label>
-              Decision clarity
+              <span>Decision clarity</span>
               <input type="range" name="decisions" min="1" max="5" value="2" />
             </label>
             <label>
-              Delivery pressure
+              <span>Delivery pressure</span>
               <input type="range" name="pressure" min="1" max="5" value="4" />
             </label>
-            <output id="calcOutput">Recommended first package: PRD rescue and evidence map.</output>
+            <div class="calc-result">
+              <span data-calc-score>Readiness index: 54 / 100</span>
+              <output data-calc-output>Recommended first package: PRD rescue and evidence map.</output>
+            </div>
           </form>
         </div>
       </section>
 
-      <section class="section" id="process" aria-labelledby="processTitle">
+      <section class="section section-light" id="process" aria-labelledby="processTitle">
         <div class="section-inner">
           <div class="section-heading">
-            <h2 id="processTitle">How Work Moves</h2>
+            <p class="eyebrow">Process timeline</p>
+            <h2 id="processTitle">How work moves without overclaiming.</h2>
             <p>
-              The process is designed for traceability. It separates confirmed facts from
-              interpretation, hypotheses, and gaps before anything becomes a public claim.
+              The workflow is designed for traceability. Stronger automation is added only after the underlying evidence, approvals, and static proof are clear.
             </p>
           </div>
+
           <ol class="timeline">
             <li>
               <span>01</span>
-              <h3>Context Intake</h3>
-              <p>Collect approved notes, calls, tickets, docs, research, and constraints.</p>
+              <h3>Intake</h3>
+              <p>Collect only approved source zones and document the operating boundary.</p>
             </li>
             <li>
               <span>02</span>
-              <h3>Evidence Model</h3>
-              <p>Classify sources, jobs, stakeholders, alternatives, risks, and open questions.</p>
+              <h3>Evidence</h3>
+              <p>Classify facts, interpretations, hypotheses, gaps, and owner decisions.</p>
             </li>
             <li>
               <span>03</span>
-              <h3>PRD And Tasks</h3>
-              <p>Build the PRD, acceptance criteria, responsibility matrix, and task sequence.</p>
+              <h3>Packet</h3>
+              <p>Build the PRD, ICP evidence, task sequence, and review states.</p>
             </li>
             <li>
               <span>04</span>
-              <h3>Control Review</h3>
-              <p>Run safety, evidence, memory, and implementation gates before handoff.</p>
+              <h3>Gate</h3>
+              <p>Run safety, dashboard, memory, and implementation checks before handoff.</p>
             </li>
           </ol>
         </div>
       </section>
 
-      <section class="section proof-section" aria-label="Current boundaries">
-        <div class="section-inner proof-grid">
+      <section class="boundary-section" aria-label="Current boundaries and routes">
+        <div class="section-inner boundary-layout">
           <div>
-            <h2>What Is Working Now</h2>
-            <p>
-              The internal dashboard, public-safe knowledge layer, and static Vercel hosting path
-              are the reliable base. They preserve the last deployed state even when local agents
-              are off.
-            </p>
+            <p class="eyebrow">Current public boundary</p>
+            <h2>Static proof first. Runtime proof later.</h2>
           </div>
-          <div class="proof-list">
-            <div><span>Working</span><strong>Static dashboard and generated public-safe state</strong></div>
-            <div><span>Gated</span><strong>OpenRouter, Mistral, voice providers, Railway backend</strong></div>
-            <div><span>Blocked by proof</span><strong>Demand claims, autonomous writeback, guaranteed ROI</strong></div>
+          <div class="boundary-list">
+            <div><span>Reachable</span><strong>Landing page, diagnostic, and dashboard route</strong></div>
+            <div><span>Gated</span><strong>Railway, providers, voice, Nexus, Notion, and writeback</strong></div>
+            <div><span>Next proof</span><strong>Owner-approved deployment and verified runtime bridge</strong></div>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>ArchFlow</span>
-      <a href="/dashboard">Internal dashboard</a>
-      <a href="/quiz.html">Diagnostic</a>
+      <a class="brand-lockup footer-brand" href="#top" aria-label="ArcFlow Automate home">
+        <img src="assets/archflow-mark.svg" alt="" class="brand-mark" />
+        <span>
+          <strong>ArcFlow Automate</strong>
+          <small>Source labels. Explicit gaps. Approval gates.</small>
+        </span>
+      </a>
+      <div class="footer-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/quiz.html">Diagnostic</a>
+        <a href="#top">Back to top</a>
+      </div>
     </footer>
 
-    <script src="/main.js" defer></script>
+    <script src="main.js?v=20260701-blue" defer></script>
+    <script src="hover-depth.js?v=20260701-mobilepress" defer></script>
   </body>
 </html>

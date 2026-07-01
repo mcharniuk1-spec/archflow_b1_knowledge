@@ -1,0 +1,76 @@
+{
+  "productionUrl": "https://archflowautomate.vercel.app",
+  "figmaFileKey": "xxKd3iT3uxGIATN7hR92jb",
+  "figmaFileUrl": "https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb",
+  "syncPageId": "23:2",
+  "syncPageNodeUrl": "https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=23-2",
+  "syncFrameId": "122:2",
+  "syncFrameNodeUrl": "https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=122-2",
+  "syncedAt": "2026-07-01T11:00:30Z",
+  "method": "Figma MCP HTML-to-design capture via Playwright external capture, then Figma Plugin API sync-page update",
+  "captures": {
+    "landingDesktop": {
+      "nodeId": "120:2",
+      "nodeUrl": "https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=120-2",
+      "route": "/?figma=1",
+      "viewport": "1440x1500",
+      "source": "https://archflowautomate.vercel.app/?figma=1"
+    },
+    "landingMobile": {
+      "nodeId": "119:2",
+      "nodeUrl": "https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=119-2",
+      "route": "/?figma=1",
+      "viewport": "390x1200",
+      "source": "https://archflowautomate.vercel.app/?figma=1"
+    },
+    "quizDesktop": {
+      "nodeId": "118:2",
+      "nodeUrl": "https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=118-2",
+      "route": "/quiz?figma=1&step=0",
+      "viewport": "1440x1300",
+      "source": "https://archflowautomate.vercel.app/quiz?figma=1&step=0"
+    },
+    "quizMobile": {
+      "nodeId": "121:2",
+      "nodeUrl": "https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=121-2",
+      "route": "/quiz?figma=1&step=4",
+      "viewport": "390x1200",
+      "source": "https://archflowautomate.vercel.app/quiz?figma=1&step=4"
+    }
+  },
+  "quizStateRoutes": [
+    "/quiz?figma=1&step=0",
+    "/quiz?figma=1&step=1",
+    "/quiz?figma=1&step=2",
+    "/quiz?figma=1&step=3",
+    "/quiz?figma=1&step=4"
+  ],
+  "notes": [
+    "Production cleanUrls redirects /quiz.html to /quiz.",
+    "Raw captures are layout references; the Figma design-system page remains the editable baseline.",
+    "The public landing is intentionally limited to three blocks plus a diagnostic subpage.",
+    "Mobile buttons support touch/click depth that leans toward the tap point."
+  ],
+  "verification": {
+    "local": [
+      "node --check main.js",
+      "node --check quiz.js",
+      "node --check hover-depth.js",
+      "python3 -m json.tool site.webmanifest",
+      "python3 scripts/public_safety_scan.py",
+      "git diff --check"
+    ],
+    "browser": [
+      "Desktop homepage 1440px: no horizontal overflow, all sections visible.",
+      "Mobile homepage 390px: no horizontal overflow, click-depth variables changed on button press.",
+      "Desktop diagnostic step 4: no horizontal overflow.",
+      "Mobile diagnostic step 4: no horizontal overflow and result/form controls fit."
+    ],
+    "production": [
+      "https://archflowautomate.vercel.app/ returned HTTP 200 with the minimal PRD/ICP landing.",
+      "https://archflowautomate.vercel.app/quiz?step=4 returned HTTP 200.",
+      "Headless Chrome verified deployed homepage title and hero copy.",
+      "Headless Chrome verified deployed diagnostic title and result copy."
+    ]
+  }
+}

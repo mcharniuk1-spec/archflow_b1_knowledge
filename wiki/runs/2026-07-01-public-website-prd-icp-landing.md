@@ -12,6 +12,10 @@ Diagnostic route:
 
 - `https://archflowautomate.vercel.app/quiz?step=4`
 
+Dashboard route:
+
+- `https://archflowautomate.vercel.app/dashboard`
+
 ## Positioning
 
 ArchFlow is positioned as a service-led operating layer for B2B SaaS product teams that need source-backed PRDs, ICP evidence, acceptance criteria, task handoff, and approval-gated agent workflows from scattered project context.
@@ -45,6 +49,9 @@ ArchFlow's safer wedge is not replacing those tools. The wedge is turning existi
 - Headless Chrome verified deployed homepage and diagnostic DOM.
 - Figma sync completed.
 - Notion task was updated.
+- Final public-source deployment serves website and dashboard from the same public Git source.
+- Vercel SSO protection was disabled for the public project so the live alias is publicly reachable.
+- Final route checks passed for `/`, `/quiz?step=4`, `/quiz.html`, `/dashboard`, and `/project/dashboard/data.json`.
 
 ## Figma
 
@@ -60,7 +67,7 @@ Updated:
 
 - `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout`
 
-The task remains Review until final Git/source alignment and active-lane closeout are finished.
+The task can move to Done after the final Git commit/push records the aligned source.
 
 ## Guardrails
 

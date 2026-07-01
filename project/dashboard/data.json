@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T11:04:35.110257+00:00",
+  "generated_at": "2026-07-01T11:22:02.255481+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -397,6 +397,27 @@
   "activity": [
     {
       "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
+      "title": "2026-07-01 Messi Task Architecture Review",
+      "modified": "2026-07-01T11:06:15.811309+00:00",
+      "size": 3781
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md",
+      "title": "Agent Handout: Messi Task Architecture Review",
+      "modified": "2026-07-01T11:06:06.231643+00:00",
+      "size": 3207
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
+      "title": "Messi Task Architecture Review",
+      "modified": "2026-07-01T11:05:48.853918+00:00",
+      "size": 17450
+    },
+    {
+      "kind": "wiki_run",
       "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
       "title": "2026-07-01 Public Website PRD/ICP Landing",
       "modified": "2026-07-01T11:04:25.095388+00:00",
@@ -443,20 +464,6 @@
       "title": "Public Website Market Research And Minimal Copy Brief",
       "modified": "2026-07-01T11:01:32.474989+00:00",
       "size": 3813
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
-      "title": "2026-07-01 Messi Task Architecture Review",
-      "modified": "2026-07-01T11:00:46.541522+00:00",
-      "size": 3446
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
-      "title": "Messi Task Architecture Review",
-      "modified": "2026-07-01T11:00:34.793594+00:00",
-      "size": 16098
     },
     {
       "kind": "wiki_run",
@@ -527,13 +534,6 @@
       "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
       "modified": "2026-07-01T10:56:40.414904+00:00",
       "size": 6418
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md",
-      "title": "Agent Handout: Messi Task Architecture Review",
-      "modified": "2026-07-01T10:49:02.588399+00:00",
-      "size": 2628
     },
     {
       "kind": "project_run",
@@ -2078,7 +2078,7 @@
     {
       "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
       "title": "Messi Task Architecture Review",
-      "text": "# Messi Task Architecture Review  Date: 2026-07-01 Status: active PM review, awaiting Ronaldinho technical audit and active-lane closeout  ## 1. Executive Answer  Keep the work split into two delivery systems and one coordination layer.  The first delivery system is the public PRD/ICP service product. It explains what ArchFlow sells: turning messy product context into source-backed PRDs, ICP evidence, task definitions, and governed agent workflow setup.  The second delivery system is the reliable development/control system. It explains how the work is controlled: Jarvis, dashboard views, block schema, node panels, provider/runtime gates, run notes, issues, decisions, and review checks.  The coordination layer is Messi. Messi should not collapse public website delivery, Jarvis delivery, and provider/backend setup into one vague \"done\" state. Each layer needs its own task, owner, evidence, and next gate.  ## 2. Situation And Complication  FACT:  - `JDB-8` is Done for the static/browser-local Jarvis block-schema and voice fallback slice. - `JDB-7` remains Review for review-branch merge/deploy decision. - `E1.3.9` remains Review as the umbrella for dashboard, Jarvis shell, hosting, and"
+      "text": "# Messi Task Architecture Review  Date: 2026-07-01 Status: active PM review, review branch pending Git/source closeout  ## 1. Executive Answer  Keep the work split into two delivery systems and one coordination layer.  The first delivery system is the public PRD/ICP service product. It explains what ArchFlow sells: turning messy product context into source-backed PRDs, ICP evidence, task definitions, and governed agent workflow setup.  The second delivery system is the reliable development/control system. It explains how the work is controlled: Jarvis, dashboard views, block schema, node panels, provider/runtime gates, run notes, issues, decisions, and review checks.  The coordination layer is Messi. Messi should not collapse public website delivery, Jarvis delivery, and provider/backend setup into one vague \"done\" state. Each layer needs its own task, owner, evidence, and next gate.  ## 2. Situation And Complication  FACT:  - `JDB-8` is Done for the static/browser-local Jarvis block-schema and voice fallback slice. - `JDB-7` remains Review for review-branch merge/deploy decision. - `E1.3.9` remains Review as the umbrella for dashboard, Jarvis shell, hosting, and Onyx planning. - `"
     },
     {
       "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
@@ -2368,7 +2368,7 @@
     {
       "path": "project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md",
       "title": "Agent Handout: Messi Task Architecture Review",
-      "text": "# Agent Handout: Messi Task Architecture Review  Date: 2026-07-01 Status: active, awaiting Ronaldinho technical audit and active-lane closeout  ## Task  Review active/done ArchFlow Notion tasks and align the task numbering, ownership, explanation, evidence, and next-step sequence for the dashboard/Jarvis/public website work.  ## Outputs  - `project/reports/2026-07-01-messi-task-architecture-review.md` - New Notion task `JDB-9 - Review dashboard operator UX optimization and source-state closeout` - New Notion task `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout` - New Notion task `E3.3.1A - Reconcile public PRD/ICP landing source with deployed site` - New Notion task `E3.3.1B - Complete public website deploy, Figma, and Notion closeout proof` - New Notion task `JDB-10 - Dashboard proof and backlog visibility pass` - Updated Notion notes for `JDB-7`, `E1.3.9`, `E1.3.10`, and `E3.3` - Ronaldinho technical verifier lane created  ## Main Decision  Do not treat July 1 as one broad Done state. Split it:  - `JDB-8`: Done for static/browser-local block-schema and voice fallback QA. - `JDB-9`: Review for newer dashboard operator UX optimization. - `E3.3.1`: Revie"
+      "text": "# Agent Handout: Messi Task Architecture Review  Date: 2026-07-01 Status: active, review branch pending Git/source closeout  ## Task  Review active/done ArchFlow Notion tasks and align the task numbering, ownership, explanation, evidence, and next-step sequence for the dashboard/Jarvis/public website work.  ## Outputs  - `project/reports/2026-07-01-messi-task-architecture-review.md` - New Notion task `JDB-9 - Review dashboard operator UX optimization and source-state closeout` - New Notion task `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout` - New Notion task `E3.3.1A - Reconcile public PRD/ICP landing source with deployed site` - New Notion task `E3.3.1B - Complete public website deploy, Figma, and Notion closeout proof` - New Notion task `JDB-10 - Dashboard proof and backlog visibility pass` - Updated Notion notes for `JDB-7`, `E1.3.9`, `E1.3.10`, and `E3.3` - Ronaldinho technical verifier lane created  ## Main Decision  Do not treat July 1 as one broad Done state. Split it:  - `JDB-8`: Done for static/browser-local block-schema and voice fallback QA. - `JDB-9`: Review for newer dashboard operator UX optimization. - `E3.3.1`: Review for public PRD/IC"
     },
     {
       "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",

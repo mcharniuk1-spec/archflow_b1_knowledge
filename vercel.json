@@ -1,5 +1,10 @@
 {
+  "cleanUrls": true,
   "rewrites": [
+    {
+      "source": "/quiz",
+      "destination": "/quiz.html"
+    },
     {
       "source": "/dashboard",
       "destination": "/project/dashboard/index.html"
