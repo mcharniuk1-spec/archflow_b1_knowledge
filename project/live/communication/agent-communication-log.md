@@ -3262,3 +3262,29 @@ GAP: Main promotion, owner-device visual/voice acceptance, Railway/backend, prov
 Checks: see `project/runs/2026-07-01-final-integration-notion-closeout/agent-handout.md`.
 
 Next: regenerate dashboard data after this log entry, run final safety/diff checks, commit, push, stop the local QA server, and leave Messi active until the owner says `Dyakuyu`.
+
+## 2026-07-01 15:36 - Codex Jesus - long-term goal memory added
+
+Status: complete
+
+Task: Save the durable public-safe long-term goal from today's and yesterday's execution.
+
+Files changed:
+
+- `wiki/memory.md`
+- `wiki/insights.md`
+- `project/runs/2026-07-01-final-integration-notion-closeout/agent-handout.md`
+- this append-only live-log entry
+- `project/dashboard/data.json` after regeneration
+
+FACT: WikiLLM memory now records that the website sells the PRD/ICP service wedge while the dashboard proves the static control layer.
+
+FACT: Runtime/provider/Railway/Nexus/writeback remain future gated layers.
+
+INTERPRETATION: Future agents should not collapse static public proof, buyer-facing offer, and backend/provider execution into one Done claim.
+
+GAP: Owner-device acceptance, main promotion, Figma final sync if promoted, and backend/provider activation remain separate decisions.
+
+Checks: final safety/diff checks rerun before push.
+
+Next: regenerate dashboard data, validate, commit, push, and keep Messi active until the owner says `Dyakuyu`.

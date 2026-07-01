@@ -217,3 +217,12 @@ ArchFlow Block 1 is the first public solution:
   - `archflow_evening_skill_and_hook_update` for the 21:00 maintenance scope,
   - `daily_skill_rag_retrospective` for the 22:30 review scope.
 - Repeating inefficient tool patterns are first captured in run summaries and moved to durable memory only if they persist across multiple cycles.
+
+## Final Static Website And Dashboard Goal Memory - 2026-07-01
+
+- Current public service goal: ArchFlow Automate should be presented as a source-backed PRD/ICP operating service for B2B SaaS product teams, not as a generic AI chatbot or unproven autonomous platform.
+- The public website's job is to explain the offer clearly: approved sources become context digest, PRD, ICP evidence, task matrix, approval gates, and an agent-ready operating handoff.
+- The public diagnostic and calculator are planning tools only. They can estimate rework/readiness and recommend the first package, but must not claim guaranteed ROI or validated demand.
+- The dashboard's job is the operator/control layer: Jarvis command center, PRD/ICP service flow, reliable agent orchestra, proof/backlog visibility, generated data, and blocked runtime gates.
+- Static delivery is allowed to be merge-ready when website, diagnostic, dashboard, generated data, run notes, Notion Links, and task states are aligned and public-safe.
+- Future runtime layers remain separate gates: owner-device visual/voice acceptance, main promotion, Figma final baseline sync if promoted, Railway/backend, provider activation, live Nexus, durable writeback, autonomous writeback, and model-call cost logging.

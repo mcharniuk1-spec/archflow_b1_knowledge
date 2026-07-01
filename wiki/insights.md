@@ -102,3 +102,11 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: without a ledger, agents can only give qualitative advice and cannot prove which model choices saved money or improved output quality.
 - Where applicable: OpenRouter activation, E2 account research, E3 content and website drafts, E6 outreach variants, E7 payment verdict review, and future provider bridge design.
 - Limitation: Telegram delivery and cost accounting remain partial until an approved sender and model-call logging source exist.
+
+## Insight - Website Sells The Service, Dashboard Proves The Control Layer
+
+- Observation: The strongest July 1 combined state separates the blue/ivory public website from the internal operator dashboard instead of trying to make one surface do both jobs.
+- Interpretation: the website should stay focused on the buyer-facing PRD/ICP service wedge, while the dashboard should prove source state, routes, generated data, and blocked gates.
+- Why it matters: this prevents overclaiming live Jarvis/provider/Railway/writeback execution while still giving the owner a working public page and a reliable test dashboard.
+- Where applicable: E3 website promotion, JDB dashboard review, Notion task descriptions, future Figma baseline sync, and any backend/provider activation decision.
+- Limitation: owner-device voice acceptance and provider-backed runtime proof remain separate from static visual and route proof.

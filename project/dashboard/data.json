@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T12:28:25.392407+00:00",
+  "generated_at": "2026-07-01T12:31:54.400997+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -399,8 +399,8 @@
       "kind": "project_run",
       "path": "project/runs/2026-07-01-final-integration-notion-closeout/agent-handout.md",
       "title": "Final Integration And Notion Closeout Handout",
-      "modified": "2026-07-01T12:28:18.304217+00:00",
-      "size": 4423
+      "modified": "2026-07-01T12:31:44.314968+00:00",
+      "size": 4621
     },
     {
       "kind": "wiki_run",

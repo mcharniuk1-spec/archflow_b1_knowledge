@@ -20,6 +20,7 @@ The current merge candidate is the review branch static scope: blue/ivory ArcFlo
 - The diagnostic remains browser-local/static-safe; it does not post assessment data to a backend.
 - The Notion Links page was prepended with current public routes, the review branch, the static delivery scope, and gated follow-up.
 - The main Notion task rows were refreshed to branch-head evidence: `E1.3.9`, `E1.3.10`, `E3.3`, `E3.3.1`, `E3.3.1A`, `E3.3.1B`, `JDB-7`, `JDB-9`, `JDB-10`, `JDB-11`, and `OPS-1`.
+- The public WikiLLM memory and insights now record the long-term split: website sells the PRD/ICP service wedge; dashboard proves the static control layer; runtime/provider/writeback remain gated.
 
 ## INTERPRETATION
 
