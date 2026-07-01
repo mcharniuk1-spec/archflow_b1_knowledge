@@ -3063,3 +3063,47 @@ INTERPRETATION: The website/dashboard scope is complete and source-backed for st
 GAP: Owner-device visual/voice acceptance, main-branch promotion, Railway/local backend bridge, provider activation, live Nexus, durable Notion/GitHub/WikiLLM writeback, and autonomous writeback remain future gated actions.
 
 Next safe action: avoid further static copy churn unless a concrete defect appears; choose owner-device visual/voice acceptance, main-branch promotion, or a separately approved backend/provider bridge as the next lane.
+
+## 2026-07-01 17:34 - Codex Jesus - audit hash wording correction started
+
+Status: starting
+
+Task: Correct stale commit wording inside the final completion audit handout after deployed dashboard data confirmed the handout is published but still says `2c3fdb6`.
+
+Files likely to change:
+
+- `project/runs/2026-07-01-final-completion-audit/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json` after regeneration
+
+Files claimed:
+
+- `project/runs/2026-07-01-final-completion-audit/agent-handout.md`
+- this append-only live-log entry
+- generated dashboard data
+
+Expected output: dashboard-published audit wording that does not claim a stale final branch hash.
+
+Blockers: none known.
+
+Next step: revise the handout to describe the base commit and final commit relationship without creating a self-stale hash, regenerate dashboard data, validate, commit, and push.
+
+## 2026-07-01 17:39 - Codex Jesus - audit hash wording correction complete
+
+Status: complete
+
+Task: Remove the self-staling current-commit claim from the final completion audit handout.
+
+Files changed:
+
+- `project/runs/2026-07-01-final-completion-audit/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json` after regeneration
+
+FACT: The handout now records `2c3fdb6` as the audit starting base, not as a forever-current branch head.
+
+FACT: The exact current commit should be verified from Git status/log and the latest live-log entry because any commit that changes the handout necessarily changes the branch head.
+
+INTERPRETATION: This avoids publishing stale current-branch evidence in dashboard data while preserving the audit history.
+
+Next safe action: regenerate dashboard data, run safety/diff/JSON checks, commit, and push.

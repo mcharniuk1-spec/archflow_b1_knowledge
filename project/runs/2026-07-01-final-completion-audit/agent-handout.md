@@ -9,7 +9,7 @@ Continue the final Jesus/Messi audit for the public ArchFlow website and dashboa
 
 ## FACT
 
-- Active review branch is clean and pushed at `2c3fdb6`.
+- The audit started from clean pushed branch state at `2c3fdb6`; subsequent audit-evidence commits are tracked by Git and the live communication log. The branch must be checked with `git status --short --branch` and `git log --oneline -1` for the exact current commit.
 - The deployed public routes returned HTTP 200 for `/`, `/quiz?step=4`, `/dashboard`, and `/project/dashboard/data.json`.
 - Root website source presents ArcFlow Automate as a B2B SaaS PRD/ICP operating-system service with:
   - blue/ivory editorial hero,
