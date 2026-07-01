@@ -1,7 +1,7 @@
 # Messi Task Architecture Review
 
 Date: 2026-07-01
-Status: active PM review, awaiting Ronaldinho technical audit and active-lane closeout
+Status: active PM review, review branch pending Git/source closeout
 
 ## 1. Executive Answer
 
@@ -166,12 +166,11 @@ Do not mark the whole July 1 execution Done.
 
 Use this sequence:
 
-1. Ronaldinho completes technical audit.
-2. Ronaldo resolves public website source/deploy alignment and Figma/Notion closeout.
-3. Jesus closes or hands off infra/status and dashboard architecture review.
-4. LOL dashboard optimization is accepted, revised, or rolled into a final checkpoint.
-5. Messi validates Notion, repo reports, dashboard data, safety scan, and Git status.
-6. Only then stage, commit, and push the new coordination/dashboard/website artifacts.
+1. Jesus accepts `JDB-10` as review-ready for the static dashboard scope.
+2. Jesus defines the current local root website files as the review-branch MVP source of truth.
+3. Messi validates Notion where connector access allows, repo reports, dashboard data, safety scan, and Git status.
+4. Stage, commit, and push only public-safe review-branch artifacts.
+5. Keep production deploy, Figma sync, and live public alias replacement as gated follow-up work.
 
 ## 7. Requirements And Implications
 
@@ -240,19 +239,18 @@ The rows separate real risks. JDB tasks cover Jarvis/dashboard. E3 tasks cover p
 
 ## 9. Open Questions
 
-1. Does the deployed public website match the newer local root source files, or is it still serving an earlier version?
-2. Did Ronaldo complete Figma sync, or is it still pending?
-3. Should Jesus close the stale branch-stabilization/infra entries before Messi commits?
-4. Does Ronaldinho confirm the dashboard UX changes meet technical delivery requirements?
-5. Should `E3.3.1` become Done only after Git source alignment, or after Figma sync too?
+1. Can the remaining Notion rows be updated after the connector usage limit resets?
+2. Should production deployment replace the live public alias with the local MVP source now, or wait for a separate owner-approved deploy pass?
+3. Did Ronaldo complete Figma sync, or is it still pending?
+4. Should untracked QA screenshot artifacts be removed after tool access resets, or left excluded from Git until the next cleanup pass?
 
 ## 10. Confidence Level
 
 Confidence: 0.86 for Notion task structure and dashboard/Jarvis status.
 
-Confidence: 0.72 for public website delivery status because the live URL is verified and local source now exists, but source/deploy/Figma closeout is still pending.
+Confidence: 0.76 for public website delivery status because Jesus has defined the local root files as the review-branch MVP source of truth, but production deploy and Figma closeout remain pending.
 
-Confidence: 0.62 for final push readiness because active agent lanes and Ronaldinho audit are still pending.
+Confidence: 0.72 for final push readiness if generated screenshots are excluded and final checks still pass; Notion connector usage limit prevents a complete final Notion sync this turn.
 
 ## 11. Ronaldinho Technical Audit Integration
 
@@ -271,18 +269,17 @@ The dashboard/Jarvis work can remain in Review or Done depending on the exact sl
 
 - `JDB-8`: Done for the static/browser-local slice.
 - `JDB-9`: Review for dashboard operator UX optimization source-state closeout.
-- `JDB-10`: In Progress for dashboard proof/backlog visibility.
+- `JDB-10`: Review for dashboard proof/backlog visibility after LOL correction and Jesus acceptance.
 
-The public website cannot be Done from current repo evidence. The source files are now present, but it still needs source/deploy reconciliation, then Figma/Notion closeout.
+The public website cannot be Done yet. Jesus has resolved the review-branch source decision by defining the local root files as the MVP source of truth, but production deploy, Figma sync, and final Notion closeout remain gated.
 
 ACTION:
 
-- Created `E3.3.1A - Reconcile public PRD/ICP landing source with deployed site`; it started Blocked and later moved to In Progress after root source files appeared.
+- Created `E3.3.1A - Reconcile public PRD/ICP landing source with deployed site`; it started Blocked, moved to In Progress after root source files appeared, and moved to Review after Jesus defined local Git source as the review-branch MVP source of truth.
 - Created `E3.3.1B - Complete public website deploy, Figma, and Notion closeout proof` as To Do.
-- Created `JDB-10 - Dashboard proof and backlog visibility pass` as In Progress.
-- Notify Ronaldo to restore/provide source or downgrade the website lane.
-- Notify Jesus to own source-reconciliation architecture if Ronaldo cannot provide the local source.
-- Notify LOL to continue dashboard proof/backlog visibility without touching root website files.
+- Created `JDB-10 - Dashboard proof and backlog visibility pass`; it is now Review.
+- Notified Ronaldo/Jesus that production deploy and Figma sync remain gated.
+- Notified LOL to keep dashboard proof/backlog work separate from root website files.
 
 ## 12. Source-State Correction After Ronaldo Continuation
 
@@ -294,17 +291,18 @@ FACT:
 - Local `/` and `/quiz.html?step=4` returned HTTP 200 from a temporary local server.
 - The live public alias currently serves a different website source than the current local root files.
 - The live alias appears to be backed by a separate CLI deployment path, not by the current local `public` worktree source state.
+- Jesus later decided that the current local root website files are the review-branch MVP source of truth.
 
 INTERPRETATION:
 
-The public website source issue moved from "files absent" to "source/deploy mismatch in progress." The task should no longer be treated as fully blocked, but it still cannot be Done because the current local source and deployed source do not match. A blind push/deploy could overwrite the live public website with a different local version.
+The public website source issue moved from "files absent" to "source/deploy mismatch" to a review-branch source decision. The local root files are the MVP source for this branch. The live public alias should not be treated as authoritative for this branch until an owner-approved deploy replaces or aligns it.
 
 ACTION:
 
-- Updated `E3.3.1A` from Blocked to In Progress, with a source/deploy reconciliation blocker.
+- Updated `E3.3.1A` from Blocked to In Progress, then to Review after the Jesus source-of-truth decision.
 - Kept `E3.3.1` in Review.
-- Kept `E3.3.1B` as To Do after source/redesign closeout.
-- Kept `JDB-10` as In Progress for LOL dashboard proof/backlog visibility.
+- Kept `E3.3.1B` as To Do for deployment, Figma, Notion URL/status, and public route proof.
+- Kept `JDB-10` as Review for static dashboard acceptance.
 
 ## 13. Dashboard Smoke Failure And Resolution After Sample-Output Change
 
@@ -341,4 +339,18 @@ FACT:
 
 INTERPRETATION:
 
-The current local dashboard/Jarvis branch is technically review-ready. The final Git push remains blocked by product/source governance, not by local validation: the live public website and local root website source are still different.
+The current local dashboard/Jarvis branch is technically review-ready. The final Git push is now a scope-control question: commit only public-safe review-branch artifacts, exclude disallowed screenshots, and do not imply production deployment.
+
+## 15. Latest Jesus Decision And Remaining Closeout
+
+FACT:
+
+- Jesus accepted `JDB-10` as review-ready for the static dashboard scope.
+- Jesus defined the current local root website files as the review-branch MVP source of truth.
+- Production deploy, Figma sync, deployed URL closeout, Railway backend, provider runtime, and main promotion remain gated.
+- The Notion connector hit a usage limit after `E3.3.1A` was moved to Review, so remaining Notion note updates must be completed after the limit resets.
+- Three untracked QA screenshot files are present under `project/outputs/`; public policy and run notes say screenshots should not be retained in the public repo. Tool access blocked removal this turn, so they must be excluded from commit or removed after access resets.
+
+INTERPRETATION:
+
+The review branch can be prepared for Git only if the commit excludes disallowed screenshot artifacts and does not imply production deployment. The human-readable state is: static dashboard is review-ready; public website MVP source exists locally; live replacement and Figma are next gated platform actions.

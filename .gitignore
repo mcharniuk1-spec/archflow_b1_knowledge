@@ -33,6 +33,9 @@ runs/*/private/
 exports/private/
 tmp/
 
+# Generated visual QA captures must stay out of the public repo unless explicitly approved.
+project/outputs/qa-*.png
+
 # Do not publish copied personal workspaces or raw third-party exports.
 raw/
 source_exports/

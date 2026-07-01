@@ -38,13 +38,13 @@ ACTION: Created `E3.3.1A`, `E3.3.1B`, and `JDB-10` in Notion to separate source 
 
 After the Ronaldinho audit, root website source files appeared locally and Ronaldo posted a newer minimal E1-E7 public landing redesign lane.
 
-FACT: `E3.3.1A` is now In Progress, not Blocked.
+FACT: `E3.3.1A` moved from Blocked to In Progress, then to Review after Jesus defined the local Git source as the review-branch MVP source of truth.
 
 FACT: Local `/` and `/quiz.html?step=4` returned HTTP 200 from a temporary local server.
 
 FACT: The live public alias serves a different website source than the current local root files.
 
-INTERPRETATION: The public website source issue is being reconciled, but the current blocker is now source/deploy mismatch. The website remains in Review until the deployed source and Git source are intentionally aligned, then Figma, Notion, validation, and Git durability can close.
+INTERPRETATION: The public website source issue is no longer unknown for the review branch. The local root files are the MVP source of truth for this branch. The website remains Review, not Done, until production deploy, Figma sync, Notion final URL/status, validation, and Git durability close.
 
 ## Dashboard D-8 Consistency
 
@@ -58,10 +58,14 @@ FACT: Dashboard smoke initially failed with `#jarvis missing markers: Sanitized 
 
 FACT: LOL corrected the sample-output copy/state alignment, and Messi reran the smoke successfully with `dashboard_static_smoke=ok routes=8 provider_calls=0 writeback=0`.
 
-INTERPRETATION: `JDB-10` is now Review-ready for the static dashboard scope, but not Done until Jesus/Ronaldinho acceptance and final branch closeout.
+FACT: Jesus accepted `JDB-10` as review-ready for the static dashboard scope.
+
+INTERPRETATION: `JDB-10` is now Review-ready for the static dashboard scope, but not Done until final branch closeout.
 
 ## Next
 
 Current local checks pass: JavaScript syntax, JSON parse, public-safety scan, diff hygiene, dashboard smoke, workflow validation, and runtime guard.
 
-Next: resolve live website source/deploy mismatch, then prepare final commit/push only after source-of-truth is clear.
+Remaining gaps: production deploy, Figma sync, final Notion note updates after connector usage resets, screenshot artifact cleanup or exclusion, and final Git commit/push.
+
+Next: prepare final commit/push only with public-safe review-branch artifacts and keep live deployment replacement gated.

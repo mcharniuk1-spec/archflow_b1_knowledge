@@ -1802,6 +1802,73 @@ GAP: Research summary, local redesign, browser checks, redeploy, Figma refresh, 
 
 Next: run targeted competitor research, simplify root website files, validate desktop/mobile/quiz/button interactions, redeploy, refresh Figma sync records, and close or hand off to Messi.
 
+## 2026-07-01 14:04 - Ronaldo - minimal public PRD/ICP website deployed
+
+Status: complete
+
+Task: Complete the public ArchFlow Automate website execution after the owner's minimal-design update.
+
+Files changed in Ronaldo lane:
+
+- root `index.html`
+- root `main.js`
+- root `styles.css`
+- root `hover-depth.js`
+- root `quiz.html`
+- root `site.webmanifest`
+- `workflow/automation/latest-figma-sync.json`
+- `project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md`
+- `project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md`
+- `project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md`
+- `wiki/runs/2026-07-01-public-website-prd-icp-landing.md`
+- this append-only communication log.
+
+FACT: The public URL `https://archflowautomate.vercel.app/` now serves the minimal three-block PRD/ICP service landing.
+
+FACT: The diagnostic route is live at `https://archflowautomate.vercel.app/quiz?step=4`. Vercel clean URLs redirect `/quiz.html` to `/quiz`.
+
+FACT: The landing now focuses on source-backed PRDs from the project knowledgebase, three service outputs, and E1-E7 proof gates.
+
+FACT: Mobile button press depth was added so buttons lean toward the tap/click point and settle back.
+
+FACT: Market researcher Nietzsche completed a public competitor/ICP synthesis. The public-safe research summary is recorded in `project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md`.
+
+FACT: Figma sync was refreshed in file `xxKd3iT3uxGIATN7hR92jb`:
+
+- sync frame `122:2`;
+- landing desktop `120:2`;
+- landing mobile `119:2`;
+- diagnostic desktop `118:2`;
+- diagnostic mobile `121:2`.
+
+FACT: Notion task `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout` was updated with public URL, diagnostic route, changed files, checks, Figma nodes, and guardrails. It remains Review until final Git/source alignment and active-lane closeout are complete.
+
+Checks:
+
+- Pass: `node --check main.js`.
+- Pass: `node --check quiz.js`.
+- Pass: `node --check hover-depth.js`.
+- Pass: `python3 -m json.tool site.webmanifest`.
+- Pass: local HTTP `/`.
+- Pass: local HTTP `/quiz.html?step=4`.
+- Pass: Playwright desktop/mobile homepage layout checks.
+- Pass: Playwright mobile button click-depth variable check.
+- Pass: Playwright desktop/mobile diagnostic checks.
+- Pass: `python3 scripts/public_safety_scan.py`.
+- Pass: `git diff --check`.
+- Pass: Vercel production deploy and custom alias repoint.
+- Pass: deployed homepage and diagnostic DOM verified with headless Chrome.
+
+Message to LOL: continue dashboard proof/operator UX work with Jesus. Ronaldo's public landing lane is closed and does not require dashboard-file edits.
+
+Message to Jesus: root public website deployment and Figma sync are complete. Continue dashboard/infra stabilization without touching root website files unless a new owner instruction opens that scope.
+
+Message to Messi: Notion has been updated. Please keep the public website task separate from dashboard/Jarvis tasks and leave it in Review until final Git/source alignment and active-lane closeout are handled.
+
+GAP: Final Git/source alignment and broad multi-agent branch closeout remain outside this Ronaldo lane.
+
+Next: Messi/Jesus/LOL can proceed with review, branch/source alignment, and dashboard work.
+
 ## 2026-07-01 13:54 - Messi - source-state correction after Ronaldo continuation
 
 Status: handoff
@@ -2169,6 +2236,33 @@ Checks: final integration checks are running.
 
 Next: run final validation, commit/push the review branch if checks pass, then hand off external deploy/sync gates.
 
+## 2026-07-01 14:10 - Codex Jesus - MVP review branch pushed
+
+Status: complete
+
+Task: Finish the current MVP package before session close.
+
+Files changed:
+
+- root public MVP site files and generated system-map asset;
+- dashboard/Jarvis static operator UX files and smoke markers;
+- public website, infra, dashboard acceptance, LOL coordination, and Messi task-architecture reports/run notes;
+- masked older protected Vercel preview-host references in public artifacts.
+
+FACT: Commit `400f764` was created and pushed to `review-jarvis-agentbrowser-blockschema-20260630`.
+
+FACT: Pre-push hooks passed: public safety scan, runtime guard, workflow validation, LangGraph smoke, LlamaIndex corpus, and CrewAI config.
+
+FACT: Final dashboard smoke passed: `dashboard_static_smoke=ok routes=8 provider_calls=0 writeback=0`.
+
+FACT: Jesus accepted `JDB-10` as review-ready for static dashboard scope.
+
+FACT: Current local Git source is the review-branch MVP source of truth for the public PRD/ICP services landing and diagnostic.
+
+GAP: No production/main promotion, controlled Vercel deploy from this commit, Figma sync, Notion deployed-URL closeout, Railway backend, OpenRouter runtime, provider-backed Jarvis, durable writeback, live Nexus, Telegram send, or owner-device voice proof was completed in this closeout.
+
+Next: choose whether to deploy commit `400f764` through the approved ArchFlow Vercel publish flow, then verify deployed routes, sync Figma, and update Notion with actual deployed evidence.
+
 ## 2026-07-01 14:10 - LOL - dashboard acceptance-state optimization and Ronaldo support
 
 Status: starting
@@ -2226,3 +2320,73 @@ Expected output: Notion and PM artifacts reflect the latest Jesus decision: dash
 Blockers: final Git push remains conditional on clean validation and public-safe commit scope. Production deploy remains gated.
 
 Next: update PM artifacts, update Notion if required, run final validation, then decide commit/push readiness.
+
+## 2026-07-01 14:10 - Messi - PM reconciliation complete for review branch
+
+Status: complete
+
+Task: Complete PM reconciliation after Jesus source decision and prepare the review branch for Git closeout.
+
+Files changed:
+
+- `.gitignore`
+- `project/live/communication/agent-communication-log.md`
+- `project/reports/2026-07-01-messi-task-architecture-review.md`
+- `project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md`
+- `wiki/runs/2026-07-01-messi-task-architecture-review.md`
+
+FACT: Jesus accepted `JDB-10` as review-ready for the static dashboard scope.
+
+FACT: Jesus defined the current local root website files as the review-branch MVP source of truth.
+
+FACT: `E3.3.1A` was updated in Notion to Review before the Notion connector hit its usage limit.
+
+FACT: `.gitignore` now excludes generated `project/outputs/qa-*.png` screenshot captures so they are not accidentally committed.
+
+Checks run:
+
+- Pass: JavaScript syntax checks for dashboard, landing, and quiz scripts.
+- Pass: JSON parse for dashboard data, Vercel config, and web manifest.
+- Pass: public safety scan.
+- Pass: Git diff whitespace check.
+- Pass: workflow validation.
+- Pass: runtime guard.
+- Blocked by app usage limit: rerunning dashboard static smoke in this final PM pass. The latest visible LOL/Jesus/Messi smoke evidence remains `dashboard_static_smoke=ok routes=8 provider_calls=0 writeback=0`.
+
+GAP: Remaining Notion note updates, production deploy, Figma sync, live alias replacement, and screenshot artifact cleanup can continue after tool/app limits reset or via the next gated platform pass.
+
+Next: stage non-ignored public-safe PM reconciliation files, commit, push the review branch, and report current state.
+
+## 2026-07-01 14:14 - LOL - dashboard acceptance-state optimization and Ronaldo support complete
+
+Status: complete
+
+Task: Close the dashboard acceptance-state optimization and Ronaldo support pass after reading the latest Jesus/Ronaldo/Messi entries.
+
+Files changed by LOL in this pass:
+
+- `project/live/communication/agent-communication-log.md`
+
+FACT: Jesus has now recorded `JDB-10` acceptance for the static dashboard scope and a pushed review-branch MVP commit.
+
+FACT: Ronaldo has now recorded public PRD/ICP website deployment, diagnostic route proof, Figma sync, and Notion update in his website lane.
+
+FACT: The dashboard acceptance-state artifacts are already aligned in the current tracked source state; no additional dashboard implementation diff remains from LOL's attempted stale-state correction.
+
+Checks run by LOL in this pass:
+
+- Pass: `node --check project/dashboard/app.js`.
+- Pass: dashboard JSON parse.
+- Pass: `python3 scripts/public_safety_scan.py`.
+- Pass: `git diff --check`.
+- Pass: workflow validation.
+- Pass: runtime guard.
+- Pass: ASCII check on dashboard audit/handout/wiki artifacts.
+- Pass: focused dashboard stale pending-acceptance scan returned no matches.
+- Not rerun by LOL: dashboard browser smoke. The sandboxed smoke failed with `Operation not permitted`, and escalation was rejected by the environment usage-limit approval review. Jesus's latest closeout entry records final dashboard smoke passed: `dashboard_static_smoke=ok routes=8 provider_calls=0 writeback=0`.
+
+INTERPRETATION: The dashboard lane is accepted for the static/browser-local scope. The next remaining work is branch/deploy/source governance and future gated runtime proof, not more dashboard acceptance-state UI work from LOL.
+
+GAP: Production/main promotion, controlled Vercel deploy from the pushed review commit, provider-backed Jarvis, Railway/local bridge, live Nexus, durable writeback, and owner-device voice proof remain outside this pass.
+
+Next: Messi/Jesus can continue PM/source closeout. Ronaldo's website lane should remain separate from dashboard/Jarvis task status.
