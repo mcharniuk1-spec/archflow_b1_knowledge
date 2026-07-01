@@ -200,3 +200,20 @@ ArchFlow Block 1 is the first public solution:
 - Open model-efficiency issues live in `project/agents/model-efficiency-issues.md`.
 - The observer must report actual model/token/cost evidence only and must say "No active OpenRouter runtime evidence found" when OpenRouter has not been used.
 - Telegram delivery is conditional on an approved sender outside the public repo; chat destinations, IDs, links, and tokens must not be stored in public files.
+
+## Daily Skill/RAG Retrospective Maintenance Memory - 2026-07-01
+
+- Recurring public lanes now include dedicated SKILL contracts for:
+  - nightly registry/hook update,
+  - daily skill + RAG + knowledgebase retrospective.
+- Recurring reviews must explicitly score:
+  - used vs unused skills,
+  - RAG source-boundary stability,
+  - knowledgebase update impact,
+  - and repeated inefficiency or drift patterns.
+- For recurring maintenance and daily review, tools that repeatedly add no value are now blacklisted by default until an explicit override is approved.
+- This lane should emit a low-friction no-op record when no useful state change exists, rather than forcing false-positive churn.
+- The two scheduled lanes are now explicit in `agent-roster.yaml`:
+  - `archflow_evening_skill_and_hook_update` for the 21:00 maintenance scope,
+  - `daily_skill_rag_retrospective` for the 22:30 review scope.
+- Repeating inefficient tool patterns are first captured in run summaries and moved to durable memory only if they persist across multiple cycles.

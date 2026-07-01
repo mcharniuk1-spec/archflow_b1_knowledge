@@ -2806,6 +2806,42 @@ Reason: repo-level public-safety validation cannot pass while the report and gen
 
 Next step: replace the owner-identifying wording with generic owner wording, regenerate dashboard data, and rerun safety/diff checks.
 
+## 2026-07-01 16:09 - Codex Jesus - Messi/Ronaldinho final coordination
+
+Status: handoff
+
+Task: Reconcile Messi sequencing, Ronaldinho technical review, Notion task state, and final branch validation scope after the public-safety wording patch.
+
+Files changed or accepted into final scope:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md`
+- `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md`
+- `project/dashboard/data.json`
+
+Role split:
+
+- Messi owns PM sequencing, Notion task language, deploy/report reconciliation, and final human-readable delivery state.
+- Jesus owns website implementation, calculator/static-safety behavior, integration validation, and final source hygiene.
+- Ronaldinho owns independent technical review of dashboard/Jarvis/block-schema/drag-and-drop/source coherence.
+- Future backend/provider/runtime work must open a separate approved gate with server-side secret handling, budget logging, and frontier review.
+
+FACT: Ronaldinho's handout is complete and records no required source/config patch beyond the narrow public-safety wording cleanup and regenerated dashboard data.
+
+FACT: Notion task properties now show the website/dashboard closeout tasks and Ronaldinho technical review as Done, with provider/backend/voice/Railway/Nexus/writeback gates still explicitly separate.
+
+FACT: This pass updated stale Notion `Notes` wording for the dashboard proof task and deploy/Figma/Notion closeout task so they no longer list Ronaldinho review as future work.
+
+FACT: No OpenRouter browser/frontend calls, provider-backed Jarvis, Railway runtime, live Nexus, voice persistence, or autonomous writeback were activated.
+
+INTERPRETATION: The static website/dashboard delivery can be treated as complete if the final repo validation remains green and the current public-safety patch is committed and pushed.
+
+HYPOTHESIS: The next reliability gain should come from owner-device visual/voice acceptance or an explicitly approved backend/provider bridge, not from more static copy churn.
+
+GAP: Browser/Chrome proof remains environment-sensitive. Ronaldinho recorded a passing dashboard smoke in an allowed context, while the current Jesus sandbox had previously blocked Chrome with `Operation not permitted`.
+
+Next safe action: regenerate dashboard data after this log update, rerun the final validation gate, then commit and push the public-safe closeout artifacts if all checks pass.
+
 ## 2026-07-01 16:02 - Messi - Ronaldinho technical review closed and Notion aligned
 
 Status: complete
@@ -2868,3 +2904,86 @@ Checks run:
 GAP: Owner-device voice proof, mobile node-panel click-through, Railway/backend/provider bridge, live Nexus, Notion/GitHub/WikiLLM writeback, production promotion, and Figma sync remain separate gated actions.
 
 Next safe action: Messi/final integrator can use `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md` as the technical closeout evidence, then decide whether to perform owner-device visual/voice acceptance before stronger runtime claims.
+
+## 2026-07-01 16:34 - Ronaldinho - Skills and daily review hardening complete
+
+Status: complete
+
+Task:
+- harden scheduled recurring skill maintenance and daily retrospective execution so both lanes review skills, RAG, knowledgebase, and inefficiency patterns; add explicit blacklists for low-value or irrelevant tools; and update automation-facing docs.
+
+Files changed:
+
+- `public/.codex/hooks.json` (no contract change required; verified alignment context)
+- `public/skills/skills-used.md`
+- `public/project/agents/skills-by-agent.md`
+- `public/project/agents/agent-roster.yaml`
+- `public/skills/evening-skill-registry-update/SKILL.md` (new)
+- `public/skills/daily-public-project-review/SKILL.md` (new)
+- `public/project/automation/archflow-public-evening-skill-and-hook-update.md` (new)
+- `public/project/automation/daily-skill-retrospective-and-rag-knowledge-review.md` (new)
+- `public/project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md` (new)
+- `public/project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md` (new)
+- `public/wiki/memory.md` and `public/wiki/log.md` to be updated in next step.
+
+Checks:
+- Targeted read/consistency checks on registry, skill, and automation docs completed.
+- No runtime starts, provider calls, deployments, or model-provider operations were performed.
+
+Result:
+- both recurring lanes now have explicit skill contracts and long-term relevance/inefficiency constraints.
+
+Next action:
+- run one scheduled daily cycle and confirm the day-run uses `skills/daily-public-project-review/SKILL.md`.
+
+## 2026-07-01 16:23 - Ronaldinho - Skills registry and daily RAG retrospective hardening
+
+Status: running
+
+Task: harden recurring skill-operations for long-term consistency:
+- define missing SKILL contracts for `evening-skill-registry-update` and `daily-public-project-review`;
+- add skill-level constraints for inefficient or irrelevant tools;
+- align these constraints with long-term global knowledge requirements for AF RAG/KB review;
+- and update automation docs for the ArchFlow public evening and daily skill/RAG retrospective lanes.
+
+Files claimed:
+- `public/project/live/communication/agent-communication-log.md`
+- `public/skills/skills-used.md`
+- `public/project/agents/skills-by-agent.md`
+- `public/skills/evening-skill-registry-update/SKILL.md` (new)
+- `public/skills/daily-public-project-review/SKILL.md` (new)
+- `public/project/automation/archflow-public-evening-skill-and-hook-update.md` (new)
+- `public/project/automation/daily-skill-retrospective-and-rag-knowledge-review.md` (new)
+- `public/project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md` (new)
+- `public/project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md` (new)
+
+Expected next step: after edits, append one `complete` update with artifacts and no-drift follow-up.
+
+## 2026-07-01 - Codex - scheduled maintenance lanes separated and aligned
+
+Status: complete
+
+Task: adapt both recurring automation lanes into explicit 21:00/22:30 schedule-owned blocks (`archflow_evening_skill_and_hook_update` and `daily_skill_rag_retrospective`) and align SKILL contracts, lane irrelevance rules, and long-term memory carry-forward expectations.
+
+Files changed:
+
+- `project/agents/agent-roster.yaml`
+- `project/automation/archflow-public-evening-skill-and-hook-update.md`
+- `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`
+- `skills/evening-skill-registry-update/SKILL.md`
+- `skills/daily-public-project-review/SKILL.md`
+- `skills/skills-used.md`
+- `project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md`
+- `project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md`
+
+FACT: `agent-roster.yaml` now defines two separate automation blocks and includes explicit schedule times for the two requested lanes.
+
+FACT: Both lane docs now declare explicit source lineage to their own lane and explicit long-term no-repeat rules.
+
+FACT: `agent-roster.yaml` no longer runs `daily-public-project-review` from the evening hook block.
+
+FACT: `.codex/hooks.json` remained unchanged in this hardening pass; hook contract was read and confirmed.
+
+INTERPRETATION: The recurring maintenance system is now operationally clearer and better suited for long-term global-knowledge quality, since each lane can now independently generate no-op-safe outputs and preserve useful inefficiency memory.
+
+Next: wait for both scheduled executions and verify each one writes its own run-summary, no-op state, and durable inefficiency note.

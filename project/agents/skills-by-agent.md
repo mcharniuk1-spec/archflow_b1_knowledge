@@ -121,8 +121,8 @@ Purpose: keep the skill registry current every evening.
 
 Skills set up:
 
-- evening-skill-registry-update
-- daily-public-project-review
+- [`evening-skill-registry-update`](../../skills/evening-skill-registry-update/SKILL.md) - verifies registry/hook drift and updates scheduled public files only when necessary.
+- [`daily-public-project-review`](../../skills/daily-public-project-review/SKILL.md) - produces end-of-day skill, tool, RAG, and knowledgebase retrospective notes plus blacklist updates.
 - archflow-e1-runtime-guard
 - task-handout
 - outquestions

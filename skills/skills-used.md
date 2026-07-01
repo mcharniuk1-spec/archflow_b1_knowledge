@@ -10,6 +10,8 @@ This project uses the following skills and methods.
 | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. |
 | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. |
 | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. |
+| [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, and run-note targets synchronized for recurring maintenance. |
+| [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. |
 | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. |
 | [`outquestions`](outquestions/SKILL.md) | Report what changed after each substantial execution and list the decision questions required before the next stage. |
 | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. |
@@ -31,6 +33,32 @@ This project uses the following skills and methods.
 | AF Review | Approve or block output before handoff. |
 | E1 runtime guard | Pre-push runtime validation for workflow YAML, LangGraph, LlamaIndex, CrewAI, and saved skills. |
 | Outquestions | End each substantial run with next-stage decision questions, gates, risks, and a clear nontechnical report. |
+
+## Inefficiency And Relevance Controls
+
+For recurring daily maintenance and retrospective lanes:
+
+- Do not use broad search or full-folder reindexing as the default proof of correctness.
+- Do not re-run full retrieval index generation unless corpus source files changed.
+- Do not run full `graphify` refresh or browser automation in registry-only maintenance.
+- Do not treat provider checks or model-provider probes as registry evidence.
+- Do not include full-stack model-efficiency or provider evidence collection in this lane unless execution actually changed provider/runtime contracts.
+- If an approach is repeatedly non-impactful across three scheduled runs, mark it as "do not repeat without exception" and move the constraint to wiki memory in `wiki/insights.md`.
+
+Allowed default checks are:
+
+- targeted file diffs,
+- YAML/JSON parse on edited files,
+- hook alignment checks,
+- concise run-note generation for no-op or changed states.
+
+## Lane-Specific Irrelevance Blacklist (Not to Reuse by Default)
+
+- `playwright` for registry-only runs.
+- `curl`/REST smoke in this lane when no endpoint change occurred.
+- broad `graphify` refresh for no-source-change cycles.
+- model-provider calls in registry and retrospective review lanes.
+- full-repo scans for already scoped daily changes.
 
 ## Agent Roles
 

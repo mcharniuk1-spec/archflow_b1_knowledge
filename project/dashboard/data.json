@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T11:45:55.194222+00:00",
+  "generated_at": "2026-07-01T11:50:30.029061+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,7 +30,7 @@
     },
     {
       "label": "Activity files",
-      "value": "165",
+      "value": "167",
       "tone": "ok"
     },
     {
@@ -395,6 +395,20 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md",
+      "title": "Skill Registry And Daily RAG Review Hardening Handout",
+      "modified": "2026-07-01T11:50:27.014647+00:00",
+      "size": 3366
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md",
+      "title": "Skill Registry And Daily RAG Review Hardening",
+      "modified": "2026-07-01T11:50:03.947477+00:00",
+      "size": 3041
+    },
     {
       "kind": "project_report",
       "path": "project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md",
@@ -1870,6 +1884,16 @@
       "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - [`outquestions`](../../skills/outquestions/SKILL.md) - reports execution outcomes and the questions/gates needed before moving"
     },
     {
+      "path": "project/automation/archflow-public-evening-skill-and-hook-update.md",
+      "title": "ArchFlow Public Evening Skill And Hook Update",
+      "text": "# ArchFlow Public Evening Skill And Hook Update  Automation ID: `archflow-evening-skill-and-hook-update`  Status: active in Codex app automation.  Schedule: daily at 21:00.  Contract source: `project/agents/agent-roster.yaml` (`archflow_evening_skill_and_hook_update`).  ## Purpose  Run a bounded, no-amnesia nightly maintenance lane that keeps skill registries and handout hook contracts aligned and updates only when needed.  ## Scope  Read:  - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `skills/evening-skill-registry-update/SKILL.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `wiki/log.md` and `project/runs/` as needed for continuity. - `project/automation/archflow-public-evening-skill-and-hook-update.md`  Write:  - `project/agents/agent-roster.yaml` (if needed), - `project/agents/skills-by-agent.md` (if needed), - `skills/skills-used.md` (if needed), - `project/runs/<run-id>/run-summary.md`, - `project/runs/<run-id>/agen"
+    },
+    {
+      "path": "project/automation/daily-skill-retrospective-and-rag-knowledge-review.md",
+      "title": "Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# Daily Skill Retrospective And RAG Knowledge Review  Automation ID: `daily-skill-rag-knowledge-review`  Status: active in Codex app automation.  Schedule: daily at 22:30.  Contract source: `project/agents/agent-roster.yaml` (`daily_skill_rag_retrospective` job lane).  Purpose  Run the end-of-day review lane that checks skills, knowledgebase writeback health, RAG corpus boundaries, and recurring inefficiency patterns so each next day starts with a tighter operating plan.  Scope  Read:  - `project/runs/` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `skills/daily-public-project-review/SKILL.md` - `skills/skills-used.md` - `project/agentic-stack.md` - `project/scripts/llamaindex-approved-corpus.py` command summary or output (if present), - `project/live/communication/agent-communication-log.md`, - `wiki/memory.md` - `wiki/insights.md` - `wiki/log.md`.  Write:  - `project/runs/<run-id>/run-summary.md`, - `project/runs/<run-id>/agent-handout.md`, - `wiki/log.md`, - `wiki/memory.md` (only when recurring constraints repeat and are likely stable), - `wiki/insights.md` (for durable cross-run inefficiency rules), - `project/live/communication/"
+    },
+    {
       "path": "project/automation/yushchenko-model-efficiency-observer.md",
       "title": "Yushchenko Model Efficiency Observer",
       "text": "# Yushchenko Model Efficiency Observer  Status: active in Codex app automation.  Automation ID: `yushchenko-model-efficiency-observer`  Cadence: every five hours.  ## Purpose  The Yushchenko observer watches model and token usage across the ArchFlow public project and produces recurring Markdown reports. It checks whether agents used the right model tier for the task, whether OpenRouter usage was logged, and whether cheaper execution models should replace frontier calls.  ## Scope  Read:  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/live/communication/agent-communication-log.md` - `project/runs/` - `wiki/log.md`  Write:  - `project/runs/yushchenko-model-efficiency/YYYY-MM-DD-HHMM-model-efficiency-report.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `wiki/log.md` - `project/live/communication/agent-communication-log.md`  ## Required Report Sections  Each report must include:  1. Run window and evidence files inspected. 2. Models used by provider and model ID. 3. Task and rea"
@@ -2480,6 +2504,16 @@
       "text": "# Scheduled Automation Audit  Date: 2026-07-01 Status: complete  ## Task  Check the local scheduled Codex automations against current ArchFlow public operating rules, live communication requirements, task-handout expectations, and each automation's stated goal.  ## Findings  FACT: Four local automation definitions were present: three active scheduled jobs and one paused Real Estate health-check job.  FACT: The Yushchenko model-efficiency observer was active, scheduled every five hours, and already pointed at the ArchFlow public project root.  FACT: The ArchFlow public evening skill and hook update was active at 21:00 daily, but its working directory did not match the repo-relative paths in its prompt. It was updated to run from the public project root.  FACT: The daily skill retrospective and RAG knowledge review was active at 22:30 daily, but its working directory did not match its LangGraph strategic-system workspace. It was updated to run from that workspace.  FACT: The paused Real Estate health-check automation remains paused. It was not changed because it is outside the active ArchFlow schedule shown in the current audit and has a different project scope.  INTERPRETATION: The "
     },
     {
+      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md",
+      "title": "Skill Registry And Daily RAG Review Hardening Handout",
+      "text": "# Skill Registry And Daily RAG Review Hardening Handout  ## Title and Purpose  This handout records the 2026-07-01 hardening pass that separated the two recurring maintenance lanes:  - ArchFlow public evening skill and hook update (21:00), - Daily Skill Retrospective and RAG Knowledge Review (22:30).  ## Human Summary  The recurring maintenance system now has explicit dual-lane separation in `agent-roster.yaml`, with distinct schedules and target files. Both automation contracts now carry explicit long-term inefficiency gates and stronger tool-relevance constraints, so each lane records what should not be repeated and escalates durable constraints to long-term knowledge surfaces.  ## Current State  Status: complete.  Configured scheduled lane coverage after this pass:  - `archflow_evening_skill_and_hook_update`:   - `public/project/agents/agent-roster.yaml` evening target block,   - `public/project/automation/archflow-public-evening-skill-and-hook-update.md`,   - `public/skills/evening-skill-registry-update/SKILL.md`. - `daily_skill_rag_retrospective`:   - `public/project/agents/agent-roster.yaml` daily retrospective block,   - `public/project/automation/daily-skill-retrospective-a"
+    },
+    {
+      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md",
+      "title": "Skill Registry And Daily RAG Review Hardening",
+      "text": "# Skill Registry And Daily RAG Review Hardening  Date: 2026-07-01 Status: complete  ## Task  Separate the recurring daily automation lanes so each has independent schedule intent and run scope, while preserving the daily retrospective/RAG focus and adding durable inefficiency controls.  ## Findings  FACT: The previous configuration grouped both the evening registry maintenance and the daily retrospective review into one automation block (`evening_skill_registry_update`), which reduced schedule clarity for the 21:00/22:30 split.  FACT: Both lanes already had dedicated SKILL contracts and dedicated automation docs, but the roster lacked explicit execution separation and lane-local long-term knowledge gate language.  FACT: The `.codex/hooks.json` trigger remained aligned to `project/scripts/task-handout-hook.py` throughout this pass; no contract change was required in the hook file.  INTERPRETATION: Stable long-term reliability needs explicit schedule-by-lane ownership, because both runs can be review-only but serve different outputs.  HYPOTHESIS: Separating the automation registry blocks and forcing explicit inefficiency gates in both lanes will lower recurring false-positive churn a"
+    },
+    {
       "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
       "title": "Agent Handout: Yushchenko Model Efficiency Observer",
       "text": "# Agent Handout: Yushchenko Model Efficiency Observer  ## Title And Purpose  This handout records the creation of the Yushchenko model-efficiency and token-use observer for ArchFlow.  ## Human Summary  The project now has a recurring observer lane for model usage, token efficiency, and OpenRouter routing discipline. The observer is active in the Codex app automation with a five-hour cadence.  The observer saves Markdown reports under `project/runs/yushchenko-model-efficiency/`, updates reusable model-efficiency advice and issue lists, and notifies agents through the live communication log. Telegram delivery is conditional: it should happen only when an approved sender exists outside the public repo.  ## Current State  Status: complete.  Main artifacts:  - `project/automation/yushchenko-model-efficiency-observer.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md` - `project/agents/agent-roster.yaml` - `project/agents/README.md` - `wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md`  Automation:  - Codex app automation ID: `yushchenko-model-"
@@ -2725,6 +2759,16 @@
       "text": "interface:   display_name: \"ArchFlow Task Breakdown\"   short_description: \"Plan ArchFlow epics into safe staged subtasks\"   default_prompt: \"Use $archflow-task-breakdown to decompose this ArchFlow epic into staged tasks, subtasks, checks, and Notion-ready outputs.\""
     },
     {
+      "path": "skills/daily-public-project-review/SKILL.md",
+      "title": "Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "--- name: daily-public-project-review description: Run a daily retrospective over skills, tool usage, RAG retrieval state, and knowledgebase updates so the next cycle carries forward evidence and excludes recurring low-value work. ---  # Daily Skill Retrospective And RAG Knowledge Review  ## Purpose  Use this skill as the second daily lane after the evening maintenance pass. It reviews what changed during the day and verifies:  - which skills were used and were useful, - whether each skill output supported the current ArchFlow thesis and knowledgebase contract, - what changed in retrieval quality, - which tool paths repeatedly wasted time, - and what should be carried into the next day's plan.  ## When To Use  - In the daily routine that follows evening registry/hook maintenance. - After major public runs, knowledgebase packets, or model-efficiency notes. - When scheduled reviewers detect repeated no-op runs or recurring noise.  ## Required Inputs  Read at least:  - `project/runs/` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/agentic-stack.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `wiki/memory.md` "
+    },
+    {
+      "path": "skills/evening-skill-registry-update/SKILL.md",
+      "title": "ArchFlow Evening Skill Registry And Hook Update",
+      "text": "--- name: evening-skill-registry-update description: Review and align the public ArchFlow skill registry and handout hook with actual configured agents, skills, and evidence surfaces so recurring maintenance stays stable and low-entropy across days. ---  # ArchFlow Evening Skill Registry And Hook Update  ## Purpose  Use this skill for the nightly ArchFlow public maintenance job that keeps:  - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `.codex/hooks.json`  in consistent sync for a stable handoff workflow and predictable daily output.  ## When To Use  - In the nightly public maintenance lane before any broad report or dashboard update. - When skill names drift between code and registry files. - After any hook or skill contract change. - When automation notes report that no functional change is needed and a low-entropy no-op is valid.  ## Required Inputs  Read all of:  - `project/operating-rules.md` - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py`  Optional but recommended:  - `proj"
+    },
+    {
       "path": "skills/outquestions/SKILL.md",
       "title": "Outquestions",
       "text": "--- name: outquestions description: Use this skill after each substantial ArchFlow execution, planning pass, Notion task update, GitHub update, dashboard/voice/hosting step, or multi-agent run to produce an execution report with the critical open questions, decisions, owner choices, and next-stage gates needed to move reliably. metadata:   short-description: Report execution outcomes and next-stage decision questions ---  # Outquestions  Use this skill when an ArchFlow run needs more than a status note. It turns completed work into a compact execution report plus the questions that must be answered before the next stage starts.  ## Trigger  Run this skill after:  - a Notion task or GitHub update - a dashboard, voice, hosting, Onyx, or agent workflow planning pass - a multi-agent or sidecar-agent run - a public-facing content/reporting task - any execution where the next stage depends on owner decisions  ## Output Shape  Write these sections:  1. **What changed**    - 2-5 plain paragraphs.    - Explain the action, why it matters, and what is now easier or safer.  2. **Artifacts**    - List created or updated files, pages, tasks, reports, or commits.    - Use repo-relative paths for "
@@ -2732,7 +2776,7 @@
     {
       "path": "skills/skills-used.md",
       "title": "Skills And Methods Used",
-      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. | | [`outquestions`](outquestions/SKILL.md) | Report what changed after each substantial execution and list the decision questions required before the next stage. | | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. | | Loop Engineering operating contract | Keep agent workflows bounded with state, attempt caps, budget, maker/check"
+      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, and run-note targets synchronized for recurring maintenance. | | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. | | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. | | [`"
     },
     {
       "path": "skills/task-handout/SKILL.md",

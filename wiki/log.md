@@ -78,3 +78,8 @@
 - Added the Messi coordination review: the July 1 dashboard/model-routing/Notion work is directionally correct but should freeze before more implementation; open blockers are active file claims, missing screenshot evidence referenced by a run note, and pending modal/mobile QA. A reported duplicate top-level YAML key was rechecked and is not present in the current shared workspace.
 - Added `project/scripts/dashboard-static-smoke.py` as the reusable rendered-route smoke test for dashboard/Jarvis UI changes; it verifies `#jarvis`, `#history`, `#service`, `#schema`, `#config`, `#plan`, and the two node-panel deep links without provider calls or writeback.
 - Pushed review branch `review-jarvis-agentbrowser-blockschema-20260630` at `5efd281` for July 1 dashboard orchestration, model-routing, live-agent communication, planning, and smoke-test stabilization; merge/deploy/runtime activation remain gated.
+- Hardened recurring public execution contracts for the two scheduled maintenance lanes:
+  - ArchFlow public evening skill and hook update,
+  - Daily Skill Retrospective and RAG Knowledge Review.
+  Added dedicated SKILL contracts, explicit no-op-safe lane scope, and recurring inefficiency blacklists so each run reviews not only functional output but also tool relevance and waste.
+- Split the two scheduled maintenance lane contracts in `agent-roster.yaml` into separate scheduled blocks (`21:00` and `22:30`) and added explicit long-term inefficiency carry-forward to wiki memory surfaces for durable global-knowledge governance.

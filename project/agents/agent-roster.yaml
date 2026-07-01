@@ -181,12 +181,13 @@ agents:
       - openrouter_runtime_stays_disabled_without_explicit_approval
 
 automation:
-  evening_skill_registry_update:
+  archflow_evening_skill_and_hook_update:
     schedule: daily_evening
+    schedule_time: "21:00"
     provider: codex_operator
+    automation_id: archflow-evening-skill-and-hook-update
     skills:
       - evening-skill-registry-update
-      - daily-public-project-review
       - archflow-e1-runtime-guard
       - task-handout
       - outquestions
@@ -194,6 +195,27 @@ automation:
       - project/agents/skills-by-agent.md
       - project/agents/agent-roster.yaml
       - skills/skills-used.md
+      - project/automation/archflow-public-evening-skill-and-hook-update.md
+      - .codex/hooks.json
+      - project/live/communication/agent-communication-log.md
+  daily_skill_rag_retrospective:
+    schedule: daily_evening
+    schedule_time: "22:30"
+    provider: codex_operator
+    automation_id: daily-skill-rag-knowledge-review
+    skills:
+      - daily-public-project-review
+      - task-handout
+      - outquestions
+    target_files:
+      - project/automation/daily-skill-retrospective-and-rag-knowledge-review.md
+      - project/agentic-stack.md
+      - project/agents/skills-by-agent.md
+      - skills/skills-used.md
+      - wiki/memory.md
+      - wiki/log.md
+      - wiki/insights.md
+      - project/live/communication/agent-communication-log.md
   yushchenko_model_efficiency_observer:
     schedule: every_five_hours
     provider: codex_app_cron
