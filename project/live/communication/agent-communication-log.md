@@ -3107,3 +3107,47 @@ FACT: The exact current commit should be verified from Git status/log and the la
 INTERPRETATION: This avoids publishing stale current-branch evidence in dashboard data while preserving the audit history.
 
 Next safe action: regenerate dashboard data, run safety/diff/JSON checks, commit, and push.
+
+## 2026-07-01 15:07 - Codex Messi - Jesus merge handout starting
+
+Status: starting
+
+Task: Create a fast Jesus merge handout so Jesus can merge and finish the full execution/setup from current public evidence.
+
+Files likely to change:
+
+- `project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json` after regeneration
+
+Files claimed:
+
+- `project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md`
+- this append-only live-log entry
+- generated dashboard data
+
+Expected output: short public-safe merge handout with live route proof, final branch evidence, done/gated split, and Jesus next actions.
+
+Blockers: none known. Production alias route checks are returning HTTP 200 for the website and dashboard.
+
+Next step: write the handout, regenerate dashboard data, validate, commit, push, redeploy, and update Notion evidence links.
+
+## 2026-07-01 15:09 - Codex Messi - Jesus merge handout complete
+
+Status: complete
+
+Task: Create the fast Jesus merge handout for final merge/setup execution.
+
+Files changed:
+
+- `project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json` after regeneration
+
+FACT: The handout gives Jesus the current done/gated split, route proof, merge sequence, and owner roles.
+
+FACT: The dashboard data was regenerated after creating the handout.
+
+INTERPRETATION: Jesus can now review one concise handoff instead of reconstructing state from multiple run files.
+
+Next safe action: run safety/diff/JSON checks, commit, push, redeploy, verify alias routes, and sync Notion final evidence links.

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T12:03:42.114962+00:00",
+  "generated_at": "2026-07-01T12:07:47.643210+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,7 +30,7 @@
     },
     {
       "label": "Activity files",
-      "value": "168",
+      "value": "169",
       "tone": "ok"
     },
     {
@@ -395,6 +395,13 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md",
+      "title": "Jesus Merge Handoff",
+      "modified": "2026-07-01T12:07:41.438711+00:00",
+      "size": 3310
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-final-completion-audit/agent-handout.md",
@@ -2459,6 +2466,11 @@
       "path": "project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md",
       "title": "Agent Handout: Infra Status And Next Setup",
       "text": "# Agent Handout: Infra Status And Next Setup  Date: 2026-07-01 Status: handoff-ready after local validation  ## Current Result  The current MVP is local and static:  - public ArchFlow services landing at `/`; - PRD/ICP readiness diagnostic at `/quiz.html`; - internal dashboard preserved at `/dashboard`; - no active Railway backend; - no active provider-backed Jarvis runtime.  ## Verified Infra State  - Vercel is linked and has prior ready static deployments. - Railway is not linked in this repo and no Railway service config exists. - OpenRouter and Mistral are ignored local env material only. - Static browser code does not call providers. - NVIDIA `garak` / NeMo Guardrails tooling is not installed, so no NVIDIA safety checker was run.  ## Files To Review Next  - `index.html` - `quiz.html` - `main.js` - `quiz.js` - `styles.css` - `site.webmanifest` - `assets/archflow-system-map.png` - `vercel.json` - `project/reports/2026-07-01-infra-status-and-next-setup.md` - `project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md`  ## Next Safe Actions  1. Decide whether to deploy this review-branch MVP to Vercel. 2. If deploying, use the approved ArchFlow Vercel publish flow and t"
+    },
+    {
+      "path": "project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md",
+      "title": "Jesus Merge Handoff",
+      "text": "# Jesus Merge Handoff  Date: 2026-07-01 Owner role: Messi Recipient role: Jesus Status: ready for Jesus merge review  ## Executive Answer  Jesus can use this branch as the current merge candidate for the public-safe ArchFlow static website and dashboard lane. The website, quiz route, dashboard shell, generated dashboard data, runtime-readiness evidence, Notion-state evidence, and technical review handouts are committed and pushed.  Do not treat backend/provider writeback, live Nexus writeback, voice execution, Railway service operation, or production-main promotion as completed unless Jesus explicitly approves and verifies those lanes. They remain gated follow-up work.  ## Current Evidence  - Branch before this handout: `review-jarvis-agentbrowser-blockschema-20260630` - Last pushed evidence commit before this handout: `511f2ab` - Live alias checked before writing this handout: `https://<protected-preview-host>` - Route checks returned HTTP 200 for:   - `/`   - `/dashboard`   - `/project/dashboard/data.json`  This handout will create a newer commit. Jesus should run `git log --oneline -5` after pulling to confirm the final handout commit at branch head.  ## Done  - Public website a"
     },
     {
       "path": "project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md",
