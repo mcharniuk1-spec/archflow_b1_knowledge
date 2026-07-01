@@ -198,10 +198,10 @@
       <section class="readiness-section" id="readiness" aria-labelledby="readinessTitle">
         <div class="section-inner readiness-layout">
           <div>
-            <p class="eyebrow">Calculator and readiness section</p>
+            <p class="eyebrow">PRD/ICP calculator</p>
             <h2 id="readinessTitle">Estimate the first useful wedge.</h2>
             <p>
-              This browser-local calculator picks a planning direction from source quality, decision clarity, and delivery pressure. It is not a performance guarantee.
+              This browser-local calculator estimates PRD/ICP rework value, knowledgebase readiness, and the first safe service package. It is a planning tool, not guaranteed ROI.
             </p>
             <div class="readiness-actions">
               <a class="btn btn-primary" href="/quiz.html">Open full diagnostic</a>
@@ -209,22 +209,80 @@
             </div>
           </div>
 
-          <form class="mini-calc" data-mini-calc aria-label="ArcFlow readiness calculator">
-            <label>
-              <span>Source quality</span>
-              <input type="range" name="sources" min="1" max="5" value="3" />
-            </label>
-            <label>
-              <span>Decision clarity</span>
-              <input type="range" name="decisions" min="1" max="5" value="2" />
-            </label>
-            <label>
-              <span>Delivery pressure</span>
-              <input type="range" name="pressure" min="1" max="5" value="4" />
-            </label>
+          <form class="mini-calc" data-mini-calc aria-label="PRD ICP operating calculator">
+            <fieldset class="calc-mode">
+              <legend>Mode</legend>
+              <label><input type="radio" name="mode" value="roi" checked /> PRD/ICP ROI</label>
+              <label><input type="radio" name="mode" value="readiness" /> Knowledgebase readiness</label>
+            </fieldset>
+
+            <div class="calc-grid">
+              <label>
+                <span>Product people involved</span>
+                <input type="range" name="productPeople" min="1" max="30" value="7" />
+                <output data-range-output="productPeople">7 people</output>
+              </label>
+              <label>
+                <span>Weekly PRD/research/task hours</span>
+                <input type="range" name="weeklyHours" min="5" max="180" value="48" />
+                <output data-range-output="weeklyHours">48 hours</output>
+              </label>
+              <label>
+                <span>Blended hourly cost</span>
+                <input type="range" name="hourlyCost" min="30" max="220" step="5" value="95" />
+                <output data-range-output="hourlyCost">EUR 95</output>
+              </label>
+              <label>
+                <span>Rework/context-loss share</span>
+                <input type="range" name="wasteShare" min="5" max="60" value="28" />
+                <output data-range-output="wasteShare">28%</output>
+              </label>
+              <label>
+                <span>Recoverable share with ArchFlow</span>
+                <input type="range" name="recoverableShare" min="10" max="65" value="35" />
+                <output data-range-output="recoverableShare">35%</output>
+              </label>
+              <label>
+                <span>Setup plus support estimate</span>
+                <input type="range" name="setupCost" min="5000" max="45000" step="2500" value="15000" />
+                <output data-range-output="setupCost">EUR 15,000</output>
+              </label>
+              <label>
+                <span>Source centralization</span>
+                <input type="range" name="sourceCentralization" min="1" max="10" value="5" />
+                <output data-range-output="sourceCentralization">5 / 10</output>
+              </label>
+              <label>
+                <span>Approval maturity</span>
+                <input type="range" name="approvalMaturity" min="1" max="10" value="6" />
+                <output data-range-output="approvalMaturity">6 / 10</output>
+              </label>
+            </div>
+
             <div class="calc-result">
-              <span data-calc-score>Readiness index: 54 / 100</span>
+              <span data-calc-mode-label>PRD/ICP ROI planning estimate</span>
+              <div class="calc-metrics" aria-live="polite">
+                <article>
+                  <span>Monthly recovered work</span>
+                  <strong data-calc-monthly>EUR 0</strong>
+                </article>
+                <article>
+                  <span>Yearly recovered work</span>
+                  <strong data-calc-yearly>EUR 0</strong>
+                </article>
+                <article>
+                  <span>Estimated payback</span>
+                  <strong data-calc-payback>Needs scoping</strong>
+                </article>
+                <article>
+                  <span>KB readiness</span>
+                  <strong data-calc-readiness>0 / 100</strong>
+                </article>
+              </div>
               <output data-calc-output>Recommended first package: PRD rescue and evidence map.</output>
+              <p class="calc-disclaimer">
+                Browser-local planning estimate only. No guaranteed ROI, provider-backed execution, Railway runtime, or autonomous writeback is claimed.
+              </p>
             </div>
           </form>
         </div>

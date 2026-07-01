@@ -26,9 +26,9 @@ The homepage has three blocks:
 
 1. Hero.
 2. Service system.
-3. Proof/trust.
+3. Readiness/proof.
 
-The diagnostic remains a subpage.
+The diagnostic remains a subpage. The homepage now includes a browser-local PRD/ICP ROI and knowledgebase-readiness calculator.
 
 ## Research Summary
 
@@ -52,6 +52,7 @@ ArchFlow's safer wedge is not replacing those tools. The wedge is turning existi
 - Final public-source deployment serves website and dashboard from the same public Git source.
 - Vercel SSO protection was disabled for the public project so the live alias is publicly reachable.
 - Final route checks passed for `/`, `/quiz?step=4`, `/quiz.html`, `/dashboard`, and `/project/dashboard/data.json`.
+- Jesus follow-up review passed: calculator enhanced, quiz save is local-only, no frontend `/api` or `fetch()` calls remain, mobile overflow measured `0` for homepage and quiz step 4.
 
 ## Figma
 
@@ -65,9 +66,13 @@ ArchFlow's safer wedge is not replacing those tools. The wedge is turning existi
 
 Updated:
 
-- `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout`
+- `JDB-10`: Done.
+- `E3.3.1`: Done.
+- `E3.3.1A`: Done.
+- `E3.3.1B`: Done.
+- `JDB-7`, `E1.3.9`, and `E1.3.10`: kept in Review with updated evidence.
 
-The task can move to Done after the final Git commit/push records the aligned source.
+Final Git source proof: commit `3cdefba` was pushed to `origin/review-jarvis-agentbrowser-blockschema-20260630`.
 
 ## Guardrails
 
@@ -78,3 +83,7 @@ The task can move to Done after the final Git commit/push records the aligned so
 - No browser-side provider calls.
 - No autonomous writeback.
 - No full platform replacement claim.
+
+## Coordination
+
+A later Jesus starting entry produced root website implementation edits. Messi reviewed and accepted them for redeploy because they strengthen the calculator while preserving static/browser-local boundaries. Future backend/provider/writeback work remains a separate gated lane.

@@ -209,13 +209,15 @@ a {
 }
 
 .header-cta,
-.btn-primary {
+.btn-primary,
+.btn.primary {
   color: var(--white);
   background: linear-gradient(135deg, var(--teal), var(--blue));
   box-shadow: 0 16px 30px rgba(15, 86, 86, 0.22);
 }
 
-.btn-secondary {
+.btn-secondary,
+.btn.secondary {
   color: var(--ink);
   border-color: var(--line-strong);
   background: rgba(255, 250, 240, 0.7);
@@ -681,6 +683,45 @@ a {
   box-shadow: var(--shadow);
 }
 
+.calc-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0 0 18px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.calc-mode legend {
+  width: 100%;
+  margin-bottom: 2px;
+  color: var(--teal);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.calc-mode label {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.48);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .mini-calc label {
   display: grid;
   gap: 9px;
@@ -690,6 +731,14 @@ a {
   text-transform: uppercase;
 }
 
+.mini-calc output {
+  color: var(--teal);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: none;
+}
+
 input[type="range"] {
   width: 100%;
   accent-color: var(--teal);
@@ -697,12 +746,13 @@ input[type="range"] {
 
 .calc-result {
   display: grid;
-  gap: 9px;
+  gap: 13px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
 }
 
-.calc-result span {
+.calc-result > span,
+.calc-metrics span {
   color: var(--teal);
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 12px;
@@ -710,11 +760,40 @@ input[type="range"] {
   text-transform: uppercase;
 }
 
+.calc-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.calc-metrics article {
+  min-height: 92px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.46);
+}
+
+.calc-metrics strong {
+  font-size: 22px;
+  line-height: 1.05;
+}
+
 .calc-result output {
   color: var(--ink);
   font-size: 22px;
   font-weight: 800;
   line-height: 1.2;
+}
+
+.calc-disclaimer {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .timeline {
@@ -1288,6 +1367,8 @@ textarea {
 
   .output-rail,
   .timeline,
+  .calc-grid,
+  .calc-metrics,
   .economics-grid,
   .contact-grid,
   .quiz-result-grid {

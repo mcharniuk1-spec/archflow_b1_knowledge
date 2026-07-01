@@ -496,28 +496,14 @@ function setupQuiz() {
   submitButton?.addEventListener("click", async () => {
     renderResult(form);
     saveState(form);
-    submitStatus.textContent = "";
+    buildSubmission(form);
+    submitStatus.textContent = "Saved in this browser. Use the email fallback to send the assessment for review; no backend submission was made.";
     submitButton.disabled = true;
-    submitButton.textContent = "Saving...";
-
-    try {
-      const response = await fetch("/api/quiz-submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(buildSubmission(form))
-      });
-      const data = await response.json();
-      if (!response.ok || !data.ok) throw new Error(data.code || "SUBMISSION_FAILED");
-      submitStatus.textContent = "Saved to ArchFlow. We will review the assessment and follow up if contact details were provided.";
-    } catch (error) {
-      submitStatus.textContent =
-        error.message === "SHEETS_NOT_CONFIGURED"
-          ? "The backend save path is ready in code but not configured yet. Use the email fallback for now."
-          : "Could not save automatically. Use the email fallback or try again later.";
-    } finally {
+    submitButton.textContent = "Saved locally";
+    window.setTimeout(() => {
       submitButton.disabled = false;
-      submitButton.textContent = "Save assessment to ArchFlow";
-    }
+      submitButton.textContent = "Save locally";
+    }, 900);
   });
 
   updateRangeOutputs(form);

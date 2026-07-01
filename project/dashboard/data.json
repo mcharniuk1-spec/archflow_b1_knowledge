@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T11:22:02.255481+00:00",
+  "generated_at": "2026-07-01T11:35:25.855565+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,12 +25,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "41 files",
+      "value": "42 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "158",
+      "value": "163",
       "tone": "ok"
     },
     {
@@ -396,6 +396,62 @@
   ],
   "activity": [
     {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
+      "title": "Agent Handout: Dev Orchestration Lane",
+      "modified": "2026-07-01T11:35:22.389355+00:00",
+      "size": 3001
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-prd-icp-lane/agent-handout.md",
+      "title": "Agent Handout: PRD/ICP Lane",
+      "modified": "2026-07-01T11:35:22.289696+00:00",
+      "size": 2429
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-blue-archflow-automate-website.md",
+      "title": "2026-07-01 Blue ArcFlow Automate Website",
+      "modified": "2026-07-01T11:35:22.184343+00:00",
+      "size": 1832
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-blue-archflow-automate-website/agent-handout.md",
+      "title": "Agent Handout: Blue ArcFlow Automate Website",
+      "modified": "2026-07-01T11:35:22.082083+00:00",
+      "size": 3557
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-blue-archflow-automate-website-review.md",
+      "title": "Blue ArcFlow Automate Website Review",
+      "modified": "2026-07-01T11:34:23.658820+00:00",
+      "size": 5054
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
+      "title": "2026-07-01 Public Website PRD/ICP Landing",
+      "modified": "2026-07-01T11:33:45.406647+00:00",
+      "size": 3149
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
+      "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
+      "modified": "2026-07-01T11:33:45.309923+00:00",
+      "size": 6890
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
+      "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
+      "modified": "2026-07-01T11:33:45.212161+00:00",
+      "size": 4657
+    },
+    {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
       "title": "2026-07-01 Messi Task Architecture Review",
@@ -418,13 +474,6 @@
     },
     {
       "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
-      "title": "2026-07-01 Public Website PRD/ICP Landing",
-      "modified": "2026-07-01T11:04:25.095388+00:00",
-      "size": 2104
-    },
-    {
-      "kind": "wiki_run",
       "path": "wiki/runs/2026-07-01-dashboard-operator-ux-optimization.md",
       "title": "2026-07-01 Dashboard Operator UX Optimization",
       "modified": "2026-07-01T11:04:20.249680+00:00",
@@ -438,25 +487,11 @@
       "size": 2939
     },
     {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
-      "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
-      "modified": "2026-07-01T11:04:09.379089+00:00",
-      "size": 3611
-    },
-    {
       "kind": "project_report",
       "path": "project/reports/2026-07-01-dashboard-jdb-10-acceptance-audit.md",
       "title": "Dashboard JDB-10 Acceptance Audit",
       "modified": "2026-07-01T11:04:04.785314+00:00",
       "size": 8062
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
-      "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
-      "modified": "2026-07-01T11:03:45.545820+00:00",
-      "size": 5269
     },
     {
       "kind": "project_report",
@@ -1506,7 +1541,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 41,
+    "file_count": 42,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -1654,6 +1689,11 @@
         "excerpt": "# 2026-07-01 Agent Communication Channel  ## Task  Create a live communication folder for ArchFlow public project agents and provide a system prompt append for the new coordination pattern.  ## Result  - Added `project/live/communication/` as the shared public-safe channel for active parallel agent dialogue. - Added the current notice, message template, pattern-change log, and copy-ready system prompt append. - Updat"
       },
       {
+        "path": "wiki/runs/2026-07-01-blue-archflow-automate-website.md",
+        "title": "2026-07-01 Blue ArcFlow Automate Website",
+        "excerpt": "# 2026-07-01 Blue ArcFlow Automate Website  ## Result  Jesus updated the public ArcFlow Automate website toward the blue/ivory owner-approved direction while preserving Ronaldo's arch assets, hover-depth interaction, `/dashboard`, and `/quiz.html`.  ## FACT  - Root site now has a light editorial hero, teal arch system visual, embedded dark diagnostic panel, service-output rail, dark two-lane diagram, PRD/ICP calculat"
+      },
+      {
         "path": "wiki/runs/2026-07-01-competitor-dashboard-website-plan.md",
         "title": "2026-07-01 Competitor Dashboard And Website Plan",
         "excerpt": "# 2026-07-01 Competitor Dashboard And Website Plan  ## Task  Review competitor positioning and prepare the next ArchFlow planning direction for:  - dashboard improvement; - public services website improvement.  ## Result  Created:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - `project/runs/2026-07-01-competitor-dashboard-we"
@@ -1706,7 +1746,7 @@
       {
         "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
         "title": "2026-07-01 Public Website PRD/ICP Landing",
-        "excerpt": "# 2026-07-01 Public Website PRD/ICP Landing  ## Result  The public ArchFlow Automate website was redeployed as a minimal PRD/ICP service landing.  Public URL:  - `https://<protected-preview-host>`  Diagnostic route:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is positioned as a service-led operating layer for B2B SaaS product teams that need source-backed PRDs, ICP evidence, acceptance criteria, t"
+        "excerpt": "# 2026-07-01 Public Website PRD/ICP Landing  ## Result  The public ArchFlow Automate website was redeployed as a minimal PRD/ICP service landing.  Public URL:  - `https://<protected-preview-host>`  Diagnostic route:  - `https://<protected-preview-host>`  Dashboard route:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is positioned as a service-led operating layer for B2B SaaS product teams that need "
       },
       {
         "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
@@ -2041,6 +2081,11 @@
       "text": "# Jarvis Device Bridge And Capture Global Wall  Date: 2026-06-30 Status: planned, not implemented Scope: public-safe roadmap for dashboard, local operator state, voice/screen capture, and Codex/OpenAI bridge planning.  ## Purpose  Create a reliable path for Jarvis to show where the active agent is running, whether a local operator bridge is connected, and how voice/screen capture can become task/report input without storing private raw material by default.  This wall does not enable live capture, model calls, deployments, or write actions. It defines the structure future agents should implement and review.  ## Facts  - The current dashboard is a Vercel/static or static-enhanced visibility surface, not a live control plane. - Codex is currently the local operator/editor/reviewer when the owner runs it on the owner's device. - Codex app authorization is not an application API key and should not be copied into hosted services. - OpenAI API use for application code requires an approved API key stored in a secret store or local private environment file. - Voice and screen capture are private input channels and should default to transient processing plus reviewed summaries.  ## Operating"
     },
     {
+      "path": "project/reports/2026-07-01-blue-archflow-automate-website-review.md",
+      "title": "Blue ArcFlow Automate Website Review",
+      "text": "# Blue ArcFlow Automate Website Review  Date: 2026-07-01 Status: implementation updated; Chrome visual smoke blocked by environment  ## Task  Finish the public ArcFlow Automate website reliability pass using the owner-approved blue/ivory visual direction while preserving the dashboard route, the diagnostic route, Ronaldo's arch/hover interaction system, and public-safe runtime boundaries.  ## FACT  - The current root website uses a light ivory editorial hero, a teal architectural arch system visual, an embedded dark diagnostic panel, a service-output rail, a dark two-lane system diagram, a PRD/ICP calculator, and a process timeline. - Ronaldo's delivered assets and interaction system remain in use: `assets/archflow-system-map.png`, the `assets/3d-arcs/` WebP assets, `assets/archflow-mark.svg`, manifest icons, and `hover-depth.js`. - `hover-depth.js` now applies depth-hover behavior to the new output cards, lane cards, calculator, calculator metric cards, and embedded diagnostic panel. - The root calculator is PRD/ICP-specific. It has `PRD/ICP ROI` and `Knowledgebase readiness` modes, uses product-team inputs, and labels outputs as browser-local planning estimates only. - `quiz.js` "
+    },
+    {
       "path": "project/reports/2026-07-01-competitor-dashboard-website-plan.md",
       "title": "Competitor-Backed Dashboard And Website Improvement Plan",
       "text": "# Competitor-Backed Dashboard And Website Improvement Plan  Date: 2026-07-01 Status: planning brief for next execution  ## Executive Answer  ArchFlow should move forward in two coordinated directions.  Direction 1 is the internal dashboard: make it feel like a real operating cockpit for two separate orchestras. The first orchestra is the buyer-facing PRD/ICP service flow. The second orchestra is the internal reliable agent-control system. The current dashboard already has the right structural split, but it needs clearer first-screen operation, stronger visual hierarchy, explicit state/proof panels, better mobile/modal proof, and a more legible relationship between Jarvis, nodes, approvals, and generated outputs.  Direction 2 is the public website: position ArchFlow as a service-led automation and agentic operating-architecture company for product teams. The public offer should be \"source-backed operating architecture that turns messy chats, docs, meetings, product decisions, and agent work into PRDs, reports, tasks, responsibilities, evidence packets, and approval-gated execution.\" The site should sell a practical service path first, not a finished autonomous AI platform.  Ronaldo "
@@ -2326,6 +2371,11 @@
       "text": "# Agent Handout: Live Communication Channel  ## Title And Purpose  This handout records the creation of the ArchFlow public project live communication channel for parallel agent work.  ## Human Summary  ArchFlow now has a single public-safe live communication folder at `project/live/communication/`. Agents should use it before and during active work so parallel changes do not contradict each other.  The folder contains the working log, the current notice, a message template, a pattern-change log, and a copy-ready system prompt append. Run-specific handouts remain the durable completion record after substantial work.  ## Current State  Status: complete.  Main artifacts:  - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/live/communication/message-template.md` - `project/live/communication/pattern-change-log.md` - `project/live/communication/system-prompt-append.md`  ## Agent Continuation Prompt  ```text You are continuing ArchFlow public project work. Before editing files, read project/operating-rules.md and project/live/communication/current-agent-notice.md. Then read "
     },
     {
+      "path": "project/runs/2026-07-01-blue-archflow-automate-website/agent-handout.md",
+      "title": "Agent Handout: Blue ArcFlow Automate Website",
+      "text": "# Agent Handout: Blue ArcFlow Automate Website  Date: 2026-07-01 Owner lane: Jesus Status: implemented, integrator-reviewed, and ready for redeploy  ## Objective  Finish the blue/ivory public website implementation while preserving Ronaldo's visual interaction system, `/dashboard`, `/quiz.html`, static-safe public boundaries, and OpenRouter-ready routing discipline.  ## Result  - Root website now presents ArcFlow Automate as a PRD/ICP and governed agent-workflow services site for B2B SaaS product teams. - First viewport uses the teal architectural system map and embedded dark diagnostic panel. - Page includes service-output rail, dark two-lane system diagram, PRD/ICP calculator, process timeline, and gated-boundary section. - Calculator now has PRD/ICP ROI and Knowledgebase readiness modes with product-team inputs and planning-estimate disclaimers. - Quiz submit no longer calls `/api/quiz-submit`; the diagnostic remains static/browser-local and can use an email fallback. - Hover-depth interaction was extended to the new cards, lane surfaces, calculator, and diagnostic panel.  ## FACT  - Browser/frontend code does not call OpenRouter or any provider. - Railway runtime config files w"
+    },
+    {
       "path": "project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md",
       "title": "Agent Handout: Competitor-Backed Dashboard And Website Plan",
       "text": "# Agent Handout: Competitor-Backed Dashboard And Website Plan  ## Purpose  Use this handout to continue the next ArchFlow design/planning or implementation-prep pass without conflicting with active sidecar lanes.  ## Current State  Status: planning brief ready for Ronaldo.  Primary artifacts:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md`  ## Key Decision  Jesus has posted `Status: complete` for the dashboard smoke-test/setup lane. Ronaldo or the next implementer may proceed beyond planning only after appending a fresh starting claim, checking current `git status`, and confirming no newer active lane has claimed the same files.  ## Context To Preserve  Positioning: ArchFlow is a service-led agentic operating-system and automation architecture company. It turns messy product context into source-backed PRDs, reports, tasks, responsibilities, evidence packets, and approval-gated execution.  ICP: product teams in B2B SaaS scaleups, especially Series B-D, roughly 50-500 employees, 2-5 PMs, and a Director or VP Product accountable for PRD quality, discovery-to-delivery speed, and cross-functional "
@@ -2344,6 +2394,11 @@
       "path": "project/runs/2026-07-01-dashboard-two-layer-schema/run-summary.md",
       "title": "Run Summary: Two-Layer Dashboard Schema Control Panel",
       "text": "# Run Summary: Two-Layer Dashboard Schema Control Panel  Date: 2026-07-01 Status: implemented, architecture reviewer approved  ## Task  Make the dashboard comprehensible and operable for two separate jobs:  1. `(1) PRD/ICP Flow`: the externally showable service-product path from source context to PRD, evidence, ICP, demo package, and approved output. 2. `(2) Agent Orchestra`: the local reliable development/control system for Codex, LangGraph-style routing, WikiLLM, Graphify, safety review, run logs, approvals, and gated provider/backend actions.  ## Answer First  The dashboard now has two separate block-schema screens, draggable/clickable nodes, and a large n8n-style node control panel covering inputs, outputs, connections, dropdown configuration, run history, prompts, comments, safety fields, and business-fit fields. It remains a static browser-local review surface: no provider calls, secrets, raw transcripts, deployment, or writeback are enabled.  ## Outputs  - Updated `project/dashboard/app.js`. - Updated `project/dashboard/styles.css`. - Updated `project/dashboard/index.html`. - Updated `project/dashboard/README.md`. - Added this run record and the handout beside it.  ## Dashbo"
+    },
+    {
+      "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
+      "title": "Agent Handout: Dev Orchestration Lane",
+      "text": "# Agent Handout: Dev Orchestration Lane  Date: 2026-07-01 Owner lane: Lane 2 Dev Orchestration Status: validation reviewed for redeploy  ## Lane Contract  Lane 2 keeps the agent system operable: workflow health, schema control, review gates, dashboard/runtime correctness, and safe tool integration.  AF role ownership:  - `af_tools/dev`: dashboard and workflow artifact checks. - `af_context/dev`: status synthesis of model routing and deployment boundaries. - `af_review`: no false backend, provider, Railway, or writeback claims. - `af_publisher`: runbook, run notes, and completion evidence.  ## FACT  - `project/workflows/langgraph-controller.yaml`, `project/workflows/crewai-crew.yaml`, and related workflow files validate with the repo-local workflow validator. - Runtime guard reports workflow, LangGraph, LlamaIndex corpus, and CrewAI config as verified. - LangGraph smoke reaches local approved state. External trace upload produced DNS warnings in this environment and should not be treated as runtime/provider proof. - Exact global Python CrewAI config check fails because `crewai` is not installed in global Python. - Repo-local venv CrewAI config check passes without LLM execution. - C"
     },
     {
       "path": "project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md",
@@ -2376,14 +2431,19 @@
       "text": "# Agent Handout: OpenRouter Model Routing  ## Title And Purpose  This handout records the OpenRouter model-routing architecture for future ArchFlow agents.  ## Human Summary  ArchFlow now has a durable model-routing plan for future OpenRouter use. The plan keeps OpenRouter disabled today and treats cloud execution as approval-gated, server-side work only.  The new architecture uses the strongest Claude, Gemini, and OpenAI models as a frontier council for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts. Cheaper models such as Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, MiniMax, Mercury, Grok, and Gemma are assigned to bounded execution work that must be checked before publication or memory promotion.  ## Current State  Status: complete after validation.  Main artifacts:  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `wiki/runs/2026-07-01-openrouter-model-routing.md` - `wiki/memory.md` - `wiki/insights.md` - `wiki/log.md`  OpenRouter runtime state: disabled.  ## Agent Continuation Prompt  ```text You are continuing ArchFlow model-routing work. Read project/config/model-rou"
     },
     {
+      "path": "project/runs/2026-07-01-prd-icp-lane/agent-handout.md",
+      "title": "Agent Handout: PRD/ICP Lane",
+      "text": "# Agent Handout: PRD/ICP Lane  Date: 2026-07-01 Owner lane: Lane 1 PRD/ICP Status: website implementation reviewed for redeploy  ## Lane Contract  Lane 1 turns inputs, knowledge, and market signals into a PRD, responsibility matrix, knowledgebase packet, and reviewed outputs.  AF role ownership:  - `af_tools`: corpus, inventory, and source-boundary checks. - `af_context`: extraction and interpretation with schema discipline. - `af_manager`: PRD, task matrix, and responsibility outputs. - `af_research`: ICP and account evidence synthesis. - `af_review`: safety, claim, evidence, and scope gate. - `af_knowledge`: KB packet generation only after approved outputs. - `af_publisher`: review packet and handout only.  ## FACT  - The public website now presents Lane 1 as source inventory, PRD/ICP packet, task matrix, and agent gate map. - The PRD/ICP calculator uses product-team inputs: people involved, weekly PRD/research/task hours, hourly cost, rework/context-loss share, recoverable share, setup/support estimate, source centralization, and approval maturity. - Calculator output is explicitly a planning estimate and not guaranteed ROI. - The diagnostic remains static-safe and does not subm"
+    },
+    {
       "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
       "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
-      "text": "# Agent Handout: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Owner lane: Ronaldo Status: deployed, Figma-synced, Notion-updated, pending final Git/source alignment review  ## Current State  The public ArchFlow Automate site now serves a minimal PRD/ICP services landing at:  - `https://<protected-preview-host>`  The diagnostic route is:  - `https://<protected-preview-host>`  Vercel clean URLs redirect `/quiz.html` to `/quiz`.  ## Positioning  ArchFlow is presented as a service-led operating layer for B2B SaaS product teams with scattered product context.  The offer is:  - source inventory; - source-backed PRD packet; - ICP evidence review; - acceptance criteria and task handoff; - approval-gated agent operating layer.  The site does not present ArchFlow as a full roadmap platform, feedback repository, enterprise search tool, or generic PRD generator replacement.  ## Page Structure  Homepage blocks:  1. Hero: PRDs from your project knowledgebase. 2. System: three service outputs. 3. Proof/trust: E1-E7 delivery spine and public boundaries.  Subpage:  - Diagnostic flow for first-package recommendation, knowledgebase readiness, agent readiness, planning estimate, approval "
+      "text": "# Agent Handout: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Owner lane: Ronaldo Status: deployed, Figma-synced, Notion-updated, source-aligned in public worktree  ## Current State  The public ArchFlow Automate site now serves a minimal PRD/ICP services landing at:  - `https://<protected-preview-host>`  The diagnostic route is:  - `https://<protected-preview-host>`  Vercel clean URLs redirect `/quiz.html` to `/quiz`.  The operator dashboard is live at:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is presented as a service-led operating layer for B2B SaaS product teams with scattered product context.  The offer is:  - source inventory; - source-backed PRD packet; - ICP evidence review; - acceptance criteria and task handoff; - approval-gated agent operating layer.  The site does not present ArchFlow as a full roadmap platform, feedback repository, enterprise search tool, or generic PRD generator replacement.  ## Page Structure  Homepage blocks:  1. Hero: PRDs from your project knowledgebase. 2. System: three service outputs. 3. Proof/trust: E1-E7 delivery spine and public boundaries.  Subpage:  - Diagnostic flow for first-package recommendation, know"
     },
     {
       "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
       "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
-      "text": "# Run Summary: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Status: deployed and synced; Git/source alignment remains a review gate  ## Task  Replace the old ArchFlow Automate public landing with a concise service-led website for PRD/ICP discovery, knowledgebase-driven PRD automation, task handoff, and approval-gated agent operating layers.  ## Inputs  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - `project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md` - Market researcher agent Nietzsche, 2026-07-01 - Live communication log through the Ronaldo minimal landing redesign lane  ## Output  Public URL:  - `https://<protected-preview-host>`  Production route behavior:  - `/` serves the minimal three-block PRD/ICP landing. - `/quiz` serves the diagnostic route. - `/quiz.html` redirects to `/quiz` through Vercel clean URLs.  The landing now has only three public blocks:  1. Hero: PRDs from the project knowledgebase. 2. System: three tangible service outputs. 3. Proof/trust: E"
+      "text": "# Run Summary: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Status: deployed, synced, and source-aligned in the public worktree  ## Task  Replace the old ArchFlow Automate public landing with a concise service-led website for PRD/ICP discovery, knowledgebase-driven PRD automation, task handoff, and approval-gated agent operating layers.  ## Inputs  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - `project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md` - Market researcher agent Nietzsche, 2026-07-01 - Live communication log through the Ronaldo minimal landing redesign lane  ## Output  Public URL:  - `https://<protected-preview-host>`  Production route behavior:  - `/` serves the minimal three-block PRD/ICP landing. - `/quiz` serves the diagnostic route. - `/quiz.html` redirects to `/quiz` through Vercel clean URLs. - `/dashboard` serves the static operator dashboard.  The landing now has only three public blocks:  1. Hero: PRDs from the project knowledgebase. 2. System: "
     },
     {
       "path": "project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md",
@@ -2801,6 +2861,11 @@
       "text": "# 2026-07-01 Agent Communication Channel  ## Task  Create a live communication folder for ArchFlow public project agents and provide a system prompt append for the new coordination pattern.  ## Result  - Added `project/live/communication/` as the shared public-safe channel for active parallel agent dialogue. - Added the current notice, message template, pattern-change log, and copy-ready system prompt append. - Updated `project/operating-rules.md`, `project/agents/README.md`, and `project/agents/agent-roster.yaml` so future agents route to the live communication channel before work. - Recorded this handout under `project/runs/2026-07-01-agent-communication-channel/`.  ## Follow-Up  Future agents should append starting, running, blocked, handoff, and complete updates to `project/live/communication/agent-communication-log.md` and keep substantial completion records under `project/runs/`."
     },
     {
+      "path": "wiki/runs/2026-07-01-blue-archflow-automate-website.md",
+      "title": "2026-07-01 Blue ArcFlow Automate Website",
+      "text": "# 2026-07-01 Blue ArcFlow Automate Website  ## Result  Jesus updated the public ArcFlow Automate website toward the blue/ivory owner-approved direction while preserving Ronaldo's arch assets, hover-depth interaction, `/dashboard`, and `/quiz.html`.  ## FACT  - Root site now has a light editorial hero, teal arch system visual, embedded dark diagnostic panel, service-output rail, dark two-lane diagram, PRD/ICP calculator, and process timeline. - Calculator has PRD/ICP ROI and Knowledgebase readiness modes. - Quiz is static-safe and no longer posts to `/api/quiz-submit`. - Dashboard data was regenerated. - OpenRouter, Railway, provider-backed Jarvis, durable writeback, live voice, live Nexus, and Notion writeback remain gated.  ## INTERPRETATION  The page now better matches the ArchFlow automation-services direction: source-backed PRDs, ICP evidence, task handoff, and approval-gated agent workflows for product teams.  ## HYPOTHESIS  The PRD/ICP calculator should make the offer more concrete without overclaiming because it frames value as a browser-local planning estimate.  ## GAP  - Global Python lacks `crewai`; repo-local venv passes CrewAI config. - Local Python static server does n"
+    },
+    {
       "path": "wiki/runs/2026-07-01-competitor-dashboard-website-plan.md",
       "title": "2026-07-01 Competitor Dashboard And Website Plan",
       "text": "# 2026-07-01 Competitor Dashboard And Website Plan  ## Task  Review competitor positioning and prepare the next ArchFlow planning direction for:  - dashboard improvement; - public services website improvement.  ## Result  Created:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - `project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md`  Ronaldo planning extension:  - `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - issue priority pass appended to `project/issues/2026-07-01-dashboard-website-improvement-issues.md`  ## Executive Answer  ArchFlow should improve the internal dashboard as a two-orchestra operating cockpit and build the public website as a service-led offer for source-backed PRDs, reporting, task definition, and governed agent-management systems.  Jesus has posted `Status: complete` for the dashboard smoke-test/setup lane. Ronaldo or the next implementer may proceed beyond planning only after appending a fresh starting claim, checking current `git status`"
@@ -2853,7 +2918,7 @@
     {
       "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
       "title": "2026-07-01 Public Website PRD/ICP Landing",
-      "text": "# 2026-07-01 Public Website PRD/ICP Landing  ## Result  The public ArchFlow Automate website was redeployed as a minimal PRD/ICP service landing.  Public URL:  - `https://<protected-preview-host>`  Diagnostic route:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is positioned as a service-led operating layer for B2B SaaS product teams that need source-backed PRDs, ICP evidence, acceptance criteria, task handoff, and approval-gated agent workflows from scattered project context.  ## Structure  The homepage has three blocks:  1. Hero. 2. Service system. 3. Proof/trust.  The diagnostic remains a subpage.  ## Research Summary  Competitor review shows that product-work platforms already cover customer-signal capture, AI synthesis, roadmap/product-suite operations, PRD/spec generation, knowledge assistants, and governance.  ArchFlow's safer wedge is not replacing those tools. The wedge is turning existing scattered material into reviewed delivery artifacts and a controlled agent-ready operating layer.  ## Verification  - JS syntax checks passed. - Manifest JSON parsed. - Local route checks passed. - Desktop/mobile Playwright checks passed. - Mobile click-depth behavior w"
+      "text": "# 2026-07-01 Public Website PRD/ICP Landing  ## Result  The public ArchFlow Automate website was redeployed as a minimal PRD/ICP service landing.  Public URL:  - `https://<protected-preview-host>`  Diagnostic route:  - `https://<protected-preview-host>`  Dashboard route:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is positioned as a service-led operating layer for B2B SaaS product teams that need source-backed PRDs, ICP evidence, acceptance criteria, task handoff, and approval-gated agent workflows from scattered project context.  ## Structure  The homepage has three blocks:  1. Hero. 2. Service system. 3. Readiness/proof.  The diagnostic remains a subpage. The homepage now includes a browser-local PRD/ICP ROI and knowledgebase-readiness calculator.  ## Research Summary  Competitor review shows that product-work platforms already cover customer-signal capture, AI synthesis, roadmap/product-suite operations, PRD/spec generation, knowledge assistants, and governance.  ArchFlow's safer wedge is not replacing those tools. The wedge is turning existing scattered material into reviewed delivery artifacts and a controlled agent-ready operating layer.  ## Verification  "
     },
     {
       "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",

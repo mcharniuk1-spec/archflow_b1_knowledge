@@ -4,12 +4,18 @@ if (new URLSearchParams(window.location.search).has("figma")) {
   document.documentElement.dataset.captureMode = "full";
 }
 
-const packageRecommendations = [
-  "Recommended first package: PRD rescue and evidence map.",
-  "Recommended first package: ICP evidence review and positioning brief.",
-  "Recommended first package: knowledgebase readiness and task matrix.",
-  "Recommended first package: governed agent-orchestra setup plan."
-];
+const euro = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "EUR",
+  maximumFractionDigits: 0
+});
+
+const packageRecommendations = {
+  prd: "Recommended first package: source-backed PRD and task matrix.",
+  icp: "Recommended first package: ICP evidence review and buyer logic brief.",
+  kb: "Recommended first package: knowledgebase readiness and source-boundary cleanup.",
+  agent: "Recommended first package: governed agent-orchestra setup plan."
+};
 
 function setupHeader() {
   const header = document.querySelector("[data-site-header]");
@@ -56,26 +62,71 @@ function setupMapMotion() {
 function setupMiniCalculator() {
   const form = document.querySelector("[data-mini-calc]");
   const output = document.querySelector("[data-calc-output]");
-  const score = document.querySelector("[data-calc-score]");
-  if (!form || !output || !score) return;
+  const modeLabel = document.querySelector("[data-calc-mode-label]");
+  const monthly = document.querySelector("[data-calc-monthly]");
+  const yearly = document.querySelector("[data-calc-yearly]");
+  const payback = document.querySelector("[data-calc-payback]");
+  const readinessOutput = document.querySelector("[data-calc-readiness]");
+  if (!form || !output || !modeLabel || !monthly || !yearly || !payback || !readinessOutput) return;
+
+  const rangeOutputs = {
+    productPeople: (value) => `${value} people`,
+    weeklyHours: (value) => `${value} hours`,
+    hourlyCost: (value) => euro.format(value),
+    wasteShare: (value) => `${value}%`,
+    recoverableShare: (value) => `${value}%`,
+    setupCost: (value) => euro.format(value),
+    sourceCentralization: (value) => `${value} / 10`,
+    approvalMaturity: (value) => `${value} / 10`
+  };
 
   function update() {
     const formData = new FormData(form);
-    const sources = Number(formData.get("sources") || 3);
-    const decisions = Number(formData.get("decisions") || 2);
-    const pressure = Number(formData.get("pressure") || 4);
-    const sourceReadiness = sources * 14;
-    const decisionReadiness = decisions * 13;
-    const pressurePenalty = (6 - pressure) * 4;
-    const readiness = clamp(Math.round(sourceReadiness + decisionReadiness + pressurePenalty), 18, 96);
-    const knowledgeGap = 6 - Math.round((sources + decisions) / 2);
-    const index = clamp(Math.round((knowledgeGap + pressure - 2) / 2), 0, packageRecommendations.length - 1);
+    const mode = String(formData.get("mode") || "roi");
+    const productPeople = Number(formData.get("productPeople") || 7);
+    const weeklyHours = Number(formData.get("weeklyHours") || 48);
+    const hourlyCost = Number(formData.get("hourlyCost") || 95);
+    const wasteShare = Number(formData.get("wasteShare") || 28);
+    const recoverableShare = Number(formData.get("recoverableShare") || 35);
+    const setupCost = Number(formData.get("setupCost") || 15000);
+    const sourceCentralization = Number(formData.get("sourceCentralization") || 5);
+    const approvalMaturity = Number(formData.get("approvalMaturity") || 6);
 
-    score.textContent = `Readiness index: ${readiness} / 100`;
-    output.value = packageRecommendations[index];
+    Object.entries(rangeOutputs).forEach(([name, formatter]) => {
+      const field = form.elements[name];
+      const target = form.querySelector(`[data-range-output="${name}"]`);
+      if (field && target) target.textContent = formatter(Number(field.value));
+    });
+
+    const monthlyLost = weeklyHours * 4.33 * hourlyCost * (wasteShare / 100);
+    const monthlyRecovered = monthlyLost * (recoverableShare / 100);
+    const yearlyRecovered = monthlyRecovered * 12;
+    const paybackMonths = monthlyRecovered > 0 ? setupCost / monthlyRecovered : 0;
+    const scalePenalty = productPeople > 14 ? 4 : productPeople > 8 ? 1 : 0;
+    const kbReadiness = clamp(
+      Math.round(sourceCentralization * 4.2 + approvalMaturity * 3.4 + (100 - wasteShare) * 0.16 + recoverableShare * 0.12 - scalePenalty),
+      18,
+      96
+    );
+
+    let packageKey = "prd";
+    if (sourceCentralization <= 4 || kbReadiness < 50) packageKey = "kb";
+    else if (approvalMaturity <= 4 || productPeople >= 14) packageKey = "agent";
+    else if (wasteShare < 22 && recoverableShare < 28) packageKey = "icp";
+
+    monthly.textContent = euro.format(monthlyRecovered);
+    yearly.textContent = euro.format(yearlyRecovered);
+    payback.textContent = paybackMonths > 0 ? `${Math.max(1, Math.round(paybackMonths))} mo` : "Needs scoping";
+    readinessOutput.textContent = `${kbReadiness} / 100`;
+    modeLabel.textContent = mode === "readiness" ? "Knowledgebase readiness estimate" : "PRD/ICP ROI planning estimate";
+    output.value =
+      mode === "readiness"
+        ? `${packageRecommendations[packageKey]} KB readiness is ${kbReadiness}/100; raise source centralization and approval maturity before provider-backed automation.`
+        : `${packageRecommendations[packageKey]} Estimated recoverable product-work value is ${euro.format(monthlyRecovered)} per month before implementation proof.`;
   }
 
   form.addEventListener("input", update);
+  form.addEventListener("change", update);
   update();
 }
 

@@ -74,8 +74,9 @@ Primary ICP remains B2B SaaS scaleups, roughly 50-500 employees, 2-5 PMs, and a 
 
 - Reduced the homepage from a long showcase to a three-block page.
 - Kept one primary layered arch visual and one dark flow panel.
-- Removed the homepage calculator to reduce cognitive load.
+- Integrated a compact PRD/ICP ROI and knowledgebase-readiness calculator after Jesus follow-up review.
 - Preserved the diagnostic as a separate subpage.
+- Changed the quiz save action to browser-local messaging with email fallback; no frontend backend submission is claimed.
 - Added mobile touch/click depth: buttons lean toward the tap point and settle back.
 - Preserved desktop hover-depth for fine pointers.
 
@@ -109,14 +110,21 @@ Primary ICP remains B2B SaaS scaleups, roughly 50-500 employees, 2-5 PMs, and a 
 - Final public-source deployment completed from the public Git worktree.
 - Vercel SSO protection was disabled for the public project so the live alias is publicly reachable.
 - Final live route checks passed: `/`, `/quiz?step=4`, `/quiz.html`, `/dashboard`, and `/project/dashboard/data.json`.
+- Jesus follow-up review passed: no root/quiz `/api` or `fetch()` calls, Chrome screenshots captured, homepage mobile overflow `0`, quiz step 4 mobile overflow `0`, and dashboard static smoke remained `routes=8 provider_calls=0 writeback=0`.
 
 ## Notion
 
-Notion task updated:
+Notion tasks updated:
 
-- `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout`
+- `JDB-10`: Done for accepted static dashboard/Jarvis scope.
+- `E3.3.1`: Done for public PRD/ICP landing, diagnostic, dashboard route, Figma sync record, and deployed source alignment.
+- `E3.3.1A`: Done for source/deploy alignment resolution.
+- `E3.3.1B`: Done for deploy/Figma/Notion/Git closeout.
+- `JDB-7`, `E1.3.9`, and `E1.3.10`: kept in Review with updated evidence because branch promotion and provider/backend/security gates remain future decisions.
 
-The Notion task records the public URL, diagnostic route, changed files, checks, Figma nodes, and guardrails. It can move to Done after the final Git commit/push records the source alignment.
+Final Git source proof: commit `3cdefba` was pushed to `origin/review-jarvis-agentbrowser-blockschema-20260630`.
+
+Coordination note: a later Jesus starting entry produced root website changes. Messi reviewed and accepted those changes for redeploy because they preserve the static/browser-local boundary and passed verification.
 
 ## Guardrails
 

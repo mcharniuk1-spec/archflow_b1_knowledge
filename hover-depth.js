@@ -7,6 +7,11 @@
     "a:not(.skip-link)",
     "button:not(:disabled)",
     ".system-grid article",
+    ".output-card",
+    ".lane-card",
+    ".calc-metrics article",
+    ".mini-calc",
+    ".diagnostic-panel",
     ".choice-field label"
   ].join(",");
 
@@ -25,9 +30,10 @@
 
   function setDepthVars(element, metrics, force = 1) {
     if (!metrics) return;
-    const tilt = element.matches(".system-grid article") ? 7 : 5.4;
-    const shift = element.matches(".system-grid article") ? 3 : 2;
-    const lift = element.matches(".system-grid article") ? 10 : 7;
+    const isLargeSurface = element.matches(".system-grid article, .output-card, .lane-card, .mini-calc, .diagnostic-panel");
+    const tilt = isLargeSurface ? 7 : 5.4;
+    const shift = isLargeSurface ? 3 : 2;
+    const lift = isLargeSurface ? 10 : 7;
     element.style.setProperty("--depth-rot-x", `${(-metrics.y * tilt * force).toFixed(3)}deg`);
     element.style.setProperty("--depth-rot-y", `${(metrics.x * tilt * force).toFixed(3)}deg`);
     element.style.setProperty("--depth-shift-x", `${(metrics.x * shift * force).toFixed(3)}px`);

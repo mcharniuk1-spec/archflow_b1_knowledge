@@ -98,6 +98,9 @@ Provider/backend/runtime work remains out of scope:
 - Deployed homepage and diagnostic DOM verified with headless Chrome.
 - Final public-source deployment verified `/`, `/quiz?step=4`, `/quiz.html`, `/dashboard`, and dashboard data route.
 - Vercel SSO protection was disabled for the public project so the live alias is publicly reachable.
+- Jesus follow-up review: homepage calculator expanded into PRD/ICP ROI and KB-readiness modes.
+- Jesus follow-up review: quiz save action is browser-local and root/quiz scripts contain no `/api` or `fetch()` calls.
+- Chrome layout measurement: homepage mobile overflow `0`; quiz step 4 mobile overflow `0`.
 
 ## Figma
 
@@ -114,11 +117,15 @@ Capture nodes:
 
 ## Notion
 
-Updated task:
+Updated tasks:
 
-- `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout`
+- `JDB-10`: Done for accepted static dashboard/Jarvis scope.
+- `E3.3.1`: Done for public PRD/ICP landing, diagnostic, dashboard route, Figma sync record, and deployed source alignment.
+- `E3.3.1A`: Done for source/deploy alignment resolution.
+- `E3.3.1B`: Done for deploy/Figma/Notion/Git closeout.
+- `JDB-7`, `E1.3.9`, and `E1.3.10`: kept in Review with updated evidence because branch promotion and provider/backend/security gates remain future decisions.
 
-Status can move to Done after the final Git commit/push records the aligned public source.
+Final Git source proof: commit `3cdefba` was pushed to `origin/review-jarvis-agentbrowser-blockschema-20260630`.
 
 ## Guardrails
 
@@ -132,4 +139,4 @@ Status can move to Done after the final Git commit/push records the aligned publ
 
 ## Next Safe Action
 
-Messi should commit/push the aligned public source and update Notion. LOL/Jesus can continue future dashboard/runtime work without touching the completed public website deployment unless a new owner instruction opens that scope.
+Redeploy the accepted Jesus calculator/local-save enhancement from the public worktree, then update Notion with the new final commit. Future backend/provider/writeback work remains a separate gated lane.

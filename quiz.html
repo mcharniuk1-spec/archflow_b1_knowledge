@@ -14,10 +14,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650;6..72,750&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260701-minimal" />
+    <link rel="stylesheet" href="styles.css?v=20260701-blue" />
   </head>
   <body class="quiz-page">
     <a class="skip-link" href="#quiz-main">Skip to diagnostic</a>
@@ -30,7 +30,7 @@
           <small>Workflow diagnostic</small>
         </span>
       </a>
-      <a class="header-cta" href="index.html#services">View services</a>
+      <a class="header-cta" href="/#outputs">View outputs</a>
     </header>
 
     <main class="quiz-shell" id="quiz-main">
@@ -260,7 +260,7 @@
             <div class="contact-capture">
               <h3>Optional follow-up</h3>
               <p>
-                Save this assessment for ArchFlow review. If the backend is not configured, use the email fallback.
+                Save this assessment in this browser, then use the email fallback if you want to send it for review.
               </p>
               <label class="text-field hp-field" aria-hidden="true">
                 <span>Website</span>
@@ -282,13 +282,13 @@
               </div>
               <label class="consent-row">
                 <input type="checkbox" name="consent" />
-                <span>I agree that ArchFlow may use this assessment to prepare a follow-up recommendation.</span>
+                <span>If I email this assessment, ArchFlow may use it to prepare a follow-up recommendation.</span>
               </label>
               <div class="submit-actions">
-                <button class="btn primary full" type="button" data-submit-assessment>
-                  Save assessment to ArchFlow
+                <button class="btn btn-primary full" type="button" data-submit-assessment>
+                  Save locally
                 </button>
-                <a class="btn secondary full" data-mailto-link href="mailto:hello@archflow.ai?subject=ArchFlow%20PRD%20ICP%20diagnostic">
+                <a class="btn btn-secondary full" data-mailto-link href="mailto:hello@archflow.ai?subject=ArchFlow%20PRD%20ICP%20diagnostic">
                   Email fallback
                 </a>
               </div>
@@ -299,14 +299,14 @@
           <p class="form-error" data-form-error role="alert" aria-live="polite"></p>
 
           <div class="quiz-actions">
-            <button class="btn secondary" type="button" data-prev-step>Back</button>
-            <button class="btn primary" type="button" data-next-step>Next</button>
+            <button class="btn btn-secondary" type="button" data-prev-step>Back</button>
+            <button class="btn btn-primary" type="button" data-next-step>Next</button>
           </div>
         </form>
       </section>
     </main>
 
-    <script src="quiz.js?v=20260701-minimal" defer></script>
+    <script src="quiz.js?v=20260701-blue" defer></script>
     <script src="hover-depth.js?v=20260701-mobilepress" defer></script>
   </body>
 </html>

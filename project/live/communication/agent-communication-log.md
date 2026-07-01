@@ -416,7 +416,7 @@ Agents notified:
 - Jesus
 - messi
 - LOL
-- Ющенко
+- Yushchenko
 
 Action requested: acknowledge this guidance before touching any OpenRouter-related task and wait for Codex to own the active validation run.
 
@@ -2547,3 +2547,94 @@ FACT: Dashboard static smoke passed before deployment: `dashboard_static_smoke=o
 INTERPRETATION: The website and dashboard are now deployed from one public source. Remaining closeout is Git commit/push and final Notion task-state update.
 
 Next: update durable run notes, commit/push the reconciled source, then update Notion task statuses.
+
+## 2026-07-01 15:02 - Codex Jesus - updated orchestration split after owner correction
+
+Status: starting
+
+Task: Continue the blue/ivory ArcFlow Automate implementation while explicitly preserving Ronaldo's delivered visual system and separating Jesus/Messi responsibilities for reliable closeout.
+
+Files likely to change by Jesus:
+
+- `index.html`
+- `styles.css`
+- `main.js`
+- `quiz.html`
+- `quiz.js`
+- `project/reports/2026-07-01-blue-archflow-automate-website-review.md`
+- `project/runs/2026-07-01-blue-archflow-automate-website/agent-handout.md`
+- `project/runs/2026-07-01-prd-icp-lane/agent-handout.md`
+- `project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md`
+- `wiki/runs/2026-07-01-blue-archflow-automate-website.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed by Jesus: root website implementation, quiz static-safety behavior, PRD-oriented calculator clarity, and the lane handout/report artifacts listed above.
+
+Requested Messi split: Messi should own final validation coordination, open starting/in-progress state reconciliation, workflow evidence review, commit/push readiness, and deploy/Figma/Notion closeout only after Jesus posts complete or handoff for the website lane. Messi should not edit root website implementation files while this entry is active.
+
+FACT: Ronaldo's planning and source-sync work delivered public website assets, `hover-depth.js`, arch visuals, manifest icons, and design guidance around layered 3D/stroke arch elements, dark command panels, calculator-first proof interaction, and hover-depth motion.
+
+FACT: The current owner correction requires the website to use that Ronaldo/legacy visual direction, not a generic minimal page, while keeping public claims gated.
+
+FACT: OpenRouter execution is disabled until an approved backend bridge exists; no browser/frontend cloud model calls are allowed.
+
+INTERPRETATION: Jesus should finish the public root site as the strong blue/ivory PRD/ICP automation-services page; Messi should then run the broader workflow/lane validation and close open coordination states before any merge-ready claim.
+
+HYPOTHESIS: Keeping Jesus on root UI/quiz and Messi on validation/Git closeout reduces file conflicts while preserving the two-lane LangGraph/CrewAI operating model.
+
+GAP: Fresh validation is still required for CrewAI config, Chrome dashboard smoke, LangGraph/CrewAI workflow checks, route smoke, visual QA, and public-safety status before commit/push.
+
+Next: inspect Ronaldo planning artifacts, finish the website/calculator/static diagnostic changes, then hand off to Messi-style validation evidence with exact pass/fail results.
+
+## 2026-07-01 15:12 - Messi - Notion and Git closeout complete
+
+Status: complete
+
+Task: Finish the public deployment/source/Notion/Git closeout without editing root website implementation files after the later Jesus starting claim.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`;
+- `project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md`;
+- `project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md`;
+- `wiki/runs/2026-07-01-public-website-prd-icp-landing.md`.
+
+FACT: Git source alignment was already pushed in commit `3cdefba` on `origin/review-jarvis-agentbrowser-blockschema-20260630`.
+
+FACT: Production alias route checks passed for `/`, `/quiz?step=4`, and `/dashboard` with HTTP 200.
+
+FACT: Notion closeout-specific tasks were updated: `JDB-10`, `E3.3.1`, `E3.3.1A`, and `E3.3.1B` are Done.
+
+FACT: Notion umbrella/security rows `JDB-7`, `E1.3.9`, and `E1.3.10` were kept in Review with updated evidence because branch promotion and provider/backend/security gates remain future decisions.
+
+INTERPRETATION: The static public website/dashboard lane is complete. The later Jesus website-start entry should be treated as a separate future implementation lane, not as a blocker to this closeout.
+
+Next: review the later Jesus implementation diff before any commit that includes root website files.
+
+## 2026-07-01 15:24 - Messi - Jesus website diff reviewed and accepted for redeploy
+
+Status: complete
+
+Task: Review the later Jesus root website changes and decide whether to integrate them into the final deployed lane.
+
+Files reviewed:
+
+- `index.html`;
+- `styles.css`;
+- `main.js`;
+- `hover-depth.js`;
+- `quiz.html`;
+- `quiz.js`;
+- `project/dashboard/data.json`.
+
+FACT: Jesus expanded the homepage calculator into PRD/ICP ROI and knowledgebase-readiness modes.
+
+FACT: Jesus changed the quiz save action to local-only messaging and removed the frontend `/api/quiz-submit` call path.
+
+FACT: Root website scripts contain no `/api` or `fetch()` calls after the change.
+
+FACT: Verification passed: JS syntax checks, manifest parse, public safety scan, `git diff --check`, dashboard static smoke with `routes=8 provider_calls=0 writeback=0`, local route HEAD checks, Chrome desktop/mobile screenshots, homepage mobile overflow `0`, and quiz step 4 mobile overflow `0`.
+
+INTERPRETATION: The Jesus diff strengthens the public calculator while preserving current runtime boundaries. It is accepted for final commit, redeploy, Notion refresh, and Git push.
+
+Next: regenerate dashboard data after final docs updates, commit, push, redeploy, and update Notion with the new final commit.
