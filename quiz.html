@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ArchFlow Diagnostic</title>
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="diagnostic-page">
+    <header class="site-header compact">
+      <a class="brand" href="/" aria-label="ArchFlow home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>ArchFlow</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+      </nav>
+      <a class="header-action" href="/">Back To Site</a>
+    </header>
+
+    <main class="diagnostic-shell">
+      <section class="diagnostic-hero" aria-labelledby="diagnosticTitle">
+        <h1 id="diagnosticTitle">PRD/ICP<wbr> Readiness Diagnostic</h1>
+        <p>
+          Answer five short questions. The result estimates the safest first ArchFlow package
+          and names the evidence gaps to resolve before automation or public claims.
+        </p>
+      </section>
+
+      <section class="diagnostic-panel" aria-live="polite">
+        <div class="progress-line">
+          <span id="stepLabel">Step 1 of 5</span>
+          <div class="progress-track"><span id="progressFill"></span></div>
+        </div>
+
+        <form id="diagnosticForm">
+          <fieldset class="diagnostic-step is-active" data-step="1">
+            <legend>Where is product context scattered today?</legend>
+            <label><input type="checkbox" name="sources" value="calls" /> Customer and stakeholder calls</label>
+            <label><input type="checkbox" name="sources" value="tickets" /> Tickets, specs, and backlog notes</label>
+            <label><input type="checkbox" name="sources" value="research" /> Research, competitor notes, and market signals</label>
+            <label><input type="checkbox" name="sources" value="decisions" /> Decision logs and leadership chat</label>
+          </fieldset>
+
+          <fieldset class="diagnostic-step" data-step="2">
+            <legend>What breaks most often before delivery?</legend>
+            <label><input type="radio" name="breakage" value="prd" checked /> PRDs are vague or incomplete</label>
+            <label><input type="radio" name="breakage" value="icp" /> ICP and buyer evidence are weak</label>
+            <label><input type="radio" name="breakage" value="handoff" /> Engineering handoff loses context</label>
+            <label><input type="radio" name="breakage" value="memory" /> Knowledge is not reusable after the project</label>
+          </fieldset>
+
+          <fieldset class="diagnostic-step" data-step="3">
+            <legend>How reliable is the current knowledgebase?</legend>
+            <label>Source labels <input type="range" name="sourceLabels" min="1" max="5" value="2" /></label>
+            <label>Decision trace <input type="range" name="decisionTrace" min="1" max="5" value="2" /></label>
+            <label>Task readiness <input type="range" name="taskReadiness" min="1" max="5" value="3" /></label>
+          </fieldset>
+
+          <fieldset class="diagnostic-step" data-step="4">
+            <legend>What should agents be allowed to do first?</legend>
+            <label><input type="radio" name="agentScope" value="draft" checked /> Draft and organize only</label>
+            <label><input type="radio" name="agentScope" value="review" /> Draft plus review-gate support</label>
+            <label><input type="radio" name="agentScope" value="writeback" /> Writeback after approval</label>
+            <label><input type="radio" name="agentScope" value="provider" /> Provider-backed orchestration</label>
+          </fieldset>
+
+          <fieldset class="diagnostic-step" data-step="5">
+            <legend>Which outcome matters most in the next 30 days?</legend>
+            <label><input type="radio" name="outcome" value="prd" checked /> A production-ready PRD</label>
+            <label><input type="radio" name="outcome" value="icp" /> A sharper ICP and evidence base</label>
+            <label><input type="radio" name="outcome" value="system" /> A reusable knowledgebase and agent-control system</label>
+            <label><input type="radio" name="outcome" value="team" /> Clear task ownership and delivery sequence</label>
+          </fieldset>
+
+          <div class="diagnostic-actions">
+            <button class="button button-ghost dark" type="button" id="prevStep">Back</button>
+            <button class="button button-primary" type="button" id="nextStep">Next</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="diagnostic-result" id="diagnosticResult" hidden>
+        <div>
+          <span class="result-label">Recommended first package</span>
+          <h2 id="resultTitle">PRD rescue and evidence map</h2>
+          <p id="resultCopy">
+            Start by turning scattered context into a source-backed PRD and evidence map before
+            adding provider-backed automation.
+          </p>
+        </div>
+        <div class="result-stack" id="resultStack"></div>
+      </section>
+    </main>
+
+    <script src="/quiz.js" defer></script>
+  </body>
+</html>

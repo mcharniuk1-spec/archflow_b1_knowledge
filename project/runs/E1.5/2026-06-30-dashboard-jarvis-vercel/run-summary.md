@@ -52,13 +52,13 @@ HYPOTHESIS: The Jarvis shell plus content templates gives enough structure to st
 
 Preview route for review:
 
-- `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`
+- protected Vercel preview dashboard route, masked in this public artifact
 
 Access state:
 
 - Unauthenticated requests currently redirect to Vercel SSO, including `/`, `/dashboard`, `/project/dashboard/`, and `/project/dashboard/data.json`.
 - Dashboard HTML was verified through the Vercel protected-deployment access flow.
-- A first Vercel CLI deploy was run without `--prod` but was still recorded by Vercel as target `production`; the explicit preview deployment above was then created with `--target preview` and is the canonical review target.
+- A first Vercel CLI deploy was run without `--prod` but was still recorded by Vercel as target `production`; the later explicit preview deployment was then created with `--target preview` and is the canonical review target.
 - Do not treat the production-target deployment as the approved hosted dashboard. Keep future deploy commands explicit with `--target preview` until owner approval for production.
 
 ## Content Agent Output

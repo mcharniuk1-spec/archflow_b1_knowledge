@@ -74,7 +74,7 @@ Railway:
 
 FACT:
 
-- `OPENROUTER_API_KEY` and `MISTRAL_API_KEY` are now stored only in ignored local env storage.
+- `OPENROUTER_API_KEY` and `MISTRAL_API_KEY` are now stored only in ignored local env storage outside public Git.
 - The Markdown secret source was deleted.
 - The local OpenAI key file created on June 30 was deleted.
 - Ignored env files were set to owner-only permissions.

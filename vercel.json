@@ -1,11 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/",
+      "source": "/dashboard",
       "destination": "/project/dashboard/index.html"
     },
     {
-      "source": "/dashboard",
+      "source": "/dashboard/",
       "destination": "/project/dashboard/index.html"
     }
   ],

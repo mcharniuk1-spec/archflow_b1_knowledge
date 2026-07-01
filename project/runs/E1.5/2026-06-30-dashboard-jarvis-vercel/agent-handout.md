@@ -11,7 +11,7 @@ This is not a backend. Durable writes still require Codex or a future Railway/AP
 
 Canonical review route:
 
-- `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`
+- protected Vercel preview dashboard route, masked in this public artifact
 
 Use only the explicit preview deployment for review. An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; keep it out of review and keep future deploy commands explicit with `--target preview`.
 

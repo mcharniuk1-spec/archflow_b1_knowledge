@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T10:14:51.690728+00:00",
+  "generated_at": "2026-07-01T11:04:35.110257+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,12 +25,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "36 files",
+      "value": "41 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "142",
+      "value": "158",
       "tone": "ok"
     },
     {
@@ -397,17 +397,178 @@
   "activity": [
     {
       "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
+      "title": "2026-07-01 Public Website PRD/ICP Landing",
+      "modified": "2026-07-01T11:04:25.095388+00:00",
+      "size": 2104
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-dashboard-operator-ux-optimization.md",
+      "title": "2026-07-01 Dashboard Operator UX Optimization",
+      "modified": "2026-07-01T11:04:20.249680+00:00",
+      "size": 2332
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-operator-ux-optimization/agent-handout.md",
+      "title": "Agent Handout: Dashboard Operator UX Optimization",
+      "modified": "2026-07-01T11:04:13.647863+00:00",
+      "size": 2939
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
+      "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
+      "modified": "2026-07-01T11:04:09.379089+00:00",
+      "size": 3611
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-dashboard-jdb-10-acceptance-audit.md",
+      "title": "Dashboard JDB-10 Acceptance Audit",
+      "modified": "2026-07-01T11:04:04.785314+00:00",
+      "size": 8062
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
+      "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
+      "modified": "2026-07-01T11:03:45.545820+00:00",
+      "size": 5269
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md",
+      "title": "Public Website Market Research And Minimal Copy Brief",
+      "modified": "2026-07-01T11:01:32.474989+00:00",
+      "size": 3813
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
+      "title": "2026-07-01 Messi Task Architecture Review",
+      "modified": "2026-07-01T11:00:46.541522+00:00",
+      "size": 3446
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
+      "title": "Messi Task Architecture Review",
+      "modified": "2026-07-01T11:00:34.793594+00:00",
+      "size": 16098
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Run: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-01T11:00:02.499915+00:00",
+      "size": 1717
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-current-state-e1-e7-vercel-railway-jarvis.md",
+      "title": "Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System",
+      "modified": "2026-07-01T10:58:37.480695+00:00",
+      "size": 13121
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-infra-status-and-next-setup.md",
+      "title": "2026-07-01 Infra Status And Next Setup",
+      "modified": "2026-07-01T10:58:03.511369+00:00",
+      "size": 1027
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md",
+      "title": "Agent Handout: Infra Status And Next Setup",
+      "modified": "2026-07-01T10:58:03.411918+00:00",
+      "size": 1641
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-infra-status-and-next-setup.md",
+      "title": "Infra Status And Next Setup",
+      "modified": "2026-07-01T10:58:03.246050+00:00",
+      "size": 3318
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
+      "title": "Run: June 30 Integrator Review",
+      "modified": "2026-07-01T10:56:40.838779+00:00",
+      "size": 3041
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Decision: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-01T10:56:40.732607+00:00",
+      "size": 2059
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md",
+      "title": "Coordination Stream: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-01T10:56:40.626843+00:00",
+      "size": 2063
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md",
+      "title": "Agent Handout: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-01T10:56:40.519091+00:00",
+      "size": 2567
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md",
+      "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-01T10:56:40.414904+00:00",
+      "size": 6418
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md",
+      "title": "Agent Handout: Messi Task Architecture Review",
+      "modified": "2026-07-01T10:49:02.588399+00:00",
+      "size": 2628
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-lol-agent-coordination-and-kb-brief/agent-handout.md",
+      "title": "Agent Handout: LOL Agent Coordination And Knowledge-Base Brief",
+      "modified": "2026-07-01T10:25:31.141737+00:00",
+      "size": 2386
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md",
+      "title": "2026-07-01 LOL Agent Coordination And Knowledge-Base Brief",
+      "modified": "2026-07-01T10:25:12.956863+00:00",
+      "size": 2958
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-lol-agent-coordination-and-kb-brief.md",
+      "title": "LOL Agent Coordination And Knowledge-Base Brief",
+      "modified": "2026-07-01T10:24:04.459873+00:00",
+      "size": 11189
+    },
+    {
+      "kind": "wiki_run",
       "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
       "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
-      "modified": "2026-07-01T10:14:32.685674+00:00",
-      "size": 3739
+      "modified": "2026-07-01T10:19:12.480422+00:00",
+      "size": 3992
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md",
       "title": "Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
-      "modified": "2026-07-01T10:14:32.581190+00:00",
-      "size": 5916
+      "modified": "2026-07-01T10:19:12.376403+00:00",
+      "size": 6134
     },
     {
       "kind": "wiki_run",
@@ -536,13 +697,6 @@
       "size": 2655
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-current-state-e1-e7-vercel-railway-jarvis.md",
-      "title": "Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System",
-      "modified": "2026-07-01T09:33:14.537113+00:00",
-      "size": 13102
-    },
-    {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
       "title": "Agent Handout: OpenRouter Model Routing",
@@ -627,13 +781,6 @@
       "size": 6110
     },
     {
-      "kind": "project_run",
-      "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
-      "title": "Run: June 30 Integrator Review",
-      "modified": "2026-06-30T13:22:18.278153+00:00",
-      "size": 3044
-    },
-    {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-06-30-evening-skill-hook-audit.md",
       "title": "2026-06-30 Evening Skill And Hook Audit",
@@ -653,41 +800,6 @@
       "title": "2026-06-30 Evening Skill And Hook Audit",
       "modified": "2026-06-30T13:20:31.481762+00:00",
       "size": 2147
-    },
-    {
-      "kind": "wiki_decision",
-      "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
-      "title": "Decision: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-06-30T13:14:22.757419+00:00",
-      "size": 2081
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
-      "title": "Run: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-06-30T13:14:22.649833+00:00",
-      "size": 1739
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md",
-      "title": "Agent Handout: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-06-30T13:14:22.541334+00:00",
-      "size": 2583
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md",
-      "title": "Coordination Stream: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-06-30T13:14:22.343046+00:00",
-      "size": 2079
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md",
-      "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
-      "modified": "2026-06-30T13:14:22.237867+00:00",
-      "size": 6434
     },
     {
       "kind": "project_run",
@@ -1394,7 +1506,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 36,
+    "file_count": 41,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -1547,14 +1659,24 @@
         "excerpt": "# 2026-07-01 Competitor Dashboard And Website Plan  ## Task  Review competitor positioning and prepare the next ArchFlow planning direction for:  - dashboard improvement; - public services website improvement.  ## Result  Created:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - `project/runs/2026-07-01-competitor-dashboard-we"
       },
       {
+        "path": "wiki/runs/2026-07-01-dashboard-operator-ux-optimization.md",
+        "title": "2026-07-01 Dashboard Operator UX Optimization",
+        "excerpt": "# 2026-07-01 Dashboard Operator UX Optimization  Status: complete  ## Summary  LOL optimized the static dashboard for operator comprehension while preserving provider/backend/writeback boundaries and avoiding Ronaldo's root website files.  ## FACT  - The Jarvis screen now exposes an Operating Switchboard. - The Jarvis screen now exposes a Proof And Backlog Drawer. - The Jarvis screen now exposes public-safe sample ou"
+      },
+      {
         "path": "wiki/runs/2026-07-01-dashboard-two-layer-schema.md",
         "title": "Run Note: Two-Layer Dashboard Schema Control Panel",
         "excerpt": "# Run Note: Two-Layer Dashboard Schema Control Panel  ## Task  Make the dashboard operable as two separate block-schema screens:  - `(1) PRD/ICP Flow` for the service-product path. - `(2) Agent Orchestra` for the reliable local control system.  ## Result  - Added explicit `#service` and `#schema` schema screens. - Added large node control panels with inputs, outputs, connection settings, dropdown configuration, run h"
       },
       {
+        "path": "wiki/runs/2026-07-01-infra-status-and-next-setup.md",
+        "title": "2026-07-01 Infra Status And Next Setup",
+        "excerpt": "# 2026-07-01 Infra Status And Next Setup  ## Summary  The current MVP is a local static public site plus preserved internal dashboard route. Vercel is the static host and has prior ready deployments. Railway is not configured. OpenRouter and Mistral remain ignored local env material only, and static browser code must not call providers.  ## FACT  - Public MVP files now exist for `/` and `/quiz.html`. - Dashboard rema"
+      },
+      {
         "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
         "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
-        "excerpt": "# Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending  ## Summary  The missing final June 30 accepted state was transferred into the ArchFlow public knowledge layer. The project now records that the accepted review branch is `d18fc55`, `JDB-8` is Done, `JDB-7` remains Review, and Te"
+        "excerpt": "# Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer, validation, review-branch commit, and review-branch push completed; merge and deploy remain pending  ## Summary  The missing final June 30 accepted state was transferred into the ArchFlow public knowledge layer. The project now records that the accepted review branch is `d18fc55`, `JDB-8` is Done, `JDB-7"
       },
       {
         "path": "wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md",
@@ -1562,14 +1684,29 @@
         "excerpt": "# 2026-07-01 Legacy Design Reference And PRD Calculator  ## Task  Use the latest legacy ArchFlow website as the design reference for the future public PRD/ICP landing page.  ## Result  Created `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md`.  ## Key Finding  The legacy website should be reused for visual mechanics, not category positioning. Its strongest reusable elements are layered "
       },
       {
+        "path": "wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md",
+        "title": "2026-07-01 LOL Agent Coordination And Knowledge-Base Brief",
+        "excerpt": "# 2026-07-01 LOL Agent Coordination And Knowledge-Base Brief  Status: complete  ## Summary  LOL coordinated the active dashboard, public website, and knowledge-base lanes without claiming implementation files.  The work keeps the current split explicit:  - Jesus: dashboard stabilization, operator UX proof, and control-system knowledge updates. - Ronaldo: public ArchFlow PRD/ICP service landing and diagnostic/calculat"
+      },
+      {
         "path": "wiki/runs/2026-07-01-messi-coordination-review.md",
         "title": "2026-07-01 Messi Coordination Review",
         "excerpt": "# 2026-07-01 Messi Coordination Review  ## Task  Coordinate the active July 1 ArchFlow dashboard/model-routing/Notion work as project manager, product owner, and strategic planner.  ## Result  - Verified the current repo branch and dirty worktree state. - Verified live Notion task state for the key dashboard/Jarvis/E1/E2 rows. - Integrated four read-only reviewer passes: repo state, dashboard vision, Notion state, an"
       },
       {
+        "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
+        "title": "2026-07-01 Messi Task Architecture Review",
+        "excerpt": "# 2026-07-01 Messi Task Architecture Review  Status: active PM review  ## Summary  Messi reviewed the current Notion task structure for the Jarvis/dashboard/public website execution and split the work into clearer rows.  ## FACT  - `JDB-8` remains Done for the static/browser-local Jarvis block-schema and voice fallback slice. - `JDB-9` was created for the newer dashboard operator UX optimization review. - `E3.3.1` wa"
+      },
+      {
         "path": "wiki/runs/2026-07-01-openrouter-model-routing.md",
         "title": "2026-07-01 OpenRouter Model Routing",
         "excerpt": "# 2026-07-01 OpenRouter Model Routing  ## Task  Define a strategic and economical OpenRouter model-routing architecture for ArchFlow.  ## Result  - Added `project/reports/2026-07-01-openrouter-model-routing-plan.md`. - Replaced `project/config/model-routing.yaml` with a fuller routing contract. - Kept OpenRouter runtime disabled until explicit approval and an approved local bridge or backend exists. - Defined the fro"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
+        "title": "2026-07-01 Public Website PRD/ICP Landing",
+        "excerpt": "# 2026-07-01 Public Website PRD/ICP Landing  ## Result  The public ArchFlow Automate website was redeployed as a minimal PRD/ICP service landing.  Public URL:  - `https://<protected-preview-host>`  Diagnostic route:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is positioned as a service-led operating layer for B2B SaaS product teams that need source-backed PRDs, ICP evidence, acceptance criteria, t"
       },
       {
         "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
@@ -1871,7 +2008,7 @@
     {
       "path": "project/provider-setup.md",
       "title": "Provider Setup",
-      "text": "# Provider Setup  This project supports four provider concepts:  1. Ollama local model provider. 2. Codex operator authentication. 3. OpenRouter as a future hosted orchestration/model provider. 4. Mistral as a future hosted quality/synthesis provider.  They are not the same thing.  ## Current Verified State  As of 2026-06-25:  - Ollama CLI is installed. - Ollama server is started through the local Homebrew service. - Local Ollama manifests include a Qwythos model: `Qwythos-9B-Claude-Mythos-5-1M-GGUF` with `Q4_K_M` quantization. - Qwythos appears in `ollama list`, but the smoke test failed at model load time with an Ollama 500 error. - Qwythos now loads and generates text through Ollama. - `gemma4:e4b` remains the fallback model. - Codex is available as the operator runtime. - Codex auth should not be treated as an exportable API key. - LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.  As of 2026-07-01:  - The root ignored `.env.local` contains `OPENROUTER_API_KEY` and `MISTRAL_API_KEY`. - The Markdown file that temporarily contained those values was deleted. - The local OpenAI key file creat"
+      "text": "# Provider Setup  This project supports four provider concepts:  1. Ollama local model provider. 2. Codex operator authentication. 3. OpenRouter as a future hosted orchestration/model provider. 4. Mistral as a future hosted quality/synthesis provider.  They are not the same thing.  ## Current Verified State  As of 2026-06-25:  - Ollama CLI is installed. - Ollama server is started through the local Homebrew service. - Local Ollama manifests include a Qwythos model: `Qwythos-9B-Claude-Mythos-5-1M-GGUF` with `Q4_K_M` quantization. - Qwythos appears in `ollama list`, but the smoke test failed at model load time with an Ollama 500 error. - Qwythos now loads and generates text through Ollama. - `gemma4:e4b` remains the fallback model. - Codex is available as the operator runtime. - Codex auth should not be treated as an exportable API key. - LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.  As of 2026-07-01:  - The ignored ArchFlow workspace `.env.local` contains `OPENROUTER_API_KEY` and `MISTRAL_API_KEY`; the public repo root `.env.local` is separate ignored local deploy material. - The Markdown "
     },
     {
       "path": "project/reports/2026-06-25-chat-execution-report.md",
@@ -1914,9 +2051,24 @@
       "text": "# Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System  Date: 2026-07-01 Status: current-state synthesis after June 30 transfer and provider cleanup  ## Executive Answer  ArchFlow is in a two-paradigm state.  Paradigm 1 is the showable service product: a Product Discovery-to-Production PRD Pack for product teams. Its goal is to turn raw product-team material into a reviewed PRD, task/responsibility plan, ICP evidence, and a buyer-facing demo/landing path. This is not validated commercially yet. The product concept is coherent, but E2 evidence, E3 positioning, E4 content proof, E6 outreach, and E7 payment verdict still need execution.  Paradigm 2 is the reliable development and control system: the local agentic operating environment that makes Paradigm 1 repeatable. It contains Codex as operator, LangGraph-style state/control, WikiLLM memory, Graphify structure, public-safe run notes, dashboard/Jarvis UI, hooks, validations, and future provider/backend gates. This layer is stronger than the product layer today: E1 proof exists, E1.3 readback passed, and the accepted June 30 dashboard review branch works as a browser-local/static review slice.  Vercel is the current da"
     },
     {
+      "path": "project/reports/2026-07-01-dashboard-jdb-10-acceptance-audit.md",
+      "title": "Dashboard JDB-10 Acceptance Audit",
+      "text": "# Dashboard JDB-10 Acceptance Audit  Date: 2026-07-01 Status: accepted by Jesus for static dashboard scope  ## 1. Executive Answer  The static dashboard is accepted by Jesus for `JDB-10` as an operator dashboard and proof surface for the static/browser-local scope.  It now satisfies the dashboard backlog requirements for the static/browser-local scope: Jarvis first-screen operation, two-lane mode separation, state/gate clarity, node-panel hierarchy, stage rails, proof/backlog visibility, and public-safe sample outputs.  It does not prove provider-backed Jarvis, Railway/local bridge, durable writeback, live Nexus, production deploy, main merge, owner-device voice, real E2.0A customer artifacts, customer proof, or validated demand. Those remain correctly gated and should not block acceptance of the static dashboard scope unless Jesus expands the requirement.  ## 2. Sources Reviewed  - SOURCE: `project/project-plan.md` - SOURCE: `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - SOURCE: `project/live/communication/agent-communication-log.md` - SOURCE: `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - SOURCE: `project/reports/2026-07-01-messi-coordi"
+    },
+    {
+      "path": "project/reports/2026-07-01-infra-status-and-next-setup.md",
+      "title": "Infra Status And Next Setup",
+      "text": "# Infra Status And Next Setup  Date: 2026-07-01 Status: local MVP implemented; hosted runtime remains gated  ## Executive Answer  The current MVP is a static public ArchFlow services website plus the existing internal dashboard route.  Vercel is configured and externally verified as the static hosting layer with prior ready deployments. It keeps the last deployed website/dashboard available when local Codex/Jarvis is off, but it does not execute Jarvis, agents, provider calls, memory writes, or Notion/GitHub writeback.  Railway is not linked or configured for this repo. The Railway connector returned no linked project, and no local Railway service files were found. Railway remains the future backend option for server-side auth, provider calls, queues, SSE/websocket, durable uploads, and writeback.  OpenRouter and Mistral are present only as ignored owner-local environment variables outside public Git. The public browser code must not read or call those providers. OpenAI local key material from the June 30 lane remains removed.  ## FACT  - `.vercel/project.json` exists locally and links this repo to a Vercel project, with sensitive IDs kept out of public artifacts. - Vercel project/"
+    },
+    {
       "path": "project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md",
       "title": "Legacy Design Reference And PRD/ICP Calculator Brief",
       "text": "# Legacy Design Reference And PRD/ICP Calculator Brief  Date: 2026-07-01 Status: design addendum for Ronaldo and future website execution  ## Executive Answer  The owner-provided legacy ArchFlow public site should be treated as the visual interaction reference, not as the current positioning reference.  Keep the design mechanics:  - layered 3D arch assets; - scroll-driven arch drift; - cursor-driven hover-depth on buttons and cards; - warm editorial palette; - Playfair-style display typography; - dark command panels with arch-line overlays; - calculator-first proof interaction.  Replace the category message:  - old: short-term rental automation systems; - new: source-backed PRD/ICP systems, analytical executable agents, and governed knowledgebase-driven agent orchestration.  ## What The Legacy Site Actually Uses  FACT: The legacy site uses 3D-looking arch WebP assets in layered fields, not a visible full Three.js scene in the inspected public HTML/JS.  FACT: The motion model is still valuable and should be reused:  - `arc-field` containers with `perspective`; - `arc-object` images with CSS variables for position, rotation, opacity, and z-depth; - per-asset `data-speed`, `data-drift"
+    },
+    {
+      "path": "project/reports/2026-07-01-lol-agent-coordination-and-kb-brief.md",
+      "title": "LOL Agent Coordination And Knowledge-Base Brief",
+      "text": "# LOL Agent Coordination And Knowledge-Base Brief  Date: 2026-07-01 Status: active coordination brief  ## 1. Executive Answer  Keep the current work split into three lanes:  - Jesus owns dashboard stabilization, dashboard proof, and knowledge updates for the control system. - Ronaldo owns the public ArchFlow PRD/ICP services landing and diagnostic/calculator implementation. - Messi owns strategic review, summarization, knowledge-base organization, and readable wall structure.  LOL's role in this pass is support and integration, not implementation ownership. LOL should not edit Ronaldo's root website files or Jesus's dashboard implementation files. The reliable output is a shared instruction layer that helps all agents keep the same operating model.  ## 2. Current Situation  FACT:  - Ronaldo has claimed the public website and diagnostic implementation lane. - Jesus has a branch-stabilization lane after dashboard panel-route smoke proof passed. - Messi previously completed a coordination review and currently has no implementation claim in the live log. - The dashboard already separates `(1) PRD/ICP Flow` from `(2) Agent Orchestra`. - Provider-backed Jarvis, direct browser provider ca"
     },
     {
       "path": "project/reports/2026-07-01-messi-coordination-review.md",
@@ -1924,9 +2076,19 @@
       "text": "# Messi Coordination Review  Date: 2026-07-01 Status: decision-ready coordination snapshot  ## 1. Executive Answer  Freeze implementation expansion now. The current ArchFlow work is locally advanced, but not yet durable enough for merge, deploy, or more parallel dashboard edits.  The right next action is to stabilize the active branch: close or hand off live file claims, resolve the missing dashboard screenshot evidence referenced by the transfer run note, run final validation, then ask for one owner decision: prepare the current branch for review/commit, or switch to E2.0 product dry run.  The dashboard vision is directionally correct. It now separates `(1) PRD/ICP Flow` from `(2) Agent Orchestra`, keeps Jarvis static/browser-local, keeps provider calls disabled, and preserves the E1-E7 path. It is not yet a full UX acceptance pass because modal click-through, mobile framing, screenshot evidence, and final branch durability remain open.  ## 2. Situation And Complication  ArchFlow has two active lanes:  - Product lane: the Product Discovery-to-Production PRD Pack for B2B SaaS product teams. - Control-system lane: the local operating system for Codex, LangGraph-style routing, WikiLL"
     },
     {
+      "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
+      "title": "Messi Task Architecture Review",
+      "text": "# Messi Task Architecture Review  Date: 2026-07-01 Status: active PM review, awaiting Ronaldinho technical audit and active-lane closeout  ## 1. Executive Answer  Keep the work split into two delivery systems and one coordination layer.  The first delivery system is the public PRD/ICP service product. It explains what ArchFlow sells: turning messy product context into source-backed PRDs, ICP evidence, task definitions, and governed agent workflow setup.  The second delivery system is the reliable development/control system. It explains how the work is controlled: Jarvis, dashboard views, block schema, node panels, provider/runtime gates, run notes, issues, decisions, and review checks.  The coordination layer is Messi. Messi should not collapse public website delivery, Jarvis delivery, and provider/backend setup into one vague \"done\" state. Each layer needs its own task, owner, evidence, and next gate.  ## 2. Situation And Complication  FACT:  - `JDB-8` is Done for the static/browser-local Jarvis block-schema and voice fallback slice. - `JDB-7` remains Review for review-branch merge/deploy decision. - `E1.3.9` remains Review as the umbrella for dashboard, Jarvis shell, hosting, and"
+    },
+    {
       "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
       "title": "OpenRouter Model Routing Plan",
       "text": "# OpenRouter Model Routing Plan  Date: 2026-07-01  Status: specification only. OpenRouter runtime remains disabled until explicit approval and an approved local bridge or backend exists.  ## Purpose  This plan defines how ArchFlow should use OpenRouter economically and reliably after provider activation is approved. It does not activate cloud model calls.  The architecture is simple:  1. Codex remains the operator, file editor, reviewer, and approval boundary. 2. LangGraph controls state, routing, stop conditions, and review gates. 3. WikiLLM and Obsidian remain the durable memory layers. 4. OpenRouter becomes a future server-side model router only for sanitized packets. 5. Claude, Gemini, and OpenAI frontier models handle planning, long reasoning, strategy, and review. 6. Cheaper models handle bounded execution, extraction, classification, drafting, and code variants.  ## Activation Boundary  FACT: The current public project must not call OpenRouter from static browser code.  FACT: Cloud model keys must stay out of public files, frontend code, prompts, logs, screenshots, dashboard JSON, and generated artifacts.  INTERPRETATION: This plan is a routing contract for a future approved"
+    },
+    {
+      "path": "project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md",
+      "title": "Public Website Market Research And Minimal Copy Brief",
+      "text": "# Public Website Market Research And Minimal Copy Brief  Date: 2026-07-01 Status: source-labeled implementation brief  ## Scope  This brief supports the ArchFlow public landing redesign. It is public-safe and uses only public competitor observations plus the current ArchFlow planning boundary.  ## Sources  - SOURCE: Market researcher agent Nietzsche, 2026-07-01, no files edited. - SOURCE: Productboard public website: `https://www.productboard.com/` - SOURCE: Aha! public website: `https://www.aha.io/` - SOURCE: Dovetail public website: `https://www.dovetail.com/` - SOURCE: Zeda.io public website: `https://zeda.io/` - SOURCE: BuildBetter public website: `https://www.buildbetter.ai/` - SOURCE: Fibery product-management page: `https://fibery.io/product-management` - SOURCE: Cycle.app product agents page: `https://cycle.app/product-agents` - SOURCE: ChatPRD public website: `https://www.chatprd.ai/` - SOURCE: Notion AI public website: `https://www.notion.com/product/ai` - SOURCE: Glean public website: `https://www.glean.com/` - SOURCE: Dust docs intro: `https://docs.dust.tt/docs/intro` - SOURCE: `project/reports/2026-07-01-competitor-dashboard-website-plan.md`  ## Competitor Pattern  FAC"
     },
     {
       "path": "project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md",
@@ -2136,7 +2298,7 @@
     {
       "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
       "title": "Run: June 30 Integrator Review",
-      "text": "# Run: June 30 Integrator Review  Date: 2026-06-30 Status: completed, ready for public Git review  ## Task  Review the combined June 30 public repository diff after the dashboard/Jarvis/Vercel lane, E1.5 content-template lane, and evening skill/hook audit lane.  ## Included Lanes  - Dashboard/Jarvis/Vercel shell under `project/dashboard/`. - Vercel config and ignored local Vercel metadata. - E1.5 content-template library under `project/content/templates/`. - Dashboard and content run notes under `project/runs/E1.5/`. - Evening skill/hook audit run notes under `project/runs/2026-06-30-evening-skill-hook-audit/`. - Wiki run, decision, memory, insights, and log updates. - `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html` ASCII punctuation normalization.  ## Decisions  FACT: The stable review alias currently resolves to a Ready Preview deployment:  - `https://<protected-preview-host>`  FACT: Unauthenticated requests to the dashboard route and `data.json` route redirect to Vercel SSO.  FACT: One older production-target Vercel deployment still exists:  - `https://<protected-preview-host>`  INTERPRETATION: Do not remove or roll back the production-target deployment in this pass"
+      "text": "# Run: June 30 Integrator Review  Date: 2026-06-30 Status: completed, ready for public Git review  ## Task  Review the combined June 30 public repository diff after the dashboard/Jarvis/Vercel lane, E1.5 content-template lane, and evening skill/hook audit lane.  ## Included Lanes  - Dashboard/Jarvis/Vercel shell under `project/dashboard/`. - Vercel config and ignored local Vercel metadata. - E1.5 content-template library under `project/content/templates/`. - Dashboard and content run notes under `project/runs/E1.5/`. - Evening skill/hook audit run notes under `project/runs/2026-06-30-evening-skill-hook-audit/`. - Wiki run, decision, memory, insights, and log updates. - `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html` ASCII punctuation normalization.  ## Decisions  FACT: The stable review alias currently resolves to a Ready Preview deployment:  - protected Vercel preview dashboard route, masked in this public artifact  FACT: Unauthenticated requests to the dashboard route and `data.json` route redirect to Vercel SSO.  FACT: One older production-target Vercel deployment still exists:  - protected Vercel production-target deployment, masked in this public artifact  INTERPR"
     },
     {
       "path": "project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md",
@@ -2169,6 +2331,11 @@
       "text": "# Agent Handout: Competitor-Backed Dashboard And Website Plan  ## Purpose  Use this handout to continue the next ArchFlow design/planning or implementation-prep pass without conflicting with active sidecar lanes.  ## Current State  Status: planning brief ready for Ronaldo.  Primary artifacts:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md`  ## Key Decision  Jesus has posted `Status: complete` for the dashboard smoke-test/setup lane. Ronaldo or the next implementer may proceed beyond planning only after appending a fresh starting claim, checking current `git status`, and confirming no newer active lane has claimed the same files.  ## Context To Preserve  Positioning: ArchFlow is a service-led agentic operating-system and automation architecture company. It turns messy product context into source-backed PRDs, reports, tasks, responsibilities, evidence packets, and approval-gated execution.  ICP: product teams in B2B SaaS scaleups, especially Series B-D, roughly 50-500 employees, 2-5 PMs, and a Director or VP Product accountable for PRD quality, discovery-to-delivery speed, and cross-functional "
     },
     {
+      "path": "project/runs/2026-07-01-dashboard-operator-ux-optimization/agent-handout.md",
+      "title": "Agent Handout: Dashboard Operator UX Optimization",
+      "text": "# Agent Handout: Dashboard Operator UX Optimization  Date: 2026-07-01 Status: complete  ## Task  Optimize the dashboard after asking Jesus for concrete action/command guidance and while coordinating with Ronaldo's public ArchFlow PRD automation service-agency website lane.  ## Scope  Changed dashboard UX only:  - Jarvis first-screen operating strip and Operating Switchboard. - Jarvis first-screen Proof And Backlog Drawer. - Jarvis first-screen Public-Safe Sample Outputs gallery. - Schema workflow stage rail. - Schema runtime gate strip. - Node control panel Overview section and quick facts. - Dashboard README and smoke-test markers for the new clarity proof. - Dashboard issue backlog progress note. - Dashboard JDB-10 acceptance audit.  No root public website files, provider config, backend/runtime files, deploy config, or external writeback files are changed in this lane.  ## Coordination  Jesus request was posted in `project/live/communication/agent-communication-log.md` asking for exact dashboard actions and validation commands.  Jesus later accepted `JDB-10` as review-ready for the static dashboard scope. This acceptance covers Jarvis first-screen operation, two-lane mode separa"
+    },
+    {
       "path": "project/runs/2026-07-01-dashboard-two-layer-schema/agent-handout.md",
       "title": "Agent Handout: Two-Layer Dashboard Schema Control Panel",
       "text": "# Agent Handout: Two-Layer Dashboard Schema Control Panel  ## Title And Purpose  Use this handout when continuing the dashboard/Jarvis work after the July 1 two-layer schema UI pass.  ## Human Summary  The dashboard now separates the service-product path from the internal control-system path:  - `(1) PRD/ICP Flow` is the externally showable product-service workflow. - `(2) Agent Orchestra` is the local agentic control workflow.  Each screen uses a draggable block schema. Clicking a node opens a large node control panel for inputs, outputs, connections, dropdown configuration, interpreted run logs, prompts, system prompt, comments, safety, and business-fit fields.  The dashboard is still static/browser-local. It creates review packets and local state only. It does not call providers, store raw transcripts, write to WikiLLM/Obsidian/Notion/GitHub, deploy, or run a backend queue.  The independent review pass found and fixed reliability issues: queueing from the node panel now saves current form edits first, stale localStorage schemas are reset when they do not match the current graph version, connect mode is isolated to the active schema screen, and node-panel section controls no long"
@@ -2179,9 +2346,19 @@
       "text": "# Run Summary: Two-Layer Dashboard Schema Control Panel  Date: 2026-07-01 Status: implemented, architecture reviewer approved  ## Task  Make the dashboard comprehensible and operable for two separate jobs:  1. `(1) PRD/ICP Flow`: the externally showable service-product path from source context to PRD, evidence, ICP, demo package, and approved output. 2. `(2) Agent Orchestra`: the local reliable development/control system for Codex, LangGraph-style routing, WikiLLM, Graphify, safety review, run logs, approvals, and gated provider/backend actions.  ## Answer First  The dashboard now has two separate block-schema screens, draggable/clickable nodes, and a large n8n-style node control panel covering inputs, outputs, connections, dropdown configuration, run history, prompts, comments, safety fields, and business-fit fields. It remains a static browser-local review surface: no provider calls, secrets, raw transcripts, deployment, or writeback are enabled.  ## Outputs  - Updated `project/dashboard/app.js`. - Updated `project/dashboard/styles.css`. - Updated `project/dashboard/index.html`. - Updated `project/dashboard/README.md`. - Added this run record and the handout beside it.  ## Dashbo"
     },
     {
+      "path": "project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md",
+      "title": "Agent Handout: Infra Status And Next Setup",
+      "text": "# Agent Handout: Infra Status And Next Setup  Date: 2026-07-01 Status: handoff-ready after local validation  ## Current Result  The current MVP is local and static:  - public ArchFlow services landing at `/`; - PRD/ICP readiness diagnostic at `/quiz.html`; - internal dashboard preserved at `/dashboard`; - no active Railway backend; - no active provider-backed Jarvis runtime.  ## Verified Infra State  - Vercel is linked and has prior ready static deployments. - Railway is not linked in this repo and no Railway service config exists. - OpenRouter and Mistral are ignored local env material only. - Static browser code does not call providers. - NVIDIA `garak` / NeMo Guardrails tooling is not installed, so no NVIDIA safety checker was run.  ## Files To Review Next  - `index.html` - `quiz.html` - `main.js` - `quiz.js` - `styles.css` - `site.webmanifest` - `assets/archflow-system-map.png` - `vercel.json` - `project/reports/2026-07-01-infra-status-and-next-setup.md` - `project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md`  ## Next Safe Actions  1. Decide whether to deploy this review-branch MVP to Vercel. 2. If deploying, use the approved ArchFlow Vercel publish flow and t"
+    },
+    {
       "path": "project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md",
       "title": "Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
-      "text": "# Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending  ## Task  Transfer the missing final June 30 accepted state into the ArchFlow public knowledge layer, clean provider-key handling, finish the interrupted two-paradigm dashboard edit, and keep runtime/provider/writeback claims accurate.  ## Inputs  - `project/project-plan.md` - `project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md` - `project/runs/2026-06-30-dashboard-reliability-sync/run-summary.md` - `wiki/memory.md` - `wiki/log.md` - LangGraph handout sources summarized by the owner - Current dashboard source under `project/dashboard/`  ## Outputs  - Removed the temporary Markdown provider-key file from the workspace root. - Preserved OpenRouter and Mistral keys only in ignored local env storage. - Removed the June 30 OpenAI local key file. - Restricted ignored env files to owner-only permissions. - Added OpenRouter/Mistral runtime boundaries to:   - `project/config/model-routing.yaml`   - `project/config/providers.env.example`   - `project/provider-setup.md`   - `project"
+      "text": "# Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer, validation, review-branch commit, and review-branch push completed; merge and deploy remain pending  ## Task  Transfer the missing final June 30 accepted state into the ArchFlow public knowledge layer, clean provider-key handling, finish the interrupted two-paradigm dashboard edit, and keep runtime/provider/writeback claims accurate.  ## Inputs  - `project/project-plan.md` - `project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md` - `project/runs/2026-06-30-dashboard-reliability-sync/run-summary.md` - `wiki/memory.md` - `wiki/log.md` - LangGraph handout sources summarized by the owner - Current dashboard source under `project/dashboard/`  ## Outputs  - Removed the temporary Markdown provider-key file from the workspace root. - Preserved OpenRouter and Mistral keys only in ignored local env storage. - Removed the June 30 OpenAI local key file. - Restricted ignored env files to owner-only permissions. - Added OpenRouter/Mistral runtime boundaries to:   - `project/config/model-routing.yaml`   - `project/config/providers.env.example`   - `project/provide"
+    },
+    {
+      "path": "project/runs/2026-07-01-lol-agent-coordination-and-kb-brief/agent-handout.md",
+      "title": "Agent Handout: LOL Agent Coordination And Knowledge-Base Brief",
+      "text": "# Agent Handout: LOL Agent Coordination And Knowledge-Base Brief  Date: 2026-07-01 Status: complete  ## Task  Coordinate Jesus, Ronaldo, and Messi so dashboard stabilization, public website implementation, and knowledge-base organization stay aligned without overlapping active implementation claims.  ## Inputs  - Live communication log through the latest Jesus/Ronaldo/Messi entries. - Ronaldo dashboard and website execution plan. - Legacy design and PRD/ICP calculator brief. - Messi coordination review. - Public project operating rules.  ## Outputs  - `project/reports/2026-07-01-lol-agent-coordination-and-kb-brief.md` - `wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md` - Updated `project/live/communication/agent-communication-log.md` - Regenerated `project/dashboard/data.json` after validation step  ## Agent Instructions  Jesus:  - Continue dashboard stabilization and proof. - Prioritize Jarvis as first-screen command core, explicit two-lane separation, state badges, proof/issue entry points, and node-panel clarity. - Coordinate with Messi on knowledge-base/wall updates.  Ronaldo:  - Continue public landing/diagnostic implementation in the claimed root website files. - "
     },
     {
       "path": "project/runs/2026-07-01-messi-coordination-review/agent-handout.md",
@@ -2189,9 +2366,24 @@
       "text": "# Agent Handout: Messi Coordination Review  ## Title And Purpose  Use this handout to continue the July 1 Messi coordination pass without reopening broad discovery. It records the project-manager/product-owner snapshot across repo state, dashboard vision, Notion status, active agent claims, risks, and the next decision.  ## Human Summary  This pass coordinated four read-only sidecar reviewers plus a local evidence review. The purpose was not to implement another dashboard or provider change. The purpose was to decide whether yesterday/current work is reliable enough to advance.  The answer is: the direction is correct, but the branch should be frozen and stabilized before more implementation. The dashboard correctly separates the service-product flow from the agent-control flow. Notion confirms the key current statuses. OpenRouter is documented as a future disabled routing specification. But the worktree is broad and dirty, active file claims remain open, and one run summary references dashboard screenshots that are no longer present in the current shared folder.  No dashboard, model-routing, provider, or Notion task files were edited by this coordination pass. The durable output i"
     },
     {
+      "path": "project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md",
+      "title": "Agent Handout: Messi Task Architecture Review",
+      "text": "# Agent Handout: Messi Task Architecture Review  Date: 2026-07-01 Status: active, awaiting Ronaldinho technical audit and active-lane closeout  ## Task  Review active/done ArchFlow Notion tasks and align the task numbering, ownership, explanation, evidence, and next-step sequence for the dashboard/Jarvis/public website work.  ## Outputs  - `project/reports/2026-07-01-messi-task-architecture-review.md` - New Notion task `JDB-9 - Review dashboard operator UX optimization and source-state closeout` - New Notion task `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout` - New Notion task `E3.3.1A - Reconcile public PRD/ICP landing source with deployed site` - New Notion task `E3.3.1B - Complete public website deploy, Figma, and Notion closeout proof` - New Notion task `JDB-10 - Dashboard proof and backlog visibility pass` - Updated Notion notes for `JDB-7`, `E1.3.9`, `E1.3.10`, and `E3.3` - Ronaldinho technical verifier lane created  ## Main Decision  Do not treat July 1 as one broad Done state. Split it:  - `JDB-8`: Done for static/browser-local block-schema and voice fallback QA. - `JDB-9`: Review for newer dashboard operator UX optimization. - `E3.3.1`: Revie"
+    },
+    {
       "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
       "title": "Agent Handout: OpenRouter Model Routing",
       "text": "# Agent Handout: OpenRouter Model Routing  ## Title And Purpose  This handout records the OpenRouter model-routing architecture for future ArchFlow agents.  ## Human Summary  ArchFlow now has a durable model-routing plan for future OpenRouter use. The plan keeps OpenRouter disabled today and treats cloud execution as approval-gated, server-side work only.  The new architecture uses the strongest Claude, Gemini, and OpenAI models as a frontier council for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts. Cheaper models such as Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, MiniMax, Mercury, Grok, and Gemma are assigned to bounded execution work that must be checked before publication or memory promotion.  ## Current State  Status: complete after validation.  Main artifacts:  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `wiki/runs/2026-07-01-openrouter-model-routing.md` - `wiki/memory.md` - `wiki/insights.md` - `wiki/log.md`  OpenRouter runtime state: disabled.  ## Agent Continuation Prompt  ```text You are continuing ArchFlow model-routing work. Read project/config/model-rou"
+    },
+    {
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
+      "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
+      "text": "# Agent Handout: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Owner lane: Ronaldo Status: deployed, Figma-synced, Notion-updated, pending final Git/source alignment review  ## Current State  The public ArchFlow Automate site now serves a minimal PRD/ICP services landing at:  - `https://<protected-preview-host>`  The diagnostic route is:  - `https://<protected-preview-host>`  Vercel clean URLs redirect `/quiz.html` to `/quiz`.  ## Positioning  ArchFlow is presented as a service-led operating layer for B2B SaaS product teams with scattered product context.  The offer is:  - source inventory; - source-backed PRD packet; - ICP evidence review; - acceptance criteria and task handoff; - approval-gated agent operating layer.  The site does not present ArchFlow as a full roadmap platform, feedback repository, enterprise search tool, or generic PRD generator replacement.  ## Page Structure  Homepage blocks:  1. Hero: PRDs from your project knowledgebase. 2. System: three service outputs. 3. Proof/trust: E1-E7 delivery spine and public boundaries.  Subpage:  - Diagnostic flow for first-package recommendation, knowledgebase readiness, agent readiness, planning estimate, approval "
+    },
+    {
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
+      "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
+      "text": "# Run Summary: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Status: deployed and synced; Git/source alignment remains a review gate  ## Task  Replace the old ArchFlow Automate public landing with a concise service-led website for PRD/ICP discovery, knowledgebase-driven PRD automation, task handoff, and approval-gated agent operating layers.  ## Inputs  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - `project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md` - Market researcher agent Nietzsche, 2026-07-01 - Live communication log through the Ronaldo minimal landing redesign lane  ## Output  Public URL:  - `https://<protected-preview-host>`  Production route behavior:  - `/` serves the minimal three-block PRD/ICP landing. - `/quiz` serves the diagnostic route. - `/quiz.html` redirects to `/quiz` through Vercel clean URLs.  The landing now has only three public blocks:  1. Hero: PRDs from the project knowledgebase. 2. System: three tangible service outputs. 3. Proof/trust: E"
     },
     {
       "path": "project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md",
@@ -2341,7 +2533,7 @@
     {
       "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md",
       "title": "Agent Handout: Dashboard Jarvis Vercel Shell",
-      "text": "# Agent Handout: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: continue from review, commit, and private task sync  ## Summary  The dashboard is now a Jarvis-first static command shell for Vercel preview. It supports live in-page refresh of deployed `data.json`, normal/interview mode, browser-local voice authorization, browser-local file metadata packet creation, and downloadable research/check/content packets.  This is not a backend. Durable writes still require Codex or a future Railway/API layer.  Canonical review route:  - `https://<protected-preview-host>`  Use only the explicit preview deployment for review. An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; keep it out of review and keep future deploy commands explicit with `--target preview`.  ## Changed Files  - `project/dashboard/index.html` - `project/dashboard/app.js` - `project/dashboard/styles.css` - `project/dashboard/README.md` - `project/dashboard/data.json` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-content-agent-templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/`  ## Current Decisions  - Ver"
+      "text": "# Agent Handout: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: continue from review, commit, and private task sync  ## Summary  The dashboard is now a Jarvis-first static command shell for Vercel preview. It supports live in-page refresh of deployed `data.json`, normal/interview mode, browser-local voice authorization, browser-local file metadata packet creation, and downloadable research/check/content packets.  This is not a backend. Durable writes still require Codex or a future Railway/API layer.  Canonical review route:  - protected Vercel preview dashboard route, masked in this public artifact  Use only the explicit preview deployment for review. An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; keep it out of review and keep future deploy commands explicit with `--target preview`.  ## Changed Files  - `project/dashboard/index.html` - `project/dashboard/app.js` - `project/dashboard/styles.css` - `project/dashboard/README.md` - `project/dashboard/data.json` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-content-agent-templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis"
     },
     {
       "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md",
@@ -2481,7 +2673,7 @@
     {
       "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
       "title": "Decision: Dashboard Jarvis Vercel Shell",
-      "text": "# Decision: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: accepted for first hosted dashboard  ## Decision  Use a Vercel preview as the first hosted dashboard target. The dashboard is public-safe and read-only at the hosted data layer, with a browser-local Jarvis command shell for normal/interview mode, current-session voice transcript commands, file metadata packet preparation, and local packet downloads.  Railway remains deferred until the system needs server-side auth, live APIs, event streams, durable uploads, background workers, persistent state, model-provider calls, or write actions.  ## Rationale  The current dashboard is static and already uses generated public-safe `data.json`. Vercel can host that safely if the data remains public-safe and no secrets/private state are emitted. A hidden link helps review but is not authentication; Vercel preview authentication is acceptable for this first review pass.  Canonical review route:  - `https://<protected-preview-host>`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the approved review target. Future deploy commands stay "
+      "text": "# Decision: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: accepted for first hosted dashboard  ## Decision  Use a Vercel preview as the first hosted dashboard target. The dashboard is public-safe and read-only at the hosted data layer, with a browser-local Jarvis command shell for normal/interview mode, current-session voice transcript commands, file metadata packet preparation, and local packet downloads.  Railway remains deferred until the system needs server-side auth, live APIs, event streams, durable uploads, background workers, persistent state, model-provider calls, or write actions.  ## Rationale  The current dashboard is static and already uses generated public-safe `data.json`. Vercel can host that safely if the data remains public-safe and no secrets/private state are emitted. A hidden link helps review but is not authentication; Vercel preview authentication is acceptable for this first review pass.  Canonical review route:  - protected Vercel preview dashboard route, masked in this public artifact  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment is the approved review targ"
     },
     {
       "path": "wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md",
@@ -2581,7 +2773,7 @@
     {
       "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
       "title": "Run: Dashboard Jarvis Vercel Shell",
-      "text": "# Run: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Summary  The public dashboard was extended from a static read-only status board into a Jarvis-first command shell for Vercel preview. The shell adds normal/interview modes, a bottom command input, manual and timed refresh, browser-local voice authorization, metadata-only file packet creation, current-session event history, and packet downloads.  The implementation keeps the public boundary clear: static Vercel can stage session packets and refresh deployed `data.json`, but durable writes wait for Codex or a future Railway/backend service. Unauthenticated smoke checks currently redirect to Vercel SSO.  Canonical review route:  - `https://<protected-preview-host>`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the only approved review target.  ## Artifacts  - `project/dashboard/` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/` - `project/runs/E1.5/2026-06-30-content-agent-templa"
+      "text": "# Run: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Summary  The public dashboard was extended from a static read-only status board into a Jarvis-first command shell for Vercel preview. The shell adds normal/interview modes, a bottom command input, manual and timed refresh, browser-local voice authorization, metadata-only file packet creation, current-session event history, and packet downloads.  The implementation keeps the public boundary clear: static Vercel can stage session packets and refresh deployed `data.json`, but durable writes wait for Codex or a future Railway/backend service. Unauthenticated smoke checks currently redirect to Vercel SSO.  Canonical review route:  - protected Vercel preview dashboard route, masked in this public artifact  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment is the only approved review target.  ## Artifacts  - `project/dashboard/` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/` - `project/runs/E1.5"
     },
     {
       "path": "wiki/runs/2026-06-30-dashboard-reliability-sync.md",
@@ -2614,14 +2806,24 @@
       "text": "# 2026-07-01 Competitor Dashboard And Website Plan  ## Task  Review competitor positioning and prepare the next ArchFlow planning direction for:  - dashboard improvement; - public services website improvement.  ## Result  Created:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - `project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md`  Ronaldo planning extension:  - `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - issue priority pass appended to `project/issues/2026-07-01-dashboard-website-improvement-issues.md`  ## Executive Answer  ArchFlow should improve the internal dashboard as a two-orchestra operating cockpit and build the public website as a service-led offer for source-backed PRDs, reporting, task definition, and governed agent-management systems.  Jesus has posted `Status: complete` for the dashboard smoke-test/setup lane. Ronaldo or the next implementer may proceed beyond planning only after appending a fresh starting claim, checking current `git status`"
     },
     {
+      "path": "wiki/runs/2026-07-01-dashboard-operator-ux-optimization.md",
+      "title": "2026-07-01 Dashboard Operator UX Optimization",
+      "text": "# 2026-07-01 Dashboard Operator UX Optimization  Status: complete  ## Summary  LOL optimized the static dashboard for operator comprehension while preserving provider/backend/writeback boundaries and avoiding Ronaldo's root website files.  ## FACT  - The Jarvis screen now exposes an Operating Switchboard. - The Jarvis screen now exposes a Proof And Backlog Drawer. - The Jarvis screen now exposes public-safe sample outputs. - The switchboard separates the PRD/ICP service product from the reliable agent orchestra. - The schema screens now expose workflow stage rails and runtime gates. - The node control panel now opens with an Overview section and quick facts before detailed inputs/config/prompts/logs. - The dashboard issue backlog now has an append-only progress note for D-1 through D-8. - A JDB-10 acceptance audit now maps dashboard requirements to evidence for Jesus/Ronaldinho review. - Jesus accepted JDB-10 as review-ready for the static dashboard scope after the audit. - Ronaldo's public website lane remains separate and service-led.  ## INTERPRETATION  - The dashboard should be easier for a first-time operator to understand before opening docs or run notes. - The public website"
+    },
+    {
       "path": "wiki/runs/2026-07-01-dashboard-two-layer-schema.md",
       "title": "Run Note: Two-Layer Dashboard Schema Control Panel",
       "text": "# Run Note: Two-Layer Dashboard Schema Control Panel  ## Task  Make the dashboard operable as two separate block-schema screens:  - `(1) PRD/ICP Flow` for the service-product path. - `(2) Agent Orchestra` for the reliable local control system.  ## Result  - Added explicit `#service` and `#schema` schema screens. - Added large node control panels with inputs, outputs, connection settings, dropdown configuration, run history, prompts, system prompt, developer comments, safety fields, and business-fit fields. - Kept all execution, provider, backend, deployment, and writeback actions gated. - Reviewed Claude-Mem, Impeccable, garak, NeMo Guardrails, and task-observer applicability as references only. - Integrated implementation, UX, and public-safety review findings: queue/save correctness, schema version handling, connect-mode isolation, node-panel tab behavior, mobile navigation, browser-local labels, generated URL redaction, and screenshot artifact removal.  ## Validation  - Pass: dashboard JavaScript syntax. - Pass: schema static smoke over both graph defaults. - Pass: dashboard data regeneration and JSON parse. - Pass: public safety scan. - Pass: workflow validation. - Pass: pre-pu"
     },
     {
+      "path": "wiki/runs/2026-07-01-infra-status-and-next-setup.md",
+      "title": "2026-07-01 Infra Status And Next Setup",
+      "text": "# 2026-07-01 Infra Status And Next Setup  ## Summary  The current MVP is a local static public site plus preserved internal dashboard route. Vercel is the static host and has prior ready deployments. Railway is not configured. OpenRouter and Mistral remain ignored local env material only, and static browser code must not call providers.  ## FACT  - Public MVP files now exist for `/` and `/quiz.html`. - Dashboard remains available under `/dashboard`. - Vercel local linkage exists, but the current MVP has not been deployed in this pass. - Railway MCP returned no linked project and no local Railway config was found. - No NVIDIA safety checker was available locally.  ## GAP  - Hosted current MVP URL. - Figma sync. - Notion deployed-URL update. - Railway backend. - Server-side OpenRouter bridge. - Provider-backed Jarvis and voice proof.  ## Next  Commit and push the review branch after validation. Then choose whether to deploy the static MVP, or first build the server-side bridge contract for provider-backed Jarvis."
+    },
+    {
       "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
       "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
-      "text": "# Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending  ## Summary  The missing final June 30 accepted state was transferred into the ArchFlow public knowledge layer. The project now records that the accepted review branch is `d18fc55`, `JDB-8` is Done, `JDB-7` remains Review, and Telegram was not sent because external disclosure was blocked by approval review.  Provider handling was corrected. OpenRouter and Mistral keys are local ignored env material only. The temporary Markdown key file was deleted. The June 30 OpenAI local key file was deleted. Ignored env files were restricted to owner-only permissions. Static dashboard code must not access provider keys or call providers.  The dashboard was extended from the interrupted two-screen edit into explicit `(1) PRD/ICP Flow` and `(2) Agent Orchestra` schema screens. Node control panels now expose the configuration that matters for agent work: inputs, outputs, prompts, comments, last runs, connection summary, safety, persistence, memory target, trace target, and provider mode.  Added `project/scripts"
+      "text": "# Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer, validation, review-branch commit, and review-branch push completed; merge and deploy remain pending  ## Summary  The missing final June 30 accepted state was transferred into the ArchFlow public knowledge layer. The project now records that the accepted review branch is `d18fc55`, `JDB-8` is Done, `JDB-7` remains Review, and Telegram was not sent because external disclosure was blocked by approval review.  Provider handling was corrected. OpenRouter and Mistral keys are local ignored env material only. The temporary Markdown key file was deleted. The June 30 OpenAI local key file was deleted. Ignored env files were restricted to owner-only permissions. Static dashboard code must not access provider keys or call providers.  The dashboard was extended from the interrupted two-screen edit into explicit `(1) PRD/ICP Flow` and `(2) Agent Orchestra` schema screens. Node control panels now expose the configuration that matters for agent work: inputs, outputs, prompts, comments, last runs, connection summary, safety, persistence, memory target, trace target, and provider mode."
     },
     {
       "path": "wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md",
@@ -2629,14 +2831,29 @@
       "text": "# 2026-07-01 Legacy Design Reference And PRD Calculator  ## Task  Use the latest legacy ArchFlow website as the design reference for the future public PRD/ICP landing page.  ## Result  Created `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md`.  ## Key Finding  The legacy website should be reused for visual mechanics, not category positioning. Its strongest reusable elements are layered 3D arch assets, scroll drift, cursor hover-depth, warm editorial styling, dark command panels, and a calculator-first proof interaction.  ## Recommendation  The new public website should simplify the legacy ROI/readiness calculator into a PRD/ICP Operating ROI Calculator with two modes:  - PRD/ICP ROI; - Knowledgebase Readiness.  The calculator should estimate recoverable product-work value, knowledgebase readiness, and the recommended first ArchFlow package while avoiding guaranteed ROI claims.  ## Confidence  Confidence: 0.82 for visual direction; 0.68 for calculator economics until ROI and demand proof exist."
     },
     {
+      "path": "wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md",
+      "title": "2026-07-01 LOL Agent Coordination And Knowledge-Base Brief",
+      "text": "# 2026-07-01 LOL Agent Coordination And Knowledge-Base Brief  Status: complete  ## Summary  LOL coordinated the active dashboard, public website, and knowledge-base lanes without claiming implementation files.  The work keeps the current split explicit:  - Jesus: dashboard stabilization, operator UX proof, and control-system knowledge updates. - Ronaldo: public ArchFlow PRD/ICP service landing and diagnostic/calculator implementation. - Messi: strategic review, summarization, and readable two-lane knowledge-base/wall organization.  ## Source Labels  - SOURCE: `project/live/communication/agent-communication-log.md` - SOURCE: `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - SOURCE: `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - SOURCE: `project/reports/2026-07-01-messi-coordination-review.md` - SOURCE: `project/operating-rules.md`  ## FACT  - Ronaldo has an active claim on root public website and diagnostic implementation files. - Jesus has an active branch-stabilization lane after dashboard route smoke proof. - Messi has no active implementation file claim in the live log. - The two required structures remain `(1) PRD/ICP"
+    },
+    {
       "path": "wiki/runs/2026-07-01-messi-coordination-review.md",
       "title": "2026-07-01 Messi Coordination Review",
       "text": "# 2026-07-01 Messi Coordination Review  ## Task  Coordinate the active July 1 ArchFlow dashboard/model-routing/Notion work as project manager, product owner, and strategic planner.  ## Result  - Verified the current repo branch and dirty worktree state. - Verified live Notion task state for the key dashboard/Jarvis/E1/E2 rows. - Integrated four read-only reviewer passes: repo state, dashboard vision, Notion state, and independent process review. - Added `project/reports/2026-07-01-messi-coordination-review.md`. - Added `project/runs/2026-07-01-messi-coordination-review/agent-handout.md`.  ## Durable Interpretation  The dashboard/Jarvis direction is correct, but the branch should freeze before more implementation. The next reliable move is to close or hand off active claims, resolve missing screenshot evidence, run final validation, then choose between branch review/commit and E2.0A product dry run.  ## Key State  - `JDB-8`: Done. - `JDB-7`: Review. - `E1.3.9`: Review. - `E1.3.10`: Review. - `E2.0` and `E2.0A`: To Do. - OpenRouter: specification only, runtime disabled. - Railway/backend/writeback/provider calls: gated.  ## Follow-Up  1. Close or hand off active dashboard/model-routi"
     },
     {
+      "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
+      "title": "2026-07-01 Messi Task Architecture Review",
+      "text": "# 2026-07-01 Messi Task Architecture Review  Status: active PM review  ## Summary  Messi reviewed the current Notion task structure for the Jarvis/dashboard/public website execution and split the work into clearer rows.  ## FACT  - `JDB-8` remains Done for the static/browser-local Jarvis block-schema and voice fallback slice. - `JDB-9` was created for the newer dashboard operator UX optimization review. - `E3.3.1` was created for the public PRD/ICP services landing and diagnostic deployment closeout. - The public URL currently serves PRD/ICP ArchFlow website HTML. - Ronaldinho initially found the claimed root website source files absent; after Ronaldo continued, root website source files appeared locally.  ## INTERPRETATION  Dashboard/Jarvis delivery and public website delivery must remain separate. A working public URL is not enough to mark website work Done if the source state and closeout evidence do not align.  ## HYPOTHESIS  The task board will be easier for the owner to monitor if each row maps to one delivery layer, one owner lane, one evidence package, and one next gate.  ## GAP  Ronaldo website source alignment, Jesus closeout, Figma sync, and final Git staging/push remain"
+    },
+    {
       "path": "wiki/runs/2026-07-01-openrouter-model-routing.md",
       "title": "2026-07-01 OpenRouter Model Routing",
       "text": "# 2026-07-01 OpenRouter Model Routing  ## Task  Define a strategic and economical OpenRouter model-routing architecture for ArchFlow.  ## Result  - Added `project/reports/2026-07-01-openrouter-model-routing-plan.md`. - Replaced `project/config/model-routing.yaml` with a fuller routing contract. - Kept OpenRouter runtime disabled until explicit approval and an approved local bridge or backend exists. - Defined the frontier council: strongest available Claude, Gemini, and OpenAI models for planning, long reasoning, strategy, and review. - Defined the execution pool: Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, and selected optional models for bounded execution only. - Added maker/checker rules, E1-E7 routing, budget controls, reliability controls, activation gates, and required logging fields.  ## Review  An independent reviewer prompt/checklist was produced during the run and folded into the final report. The main correction was to avoid implying live provider availability and to mark model IDs as activation-time verified targets rather than permanent hard-coded truth.  ## Follow-Up  Before any runtime work:  1. Get explicit approval for provider activation. 2. Build or ap"
+    },
+    {
+      "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
+      "title": "2026-07-01 Public Website PRD/ICP Landing",
+      "text": "# 2026-07-01 Public Website PRD/ICP Landing  ## Result  The public ArchFlow Automate website was redeployed as a minimal PRD/ICP service landing.  Public URL:  - `https://<protected-preview-host>`  Diagnostic route:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is positioned as a service-led operating layer for B2B SaaS product teams that need source-backed PRDs, ICP evidence, acceptance criteria, task handoff, and approval-gated agent workflows from scattered project context.  ## Structure  The homepage has three blocks:  1. Hero. 2. Service system. 3. Proof/trust.  The diagnostic remains a subpage.  ## Research Summary  Competitor review shows that product-work platforms already cover customer-signal capture, AI synthesis, roadmap/product-suite operations, PRD/spec generation, knowledge assistants, and governance.  ArchFlow's safer wedge is not replacing those tools. The wedge is turning existing scattered material into reviewed delivery artifacts and a controlled agent-ready operating layer.  ## Verification  - JS syntax checks passed. - Manifest JSON parsed. - Local route checks passed. - Desktop/mobile Playwright checks passed. - Mobile click-depth behavior w"
     },
     {
       "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",

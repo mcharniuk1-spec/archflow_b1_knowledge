@@ -11,9 +11,9 @@ The implementation keeps the public boundary clear: static Vercel can stage sess
 
 Canonical review route:
 
-- `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`
+- protected Vercel preview dashboard route, masked in this public artifact
 
-An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the only approved review target.
+An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment is the only approved review target.
 
 ## Artifacts
 

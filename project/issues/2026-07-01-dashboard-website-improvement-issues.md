@@ -16,6 +16,22 @@ Status: open planning backlog
 | D-7 | P2 | Brand expression is functional but not memorable. | Add stroke-only arch motif, depth hover buttons, and purposeful transitions. | Dashboard feels like ArchFlow without sacrificing density. |
 | D-8 | P2 | Public-safe sample outputs are missing. | Add sanitized sample packets for PRD, evidence, task matrix, and agent run. | Buyer/service lane can be demonstrated without private data. |
 
+### Dashboard Progress Update - 2026-07-01 13:47
+
+FACT:
+
+- D-1 is materially implemented: Jarvis now dominates the first dashboard screen with command core, manual transcript fallback, chat, packet queue, and operating state strip.
+- D-2 is materially implemented: the first screen and schema screens now separate the PRD/ICP service product from the reliable agent orchestra.
+- D-3 is materially implemented for static UI: state badges and runtime gates now label static snapshot, browser-local packets, provider disabled, backend absent, public-safe sources only, and writeback approval required.
+- D-4 is materially implemented: the node control panel now starts with Overview and quick facts before Inputs, Outputs, Connections, Config, Logs, Prompts, Comments, and Safety.
+- D-5 is partial: stage rails and mobile stacking exist, but durable sanitized mobile proof should still be retained before merge/deploy acceptance.
+- D-6 is materially implemented: the Jarvis first screen now includes a Proof And Backlog Drawer with issue state, validation commands, next control step, and E2.0A dry-run step.
+- D-8 is materially implemented for static demonstration: the dashboard now includes public-safe sample outputs for sanitized source packet, PRD excerpt, evidence card, task matrix, agent node config, and approval log. These are examples only, not customer proof or provider/backend outputs.
+
+GAP:
+
+- Provider-backed Jarvis, Railway/local bridge, durable writeback, live Nexus, production deploy, main merge, customer proof, and owner-device microphone/speaker proof remain outside this dashboard optimization pass.
+
 ## Website Issues
 
 | ID | Priority | Issue | Required Fix | Acceptance |

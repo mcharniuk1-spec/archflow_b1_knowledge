@@ -33,7 +33,7 @@ Parallel integration thread:
 - Regenerated dashboard data.
 - Ran local HTTP and visual QA.
 - Deployed a Vercel preview; unauthenticated route checks redirect to Vercel SSO.
-- Canonical review route: `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`.
+- Canonical review route: protected Vercel preview dashboard route, masked in this public artifact.
 - Noted Vercel CLI side effect: an initial deploy without `--prod` landed as target `production`; the explicit `--target preview` deployment is the only review target.
 
 ## Merge Notes

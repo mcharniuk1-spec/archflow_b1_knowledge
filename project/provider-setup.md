@@ -25,7 +25,7 @@ As of 2026-06-25:
 
 As of 2026-07-01:
 
-- The root ignored `.env.local` contains `OPENROUTER_API_KEY` and `MISTRAL_API_KEY`.
+- The ignored ArchFlow workspace `.env.local` contains `OPENROUTER_API_KEY` and `MISTRAL_API_KEY`; the public repo root `.env.local` is separate ignored local deploy material.
 - The Markdown file that temporarily contained those values was deleted.
 - The local OpenAI key file created during the June 30 setup lane was deleted.
 - Ignored env files were restricted to owner-only permissions.

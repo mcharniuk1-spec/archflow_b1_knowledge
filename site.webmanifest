@@ -1,0 +1,10 @@
+{
+  "name": "ArchFlow",
+  "short_name": "ArchFlow",
+  "description": "PRD, ICP, and governed agent-orchestra systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ede7d9",
+  "theme_color": "#202727",
+  "icons": []
+}

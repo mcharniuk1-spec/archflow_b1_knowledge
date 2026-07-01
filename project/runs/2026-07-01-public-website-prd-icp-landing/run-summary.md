@@ -1,0 +1,121 @@
+# Run Summary: Minimal Public PRD/ICP Services Landing
+
+Date: 2026-07-01
+Status: deployed and synced; Git/source alignment remains a review gate
+
+## Task
+
+Replace the old ArchFlow Automate public landing with a concise service-led website for PRD/ICP discovery, knowledgebase-driven PRD automation, task handoff, and approval-gated agent operating layers.
+
+## Inputs
+
+- `project/reports/2026-07-01-competitor-dashboard-website-plan.md`
+- `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md`
+- `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md`
+- `project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md`
+- Market researcher agent Nietzsche, 2026-07-01
+- Live communication log through the Ronaldo minimal landing redesign lane
+
+## Output
+
+Public URL:
+
+- `https://archflowautomate.vercel.app/`
+
+Production route behavior:
+
+- `/` serves the minimal three-block PRD/ICP landing.
+- `/quiz` serves the diagnostic route.
+- `/quiz.html` redirects to `/quiz` through Vercel clean URLs.
+
+The landing now has only three public blocks:
+
+1. Hero: PRDs from the project knowledgebase.
+2. System: three tangible service outputs.
+3. Proof/trust: E1-E7 delivery spine and public boundaries.
+
+The diagnostic remains the deeper subpage for package selection, knowledgebase readiness, agent readiness, conservative planning estimates, and optional follow-up.
+
+## Files Changed
+
+- root `index.html`
+- root `main.js`
+- root `styles.css`
+- root `hover-depth.js`
+- root `quiz.html`
+- root `site.webmanifest`
+- `workflow/automation/latest-figma-sync.json`
+- `public/project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md`
+- `public/project/live/communication/agent-communication-log.md`
+- `public/project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md`
+- `public/project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md`
+- `public/wiki/runs/2026-07-01-public-website-prd-icp-landing.md`
+
+## Market Positioning
+
+FACT: Competitors already cover customer-signal capture, AI synthesis, product-roadmap suites, PRD/spec generation, knowledge assistants, and governed enterprise agents.
+
+INTERPRETATION: ArchFlow should not sell as a full Productboard, Aha!, Dovetail, Notion, Glean, or generic PRD-tool replacement.
+
+HYPOTHESIS: The clean wedge is a service-led operating layer that works around existing tools and turns scattered product material into reviewed delivery artifacts.
+
+Primary ICP remains B2B SaaS scaleups, roughly 50-500 employees, 2-5 PMs, and a Director or VP Product accountable for PRD quality, discovery-to-delivery speed, and cross-functional alignment.
+
+## Design Changes
+
+- Reduced the homepage from a long showcase to a three-block page.
+- Kept one primary layered arch visual and one dark flow panel.
+- Removed the homepage calculator to reduce cognitive load.
+- Preserved the diagnostic as a separate subpage.
+- Added mobile touch/click depth: buttons lean toward the tap point and settle back.
+- Preserved desktop hover-depth for fine pointers.
+
+## Figma Sync
+
+- Sync page: `https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=23-2`
+- Sync frame: `https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=122-2`
+- Landing desktop: `https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=120-2`
+- Landing mobile: `https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=119-2`
+- Diagnostic desktop: `https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=118-2`
+- Diagnostic mobile: `https://www.figma.com/design/xxKd3iT3uxGIATN7hR92jb?node-id=121-2`
+
+## Checks
+
+- `node --check main.js`: passed.
+- `node --check quiz.js`: passed.
+- `node --check hover-depth.js`: passed.
+- `python3 -m json.tool site.webmanifest`: passed.
+- Local HTTP `/`: 200.
+- Local HTTP `/quiz.html?step=4`: 200.
+- Desktop homepage Playwright check: no horizontal overflow, all sections visible.
+- Mobile homepage Playwright check: no horizontal overflow.
+- Mobile homepage click-depth check: primary button tilt/light variables changed on press.
+- Desktop diagnostic step 4 Playwright check: no horizontal overflow.
+- Mobile diagnostic step 4 Playwright check: no horizontal overflow.
+- `python3 scripts/public_safety_scan.py`: passed.
+- `git diff --check`: passed.
+- Vercel production deploy completed.
+- `https://archflowautomate.vercel.app/`: HTTP 200 and headless Chrome DOM verified.
+- `https://archflowautomate.vercel.app/quiz?step=4`: HTTP 200 and headless Chrome DOM verified.
+
+## Notion
+
+Notion task updated:
+
+- `E3.3.1 - Public PRD/ICP services landing and diagnostic deployment closeout`
+
+The Notion task records the public URL, diagnostic route, changed files, checks, Figma nodes, and guardrails. It remains in Review until final Git/source alignment and active-lane closeout are complete.
+
+## Guardrails
+
+- No guaranteed ROI claim.
+- No validated demand claim before E5/E6/E7 proof.
+- No provider-backed Jarvis claim.
+- No Railway runtime claim.
+- No browser-side provider calls.
+- No autonomous writeback claim.
+- No full Productboard/Aha/Dovetail replacement claim.
+
+## Remaining Gap
+
+The public website is deployed and synced, but final Git/source alignment and active multi-agent closeout remain for Messi/Jesus/LOL coordination.

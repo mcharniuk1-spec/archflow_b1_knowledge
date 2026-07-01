@@ -49,9 +49,13 @@ python3 project/scripts/dashboard-static-smoke.py
 What it proves:
 
 - `#jarvis`, `#history`, `#service`, `#schema`, `#config`, and `#plan` render in headless Chrome.
+- The Jarvis first screen exposes the Operating Switchboard, the PRD/ICP service product lane, the reliable agent orchestra lane, and blocked provider/backend/writeback gates.
+- The Jarvis first screen exposes the Proof And Backlog Drawer with dashboard issue states, current proof, remaining gates, E2.0A dry-run next step, and validation commands.
+- The Jarvis first screen exposes Public-Safe Sample Outputs for source packet, PRD excerpt, evidence card, task matrix, agent node config, and approval log.
 - `?panel=svc-intake#service` and `?panel=architecture-review#schema` open the large node control panel on initial render for the two required modes.
 - `(1) PRD/ICP Flow` and `(2) Agent Orchestra` expose their required source, node, provider-boundary, and approval-gate markers.
-- The node control panel exposes Inputs, Outputs, Configuration, Prompts, Safety, and provider/writeback boundary text.
+- The schema screens expose workflow stage rails and runtime gates for provider-disabled, backend-absent, writeback-approval, and public-safe-source states.
+- The node control panel exposes Overview, Inputs, Outputs, Configuration, Prompts, Safety, and provider/writeback boundary text.
 - Rendered HTML does not expose obvious provider secret patterns.
 - The static UI performs no provider calls and no writeback.
 
@@ -90,12 +94,15 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 - Env/config and runtime package status.
 - E1.3 KB writeback/readback derived gate status and evidence links.
 - Jarvis normal/interview mode shell.
+- First-screen Operating Switchboard that separates the PRD/ICP service product from the reliable agent orchestra and surfaces blocked gates.
+- First-screen Proof And Backlog Drawer that summarizes dashboard issue states, latest proof, remaining gates, and validation commands.
+- Public-safe sample outputs for sanitized source packet, PRD excerpt, evidence card, task matrix, agent node config, and approval log.
 - Current-session Jarvis chat history with export/clear controls.
 - Browser-local voice input through Web Speech recognition where supported.
 - Browser-local speech output through Web Speech synthesis where supported.
 - `(1) PRD/ICP Flow` block-schema page for the externally showable service product path.
 - `(2) Agent Orchestra` block-schema page for the local Codex/LangGraph/WikiLLM/Graphify control system.
-- Full node control panels with inputs, outputs, run notes, system prompts, comments, config dropdowns, and connection summaries.
+- Full node control panels with overview, inputs, outputs, run notes, system prompts, comments, config dropdowns, runtime gates, and connection summaries.
 - Config/subprompting page for browser-local prompt candidates and exportable review packets.
 - Project Plan page for the E1-E7 spine and current source links.
 - Browser-local file metadata packet creation.
@@ -158,7 +165,7 @@ Deferred to Vercel server/auth or Railway backend:
 
 Provider state as of 2026-07-01:
 
-- `OPENROUTER_API_KEY` and `MISTRAL_API_KEY` are stored only in the root ignored local `.env.local`.
+- `OPENROUTER_API_KEY` and `MISTRAL_API_KEY` are stored only in the ignored ArchFlow workspace `.env.local`.
 - the June 30 OpenAI local key file was removed;
 - static Vercel/client JavaScript must not read provider env vars or call providers directly;
 - provider use requires an approved local bridge or backend with server-side secret access, budget limits, source labels, and review before any writeback.

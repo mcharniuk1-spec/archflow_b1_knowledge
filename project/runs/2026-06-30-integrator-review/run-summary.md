@@ -21,13 +21,13 @@ Review the combined June 30 public repository diff after the dashboard/Jarvis/Ve
 
 FACT: The stable review alias currently resolves to a Ready Preview deployment:
 
-- `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`
+- protected Vercel preview dashboard route, masked in this public artifact
 
 FACT: Unauthenticated requests to the dashboard route and `data.json` route redirect to Vercel SSO.
 
 FACT: One older production-target Vercel deployment still exists:
 
-- `https://public-j333ecdc8-mcharniuk1-4994s-projects.vercel.app`
+- protected Vercel production-target deployment, masked in this public artifact
 
 INTERPRETATION: Do not remove or roll back the production-target deployment in this pass. It is protected by Vercel SSO and still has active aliases. Removing it is a destructive hosting operation and should be handled only after owner approval or an explicit Vercel cleanup task.
 
@@ -59,4 +59,3 @@ Commit/push is technically ready after this review, but production hosting clean
 2. Keep the canonical review route as the preview alias.
 3. Create a separate Vercel cleanup task if the production-target deployment or its aliases should be removed.
 4. Keep Railway, provider calls, raw voice/document persistence, and durable browser writeback disabled.
-

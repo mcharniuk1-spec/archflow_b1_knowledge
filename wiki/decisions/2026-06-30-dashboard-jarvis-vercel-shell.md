@@ -15,9 +15,9 @@ The current dashboard is static and already uses generated public-safe `data.jso
 
 Canonical review route:
 
-- `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`
+- protected Vercel preview dashboard route, masked in this public artifact
 
-An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the approved review target. Future deploy commands stay explicit with `--target preview` until owner approval for production.
+An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment is the approved review target. Future deploy commands stay explicit with `--target preview` until owner approval for production.
 
 ## Consequences
 

@@ -770,6 +770,149 @@ function systemCards(data) {
   ];
 }
 
+function operatingStatusCards(data) {
+  const latestSource = data.activity?.[0]?.title || data.sources?.[0]?.title || "latest public-safe source";
+  return [
+    {
+      label: "Start Here",
+      value: "Jarvis command",
+      note: "Ask, refresh, stage packet, or open interview mode.",
+      tone: "ok",
+    },
+    {
+      label: "Lane 1",
+      value: "PRD/ICP service product",
+      note: "Buyer-facing PRD, ICP, evidence, report, and task outputs.",
+      tone: "ok",
+    },
+    {
+      label: "Lane 2",
+      value: "Reliable agent orchestra",
+      note: "Internal Codex, review, provider gate, memory, and writeback control.",
+      tone: "ok",
+    },
+    {
+      label: "Current Proof",
+      value: "static route smoke",
+      note: `Latest source: ${latestSource}`.slice(0, 82),
+      tone: "warn",
+    },
+    {
+      label: "Blocked Gates",
+      value: "runtime gates",
+      note: "Provider, backend, and writeback stay gated.",
+      tone: "warn",
+    },
+  ];
+}
+
+function proofBacklogItems() {
+  return [
+    {
+      id: "D-1",
+      title: "Jarvis first-screen operating area",
+      status: "proved",
+      proof: "Jarvis command core, manual transcript fallback, chat, packet queue, and operating states render on #jarvis.",
+      next: "Keep voice proof gated to owner-device browser permission.",
+    },
+    {
+      id: "D-2",
+      title: "Two-orchestra operating modes",
+      status: "proved",
+      proof: "Operating Switchboard and schema screens separate PRD/ICP service product from reliable agent orchestra.",
+      next: "Keep website copy buyer-facing while dashboard remains internal control proof.",
+    },
+    {
+      id: "D-3",
+      title: "Static/local/provider/writeback clarity",
+      status: "proved",
+      proof: "State badges, runtime gates, and smoke markers show provider disabled and writeback gated.",
+      next: "Do not claim backend/provider runtime until approved bridge exists.",
+    },
+    {
+      id: "D-4",
+      title: "Node control panel hierarchy",
+      status: "proved",
+      proof: "Node panel includes Overview, Inputs, Outputs, Connections, Config, Logs, Prompts, Comments, and Safety.",
+      next: "Add real run artifacts only after Codex/backend writes reviewed outputs.",
+    },
+    {
+      id: "D-5",
+      title: "Long graph and mobile review",
+      status: "partial",
+      proof: "Stage rail and node strip exist; mobile screenshot was inspected temporarily, not retained.",
+      next: "Add durable sanitized screenshot or mobile stage-card acceptance record before merge/deploy claim.",
+    },
+    {
+      id: "D-6",
+      title: "Proof and blocker visibility",
+      status: "proved",
+      proof: "This panel surfaces checks, blockers, backlog IDs, accepted static-scope state, and next commands inside the dashboard.",
+      next: "Keep it aligned with issue/run notes after each dashboard pass and do not merge gated runtime work into static acceptance.",
+    },
+    {
+      id: "D-8",
+      title: "Public-safe sample outputs",
+      status: "proved",
+      proof: "Sanitized source packet, PRD excerpt, evidence card, task matrix, agent node config, and approval log examples now render on the Jarvis first screen.",
+      next: "Replace examples with reviewed E2.0A artifacts only after source-safe proof exists.",
+    },
+  ];
+}
+
+function validationCommandItems() {
+  return [
+    ["JavaScript syntax", "`node --check project/dashboard/app.js`", "passed"],
+    ["Dashboard JSON", "parse `project/dashboard/data.json`", "passed"],
+    ["Rendered route smoke", "`python3 project/scripts/dashboard-static-smoke.py`", "passed"],
+    ["Public safety", "`python3 scripts/public_safety_scan.py`", "passed"],
+    ["Diff hygiene", "`git diff --check`", "passed"],
+    ["Runtime guard", "`python3 project/scripts/pre-push-runtime-guard.py`", "required before branch closeout"],
+    ["Workflow validation", "`project/local/venv/bin/python project/scripts/validate-workflows.py`", "required before branch closeout"],
+  ];
+}
+
+function publicSafeSampleOutputs() {
+  return [
+    {
+      label: "Source packet",
+      title: "Sanitized product-context packet",
+      body: "Situation, goals, known facts, assumptions, open gaps, constraints, and approved source labels. Raw calls, transcripts, documents, customer names, and private links are excluded.",
+      output: "Input for PRD builder and evidence fork.",
+    },
+    {
+      label: "PRD excerpt",
+      title: "Sanitized PRD excerpt",
+      body: "Problem, target user, acceptance criteria, non-goals, dependencies, risks, and reviewer questions. Each claim is tagged as FACT, INTERPRETATION, HYPOTHESIS, or GAP.",
+      output: "Draft section for owner review, not an auto-approved PRD.",
+    },
+    {
+      label: "Evidence card",
+      title: "ICP signal card",
+      body: "Account shape, role hypothesis, pain type, source grade, confidence, contradiction, and next verification action. Public social signals remain hypotheses until triangulated.",
+      output: "E2.0A research packet candidate.",
+    },
+    {
+      label: "Task matrix",
+      title: "Delivery responsibility grid",
+      body: "Task, owner, input artifact, expected output, acceptance criteria, blocker, approval gate, and durable destination. No task is marked done without linked evidence.",
+      output: "Implementation handoff for Codex/reviewer lanes.",
+    },
+    {
+      label: "Agent node config",
+      title: "Approval-gated node contract",
+      body: "Allowed inputs, forbidden inputs, model provider state, persistence mode, retrieval scope, safety review, run recorder, prompt, system prompt, and comments.",
+      output: "Browser-local node packet for Codex review.",
+    },
+    {
+      label: "Approval log",
+      title: "Human review checkpoint",
+      body: "Decision, evidence used, explicit gaps, blocked actions, approved destination, next owner, and confidence level. Provider/backend/writeback claims remain gated.",
+      output: "Public-safe run note or issue update.",
+    },
+  ];
+}
+
 function createLocalPacket(kind, source, input, extra = {}) {
   const id = makeId(kind);
   const packet = {
@@ -960,6 +1103,12 @@ function renderJarvis(data) {
         <div class="jarvis-orb" aria-hidden="true">JV</div>
         <h2>Jarvis Command Center</h2>
         <p class="muted">Ask for status, refresh, checks, content packets, or interview mode. Voice and file checks stay local until backend writeback exists.</p>
+        <div class="operator-strip" aria-label="Dashboard operating states">
+          <span>Static snapshot</span>
+          <span>Browser-local packets</span>
+          <span>Provider disabled</span>
+          <span>Writeback gated</span>
+        </div>
         <form class="voice-fallback" id="voiceFallbackForm" data-testid="voice-fallback-form" aria-label="Manual voice transcript fallback">
           <label for="voiceFallbackInput">Manual transcript fallback</label>
           <div>
@@ -991,6 +1140,115 @@ function renderJarvis(data) {
         </div>
       </aside>
     </div>
+
+    <section class="panel operating-switchboard" style="margin-top:16px">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Operating Switchboard</h2>
+          <p class="muted">Choose the buyer-output flow or the internal control flow. The dashboard shows proof and blockers before any durable action.</p>
+        </div>
+        <div class="row-actions">
+          <a class="button active-soft" href="#service">Open PRD/ICP Flow</a>
+          <a class="button active-soft" href="#schema">Open Agent Orchestra</a>
+          <a class="button" href="#gates">Review Gates</a>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <article class="row">
+          <span class="row-title">PRD/ICP service product</span>
+          <div class="row-meta">Source packet -> PRD -> evidence -> ICP -> demo package -> approval -> service output.</div>
+        </article>
+        <article class="row">
+          <span class="row-title">Reliable agent orchestra</span>
+          <div class="row-meta">Command -> route -> Codex work -> parallel review -> merge -> owner approval -> durable output.</div>
+        </article>
+        <article class="row">
+          <span class="row-title">Proof and issue queue</span>
+          <div class="row-meta">Static route smoke, public-safety checks, local packets, and blocked gates stay visible before any writeback.</div>
+        </article>
+      </div>
+    </section>
+
+    <div class="grid cols-6" style="margin-top:16px">${operatingStatusCards(data).map((item) => card(item)).join("")}</div>
+
+    <section class="panel proof-backlog" style="margin-top:16px" id="proofBacklog">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Proof And Backlog Drawer</h2>
+          <p class="muted">Current dashboard acceptance state from the project plan, issue backlog, communication history, and latest run checks.</p>
+        </div>
+        <div class="row-actions">
+          <a class="button" href="../issues/2026-07-01-dashboard-website-improvement-issues.md">Issue backlog</a>
+          <a class="button" href="#plan">Project plan</a>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <article class="row proof-command">
+          <span class="row-title">Jesus command state</span>
+          <div class="row-meta">Jesus accepted JDB-10 as review-ready for the static dashboard scope. Continue preserving provider, backend, writeback, voice, Nexus, deploy, and website-source gates.</div>
+        </article>
+        <article class="row proof-command">
+          <span class="row-title">Next product step</span>
+          <div class="row-meta">E2.0A dry run should produce evidence-card schema, source grades, ICP profile outline, executive decision, and next tasks.</div>
+        </article>
+        <article class="row proof-command">
+          <span class="row-title">Next control step</span>
+          <div class="row-meta">Run final validation, preserve the accepted static dashboard boundary, and keep Ronaldo's website closeout separate from dashboard acceptance.</div>
+        </article>
+      </div>
+      <div class="proof-grid">
+        <div>
+          <h3>Dashboard Issue State</h3>
+          <div class="list">
+            ${proofBacklogItems().map((item) => `
+              <article class="proof-item ${escapeHtml(item.status)}">
+                <div>
+                  <strong>${escapeHtml(item.id)} ${escapeHtml(item.title)}</strong>
+                  <p>${escapeHtml(item.proof)}</p>
+                  <span>${escapeHtml(item.next)}</span>
+                </div>
+                ${badge(item.status)}
+              </article>
+            `).join("")}
+          </div>
+        </div>
+        <div>
+          <h3>Validation Commands</h3>
+          <div class="list">
+            ${validationCommandItems().map(([label, command, status]) => `
+              <article class="proof-check">
+                <strong>${escapeHtml(label)}</strong>
+                <code>${escapeHtml(command)}</code>
+                <span>${escapeHtml(status)}</span>
+              </article>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel sample-output-gallery" style="margin-top:16px">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Public-Safe Sample Outputs</h2>
+          <p class="muted">Sanitized examples show what the service and agent orchestra produce without private screenshots, raw transcripts, customer data, or validated-demand claims.</p>
+        </div>
+        <div class="row-actions">
+          <a class="button" href="#service">Service flow</a>
+          <a class="button" href="#schema">Agent config</a>
+        </div>
+      </div>
+      <div class="sample-grid">
+        ${publicSafeSampleOutputs().map((item) => `
+          <article class="sample-card">
+            <span>${escapeHtml(item.label)}</span>
+            <strong>${escapeHtml(item.title)}</strong>
+            <p>${escapeHtml(item.body)}</p>
+            <em>${escapeHtml(item.output)}</em>
+          </article>
+        `).join("")}
+      </div>
+    </section>
 
     <div class="grid cols-6" style="margin-top:16px">${systemCards(data).map((item) => card(item)).join("")}</div>
 
@@ -1261,6 +1519,13 @@ function renderSchema(data) {
         </div>
       </div>
 
+      <div class="schema-stage-rail" aria-label="Workflow stage rail">
+        ${(kind === "service"
+          ? ["Intake", "PRD", "Evidence", "ICP", "Demo", "Approval", "Output"]
+          : ["Command", "Route", "Develop", "Review", "Merge", "Approval", "Record"]
+        ).map((stage, index) => `<span><strong>${index + 1}</strong>${escapeHtml(stage)}</span>`).join("")}
+      </div>
+
       <div class="schema-status">
         <span>${badge(validation.errors.length ? "blocked" : validation.warnings.length ? "needs review" : "valid")}</span>
         <span>${badge("static browser local")}</span>
@@ -1276,6 +1541,13 @@ function renderSchema(data) {
           ["Boundary", "Static UI creates local review packets only. No secrets, raw transcripts, provider calls, backend writes, or deployment actions run here."],
           ["Confidence", validation.errors.length ? "Medium: schema still has blocking validation errors." : validation.warnings.length ? "Medium-high: warnings need reviewer attention." : "High for static review UI; runtime execution remains gated."]
         ].map(([label, value]) => `<div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`).join("")}
+      </div>
+
+      <div class="schema-runtime-gates">
+        <span>Runtime gate: provider disabled</span>
+        <span>Runtime gate: backend absent</span>
+        <span>Runtime gate: writeback approval required</span>
+        <span>Runtime gate: public-safe sources only</span>
       </div>
 
       <div class="schema-node-strip" aria-label="Node index">
@@ -1419,7 +1691,7 @@ function renderSchemaInspector(node) {
 function renderNodeControlPanel(node) {
   const incoming = incomingSchemaEdges(node.id);
   const outgoing = outgoingSchemaEdges(node.id);
-  const tabs = ["Inputs", "Outputs", "Connections", "Config", "Logs", "Prompts", "Comments", "Safety"];
+  const tabs = ["Overview", "Inputs", "Outputs", "Connections", "Config", "Logs", "Prompts", "Comments", "Safety"];
   return `
     <div class="node-panel-backdrop" role="presentation">
       <section class="node-panel" role="dialog" aria-modal="true" aria-labelledby="nodePanelTitle">
@@ -1429,6 +1701,13 @@ function renderNodeControlPanel(node) {
               <div class="panel-eyebrow">${escapeHtml(blockSchema.title)}</div>
               <h2 id="nodePanelTitle">${escapeHtml(node.title)}</h2>
               <p>${escapeHtml(node.job || "Configure this node for the selected workflow layer.")}</p>
+              <div class="node-panel-quick-facts" aria-label="Node operating facts">
+                <span>${escapeHtml(node.workflowLayer || "workflow layer unset")}</span>
+                <span>${escapeHtml(incoming.length)} inputs</span>
+                <span>${escapeHtml(outgoing.length)} outputs</span>
+                <span>MODEL PROVIDER ${escapeHtml(node.config?.modelProvider || "none")}</span>
+                <span>${escapeHtml(node.config?.approvalGate || "approval gate unset")}</span>
+              </div>
             </div>
             <div class="row-actions">
               <button class="primary" type="submit">Save local node</button>
@@ -1440,6 +1719,21 @@ function renderNodeControlPanel(node) {
             ${tabs.map((tab) => `<button class="node-panel-tab" type="button" data-panel-target="nodePanel${tab}">${tab}</button>`).join("")}
           </nav>
           <div class="node-panel-body">
+            <section class="node-panel-section node-panel-overview" id="nodePanelOverview">
+              <h3>Overview</h3>
+              <div class="grid cols-3">
+                <div class="row"><span class="row-title">Job</span><div class="row-meta">${escapeHtml(node.job || "No job defined.")}</div></div>
+                <div class="row"><span class="row-title">Pain Reduced</span><div class="row-meta">${escapeHtml(node.pain || "No risk defined.")}</div></div>
+                <div class="row"><span class="row-title">Evidence</span><div class="row-meta">${escapeHtml(node.evidence || "Evidence pending.")}</div></div>
+              </div>
+              <div class="schema-runtime-gates compact">
+                <span>Provider calls blocked</span>
+                <span>Raw capture blocked</span>
+                <span>Writeback requires approval</span>
+                <span>Export creates local packet</span>
+              </div>
+            </section>
+
             <section class="node-panel-section" id="nodePanelInputs">
               <h3>Inputs</h3>
               <div class="control-grid">
