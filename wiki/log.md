@@ -83,3 +83,4 @@
   - Daily Skill Retrospective and RAG Knowledge Review.
   Added dedicated SKILL contracts, explicit no-op-safe lane scope, and recurring inefficiency blacklists so each run reviews not only functional output but also tool relevance and waste.
 - Split the two scheduled maintenance lane contracts in `agent-roster.yaml` into separate scheduled blocks (`21:00` and `22:30`) and added explicit long-term inefficiency carry-forward to wiki memory surfaces for durable global-knowledge governance.
+- Completed the final Jesus integration and Notion closeout for the static website/dashboard lane: Messi handoff reviewed, mobile homepage readability fixed, Notion Links and task rows refreshed to branch-head evidence, dashboard route/static data verified, and runtime/provider/Railway/Nexus/writeback claims kept gated.
