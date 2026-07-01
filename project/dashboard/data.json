@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T14:49:30.710336+00:00",
+  "generated_at": "2026-07-01T10:14:51.690728+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,12 +25,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "28 files",
+      "value": "36 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "115",
+      "value": "142",
       "tone": "ok"
     },
     {
@@ -396,18 +396,207 @@
   ],
   "activity": [
     {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
+      "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
+      "modified": "2026-07-01T10:14:32.685674+00:00",
+      "size": 3739
+    },
+    {
       "kind": "project_run",
-      "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/agent-handout.md",
-      "title": "Agent Handout: Jarvis Voice Dashboard Review Branch",
-      "modified": "2026-06-30T14:49:17.801196+00:00",
-      "size": 1441
+      "path": "project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md",
+      "title": "Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
+      "modified": "2026-07-01T10:14:32.581190+00:00",
+      "size": 5916
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-competitor-dashboard-website-plan.md",
+      "title": "2026-07-01 Competitor Dashboard And Website Plan",
+      "modified": "2026-07-01T10:11:10.406180+00:00",
+      "size": 3186
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md",
+      "title": "Agent Handout: Competitor-Backed Dashboard And Website Plan",
+      "modified": "2026-07-01T10:11:10.306579+00:00",
+      "size": 4844
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md",
+      "title": "Ronaldo Dashboard And Website Execution Plan",
+      "modified": "2026-07-01T10:11:10.204978+00:00",
+      "size": 14834
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md",
+      "title": "Legacy Design Reference And PRD/ICP Calculator Brief",
+      "modified": "2026-07-01T10:02:22.345211+00:00",
+      "size": 8817
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md",
+      "title": "2026-07-01 Legacy Design Reference And PRD Calculator",
+      "modified": "2026-07-01T10:00:54.122998+00:00",
+      "size": 1040
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-two-paradigm-execution-plan.md",
+      "title": "Two-Paradigm Execution Plan",
+      "modified": "2026-07-01T09:59:55.558120+00:00",
+      "size": 4819
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-competitor-dashboard-website-plan.md",
+      "title": "Competitor-Backed Dashboard And Website Improvement Plan",
+      "modified": "2026-07-01T09:55:46.816559+00:00",
+      "size": 20647
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md",
+      "title": "Scheduled Automation Audit Handout",
+      "modified": "2026-07-01T09:53:42.495658+00:00",
+      "size": 4123
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-scheduled-automation-audit/run-summary.md",
+      "title": "Scheduled Automation Audit",
+      "modified": "2026-07-01T09:53:42.395420+00:00",
+      "size": 2607
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-dashboard-two-layer-schema.md",
+      "title": "Run Note: Two-Layer Dashboard Schema Control Panel",
+      "modified": "2026-07-01T09:43:43.412241+00:00",
+      "size": 1539
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/agent-handout.md",
+      "title": "Agent Handout: Two-Layer Dashboard Schema Control Panel",
+      "modified": "2026-07-01T09:43:43.311812+00:00",
+      "size": 3546
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/run-summary.md",
+      "title": "Run Summary: Two-Layer Dashboard Schema Control Panel",
+      "modified": "2026-07-01T09:43:43.211675+00:00",
+      "size": 6269
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-messi-coordination-review.md",
+      "title": "2026-07-01 Messi Coordination Review",
+      "modified": "2026-07-01T09:39:39.347818+00:00",
+      "size": 1427
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-messi-coordination-review/agent-handout.md",
+      "title": "Agent Handout: Messi Coordination Review",
+      "modified": "2026-07-01T09:39:39.248348+00:00",
+      "size": 6460
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-messi-coordination-review.md",
+      "title": "Messi Coordination Review",
+      "modified": "2026-07-01T09:39:39.144875+00:00",
+      "size": 9707
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
+      "title": "2026-07-01 Yushchenko Model Efficiency Observer",
+      "modified": "2026-07-01T09:37:46.127471+00:00",
+      "size": 1271
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
+      "title": "Agent Handout: Yushchenko Model Efficiency Observer",
+      "modified": "2026-07-01T09:37:38.118863+00:00",
+      "size": 3498
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md",
+      "title": "Initial Model Efficiency Report",
+      "modified": "2026-07-01T09:37:19.335392+00:00",
+      "size": 2655
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-current-state-e1-e7-vercel-railway-jarvis.md",
+      "title": "Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System",
+      "modified": "2026-07-01T09:33:14.537113+00:00",
+      "size": 13102
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
+      "title": "Agent Handout: OpenRouter Model Routing",
+      "modified": "2026-07-01T09:29:57.629084+00:00",
+      "size": 3934
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-openrouter-model-routing.md",
+      "title": "2026-07-01 OpenRouter Model Routing",
+      "modified": "2026-07-01T09:28:39.172514+00:00",
+      "size": 1418
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
+      "title": "OpenRouter Model Routing Plan",
+      "modified": "2026-07-01T09:28:29.222512+00:00",
+      "size": 11399
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-agent-communication-channel/agent-handout.md",
+      "title": "Agent Handout: Live Communication Channel",
+      "modified": "2026-07-01T09:18:32.573776+00:00",
+      "size": 3014
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-agent-communication-channel.md",
+      "title": "2026-07-01 Agent Communication Channel",
+      "modified": "2026-07-01T09:18:10.247855+00:00",
+      "size": 899
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md",
+      "title": "Jarvis Agentbrowser Voice And Block Schema Review",
+      "modified": "2026-06-30T20:26:17.778453+00:00",
+      "size": 2425
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/run-summary.md",
       "title": "Run: Jarvis Voice Dashboard Review Branch",
-      "modified": "2026-06-30T14:49:17.701104+00:00",
+      "modified": "2026-06-30T15:03:48.268157+00:00",
       "size": 2310
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/agent-handout.md",
+      "title": "Agent Handout: Jarvis Voice Dashboard Review Branch",
+      "modified": "2026-06-30T15:03:48.268010+00:00",
+      "size": 1441
     },
     {
       "kind": "project_run",
@@ -608,7 +797,7 @@
     {
       "kind": "project_run",
       "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md",
-      "title": "GloomyLord Internal Reporting Brief",
+      "title": "Visual Reporting Internal Reporting Brief",
       "modified": "2026-06-30T11:59:28.092079+00:00",
       "size": 1716
     },
@@ -1205,7 +1394,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 28,
+    "file_count": 36,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -1346,6 +1535,46 @@
         "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
         "title": "Run: Onyx Dashboard Voice Hosting Execution",
         "excerpt": "# Run: Onyx Dashboard Voice Hosting Execution  Date: 2026-06-30 Status: planned and recorded  ## Summary  The June 30 plan was converted into a public-safe execution baseline. ArchFlow remains the workflow brain; Onyx is a later optional portal/search layer. The dashboard should go live in stages, beginning with the current static read-only dashboard and only adding Railway/live workers when the project needs a long-"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-agent-communication-channel.md",
+        "title": "2026-07-01 Agent Communication Channel",
+        "excerpt": "# 2026-07-01 Agent Communication Channel  ## Task  Create a live communication folder for ArchFlow public project agents and provide a system prompt append for the new coordination pattern.  ## Result  - Added `project/live/communication/` as the shared public-safe channel for active parallel agent dialogue. - Added the current notice, message template, pattern-change log, and copy-ready system prompt append. - Updat"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-competitor-dashboard-website-plan.md",
+        "title": "2026-07-01 Competitor Dashboard And Website Plan",
+        "excerpt": "# 2026-07-01 Competitor Dashboard And Website Plan  ## Task  Review competitor positioning and prepare the next ArchFlow planning direction for:  - dashboard improvement; - public services website improvement.  ## Result  Created:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - `project/runs/2026-07-01-competitor-dashboard-we"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-dashboard-two-layer-schema.md",
+        "title": "Run Note: Two-Layer Dashboard Schema Control Panel",
+        "excerpt": "# Run Note: Two-Layer Dashboard Schema Control Panel  ## Task  Make the dashboard operable as two separate block-schema screens:  - `(1) PRD/ICP Flow` for the service-product path. - `(2) Agent Orchestra` for the reliable local control system.  ## Result  - Added explicit `#service` and `#schema` schema screens. - Added large node control panels with inputs, outputs, connection settings, dropdown configuration, run h"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
+        "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
+        "excerpt": "# Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending  ## Summary  The missing final June 30 accepted state was transferred into the ArchFlow public knowledge layer. The project now records that the accepted review branch is `d18fc55`, `JDB-8` is Done, `JDB-7` remains Review, and Te"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md",
+        "title": "2026-07-01 Legacy Design Reference And PRD Calculator",
+        "excerpt": "# 2026-07-01 Legacy Design Reference And PRD Calculator  ## Task  Use the latest legacy ArchFlow website as the design reference for the future public PRD/ICP landing page.  ## Result  Created `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md`.  ## Key Finding  The legacy website should be reused for visual mechanics, not category positioning. Its strongest reusable elements are layered "
+      },
+      {
+        "path": "wiki/runs/2026-07-01-messi-coordination-review.md",
+        "title": "2026-07-01 Messi Coordination Review",
+        "excerpt": "# 2026-07-01 Messi Coordination Review  ## Task  Coordinate the active July 1 ArchFlow dashboard/model-routing/Notion work as project manager, product owner, and strategic planner.  ## Result  - Verified the current repo branch and dirty worktree state. - Verified live Notion task state for the key dashboard/Jarvis/E1/E2 rows. - Integrated four read-only reviewer passes: repo state, dashboard vision, Notion state, an"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-openrouter-model-routing.md",
+        "title": "2026-07-01 OpenRouter Model Routing",
+        "excerpt": "# 2026-07-01 OpenRouter Model Routing  ## Task  Define a strategic and economical OpenRouter model-routing architecture for ArchFlow.  ## Result  - Added `project/reports/2026-07-01-openrouter-model-routing-plan.md`. - Replaced `project/config/model-routing.yaml` with a fuller routing contract. - Kept OpenRouter runtime disabled until explicit approval and an approved local bridge or backend exists. - Defined the fro"
+      },
+      {
+        "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
+        "title": "2026-07-01 Yushchenko Model Efficiency Observer",
+        "excerpt": "# 2026-07-01 Yushchenko Model Efficiency Observer  ## Task  Create a recurring model-efficiency and token-use observer for ArchFlow.  ## Result  - Created Codex app automation `yushchenko-model-efficiency-observer` with a five-hour cadence. - Added the Yushchenko observer role to `project/agents/agent-roster.yaml`. - Updated `project/agents/README.md`. - Added `project/automation/yushchenko-model-efficiency-observer."
       }
     ]
   },
@@ -1427,7 +1656,7 @@
     {
       "path": "project/agents/README.md",
       "title": "Agents",
-      "text": "# Agents  This folder defines only the agents and skills used or explicitly set up for the public ArchFlow project.  It does not publish the operator's full private skill library.  ## Agent Team  | Agent | Purpose | |---|---| | AF Tools | Source and tool inventory. | | AF Context | Structured context extraction. | | AF Manager | PRD, backlog, responsibility, and success criteria. | | AF Knowledge | Knowledge-base update packets. | | AF Review | Public-safety and evidence review. | | AF Publisher | Git/public project publishing. |  See `skills-by-agent.md` and `agent-roster.yaml`.  Workflow contracts:  - `../workflows/langgraph-controller.yaml` - `../workflows/crewai-crew.yaml` - `../workflows/llamaindex-rag.yaml`"
+      "text": "# Agents  This folder defines only the agents and skills used or explicitly set up for the public ArchFlow project.  It does not publish the operator's full private skill library.  ## Agent Team  | Agent | Purpose | |---|---| | AF Tools | Source and tool inventory. | | AF Context | Structured context extraction. | | AF Manager | PRD, backlog, responsibility, and success criteria. | | AF Knowledge | Knowledge-base update packets. | | AF Review | Public-safety and evidence review. | | AF Publisher | Git/public project publishing. | | Yushchenko Model Efficiency Observer | Recurring model/token efficiency review and advice. |  See `skills-by-agent.md` and `agent-roster.yaml`.  Live communication:  - `../live/communication/README.md` - `../live/communication/current-agent-notice.md` - `../live/communication/agent-communication-log.md`  Every agent must read the live communication notice and append a starting update before editing project files.  Workflow contracts:  - `../workflows/langgraph-controller.yaml` - `../workflows/crewai-crew.yaml` - `../workflows/llamaindex-rag.yaml`  Model-efficiency observer:  - `model-efficiency-advice.md` - `model-efficiency-issues.md` - `../automation/y"
     },
     {
       "path": "project/agents/agent-roster.yaml",
@@ -1435,14 +1664,29 @@
       "text": "agents:   af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     outputs:       - source_inventory       - tool_readiness_report       - provider_status    af_context:     title: AF Context     provider: codex_operator     local_model: gemma4:e4b     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap     outputs:       - context_digest       - translated_plan       - gaps    af_manager:     title: AF Manager     provider: codex_operator     local_model: gemma4:e4b     skills:       - archflow-task-breakdown       - task-handout       - outquestions       - prd-from-dialogue       - responsibility-assignment-extraction       - milestone-planning       - acceptance-criteria-writing     outputs:       - prd       - task_matrix       - milestone_plan    af_research:     title: AF Research     pr"
     },
     {
+      "path": "project/agents/model-efficiency-advice.md",
+      "title": "Model Efficiency Advice",
+      "text": "# Model Efficiency Advice  Purpose: reusable advice for ArchFlow agents choosing models, spending tokens, and deciding when to escalate from cheap execution models to frontier review.  ## Standing Advice  1. Use Codex and deterministic scripts before model calls when the task is file inspection, schema validation, YAML parsing, public-safety scanning, or simple formatting. 2. Treat OpenRouter as disabled unless an approved backend or local bridge exists. 3. Use cheap execution models first for extraction, classification, drafting, source discovery, and code variants. 4. Use the Claude, Gemini, and OpenAI frontier council only when the result affects strategy, architecture, public claims, memory promotion, outreach, pricing, or payment verdicts. 5. Never let an execution-pool model self-approve its own output. 6. Log model ID, task, role, source IDs, prompt version, estimated input/output tokens, estimated cost, decision, reviewer, and human gate status. 7. If token or cost data is missing, report it as missing. Do not estimate after the fact unless the source log supports it. 8. For bulk E2 research, audit a sample with a frontier reviewer instead of reviewing every low-value item."
+    },
+    {
+      "path": "project/agents/model-efficiency-issues.md",
+      "title": "Model Efficiency Issues",
+      "text": "# Model Efficiency Issues  Purpose: open issues the Yushchenko Model Efficiency Observer and other agents should track until resolved.  ## Open Issues  ### MEI-1 - No Canonical Model-Call Ledger Yet  Status: open  FACT: The model-routing plan defines required fields, but the project does not yet have a canonical ledger file or database for model calls.  Impact: Observer reports can only summarize available run notes and logs. Token/cost efficiency will be incomplete until model calls are logged consistently.  Needed action: create a public-safe model-call ledger schema before activating OpenRouter.  ### MEI-2 - Telegram Sender Not Proven  Status: open  FACT: The recurring automation is active, but no Telegram connector or approved sender was exposed in this session.  Impact: Reports can be saved locally, but Telegram delivery may be skipped until a sender exists.  Needed action: configure an approved Telegram sender outside the public repo and keep chat IDs, URLs, and tokens out of public files.  ### MEI-3 - OpenRouter Runtime Disabled  Status: open  FACT: OpenRouter is intentionally disabled until explicit approval and a backend or local bridge exists.  Impact: Reports should say "
+    },
+    {
       "path": "project/agents/skills-by-agent.md",
       "title": "Skills By Agent",
       "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - [`outquestions`](../../skills/outquestions/SKILL.md) - reports execution outcomes and the questions/gates needed before moving"
     },
     {
+      "path": "project/automation/yushchenko-model-efficiency-observer.md",
+      "title": "Yushchenko Model Efficiency Observer",
+      "text": "# Yushchenko Model Efficiency Observer  Status: active in Codex app automation.  Automation ID: `yushchenko-model-efficiency-observer`  Cadence: every five hours.  ## Purpose  The Yushchenko observer watches model and token usage across the ArchFlow public project and produces recurring Markdown reports. It checks whether agents used the right model tier for the task, whether OpenRouter usage was logged, and whether cheaper execution models should replace frontier calls.  ## Scope  Read:  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/live/communication/agent-communication-log.md` - `project/runs/` - `wiki/log.md`  Write:  - `project/runs/yushchenko-model-efficiency/YYYY-MM-DD-HHMM-model-efficiency-report.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `wiki/log.md` - `project/live/communication/agent-communication-log.md`  ## Required Report Sections  Each report must include:  1. Run window and evidence files inspected. 2. Models used by provider and model ID. 3. Task and rea"
+    },
+    {
       "path": "project/config/model-routing.yaml",
       "title": "model-routing.yaml",
-      "text": "provider_mode: codex_auth_main  providers:   codex_operator:     status: active_as_primary_operator_runtime     mode: codex_app     auth_scope: codex_app_authenticated_tools     exports_api_key: false     use_for:       - file_edits       - approvals       - public_safety_review       - orchestration       - final_outputs       - github_publication     github_publication:       repository: mcharniuk1-spec/archflow_b1_knowledge       verified_method: codex_operated_git_ssh       local_https_push_status: blocked_missing_git_credentials       ssh_push_status: verified    ollama_local:     status: service_started_qwythos_loads     role: local_minor_background_tasks     base_url_env: OLLAMA_BASE_URL     chat_model_env: OLLAMA_CHAT_MODEL     fallback_chat_model_env: OLLAMA_FALLBACK_CHAT_MODEL     embedding_model_env: OLLAMA_EMBED_MODEL     task_scope_env: OLLAMA_TASK_SCOPE     default_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     active_background_chat_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     fallback_chat_model: gemma4:e4b     default_embedding_model: nomic-embed-text     allowed_tasks:       - draft_cleanup       - public_text_sum"
+      "text": "provider_mode: codex_operator_primary_openrouter_spec_only  status:   runtime_activation: disabled_until_explicit_approval   reason: static dashboard and public repo must not call model providers directly   model_ids: target_ids_require_activation_time_verification_against_openrouter_models_api   activation_requires:     - approved_local_bridge_or_backend     - server_side_secret_access_only     - fresh_openrouter_model_list_check     - budget_limit_per_run     - model_id_and_cost_logging     - public_safety_screen     - human_approval_before_external_or_memory_write     - retry_and_timeout_policy  providers:   codex_operator:     status: active_as_primary_operator_runtime     mode: codex_app     auth_scope: codex_app_authenticated_tools     exports_api_key: false     use_for:       - file_edits       - approvals       - public_safety_review       - orchestration       - final_outputs       - github_publication     github_publication:       repository: mcharniuk1-spec/archflow_b1_knowledge       verified_method: codex_operated_git_ssh       local_https_push_status: blocked_missing_git_credentials       ssh_push_status: verified    ollama_local:     status: service_started_qwythos_l"
     },
     {
       "path": "project/content/templates/README.md",
@@ -1482,7 +1726,7 @@
     {
       "path": "project/dashboard/README.md",
       "title": "Local Operator Dashboard",
-      "text": "# Local Operator Dashboard  This is the Phase 2 dashboard for ArchFlow Block 1.  It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  Current stable protected review route:  ```text https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/ ```  Review-branch local deep links:  ```text http://127.0.0.1:8765/project/dashboard/#jarvis http://127.0.0.1:8765/project/dashboard/#history http://127.0.0.1:8765/project/dashboard/#schema http://127.0.0.1:8765/project/dashboard/#config http://127.0.0.1:8765/project/dashboard/#plan ```  Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8765 ```  Open:  ```text http://127.0.0.1:8765/project/dashboard/ ```  ## Vercel Preview  Deploy from the public rep"
+      "text": "# Local Operator Dashboard  This is the Phase 2 dashboard for ArchFlow Block 1.  It is a static source-state control panel and Jarvis command shell generated from public project files. It can hold browser-local draft graph edits and review packets, but it cannot write back to source files by itself. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  Protected review route format:  ```text https://<protected-preview-host>/project/dashboard/ ```  Review-branch local deep links:  ```text http://127.0.0.1:8765/project/dashboard/#jarvis http://127.0.0.1:8765/project/dashboard/#history http://127.0.0.1:8765/project/dashboard/#service http://127.0.0.1:8765/project/dashboard/#schema http://127.0.0.1:8765/project/dashboard/#config http://127.0.0.1:8765/project/dashboard/#plan ```  Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3"
     },
     {
       "path": "project/future-actions-and-parameters.md",
@@ -1495,9 +1739,39 @@
       "text": "# Integrated Knowledge Operations Plan  Status: configured and partially runtime-verified as the public project contract.  ## Goal  Operate ArchFlow as one coordinated system while keeping each knowledge layer responsible for a different job.  ## How The Layers Work Together  ```text Codex   -> WikiLLM public memory   -> public-safety scan   -> LangGraph state workflow   -> LlamaIndex approved retrieval   -> CrewAI role outputs   -> LangGraph review gate   -> LangSmith trace   -> WikiLLM run/decision/issue updates   -> Git pre-push safety hook   -> GitHub ```  ## Current Execution Status  | Layer | Status | |---|---| | Codex | Active operator. | | WikiLLM | Active under `wiki/`. | | Ollama/Qwythos | Active local model. | | LangSmith | Key present locally; SDK installed in ignored local runtime; smoke trace submitted. | | LangGraph | Runtime installed; sanitized smoke workflow passed. | | CrewAI | Runtime installed; config/import check passed without LLM execution. | | LlamaIndex | Runtime installed; approved-corpus retrieval proof passed. | | Graphify | Public repo graph generated and linked from dashboard. | | Obsidian mirror | Planned as sanitized mirror only. | | Nexus | Planned"
     },
     {
+      "path": "project/issues/2026-07-01-dashboard-website-improvement-issues.md",
+      "title": "Dashboard And Website Improvement Issues",
+      "text": "# Dashboard And Website Improvement Issues  Date: 2026-07-01 Status: open planning backlog  ## Dashboard Issues  | ID | Priority | Issue | Required Fix | Acceptance | |---|---:|---|---|---| | D-1 | P0 | Jarvis is not yet dominant enough as the first-screen operating area. | Redesign first viewport around Jarvis chat, voice sphere, command state, and packet queue. | A new user can identify where to start without reading docs. | | D-2 | P0 | Two orchestras can still feel like tabs rather than operating modes. | Add explicit mode switch and lane descriptions for PRD/ICP Flow and Agent Orchestra. | Each lane explains purpose, inputs, outputs, and blocked actions. | | D-3 | P0 | Static/local/backend/provider/writeback state can be misunderstood. | Add persistent state badges and proof drawer. | No page implies provider-backed or durable writeback execution unless implemented. | | D-4 | P1 | Node panel is rich but can feel dense. | Group controls into task tabs: Overview, Inputs, Outputs, Config, Prompt, Runs, Comments. | Operators find prompts/config/logs in one click. | | D-5 | P1 | Long graph navigation is hard on small screens. | Add mini-map, stage rail, and mobile stage cards. | Mo"
+    },
+    {
       "path": "project/langsmith-setup.md",
       "title": "LangSmith Setup",
       "text": "# LangSmith Setup  Status: configured; local ignored API key present; sanitized smoke trace submitted.  ## Current Parameters  | Parameter | Value | |---|---| | Purpose | Observability and tracing only. | | Model execution | Ollama local only. | | Cloud model keys | Not configured. | | Project name | `ArchFlow` | | Project ID | `masked_langsmith_project_id` | | Endpoint | `https://eu.api.smith.langchain.com` | | Local env file | `project/.env.langsmith.local` | | Public example | `project/config/langsmith.env.example` |  ## Local Env File  Store the API key only in:  `project/.env.langsmith.local`  Keep this line blank in Git-tracked files:  ```env LANGSMITH_API_KEY= ```  ## Active Env Block  ```env LANGSMITH_TRACING=true LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com LANGSMITH_PROJECT=ArchFlow LANGSMITH_PROJECT_ID=masked_langsmith_project_id LANGSMITH_API_KEY= LANGGRAPH_CONTROL_MODE=codex_supervised LANGGRAPH_LLM_PROVIDER=ollama_local OLLAMA_BASE_URL=http://127.0.0.1:11434 OLLAMA_CHAT_MODEL=hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M OLLAMA_FALLBACK_CHAT_MODEL=gemma4:e4b OLLAMA_EMBED_MODEL=nomic-embed-text LANGSMITH_RUN_TAGS=archflow,block1,ollama,qwythos,publ"
+    },
+    {
+      "path": "project/live/communication/README.md",
+      "title": "Live Agent Communication",
+      "text": "# Live Agent Communication  Purpose: this folder is the shared public-safe communication channel for ArchFlow agents working in parallel.  Every active agent must read this folder before changing project files, then append short status updates while working. The goal is to prevent contradictory edits, duplicate work, stale assumptions, and silent file ownership conflicts.  ## Required Files  | File | Purpose | |---|---| | `agent-communication-log.md` | Append-only working dialogue between agents. | | `current-agent-notice.md` | Current notice that every agent must read before work. | | `message-template.md` | Required update format. | | `pattern-change-log.md` | Append-only record of changes to this communication pattern. | | `system-prompt-append.md` | Copy-ready prompt section to add to agent system/developer prompts. |  ## Agent Rule  Before starting work, each agent must:  1. Read `project/operating-rules.md`. 2. Read this `README.md`. 3. Read `current-agent-notice.md`. 4. Read the latest section of `agent-communication-log.md`. 5. Append a `starting` update that names the task, files likely to change, expected output, and blockers.  During work, each agent must:  - Append a sh"
+    },
+    {
+      "path": "project/live/communication/current-agent-notice.md",
+      "title": "Current Agent Notice",
+      "text": "# Current Agent Notice  Date: 2026-07-01 Status: active  All ArchFlow public project agents must use `project/live/communication/` as the shared live coordination channel.  Before starting or continuing work:  1. Read `project/live/communication/README.md`. 2. Read the latest entries in `project/live/communication/agent-communication-log.md`. 3. Append a `starting` update before editing files. 4. Name the files you expect to touch. 5. Check whether another agent has claimed the same files.  If another agent is working on the same file or task, stop and coordinate in `agent-communication-log.md` before editing.  For substantial work, still create or update the relevant run handout under `project/runs/`. The live communication folder coordinates active work; the run handout records durable completion state.  Safety boundary: this folder is public-safe only. Do not paste secrets, raw private source material, local absolute paths, private URLs, account IDs, screenshots, credentials, or personal identifiers."
+    },
+    {
+      "path": "project/live/communication/message-template.md",
+      "title": "Message Template",
+      "text": "# Message Template  Use this format in `agent-communication-log.md`.  ```md ## YYYY-MM-DD HH:MM - Agent Name - short status  Status: starting / running / blocked / handoff / complete  Task:  Files likely to change:  Files claimed:  FACT:  INTERPRETATION:  HYPOTHESIS:  GAP:  Checks:  Next: ```  Keep entries concise. Use repo-relative paths only."
+    },
+    {
+      "path": "project/live/communication/pattern-change-log.md",
+      "title": "Pattern Change Log",
+      "text": "# Pattern Change Log  Append-only record of changes to the ArchFlow agent communication pattern.  ## 2026-07-01 - Live communication folder created  Status: active  Change:  - Added `project/live/communication/` as the shared live channel for ArchFlow public project agents. - Required agents to read the folder before work, append a starting update, claim expected files, coordinate conflicts, and report completion or handoff. - Kept run-specific `agent-handout.md` files as durable completion records after substantial work.  Reason:  - Parallel agents need a single current channel to prevent contradictions and silent overlapping edits.  Applies to:  - AF Tools - AF Context - AF Manager - AF Research - AF Knowledge - AF Copy - Visual Reporting - AF Review - AF Publisher - Any Codex, Claude Code, Cursor, or sidecar agent working on the public ArchFlow project."
+    },
+    {
+      "path": "project/live/communication/system-prompt-append.md",
+      "title": "System Prompt Append: ArchFlow Agent Communication",
+      "text": "# System Prompt Append: ArchFlow Agent Communication  Append this section to the current ArchFlow agent system/developer prompt.  ```text ArchFlow Public Project Live Communication Rule  Before starting or continuing any ArchFlow public project work, read:  - project/operating-rules.md - project/live/communication/README.md - project/live/communication/current-agent-notice.md - the latest entries in project/live/communication/agent-communication-log.md  Before editing files, append a short `starting` update to project/live/communication/agent-communication-log.md. Include the task, files likely to change, files claimed, expected output, blockers, and next step.  During work, append an update before editing shared files or changing scope. If another agent has claimed the same file or task, pause and coordinate in the communication log before editing.  After work, append a `complete`, `blocked`, or `handoff` update with files changed, checks run or skipped, remaining gaps, and the next safe action.  For substantial work, also create or update the relevant project/runs/<run-id>/agent-handout.md. The live communication folder coordinates active work; run handouts record durable complet"
     },
     {
       "path": "project/loops/LOOP.md",
@@ -1590,9 +1864,14 @@
       "text": "# AF Review Prompt  ```md AF Review  Review target:  Check for: - public safety - English-only content - no personal names or private IDs - no local absolute paths - no secrets - no unsupported customer or ROI claims - clear next action  Output: - approved or blocked - issues - required edits - final public-safe summary ```"
     },
     {
+      "path": "project/prompts/analytical-writing-agent-framework.md",
+      "title": "Analytical Writing Agent Framework",
+      "text": "# Analytical Writing Agent Framework  Date: 2026-07-01 Status: active internal writing instruction  Use this for summaries, work reports, logs, knowledge pathways, PRD execution tasks, market analysis, customer profiles, brainstorms, and explanations.  ## Core Instruction  You are an analytical writing agent responsible for producing decision-ready project documents, market analysis, target audience analysis, brainstorms, summaries, and explanations.  Use three frameworks together:  1. Jobs To Be Done. 2. Amazon Working Backwards / PR-FAQ. 3. Minto Pyramid Principle with SCQA and MECE structure.  ## Jobs To Be Done  Start by identifying the real customer or stakeholder job.  Define:  - Situation: when and where the problem appears. - Functional job: what the user needs to accomplish. - Social job: how the user wants to be perceived. - Emotional job: what fear, risk, anxiety, or confidence problem exists. - Current alternatives: what the user uses now. - Switching trigger: what event makes the user search for a better solution. - Adoption barriers: why the user may still avoid the solution.  ## Working Backwards / PR-FAQ  Convert the job into a future successful product, feature, se"
+    },
+    {
       "path": "project/provider-setup.md",
       "title": "Provider Setup",
-      "text": "# Provider Setup  This project supports two provider concepts:  1. Ollama local model provider. 2. Codex operator authentication.  They are not the same thing.  ## Current Verified State  As of 2026-06-25:  - Ollama CLI is installed. - Ollama server is started through the local Homebrew service. - Local Ollama manifests include a Qwythos model: `Qwythos-9B-Claude-Mythos-5-1M-GGUF` with `Q4_K_M` quantization. - Qwythos appears in `ollama list`, but the smoke test failed at model load time with an Ollama 500 error. - Qwythos now loads and generates text through Ollama. - `gemma4:e4b` remains the fallback model. - Codex is available as the operator runtime. - Codex auth should not be treated as an exportable API key. - LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.  ## Recommended Mode  Use Codex authentication as the main project operator and publication path. Use Ollama only for local minor/background tasks:  - `ARCHFLOW_PROVIDER_MODE=codex_auth_main` - `CODEX_OPERATOR_MODE=codex_app` - `CODEX_AUTH_EXPORTS_API_KEY=false` - `CODEX_GITHUB_PUBLICATION=codex_operated_git_ssh` - `OLLAMA_CHAT_MOD"
+      "text": "# Provider Setup  This project supports four provider concepts:  1. Ollama local model provider. 2. Codex operator authentication. 3. OpenRouter as a future hosted orchestration/model provider. 4. Mistral as a future hosted quality/synthesis provider.  They are not the same thing.  ## Current Verified State  As of 2026-06-25:  - Ollama CLI is installed. - Ollama server is started through the local Homebrew service. - Local Ollama manifests include a Qwythos model: `Qwythos-9B-Claude-Mythos-5-1M-GGUF` with `Q4_K_M` quantization. - Qwythos appears in `ollama list`, but the smoke test failed at model load time with an Ollama 500 error. - Qwythos now loads and generates text through Ollama. - `gemma4:e4b` remains the fallback model. - Codex is available as the operator runtime. - Codex auth should not be treated as an exportable API key. - LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.  As of 2026-07-01:  - The root ignored `.env.local` contains `OPENROUTER_API_KEY` and `MISTRAL_API_KEY`. - The Markdown file that temporarily contained those values was deleted. - The local OpenAI key file creat"
     },
     {
       "path": "project/reports/2026-06-25-chat-execution-report.md",
@@ -1623,6 +1902,41 @@
       "path": "project/reports/2026-06-30-jarvis-device-bridge-global-wall.md",
       "title": "Jarvis Device Bridge And Capture Global Wall",
       "text": "# Jarvis Device Bridge And Capture Global Wall  Date: 2026-06-30 Status: planned, not implemented Scope: public-safe roadmap for dashboard, local operator state, voice/screen capture, and Codex/OpenAI bridge planning.  ## Purpose  Create a reliable path for Jarvis to show where the active agent is running, whether a local operator bridge is connected, and how voice/screen capture can become task/report input without storing private raw material by default.  This wall does not enable live capture, model calls, deployments, or write actions. It defines the structure future agents should implement and review.  ## Facts  - The current dashboard is a Vercel/static or static-enhanced visibility surface, not a live control plane. - Codex is currently the local operator/editor/reviewer when the owner runs it on the owner's device. - Codex app authorization is not an application API key and should not be copied into hosted services. - OpenAI API use for application code requires an approved API key stored in a secret store or local private environment file. - Voice and screen capture are private input channels and should default to transient processing plus reviewed summaries.  ## Operating"
+    },
+    {
+      "path": "project/reports/2026-07-01-competitor-dashboard-website-plan.md",
+      "title": "Competitor-Backed Dashboard And Website Improvement Plan",
+      "text": "# Competitor-Backed Dashboard And Website Improvement Plan  Date: 2026-07-01 Status: planning brief for next execution  ## Executive Answer  ArchFlow should move forward in two coordinated directions.  Direction 1 is the internal dashboard: make it feel like a real operating cockpit for two separate orchestras. The first orchestra is the buyer-facing PRD/ICP service flow. The second orchestra is the internal reliable agent-control system. The current dashboard already has the right structural split, but it needs clearer first-screen operation, stronger visual hierarchy, explicit state/proof panels, better mobile/modal proof, and a more legible relationship between Jarvis, nodes, approvals, and generated outputs.  Direction 2 is the public website: position ArchFlow as a service-led automation and agentic operating-architecture company for product teams. The public offer should be \"source-backed operating architecture that turns messy chats, docs, meetings, product decisions, and agent work into PRDs, reports, tasks, responsibilities, evidence packets, and approval-gated execution.\" The site should sell a practical service path first, not a finished autonomous AI platform.  Ronaldo "
+    },
+    {
+      "path": "project/reports/2026-07-01-current-state-e1-e7-vercel-railway-jarvis.md",
+      "title": "Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System",
+      "text": "# Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System  Date: 2026-07-01 Status: current-state synthesis after June 30 transfer and provider cleanup  ## Executive Answer  ArchFlow is in a two-paradigm state.  Paradigm 1 is the showable service product: a Product Discovery-to-Production PRD Pack for product teams. Its goal is to turn raw product-team material into a reviewed PRD, task/responsibility plan, ICP evidence, and a buyer-facing demo/landing path. This is not validated commercially yet. The product concept is coherent, but E2 evidence, E3 positioning, E4 content proof, E6 outreach, and E7 payment verdict still need execution.  Paradigm 2 is the reliable development and control system: the local agentic operating environment that makes Paradigm 1 repeatable. It contains Codex as operator, LangGraph-style state/control, WikiLLM memory, Graphify structure, public-safe run notes, dashboard/Jarvis UI, hooks, validations, and future provider/backend gates. This layer is stronger than the product layer today: E1 proof exists, E1.3 readback passed, and the accepted June 30 dashboard review branch works as a browser-local/static review slice.  Vercel is the current da"
+    },
+    {
+      "path": "project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md",
+      "title": "Legacy Design Reference And PRD/ICP Calculator Brief",
+      "text": "# Legacy Design Reference And PRD/ICP Calculator Brief  Date: 2026-07-01 Status: design addendum for Ronaldo and future website execution  ## Executive Answer  The owner-provided legacy ArchFlow public site should be treated as the visual interaction reference, not as the current positioning reference.  Keep the design mechanics:  - layered 3D arch assets; - scroll-driven arch drift; - cursor-driven hover-depth on buttons and cards; - warm editorial palette; - Playfair-style display typography; - dark command panels with arch-line overlays; - calculator-first proof interaction.  Replace the category message:  - old: short-term rental automation systems; - new: source-backed PRD/ICP systems, analytical executable agents, and governed knowledgebase-driven agent orchestration.  ## What The Legacy Site Actually Uses  FACT: The legacy site uses 3D-looking arch WebP assets in layered fields, not a visible full Three.js scene in the inspected public HTML/JS.  FACT: The motion model is still valuable and should be reused:  - `arc-field` containers with `perspective`; - `arc-object` images with CSS variables for position, rotation, opacity, and z-depth; - per-asset `data-speed`, `data-drift"
+    },
+    {
+      "path": "project/reports/2026-07-01-messi-coordination-review.md",
+      "title": "Messi Coordination Review",
+      "text": "# Messi Coordination Review  Date: 2026-07-01 Status: decision-ready coordination snapshot  ## 1. Executive Answer  Freeze implementation expansion now. The current ArchFlow work is locally advanced, but not yet durable enough for merge, deploy, or more parallel dashboard edits.  The right next action is to stabilize the active branch: close or hand off live file claims, resolve the missing dashboard screenshot evidence referenced by the transfer run note, run final validation, then ask for one owner decision: prepare the current branch for review/commit, or switch to E2.0 product dry run.  The dashboard vision is directionally correct. It now separates `(1) PRD/ICP Flow` from `(2) Agent Orchestra`, keeps Jarvis static/browser-local, keeps provider calls disabled, and preserves the E1-E7 path. It is not yet a full UX acceptance pass because modal click-through, mobile framing, screenshot evidence, and final branch durability remain open.  ## 2. Situation And Complication  ArchFlow has two active lanes:  - Product lane: the Product Discovery-to-Production PRD Pack for B2B SaaS product teams. - Control-system lane: the local operating system for Codex, LangGraph-style routing, WikiLL"
+    },
+    {
+      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
+      "title": "OpenRouter Model Routing Plan",
+      "text": "# OpenRouter Model Routing Plan  Date: 2026-07-01  Status: specification only. OpenRouter runtime remains disabled until explicit approval and an approved local bridge or backend exists.  ## Purpose  This plan defines how ArchFlow should use OpenRouter economically and reliably after provider activation is approved. It does not activate cloud model calls.  The architecture is simple:  1. Codex remains the operator, file editor, reviewer, and approval boundary. 2. LangGraph controls state, routing, stop conditions, and review gates. 3. WikiLLM and Obsidian remain the durable memory layers. 4. OpenRouter becomes a future server-side model router only for sanitized packets. 5. Claude, Gemini, and OpenAI frontier models handle planning, long reasoning, strategy, and review. 6. Cheaper models handle bounded execution, extraction, classification, drafting, and code variants.  ## Activation Boundary  FACT: The current public project must not call OpenRouter from static browser code.  FACT: Cloud model keys must stay out of public files, frontend code, prompts, logs, screenshots, dashboard JSON, and generated artifacts.  INTERPRETATION: This plan is a routing contract for a future approved"
+    },
+    {
+      "path": "project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md",
+      "title": "Ronaldo Dashboard And Website Execution Plan",
+      "text": "# Ronaldo Dashboard And Website Execution Plan  Date: 2026-07-01 Status: planning/design package  ## Scope  This plan is public-safe planning only. It does not edit dashboard implementation files, activate providers, deploy, push, write external systems, or claim backend/runtime behavior that has not been implemented and verified.  Coordination state: Jesus posted `Status: complete` for the dashboard smoke-test/setup lane in `project/live/communication/agent-communication-log.md`. Implementation work is now unblocked from that specific gate, but any agent touching implementation files must first append a fresh starting claim, check current `git status`, and verify no newer active lane has claimed the same files.  ## Source Labels  - SOURCE: `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - SOURCE: `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - SOURCE: `project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md` - SOURCE: `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - SOURCE: `wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md` - SOURCE: Live communication log entries through"
+    },
+    {
+      "path": "project/reports/2026-07-01-two-paradigm-execution-plan.md",
+      "title": "Two-Paradigm Execution Plan",
+      "text": "# Two-Paradigm Execution Plan  Date: 2026-07-01 Status: testable operating plan  ## Executive Answer  Execute ArchFlow through two explicitly separated lanes:  1. Product lane: PRD/ICP service product, externally showable after evidence gates. 2. Control-system lane: local agentic development system, operated by Codex and later optionally by an approved local bridge or backend.  The two lanes can share dashboard visibility, but they must not share authority. The product lane creates buyer-facing output. The control-system lane edits code, routes agents, verifies checks, writes memory, and decides when output is safe.  ## Lane 1: PRD/ICP Service Product  Goal: show the buyer a clear productized service outcome.  Input:  - sanitized dialogue or meeting summary; - product-team docs or approved public examples; - customer/research notes; - current ICP hypothesis; - constraints and privacy boundaries.  Flow:  1. Intake source packet. 2. Build PRD. 3. Split market evidence research. 4. Synthesize one ICP. 5. Build landing/demo package. 6. Approve external-safe output. 7. Publish PRD/ICP packet or buyer-facing demo.  Required artifacts:  - source packet; - PRD draft; - evidence cards; - I"
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -1822,7 +2136,12 @@
     {
       "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
       "title": "Run: June 30 Integrator Review",
-      "text": "# Run: June 30 Integrator Review  Date: 2026-06-30 Status: completed, ready for public Git review  ## Task  Review the combined June 30 public repository diff after the dashboard/Jarvis/Vercel lane, E1.5 content-template lane, and evening skill/hook audit lane.  ## Included Lanes  - Dashboard/Jarvis/Vercel shell under `project/dashboard/`. - Vercel config and ignored local Vercel metadata. - E1.5 content-template library under `project/content/templates/`. - Dashboard and content run notes under `project/runs/E1.5/`. - Evening skill/hook audit run notes under `project/runs/2026-06-30-evening-skill-hook-audit/`. - Wiki run, decision, memory, insights, and log updates. - `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html` ASCII punctuation normalization.  ## Decisions  FACT: The stable review alias currently resolves to a Ready Preview deployment:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  FACT: Unauthenticated requests to the dashboard route and `data.json` route redirect to Vercel SSO.  FACT: One older production-target Vercel deployment still exists:  - `https://public-j333ecdc8-mcharniuk1-4994s-projects.vercel.app`  INTER"
+      "text": "# Run: June 30 Integrator Review  Date: 2026-06-30 Status: completed, ready for public Git review  ## Task  Review the combined June 30 public repository diff after the dashboard/Jarvis/Vercel lane, E1.5 content-template lane, and evening skill/hook audit lane.  ## Included Lanes  - Dashboard/Jarvis/Vercel shell under `project/dashboard/`. - Vercel config and ignored local Vercel metadata. - E1.5 content-template library under `project/content/templates/`. - Dashboard and content run notes under `project/runs/E1.5/`. - Evening skill/hook audit run notes under `project/runs/2026-06-30-evening-skill-hook-audit/`. - Wiki run, decision, memory, insights, and log updates. - `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.html` ASCII punctuation normalization.  ## Decisions  FACT: The stable review alias currently resolves to a Ready Preview deployment:  - `https://<protected-preview-host>`  FACT: Unauthenticated requests to the dashboard route and `data.json` route redirect to Vercel SSO.  FACT: One older production-target Vercel deployment still exists:  - `https://<protected-preview-host>`  INTERPRETATION: Do not remove or roll back the production-target deployment in this pass"
+    },
+    {
+      "path": "project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md",
+      "title": "Jarvis Agentbrowser Voice And Block Schema Review",
+      "text": "# Jarvis Agentbrowser Voice And Block Schema Review  Date: 2026-06-30 Status: completed on review branch Branch: `review-jarvis-agentbrowser-blockschema-20260630`  ## Task  Improve the dashboard after the visible voice recognition `network` failure and make the block schema page operable for local review without enabling provider calls, writeback, raw transcript storage, or external publishing.  ## Changes  - Added a manual transcript fallback path in the Jarvis view. - Preserved fallback input during live/focus refresh so operator text is not cleared while editing. - Added clearer browser speech-recognition error messages and a speaker-test control. - Replaced the static block-schema explanation with a local editor:   - draggable blocks;   - visible movement controls;   - node prompts, comments, owner/agent, status, requirements, files, questions, outputs, links, and config JSON;   - validation and review queue export;   - explicit LangGraph, CrewAI, LangSmith, and Codex trace-prep boundaries. - Expanded the default schema with separate checker and safety review branches so the default graph validates cleanly.  ## Verification  - `agent-browser` checked the local dashboard route. "
     },
     {
       "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/agent-handout.md",
@@ -1837,7 +2156,57 @@
     {
       "path": "project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
       "title": "Run: Onyx Dashboard Voice Hosting Execution Plan",
-      "text": "# Run: Onyx Dashboard Voice Hosting Execution Plan  Date: 2026-06-30 Status: planned, task-created, repo-updated  ## Task  Turn the June 30 Onyx, live dashboard, voice layer, and hosting plan into executable project structure:  - create Notion tasks for the dashboard/voice/hosting plan - create a separate GloomyLord task for PRD, research templates, monitoring templates, backlog, ideas summary, and visual social report design - add a reusable `outquestions` skill for execution reports and next-stage decision questions - update the public GitHub project with a public-safe run record and decision baseline  ## Execution Summary  The plan remains staged. ArchFlow stays the workflow brain; Onyx is not promoted into the core runtime. The next implementation path is a hosted read-only dashboard first, then a live API/worker service only when the state model, auth boundary, and secret policy are explicit. Voice starts local and read-only before any command can write to files, Notion, GitHub, deployments, outreach, or memory.  The dashboard direction follows the current project shape. The existing dashboard is static and generated from public project files, so the first live step is Vercel/"
+      "text": "# Run: Onyx Dashboard Voice Hosting Execution Plan  Date: 2026-06-30 Status: planned, task-created, repo-updated  ## Task  Turn the June 30 Onyx, live dashboard, voice layer, and hosting plan into executable project structure:  - create Notion tasks for the dashboard/voice/hosting plan - create a separate Visual Reporting task for PRD, research templates, monitoring templates, backlog, ideas summary, and visual social report design - add a reusable `outquestions` skill for execution reports and next-stage decision questions - update the public GitHub project with a public-safe run record and decision baseline  ## Execution Summary  The plan remains staged. ArchFlow stays the workflow brain; Onyx is not promoted into the core runtime. The next implementation path is a hosted read-only dashboard first, then a live API/worker service only when the state model, auth boundary, and secret policy are explicit. Voice starts local and read-only before any command can write to files, Notion, GitHub, deployments, outreach, or memory.  The dashboard direction follows the current project shape. The existing dashboard is static and generated from public project files, so the first live step is V"
+    },
+    {
+      "path": "project/runs/2026-07-01-agent-communication-channel/agent-handout.md",
+      "title": "Agent Handout: Live Communication Channel",
+      "text": "# Agent Handout: Live Communication Channel  ## Title And Purpose  This handout records the creation of the ArchFlow public project live communication channel for parallel agent work.  ## Human Summary  ArchFlow now has a single public-safe live communication folder at `project/live/communication/`. Agents should use it before and during active work so parallel changes do not contradict each other.  The folder contains the working log, the current notice, a message template, a pattern-change log, and a copy-ready system prompt append. Run-specific handouts remain the durable completion record after substantial work.  ## Current State  Status: complete.  Main artifacts:  - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/live/communication/message-template.md` - `project/live/communication/pattern-change-log.md` - `project/live/communication/system-prompt-append.md`  ## Agent Continuation Prompt  ```text You are continuing ArchFlow public project work. Before editing files, read project/operating-rules.md and project/live/communication/current-agent-notice.md. Then read "
+    },
+    {
+      "path": "project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md",
+      "title": "Agent Handout: Competitor-Backed Dashboard And Website Plan",
+      "text": "# Agent Handout: Competitor-Backed Dashboard And Website Plan  ## Purpose  Use this handout to continue the next ArchFlow design/planning or implementation-prep pass without conflicting with active sidecar lanes.  ## Current State  Status: planning brief ready for Ronaldo.  Primary artifacts:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md`  ## Key Decision  Jesus has posted `Status: complete` for the dashboard smoke-test/setup lane. Ronaldo or the next implementer may proceed beyond planning only after appending a fresh starting claim, checking current `git status`, and confirming no newer active lane has claimed the same files.  ## Context To Preserve  Positioning: ArchFlow is a service-led agentic operating-system and automation architecture company. It turns messy product context into source-backed PRDs, reports, tasks, responsibilities, evidence packets, and approval-gated execution.  ICP: product teams in B2B SaaS scaleups, especially Series B-D, roughly 50-500 employees, 2-5 PMs, and a Director or VP Product accountable for PRD quality, discovery-to-delivery speed, and cross-functional "
+    },
+    {
+      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/agent-handout.md",
+      "title": "Agent Handout: Two-Layer Dashboard Schema Control Panel",
+      "text": "# Agent Handout: Two-Layer Dashboard Schema Control Panel  ## Title And Purpose  Use this handout when continuing the dashboard/Jarvis work after the July 1 two-layer schema UI pass.  ## Human Summary  The dashboard now separates the service-product path from the internal control-system path:  - `(1) PRD/ICP Flow` is the externally showable product-service workflow. - `(2) Agent Orchestra` is the local agentic control workflow.  Each screen uses a draggable block schema. Clicking a node opens a large node control panel for inputs, outputs, connections, dropdown configuration, interpreted run logs, prompts, system prompt, comments, safety, and business-fit fields.  The dashboard is still static/browser-local. It creates review packets and local state only. It does not call providers, store raw transcripts, write to WikiLLM/Obsidian/Notion/GitHub, deploy, or run a backend queue.  The independent review pass found and fixed reliability issues: queueing from the node panel now saves current form edits first, stale localStorage schemas are reset when they do not match the current graph version, connect mode is isolated to the active schema screen, and node-panel section controls no long"
+    },
+    {
+      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/run-summary.md",
+      "title": "Run Summary: Two-Layer Dashboard Schema Control Panel",
+      "text": "# Run Summary: Two-Layer Dashboard Schema Control Panel  Date: 2026-07-01 Status: implemented, architecture reviewer approved  ## Task  Make the dashboard comprehensible and operable for two separate jobs:  1. `(1) PRD/ICP Flow`: the externally showable service-product path from source context to PRD, evidence, ICP, demo package, and approved output. 2. `(2) Agent Orchestra`: the local reliable development/control system for Codex, LangGraph-style routing, WikiLLM, Graphify, safety review, run logs, approvals, and gated provider/backend actions.  ## Answer First  The dashboard now has two separate block-schema screens, draggable/clickable nodes, and a large n8n-style node control panel covering inputs, outputs, connections, dropdown configuration, run history, prompts, comments, safety fields, and business-fit fields. It remains a static browser-local review surface: no provider calls, secrets, raw transcripts, deployment, or writeback are enabled.  ## Outputs  - Updated `project/dashboard/app.js`. - Updated `project/dashboard/styles.css`. - Updated `project/dashboard/index.html`. - Updated `project/dashboard/README.md`. - Added this run record and the handout beside it.  ## Dashbo"
+    },
+    {
+      "path": "project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md",
+      "title": "Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
+      "text": "# Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending  ## Task  Transfer the missing final June 30 accepted state into the ArchFlow public knowledge layer, clean provider-key handling, finish the interrupted two-paradigm dashboard edit, and keep runtime/provider/writeback claims accurate.  ## Inputs  - `project/project-plan.md` - `project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md` - `project/runs/2026-06-30-dashboard-reliability-sync/run-summary.md` - `wiki/memory.md` - `wiki/log.md` - LangGraph handout sources summarized by the owner - Current dashboard source under `project/dashboard/`  ## Outputs  - Removed the temporary Markdown provider-key file from the workspace root. - Preserved OpenRouter and Mistral keys only in ignored local env storage. - Removed the June 30 OpenAI local key file. - Restricted ignored env files to owner-only permissions. - Added OpenRouter/Mistral runtime boundaries to:   - `project/config/model-routing.yaml`   - `project/config/providers.env.example`   - `project/provider-setup.md`   - `project"
+    },
+    {
+      "path": "project/runs/2026-07-01-messi-coordination-review/agent-handout.md",
+      "title": "Agent Handout: Messi Coordination Review",
+      "text": "# Agent Handout: Messi Coordination Review  ## Title And Purpose  Use this handout to continue the July 1 Messi coordination pass without reopening broad discovery. It records the project-manager/product-owner snapshot across repo state, dashboard vision, Notion status, active agent claims, risks, and the next decision.  ## Human Summary  This pass coordinated four read-only sidecar reviewers plus a local evidence review. The purpose was not to implement another dashboard or provider change. The purpose was to decide whether yesterday/current work is reliable enough to advance.  The answer is: the direction is correct, but the branch should be frozen and stabilized before more implementation. The dashboard correctly separates the service-product flow from the agent-control flow. Notion confirms the key current statuses. OpenRouter is documented as a future disabled routing specification. But the worktree is broad and dirty, active file claims remain open, and one run summary references dashboard screenshots that are no longer present in the current shared folder.  No dashboard, model-routing, provider, or Notion task files were edited by this coordination pass. The durable output i"
+    },
+    {
+      "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
+      "title": "Agent Handout: OpenRouter Model Routing",
+      "text": "# Agent Handout: OpenRouter Model Routing  ## Title And Purpose  This handout records the OpenRouter model-routing architecture for future ArchFlow agents.  ## Human Summary  ArchFlow now has a durable model-routing plan for future OpenRouter use. The plan keeps OpenRouter disabled today and treats cloud execution as approval-gated, server-side work only.  The new architecture uses the strongest Claude, Gemini, and OpenAI models as a frontier council for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts. Cheaper models such as Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, MiniMax, Mercury, Grok, and Gemma are assigned to bounded execution work that must be checked before publication or memory promotion.  ## Current State  Status: complete after validation.  Main artifacts:  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `wiki/runs/2026-07-01-openrouter-model-routing.md` - `wiki/memory.md` - `wiki/insights.md` - `wiki/log.md`  OpenRouter runtime state: disabled.  ## Agent Continuation Prompt  ```text You are continuing ArchFlow model-routing work. Read project/config/model-rou"
+    },
+    {
+      "path": "project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md",
+      "title": "Scheduled Automation Audit Handout",
+      "text": "# Scheduled Automation Audit Handout  ## Title and Purpose  This handout records the 2026-07-01 audit of scheduled Codex automations that affect ArchFlow public work and adjacent skill/RAG review workflows.  ## Human Summary  The audit found that the active Yushchenko observer was correctly aimed at the ArchFlow public project root and already matched its model-efficiency goal. Its referenced model-routing, advice, issue, and communication files exist.  Two active daily jobs had working-directory drift. The ArchFlow evening skill/hook update used repo-relative `project/...` paths but was configured one level too high. The daily skill retrospective described a LangGraph strategic-system workspace but was also configured from the ArchFlow root. Both automations were updated through the Codex automation tool so their future runs start where their prompts expect.  The paused Real Estate health-check automation was inspected but left paused because it is a separate project lane and was not part of the active ArchFlow schedule shown in this audit.  ## Current State  Status: complete.  Active schedules:  - Yushchenko model-efficiency observer: active, every five hours, ArchFlow public pro"
+    },
+    {
+      "path": "project/runs/2026-07-01-scheduled-automation-audit/run-summary.md",
+      "title": "Scheduled Automation Audit",
+      "text": "# Scheduled Automation Audit  Date: 2026-07-01 Status: complete  ## Task  Check the local scheduled Codex automations against current ArchFlow public operating rules, live communication requirements, task-handout expectations, and each automation's stated goal.  ## Findings  FACT: Four local automation definitions were present: three active scheduled jobs and one paused Real Estate health-check job.  FACT: The Yushchenko model-efficiency observer was active, scheduled every five hours, and already pointed at the ArchFlow public project root.  FACT: The ArchFlow public evening skill and hook update was active at 21:00 daily, but its working directory did not match the repo-relative paths in its prompt. It was updated to run from the public project root.  FACT: The daily skill retrospective and RAG knowledge review was active at 22:30 daily, but its working directory did not match its LangGraph strategic-system workspace. It was updated to run from that workspace.  FACT: The paused Real Estate health-check automation remains paused. It was not changed because it is outside the active ArchFlow schedule shown in the current audit and has a different project scope.  INTERPRETATION: The "
+    },
+    {
+      "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
+      "title": "Agent Handout: Yushchenko Model Efficiency Observer",
+      "text": "# Agent Handout: Yushchenko Model Efficiency Observer  ## Title And Purpose  This handout records the creation of the Yushchenko model-efficiency and token-use observer for ArchFlow.  ## Human Summary  The project now has a recurring observer lane for model usage, token efficiency, and OpenRouter routing discipline. The observer is active in the Codex app automation with a five-hour cadence.  The observer saves Markdown reports under `project/runs/yushchenko-model-efficiency/`, updates reusable model-efficiency advice and issue lists, and notifies agents through the live communication log. Telegram delivery is conditional: it should happen only when an approved sender exists outside the public repo.  ## Current State  Status: complete.  Main artifacts:  - `project/automation/yushchenko-model-efficiency-observer.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md` - `project/agents/agent-roster.yaml` - `project/agents/README.md` - `wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md`  Automation:  - Codex app automation ID: `yushchenko-model-"
     },
     {
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
@@ -1917,7 +2286,7 @@
     {
       "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-coordination-stream.md",
       "title": "E1.3 Agent Coordination Stream",
-      "text": "# E1.3 Agent Coordination Stream  Date: 2026-06-30 Status: recorded public-safe sidecar coordination  ## Main Operator Stream  Codex kept the critical path local: inspect current E1.2 evidence, implement E1.3 writeback/readback, update dashboard status, start E1.5 gate, validate, then report.  ## Sidecar Assignments  | Sidecar | Assignment | Result | |---|---|---| | AF Review sidecar | Read-only E1.2 proof integrity review | Confirmed E1.2 was actually executed and identified owner acceptance as the remaining state gate. | | AF Knowledge/Dashboard sidecar | Read-only E1.3 and dashboard-readback requirements | Confirmed E1.3 was not complete and recommended a derived dashboard gate object. | | AF Copy/GloomyLord sidecar | Read-only public-reporting and visual gate review | Recommended LinkedIn-first product-team category education, GloomyLord as internal sidecar by default, and AF Review plus owner copy approval. |  ## Integration Decisions  FACT: E1.2 proof exists and is technically approved as an internal proof.  FACT: E1.3 required a new run folder, writeback report, readback report, review report, wiki run/log update, and dashboard-derived gate status.  INTERPRETATION: E1.5 shou"
+      "text": "# E1.3 Agent Coordination Stream  Date: 2026-06-30 Status: recorded public-safe sidecar coordination  ## Main Operator Stream  Codex kept the critical path local: inspect current E1.2 evidence, implement E1.3 writeback/readback, update dashboard status, start E1.5 gate, validate, then report.  ## Sidecar Assignments  | Sidecar | Assignment | Result | |---|---|---| | AF Review sidecar | Read-only E1.2 proof integrity review | Confirmed E1.2 was actually executed and identified owner acceptance as the remaining state gate. | | AF Knowledge/Dashboard sidecar | Read-only E1.3 and dashboard-readback requirements | Confirmed E1.3 was not complete and recommended a derived dashboard gate object. | | AF Copy/Visual Reporting sidecar | Read-only public-reporting and visual gate review | Recommended LinkedIn-first product-team category education, Visual Reporting as internal sidecar by default, and AF Review plus owner copy approval. |  ## Integration Decisions  FACT: E1.2 proof exists and is technically approved as an internal proof.  FACT: E1.3 required a new run folder, writeback report, readback report, review report, wiki run/log update, and dashboard-derived gate status.  INTERPRETATIO"
     },
     {
       "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-handout.md",
@@ -1962,17 +2331,17 @@
     {
       "path": "project/runs/E1.5/2026-06-30-content-agent-templates/agent-handout.md",
       "title": "Agent Handout: E1.5 Content Agent Templates",
-      "text": "# Agent Handout: E1.5 Content Agent Templates  ## Title And Purpose  This handout covers the E1.5 content-template agent pass. It is for the next ArchFlow agent that needs to turn E1.3, E1.5, or GloomyLord process proof into public-safe content drafts.  ## Human Summary  The run created a reusable content-template library under `project/content/templates/`. The library covers carousel planning, implementation proof posts, dashboard updates, research/check tasks, review gates, and after-execution reports.  The templates are implementation-focused. They require artifact paths, proof labels, allowed screenshot/data boundaries, copy blocks, review states, approval checklists, and save locations. They are not summary-only and they do not approve any public post by themselves.  The templates preserve the current ArchFlow defaults: one ICP lane for B2B SaaS product leaders, Product Discovery-to-Production PRD Pack positioning, ArchFlow company voice, product-system/research-lab visual style, AF Review, and owner approval before publication.  ## Current State  - Task status: completed. - Publication status: blocked until AF Review and owner approval. - Main artifacts: `project/content/temp"
+      "text": "# Agent Handout: E1.5 Content Agent Templates  ## Title And Purpose  This handout covers the E1.5 content-template agent pass. It is for the next ArchFlow agent that needs to turn E1.3, E1.5, or Visual Reporting process proof into public-safe content drafts.  ## Human Summary  The run created a reusable content-template library under `project/content/templates/`. The library covers carousel planning, implementation proof posts, dashboard updates, research/check tasks, review gates, and after-execution reports.  The templates are implementation-focused. They require artifact paths, proof labels, allowed screenshot/data boundaries, copy blocks, review states, approval checklists, and save locations. They are not summary-only and they do not approve any public post by themselves.  The templates preserve the current ArchFlow defaults: one ICP lane for B2B SaaS product leaders, Product Discovery-to-Production PRD Pack positioning, ArchFlow company voice, product-system/research-lab visual style, AF Review, and owner approval before publication.  ## Current State  - Task status: completed. - Publication status: blocked until AF Review and owner approval. - Main artifacts: `project/conten"
     },
     {
       "path": "project/runs/E1.5/2026-06-30-content-agent-templates/run-summary.md",
       "title": "Run: E1.5 Content Agent Templates",
-      "text": "# Run: E1.5 Content Agent Templates  Date: 2026-06-30 Status: completed, publication still blocked Agent role: content-template agent  ## Task  Create practical public-safe content templates for executed task and review states, especially E1.3, E1.5, and GloomyLord reporting work.  ## Inputs  - `project/project-plan.md` - `project/runs/E1.3/2026-06-30-kb-readback/run-summary.md` - `project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md` - `project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md` - `project/prompts/af-review.md`  ## Outputs  | Output | Path | Purpose | |---|---|---| | Template index | `project/content/templates/README.md` | Defines defaults, safety boundary, and save locations | | Carousel template | `project/content/templates/carousel-template.md` | Turns proof runs into reviewed LinkedIn-first carousel plans | | Implementation proof post template | `project/content/templates/implementation-proof-post-template.md` | Turns executed artifacts into implementation-focused company posts | | Dashboard update template | `project/content/templates/dashboard-update-template.md` | Documents public-safe dashboard status without touching das"
+      "text": "# Run: E1.5 Content Agent Templates  Date: 2026-06-30 Status: completed, publication still blocked Agent role: content-template agent  ## Task  Create practical public-safe content templates for executed task and review states, especially E1.3, E1.5, and Visual Reporting reporting work.  ## Inputs  - `project/project-plan.md` - `project/runs/E1.3/2026-06-30-kb-readback/run-summary.md` - `project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md` - `project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md` - `project/prompts/af-review.md`  ## Outputs  | Output | Path | Purpose | |---|---|---| | Template index | `project/content/templates/README.md` | Defines defaults, safety boundary, and save locations | | Carousel template | `project/content/templates/carousel-template.md` | Turns proof runs into reviewed LinkedIn-first carousel plans | | Implementation proof post template | `project/content/templates/implementation-proof-post-template.md` | Turns executed artifacts into implementation-focused company posts | | Dashboard update template | `project/content/templates/dashboard-update-template.md` | Documents public-safe dashboard status without touchi"
     },
     {
       "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md",
       "title": "Agent Handout: Dashboard Jarvis Vercel Shell",
-      "text": "# Agent Handout: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: continue from review, commit, and private task sync  ## Summary  The dashboard is now a Jarvis-first static command shell for Vercel preview. It supports live in-page refresh of deployed `data.json`, normal/interview mode, browser-local voice authorization, browser-local file metadata packet creation, and downloadable research/check/content packets.  This is not a backend. Durable writes still require Codex or a future Railway/API layer.  Canonical review route:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  Use only the explicit preview deployment for review. An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; keep it out of review and keep future deploy commands explicit with `--target preview`.  ## Changed Files  - `project/dashboard/index.html` - `project/dashboard/app.js` - `project/dashboard/styles.css` - `project/dashboard/README.md` - `project/dashboard/data.json` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-content-agent-templates/` - `project/runs/E1.5/2026-06-30-"
+      "text": "# Agent Handout: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: continue from review, commit, and private task sync  ## Summary  The dashboard is now a Jarvis-first static command shell for Vercel preview. It supports live in-page refresh of deployed `data.json`, normal/interview mode, browser-local voice authorization, browser-local file metadata packet creation, and downloadable research/check/content packets.  This is not a backend. Durable writes still require Codex or a future Railway/API layer.  Canonical review route:  - `https://<protected-preview-host>`  Use only the explicit preview deployment for review. An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; keep it out of review and keep future deploy commands explicit with `--target preview`.  ## Changed Files  - `project/dashboard/index.html` - `project/dashboard/app.js` - `project/dashboard/styles.css` - `project/dashboard/README.md` - `project/dashboard/data.json` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-content-agent-templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/`  ## Current Decisions  - Ver"
     },
     {
       "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md",
@@ -1982,32 +2351,37 @@
     {
       "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md",
       "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
-      "text": "# Run: E1.5 Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Task  Extend the existing static dashboard into a Vercel-ready Jarvis command shell while the content-template agent creates E1.5/GloomyLord templates and the deployment sidecar audits Vercel/Railway boundaries.  ## Decisions Applied  FACT: The first hosted dashboard target is Vercel static preview with Vercel authentication active on the preview.  FACT: Hidden link is not security. This preview currently receives Vercel SSO redirects for unauthenticated requests, which is acceptable for this review pass. Future shared/private state still needs a deliberate platform or server-side auth policy.  FACT: Railway is deferred until live API, Google auth, SSE/websocket events, voice execution, uploads, background workers, durable writes, queues, or private state are required.  FACT: Jarvis can prepare session-only research/check packets from typed input or an explicitly authorized browser voice transcript. File intake captures metadata only; it does not read or store document bodies.  INTERPRETATION: The correct first implementation is a dashboard s"
+      "text": "# Run: E1.5 Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Task  Extend the existing static dashboard into a Vercel-ready Jarvis command shell while the content-template agent creates E1.5/Visual Reporting templates and the deployment sidecar audits Vercel/Railway boundaries.  ## Decisions Applied  FACT: The first hosted dashboard target is Vercel static preview with Vercel authentication active on the preview.  FACT: Hidden link is not security. This preview currently receives Vercel SSO redirects for unauthenticated requests, which is acceptable for this review pass. Future shared/private state still needs a deliberate platform or server-side auth policy.  FACT: Railway is deferred until live API, Google auth, SSE/websocket events, voice execution, uploads, background workers, durable writes, queues, or private state are required.  FACT: Jarvis can prepare session-only research/check packets from typed input or an explicitly authorized browser voice transcript. File intake captures metadata only; it does not read or store document bodies.  INTERPRETATION: The correct first implementation is a dashb"
     },
     {
       "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/agent-handout.md",
       "title": "Agent Handout: E1.5 Public Reporting Gate",
-      "text": "# Agent Handout: E1.5 Public Reporting Gate  Use this before drafting public content, carousel text, or GloomyLord visuals.  ## Current State  E1.5 has started as a gate. No public content has been approved or published.  ## Rules  - LinkedIn-first category education is the safest default. - Audience is B2B SaaS product leaders unless changed by owner decision. - GloomyLord is internal by default. - AF Copy drafts only from approved public-safe artifacts. - AF Review plus owner approval are required before publishing. - Demand, ROI, market-validation, and customer claims remain blocked until E6/E7 proof exists.  ## Next Agent Task  Create a template pack only after owner answers the dashboard visibility, GloomyLord branding, approval path, and CTA questions."
+      "text": "# Agent Handout: E1.5 Public Reporting Gate  Use this before drafting public content, carousel text, or Visual Reporting visuals.  ## Current State  E1.5 has started as a gate. No public content has been approved or published.  ## Rules  - LinkedIn-first category education is the safest default. - Audience is B2B SaaS product leaders unless changed by owner decision. - Visual Reporting is internal by default. - AF Copy drafts only from approved public-safe artifacts. - AF Review plus owner approval are required before publishing. - Demand, ROI, market-validation, and customer claims remain blocked until E6/E7 proof exists.  ## Next Agent Task  Create a template pack only after owner answers the dashboard visibility, Visual Reporting branding, approval path, and CTA questions."
     },
     {
       "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md",
-      "title": "GloomyLord Internal Reporting Brief",
-      "text": "# GloomyLord Internal Reporting Brief  Date: 2026-06-30 Status: initial brief  ## Role  GloomyLord is the internal visual/reporting sidecar for ArchFlow process proof. It prepares report templates, carousel structures, dashboard-friendly cards, and public-safe visual systems from approved artifacts.  ## First Work Package  1. PRD for public reporting templates. 2. Research-template set for account evidence cards and process proof cards. 3. Daily and weekly monitoring templates. 4. Backlog of report ideas tied to E1-E7. 5. One-slide to six-slide carousel structure for LinkedIn-first reporting. 6. Dashboard-friendly status-card and proof-card layout rules.  ## Visual Rules  - Use product-system and research-lab discipline. - Use readable mobile typography. - Use evidence labels, redaction bars, source-status chips, and simple process diagrams. - Prefer artifact before/after blocks over abstract AI visuals. - Do not use private screenshots, raw Notion screenshots, fake live dashboards, customer logos, or named target accounts. - Do not turn internal proof into demand proof.  ## Default Slide Pattern  1. Problem: messy product material or PRD handoff bottleneck. 2. Input boundary: what"
+      "title": "Visual Reporting Internal Reporting Brief",
+      "text": "# Visual Reporting Internal Reporting Brief  Date: 2026-06-30 Status: initial brief  ## Role  Visual Reporting is the internal visual/reporting sidecar for ArchFlow process proof. It prepares report templates, carousel structures, dashboard-friendly cards, and public-safe visual systems from approved artifacts.  ## First Work Package  1. PRD for public reporting templates. 2. Research-template set for account evidence cards and process proof cards. 3. Daily and weekly monitoring templates. 4. Backlog of report ideas tied to E1-E7. 5. One-slide to six-slide carousel structure for LinkedIn-first reporting. 6. Dashboard-friendly status-card and proof-card layout rules.  ## Visual Rules  - Use product-system and research-lab discipline. - Use readable mobile typography. - Use evidence labels, redaction bars, source-status chips, and simple process diagrams. - Prefer artifact before/after blocks over abstract AI visuals. - Do not use private screenshots, raw Notion screenshots, fake live dashboards, customer logos, or named target accounts. - Do not turn internal proof into demand proof.  ## Default Slide Pattern  1. Problem: messy product material or PRD handoff bottleneck. 2. Input bo"
     },
     {
       "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md",
       "title": "E1.5 Public Reporting Gate",
-      "text": "# E1.5 Public Reporting Gate  Date: 2026-06-30 Status: started, gate defined, publishing blocked until approval  ## Purpose  E1.5 starts by defining the public-safe process for case-study and content reporting. This is not public posting yet. It is the gate that decides what can become a carousel, report, or post.  ## Audience Default  FACT: The current public-facing audience is product leaders in B2B SaaS scaleups: Directors or VPs of Product, Heads of Product, Product Ops leads, and senior PM leaders in companies with roughly 50-500 employees and 2-5 PMs.  INTERPRETATION: Public reporting should educate that audience about source-grounded PRD workflow quality, not present a founder diary or generic AI automation content.  ## Post Identity Default  HYPOTHESIS: Posts should default to ArchFlow company content, not personal build-in-public content, until the owner explicitly chooses a personal voice lane.  ## GloomyLord Boundary  GloomyLord is an internal visual/reporting sidecar by default. It can design report templates, carousel structures, dashboard-friendly visual systems, and proof cards. It is not public-facing branding unless separately approved.  Visual style default: produ"
+      "text": "# E1.5 Public Reporting Gate  Date: 2026-06-30 Status: started, gate defined, publishing blocked until approval  ## Purpose  E1.5 starts by defining the public-safe process for case-study and content reporting. This is not public posting yet. It is the gate that decides what can become a carousel, report, or post.  ## Audience Default  FACT: The current public-facing audience is product leaders in B2B SaaS scaleups: Directors or VPs of Product, Heads of Product, Product Ops leads, and senior PM leaders in companies with roughly 50-500 employees and 2-5 PMs.  INTERPRETATION: Public reporting should educate that audience about source-grounded PRD workflow quality, not present a founder diary or generic AI automation content.  ## Post Identity Default  HYPOTHESIS: Posts should default to ArchFlow company content, not personal build-in-public content, until the owner explicitly chooses a personal voice lane.  ## Visual Reporting Boundary  Visual Reporting is an internal visual/reporting sidecar by default. It can design report templates, carousel structures, dashboard-friendly visual systems, and proof cards. It is not public-facing branding unless separately approved.  Visual style de"
     },
     {
       "path": "project/runs/E1.5/2026-06-30-public-reporting-gate/run-summary.md",
       "title": "Run: E1.5 Public Reporting Gate Start",
-      "text": "# Run: E1.5 Public Reporting Gate Start  Date: 2026-06-30 Status: started, publishing blocked  ## Task  Start E1.5 by defining the case-study/content gate before any public carousel or post is generated.  ## What Changed  The public-reporting gate now defines the audience default, post identity default, GloomyLord boundary, carousel eligibility rules, channel default, CTA default, and blocking questions.  The GloomyLord brief defines the internal visual/reporting sidecar role and the first template package without making it a public persona or publishing lane.  ## Next Gate  Write the E1.4 KB update principle and get owner answers to the blocking questions before public copy generation or dashboard-linked publishing."
+      "text": "# Run: E1.5 Public Reporting Gate Start  Date: 2026-06-30 Status: started, publishing blocked  ## Task  Start E1.5 by defining the case-study/content gate before any public carousel or post is generated.  ## What Changed  The public-reporting gate now defines the audience default, post identity default, Visual Reporting boundary, carousel eligibility rules, channel default, CTA default, and blocking questions.  The Visual Reporting brief defines the internal visual/reporting sidecar role and the first template package without making it a public persona or publishing lane.  ## Next Gate  Write the E1.4 KB update principle and get owner answers to the blocking questions before public copy generation or dashboard-linked publishing."
     },
     {
       "path": "project/runs/README.md",
       "title": "Runs",
       "text": "# Runs  Store future public-safe run summaries here.  Rules:  - Do not store raw private inputs. - Store sanitized source summaries only. - Keep filenames date-prefixed. - Keep all content in English. - Each run must include checks, outputs, gaps, and next actions."
+    },
+    {
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md",
+      "title": "Initial Model Efficiency Report",
+      "text": "# Initial Model Efficiency Report  Observer: Yushchenko Model Efficiency Observer  Status: baseline report  ## Run Window  Initial setup run on 2026-07-01.  ## Evidence Inspected  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/live/communication/agent-communication-log.md` - `wiki/memory.md` - `wiki/log.md`  ## Model Usage  FACT: No active OpenRouter runtime evidence found.  FACT: OpenRouter remains disabled until explicit approval and an approved local bridge or backend exists.  FACT: The current documented routing plan reserves strongest Claude, Gemini, and OpenAI models for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts.  FACT: Cheaper execution models are assigned to bounded intermediate work and must not self-approve public claims, outreach, memory promotion, architecture, pricing, or payment verdicts.  ## Token And Cost Evidence  GAP: No canonical model-call ledger exists yet.  GAP: No token counts, cost records, or OpenRouter request logs were found in the public-safe project evidence inspected for this baseline report.  ## Efficiency Assessment  Efficiency score: `"
     },
     {
       "path": "project/workflows/crewai-crew.yaml",
@@ -2107,7 +2481,7 @@
     {
       "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
       "title": "Decision: Dashboard Jarvis Vercel Shell",
-      "text": "# Decision: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: accepted for first hosted dashboard  ## Decision  Use a Vercel preview as the first hosted dashboard target. The dashboard is public-safe and read-only at the hosted data layer, with a browser-local Jarvis command shell for normal/interview mode, current-session voice transcript commands, file metadata packet preparation, and local packet downloads.  Railway remains deferred until the system needs server-side auth, live APIs, event streams, durable uploads, background workers, persistent state, model-provider calls, or write actions.  ## Rationale  The current dashboard is static and already uses generated public-safe `data.json`. Vercel can host that safely if the data remains public-safe and no secrets/private state are emitted. A hidden link helps review but is not authentication; Vercel preview authentication is acceptable for this first review pass.  Canonical review route:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is th"
+      "text": "# Decision: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: accepted for first hosted dashboard  ## Decision  Use a Vercel preview as the first hosted dashboard target. The dashboard is public-safe and read-only at the hosted data layer, with a browser-local Jarvis command shell for normal/interview mode, current-session voice transcript commands, file metadata packet preparation, and local packet downloads.  Railway remains deferred until the system needs server-side auth, live APIs, event streams, durable uploads, background workers, persistent state, model-provider calls, or write actions.  ## Rationale  The current dashboard is static and already uses generated public-safe `data.json`. Vercel can host that safely if the data remains public-safe and no secrets/private state are emitted. A hidden link helps review but is not authentication; Vercel preview authentication is acceptable for this first review pass.  Canonical review route:  - `https://<protected-preview-host>`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the approved review target. Future deploy commands stay "
     },
     {
       "path": "wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md",
@@ -2142,7 +2516,7 @@
     {
       "path": "wiki/memory.md",
       "title": "Memory",
-      "text": "# Memory  ## Stable Project Direction  ArchFlow Block 1 is the first public solution:  `dialogue/chat/meeting material -> structured context -> PRD -> responsibility plan -> agent-ready knowledge base`  ## Current Runtime Decisions  - Codex is the primary operator, review, file-edit, and publication layer. - Codex authentication is not exported as an API key. - Ollama is the only model execution provider for now. - Qwythos is the active local model after the latest smoke test generated text. - `gemma4:e4b` remains the local fallback. - LangSmith is tracing only, not a model provider. - No cloud model credentials are configured. - LangGraph runtime is installed and the sanitized smoke workflow reached approved status. - LlamaIndex runtime is installed and the approved public corpus retrieval proof returned source paths. - CrewAI runtime is installed and config/import validation passes without LLM execution.  ## Public Repo Rules  - All active project work goes under `project/`. - Sanitized previous history goes under `history/`. - Public WikiLLM memory goes under `wiki/`. - Used/setup skills only go under `skills/` and `project/agents/`. - Env files with real keys stay ignored.  ## "
+      "text": "# Memory  ## Stable Project Direction  ArchFlow Block 1 is the first public solution:  `dialogue/chat/meeting material -> structured context -> PRD -> responsibility plan -> agent-ready knowledge base`  ## Current Runtime Decisions  - Codex is the primary operator, review, file-edit, and publication layer. - Codex authentication is not exported as an API key. - Ollama is the only model execution provider for now. - Qwythos is the active local model after the latest smoke test generated text. - `gemma4:e4b` remains the local fallback. - LangSmith is tracing only, not a model provider. - No cloud model provider is active in runtime. OpenRouter and Mistral keys exist only in ignored local env storage after the July 1 cleanup; browser/client code must not read or call them. - LangGraph runtime is installed and the sanitized smoke workflow reached approved status. - LlamaIndex runtime is installed and the approved public corpus retrieval proof returned source paths. - CrewAI runtime is installed and config/import validation passes without LLM execution.  ## Public Repo Rules  - All active project work goes under `project/`. - Sanitized previous history goes under `history/`. - Public Wi"
     },
     {
       "path": "wiki/rules/public-wikillm-contract.md",
@@ -2207,7 +2581,7 @@
     {
       "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
       "title": "Run: Dashboard Jarvis Vercel Shell",
-      "text": "# Run: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Summary  The public dashboard was extended from a static read-only status board into a Jarvis-first command shell for Vercel preview. The shell adds normal/interview modes, a bottom command input, manual and timed refresh, browser-local voice authorization, metadata-only file packet creation, current-session event history, and packet downloads.  The implementation keeps the public boundary clear: static Vercel can stage session packets and refresh deployed `data.json`, but durable writes wait for Codex or a future Railway/backend service. Unauthenticated smoke checks currently redirect to Vercel SSO.  Canonical review route:  - `https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the only approved review target.  ## Artifacts  - `project/dashboard/` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/"
+      "text": "# Run: Dashboard Jarvis Vercel Shell  Date: 2026-06-30 Status: implemented, validated, preview deployed behind Vercel authentication  ## Summary  The public dashboard was extended from a static read-only status board into a Jarvis-first command shell for Vercel preview. The shell adds normal/interview modes, a bottom command input, manual and timed refresh, browser-local voice authorization, metadata-only file packet creation, current-session event history, and packet downloads.  The implementation keeps the public boundary clear: static Vercel can stage session packets and refresh deployed `data.json`, but durable writes wait for Codex or a future Railway/backend service. Unauthenticated smoke checks currently redirect to Vercel SSO.  Canonical review route:  - `https://<protected-preview-host>`  An initial Vercel CLI deploy without `--prod` was recorded by Vercel as target `production`; the explicit `--target preview` deployment above is the only approved review target.  ## Artifacts  - `project/dashboard/` - `vercel.json` - `.vercelignore` - `project/content/templates/` - `project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/` - `project/runs/E1.5/2026-06-30-content-agent-templa"
     },
     {
       "path": "wiki/runs/2026-06-30-dashboard-reliability-sync.md",
@@ -2227,7 +2601,47 @@
     {
       "path": "wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md",
       "title": "Run: Onyx Dashboard Voice Hosting Execution",
-      "text": "# Run: Onyx Dashboard Voice Hosting Execution  Date: 2026-06-30 Status: planned and recorded  ## Summary  The June 30 plan was converted into a public-safe execution baseline. ArchFlow remains the workflow brain; Onyx is a later optional portal/search layer. The dashboard should go live in stages, beginning with the current static read-only dashboard and only adding Railway/live workers when the project needs a long-running API, queue, or voice bridge.  Two private Notion tasks were created for the next work: one for the live dashboard/voice/hosting/Onyx path and one for GloomyLord to prepare the PRD, research templates, monitoring templates, backlog, ideas summary, and public visual report system.  ## Outputs  - Added `skills/outquestions/SKILL.md`. - Updated the public skill registry and agent skill map. - Added public run note `project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md`. - Added public decision record `wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md`.  ## Decision  Vercel is the first dashboard target because the current dashboard is static and read-only. Railway is reserved for live API, worker, queue, websocket/SSE, or voice-service needs"
+      "text": "# Run: Onyx Dashboard Voice Hosting Execution  Date: 2026-06-30 Status: planned and recorded  ## Summary  The June 30 plan was converted into a public-safe execution baseline. ArchFlow remains the workflow brain; Onyx is a later optional portal/search layer. The dashboard should go live in stages, beginning with the current static read-only dashboard and only adding Railway/live workers when the project needs a long-running API, queue, or voice bridge.  Two private Notion tasks were created for the next work: one for the live dashboard/voice/hosting/Onyx path and one for Visual Reporting to prepare the PRD, research templates, monitoring templates, backlog, ideas summary, and public visual report system.  ## Outputs  - Added `skills/outquestions/SKILL.md`. - Updated the public skill registry and agent skill map. - Added public run note `project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md`. - Added public decision record `wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md`.  ## Decision  Vercel is the first dashboard target because the current dashboard is static and read-only. Railway is reserved for live API, worker, queue, websocket/SSE, or voice-service"
+    },
+    {
+      "path": "wiki/runs/2026-07-01-agent-communication-channel.md",
+      "title": "2026-07-01 Agent Communication Channel",
+      "text": "# 2026-07-01 Agent Communication Channel  ## Task  Create a live communication folder for ArchFlow public project agents and provide a system prompt append for the new coordination pattern.  ## Result  - Added `project/live/communication/` as the shared public-safe channel for active parallel agent dialogue. - Added the current notice, message template, pattern-change log, and copy-ready system prompt append. - Updated `project/operating-rules.md`, `project/agents/README.md`, and `project/agents/agent-roster.yaml` so future agents route to the live communication channel before work. - Recorded this handout under `project/runs/2026-07-01-agent-communication-channel/`.  ## Follow-Up  Future agents should append starting, running, blocked, handoff, and complete updates to `project/live/communication/agent-communication-log.md` and keep substantial completion records under `project/runs/`."
+    },
+    {
+      "path": "wiki/runs/2026-07-01-competitor-dashboard-website-plan.md",
+      "title": "2026-07-01 Competitor Dashboard And Website Plan",
+      "text": "# 2026-07-01 Competitor Dashboard And Website Plan  ## Task  Review competitor positioning and prepare the next ArchFlow planning direction for:  - dashboard improvement; - public services website improvement.  ## Result  Created:  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/issues/2026-07-01-dashboard-website-improvement-issues.md` - `project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md`  Ronaldo planning extension:  - `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - issue priority pass appended to `project/issues/2026-07-01-dashboard-website-improvement-issues.md`  ## Executive Answer  ArchFlow should improve the internal dashboard as a two-orchestra operating cockpit and build the public website as a service-led offer for source-backed PRDs, reporting, task definition, and governed agent-management systems.  Jesus has posted `Status: complete` for the dashboard smoke-test/setup lane. Ronaldo or the next implementer may proceed beyond planning only after appending a fresh starting claim, checking current `git status`"
+    },
+    {
+      "path": "wiki/runs/2026-07-01-dashboard-two-layer-schema.md",
+      "title": "Run Note: Two-Layer Dashboard Schema Control Panel",
+      "text": "# Run Note: Two-Layer Dashboard Schema Control Panel  ## Task  Make the dashboard operable as two separate block-schema screens:  - `(1) PRD/ICP Flow` for the service-product path. - `(2) Agent Orchestra` for the reliable local control system.  ## Result  - Added explicit `#service` and `#schema` schema screens. - Added large node control panels with inputs, outputs, connection settings, dropdown configuration, run history, prompts, system prompt, developer comments, safety fields, and business-fit fields. - Kept all execution, provider, backend, deployment, and writeback actions gated. - Reviewed Claude-Mem, Impeccable, garak, NeMo Guardrails, and task-observer applicability as references only. - Integrated implementation, UX, and public-safety review findings: queue/save correctness, schema version handling, connect-mode isolation, node-panel tab behavior, mobile navigation, browser-local labels, generated URL redaction, and screenshot artifact removal.  ## Validation  - Pass: dashboard JavaScript syntax. - Pass: schema static smoke over both graph defaults. - Pass: dashboard data regeneration and JSON parse. - Pass: public safety scan. - Pass: workflow validation. - Pass: pre-pu"
+    },
+    {
+      "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
+      "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
+      "text": "# Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion  Date: 2026-07-01 Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending  ## Summary  The missing final June 30 accepted state was transferred into the ArchFlow public knowledge layer. The project now records that the accepted review branch is `d18fc55`, `JDB-8` is Done, `JDB-7` remains Review, and Telegram was not sent because external disclosure was blocked by approval review.  Provider handling was corrected. OpenRouter and Mistral keys are local ignored env material only. The temporary Markdown key file was deleted. The June 30 OpenAI local key file was deleted. Ignored env files were restricted to owner-only permissions. Static dashboard code must not access provider keys or call providers.  The dashboard was extended from the interrupted two-screen edit into explicit `(1) PRD/ICP Flow` and `(2) Agent Orchestra` schema screens. Node control panels now expose the configuration that matters for agent work: inputs, outputs, prompts, comments, last runs, connection summary, safety, persistence, memory target, trace target, and provider mode.  Added `project/scripts"
+    },
+    {
+      "path": "wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md",
+      "title": "2026-07-01 Legacy Design Reference And PRD Calculator",
+      "text": "# 2026-07-01 Legacy Design Reference And PRD Calculator  ## Task  Use the latest legacy ArchFlow website as the design reference for the future public PRD/ICP landing page.  ## Result  Created `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md`.  ## Key Finding  The legacy website should be reused for visual mechanics, not category positioning. Its strongest reusable elements are layered 3D arch assets, scroll drift, cursor hover-depth, warm editorial styling, dark command panels, and a calculator-first proof interaction.  ## Recommendation  The new public website should simplify the legacy ROI/readiness calculator into a PRD/ICP Operating ROI Calculator with two modes:  - PRD/ICP ROI; - Knowledgebase Readiness.  The calculator should estimate recoverable product-work value, knowledgebase readiness, and the recommended first ArchFlow package while avoiding guaranteed ROI claims.  ## Confidence  Confidence: 0.82 for visual direction; 0.68 for calculator economics until ROI and demand proof exist."
+    },
+    {
+      "path": "wiki/runs/2026-07-01-messi-coordination-review.md",
+      "title": "2026-07-01 Messi Coordination Review",
+      "text": "# 2026-07-01 Messi Coordination Review  ## Task  Coordinate the active July 1 ArchFlow dashboard/model-routing/Notion work as project manager, product owner, and strategic planner.  ## Result  - Verified the current repo branch and dirty worktree state. - Verified live Notion task state for the key dashboard/Jarvis/E1/E2 rows. - Integrated four read-only reviewer passes: repo state, dashboard vision, Notion state, and independent process review. - Added `project/reports/2026-07-01-messi-coordination-review.md`. - Added `project/runs/2026-07-01-messi-coordination-review/agent-handout.md`.  ## Durable Interpretation  The dashboard/Jarvis direction is correct, but the branch should freeze before more implementation. The next reliable move is to close or hand off active claims, resolve missing screenshot evidence, run final validation, then choose between branch review/commit and E2.0A product dry run.  ## Key State  - `JDB-8`: Done. - `JDB-7`: Review. - `E1.3.9`: Review. - `E1.3.10`: Review. - `E2.0` and `E2.0A`: To Do. - OpenRouter: specification only, runtime disabled. - Railway/backend/writeback/provider calls: gated.  ## Follow-Up  1. Close or hand off active dashboard/model-routi"
+    },
+    {
+      "path": "wiki/runs/2026-07-01-openrouter-model-routing.md",
+      "title": "2026-07-01 OpenRouter Model Routing",
+      "text": "# 2026-07-01 OpenRouter Model Routing  ## Task  Define a strategic and economical OpenRouter model-routing architecture for ArchFlow.  ## Result  - Added `project/reports/2026-07-01-openrouter-model-routing-plan.md`. - Replaced `project/config/model-routing.yaml` with a fuller routing contract. - Kept OpenRouter runtime disabled until explicit approval and an approved local bridge or backend exists. - Defined the frontier council: strongest available Claude, Gemini, and OpenAI models for planning, long reasoning, strategy, and review. - Defined the execution pool: Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, and selected optional models for bounded execution only. - Added maker/checker rules, E1-E7 routing, budget controls, reliability controls, activation gates, and required logging fields.  ## Review  An independent reviewer prompt/checklist was produced during the run and folded into the final report. The main correction was to avoid implying live provider availability and to mark model IDs as activation-time verified targets rather than permanent hard-coded truth.  ## Follow-Up  Before any runtime work:  1. Get explicit approval for provider activation. 2. Build or ap"
+    },
+    {
+      "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
+      "title": "2026-07-01 Yushchenko Model Efficiency Observer",
+      "text": "# 2026-07-01 Yushchenko Model Efficiency Observer  ## Task  Create a recurring model-efficiency and token-use observer for ArchFlow.  ## Result  - Created Codex app automation `yushchenko-model-efficiency-observer` with a five-hour cadence. - Added the Yushchenko observer role to `project/agents/agent-roster.yaml`. - Updated `project/agents/README.md`. - Added `project/automation/yushchenko-model-efficiency-observer.md`. - Added `project/agents/model-efficiency-advice.md`. - Added `project/agents/model-efficiency-issues.md`. - Added baseline report `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md`.  ## Current Finding  FACT: No active OpenRouter runtime evidence was found in the baseline observer report.  INTERPRETATION: The project now has the observer and advice loop before cloud provider activation, which should reduce token waste and prevent unreviewed model escalation.  GAP: Telegram delivery requires an approved sender outside public files. The private destination must not be stored in the public repo.  ## Follow-Up  Before OpenRouter activation, add a canonical model-call ledger with model ID, task, role, source IDs, prompt version, tok"
     }
   ],
   "sources": [

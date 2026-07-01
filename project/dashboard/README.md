@@ -2,12 +2,12 @@
 
 This is the Phase 2 dashboard for ArchFlow Block 1.
 
-It is a read-only control panel and Jarvis command shell generated from public project files. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.
+It is a static source-state control panel and Jarvis command shell generated from public project files. It can hold browser-local draft graph edits and review packets, but it cannot write back to source files by itself. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.
 
-Current stable protected review route:
+Protected review route format:
 
 ```text
-https://public-mcharniuk1-4994-mcharniuk1-4994s-projects.vercel.app/project/dashboard/
+https://<protected-preview-host>/project/dashboard/
 ```
 
 Review-branch local deep links:
@@ -15,6 +15,7 @@ Review-branch local deep links:
 ```text
 http://127.0.0.1:8765/project/dashboard/#jarvis
 http://127.0.0.1:8765/project/dashboard/#history
+http://127.0.0.1:8765/project/dashboard/#service
 http://127.0.0.1:8765/project/dashboard/#schema
 http://127.0.0.1:8765/project/dashboard/#config
 http://127.0.0.1:8765/project/dashboard/#plan
@@ -36,6 +37,29 @@ Open:
 ```text
 http://127.0.0.1:8765/project/dashboard/
 ```
+
+## Static Smoke Test
+
+For dashboard/Jarvis UI changes, run the rendered-route smoke test from the repository root:
+
+```bash
+python3 project/scripts/dashboard-static-smoke.py
+```
+
+What it proves:
+
+- `#jarvis`, `#history`, `#service`, `#schema`, `#config`, and `#plan` render in headless Chrome.
+- `?panel=svc-intake#service` and `?panel=architecture-review#schema` open the large node control panel on initial render for the two required modes.
+- `(1) PRD/ICP Flow` and `(2) Agent Orchestra` expose their required source, node, provider-boundary, and approval-gate markers.
+- The node control panel exposes Inputs, Outputs, Configuration, Prompts, Safety, and provider/writeback boundary text.
+- Rendered HTML does not expose obvious provider secret patterns.
+- The static UI performs no provider calls and no writeback.
+
+What it does not prove:
+
+- real microphone permission or speaker output on the owner's browser;
+- node-modal click-through quality on mobile;
+- Railway/local bridge, provider, Nexus, Notion, GitHub, or WikiLLM writeback.
 
 ## Vercel Preview
 
@@ -69,7 +93,9 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 - Current-session Jarvis chat history with export/clear controls.
 - Browser-local voice input through Web Speech recognition where supported.
 - Browser-local speech output through Web Speech synthesis where supported.
-- Block-schema page for direct owner-to-Codex flow and downstream graph/review/memory flow.
+- `(1) PRD/ICP Flow` block-schema page for the externally showable service product path.
+- `(2) Agent Orchestra` block-schema page for the local Codex/LangGraph/WikiLLM/Graphify control system.
+- Full node control panels with inputs, outputs, run notes, system prompts, comments, config dropdowns, and connection summaries.
 - Config/subprompting page for browser-local prompt candidates and exportable review packets.
 - Project Plan page for the E1-E7 spine and current source links.
 - Browser-local file metadata packet creation.
@@ -95,7 +121,7 @@ After each substantial dashboard/Jarvis execution:
 1. Write a public-safe run note under `project/runs/`.
 2. Append the durable memory summary under `wiki/runs/`, `wiki/memory.md`, and `wiki/log.md`.
 3. Regenerate `project/dashboard/data.json`.
-4. Run the public safety, workflow, dashboard JSON, JavaScript, and runtime guard checks.
+4. Run the public safety, workflow, dashboard JSON, JavaScript, rendered-route smoke, and runtime guard checks.
 5. Commit and push the tracked source update.
 6. Update Notion append-only with the protected preview URL, GitHub commit, verification status, and remaining gated work.
 
@@ -127,8 +153,15 @@ Deferred to Vercel server/auth or Railway backend:
 - Notion/GitHub/WikiLLM writes;
 - SSE/websocket live events;
 - background workers and queues;
-- OpenAI/Mistral/Ollama provider calls;
+- OpenRouter/Mistral/OpenAI/Ollama provider calls;
 - any private dashboard state.
+
+Provider state as of 2026-07-01:
+
+- `OPENROUTER_API_KEY` and `MISTRAL_API_KEY` are stored only in the root ignored local `.env.local`.
+- the June 30 OpenAI local key file was removed;
+- static Vercel/client JavaScript must not read provider env vars or call providers directly;
+- provider use requires an approved local bridge or backend with server-side secret access, budget limits, source labels, and review before any writeback.
 
 ## Boundary
 

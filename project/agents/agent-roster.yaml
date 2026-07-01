@@ -141,6 +141,45 @@ agents:
       - publication_review
       - release_notes
 
+  yushchenko_model_efficiency_observer:
+    title: Yushchenko Model Efficiency Observer
+    provider: codex_automation
+    local_model: none
+    mode: recurring_model_and_token_use_observer
+    schedule: every_five_hours
+    skills:
+      - model-usage-review
+      - token-efficiency-audit
+      - openrouter-routing-review
+      - public-safety-review
+      - task-handout
+    reads:
+      - project/config/model-routing.yaml
+      - project/reports/2026-07-01-openrouter-model-routing-plan.md
+      - project/agents/model-efficiency-advice.md
+      - project/agents/model-efficiency-issues.md
+      - project/live/communication/agent-communication-log.md
+      - project/runs/
+      - wiki/log.md
+    writes:
+      - project/runs/yushchenko-model-efficiency/
+      - project/agents/model-efficiency-advice.md
+      - project/agents/model-efficiency-issues.md
+      - wiki/log.md
+      - project/live/communication/agent-communication-log.md
+    outputs:
+      - model_efficiency_report
+      - token_usage_summary
+      - cost_waste_findings
+      - routing_advice
+      - open_issues
+    rules:
+      - report_actual_evidence_only
+      - do_not_invent_token_or_cost_numbers
+      - do_not_store_private_chat_destinations_or_tokens
+      - telegram_summary_only_when_approved_sender_exists
+      - openrouter_runtime_stays_disabled_without_explicit_approval
+
 automation:
   evening_skill_registry_update:
     schedule: daily_evening
@@ -155,3 +194,20 @@ automation:
       - project/agents/skills-by-agent.md
       - project/agents/agent-roster.yaml
       - skills/skills-used.md
+  yushchenko_model_efficiency_observer:
+    schedule: every_five_hours
+    provider: codex_app_cron
+    automation_id: yushchenko-model-efficiency-observer
+    status: active
+    target_files:
+      - project/runs/yushchenko-model-efficiency/
+      - project/agents/model-efficiency-advice.md
+      - project/agents/model-efficiency-issues.md
+      - wiki/log.md
+
+communication:
+  active_channel: project/live/communication
+  current_notice: project/live/communication/current-agent-notice.md
+  live_log: project/live/communication/agent-communication-log.md
+  pattern_change_log: project/live/communication/pattern-change-log.md
+  rule: read_current_notice_and_append_starting_update_before_editing

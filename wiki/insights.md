@@ -86,3 +86,19 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: this lets Jarvis accept typed, voice, and file inputs now without pretending that static JavaScript can update the KB, Notion, GitHub, or local files.
 - Where applicable: dashboard hosting, voice mode, file checks, E1.5 content templates, E2 research packets, and future Railway API design.
 - Limitation: true live state, Google auth, SSE/websocket events, background jobs, provider model calls, and durable memory writes require a backend.
+
+## Insight - Economical Frontier Council
+
+- Observation: ArchFlow benefits from strong Claude, Gemini, and OpenAI models for strategy, long reasoning, and review, but using them for every transformation would waste budget and create slow feedback loops.
+- Interpretation: the reliable model architecture is a tiered maker/checker system: cheap execution models produce structured intermediate artifacts, deterministic checks validate shape and source IDs, and frontier models review only when the output affects strategy, public claims, memory, outreach, architecture, or payment verdicts.
+- Why it matters: this keeps the system economically viable while still using the strongest models where mistakes would be expensive.
+- Where applicable: E1 PRD/KB review, E2 account evidence cards, E3 positioning, E4 content, E5 ROI logic, E6 outreach, E7 payment verdicts, and future Railway/provider bridge design.
+- Limitation: model names and pricing change quickly, so exact OpenRouter IDs must be refreshed before runtime activation.
+
+## Insight - Model Efficiency Needs A Ledger
+
+- Observation: A model-routing plan can prevent obvious misuse, but it cannot measure efficiency without recorded model IDs, task roles, token counts, costs, reviewers, and outcomes.
+- Interpretation: the Yushchenko observer is useful as a recurring reviewer, but real optimization requires a canonical model-call ledger before OpenRouter activation.
+- Why it matters: without a ledger, agents can only give qualitative advice and cannot prove which model choices saved money or improved output quality.
+- Where applicable: OpenRouter activation, E2 account research, E3 content and website drafts, E6 outreach variants, E7 payment verdict review, and future provider bridge design.
+- Limitation: Telegram delivery and cost accounting remain partial until an approved sender and model-call logging source exist.

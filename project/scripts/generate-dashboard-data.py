@@ -32,11 +32,25 @@ def read(path: Path, limit: int | None = None) -> str:
     return text if limit is None else text[:limit]
 
 
+def sanitize_public_text(text: str) -> str:
+    replacements = {
+        "GloomyLord": "Visual Reporting",
+        "Codex Jesus": "Architecture Reviewer",
+    }
+    for original, replacement in replacements.items():
+        text = text.replace(original, replacement)
+    return text
+
+
 def public_excerpt(text: str, limit: int = 1200) -> str:
     sanitized_lines = []
     secret_line = re.compile(r"^(\s*[A-Z0-9_]*(?:KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*\s*=\s*)(.+)$")
+    protected_preview_url = re.compile(r"https://[^\s`\"')]+(?:vercel\.app|vercel\.sh)[^\s`\"')]*")
     for line in text.splitlines():
-        sanitized_lines.append(secret_line.sub(r"\1<not-shown>", line))
+        line = secret_line.sub(r"\1<not-shown>", line)
+        line = protected_preview_url.sub("https://<protected-preview-host>", line)
+        line = sanitize_public_text(line)
+        sanitized_lines.append(line)
     return " ".join(sanitized_lines)[:limit]
 
 
@@ -46,8 +60,8 @@ def title_for(path: Path) -> str:
     for line in read(path, 1200).splitlines():
         line = line.strip()
         if line.startswith("# "):
-            return line[2:].strip()
-    return path.name
+            return sanitize_public_text(line[2:].strip())
+    return sanitize_public_text(path.name)
 
 
 def first_match(text: str, pattern: str, default: str = "") -> str:
@@ -63,7 +77,10 @@ def list_files(base: Path, suffixes: tuple[str, ...] = (".md", ".yaml", ".yml"))
     for path in sorted(base.rglob("*")):
         if not path.is_file() or path.suffix not in suffixes:
             continue
-        if skip_parts.intersection(path.relative_to(ROOT).parts):
+        rel_parts = path.relative_to(ROOT).parts
+        if skip_parts.intersection(rel_parts):
+            continue
+        if rel_parts == ("project", "live", "communication", "agent-communication-log.md"):
             continue
         if path.name.startswith(".env"):
             continue

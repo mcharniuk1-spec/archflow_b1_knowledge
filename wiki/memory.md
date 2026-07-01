@@ -14,7 +14,7 @@ ArchFlow Block 1 is the first public solution:
 - Qwythos is the active local model after the latest smoke test generated text.
 - `gemma4:e4b` remains the local fallback.
 - LangSmith is tracing only, not a model provider.
-- No cloud model credentials are configured.
+- No cloud model provider is active in runtime. OpenRouter and Mistral keys exist only in ignored local env storage after the July 1 cleanup; browser/client code must not read or call them.
 - LangGraph runtime is installed and the sanitized smoke workflow reached approved status.
 - LlamaIndex runtime is installed and the approved public corpus retrieval proof returned source paths.
 - CrewAI runtime is installed and config/import validation passes without LLM execution.
@@ -62,6 +62,13 @@ ArchFlow Block 1 is the first public solution:
 - `skills/task-handout/SKILL.md` is mandatory when the hook triggers, when one or more agent roles are used, or when one or more subtasks are solved or changed.
 - The hook only marks that the handout skill is required; the executing agent must create or update `agent-handout.md` after outputs and checks exist.
 - The ignored local marker is written under `project/local/task-handout-hook/`.
+
+## Live Agent Communication Memory
+
+- `project/live/communication/` is the shared active communication channel for parallel ArchFlow public project agents.
+- Agents must read the current notice and latest communication log before work, append a starting update before edits, coordinate file claims, and append complete, blocked, or handoff updates after work.
+- Run-specific `agent-handout.md` files remain the durable completion record for substantial work.
+- Changes to the communication pattern must be recorded in `project/live/communication/pattern-change-log.md` and announced in `project/live/communication/agent-communication-log.md`.
 
 ## LangSmith Trace Memory
 
@@ -151,3 +158,44 @@ ArchFlow Block 1 is the first public solution:
 - The dashboard README now records the verified preview URL and the reliability-sync procedure.
 - Reliable dashboard updates require a run note, KB/log update, regenerated `project/dashboard/data.json`, safety/workflow/runtime checks, GitHub push, append-only Notion sync, and a web-view status check.
 - Always-on execution is not active yet. Railway/API, OpenAI/Mistral runtime, live Codex bridge, persistent uploads, voice persistence, and browser writeback remain separate approval-gated work.
+
+## June 30 Transfer And Provider Cleanup Memory - 2026-07-01
+
+- The accepted June 30 static/browser-local review slice is `review-jarvis-agentbrowser-blockschema-20260630` at `d18fc55`.
+- Main remains the reliable protected static dashboard baseline until owner-approved merge/deploy.
+- JDB-8 is Done, JDB-7 is Review for merge/deploy, and E1.3.9 remains Review.
+- Telegram publishing was not sent because the approval reviewer blocked external disclosure of protected/internal links and status data; exact owner-approved disclosure is required before sending.
+- The dashboard now separates `(1) PRD/ICP Flow` from `(2) Agent Orchestra` and exposes node-level controls for prompts, comments, inputs, outputs, files, config, runs, and output links.
+- OpenRouter and Mistral keys are available only in ignored local env storage for future approved local bridge or backend tests.
+- The June 30 OpenAI local key file was removed; OpenAI is not an active ArchFlow runtime provider after cleanup.
+- Static Vercel can preserve and display the last deployed dashboard state when the local agent is off, but cannot safely call providers, alter parameters, or write to GitHub, Notion, WikiLLM, Obsidian, or Telegram.
+- Railway remains deferred until server-side auth, API state, queues/workers, SSE/websocket, provider calls, durable uploads, persistent run state, or writeback are explicitly approved.
+- When extending `project/config/model-routing.yaml`, preserve the validator-required `cloud_api`, `langsmith_observability`, and top-level `routing` keys. OpenRouter-specific planning can be richer, but it must not break the existing workflow validator or runtime guard.
+- Dashboard voice UI must not claim browser microphone authorization until the browser actually starts speech recognition. Before that, describe the state as permission required or listening request pending.
+- Dashboard/Jarvis UI changes should run `python3 project/scripts/dashboard-static-smoke.py` after regenerating data. This is the reusable rendered-route proof for `#jarvis`, `#history`, `#service`, `#schema`, `#config`, `#plan`, and the two node-panel deep links; it verifies static browser rendering only and does not prove mic/speaker, provider calls, Railway/local bridge, or writeback.
+
+## Dashboard Two-Layer Schema Memory - 2026-07-01
+
+- The dashboard must keep `(1) PRD/ICP Flow` and `(2) Agent Orchestra` as separate screens because they answer different jobs: externally showable service-product workflow versus local reliable control-system workflow.
+- Schema nodes should remain draggable and clickable, with the full node panel used for inputs, outputs, connection settings, dropdown configuration, interpreted run logs, operating prompt, system prompt, developer comments, safety, evidence, user job, pain, and business objective.
+- Static dashboard actions remain browser-local review packets only. Provider calls, raw transcript storage, durable writeback, deployment, backend queues, and live traces require explicit approval and a server/local bridge.
+- Claude-Mem and Impeccable are candidate memory/design tools, while NVIDIA garak and NeMo Guardrails are candidate safety-evaluation tools. Treat them as reviewed references only until hook scope, storage, worker behavior, install path, and public/private boundaries are approved.
+- No current local Claude/Codex task-observer skill was found. Use the project chat registry, live communication log, dashboard session events, and run notes as the safe observer layer until a specific tool is selected.
+
+## OpenRouter Model Routing Memory - 2026-07-01
+
+- OpenRouter remains disabled as a runtime provider until explicit approval and an approved local bridge or backend exists.
+- The model-routing contract is now recorded in `project/config/model-routing.yaml` and explained in `project/reports/2026-07-01-openrouter-model-routing-plan.md`.
+- The strategic pattern is a frontier council: strongest available Claude, Gemini, and OpenAI models are reserved for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts.
+- Cheaper execution models such as Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, MiniMax, Mercury, Grok, and Gemma are assigned only to bounded extraction, classification, drafting, code variants, source discovery, and other intermediate work.
+- Execution-pool outputs must not self-approve public claims, memory promotion, outreach, pricing, architecture changes, or payment verdicts.
+- Future activation must refresh OpenRouter model IDs, keep secrets server-side or in ignored local env, log model ID and cost metadata, enforce budget caps, and require public-safety plus human approval before external or memory writes.
+
+## Yushchenko Model Efficiency Observer Memory - 2026-07-01
+
+- Codex app automation `yushchenko-model-efficiency-observer` is active on a five-hour cadence.
+- The observer writes public-safe Markdown reports under `project/runs/yushchenko-model-efficiency/`.
+- Durable model-efficiency advice lives in `project/agents/model-efficiency-advice.md`.
+- Open model-efficiency issues live in `project/agents/model-efficiency-issues.md`.
+- The observer must report actual model/token/cost evidence only and must say "No active OpenRouter runtime evidence found" when OpenRouter has not been used.
+- Telegram delivery is conditional on an approved sender outside the public repo; chat destinations, IDs, links, and tokens must not be stored in public files.

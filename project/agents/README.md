@@ -14,11 +14,28 @@ It does not publish the operator's full private skill library.
 | AF Knowledge | Knowledge-base update packets. |
 | AF Review | Public-safety and evidence review. |
 | AF Publisher | Git/public project publishing. |
+| Yushchenko Model Efficiency Observer | Recurring model/token efficiency review and advice. |
 
 See `skills-by-agent.md` and `agent-roster.yaml`.
+
+Live communication:
+
+- `../live/communication/README.md`
+- `../live/communication/current-agent-notice.md`
+- `../live/communication/agent-communication-log.md`
+
+Every agent must read the live communication notice and append a starting update before editing project files.
 
 Workflow contracts:
 
 - `../workflows/langgraph-controller.yaml`
 - `../workflows/crewai-crew.yaml`
 - `../workflows/llamaindex-rag.yaml`
+
+Model-efficiency observer:
+
+- `model-efficiency-advice.md`
+- `model-efficiency-issues.md`
+- `../automation/yushchenko-model-efficiency-observer.md`
+
+The observer runs on a five-hour cadence through the Codex app automation `yushchenko-model-efficiency-observer`. It reports actual model/token evidence only. If OpenRouter has no active runtime evidence, it must say that plainly instead of estimating usage.

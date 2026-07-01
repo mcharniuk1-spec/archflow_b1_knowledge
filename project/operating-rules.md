@@ -43,6 +43,31 @@ Use this layering:
 - Codex remains the local operator and approval boundary.
 - Ollama is the local model provider once approved and started.
 
+## Live Agent Communication Rule
+
+All parallel or role-based ArchFlow public project work must use `project/live/communication/` as the shared active communication channel.
+
+Before starting or continuing work, each agent must read:
+
+- `project/live/communication/README.md`
+- `project/live/communication/current-agent-notice.md`
+- the latest entries in `project/live/communication/agent-communication-log.md`
+
+Before editing files, each agent must append a short starting update to `project/live/communication/agent-communication-log.md` with the task, files likely to change, files claimed, expected output, blockers, and next step.
+
+During work, agents must announce scope changes and coordinate before editing files another agent has claimed. After work, agents must append a complete, blocked, or handoff update with files changed, checks, gaps, and next action.
+
+For substantial work, still create or update the relevant `project/runs/<run-id>/agent-handout.md`. The live communication folder coordinates active work; run handouts record durable completion state.
+
+## Actor And Reviewer Rule
+
+For substantial dashboard, website, provider, deployment, memory, or architecture work, Jesus/Codex must use an explicit Actor plus Reviewer split when subagent tools are available:
+
+- Actor: owns a bounded implementation or planning slice with a clear file scope.
+- Reviewer: audits evidence, safety, completion claims, and remaining gaps without editing files unless explicitly assigned a separate fix.
+
+The lead integrator remains responsible for merge order, conflict review, validation, durable run notes, and final owner handoff. Actor and Reviewer file claims must be recorded in `project/live/communication/agent-communication-log.md` before edits.
+
 ## Task Handout Hook Rule
 
 The project prompt hook checks every submitted prompt for handout triggers. If it emits `TASK_HANDOUT_HOOK_TRIGGER=required`, the active agent must read `skills/task-handout/SKILL.md` before continuing.

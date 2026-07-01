@@ -1,9 +1,11 @@
 # Provider Setup
 
-This project supports two provider concepts:
+This project supports four provider concepts:
 
 1. Ollama local model provider.
 2. Codex operator authentication.
+3. OpenRouter as a future hosted orchestration/model provider.
+4. Mistral as a future hosted quality/synthesis provider.
 
 They are not the same thing.
 
@@ -20,6 +22,15 @@ As of 2026-06-25:
 - Codex is available as the operator runtime.
 - Codex auth should not be treated as an exportable API key.
 - LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.
+
+As of 2026-07-01:
+
+- The root ignored `.env.local` contains `OPENROUTER_API_KEY` and `MISTRAL_API_KEY`.
+- The Markdown file that temporarily contained those values was deleted.
+- The local OpenAI key file created during the June 30 setup lane was deleted.
+- Ignored env files were restricted to owner-only permissions.
+- No provider key is tracked by Git, shown in dashboard JSON, or stored in public WikiLLM notes.
+- The static dashboard must not call OpenRouter, Mistral, OpenAI, or Ollama directly because browser JavaScript cannot safely hold provider secrets.
 
 ## Recommended Mode
 
@@ -51,6 +62,25 @@ Completed:
 No secret values are needed for Ollama.
 
 If later cloud APIs are used, API keys must be created and stored outside public files.
+
+## OpenRouter / Mistral Status
+
+OpenRouter and Mistral are available only as local secret material for future approved tests. They are not active dashboard runtimes.
+
+Allowed future route:
+
+1. static dashboard creates a browser-local packet;
+2. Codex or an approved local bridge reviews the packet;
+3. a backend/local bridge reads provider keys from ignored env or secret store;
+4. the provider call uses only sanitized, approved input;
+5. the result returns as a reviewed run note, issue, decision, or dashboard data update.
+
+Blocked route:
+
+- no provider key in client JavaScript;
+- no provider call from the static Vercel page;
+- no raw transcript/audio/screen/private document upload to a provider;
+- no automatic Notion/GitHub/WikiLLM writeback after a model response.
 
 ## LangSmith Status
 

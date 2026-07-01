@@ -1,4 +1,18 @@
-provider_mode: codex_auth_main
+provider_mode: codex_operator_primary_openrouter_spec_only
+
+status:
+  runtime_activation: disabled_until_explicit_approval
+  reason: static dashboard and public repo must not call model providers directly
+  model_ids: target_ids_require_activation_time_verification_against_openrouter_models_api
+  activation_requires:
+    - approved_local_bridge_or_backend
+    - server_side_secret_access_only
+    - fresh_openrouter_model_list_check
+    - budget_limit_per_run
+    - model_id_and_cost_logging
+    - public_safety_screen
+    - human_approval_before_external_or_memory_write
+    - retry_and_timeout_policy
 
 providers:
   codex_operator:
@@ -45,36 +59,99 @@ providers:
     notes:
       - qwythos_smoke_test_required_manual_stop_after_verbose_generation
 
+  openrouter_cloud:
+    status: disabled_spec_ready
+    role: future_sanitized_multi_model_routing
+    client_javascript_access: forbidden
+    key_storage: ignored_local_env_or_provider_secret_store_only
+    forbidden_inputs:
+      - raw_private_transcript
+      - raw_audio_or_screen_capture
+      - credentials_or_env_files
+      - private_notion_export
+      - unsanitized_uploaded_documents
+      - private_profile_data
+    allowed_inputs:
+      - approved_command_packet
+      - sanitized_prd_summary
+      - source_labeled_research_summary
+      - public_safe_account_evidence_card
+      - browser_local_packet_export_after_codex_review
+
+  mistral_cloud:
+    status: disabled_until_credentials_source_approval_and_budget
+    role: future_sanitized_quality_pass
+    key_storage: ignored_local_env_or_provider_secret_store_only
+    draft_batch_model: mistral_small_current
+    final_strategy_model: mistral_medium_current
+    ocr_model: preflight_required_before_use
+    allowed_inputs:
+      - approved_context_digest
+      - sanitized_research_summary
+      - draft_prd_without_raw_private_sources
+      - reviewed_task_matrix
+      - approved_copy_brief
+    forbidden_inputs:
+      - raw_private_transcript
+      - private_notion_export
+      - credentials_or_env_files
+      - unsanitized_client_material
+      - private_profile_data
+    required_metadata:
+      - model_id
+      - prompt_version
+      - source_ids_used
+      - budget_status
+      - review_required
+
   cloud_api:
-    status: not_configured
+    status: local_ignored_keys_present_runtime_disabled
+    role: umbrella_for_future_server_side_cloud_provider_calls
+    client_javascript_access: forbidden
     allowed_only_after_approval: true
     env_names:
-      - OPENAI_API_KEY
-      - OPENAI_BASE_URL
+      - OPENROUTER_API_KEY
+      - OPENROUTER_MODEL
       - MISTRAL_API_KEY
+      - MISTRAL_MODEL
+      - OPENAI_API_KEY
+      - OPENAI_MODEL
+    current_key_state:
+      openrouter: present_only_in_ignored_local_env
+      mistral: present_only_in_ignored_local_env
+      openai: removed_not_active
+    activation_requires:
+      - approved_local_bridge_or_backend
+      - server_side_secret_access_only
+      - fresh_model_list_check
+      - budget_limit_per_run
+      - model_id_and_cost_logging
+      - public_safety_screen
+      - human_approval_before_external_or_memory_write
+      - retry_and_timeout_policy
+    provider_specs:
+      openrouter: openrouter_cloud
+      mistral: mistral_cloud
+    optional_openrouter_orchestrator:
+      status: disabled_until_backend_or_local_bridge_approval
+      allowed_inputs:
+        - approved_command_packet
+        - sanitized_prd_summary
+        - source_labeled_research_summary
+        - public_safe_account_evidence_card
+        - browser_local_packet_export_after_codex_review
+      forbidden_inputs:
+        - raw_private_transcript
+        - raw_audio_or_screen_capture
+        - credentials_or_env_files
+        - private_notion_export
+        - unsanitized_uploaded_documents
+        - private_profile_data
     optional_mistral_quality_pass:
       status: disabled_until_credentials_source_approval_and_budget
       draft_batch_model: mistral_small_current
       final_strategy_model: mistral_medium_current
       ocr_model: preflight_required_before_use
-      allowed_inputs:
-        - approved_context_digest
-        - sanitized_research_summary
-        - draft_prd_without_raw_private_sources
-        - reviewed_task_matrix
-        - approved_copy_brief
-      forbidden_inputs:
-        - raw_private_transcript
-        - private_notion_export
-        - credentials_or_env_files
-        - unsanitized_client_material
-        - private_profile_data
-      required_metadata:
-        - model_id
-        - prompt_version
-        - source_ids_used
-        - budget_status
-        - review_required
 
   langsmith_observability:
     status: configured_key_present_local_ignored_smoke_trace_submitted
@@ -96,5 +173,313 @@ routing:
   public_safe_review: codex_operator
   final_client_output: codex_operator
   minor_background_tasks: ollama_local_qwythos
-  future_high_quality_llm: cloud_api
+  static_dashboard_provider_calls: forbidden
+  future_openrouter_orchestration: cloud_api_after_explicit_backend_or_local_bridge_approval
   future_sanitized_mistral_quality_pass: cloud_api_after_explicit_approval
+  future_high_quality_llm: cloud_api
+
+frontier_council:
+  purpose: highest_stakes_planning_long_reasoning_strategy_and_review
+  use_rule: use_all_three_families_only_for_material_strategy_architecture_public_claim_or_payment_decisions
+  do_not_use_for:
+    - routine_summarization
+    - formatting
+    - bulk_extraction
+    - first_draft_content_variants
+    - simple_code_completion
+  current_target_families:
+    anthropic:
+      primary: anthropic/claude-opus-4.7
+      fallback: anthropic/claude-opus-4.6
+      economical_frontier: anthropic/claude-sonnet-4.6
+      strengths:
+        - long_form_strategy
+        - instruction_following
+        - artifact_review
+        - writing_quality
+        - agentic_code_review
+      weaknesses:
+        - expensive_for_bulk_extraction
+        - can_over_polish_uncertain_market_claims
+        - must_be_forced_to_label_hypotheses
+    google:
+      primary: google/gemini-3.1-pro-preview
+      fallback: google/gemini-3-flash-preview
+      economical_frontier: google/gemini-3.1-flash-lite-preview
+      strengths:
+        - long_context_comparison
+        - multimodal_review
+        - broad_alternative_generation
+        - fast_large_context_scanning
+      weaknesses:
+        - preview_ids_can_change
+        - may_need_strict_schema_constraints
+        - final_public_claims_need_checker_review
+    openai:
+      primary: openai/gpt-5.4-pro
+      fallback: openai/gpt-5.2-pro
+      economical_frontier: openai/gpt-5.4-mini
+      strengths:
+        - structured_reasoning
+        - conservative_decision_review
+        - tool_and_schema_planning
+        - scoring_and_verdicts
+      weaknesses:
+        - expensive_for_repeated_drafts
+        - may_be_overkill_for_simple_transformations
+        - exact_model_availability_must_be_refreshed
+
+execution_pool:
+  purpose: bounded_low_or_medium_risk_execution_before_frontier_review
+  default_rules:
+    - never_publish_execution_pool_output_without_frontier_or_codex_review
+    - never_use_for_final_strategy_or_payment_verdict
+    - prefer_json_schema_outputs_for_batch_work
+    - sample_audit_at_least_twenty_percent_of_bulk_outputs
+    - escalate_to_frontier_only_on_threshold_hit
+  escalation_thresholds:
+    - affects_public_claims
+    - affects_pricing_or_payment_verdict
+    - changes_architecture_or_memory_contract
+    - conflicting_sources_or_low_confidence
+    - account_score_above_outreach_threshold
+    - user_explicitly_requests_frontier_review
+  models:
+    kimi:
+      target: moonshotai/kimi-k2-thinking
+      roles:
+        - code_patch_draft
+        - long_chain_execution_plan
+        - implementation_variant
+      good_at:
+        - coding_drafts
+        - multi_step_task_decomposition
+        - fast_iteration
+      poor_at:
+        - final_business_judgment
+        - public_claim_approval
+        - unsupported_market_inference_control
+    qwen:
+      target: qwen/qwen3.6-plus
+      fallback: qwen/qwen3-235b-a22b
+      roles:
+        - extraction
+        - classification
+        - account_evidence_card_draft
+        - structured_data_normalization
+      good_at:
+        - economical_bulk_processing
+        - schema_filling
+        - multilingual_public_source_normalization
+      poor_at:
+        - final_positioning
+        - nuanced_risk_decisions
+        - high_stakes_strategy
+    mistral:
+      target: mistralai/mistral-medium-3.1
+      fallback: mistralai/mistral-small-3.2-24b-instruct-2506
+      code_model: mistralai/codestral-2508
+      roles:
+        - copy_variant_draft
+        - concise_research_synthesis
+        - code_completion
+        - cleanup_pass
+      good_at:
+        - economical_quality_passes
+        - concise_outputs
+        - developer_task_support
+      poor_at:
+        - sole_source_of_truth_decisions
+        - unsupported_claim_filtering_without_checker
+        - large_strategy_verdicts
+    deepseek:
+      target: deepseek/deepseek-v4-pro
+      fallback: deepseek/deepseek-v4-flash
+      reasoning_option: deepseek/deepseek-r1
+      roles:
+        - reasoning_draft
+        - technical_analysis
+        - alternate_solution_generation
+      good_at:
+        - cost_effective_reasoning
+        - technical_breakdowns
+        - failure_mode_exploration
+      poor_at:
+        - final_public_copy
+        - legal_or_privacy_boundary_approval
+        - unsupported_factual_assertions_without_sources
+    z_ai:
+      target: z-ai/glm-5
+      roles:
+        - long_context_batch_synthesis
+        - extraction
+        - cheap_agentic_workflow_draft
+      good_at:
+        - economical_long_context_work
+        - batch_summaries
+        - first_pass_corpus_mapping
+      poor_at:
+        - final_architecture_decisions
+        - payment_verdicts
+        - publication_without_review
+    llama:
+      target: meta-llama/llama-3.3-70b-instruct
+      roles:
+        - baseline_open_model_comparison
+        - simple_classification
+        - fallback_drafting
+      good_at:
+        - cheap_baseline_outputs
+        - reproducible_simple_tasks
+        - comparison_against_closed_models
+      poor_at:
+        - complex_long_context_strategy
+        - final_quality_bar
+        - subtle_business_positioning
+    perplexity:
+      target: perplexity/sonar-pro
+      fallback: perplexity/sonar
+      roles:
+        - public_web_research_assist
+        - source_discovery
+        - current_fact_check_draft
+      good_at:
+        - current_source_discovery
+        - cited_research_starting_points
+        - market_scan_inputs
+      poor_at:
+        - acting_as_final_truth_without_source_review
+        - private_or_approval_gated_research
+        - outreach_claims_without_independent_verification
+    minimax:
+      target: minimax/minimax-m2.5
+      roles:
+        - alternate_draft
+        - style_variant
+        - secondary_execution
+      good_at:
+        - fast_variants
+        - creative_drafts
+      poor_at:
+        - canonical_decisions
+        - complex_evidence_verdicts
+    mercury:
+      target: inception/mercury-2
+      roles:
+        - speed_first_draft
+        - low_risk_transformation
+      good_at:
+        - fast_responses
+        - cheap_draft_generation
+      poor_at:
+        - deep_reasoning
+        - final_outputs
+    grok:
+      target: x-ai/grok-4.3
+      roles:
+        - contrarian_review
+        - message_angle_variants
+      good_at:
+        - adversarial_questions
+        - alternative_framing
+      poor_at:
+        - restrained_public_claims_without_checker
+        - canonical_architecture
+    gemma:
+      target: google/gemma-4-31b-it
+      roles:
+        - cheap_google_family_baseline
+        - simple_public_text_cleanup
+      good_at:
+        - low_cost_transformations
+        - family_baseline_testing
+      poor_at:
+        - frontier_reasoning
+        - final_strategy
+
+task_routing:
+  E1_kb_prd_workflow:
+    plan: [anthropic/claude-opus-4.7, google/gemini-3.1-pro-preview, openai/gpt-5.4-pro]
+    execute: [qwen/qwen3.6-plus, mistralai/mistral-medium-3.1, moonshotai/kimi-k2-thinking]
+    review: [anthropic/claude-sonnet-4.6, openai/gpt-5.4-pro]
+  E2_research_engine:
+    plan: [openai/gpt-5.4-pro, google/gemini-3.1-pro-preview, anthropic/claude-opus-4.7]
+    execute: [qwen/qwen3.6-plus, z-ai/glm-5, perplexity/sonar-pro, deepseek/deepseek-v4-flash]
+    review: [openai/gpt-5.4-pro, anthropic/claude-sonnet-4.6]
+  E3_website_positioning:
+    plan: [anthropic/claude-opus-4.7, openai/gpt-5.4-pro, google/gemini-3.1-pro-preview]
+    execute: [moonshotai/kimi-k2-thinking, mistralai/codestral-2508, mistralai/mistral-medium-3.1]
+    review: [anthropic/claude-sonnet-4.6, google/gemini-3-flash-preview]
+  E4_content:
+    plan: [anthropic/claude-opus-4.7, openai/gpt-5.4-pro]
+    execute: [mistralai/mistral-small-3.2-24b-instruct-2506, qwen/qwen3.6-plus, minimax/minimax-m2.5]
+    review: [anthropic/claude-sonnet-4.6]
+  E5_roi_analytics:
+    plan: [openai/gpt-5.4-pro, google/gemini-3.1-pro-preview]
+    execute: [qwen/qwen3.6-plus, deepseek/deepseek-v4-pro]
+    review: [openai/gpt-5.4-pro, anthropic/claude-sonnet-4.6]
+  E6_outreach:
+    plan: [anthropic/claude-opus-4.7, openai/gpt-5.4-pro]
+    execute: [mistralai/mistral-medium-3.1, qwen/qwen3.6-plus]
+    review: [anthropic/claude-sonnet-4.6, openai/gpt-5.4-pro]
+  E7_payment_verdict:
+    plan: [openai/gpt-5.4-pro, anthropic/claude-opus-4.7, google/gemini-3.1-pro-preview]
+    execute: [qwen/qwen3.6-plus]
+    review: [openai/gpt-5.4-pro, anthropic/claude-opus-4.7]
+
+quality_gates:
+  unsupported_model_id: refresh_openrouter_models_before_activation
+  public_claim: at_least_two_sources_plus_frontier_review
+  outreach: source_url_required_plus_safety_review_plus_human_approval
+  memory_write: codex_review_plus_human_approval_for_sensitive_changes
+  architecture_change: three_family_frontier_council_required
+  bulk_research: execution_pool_first_then_sampled_frontier_review
+  payment_verdict: openai_and_anthropic_review_required
+  model_availability_failure: fall_back_to_capability_tier_not_unverified_alias
+  provider_rate_limit_or_cost_spike: stop_or_downgrade_to_execution_pool_with_human_notice
+
+budget_controls:
+  default_mode: economical_until_escalation_threshold
+  frontier_council_quota:
+    routine_run: zero
+    substantial_strategy_run: one_to_three_calls_per_family
+    payment_or_architecture_verdict: one_call_per_family_plus_final_codex_review
+  execution_pool_quota:
+    bulk_account_cards: cheap_models_first
+    content_variants: cheap_models_first_then_sample_review
+    code_drafts: code_execution_model_first_then_codex_review
+  stop_conditions:
+    - budget_cap_reached
+    - repeated_low_confidence_outputs
+    - provider_unavailable
+    - source_boundary_unclear
+    - human_approval_required
+
+reliability_controls:
+  retries:
+    transient_provider_error: one_retry_then_fallback
+    schema_validation_failure: one_repair_attempt_then_handoff_to_reviewer
+    low_confidence_or_conflict: no_retry_escalate_to_checker
+  timeouts:
+    cheap_execution_call: short
+    frontier_review_call: medium
+    long_context_strategy_call: long_with_explicit_budget
+  validation:
+    structured_outputs: schema_parse_required
+    research_outputs: source_ids_required
+    outreach_outputs: public_signal_required
+    memory_outputs: review_and_approval_required
+
+logging:
+  required_fields:
+    - timestamp
+    - epic_or_task
+    - model_id
+    - model_role
+    - prompt_version
+    - source_ids_used
+    - output_artifact
+    - cost_estimate
+    - decision
+    - reviewer_model_id
+    - human_gate_required
