@@ -1,7 +1,7 @@
 # Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion
 
 Date: 2026-07-01
-Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending
+Status: local transfer, validation, review-branch commit, and review-branch push completed; merge and deploy remain pending
 
 ## Task
 
@@ -46,6 +46,7 @@ Transfer the missing final June 30 accepted state into the ArchFlow public knowl
 - Branch `review-jarvis-agentbrowser-blockschema-20260630` was accepted at `d18fc55` for the browser-local/static review slice.
 - `JDB-8` is Done.
 - `JDB-7` remains Review for merge/deploy decision.
+- Review branch was pushed at `5efd281` after the July 1 dashboard/control-system stabilization.
 - `E1.3.9` remains Review for the broader dashboard/Jarvis lane.
 - Telegram was not sent because external disclosure of protected/internal links and status data was blocked by approval review.
 - Live Nexus, Railway/backend, provider-backed voice, writeback, real mic/speaker proof, deployment to main, and automatic external memory sync remain gated.
@@ -72,13 +73,13 @@ Transfer the missing final June 30 accepted state into the ArchFlow public knowl
 - Dashboard review found misleading voice authorization wording. Fixed by only persisting browser voice readiness after `SpeechRecognition.onstart`, and by changing UI copy from authorization claims to permission/listening state.
 - Dashboard review found keyboard accessibility gaps for schema nodes and modal closing. Fixed by adding button semantics, focusability, Enter/Space activation, visible focus styling, backdrop close, and Escape close.
 - Dashboard review found fixed-composer overlap risk. Reduced by increasing the dashboard bottom clearance.
-- Knowledge review found that the run was too broadly labeled complete while Git durability is pending. Fixed by changing the status to local transfer/validation completed while commit, push, merge, and deploy remain pending.
+- Knowledge review found that the run was too broadly labeled complete while Git durability was pending. Fixed first by changing the status to local transfer/validation completed; after owner continuation, review-branch commit/push was completed at `5efd281` while merge and deploy remain pending.
 - Knowledge review found the analytical writing framework could force PR-FAQ and SCQA more explicitly. Fixed by adding a decision-question step and required PR-FAQ section.
 - Knowledge review found E3/E4 status vocabulary needed reconciliation. Fixed by adding a status vocabulary note in the current-state report.
 
 ## Gaps
 
-- Git durability is still pending: the July 1 files are local workspace changes until commit/push/merge are owner-approved and executed.
+- Git durability: review-branch commit/push is complete at `5efd281`; merge to `main`, production deployment, and any external runtime activation remain pending.
 - NVIDIA-specific safety checker is not installed in this environment.
 - Live Nexus tool operation is not proven.
 - OpenRouter/Mistral provider calls are not active; they require a backend/local bridge and approval.

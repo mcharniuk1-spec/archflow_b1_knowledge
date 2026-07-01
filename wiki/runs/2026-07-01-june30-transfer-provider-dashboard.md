@@ -1,7 +1,7 @@
 # Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion
 
 Date: 2026-07-01
-Status: local transfer and validation completed; Git commit, push, merge, and deploy remain pending
+Status: local transfer, validation, review-branch commit, and review-branch push completed; merge and deploy remain pending
 
 ## Summary
 
@@ -12,6 +12,8 @@ Provider handling was corrected. OpenRouter and Mistral keys are local ignored e
 The dashboard was extended from the interrupted two-screen edit into explicit `(1) PRD/ICP Flow` and `(2) Agent Orchestra` schema screens. Node control panels now expose the configuration that matters for agent work: inputs, outputs, prompts, comments, last runs, connection summary, safety, persistence, memory target, trace target, and provider mode.
 
 Added `project/scripts/dashboard-static-smoke.py` as the reusable rendered-route proof for the dashboard setup. It rendered `#jarvis`, `#history`, `#service`, `#schema`, `#config`, `#plan`, `?panel=svc-intake#service`, and `?panel=architecture-review#schema` in headless Chrome and confirmed zero provider calls/writeback.
+
+Review-branch Git durability is now complete at `5efd281`. Merge to `main`, production deployment, provider activation, Railway/backend, and external writeback remain pending.
 
 ## Durable Interpretation
 
@@ -45,7 +47,7 @@ Vercel preserves the last static dashboard state when local agents are off. Rail
 - Pass: Notion task-row verification after property updates for JDB-8, JDB-7, and E1.3.9. Page IDs and private URLs are intentionally not stored in this public note.
 - Replaced: earlier narrow headless Chrome route smoke for `#jarvis`, `#service`, and `#schema`; temporary PNG captures were removed from the public run folder.
 - Gap: interactive visual click-through of the large node control modal is still pending before merge/deploy.
-- Gap: Git durability is still pending until owner-approved commit, push, merge, and deploy.
+- Gap: merge to `main`, production deploy, provider activation, Railway/backend, and external writeback remain pending after review-branch push.
 
 ## Parallel Review Integration
 
