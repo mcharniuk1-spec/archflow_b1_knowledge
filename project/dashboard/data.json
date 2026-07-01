@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T11:56:11.202326+00:00",
+  "generated_at": "2026-07-01T12:00:20.234618+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,7 +30,7 @@
     },
     {
       "label": "Activity files",
-      "value": "167",
+      "value": "168",
       "tone": "ok"
     },
     {
@@ -395,6 +395,13 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-final-completion-audit/agent-handout.md",
+      "title": "Final Completion Audit Handout",
+      "modified": "2026-07-01T12:00:00.948536+00:00",
+      "size": 4479
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md",
@@ -2442,6 +2449,11 @@
       "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
       "title": "Agent Handout: Dev Orchestration Lane",
       "text": "# Agent Handout: Dev Orchestration Lane  Date: 2026-07-01 Owner lane: Lane 2 Dev Orchestration Status: validation reviewed for redeploy  ## Lane Contract  Lane 2 keeps the agent system operable: workflow health, schema control, review gates, dashboard/runtime correctness, and safe tool integration.  AF role ownership:  - `af_tools/dev`: dashboard and workflow artifact checks. - `af_context/dev`: status synthesis of model routing and deployment boundaries. - `af_review`: no false backend, provider, Railway, or writeback claims. - `af_publisher`: runbook, run notes, and completion evidence.  ## FACT  - `project/workflows/langgraph-controller.yaml`, `project/workflows/crewai-crew.yaml`, and related workflow files validate with the repo-local workflow validator. - Runtime guard reports workflow, LangGraph, LlamaIndex corpus, and CrewAI config as verified. - LangGraph smoke reaches local approved state. External trace upload produced DNS warnings in this environment and should not be treated as runtime/provider proof. - Exact global Python CrewAI config check fails because `crewai` is not installed in global Python. - Repo-local venv CrewAI config check passes without LLM execution. - C"
+    },
+    {
+      "path": "project/runs/2026-07-01-final-completion-audit/agent-handout.md",
+      "title": "Final Completion Audit Handout",
+      "text": "# Final Completion Audit Handout  Date: 2026-07-01 Status: complete for static public website/dashboard scope; runtime gates remain separate  ## Task  Continue the final Jesus/Messi audit for the public ArchFlow website and dashboard after the blue/ivory website, dashboard closeout, Notion task-note updates, and scheduled skill/RAG lane hardening.  ## FACT  - Active review branch is clean and pushed at `2c3fdb6`. - The deployed public routes returned HTTP 200 for `/`, `/quiz?step=4`, `/dashboard`, and `/project/dashboard/data.json`. - Root website source presents ArcFlow Automate as a B2B SaaS PRD/ICP operating-system service with:   - blue/ivory editorial hero,   - teal architectural system visual,   - embedded diagnostic panel,   - service-output rail,   - dark two-lane system diagram,   - PRD/ICP calculator,   - process timeline,   - dashboard and diagnostic CTAs. - Market and competitor positioning artifacts support the current wedge: a service-led operating layer around existing product tools, not a full Productboard/Aha/Dovetail/Notion/Glean replacement or generic PRD generator. - `quiz.js` has no backend submission path; diagnostic save remains static/browser-local with emai"
     },
     {
       "path": "project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md",
