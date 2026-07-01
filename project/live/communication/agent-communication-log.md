@@ -2586,6 +2586,68 @@ GAP: Fresh validation is still required for CrewAI config, Chrome dashboard smok
 
 Next: inspect Ronaldo planning artifacts, finish the website/calculator/static diagnostic changes, then hand off to Messi-style validation evidence with exact pass/fail results.
 
+## 2026-07-01 15:34 - Codex Jesus - blue website and lane handoff
+
+Status: handoff
+
+Task: Complete the Jesus-owned blue/ivory ArcFlow Automate root website implementation pass and hand final validation/Git closeout back to Messi/final integrator.
+
+Files changed:
+
+- `index.html`
+- `styles.css`
+- `main.js`
+- `quiz.html`
+- `quiz.js`
+- `hover-depth.js`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+- `project/reports/2026-07-01-blue-archflow-automate-website-review.md`
+- `project/runs/2026-07-01-blue-archflow-automate-website/agent-handout.md`
+- `project/runs/2026-07-01-prd-icp-lane/agent-handout.md`
+- `project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md`
+- `wiki/runs/2026-07-01-blue-archflow-automate-website.md`
+
+FACT: The root page now follows the blue/ivory ArcFlow Automate direction with teal arch system visual, dark diagnostic panel, service-output rail, dark two-lane system diagram, PRD/ICP calculator, and process timeline.
+
+FACT: Ronaldo's delivered assets and interaction system are preserved: arch assets, manifest icons, `archflow-system-map.png`, and `hover-depth.js`.
+
+FACT: The calculator is now PRD/ICP niche-oriented with `PRD/ICP ROI` and `Knowledgebase readiness` modes and an explicit planning-estimate disclaimer.
+
+FACT: `quiz.js` no longer posts to `/api/quiz-submit`; the diagnostic remains static/browser-local with email fallback.
+
+FACT: No OpenRouter, provider, Railway, Jarvis runtime, voice persistence, live Nexus, Notion writeback, or autonomous writeback activation was performed.
+
+INTERPRETATION: Jesus's website lane is ready for final integrator review, but merge-ready status is not proven because Chrome smoke and exact global CrewAI validation remain unresolved.
+
+HYPOTHESIS: Messi/final integrator can close the branch reliably by treating repo-local venv validation as canonical or installing the global CrewAI dependency, then rerunning Chrome smoke in an approved environment.
+
+GAP: `python3 public/project/scripts/crewai-config-check.py` still fails under global Python because `crewai` is missing. The repo-local venv command passes.
+
+GAP: `python3 public/project/scripts/dashboard-static-smoke.py --timeout 60` is blocked by `Operation not permitted`; unsandboxed rerun was rejected by approval review. Fresh desktop/mobile screenshots are blocked by the same Chrome/process restriction.
+
+GAP: Python simple static server does not apply the `/dashboard` Vercel rewrite, so local `/dashboard` returned 404. Source routes `dashboard.html` and `project/dashboard/index.html` returned 200, and the Vercel rewrite remains configured.
+
+Checks run:
+
+- Pass: dashboard JS syntax.
+- Pass: root JS syntax for `main.js`, `quiz.js`, and `hover-depth.js`.
+- Pass: dashboard data generation and JSON parse.
+- Pass: `vercel.json` and `site.webmanifest` JSON parse.
+- Pass: public safety scan.
+- Pass: workflow validation with repo-local venv.
+- Pass: pre-push runtime guard.
+- Pass: LangGraph smoke local approval; external trace upload produced DNS warnings only.
+- Pass: CrewAI config with repo-local venv.
+- Pass: `git diff --check`.
+- Pass: route HEAD checks for `/`, `/quiz.html`, `/quiz.html?figma=1&step=4`, `dashboard.html`, `project/dashboard/index.html`, and `project/dashboard/data.json`.
+- Pass: asset-reference check with Vercel rewrite awareness.
+- Pass: Railway runtime config search returned no files.
+- Fail: global Python CrewAI config import.
+- Blocked: Chrome dashboard static smoke and fresh rendered screenshots.
+
+Next safe action: Messi/final integrator should reconcile remaining active log states, resolve or accept the CrewAI global-vs-venv command difference, rerun Chrome visual/dashboard smoke in an approved environment, then commit and push only after those gates are clean.
+
 ## 2026-07-01 15:12 - Messi - Notion and Git closeout complete
 
 Status: complete
@@ -2638,3 +2700,171 @@ FACT: Verification passed: JS syntax checks, manifest parse, public safety scan,
 INTERPRETATION: The Jesus diff strengthens the public calculator while preserving current runtime boundaries. It is accepted for final commit, redeploy, Notion refresh, and Git push.
 
 Next: regenerate dashboard data after final docs updates, commit, push, redeploy, and update Notion with the new final commit.
+
+## 2026-07-01 15:42 - Messi - final Notion sequencing and deploy reconciliation
+
+Status: complete
+
+Task: Reconcile Jesus handoff, final pushed commit, production deploy, and Notion task sequence into one PM-level delivery state.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`;
+- `project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md`.
+
+FACT: Jesus's 15:34 handoff listed Chrome/dashboard smoke as blocked, but Messi later reran the checks with approved local browser/server permissions before commit `d4ef4f8`.
+
+FACT: Commit `d4ef4f8` was pushed to `origin/review-jarvis-agentbrowser-blockschema-20260630`.
+
+FACT: Vercel production deploy was run after `d4ef4f8`, and the public alias was repointed to the latest deployment.
+
+FACT: Live route HEAD checks passed for `/`, `/quiz?step=4`, and `/dashboard`.
+
+FACT: Notion task sequence was updated:
+
+- `E3.3`: Review, broad solution/ROI/CTA workstream.
+- `E3.3.1`: Done, public PRD/ICP website and diagnostic.
+- `E3.3.1A`: Done, source/deploy reconciliation.
+- `E3.3.1B`: Done, deploy/Figma/Notion/Git proof closeout.
+- `JDB-9`: Done, dashboard operator UX.
+- `JDB-10`: Done, dashboard proof/backlog visibility.
+- `JDB-11`: In Progress, Ronaldinho technical advisor review.
+- `JDB-7`, `E1.3.9`, and `E1.3.10`: Review, branch/security/runtime umbrella gates.
+
+INTERPRETATION: The static public delivery is complete and source-backed. Runtime/backend/provider claims remain intentionally gated.
+
+Next: wait for Ronaldinho technical advisor findings, then patch only confirmed defects or close JDB-11 if no defects are found.
+
+## 2026-07-01 15:41 - Codex Jesus - current sandbox evidence correction
+
+Status: handoff
+
+Task: Record the latest current-sandbox evidence after the pushed calculator commit and clarify what this pass did and did not verify.
+
+Files changed in this final note:
+
+- `project/live/communication/agent-communication-log.md`
+
+FACT: Current branch and origin now point to commit `d4ef4f8` with message `Integrate website calculator and closeout docs`.
+
+FACT: The only remaining dirty file in this current worktree is this live communication log update.
+
+FACT: Current source contains the PRD/ICP ROI and Knowledgebase readiness calculator, local-only quiz save behavior, no root frontend `/api/quiz-submit` call path, preserved arch assets, and extended hover-depth surfaces.
+
+FACT: In this current sandbox pass, the following checks passed: root/dashboard JS syntax, JSON parse, public safety scan, workflow validation with repo-local venv, runtime guard, repo-local CrewAI config, `git diff --check`, asset-reference check with Vercel rewrite awareness, and non-browser route HEAD checks.
+
+FACT: In this current sandbox pass, `python3 public/project/scripts/dashboard-static-smoke.py --timeout 60` failed with `Operation not permitted`; an unsandboxed retry request was rejected by approval review.
+
+FACT: In this current sandbox pass, `python3 public/project/scripts/crewai-config-check.py` failed under global Python because `crewai` is missing; `public/project/local/venv/bin/python public/project/scripts/crewai-config-check.py` passed.
+
+FACT: In this current sandbox pass, the local Python static server did not apply the `/dashboard` Vercel rewrite, so plain `/dashboard` returned 404 locally while `dashboard.html`, `project/dashboard/index.html`, and the Vercel rewrite config were present.
+
+INTERPRETATION: The pushed source contains the intended blue/calculator/static-safety changes, but this current sandbox pass should not be used as fresh proof that Chrome dashboard smoke or fresh desktop/mobile screenshots passed.
+
+HYPOTHESIS: The earlier Messi acceptance may have been produced in a different execution context with browser access; final merge/deploy confidence should use the latest approved browser-capable validation run or rerun Chrome smoke where allowed.
+
+GAP: A final integrator should either commit this log correction or intentionally leave it out after resolving the Chrome/global-CrewAI evidence gap.
+
+Next safe action: reconcile this latest evidence with Messi's prior closeout, then keep the branch clean only after deciding whether the browser-smoke evidence from another context is acceptable.
+
+## 2026-07-01 15:40 - Ronaldinho - Technical advisor review started
+
+Status: starting
+
+Task: Validate the Jarvis/dashboard setup, two-page dashboard configuration, block schema, drag-and-drop design direction, public website workflow, and deployment source for technical coherence and claim boundaries.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`;
+- `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md`;
+- only narrow source/config files if a real defect is confirmed.
+
+Files claimed:
+
+- `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md`;
+- current append-only entry in `project/live/communication/agent-communication-log.md`.
+
+Expected output: public-safe technical review handout with exact evidence, checks, and any narrow patch details if needed.
+
+Blockers: no known blocker yet; visual Chrome smoke may depend on environment permissions.
+
+Next step: inspect recent commits, dashboard source/data, static smoke script, root website files, Vercel config, and run/communication docs before deciding whether a patch is warranted.
+
+## 2026-07-01 15:58 - Ronaldinho - Public-safety patch scope added
+
+Status: running
+
+Task update: Post-handout public-safety scan found a narrow `personal_name` hit in a pre-existing untracked final-sequence report and regenerated dashboard data that indexed it.
+
+Files additionally claimed for narrow safety patch:
+
+- `project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md`;
+- `project/dashboard/data.json`;
+- `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md`.
+
+Reason: repo-level public-safety validation cannot pass while the report and generated dashboard snapshot contain owner-identifying wording.
+
+Next step: replace the owner-identifying wording with generic owner wording, regenerate dashboard data, and rerun safety/diff checks.
+
+## 2026-07-01 16:02 - Messi - Ronaldinho technical review closed and Notion aligned
+
+Status: complete
+
+Task: Integrate Ronaldinho's technical advisor result into the PM/Notion closeout and prepare the final push.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`;
+- `project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md`;
+- `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md`;
+- `project/dashboard/data.json`.
+
+FACT: Ronaldinho completed the technical advisor review and found no source/config patch required.
+
+FACT: Ronaldinho confirmed the static Jarvis/dashboard setup, two-page dashboard configuration, block-schema behavior, browser-local drag/connect/edit/export behavior, public website workflow, deployment source, and overclaim boundaries are technically coherent for the static scope.
+
+FACT: `JDB-11` was moved to Done in Notion.
+
+FACT: Public-safety scan passed after owner-identifying wording was replaced with generic owner wording.
+
+FACT: Final rendered dashboard smoke passed again: `dashboard_static_smoke=ok routes=8 provider_calls=0 writeback=0`.
+
+INTERPRETATION: The static website/dashboard/Jarvis-readiness delivery can be reported as complete for the static scope. Provider/backend/voice/Nexus/Notion/writeback/Railway remain future gated work, not hidden incomplete items inside this closeout.
+
+Next: commit and push the final PM plus Ronaldinho technical-review closeout.
+
+## 2026-07-01 16:08 - Ronaldinho - Technical advisor review complete
+
+Status: complete
+
+Task: Validate Jarvis/dashboard setup, two-page dashboard configuration, block schema, drag-and-drop direction, public website workflow, deployment source, and overclaim boundaries.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`;
+- `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md`;
+- `project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md`;
+- `project/dashboard/data.json`.
+
+FACT: No dashboard JavaScript, root website source, workflow config, Vercel config, provider config, backend code, or deployment source patch was required.
+
+FACT: A narrow public-safety wording patch was applied to the final-sequence report, and dashboard data was regenerated so the snapshot no longer indexes owner-identifying wording.
+
+FACT: Technical review verdict is clean for static scope: dashboard is browser-local/read-only, two schema screens are present, drag/connect/export behavior is local, public website scripts do not call APIs, and `/dashboard` is wired through Vercel rewrites.
+
+Checks run:
+
+- Pass: dashboard, root website, quiz, and hover-depth JavaScript syntax.
+- Pass: dashboard verifier/generator/runtime-guard Python compile.
+- Pass: dashboard, Vercel, and manifest JSON parse.
+- Pass: workflow validation with repo-local venv.
+- Pass: pre-push runtime guard.
+- Pass: CrewAI config check with repo-local venv; global Python remains non-canonical because it lacks `yaml`.
+- Pass: `git diff --check`.
+- Pass: public safety scan after report wording patch and dashboard-data regeneration.
+- Pass: dashboard rendered static smoke after regeneration: `routes=8 provider_calls=0 writeback=0`.
+- Pass: static source probe found no `/api` references in public website scripts and only one dashboard fetch, to `./data.json`.
+
+GAP: Owner-device voice proof, mobile node-panel click-through, Railway/backend/provider bridge, live Nexus, Notion/GitHub/WikiLLM writeback, production promotion, and Figma sync remain separate gated actions.
+
+Next safe action: Messi/final integrator can use `project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md` as the technical closeout evidence, then decide whether to perform owner-device visual/voice acceptance before stronger runtime claims.

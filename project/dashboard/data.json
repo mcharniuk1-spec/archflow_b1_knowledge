@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T11:35:25.855565+00:00",
+  "generated_at": "2026-07-01T11:45:55.194222+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,7 +30,7 @@
     },
     {
       "label": "Activity files",
-      "value": "163",
+      "value": "165",
       "tone": "ok"
     },
     {
@@ -395,6 +395,20 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md",
+      "title": "2026-07-01 Messi Final Delivery Sequence And Notion Review",
+      "modified": "2026-07-01T11:43:16.866431+00:00",
+      "size": 7349
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md",
+      "title": "Agent Handout: Ronaldinho Technical Advisor Review",
+      "modified": "2026-07-01T11:43:10.457722+00:00",
+      "size": 8032
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
@@ -2121,6 +2135,11 @@
       "text": "# Messi Coordination Review  Date: 2026-07-01 Status: decision-ready coordination snapshot  ## 1. Executive Answer  Freeze implementation expansion now. The current ArchFlow work is locally advanced, but not yet durable enough for merge, deploy, or more parallel dashboard edits.  The right next action is to stabilize the active branch: close or hand off live file claims, resolve the missing dashboard screenshot evidence referenced by the transfer run note, run final validation, then ask for one owner decision: prepare the current branch for review/commit, or switch to E2.0 product dry run.  The dashboard vision is directionally correct. It now separates `(1) PRD/ICP Flow` from `(2) Agent Orchestra`, keeps Jarvis static/browser-local, keeps provider calls disabled, and preserves the E1-E7 path. It is not yet a full UX acceptance pass because modal click-through, mobile framing, screenshot evidence, and final branch durability remain open.  ## 2. Situation And Complication  ArchFlow has two active lanes:  - Product lane: the Product Discovery-to-Production PRD Pack for B2B SaaS product teams. - Control-system lane: the local operating system for Codex, LangGraph-style routing, WikiLL"
     },
     {
+      "path": "project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md",
+      "title": "2026-07-01 Messi Final Delivery Sequence And Notion Review",
+      "text": "# 2026-07-01 Messi Final Delivery Sequence And Notion Review  ## Executive Answer  The public ArchFlow delivery is now organized as one sequence instead of scattered agent activity:  1. Public website and diagnostic are Done as the buyer-facing PRD/ICP offer. 2. Dashboard operator UX and proof/backlog visibility are Done as the static Jarvis/dashboard evidence layer. 3. Branch-level promotion, provider-backed Jarvis, live Nexus, Railway/backend, voice, and writeback remain Review/future gates. 4. Ronaldinho completed the technical-advisor review for Jarvis/dashboard/block-schema/drag-and-drop coherence.  ## Situation And Complication  Today and yesterday produced overlapping work from Jesus, Lowell/LOL, Ronaldo, and Messi. The risk was that Notion would show isolated Done items without explaining the order, dependencies, and boundaries.  The board now needs to answer a human management question: what is actually delivered, how the layers work together, what still needs review, and why the next work should not jump directly into provider/backend activation.  ## Customer / Stakeholder Job  Situation: the owner needs one reliable project view after several parallel agents worked on we"
+    },
+    {
       "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
       "title": "Messi Task Architecture Review",
       "text": "# Messi Task Architecture Review  Date: 2026-07-01 Status: active PM review, review branch pending Git/source closeout  ## 1. Executive Answer  Keep the work split into two delivery systems and one coordination layer.  The first delivery system is the public PRD/ICP service product. It explains what ArchFlow sells: turning messy product context into source-backed PRDs, ICP evidence, task definitions, and governed agent workflow setup.  The second delivery system is the reliable development/control system. It explains how the work is controlled: Jarvis, dashboard views, block schema, node panels, provider/runtime gates, run notes, issues, decisions, and review checks.  The coordination layer is Messi. Messi should not collapse public website delivery, Jarvis delivery, and provider/backend setup into one vague \"done\" state. Each layer needs its own task, owner, evidence, and next gate.  ## 2. Situation And Complication  FACT:  - `JDB-8` is Done for the static/browser-local Jarvis block-schema and voice fallback slice. - `JDB-7` remains Review for review-branch merge/deploy decision. - `E1.3.9` remains Review as the umbrella for dashboard, Jarvis shell, hosting, and Onyx planning. - `"
@@ -2444,6 +2463,11 @@
       "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
       "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
       "text": "# Run Summary: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Status: deployed, synced, and source-aligned in the public worktree  ## Task  Replace the old ArchFlow Automate public landing with a concise service-led website for PRD/ICP discovery, knowledgebase-driven PRD automation, task handoff, and approval-gated agent operating layers.  ## Inputs  - `project/reports/2026-07-01-competitor-dashboard-website-plan.md` - `project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md` - `project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md` - `project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md` - Market researcher agent Nietzsche, 2026-07-01 - Live communication log through the Ronaldo minimal landing redesign lane  ## Output  Public URL:  - `https://<protected-preview-host>`  Production route behavior:  - `/` serves the minimal three-block PRD/ICP landing. - `/quiz` serves the diagnostic route. - `/quiz.html` redirects to `/quiz` through Vercel clean URLs. - `/dashboard` serves the static operator dashboard.  The landing now has only three public blocks:  1. Hero: PRDs from the project knowledgebase. 2. System: "
+    },
+    {
+      "path": "project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md",
+      "title": "Agent Handout: Ronaldinho Technical Advisor Review",
+      "text": "# Agent Handout: Ronaldinho Technical Advisor Review  Status: complete Date: 2026-07-01 Role: technical validation and improvement advice  ## Mission  Validate whether the current Jarvis/dashboard setup, two-page dashboard configuration, block schema, drag-and-drop design direction, public website workflow, and deployment source are technically coherent and not overclaimed.  No dashboard/source/config patch was required. A narrow public-safety wording patch was required after the first handout pass because a pre-existing final-sequence report used owner-identifying wording and `project/dashboard/data.json` had indexed it.  ## Reviewed Scope  - Recent commits: `d4ef4f8` and `3cdefba`. - Dashboard source: `project/dashboard/README.md`, `project/dashboard/index.html`, `project/dashboard/app.js`, `project/dashboard/styles.css`, `project/dashboard/data.json`. - Dashboard verifier: `project/scripts/dashboard-static-smoke.py`. - Public website source: `index.html`, `main.js`, `quiz.html`, `quiz.js`, `hover-depth.js`, `dashboard.html`. - Deployment source: `vercel.json`. - Workflow/config source: `project/workflows/*.yaml`, `project/config/model-routing.yaml`. - Live coordination and run d"
     },
     {
       "path": "project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md",
