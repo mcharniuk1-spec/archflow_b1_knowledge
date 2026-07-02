@@ -41,21 +41,23 @@ function setupHeader() {
   });
 }
 
-function setupMapMotion() {
-  const map = document.querySelector("[data-system-map]");
-  if (!map || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+function setupHeroArcMotion() {
+  const arc = document.querySelector("[data-hero-arc]");
+  if (!arc || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  map.addEventListener("pointermove", (event) => {
-    const rect = map.getBoundingClientRect();
+  arc.addEventListener("pointermove", (event) => {
+    const rect = arc.getBoundingClientRect();
     const x = (event.clientX - rect.left) / Math.max(rect.width, 1) - 0.5;
     const y = (event.clientY - rect.top) / Math.max(rect.height, 1) - 0.5;
-    map.style.setProperty("--map-x", `${(x * 12).toFixed(2)}px`);
-    map.style.setProperty("--map-y", `${(y * 8).toFixed(2)}px`);
+    arc.style.setProperty("--arc-x", `${(x * 10).toFixed(2)}px`);
+    arc.style.setProperty("--arc-y", `${(y * 6).toFixed(2)}px`);
+    arc.style.setProperty("--arc-rotate", `${(x * 0.8).toFixed(2)}deg`);
   });
 
-  map.addEventListener("pointerleave", () => {
-    map.style.setProperty("--map-x", "0px");
-    map.style.setProperty("--map-y", "0px");
+  arc.addEventListener("pointerleave", () => {
+    arc.style.setProperty("--arc-x", "0px");
+    arc.style.setProperty("--arc-y", "0px");
+    arc.style.setProperty("--arc-rotate", "0deg");
   });
 }
 
@@ -131,7 +133,7 @@ function setupMiniCalculator() {
 }
 
 function setupReveal() {
-  const items = [...document.querySelectorAll(".hero-copy, .hero-system, .output-card, .lane-card, .timeline li")];
+  const items = [...document.querySelectorAll(".hero-copy, .hero-visual, .output-card, .lane-card, .timeline li")];
   if (!items.length || !("IntersectionObserver" in window) || document.documentElement.dataset.captureMode === "full") {
     items.forEach((item) => item.classList.add("is-visible"));
     return;
@@ -154,7 +156,7 @@ function setupReveal() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHeader();
-  setupMapMotion();
+  setupHeroArcMotion();
   setupMiniCalculator();
   setupReveal();
 });

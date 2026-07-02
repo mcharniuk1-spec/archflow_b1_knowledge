@@ -9,9 +9,6 @@
     ".system-grid article",
     ".output-card",
     ".lane-card",
-    ".calc-metrics article",
-    ".mini-calc",
-    ".diagnostic-panel",
     ".choice-field label"
   ].join(",");
 
@@ -30,7 +27,7 @@
 
   function setDepthVars(element, metrics, force = 1) {
     if (!metrics) return;
-    const isLargeSurface = element.matches(".system-grid article, .output-card, .lane-card, .mini-calc, .diagnostic-panel");
+    const isLargeSurface = element.matches(".system-grid article, .output-card, .lane-card");
     const tilt = isLargeSurface ? 7 : 5.4;
     const shift = isLargeSurface ? 3 : 2;
     const lift = isLargeSurface ? 10 : 7;

@@ -4451,3 +4451,44 @@ GAP: Prompt 3 website visual files are still active and should be committed by t
 GAP: Telegram was deferred because no explicit approval or approved sender/secret-store proof was provided.
 
 Next: stage and push only Prompt 2.1-owned files, leaving Prompt 3 visual files unstaged.
+
+## 2026-07-02 14:51 - Codex - Public website visual delivery complete
+
+Status: complete
+
+Task:
+Complete Prompt 3 public homepage visual/code implementation for the PRD/ICP brand surface.
+
+Files changed:
+- `index.html`
+- `styles.css`
+- `main.js`
+- `hover-depth.js`
+- `project/reports/2026-07-02-public-website-visual-delivery.md`
+- `project/runs/2026-07-02-public-website-visual-delivery/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+
+Asset used:
+- `assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp`
+
+Checks:
+- Pass: JavaScript syntax for `main.js`, `hover-depth.js`, and `quiz.js`.
+- Pass: public safety scan.
+- Pass: diff whitespace check.
+- Pass: local route checks for homepage, diagnostic route, dashboard route, and selected 3D arch asset.
+- Pass: repo-local workflow validation.
+- Pass: pre-push runtime guard.
+- Pass: Playwright desktop and mobile layout smoke; mobile viewport had `scrollWidth=390`, diagnostic CTA and next-section cue visible, and calculator `depth-hover=false`.
+- Skipped: deploy, production promotion, Figma sync, Notion update, Telegram send, provider calls, Railway proof, voice, and writeback checks because they are out of this website-only lane.
+
+FACT:
+- Prompt 2.1 posted complete and explicitly left the website visual files unstaged for Prompt 3.
+- The first screen now uses a transparent 3D arch object with four process stages and a wide Readiness Diagnostic CTA under the visual.
+- The calculator remains stable and no longer receives calculator-surface hover-depth behavior.
+
+GAP:
+- Git commit/push and main merge still need the final ownership-safe staging decision for the Prompt 3 website lane.
+- Vercel deploy and Figma sync remain undone because no deploy was requested or performed.
+
+Next:
+- Stage only the Prompt 3 website files listed above, rerun safety/diff checks if staging, then commit/push only after the final merge/push decision is approved.
