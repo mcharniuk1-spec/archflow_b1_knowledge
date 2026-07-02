@@ -136,3 +136,20 @@ INTERPRETATION:
 
 GAP:
 - Full PRD/ICP test cycle, FastAPI runtime proof, OpenRouter activation, Railway, Telegram, production/Figma sync, and dashboard-driven writeback remain owner-approval gated.
+
+## 2026-07-02 - ArcFlow v1 final release closeout
+
+FACT:
+- Prompt 2.1 `e00a39e`, Prompt 3 `da124bf`, and release source state `383434a` are represented on `main`.
+- Notion E1, E1.3.9, and E1.3.10 received final release closeout updates.
+- The E1.3.9 and E1.3.10 Git pointers were updated from deleted review branches to the release source commit.
+- The two non-main review branches had no unique unmerged work and were deleted locally and remotely.
+- Remote heads now show only `main`.
+- Telegram was skipped because the approved sender was unavailable.
+
+INTERPRETATION:
+- ArcFlow v1 is aligned for the public-safe static/browser-local source release.
+- This closeout does not activate provider-backed Jarvis, Railway, OpenRouter, Telegram, production/Figma sync, or dashboard-driven writeback.
+
+GAP:
+- Local full-stack Jarvis proof, FastAPI runtime proof, OpenRouter activation, Railway migration, Telegram delivery, production/Figma sync, and dashboard writeback remain owner-gated.
