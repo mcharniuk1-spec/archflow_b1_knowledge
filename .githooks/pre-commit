@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+set -eu
+
+files=$(git diff --cached --name-only --diff-filter=ACMR)
+[ -z "$files" ] && exit 0
+
+blocked='(sk-or-v1-[A-Za-z0-9_-]+|[0-9]{8,12}:[A-Za-z0-9_-]{30,}|^[[:space:]]*(OPENROUTER_API_KEY|MISTRAL_API_KEY|TELEGRAM_BOT_TOKEN|TELEGRAM_BOT_NAME|TELEGRAM_BOT_USERNAME|TELEGRAM_BOT_DISPLAY_NAME|TELEGRAM_CHAT_ID|TELEGRAM_CHAT_REFERENCE|TELEGRAM_TARGET_LABEL|RAILWAY_TOKEN|RAILWAY_API_TOKEN|RAILWAY_PROJECT_ID|RAILWAY_SERVICE_ID)[[:space:]]*=[[:space:]]*[^[:space:]#]+)'
+
+for file in $files; do
+  case "$file" in
+    .env|.env.*|*/.env|*/.env.*|tg.md|*/tg.md|*secret*|*private*)
+      echo "pre-commit blocked local secret/private file: $file" >&2
+      exit 1
+      ;;
+  esac
+
+  if git show ":$file" 2>/dev/null | grep -E "$blocked" >/dev/null; then
+    echo "pre-commit blocked possible secret value in staged file: $file" >&2
+    echo "Move real values to ignored local env storage and keep tracked files placeholder-only." >&2
+    exit 1
+  fi
+done
+
+exit 0

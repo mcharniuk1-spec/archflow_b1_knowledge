@@ -14,6 +14,9 @@ build/
 .env
 .env.*
 !.env.example
+tg.md
+docs/tg.md
+**/tg.md
 .vercel/
 *.key
 *.pem

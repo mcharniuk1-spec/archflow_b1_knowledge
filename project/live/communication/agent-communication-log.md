@@ -4660,3 +4660,71 @@ Checks:
 
 Next:
 - Owner review or the next approved gated runtime lane.
+
+## 2026-07-02 15:12 - Jesus/Codex - Local secret consolidation starting
+
+Status: starting
+
+Task:
+Read local Telegram credential note, consolidate Telegram/OpenRouter/Mistral values into one ignored local env file, and verify Git/hook protections prevent secret commits.
+
+Files likely to change:
+- `.gitignore`
+- `.githooks/pre-commit`
+- `project/live/communication/agent-communication-log.md`
+- one ignored local env file outside public Git tracking
+
+Files claimed:
+- `.gitignore`
+- `.githooks/pre-commit`
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+- OpenRouter and Mistral keys were found in the root ignored local env file.
+- Telegram values need to be recovered from a local note and moved into ignored env storage.
+
+INTERPRETATION:
+- The correct fix is a single local secret env file plus tracked guardrails, not restoring secrets to Markdown or public files.
+
+GAP:
+- Need to locate the local Telegram note and verify current ignore/hook coverage.
+
+Checks:
+- Pending.
+
+Next:
+- Locate `tg.md`, parse secret names without printing values, update only ignored local env storage, then add or verify Git protections.
+
+## 2026-07-02 15:12 - Jesus/Codex - Local secret consolidation complete
+
+Status: complete
+
+Task:
+Consolidate local provider and Telegram secrets into one local env file and add Git protections.
+
+Files changed:
+- `.gitignore`
+- `.githooks/pre-commit`
+- `project/live/communication/agent-communication-log.md`
+- local env file outside public Git tracking
+
+FACT:
+- Root local env storage now contains OpenRouter, Mistral, Telegram bot token, Telegram note-derived bot name, Telegram verified bot username/display name, Telegram chat reference, Telegram target label, and a usable Telegram chat target.
+- Telegram bot token validation returned HTTP 200 through `getMe`; no message was sent.
+- OpenRouter and Mistral were already present in the same local env file.
+- `.gitignore` now explicitly ignores `tg.md` paths in addition to env files.
+- A pre-commit hook now blocks staged env/private files and common OpenRouter/Telegram/provider/Railway secret patterns.
+
+INTERPRETATION:
+- The single-file local secret source is now the root local env file, while public repo files remain placeholder-only.
+
+GAP:
+- Telegram delivery itself was not sent in this run; only token/config validation was performed.
+
+Checks:
+- Pass: public safety scan.
+- Pass: ignore rules for `.env`, `.env.*`, `tg.md`, and `docs/tg.md`.
+- Pass: local env presence check for OpenRouter, Mistral, and Telegram variables without printing values.
+
+Next:
+- Commit and push only the public-safe Git guardrails and communication-log update.
