@@ -4728,3 +4728,60 @@ Checks:
 
 Next:
 - Commit and push only the public-safe Git guardrails and communication-log update.
+
+## 2026-07-02 15:12 - Jesus/Codex - Telegram status message starting
+
+Status: starting
+
+Task:
+Send a public-safe ArchFlow status message to the approved Telegram target from local env.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+- Telegram token, target, and label are present in local-only env storage.
+- No token or chat identifier will be logged.
+
+INTERPRETATION:
+- This is an external notification only, not provider/runtime activation.
+
+GAP:
+- Pending Telegram send result.
+
+Checks:
+- Pending.
+
+Next:
+- Send concise redacted status message through Telegram API.
+
+## 2026-07-02 15:12 - Jesus/Codex - Telegram status message blocked
+
+Status: blocked
+
+Task:
+Send a public-safe ArchFlow status message to the approved Telegram target from local env.
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+- Telegram send request reached the Telegram API.
+- Telegram returned HTTP 400 with `chat not found`.
+- The bot token itself had previously validated through `getMe`.
+- No token, chat ID, private URL, or API response body was logged.
+
+INTERPRETATION:
+- The local bot token is valid, but the configured Telegram chat target is not a chat the bot can currently message.
+
+GAP:
+- Need a valid Telegram chat target, or explicit approval to inspect bot updates for a recent allowed chat.
+
+Checks:
+- Send attempted; blocked by Telegram target validity.
+
+Next:
+- Correct `TELEGRAM_CHAT_ID` in local env, or approve a `getUpdates` lookup after acknowledging it may expose private Telegram chat metadata/message snippets.
