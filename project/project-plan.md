@@ -51,7 +51,7 @@ GAP: Directory counts, job counts, social posts, named company samples, and inte
 
 ## E1 - Build The Knowledge Base On Ourselves
 
-Goal: create a clean KB project from scratch and prove one repeatable dialogue-to-PRD loop.
+Goal: prove the internal knowledge-base and PRD operating method for the Product Discovery-to-Production PRD Pack before market validation. E1 turns approved product-team/project material into source inventory, context digest, PRD, task matrix, acceptance criteria, decision log, KB update, review gate, and agent handoff.
 
 Tasks:
 
@@ -59,16 +59,21 @@ Tasks:
 |---|---|---|---|---|
 | E1.1 Set up a separate KB project from scratch | Done | Docs | 2026-06-26 | Working KB workspace and structure. |
 | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | PRD, streaming report, system report, task matrix, KB update, review report, and PDFs from the first reproducible proof. |
+| E1.2.8 Run testmeeting.md PRD/PDF comparison: Codex local vs OpenRouter | Blocked | Docs | 2026-07-04 | Blocked until `docs/testmeeting.md` or an approved substitute exists and OpenRouter/provider-run gates are approved. |
 | E1.3 Record the PRD and agent history in the KB | Review | Docs | 2026-06-30 | Public-safe KB writeback, source registry, and readback proof. |
 | E1.4 Write the KB update principle | Backlog | Docs | 2026-07-03 | One to two page method for building and updating the KB. |
 | E1.5 Document the process for case study and content | In Progress | Docs | 2026-07-04 | Public-reporting gate, GloomyLord brief, content templates, and Jarvis dashboard shell started. |
+| E1.6 Set up personal KB: Obsidian + WikiLLM | To Do | Docs | 2026-07-04 | Personal operating KB setup preserved as a separate Notion row; not the hosted runtime task. |
+| E1.7 Make hosted dashboard, Jarvis, API, and agentic system work without local runtime | Backlog | Runtime | After E1.5 owner acceptance and E1.6 personal-KB setup decision | Railway-hosted `jarvis-api`, verified `/health`, safe CORS/auth, dashboard API integration, and provider-disabled agentic control surface that can run when local Codex/Jarvis is off. |
 
 E1.1 through E1.3 now have a finer staged sequence:
 
 1. E1.1 setup order: Git safety, env/config, Ollama, LangSmith, LangGraph, Pydantic/YAML validation, LlamaIndex, CrewAI, observability/provenance.
 2. E1.2 proof order: source packet, source inventory, context digest, PRD, responsibility matrix, provenance log, review gate.
-3. E1.3 KB order: approved PRD write, agent history, source registry, retrieval metadata, loop state, readback test, memory candidates, E1.4/E2 handoff.
-4. E1.3 loop rule: keep the loop at L1 report-only until readback proves the KB can answer current mission, next step, forbidden actions, existing outputs, and open gaps from memory.
+3. E1.2.8 comparison rule: do not claim a testmeeting PRD/PDF run until the fixture exists and provider/local-run gates pass.
+4. E1.3 KB order: approved PRD write, agent history, source registry, retrieval metadata, loop state, readback test, memory candidates, E1.4/E2 handoff.
+5. E1.3 loop rule: keep the loop at L1 report-only until readback proves the KB can answer current mission, next step, forbidden actions, existing outputs, and open gaps from memory.
+6. E1.7 runtime rule: hosted dashboard/Jarvis/API work must remain provider-disabled first, prove Railway `/health`, CORS, auth, budget guards, and dashboard API routing, and only then become eligible for provider activation or writeback approvals.
 
 E1.3 review update on 2026-06-30:
 
@@ -82,6 +87,8 @@ E1.3 review update on 2026-06-30:
 | Dashboard/voice/hosting plan | Review | static Vercel dashboard first, Railway and voice writes gated |
 | Jarvis dashboard shell | In Progress | `project/dashboard/` supports normal/interview mode, browser-local packets, and in-page refresh |
 | GloomyLord reporting package | In Progress | starts under E1.5 public-reporting gate and `project/content/templates/` |
+| Testmeeting/OpenRouter PRD comparison | Blocked | `project/issues/2026-07-02-testmeeting-openrouter-prd-run-blocked.md`; `docs/testmeeting.md` missing and OpenRouter disabled/gated |
+| Hosted Jarvis/API runtime without local machine | Backlog | `project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md`; Railway project/service initialized, deployment approval-gated; canonical task should be E1.7 because live Notion already uses E1.6 for personal KB setup |
 
 E1.3 review caveat: E1.2 remains in Review until owner acceptance. The E1.3 readback proof can pass without marking E1.2 Done.
 

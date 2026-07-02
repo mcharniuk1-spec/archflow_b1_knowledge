@@ -4821,6 +4821,45 @@ Checks:
 Next:
 - Inspect the Jarvis API service files and Vercel linkage, then create/link Railway resources.
 
+## 2026-07-02 16:00 - Jesus/Codex - Railway Jarvis API setup blocked at deployment
+
+Status: blocked
+
+Task:
+Create an ArchFlow Railway backend project/service for the provider-disabled Jarvis API, set initial safe env, add minimal deployment config, deploy, and verify `/health`.
+
+Files changed:
+- `docs/railway.md`
+- `public/services/jarvis-api/Procfile`
+- `public/services/jarvis-api/railway.json`
+- `public/project/live/communication/agent-communication-log.md`
+- `public/project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md`
+
+FACT:
+- Railway MCP is connected and authenticated.
+- A Railway project for ArchFlow was created.
+- A `jarvis-api` Railway service was created.
+- Initial provider-disabled service variables were set.
+- Local Railway deployment config was added.
+- Deployment upload was blocked by the approval reviewer because it would export local workspace code to Railway.
+
+INTERPRETATION:
+- Railway account/project/service setup is complete enough for the next deployment attempt.
+- The remaining blocker is explicit owner approval for uploading `public/services/jarvis-api` to Railway.
+
+GAP:
+- No Railway deployment completed.
+- No Railway service domain was generated.
+- `/health` was not verified on Railway.
+- Dashboard API calls were not pointed at Railway.
+
+Checks:
+- Pass: `public/services/jarvis-api/railway.json` parses as JSON.
+- Skipped: deployed `/health` verification because deploy was blocked.
+
+Next:
+- Owner must explicitly approve uploading only `public/services/jarvis-api` to Railway, or defer deployment.
+
 ## 2026-07-02 16:12 - Jesus/Codex - Telegram delivery target refreshed and sent
 
 Status: complete
@@ -4846,3 +4885,118 @@ Checks:
 
 Next:
 - Continue keeping Telegram delivery audit entries public-safe and values local-only.
+
+## 2026-07-02 16:18 - Jesus/Codex - Railway runtime deferred into E1.6
+
+Status: complete
+
+Task:
+Record the hosted dashboard/Jarvis/API agentic system as the final future E1 task instead of continuing Railway deployment now.
+
+Files changed:
+- `project/project-plan.md`
+- `project/reports/2026-07-02-e1-task-consolidation-table.md`
+- `project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+- E1 now includes `E1.6 Make hosted dashboard, Jarvis, API, and agentic system work without local runtime`.
+- E1.6 is Backlog, not active deployment.
+- Railway project/service initialization remains recorded, but code upload, domain generation, `/health`, and dashboard API routing remain incomplete.
+
+INTERPRETATION:
+- The correct current state is static/local proof first, then hosted runtime as the last E1 gate after E1.5 owner acceptance or explicit owner reopening.
+
+GAP:
+- E1.6 still needs approved Railway deployment, hosted health verification, CORS/auth proof, dashboard backend routing, and provider-disabled runtime review.
+
+Checks:
+- Not run; documentation-only task update.
+
+Next:
+- Keep E1.6 as the final E1 backlog task until owner explicitly approves deployment or asks to start the hosted-runtime lane.
+
+## 2026-07-02 16:30 - Jesus/Codex - E1 Notion and runtime consolidation review
+
+Status: starting
+
+Task:
+- Re-review E1, E1.2, E1.3.8, E1.3.9, E1.3.10, GloomyLord duplicate rows, dashboard/Jarvis runtime state, E1.2 PRD proof outputs, and current Git branch state before updating Notion and local reports.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+- `project/project-plan.md`
+- `project/reports/2026-07-02-e1-task-consolidation-table.md`
+- `project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md`
+- `project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md`
+- possible narrow runtime/report files if verification shows drift.
+
+Files claimed:
+- E1 task/status consolidation reports and this run handout only.
+
+Expected output:
+- Current evidence-backed E1 summary for Notion, clear task-status recommendations, runtime/backend/provider proof boundary, and next task records for any blocked OpenRouter/Railway/voice/full-test work.
+
+Blockers:
+- No raw secrets, private URLs, private source text, account IDs, screenshots, or credentials may be logged here.
+- Provider-backed OpenRouter, Railway upload, production promotion, and Telegram sending require existing approval/proof paths.
+
+Next:
+- Fetch live Notion pages and local artifacts, update only evidence-backed state, then run the smallest relevant checks.
+
+## 2026-07-02 16:42 - Jesus/Codex - E1 Notion and runtime consolidation complete
+
+Status: complete
+
+Task:
+- Rewrite the E1 parent page as a current product/ICP operating page.
+- Clean duplicate-looking E1.3.8/E1.3.9/E1.3.10 and Visual Reporting rows by meaning instead of deleting evidence.
+- Record blocked follow-up work for the requested `testmeeting.md` OpenRouter comparison and hosted dashboard/Jarvis runtime.
+- Verify local Jarvis API readiness without claiming provider, Railway, voice, or writeback production state.
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+- `project/project-plan.md`
+- `project/reports/2026-07-02-e1-task-consolidation-table.md`
+- `project/dashboard/data.json`
+- `project/issues/2026-07-02-testmeeting-openrouter-prd-run-blocked.md`
+- `project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md`
+- `project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md`
+- `services/jarvis-api/Procfile`
+- `services/jarvis-api/railway.json`
+
+External updates:
+- E1 parent page was rewritten with the current PRD automation service goal, ICP, method, E1 child-state summary, strategic questions, and output package.
+- E1.2, E1.3.8, E1.3.9, E1.3.10, E1.6, and Visual Reporting duplicate rows were updated to evidence-backed states.
+- New follow-up tasks were created for `E1.2.8` testmeeting/OpenRouter comparison and `E1.7` hosted dashboard/Jarvis runtime.
+
+FACT:
+- Current ICP is one primary lane: B2B SaaS product teams, Series B-D, 50-500 people, 2-5 PMs, owned by a Director or VP Product.
+- Local Jarvis API endpoints passed in provider-disabled mode.
+- Existing E1.2 PDF outputs are from the June 26 proof package, not from `testmeeting.md`.
+- `testmeeting.md` is not present in the public repo.
+- OpenRouter remains disabled and no provider-call ledger exists for a real OpenRouter run.
+- Railway project/service setup is recorded, but hosted deployment, domain, and hosted `/health` are still not complete.
+- Git branch review showed the current deployable repo has only `main` and `origin/main`.
+
+INTERPRETATION:
+- E1 is now reliable as a current product/ICP control page, not a chronological dump.
+- E1.3.9 is the dashboard/Jarvis/hosting umbrella in Review.
+- E1.3.10 is the security/access/runtime gate in Review.
+- Visual Reporting rows belong under E1.5 reporting and evidence preparation, not as duplicate dashboard/security tasks.
+
+GAP:
+- The requested second E1.2 `testmeeting.md` OpenRouter PRD/PDF run is blocked until the approved fixture exists and provider activation gates are opened.
+- Hosted Railway runtime, dashboard API routing, owner-device voice proof, Nexus/writeback, Telegram comparison summary, and production/Figma sync remain future gated work.
+
+Checks:
+- Pass: local Jarvis API `/health`.
+- Pass: local Jarvis API role config endpoint.
+- Pass: local Jarvis API PRD/ICP lane endpoint.
+- Pass: local Jarvis API meeting-test endpoint returns the expected approval gate.
+- Pass: local Jarvis API voice-chat endpoint returns a provider-disabled review packet.
+- Pass: dashboard data regenerated after local FastAPI readiness changed.
+- Remaining checks to run before Git push: public safety scan, workflow validation, runtime guard, JSON parsing, JS syntax check, and diff whitespace check.
+
+Next:
+- Run final checks, commit the public-safe consolidation state, and push `main`.

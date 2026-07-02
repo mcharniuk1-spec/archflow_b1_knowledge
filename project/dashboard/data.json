@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:45:37.498175+00:00",
+  "generated_at": "2026-07-02T13:27:05.482787+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "48 files",
+      "value": "49 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "206",
+      "value": "213",
       "tone": "ok"
     },
     {
@@ -549,11 +549,67 @@
     {
       "module": "fastapi",
       "label": "FastAPI dashboard runtime",
-      "status": "not_installed",
+      "status": "installed",
       "runtime": "project_local_venv"
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md",
+      "title": "Railway Jarvis API Setup Handout",
+      "modified": "2026-07-02T13:27:00.067929+00:00",
+      "size": 2125
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md",
+      "title": "E1 Notion And Runtime Consolidation Handout",
+      "modified": "2026-07-02T13:21:25.877770+00:00",
+      "size": 4961
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
+      "title": "E1 Task Consolidation Table",
+      "modified": "2026-07-02T13:14:42.899572+00:00",
+      "size": 11003
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-arcflow-v1-final-release/agent-handout.md",
+      "title": "ArcFlow v1 Final Release Handout",
+      "modified": "2026-07-02T12:23:10.976508+00:00",
+      "size": 6248
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-arcflow-v1-final-release.md",
+      "title": "2026-07-02 ArcFlow v1 Final Release",
+      "modified": "2026-07-02T12:22:10.164501+00:00",
+      "size": 2274
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-arcflow-v1-final-release.md",
+      "title": "ArcFlow v1 Final Release Report",
+      "modified": "2026-07-02T12:22:09.921850+00:00",
+      "size": 6337
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-public-website-visual-delivery/agent-handout.md",
+      "title": "Agent Handout: Public Website Visual Delivery",
+      "modified": "2026-07-02T11:50:50.259915+00:00",
+      "size": 5920
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-public-website-visual-delivery.md",
+      "title": "Public Website Visual Delivery Report",
+      "modified": "2026-07-02T11:50:50.170869+00:00",
+      "size": 3265
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-02-prompt-2-1-notion-local-stack-contract/agent-handout.md",
@@ -1134,13 +1190,6 @@
       "title": "Jarvis Dashboard ICP Task Consolidation",
       "modified": "2026-07-02T11:24:38.827542+00:00",
       "size": 11043
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
-      "title": "E1 Task Consolidation Table",
-      "modified": "2026-07-02T11:24:38.827431+00:00",
-      "size": 9174
     },
     {
       "kind": "project_report",
@@ -2001,7 +2050,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 48,
+    "file_count": 49,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -2224,6 +2273,11 @@
         "excerpt": "# 2026-07-01 Yushchenko Model Efficiency Observer  ## Task  Create a recurring model-efficiency and token-use observer for ArchFlow.  ## Result  - Created Codex app automation `yushchenko-model-efficiency-observer` with a five-hour cadence. - Added the Yushchenko observer role to `project/agents/agent-roster.yaml`. - Updated `project/agents/README.md`. - Added `project/automation/yushchenko-model-efficiency-observer."
       },
       {
+        "path": "wiki/runs/2026-07-02-arcflow-v1-final-release.md",
+        "title": "2026-07-02 ArcFlow v1 Final Release",
+        "excerpt": "# 2026-07-02 ArcFlow v1 Final Release  Status: complete for static/browser-local source release and closeout  ## Task  Verify Prompt 2.1 and Prompt 3, reconcile Notion and repo state, push/keep `main` as the release branch, delete only safe merged branches, and record remaining gates.  ## FACT  - Prompt 2.1 is represented by `e00a39e`. - Prompt 3 is represented by `da124bf`. - Release source state is `383434a` on `ma"
+      },
+      {
         "path": "wiki/runs/2026-07-02-crewai-level-3-proof.md",
         "title": "2026-07-02 CrewAI Level 3 Proof",
         "excerpt": "# 2026-07-02 CrewAI Level 3 Proof  Status: complete  ## Task  Run the separate CrewAI Level 3 proof pass requested after Prompt 1.2 and integrate the result into the dashboard cycle.  ## FACT  - A tiny public-safe PRD/ICP fixture was created. - Direct CrewAI executed the fixture with a deterministic local LLM adapter. - The proof wrote a model-call ledger. - The budget guard recorded a 5.00 USD daily cap, 1.99 USD ru"
@@ -2429,6 +2483,11 @@
       "path": "project/issues/2026-07-01-dashboard-website-improvement-issues.md",
       "title": "Dashboard And Website Improvement Issues",
       "text": "# Dashboard And Website Improvement Issues  Date: 2026-07-01 Status: open planning backlog  ## Dashboard Issues  | ID | Priority | Issue | Required Fix | Acceptance | |---|---:|---|---|---| | D-1 | P0 | Jarvis is not yet dominant enough as the first-screen operating area. | Redesign first viewport around Jarvis chat, voice sphere, command state, and packet queue. | A new user can identify where to start without reading docs. | | D-2 | P0 | Two orchestras can still feel like tabs rather than operating modes. | Add explicit mode switch and lane descriptions for PRD/ICP Flow and Agent Orchestra. | Each lane explains purpose, inputs, outputs, and blocked actions. | | D-3 | P0 | Static/local/backend/provider/writeback state can be misunderstood. | Add persistent state badges and proof drawer. | No page implies provider-backed or durable writeback execution unless implemented. | | D-4 | P1 | Node panel is rich but can feel dense. | Group controls into task tabs: Overview, Inputs, Outputs, Config, Prompt, Runs, Comments. | Operators find prompts/config/logs in one click. | | D-5 | P1 | Long graph navigation is hard on small screens. | Add mini-map, stage rail, and mobile stage cards. | Mo"
+    },
+    {
+      "path": "project/issues/2026-07-02-testmeeting-openrouter-prd-run-blocked.md",
+      "title": "Testmeeting And OpenRouter PRD Run Blocked",
+      "text": "# Testmeeting And OpenRouter PRD Run Blocked  Date: 2026-07-02 Status: blocked  ## Issue  The requested second E1.2 PRD/PDF comparison cannot be completed from current repo state.  ## FACT  - `docs/testmeeting-prd-runbook.md` exists. - `docs/testmeeting.md` does not exist in the repo. - The local Jarvis API meeting-test endpoint exists, but returns an approval-required packet when owner approval is false. - OpenRouter remains disabled. - No provider-call ledger exists for a real OpenRouter run. - Existing E1.2 PDFs are from the June 26 proof package, not from `testmeeting.md`.  ## INTERPRETATION  The correct state is not failed execution; it is missing approved input plus missing provider activation gates. The repo should not fabricate a meeting fixture or claim testmeeting PDFs exist.  ## Required Resolution  1. Add or approve `docs/testmeeting.md`, or provide an approved substitute source packet. 2. Run the local/Codex PRD packet with `MODEL_PROVIDER=none`. 3. Render local Markdown output to PDF. 4. Only then run OpenRouter after server-side secret handling, fresh model/pricing check, provider-call ledger, budget guard, and AF Review. 5. Produce a comparison report and Telegram-s"
     },
     {
       "path": "project/langsmith-setup.md",
@@ -2666,6 +2725,11 @@
       "text": "# Two-Paradigm Execution Plan  Date: 2026-07-01 Status: testable operating plan  ## Executive Answer  Execute ArchFlow through two explicitly separated lanes:  1. Product lane: PRD/ICP service product, externally showable after evidence gates. 2. Control-system lane: local agentic development system, operated by Codex and later optionally by an approved local bridge or backend.  The two lanes can share dashboard visibility, but they must not share authority. The product lane creates buyer-facing output. The control-system lane edits code, routes agents, verifies checks, writes memory, and decides when output is safe.  ## Lane 1: PRD/ICP Service Product  Goal: show the buyer a clear productized service outcome.  Input:  - sanitized dialogue or meeting summary; - product-team docs or approved public examples; - customer/research notes; - current ICP hypothesis; - constraints and privacy boundaries.  Flow:  1. Intake source packet. 2. Build PRD. 3. Split market evidence research. 4. Synthesize one ICP. 5. Build landing/demo package. 6. Approve external-safe output. 7. Publish PRD/ICP packet or buyer-facing demo.  Required artifacts:  - source packet; - PRD draft; - evidence cards; - I"
     },
     {
+      "path": "project/reports/2026-07-02-arcflow-v1-final-release.md",
+      "title": "ArcFlow v1 Final Release Report",
+      "text": "# ArcFlow v1 Final Release Report  Date: 2026-07-02 Status: complete for source release, Notion closeout, and branch cleanup  ## Summary  ArcFlow v1 is aligned across the public repository source state and the Notion task summaries for the static/browser-local scope.  Release source state:  - `main`: `383434a` - Prompt 2.1: `e00a39e` - Prompt 3: `da124bf`  This closeout adds only public-safe audit artifacts. It does not activate providers, Railway, production/Figma sync, Telegram automation, live writeback, or the full PRD/ICP runtime test cycle.  ## Prompt 2.1 Verification  Accepted:  - `arcagcom` live-agent communication contract. - `archflow1` local Jarvis stack operating contract. - `docs/dashboard-local-jarvis-stack-manual.md`. - Prompt 2.1 Notion/task clarification and duplicate/drift map. - Dashboard data refresh and runtime-claim boundary.  Preserved runtime facts:  - CrewAI Level 3 is `proof_passed_not_default_runtime`. - CrewAI proof is deterministic local direct runtime only. - CrewAI is not default runtime and is not provider-backed runtime. - OpenRouter remains disabled. - OpenRouter activation still requires server-side secrets, fresh pricing, provider-call ledger, li"
+    },
+    {
       "path": "project/reports/2026-07-02-dashboard-execution-architecture.md",
       "title": "Dashboard Execution Architecture",
       "text": "# Dashboard Execution Architecture  Date: 2026-07-02 Status: Prompt 1.2 complete; Level 3 proof integrated, not default runtime Lead integrator: Jesus/Codex  ## Executive Decision  Prompt 1.2 defines the operational execution layer for the Jarvis dashboard without building the UI, deploying Railway, activating providers, or claiming autonomous CrewAI runtime.  The dashboard should become the control surface for ArchFlow's Product Discovery-to-Production PRD Pack. It should make LangGraph, OpenRouter, and CrewAI understandable from the dashboard model through two screens:  - `(1) PRD/ICP Flow`: client/product flow for turning approved product-team material into a reviewed PRD/ICP artifact bundle. - `(2) Agent Orchestra`: operator flow for assigning roles, supervising bounded agent work, collecting artifacts, running review gates, and producing handoffs.  Implementation should build toward Level 2: LangGraph-wrapped role execution with server-side model routing only after explicit approval and proof. Level 3 direct CrewAI runtime now has a deterministic local proof package, but it remains `proof_passed_not_default_runtime`.  ## Evidence Reviewed  - `project/reports/2026-07-02-jarvis-"
@@ -2673,7 +2737,7 @@
     {
       "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
       "title": "E1 Task Consolidation Table",
-      "text": "# E1 Task Consolidation Table  Date: 2026-07-02 Status: public-safe consolidation package  This table preserves task meaning while separating static proof, review-ready work, and future runtime gates. It uses sanitized live task-board evidence plus public repo evidence. No private task URLs or IDs are included.  | Original task/document | Duplicate or canonical task | Current status | Corrected status | Owner agent | Reason | Acceptance criteria | Notion update needed | |---|---|---|---|---|---|---|---| | E1 Build the Knowledge Base on Ourselves | E1 parent | Active | Active | Messi/Jesus | Parent still has Review and future child rows. | Child states reflect E1.1 Done, E1.2 Review, E1.3 Review, E1.4 Backlog, E1.5 In Progress. | Append a concise child-state summary. | | E1.1 Set up separate KB project | E1.1 | Done | Done | Jesus/Codex | Runtime/setup proof exists. | Working public-safe KB workspace and setup artifacts exist. | No change. | | E1.2 dialogue to summary to PRD | E1.2 proof package | Review | Review | Jesus/Codex, owner acceptance gate | Technical proof exists, but owner acceptance remains the final Done gate. | PRD, stream report, system report, task matrix, KB update"
+      "text": "# E1 Task Consolidation Table  Date: 2026-07-02 Status: public-safe consolidation package  This table preserves task meaning while separating static proof, review-ready work, and future runtime gates. It uses sanitized live task-board evidence plus public repo evidence. No private task URLs or IDs are included.  | Original task/document | Duplicate or canonical task | Current status | Corrected status | Owner agent | Reason | Acceptance criteria | Notion update needed | |---|---|---|---|---|---|---|---| | E1 Build the Knowledge Base on Ourselves | E1 parent | Active | Active | Messi/Jesus | Parent still has Review and future child rows. | Child states reflect E1.1 Done, E1.2 Review, E1.3 Review, E1.4 Backlog, E1.5 In Progress, E1.6 To Do, and E1.7 Backlog. | Replace historical sections with a concise child-state summary. | | E1.1 Set up separate KB project | E1.1 | Done | Done | Jesus/Codex | Runtime/setup proof exists. | Working public-safe KB workspace and setup artifacts exist. | No change. | | E1.2 dialogue to summary to PRD | E1.2 proof package | Review | Review | Jesus/Codex, owner acceptance gate | Technical proof exists, but owner acceptance remains the final Done gate. | P"
     },
     {
       "path": "project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md",
@@ -2694,6 +2758,11 @@
       "path": "project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
       "title": "Prompt 2.1 Notion And Local Jarvis Stack Contract Report",
       "text": "# Prompt 2.1 Notion And Local Jarvis Stack Contract Report  Date: 2026-07-02 Status: implementation complete for docs, skills, Notion notes, and coordination contract  ## Scope  Prompt 2.1 owns Notion/task architecture, dashboard operating documentation, local Jarvis stack contract, and coordination skills. Prompt 3 remains the website visual/code lane.  No website visual files were changed.  ## Evidence Read  - Prompt 2 layer report and handout. - Prompt 2 PRD/ICP templates and test runbook. - CrewAI/LangGraph operations contract. - Current Notion E1-E7 epics and E1/JDB/TG task rows. - Live project communication log. - Current Git branch state.  ## Notion E1-E7 State  | Epic | Current state | Prompt 2.1 interpretation | |---|---:|---| | E1 | Active | Correct. Current local KB/dashboard foundation remains active. | | E2 | Not started | Correct. ICP research execution still waits for approved evidence cycle. | | E3 | Not started | Website work exists, but E3 strategic acceptance still needs owner gates. | | E4 | Active | Content/reporting is active as planning/template work, not public automation. | | E5 | Active | Analytics/ROI method is active as methodology, not validated ROI cla"
+    },
+    {
+      "path": "project/reports/2026-07-02-public-website-visual-delivery.md",
+      "title": "Public Website Visual Delivery Report",
+      "text": "# Public Website Visual Delivery Report  Date: 2026-07-02 Status: implemented and locally validated  ## Scope  This pass updates the public homepage visual/code implementation only. It does not edit Notion, dashboard backend, provider routing, Telegram, model runtime, CrewAI/LangGraph config, skills, or Prompt 2.1 task-state docs.  ## Changes  - Replaced the first-screen boxed system-map visual with the transparent 3D arch object `assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp`. - Added four visible process stages around or near the arch: raw material, knowledge base, PRD/ICP output, and agent oversight. - Moved the primary `Readiness Diagnostic` call to action under the arch/stage visual and made it wider. - Updated homepage copy for the current ICP: B2B SaaS, Series B-D, 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed. - Preserved cautious runtime wording: browser-local diagnostic first; provider runtime, Railway, voice, and writeback stay gated until verified. - Kept the `Estimate the first useful wedge` calculator block stable and removed calculator hover-depth behavior. - Added mobile-specific layout rules so the arch, stag"
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -3076,6 +3145,11 @@
       "text": "# Agent Handout: Yushchenko Model Efficiency Observer  ## Title And Purpose  This handout records the creation of the Yushchenko model-efficiency and token-use observer for ArchFlow.  ## Human Summary  The project now has a recurring observer lane for model usage, token efficiency, and OpenRouter routing discipline. The observer is active in the Codex app automation with a five-hour cadence.  The observer saves Markdown reports under `project/runs/yushchenko-model-efficiency/`, updates reusable model-efficiency advice and issue lists, and notifies agents through the live communication log. Telegram delivery is conditional: it should happen only when an approved sender exists outside the public repo.  ## Current State  Status: complete.  Main artifacts:  - `project/automation/yushchenko-model-efficiency-observer.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md` - `project/agents/agent-roster.yaml` - `project/agents/README.md` - `wiki/runs/2026-07-01-yushchenko-m"
     },
     {
+      "path": "project/runs/2026-07-02-arcflow-v1-final-release/agent-handout.md",
+      "title": "ArcFlow v1 Final Release Handout",
+      "text": "# ArcFlow v1 Final Release Handout  ## Title And Purpose  This handout records the ArcFlow v1 final integration after Prompt 2.1 and Prompt 3 completed. Use it to continue release operations without reopening the chat.  ## Human Summary  The final release state is now reconciled for the static/browser-local scope. Prompt 2.1 supplied the task-system, Notion, and local Jarvis stack contracts. Prompt 3 supplied the public homepage visual refresh. Both are represented on `main` through release source commit `383434a`.  Notion was updated with a concise final closeout on the E1 epic and the relevant dashboard/security rows. The stale review-branch Git pointers on E1.3.9 and E1.3.10 were replaced with the release source commit. Statuses were not overstated: E1 stays Active, dashboard/security rows stay Review, and gated runtime/provider/deployment work remains gated.  The two non-main review branches were checked for unique work, found fully represented on `main`, and deleted locally and remotely. Only `main` remains as a remote branch.  Telegram was not sent because no approved sender environment was available. No token, chat ID, private target, API response, or fallback credential doc"
+    },
+    {
       "path": "project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md",
       "title": "CrewAI Level 3 Proof Handout",
       "text": "# CrewAI Level 3 Proof Handout  ## Title And Purpose  This handout records the direct CrewAI Level 3 proof run. Use it before enabling any future provider-backed or default CrewAI runtime.  ## Human Summary  The proof executed one direct CrewAI runtime flow using a tiny public-safe PRD/ICP fixture and a deterministic local LLM adapter. It did not call OpenRouter, did not spend provider budget, did not write external systems, and did not promote public claims.  The result proves CrewAI direct runtime mechanics for a bounded local fixture. It does not prove provider-backed CrewAI, backend deployment, live writeback, or production readiness.  ## Current State  Status: `proof_passed_not_default_runtime`.  Main artifacts: - `input-fixture.md` - `crew-output.md` - `review-report.md` - `model-call-ledger.jsonl` - `budget-guard.json` - `runtime-proof.json` - `dashboard-state.md`  ## Agent Continuation Prompt  Continue only from the proof artifacts in this run folder. Preserve the Level 3 status as `proof_passed_not_default_runtime` unless the owner explicitly approves default runtime. Do not activate OpenRouter or external writeback from this proof alone.  ## Execution Trace  FACT: - Direc"
@@ -3106,6 +3180,11 @@
       "text": "# Dashboard Execution Architecture Handout  Date: 2026-07-02 Audience: next ArchFlow public project operator  ## Title And Purpose  This handout records Prompt 1.2: the operational execution architecture for the Jarvis dashboard. Use it before starting Prompt 2.  ## Human Summary  Prompt 1.2 defined the execution contract that Prompt 2 should render and implement as a static/browser-local dashboard MVP. A follow-up Level 3 CrewAI proof pass executed one deterministic local CrewAI fixture and integrated its status into the contract and dashboard schema.  The dashboard has two screens. `(1) PRD/ICP Flow` is the product-service path that turns approved product-team material into a context digest, PRD, task matrix, evidence cards, acceptance criteria, decision log, review packet, and handoff. `(2) Agent Orchestra` is the operator path that shows roles, assignments, bounded worker outputs, review gates, blockers, handoffs, and final decisions.  The most important boundary is execution level. Level 1 configured roles are active as YAML/docs. Level 2 LangGraph-wrapped role execution is the intended architecture. Level 3 direct CrewAI runtime is now `proof_passed_not_default_runtime` for a"
     },
     {
+      "path": "project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md",
+      "title": "E1 Notion And Runtime Consolidation Handout",
+      "text": "# E1 Notion And Runtime Consolidation Handout  ## Purpose  This handout records the July 2 E1 cleanup pass: E1 Notion rewrite, duplicate task clarification, local Jarvis API proof, and blocked follow-up tasks for the missing testmeeting/OpenRouter run and hosted runtime.  ## Human Summary  E1 was rewritten in Notion as a current operating page instead of a chronological execution log. The page now explains what E1 is proving, why it matters for the Product Discovery-to-Production PRD Pack, which methods are used, and how the current ICP is narrowed to B2B SaaS product teams with Director or VP Product ownership.  The task cleanup did not delete Visual Reporting rows. It renamed the duplicate-looking Visual Reporting rows under E1.5 reporting/method work and kept them blocked until artifact proof, redaction rules, and owner approval exist. The dashboard/security rows remain E1.3.9 and E1.3.10 in Review.  The local Jarvis API can now run from the repo-local venv after installing FastAPI. Local `/health`, role config, PRD/ICP lane, meeting-test approval block, and voice-chat packet checks passed on `127.0.0.1:8787`. The proof is provider-disabled only: `MODEL_PROVIDER=none`, provider "
+    },
+    {
       "path": "project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md",
       "title": "Jarvis Dashboard ICP Task Consolidation Handout",
       "text": "# Jarvis Dashboard ICP Task Consolidation Handout  Date: 2026-07-02 Audience: next ArchFlow public project operator  ## Title And Purpose  This handout records the Prompt 1 strategy, ICP, task, Notion-package, and dashboard-readiness consolidation. Use it before starting Prompt 2 or updating the task board.  ## Human Summary  This run rebuilt the foundation for the Jarvis dashboard MVP without implementing dashboard, backend, provider, voice, or writeback code. The key decision is that ArchFlow should present a Product Discovery-to-Production PRD Pack for B2B SaaS product teams. The dashboard supports that service as an operator proof and supervision layer.  The work consolidated five review lanes: task-board/E1 status, Visual Reporting reporting documents, ICP and competitor positioning, technical runtime boundaries, and two-lane dashboard UX. The main correction is task separation. Static dashboard slices can be Done, while dashboard/Jarvis umbrella, access/security, and live runtime rows stay Review or Blocked until their specific proof exists.  Prompt 2 is now ready only as a static/browser-local dashboard MVP implementation lane. It is not permission to activate OpenRouter, Ra"
@@ -3119,6 +3198,16 @@
       "path": "project/runs/2026-07-02-prompt-2-1-notion-local-stack-contract/agent-handout.md",
       "title": "Prompt 2.1 Notion And Local Jarvis Stack Contract Handout",
       "text": "# Prompt 2.1 Notion And Local Jarvis Stack Contract Handout  ## Title And Purpose  This handout records Prompt 2.1 after Prompt 2 completed and was merged to `main`.  Use it to continue Notion/task architecture, local Jarvis stack operation, or Prompt 3 coordination without reopening the whole chat.  ## Human Summary  Prompt 2.1 clarified the operating layer around the Jarvis dashboard rather than activating new runtime. The work creates two project-local skills: `arcagcom` for parallel-agent communication and `archflow1` for local Jarvis stack operation.  The local Jarvis manual now explains how Dashboard Screen 1, Dashboard Screen 2, `jarvis-api`, LangGraph, CrewAI, OpenRouter, STT, TTS, and Railway relate. It carries forward the owner-decision gates: full PRD/ICP test cycle, FastAPI dependency/runtime proof, OpenRouter activation/budget ledger, and Railway/Telegram/production/Figma/writeback decisions.  Notion optimization is handled as evidence-backed clarification. Duplicate-looking E1.3.8/E1.3.9/E1.3.10/JDB rows are mapped by meaning. No page was deleted, no private URLs were stored, and no runtime/provider status was upgraded without proof.  ## Current State  Task status: co"
+    },
+    {
+      "path": "project/runs/2026-07-02-public-website-visual-delivery/agent-handout.md",
+      "title": "Agent Handout: Public Website Visual Delivery",
+      "text": "# Agent Handout: Public Website Visual Delivery  Date: 2026-07-02 Owner lane: website visual/code implementation Status: implemented and locally validated  ## Purpose  Use this handout to continue or review the public homepage visual delivery work without relying on chat history. The run is scoped to root website files and a website-specific report only.  ## Human Summary  The homepage now presents ArchFlow as a service for B2B SaaS product teams that turns raw product-team material into production-ready PRD/ICP clarity through a structured knowledge base and review-gated agent oversight.  The first screen no longer uses the boxed system-map image. It uses the transparent 3D arch asset `assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp`, with four process stages placed around or near the arch and a wide `Readiness Diagnostic` button directly underneath.  The PRD/ICP calculator remains the same usable planning tool. It keeps the `Estimate the first useful wedge` section, but hover-depth behavior was removed from the calculator surface so it does not behave like a decorative card.  ## Current State  - Root homepage files are updated: `index.html`, `styles.css`, `main.js`"
+    },
+    {
+      "path": "project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md",
+      "title": "Railway Jarvis API Setup Handout",
+      "text": "# Railway Jarvis API Setup Handout  ## Human Summary  Railway MCP is connected in Codex, and the ArchFlow Railway backend lane was initialized for the provider-disabled Jarvis API.  The Railway account was reachable through MCP. A new Railway project and a `jarvis-api` service were created. Initial service variables were set with provider execution disabled. Local deployment config was added under `public/services/jarvis-api/`.  Deployment did not complete because the approval reviewer blocked uploading local workspace code to Railway. This is now an owner approval gate, not a technical setup gap.  This lane is now recorded as future E1 task `E1.7`: make the hosted dashboard, Jarvis, API, and agentic system work without depending on the local machine. `E1.6` remains the separate personal KB setup task in Notion.  ## Files Changed  - `docs/railway.md` - `public/services/jarvis-api/Procfile` - `public/services/jarvis-api/railway.json` - `public/project/live/communication/agent-communication-log.md` - `public/project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md`  ## Runtime State  - Railway MCP: connected. - Railway project: created. - Railway service: created. - Provider"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
@@ -3654,6 +3743,11 @@
       "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
       "title": "2026-07-01 Yushchenko Model Efficiency Observer",
       "text": "# 2026-07-01 Yushchenko Model Efficiency Observer  ## Task  Create a recurring model-efficiency and token-use observer for ArchFlow.  ## Result  - Created Codex app automation `yushchenko-model-efficiency-observer` with a five-hour cadence. - Added the Yushchenko observer role to `project/agents/agent-roster.yaml`. - Updated `project/agents/README.md`. - Added `project/automation/yushchenko-model-efficiency-observer.md`. - Added `project/agents/model-efficiency-advice.md`. - Added `project/agents/model-efficiency-issues.md`. - Added baseline report `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md`.  ## Current Finding  FACT: No active OpenRouter runtime evidence was found in the baseline observer report.  INTERPRETATION: The project now has the observer and advice loop before cloud provider activation, which should reduce token waste and prevent unreviewed model escalation.  GAP: Telegram delivery requires an approved sender outside public files. The private destination must not be stored in the public repo.  ## Follow-Up  Before OpenRouter activation, add a canonical model-call ledger with model ID, task, role, source IDs, prompt version, tok"
+    },
+    {
+      "path": "wiki/runs/2026-07-02-arcflow-v1-final-release.md",
+      "title": "2026-07-02 ArcFlow v1 Final Release",
+      "text": "# 2026-07-02 ArcFlow v1 Final Release  Status: complete for static/browser-local source release and closeout  ## Task  Verify Prompt 2.1 and Prompt 3, reconcile Notion and repo state, push/keep `main` as the release branch, delete only safe merged branches, and record remaining gates.  ## FACT  - Prompt 2.1 is represented by `e00a39e`. - Prompt 3 is represented by `da124bf`. - Release source state is `383434a` on `main`. - Final Notion closeout was appended to E1, E1.3.9, and E1.3.10. - The E1.3.9 and E1.3.10 Git pointers now reference the release source commit. - The two review branches had no unique unmerged commits relative to `main` and were deleted locally and remotely. - Remote heads now show only `main`. - Telegram was skipped because the approved sender was unavailable.  ## INTERPRETATION  ArcFlow v1 is aligned for the public-safe static/browser-local source state. This is a source and task-system release, not a production/provider/runtime activation.  ## GAP  - Local full-stack Jarvis proof remains owner-gated. - FastAPI runtime proof remains dependency-gated. - OpenRouter provider activation remains approval, pricing, ledger, and budget-guard gated. - Railway migration re"
     },
     {
       "path": "wiki/runs/2026-07-02-crewai-level-3-proof.md",
