@@ -178,6 +178,13 @@ ArchFlow Block 1 is the first public solution:
 ## Dashboard Two-Layer Schema Memory - 2026-07-01
 
 - The dashboard must keep `(1) PRD/ICP Flow` and `(2) Agent Orchestra` as separate screens because they answer different jobs: externally showable service-product workflow versus local reliable control-system workflow.
+
+## Prompt 2.1 Local Jarvis Stack Memory - 2026-07-02
+
+- `skills/arcagcom/SKILL.md` is the project-local communication skill for live-agent file claims, start/handoff/complete updates, Prompt 2.1/Prompt 3 coordination, and merge gates.
+- `skills/archflow1/SKILL.md` is the project-local operating skill for Dashboard UI, `jarvis-api`, optional STT/TTS services, LangGraph, CrewAI role levels, OpenRouter budget gates, and later Railway migration.
+- Prompt 2.1 resolves shorthand task drift by mapping `138`, `139`, `11310`, `41310`, `8`, `9`, and `10` to exact E1.3.x/JDB rows instead of deleting history.
+- The four owner decisions remain explicit gates: full PRD/ICP test cycle; FastAPI dependency install/runtime proof; OpenRouter server-side activation and budget ledger; Railway, Telegram, production/Figma sync, and dashboard-driven writeback.
 - Schema nodes should remain draggable and clickable, with the full node panel used for inputs, outputs, connection settings, dropdown configuration, interpreted run logs, operating prompt, system prompt, developer comments, safety, evidence, user job, pain, and business objective.
 - Static dashboard actions remain browser-local review packets only. Provider calls, raw transcript storage, durable writeback, deployment, backend queues, and live traces require explicit approval and a server/local bridge.
 - Claude-Mem and Impeccable are candidate memory/design tools, while NVIDIA garak and NeMo Guardrails are candidate safety-evaluation tools. Treat them as reviewed references only until hook scope, storage, worker behavior, install path, and public/private boundaries are approved.

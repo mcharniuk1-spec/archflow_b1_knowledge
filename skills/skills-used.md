@@ -15,6 +15,8 @@ This project uses the following skills and methods.
 | [`priority-task-operator`](priority-task-operator/SKILL.md) | Select highest-priority actionable task by urgency and importance, create a PitAgent handoff packet, and prepare KB/Notion/GitHub follow-up evidence. |
 | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. |
 | [`outquestions`](outquestions/SKILL.md) | Report what changed after each substantial execution and list the decision questions required before the next stage. |
+| [`arcagcom`](arcagcom/SKILL.md) | Coordinate parallel ArchFlow public project agents through the live communication log, file claims, handoffs, checks, and Prompt 2.1/Prompt 3 merge gates. |
+| [`archflow1`](archflow1/SKILL.md) | Operate and review the local Jarvis dashboard stack, including jarvis-api, LangGraph, CrewAI levels, voice paths, OpenRouter budget gates, and Railway migration gates. |
 | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. |
 | Loop Engineering operating contract | Keep agent workflows bounded with state, attempt caps, budget, maker/checker separation, and stop conditions. |
 | Market evidence engine | Turn E2 into account universe, public-signal extraction, scoring, role verification, and reviewed ICP/output handoff. |

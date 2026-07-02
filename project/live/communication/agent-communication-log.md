@@ -4338,3 +4338,116 @@ GAP: Git commit, push, and main merge were not performed during this closeout be
 GAP: Full PRD/ICP test cycle remains owner-approval gated.
 
 Next: owner should decide whether to stage only Prompt 2 files or coordinate a broader Prompt 1/Prompt 1.2/CrewAI/Yushchenko commit set before push and main merge.
+
+## 2026-07-02 14:37 - Codex - Public website visual delivery
+
+Status: starting
+
+Task:
+Deliver the public website visual/code implementation for the PRD/ICP brand surface, in parallel with the completed Prompt 2.1 dashboard/runtime documentation lane.
+
+Files likely to change:
+- `index.html`
+- `styles.css`
+- `main.js`
+- `hover-depth.js`
+- `project/runs/2026-07-02-public-website-visual-delivery/agent-handout.md`
+- `project/reports/2026-07-02-public-website-visual-delivery.md`
+
+Files claimed:
+- Public website visual/design files listed above for this implementation pass only.
+
+Expected output:
+- Responsive first screen with a 3D arc asset, clear process stages, wider Readiness Diagnostic action, stable PRD/ICP calculator block, and public-safe ICP-aligned copy.
+
+Blockers:
+- No production promotion, provider/runtime claims, Notion updates, Telegram delivery, model routing edits, or dashboard backend edits are in scope.
+- Git push and main merge remain coordination-gated until the current dirty tree ownership is clear.
+
+Next:
+- Inspect current website structure, assets, and checks, then patch only website/design surfaces and run the smallest meaningful validation.
+## 2026-07-02 15:05 - Jesus/Codex - Prompt 2.1 Notion and local Jarvis stack contract
+
+Status: starting
+
+Task: Execute Prompt 2.1 for Notion/task architecture optimization, local Jarvis stack contract, project coordination skills, and owner-decision gate coverage.
+
+State correction from prior entry: Prompt 2 was later committed, pushed, fast-forwarded to `main`, and `main` was pushed at commit `9f0dd60`. The public worktree was clean at Prompt 2.1 start.
+
+Files likely to change:
+
+- `skills/arcagcom/SKILL.md`
+- `skills/archflow1/SKILL.md`
+- `skills/skills-used.md`
+- `docs/dashboard-local-jarvis-stack-manual.md`
+- `project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md`
+- `project/runs/2026-07-02-prompt-2-1-notion-local-stack-contract/agent-handout.md`
+- `wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed: the files listed above only. Website visual files are not claimed.
+
+Expected output: project-local `arcagcom` and `archflow1` skills, local Jarvis stack manual, Notion duplicate/status/drift map, append-only Notion updates where targets are exact, run handout, validation, and Git closeout if no Prompt 3 conflict appears.
+
+Blockers: no owner approval is present for full PRD/ICP test execution, FastAPI dependency install, OpenRouter activation, Railway, Telegram send, production/Figma sync, or dashboard-driven writeback.
+
+Next: inspect Prompt 2 outputs and Notion task state, then create scoped skills/docs before any Notion updates.
+## 2026-07-02 15:48 - Jesus/Codex - Prompt 2.1 Notion and local Jarvis stack contract complete
+
+Status: complete
+
+Task: Complete Prompt 2.1 docs, project-local skills, Notion/task clarification, and local Jarvis stack contract.
+
+Files changed by Prompt 2.1:
+
+- `skills/arcagcom/SKILL.md`
+- `skills/archflow1/SKILL.md`
+- `skills/skills-used.md`
+- `docs/dashboard-local-jarvis-stack-manual.md`
+- `project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md`
+- `project/runs/2026-07-02-prompt-2-1-notion-local-stack-contract/agent-handout.md`
+- `wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Not staged by Prompt 2.1:
+
+- `index.html`
+- `styles.css`
+- `main.js`
+- `hover-depth.js`
+
+Reason: those website visual files are claimed by the active Prompt 3 public website visual delivery lane.
+
+Notion updates:
+
+- E1 epic received E1-E7 interpretation, duplicate map, owner-decision gates, and evidence artifact pointers.
+- E1.3.9 dashboard umbrella received the local Jarvis stack contract and coordination note.
+- E1.3.10 secure dashboard gate received runtime/security gate clarification.
+- E1.3.10 GloomyLord planning package received corrected Blocked wording and daily/weekly/PRD review templates.
+- E1.3.10 GloomyLord method log and E1.3.9 GloomyLord audience sample received corrected Blocked wording.
+- JDB-2, JDB-3, JDB-4, JDB-7, and E1.5 received scoped boundary notes.
+
+Checks:
+
+- Pass: public safety scan.
+- Pass: dashboard data regeneration and JSON parse.
+- Pass: dashboard JavaScript syntax check.
+- Pass: Python syntax compile for Jarvis API and dashboard scripts.
+- Pass: workflow validation.
+- Pass: pre-push runtime guard.
+- Pass: dashboard static smoke with provider calls `0` and writeback `0`.
+- Pass: diff whitespace check.
+
+FACT: `arcagcom` now defines live-agent coordination and Prompt 2.1 / Prompt 3 merge gates.
+FACT: `archflow1` now defines local dashboard/Jarvis stack operation, voice path, OpenRouter budget gate, CrewAI levels, and Railway migration prerequisites.
+FACT: The four owner decisions remain gated: full PRD/ICP test cycle, FastAPI runtime proof, OpenRouter server-side activation and budget ledger, and Railway/Telegram/production/Figma/dashboard-driven writeback.
+
+GAP: Prompt 3 website visual files are still active and should be committed by that lane or reviewed separately before final website visual closeout.
+GAP: Telegram was deferred because no explicit approval or approved sender/secret-store proof was provided.
+
+Next: stage and push only Prompt 2.1-owned files, leaving Prompt 3 visual files unstaged.

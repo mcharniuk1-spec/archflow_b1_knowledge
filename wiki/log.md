@@ -121,3 +121,18 @@ Outputs:
 - `project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md`
 - `project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md`
 - `wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md`
+
+## 2026-07-02 - Prompt 2.1 Notion and local Jarvis stack contract
+
+FACT:
+- Added project-local `arcagcom` and `archflow1` skills.
+- Added `docs/dashboard-local-jarvis-stack-manual.md`.
+- Added a Prompt 2.1 duplicate/drift report and run handout.
+- Clarified that JDB-8/JDB-9/JDB-10 are Done only for static/browser-local scope.
+- Clarified that E1.3.9 and the secure dashboard gate remain Review until live runtime gates are actually proven.
+
+INTERPRETATION:
+- Prompt 2.1 improves operator reliability and task-board clarity without activating provider/backend/deployment/writeback lanes.
+
+GAP:
+- Full PRD/ICP test cycle, FastAPI runtime proof, OpenRouter activation, Railway, Telegram, production/Figma sync, and dashboard-driven writeback remain owner-approval gated.

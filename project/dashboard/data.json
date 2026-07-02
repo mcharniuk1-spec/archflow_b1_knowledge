@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:21:51.330176+00:00",
+  "generated_at": "2026-07-02T11:45:37.498175+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "47 files",
+      "value": "48 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "203",
+      "value": "206",
       "tone": "ok"
     },
     {
@@ -555,676 +555,697 @@
   ],
   "activity": [
     {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md",
-      "title": "2026-07-02 Jarvis Dashboard MVP Implementation",
-      "modified": "2026-07-02T11:21:44.005590+00:00",
-      "size": 2373
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-prompt-2-1-notion-local-stack-contract/agent-handout.md",
+      "title": "Prompt 2.1 Notion And Local Jarvis Stack Contract Handout",
+      "modified": "2026-07-02T11:44:43.536783+00:00",
+      "size": 5782
     },
     {
       "kind": "project_report",
-      "path": "project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md",
-      "title": "Jarvis Dashboard MVP Layer Report",
-      "modified": "2026-07-02T11:21:08.354285+00:00",
-      "size": 6046
+      "path": "project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
+      "title": "Prompt 2.1 Notion And Local Jarvis Stack Contract Report",
+      "modified": "2026-07-02T11:43:28.310014+00:00",
+      "size": 7161
     },
     {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md",
-      "title": "Jarvis Dashboard MVP Implementation Handout",
-      "modified": "2026-07-02T11:21:01.709322+00:00",
-      "size": 6811
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
+      "title": "2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract",
+      "modified": "2026-07-02T11:40:07.144954+00:00",
+      "size": 1839
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md",
+      "title": "2026-07-02 Jarvis Dashboard MVP Implementation",
+      "modified": "2026-07-02T11:24:38.841860+00:00",
+      "size": 2373
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-dashboard-execution-architecture.md",
+      "title": "2026-07-02 Dashboard Execution Architecture",
+      "modified": "2026-07-02T11:24:38.841776+00:00",
+      "size": 3523
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-crewai-level-3-proof.md",
+      "title": "2026-07-02 CrewAI Level 3 Proof",
+      "modified": "2026-07-02T11:24:38.841685+00:00",
+      "size": 2169
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
+      "title": "2026-07-01 Yushchenko Model Efficiency Observer",
+      "modified": "2026-07-02T11:24:38.841595+00:00",
+      "size": 1271
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
+      "title": "2026-07-01 Public Website PRD/ICP Landing",
+      "modified": "2026-07-02T11:24:38.841519+00:00",
+      "size": 3149
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-openrouter-model-routing.md",
+      "title": "2026-07-01 OpenRouter Model Routing",
+      "modified": "2026-07-02T11:24:38.841437+00:00",
+      "size": 1418
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
+      "title": "2026-07-01 Messi Task Architecture Review",
+      "modified": "2026-07-02T11:24:38.841360+00:00",
+      "size": 3781
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-messi-coordination-review.md",
+      "title": "2026-07-01 Messi Coordination Review",
+      "modified": "2026-07-02T11:24:38.841271+00:00",
+      "size": 1427
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md",
+      "title": "2026-07-01 LOL Agent Coordination And Knowledge-Base Brief",
+      "modified": "2026-07-02T11:24:38.841174+00:00",
+      "size": 2958
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md",
+      "title": "2026-07-01 Legacy Design Reference And PRD Calculator",
+      "modified": "2026-07-02T11:24:38.841078+00:00",
+      "size": 1040
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
+      "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
+      "modified": "2026-07-02T11:24:38.840975+00:00",
+      "size": 3992
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-infra-status-and-next-setup.md",
+      "title": "2026-07-01 Infra Status And Next Setup",
+      "modified": "2026-07-02T11:24:38.840883+00:00",
+      "size": 1027
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-final-integration-notion-closeout.md",
+      "title": "2026-07-01 Final Integration And Notion Closeout",
+      "modified": "2026-07-02T11:24:38.840793+00:00",
+      "size": 1657
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-dashboard-website-strategy-qa.md",
+      "title": "2026-07-01 Dashboard Website Strategy QA",
+      "modified": "2026-07-02T11:24:38.840696+00:00",
+      "size": 2416
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-dashboard-two-layer-schema.md",
+      "title": "Run Note: Two-Layer Dashboard Schema Control Panel",
+      "modified": "2026-07-02T11:24:38.840509+00:00",
+      "size": 1539
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-dashboard-operator-ux-optimization.md",
+      "title": "2026-07-01 Dashboard Operator UX Optimization",
+      "modified": "2026-07-02T11:24:38.840404+00:00",
+      "size": 2332
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-competitor-dashboard-website-plan.md",
+      "title": "2026-07-01 Competitor Dashboard And Website Plan",
+      "modified": "2026-07-02T11:24:38.840320+00:00",
+      "size": 3186
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-blue-archflow-automate-website.md",
+      "title": "2026-07-01 Blue ArcFlow Automate Website",
+      "modified": "2026-07-02T11:24:38.840241+00:00",
+      "size": 1832
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-agent-communication-channel.md",
+      "title": "2026-07-01 Agent Communication Channel",
+      "modified": "2026-07-02T11:24:38.840161+00:00",
+      "size": 899
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Run: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-02T11:24:38.840069+00:00",
+      "size": 1717
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
+      "title": "Decision: Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-02T11:24:38.839511+00:00",
+      "size": 2059
     },
     {
       "kind": "project_run",
       "path": "project/runs/yushchenko-model-efficiency/agent-handout.md",
       "title": "Yushchenko Model Efficiency Observer Handout",
-      "modified": "2026-07-02T11:04:01.835372+00:00",
+      "modified": "2026-07-02T11:24:38.836820+00:00",
       "size": 807
     },
     {
       "kind": "project_run",
       "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1402-model-efficiency-report.md",
       "title": "Yushchenko Model Efficiency Report",
-      "modified": "2026-07-02T11:03:49.730408+00:00",
+      "modified": "2026-07-02T11:24:38.836715+00:00",
       "size": 4993
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-dashboard-execution-architecture.md",
-      "title": "Dashboard Execution Architecture",
-      "modified": "2026-07-02T10:36:27.206087+00:00",
-      "size": 13245
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md",
-      "title": "CrewAI Level 3 Proof Handout",
-      "modified": "2026-07-02T10:35:15.496408+00:00",
-      "size": 3064
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-02-crewai-level-3-proof.md",
-      "title": "2026-07-02 CrewAI Level 3 Proof",
-      "modified": "2026-07-02T10:33:47.045694+00:00",
-      "size": 2169
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-02-dashboard-execution-architecture.md",
-      "title": "2026-07-02 Dashboard Execution Architecture",
-      "modified": "2026-07-02T10:33:33.280967+00:00",
-      "size": 3523
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md",
-      "title": "Dashboard Execution Architecture Handout",
-      "modified": "2026-07-02T10:33:20.845224+00:00",
-      "size": 9691
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-crewai-level-3-proof/dashboard-state.md",
-      "title": "Dashboard State Packet",
-      "modified": "2026-07-02T10:27:52.946173+00:00",
-      "size": 560
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-crewai-level-3-proof/review-report.md",
-      "title": "AF Review Report",
-      "modified": "2026-07-02T10:27:52.945622+00:00",
-      "size": 420
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-crewai-level-3-proof/crew-output.md",
-      "title": "CrewAI Level 3 Direct Runtime Output",
-      "modified": "2026-07-02T10:27:52.945476+00:00",
-      "size": 465
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md",
-      "title": "Tiny Public-Safe PRD/ICP Fixture",
-      "modified": "2026-07-02T10:27:52.919139+00:00",
-      "size": 656
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md",
-      "title": "Jarvis Dashboard ICP Task Consolidation Handout",
-      "modified": "2026-07-02T09:27:15.976020+00:00",
-      "size": 6802
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-notion-update-package.md",
-      "title": "Notion Update Package",
-      "modified": "2026-07-02T09:25:18.743005+00:00",
-      "size": 5455
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
-      "title": "E1 Task Consolidation Table",
-      "modified": "2026-07-02T09:25:18.649464+00:00",
-      "size": 9174
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md",
-      "title": "Jarvis Dashboard ICP Task Consolidation",
-      "modified": "2026-07-02T09:25:18.555719+00:00",
-      "size": 11043
     },
     {
       "kind": "project_run",
       "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1112-model-efficiency-report.md",
       "title": "Yushchenko Model Efficiency Report",
-      "modified": "2026-07-02T08:12:58.326435+00:00",
+      "modified": "2026-07-02T11:24:38.836615+00:00",
       "size": 5726
     },
     {
       "kind": "project_run",
       "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md",
       "title": "Yushchenko Model Efficiency Report",
-      "modified": "2026-07-02T07:17:00.394617+00:00",
+      "modified": "2026-07-02T11:24:38.836513+00:00",
       "size": 4207
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
-      "title": "Agent Handout: Yushchenko Model Efficiency Observer",
-      "modified": "2026-07-01T19:48:49.746818+00:00",
-      "size": 3909
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md",
+      "title": "Initial Model Efficiency Report",
+      "modified": "2026-07-02T11:24:38.836416+00:00",
+      "size": 2655
     },
     {
       "kind": "project_run",
       "path": "project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md",
       "title": "Yushchenko Model Efficiency Report",
-      "modified": "2026-07-01T19:48:18.554727+00:00",
+      "modified": "2026-07-02T11:24:38.836305+00:00",
       "size": 3635
     },
     {
       "kind": "project_run",
-      "path": "project/runs/20260701_run_daily_skill_retrospective.md",
-      "title": "Run Note - Daily Skill Retrospective And RAG Knowledge Review",
-      "modified": "2026-07-01T19:34:56.256035+00:00",
-      "size": 3329
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/20260701_daily_skill_retrospective.md",
-      "title": "Daily Skill Retrospective And RAG Knowledge Review",
-      "modified": "2026-07-01T19:34:56.167512+00:00",
-      "size": 8527
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-evening-skill-hook-review/agent-handout.md",
-      "title": "Evening Skill And Hook Review Handout",
-      "modified": "2026-07-01T18:05:10.654909+00:00",
-      "size": 3930
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-evening-skill-hook-review/run-summary.md",
-      "title": "Evening Skill And Hook Review",
-      "modified": "2026-07-01T18:05:10.566339+00:00",
-      "size": 2451
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-priority-task-lane-setup/run-summary.md",
-      "title": "Priority Task Lane Setup",
-      "modified": "2026-07-01T18:03:54.565653+00:00",
-      "size": 1863
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-priority-task-lane-setup/agent-handout.md",
-      "title": "Priority Task Lane Setup Handout",
-      "modified": "2026-07-01T13:07:26.654785+00:00",
-      "size": 1503
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.pdf",
-      "title": "review-report.pdf",
-      "modified": "2026-07-01T12:59:28.016010+00:00",
-      "size": 238913
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-dashboard-website-strategy-qa.md",
-      "title": "2026-07-01 Dashboard Website Strategy QA",
-      "modified": "2026-07-01T12:59:14.191078+00:00",
-      "size": 2416
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/agent-handout.md",
-      "title": "Dashboard Website Strategy QA Handout",
-      "modified": "2026-07-01T12:59:14.096524+00:00",
-      "size": 4792
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.md",
-      "title": "Dashboard, Website, Strategy, And Workflow QA Review",
-      "modified": "2026-07-01T12:59:13.917564+00:00",
-      "size": 10420
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-final-integration-notion-closeout/agent-handout.md",
-      "title": "Final Integration And Notion Closeout Handout",
-      "modified": "2026-07-01T12:31:44.314968+00:00",
-      "size": 4621
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-final-integration-notion-closeout.md",
-      "title": "2026-07-01 Final Integration And Notion Closeout",
-      "modified": "2026-07-01T12:26:03.036771+00:00",
-      "size": 1657
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-messi-fast-final-closeout/agent-handout.md",
-      "title": "Messi Fast Final Closeout Handout",
-      "modified": "2026-07-01T12:13:20.764142+00:00",
-      "size": 3746
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md",
-      "title": "Jesus Merge Handoff",
-      "modified": "2026-07-01T12:07:41.438711+00:00",
-      "size": 3310
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-final-completion-audit/agent-handout.md",
-      "title": "Final Completion Audit Handout",
-      "modified": "2026-07-01T12:03:28.710455+00:00",
-      "size": 4691
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md",
-      "title": "Skill Registry And Daily RAG Review Hardening Handout",
-      "modified": "2026-07-01T11:50:27.014647+00:00",
-      "size": 3366
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md",
-      "title": "Skill Registry And Daily RAG Review Hardening",
-      "modified": "2026-07-01T11:50:03.947477+00:00",
-      "size": 3041
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md",
-      "title": "2026-07-01 Messi Final Delivery Sequence And Notion Review",
-      "modified": "2026-07-01T11:43:16.866431+00:00",
-      "size": 7349
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md",
-      "title": "Agent Handout: Ronaldinho Technical Advisor Review",
-      "modified": "2026-07-01T11:43:10.457722+00:00",
-      "size": 8032
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
-      "title": "Agent Handout: Dev Orchestration Lane",
-      "modified": "2026-07-01T11:35:22.389355+00:00",
-      "size": 3001
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-prd-icp-lane/agent-handout.md",
-      "title": "Agent Handout: PRD/ICP Lane",
-      "modified": "2026-07-01T11:35:22.289696+00:00",
-      "size": 2429
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-blue-archflow-automate-website.md",
-      "title": "2026-07-01 Blue ArcFlow Automate Website",
-      "modified": "2026-07-01T11:35:22.184343+00:00",
-      "size": 1832
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-blue-archflow-automate-website/agent-handout.md",
-      "title": "Agent Handout: Blue ArcFlow Automate Website",
-      "modified": "2026-07-01T11:35:22.082083+00:00",
-      "size": 3557
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-blue-archflow-automate-website-review.md",
-      "title": "Blue ArcFlow Automate Website Review",
-      "modified": "2026-07-01T11:34:23.658820+00:00",
-      "size": 5054
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-public-website-prd-icp-landing.md",
-      "title": "2026-07-01 Public Website PRD/ICP Landing",
-      "modified": "2026-07-01T11:33:45.406647+00:00",
-      "size": 3149
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
-      "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
-      "modified": "2026-07-01T11:33:45.309923+00:00",
-      "size": 6890
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
-      "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
-      "modified": "2026-07-01T11:33:45.212161+00:00",
-      "size": 4657
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-messi-task-architecture-review.md",
-      "title": "2026-07-01 Messi Task Architecture Review",
-      "modified": "2026-07-01T11:06:15.811309+00:00",
-      "size": 3781
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md",
-      "title": "Agent Handout: Messi Task Architecture Review",
-      "modified": "2026-07-01T11:06:06.231643+00:00",
-      "size": 3207
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
-      "title": "Messi Task Architecture Review",
-      "modified": "2026-07-01T11:05:48.853918+00:00",
-      "size": 17450
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-dashboard-operator-ux-optimization.md",
-      "title": "2026-07-01 Dashboard Operator UX Optimization",
-      "modified": "2026-07-01T11:04:20.249680+00:00",
-      "size": 2332
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-dashboard-operator-ux-optimization/agent-handout.md",
-      "title": "Agent Handout: Dashboard Operator UX Optimization",
-      "modified": "2026-07-01T11:04:13.647863+00:00",
-      "size": 2939
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-dashboard-jdb-10-acceptance-audit.md",
-      "title": "Dashboard JDB-10 Acceptance Audit",
-      "modified": "2026-07-01T11:04:04.785314+00:00",
-      "size": 8062
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md",
-      "title": "Public Website Market Research And Minimal Copy Brief",
-      "modified": "2026-07-01T11:01:32.474989+00:00",
-      "size": 3813
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md",
-      "title": "Run: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-07-01T11:00:02.499915+00:00",
-      "size": 1717
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-current-state-e1-e7-vercel-railway-jarvis.md",
-      "title": "Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System",
-      "modified": "2026-07-01T10:58:37.480695+00:00",
-      "size": 13121
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-infra-status-and-next-setup.md",
-      "title": "2026-07-01 Infra Status And Next Setup",
-      "modified": "2026-07-01T10:58:03.511369+00:00",
-      "size": 1027
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md",
-      "title": "Agent Handout: Infra Status And Next Setup",
-      "modified": "2026-07-01T10:58:03.411918+00:00",
-      "size": 1641
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-infra-status-and-next-setup.md",
-      "title": "Infra Status And Next Setup",
-      "modified": "2026-07-01T10:58:03.246050+00:00",
-      "size": 3318
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
-      "title": "Run: June 30 Integrator Review",
-      "modified": "2026-07-01T10:56:40.838779+00:00",
-      "size": 3041
-    },
-    {
-      "kind": "wiki_decision",
-      "path": "wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md",
-      "title": "Decision: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-07-01T10:56:40.732607+00:00",
-      "size": 2059
+      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md",
+      "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
+      "modified": "2026-07-02T11:24:38.836033+00:00",
+      "size": 6418
     },
     {
       "kind": "project_run",
       "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md",
       "title": "Coordination Stream: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-07-01T10:56:40.626843+00:00",
+      "modified": "2026-07-02T11:24:38.835908+00:00",
       "size": 2063
     },
     {
       "kind": "project_run",
       "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md",
       "title": "Agent Handout: Dashboard Jarvis Vercel Shell",
-      "modified": "2026-07-01T10:56:40.519091+00:00",
+      "modified": "2026-07-02T11:24:38.835797+00:00",
       "size": 2567
     },
     {
       "kind": "project_run",
-      "path": "project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md",
-      "title": "Run: E1.5 Dashboard Jarvis Vercel Shell",
-      "modified": "2026-07-01T10:56:40.414904+00:00",
-      "size": 6418
+      "path": "project/runs/20260701_run_daily_skill_retrospective.md",
+      "title": "Run Note - Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-02T11:24:38.835692+00:00",
+      "size": 3329
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-lol-agent-coordination-and-kb-brief/agent-handout.md",
-      "title": "Agent Handout: LOL Agent Coordination And Knowledge-Base Brief",
-      "modified": "2026-07-01T10:25:31.141737+00:00",
-      "size": 2386
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md",
-      "title": "2026-07-01 LOL Agent Coordination And Knowledge-Base Brief",
-      "modified": "2026-07-01T10:25:12.956863+00:00",
-      "size": 2958
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-lol-agent-coordination-and-kb-brief.md",
-      "title": "LOL Agent Coordination And Knowledge-Base Brief",
-      "modified": "2026-07-01T10:24:04.459873+00:00",
-      "size": 11189
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md",
-      "title": "Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
-      "modified": "2026-07-01T10:19:12.480422+00:00",
-      "size": 3992
+      "path": "project/runs/20260701_daily_skill_retrospective.md",
+      "title": "Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-02T11:24:38.835610+00:00",
+      "size": 8527
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md",
-      "title": "Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
-      "modified": "2026-07-01T10:19:12.376403+00:00",
-      "size": 6134
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-competitor-dashboard-website-plan.md",
-      "title": "2026-07-01 Competitor Dashboard And Website Plan",
-      "modified": "2026-07-01T10:11:10.406180+00:00",
-      "size": 3186
+      "path": "project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md",
+      "title": "Jarvis Dashboard MVP Implementation Handout",
+      "modified": "2026-07-02T11:24:38.835490+00:00",
+      "size": 6811
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md",
-      "title": "Agent Handout: Competitor-Backed Dashboard And Website Plan",
-      "modified": "2026-07-01T10:11:10.306579+00:00",
-      "size": 4844
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md",
-      "title": "Ronaldo Dashboard And Website Execution Plan",
-      "modified": "2026-07-01T10:11:10.204978+00:00",
-      "size": 14834
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md",
-      "title": "Legacy Design Reference And PRD/ICP Calculator Brief",
-      "modified": "2026-07-01T10:02:22.345211+00:00",
-      "size": 8817
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md",
-      "title": "2026-07-01 Legacy Design Reference And PRD Calculator",
-      "modified": "2026-07-01T10:00:54.122998+00:00",
-      "size": 1040
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-two-paradigm-execution-plan.md",
-      "title": "Two-Paradigm Execution Plan",
-      "modified": "2026-07-01T09:59:55.558120+00:00",
-      "size": 4819
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-competitor-dashboard-website-plan.md",
-      "title": "Competitor-Backed Dashboard And Website Improvement Plan",
-      "modified": "2026-07-01T09:55:46.816559+00:00",
-      "size": 20647
+      "path": "project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md",
+      "title": "Jarvis Dashboard ICP Task Consolidation Handout",
+      "modified": "2026-07-02T11:24:38.835363+00:00",
+      "size": 6802
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md",
-      "title": "Scheduled Automation Audit Handout",
-      "modified": "2026-07-01T09:53:42.495658+00:00",
-      "size": 4123
+      "path": "project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md",
+      "title": "Dashboard Execution Architecture Handout",
+      "modified": "2026-07-02T11:24:38.835129+00:00",
+      "size": 9691
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/review-report.md",
+      "title": "AF Review Report",
+      "modified": "2026-07-02T11:24:38.834913+00:00",
+      "size": 420
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md",
+      "title": "Tiny Public-Safe PRD/ICP Fixture",
+      "modified": "2026-07-02T11:24:38.834736+00:00",
+      "size": 656
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/dashboard-state.md",
+      "title": "Dashboard State Packet",
+      "modified": "2026-07-02T11:24:38.834654+00:00",
+      "size": 560
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/crew-output.md",
+      "title": "CrewAI Level 3 Direct Runtime Output",
+      "modified": "2026-07-02T11:24:38.834462+00:00",
+      "size": 465
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md",
+      "title": "CrewAI Level 3 Proof Handout",
+      "modified": "2026-07-02T11:24:38.834290+00:00",
+      "size": 3064
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
+      "title": "Agent Handout: Yushchenko Model Efficiency Observer",
+      "modified": "2026-07-02T11:24:38.834179+00:00",
+      "size": 3909
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md",
+      "title": "Skill Registry And Daily RAG Review Hardening",
+      "modified": "2026-07-02T11:24:38.834065+00:00",
+      "size": 3041
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md",
+      "title": "Skill Registry And Daily RAG Review Hardening Handout",
+      "modified": "2026-07-02T11:24:38.833866+00:00",
+      "size": 3366
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-scheduled-automation-audit/run-summary.md",
       "title": "Scheduled Automation Audit",
-      "modified": "2026-07-01T09:53:42.395420+00:00",
+      "modified": "2026-07-02T11:24:38.833724+00:00",
       "size": 2607
     },
     {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-dashboard-two-layer-schema.md",
-      "title": "Run Note: Two-Layer Dashboard Schema Control Panel",
-      "modified": "2026-07-01T09:43:43.412241+00:00",
-      "size": 1539
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md",
+      "title": "Scheduled Automation Audit Handout",
+      "modified": "2026-07-02T11:24:38.833628+00:00",
+      "size": 4123
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/agent-handout.md",
-      "title": "Agent Handout: Two-Layer Dashboard Schema Control Panel",
-      "modified": "2026-07-01T09:43:43.311812+00:00",
-      "size": 3546
+      "path": "project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md",
+      "title": "Agent Handout: Ronaldinho Technical Advisor Review",
+      "modified": "2026-07-02T11:24:38.833371+00:00",
+      "size": 8032
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/run-summary.md",
-      "title": "Run Summary: Two-Layer Dashboard Schema Control Panel",
-      "modified": "2026-07-01T09:43:43.211675+00:00",
-      "size": 6269
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-messi-coordination-review.md",
-      "title": "2026-07-01 Messi Coordination Review",
-      "modified": "2026-07-01T09:39:39.347818+00:00",
-      "size": 1427
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md",
+      "title": "Run Summary: Minimal Public PRD/ICP Services Landing",
+      "modified": "2026-07-02T11:24:38.833213+00:00",
+      "size": 6890
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-01-messi-coordination-review/agent-handout.md",
-      "title": "Agent Handout: Messi Coordination Review",
-      "modified": "2026-07-01T09:39:39.248348+00:00",
-      "size": 6460
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-messi-coordination-review.md",
-      "title": "Messi Coordination Review",
-      "modified": "2026-07-01T09:39:39.144875+00:00",
-      "size": 9707
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
-      "title": "2026-07-01 Yushchenko Model Efficiency Observer",
-      "modified": "2026-07-01T09:37:46.127471+00:00",
-      "size": 1271
+      "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
+      "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
+      "modified": "2026-07-02T11:24:38.833013+00:00",
+      "size": 4657
     },
     {
       "kind": "project_run",
-      "path": "project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md",
-      "title": "Initial Model Efficiency Report",
-      "modified": "2026-07-01T09:37:19.335392+00:00",
-      "size": 2655
+      "path": "project/runs/2026-07-01-priority-task-lane-setup/run-summary.md",
+      "title": "Priority Task Lane Setup",
+      "modified": "2026-07-02T11:24:38.832897+00:00",
+      "size": 1863
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-priority-task-lane-setup/agent-handout.md",
+      "title": "Priority Task Lane Setup Handout",
+      "modified": "2026-07-02T11:24:38.832755+00:00",
+      "size": 1502
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-prd-icp-lane/agent-handout.md",
+      "title": "Agent Handout: PRD/ICP Lane",
+      "modified": "2026-07-02T11:24:38.832622+00:00",
+      "size": 2429
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
       "title": "Agent Handout: OpenRouter Model Routing",
-      "modified": "2026-07-01T09:29:57.629084+00:00",
+      "modified": "2026-07-02T11:24:38.832480+00:00",
       "size": 3934
     },
     {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-openrouter-model-routing.md",
-      "title": "2026-07-01 OpenRouter Model Routing",
-      "modified": "2026-07-01T09:28:39.172514+00:00",
-      "size": 1418
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md",
+      "title": "Agent Handout: Messi Task Architecture Review",
+      "modified": "2026-07-02T11:24:38.832251+00:00",
+      "size": 3207
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
-      "title": "OpenRouter Model Routing Plan",
-      "modified": "2026-07-01T09:28:29.222512+00:00",
-      "size": 11399
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-messi-fast-final-closeout/agent-handout.md",
+      "title": "Messi Fast Final Closeout Handout",
+      "modified": "2026-07-02T11:24:38.832138+00:00",
+      "size": 3746
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-messi-coordination-review/agent-handout.md",
+      "title": "Agent Handout: Messi Coordination Review",
+      "modified": "2026-07-02T11:24:38.832021+00:00",
+      "size": 6460
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-lol-agent-coordination-and-kb-brief/agent-handout.md",
+      "title": "Agent Handout: LOL Agent Coordination And Knowledge-Base Brief",
+      "modified": "2026-07-02T11:24:38.831891+00:00",
+      "size": 2386
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md",
+      "title": "Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion",
+      "modified": "2026-07-02T11:24:38.831768+00:00",
+      "size": 6134
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md",
+      "title": "Jesus Merge Handoff",
+      "modified": "2026-07-02T11:24:38.831511+00:00",
+      "size": 3310
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md",
+      "title": "Agent Handout: Infra Status And Next Setup",
+      "modified": "2026-07-02T11:24:38.831312+00:00",
+      "size": 1641
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-final-integration-notion-closeout/agent-handout.md",
+      "title": "Final Integration And Notion Closeout Handout",
+      "modified": "2026-07-02T11:24:38.831193+00:00",
+      "size": 4621
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-final-completion-audit/agent-handout.md",
+      "title": "Final Completion Audit Handout",
+      "modified": "2026-07-02T11:24:38.831053+00:00",
+      "size": 4691
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-evening-skill-hook-review/run-summary.md",
+      "title": "Evening Skill And Hook Review",
+      "modified": "2026-07-02T11:24:38.830845+00:00",
+      "size": 2451
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "modified": "2026-07-02T11:24:38.830769+00:00",
+      "size": 3930
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
+      "title": "Agent Handout: Dev Orchestration Lane",
+      "modified": "2026-07-02T11:24:38.830652+00:00",
+      "size": 3001
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.pdf",
+      "title": "review-report.pdf",
+      "modified": "2026-07-02T11:24:38.830479+00:00",
+      "size": 238913
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.md",
+      "title": "Dashboard, Website, Strategy, And Workflow QA Review",
+      "modified": "2026-07-02T11:24:38.830013+00:00",
+      "size": 10416
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/agent-handout.md",
+      "title": "Dashboard Website Strategy QA Handout",
+      "modified": "2026-07-02T11:24:38.829695+00:00",
+      "size": 4792
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/run-summary.md",
+      "title": "Run Summary: Two-Layer Dashboard Schema Control Panel",
+      "modified": "2026-07-02T11:24:38.829571+00:00",
+      "size": 6269
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-two-layer-schema/agent-handout.md",
+      "title": "Agent Handout: Two-Layer Dashboard Schema Control Panel",
+      "modified": "2026-07-02T11:24:38.829474+00:00",
+      "size": 3546
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-operator-ux-optimization/agent-handout.md",
+      "title": "Agent Handout: Dashboard Operator UX Optimization",
+      "modified": "2026-07-02T11:24:38.829357+00:00",
+      "size": 2939
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md",
+      "title": "Agent Handout: Competitor-Backed Dashboard And Website Plan",
+      "modified": "2026-07-02T11:24:38.829086+00:00",
+      "size": 4844
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-blue-archflow-automate-website/agent-handout.md",
+      "title": "Agent Handout: Blue ArcFlow Automate Website",
+      "modified": "2026-07-02T11:24:38.828936+00:00",
+      "size": 3557
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-agent-communication-channel/agent-handout.md",
       "title": "Agent Handout: Live Communication Channel",
-      "modified": "2026-07-01T09:18:32.573776+00:00",
+      "modified": "2026-07-02T11:24:38.828802+00:00",
       "size": 3014
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-01-agent-communication-channel.md",
-      "title": "2026-07-01 Agent Communication Channel",
-      "modified": "2026-07-01T09:18:10.247855+00:00",
-      "size": 899
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md",
-      "title": "Jarvis Agentbrowser Voice And Block Schema Review",
-      "modified": "2026-06-30T20:26:17.778453+00:00",
-      "size": 2425
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/run-summary.md",
       "title": "Run: Jarvis Voice Dashboard Review Branch",
-      "modified": "2026-06-30T15:03:48.268157+00:00",
+      "modified": "2026-07-02T11:24:38.828655+00:00",
       "size": 2310
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-06-30-jarvis-voice-dashboard-review/agent-handout.md",
       "title": "Agent Handout: Jarvis Voice Dashboard Review Branch",
-      "modified": "2026-06-30T15:03:48.268010+00:00",
+      "modified": "2026-07-02T11:24:38.828541+00:00",
       "size": 1441
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md",
+      "title": "Jarvis Agentbrowser Voice And Block Schema Review",
+      "modified": "2026-07-02T11:24:38.828188+00:00",
+      "size": 2425
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-06-30-integrator-review/run-summary.md",
+      "title": "Run: June 30 Integrator Review",
+      "modified": "2026-07-02T11:24:38.828016+00:00",
+      "size": 3041
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-notion-update-package.md",
+      "title": "Notion Update Package",
+      "modified": "2026-07-02T11:24:38.827846+00:00",
+      "size": 5455
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md",
+      "title": "Jarvis Dashboard MVP Layer Report",
+      "modified": "2026-07-02T11:24:38.827657+00:00",
+      "size": 6046
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md",
+      "title": "Jarvis Dashboard ICP Task Consolidation",
+      "modified": "2026-07-02T11:24:38.827542+00:00",
+      "size": 11043
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
+      "title": "E1 Task Consolidation Table",
+      "modified": "2026-07-02T11:24:38.827431+00:00",
+      "size": 9174
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-dashboard-execution-architecture.md",
+      "title": "Dashboard Execution Architecture",
+      "modified": "2026-07-02T11:24:38.827315+00:00",
+      "size": 13245
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-two-paradigm-execution-plan.md",
+      "title": "Two-Paradigm Execution Plan",
+      "modified": "2026-07-02T11:24:38.827186+00:00",
+      "size": 4819
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md",
+      "title": "Ronaldo Dashboard And Website Execution Plan",
+      "modified": "2026-07-02T11:24:38.827086+00:00",
+      "size": 14834
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md",
+      "title": "Public Website Market Research And Minimal Copy Brief",
+      "modified": "2026-07-02T11:24:38.826948+00:00",
+      "size": 3813
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
+      "title": "OpenRouter Model Routing Plan",
+      "modified": "2026-07-02T11:24:38.826855+00:00",
+      "size": 11399
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-messi-task-architecture-review.md",
+      "title": "Messi Task Architecture Review",
+      "modified": "2026-07-02T11:24:38.826728+00:00",
+      "size": 17450
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md",
+      "title": "2026-07-01 Messi Final Delivery Sequence And Notion Review",
+      "modified": "2026-07-02T11:24:38.826624+00:00",
+      "size": 7349
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-messi-coordination-review.md",
+      "title": "Messi Coordination Review",
+      "modified": "2026-07-02T11:24:38.826528+00:00",
+      "size": 9707
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-lol-agent-coordination-and-kb-brief.md",
+      "title": "LOL Agent Coordination And Knowledge-Base Brief",
+      "modified": "2026-07-02T11:24:38.826424+00:00",
+      "size": 11189
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md",
+      "title": "Legacy Design Reference And PRD/ICP Calculator Brief",
+      "modified": "2026-07-02T11:24:38.826320+00:00",
+      "size": 8817
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-infra-status-and-next-setup.md",
+      "title": "Infra Status And Next Setup",
+      "modified": "2026-07-02T11:24:38.826211+00:00",
+      "size": 3318
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-dashboard-jdb-10-acceptance-audit.md",
+      "title": "Dashboard JDB-10 Acceptance Audit",
+      "modified": "2026-07-02T11:24:38.826136+00:00",
+      "size": 8062
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-current-state-e1-e7-vercel-railway-jarvis.md",
+      "title": "Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System",
+      "modified": "2026-07-02T11:24:38.826051+00:00",
+      "size": 13121
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-competitor-dashboard-website-plan.md",
+      "title": "Competitor-Backed Dashboard And Website Improvement Plan",
+      "modified": "2026-07-02T11:24:38.825915+00:00",
+      "size": 20647
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-blue-archflow-automate-website-review.md",
+      "title": "Blue ArcFlow Automate Website Review",
+      "modified": "2026-07-02T11:24:38.825808+00:00",
+      "size": 5054
     },
     {
       "kind": "project_run",
@@ -1980,7 +2001,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 47,
+    "file_count": 48,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -2216,6 +2237,11 @@
         "path": "wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md",
         "title": "2026-07-02 Jarvis Dashboard MVP Implementation",
         "excerpt": "# 2026-07-02 Jarvis Dashboard MVP Implementation  Status: implementation complete for static/dashboard and provider-disabled API-contract scope  ## Task  Finish the Jarvis dashboard MVP as a reliable static/browser-local control and communication surface for the PRD/ICP knowledge engine and multi-agent execution system.  ## FACT  - Screen 1 now has a PRD/ICP request surface and required output blocks. - Screen 2 now "
+      },
+      {
+        "path": "wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
+        "title": "2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract",
+        "excerpt": "# 2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract  Status: complete for docs, skills, Notion clarification, and local stack contract scope  ## Task  Optimize the Notion/task architecture, create local Jarvis stack operating contracts, and define Prompt 2.1 / Prompt 3 coordination without activating gated runtime.  ## FACT  - `arcagcom` was added as the live-agent communication skill. - `archflow1` was ad"
       }
     ]
   },
@@ -2665,6 +2691,11 @@
       "text": "# Notion Update Package  Date: 2026-07-02 Status: human-friendly update package; no live task-board writes performed by this report  ## Purpose  Use this package to update task-board rows without overloading task bodies with execution history. The goal is to correct task meaning, preserve evidence, and prevent static dashboard proof from being confused with live runtime capability.  ## Recommended Board Update Summary  ArchFlow Prompt 1 consolidation is complete. The current offer is a Product Discovery-to-Production PRD Pack for B2B SaaS product teams. The Jarvis dashboard MVP should support two lanes: Lane A for direct Jarvis chat/config/local packet control and Lane B for coordinator/executor workflow supervision, QA, docs, reporting, and deployment sequencing.  Current proof supports static/browser-local website and dashboard review, generated dashboard data, E1.3 KB readback, and public-safe task/reporting artifacts. Runtime/backend/provider/voice/writeback work remains gated and should not be marked Done.  ## Status Updates To Apply  | Row | Recommended action | |---|---| | E1 parent | Keep Active. Add child-state summary from this package. | | E1.2 | Keep Review until owner "
     },
     {
+      "path": "project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
+      "title": "Prompt 2.1 Notion And Local Jarvis Stack Contract Report",
+      "text": "# Prompt 2.1 Notion And Local Jarvis Stack Contract Report  Date: 2026-07-02 Status: implementation complete for docs, skills, Notion notes, and coordination contract  ## Scope  Prompt 2.1 owns Notion/task architecture, dashboard operating documentation, local Jarvis stack contract, and coordination skills. Prompt 3 remains the website visual/code lane.  No website visual files were changed.  ## Evidence Read  - Prompt 2 layer report and handout. - Prompt 2 PRD/ICP templates and test runbook. - CrewAI/LangGraph operations contract. - Current Notion E1-E7 epics and E1/JDB/TG task rows. - Live project communication log. - Current Git branch state.  ## Notion E1-E7 State  | Epic | Current state | Prompt 2.1 interpretation | |---|---:|---| | E1 | Active | Correct. Current local KB/dashboard foundation remains active. | | E2 | Not started | Correct. ICP research execution still waits for approved evidence cycle. | | E3 | Not started | Website work exists, but E3 strategic acceptance still needs owner gates. | | E4 | Active | Content/reporting is active as planning/template work, not public automation. | | E5 | Active | Analytics/ROI method is active as methodology, not validated ROI cla"
+    },
+    {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
       "title": "Run - Clean Public Resetup",
       "text": "# Run - Clean Public Resetup  Date: 2026-06-25 Scope: public project folder  ## Task  Create a clean public-safe project folder for the ArchFlow reset. Translate the private project board into English. Keep prior work as sanitized history. Prepare provider setup templates for Ollama local mode and Codex operator mode without storing secrets.  ## Inputs Reviewed  - Existing resetup package from 2026-06-24. - Private project board epics and tasks. - Existing local provider state. - Current public-safety requirements.  ## Outputs Created  - `README.md` - `AGENTS.md` - `CLAUDE.md` - `project/README.md` - `project/operating-rules.md` - `project/project-plan.md` - `project/agentic-stack.md` - `project/provider-setup.md` - `project/config/providers.env.example` - `project/config/model-routing.yaml` - `project/scripts/check-ollama.sh` - `project/scripts/smoke-test-ollama-qwythos.sh` - `project/prompts/af-graph.md` - `project/prompts/af-review.md` - `history/previous-work-summary.md` - `history/legacy-file-inventory.md` - `history/resetup-summary-2026-06-24.md` - `history/notion-plan-ingest-2026-06-25.md` - `skills/skills-used.md` - `PUBLICATION_REVIEW.md` - `CHANGELOG.md`  ## Checks  - Pub"
@@ -2922,7 +2953,7 @@
     {
       "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.md",
       "title": "Dashboard, Website, Strategy, And Workflow QA Review",
-      "text": "# Dashboard, Website, Strategy, And Workflow QA Review  Date: 2026-07-01   Status: QA/PM audit complete; static delivery verified; runtime lanes remain gated   Agent roles used: Codex QA, Senior Dev, Project Manager, Strategy Review, Reviewer  ## Essential Links  - Public site: https://<protected-preview-host> - Diagnostic: https://<protected-preview-host> - Dashboard: https://<protected-preview-host> - Dashboard data: https://<protected-preview-host> - Review branch: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/tree/review-jarvis-agentbrowser-blockschema-20260630  ## Executive Review  FACT: The current public site and dashboard routes returned HTTP 200 during this audit. The active review branch matched the GitHub remote at commit `73c41ea` before this audit added local report and memory artifacts. Notion now has an `Agent Tags` multi-select field, active task rows have updated tags, and the Links page has been cleared down to essential current links and gated-state notes.  INTERPRETATION: The static website and dashboard are working as a review-ready public-safe delivery candidate. They are consistent with the strategic plan because the website sells the source-backed"
+      "text": "# Dashboard, Website, Strategy, And Workflow QA Review  Date: 2026-07-01 Status: QA/PM audit complete; static delivery verified; runtime lanes remain gated Agent roles used: Codex QA, Senior Dev, Project Manager, Strategy Review, Reviewer  ## Essential Links  - Public site: https://<protected-preview-host> - Diagnostic: https://<protected-preview-host> - Dashboard: https://<protected-preview-host> - Dashboard data: https://<protected-preview-host> - Review branch: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/tree/review-jarvis-agentbrowser-blockschema-20260630  ## Executive Review  FACT: The current public site and dashboard routes returned HTTP 200 during this audit. The active review branch matched the GitHub remote at commit `73c41ea` before this audit added local report and memory artifacts. Notion now has an `Agent Tags` multi-select field, active task rows have updated tags, and the Links page has been cleared down to essential current links and gated-state notes.  INTERPRETATION: The static website and dashboard are working as a review-ready public-safe delivery candidate. They are consistent with the strategic plan because the website sells the source-backed PRD"
     },
     {
       "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
@@ -3083,6 +3114,11 @@
       "path": "project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md",
       "title": "Jarvis Dashboard MVP Implementation Handout",
       "text": "# Jarvis Dashboard MVP Implementation Handout  ## Title And Purpose  This handout records Prompt 2 implementation for the Jarvis dashboard MVP after Prompt 1, Prompt 1.2, and the CrewAI Level 3 proof were complete.  ## Human Summary  The implementation strengthened the static/browser-local dashboard into a more complete operator surface for ArchFlow's PRD/ICP knowledge engine and multi-agent execution system.  Screen 1 now provides a direct PRD/ICP request surface, PRD output blocks, and backend fallback behavior. Screen 2 now exposes task stages and editable role configuration panels for the required agent roles and CrewAI role workers. The bottom composer is fixed, voice controls have explicit mic/stop/cancel/timer/transcript/playback states, and block schemas have zoom controls.  A provider-disabled FastAPI service contract was added under `services/jarvis-api/`. It implements the requested endpoint set, but it does not call OpenRouter, perform writeback, store raw voice content, deploy Railway, or run the full test cycle. FastAPI is not installed in the current local runtime, so runtime import remains dependency-gated.  ## Current State  Task status: implementation complete for"
+    },
+    {
+      "path": "project/runs/2026-07-02-prompt-2-1-notion-local-stack-contract/agent-handout.md",
+      "title": "Prompt 2.1 Notion And Local Jarvis Stack Contract Handout",
+      "text": "# Prompt 2.1 Notion And Local Jarvis Stack Contract Handout  ## Title And Purpose  This handout records Prompt 2.1 after Prompt 2 completed and was merged to `main`.  Use it to continue Notion/task architecture, local Jarvis stack operation, or Prompt 3 coordination without reopening the whole chat.  ## Human Summary  Prompt 2.1 clarified the operating layer around the Jarvis dashboard rather than activating new runtime. The work creates two project-local skills: `arcagcom` for parallel-agent communication and `archflow1` for local Jarvis stack operation.  The local Jarvis manual now explains how Dashboard Screen 1, Dashboard Screen 2, `jarvis-api`, LangGraph, CrewAI, OpenRouter, STT, TTS, and Railway relate. It carries forward the owner-decision gates: full PRD/ICP test cycle, FastAPI dependency/runtime proof, OpenRouter activation/budget ledger, and Railway/Telegram/production/Figma/writeback decisions.  Notion optimization is handled as evidence-backed clarification. Duplicate-looking E1.3.8/E1.3.9/E1.3.10/JDB rows are mapped by meaning. No page was deleted, no private URLs were stored, and no runtime/provider status was upgraded without proof.  ## Current State  Task status: co"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
@@ -3345,6 +3381,11 @@
       "text": "# Resetup Summary - 2026-06-24  The resetup created a clearer operating model for the project.  ## Accepted Direction  The active solution is the knowledge-base and PRD engine:  1. Intake dialogue, chat, meeting notes, or transcript. 2. Summarize into structured context. 3. Produce a PRD. 4. Extract tasks, responsibilities, metrics, and blockers. 5. Update the knowledge base. 6. Review for evidence, public safety, and next action.  ## Agentic Stack  | Layer | Role | |---|---| | LangGraph | Controls reasoning path, state, and approval gates. | | CrewAI | Organizes agents as a team. | | LlamaIndex | Connects agents to bounded data and RAG. | | Codex | Operates locally, edits files, verifies outputs, and handles approvals. | | Ollama | Local model provider after approval. |  ## Public Project Rule  All new active work goes under `public/project`. Prior work is represented under `public/history` as summaries only."
     },
     {
+      "path": "skills/arcagcom/SKILL.md",
+      "title": "Arcagcom",
+      "text": "--- name: arcagcom description: ArchFlow public project live-agent communication contract. Use before parallel work, role-based work, Prompt 2.1/Prompt 3 coordination, shared-file edits, Git closeout, or handoff. ---  # Arcagcom  ## Purpose  Use `arcagcom` to coordinate ArchFlow public project agents through `project/live/communication/`.  The goal is simple: no silent overlap, no private data in public logs, no contradictory status claims, and no final Git merge before active lanes have posted completion or handoff state.  ## Required Read Order  Before editing files, read:  1. `project/operating-rules.md` 2. `project/live/communication/README.md` 3. `project/live/communication/current-agent-notice.md` 4. latest entries in `project/live/communication/agent-communication-log.md`  ## Starting Update  Append a `starting` entry before editing. Include:  - task; - files likely to change; - files claimed; - expected output; - blockers; - next step.  Claim only the files needed for the current task. Do not claim broad folders unless the task truly owns the whole folder.  ## During Work  Append an update before:  - editing a shared file another lane may touch; - expanding scope; - changin"
+    },
+    {
       "path": "skills/archflow-e1-runtime-guard/SKILL.md",
       "title": "ArchFlow E1 Runtime Guard",
       "text": "--- name: archflow-e1-runtime-guard description: Validate the ArchFlow E1 runtime before Git push. Use after setup or before publication to confirm the public safety boundary, workflow YAML, LangGraph smoke path, LlamaIndex readiness, CrewAI readiness, and saved project skills without installing packages during the hook. ---  # ArchFlow E1 Runtime Guard  ## Purpose  Use this skill whenever E1 runtime work is changed or pushed. It keeps the Block 1 setup repeatable by checking that the public project can still run the knowledge-base spine:  `public safety scan -> workflow validation -> LangGraph smoke path -> LlamaIndex import -> CrewAI import -> Git push`  The skill is intentionally a guard, not an installer. Package installation happens as an explicit setup step before pushing.  ## When To Use  - Before pushing E1.1, E1.2, or workflow changes. - After changing `project/workflows/`, `project/agents/`, `project/scripts/`, or `skills/`. - After installing or upgrading LangGraph, LlamaIndex, CrewAI, LangSmith, Pydantic, or PyYAML. - After changing the approved corpus boundary.  ## Required Checks  1. Run the public safety scan.    - Blocks secrets, private links, local absolute paths,"
@@ -3358,6 +3399,11 @@
       "path": "skills/archflow-task-breakdown/agents/openai.yaml",
       "title": "openai.yaml",
       "text": "interface:   display_name: \"ArchFlow Task Breakdown\"   short_description: \"Plan ArchFlow epics into safe staged subtasks\"   default_prompt: \"Use $archflow-task-breakdown to decompose this ArchFlow epic into staged tasks, subtasks, checks, and Notion-ready outputs.\""
+    },
+    {
+      "path": "skills/archflow1/SKILL.md",
+      "title": "Archflow1",
+      "text": "--- name: archflow1 description: Local ArchFlow Jarvis stack operating contract for dashboard, jarvis-api, LangGraph, CrewAI, voice services, OpenRouter budget gates, and later Railway migration. ---  # Archflow1  ## Purpose  Use `archflow1` when running, reviewing, or extending the local ArchFlow Jarvis stack from the dashboard.  This skill is a local operating contract, not proof that the full runtime is live.  ## Stack Topology  Layer order:  1. Dashboard local UI: static browser surface under `project/dashboard/`. 2. `jarvis-api`: FastAPI backend contract under `services/jarvis-api/`. 3. LangGraph controller: routing, state, gates, lane execution, and review stops. 4. CrewAI roles: role/team structure orchestrated through LangGraph by default. 5. Optional voice services:    - `stt-faster-whisper` for speech-to-text;    - `tts-kokoro` for text-to-speech;    - Piper as a lower-complexity fallback. 6. OpenRouter: server-side only, disabled unless owner-approved budget and ledger gates pass. 7. Railway: later deployment target after local proof, auth, secrets, budget, and review gates pass.  ## Expected Local Endpoints  If `jarvis-api` is running, expected endpoints are:  - `/healt"
     },
     {
       "path": "skills/daily-public-project-review/SKILL.md",
@@ -3623,6 +3669,11 @@
       "path": "wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md",
       "title": "2026-07-02 Jarvis Dashboard MVP Implementation",
       "text": "# 2026-07-02 Jarvis Dashboard MVP Implementation  Status: implementation complete for static/dashboard and provider-disabled API-contract scope  ## Task  Finish the Jarvis dashboard MVP as a reliable static/browser-local control and communication surface for the PRD/ICP knowledge engine and multi-agent execution system.  ## FACT  - Screen 1 now has a PRD/ICP request surface and required output blocks. - Screen 2 now has task stages and editable role configuration panels. - Voice controls now include mic, stop, cancel, timer, transcript preview, send transcript, speaker playback, stop playback, and auto-speak. - Block-schema zoom controls were added. - A provider-disabled FastAPI service contract was added under `services/jarvis-api/`. - Env examples contain placeholders only. - `docs/tgapi.md` was removed after a Telegram-token-shaped value was detected. - OpenRouter remains disabled with `5.00` USD daily cap and `1.99` USD run hard stop. - CrewAI Level 3 remains `proof_passed_not_default_runtime`. - Public safety, workflow validation, runtime guard, CrewAI config check, dashboard JSON parse, node syntax check, dashboard static smoke, and diff whitespace checks pass. - Append-only "
+    },
+    {
+      "path": "wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
+      "title": "2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract",
+      "text": "# 2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract  Status: complete for docs, skills, Notion clarification, and local stack contract scope  ## Task  Optimize the Notion/task architecture, create local Jarvis stack operating contracts, and define Prompt 2.1 / Prompt 3 coordination without activating gated runtime.  ## FACT  - `arcagcom` was added as the live-agent communication skill. - `archflow1` was added as the local Jarvis stack operating skill. - `docs/dashboard-local-jarvis-stack-manual.md` was added. - `project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md` records the duplicate/drift map and owner gates. - Notion updates were kept append-only or note-only against exact rows. - OpenRouter remains disabled with the `5.00` USD daily cap and `1.99` USD run hard stop. - CrewAI Level 3 remains `proof_passed_not_default_runtime`.  ## INTERPRETATION  Prompt 2.1 makes the system easier to operate and review. It does not make the dashboard a live backend, provider runtime, Telegram sender, production deployment, or autonomous writeback layer.  ## GAP  - Full PRD/ICP test cycle requires owner approval. - FastAPI runtime proof requires owner-approved depende"
     }
   ],
   "sources": [
