@@ -218,6 +218,48 @@ Files changed:
 - `project/reports/2026-07-01-openrouter-model-routing-plan.md`
 - `project/runs/2026-07-01-openrouter-model-routing/agent-handout.md`
 - `wiki/runs/2026-07-01-openrouter-model-routing.md`
+
+## 2026-07-02 10:14 - Codex - Yushchenko observer report
+
+Status: starting
+
+Task: Produce the next public-safe model-efficiency observer report from local evidence only.
+
+Files likely to change:
+
+- `project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md`
+- `wiki/log.md`
+
+Files claimed: only `project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md`.
+
+Expected output: an evidence-backed report stating whether any active OpenRouter usage was found.
+
+Blockers: none.
+
+Next: scan public-safe run artifacts and logs, then write the report.
+
+## 2026-07-02 10:14 - Codex - Yushchenko observer report
+
+Status: complete
+
+Task: Publish the public-safe model-efficiency observer report from local evidence only.
+
+Files changed:
+
+- `project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md`
+- `wiki/log.md`
+
+Checks:
+
+- Pass: `python3 scripts/public_safety_scan.py`
+
+Findings:
+
+FACT: No active OpenRouter runtime evidence was found in the inspected public-safe project files.
+
+FACT: No token, cost, or per-call model ledger entries were found.
+
+Next action: keep reporting missing runtime evidence until a public-safe model-call ledger exists.
 - `wiki/memory.md`
 - `wiki/insights.md`
 - `wiki/log.md`
@@ -3288,3 +3330,1011 @@ GAP: Owner-device acceptance, main promotion, Figma final sync if promoted, and 
 Checks: final safety/diff checks rerun before push.
 
 Next: regenerate dashboard data, validate, commit, push, and keep Messi active until the owner says `Dyakuyu`.
+
+## 2026-07-01 15:42 - Codex - dashboard website strategy QA audit started
+
+Status: starting
+
+Task: Review the current dashboard, website, strategic plan, Git/Notion alignment, Maxibook Telegram bot issues, LangGraph/API/runtime readiness, and produce a public-safe PDF plus durable state updates.
+
+Files likely to change:
+
+- `project/runs/2026-07-01-dashboard-website-strategy-qa/agent-handout.md`
+- `project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.md`
+- `project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.pdf`
+- `wiki/runs/2026-07-01-dashboard-website-strategy-qa.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json` only if regeneration is needed after public-file edits
+
+Files claimed:
+
+- the new QA audit run folder
+- this append-only live-log entry
+- public WikiLLM run/memory/log entries for this audit
+
+FACT: The active branch is a review branch with recent website/dashboard closeout commits.
+
+INTERPRETATION: This is a QA, PM, and state-sync audit, not a production promotion or provider activation.
+
+HYPOTHESIS: Static website/dashboard should be verifiable from committed source and current routes; backend/provider/Railway/Nexus/writeback lanes likely remain gated unless fresh checks prove otherwise.
+
+GAP: Live Notion and external route checks depend on available connectors/network; any unavailable check will be recorded as a blocker instead of upgraded to Done.
+
+Checks: starting state inspected from Git branch, recent commits, and live communication handoff.
+
+Next: inspect current source, run local/static checks, verify public routes where permitted, discover Notion tooling, then write the report and update durable state.
+
+## 2026-07-01 16:06 - Codex - priority automation scaffolding started
+
+Status: starting
+
+Task:
+Create a new recurring Codex automation lane that runs at 00:30 and 06:30, ranks completed+current tasks by urgency/importance from `project-plan`, executes the highest-priority operational task, generates a new run-handoff artifact for the next agent, updates KB/Notion/GitHub steps where possible, and records durable proof.
+
+Files likely to change:
+
+- `project/agents/agent-roster.yaml`
+- `project/automation/archflow-priority-task-operator-lane.md`
+- `project/scripts/priority-task-operator.py`
+- `project/runs/2026-07-01-priority-morning-automation/` (new `run-summary.md`, `agent-handout.md`, `selected-task.md`)
+- `skills/` (new `priority-task-lane/` skill contract)
+- `skills/skills-used.md`
+- `project/agents/skills-by-agent.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- `project/agents/agent-roster.yaml`
+- `project/automation/archflow-priority-task-operator-lane.md`
+- `project/scripts/priority-task-operator.py`
+- `project/runs/2026-07-01-priority-morning-automation/`
+- `skills/priority-task-lane/SKILL.md`
+- `public/project/live/communication/agent-communication-log.md`
+
+FACT:
+- Existing automation system already has two active schedules (`21:00` and `22:30`) and one five-hour observer lane.
+- The public-safe workflow requires a `starting` update in the live log before any automation edits.
+- The project does not expose a local implementation of Notion or GitHub push actions in this public folder for this lane.
+
+INTERPRETATION:
+- A deterministic lane needs a new priority-scheduling script and one explicit contract file to be dependable.
+- Full external side-effects (actual Notion writes and provider-safe GitHub push) should be handled via explicit evidence-based handoff unless connectors are explicitly enabled.
+
+HYPOTHESIS:
+- Two separate `daily_evening` automation entries with `schedule_time: 00:30` and `schedule_time: 06:30` will be accepted by the existing Codex Cron registry pattern.
+
+GAP:
+- API-level credentials and approved connectors for live Notion updates and GitHub pushes are not guaranteed from this public folder.
+- Runtime verification that 00:30/06:30 jobs trigger in Codex must be checked on the next scheduled cycle.
+
+Checks:
+- starting state read from required communication files and task files
+
+Next:
+- Add new priority-task skill and script, wire both 00:30/06:30 entries in `agent-roster.yaml`, then append complete state in the same log.
+
+## 2026-07-01 16:17 - Codex - priority task automation setup complete
+
+Status: complete
+
+Task:
+Create and wire an automated morning priority-execution lane that runs at 00:30 and 06:30, selects highest-priority unfinished tasks by urgency/importance, creates a PitAgent handoff, and updates skill/automation registry metadata.
+
+FACT:
+- Added two recurring entries in `project/agents/agent-roster.yaml` for `00:30` (`archflow-priority-task-operator-0030`) and `06:30` (`archflow-priority-task-operator-0630`).
+- Added dedicated skill contract `skills/priority-task-operator/SKILL.md`.
+- Added executable lane script `project/scripts/priority-task-operator.py` with deterministic ranking, top-task selection, and handoff artifact generation.
+- Added contract `project/automation/archflow-priority-task-operator-lane.md` and run notes under `project/runs/2026-07-01-priority-task-lane-setup/`.
+- Updated skill registry references in `project/agents/skills-by-agent.md` and `skills/skills-used.md`.
+
+INTERPRETATION:
+- The lane can now be scheduled and will produce consistent evidence packets; full execution of external actions still requires downstream Notion/GitHub connectors or manual operator follow-through.
+
+HYPOTHESIS:
+- With stable `project-plan.md` table format, each scheduled pass will return the same deterministic top-priority row unless statuses or due dates change.
+
+GAP:
+- Actual Notion and GitHub push calls are still handoff-mode actions in this environment and are not performed automatically.
+- The first runtime triggers at 00:30/06:30 still need to be observed in the local Codex automation scheduler.
+
+Checks:
+- `python3 -m py_compile public/project/scripts/priority-task-operator.py`
+- `git -C public status --short` (run context)
+- `public/project/agents/agent-roster.yaml` and `project/automation/archflow-priority-task-operator-lane.md` reviewed during edits.
+
+Next:
+- Wait for the first scheduled 00:30/06:30 execution and confirm generated `project/runs/<run-id>/selected-task.md` plus `pitagent-chat-prompt.md`.
+- Update Notion/GitHub connector steps in the first successful run when access is available.
+
+## 2026-07-01 16:20 - LOL - cross-agent coordination brief reconciliation
+
+Status: complete
+
+Task: Reconcile the duplicate LOL starting entry with the already-created coordination brief, handout, and wiki run note.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+- `project/reports/2026-07-01-lol-agent-coordination-and-kb-brief.md` exists and gives Jesus dashboard perception guidance, Ronaldo public website guidance, and Messi knowledge-base/wall organization instructions.
+- `project/runs/2026-07-01-lol-agent-coordination-and-kb-brief/agent-handout.md` marks the LOL coordination pass complete.
+- `wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md` records the public-safe run summary.
+
+INTERPRETATION:
+- The later `Status: starting` LOL entry is stale relative to the completed artifacts and should be treated as reconciled by this append-only correction.
+
+GAP:
+- Live Obsidian/Nexus wall editing was not performed by LOL. Messi/Jesus should use the brief for that knowledge-base organization work.
+
+Checks:
+- Pending final local validation after this log append.
+
+Next:
+- Use the LOL brief as a coordination input only. Do not reopen root website or dashboard implementation ownership from LOL unless the owner gives a new direct instruction.
+
+## 2026-07-01 21:00 - Codex - evening skill and hook drift review
+
+Status: starting
+
+Task:
+Review public skill registries, hook contracts, hook-backed workflow claims, and reusable-skill drift for the scheduled evening maintenance lane.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+- `project/agents/skills-by-agent.md`
+- `project/agents/agent-roster.yaml`
+- `skills/skills-used.md`
+- `.codex/hooks.json`
+- `project/scripts/*hook*.py`
+- `.githooks/`
+- `AGENTS.md`
+- `project/operating-rules.md`
+- `skills/`
+- `project/runs/<run-id>/agent-handout.md`
+- `project/runs/<run-id>/run-summary.md`
+
+Files claimed:
+- `project/live/communication/agent-communication-log.md`
+- Skill and hook registry files only if actual drift is found.
+- The evening drift-review run folder only if meaningful public-safe changes are made.
+
+Expected output:
+- Public-safe no-op verdict or minimal updates backed by validation.
+
+Blockers:
+- No external connector, network, provider, service-start, credential, push, or private-source action is approved for this lane.
+
+Next:
+- Read the task-handout skill because this maintenance lane reviews subtasks, then inspect registries, hooks, scripts, and validation surfaces before deciding whether edits are needed.
+
+## 2026-07-01 21:05 - Codex - evening skill and hook drift review complete
+
+Status: complete
+
+Task:
+Review public skill registries, task-handout hook alignment, hook-backed workflow claims, and reusable-skill drift for the scheduled evening maintenance lane.
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+- `skills/priority-task-operator/SKILL.md`
+- `project/runs/2026-07-01-priority-task-lane-setup/run-summary.md`
+- `project/runs/2026-07-01-evening-skill-hook-review/run-summary.md`
+- `project/runs/2026-07-01-evening-skill-hook-review/agent-handout.md`
+
+FACT:
+- Registry files already include `priority-task-operator` consistently across the automation roster and skill registry surfaces.
+- The task-handout hook remains aligned across `.codex/hooks.json`, `project/scripts/task-handout-hook.py`, and `skills/task-handout/SKILL.md`.
+- The pre-push hook still runs the public safety scan and runtime guard.
+- The only new drift found was path-prefix wording in the new priority-task skill and setup run summary.
+
+INTERPRETATION:
+- No speculative skill or hook expansion was needed.
+- The priority-task operator lane is concrete enough to remain registered, but its first scheduled 00:30 and 06:30 runtime outputs still need observation.
+
+GAP:
+- Notion and GitHub follow-up remain packet/handoff mode until connector evidence exists.
+- Scheduler runtime proof for the new priority-task lane is still pending.
+
+Checks:
+- `.codex/hooks.json` JSON parse passed.
+- Hook, priority, and pre-push guard script bytecode compilation passed.
+- Workflow validation passed.
+- Forced task-handout hook probe returned `TASK_HANDOUT_HOOK_TRIGGER=required`.
+- `scripts/public_safety_scan.py` passed.
+- Ignored local env/runtime checks passed.
+- Tracked plus untracked non-ignored text ASCII check passed.
+- `git diff --check` passed.
+- `git status --short` reviewed.
+
+Next:
+- Observe the first priority-task runs at 00:30 and 06:30, then inspect generated packet files before claiming runtime success.
+
+## 2026-07-01 22:33 - Codex - daily skill and RAG retrospective
+
+Status: starting
+
+Task:
+Run the 22:30 daily retrospective over ArchFlow public skill usage, hook and automation outputs, run notes, RAG/KB state, coordination files, and durable memory surfaces.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/20260701_daily_skill_retrospective.md`
+- `project/runs/20260701_run_daily_skill_retrospective.md`
+- automation memory outside the public repo for this scheduled lane
+
+Files claimed:
+- The daily retrospective report and run note for 2026-07-01.
+- The live communication log entries for this retrospective only.
+
+Expected output:
+- Public-safe retrospective with FACT/INTERPRETATION/HYPOTHESIS/GAP, lane recommendations, and checks.
+
+Blockers:
+- No network, provider calls, deploys, pushes, live Nexus, Telegram, or service starts are approved for this lane.
+
+Next:
+- Normalize today's run/report evidence into the daily retrospective and record only useful local conclusions.
+
+## 2026-07-01 22:35 - Codex - daily skill and RAG retrospective complete
+
+Status: complete
+
+Task:
+Completed the 22:30 daily retrospective over ArchFlow public skill usage, RAG/KB state, automation boundaries, coordination files, and open operational gaps.
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/20260701_daily_skill_retrospective.md`
+- `project/runs/20260701_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `wiki/log.md`
+
+FACT:
+- The 21:00 evening skill and hook lane already handled registry drift.
+- The daily lane reviewed broader run evidence, skill usefulness, RAG/KB impact, and inefficiency patterns.
+- No new registry, decision, TOML, JSON, YAML, or durable memory/insights edits were needed from this run.
+
+INTERPRETATION:
+- The lane split is working. Future daily retrospectives should use the evening lane output as input and avoid redoing registry discovery unless evidence changes.
+
+GAP:
+- Priority-task first-cycle proof, model-call ledger, Telegram sender proof, live Nexus/writeback proof, and backend/provider runtime proof remain open.
+
+Checks:
+- Confirmed new Markdown paths exist.
+- Touched-file non-ASCII scan returned no matches.
+- `scripts/public_safety_scan.py` passed from the public project root.
+- `git status --short` reviewed; prior July 1 uncommitted changes remain outside this run's ownership.
+
+Next:
+- Observe priority-task scheduled outputs after the first 00:30 and 06:30 runs, then update the issue only with proof-backed closure.
+## 2026-07-01 - Codex - Yushchenko observer starting
+
+Status: starting
+
+Task: Build the public-safe model-efficiency observer report from existing project logs and run artifacts.
+
+Files likely to change:
+- project/runs/yushchenko-model-efficiency/YYYY-MM-DD-HHMM-model-efficiency-report.md
+- project/agents/model-efficiency-advice.md
+- project/agents/model-efficiency-issues.md
+- wiki/log.md
+- wiki/memory.md or wiki/insights.md if a durable pattern changes
+
+Files claimed: only the observer report and its directly related notes.
+
+FACT: The observer pass will stay public-safe and avoid private URLs, tokens, credentials, account IDs, screenshots, and raw private source text.
+
+GAP: The automation memory file was not present at the expected path in this session.
+
+## 2026-07-01 - Codex - Yushchenko observer completion
+
+Status: complete
+
+Task: Publish the follow-up model-efficiency observer report and refresh the durable observer notes.
+
+Files changed:
+- project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md
+- project/agents/model-efficiency-advice.md
+- project/agents/model-efficiency-issues.md
+- wiki/log.md
+- project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md
+
+FACT: No active OpenRouter runtime evidence was found in the inspected public-safe project files.
+
+FACT: No token counts, cost records, or canonical model-call ledger entries were found.
+
+INTERPRETATION: The observer lane is behaving correctly for a pre-activation state, but it still cannot measure true efficiency until runtime logging exists.
+
+GAP: Telegram send skipped - approved sender unavailable.
+
+Checks:
+- Pass: `python3 scripts/public_safety_scan.py`
+
+Next: Keep the observer reporting missing runtime evidence until a real public-safe model-call ledger exists.
+## 2026-07-02 11:12 - Codex - Yushchenko observer rerun
+
+Status: starting
+
+Task: Run a public-safe model-efficiency evidence sweep and publish a fresh observer report with explicit token/cost/context-gap findings.
+
+Files likely to change:
+
+- project/runs/yushchenko-model-efficiency/2026-07-02-????-model-efficiency-report.md
+
+Files claimed:
+
+- project/runs/yushchenko-model-efficiency/2026-07-02-????-model-efficiency-report.md
+
+Next: inspect public-safe run artifacts and model-routing artifacts for provider/log evidence.
+
+## 2026-07-02 11:12 - Codex - Yushchenko observer rerun
+
+Status: complete
+
+Task: Publish the rerun model-efficiency report from local evidence and close-loop the automation with check results.
+
+Files changed:
+- project/runs/yushchenko-model-efficiency/2026-07-02-1112-model-efficiency-report.md
+- project/agents/model-efficiency-advice.md
+- project/agents/model-efficiency-issues.md
+- automation memory file outside the public repo
+- project/live/communication/agent-communication-log.md
+- wiki/log.md
+
+FACT:
+- No active OpenRouter runtime evidence was found in project evidence inspected for this run.
+- No token/cost/context telemetry exists in local model-call format.
+- 2x attempts of `project/scripts/check-ollama.sh` and `project/scripts/smoke-test-ollama-qwythos.sh` both failed with the local endpoint blocked/unreachable (`127.0.0.1:11434`).
+
+Checks:
+- `python3 scripts/public_safety_scan.py`
+- YAML parse for `project/agents/agent-roster.yaml`
+
+Next:
+- Keep reporting missing runtime evidence as GAP until an active public-safe model-call ledger and reachable inference endpoint are available.
+
+## 2026-07-02 11:50 - Jesus/Codex - Jarvis dashboard ICP task consolidation
+
+Status: starting
+
+Task:
+Rebuild the public-safe strategic and task foundation for the Jarvis dashboard MVP before implementation. Coordinate bounded read-only review lanes for Notion/E1 tasks, GloomyLord documents, ICP/competitor positioning, technical state, and two-lane dashboard UX, then integrate the findings into reports, a Notion update package, a run handout, and WikiLLM/public memory updates.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+- `project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md`
+- `project/reports/2026-07-02-e1-task-consolidation-table.md`
+- `project/reports/2026-07-02-notion-update-package.md`
+- `project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md` only if reusable strategic meaning changes
+
+Files claimed:
+- The three July 2 Jarvis/ICP consolidation reports.
+- The July 2 Jarvis/ICP consolidation run handout.
+- Append-only communication and wiki log/memory updates for this consolidation only.
+
+Expected output:
+- Public-safe strategic report, task consolidation table, Notion update package, run handout, memory/log updates, validation results, and a clear Prompt 2 readiness decision.
+
+Blockers:
+- No implementation, deployment, provider activation, live backend, voice runtime, owner-device proof, private raw-source logging, or destructive task changes are approved in this block.
+- Live Notion edits are not assumed; the required output is a Notion update package unless an approved connector action is explicitly performed and verified.
+
+Next:
+- Inspect current public Git state, prior role artifacts, reset-plan files, project plan, dashboard/model-routing evidence, and available Notion/local task evidence before writing the consolidated outputs.
+
+## 2026-07-02 12:35 - Jesus/Codex - Jarvis dashboard ICP task consolidation writing
+
+Status: update
+
+Task:
+Integrate completed read-only audit lanes into the required July 2 consolidation artifacts.
+
+Files now being edited:
+- `project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md`
+- `project/reports/2026-07-02-e1-task-consolidation-table.md`
+- `project/reports/2026-07-02-notion-update-package.md`
+- `project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+
+FACT:
+- Five bounded read-only review lanes completed: Notion/E1 task audit, GloomyLord document review, ICP/competitor positioning, technical state, and two-lane dashboard UX.
+- Live task-board evidence shows duplicate-looking E1.3.9 and E1.3.10 rows across dashboard/security and GloomyLord/reporting scopes.
+- Current implementation scope remains documentation and task consolidation only.
+
+Next:
+- Write the reports and handout, then run public-safety and Markdown validation checks before the completion update.
+
+## 2026-07-02 12:55 - Jesus/Codex - Jarvis dashboard ICP task consolidation complete
+
+Status: complete
+
+Task:
+Completed the pre-implementation strategy, ICP, task, Notion-package, memory, and handout consolidation for the Jarvis dashboard MVP.
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+- `project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md`
+- `project/reports/2026-07-02-e1-task-consolidation-table.md`
+- `project/reports/2026-07-02-notion-update-package.md`
+- `project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md`
+- `wiki/memory.md`
+- `wiki/log.md`
+- Global project wiki memory/log/run note outside the public repo was updated with the same public-safe current goal and readiness decision.
+
+FACT:
+- The current service wedge is the Product Discovery-to-Production PRD Pack for B2B SaaS product teams.
+- The dashboard MVP has two lanes: Lane A for direct Jarvis chat/config/local packet control, and Lane B for coordinator/executor supervision, QA, docs, reporting, and deployment sequencing.
+- Static/browser-local website and dashboard slices may be treated as proven where prior evidence supports them.
+- Provider-backed Jarvis, Railway/backend, live Nexus/writeback, owner-device voice proof, Telegram delivery, model-call telemetry, vector retrieval, and production/Figma promotion remain gated.
+- E1.3.9 and E1.3.10 have duplicate-looking dashboard/security versus GloomyLord/reporting meanings; the package recommends moving or renaming GloomyLord rows under E1.5/reporting.
+
+Implementation readiness:
+- Ready for Prompt 2 with constraints.
+- Prompt 2 may begin only as a static/browser-local dashboard MVP implementation and proof pass.
+- Prompt 2 must not activate provider/backend/voice/writeback runtime without separate approval.
+
+Checks:
+- Pass: `python3 scripts/public_safety_scan.py`
+- Pass: `git diff --check`
+- Pass: targeted scan over new July 2 public files found no leaked secret values or private links.
+- Reviewed: `git status --short`; the worktree already contained unrelated July 1 and July 2 dirty files outside this run's ownership.
+
+Next:
+- Apply the Notion update package manually or through an approved connector action.
+- Start Prompt 2 only after reading these consolidation artifacts and the current live communication log.
+
+## 2026-07-02 12:17 - Lead/Codex - Jarvis dashboard MVP implementation preflight
+
+Status: starting
+
+Task:
+Run the Prompt 2 Jarvis dashboard MVP implementation preflight after the requested Prompt 1 consolidation.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md`
+
+Files claimed:
+- Append-only live communication entries for this Prompt 2 preflight.
+- The Prompt 2 implementation preflight handout only.
+
+Expected output:
+- A public-safe go/no-go decision for implementation, based on whether the required Prompt 1 reports and handout exist.
+
+Blockers:
+- Prompt 2 says to run only after Prompt 1 is complete and its reports/handout exist.
+
+Next:
+- Check the required Prompt 1 artifact paths, current git state, skill readiness, and safety gates before any implementation edit.
+
+## 2026-07-02 12:17 - Lead/Codex - Jarvis dashboard MVP implementation blocked
+
+Status: blocked
+
+Task:
+Complete the Prompt 2 implementation preflight without starting implementation.
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md`
+
+FACT:
+- The required Prompt 1 reports were not present under `project/reports/`.
+- The required Prompt 1 run handout was not present under `project/runs/`.
+- The latest live-log entry for Prompt 1 is still a `starting` entry, not a `complete` or `handoff` entry.
+- The current worktree already has modified and untracked files from prior audit, automation, registry, dashboard-data, wiki, and model-efficiency lanes.
+
+INTERPRETATION:
+- Starting dashboard, backend, voice, website, Notion, Git push, or deployment work now would violate the stated Prompt 2 precondition and risk mixing implementation work into incomplete Prompt 1 consolidation.
+
+GAP:
+- No local SkillSpector LOW-risk artifact was found in the inspected public project files.
+- Prompt 1 must finish or be explicitly waived before implementation can safely begin.
+
+Checks:
+- Inspected required Prompt 1 artifact paths.
+- Reviewed current branch, remotes, dirty tracked files, and untracked files.
+- Confirmed installed public skill registry includes the core task-handout, outquestions, runtime guard, task-breakdown, evening review, daily review, and priority-task operator skills.
+- `scripts/public_safety_scan.py` passed after the blocked handout was written.
+- `git diff --check` passed after the blocked handout was written.
+- Did not run git fetch, git ls-remote, runtime guard, dashboard smoke, Notion updates, backend setup, provider activation, or push because implementation is blocked before those gates.
+
+Next:
+- Finish Prompt 1 and create the three consolidation reports plus run handout, or explicitly waive the precondition in a new owner instruction.
+
+## 2026-07-02 12:35 - Jesus/Codex - Dashboard execution architecture Prompt 1.2
+
+Status: starting
+
+Task:
+Define the operational execution layer for the Jarvis dashboard after Prompt 1 and before Prompt 2. Produce the LangGraph, OpenRouter, CrewAI, role, configuration, review-gate, and Prompt 2 implementation contract for the two block-schema screens without building UI, deploying, activating providers, or claiming autonomous runtime.
+
+Files likely to change:
+- `project/agentic-stack.md`
+- `project/agents/agent-roster.yaml`
+- `project/workflows/langgraph-controller.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-02-dashboard-execution-architecture.md`
+- `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md`
+- `wiki/runs/2026-07-02-dashboard-execution-architecture.md`
+- `wiki/log.md`
+
+Files claimed:
+- Prompt 1.2 execution-architecture edits only in the files listed above.
+- Append-only communication and wiki log entries for this run.
+
+Expected output:
+- A public-safe execution architecture report, updated YAML/docs contracts, run handout, WikiLLM run note, validation results, and a clear Prompt 2 readiness decision.
+
+Blockers:
+- No full dashboard UI build, Railway deploy, provider activation, live backend claim, external write, Git push, Telegram send, Notion mutation, production promotion, or secret-bearing config is approved in this block.
+- Existing dirty files from prior July 1 and July 2 lanes must be preserved.
+
+Next:
+- Read Prompt 1 outputs and current stack/config files, run bounded subagent review lanes, then edit only the Prompt 1.2 architecture contract files.
+
+## 2026-07-02 12:50 - Jesus/Codex - Dashboard execution architecture writing
+
+Status: running
+
+Task:
+Integrate the Prompt 1.2 reviewer lanes into the operational execution contract for PRD/ICP Flow, Agent Orchestra, LangGraph routing, CrewAI levels, OpenRouter boundaries, and Prompt 2 readiness.
+
+Files now being edited:
+- `project/agentic-stack.md`
+- `project/agents/agent-roster.yaml`
+- `project/workflows/langgraph-controller.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-02-dashboard-execution-architecture.md`
+- `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md`
+- `wiki/runs/2026-07-02-dashboard-execution-architecture.md`
+- `wiki/log.md`
+
+FACT:
+- Prompt 1 is complete and says Prompt 2 is allowed only as static/browser-local dashboard MVP work.
+- Read-only reviewer lanes agree that OpenRouter, backend, writeback, voice, Telegram, and production promotion remain gated.
+- No canonical model-call ledger or active OpenRouter runtime evidence exists.
+
+Next:
+- Patch the scoped contract files, regenerate dashboard data, and run safety/config validation.
+
+## 2026-07-02 13:05 - Jesus/Codex - Dashboard execution architecture complete
+
+Status: complete
+
+Task:
+Completed Prompt 1.2 dashboard execution architecture between Prompt 1 and Prompt 2.
+
+Files changed:
+- `project/agentic-stack.md`
+- `project/agents/agent-roster.yaml`
+- `project/workflows/langgraph-controller.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-02-dashboard-execution-architecture.md`
+- `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md`
+- `wiki/runs/2026-07-02-dashboard-execution-architecture.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+- Prompt 1.2 defines two dashboard screens: `(1) PRD/ICP Flow` and `(2) Agent Orchestra`.
+- Level 1 configured roles are active as YAML/docs.
+- Level 2 LangGraph-wrapped role execution is the target architecture.
+- Level 3 direct CrewAI runtime remains blocked until public-safe local proof exists.
+- OpenRouter remains server-side only and disabled until backend/local-bridge, secret, model-list, ledger, budget, safety, and approval gates pass.
+- The model-call ledger is now an explicit activation blocker.
+
+INTERPRETATION:
+- Prompt 2 is ready only for static/browser-local dashboard MVP implementation against this contract.
+- The earlier Prompt 2 blocked handout is historical because it was written before Prompt 1 and Prompt 1.2 were complete.
+
+GAP:
+- No backend/local bridge, provider runtime, model-call ledger, direct CrewAI execution proof, live writeback, Telegram sender proof, owner-device voice proof, or production promotion approval exists.
+- Existing dirty files from prior July 1 and July 2 lanes remain outside this run's ownership.
+
+Checks:
+- Pass: `python3 project/scripts/generate-dashboard-data.py`
+- Pass with project-local runtime: `project/local/venv/bin/python project/scripts/validate-workflows.py`
+- Pass with project-local runtime: `project/local/venv/bin/python project/scripts/crewai-config-check.py`
+- Pass: dashboard JSON parse
+- Pass: `node --check project/dashboard/app.js`
+- Pass: `python3 scripts/public_safety_scan.py`
+- Pass: `git diff --check`
+- Pass: `project/local/venv/bin/python project/scripts/pre-push-runtime-guard.py`
+- Pass after approved unsandboxed rerun: `project/local/venv/bin/python project/scripts/dashboard-static-smoke.py` with routes=8, provider_calls=0, writeback=0
+- Initial system-Python workflow/CrewAI checks failed only because system Python lacked `yaml`; project-local runtime checks passed.
+
+Next:
+- Start Prompt 2 only after reading `project/reports/2026-07-02-dashboard-execution-architecture.md`, this handout, and the latest live communication log.
+- Prompt 2 must preserve static/browser-local, provider-disabled, backend-absent, and writeback-gated labels.
+
+## 2026-07-02 13:18 - Jesus/Codex - OpenRouter budget and CrewAI Level 3 clarification
+
+Status: starting
+
+Task:
+Record the owner budget rule for OpenRouter and clarify why Level 3 direct CrewAI runtime is blocked, plus the concrete proof steps to unblock it.
+
+Files likely to change:
+- `project/config/model-routing.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `project/reports/2026-07-02-dashboard-execution-architecture.md`
+- `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md`
+- `wiki/runs/2026-07-02-dashboard-execution-architecture.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+- Prompt 1.2 budget/Level 3 clarification edits only in the files listed above.
+
+FACT:
+- Owner budget instruction: OpenRouter cap is 5 USD per day and always under 2 USD per run.
+- Level 3 is blocked because direct CrewAI LLM execution has not yet been proven on a public-safe fixture.
+
+Next:
+- Patch the budget and CrewAI proof contract, regenerate dashboard data, and run validation.
+
+## 2026-07-02 13:25 - Jesus/Codex - OpenRouter budget and CrewAI Level 3 clarification complete
+
+Status: complete
+
+Task:
+Recorded the owner OpenRouter budget cap and clarified the Level 3 direct CrewAI runtime blocker and unblock path.
+
+Files changed:
+- `project/config/model-routing.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `project/reports/2026-07-02-dashboard-execution-architecture.md`
+- `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md`
+- `wiki/runs/2026-07-02-dashboard-execution-architecture.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+- OpenRouter budget policy is now 5.00 USD per day and always under 2.00 USD per run.
+- Config uses 1.99 USD as the hard per-run threshold.
+- Level 3 direct CrewAI runtime remains blocked because there is no direct CrewAI LLM task proof, no public-safe fixture run, no model-call ledger for that runtime, no verified CrewAI budget guard, and no reviewed direct-runtime output package.
+
+INTERPRETATION:
+- Level 3 is not blocked as a strategic rejection of CrewAI. It is blocked because proof and guardrails are missing.
+
+GAP:
+- A Level 3 proof run still needs a tiny public-safe fixture, ledger and budget guard, direct CrewAI output, AF Review, public-safety scan, workflow validation, and runtime guard.
+
+Checks:
+- Pass: `python3 project/scripts/generate-dashboard-data.py`
+- Pass: `project/local/venv/bin/python project/scripts/validate-workflows.py`
+- Pass: `project/local/venv/bin/python project/scripts/crewai-config-check.py`
+- Pass: dashboard JSON parse
+- Pass: `python3 scripts/public_safety_scan.py`
+- Pass: `git diff --check`
+
+Next:
+- To unblock Level 3, run a separate approved `crewai-level-3-proof` pass with the documented fixture, ledger, budget, output, and review artifacts.
+
+## 2026-07-02 13:31 - Jesus/Codex - CrewAI Level 3 proof execution
+
+Status: starting
+
+Task:
+Execute the CrewAI Level 3 direct runtime proof with a tiny public-safe PRD/ICP fixture, ledger, budget guard, deterministic output artifacts, AF Review packet, safety checks, and dashboard representation on `(1) PRD/ICP Flow` and `(2) Agent Orchestra`.
+
+Files likely to change:
+- `project/scripts/crewai-level-3-proof.py`
+- `project/runs/2026-07-02-crewai-level-3-proof/`
+- `project/workflows/crewai-crew.yaml`
+- `project/workflows/langgraph-controller.yaml`
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-02-dashboard-execution-architecture.md`
+- `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md`
+- `wiki/runs/2026-07-02-dashboard-execution-architecture.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+- CrewAI Level 3 proof script and run folder.
+- Prompt 1.2 dashboard/CrewAI/model-routing contract updates for proof status and dashboard representation only.
+
+FACT:
+- The proof will not call OpenRouter unless explicitly required by a later approval.
+- The proof will use a public-safe fixture and a deterministic local LLM path with zero spend, while still writing the required model-call ledger and budget-guard artifacts.
+
+Next:
+- Inspect CrewAI runtime API and dashboard data/schema handling, implement the proof, run it, update contracts, regenerate dashboard data, and validate.
+
+## 2026-07-02 13:58 - Jesus/Codex - CrewAI Level 3 proof execution
+
+Status: complete
+
+Files changed:
+- `project/scripts/crewai-level-3-proof.py`
+- `project/runs/2026-07-02-crewai-level-3-proof/`
+- `project/workflows/crewai-crew.yaml`
+- `project/workflows/langgraph-controller.yaml`
+- `project/config/model-routing.yaml`
+- `project/dashboard/app.js`
+- `project/scripts/generate-dashboard-data.py`
+- `project/dashboard/data.json`
+- `project/reports/2026-07-02-dashboard-execution-architecture.md`
+- `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md`
+- `wiki/runs/2026-07-02-dashboard-execution-architecture.md`
+- `wiki/runs/2026-07-02-crewai-level-3-proof.md`
+- `wiki/log.md`
+
+FACT:
+- Direct CrewAI Level 3 proof executed with a tiny public-safe PRD/ICP fixture and deterministic local LLM adapter.
+- Model-call ledger and budget guard were saved under the proof run folder.
+- Budget guard recorded 5.00 USD daily cap, 1.99 USD run cap, and 0.00 USD actual spend.
+- Provider calls were zero.
+- External writeback calls were zero.
+- Level 3 was promoted only to `proof_passed_not_default_runtime`.
+- Dashboard Screen 1 and Screen 2 block schemas now represent the CrewAI proof branch and remaining provider/default-runtime gates.
+
+Checks run:
+- Pass: `project/local/venv/bin/python project/scripts/crewai-level-3-proof.py`
+- Pass: `python3 project/scripts/generate-dashboard-data.py`
+- Pass: `project/local/venv/bin/python project/scripts/validate-workflows.py`
+- Pass: `project/local/venv/bin/python project/scripts/crewai-config-check.py`
+- Pass: dashboard JSON parse
+- Pass: `node --check project/dashboard/app.js`
+- Pass: `python3 scripts/public_safety_scan.py`
+- Pass: `git diff --check`
+- Pass: `project/local/venv/bin/python project/scripts/pre-push-runtime-guard.py`
+- Pass after approved local-server rerun: `project/local/venv/bin/python project/scripts/dashboard-static-smoke.py` with eight routes, zero provider calls, and zero writeback.
+
+Remaining gaps:
+- Provider-backed/default CrewAI runtime still requires explicit owner approval, backend/local bridge, server-side secret handling, fresh provider pricing, provider-backed ledger proof, live budget guard, and expanded AF Review.
+- OpenRouter remains disabled.
+
+Next:
+- Treat CrewAI Level 3 as proof-passed evidence only. Do not promote it to default runtime or provider-backed runtime without a later approved activation pass.
+
+## 2026-07-02 14:28 - Jesus/Codex - Jarvis dashboard MVP implementation
+
+Status: starting
+
+Task:
+Implement the Jarvis dashboard MVP as a reliable control and communication surface after Prompt 1, Prompt 1.2, and the CrewAI Level 3 direct proof.
+
+Files likely to change:
+- `project/dashboard/app.js`
+- `project/dashboard/styles.css`
+- `project/scripts/generate-dashboard-data.py`
+- `project/dashboard/data.json`
+- `project/config/model-routing.yaml`
+- `project/workflows/langgraph-controller.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `services/jarvis-api/`
+- `.env.example`
+- `docs/prd-icp-output-template.md`
+- `docs/reporting-daily-weekly-template.md`
+- `docs/testmeeting-prd-runbook.md`
+- `docs/dashboard-role-configuration.md`
+- `docs/crewai-langgraph-operations.md`
+- `project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md`
+- `project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md`
+- `wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+
+Files claimed:
+- Jarvis dashboard MVP UI/API/docs/run-note surfaces listed above for this implementation pass only.
+
+Expected output:
+- Two visible dashboard screens for PRD/ICP Flow and Agent Orchestra, provider-disabled FastAPI service skeleton, budget/env guard contract, voice UI states, role configuration surfaces, reporting/PRD templates, and a layer-by-layer setup report.
+
+Blockers:
+- OpenRouter/provider calls, Railway/live backend deployment, browser-side secrets, Telegram send, live Notion writeback, production promotion, and full PRD/ICP test-cycle execution remain owner-approval gated.
+- Existing dirty files from previous July 1 and July 2 lanes are pre-existing and will not be reverted.
+
+Next:
+- Inspect dashboard/API/script shape, migrate Telegram secret documentation if unsafe, patch the implementation surfaces, regenerate dashboard data, then run validation.
+
+## 2026-07-02 14:00 - LOL/Ronaldo/Theory Sidecar - Jarvis dashboard MVP review
+
+Status: starting
+
+Task:
+Review the current Jarvis dashboard MVP surfaces for PRD/ICP Flow blocks, Agent Orchestra role config panels, composer/voice/block-schema controls, and product/ICP consistency.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+- This communication-log start/complete note only.
+
+Expected output:
+- Concise read-only findings for the active implementer/integrator.
+
+Blockers:
+- Implementation files are currently claimed by the active Jarvis dashboard MVP implementation pass, so this sidecar will not edit them.
+
+Next:
+- Read the dashboard code, styles, Prompt 1/1.2 reports, and public-safe FreePRD/discovery-call requirements, then return findings.
+
+## 2026-07-02 14:00 - Ronaldinho/Security sidecar - Jarvis dashboard MVP scope review
+
+Status: starting
+
+Task:
+Review provider-disabled Jarvis API, env placeholders, OpenRouter budget guard, Telegram secret migration, and public-safety risk without editing implementation files.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md` only.
+
+Files claimed:
+- Append-only reviewer start/complete notes only.
+
+Expected output:
+- Concise blockers, file/path recommendations, and validation commands for the implementation owner.
+
+Blockers:
+- Implementation files are already claimed by the active MVP implementation pass.
+
+Next:
+- Inspect the intended API/env/config/docs surfaces read-only and return findings.
+
+## 2026-07-02 14:00 - LOL/Ronaldo/Theory Sidecar - Jarvis dashboard MVP review complete
+
+Status: complete
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+- Pass: dashboard JavaScript syntax check.
+- Skipped: dashboard smoke and visual QA because implementation files are actively claimed by the MVP implementation owner.
+
+Findings:
+- PRD/ICP Flow matches the single product-team ICP and PRD Pack direction, but the direct backend send control is rendered without an evident handler and should not imply an available backend.
+- PRD template and test-runbook links point to docs artifacts that are not present in the public tree yet.
+- Agent Orchestra role cards include the requested reviewer roles, including Theory, but role save/export controls are rendered without evident handlers.
+- FreePRD/discovery-call requirements are represented only as a Theory role responsibility, not as a visible checklist, source artifact, or output block.
+- New PRD/role/voice panel classes need styling review because dedicated selectors are not present for the new card grids/toolbars.
+
+Next:
+- Implementation owner should wire or relabel the dead controls, add or remove the missing docs links, and make the Theory/FreePRD/discovery-call checklist visible before final smoke/visual acceptance.
+
+## 2026-07-02 14:01 - Ronaldinho/Security sidecar - Jarvis dashboard MVP scope review complete
+
+Status: complete
+
+Files changed:
+- `project/live/communication/agent-communication-log.md` only.
+
+FACT:
+- No `services/jarvis-api/` tree is present in the public project yet.
+- No root or service-local `.env.example` is present; only tracked config examples under `project/config/`.
+- Existing model-routing keeps provider runtime disabled, static dashboard provider calls forbidden, backend/local bridge absent, and the 5.00 USD daily / 1.99 USD per-run OpenRouter cap documented.
+- The dashboard currently fetches only local `data.json`; the local-backend button is visible but no backend handler was found in the current dashboard JavaScript.
+- Telegram delivery remains conditional on an approved sender outside the public repo.
+
+Checks:
+- Pass: public safety scan.
+- Pass: dashboard JSON parse.
+- Pass: dashboard JavaScript syntax check.
+- Pass: workflow validation.
+- Pass: runtime guard.
+- Pass: diff whitespace check.
+- Pass: ignored local env files confirmed ignored.
+
+GAP:
+- Provider-disabled FastAPI skeleton, service-local env placeholders, live backend health check, provider-backed budget guard enforcement, and Telegram secret migration proof are still missing.
+
+Next:
+- Implementation owner should add the API skeleton and env/secret/budget guard artifacts before claiming backend/API readiness.
+## 2026-07-02 10:14 - Codex - Yushchenko observer report
+
+Status: starting
+
+Task: Produce the next public-safe model-efficiency observer report from local evidence only.
+
+Files likely to change:
+
+- `project/runs/yushchenko-model-efficiency/2026-07-02-1145-model-efficiency-report.md`
+
+Files claimed: only `project/runs/yushchenko-model-efficiency/2026-07-02-1145-model-efficiency-report.md`.
+
+Expected output: an evidence-backed report that separates local deterministic model-use evidence from active OpenRouter runtime evidence.
+
+Blockers: none.
+
+Next: scan public-safe run artifacts and logs, then write the report.
+## 2026-07-02 14:02 - Codex - Yushchenko observer report
+
+Status: complete
+
+Task: Publish the public-safe model-efficiency observer report from local evidence only.
+
+Files changed:
+
+- `project/runs/yushchenko-model-efficiency/2026-07-02-1402-model-efficiency-report.md`
+- `project/runs/yushchenko-model-efficiency/agent-handout.md`
+- `project/agents/model-efficiency-advice.md`
+- `project/agents/model-efficiency-issues.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `project/live/communication/agent-communication-log.md`
+
+Checks:
+
+- Pass: `python3 scripts/public_safety_scan.py`
+
+FACT: No active OpenRouter runtime evidence was found in the inspected public-safe project files.
+FACT: A separate zero-cost local deterministic CrewAI proof ledger exists and remains labeled as local proof, not provider-backed OpenRouter runtime.
+INTERPRETATION: The project now has clearer evidence separation between local proof runtime and provider runtime claims.
+GAP: Telegram delivery was skipped because an approved sender was unavailable.
+
+Next action: continue future observer runs from evidence only and keep provider-backed OpenRouter claims disabled until runtime evidence exists.
+## 2026-07-02 14:24 - Jesus/Codex - Jarvis dashboard MVP implementation complete
+
+Status: complete
+
+Task: Finish Prompt 2 Jarvis dashboard MVP implementation after Prompt 1, Prompt 1.2, and CrewAI Level 3 proof.
+
+Files changed:
+
+- `project/dashboard/app.js`
+- `project/dashboard/styles.css`
+- `project/dashboard/data.json`
+- `project/scripts/generate-dashboard-data.py`
+- `services/jarvis-api/`
+- `.env.example`
+- `services/jarvis-api/.env.example`
+- `docs/prd-icp-output-template.md`
+- `docs/reporting-daily-weekly-template.md`
+- `docs/testmeeting-prd-runbook.md`
+- `docs/dashboard-role-configuration.md`
+- `docs/crewai-langgraph-operations.md`
+- `project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md`
+- `project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md`
+- `wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+- `scripts/public_safety_scan.py`
+
+Checks:
+
+- Pass: public safety scan.
+- Pass: workflow validation.
+- Pass: CrewAI config check.
+- Pass: pre-push runtime guard.
+- Pass: CrewAI Level 3 proof status check.
+- Pass: dashboard JSON parse.
+- Pass: dashboard JavaScript syntax check.
+- Pass: Python syntax compile for Jarvis API and dashboard scripts.
+- Pass: dashboard static smoke with provider calls `0` and writeback `0`.
+- Pass: new-PDF path scan.
+- Pass: diff whitespace check.
+
+FACT: Screen 1 now has PRD/ICP request controls, PRD output blocks, owner-gated test cycle handling, and browser-local fallback packets when the backend is unavailable.
+FACT: Screen 2 now has role configuration panels, task stages, and browser-local role export packets for the required agents and CrewAI role workers.
+FACT: The Jarvis API contract exists but remains provider-disabled; FastAPI runtime proof is dependency-gated because FastAPI is not installed in the current local runtimes.
+FACT: OpenRouter remains disabled with the recorded 5.00 USD daily cap and 1.99 USD run hard stop.
+FACT: CrewAI Level 3 remains `proof_passed_not_default_runtime`, not default runtime, not provider runtime, and not writeback runtime.
+FACT: Telegram secret material was removed from the non-env docs layer and placeholder env examples were added.
+FACT: Append-only Notion evidence notes were added to the matching E1/E1.2/E1.3.9/security/reporting rows.
+
+GAP: Dashboard-driven Notion writeback remains gated; the update was performed by the operator connector, not by the browser UI.
+GAP: Git commit, push, and main merge were not performed during this closeout because the tree contains pre-existing and concurrent dirty work; staging needs an ownership-safe decision.
+GAP: Full PRD/ICP test cycle remains owner-approval gated.
+
+Next: owner should decide whether to stage only Prompt 2 files or coordinate a broader Prompt 1/Prompt 1.2/CrewAI/Yushchenko commit set before push and main merge.

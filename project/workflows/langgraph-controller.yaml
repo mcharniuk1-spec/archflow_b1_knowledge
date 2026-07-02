@@ -116,3 +116,324 @@ current_parameters:
   langsmith_project_id: masked_langsmith_project_id
   smoke_script: project/scripts/langgraph-smoke-run.py
   last_smoke_result: langgraph_smoke_ok_approval_approved
+
+screen_contracts:
+  version: prompt_1_2
+  status: level_3_proof_integrated_not_default_runtime
+  provider_runtime: disabled
+  writeback_runtime: disabled
+  current_execution_route: codex_operator_packets_and_static_dashboard_state
+  shared_state:
+    run_id: string
+    lane: prd_icp_flow_or_agent_orchestra
+    request_class: string
+    source_packet: object
+    source_ids: list
+    public_boundary_status: pass_fail_or_needs_review
+    project_context_refs: list
+    runtime_mode: static_snapshot_browser_local_codex_operator_or_disabled_provider
+    provider_route: mock_codex_operator_ollama_minor_or_disabled_cloud
+    model_call_ledger_status: proof_ledger_exists_for_deterministic_crewai_level_3_provider_ledger_required_before_activation
+    crewai_level_3_status: proof_passed_not_default_runtime
+    crewai_level_3_proof_path: project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json
+    approval_status: pending_approved_revise_blocked_wait_decision
+    blocked_gates: list
+    artifacts: list
+    review_report_path: string
+    handoff_packet_path: string
+    gaps: list
+  lanes:
+    prd_icp_flow:
+      purpose: client_product_flow_for_product_discovery_to_production_prd_pack
+      roles:
+        - af_context
+        - af_research
+        - af_manager
+        - af_copy
+        - af_review
+      state_fields:
+        workflow_screen: prd_icp_flow
+        input_packet_path: string
+        context_digest_path: string
+        research_summary_path: string
+        prd_path: string
+        icp_evidence_cards_path: string
+        task_matrix_path: string
+        acceptance_criteria_path: string
+        decision_log_path: string
+        review_packet_path: string
+        crewai_level_3_proof_path: string
+        crewai_level_3_status: proof_passed_not_default_runtime_or_blocked
+        output_packet_path: string
+        next_questions: list
+      nodes:
+        receive_direct_request:
+          owner_agent: af_context
+          purpose: capture typed Jarvis request or imported local packet without external writeback.
+          output: input_packet_path
+        classify_request:
+          owner_agent: af_manager
+          purpose: classify request as PRD, ICP, evidence card, task matrix, artifact bundle, or question.
+          output: request_class
+        load_project_context:
+          owner_agent: af_context
+          purpose: load approved public-safe project context and source refs.
+          output: project_context_refs
+        select_model_or_mock:
+          owner_agent: af_tools
+          purpose: choose Codex/manual packet today; block cloud provider route until approved backend, ledger, and budget gates exist.
+          output: provider_route
+        run_context_stage:
+          owner_agent: af_context
+          purpose: produce FACT, INTERPRETATION, HYPOTHESIS, and GAP digest.
+          output: context_digest_path
+        run_research_stage:
+          owner_agent: af_research
+          purpose: create ICP, competitor, pain, or evidence-card summaries from approved sources only.
+          output: research_summary_path
+        run_prd_stage:
+          owner_agent: af_manager
+          purpose: create PRD structure, task matrix, milestones, and acceptance criteria.
+          output:
+            - prd_path
+            - task_matrix_path
+            - acceptance_criteria_path
+        run_copy_stage:
+          owner_agent: af_copy
+          purpose: convert structured product logic into readable service and PRD language.
+          output: output_packet_path
+        run_crewai_level_3_proof:
+          owner_agent: af_manager
+          purpose: replay one tiny public-safe PRD/ICP fixture through direct CrewAI deterministic local runtime; save proof only and do not promote default/provider runtime.
+          output:
+            - crewai_level_3_proof_path
+            - model_call_ledger_status
+        run_review_stage:
+          owner_agent: af_review
+          purpose: check source support, safety, completeness, runtime labels, and unresolved gaps.
+          output: review_report_path
+        return_response_to_dashboard:
+          owner_agent: af_manager
+          purpose: expose reviewed summary, next questions, and blocked gates to the static dashboard.
+          output: dashboard_state_packet
+        save_artifact_for_review:
+          owner_agent: af_knowledge
+          purpose: save local artifact packet for Codex/operator review, not live writeback.
+          output: review_packet_path
+      dashboard_blocks:
+        - Input
+        - Context
+        - Research
+        - PRD Draft
+        - Acceptance Criteria
+        - CrewAI Proof
+        - Review
+        - Output Packet
+        - Questions
+        - Runtime Gates
+      gates:
+        classify_request:
+          pass_if:
+            - request_class_is_supported
+          block_if:
+            - contains_private_raw_source
+            - requests_external_write_without_approval
+        select_model_or_mock:
+          current_route: mock_or_codex_operator_packet
+          disabled_routes:
+            - openrouter_cloud
+            - mistral_cloud
+            - openai_cloud
+            - railway_backend
+        run_review_stage:
+          approve_if:
+            - public_boundary_status_pass
+            - unsupported_claims_zero
+            - source_labels_present
+            - writeback_requested_false
+          revise_if:
+            - gaps_or_unsupported_claims_present
+          block_if:
+            - private_data_detected
+            - provider_activation_required
+            - model_call_ledger_missing_for_provider_route
+        run_crewai_level_3_proof:
+          approve_if:
+            - proof_fixture_public_safe
+            - deterministic_local_llm_only
+            - model_call_ledger_written
+            - budget_guard_under_1_99_run_cap_and_5_00_daily_cap
+            - writeback_requested_false
+            - af_review_passed
+          block_if:
+            - provider_call_requested
+            - default_runtime_promotion_requested
+            - external_write_requested
+    agent_orchestra:
+      purpose: operator_execution_flow_for_specialist_roles_and_review_gated_handoffs
+      roles:
+        - jesus
+        - lol
+        - ronaldinho
+        - messi
+        - ronaldo
+        - yushchenko
+        - actor
+        - af_tools
+        - af_knowledge
+        - af_publisher
+        - af_review
+      state_fields:
+        workflow_screen: agent_orchestra
+        task_packet_path: string
+        assigned_roles: list
+        role_objectives: object
+        allowed_tools: object
+        source_boundaries: object
+        worker_outputs: list
+        merge_plan: object
+        conflict_notes: list
+        blocker_status: list
+        crewai_level_3_proof_path: string
+        crewai_level_3_status: proof_passed_not_default_runtime_or_blocked
+        decision_needed: string
+        next_safe_action: string
+      nodes:
+        receive_operator_task:
+          owner_agent: jesus
+          purpose: capture operator task and public-safe constraints.
+          output: task_packet_path
+        classify_lane_and_scope:
+          owner_agent: messi
+          purpose: classify lane, file ownership, risk, and required gates.
+          output: request_class
+        assign_roles:
+          owner_agent: jesus
+          purpose: map task slices to named roles and AF functional roles.
+          output: assigned_roles
+        create_task_packet:
+          owner_agent: af_manager
+          purpose: write role objectives, allowed tools, source boundaries, output artifact types, and handoff targets.
+          output: task_packet_path
+        run_role_workers:
+          owner_agent: actor
+          purpose: execute bounded local worker slices or record read-only findings; provider-backed workers are disabled.
+          output: worker_outputs
+        run_crewai_level_3_proof:
+          owner_agent: af_manager
+          purpose: run or display the reviewed direct CrewAI proof package as a worker-runtime readiness branch, with no provider calls, default promotion, or writeback.
+          output:
+            - crewai_level_3_proof_path
+            - model_call_ledger_status
+        collect_artifacts:
+          owner_agent: af_knowledge
+          purpose: collect outputs, evidence links, blockers, and open questions.
+          output: artifacts
+        run_review_gate:
+          owner_agent: af_review
+          purpose: check public safety, claim support, runtime boundaries, and maker/checker separation.
+          output: review_report_path
+        merge_findings:
+          owner_agent: jesus
+          purpose: integrate role findings and resolve conflicts.
+          output: merge_plan
+        produce_handoff:
+          owner_agent: af_publisher
+          purpose: create run handout or packet for the next operator.
+          output: handoff_packet_path
+        wait_for_integrator_decision:
+          owner_agent: jesus
+          purpose: stop until the integrator or owner approves next side effect.
+          output: decision_needed
+        optionally_prepare_git_notion_deploy_actions:
+          owner_agent: af_publisher
+          purpose: prepare action packet only; do not execute external side effects without approval.
+          output: next_safe_action
+      dashboard_blocks:
+        - Task Intake
+        - Role Assignment
+        - Active Agents
+        - CrewAI Proof
+        - Work Artifacts
+        - QA Gate
+        - Docs/Reports
+        - Git/Deploy Sequence
+        - Notion/Memory Closeout
+        - Blockers
+        - Final Decision
+      gates:
+        assign_roles:
+          pass_if:
+            - roles_are_named
+            - outputs_are_bounded
+            - file_claims_are_clear
+          block_if:
+            - overlapping_file_claims
+            - unclear_owner_decision
+        run_role_workers:
+          current_route: codex_manual_or_static_packet_only
+          disabled_routes:
+            - autonomous_workers
+            - provider_backed_workers
+            - web_writeback
+        run_crewai_level_3_proof:
+          current_route: direct_crewai_deterministic_local_proof_passed_not_default_runtime
+          allowed_only_for:
+            - tiny_public_safe_fixture
+            - proof_artifact_generation
+            - dashboard_state_representation
+          disabled_routes:
+            - provider_backed_crewai
+            - default_runtime_promotion
+            - external_writeback
+        run_review_gate:
+          approve_if:
+            - reviewer_not_same_as_maker_for_high_risk_output
+            - evidence_links_present
+            - public_safety_pass
+            - runtime_boundaries_visible
+          revise_if:
+            - inconsistent_findings
+            - missing_evidence
+          block_if:
+            - unsafe_source
+            - unsupported_external_claim
+        wait_for_integrator_decision:
+          required_for:
+            - provider_activation
+            - backend_or_railway_work
+            - github_notion_wikillm_writeback
+            - telegram_delivery
+            - production_promotion
+            - direct_crewai_default_or_provider_runtime_execution
+        optionally_prepare_git_notion_deploy_actions:
+          allowed_only_for:
+            - action_packet_preparation_without_external_send
+
+disabled_boundaries:
+  provider_calls:
+    status: disabled_until_explicit_approval
+    forbidden_in_static_dashboard: true
+    activation_requires:
+      - approved_backend_or_local_bridge
+      - server_side_secret_access_only
+      - canonical_model_call_ledger
+      - budget_cap
+      - public_safety_screen
+      - human_review_gate
+  writeback:
+    status: disabled_until_backend_or_codex_operator_approval
+    forbidden_targets:
+      - git
+      - notion
+      - wikillm
+      - obsidian
+      - nexus
+      - telegram
+  private_inputs:
+    forbidden:
+      - raw_private_transcripts
+      - credentials
+      - private_notion_exports
+      - unsanitized_uploads
+      - raw_voice_or_screen_capture

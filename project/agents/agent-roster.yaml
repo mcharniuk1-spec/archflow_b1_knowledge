@@ -180,6 +180,148 @@ agents:
       - telegram_summary_only_when_approved_sender_exists
       - openrouter_runtime_stays_disabled_without_explicit_approval
 
+dashboard_execution_roles:
+  status: prompt_1_2_architecture_contract_only
+  visibility: operator_ui_only_not_customer_facing
+  purpose: >
+    Map the named operator roles used in ArchFlow coordination to stable AF roles
+    and dashboard responsibilities for the two block-schema screens.
+  roles:
+    jesus:
+      title: Lead Integrator
+      af_role: codex_operator
+      responsibilities:
+        - final_architecture_decision
+        - execution_contract
+        - prompt_2_readiness_decision
+        - run_handout
+      allowed_actions:
+        - local_file_edits_after_live_log_claim
+        - merge_reviewer_findings
+        - run_validation_checks
+      gated_actions:
+        - git_push
+        - production_promotion
+        - provider_activation
+        - external_writeback
+    lol:
+      title: Dashboard Workflow Owner
+      af_role: af_dashboard_operator
+      responsibilities:
+        - screen_1_prd_icp_flow
+        - screen_2_agent_orchestra
+        - block_schema_control_surface
+      allowed_actions:
+        - propose_dashboard_blocks
+        - review_operator_ux
+        - prepare_static_schema_candidates
+      gated_actions:
+        - live_backend_changes
+        - writeback_runtime_changes
+    ronaldinho:
+      title: Technical Reviewer
+      af_role: af_tools
+      responsibilities:
+        - langgraph_boundary_review
+        - openrouter_boundary_review
+        - crewai_boundary_review
+        - railway_and_backend_gate_review
+      allowed_actions:
+        - verify_config_boundaries
+        - list_runtime_gaps
+      gated_actions:
+        - deploy_runtime
+        - create_secret_config
+    messi:
+      title: PM And Task Reviewer
+      af_role: af_manager
+      responsibilities:
+        - task_state_mapping
+        - review_gate_mapping
+        - handoff_readiness
+        - notion_update_package_review
+      allowed_actions:
+        - prepare_task_update_packet
+        - reconcile_status_language
+      gated_actions:
+        - live_task_board_mutation
+        - mark_done_without_owner_acceptance
+    ronaldo:
+      title: Product And ICP Reviewer
+      af_role: af_research
+      responsibilities:
+        - prd_icp_offer_fit
+        - b2b_saas_product_team_positioning
+        - service_artifact_fit
+      allowed_actions:
+        - review_product_claims
+        - list_icp_gaps
+      gated_actions:
+        - validated_demand_claim
+        - outreach_or_payment_verdict
+    yushchenko:
+      title: Model Efficiency Observer
+      af_role: yushchenko_model_efficiency_observer
+      responsibilities:
+        - openrouter_routing_gap_review
+        - token_and_cost_logging_needs
+        - model_call_ledger_readiness
+      allowed_actions:
+        - publish_observer_report
+        - record_missing_runtime_evidence
+      gated_actions:
+        - invent_token_or_cost_numbers
+        - activate_provider_runtime
+    actor:
+      title: Bounded Subagent
+      af_role: assigned_per_task
+      responsibilities:
+        - one_scoped_slice
+        - explicit_artifact_output
+        - no_cross_file_ownership_without_claim
+      allowed_actions:
+        - read_only_review
+        - bounded_patch_when_assigned
+      gated_actions:
+        - final_approval
+        - external_side_effects
+    af_review:
+      title: Final Public-Safety And Claim Reviewer
+      af_role: af_review
+      responsibilities:
+        - evidence_gate
+        - public_safety_gate
+        - runtime_boundary_gate
+        - unsupported_claim_gate
+      allowed_actions:
+        - approve_revise_or_block
+      gated_actions:
+        - self_approve_maker_output
+  status_model:
+    - draft
+    - ready
+    - running
+    - blocked
+    - review
+    - revise
+    - approved
+    - done
+    - gated
+  blocker_model:
+    - missing_input
+    - unsafe_source
+    - unsupported_claim
+    - runtime_not_approved
+    - proof_missing
+    - owner_approval_required
+    - file_claim_conflict
+  runtime_labels:
+    - static_snapshot
+    - browser_local
+    - provider_disabled
+    - backend_absent
+    - writeback_gated
+
 automation:
   archflow_evening_skill_and_hook_update:
     schedule: daily_evening
@@ -215,6 +357,38 @@ automation:
       - wiki/memory.md
       - wiki/log.md
       - wiki/insights.md
+      - project/live/communication/agent-communication-log.md
+  archflow_priority_task_operator_midnight:
+    schedule: daily_evening
+    schedule_time: "00:30"
+    provider: codex_operator
+    automation_id: archflow-priority-task-operator-0030
+    skills:
+      - priority-task-operator
+      - task-handout
+      - outquestions
+    target_files:
+      - project/project-plan.md
+      - project/scripts/priority-task-operator.py
+      - project/automation/archflow-priority-task-operator-lane.md
+      - project/runs/
+      - wiki/log.md
+      - project/live/communication/agent-communication-log.md
+  archflow_priority_task_operator_morning:
+    schedule: daily_evening
+    schedule_time: "06:30"
+    provider: codex_operator
+    automation_id: archflow-priority-task-operator-0630
+    skills:
+      - priority-task-operator
+      - task-handout
+      - outquestions
+    target_files:
+      - project/project-plan.md
+      - project/scripts/priority-task-operator.py
+      - project/automation/archflow-priority-task-operator-lane.md
+      - project/runs/
+      - wiki/log.md
       - project/live/communication/agent-communication-log.md
   yushchenko_model_efficiency_observer:
     schedule: every_five_hours

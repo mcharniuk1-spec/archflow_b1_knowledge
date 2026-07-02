@@ -200,6 +200,7 @@ ArchFlow Block 1 is the first public solution:
 - Open model-efficiency issues live in `project/agents/model-efficiency-issues.md`.
 - The observer must report actual model/token/cost evidence only and must say "No active OpenRouter runtime evidence found" when OpenRouter has not been used.
 - Telegram delivery is conditional on an approved sender outside the public repo; chat destinations, IDs, links, and tokens must not be stored in public files.
+- A separate zero-cost local deterministic CrewAI proof ledger now exists under `project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl`. It is valid runtime evidence for the local proof path, but it is not OpenRouter evidence and must stay labeled that way.
 
 ## Daily Skill/RAG Retrospective Maintenance Memory - 2026-07-01
 
@@ -226,3 +227,33 @@ ArchFlow Block 1 is the first public solution:
 - The dashboard's job is the operator/control layer: Jarvis command center, PRD/ICP service flow, reliable agent orchestra, proof/backlog visibility, generated data, and blocked runtime gates.
 - Static delivery is allowed to be merge-ready when website, diagnostic, dashboard, generated data, run notes, Notion Links, and task states are aligned and public-safe.
 - Future runtime layers remain separate gates: owner-device visual/voice acceptance, main promotion, Figma final baseline sync if promoted, Railway/backend, provider activation, live Nexus, durable writeback, autonomous writeback, and model-call cost logging.
+
+## Dashboard Website Strategy QA Memory - 2026-07-01
+
+- The latest QA/PM audit confirms the stable public site and dashboard routes return HTTP 200 for the static review scope.
+- Notion task management now has `Agent Tags` for active agent and specialization tracking; use tags to distinguish QA, senior dev, PM, strategy review, frontend, dashboard, LangGraph, RAG KB, Notion, GitHub, Telegram, API runtime, and reviewer work.
+- The Notion Links page should stay minimal: current public site, diagnostic, dashboard, dashboard data, review branch, PR create link, and gated-state notes only.
+- Maxibook Telegram delivery remains To Do until TG-1/TG-2/TG-3 prove sender contract, redacted outbound template, dry-run/health check, and public-safe send audit.
+- GitHub review branch matched local branch at `73c41ea` before the audit's local report artifacts; new audit files require a separate approved commit/push before GitHub again reflects every local artifact.
+
+## Jarvis Dashboard ICP Task Consolidation Memory - 2026-07-02
+
+- Current English goal: ArchFlow is an AI-native service that turns raw product-team material, including conversations, research, documents, decisions, notes, and backlog fragments, into production-ready PRDs in days rather than weeks through a connected knowledge-base engine and supervised multi-agent execution workflow.
+- Current ICP: product teams in B2B SaaS companies, usually Series B-D, roughly 50-500 employees, often with 2-5 PMs, where the Director or VP of Product owns PRD quality, discovery-to-delivery speed, and cross-functional alignment.
+- Current first offer: Product Discovery-to-Production PRD Pack. Expected outputs are source inventory, context digest, PRD, ICP/evidence cards where relevant, task matrix, acceptance criteria, decision log, risk/gap list, KB update packet, and approval-gated agent handoff.
+- Jarvis dashboard MVP concept: Lane A is direct Jarvis chat/config/local packet control; Lane B is coordinator/executor supervision for PRD/ICP Flow, Agent Orchestra, QA, docs, reporting, and deployment sequencing.
+- Current proof supports static/browser-local dashboard and website review only. Provider-backed Jarvis, Railway/backend, live Nexus/writeback, owner-device voice proof, Telegram delivery, model-call telemetry, vector retrieval, and production/Figma promotion remain gated.
+- Task consolidation outcome: keep E1 active, E1.2 Review, E1.3 Review, E1.3.8 Review, dashboard E1.3.9 Review, access/security E1.3.10 Review, and JDB-8/JDB-9/JDB-10 Done only for static/browser-local scope.
+- GloomyLord remains an internal visual/reporting sidecar. GloomyLord audience-pain, method-log, and planning-package rows should move or rename under E1.5/reporting to avoid collision with E1.3.9/E1.3.10 dashboard/security rows.
+- Prompt 2 readiness: ready only for static/browser-local dashboard MVP implementation and proof. It is not approval for provider/backend/voice/writeback runtime activation.
+
+## Jarvis Dashboard MVP Implementation Memory - 2026-07-02
+
+- Screen 1 now exposes a PRD/ICP request surface, required output blocks, local packet fallback, and test-cycle gate references.
+- Screen 2 now exposes task stages and editable browser-local role configuration panels for the named ArchFlow roles plus CrewAI role workers.
+- Dashboard voice controls are explicit: mic, stop, cancel, timer, editable transcript preview, send transcript, browser playback, stop playback, and auto-speak. Raw audio and raw transcript persistence remain off by default.
+- `services/jarvis-api/` is a provider-disabled FastAPI service contract with required endpoints, not a deployed or provider-backed runtime.
+- `.env.example` and `services/jarvis-api/.env.example` are tracked placeholder examples; real env files remain blocked.
+- `docs/tgapi.md` was removed after a Telegram-token-shaped value was detected outside env flow.
+- OpenRouter remains disabled with a `5.00` USD daily cap and `1.99` USD run hard stop. Provider activation still requires owner approval, backend/local bridge, server-side secrets, fresh pricing, provider ledger proof, live budget guard, and expanded AF Review.
+- CrewAI Level 3 remains `proof_passed_not_default_runtime`; it is not default runtime and not provider runtime.

@@ -123,6 +123,7 @@ Skills set up:
 
 - [`evening-skill-registry-update`](../../skills/evening-skill-registry-update/SKILL.md) - verifies registry/hook drift and updates scheduled public files only when necessary.
 - [`daily-public-project-review`](../../skills/daily-public-project-review/SKILL.md) - produces end-of-day skill, tool, RAG, and knowledgebase retrospective notes plus blacklist updates.
+- [`priority-task-operator`](../../skills/priority-task-operator/SKILL.md) - ranks all tasks by urgency + importance, selects one top-priority action, and generates a PitAgent handoff + reliability packet.
 - archflow-e1-runtime-guard
 - task-handout
 - outquestions

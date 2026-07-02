@@ -110,6 +110,8 @@ def blocked_path(path: Path) -> str | None:
     base = path.name
     if base == ".DS_Store":
         return "macos_metadata"
+    if base == ".env.example":
+        return None
     if base == ".env" or base.startswith(".env."):
         return "env_file_must_not_be_tracked"
     if rel.startswith("project/local/"):

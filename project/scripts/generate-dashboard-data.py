@@ -204,6 +204,20 @@ def parse_langgraph() -> dict:
 def parse_crewai() -> dict:
     path = PROJECT / "workflows" / "crewai-crew.yaml"
     text = read(path) if path.exists() else ""
+    level_3_text = ""
+    if "level_3_direct_crewai_runtime:" in text:
+        level_3_text = text.split("level_3_direct_crewai_runtime:", 1)[1].split("\ntask_execution_policy:", 1)[0]
+    level_3_ledger = "project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl"
+    level_3_budget = PROJECT / "runs" / "2026-07-02-crewai-level-3-proof" / "budget-guard.json"
+    level_3_cost = ""
+    if level_3_budget.exists():
+        try:
+            budget_data = json.loads(read(level_3_budget))
+            actual_cost = budget_data.get("actual_spend_usd")
+            if actual_cost is not None:
+                level_3_cost = f"{float(actual_cost):.2f} USD"
+        except (TypeError, ValueError, json.JSONDecodeError):
+            level_3_cost = ""
     agents = []
     for agent_id, data in parse_mapping_block(text, "agents").items():
         agents.append(
@@ -244,6 +258,12 @@ def parse_crewai() -> dict:
         "memory": first_match(text, r"^memory:\s*(.*)$", "unknown"),
         "cache": first_match(text, r"^cache:\s*(.*)$", "unknown"),
         "planning": first_match(text, r"^planning:\s*(.*)$", "unknown"),
+        "level_3_status": first_match(level_3_text, r"^\s{4}status:\s*(.*)$", "unknown"),
+        "level_3_ledger": level_3_ledger if (ROOT / level_3_ledger).exists() else "",
+        "level_3_cost": level_3_cost,
+        "level_3_proof": "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json"
+        if (PROJECT / "runs" / "2026-07-02-crewai-level-3-proof" / "runtime-proof.json").exists()
+        else "",
         "agents": agents,
         "tasks": tasks,
         "limitations": re.findall(r"^\s{2}-\s*(.*)$", text.split("current_limitations:", 1)[-1], re.MULTILINE)
@@ -282,6 +302,12 @@ def env_status() -> list[dict]:
             if line.startswith("LANGSMITH_API_KEY=") and line.split("=", 1)[1].strip():
                 langsmith_key_present = True
     return [
+        {"name": "Root env example", "path": ".env.example", "status": "tracked_placeholder" if (ROOT / ".env.example").exists() else "missing"},
+        {
+            "name": "Jarvis API env example",
+            "path": "services/jarvis-api/.env.example",
+            "status": "tracked_placeholder" if (ROOT / "services" / "jarvis-api" / ".env.example").exists() else "missing",
+        },
         {"name": "Provider example", "path": "project/config/providers.env.example", "status": "tracked_example"},
         {"name": "LangSmith example", "path": "project/config/langsmith.env.example", "status": "tracked_example"},
         {"name": "Local provider env", "path": "project/.env.local", "status": "present_ignored" if local_env.exists() else "missing"},
@@ -301,6 +327,75 @@ def env_status() -> list[dict]:
             "status": "present_ignored" if (PROJECT / "local" / "rag_index").exists() else "not_generated",
         },
     ]
+
+
+def jarvis_api_status() -> dict:
+    service_root = ROOT / "services" / "jarvis-api"
+    required = [
+        service_root / "app.py",
+        service_root / "README.md",
+        service_root / "requirements.txt",
+        service_root / ".env.example",
+    ]
+    endpoints = [
+        "/health",
+        "/api/chat",
+        "/api/config/roles",
+        "/api/config/roles/update",
+        "/api/lanes/prd-icp",
+        "/api/lanes/agent-orchestra",
+        "/api/reports/daily-form",
+        "/api/reports/weekly-form",
+        "/api/reports/whole-block",
+        "/api/test-runs/meeting-prd",
+        "/api/voice/transcribe",
+        "/api/voice/chat",
+        "/api/voice/tts",
+    ]
+    return {
+        "status": "contract_present_provider_disabled" if all(path.exists() for path in required) else "missing_or_partial",
+        "path": "services/jarvis-api",
+        "runtime": "fastapi_local_or_future_backend",
+        "provider_runtime": "disabled",
+        "writeback_runtime": "disabled",
+        "openrouter_budget": {
+            "daily_budget_usd": 5.00,
+            "run_hard_stop_usd": 1.99,
+            "over_cap_behavior": "stop_and_request_owner_approval",
+        },
+        "endpoints": endpoints,
+        "required_files": [{"path": rel(path), "status": "present" if path.exists() else "missing"} for path in required],
+    }
+
+
+def prd_template_status() -> dict:
+    paths = [
+        ROOT / "docs" / "prd-icp-output-template.md",
+        ROOT / "docs" / "reporting-daily-weekly-template.md",
+        ROOT / "docs" / "testmeeting-prd-runbook.md",
+        ROOT / "docs" / "dashboard-role-configuration.md",
+        ROOT / "docs" / "crewai-langgraph-operations.md",
+    ]
+    return {
+        "status": "present" if all(path.exists() for path in paths) else "missing_or_partial",
+        "paths": [{"path": rel(path), "status": "present" if path.exists() else "missing"} for path in paths],
+        "output_blocks": [
+            "Meeting Summary",
+            "Product Context",
+            "Stakeholders",
+            "ICP",
+            "Pains/JTBD",
+            "Existing Workflow",
+            "Proposed Workflow",
+            "Requirements",
+            "Decisions",
+            "Questions",
+            "Risks",
+            "Next Tasks",
+            "Backlog",
+            "Success Metrics",
+        ],
+    }
 
 
 def package_status() -> list[dict]:
@@ -480,6 +575,7 @@ def main() -> None:
             {"label": "LangGraph", "value": langgraph["status"], "tone": "ok"},
             {"label": "CrewAI", "value": crewai["status"], "tone": "ok"},
             {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "ok"},
+            {"label": "Jarvis API", "value": jarvis_api_status()["status"], "tone": "warn"},
             {"label": "WikiLLM files", "value": f"{wiki_summary()['file_count']} files", "tone": "ok"},
             {"label": "Activity files", "value": str(len(activity_items())), "tone": "ok"},
             {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},
@@ -488,6 +584,8 @@ def main() -> None:
         "langgraph": langgraph,
         "crewai": crewai,
         "llamaindex": llamaindex,
+        "jarvis_api": jarvis_api_status(),
+        "prd_templates": prd_template_status(),
         "env": env_status(),
         "packages": package_status(),
         "activity": activity_items(),

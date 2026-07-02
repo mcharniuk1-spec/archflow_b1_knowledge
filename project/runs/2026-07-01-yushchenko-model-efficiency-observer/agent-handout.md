@@ -20,6 +20,7 @@ Main artifacts:
 - `project/agents/model-efficiency-advice.md`
 - `project/agents/model-efficiency-issues.md`
 - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md`
+- `project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md`
 - `project/agents/agent-roster.yaml`
 - `project/agents/README.md`
 - `wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md`
@@ -46,9 +47,13 @@ FACT: Added advice and issue documents for durable model-efficiency guidance.
 
 FACT: Created a baseline report showing no active OpenRouter runtime evidence.
 
+FACT: Produced a follow-up observer report that again found no active OpenRouter runtime evidence and no public-safe token or cost ledger.
+
 INTERPRETATION: The observer is useful before OpenRouter activation because it prevents agents from confusing planned routing with actual model usage.
 
 GAP: Telegram delivery is not proven because no approved Telegram sender is exposed in this session.
+
+GAP: Real token and cost measurement remains blocked until a canonical model-call ledger exists.
 
 ## Decisions
 
@@ -66,7 +71,8 @@ GAP: Telegram delivery is not proven because no approved Telegram sender is expo
 
 1. Add a canonical model-call ledger before OpenRouter activation.
 2. Configure an approved Telegram sender outside the public repo if Telegram delivery is required.
-3. Let the automation generate the next five-hour report from available evidence.
+3. Keep reporting missing runtime evidence until the first logged model call exists.
+4. Let the automation generate the next five-hour report from available evidence.
 
 ## Safety Boundary
 

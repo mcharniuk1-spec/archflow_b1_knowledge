@@ -1,0 +1,14 @@
+{
+  "budget_guard": "project/runs/2026-07-02-crewai-level-3-proof/budget-guard.json",
+  "default_runtime": false,
+  "deterministic_output_path": "project/runs/2026-07-02-crewai-level-3-proof/crew-output.md",
+  "direct_crewai_task_run_pass": true,
+  "model_call_ledger": "project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl",
+  "provider_runtime": "not_activated",
+  "public_safe_fixture": true,
+  "recommended_level_3_status": "proof_passed_not_default_runtime",
+  "review_report": "project/runs/2026-07-02-crewai-level-3-proof/review-report.md",
+  "run_id": "2026-07-02-crewai-level-3-proof",
+  "status": "proof_passed_not_default_runtime",
+  "writeback_runtime": "not_activated"
+}

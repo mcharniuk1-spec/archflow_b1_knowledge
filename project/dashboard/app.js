@@ -24,25 +24,34 @@ const storageKeys = {
   chatHistory: "archflow.jarvis.chatHistory",
   blockSchema: "archflow.jarvis.blockSchema",
   serviceBlockSchema: "archflow.jarvis.serviceBlockSchema",
+  schemaZoom: "archflow.jarvis.schemaZoom",
+  roleConfig: "archflow.jarvis.roleConfig",
+  prdComposer: "archflow.jarvis.prdComposer",
+  voiceTranscriptPreview: "archflow.jarvis.voiceTranscriptPreview",
+  autoSpeak: "archflow.jarvis.autoSpeak",
   packets: "archflow.jarvis.localPackets",
   events: "archflow.jarvis.events",
 };
 
-const blockSchemaVersion = "0.3";
+const blockSchemaVersion = "0.4";
 
 let dashboardData = null;
 let activeTab = window.location.hash?.replace(/^#/, "") || "jarvis";
 let jarvisMode = localStorage.getItem(storageKeys.mode) || "normal";
 let voiceAuthorized = localStorage.getItem(storageKeys.voiceAuthorized) === "true";
 let voiceOutputEnabled = localStorage.getItem(storageKeys.voiceOutput) === "true";
+let autoSpeakEnabled = localStorage.getItem(storageKeys.autoSpeak) === "true";
 let dataSignature = "";
 let refreshTimer = null;
 let localPackets = loadJson(storageKeys.packets, []);
+let roleConfigs = loadJson(storageKeys.roleConfig, defaultRoleConfigs());
+let prdComposerDraft = localStorage.getItem(storageKeys.prdComposer) || "";
 let blockSchemas = {
   service: loadBlockSchemaFromStorage(storageKeys.serviceBlockSchema, defaultServiceBlockSchema(), "service"),
   control: loadBlockSchemaFromStorage(storageKeys.blockSchema, defaultBlockSchema(), "control"),
 };
 let blockSchema = blockSchemas.control;
+let schemaZoom = clamp(Number(localStorage.getItem(storageKeys.schemaZoom) || 1), 0.55, 1.35);
 let blockSchemaConnectSource = null;
 let blockSchemaDrag = null;
 let blockSchemaDragMoved = false;
@@ -50,6 +59,11 @@ let nodeControlPanelId = null;
 let initialPanelDeepLinkApplied = false;
 const initialPanelDeepLinkId = new URLSearchParams(window.location.search).get("panel");
 let voiceFallbackDraft = "";
+let voiceTranscriptPreview = localStorage.getItem(storageKeys.voiceTranscriptPreview) || "";
+let activeRecognition = null;
+let voiceTimerId = null;
+let voiceStartedAt = null;
+let voiceElapsedSeconds = 0;
 let chatHistory = loadJson(storageKeys.chatHistory, [
   {
     id: "welcome",
@@ -93,6 +107,11 @@ function loadJson(key, fallback) {
 
 function saveJson(key, value) {
   storageForKey(key).setItem(key, JSON.stringify(value));
+}
+
+function clamp(value, min, max) {
+  const numeric = Number.isFinite(value) ? value : min;
+  return Math.min(max, Math.max(min, numeric));
 }
 
 function defaultPromptConfig() {
@@ -280,16 +299,38 @@ function defaultServiceBlockSchema() {
         inputs: ["ICP profile", "PRD draft", "proof cards"],
         outputs: ["landing outline", "demo script", "content angles"]
       }),
-      schemaNode("svc-approval", "approval", "Client-output approval", 2180, 120, "Owner approval", "Approve what can be shown externally and what must remain internal or blocked.", "Approved service output or blocked issue.", {
+      schemaNode("svc-crewai-proof", "agent", "CrewAI Level 3 proof", 2180, 286, "AF Manager + AF Review", "Run one tiny public-safe PRD/ICP fixture through direct CrewAI deterministic local runtime with no provider calls and no writeback.", "Proof packet: proof_passed_not_default_runtime.", {
+        workflowLayer: "runtime proof",
+        job: "Show that direct CrewAI can execute the PRD/ICP fixture without becoming the default runtime.",
+        pain: "Level 3 was blocked by missing proof, not by rejection of CrewAI.",
+        evidence: "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json",
+        businessObjective: "Make the runtime readiness path visible while keeping provider/default promotion gated.",
+        inputs: ["tiny public-safe PRD/ICP fixture", "budget guard", "model-call ledger schema", "CrewAI config"],
+        outputs: ["crew output", "model-call ledger", "budget guard", "AF Review report", "runtime proof"],
+        config: {
+          modelProvider: "local deterministic",
+          providerMode: "OpenRouter disabled",
+          executionMode: "direct CrewAI proof only",
+          persistence: "run artifact only",
+          approvalGate: "proof passed; default/provider runtime still requires owner approval",
+          outputConnector: "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json"
+        },
+        lastRuns: [{
+          time: "2026-07-02",
+          status: "proof_passed_not_default_runtime",
+          summary: "Direct CrewAI fixture run completed with zero provider calls, zero writeback, and 0.00 USD spend."
+        }]
+      }),
+      schemaNode("svc-approval", "approval", "Client-output approval", 2490, 120, "Owner approval", "Approve what can be shown externally and what must remain internal or blocked.", "Approved service output or blocked issue.", {
         workflowLayer: "approval gate",
         job: "Prevent unverified claims and private context from reaching external surfaces.",
         pain: "Public-facing assets can overclaim if generated from partial internal notes.",
         evidence: "Public-safety gate requires source labels and approved claims.",
         businessObjective: "Keep demo-ready output credible and safe.",
-        inputs: ["demo package", "safety review", "source labels"],
+        inputs: ["demo package", "CrewAI proof state", "safety review", "source labels"],
         outputs: ["approval packet", "blocked issue", "revision request"]
       }),
-      schemaNode("svc-output", "output", "Service output packet", 2490, 120, "Publisher", "Package PRD, ICP, demo, next tasks, and confidence level for review or buyer-facing use.", "Linked service packet with confidence level.", {
+      schemaNode("svc-output", "output", "Service output packet", 2800, 120, "Publisher", "Package PRD, ICP, demo, next tasks, and confidence level for review or buyer-facing use.", "Linked service packet with confidence level.", {
         workflowLayer: "publishing",
         job: "Create the final artifact the buyer or internal reviewer can inspect.",
         pain: "Work is not done when it exists only in chat.",
@@ -308,8 +349,9 @@ function defaultServiceBlockSchema() {
       schemaEdge("svc-e6", "svc-pain", "svc-research-merge", "pain packet", "Pain branch returns buyer language and objections.", "merge"),
       schemaEdge("svc-e7", "svc-research-merge", "svc-icp", "merged evidence", "Contradictions are marked as gaps before synthesis.", "normal"),
       schemaEdge("svc-e8", "svc-icp", "svc-demo", "ICP accepted", "One ICP lane is coherent enough for positioning.", "normal"),
-      schemaEdge("svc-e9", "svc-demo", "svc-approval", "demo ready", "External-facing package needs approval.", "approval"),
-      schemaEdge("svc-e10", "svc-approval", "svc-output", "approved", "Owner approves external-safe output.", "normal")
+      schemaEdge("svc-e9", "svc-demo", "svc-crewai-proof", "runtime proof", "Direct CrewAI may prove the fixture but cannot promote itself to default runtime.", "conditional"),
+      schemaEdge("svc-e10", "svc-crewai-proof", "svc-approval", "proof reviewed", "AF Review verifies proof artifacts before owner approval.", "approval"),
+      schemaEdge("svc-e11", "svc-approval", "svc-output", "approved", "Owner approves external-safe output.", "normal")
     ]
   };
 }
@@ -385,16 +427,38 @@ function defaultControlBlockSchema() {
         inputs: ["external repo review", "changed files", "public-safety scan"],
         outputs: ["risk rating", "blocked items", "safe next step"]
       }),
-      schemaNode("merge", "merge", "Integrator merge", 1560, 160, "Lead integrator", "Merge branch outputs, preserve source links, and reject unsupported claims.", "Single accepted handoff with checks.", {
+      schemaNode("crewai-proof", "agent", "CrewAI Level 3 direct proof", 1560, 392, "AF Manager + AF Review", "Run or display the direct CrewAI deterministic proof branch; preserve the proof as a runtime-readiness artifact only.", "Reviewed proof packet; not default runtime.", {
+        workflowLayer: "runtime proof",
+        job: "Represent direct CrewAI readiness inside the operator graph without enabling autonomous/provider execution.",
+        pain: "Runtime claims become unsafe when proof, ledger, budget, and review are hidden.",
+        evidence: "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json",
+        businessObjective: "Let the operator see the Level 3 path and remaining gates before promotion.",
+        inputs: ["operator task", "public-safe fixture", "budget guard", "ledger path"],
+        outputs: ["runtime proof", "review report", "dashboard state"],
+        config: {
+          modelProvider: "local deterministic",
+          providerMode: "provider disabled",
+          executionMode: "direct CrewAI proof passed; not default runtime",
+          persistence: "repo run artifact",
+          approvalGate: "owner approval required for provider/default runtime",
+          outputConnector: "project/runs/2026-07-02-crewai-level-3-proof/dashboard-state.md"
+        },
+        lastRuns: [{
+          time: "2026-07-02",
+          status: "proof_passed_not_default_runtime",
+          summary: "Tiny PRD/ICP fixture produced deterministic CrewAI output, ledger, budget guard, and AF Review packet."
+        }]
+      }),
+      schemaNode("merge", "merge", "Integrator merge", 1860, 160, "Lead integrator", "Merge branch outputs, preserve source links, and reject unsupported claims.", "Single accepted handoff with checks.", {
         workflowLayer: "control system",
         job: "Turn parallel findings into one coherent result.",
         pain: "Separate agent reports can contradict each other or bury blockers.",
         evidence: "The integrator owns merge order, final review, and durable records.",
         businessObjective: "Finish with a verified dashboard state, not scattered chat output.",
-        inputs: ["review findings", "safety verdict", "checks"],
+        inputs: ["review findings", "safety verdict", "CrewAI proof state", "checks"],
         outputs: ["accepted changes", "remaining gaps", "handoff"]
       }),
-      schemaNode("approval", "approval", "Writeback approval", 1860, 160, "Owner approval", "Approve or reject Notion, GitHub, WikiLLM, Telegram, model, capture, or backend writeback.", "Approved packet or blocked issue.", {
+      schemaNode("approval", "approval", "Writeback approval", 2160, 160, "Owner approval", "Approve or reject Notion, GitHub, WikiLLM, Telegram, model, capture, or backend writeback.", "Approved packet or blocked issue.", {
         workflowLayer: "approval gate",
         job: "Keep high-impact actions explicit.",
         pain: "Static dashboard actions can look executable even when no safe backend exists.",
@@ -403,7 +467,7 @@ function defaultControlBlockSchema() {
         inputs: ["handoff packet", "approval request"],
         outputs: ["approved action", "blocked issue", "revision request"]
       }),
-      schemaNode("output", "output", "Durable output", 2160, 160, "Publisher", "Create run note, decision, issue, dashboard data update, or review branch.", "Linked artifact and dashboard status.", {
+      schemaNode("output", "output", "Durable output", 2460, 160, "Publisher", "Create run note, decision, issue, dashboard data update, or review branch.", "Linked artifact and dashboard status.", {
         workflowLayer: "publishing",
         job: "Make completed work retrievable for the next run.",
         pain: "Work is not complete if the result exists only in chat.",
@@ -421,8 +485,10 @@ function defaultControlBlockSchema() {
       schemaEdge("e5", "monitor", "parallel", "status fork", "State should be visible to each reviewer.", "parallel"),
       schemaEdge("e6", "parallel", "architecture-review", "architecture branch", "Architecture reviewer validates architecture and UX proof.", "parallel"),
       schemaEdge("e7", "parallel", "safety-review", "safety branch", "Safety reviewer checks public/private and source boundaries.", "parallel"),
+      schemaEdge("e12", "parallel", "crewai-proof", "runtime proof branch", "CrewAI proof runs only as deterministic local fixture evidence.", "parallel"),
       schemaEdge("e8", "architecture-review", "merge", "checker verdict", "Architecture reviewer returns facts, gaps, checks, and status.", "merge"),
       schemaEdge("e9", "safety-review", "merge", "safety verdict", "Safety reviewer returns public-safe corrections.", "merge"),
+      schemaEdge("e13", "crewai-proof", "merge", "proof state", "Integrator receives proof status and remaining provider/default-runtime gates.", "merge"),
       schemaEdge("e10", "merge", "approval", "needs writeback", "Any durable write, provider, capture, or external send needs approval.", "approval"),
       schemaEdge("e11", "approval", "output", "approved output", "Approved output is recorded and linked.", "normal")
     ]
@@ -634,8 +700,8 @@ function speechSynthesisAvailable() {
   return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
 }
 
-function speakText(text) {
-  if (!voiceOutputEnabled || !speechSynthesisAvailable()) return;
+function speakText(text, options = {}) {
+  if ((!voiceOutputEnabled && !options.force) || !speechSynthesisAvailable()) return;
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(String(text || "").slice(0, 900));
   utterance.rate = 0.96;
@@ -649,6 +715,12 @@ function speakText(text) {
   utterance.onstart = () => setLiveStatus("Jarvis speaking", "ok");
   utterance.onend = () => setLiveStatus("Static polling active", "warn");
   window.speechSynthesis.speak(utterance);
+}
+
+function stopSpeechPlayback() {
+  if (speechSynthesisAvailable()) window.speechSynthesis.cancel();
+  setLiveStatus("Speech stopped", "warn");
+  appendEvent("Speech playback stopped", "Browser speech synthesis was stopped by the operator.", "warn");
 }
 
 function addPacket(packet) {
@@ -913,6 +985,182 @@ function publicSafeSampleOutputs() {
   ];
 }
 
+function prdIcpOutputBlocks() {
+  return [
+    ["Meeting Summary", "Decision-ready summary of approved meeting or interview input, with raw transcript storage off by default."],
+    ["Product Context", "Problem, product area, user workflow, constraints, non-goals, and source boundary."],
+    ["Stakeholders", "Decision owner, product owner, engineering partner, reviewer, and follow-up owners."],
+    ["ICP", "Current B2B SaaS product-team lane, account shape, buyer role, triggers, disqualifiers, and confidence."],
+    ["Pains/JTBD", "Buyer pains, jobs to be done, current friction, desired outcome, and evidence grade."],
+    ["Existing Workflow", "Current steps, tools, handoffs, duplicate work, blockers, and decision-memory loss."],
+    ["Proposed Workflow", "Target state, human gates, agent roles, source labels, and review checkpoints."],
+    ["Requirements", "Functional, non-functional, safety, reporting, retrieval, and integration requirements."],
+    ["Decisions", "Accepted decisions, owner, evidence used, confidence, and later review trigger."],
+    ["Questions", "Missing context, contradictions, buyer validation questions, and approval questions."],
+    ["Risks", "Unsupported claims, raw-source risk, provider/runtime risk, cost risk, and delivery risk."],
+    ["Next Tasks", "Role-owned next actions with artifact target, blocker, review gate, and due condition."],
+    ["Backlog", "Suggested Jira/GitLab-ready epics, stories, acceptance criteria, and dependencies."],
+    ["Success Metrics", "Cycle-time, rework, handoff quality, evidence completeness, review latency, and buyer signal metrics."],
+  ];
+}
+
+function taskStages() {
+  return ["Intake", "Role Assignment", "Active Work", "QA Gate", "Docs/Reports", "Git/Deploy", "Notion/Memory", "Final Decision"];
+}
+
+function defaultRoleConfigs() {
+  const makeRole = (id, title, objective, responsibility, tools, modelRoute, budgetMode, outputArtifact, reviewGate, status, handoffTarget) => ({
+    id,
+    title,
+    objective,
+    responsibility,
+    tools,
+    modelRoute,
+    budgetMode,
+    outputArtifact,
+    reviewGate,
+    status,
+    handoffTarget,
+  });
+  return [
+    makeRole("jesus", "Jesus", "Lead integration and final acceptance.", "Merge order, final validation, Git push packet, and handout.", "Codex, Git, validation scripts", "Codex operator", "local only", "agent-handout.md", "AF Review plus owner gate", "active", "Owner approval"),
+    makeRole("messi", "Messi", "Close out PM evidence without overclaiming.", "Notion/GitHub/project closeout, E1/E1.3.9 status, report links, task evidence.", "Notion package, wiki log, Git status", "Codex operator", "local only", "notion-update-package.md", "Evidence exists first", "review", "Jesus"),
+    makeRole("lol", "LOL", "Own dashboard UX and block schema surface.", "Screen 1, Screen 2, role panels, composer, voice states, schema controls.", "Dashboard JS/CSS, static smoke", "Codex operator", "local only", "dashboard UI diff", "Browser/static proof", "active", "Jesus"),
+    makeRole("ronaldinho", "Ronaldinho", "Review runtime and backend claims.", "Backend/API, LangGraph, CrewAI, OpenRouter, env, Railway, voice, runtime boundaries.", "FastAPI, YAML, runtime guards", "Codex operator", "no provider spend", "technical review", "Provider disabled check", "review", "Jesus"),
+    makeRole("ronaldo", "Ronaldo", "Protect product and ICP consistency.", "PRD/ICP offer, buyer value, current single ICP lane, demo/report consistency.", "Reports, ICP docs, PRD template", "Codex operator", "local only", "ICP review", "Source support", "review", "Jesus"),
+    makeRole("yushchenko", "Yushchenko", "Keep model budget and ledger discipline.", "OpenRouter ledger, token/cost discipline, 5.00 USD daily cap, 1.99 USD hard stop.", "model-routing.yaml, ledger schema", "OpenRouter gated", "stop before 1.99 USD", "budget verdict", "Ledger required", "gated", "Jesus"),
+    makeRole("theory", "Theory Subagent", "Ground PRD and discovery structure.", "FreePRD, PRD theory, ICP theory, discovery-call theory, missing-info questions.", "PRD/report templates", "Codex operator", "local only", "theory notes", "Source review", "review", "Ronaldo"),
+    makeRole("security", "Security Subagent", "Protect secrets and unsafe write paths.", "Env variables, Telegram migration, secret scan, browser key ban, raw transcript policy.", "public safety scan, env examples", "Codex operator", "local only", "security checklist", "Secret scan", "active", "Ronaldinho"),
+    makeRole("actor", "Actor", "Execute one bounded task slice.", "Implement assigned scope without reverting unrelated changes.", "Scoped editor tools", "Codex operator", "local only", "bounded patch", "Reviewer required", "available", "Jesus"),
+    makeRole("af_tools", "AF Tools", "Verify sources, providers, and tools.", "Readiness checks, source inventory, provider status, runtime boundaries.", "runtime guard, config check", "Codex operator", "local only", "tool readiness", "AF Review", "active", "Jesus"),
+    makeRole("af_knowledge", "AF Knowledge", "Prepare reviewed memory packets.", "WikiLLM, run notes, insights, and public-safe memory candidates.", "wiki files, run notes", "Codex operator", "local only", "KB update packet", "Memory approval", "review", "Messi"),
+    makeRole("af_publisher", "AF Publisher", "Prepare publication only after gates pass.", "Git/deploy/report packet, release notes, blocked send reasons.", "Git, Vercel gated, reports", "Codex operator", "local only", "publication packet", "Owner approval", "gated", "Jesus"),
+    makeRole("af_review", "AF Review", "Approve, revise, or block final output.", "Public safety, claim support, runtime boundary, docs/check evidence.", "safety scan, diff check, smoke", "Codex operator", "local only", "review verdict", "Required before push", "active", "Jesus"),
+    makeRole("crewai_workers", "CrewAI Role Workers", "Represent CrewAI roles without default runtime promotion.", "Configured role/task workers; Level 3 deterministic proof is evidence only.", "crewai-crew.yaml, proof artifacts", "proof_passed_not_default_runtime", "0.00 USD proof spend", "CrewAI proof packet", "Provider/default approval required", "eligible", "LangGraph"),
+  ];
+}
+
+function ensureRoleConfigs() {
+  const defaults = defaultRoleConfigs();
+  const byId = new Map((Array.isArray(roleConfigs) ? roleConfigs : []).map((role) => [role.id, role]));
+  roleConfigs = defaults.map((role) => ({ ...role, ...(byId.get(role.id) || {}) }));
+  saveJson(storageKeys.roleConfig, roleConfigs);
+}
+
+function renderPrdIcpRequestSurface() {
+  return `
+    <section class="panel prd-request-panel" style="margin-top:16px">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Direct Jarvis PRD/ICP Request</h2>
+          <p class="muted">Attempts the local backend lane when available; otherwise it stages a browser-local packet for Codex review. OpenRouter stays server-side and disabled until approval and budget guard proof exist.</p>
+        </div>
+        <div class="row-actions">
+          <button class="primary" id="prdSendBackend" type="button">Send to local backend</button>
+          <button class="button" id="prdStagePacket" type="button">Stage packet</button>
+        </div>
+      </div>
+      <label class="full-width-label">Request
+        <textarea id="prdComposerInput" rows="5" placeholder="Turn the approved meeting/interview/research input into a PRD/ICP packet with backlog and missing-info questions.">${escapeHtml(prdComposerDraft)}</textarea>
+      </label>
+      <div class="schema-runtime-gates compact">
+        <span>Test fixture: docs/testmeeting.md after owner approval</span>
+        <span>Discovery source links: approval-gated inputs</span>
+        <span>Output includes Jira/GitLab backlog</span>
+        <span>Missing-info questions required</span>
+      </div>
+      <div id="prdBackendStatus" class="callout compact">Backend status unknown. Static mode will preserve the request as text if the backend is unavailable.</div>
+    </section>
+  `;
+}
+
+function renderPrdIcpOutputBlocks() {
+  return `
+    <section class="panel prd-blocks-panel" style="margin-top:16px">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">PRD/ICP Output Blocks</h2>
+          <p class="muted">The service output follows a product-doc structure: source summary first, then workflow, requirements, decisions, backlog, metrics, and gaps.</p>
+        </div>
+        <div class="row-actions">
+          <a class="button" href="../../docs/prd-icp-output-template.md">PRD template</a>
+          <a class="button" href="../../docs/testmeeting-prd-runbook.md">Test runbook</a>
+        </div>
+      </div>
+      <div class="output-block-grid">
+        ${prdIcpOutputBlocks().map(([title, body]) => `
+          <article class="output-block">
+            <strong>${escapeHtml(title)}</strong>
+            <p>${escapeHtml(body)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderTaskStages() {
+  return `
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Agent Orchestra Stages</h2>
+          <p class="muted">Operator-facing execution path from intake through final decision, with Git/deploy and Notion/memory as explicit gates.</p>
+        </div>
+      </div>
+      <div class="stage-grid">
+        ${taskStages().map((stage, index) => `
+          <article class="stage-card">
+            <span>${index + 1}</span>
+            <strong>${escapeHtml(stage)}</strong>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderRoleConfigPanels() {
+  ensureRoleConfigs();
+  return `
+    <section class="panel role-config-panel" style="margin-top:16px">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Role Configuration</h2>
+          <p class="muted">Editable safe fields are stored in browser localStorage and can be exported as a review packet. The browser does not write source YAML.</p>
+        </div>
+        <div class="row-actions">
+          <button class="primary" id="saveRoleConfig" type="button">Save local role config</button>
+          <button class="button" id="exportRoleConfig" type="button">Export role packet</button>
+        </div>
+      </div>
+      <div class="role-card-grid">
+        ${roleConfigs.map((role) => `
+          <article class="role-config-card" data-role-id="${escapeHtml(role.id)}">
+            <header>
+              <strong>${escapeHtml(role.title)}</strong>
+              <span>${escapeHtml(role.status)}</span>
+            </header>
+            <label>Objective<input data-field="objective" value="${escapeHtml(role.objective)}" /></label>
+            <label>Responsibility<textarea data-field="responsibility" rows="2">${escapeHtml(role.responsibility)}</textarea></label>
+            <label>Tools<input data-field="tools" value="${escapeHtml(role.tools)}" /></label>
+            <div class="control-grid compact">
+              <label>Model route<input data-field="modelRoute" value="${escapeHtml(role.modelRoute)}" /></label>
+              <label>Budget mode<input data-field="budgetMode" value="${escapeHtml(role.budgetMode)}" /></label>
+              <label>Output artifact<input data-field="outputArtifact" value="${escapeHtml(role.outputArtifact)}" /></label>
+              <label>Review gate<input data-field="reviewGate" value="${escapeHtml(role.reviewGate)}" /></label>
+              <label>Status<select data-field="status">
+                ${["available", "active", "review", "blocked", "gated", "eligible", "done"].map((status) => `<option value="${status}" ${role.status === status ? "selected" : ""}>${status}</option>`).join("")}
+              </select></label>
+              <label>Handoff target<input data-field="handoffTarget" value="${escapeHtml(role.handoffTarget)}" /></label>
+            </div>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
 function createLocalPacket(kind, source, input, extra = {}) {
   const id = makeId(kind);
   const packet = {
@@ -1085,7 +1333,7 @@ function handleGlobalSubmit(value, source = "typed command") {
   const reply = jarvisReply(input, source);
   appendChat("assistant", reply, "Jarvis static command shell");
   appendEvent("Jarvis command", `${input.slice(0, 120)} -> ${reply.slice(0, 160)}`, "ok");
-  speakText(reply);
+  if (autoSpeakEnabled) speakText(reply);
   if (activeTab === previousTab && activeTab !== "jarvis") activeTab = "jarvis";
   window.history.replaceState(null, "", `#${activeTab}`);
   render();
@@ -1109,25 +1357,33 @@ function renderJarvis(data) {
           <span>Provider disabled</span>
           <span>Writeback gated</span>
         </div>
-        <form class="voice-fallback" id="voiceFallbackForm" data-testid="voice-fallback-form" aria-label="Manual voice transcript fallback">
-          <label for="voiceFallbackInput">Manual transcript fallback</label>
-          <div>
-            <input id="voiceFallbackInput" data-testid="voice-fallback-input" type="text" value="${escapeHtml(voiceFallbackDraft)}" placeholder="Type what you said if microphone recognition fails" />
-            <button class="button" id="voiceFallbackSubmit" data-testid="voice-fallback-submit" type="button">Use transcript</button>
+        <form class="voice-fallback voice-control-panel" id="voiceFallbackForm" data-testid="voice-fallback-form" aria-label="Voice and transcript controls">
+          <div class="voice-toolbar" role="group" aria-label="Voice controls">
+            <button class="primary" id="voiceToggle" type="button">${voiceAuthorized ? "Mic" : "Request mic"}</button>
+            <button class="button" id="voiceStop" type="button">Stop</button>
+            <button class="button" id="voiceCancel" type="button">Cancel</button>
+            <span class="voice-timer" id="voiceTimer" aria-live="polite">${formatVoiceTimer()}</span>
           </div>
-          <p class="form-status" id="voiceFallbackStatus" aria-live="polite">Fallback uses the same visible chat path as the bottom composer.</p>
+          <label for="voiceTranscriptPreview">Manual transcript fallback / editable transcript preview</label>
+          <textarea id="voiceTranscriptPreview" data-testid="voice-fallback-input" rows="4" placeholder="Transcript appears here, or type it manually before sending.">${escapeHtml(voiceTranscriptPreview || voiceFallbackDraft)}</textarea>
+          <div class="voice-toolbar" role="group" aria-label="Transcript and playback controls">
+            <button class="button" id="voiceFallbackSubmit" data-testid="voice-fallback-submit" type="button">Send transcript</button>
+            <button class="button" id="voicePlayLast" type="button">Play last reply</button>
+            <button class="button" id="voiceStopPlayback" type="button">Stop playback</button>
+            <label class="toggle-control"><input id="autoSpeakToggle" type="checkbox" ${autoSpeakEnabled ? "checked" : ""} /> Auto-speak</label>
+          </div>
+          <p class="form-status" id="voiceFallbackStatus" aria-live="polite">Transcribing state is local. Fallback uses the same visible chat path as the bottom composer.</p>
         </form>
         <div class="jarvis-actions">
           <button class="primary" id="jarvisRefresh" type="button">Refresh data</button>
-          <button class="button" id="voiceToggle" type="button">${voiceAuthorized ? "Start voice" : "Request voice"}</button>
-          <button class="button" id="voiceOutputToggle" type="button">${voiceOutputEnabled ? "Mute replies" : "Speak replies"}</button>
-          <button class="button" id="voiceTestOutput" type="button">Test speaker</button>
+          <button class="button" id="voiceOutputToggle" type="button">${voiceOutputEnabled ? "Speaker on" : "Speaker off"}</button>
+          <button class="button" id="voiceTestOutput" type="button">Speaker test</button>
           <label class="button file-button">
             Attach file
             <input id="fileInput" type="file" multiple />
           </label>
         </div>
-        <div id="voiceState" class="callout compact">${voiceAuthorized ? "Browser speech recognition was previously started in this browser. Start voice to request a new transcript." : "Voice input requires browser microphone permission when listening starts."} ${voiceOutputEnabled ? "Speech output is enabled for Jarvis replies." : "Speech output is muted."}</div>
+        <div id="voiceState" class="callout compact">${voiceAuthorized ? "Browser speech recognition was previously started in this browser. Mic requests a new transcript." : "Voice input requires browser microphone permission when listening starts."} ${voiceOutputEnabled ? "Speaker playback is enabled." : "Speaker playback is off."} ${autoSpeakEnabled ? "Auto-speak is on." : "Auto-speak is off."}</div>
       </section>
 
       <aside class="panel">
@@ -1324,6 +1580,8 @@ function renderJarvis(data) {
   });
 
   document.querySelector("#voiceToggle")?.addEventListener("click", startVoice);
+  document.querySelector("#voiceStop")?.addEventListener("click", () => stopVoiceRecognition("Voice capture stopped. Review or send the transcript preview."));
+  document.querySelector("#voiceCancel")?.addEventListener("click", cancelVoiceTranscript);
   document.querySelector("#voiceOutputToggle")?.addEventListener("click", () => {
     voiceOutputEnabled = !voiceOutputEnabled;
     localStorage.setItem(storageKeys.voiceOutput, String(voiceOutputEnabled));
@@ -1335,17 +1593,29 @@ function renderJarvis(data) {
     localStorage.setItem(storageKeys.voiceOutput, "true");
     const text = "Jarvis speaker test. Browser speech synthesis is working if you hear this sentence.";
     appendEvent("Speaker test requested", "Browser speech synthesis test started from the Jarvis panel.", "ok");
-    speakText(text);
+    speakText(text, { force: true });
     const state = document.querySelector("#voiceState");
     if (state) state.textContent = speechSynthesisAvailable()
       ? "Speaker test started. If there is no sound, check system output, browser audio permission, and available speech voices."
       : "Speech synthesis is unavailable in this browser. Use text mode or an approved provider-backed voice runtime later.";
   });
+  document.querySelector("#voicePlayLast")?.addEventListener("click", () => {
+    const lastReply = [...chatHistory].reverse().find((message) => message.role === "assistant");
+    if (lastReply) speakText(lastReply.text, { force: true });
+  });
+  document.querySelector("#voiceStopPlayback")?.addEventListener("click", stopSpeechPlayback);
+  document.querySelector("#autoSpeakToggle")?.addEventListener("change", (event) => {
+    autoSpeakEnabled = event.target.checked;
+    localStorage.setItem(storageKeys.autoSpeak, String(autoSpeakEnabled));
+    appendEvent("Auto-speak changed", autoSpeakEnabled ? "Jarvis replies will play automatically." : "Jarvis replies will stay text-only.", autoSpeakEnabled ? "ok" : "warn");
+  });
   const fallbackForm = view.querySelector("#voiceFallbackForm");
   const fallbackSubmit = view.querySelector("#voiceFallbackSubmit");
-  const fallbackInput = view.querySelector("#voiceFallbackInput");
+  const fallbackInput = view.querySelector("#voiceTranscriptPreview");
   fallbackInput?.addEventListener("input", () => {
     voiceFallbackDraft = fallbackInput.value;
+    voiceTranscriptPreview = fallbackInput.value;
+    localStorage.setItem(storageKeys.voiceTranscriptPreview, voiceTranscriptPreview);
   });
   fallbackForm?.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -1361,12 +1631,14 @@ function renderJarvis(data) {
 }
 
 function submitVoiceFallback() {
-  const input = view.querySelector("#voiceFallbackInput");
-  const transcript = (input?.value || voiceFallbackDraft).trim();
+  const input = view.querySelector("#voiceTranscriptPreview");
+  const transcript = (input?.value || voiceTranscriptPreview || voiceFallbackDraft).trim();
   if (!transcript) return;
   appendEvent("Manual transcript submitted", "Manual fallback used the Jarvis chat processing path.", "ok");
   handleGlobalSubmit(transcript, "manual transcript fallback");
   voiceFallbackDraft = "";
+  voiceTranscriptPreview = "";
+  localStorage.removeItem(storageKeys.voiceTranscriptPreview);
   if (input) input.value = "";
 }
 
@@ -1383,18 +1655,25 @@ function startVoice() {
   recognition.lang = "en-US";
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
+  activeRecognition = recognition;
   state.textContent = "Requesting browser microphone permission. If blocked, use manual transcript fallback.";
   recognition.onstart = () => {
     voiceAuthorized = true;
     localStorage.setItem(storageKeys.voiceAuthorized, "true");
     setLiveStatus("Jarvis listening", "ok");
-    state.textContent = "Listening. Speak one command or one interview answer.";
+    startVoiceTimer();
+    state.textContent = "Transcribing. Speak one command or one interview answer, then review the editable preview.";
     appendEvent("Voice listening started", "Browser speech recognition started. This proves the browser accepted the listening request for this session.", "ok");
   };
   recognition.onresult = (event) => {
     const transcript = event.results?.[0]?.[0]?.transcript || "";
-    state.textContent = `Heard: ${transcript}`;
-    handleGlobalSubmit(transcript, "authorized browser voice transcript");
+    voiceTranscriptPreview = transcript;
+    voiceFallbackDraft = transcript;
+    localStorage.setItem(storageKeys.voiceTranscriptPreview, transcript);
+    const preview = document.querySelector("#voiceTranscriptPreview");
+    if (preview) preview.value = transcript;
+    state.textContent = "Transcript captured. Edit the preview, then send transcript.";
+    appendEvent("Voice transcript captured", "Authorized browser transcript is waiting for review in the editable preview.", "ok");
   };
   recognition.onnomatch = () => {
     state.textContent = "No clear speech was detected. Use manual transcript fallback or try again.";
@@ -1402,6 +1681,8 @@ function startVoice() {
   };
   recognition.onerror = (event) => {
     const message = voiceErrorMessage(event.error);
+    activeRecognition = null;
+    stopVoiceTimer();
     if (event.error === "not-allowed" || event.error === "service-not-allowed") {
       voiceAuthorized = false;
       localStorage.removeItem(storageKeys.voiceAuthorized);
@@ -1411,7 +1692,9 @@ function startVoice() {
     appendEvent("Voice fallback ready", message, "warn");
   };
   recognition.onend = () => {
-    if (state.textContent === "Listening. Speak one command or one interview answer.") {
+    stopVoiceTimer();
+    activeRecognition = null;
+    if (state.textContent === "Transcribing. Speak one command or one interview answer, then review the editable preview.") {
       state.textContent = "Voice stopped without a transcript. Use manual transcript fallback or try again.";
     }
     setLiveStatus("Static polling active", "warn");
@@ -1437,6 +1720,61 @@ function voiceErrorMessage(errorCode) {
     aborted: "Voice recognition was stopped. Use manual transcript fallback if this was unintended."
   };
   return messages[code] || `Voice recognition failed (${code}). Use manual transcript fallback or text input; no raw audio is stored.`;
+}
+
+function formatVoiceTimer(seconds = voiceElapsedSeconds) {
+  const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const secs = String(seconds % 60).padStart(2, "0");
+  return `${mins}:${secs}`;
+}
+
+function startVoiceTimer() {
+  stopVoiceTimer(false);
+  voiceStartedAt = Date.now();
+  voiceElapsedSeconds = 0;
+  const update = () => {
+    voiceElapsedSeconds = Math.floor((Date.now() - voiceStartedAt) / 1000);
+    const timer = document.querySelector("#voiceTimer");
+    if (timer) timer.textContent = formatVoiceTimer();
+  };
+  update();
+  voiceTimerId = window.setInterval(update, 1000);
+}
+
+function stopVoiceTimer(reset = false) {
+  if (voiceTimerId) window.clearInterval(voiceTimerId);
+  voiceTimerId = null;
+  if (reset) {
+    voiceStartedAt = null;
+    voiceElapsedSeconds = 0;
+  }
+  const timer = document.querySelector("#voiceTimer");
+  if (timer) timer.textContent = formatVoiceTimer();
+}
+
+function stopVoiceRecognition(reason = "Voice recognition stopped") {
+  if (activeRecognition) {
+    try {
+      activeRecognition.stop();
+    } catch {
+      // Browser recognition can throw after it has already ended.
+    }
+  }
+  activeRecognition = null;
+  stopVoiceTimer();
+  setLiveStatus("Voice stopped", "warn");
+  appendEvent("Voice stopped", reason, "warn");
+  const state = document.querySelector("#voiceState");
+  if (state) state.textContent = reason;
+}
+
+function cancelVoiceTranscript() {
+  stopVoiceRecognition("Voice capture canceled. Transcript preview cleared.");
+  voiceTranscriptPreview = "";
+  voiceFallbackDraft = "";
+  localStorage.removeItem(storageKeys.voiceTranscriptPreview);
+  const input = document.querySelector("#voiceTranscriptPreview");
+  if (input) input.value = "";
 }
 
 function handleFiles(event) {
@@ -1515,14 +1853,18 @@ function renderSchema(data) {
           <button class="button schema-add" data-type="approval" type="button">Local approval</button>
           <button class="button" id="schemaConnect" type="button">${blockSchemaConnectSource ? "Cancel local connect" : "Local connect"}</button>
           <button class="button" id="schemaLayout" type="button">Local layout</button>
+          <button class="button" id="schemaZoomOut" type="button">Zoom out</button>
+          <button class="button" id="schemaZoomIn" type="button">Zoom in</button>
+          <button class="button" id="schemaZoomReset" type="button">Reset zoom</button>
+          <button class="button" id="schemaZoomFit" type="button">Fit</button>
           <button class="primary" id="schemaExport" type="button">Export review packet</button>
         </div>
       </div>
 
       <div class="schema-stage-rail" aria-label="Workflow stage rail">
         ${(kind === "service"
-          ? ["Intake", "PRD", "Evidence", "ICP", "Demo", "Approval", "Output"]
-          : ["Command", "Route", "Develop", "Review", "Merge", "Approval", "Record"]
+          ? ["Intake", "PRD", "Evidence", "ICP", "Demo", "CrewAI Proof", "Approval", "Output"]
+          : ["Command", "Route", "Develop", "Review", "CrewAI Proof", "Merge", "Approval", "Record"]
         ).map((stage, index) => `<span><strong>${index + 1}</strong>${escapeHtml(stage)}</span>`).join("")}
       </div>
 
@@ -1531,6 +1873,7 @@ function renderSchema(data) {
         <span>${badge("static browser local")}</span>
         <span>${badge("browser-local edits only")}</span>
         <span>${badge("MODEL_PROVIDER none")}</span>
+        <span>${badge(`zoom ${Math.round(schemaZoom * 100)}%`)}</span>
         <span>${escapeHtml(blockSchemaConnectSource ? `Connect mode: source is ${getSchemaNode(blockSchemaConnectSource)?.title || "unknown"}. Choose target.` : "Click a block to open its control panel. Drag selected blocks to reposition.")}</span>
       </div>
 
@@ -1546,6 +1889,7 @@ function renderSchema(data) {
       <div class="schema-runtime-gates">
         <span>Runtime gate: provider disabled</span>
         <span>Runtime gate: backend absent</span>
+        <span>Runtime gate: CrewAI Level 3 proof passed, not default runtime</span>
         <span>Runtime gate: writeback approval required</span>
         <span>Runtime gate: public-safe sources only</span>
       </div>
@@ -1561,7 +1905,7 @@ function renderSchema(data) {
 
       <div class="schema-workspace">
         <div class="schema-canvas-wrap">
-          <div class="schema-canvas" id="schemaCanvas" style="width:${canvasWidth}px;height:${canvasHeight}px">
+          <div class="schema-canvas" id="schemaCanvas" style="width:${canvasWidth}px;height:${canvasHeight}px;transform:scale(${schemaZoom});transform-origin:top left;">
             <svg class="schema-edge-layer" width="${canvasWidth}" height="${canvasHeight}" viewBox="0 0 ${canvasWidth} ${canvasHeight}" aria-hidden="true">${edgeSvg}</svg>
             ${blockSchema.nodes.map((node) => renderSchemaNode(node)).join("")}
           </div>
@@ -1595,12 +1939,13 @@ function renderSchema(data) {
         <h2 class="section-title">LangGraph / CrewAI / LangSmith Trace Prep</h2>
         ${table(["Layer", "Traceable state", "Boundary"], [
           ["LangGraph", "node id, route key, approval state, blocker, output link", "No raw private prompts or recordings"],
-          ["CrewAI", "agent role, task, status, handoff file, reviewer verdict", "No autonomous writeback"],
+          ["CrewAI", "agent role, task, proof status, ledger path, handoff file, reviewer verdict", "Level 3 proof passed; not default/provider runtime; no autonomous writeback"],
           ["LangSmith", "sanitized run metadata, node names, trace URL placeholder", "LANGSMITH_API_KEY not exposed or activated here"],
           ["Codex", "review branch, changed files, checks, run note", "Local operator/editor only"],
         ].map((row) => row.map(escapeHtml)))}
       </section>
     </div>
+    ${kind === "service" ? renderPrdIcpRequestSurface() + renderPrdIcpOutputBlocks() : renderTaskStages() + renderRoleConfigPanels()}
     ${nodeControlPanelId ? renderNodeControlPanel(getSchemaNode(nodeControlPanelId)) : ""}
   `;
 
@@ -1945,6 +2290,10 @@ function bindSchemaEditor() {
     saveBlockSchema();
     render();
   });
+  view.querySelector("#schemaZoomOut")?.addEventListener("click", () => setSchemaZoom(schemaZoom - 0.1));
+  view.querySelector("#schemaZoomIn")?.addEventListener("click", () => setSchemaZoom(schemaZoom + 0.1));
+  view.querySelector("#schemaZoomReset")?.addEventListener("click", () => setSchemaZoom(1));
+  view.querySelector("#schemaZoomFit")?.addEventListener("click", () => setSchemaZoom(0.72));
 
   view.querySelector("#schemaExport")?.addEventListener("click", exportBlockSchemaPacket);
   view.querySelector("#schemaQueueSelected")?.addEventListener("click", queueSelectedSchemaNode);
@@ -1971,7 +2320,97 @@ function bindSchemaEditor() {
   view.querySelector("#schemaDeleteNode")?.addEventListener("click", deleteSchemaNode);
   view.querySelector("#schemaValidateFocus")?.addEventListener("click", () => view.querySelector("#schemaValidation")?.scrollIntoView({ behavior: "smooth", block: "center" }));
   view.querySelector("#schemaLangSmithFocus")?.addEventListener("click", () => handleGlobalSubmit("Explain LangSmith trace setup for this block schema", "schema trace button"));
+  bindPrdIcpRequestSurface();
+  bindRoleConfigPanels();
   bindNodeControlPanel();
+}
+
+function setSchemaZoom(value) {
+  schemaZoom = clamp(value, 0.55, 1.35);
+  localStorage.setItem(storageKeys.schemaZoom, String(schemaZoom));
+  appendEvent("Schema zoom changed", `Block schema zoom is now ${Math.round(schemaZoom * 100)}%.`, "ok");
+  render();
+}
+
+function bindPrdIcpRequestSurface() {
+  const input = view.querySelector("#prdComposerInput");
+  const status = view.querySelector("#prdBackendStatus");
+  if (!input) return;
+  input.addEventListener("input", () => {
+    prdComposerDraft = input.value;
+    localStorage.setItem(storageKeys.prdComposer, prdComposerDraft);
+  });
+  view.querySelector("#prdStagePacket")?.addEventListener("click", () => {
+    const packet = createLocalPacket("prd-icp-request", "Screen 1 PRD/ICP composer", input.value, {
+      extra: {
+        lane: "prd_icp_flow",
+        required_blocks: prdIcpOutputBlocks().map(([title]) => title),
+        backlog_required: true,
+        missing_questions_required: true,
+        test_fixture: "docs/testmeeting.md after owner approval",
+      },
+    });
+    if (status) status.textContent = `Local packet staged: ${packet.id}.`;
+    render();
+  });
+  view.querySelector("#prdSendBackend")?.addEventListener("click", async () => {
+    const payload = {
+      request: input.value,
+      lane: "prd_icp_flow",
+      approved_test_input: false,
+      source_refs: ["docs/testmeeting.md", "approved discovery-call links"],
+    };
+    if (status) status.textContent = "Sending to local backend if available...";
+    try {
+      const response = await fetch("/api/lanes/prd-icp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(`backend returned ${response.status}`);
+      const result = await response.json();
+      appendEvent("PRD/ICP backend response", result.status || "Backend returned a lane packet.", "ok");
+      if (status) status.textContent = `Backend response: ${result.status || "ok"}.`;
+    } catch (error) {
+      const packet = createLocalPacket("prd-icp-request-backend-unavailable", "Screen 1 PRD/ICP composer", input.value, {
+        extra: {
+          backend_error: String(error.message || error),
+          fallback: "preserved as browser-local review packet",
+          openrouter_state: "disabled_until_owner_approval_and_budget_guard",
+        },
+      });
+      if (status) status.textContent = `Backend unavailable; local packet staged: ${packet.id}.`;
+      appendEvent("PRD/ICP backend unavailable", "Request preserved as a local review packet.", "warn");
+      render();
+    }
+  });
+}
+
+function bindRoleConfigPanels() {
+  if (!view.querySelector(".role-config-panel")) return;
+  view.querySelector("#saveRoleConfig")?.addEventListener("click", () => {
+    roleConfigs = Array.from(view.querySelectorAll(".role-config-card")).map((card) => {
+      const existing = roleConfigs.find((role) => role.id === card.dataset.roleId) || {};
+      const next = { ...existing };
+      card.querySelectorAll("[data-field]").forEach((input) => {
+        next[input.dataset.field] = input.value;
+      });
+      return next;
+    });
+    saveJson(storageKeys.roleConfig, roleConfigs);
+    appendEvent("Role config saved locally", "Agent Orchestra role configuration was saved in browser localStorage only.", "ok");
+    render();
+  });
+  view.querySelector("#exportRoleConfig")?.addEventListener("click", () => {
+    const packet = createLocalPacket("agent-orchestra-role-config", "Screen 2 role configuration", "Export browser-local role config for Codex review.", {
+      extra: {
+        roles: roleConfigs,
+        editable_fields: ["role objective", "responsibility", "tools", "model route", "budget mode", "output artifact", "review gate", "status", "handoff target"],
+        write_policy: "browser cannot write raw files; backend or Codex review required",
+      },
+    });
+    downloadPacket(packet.id);
+  });
 }
 
 function bindNodeControlPanel() {
@@ -2453,6 +2892,11 @@ function renderCrew(data) {
       ${card({ label: "Process", value: data.crewai.process, tone: "ok" })}
       ${card({ label: "Memory", value: data.crewai.memory, note: "Disabled until boundaries are proven", tone: "warn" })}
     </div>
+    <div class="grid cols-3" style="margin-top:16px">
+      ${card({ label: "Level 3", value: data.crewai.level_3_status || "unknown", note: "Direct CrewAI deterministic proof; not default/provider runtime", tone: data.crewai.level_3_status === "proof_passed_not_default_runtime" ? "ok" : "warn" })}
+      ${card({ label: "Proof ledger", value: data.crewai.level_3_ledger || "not recorded", note: "Public-safe proof ledger for deterministic fixture", tone: data.crewai.level_3_ledger ? "ok" : "warn" })}
+      ${card({ label: "Proof cost", value: data.crewai.level_3_cost || "unknown", note: "OpenRouter remains disabled", tone: data.crewai.level_3_cost === "0.00 USD" ? "ok" : "warn" })}
+    </div>
     <section class="panel" style="margin-top:16px">
       <h2 class="section-title">Agent Roles</h2>
       ${table(["Agent", "Role", "Goal", "Skills"], data.crewai.agents.map((agent) => [
@@ -2499,6 +2943,11 @@ function renderLangSmith(data) {
 
 function renderEnv(data) {
   view.innerHTML = `
+    <div class="grid cols-3">
+      ${card({ label: "Jarvis API", value: data.jarvis_api?.status || "unknown", note: data.jarvis_api?.path || "services/jarvis-api", tone: data.jarvis_api?.status === "contract_present_provider_disabled" ? "ok" : "warn" })}
+      ${card({ label: "Provider runtime", value: data.jarvis_api?.provider_runtime || "disabled", note: "OpenRouter server-side only after approval", tone: "warn" })}
+      ${card({ label: "Run hard stop", value: `${data.jarvis_api?.openrouter_budget?.run_hard_stop_usd || "1.99"} USD`, note: "Stop and ask approval above cap", tone: "ok" })}
+    </div>
     <div class="grid cols-2">
       <section class="panel">
         <h2 class="section-title">Env And Config Status</h2>
@@ -2517,6 +2966,10 @@ function renderEnv(data) {
         ]))}
       </section>
     </div>
+    <section class="panel" style="margin-top:16px">
+      <h2 class="section-title">Jarvis API Required Endpoints</h2>
+      <div class="chips">${(data.jarvis_api?.endpoints || []).map((endpoint) => `<span class="badge">${escapeHtml(endpoint)}</span>`).join("")}</div>
+    </section>
     <section class="panel" style="margin-top:16px">
       <h2 class="section-title">Operating Rule</h2>
       <div class="callout">Use Codex direct prompting first, then CLI proof scripts, then this dashboard. Write actions wait for Railway/auth/writeback gates.</div>

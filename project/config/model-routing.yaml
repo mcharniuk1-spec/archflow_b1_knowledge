@@ -440,6 +440,14 @@ quality_gates:
 
 budget_controls:
   default_mode: economical_until_escalation_threshold
+  openrouter_hard_caps:
+    daily_budget_usd: 5.00
+    max_per_run_usd: 1.99
+    rule: always_keep_each_run_under_2_usd
+    warn_at_run_usd: 1.50
+    stop_before_run_usd: 1.99
+    stop_before_daily_usd: 5.00
+    over_cap_behavior: stop_and_request_owner_approval
   frontier_council_quota:
     routine_run: zero
     substantial_strategy_run: one_to_three_calls_per_family
@@ -450,6 +458,8 @@ budget_controls:
     code_drafts: code_execution_model_first_then_codex_review
   stop_conditions:
     - budget_cap_reached
+    - run_cost_reaches_1_99_usd
+    - daily_openrouter_cost_reaches_5_00_usd
     - repeated_low_confidence_outputs
     - provider_unavailable
     - source_boundary_unclear
@@ -473,13 +483,165 @@ reliability_controls:
 logging:
   required_fields:
     - timestamp
+    - timestamp_utc
+    - run_id
     - epic_or_task
+    - provider
     - model_id
     - model_role
     - prompt_version
     - source_ids_used
+    - input_artifact
     - output_artifact
+    - context_window_tokens
+    - prompt_tokens
+    - output_tokens
     - cost_estimate
+    - actual_or_estimated_cost
+    - cost_currency
+    - pricing_source
+    - budget_cap
+    - budget_remaining
     - decision
     - reviewer_model_id
     - human_gate_required
+    - runtime_source
+    - status
+    - error_type
+
+prompt_1_2_dashboard_boundary:
+  status: level_3_crewai_proof_integrated_not_default_runtime
+  openrouter_role: server_side_model_provider_after_approval
+  current_runtime_state:
+    provider_runtime: disabled
+    backend_or_local_bridge: absent
+    static_dashboard_provider_calls: forbidden
+    no_active_openrouter_runtime_evidence_found: true
+    canonical_model_call_ledger: absent_for_provider_runtime_required_before_activation
+    crewai_level_3_proof_ledger: project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl
+    crewai_level_3_status: proof_passed_not_default_runtime
+  allowed_current_behavior:
+    - render_disabled_provider_gate
+    - export_browser_local_packet_for_codex_review
+    - prepare_model_route_preflight_report
+    - record_missing_token_cost_context_fields
+    - display_crewai_level_3_proof_passed_not_default_runtime
+  forbidden_current_behavior:
+    - browser_javascript_provider_call
+    - storing_provider_key_in_public_file
+    - raw_private_transcript_to_provider
+    - unsanitized_upload_to_provider
+    - provider_response_to_external_write_without_review
+    - token_or_cost_claim_without_ledger
+
+crewai_level_3_proof:
+  status: proof_passed_not_default_runtime
+  proof_run: project/runs/2026-07-02-crewai-level-3-proof/
+  runtime_source: direct_crewai_task_flow
+  model_provider: local_deterministic
+  model_id: archflow-deterministic-crewai-proof
+  provider_calls: 0
+  writeback_calls: 0
+  default_runtime: false
+  openrouter_runtime: disabled
+  budget_guard:
+    daily_budget_usd: 5.00
+    max_per_run_usd: 1.99
+    actual_spend_usd: 0.00
+    stop_condition: stop_before_provider_call_if_cap_or_ledger_missing
+  artifacts:
+    fixture: project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md
+    ledger: project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl
+    budget_guard: project/runs/2026-07-02-crewai-level-3-proof/budget-guard.json
+    crew_output: project/runs/2026-07-02-crewai-level-3-proof/crew-output.md
+    review_report: project/runs/2026-07-02-crewai-level-3-proof/review-report.md
+    runtime_proof: project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json
+    handout: project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md
+  remaining_gates_before_provider_or_default_runtime:
+    - explicit_owner_approval
+    - backend_or_local_bridge_verified
+    - secret_storage_outside_public_repo
+    - fresh_openrouter_model_list_and_pricing_check
+    - provider_backed_ledger_write_verified
+    - live_budget_guard_against_actual_provider_pricing
+    - expanded_af_review_for_non_fixture_outputs
+
+disabled_state_behavior:
+  dashboard_fields:
+    provider_runtime: disabled
+    reason: approval_backend_secret_logging_and_budget_gates_missing
+    activation_missing:
+      - approved_backend_or_local_bridge
+      - server_side_secret_access
+      - fresh_openrouter_model_list_check
+      - canonical_model_call_ledger
+      - budget_limit_per_run
+      - public_safety_screen
+      - human_approval_before_external_or_memory_write
+      - retry_and_timeout_policy
+      - daily_budget_5_usd_and_run_budget_under_2_usd_enforced
+    last_checked_at: update_per_run_when_verified
+    evidence_phrase: no_active_openrouter_runtime_evidence_found
+    next_gate: create_ledger_and_backend_preflight_before_provider_activation
+  reporting_rule:
+    token_cost_fields_without_ledger: report_missing_do_not_estimate
+    model_ids_without_fresh_check: label_unverified_until_activation_time_refresh
+
+model_call_ledger_schema:
+  status: required_before_activation
+  storage: public_safe_schema_or_server_side_log_after_backend_approval
+  minimum_fields:
+    - timestamp_utc
+    - run_id
+    - epic_or_task
+    - provider
+    - model_id
+    - model_role
+    - prompt_version
+    - source_ids_used
+    - input_artifact
+    - output_artifact
+    - context_window_tokens
+    - prompt_tokens
+    - output_tokens
+    - actual_or_estimated_cost
+    - cost_currency
+    - pricing_source
+    - budget_cap
+    - budget_remaining
+    - decision
+    - reviewer_model_id
+    - human_gate_required
+    - runtime_source
+    - status
+    - error_type
+  forbidden_fields:
+    - api_key_value
+    - credential_value
+    - raw_private_source_text
+    - private_url
+    - account_identifier
+
+server_side_activation_gates:
+  required_before_first_openrouter_call:
+    - explicit_owner_approval_for_provider_activation
+    - backend_or_local_bridge_verified
+    - secret_storage_verified_outside_public_repo
+    - fresh_models_endpoint_check
+    - selected_model_ids_and_pricing_recorded
+    - model_call_ledger_write_verified
+    - run_budget_cap_under_2_usd_set
+    - daily_budget_cap_5_usd_set
+    - retry_timeout_policy_set
+    - public_safety_screen_passed
+    - one_short_benchmark_logged
+    - af_review_and_jesus_gate_passed
+  budget_policy_fields:
+    - run_budget_cap
+    - daily_budget_cap
+    - max_per_run_usd
+    - frontier_call_quota
+    - execution_pool_quota
+    - cost_stop_condition
+    - downgrade_rule
+    - approval_required_over_cap

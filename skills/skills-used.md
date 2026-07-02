@@ -12,6 +12,7 @@ This project uses the following skills and methods.
 | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. |
 | [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, and run-note targets synchronized for recurring maintenance. |
 | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. |
+| [`priority-task-operator`](priority-task-operator/SKILL.md) | Select highest-priority actionable task by urgency and importance, create a PitAgent handoff packet, and prepare KB/Notion/GitHub follow-up evidence. |
 | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. |
 | [`outquestions`](outquestions/SKILL.md) | Report what changed after each substantial execution and list the decision questions required before the next stage. |
 | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. |

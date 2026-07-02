@@ -78,9 +78,46 @@
 - Added the Messi coordination review: the July 1 dashboard/model-routing/Notion work is directionally correct but should freeze before more implementation; open blockers are active file claims, missing screenshot evidence referenced by a run note, and pending modal/mobile QA. A reported duplicate top-level YAML key was rechecked and is not present in the current shared workspace.
 - Added `project/scripts/dashboard-static-smoke.py` as the reusable rendered-route smoke test for dashboard/Jarvis UI changes; it verifies `#jarvis`, `#history`, `#service`, `#schema`, `#config`, `#plan`, and the two node-panel deep links without provider calls or writeback.
 - Pushed review branch `review-jarvis-agentbrowser-blockschema-20260630` at `5efd281` for July 1 dashboard orchestration, model-routing, live-agent communication, planning, and smoke-test stabilization; merge/deploy/runtime activation remain gated.
+
+## 2026-07-02
+
+- The Yushchenko observer published a new public-safe model-efficiency report from local evidence only. No active OpenRouter runtime evidence was found, token and cost logs are still absent, and Telegram delivery was skipped because an approved sender was unavailable.
+- The CrewAI direct runtime proof also added a zero-cost local deterministic model-call ledger. That ledger is useful for bounded local runtime verification, but it must not be confused with provider-backed OpenRouter evidence.
 - Hardened recurring public execution contracts for the two scheduled maintenance lanes:
   - ArchFlow public evening skill and hook update,
   - Daily Skill Retrospective and RAG Knowledge Review.
   Added dedicated SKILL contracts, explicit no-op-safe lane scope, and recurring inefficiency blacklists so each run reviews not only functional output but also tool relevance and waste.
 - Split the two scheduled maintenance lane contracts in `agent-roster.yaml` into separate scheduled blocks (`21:00` and `22:30`) and added explicit long-term inefficiency carry-forward to wiki memory surfaces for durable global-knowledge governance.
 - Completed the final Jesus integration and Notion closeout for the static website/dashboard lane: Messi handoff reviewed, mobile homepage readability fixed, Notion Links and task rows refreshed to branch-head evidence, dashboard route/static data verified, and runtime/provider/Railway/Nexus/writeback claims kept gated.
+- Completed the dashboard/website/strategy QA audit: stable public site and dashboard routes returned HTTP 200, Notion task rows received `Agent Tags`, the Links page was reduced to current essential public/GitHub/dashboard pointers, Maxibook Telegram follow-up tasks TG-1 through TG-3 were created, and the public-safe PDF/handout were saved under `project/runs/2026-07-01-dashboard-website-strategy-qa/`.
+- Completed the 22:30 daily skill/RAG retrospective: the 21:00 registry lane stayed separate, `task-handout` and daily review skills were useful, and open proof gaps were consolidated for priority-task runtime, model-call ledger, Telegram sender, Nexus/writeback, and backend/provider claims.
+- Rerun the Yushchenko model-efficiency observer at 11:12 EEST; no active runtime, tokens, cost, or context-window data were logged for VLLM/remote provider calls, while two short local smoke checks each failed twice due `127.0.0.1:11434` being unreachable.
+- Completed the Jarvis dashboard ICP task consolidation block without implementation. The run created the strategic report, E1 task consolidation table, Notion update package, and run handout. It saved the current English goal, ICP, two-lane dashboard concept, and task consolidation outcome into public WikiLLM memory. Prompt 2 is ready only for static/browser-local dashboard MVP implementation; backend/provider/voice/writeback activation remains gated.
+- Completed Prompt 1.2 dashboard execution architecture. The run defined the PRD/ICP Flow and Agent Orchestra execution contracts, mapped Level 1 configured roles, Level 2 LangGraph-wrapped target execution, and blocked Level 3 direct CrewAI runtime, then added OpenRouter disabled-state behavior and a required model-call ledger gate before any future provider activation.
+- Updated the Prompt 1.2 execution contract with the owner OpenRouter budget rule: 5.00 USD per day and always under 2.00 USD per run. Clarified that Level 3 direct CrewAI runtime is blocked only because direct runtime proof is missing, and documented the proof ladder needed to unblock it safely.
+- Completed the CrewAI Level 3 proof pass. A tiny public-safe PRD/ICP fixture ran through direct CrewAI with a deterministic local LLM adapter, wrote a model-call ledger and budget guard, spent 0.00 USD, made zero provider calls and zero writeback calls, passed AF Review and validation, and promoted Level 3 only to `proof_passed_not_default_runtime`.
+## 2026-07-01
+
+- The Yushchenko model-efficiency observer completed a new public-safe report and again found no active OpenRouter runtime evidence.
+- The project still needs a canonical model-call ledger before true token and cost efficiency can be measured.
+## 2026-07-02 - Jarvis dashboard MVP implementation
+
+FACT:
+- Prompt 2 implementation updated the static dashboard with Screen 1 PRD/ICP request/output blocks, Screen 2 role configuration panels, explicit voice controls, block-schema zoom, and fixed bottom composer behavior.
+- A provider-disabled FastAPI service contract was added under `services/jarvis-api/`.
+- Env examples now provide placeholders only.
+- `docs/tgapi.md` was removed after a Telegram-token-shaped value was detected outside env flow.
+- OpenRouter remains disabled with a `5.00` USD daily cap and `1.99` USD run hard stop.
+- CrewAI Level 3 remains `proof_passed_not_default_runtime`.
+
+INTERPRETATION:
+- The dashboard is now a stronger static/browser-local control surface, not a live provider/backend/writeback runtime.
+
+GAP:
+- FastAPI dependencies are not installed in the current local runtime.
+- Full PRD/ICP test cycle, dashboard-driven Notion writeback, Telegram send, Railway deployment, provider activation, and default CrewAI promotion remain approval-gated.
+
+Outputs:
+- `project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md`
+- `project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md`
+- `wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md`

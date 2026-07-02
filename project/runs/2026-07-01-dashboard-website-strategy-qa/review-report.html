@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard, Website, Strategy, And Workflow QA Review</title>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; color: #17212b; line-height: 1.45; margin: 42px; }
+      h1 { font-size: 28px; margin-bottom: 4px; }
+      h2 { font-size: 18px; margin-top: 26px; border-bottom: 1px solid #d7dde5; padding-bottom: 5px; }
+      h3 { font-size: 15px; margin-top: 18px; }
+      p, li { font-size: 12.5px; }
+      .meta { color: #53606f; font-size: 12px; margin-bottom: 22px; }
+      a { color: #0a5d8f; text-decoration: none; }
+      table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 11.5px; }
+      th, td { border: 1px solid #d7dde5; padding: 7px; vertical-align: top; }
+      th { background: #edf3f8; text-align: left; }
+      .callout { background: #f4f7fb; border: 1px solid #d7dde5; padding: 12px 14px; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <h1>Dashboard, Website, Strategy, And Workflow QA Review</h1>
+    <div class="meta">Date: 2026-07-01 | Status: QA/PM audit complete; static delivery verified; runtime lanes remain gated</div>
+
+    <h2>Essential Links</h2>
+    <ul>
+      <li>Public site: <a href="https://archflowautomate.vercel.app/">https://archflowautomate.vercel.app/</a></li>
+      <li>Diagnostic: <a href="https://archflowautomate.vercel.app/quiz">https://archflowautomate.vercel.app/quiz</a></li>
+      <li>Dashboard: <a href="https://archflowautomate.vercel.app/dashboard">https://archflowautomate.vercel.app/dashboard</a></li>
+      <li>Dashboard data: <a href="https://archflowautomate.vercel.app/project/dashboard/data.json">https://archflowautomate.vercel.app/project/dashboard/data.json</a></li>
+      <li>Review branch: <a href="https://github.com/mcharniuk1-spec/archflow_b1_knowledge/tree/review-jarvis-agentbrowser-blockschema-20260630">review-jarvis-agentbrowser-blockschema-20260630</a></li>
+    </ul>
+
+    <h2>Executive Review</h2>
+    <div class="callout">
+      <p><strong>FACT:</strong> The current public site and dashboard routes returned HTTP 200 during this audit. The active review branch matched the GitHub remote at commit <code>73c41ea</code> before this audit added local report and memory artifacts. Notion now has an <code>Agent Tags</code> multi-select field, active task rows have updated tags, and the Links page has been cleared down to essential current links and gated-state notes.</p>
+      <p><strong>INTERPRETATION:</strong> The static website and dashboard are working as a review-ready public-safe delivery candidate. They are consistent with the strategic plan because the website sells the source-backed PRD/ICP service wedge while the dashboard presents the operator/control layer.</p>
+      <p><strong>GAP:</strong> Provider-backed Jarvis, Railway/backend, live Nexus writeback, owner-device voice proof, autonomous GitHub/Notion/WikiLLM writes, and Telegram delivery are not implemented or verified.</p>
+    </div>
+
+    <h2>Website And Dashboard</h2>
+    <p><strong>Issue:</strong> The website is working, but it can be overclaimed if it is described as a live automation platform. <strong>Argument:</strong> the current site is a static PRD/ICP service surface with a browser-local diagnostic and calculator. <strong>Solution:</strong> keep the service-led framing, run owner visual acceptance, and only promote main/Figma after explicit acceptance.</p>
+    <p><strong>Issue:</strong> The dashboard works as a static operator surface, but not as a live control plane. <strong>Argument:</strong> browser JavaScript cannot safely hold provider keys or write to external systems. <strong>Solution:</strong> keep static dashboard read-only, then build a local bridge or Railway backend with auth, secret handling, prompt/version logging, cost logging, and owner approval.</p>
+
+    <h2>Strategic Plan</h2>
+    <p>The delivery remains aligned with E1-E7: E1 proves KB/readback, E2 builds evidence cards and ICP validation, E3 turns accepted evidence into positioning/site/form, E4 creates content, E5 measures funnel/ROI, E6 runs outreach, and E7 judges payment or firm paid intent. The next safe strategic execution task is E2.0A with <code>MODEL_PROVIDER=none</code>.</p>
+
+    <h2>Notion And GitHub</h2>
+    <p>Notion now has agent/specialization tags and current rows distinguish Done, Review, and To Do correctly. The Links page now keeps only essential public routes and the review branch. GitHub matched the local review branch before this audit's local artifacts; these report artifacts are local until push is approved.</p>
+
+    <h2>Maxibook Telegram Bot</h2>
+    <p><strong>Issue:</strong> Maxibook/Telegram delivery is not implemented as a verified public-project runtime. <strong>Argument:</strong> the public repo records conditional Telegram delivery, but no approved sender, health check, or send audit proof exists. <strong>Solution:</strong> execute TG-1, TG-2, and TG-3: sender contract, redacted outbound template, dry-run mode, sender availability check, and public-safe audit log.</p>
+    <p><strong>Issue:</strong> Previous Telegram delivery was blocked for disclosure risk. <strong>Argument:</strong> external messages can expose protected/internal links or status details if generated directly from run notes. <strong>Solution:</strong> require a redacted template, owner approval for the exact message, blocked fields list, and AF Review before any send.</p>
+
+    <h2>LangGraph, API, And Layers</h2>
+    <p>LangGraph works for the verified scope: runtime installed, smoke workflow passed, and E1.3 readback proof exists. It does not yet prove a full provider-backed multi-agent runtime, persistent checkpointer, live bridge, or autonomous writeback. Static public routes are reliable enough for review; provider/API runtime is not active.</p>
+
+    <h2>Knowledge Base And Skills</h2>
+    <p>The public knowledge base is deep enough for current E1 operating memory: project plan, agentic stack, provider setup, workflow YAML, run folders, reports, WikiLLM memory, insights, decisions, and generated dashboard data. It is not yet live autonomous memory; Nexus/writeback, vector retrieval, Cognee/turbovec, always-on backend state, and external connector memory remain future gates.</p>
+    <p>The skill layer is proper for the current project. <code>task-handout</code> handles handoffs, <code>outquestions</code> handles decisions/gates, <code>archflow-task-breakdown</code> handles subtasks and acceptance criteria, and the daily/evening skills separate registry maintenance from RAG/KB retrospective.</p>
+
+    <h2>Task Tag Summary</h2>
+    <table>
+      <thead><tr><th>Area</th><th>Current state</th><th>Active tags</th></tr></thead>
+      <tbody>
+        <tr><td>Static public website</td><td>Done under child rows; parent remains Review</td><td>Frontend Website, Codex QA, Senior Dev, Project Manager</td></tr>
+        <tr><td>Static dashboard</td><td>Done for read-only scope; runtime remains gated</td><td>Dashboard, Codex QA, Senior Dev, Reviewer</td></tr>
+        <tr><td>Branch merge/deploy</td><td>Review</td><td>Project Manager, Strategy Review, GitHub Sync, Reviewer</td></tr>
+        <tr><td>Runtime/API/security gate</td><td>Review/To Do</td><td>API Runtime, Dashboard, Senior Dev, Reviewer</td></tr>
+        <tr><td>Maxibook Telegram</td><td>To Do</td><td>Telegram Bot, API Runtime, Reviewer</td></tr>
+        <tr><td>E2.0/E2.0A</td><td>To Do</td><td>Strategy Review, RAG KB, LangGraph, Project Manager</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Validation Results</h2>
+    <ul>
+      <li>Pass: public site, diagnostic, dashboard, and dashboard data routes returned HTTP 200.</li>
+      <li>Pass: dashboard JSON parsed after regeneration.</li>
+      <li>Pass: JavaScript syntax checks for root website, quiz, hover-depth, and dashboard app.</li>
+      <li>Pass: public safety scan after regenerating the PDF without local path footers.</li>
+      <li>Pass: workflow validation.</li>
+      <li>Pass: runtime guard: LangGraph smoke, LlamaIndex corpus, and CrewAI config.</li>
+      <li>Pass: dashboard rendered-route smoke, 8 routes, provider calls 0, writeback 0.</li>
+      <li>Pass: Notion query verified active JDB/E2/E3/TG/OPS rows have <code>Agent Tags</code>.</li>
+    </ul>
+
+    <h2>Next Steps</h2>
+    <ol>
+      <li>Owner decides whether to merge/promote the static review branch.</li>
+      <li>If promoted, run final production/Figma sync and update links from the promoted state.</li>
+      <li>Run E2.0A PRD-to-ICP outcome packet with approved sources and <code>MODEL_PROVIDER=none</code>.</li>
+      <li>Build TG-1/TG-2/TG-3 before any Maxibook Telegram send.</li>
+      <li>Build JDB-1/JDB-2 before claiming live Codex/Jarvis/API status.</li>
+    </ol>
+  </body>
+</html>

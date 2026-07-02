@@ -103,6 +103,14 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Where applicable: OpenRouter activation, E2 account research, E3 content and website drafts, E6 outreach variants, E7 payment verdict review, and future provider bridge design.
 - Limitation: Telegram delivery and cost accounting remain partial until an approved sender and model-call logging source exist.
 
+## Insight - Context-Overhead Measurement Is Blocked
+
+- Observation: No local public-safe evidence records provider context-window settings or runtime configuration overhead from VLLM 0.5, instruction packs, or extra libraries.
+- Interpretation: context-load overhead cannot be measured on this run; only proof of endpoint and token-window logging would make comparisons valid.
+- Why it matters: claims of efficiency gains from model-library instructions are currently speculative without measured `context_window_tokens` and per-call metadata.
+- Where applicable: model routing drift checks, benchmark planning for `VLLM 0.5` or local bridge activation, and future frontier escalation thresholds.
+- Limitation: endpoint-level telemetry must become part of the model-call ledger before any hard efficiency statement can be made.
+
 ## Insight - Website Sells The Service, Dashboard Proves The Control Layer
 
 - Observation: The strongest July 1 combined state separates the blue/ivory public website from the internal operator dashboard instead of trying to make one surface do both jobs.
@@ -110,3 +118,19 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: this prevents overclaiming live Jarvis/provider/Railway/writeback execution while still giving the owner a working public page and a reliable test dashboard.
 - Where applicable: E3 website promotion, JDB dashboard review, Notion task descriptions, future Figma baseline sync, and any backend/provider activation decision.
 - Limitation: owner-device voice acceptance and provider-backed runtime proof remain separate from static visual and route proof.
+
+## Insight - Tags Make Multi-Agent Delivery Auditable
+
+- Observation: Notion had task type and status fields, but no way to record which agent specialization actively contributed to each row.
+- Interpretation: `Agent Tags` are the right lightweight mechanism for PM review because they preserve Type as the work category while recording QA, senior-dev, frontend, dashboard, LangGraph, RAG/KB, Telegram, API, Notion, GitHub, and reviewer responsibility signals.
+- Why it matters: future agents can route work to the right workflow without reading long chat history or confusing Done static work with gated runtime work.
+- Where applicable: JDB dashboard tasks, E3 website tasks, E2 research tasks, Telegram delivery tasks, scheduled skill/RAG retrospectives, and merge/promotion reviews.
+- Limitation: tags are useful only if future updates keep them evidence-backed and avoid tagging every row with every role.
+
+## Insight - Static Control Surface With API Contract
+
+- Observation: Prompt 2 can make the dashboard operationally useful before a live backend exists by combining browser-local packets, visible role configuration, provider-disabled API contracts, and explicit budget/runtime gates.
+- Interpretation: the reliable next layer is not a hidden provider call; it is a reviewable packet path plus a server-side contract that can later be activated under auth, secrets, budget, ledger, and owner approval.
+- Why it matters: this preserves momentum on PRD/ICP workflow design while preventing the dashboard from implying Railway, OpenRouter, Telegram, Notion, or default CrewAI runtime readiness.
+- Where applicable: Jarvis API activation, Screen 1 PRD/ICP tests, Screen 2 Agent Orchestra, OpenRouter budget guard, and future Railway deployment planning.
+- Limitation: until FastAPI dependencies are installed and a backend is run, the service remains an implementation contract rather than runtime proof.

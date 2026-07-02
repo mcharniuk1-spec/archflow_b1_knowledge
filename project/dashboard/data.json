@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T12:31:54.400997+00:00",
+  "generated_at": "2026-07-02T11:21:51.330176+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -15,7 +15,7 @@
     },
     {
       "label": "CrewAI",
-      "value": "runtime_installed_config_import_passed",
+      "value": "runtime_installed_config_import_passed_level_3_proof_passed",
       "tone": "ok"
     },
     {
@@ -24,13 +24,18 @@
       "tone": "ok"
     },
     {
+      "label": "Jarvis API",
+      "value": "contract_present_provider_disabled",
+      "tone": "warn"
+    },
+    {
       "label": "WikiLLM files",
-      "value": "43 files",
+      "value": "47 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "172",
+      "value": "203",
       "tone": "ok"
     },
     {
@@ -172,12 +177,16 @@
   },
   "crewai": {
     "path": "project/workflows/crewai-crew.yaml",
-    "status": "runtime_installed_config_import_passed",
+    "status": "runtime_installed_config_import_passed_level_3_proof_passed",
     "runtime": "crewai_python",
     "process": "sequential",
     "memory": "false",
     "cache": "true",
     "planning": "false",
+    "level_3_status": "proof_passed_not_default_runtime",
+    "level_3_ledger": "project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl",
+    "level_3_cost": "0.00 USD",
+    "level_3_proof": "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json",
     "agents": [
       {
         "id": "af_tools",
@@ -244,6 +253,28 @@
           "publication-review-reporting",
           "task-handout"
         ]
+      },
+      {
+        "id": "af_dashboard_operator",
+        "role": "Dashboard command and packet operator",
+        "goal": "Define the PRD/ICP Flow command packet, safe config candidates, and local export boundary for the dashboard.",
+        "skills": [
+          "dashboard-command-packet-schema",
+          "static-dashboard-boundary-review",
+          "local-packet-export",
+          "runtime-labeling"
+        ]
+      },
+      {
+        "id": "af_orchestration_reviewer",
+        "role": "Agent orchestra reviewer",
+        "goal": "Review role assignment, worker packets, state transitions, blockers, and handoff readiness for the Agent Orchestra screen.",
+        "skills": [
+          "role-assignment-review",
+          "maker-checker-gate-review",
+          "handoff-artifact-review",
+          "runtime-boundary-review"
+        ]
       }
     ],
     "tasks": [
@@ -286,12 +317,44 @@
         "id": "task_handout",
         "agent": "af_publisher",
         "expected_output": "project/runs/<date>-<run-name>/agent-handout.md"
+      },
+      {
+        "id": "dashboard_command_packet_schema",
+        "agent": "af_dashboard_operator",
+        "expected_output": "project/outputs/templates/dashboard-command-packet.md"
+      },
+      {
+        "id": "orchestration_state_schema",
+        "agent": "af_orchestration_reviewer",
+        "expected_output": "project/outputs/templates/orchestration-state-schema.md"
+      },
+      {
+        "id": "model_route_preflight",
+        "agent": "af_tools",
+        "expected_output": "project/outputs/templates/model-route-preflight.md"
+      },
+      {
+        "id": "crewai_runtime_proof_plan",
+        "agent": "af_orchestration_reviewer",
+        "expected_output": "project/outputs/templates/crewai-runtime-proof-plan.md"
+      },
+      {
+        "id": "level_2_review_packet",
+        "agent": "af_review",
+        "expected_output": "project/outputs/templates/level-2-review-packet.md"
+      },
+      {
+        "id": "level_3_direct_crewai_proof",
+        "agent": "af_manager",
+        "expected_output": "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json"
       }
     ],
     "limitations": [
       "CrewAI imports and config validation pass.",
-      "No CrewAI LLM task execution has been run yet.",
-      "Codex remains the active execution layer until the first approved LangGraph-wrapped CrewAI proof."
+      "Direct CrewAI deterministic local proof passed under project/runs/2026-07-02-crewai-level-3-proof/.",
+      "Level 3 status is proof_passed_not_default_runtime, not default runtime.",
+      "Provider-backed CrewAI runtime remains blocked until backend, secret, pricing, ledger, budget, and owner approval gates pass.",
+      "Codex remains the active execution layer until a later approved LangGraph-wrapped or provider-backed CrewAI runtime is promoted."
     ]
   },
   "llamaindex": {
@@ -324,7 +387,103 @@
       "Only sanitized public files are approved for indexing by default."
     ]
   },
+  "jarvis_api": {
+    "status": "contract_present_provider_disabled",
+    "path": "services/jarvis-api",
+    "runtime": "fastapi_local_or_future_backend",
+    "provider_runtime": "disabled",
+    "writeback_runtime": "disabled",
+    "openrouter_budget": {
+      "daily_budget_usd": 5.0,
+      "run_hard_stop_usd": 1.99,
+      "over_cap_behavior": "stop_and_request_owner_approval"
+    },
+    "endpoints": [
+      "/health",
+      "/api/chat",
+      "/api/config/roles",
+      "/api/config/roles/update",
+      "/api/lanes/prd-icp",
+      "/api/lanes/agent-orchestra",
+      "/api/reports/daily-form",
+      "/api/reports/weekly-form",
+      "/api/reports/whole-block",
+      "/api/test-runs/meeting-prd",
+      "/api/voice/transcribe",
+      "/api/voice/chat",
+      "/api/voice/tts"
+    ],
+    "required_files": [
+      {
+        "path": "services/jarvis-api/app.py",
+        "status": "present"
+      },
+      {
+        "path": "services/jarvis-api/README.md",
+        "status": "present"
+      },
+      {
+        "path": "services/jarvis-api/requirements.txt",
+        "status": "present"
+      },
+      {
+        "path": "services/jarvis-api/.env.example",
+        "status": "present"
+      }
+    ]
+  },
+  "prd_templates": {
+    "status": "present",
+    "paths": [
+      {
+        "path": "docs/prd-icp-output-template.md",
+        "status": "present"
+      },
+      {
+        "path": "docs/reporting-daily-weekly-template.md",
+        "status": "present"
+      },
+      {
+        "path": "docs/testmeeting-prd-runbook.md",
+        "status": "present"
+      },
+      {
+        "path": "docs/dashboard-role-configuration.md",
+        "status": "present"
+      },
+      {
+        "path": "docs/crewai-langgraph-operations.md",
+        "status": "present"
+      }
+    ],
+    "output_blocks": [
+      "Meeting Summary",
+      "Product Context",
+      "Stakeholders",
+      "ICP",
+      "Pains/JTBD",
+      "Existing Workflow",
+      "Proposed Workflow",
+      "Requirements",
+      "Decisions",
+      "Questions",
+      "Risks",
+      "Next Tasks",
+      "Backlog",
+      "Success Metrics"
+    ]
+  },
   "env": [
+    {
+      "name": "Root env example",
+      "path": ".env.example",
+      "status": "tracked_placeholder"
+    },
+    {
+      "name": "Jarvis API env example",
+      "path": "services/jarvis-api/.env.example",
+      "status": "tracked_placeholder"
+    },
     {
       "name": "Provider example",
       "path": "project/config/providers.env.example",
@@ -395,6 +554,230 @@
     }
   ],
   "activity": [
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md",
+      "title": "2026-07-02 Jarvis Dashboard MVP Implementation",
+      "modified": "2026-07-02T11:21:44.005590+00:00",
+      "size": 2373
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md",
+      "title": "Jarvis Dashboard MVP Layer Report",
+      "modified": "2026-07-02T11:21:08.354285+00:00",
+      "size": 6046
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md",
+      "title": "Jarvis Dashboard MVP Implementation Handout",
+      "modified": "2026-07-02T11:21:01.709322+00:00",
+      "size": 6811
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/agent-handout.md",
+      "title": "Yushchenko Model Efficiency Observer Handout",
+      "modified": "2026-07-02T11:04:01.835372+00:00",
+      "size": 807
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1402-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "modified": "2026-07-02T11:03:49.730408+00:00",
+      "size": 4993
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-dashboard-execution-architecture.md",
+      "title": "Dashboard Execution Architecture",
+      "modified": "2026-07-02T10:36:27.206087+00:00",
+      "size": 13245
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md",
+      "title": "CrewAI Level 3 Proof Handout",
+      "modified": "2026-07-02T10:35:15.496408+00:00",
+      "size": 3064
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-crewai-level-3-proof.md",
+      "title": "2026-07-02 CrewAI Level 3 Proof",
+      "modified": "2026-07-02T10:33:47.045694+00:00",
+      "size": 2169
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-02-dashboard-execution-architecture.md",
+      "title": "2026-07-02 Dashboard Execution Architecture",
+      "modified": "2026-07-02T10:33:33.280967+00:00",
+      "size": 3523
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md",
+      "title": "Dashboard Execution Architecture Handout",
+      "modified": "2026-07-02T10:33:20.845224+00:00",
+      "size": 9691
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/dashboard-state.md",
+      "title": "Dashboard State Packet",
+      "modified": "2026-07-02T10:27:52.946173+00:00",
+      "size": 560
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/review-report.md",
+      "title": "AF Review Report",
+      "modified": "2026-07-02T10:27:52.945622+00:00",
+      "size": 420
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/crew-output.md",
+      "title": "CrewAI Level 3 Direct Runtime Output",
+      "modified": "2026-07-02T10:27:52.945476+00:00",
+      "size": 465
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md",
+      "title": "Tiny Public-Safe PRD/ICP Fixture",
+      "modified": "2026-07-02T10:27:52.919139+00:00",
+      "size": 656
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md",
+      "title": "Jarvis Dashboard ICP Task Consolidation Handout",
+      "modified": "2026-07-02T09:27:15.976020+00:00",
+      "size": 6802
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-notion-update-package.md",
+      "title": "Notion Update Package",
+      "modified": "2026-07-02T09:25:18.743005+00:00",
+      "size": 5455
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
+      "title": "E1 Task Consolidation Table",
+      "modified": "2026-07-02T09:25:18.649464+00:00",
+      "size": 9174
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md",
+      "title": "Jarvis Dashboard ICP Task Consolidation",
+      "modified": "2026-07-02T09:25:18.555719+00:00",
+      "size": 11043
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1112-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "modified": "2026-07-02T08:12:58.326435+00:00",
+      "size": 5726
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "modified": "2026-07-02T07:17:00.394617+00:00",
+      "size": 4207
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
+      "title": "Agent Handout: Yushchenko Model Efficiency Observer",
+      "modified": "2026-07-01T19:48:49.746818+00:00",
+      "size": 3909
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "modified": "2026-07-01T19:48:18.554727+00:00",
+      "size": 3635
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260701_run_daily_skill_retrospective.md",
+      "title": "Run Note - Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-01T19:34:56.256035+00:00",
+      "size": 3329
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260701_daily_skill_retrospective.md",
+      "title": "Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-01T19:34:56.167512+00:00",
+      "size": 8527
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "modified": "2026-07-01T18:05:10.654909+00:00",
+      "size": 3930
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-evening-skill-hook-review/run-summary.md",
+      "title": "Evening Skill And Hook Review",
+      "modified": "2026-07-01T18:05:10.566339+00:00",
+      "size": 2451
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-priority-task-lane-setup/run-summary.md",
+      "title": "Priority Task Lane Setup",
+      "modified": "2026-07-01T18:03:54.565653+00:00",
+      "size": 1863
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-priority-task-lane-setup/agent-handout.md",
+      "title": "Priority Task Lane Setup Handout",
+      "modified": "2026-07-01T13:07:26.654785+00:00",
+      "size": 1503
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.pdf",
+      "title": "review-report.pdf",
+      "modified": "2026-07-01T12:59:28.016010+00:00",
+      "size": 238913
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-01-dashboard-website-strategy-qa.md",
+      "title": "2026-07-01 Dashboard Website Strategy QA",
+      "modified": "2026-07-01T12:59:14.191078+00:00",
+      "size": 2416
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/agent-handout.md",
+      "title": "Dashboard Website Strategy QA Handout",
+      "modified": "2026-07-01T12:59:14.096524+00:00",
+      "size": 4792
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.md",
+      "title": "Dashboard, Website, Strategy, And Workflow QA Review",
+      "modified": "2026-07-01T12:59:13.917564+00:00",
+      "size": 10420
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-final-integration-notion-closeout/agent-handout.md",
@@ -779,13 +1162,6 @@
       "title": "2026-07-01 Yushchenko Model Efficiency Observer",
       "modified": "2026-07-01T09:37:46.127471+00:00",
       "size": 1271
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
-      "title": "Agent Handout: Yushchenko Model Efficiency Observer",
-      "modified": "2026-07-01T09:37:38.118863+00:00",
-      "size": 3498
     },
     {
       "kind": "project_run",
@@ -1604,7 +1980,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 43,
+    "file_count": 47,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -1772,6 +2148,11 @@
         "excerpt": "# Run Note: Two-Layer Dashboard Schema Control Panel  ## Task  Make the dashboard operable as two separate block-schema screens:  - `(1) PRD/ICP Flow` for the service-product path. - `(2) Agent Orchestra` for the reliable local control system.  ## Result  - Added explicit `#service` and `#schema` schema screens. - Added large node control panels with inputs, outputs, connection settings, dropdown configuration, run h"
       },
       {
+        "path": "wiki/runs/2026-07-01-dashboard-website-strategy-qa.md",
+        "title": "2026-07-01 Dashboard Website Strategy QA",
+        "excerpt": "# 2026-07-01 Dashboard Website Strategy QA  ## Task  Review the current dashboard, public website, strategic plan, Notion/GitHub state, Maxibook Telegram lane, LangGraph/API readiness, knowledge-base depth, and project skills. Produce a PDF report and update durable state.  ## Result  The public website and dashboard are working for the static review scope. Stable public site and dashboard routes returned HTTP 200. N"
+      },
+      {
         "path": "wiki/runs/2026-07-01-final-integration-notion-closeout.md",
         "title": "2026-07-01 Final Integration And Notion Closeout",
         "excerpt": "# 2026-07-01 Final Integration And Notion Closeout  ## Result  Jesus completed the final integration pass after Messi's fast handoff and combined the strongest current work from Ronaldo, LOL, and Ronaldinho into the public-safe review branch.  ## FACT  - The blue/ivory ArcFlow Automate website is the active single-page public service surface. - The site includes the teal architectural system map, dark diagnostic pane"
@@ -1820,6 +2201,21 @@
         "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
         "title": "2026-07-01 Yushchenko Model Efficiency Observer",
         "excerpt": "# 2026-07-01 Yushchenko Model Efficiency Observer  ## Task  Create a recurring model-efficiency and token-use observer for ArchFlow.  ## Result  - Created Codex app automation `yushchenko-model-efficiency-observer` with a five-hour cadence. - Added the Yushchenko observer role to `project/agents/agent-roster.yaml`. - Updated `project/agents/README.md`. - Added `project/automation/yushchenko-model-efficiency-observer."
+      },
+      {
+        "path": "wiki/runs/2026-07-02-crewai-level-3-proof.md",
+        "title": "2026-07-02 CrewAI Level 3 Proof",
+        "excerpt": "# 2026-07-02 CrewAI Level 3 Proof  Status: complete  ## Task  Run the separate CrewAI Level 3 proof pass requested after Prompt 1.2 and integrate the result into the dashboard cycle.  ## FACT  - A tiny public-safe PRD/ICP fixture was created. - Direct CrewAI executed the fixture with a deterministic local LLM adapter. - The proof wrote a model-call ledger. - The budget guard recorded a 5.00 USD daily cap, 1.99 USD ru"
+      },
+      {
+        "path": "wiki/runs/2026-07-02-dashboard-execution-architecture.md",
+        "title": "2026-07-02 Dashboard Execution Architecture",
+        "excerpt": "# 2026-07-02 Dashboard Execution Architecture  Status: complete; Level 3 proof integrated  ## Task  Define the operational execution layer for the Jarvis dashboard between Prompt 1 and Prompt 2. The work must make LangGraph, OpenRouter, and CrewAI understandable from the dashboard concept, especially through `(1) PRD/ICP Flow` and `(2) Agent Orchestra`.  ## Inputs  - Prompt 1 consolidation report and handout. - Curre"
+      },
+      {
+        "path": "wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md",
+        "title": "2026-07-02 Jarvis Dashboard MVP Implementation",
+        "excerpt": "# 2026-07-02 Jarvis Dashboard MVP Implementation  Status: implementation complete for static/dashboard and provider-disabled API-contract scope  ## Task  Finish the Jarvis dashboard MVP as a reliable static/browser-local control and communication surface for the PRD/ICP knowledge engine and multi-agent execution system.  ## FACT  - Screen 1 now has a PRD/ICP request surface and required output blocks. - Screen 2 now "
       }
     ]
   },
@@ -1911,17 +2307,22 @@
     {
       "path": "project/agents/model-efficiency-advice.md",
       "title": "Model Efficiency Advice",
-      "text": "# Model Efficiency Advice  Purpose: reusable advice for ArchFlow agents choosing models, spending tokens, and deciding when to escalate from cheap execution models to frontier review.  ## Standing Advice  1. Use Codex and deterministic scripts before model calls when the task is file inspection, schema validation, YAML parsing, public-safety scanning, or simple formatting. 2. Treat OpenRouter as disabled unless an approved backend or local bridge exists. 3. Use cheap execution models first for extraction, classification, drafting, source discovery, and code variants. 4. Use the Claude, Gemini, and OpenAI frontier council only when the result affects strategy, architecture, public claims, memory promotion, outreach, pricing, or payment verdicts. 5. Never let an execution-pool model self-approve its own output. 6. Log model ID, task, role, source IDs, prompt version, estimated input/output tokens, estimated cost, decision, reviewer, and human gate status. 7. If token or cost data is missing, report it as missing. Do not estimate after the fact unless the source log supports it. 8. For bulk E2 research, audit a sample with a frontier reviewer instead of reviewing every low-value item."
+      "text": "# Model Efficiency Advice  Purpose: reusable advice for ArchFlow agents choosing models, spending tokens, and deciding when to escalate from cheap execution models to frontier review.  ## Standing Advice  1. Use Codex and deterministic scripts before model calls when the task is file inspection, schema validation, YAML parsing, public-safety scanning, or simple formatting. 2. Treat OpenRouter as disabled unless an approved backend or local bridge exists. 3. Use cheap execution models first for extraction, classification, drafting, source discovery, and code variants. 4. Use the Claude, Gemini, and OpenAI frontier council only when the result affects strategy, architecture, public claims, memory promotion, outreach, pricing, or payment verdicts. 5. Never let an execution-pool model self-approve its own output. 6. Log model ID, task, role, source IDs, prompt version, estimated input tokens, estimated output tokens, estimated cost, reviewer, and human gate status. 7. If token or cost data is missing, report it as missing. Do not estimate after the fact unless the source log supports it. 8. For bulk E2 research, audit a sample with a frontier reviewer instead of reviewing every low-val"
     },
     {
       "path": "project/agents/model-efficiency-issues.md",
       "title": "Model Efficiency Issues",
-      "text": "# Model Efficiency Issues  Purpose: open issues the Yushchenko Model Efficiency Observer and other agents should track until resolved.  ## Open Issues  ### MEI-1 - No Canonical Model-Call Ledger Yet  Status: open  FACT: The model-routing plan defines required fields, but the project does not yet have a canonical ledger file or database for model calls.  Impact: Observer reports can only summarize available run notes and logs. Token/cost efficiency will be incomplete until model calls are logged consistently.  Needed action: create a public-safe model-call ledger schema before activating OpenRouter.  ### MEI-2 - Telegram Sender Not Proven  Status: open  FACT: The recurring automation is active, but no Telegram connector or approved sender was exposed in this session.  Impact: Reports can be saved locally, but Telegram delivery may be skipped until a sender exists.  Needed action: configure an approved Telegram sender outside the public repo and keep chat IDs, URLs, and tokens out of public files.  ### MEI-3 - OpenRouter Runtime Disabled  Status: open  FACT: OpenRouter is intentionally disabled until explicit approval and a backend or local bridge exists.  Impact: Reports should say "
+      "text": "# Model Efficiency Issues  Purpose: open issues the Yushchenko Model Efficiency Observer and other agents should track until resolved.  ## Open Issues  ### MEI-1 - No Canonical Model-Call Ledger Yet  Status: open  FACT: The model-routing plan defines required fields, but the project does not yet have a canonical ledger file or database for model calls. FACT: The 2026-07-01 observer run still found no active OpenRouter runtime evidence in public-safe project files.  Impact: Observer reports can only summarize available run notes and logs. Token/cost efficiency will be incomplete until model calls are logged consistently.  Needed action: create a public-safe model-call ledger schema before activating OpenRouter.  ### MEI-7 - Local Proof Ledger Must Stay Separate From Provider Ledger  Status: open  FACT: The CrewAI direct runtime proof now writes a zero-cost local deterministic ledger. FACT: That proof ledger is useful evidence, but it is not a provider-backed OpenRouter ledger.  Impact: Observer reports can overstate provider readiness if they do not label local proof runs separately from provider-backed runs.  Needed action: keep a distinct schema and reporting label for local deter"
     },
     {
       "path": "project/agents/skills-by-agent.md",
       "title": "Skills By Agent",
       "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - [`outquestions`](../../skills/outquestions/SKILL.md) - reports execution outcomes and the questions/gates needed before moving"
+    },
+    {
+      "path": "project/automation/archflow-priority-task-operator-lane.md",
+      "title": "ArchFlow Priority Task Operator Lane",
+      "text": "# ArchFlow Priority Task Operator Lane  Automation IDs: `archflow-priority-task-operator-0030`, `archflow-priority-task-operator-0630`  Status: active in Codex app automation.  Schedule: daily at 00:30 and 06:30.  Contract source: `project/agents/agent-roster.yaml` (`archflow_priority_task_operator_midnight` and `archflow_priority_task_operator_morning` job lanes).  ## Purpose  Run a recurring deterministic task-selection and handoff lane that keeps execution moving by urgency and importance, while preserving full audit evidence.  The lane does not invent private identifiers, raw links, or private completion claims.  ## Scope  Read:  - `project/agents/agent-roster.yaml` - `project/project-plan.md` - `skills/priority-task-operator/SKILL.md` - `project/scripts/priority-task-operator.py` - `project/live/communication/agent-communication-log.md` - `project/runs/` (latest run artifacts) - `wiki/log.md`  Write:  - `project/runs/<run-id>/selected-task.md` - `project/runs/<run-id>/pitagent-chat-prompt.md` - `project/runs/<run-id>/run-summary.md` - `project/live/communication/agent-communication-log.md` - `wiki/log.md`  ## Procedure  1. Run the selector:  `python3 project/scripts/priority-t"
     },
     {
       "path": "project/automation/archflow-public-evening-skill-and-hook-update.md",
@@ -1992,6 +2393,11 @@
       "path": "project/integration-plan.md",
       "title": "Integrated Knowledge Operations Plan",
       "text": "# Integrated Knowledge Operations Plan  Status: configured and partially runtime-verified as the public project contract.  ## Goal  Operate ArchFlow as one coordinated system while keeping each knowledge layer responsible for a different job.  ## How The Layers Work Together  ```text Codex   -> WikiLLM public memory   -> public-safety scan   -> LangGraph state workflow   -> LlamaIndex approved retrieval   -> CrewAI role outputs   -> LangGraph review gate   -> LangSmith trace   -> WikiLLM run/decision/issue updates   -> Git pre-push safety hook   -> GitHub ```  ## Current Execution Status  | Layer | Status | |---|---| | Codex | Active operator. | | WikiLLM | Active under `wiki/`. | | Ollama/Qwythos | Active local model. | | LangSmith | Key present locally; SDK installed in ignored local runtime; smoke trace submitted. | | LangGraph | Runtime installed; sanitized smoke workflow passed. | | CrewAI | Runtime installed; config/import check passed without LLM execution. | | LlamaIndex | Runtime installed; approved-corpus retrieval proof passed. | | Graphify | Public repo graph generated and linked from dashboard. | | Obsidian mirror | Planned as sanitized mirror only. | | Nexus | Planned"
+    },
+    {
+      "path": "project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md",
+      "title": "Daily Retrospective Open Operational Gaps",
+      "text": "# Daily Retrospective Open Operational Gaps  Date: 2026-07-01 Status: open  ## Issue  The July 1 daily retrospective found several remaining blockers that are already referenced across reports, but they need one concise operational issue for future scheduled runs.  ## FACT  - The `priority-task-operator` skill and script are configured, but the first scheduled 00:30 and 06:30 outputs have not yet been observed. - The Yushchenko observer found no active OpenRouter runtime evidence and no canonical model-call ledger. - Telegram delivery remains conditional on an approved sender outside the public repo. - Live Nexus/writeback remains unproven in public-safe evidence. - Static website/dashboard proof is strong, but backend/provider/writeback readiness remains gated.  ## INTERPRETATION  These are operational proof gaps, not registry drift. The daily retrospective should track them until the relevant lane closes each gap with artifacts and checks.  ## Required Closure Evidence  | Gap | Closure evidence | |---|---| | Priority-task runtime | Generated `selected-task.md`, `pitagent-chat-prompt.md`, and `selected-task.json` from scheduled execution | | Model-call ledger | Public-safe schema "
     },
     {
       "path": "project/issues/2026-07-01-dashboard-website-improvement-issues.md",
@@ -2232,6 +2638,31 @@
       "path": "project/reports/2026-07-01-two-paradigm-execution-plan.md",
       "title": "Two-Paradigm Execution Plan",
       "text": "# Two-Paradigm Execution Plan  Date: 2026-07-01 Status: testable operating plan  ## Executive Answer  Execute ArchFlow through two explicitly separated lanes:  1. Product lane: PRD/ICP service product, externally showable after evidence gates. 2. Control-system lane: local agentic development system, operated by Codex and later optionally by an approved local bridge or backend.  The two lanes can share dashboard visibility, but they must not share authority. The product lane creates buyer-facing output. The control-system lane edits code, routes agents, verifies checks, writes memory, and decides when output is safe.  ## Lane 1: PRD/ICP Service Product  Goal: show the buyer a clear productized service outcome.  Input:  - sanitized dialogue or meeting summary; - product-team docs or approved public examples; - customer/research notes; - current ICP hypothesis; - constraints and privacy boundaries.  Flow:  1. Intake source packet. 2. Build PRD. 3. Split market evidence research. 4. Synthesize one ICP. 5. Build landing/demo package. 6. Approve external-safe output. 7. Publish PRD/ICP packet or buyer-facing demo.  Required artifacts:  - source packet; - PRD draft; - evidence cards; - I"
+    },
+    {
+      "path": "project/reports/2026-07-02-dashboard-execution-architecture.md",
+      "title": "Dashboard Execution Architecture",
+      "text": "# Dashboard Execution Architecture  Date: 2026-07-02 Status: Prompt 1.2 complete; Level 3 proof integrated, not default runtime Lead integrator: Jesus/Codex  ## Executive Decision  Prompt 1.2 defines the operational execution layer for the Jarvis dashboard without building the UI, deploying Railway, activating providers, or claiming autonomous CrewAI runtime.  The dashboard should become the control surface for ArchFlow's Product Discovery-to-Production PRD Pack. It should make LangGraph, OpenRouter, and CrewAI understandable from the dashboard model through two screens:  - `(1) PRD/ICP Flow`: client/product flow for turning approved product-team material into a reviewed PRD/ICP artifact bundle. - `(2) Agent Orchestra`: operator flow for assigning roles, supervising bounded agent work, collecting artifacts, running review gates, and producing handoffs.  Implementation should build toward Level 2: LangGraph-wrapped role execution with server-side model routing only after explicit approval and proof. Level 3 direct CrewAI runtime now has a deterministic local proof package, but it remains `proof_passed_not_default_runtime`.  ## Evidence Reviewed  - `project/reports/2026-07-02-jarvis-"
+    },
+    {
+      "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
+      "title": "E1 Task Consolidation Table",
+      "text": "# E1 Task Consolidation Table  Date: 2026-07-02 Status: public-safe consolidation package  This table preserves task meaning while separating static proof, review-ready work, and future runtime gates. It uses sanitized live task-board evidence plus public repo evidence. No private task URLs or IDs are included.  | Original task/document | Duplicate or canonical task | Current status | Corrected status | Owner agent | Reason | Acceptance criteria | Notion update needed | |---|---|---|---|---|---|---|---| | E1 Build the Knowledge Base on Ourselves | E1 parent | Active | Active | Messi/Jesus | Parent still has Review and future child rows. | Child states reflect E1.1 Done, E1.2 Review, E1.3 Review, E1.4 Backlog, E1.5 In Progress. | Append a concise child-state summary. | | E1.1 Set up separate KB project | E1.1 | Done | Done | Jesus/Codex | Runtime/setup proof exists. | Working public-safe KB workspace and setup artifacts exist. | No change. | | E1.2 dialogue to summary to PRD | E1.2 proof package | Review | Review | Jesus/Codex, owner acceptance gate | Technical proof exists, but owner acceptance remains the final Done gate. | PRD, stream report, system report, task matrix, KB update"
+    },
+    {
+      "path": "project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md",
+      "title": "Jarvis Dashboard ICP Task Consolidation",
+      "text": "# Jarvis Dashboard ICP Task Consolidation  Date: 2026-07-02 Status: Prompt 1 consolidation complete; implementation not started Lead integrator: Jesus/Codex  ## Executive Decision  ArchFlow should enter Prompt 2 only as a bounded static/dashboard MVP implementation lane. Prompt 2 is allowed to begin after this consolidation if it stays inside the documented boundaries: static or browser-local dashboard work, clear runtime-state labels, generated public-safe data, local packet export, and review-gated implementation artifacts.  Prompt 2 is not allowed to activate provider-backed Jarvis, Railway/backend services, durable writeback, live Nexus actions, autonomous Notion/GitHub/WikiLLM writes, Telegram delivery, raw voice persistence, or production promotion without separate approval and proof.  ## Product Concept  ArchFlow is an AI-native service that turns raw product-team material into production-ready PRD output in days rather than weeks. The raw material can include product conversations, meeting notes, customer research, interview summaries, internal documents, decision records, backlog fragments, and execution context.  The service is not positioned as another generic AI chatbot"
+    },
+    {
+      "path": "project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md",
+      "title": "Jarvis Dashboard MVP Layer Report",
+      "text": "# Jarvis Dashboard MVP Layer Report  Date: 2026-07-02 Status: implementation complete for static/dashboard and provider-disabled API-contract scope  ## 1. Public Website Layer  No buyer-facing website content was changed. The public website remains separate from the operator dashboard and should not claim live Jarvis, provider, Railway, or autonomous execution.  ## 2. Dashboard UI Layer  `project/dashboard/app.js` and `project/dashboard/styles.css` now expose a stronger operator surface:  - fixed bottom global composer with safe-area padding; - Jarvis voice controls for mic, stop, cancel, timer, transcript preview, send transcript, playback, stop playback, and auto-speak; - block-schema zoom controls; - visible API/env/budget status; - generated data refreshed through `project/scripts/generate-dashboard-data.py`.  ## 3. Screen (1) PRD/ICP Flow  Screen 1 now includes a direct PRD/ICP request surface. It attempts the local backend lane when available and falls back to a browser-local review packet when the backend is unavailable.  Visible output blocks:  - Meeting Summary - Product Context - Stakeholders - ICP - Pains/JTBD - Existing Workflow - Proposed Workflow - Requirements - Deci"
+    },
+    {
+      "path": "project/reports/2026-07-02-notion-update-package.md",
+      "title": "Notion Update Package",
+      "text": "# Notion Update Package  Date: 2026-07-02 Status: human-friendly update package; no live task-board writes performed by this report  ## Purpose  Use this package to update task-board rows without overloading task bodies with execution history. The goal is to correct task meaning, preserve evidence, and prevent static dashboard proof from being confused with live runtime capability.  ## Recommended Board Update Summary  ArchFlow Prompt 1 consolidation is complete. The current offer is a Product Discovery-to-Production PRD Pack for B2B SaaS product teams. The Jarvis dashboard MVP should support two lanes: Lane A for direct Jarvis chat/config/local packet control and Lane B for coordinator/executor workflow supervision, QA, docs, reporting, and deployment sequencing.  Current proof supports static/browser-local website and dashboard review, generated dashboard data, E1.3 KB readback, and public-safe task/reporting artifacts. Runtime/backend/provider/voice/writeback work remains gated and should not be marked Done.  ## Status Updates To Apply  | Row | Recommended action | |---|---| | E1 parent | Keep Active. Add child-state summary from this package. | | E1.2 | Keep Review until owner "
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -2484,9 +2915,29 @@
       "text": "# Run Summary: Two-Layer Dashboard Schema Control Panel  Date: 2026-07-01 Status: implemented, architecture reviewer approved  ## Task  Make the dashboard comprehensible and operable for two separate jobs:  1. `(1) PRD/ICP Flow`: the externally showable service-product path from source context to PRD, evidence, ICP, demo package, and approved output. 2. `(2) Agent Orchestra`: the local reliable development/control system for Codex, LangGraph-style routing, WikiLLM, Graphify, safety review, run logs, approvals, and gated provider/backend actions.  ## Answer First  The dashboard now has two separate block-schema screens, draggable/clickable nodes, and a large n8n-style node control panel covering inputs, outputs, connections, dropdown configuration, run history, prompts, comments, safety fields, and business-fit fields. It remains a static browser-local review surface: no provider calls, secrets, raw transcripts, deployment, or writeback are enabled.  ## Outputs  - Updated `project/dashboard/app.js`. - Updated `project/dashboard/styles.css`. - Updated `project/dashboard/index.html`. - Updated `project/dashboard/README.md`. - Added this run record and the handout beside it.  ## Dashbo"
     },
     {
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/agent-handout.md",
+      "title": "Dashboard Website Strategy QA Handout",
+      "text": "# Dashboard Website Strategy QA Handout  ## Title And Purpose  This handout records the QA, senior-dev, project-manager, and workflow review for the current ArchFlow public website, dashboard, strategic plan, Notion/GitHub state, Telegram delivery lane, API/runtime readiness, and knowledge-base depth.  ## Human Summary  The static public website and dashboard are working as a review-ready candidate. The stable public site and dashboard returned HTTP 200, and the review branch matched the GitHub remote before this audit added local report artifacts. The website correctly presents the PRD/ICP service wedge, while the dashboard presents the operator/control layer.  Notion was updated to make the work easier to manage. The task database now has `Agent Tags`, active rows were tagged by agent/specialization, and the Links page was reduced to the current public site, diagnostic, dashboard, dashboard data, review branch, and gated-state notes.  The Maxibook Telegram lane is not ready. The public project has policy and notes for conditional Telegram summaries, but no verified sender, no health check, no redacted outbound template, and no send audit proof. Three new Notion tasks, TG-1 throug"
+    },
+    {
+      "path": "project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.md",
+      "title": "Dashboard, Website, Strategy, And Workflow QA Review",
+      "text": "# Dashboard, Website, Strategy, And Workflow QA Review  Date: 2026-07-01   Status: QA/PM audit complete; static delivery verified; runtime lanes remain gated   Agent roles used: Codex QA, Senior Dev, Project Manager, Strategy Review, Reviewer  ## Essential Links  - Public site: https://<protected-preview-host> - Diagnostic: https://<protected-preview-host> - Dashboard: https://<protected-preview-host> - Dashboard data: https://<protected-preview-host> - Review branch: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/tree/review-jarvis-agentbrowser-blockschema-20260630  ## Executive Review  FACT: The current public site and dashboard routes returned HTTP 200 during this audit. The active review branch matched the GitHub remote at commit `73c41ea` before this audit added local report and memory artifacts. Notion now has an `Agent Tags` multi-select field, active task rows have updated tags, and the Links page has been cleared down to essential current links and gated-state notes.  INTERPRETATION: The static website and dashboard are working as a review-ready public-safe delivery candidate. They are consistent with the strategic plan because the website sells the source-backed"
+    },
+    {
       "path": "project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md",
       "title": "Agent Handout: Dev Orchestration Lane",
       "text": "# Agent Handout: Dev Orchestration Lane  Date: 2026-07-01 Owner lane: Lane 2 Dev Orchestration Status: validation reviewed for redeploy  ## Lane Contract  Lane 2 keeps the agent system operable: workflow health, schema control, review gates, dashboard/runtime correctness, and safe tool integration.  AF role ownership:  - `af_tools/dev`: dashboard and workflow artifact checks. - `af_context/dev`: status synthesis of model routing and deployment boundaries. - `af_review`: no false backend, provider, Railway, or writeback claims. - `af_publisher`: runbook, run notes, and completion evidence.  ## FACT  - `project/workflows/langgraph-controller.yaml`, `project/workflows/crewai-crew.yaml`, and related workflow files validate with the repo-local workflow validator. - Runtime guard reports workflow, LangGraph, LlamaIndex corpus, and CrewAI config as verified. - LangGraph smoke reaches local approved state. External trace upload produced DNS warnings in this environment and should not be treated as runtime/provider proof. - Exact global Python CrewAI config check fails because `crewai` is not installed in global Python. - Repo-local venv CrewAI config check passes without LLM execution. - C"
+    },
+    {
+      "path": "project/runs/2026-07-01-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "text": "# Evening Skill And Hook Review Handout  ## Title and Purpose  This handout summarizes the July 1 evening review of ArchFlow public skill registries, hook contracts, and newly configured reusable workflow skills.  ## Human Summary  The review found that the skill registries were already updated for the new `priority-task-operator` lane. The roster, skills-by-agent registry, and skills-used file all include the lane consistently, so no additional registry expansion was needed.  The task-handout hook remains aligned. `.codex/hooks.json` points to `project/scripts/task-handout-hook.py`, the script only writes an ignored local trigger marker, and the `task-handout` skill still makes the executing agent responsible for the real run handout.  The only correction made here was path hygiene in the new priority-task operator documentation. The skill and its setup run summary used extra public-folder path prefixes; those were normalized to repo-relative paths.  ## Current State  - Status: complete. - New reusable workflow: `priority-task-operator` is registered and has a script plus automation contract. - Hook state: task-handout hook remains a reminder/routing guard, not an automatic file w"
+    },
+    {
+      "path": "project/runs/2026-07-01-evening-skill-hook-review/run-summary.md",
+      "title": "Evening Skill And Hook Review",
+      "text": "# Evening Skill And Hook Review  Date: 2026-07-01 Status: complete  ## Task  Review the public ArchFlow skill registries, task-handout hook contract, hook-backed workflow claims, and newly configured reusable skills.  ## Findings  FACT: - `project/agents/agent-roster.yaml`, `project/agents/skills-by-agent.md`, and `skills/skills-used.md` already include the new `priority-task-operator` lane and skill. - `.codex/hooks.json`, `skills/task-handout/SKILL.md`, and `project/scripts/task-handout-hook.py` remain aligned around the task-handout reminder hook. - `.githooks/pre-push` still runs `scripts/public_safety_scan.py` and `project/scripts/pre-push-runtime-guard.py`. - The new priority-task skill used extra public-folder path prefixes even though public files should use repo-relative paths.  INTERPRETATION: - No new speculative skill was needed; the priority task operator is already concrete, registered, and backed by a script plus automation contract. - The only corrective edit needed in this pass was path hygiene for the new skill documentation and its setup summary.  GAP: - The 00:30 and 06:30 priority-task automation windows still need first-cycle runtime observation. - Notion and "
     },
     {
       "path": "project/runs/2026-07-01-final-completion-audit/agent-handout.md",
@@ -2544,6 +2995,16 @@
       "text": "# Agent Handout: PRD/ICP Lane  Date: 2026-07-01 Owner lane: Lane 1 PRD/ICP Status: website implementation reviewed for redeploy  ## Lane Contract  Lane 1 turns inputs, knowledge, and market signals into a PRD, responsibility matrix, knowledgebase packet, and reviewed outputs.  AF role ownership:  - `af_tools`: corpus, inventory, and source-boundary checks. - `af_context`: extraction and interpretation with schema discipline. - `af_manager`: PRD, task matrix, and responsibility outputs. - `af_research`: ICP and account evidence synthesis. - `af_review`: safety, claim, evidence, and scope gate. - `af_knowledge`: KB packet generation only after approved outputs. - `af_publisher`: review packet and handout only.  ## FACT  - The public website now presents Lane 1 as source inventory, PRD/ICP packet, task matrix, and agent gate map. - The PRD/ICP calculator uses product-team inputs: people involved, weekly PRD/research/task hours, hourly cost, rework/context-loss share, recoverable share, setup/support estimate, source centralization, and approval maturity. - Calculator output is explicitly a planning estimate and not guaranteed ROI. - The diagnostic remains static-safe and does not subm"
     },
     {
+      "path": "project/runs/2026-07-01-priority-task-lane-setup/agent-handout.md",
+      "title": "Priority Task Lane Setup Handout",
+      "text": "# Priority Task Lane Setup Handout  ## Title and Purpose  Set up two recurring morning automation lanes (00:30 and 06:30) that do deterministic task prioritization from `project/project-plan.md` and generate a standardized handoff packet for the next operator.  ## Human Summary  The following was implemented in this run:  - New automation entries in `project/agents/agent-roster.yaml` for 00:30 and 06:30. - New dedicated skill `priority-task-operator`. - New selector script `project/scripts/priority-task-operator.py`. - New automation contract `project/automation/archflow-priority-task-operator-lane.md`. - Skill registry updates in `project/agents/skills-by-agent.md` and `skills/skills-used.md`.  ## Execution Continuation Prompt  You are the next Codex/operator for this setup. On the next run:  1. Ensure `project/scripts/priority-task-operator.py` parses plan rows correctly after any plan format changes. 2. Let one full scheduled cycle run at 00:30 and one at 06:30. 3. Open produced `project/runs/<run-id>/selected-task.md` and `pitagent-chat-prompt.md`. 4. If a task is selected, execute it or prepare a concrete follow-up packet. 5. Verify that KB (`wiki/log.md`) and Notion packet st"
+    },
+    {
+      "path": "project/runs/2026-07-01-priority-task-lane-setup/run-summary.md",
+      "title": "Priority Task Lane Setup",
+      "text": "# Priority Task Lane Setup  Date: 2026-07-01 Status: implemented  ## Task  Create a recurring two-time daily automation lane for the 00:30 and 06:30 windows that selects the highest-priority unfinished task by urgency and importance, prepares a fresh PitAgent execution packet, and records continuity evidence.  ## Changes Made  - Added two daily lanes to `project/agents/agent-roster.yaml`:   - `archflow_priority_task_operator_midnight` (`00:30`)   - `archflow_priority_task_operator_morning` (`06:30`) - Added a new skill contract at `skills/priority-task-operator/SKILL.md`. - Added `project/scripts/priority-task-operator.py` to parse `project-plan.md`, score tasks, and create:   - `project/runs/<run-id>/selected-task.md`   - `project/runs/<run-id>/pitagent-chat-prompt.md`   - `project/runs/<run-id>/selected-task.json` - Added a dedicated automation contract in `project/automation/archflow-priority-task-operator-lane.md`. - Updated skill registries for consistency:   - `project/agents/skills-by-agent.md`   - `skills/skills-used.md`  ## Validation Notes  - Changes are configuration and script scaffold only. - Live-time execution of the new 00:30/06:30 trigger remains to be observed in "
+    },
+    {
       "path": "project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md",
       "title": "Agent Handout: Minimal Public PRD/ICP Services Landing",
       "text": "# Agent Handout: Minimal Public PRD/ICP Services Landing  Date: 2026-07-01 Owner lane: Ronaldo Status: deployed, Figma-synced, Notion-updated, source-aligned in public worktree  ## Current State  The public ArchFlow Automate site now serves a minimal PRD/ICP services landing at:  - `https://<protected-preview-host>`  The diagnostic route is:  - `https://<protected-preview-host>`  Vercel clean URLs redirect `/quiz.html` to `/quiz`.  The operator dashboard is live at:  - `https://<protected-preview-host>`  ## Positioning  ArchFlow is presented as a service-led operating layer for B2B SaaS product teams with scattered product context.  The offer is:  - source inventory; - source-backed PRD packet; - ICP evidence review; - acceptance criteria and task handoff; - approval-gated agent operating layer.  The site does not present ArchFlow as a full roadmap platform, feedback repository, enterprise search tool, or generic PRD generator replacement.  ## Page Structure  Homepage blocks:  1. Hero: PRDs from your project knowledgebase. 2. System: three service outputs. 3. Proof/trust: E1-E7 delivery spine and public boundaries.  Subpage:  - Diagnostic flow for first-package recommendation, know"
@@ -2581,7 +3042,57 @@
     {
       "path": "project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md",
       "title": "Agent Handout: Yushchenko Model Efficiency Observer",
-      "text": "# Agent Handout: Yushchenko Model Efficiency Observer  ## Title And Purpose  This handout records the creation of the Yushchenko model-efficiency and token-use observer for ArchFlow.  ## Human Summary  The project now has a recurring observer lane for model usage, token efficiency, and OpenRouter routing discipline. The observer is active in the Codex app automation with a five-hour cadence.  The observer saves Markdown reports under `project/runs/yushchenko-model-efficiency/`, updates reusable model-efficiency advice and issue lists, and notifies agents through the live communication log. Telegram delivery is conditional: it should happen only when an approved sender exists outside the public repo.  ## Current State  Status: complete.  Main artifacts:  - `project/automation/yushchenko-model-efficiency-observer.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md` - `project/agents/agent-roster.yaml` - `project/agents/README.md` - `wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md`  Automation:  - Codex app automation ID: `yushchenko-model-"
+      "text": "# Agent Handout: Yushchenko Model Efficiency Observer  ## Title And Purpose  This handout records the creation of the Yushchenko model-efficiency and token-use observer for ArchFlow.  ## Human Summary  The project now has a recurring observer lane for model usage, token efficiency, and OpenRouter routing discipline. The observer is active in the Codex app automation with a five-hour cadence.  The observer saves Markdown reports under `project/runs/yushchenko-model-efficiency/`, updates reusable model-efficiency advice and issue lists, and notifies agents through the live communication log. Telegram delivery is conditional: it should happen only when an approved sender exists outside the public repo.  ## Current State  Status: complete.  Main artifacts:  - `project/automation/yushchenko-model-efficiency-observer.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md` - `project/agents/agent-roster.yaml` - `project/agents/README.md` - `wiki/runs/2026-07-01-yushchenko-m"
+    },
+    {
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md",
+      "title": "CrewAI Level 3 Proof Handout",
+      "text": "# CrewAI Level 3 Proof Handout  ## Title And Purpose  This handout records the direct CrewAI Level 3 proof run. Use it before enabling any future provider-backed or default CrewAI runtime.  ## Human Summary  The proof executed one direct CrewAI runtime flow using a tiny public-safe PRD/ICP fixture and a deterministic local LLM adapter. It did not call OpenRouter, did not spend provider budget, did not write external systems, and did not promote public claims.  The result proves CrewAI direct runtime mechanics for a bounded local fixture. It does not prove provider-backed CrewAI, backend deployment, live writeback, or production readiness.  ## Current State  Status: `proof_passed_not_default_runtime`.  Main artifacts: - `input-fixture.md` - `crew-output.md` - `review-report.md` - `model-call-ledger.jsonl` - `budget-guard.json` - `runtime-proof.json` - `dashboard-state.md`  ## Agent Continuation Prompt  Continue only from the proof artifacts in this run folder. Preserve the Level 3 status as `proof_passed_not_default_runtime` unless the owner explicitly approves default runtime. Do not activate OpenRouter or external writeback from this proof alone.  ## Execution Trace  FACT: - Direc"
+    },
+    {
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/crew-output.md",
+      "title": "CrewAI Level 3 Direct Runtime Output",
+      "text": "# CrewAI Level 3 Direct Runtime Output  FACT: Direct CrewAI runtime executed a PRD/ICP fixture task. PRD_PACKET: Intake is a public-safe B2B SaaS product-team brief; output is a source-bound PRD/ICP proof packet. ICP: B2B SaaS product teams with product leadership ownership. ACCEPTANCE_CRITERIA: source boundary stated; no external writeback; no provider call; review gate required. NEXT_QUESTION: Which approved source packet should feed the first non-proof run?"
+    },
+    {
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/dashboard-state.md",
+      "title": "Dashboard State Packet",
+      "text": "# Dashboard State Packet  Screen (1) PRD/ICP Flow: - Add or display `CrewAI Level 3 proof packet` after PRD Draft and before Review. - Status: `proof_passed_not_default_runtime`. - Runtime: deterministic local CrewAI proof, zero provider calls, zero writeback.  Screen (2) Agent Orchestra: - Add or display `CrewAI Level 3 direct runtime proof` as a bounded worker/review lane feeding QA Gate. - Status: `proof_passed_not_default_runtime`. - Gates retained: OpenRouter provider activation, backend/local bridge, live writeback, Telegram, production promotion."
+    },
+    {
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md",
+      "title": "Tiny Public-Safe PRD/ICP Fixture",
+      "text": "# Tiny Public-Safe PRD/ICP Fixture  Status: public-safe proof fixture  ## Source Boundary  This fixture contains invented non-client product-team context. It contains no private source text, credentials, private URLs, local paths, raw transcripts, account IDs, or customer data.  ## Product-Team Brief  A B2B SaaS product leader wants to convert scattered meeting notes and backlog fragments into a reviewed PRD, acceptance criteria, task matrix, source-bound gaps, and an ICP evidence checklist.  ## Expected Proof Output  - Context digest. - PRD/ICP proof packet. - Acceptance criteria. - Review gate result. - No provider call. - No external writeback."
+    },
+    {
+      "path": "project/runs/2026-07-02-crewai-level-3-proof/review-report.md",
+      "title": "AF Review Report",
+      "text": "# AF Review Report  FACT: AF Review checked the direct CrewAI proof output. INTERPRETATION: The proof demonstrates direct CrewAI task execution with a deterministic local LLM, not OpenRouter runtime activation. GAP: Production provider-backed CrewAI still requires an approved backend, server-side secrets, live provider ledger entries, and owner approval. VERDICT: approved_for_status_proof_passed_not_default_runtime."
+    },
+    {
+      "path": "project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md",
+      "title": "Dashboard Execution Architecture Handout",
+      "text": "# Dashboard Execution Architecture Handout  Date: 2026-07-02 Audience: next ArchFlow public project operator  ## Title And Purpose  This handout records Prompt 1.2: the operational execution architecture for the Jarvis dashboard. Use it before starting Prompt 2.  ## Human Summary  Prompt 1.2 defined the execution contract that Prompt 2 should render and implement as a static/browser-local dashboard MVP. A follow-up Level 3 CrewAI proof pass executed one deterministic local CrewAI fixture and integrated its status into the contract and dashboard schema.  The dashboard has two screens. `(1) PRD/ICP Flow` is the product-service path that turns approved product-team material into a context digest, PRD, task matrix, evidence cards, acceptance criteria, decision log, review packet, and handoff. `(2) Agent Orchestra` is the operator path that shows roles, assignments, bounded worker outputs, review gates, blockers, handoffs, and final decisions.  The most important boundary is execution level. Level 1 configured roles are active as YAML/docs. Level 2 LangGraph-wrapped role execution is the intended architecture. Level 3 direct CrewAI runtime is now `proof_passed_not_default_runtime` for a"
+    },
+    {
+      "path": "project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md",
+      "title": "Jarvis Dashboard ICP Task Consolidation Handout",
+      "text": "# Jarvis Dashboard ICP Task Consolidation Handout  Date: 2026-07-02 Audience: next ArchFlow public project operator  ## Title And Purpose  This handout records the Prompt 1 strategy, ICP, task, Notion-package, and dashboard-readiness consolidation. Use it before starting Prompt 2 or updating the task board.  ## Human Summary  This run rebuilt the foundation for the Jarvis dashboard MVP without implementing dashboard, backend, provider, voice, or writeback code. The key decision is that ArchFlow should present a Product Discovery-to-Production PRD Pack for B2B SaaS product teams. The dashboard supports that service as an operator proof and supervision layer.  The work consolidated five review lanes: task-board/E1 status, Visual Reporting reporting documents, ICP and competitor positioning, technical runtime boundaries, and two-lane dashboard UX. The main correction is task separation. Static dashboard slices can be Done, while dashboard/Jarvis umbrella, access/security, and live runtime rows stay Review or Blocked until their specific proof exists.  Prompt 2 is now ready only as a static/browser-local dashboard MVP implementation lane. It is not permission to activate OpenRouter, Ra"
+    },
+    {
+      "path": "project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md",
+      "title": "Jarvis Dashboard MVP Implementation Handout",
+      "text": "# Jarvis Dashboard MVP Implementation Handout  ## Title And Purpose  This handout records Prompt 2 implementation for the Jarvis dashboard MVP after Prompt 1, Prompt 1.2, and the CrewAI Level 3 proof were complete.  ## Human Summary  The implementation strengthened the static/browser-local dashboard into a more complete operator surface for ArchFlow's PRD/ICP knowledge engine and multi-agent execution system.  Screen 1 now provides a direct PRD/ICP request surface, PRD output blocks, and backend fallback behavior. Screen 2 now exposes task stages and editable role configuration panels for the required agent roles and CrewAI role workers. The bottom composer is fixed, voice controls have explicit mic/stop/cancel/timer/transcript/playback states, and block schemas have zoom controls.  A provider-disabled FastAPI service contract was added under `services/jarvis-api/`. It implements the requested endpoint set, but it does not call OpenRouter, perform writeback, store raw voice content, deploy Railway, or run the full test cycle. FastAPI is not installed in the current local runtime, so runtime import remains dependency-gated.  ## Current State  Task status: implementation complete for"
+    },
+    {
+      "path": "project/runs/20260701_daily_skill_retrospective.md",
+      "title": "Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-01 Status: complete Scope: ArchFlow public-safe operations  ## Executive Summary  FACT: - The 21:00 evening skill and hook lane completed before this review and found no registry drift beyond narrow priority-task path hygiene. - The 22:30 daily lane is now distinct from the registry lane in the public agent roster, skill registry, and current local automation TOML. - Today's public artifacts heavily used `task-handout`, FACT/INTERPRETATION/HYPOTHESIS/GAP structure, live communication updates, run summaries, issue lists, and WikiLLM-style memory surfaces. - Static website/dashboard proof is strong for route and rendered-dashboard scope; provider-backed Jarvis, Railway/backend, live Nexus/writeback, owner-device voice proof, autonomous writeback, model-call cost logging, and Telegram delivery remain gated.  INTERPRETATION: - The useful operating pattern is now stable: live communication first, bounded run artifacts second, WikiLLM memory only for durable constraints, and no-op-safe scheduled maintenance when evidence does not justify churn. - The main risk for future agents is not missing a skill registry entry. The "
+    },
+    {
+      "path": "project/runs/20260701_run_daily_skill_retrospective.md",
+      "title": "Run Note - Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# Run Note - Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-01 Status: complete  ## Task  Review July 1 ArchFlow public-safe skill usage, hooks, automations, coordination files, run notes, reports, issues, and knowledge surfaces. Produce a daily retrospective and update only useful local project surfaces.  ## Inputs  - `AGENTS.md` - `project/README.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - July 1 run handouts and run summaries under `project/runs/` - July 1 reports under `project/reports/` - `project/issues/` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `skills/task-handout/SKILL.md` - `skills/daily-public-project-review/SKILL.md` - `skills/evening-skill-registry-update/SKILL.md` - local automation TOML definitions - `wiki/memory.md`, `wiki/insights.md`, and `wiki/log.md`  ## Outputs  - `project/runs/20260701_daily_skill_retrospective.md` - `project/runs/20260701_run_daily_skill"
     },
     {
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
@@ -2754,14 +3265,39 @@
       "text": "# Runs  Store future public-safe run summaries here.  Rules:  - Do not store raw private inputs. - Store sanitized source summaries only. - Keep filenames date-prefixed. - Keep all content in English. - Each run must include checks, outputs, gaps, and next actions."
     },
     {
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "text": "# Yushchenko Model Efficiency Report  Observer: Yushchenko Model Efficiency Observer  Run window: 2026-07-01 22:47 EEST  ## Evidence Inspected  - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md` - `project/runs/2026-07-01-openrouter-model-routing/agent-handout.md` - `wiki/memory.md` - `wiki/log.md`  ## Models Used  FACT: No active OpenRouter runtime evidence was found in the public-safe project evidence inspected for this run.  FACT: No model-call ledger, request log, or runtime trace was found that records an actual OpenRouter model invocation.  Provider: none observed in runtime evidence.  ## Task And Purpose  Task: observe model efficiency and token-use evidence for the ArchFlow public project.  Purpose: detect whether actual model usage, token spend, or cost data exi"
+    },
+    {
       "path": "project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md",
       "title": "Initial Model Efficiency Report",
       "text": "# Initial Model Efficiency Report  Observer: Yushchenko Model Efficiency Observer  Status: baseline report  ## Run Window  Initial setup run on 2026-07-01.  ## Evidence Inspected  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/live/communication/agent-communication-log.md` - `wiki/memory.md` - `wiki/log.md`  ## Model Usage  FACT: No active OpenRouter runtime evidence found.  FACT: OpenRouter remains disabled until explicit approval and an approved local bridge or backend exists.  FACT: The current documented routing plan reserves strongest Claude, Gemini, and OpenAI models for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts.  FACT: Cheaper execution models are assigned to bounded intermediate work and must not self-approve public claims, outreach, memory promotion, architecture, pricing, or payment verdicts.  ## Token And Cost Evidence  GAP: No canonical model-call ledger exists yet.  GAP: No token counts, cost records, or OpenRouter request logs were found in the public-safe project evidence inspected for this baseline report.  ## Efficiency Assessment  Efficiency score: `"
     },
     {
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "text": "# Yushchenko Model Efficiency Report  Observer: Yushchenko Model Efficiency Observer  Run window: 2026-07-02 10:14 EEST  ## Evidence Inspected  - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/2026-07-01-openrouter-model-routing/agent-handout.md` - `project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md` - `project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md` - `project/runs/20260701_run_daily_skill_retrospective.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md` - `wiki/log.md`  ## Models Used  FACT: No active OpenRouter runtime evidence found.  FACT: No model-call ledger, request log, or runtime trace was found that records an actual provider invocation.  Provider: none obser"
+    },
+    {
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1112-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "text": "# Yushchenko Model Efficiency Report  Observer: yushchenko-model-efficiency-observer  Run window: 2026-07-02 11:12 EEST  ## Evidence Inspected  - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/2026-07-01-openrouter-model-routing/agent-handout.md` - `project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md` - `project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md` - `project/runs/2026-07-01-initial-model-efficiency-report.md` - `project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md` - `project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md` - `project/scripts/check-ollama.sh` - `project/scripts/smoke-test-ollama-qwythos.sh` - `wiki/log.md`  ## FACT  - `No active OpenRouter runtime evidence found.` - No model-call ledger, request log, or runtime trace exi"
+    },
+    {
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1402-model-efficiency-report.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "text": "# Yushchenko Model Efficiency Report  Observer: Yushchenko Model Efficiency Observer  Run window: 2026-07-02 14:02 EEST  ## Evidence Inspected  - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/2026-07-01-openrouter-model-routing/agent-handout.md` - `project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md` - `project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md` - `project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md` - `project/runs/2026-07-02-crewai-level-3-proof/review-report.md` - `project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json` - `project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl` - `project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md` - `project/runs/yushchenko-model-efficiency/2026-07-02-1112-model-efficiency-report.md` - `wiki"
+    },
+    {
+      "path": "project/runs/yushchenko-model-efficiency/agent-handout.md",
+      "title": "Yushchenko Model Efficiency Observer Handout",
+      "text": "# Yushchenko Model Efficiency Observer Handout  ## Purpose  Record the current observer state for the ArchFlow model-efficiency lane.  ## Current Status  - No active OpenRouter runtime evidence was found in the inspected public-safe project files. - A separate zero-cost local deterministic CrewAI proof ledger exists and must stay labeled as local proof, not OpenRouter runtime. - Telegram delivery was skipped because an approved sender was unavailable.  ## Durable Artifacts  - `2026-07-02-1402-model-efficiency-report.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `wiki/log.md` - `wiki/memory.md`  ## Next Safe Action  Continue reporting only evidence-backed model-use facts. Do not infer provider-backed OpenRouter usage from the local proof ledger."
+    },
+    {
       "path": "project/workflows/crewai-crew.yaml",
       "title": "crewai-crew.yaml",
-      "text": "name: archflow_block1_crew status: runtime_installed_config_import_passed runtime: crewai_python official_docs_checked:   - https://docs.crewai.com/en/concepts/crews  purpose: >   Organize the Block 1 agents as a named team. CrewAI owns role clarity,   task sequence, expected outputs, and per-task accountability.  process: sequential manager_mode: codex_operator_supervised memory: false cache: true planning: false output_log_file: project/outputs/crew-log.json max_rpm: null observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted model_execution: ollama_local_qwythos storage_boundary: project/local/home telemetry_for_guard_runs: disabled config_check_script: project/scripts/crewai-config-check.py  agents:   af_tools:     role: Source and tooling analyst     goal: Verify available sources, providers, and safe boundaries before work starts.     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check   af_context:     role: Context analyst     goal: Convert approved inputs into structured English facts, interpretations, hypotheses, and gaps.     skills:       - notion-spec-to-implement"
+      "text": "name: archflow_block1_crew status: runtime_installed_config_import_passed_level_3_proof_passed runtime: crewai_python official_docs_checked:   - https://docs.crewai.com/en/concepts/crews  purpose: >   Organize the Block 1 agents as a named team. CrewAI owns role clarity,   task sequence, expected outputs, and per-task accountability.  process: sequential manager_mode: codex_operator_supervised memory: false cache: true planning: false output_log_file: project/outputs/crew-log.json max_rpm: null observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted model_execution: level_3_direct_crewai_proof_passed_deterministic_local storage_boundary: project/local/home telemetry_for_guard_runs: disabled config_check_script: project/scripts/crewai-config-check.py  agents:   af_tools:     role: Source and tooling analyst     goal: Verify available sources, providers, and safe boundaries before work starts.     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check   af_context:     role: Context analyst     goal: Convert approved inputs into structured English facts, interpretations, hypotheses,"
     },
     {
       "path": "project/workflows/knowledge-integration.yaml",
@@ -2839,9 +3375,14 @@
       "text": "--- name: outquestions description: Use this skill after each substantial ArchFlow execution, planning pass, Notion task update, GitHub update, dashboard/voice/hosting step, or multi-agent run to produce an execution report with the critical open questions, decisions, owner choices, and next-stage gates needed to move reliably. metadata:   short-description: Report execution outcomes and next-stage decision questions ---  # Outquestions  Use this skill when an ArchFlow run needs more than a status note. It turns completed work into a compact execution report plus the questions that must be answered before the next stage starts.  ## Trigger  Run this skill after:  - a Notion task or GitHub update - a dashboard, voice, hosting, Onyx, or agent workflow planning pass - a multi-agent or sidecar-agent run - a public-facing content/reporting task - any execution where the next stage depends on owner decisions  ## Output Shape  Write these sections:  1. **What changed**    - 2-5 plain paragraphs.    - Explain the action, why it matters, and what is now easier or safer.  2. **Artifacts**    - List created or updated files, pages, tasks, reports, or commits.    - Use repo-relative paths for "
     },
     {
+      "path": "skills/priority-task-operator/SKILL.md",
+      "title": "Priority Task Operator",
+      "text": "--- name: priority-task-operator description: Select the highest priority unfinished task by urgency and importance from `project-plan.md`, start the execution handoff as a fresh operator/chat packet, and prepare KB + Notion + GitHub follow-up evidence. ---  # Priority Task Operator  ## Purpose  Use this skill for the 00:30 and 06:30 recurring automation lanes that must:  1. Review completed task history and all active/task pipeline rows. 2. Rank unfinished tasks by urgency and importance. 3. Start execution of the top-priority task with a compact handoff packet. 4. Prepare a fresh PitAgent handoff chat and reliability checkpoints. 5. Produce machine-readable update artifacts for KB/Notion/GitHub follow-up.  ## Input scope  Read:  - `project/operating-rules.md` - `project/project-plan.md` - `project/automation/archflow-priority-task-operator-lane.md` - `project/live/communication/agent-communication-log.md` - `skills/priority-task-operator/SKILL.md` - `project/scripts/priority-task-operator.py`  Read recent run proof artifacts for continuity where available:  - `project/runs/` - `wiki/log.md`  ## Execution Contract  1. Run the task selection script:  - `python3 project/scripts/prio"
+    },
+    {
       "path": "skills/skills-used.md",
       "title": "Skills And Methods Used",
-      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, and run-note targets synchronized for recurring maintenance. | | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. | | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. | | [`"
+      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, and run-note targets synchronized for recurring maintenance. | | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. | | [`priority-task-operator`](priority-task-operator/SKILL.md) | Select highest-priority actionable task by urgency and importance, create a PitAgent "
     },
     {
       "path": "skills/task-handout/SKILL.md",
@@ -3014,6 +3555,11 @@
       "text": "# Run Note: Two-Layer Dashboard Schema Control Panel  ## Task  Make the dashboard operable as two separate block-schema screens:  - `(1) PRD/ICP Flow` for the service-product path. - `(2) Agent Orchestra` for the reliable local control system.  ## Result  - Added explicit `#service` and `#schema` schema screens. - Added large node control panels with inputs, outputs, connection settings, dropdown configuration, run history, prompts, system prompt, developer comments, safety fields, and business-fit fields. - Kept all execution, provider, backend, deployment, and writeback actions gated. - Reviewed Claude-Mem, Impeccable, garak, NeMo Guardrails, and task-observer applicability as references only. - Integrated implementation, UX, and public-safety review findings: queue/save correctness, schema version handling, connect-mode isolation, node-panel tab behavior, mobile navigation, browser-local labels, generated URL redaction, and screenshot artifact removal.  ## Validation  - Pass: dashboard JavaScript syntax. - Pass: schema static smoke over both graph defaults. - Pass: dashboard data regeneration and JSON parse. - Pass: public safety scan. - Pass: workflow validation. - Pass: pre-pu"
     },
     {
+      "path": "wiki/runs/2026-07-01-dashboard-website-strategy-qa.md",
+      "title": "2026-07-01 Dashboard Website Strategy QA",
+      "text": "# 2026-07-01 Dashboard Website Strategy QA  ## Task  Review the current dashboard, public website, strategic plan, Notion/GitHub state, Maxibook Telegram lane, LangGraph/API readiness, knowledge-base depth, and project skills. Produce a PDF report and update durable state.  ## Result  The public website and dashboard are working for the static review scope. Stable public site and dashboard routes returned HTTP 200. Notion was updated with `Agent Tags`, current task states, cleaned Links content, and three Telegram delivery tasks. A public-safe report and handout were created under `project/runs/2026-07-01-dashboard-website-strategy-qa/`.  ## FACT  - Website route returned HTTP 200. - Dashboard route returned HTTP 200. - Review branch matched GitHub remote at `73c41ea` before local audit artifacts were created. - `Agent Tags` was added to the Notion task database. - TG-1, TG-2, and TG-3 were created for Telegram delivery readiness. - The skill registry contains task handout, outquestions, task breakdown, evening registry update, and daily RAG/project review skills.  ## INTERPRETATION  The current delivery is coherent when described as a static public-safe website plus read-only dash"
+    },
+    {
       "path": "wiki/runs/2026-07-01-final-integration-notion-closeout.md",
       "title": "2026-07-01 Final Integration And Notion Closeout",
       "text": "# 2026-07-01 Final Integration And Notion Closeout  ## Result  Jesus completed the final integration pass after Messi's fast handoff and combined the strongest current work from Ronaldo, LOL, and Ronaldinho into the public-safe review branch.  ## FACT  - The blue/ivory ArcFlow Automate website is the active single-page public service surface. - The site includes the teal architectural system map, dark diagnostic panel, service-output rail, two-lane diagram, PRD/ICP calculator, process timeline, diagnostic route, and dashboard CTA. - The mobile homepage had a readability issue; Jesus patched `styles.css` to keep hero copy and proof rows within the narrow viewport. - The dashboard remains a static/read-only operator surface with generated data and explicit blocked gates. - The Notion Links page now starts with current public routes and the review branch. - The key Notion task rows now use branch-head evidence and accurate Done/Review descriptions.  ## INTERPRETATION  The static website/dashboard proof is ready for owner review and merge consideration. Runtime claims remain separate because provider calls, Railway/backend, live Nexus, voice acceptance, and writeback have not been impl"
@@ -3062,6 +3608,21 @@
       "path": "wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md",
       "title": "2026-07-01 Yushchenko Model Efficiency Observer",
       "text": "# 2026-07-01 Yushchenko Model Efficiency Observer  ## Task  Create a recurring model-efficiency and token-use observer for ArchFlow.  ## Result  - Created Codex app automation `yushchenko-model-efficiency-observer` with a five-hour cadence. - Added the Yushchenko observer role to `project/agents/agent-roster.yaml`. - Updated `project/agents/README.md`. - Added `project/automation/yushchenko-model-efficiency-observer.md`. - Added `project/agents/model-efficiency-advice.md`. - Added `project/agents/model-efficiency-issues.md`. - Added baseline report `project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md`.  ## Current Finding  FACT: No active OpenRouter runtime evidence was found in the baseline observer report.  INTERPRETATION: The project now has the observer and advice loop before cloud provider activation, which should reduce token waste and prevent unreviewed model escalation.  GAP: Telegram delivery requires an approved sender outside public files. The private destination must not be stored in the public repo.  ## Follow-Up  Before OpenRouter activation, add a canonical model-call ledger with model ID, task, role, source IDs, prompt version, tok"
+    },
+    {
+      "path": "wiki/runs/2026-07-02-crewai-level-3-proof.md",
+      "title": "2026-07-02 CrewAI Level 3 Proof",
+      "text": "# 2026-07-02 CrewAI Level 3 Proof  Status: complete  ## Task  Run the separate CrewAI Level 3 proof pass requested after Prompt 1.2 and integrate the result into the dashboard cycle.  ## FACT  - A tiny public-safe PRD/ICP fixture was created. - Direct CrewAI executed the fixture with a deterministic local LLM adapter. - The proof wrote a model-call ledger. - The budget guard recorded a 5.00 USD daily cap, 1.99 USD run cap, and 0.00 USD actual spend. - Provider calls were zero. - External writeback calls were zero. - AF Review approved the proof only for `proof_passed_not_default_runtime`.  ## INTERPRETATION  CrewAI is no longer blocked by missing direct runtime proof. It is still not the default runtime and does not activate OpenRouter or any provider-backed path.  ## GAP  - Provider-backed CrewAI still needs owner approval. - Backend/local bridge and server-side secret handling are still absent. - Fresh provider model/pricing checks are still required before any provider call. - A provider-backed ledger entry is still required before OpenRouter activation.  ## Outputs  - `project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md` - `project/runs/2026-07-02-crewai-level-3-proof"
+    },
+    {
+      "path": "wiki/runs/2026-07-02-dashboard-execution-architecture.md",
+      "title": "2026-07-02 Dashboard Execution Architecture",
+      "text": "# 2026-07-02 Dashboard Execution Architecture  Status: complete; Level 3 proof integrated  ## Task  Define the operational execution layer for the Jarvis dashboard between Prompt 1 and Prompt 2. The work must make LangGraph, OpenRouter, and CrewAI understandable from the dashboard concept, especially through `(1) PRD/ICP Flow` and `(2) Agent Orchestra`.  ## Inputs  - Prompt 1 consolidation report and handout. - Current dashboard README and two-layer schema handout. - LangGraph, CrewAI, agent roster, and model-routing YAML. - Yushchenko model-efficiency reports and advice. - Live public communication log. - Six read-only reviewer lanes.  ## Outputs  - `project/reports/2026-07-02-dashboard-execution-architecture.md` - `project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md` - Updates to:   - `project/agentic-stack.md`   - `project/agents/agent-roster.yaml`   - `project/workflows/langgraph-controller.yaml`   - `project/workflows/crewai-crew.yaml`   - `project/config/model-routing.yaml`  ## FACT  - Prompt 1 is complete and permits Prompt 2 only as static/browser-local dashboard MVP work. - Level 1 configured roles are active as YAML/docs. - Level 2 LangGraph-wrapped "
+    },
+    {
+      "path": "wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md",
+      "title": "2026-07-02 Jarvis Dashboard MVP Implementation",
+      "text": "# 2026-07-02 Jarvis Dashboard MVP Implementation  Status: implementation complete for static/dashboard and provider-disabled API-contract scope  ## Task  Finish the Jarvis dashboard MVP as a reliable static/browser-local control and communication surface for the PRD/ICP knowledge engine and multi-agent execution system.  ## FACT  - Screen 1 now has a PRD/ICP request surface and required output blocks. - Screen 2 now has task stages and editable role configuration panels. - Voice controls now include mic, stop, cancel, timer, transcript preview, send transcript, speaker playback, stop playback, and auto-speak. - Block-schema zoom controls were added. - A provider-disabled FastAPI service contract was added under `services/jarvis-api/`. - Env examples contain placeholders only. - `docs/tgapi.md` was removed after a Telegram-token-shaped value was detected. - OpenRouter remains disabled with `5.00` USD daily cap and `1.99` USD run hard stop. - CrewAI Level 3 remains `proof_passed_not_default_runtime`. - Public safety, workflow validation, runtime guard, CrewAI config check, dashboard JSON parse, node syntax check, dashboard static smoke, and diff whitespace checks pass. - Append-only "
     }
   ],
   "sources": [

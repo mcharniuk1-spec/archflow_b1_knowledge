@@ -9,11 +9,14 @@ Purpose: reusable advice for ArchFlow agents choosing models, spending tokens, a
 3. Use cheap execution models first for extraction, classification, drafting, source discovery, and code variants.
 4. Use the Claude, Gemini, and OpenAI frontier council only when the result affects strategy, architecture, public claims, memory promotion, outreach, pricing, or payment verdicts.
 5. Never let an execution-pool model self-approve its own output.
-6. Log model ID, task, role, source IDs, prompt version, estimated input/output tokens, estimated cost, decision, reviewer, and human gate status.
+6. Log model ID, task, role, source IDs, prompt version, estimated input tokens, estimated output tokens, estimated cost, reviewer, and human gate status.
 7. If token or cost data is missing, report it as missing. Do not estimate after the fact unless the source log supports it.
 8. For bulk E2 research, audit a sample with a frontier reviewer instead of reviewing every low-value item.
 9. For E7 payment verdicts, do not optimize for cheapness; use strong review because a wrong verdict costs more than model tokens.
 10. If OpenRouter model IDs or pricing are stale, stop and refresh the provider model list before recommending activation.
+11. When no runtime evidence exists, say "No active OpenRouter runtime evidence found" and list the evidence files inspected.
+12. If provider context/window behavior changes, log `context_window_tokens`, `prompt_tokens`, and `actual_output_tokens` to separate runtime-configuration overhead from quality effects.
+13. Keep local deterministic proof ledgers separate from provider-backed ledgers; do not use a zero-cost local proof to imply OpenRouter activation.
 
 ## Efficiency Scoring
 

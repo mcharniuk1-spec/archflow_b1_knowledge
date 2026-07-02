@@ -1,5 +1,5 @@
 name: archflow_block1_crew
-status: runtime_installed_config_import_passed
+status: runtime_installed_config_import_passed_level_3_proof_passed
 runtime: crewai_python
 official_docs_checked:
   - https://docs.crewai.com/en/concepts/crews
@@ -16,7 +16,7 @@ planning: false
 output_log_file: project/outputs/crew-log.json
 max_rpm: null
 observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted
-model_execution: ollama_local_qwythos
+model_execution: level_3_direct_crewai_proof_passed_deterministic_local
 storage_boundary: project/local/home
 telemetry_for_guard_runs: disabled
 config_check_script: project/scripts/crewai-config-check.py
@@ -71,6 +71,24 @@ agents:
       - publication-review-reporting
       - task-handout
 
+  af_dashboard_operator:
+    role: Dashboard command and packet operator
+    goal: Define the PRD/ICP Flow command packet, safe config candidates, and local export boundary for the dashboard.
+    skills:
+      - dashboard-command-packet-schema
+      - static-dashboard-boundary-review
+      - local-packet-export
+      - runtime-labeling
+
+  af_orchestration_reviewer:
+    role: Agent orchestra reviewer
+    goal: Review role assignment, worker packets, state transitions, blockers, and handoff readiness for the Agent Orchestra screen.
+    skills:
+      - role-assignment-review
+      - maker-checker-gate-review
+      - handoff-artifact-review
+      - runtime-boundary-review
+
 tasks:
   - id: source_inventory
     agent: af_tools
@@ -96,8 +114,132 @@ tasks:
   - id: task_handout
     agent: af_publisher
     expected_output: project/runs/<date>-<run-name>/agent-handout.md
+  - id: dashboard_command_packet_schema
+    agent: af_dashboard_operator
+    expected_output: project/outputs/templates/dashboard-command-packet.md
+    execution_level: level_1_configured_roles
+  - id: orchestration_state_schema
+    agent: af_orchestration_reviewer
+    expected_output: project/outputs/templates/orchestration-state-schema.md
+    execution_level: level_1_configured_roles
+  - id: model_route_preflight
+    agent: af_tools
+    expected_output: project/outputs/templates/model-route-preflight.md
+    execution_level: level_1_configured_roles
+  - id: crewai_runtime_proof_plan
+    agent: af_orchestration_reviewer
+    expected_output: project/outputs/templates/crewai-runtime-proof-plan.md
+    execution_level: level_1_configured_roles
+  - id: level_2_review_packet
+    agent: af_review
+    expected_output: project/outputs/templates/level-2-review-packet.md
+    execution_level: level_2_langgraph_wrapped_workers
+  - id: level_3_direct_crewai_proof
+    agent: af_manager
+    expected_output: project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json
+    execution_level: level_3_direct_crewai_runtime
+
+execution_levels:
+  level_1_configured_roles:
+    status: active
+    meaning: roles_tasks_expected_outputs_and_dashboard_fields_only
+    execution: none
+    dashboard_visibility: may_display_and_edit_safe_config_candidates
+    current_source_of_truth:
+      - project/workflows/crewai-crew.yaml
+      - project/agents/agent-roster.yaml
+  level_2_langgraph_wrapped_workers:
+    status: target_architecture_after_approval
+    execution: langgraph_calls_worker_functions_using_crewai_role_task_config
+    model_route: server_side_only_when_explicitly_approved_and_logged
+    review_gate: af_review_then_jesus
+    artifact_rule: save_worker_outputs_as_review_packets_before_any_external_side_effect
+    allowed_before_provider_activation:
+      - codex_operator_manual_execution
+      - static_dashboard_state_packet
+      - local_artifact_export
+    blocked_without_approval:
+      - provider_backed_jarvis
+      - backend_or_railway_runtime
+      - nexus_or_notion_writeback
+      - telegram_delivery
+      - production_promotion
+  level_3_direct_crewai_runtime:
+    status: proof_passed_not_default_runtime
+    execution: direct_crewai_task_flow_or_langgraph_wrapped_crewai_runtime
+    default_runtime: false
+    provider_runtime: not_activated
+    writeback_runtime: not_activated
+    proof_scope:
+      - deterministic_local_llm_adapter
+      - tiny_public_safe_prd_icp_fixture
+      - no_provider_call
+      - no_external_writeback
+      - af_reviewed_output_package
+    proof_artifacts:
+      - project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md
+      - project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl
+      - project/runs/2026-07-02-crewai-level-3-proof/budget-guard.json
+      - project/runs/2026-07-02-crewai-level-3-proof/crew-output.md
+      - project/runs/2026-07-02-crewai-level-3-proof/review-report.md
+      - project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json
+      - project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md
+    remaining_blockers_for_default_or_provider_runtime:
+      - explicit_owner_approval_for_provider_or_default_crewai_runtime
+      - approved_backend_or_local_bridge_for_server_side_secrets
+      - provider_backed_model_call_ledger_entries
+      - fresh_provider_model_and_pricing_check
+      - live_budget_guard_against_actual_provider_pricing
+      - expanded_review_for_non_fixture_outputs
+    required_proof:
+      - public_safe_fixture
+      - config_import_pass
+      - direct_crewai_task_run_pass
+      - deterministic_output_path
+      - no_secret_or_private_path_output
+      - review_report_pass
+      - public_safety_scan_pass
+    unblock_ladder:
+      step_1_fixture:
+        goal: create_or_select_tiny_public_safe_prd_icp_fixture
+        output: project/runs/<date>-crewai-level-3-proof/input-fixture.md
+      step_2_budget_and_ledger:
+        goal: verify_model_call_ledger_and_budget_guard_before_any_llm_call
+        openrouter_caps:
+          daily_budget_usd: 5.00
+          max_per_run_usd: 1.99
+        output: project/runs/<date>-crewai-level-3-proof/model-call-ledger.jsonl
+      step_3_dry_runtime:
+        goal: run_direct_crewai_flow_with_no_external_writeback_and_no_public_claim_promotion
+        output: project/runs/<date>-crewai-level-3-proof/crew-output.md
+      step_4_review:
+        goal: run_af_review_public_safety_claim_support_and_runtime_boundary_check
+        output: project/runs/<date>-crewai-level-3-proof/review-report.md
+      step_5_promote_status:
+        goal: change_level_3_status_only_after_proof_artifacts_and_checks_pass
+        allowed_status_after_success: proof_passed_not_default_runtime
+        current_status: proof_passed_not_default_runtime
+
+task_execution_policy:
+  default_level: level_1_configured_roles
+  implementation_target_for_prompt_2: static_dashboard_display_of_level_1_and_level_2_contracts
+  level_2_requires:
+    - approved_worker_scope
+    - langgraph_state_packet
+    - artifact_output_path
+    - af_review_gate
+    - jesus_integrator_decision
+  blocked_without_explicit_approval:
+    - direct_crewai_provider_or_default_runtime_execution
+    - openrouter_or_other_cloud_provider_call
+    - backend_or_railway_runtime
+    - live_nexus_notion_wikillm_writeback
+    - telegram_delivery
+    - production_promotion
 
 current_limitations:
   - CrewAI imports and config validation pass.
-  - No CrewAI LLM task execution has been run yet.
-  - Codex remains the active execution layer until the first approved LangGraph-wrapped CrewAI proof.
+  - Direct CrewAI deterministic local proof passed under project/runs/2026-07-02-crewai-level-3-proof/.
+  - Level 3 status is proof_passed_not_default_runtime, not default runtime.
+  - Provider-backed CrewAI runtime remains blocked until backend, secret, pricing, ledger, budget, and owner approval gates pass.
+  - Codex remains the active execution layer until a later approved LangGraph-wrapped or provider-backed CrewAI runtime is promoted.

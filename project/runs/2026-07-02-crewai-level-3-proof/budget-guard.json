@@ -1,0 +1,10 @@
+{
+  "actual_spend_usd": 0.0,
+  "daily_budget_usd": 5.0,
+  "max_per_run_usd": 1.99,
+  "openrouter_calls": 0,
+  "provider_calls": 0,
+  "rule": "5 USD per day and always under 2 USD per run",
+  "run_id": "2026-07-02-crewai-level-3-proof",
+  "status": "pass"
+}
