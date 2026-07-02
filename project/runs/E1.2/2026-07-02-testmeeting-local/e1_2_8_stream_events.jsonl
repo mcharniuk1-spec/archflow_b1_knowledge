@@ -1,0 +1,6 @@
+{"event": "intake_validate", "index": 1, "recorded_at": "2026-07-02T14:25:05.520715+00:00"}
+{"event": "source_summarize", "index": 2, "recorded_at": "2026-07-02T14:25:05.520727+00:00"}
+{"event": "architecture_select", "index": 3, "recorded_at": "2026-07-02T14:25:05.520732+00:00"}
+{"event": "draft_prd", "index": 4, "recorded_at": "2026-07-02T14:25:05.520735+00:00"}
+{"event": "af_review", "index": 5, "recorded_at": "2026-07-02T14:25:05.520737+00:00"}
+{"event": "record_outputs", "index": 6, "recorded_at": "2026-07-02T14:25:05.520739+00:00"}

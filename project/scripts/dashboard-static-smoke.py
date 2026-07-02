@@ -40,6 +40,8 @@ SECRET_PATTERNS = [
 ROUTE_MARKERS = {
     "#jarvis": [
         "Jarvis Command Center",
+        "Architecture 1",
+        "Architecture 2",
         "Manual transcript fallback",
         "Operating Switchboard",
         "PRD/ICP service product",
@@ -56,10 +58,12 @@ ROUTE_MARKERS = {
     ],
     "#history": [
         "Chat History",
-        "Current browser-session conversation with Jarvis",
+        "Full persistent browser-local conversation with Jarvis",
     ],
     "#service": [
         "(1) PRD/ICP Flow",
+        "Architecture 1",
+        "Architecture 2",
         "Client source intake",
         "PRD builder",
         "ICP evidence cards",
@@ -86,6 +90,8 @@ ROUTE_MARKERS = {
     ],
     "#schema": [
         "(2) Agent Orchestra",
+        "Architecture 1",
+        "Architecture 2",
         "Operator command intake",
         "Classify request",
         "Codex development response",

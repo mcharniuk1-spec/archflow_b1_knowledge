@@ -61,6 +61,7 @@ PRD_BLOCKS = [
 class JarvisRequest(BaseModel):
     request: str = Field(default="", max_length=12000)
     lane: str = "general"
+    architecture: Literal["service", "control"] = "service"
     approved_test_input: bool = False
     source_refs: list[str] = Field(default_factory=list)
     owner_approval: bool = False
@@ -268,6 +269,12 @@ def chat(request: JarvisRequest) -> dict[str, Any]:
             "reply": "Jarvis API received the request. Provider calls and writeback remain disabled; this is a review packet.",
             "request_excerpt": request.request[:900],
             "lane": request.lane,
+            "architecture": request.architecture,
+            "architecture_contract": (
+                "Architecture 1: PRD/ICP service output"
+                if request.architecture == "service"
+                else "Architecture 2: controlled agent/workflow system"
+            ),
         },
     )
 
@@ -298,6 +305,7 @@ def prd_icp_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
         "review_packet_created",
         {
             "lane": "prd_icp_flow",
+            "architecture": request.architecture,
             "request_excerpt": request.request[:900],
             "output_blocks": PRD_BLOCKS,
             "required_outputs": ["suggested Jira/GitLab backlog", "missing-info questions", "review gates"],
@@ -315,6 +323,7 @@ def agent_orchestra_lane(request: JarvisRequest | None = None) -> dict[str, Any]
         "review_packet_created",
         {
             "lane": "agent_orchestra",
+            "architecture": request.architecture,
             "request_excerpt": request.request[:900],
             "stages": ["Intake", "Role Assignment", "Active Work", "QA Gate", "Docs/Reports", "Git/Deploy", "Notion/Memory", "Final Decision"],
             "roles": default_roles(),

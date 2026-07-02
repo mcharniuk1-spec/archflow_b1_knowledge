@@ -1,0 +1,1 @@
+{"created_at":"2026-07-02T14:26:00+00:00","estimated_cost_usd":0.0,"input_kind":"sanitized_digest_only","provider":"openrouter","provider_calls":0,"raw_private_source_sent":false,"reason":"sandbox DNS blocked initial attempt; escalation reviewer rejected external provider call for derived content from private local sources","status":"blocked_by_approval_reviewer"}

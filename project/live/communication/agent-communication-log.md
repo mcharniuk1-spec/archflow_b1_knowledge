@@ -5000,3 +5000,195 @@ Checks:
 
 Next:
 - Run final checks, commit the public-safe consolidation state, and push `main`.
+
+## 2026-07-02 16:50 - Codex - Public website reliable live delivery
+
+Status: starting
+
+Task:
+- Verify and, if needed, finish the public ArchFlow Automate website delivery for the live Vercel URL.
+- Preserve the 3D arch visual direction, blue/white/red brand balance, stable PRD/ICP calculator, and cautious runtime claims.
+
+Files likely to change:
+- `index.html`
+- `styles.css`
+- `main.js`
+- `hover-depth.js`
+- `project/live/communication/agent-communication-log.md`
+- `project/reports/2026-07-02-public-website-live-delivery.md`
+- `project/runs/2026-07-02-public-website-live-delivery/agent-handout.md`
+- `workflow/automation/latest-vercel-deploy.json`
+- `workflow/automation/latest-figma-sync.json`
+
+Files claimed:
+- Public website source, deploy verification artifacts, Figma sync metadata, and this communication-log lane only.
+
+Expected output:
+- Live public URL verified against the current 3D arch homepage design, local checks passing, deployment status clear, and Figma sync handled if a Vercel deploy is performed.
+
+Blockers:
+- No provider calls, Railway runtime, Notion updates, Telegram sends, voice/writeback actions, or model-routing edits are in scope.
+- Production deployment and Figma sync must follow the ArchFlow deploy hook if a deploy is required.
+
+Next:
+- Inspect current source, verify live URL, run local visual smoke, patch only if drift remains, then deploy and sync Figma if needed.
+
+## 2026-07-02 16:54 - Codex - Public website deployment source correction
+
+Status: running
+
+FACT:
+- Local source under the public repo contains the requested 3D arch hero and passes local visual smoke.
+- `archflowautomate.vercel.app` is still serving an older build and does not contain the current 3D arch hero markers.
+- The workspace-level Vercel deploy used a different linked project and produced a deployment that does not update `archflowautomate.vercel.app`.
+
+INTERPRETATION:
+- The correct deploy root for the requested public URL is the public repo root, not the workspace root.
+
+Files still claimed:
+- Public website source, deployment metadata, Figma sync metadata, run handout/report, and this communication log.
+
+Next:
+- Deploy from the public repo root, then verify `archflowautomate.vercel.app` directly.
+
+## 2026-07-02 17:24 - Codex - Public website live delivery complete
+
+Status: complete
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+- `project/reports/2026-07-02-public-website-live-delivery.md`
+- `project/runs/2026-07-02-public-website-live-delivery/agent-handout.md`
+- `workflow/automation/latest-vercel-deploy.json`
+- `workflow/automation/latest-figma-sync.json`
+
+Live result:
+- `https://archflowautomate.vercel.app` now points at the refreshed public repo deployment.
+- The live homepage contains the current 3D arch hero, process stages, wide `Readiness Diagnostic` CTA, and stable calculator implementation.
+
+Figma sync:
+- Landing desktop: node `123:2`
+- Landing mobile: node `124:2`
+- Quiz desktop: node `125:2`
+- Quiz mobile result: node `126:2`
+- Sync summary frame: node `127:2`
+
+Checks:
+- Pass: JS syntax checks for homepage, hover-depth, and quiz scripts.
+- Pass: public safety scan.
+- Pass: runtime guard.
+- Pass: live alias content-marker check.
+- Pass: live arch asset HTTP check.
+- Pass: desktop and mobile Playwright smoke with no horizontal overflow.
+- Pass: calculator hover-depth disabled on the deployed page.
+
+Skipped:
+- Notion, Telegram, provider routing, Railway/backend runtime, voice, writeback, and unsafe live/edit scripts are outside this website-only lane.
+
+Remaining gaps:
+- The workspace-level deploy wrapper should be reviewed before the next public website deploy because this pass found a deploy-root mismatch.
+
+Next safe action:
+- Commit and push the public-safe run records after final checks.
+
+## 2026-07-02 17:05 - Jesus/Codex - E1.2 testmeeting and dashboard architecture execution
+
+Status: starting
+
+Task:
+- Use the newly available root `testmeeting.md` and `discovery materials.docx` inputs for an E1.2 local/Codex PRD run and an OpenRouter-gated comparison run if provider gates are available.
+- Fix the dashboard architecture workflow UX: persistent chat history, architecture 1/2 selector, proactive interview start, clearer block-schema stages, responsive sizing, and detailed approval/parallel nodes.
+- Create dashboard operating documentation and reporting/agent-activity templates.
+- Update Notion after evidence exists, then commit and push only this dashboard/E1.2 lane.
+
+Files likely to change:
+- `project/dashboard/app.js`
+- `project/dashboard/styles.css`
+- `project/dashboard/data.json`
+- `services/jarvis-api/app.py`
+- `docs/dashboard-local-jarvis-stack-manual.md`
+- `docs/prd-icp-output-template.md`
+- `project/reports/`
+- `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+- Dashboard/Jarvis architecture files, E1.2 test run artifacts, dashboard operating docs, and this run handout only.
+
+Expected output:
+- A reviewed local E1.2 PRD/PDF output from the meeting and discovery material.
+- A clearly separated OpenRouter run result or explicit blocker with proof.
+- Dashboard local UX/runtime fixes and browser QA evidence.
+- Notion E1/E1.2/E1.2.8/E1.3.9/E1.7 status updates based on actual results.
+
+Blockers:
+- Root source files are private inputs; public repo files may store only sanitized English summaries and derived reports.
+- Do not edit the public landing page while the parallel website deployment lane is active.
+- OpenRouter requires an approved server-side key path, provider ledger, budget guard, and no public secret logging.
+- Railway deploy remains a separate approval-gated hosted-runtime task.
+
+Next:
+- Inspect source inputs and current dashboard/runtime code, then patch the smallest reliable local slice before running E1.2 tests.
+
+## 2026-07-02 17:30 - Codex - Public website live delivery handoff
+
+Status: handoff
+
+FACT:
+- The public website delivery lane is live and verified at `https://archflowautomate.vercel.app`.
+- The live alias serves the refreshed 3D arch homepage and the stable PRD/ICP calculator.
+- Figma baseline sync is complete with landing desktop/mobile and quiz desktop/mobile captures.
+- A dashboard/E1.2 lane entry is now active in this shared communication log.
+
+INTERPRETATION:
+- The website lane should not push additional main commits from this shared worktree until the active dashboard/E1.2 lane posts handoff/complete or explicitly confirms it is safe.
+
+Files left as website-lane records:
+- `project/reports/2026-07-02-public-website-live-delivery.md`
+- `project/runs/2026-07-02-public-website-live-delivery/agent-handout.md`
+- `workflow/automation/latest-vercel-deploy.json`
+- `workflow/automation/latest-figma-sync.json`
+
+Next safe action:
+- After the active dashboard/E1.2 lane hands off, commit and push the public-safe website run records and this communication update.
+
+## 2026-07-02 17:45 - Jesus/Codex - E1.2 testmeeting and dashboard architecture execution
+
+Status: complete
+
+FACT:
+- E1.2.8 local/Codex run is complete from the approved private root source inputs, with only sanitized derived outputs saved in the public repo.
+- Local PDF outputs exist for the E1.2.8 PRD, streaming report, source methodology review, and agent-activity progress report.
+- Dashboard/Jarvis now has persistent browser-local chat history, explicit clear confirmation, Architecture 1 / Architecture 2 selection, proactive interview kickoff, architecture-aware normal commands, and clearer approval/parallel node templates.
+- Local Jarvis API contract accepts architecture fields for chat and lane endpoints.
+- Dashboard operating manual and agent-activity progress report template were created.
+- OpenRouter comparison is blocked: sandbox/network failed first, then the approval reviewer rejected the external provider call as data-exfiltration risk for derived private-source content. Provider calls and spend remain zero.
+- Notion writeback was prepared but blocked by the approval reviewer usage limit. The public-safe update packet is saved locally without private Notion URLs.
+
+Checks run:
+- Pass: `node --check project/dashboard/app.js`.
+- Pass: E1.2.8 runner Python compile.
+- Pass: Jarvis API Python AST parse.
+- Pass: in-process Jarvis API checks for health, Architecture 1 PRD/ICP lane, Architecture 2 agent-orchestra lane, and meeting approval guard.
+- Pass: public safety scan.
+- Pass: workflow validation.
+- Pass: runtime guard.
+- Pass: dashboard data JSON parse.
+- Pass: git diff whitespace check.
+- Blocked: browser dashboard smoke, because escalation was rejected by the environment usage limit.
+
+Files changed:
+- Dashboard/Jarvis: `project/dashboard/app.js`, `project/dashboard/styles.css`, `services/jarvis-api/app.py`, `project/dashboard/data.json`.
+- E1.2.8 run: `project/scripts/e1_2_8_testmeeting_run.py`, `project/runs/E1.2/2026-07-02-testmeeting-local/`.
+- Docs/reports: `docs/dashboard-operating-manual.md`, `docs/testmeeting-prd-runbook.md`, `project/content/templates/agent-activity-progress-report-template.md`, E1.2.8 report PDFs, dashboard manual PDF, and this lane report/handout.
+- Task-state docs: `project/project-plan.md`, `project/reports/2026-07-02-e1-task-consolidation-table.md`, `project/issues/2026-07-02-testmeeting-openrouter-prd-run-blocked.md`.
+- Website lane records from the completed website handoff remain ready to commit with this push.
+
+Remaining gaps:
+- Apply the prepared Notion update packet after connector usage is available again.
+- Run browser dashboard smoke after escalation/browser usage is available again.
+- OpenRouter comparison requires explicit owner approval after external-provider risk review.
+- Railway hosted runtime, auth/CORS, provider routing, durable writeback, Telegram delivery, and production promotion remain separate gated tasks.
+
+Next safe action:
+- Commit and push the public-safe dashboard/E1.2 artifacts plus the website handoff records to `main`.

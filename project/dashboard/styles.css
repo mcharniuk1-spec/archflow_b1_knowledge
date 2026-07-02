@@ -327,6 +327,62 @@ a {
   color: #ffffff;
 }
 
+.architecture-selector {
+  width: min(100%, 640px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #eef2f6;
+}
+
+.jarvis-main > .architecture-selector {
+  margin-top: 48px;
+}
+
+.schema-shell .architecture-selector {
+  margin-top: 12px;
+}
+
+.architecture-selector button {
+  min-height: 58px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  display: grid;
+  gap: 3px;
+  justify-items: start;
+  padding: 9px 11px;
+  text-align: left;
+  font: inherit;
+}
+
+.architecture-selector button strong,
+.architecture-selector button span {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.architecture-selector button strong {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.architecture-selector button span {
+  font-size: 12px;
+}
+
+.architecture-selector button.active {
+  border-color: rgba(199, 45, 53, 0.28);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
 .jarvis-orb {
   width: 108px;
   height: 108px;
@@ -1308,7 +1364,7 @@ button.primary:hover {
   box-shadow: 0 12px 28px rgba(18, 30, 42, 0.12);
   cursor: grab;
   user-select: none;
-  touch-action: none;
+  touch-action: manipulation;
 }
 
 .schema-node.selected {
@@ -2030,6 +2086,18 @@ button.primary:hover {
   .voice-toolbar {
     display: grid !important;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .architecture-selector {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: min(100%, 286px);
+    justify-self: center;
+  }
+
+  .architecture-selector button {
+    min-height: 54px;
+    padding: 9px;
   }
 
   .output-block-grid,

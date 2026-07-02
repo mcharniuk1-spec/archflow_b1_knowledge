@@ -1,0 +1,40 @@
+{
+  "run_id": "E1.2.8-testmeeting-local",
+  "created_at": "2026-07-02T14:25:05.516397+00:00",
+  "source_boundary": {
+    "approved_private_inputs": [
+      "root docs/testmeeting.md",
+      "root discovery materials.docx"
+    ],
+    "public_output_rule": "Only sanitized English summaries and derived artifacts are written under public/.",
+    "provider_input_rule": "OpenRouter receives only the sanitized digest, not raw meeting text or raw DOCX body."
+  },
+  "detected_signals": {
+    "customer_interviews": true,
+    "release_kickoff": true,
+    "discovery_sprint": true,
+    "performance": true,
+    "dual_track": true,
+    "dogfooding": true
+  },
+  "themes": [
+    "Customer interviews and interview follow-up need stronger operating discipline.",
+    "Product decisions should stay customer-first while internal teams remain valuable early feedback channels.",
+    "Release kickoff communication needs clearer problem framing, examples, screenshots or mockups, and better async formats.",
+    "Discovery sprints are useful for large unknowns, but should be reserved for high-uncertainty problems.",
+    "Performance, availability, scalability, and production readiness need to be treated as product requirements, not only engineering cleanup.",
+    "Dual-track discovery and delivery should separate learning work from delivery-ready issues."
+  ],
+  "methodology": [
+    "Use Jobs-to-Be-Done framing: focus on the progress the user is trying to make.",
+    "Prefer recent behavioral evidence, especially decisions made in the last 90 days.",
+    "Ask for concrete past stories instead of hypothetical purchase intent.",
+    "Separate goals from measurable requirements and define Definition of Done clearly.",
+    "Use interview evidence and source labels to support PRD claims.",
+    "Run Discovery and Delivery as parallel tracks: evidence before build, implementation after validation.",
+    "Treat the PRD as a living contract that feeds task systems and engineering handoff."
+  ],
+  "product_focus": "Release kickoff and discovery-to-delivery handoff modernization for B2B SaaS product teams.",
+  "buyer": "Director or VP Product accountable for PRD quality, discovery cadence, and delivery handoff speed.",
+  "service_reflection": "ArchFlow turns meeting/discovery material into a PRD, task matrix, decision log, evidence gaps, and review-ready handoff packet."
+}

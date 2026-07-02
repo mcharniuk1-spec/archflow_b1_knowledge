@@ -31,13 +31,16 @@ const storageKeys = {
   autoSpeak: "archflow.jarvis.autoSpeak",
   packets: "archflow.jarvis.localPackets",
   events: "archflow.jarvis.events",
+  architectureMode: "archflow.jarvis.architectureMode",
+  interviewState: "archflow.jarvis.interviewState",
 };
 
-const blockSchemaVersion = "0.4";
+const blockSchemaVersion = "0.5";
 
 let dashboardData = null;
 let activeTab = window.location.hash?.replace(/^#/, "") || "jarvis";
 let jarvisMode = localStorage.getItem(storageKeys.mode) || "normal";
+let architectureMode = localStorage.getItem(storageKeys.architectureMode) || "service";
 let voiceAuthorized = localStorage.getItem(storageKeys.voiceAuthorized) === "true";
 let voiceOutputEnabled = localStorage.getItem(storageKeys.voiceOutput) === "true";
 let autoSpeakEnabled = localStorage.getItem(storageKeys.autoSpeak) === "true";
@@ -60,10 +63,12 @@ let initialPanelDeepLinkApplied = false;
 const initialPanelDeepLinkId = new URLSearchParams(window.location.search).get("panel");
 let voiceFallbackDraft = "";
 let voiceTranscriptPreview = localStorage.getItem(storageKeys.voiceTranscriptPreview) || "";
+let interviewState = loadJson(storageKeys.interviewState, defaultInterviewState());
 let activeRecognition = null;
 let voiceTimerId = null;
 let voiceStartedAt = null;
 let voiceElapsedSeconds = 0;
+migratePersistentChatHistory();
 let chatHistory = loadJson(storageKeys.chatHistory, [
   {
     id: "welcome",
@@ -92,9 +97,12 @@ const globalComposer = document.querySelector("#globalComposer");
 const globalInput = document.querySelector("#globalInput");
 
 if (!tabs.some((tab) => tab.id === activeTab)) activeTab = "jarvis";
+if (activeTab === "service") architectureMode = "service";
+if (activeTab === "schema") architectureMode = "control";
+localStorage.setItem(storageKeys.architectureMode, architectureMode);
 
 function storageForKey(key) {
-  return key === storageKeys.packets || key === storageKeys.events || key === storageKeys.chatHistory ? sessionStorage : localStorage;
+  return key === storageKeys.packets || key === storageKeys.events ? sessionStorage : localStorage;
 }
 
 function loadJson(key, fallback) {
@@ -107,6 +115,12 @@ function loadJson(key, fallback) {
 
 function saveJson(key, value) {
   storageForKey(key).setItem(key, JSON.stringify(value));
+}
+
+function migratePersistentChatHistory() {
+  if (localStorage.getItem(storageKeys.chatHistory)) return;
+  const legacy = sessionStorage.getItem(storageKeys.chatHistory);
+  if (legacy) localStorage.setItem(storageKeys.chatHistory, legacy);
 }
 
 function clamp(value, min, max) {
@@ -127,6 +141,69 @@ function defaultPromptConfig() {
 
 let promptConfig = loadJson(storageKeys.promptConfig, defaultPromptConfig());
 
+function defaultInterviewState() {
+  return {
+    active: false,
+    questionIndex: 0,
+    lane: "service",
+    answers: [],
+    lastSummary: "",
+  };
+}
+
+function architectureMeta(mode = architectureMode) {
+  return mode === "control"
+    ? {
+        id: "control",
+        short: "Architecture 2",
+        label: "Architecture 2 - Agent Control",
+        tab: "schema",
+        schemaKind: "control",
+        commandBias: "agent orchestra, architecture change, logs, WikiLLM, Graphify, LlamaIndex, LangGraph, approvals, and durable output control",
+        firstInterviewQuestion: "Architecture 2 selected. What system-level change, agent workflow, memory/logging decision, or dashboard-control outcome should Jarvis help structure first?",
+      }
+    : {
+        id: "service",
+        short: "Architecture 1",
+        label: "Architecture 1 - PRD Service",
+        tab: "service",
+        schemaKind: "service",
+        commandBias: "source-to-PRD service output, discovery synthesis, ICP evidence, backlog, and buyer-ready reporting",
+        firstInterviewQuestion: "Architecture 1 selected. What source material should become the next PRD/ICP packet, and what buyer or product-team decision should it support?",
+      };
+}
+
+function setArchitectureMode(mode, options = {}) {
+  architectureMode = mode === "control" ? "control" : "service";
+  localStorage.setItem(storageKeys.architectureMode, architectureMode);
+  const meta = architectureMeta();
+  if (options.switchTab) activeTab = meta.tab;
+  appendEvent("Architecture selected", `${meta.label}. Commands now bias toward ${meta.commandBias}.`, "ok");
+}
+
+const interviewQuestions = {
+  service: [
+    "What source material should become the next PRD/ICP packet, and what buyer or product-team decision should it support?",
+    "Who is the intended reviewer or buyer for this output, and what decision should they be able to make after reading it?",
+    "What evidence is approved for use, and what raw source material must stay excluded from public or provider-backed processing?",
+    "What final outputs are expected: PRD, task matrix, ICP card, evidence map, report, PDF, or backlog?",
+    "What would make the output ready for review rather than still needing owner approval?",
+  ],
+  control: [
+    "What system-level change, agent workflow, memory/logging decision, or dashboard-control outcome should Jarvis help structure first?",
+    "Which architecture layer is affected: Codex operator, LangGraph route, LlamaIndex retrieval, Graphify map, WikiLLM memory, dashboard UI, backend API, or Railway?",
+    "Which durable writes or external actions require approval before execution?",
+    "What logs, run notes, decisions, or proof artifacts must be created so the change is auditable?",
+    "What validation proves the architecture change is controlled and reversible?",
+  ],
+};
+
+function currentInterviewQuestion() {
+  const lane = interviewState.lane === "control" ? "control" : "service";
+  const questions = interviewQuestions[lane];
+  return questions[Math.min(interviewState.questionIndex, questions.length - 1)];
+}
+
 const schemaScreenMeta = {
   service: {
     title: "(1) PRD/ICP Service Product Flow",
@@ -143,7 +220,7 @@ const schemaScreenMeta = {
 };
 
 function schemaKindForActiveTab() {
-  return activeTab === "service" ? "service" : "control";
+  return architectureMeta().schemaKind;
 }
 
 function setActiveSchema() {
@@ -497,32 +574,33 @@ function defaultControlBlockSchema() {
 
 function schemaNode(id, type, title, x, y, owner, prompt, output, options = {}) {
   const workflowLayer = options.workflowLayer || "control system";
+  const typeDefaults = schemaNodeTypeDefaults(type, title, output);
   return {
     id,
     type,
     title,
     x,
     y,
-    w: type === "parallel" || type === "router" ? 260 : 230,
-    h: 150,
-    owner,
-    status: "planned",
+    w: options.w || typeDefaults.w,
+    h: options.h || typeDefaults.h,
+    owner: owner || typeDefaults.owner,
+    status: options.status || typeDefaults.status,
     workflowLayer,
     description: options.description || prompt,
     job: options.job || "Define the job this node helps the operator complete.",
     pain: options.pain || "Define the pain or failure this node reduces.",
     evidence: options.evidence || "pending: source evidence assigned during execution",
     businessObjective: options.businessObjective || "Keep execution reliable, explainable, and approval-gated.",
-    inputs: options.inputs || ["manual command packet"],
-    outputs: options.outputs || [output],
+    inputs: options.inputs || typeDefaults.inputs,
+    outputs: options.outputs || typeDefaults.outputs,
     prompt,
     systemPrompt: options.systemPrompt || prompt,
-    comments: "Starter template comment; replace with reviewer/operator notes during execution.",
-    requirements: "No secrets, raw recordings, raw transcripts, private document bodies, or unapproved provider calls.",
-    files: ["pending: assign during execution"],
-    questions: [`What does ${title} need to prove?`, "Which source file or artifact supports it?"],
-    possibleOutputs: ["run_note", "decision", "issue", "review_branch", "dashboard_packet"],
-    outputLinks: ["pending: created after execution"],
+    comments: options.comments || typeDefaults.comments,
+    requirements: options.requirements || typeDefaults.requirements,
+    files: options.files || typeDefaults.files,
+    questions: options.questions || typeDefaults.questions,
+    possibleOutputs: options.possibleOutputs || typeDefaults.possibleOutputs,
+    outputLinks: options.outputLinks || ["pending: created after execution"],
     finalOutput: output,
     lastRuns: options.lastRuns || [
       {
@@ -533,9 +611,78 @@ function schemaNode(id, type, title, x, y, owner, prompt, output, options = {}) 
     ],
     config: {
       ...defaultNodeConfig(type, workflowLayer),
+      ...typeDefaults.config,
       ...(options.config || {})
     }
   };
+}
+
+function schemaNodeTypeDefaults(type, title, output) {
+  const base = {
+    w: type === "parallel" || type === "router" ? 300 : 260,
+    h: type === "parallel" || type === "approval" ? 188 : 168,
+    owner: "Unassigned",
+    status: "planned",
+    inputs: ["manual command packet"],
+    outputs: [output || "pending output"],
+    comments: "Draft node. Replace with reviewer/operator notes during execution.",
+    requirements: "No secrets, raw recordings, raw transcripts, private document bodies, or unapproved provider calls.",
+    files: ["pending: assign during execution"],
+    questions: [`What does ${title} need to prove?`, "Which source file or artifact supports it?"],
+    possibleOutputs: ["run_note", "decision", "issue", "review_branch", "dashboard_packet"],
+    config: {},
+  };
+  if (type === "parallel") {
+    return {
+      ...base,
+      owner: "Lead integrator",
+      status: "draft unconnected",
+      inputs: ["accepted source packet", "route key", "review criteria"],
+      outputs: ["architecture branch brief", "safety branch brief", "product/output branch brief", "merge packet"],
+      comments: "Parallel nodes fan out bounded sidecar work. Each branch must return facts, gaps, changed files if any, and a merge recommendation.",
+      requirements: "Every branch needs an owner, a disjoint file scope if editing, a stop condition, and a merge target.",
+      questions: ["Which branches are needed?", "Which files are reserved by each branch?", "Where does the merge happen?"],
+      possibleOutputs: ["branch report", "review finding", "blocked issue", "merge packet"],
+      config: {
+        traceTarget: "LangGraph metadata",
+        approvalGate: "required before durable write",
+        outputConnector: "approval request",
+      },
+    };
+  }
+  if (type === "approval") {
+    return {
+      ...base,
+      owner: "Owner approval",
+      status: "approval gate",
+      inputs: ["handoff packet", "evidence links", "risk list", "requested action"],
+      outputs: ["approved action", "revision request", "blocked issue"],
+      comments: "Approval nodes prevent provider calls, external sends, writeback, deployment, raw capture, or public claims from happening implicitly.",
+      requirements: "Define allowed action, forbidden action, evidence required, rollback path, and expiry of approval.",
+      questions: ["What exact action is being approved?", "What evidence supports it?", "What remains forbidden?"],
+      possibleOutputs: ["approval record", "blocked issue", "revision note", "owner decision"],
+      config: {
+        approvalGate: "required before provider call",
+        persistence: "Git after Codex review",
+        outputConnector: "approval request",
+      },
+    };
+  }
+  if (type === "router") {
+    return {
+      ...base,
+      owner: "Jarvis router",
+      inputs: ["command packet", "current architecture mode", "current task state"],
+      outputs: ["route key", "architecture 1 path", "architecture 2 path", "stop condition"],
+      comments: "Router nodes classify work before Codex, LangGraph, or review branches act.",
+      possibleOutputs: ["route key", "classification", "stop condition"],
+      config: {
+        traceTarget: "LangGraph metadata",
+        outputConnector: "downloadable review packet",
+      },
+    };
+  }
+  return base;
 }
 
 function schemaEdge(id, from, to, label, condition, mode) {
@@ -622,6 +769,66 @@ function schemaTypeLabel(type) {
   return labels[type] || type;
 }
 
+function schemaStageIndex(node) {
+  const typeOrder = {
+    start: 0,
+    router: 1,
+    agent: 2,
+    parallel: 3,
+    merge: 4,
+    approval: 5,
+    output: 6,
+  };
+  return typeOrder[node.type] ?? 2;
+}
+
+function layoutBlockSchemaByStage() {
+  const grouped = new Map();
+  blockSchema.nodes.forEach((node) => {
+    const stage = schemaStageIndex(node);
+    grouped.set(stage, [...(grouped.get(stage) || []), node]);
+  });
+  [...grouped.entries()].forEach(([stage, nodes]) => {
+    nodes.forEach((node, row) => {
+      node.x = 60 + stage * 360;
+      node.y = 80 + row * 240;
+      node.w = Math.max(node.w || 260, node.type === "parallel" || node.type === "router" ? 300 : 260);
+      node.h = Math.max(node.h || 168, node.type === "parallel" || node.type === "approval" ? 188 : 168);
+    });
+  });
+}
+
+function draftSchemaNode(type) {
+  const index = blockSchema.nodes.length + 1;
+  const stage = schemaStageIndex({ type });
+  const sameStage = blockSchema.nodes.filter((node) => schemaStageIndex(node) === stage).length;
+  const title = `${schemaTypeLabel(type)} ${index}`;
+  const defaults = schemaNodeTypeDefaults(type, title, "Pending review output.");
+  return schemaNode(
+    makeId(`schema-${type}`),
+    type,
+    title,
+    60 + stage * 360,
+    80 + sameStage * 240,
+    defaults.owner,
+    `Define the ${schemaTypeLabel(type).toLowerCase()} prompt, evidence, owner, inputs, outputs, and approval boundary.`,
+    defaults.outputs[0] || "Pending review output.",
+    {
+      workflowLayer: architectureMode === "service" ? "service product" : "control system",
+      status: defaults.status,
+      comments: defaults.comments,
+      requirements: defaults.requirements,
+      inputs: defaults.inputs,
+      outputs: defaults.outputs,
+      questions: defaults.questions,
+      possibleOutputs: defaults.possibleOutputs,
+      config: defaults.config,
+      w: defaults.w,
+      h: defaults.h,
+    }
+  );
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -675,14 +882,16 @@ function appendChat(role, text, source = "typed command") {
       time: nowIso(),
       text: String(text || "").slice(0, 1600),
     },
-  ].slice(-80);
+  ];
   saveJson(storageKeys.chatHistory, chatHistory);
 }
 
 function clearChatHistory() {
+  const confirmed = window.confirm("Clear persistent Jarvis chat history in this browser?");
+  if (!confirmed) return;
   chatHistory = [];
   saveJson(storageKeys.chatHistory, chatHistory);
-  appendEvent("Chat history cleared", "Current-session Jarvis chat history was cleared locally.", "warn");
+  appendEvent("Chat history cleared", "Persistent Jarvis chat history was cleared locally by explicit action.", "warn");
   render();
 }
 
@@ -690,10 +899,80 @@ function exportChatHistory() {
   const packet = createLocalPacket("jarvis-chat-history-export", "current browser session", "Export current Jarvis chat history for Codex review.", {
     extra: {
       chat_history: chatHistory,
-      persistence: "session-only until downloaded and reviewed",
+      persistence: "local browser storage until explicit clear; download packet requires Codex review before durable write",
     },
   });
   downloadPacket(packet.id);
+}
+
+function enterInterviewMode(lane = architectureMode, source = "mode selector") {
+  setArchitectureMode(lane);
+  jarvisMode = "interview";
+  localStorage.setItem(storageKeys.mode, jarvisMode);
+  interviewState = {
+    ...defaultInterviewState(),
+    active: true,
+    lane: architectureMode,
+  };
+  saveJson(storageKeys.interviewState, interviewState);
+  const question = architectureMeta().firstInterviewQuestion;
+  appendChat("assistant", question, `Jarvis interview kickoff - ${architectureMeta().short}`);
+  appendEvent("Interview started", `${architectureMeta().label}. Jarvis asked the first question proactively from ${source}.`, "ok");
+  return question;
+}
+
+function advanceInterview(answer, source = "interview answer") {
+  const lane = interviewState.lane === "control" ? "control" : "service";
+  interviewState = {
+    ...interviewState,
+    active: true,
+    lane,
+    answers: [
+      ...(interviewState.answers || []),
+      {
+        time: nowIso(),
+        source,
+        architecture: lane,
+        summary: String(answer || "").slice(0, 900),
+      },
+    ].slice(-30),
+    questionIndex: Math.min((interviewState.questionIndex || 0) + 1, interviewQuestions[lane].length - 1),
+    lastSummary: String(answer || "").slice(0, 900),
+  };
+  saveJson(storageKeys.interviewState, interviewState);
+  const packet = createLocalPacket(`${lane}-interview-memory-candidate`, source, answer, {
+    extra: {
+      architecture: architectureMeta(lane).label,
+      next_question: currentInterviewQuestion(),
+      memory_policy: "summary candidates only; raw transcript storage is off by default",
+    },
+  });
+  return `Captured for ${architectureMeta(lane).label}: ${packet.id}. Next question: ${currentInterviewQuestion()}`;
+}
+
+function architectureSelectorMarkup(context = "jarvis") {
+  return `
+    <div class="architecture-selector" data-context="${escapeHtml(context)}" aria-label="Jarvis architecture selector">
+      <button class="${architectureMode === "service" ? "active" : ""}" data-architecture="service" type="button">
+        <strong>Architecture 1</strong>
+        <span>PRD/ICP service output</span>
+      </button>
+      <button class="${architectureMode === "control" ? "active" : ""}" data-architecture="control" type="button">
+        <strong>Architecture 2</strong>
+        <span>Agent control system</span>
+      </button>
+    </div>
+  `;
+}
+
+function bindArchitectureSelectors(root = document) {
+  root.querySelectorAll("[data-architecture]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setArchitectureMode(button.dataset.architecture, { switchTab: button.closest(".schema-shell") != null });
+      if (jarvisMode === "interview") enterInterviewMode(architectureMode, "architecture selector");
+      render();
+    });
+  });
 }
 
 function speechSynthesisAvailable() {
@@ -803,6 +1082,8 @@ function renderNav() {
   nav.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       activeTab = button.dataset.tab;
+      if (activeTab === "service") setArchitectureMode("service");
+      if (activeTab === "schema") setArchitectureMode("control");
       window.history.replaceState(null, "", `#${activeTab}`);
       render();
     });
@@ -1233,9 +1514,20 @@ function downloadPacket(packetId) {
 function jarvisReply(input, source = "typed command") {
   const text = String(input || "").trim();
   const lower = text.toLowerCase();
+  const architecture = architectureMeta();
 
   if (!text) {
-    return "Jarvis is ready. Ask for status, refresh, research/check, content template, or interview mode.";
+    return `Jarvis is ready in ${architecture.label}. Ask for status, refresh, a PRD/ICP packet, an architecture-control task, or interview mode.`;
+  }
+
+  if (lower.includes("architecture 1") || lower.includes("arch 1") || lower.includes("prd architecture") || lower.includes("service architecture")) {
+    setArchitectureMode("service", { switchTab: true });
+    return `Architecture 1 is active. Normal commands now bias toward ${architectureMeta().commandBias}.`;
+  }
+
+  if (lower.includes("architecture 2") || lower.includes("arch 2") || lower.includes("control architecture") || lower.includes("agent architecture")) {
+    setArchitectureMode("control", { switchTab: true });
+    return `Architecture 2 is active. Normal commands now bias toward ${architectureMeta().commandBias}.`;
   }
 
   if (lower.includes("refresh") || lower.includes("reload") || lower.includes("update dashboard")) {
@@ -1247,22 +1539,22 @@ function jarvisReply(input, source = "typed command") {
   }
 
   if (lower.includes("interview")) {
-    jarvisMode = "interview";
-    localStorage.setItem(storageKeys.mode, jarvisMode);
-    appendEvent("Jarvis mode changed", "Interview mode asks one question at a time and produces candidates for review.", "ok");
-    return "Interview mode is active. First question: what source material should become the next PRD or ICP evidence packet?";
+    return enterInterviewMode(architectureMode, source);
   }
 
   if (lower.includes("normal mode") || lower.includes("status mode")) {
     jarvisMode = "normal";
     localStorage.setItem(storageKeys.mode, jarvisMode);
+    interviewState = { ...defaultInterviewState(), lane: architectureMode };
+    saveJson(storageKeys.interviewState, interviewState);
     appendEvent("Jarvis mode changed", "Normal mode answers status and waits for instructions.", "ok");
-    return "Normal mode is active. I will answer, prepare tasks, and ask before durable writes.";
+    return `Normal mode is active in ${architectureMeta().label}. I will answer under the selected architecture and ask before durable writes.`;
   }
 
   if (lower.includes("research") || lower.includes("check") || lower.includes("file") || lower.includes("analyze")) {
     const packet = createLocalPacket("research-check", source, text, {
       extra: {
+        architecture: architecture.label,
         recommended_agent: "AF Research + AF Review",
         next_step: "Use Codex or Railway writeback to save the packet and update WikiLLM after review.",
       },
@@ -1273,6 +1565,7 @@ function jarvisReply(input, source = "typed command") {
   if (lower.includes("content") || lower.includes("carousel") || lower.includes("post")) {
     const packet = createLocalPacket("content-template-request", source, text, {
       extra: {
+        architecture: architecture.label,
         recommended_agent: "AF Copy + Visual Reporting + AF Review",
         proof_required: "approved artifact, evidence label, no demand claim, AF Review, owner approval",
       },
@@ -1282,7 +1575,7 @@ function jarvisReply(input, source = "typed command") {
 
   if (lower.includes("status") || lower.includes("what works") || lower.includes("done")) {
     const e13 = dashboardData?.gates?.e1_3;
-    return `Current status: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard is static/read-only with static data polling. OpenRouter and Mistral can only be used by a future approved local bridge or backend because static browser JavaScript cannot safely access provider keys. Railway, Google auth, durable voice/file writes, and writeback remain later gates.`;
+    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard is static/read-only with local browser packets and provider-disabled API proof. OpenRouter, Railway, durable voice/file writes, and writeback remain gated until approved backend/runtime proof exists.`;
   }
 
   if (lower.includes("voice") || lower.includes("speak") || lower.includes("sound")) {
@@ -1313,16 +1606,27 @@ function jarvisReply(input, source = "typed command") {
   }
 
   if (jarvisMode === "interview") {
-    const packet = createLocalPacket("interview-memory-candidate", source, text, {
-      extra: {
-        question_next: "Which decision, task, or proof should this update?",
-        memory_policy: "summary candidates only; raw transcript storage is off by default",
-      },
-    });
-    return `Captured as an interview memory candidate: ${packet.id}. Next question: should this become a task, a decision, an ICP evidence card, or a content angle?`;
+    return advanceInterview(text, source);
   }
 
-  return "I can answer from the dashboard state, refresh data, stage a research/check packet, or switch to interview mode. Durable writes still go through Codex or a later Railway backend.";
+  if (architectureMode === "control") {
+    const packet = createLocalPacket("architecture-control-command", source, text, {
+      extra: {
+        architecture: architecture.label,
+        allowed_scope: "prepare architecture change packet, logs, memory update candidates, and approval gates",
+        forbidden_without_approval: ["provider call", "Railway deploy", "live writeback", "raw transcript storage"],
+      },
+    });
+    return `Architecture 2 command staged: ${packet.id}. I will treat this as a controlled architecture/workflow request with logs, KB/Graphify/LlamaIndex/WikiLLM implications, and approval gates.`;
+  }
+
+  const packet = createLocalPacket("prd-service-command", source, text, {
+    extra: {
+      architecture: architecture.label,
+      expected_outputs: ["PRD section", "task matrix", "evidence gaps", "review packet"],
+    },
+  });
+  return `Architecture 1 command staged: ${packet.id}. I will treat this as a PRD/ICP service-output request and preserve missing information as questions or gaps.`;
 }
 
 function handleGlobalSubmit(value, source = "typed command") {
@@ -1344,14 +1648,16 @@ function renderJarvis(data) {
   view.innerHTML = `
     <div class="jarvis-layout">
       <section class="panel jarvis-main">
+        ${architectureSelectorMarkup("jarvis")}
         <div class="mode-bar" aria-label="Jarvis mode">
           <button class="${jarvisMode === "normal" ? "active" : ""}" data-mode="normal" type="button">Normal</button>
           <button class="${jarvisMode === "interview" ? "active" : ""}" data-mode="interview" type="button">Interview</button>
         </div>
         <div class="jarvis-orb" aria-hidden="true">JV</div>
         <h2>Jarvis Command Center</h2>
-        <p class="muted">Ask for status, refresh, checks, content packets, or interview mode. Voice and file checks stay local until backend writeback exists.</p>
+        <p class="muted">Selected: ${escapeHtml(architectureMeta().label)}. Normal mode acts under this architecture; Interview mode asks one question at a time from the selected flow.</p>
         <div class="operator-strip" aria-label="Dashboard operating states">
+          <span>${escapeHtml(architectureMeta().short)}</span>
           <span>Static snapshot</span>
           <span>Browser-local packets</span>
           <span>Provider disabled</span>
@@ -1510,23 +1816,24 @@ function renderJarvis(data) {
 
     <section class="panel" style="margin-top:16px">
       <div class="section-header">
-        <div>
+      <div>
           <h2 class="section-title">Jarvis Chat</h2>
-          <p class="muted">Current-session chat history. It stays in browser session storage until exported.</p>
+          <p class="muted">Persistent browser-local chat history. It stays available until explicitly cleared; export before moving it into a reviewed Codex packet.</p>
         </div>
         <div class="row-actions">
           <button class="button" id="exportChat" type="button">Export chat packet</button>
-          <button class="button" id="clearChat" type="button">Clear history</button>
+          <button class="button" id="clearChat" type="button">Clear persistent history</button>
         </div>
       </div>
       <div class="chat-thread" id="chatThread">
-        ${chatHistory.length ? chatHistory.slice(-14).map((message) => `
+        ${chatHistory.length ? chatHistory.slice(-18).map((message) => `
           <article class="chat-message ${escapeHtml(message.role)}">
             <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleTimeString()}</div>
             <p>${escapeHtml(message.text)}</p>
           </article>
-        `).join("") : `<div class="callout">No current-session messages. Use the bottom composer or voice input.</div>`}
+        `).join("") : `<div class="callout">No persistent chat history in this browser. Use the bottom composer, voice input, or Interview mode.</div>`}
       </div>
+      ${chatHistory.length > 18 ? `<div class="row-actions" style="margin-top:10px"><a class="button" href="#history">Open full history (${chatHistory.length})</a></div>` : ""}
     </section>
 
     <div class="split" style="margin-top:16px">
@@ -1565,12 +1872,19 @@ function renderJarvis(data) {
 
   view.querySelectorAll("[data-mode]").forEach((button) => {
     button.addEventListener("click", () => {
-      jarvisMode = button.dataset.mode;
-      localStorage.setItem(storageKeys.mode, jarvisMode);
-      appendEvent("Jarvis mode changed", `${jarvisMode} mode selected.`, "ok");
+      if (button.dataset.mode === "interview") {
+        enterInterviewMode(architectureMode, "mode button");
+      } else {
+        jarvisMode = "normal";
+        localStorage.setItem(storageKeys.mode, jarvisMode);
+        interviewState = { ...defaultInterviewState(), lane: architectureMode };
+        saveJson(storageKeys.interviewState, interviewState);
+        appendEvent("Jarvis mode changed", "Normal mode selected.", "ok");
+      }
       render();
     });
   });
+  bindArchitectureSelectors(view);
 
   document.querySelector("#jarvisRefresh")?.addEventListener("click", () => {
     loadDashboardData("manual Jarvis button").catch((error) => {
@@ -1805,11 +2119,11 @@ function renderHistory() {
       <div class="section-header">
         <div>
           <h2 class="section-title">Chat History</h2>
-          <p class="muted">Current browser-session conversation with Jarvis. Export before closing the tab if it should become a Codex-reviewed packet.</p>
+          <p class="muted">Full persistent browser-local conversation with Jarvis. Export before turning it into a Codex-reviewed packet. Clear only removes the local browser copy.</p>
         </div>
         <div class="row-actions">
           <button class="primary" id="historyExport" type="button">Export chat packet</button>
-          <button class="button" id="historyClear" type="button">Clear history</button>
+          <button class="button" id="historyClear" type="button">Clear persistent history</button>
         </div>
       </div>
       <div class="chat-thread expanded">
@@ -1818,7 +2132,7 @@ function renderHistory() {
             <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleString()}</div>
             <p>${escapeHtml(message.text)}</p>
           </article>
-        `).join("") : `<div class="callout">No chat history in this browser session.</div>`}
+        `).join("") : `<div class="callout">No persistent chat history in this browser.</div>`}
       </div>
     </section>
   `;
@@ -1843,10 +2157,11 @@ function renderSchema(data) {
         <div>
           <h2 class="section-title">${escapeHtml(meta.title)}</h2>
           <p class="muted">${escapeHtml(meta.subtitle)} Click a node to open its full control panel; drag blocks, connect routes, validate the graph, and export a review packet.</p>
+          ${architectureSelectorMarkup("schema")}
         </div>
         <div class="row-actions">
-          <a class="button ${kind === "service" ? "active-soft" : ""}" href="#service">Screen 1</a>
-          <a class="button ${kind === "control" ? "active-soft" : ""}" href="#schema">Screen 2</a>
+          <button class="button ${kind === "service" ? "active-soft" : ""}" data-architecture="service" type="button">Screen 1</button>
+          <button class="button ${kind === "control" ? "active-soft" : ""}" data-architecture="control" type="button">Screen 2</button>
           <button class="button schema-add" data-type="agent" type="button">Local agent</button>
           <button class="button schema-add" data-type="router" type="button">Local router</button>
           <button class="button schema-add" data-type="parallel" type="button">Local parallel</button>
@@ -1950,6 +2265,7 @@ function renderSchema(data) {
   `;
 
   bindSchemaEditor();
+  bindArchitectureSelectors(view);
 }
 
 function renderBlockSchemaEdges(width, height) {
@@ -1992,10 +2308,10 @@ function renderSchemaNode(node) {
       <p>${escapeHtml(node.prompt || "No prompt configured.").slice(0, 150)}</p>
       <div class="schema-node-meta">
         <span>${escapeHtml(node.owner || "Unassigned")}</span>
-        <span>${inCount} in / ${outCount} out</span>
+        <span>routes ${inCount} in / ${outCount} out</span>
       </div>
       <div class="schema-node-meta">
-        <span>${escapeHtml(config.modelProvider || "none")}</span>
+        <span>ports ${(node.inputs || []).length} in / ${(node.outputs || []).length} out</span>
         <span>${escapeHtml(node.status || "planned")}</span>
       </div>
       <div class="schema-node-output">${escapeHtml(node.finalOutput || "Pending output").slice(0, 110)}</div>
@@ -2257,8 +2573,7 @@ function bindSchemaEditor() {
   view.querySelectorAll(".schema-add").forEach((button) => {
     button.addEventListener("click", () => {
       const type = button.dataset.type || "agent";
-      const count = blockSchema.nodes.length + 1;
-      const node = schemaNode(makeId(`schema-${type}`), type, `${schemaTypeLabel(type)} ${count}`, 120 + count * 28, 120 + count * 22, schemaTypeLabel(type), `Define the ${schemaTypeLabel(type).toLowerCase()} prompt and owner.`, "Pending review output.");
+      const node = draftSchemaNode(type);
       blockSchema.nodes.push(node);
       blockSchema.selectedNodeId = node.id;
       saveBlockSchema();
@@ -2283,10 +2598,7 @@ function bindSchemaEditor() {
   });
 
   view.querySelector("#schemaLayout")?.addEventListener("click", () => {
-    blockSchema.nodes.forEach((node, index) => {
-      node.x = 60 + (index % 4) * 310;
-      node.y = 80 + Math.floor(index / 4) * 230;
-    });
+    layoutBlockSchemaByStage();
     saveBlockSchema();
     render();
   });
@@ -2357,6 +2669,7 @@ function bindPrdIcpRequestSurface() {
     const payload = {
       request: input.value,
       lane: "prd_icp_flow",
+      architecture: architectureMode,
       approved_test_input: false,
       source_refs: ["docs/testmeeting.md", "approved discovery-call links"],
     };
@@ -3005,6 +3318,7 @@ function render() {
   renderNav();
   const data = dashboardData;
   generatedAt.textContent = `Generated ${new Date(data.generated_at).toLocaleString()}`;
+  globalInput.placeholder = `${architectureMeta().short}: ask Jarvis, run a check, or type refresh`;
   if (activeTab === "jarvis") renderJarvis(data);
   if (activeTab === "history") renderHistory(data);
   if (activeTab === "service") renderSchema(data);
