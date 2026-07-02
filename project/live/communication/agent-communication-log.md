@@ -4785,3 +4785,64 @@ Checks:
 
 Next:
 - Correct `TELEGRAM_CHAT_ID` in local env, or approve a `getUpdates` lookup after acknowledging it may expose private Telegram chat metadata/message snippets.
+
+## 2026-07-02 16:00 - Jesus/Codex - Railway Jarvis API setup starting
+
+Status: starting
+
+Task:
+Create an ArchFlow Railway backend project/service for the provider-disabled Jarvis API, set initial safe env, add minimal deployment config, deploy, and verify `/health`.
+
+Files likely to change:
+- `docs/railway.md`
+- `public/services/jarvis-api/Procfile`
+- `public/services/jarvis-api/railway.json`
+- `public/project/live/communication/agent-communication-log.md`
+- relevant run handout under `public/project/runs/`
+
+Files claimed:
+- `docs/railway.md`
+- `public/services/jarvis-api/`
+- `public/project/live/communication/agent-communication-log.md`
+
+FACT:
+- Railway MCP is authenticated enough to list the owner workspace and an existing project.
+- No ArchFlow Railway project is currently linked to this directory.
+
+INTERPRETATION:
+- The first deployment should keep `MODEL_PROVIDER=none` and expose only the conservative FastAPI contract.
+
+GAP:
+- Need target dashboard origin from current Vercel/static deployment state.
+
+Checks:
+- Pending.
+
+Next:
+- Inspect the Jarvis API service files and Vercel linkage, then create/link Railway resources.
+
+## 2026-07-02 16:12 - Jesus/Codex - Telegram delivery target refreshed and sent
+
+Status: complete
+
+Task:
+- Refresh the approved Telegram bot's reachable chats after the latest owner prompt.
+- Update the ignored local env target from Telegram updates.
+- Send a redacted ArchFlow status message to the approved target.
+
+Files changed:
+- `project/live/communication/agent-communication-log.md`
+
+Safety:
+- No Telegram token, chat ID, username, private URL, message text from inbound updates, or API response body was logged.
+- Local secret values remain in the ignored root env file only.
+
+Result:
+- Telegram delivery sent to approved target label.
+
+Checks:
+- Telegram `getUpdates` succeeded with one reachable private chat visible.
+- Telegram `sendMessage` returned success.
+
+Next:
+- Continue keeping Telegram delivery audit entries public-safe and values local-only.
