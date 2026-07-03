@@ -3,8 +3,8 @@
   "created_at": "2026-07-02T14:25:05.516397+00:00",
   "source_boundary": {
     "approved_private_inputs": [
-      "root docs/testmeeting.md",
-      "root discovery materials.docx"
+      "approved meeting transcript source, filename redacted",
+      "approved discovery methodology source, filename redacted"
     ],
     "public_output_rule": "Only sanitized English summaries and derived artifacts are written under public/.",
     "provider_input_rule": "OpenRouter receives only the sanitized digest, not raw meeting text or raw DOCX body."

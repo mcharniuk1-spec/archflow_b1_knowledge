@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T08:12:59.353275+00:00",
+  "generated_at": "2026-07-03T08:53:13.193862+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "253",
+      "value": "256",
       "tone": "ok"
     },
     {
@@ -556,31 +556,136 @@
   "activity": [
     {
       "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-screenshot-smoke.md",
+      "title": "Dashboard Screenshot Smoke",
+      "modified": "2026-07-03T08:51:26.906020+00:00",
+      "size": 605
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md",
+      "title": "Jarvis Dashboard MVP Layer Report",
+      "modified": "2026-07-03T08:50:29.154664+00:00",
+      "size": 6224
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-testmeeting-dashboard-architecture.md",
+      "title": "E1.2 Testmeeting And Dashboard Architecture Report",
+      "modified": "2026-07-03T08:49:54.009741+00:00",
+      "size": 3317
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md",
+      "title": "E1 Notion And Runtime Consolidation Handout",
+      "modified": "2026-07-03T08:49:12.834628+00:00",
+      "size": 5143
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
+      "title": "E1.2.8 Source Inventory",
+      "modified": "2026-07-03T08:47:50.664946+00:00",
+      "size": 1065
+    },
+    {
+      "kind": "project_run",
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md",
       "title": "Agent Handout: E1.2 Testmeeting And Dashboard Architecture",
-      "modified": "2026-07-03T08:12:52.099128+00:00",
-      "size": 7713
+      "modified": "2026-07-03T08:46:12.281688+00:00",
+      "size": 8209
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md",
+      "title": "Notion Update Packet: E1 And Related Tasks",
+      "modified": "2026-07-03T08:46:06.328074+00:00",
+      "size": 7294
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md",
       "title": "Telegram Delivery Status",
-      "modified": "2026-07-03T08:11:44.471355+00:00",
+      "modified": "2026-07-03T08:38:11.050809+00:00",
       "size": 245
     },
     {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-screenshot-smoke.md",
-      "title": "Dashboard Screenshot Smoke",
-      "modified": "2026-07-03T08:09:44.156216+00:00",
-      "size": 605
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-e1-2-8-openrouter-comparison.pdf",
+      "title": "2026-07-03-e1-2-8-openrouter-comparison.pdf",
+      "modified": "2026-07-03T08:37:12.435015+00:00",
+      "size": 8123
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
+      "title": "2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
+      "modified": "2026-07-03T08:37:12.433476+00:00",
+      "size": 6280
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openai-provider-status.md",
-      "title": "OpenAI Provider Comparison Status",
-      "modified": "2026-07-03T07:58:15.999292+00:00",
-      "size": 696
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.pdf",
+      "title": "E1.2.8_OpenRouter_Comparison.pdf",
+      "modified": "2026-07-03T08:36:55.374241+00:00",
+      "size": 8123
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.pdf",
+      "title": "agent-activity-progress-report.pdf",
+      "modified": "2026-07-03T08:36:55.363116+00:00",
+      "size": 6280
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.pdf",
+      "title": "review-report.pdf",
+      "modified": "2026-07-03T08:36:55.352884+00:00",
+      "size": 3100
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
+      "title": "OpenRouter Model Routing Plan",
+      "modified": "2026-07-03T08:36:44.272246+00:00",
+      "size": 18872
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
+      "title": "E1.2.8 Agent Activity Progress Report",
+      "modified": "2026-07-03T08:35:03.351108+00:00",
+      "size": 3251
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
+      "title": "E1.2.8 AF Review Report",
+      "modified": "2026-07-03T08:35:03.258794+00:00",
+      "size": 1288
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
+      "title": "E1.2.8 Testmeeting Local PRD Handout",
+      "modified": "2026-07-03T08:35:03.165463+00:00",
+      "size": 2133
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openrouter-provider-status.md",
+      "title": "OpenRouter Provider Comparison Status",
+      "modified": "2026-07-03T08:32:43.150410+00:00",
+      "size": 1176
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md",
+      "title": "E1.2.8 OpenRouter Provider Comparison",
+      "modified": "2026-07-03T08:32:43.100091+00:00",
+      "size": 5938
     },
     {
       "kind": "project_run",
@@ -667,13 +772,6 @@
       "size": 5176
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
-      "title": "OpenRouter Model Routing Plan",
-      "modified": "2026-07-02T15:34:31.550843+00:00",
-      "size": 18076
-    },
-    {
       "kind": "project_run",
       "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
       "title": "Agent Handout: OpenRouter Model Routing",
@@ -695,20 +793,6 @@
       "size": 3696
     },
     {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md",
-      "title": "Notion Update Packet: E1 And Related Tasks",
-      "modified": "2026-07-02T14:38:35.999157+00:00",
-      "size": 7239
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-testmeeting-dashboard-architecture.md",
-      "title": "E1.2 Testmeeting And Dashboard Architecture Report",
-      "modified": "2026-07-02T14:38:13.398008+00:00",
-      "size": 3106
-    },
-    {
       "kind": "project_report",
       "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
       "title": "E1 Task Consolidation Table",
@@ -721,48 +805,6 @@
       "title": "2026-07-02-dashboard-operating-manual.pdf",
       "modified": "2026-07-02T14:28:12.742638+00:00",
       "size": 11584
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
-      "title": "2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
-      "modified": "2026-07-02T14:26:57.527994+00:00",
-      "size": 5953
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.pdf",
-      "title": "agent-activity-progress-report.pdf",
-      "modified": "2026-07-02T14:26:57.527841+00:00",
-      "size": 5953
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
-      "title": "E1.2.8 Agent Activity Progress Report",
-      "modified": "2026-07-02T14:26:47.344170+00:00",
-      "size": 3001
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
-      "title": "E1.2.8 AF Review Report",
-      "modified": "2026-07-02T14:26:38.410942+00:00",
-      "size": 1187
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
-      "title": "E1.2.8 Testmeeting Local PRD Handout",
-      "modified": "2026-07-02T14:26:32.519086+00:00",
-      "size": 2160
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_blocked.md",
-      "title": "E1.2.8 OpenRouter Blocked",
-      "modified": "2026-07-02T14:25:52.072756+00:00",
-      "size": 593
     },
     {
       "kind": "project_report",
@@ -843,13 +885,6 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
-      "title": "E1.2.8 Source Inventory",
-      "modified": "2026-07-02T14:25:05.516945+00:00",
-      "size": 1059
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-02-public-website-live-delivery/agent-handout.md",
       "title": "Agent Handout: Public Website Live Delivery",
       "modified": "2026-07-02T14:15:24.566755+00:00",
@@ -868,13 +903,6 @@
       "title": "Railway Jarvis API Setup Handout",
       "modified": "2026-07-02T13:27:00.067929+00:00",
       "size": 2125
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md",
-      "title": "E1 Notion And Runtime Consolidation Handout",
-      "modified": "2026-07-02T13:21:25.877770+00:00",
-      "size": 4961
     },
     {
       "kind": "project_run",
@@ -1463,13 +1491,6 @@
       "title": "Notion Update Package",
       "modified": "2026-07-02T11:24:38.827846+00:00",
       "size": 5455
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md",
-      "title": "Jarvis Dashboard MVP Layer Report",
-      "modified": "2026-07-02T11:24:38.827657+00:00",
-      "size": 6046
     },
     {
       "kind": "project_report",
@@ -2771,8 +2792,8 @@
     },
     {
       "path": "project/issues/2026-07-02-testmeeting-openrouter-prd-run-blocked.md",
-      "title": "Testmeeting OpenRouter Comparison Blocked",
-      "text": "# Testmeeting OpenRouter Comparison Blocked  Date: 2026-07-02 Status: local run complete; OpenRouter comparison blocked  ## Issue  The E1.2.8 local/Codex `testmeeting.md` PRD/PDF package is complete. The separate OpenRouter comparison remains blocked.  ## FACT  - The private root `docs/testmeeting.md` input exists and was used locally. - The private root `discovery materials.docx` input exists and was used as methodology context. - Public repo outputs store only sanitized English summaries and derived artifacts. - Local/Codex artifacts were written under `project/runs/E1.2/2026-07-02-testmeeting-local/`. - Local PDFs were copied to `project/reports/`. - The OpenRouter run was attempted only on the sanitized digest. - The first provider attempt hit sandbox DNS/network blocking. - The escalation reviewer rejected the external provider call as data-exfiltration risk for derived content from private local source materials. - No workaround was attempted. - Provider calls: 0. - Provider spend: 0.00 USD.  ## INTERPRETATION  The correct current state is split: E1.2.8 is review-ready for the local/Codex PRD package, but blocked for the OpenRouter comparison. The OpenRouter block is not a mi"
+      "title": "Testmeeting OpenRouter Comparison Resolved",
+      "text": "# Testmeeting OpenRouter Comparison Resolved  Date: 2026-07-02 Status: resolved on 2026-07-03; OpenRouter comparison completed and review-gated  ## Original Issue  The E1.2.8 local/Codex PRD/PDF package was complete, but the separate OpenRouter comparison was originally blocked by network/provider-approval constraints.  ## Resolution  The OpenRouter comparison was rerun on 2026-07-03 using only the sanitized digest. The active route is `yushchenko.source_scope_gate`; the selected execution model is `qwen/qwen3.6-plus`, with `qwen/qwen3-235b-a22b` as fallback. The comparison wrote a model ledger, budget guard, status file, Markdown output, and PDF output. It remains review-gated until AF Review and owner acceptance.  ## FACT  - The approved private meeting source was used locally. - The approved private discovery-method source was used locally. - Public repo outputs store only sanitized English summaries and derived artifacts. - Local/Codex artifacts were written under `project/runs/E1.2/2026-07-02-testmeeting-local/`. - Local PDFs were copied to `project/reports/`. - The completed OpenRouter run used only the sanitized digest. - Provider calls: 1. - Provider spend: about `0.00794` "
     },
     {
       "path": "project/langsmith-setup.md",
@@ -3022,7 +3043,7 @@
     {
       "path": "project/reports/2026-07-02-e1-2-testmeeting-dashboard-architecture.md",
       "title": "E1.2 Testmeeting And Dashboard Architecture Report",
-      "text": "# E1.2 Testmeeting And Dashboard Architecture Report  Date: 2026-07-02 Status: local execution complete; OpenRouter comparison blocked  ## E1 State Summary  E1 is the internal proof block for ArchFlow's own knowledge base and PRD automation service. It shows how approved raw material from a product team can be turned into a governed package: source inventory, sanitized digest, PRD, backlog, missing questions, evidence labels, review report, PDF outputs, task-state updates, and a durable handoff.  This is relevant to the current customer profile because the service is aimed at B2B SaaS product teams with 2-5 PMs where a Director or VP of Product needs faster and more consistent PRD quality. The method keeps the buyer-facing output focused on decisions: what is known, what is missing, what should be built, what needs approval, and what should not be claimed yet.  ## Current Outputs  - E1.2 June proof remains the base local proof package. - E1.2.8 adds a new local/Codex run from the private test meeting and discovery-methodology source. - Dashboard/Jarvis now supports Architecture 1 for PRD/ICP service output and Architecture 2 for agent-control architecture. - The dashboard operating"
+      "text": "# E1.2 Testmeeting And Dashboard Architecture Report  Date: 2026-07-02 Status: local execution complete; OpenRouter comparison completed and review-gated after 2026-07-03 provider correction  ## E1 State Summary  E1 is the internal proof block for ArchFlow's own knowledge base and PRD automation service. It shows how approved raw material from a product team can be turned into a governed package: source inventory, sanitized digest, PRD, backlog, missing questions, evidence labels, review report, PDF outputs, task-state updates, and a durable handoff.  This is relevant to the current customer profile because the service is aimed at B2B SaaS product teams with 2-5 PMs where a Director or VP of Product needs faster and more consistent PRD quality. The method keeps the buyer-facing output focused on decisions: what is known, what is missing, what should be built, what needs approval, and what should not be claimed yet.  ## Current Outputs  - E1.2 June proof remains the base local proof package. - E1.2.8 adds a new local/Codex run from the private test meeting and discovery-methodology source. - Dashboard/Jarvis now supports Architecture 1 for PRD/ICP service output and Architecture 2 f"
     },
     {
       "path": "project/reports/2026-07-02-e1-task-consolidation-table.md",
@@ -3477,32 +3498,32 @@
     {
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md",
       "title": "Agent Handout: E1.2 Testmeeting And Dashboard Architecture",
-      "text": "# Agent Handout: E1.2 Testmeeting And Dashboard Architecture  Date: 2026-07-02 Status: local execution complete; Notion and Telegram updated on 2026-07-03; OpenAI comparison quota-blocked Lane: E1.2 / E1.3.9 dashboard architecture  ## Purpose  This handout records the local/Codex E1.2.8 testmeeting PRD run and the dashboard architecture updates that make Jarvis usable as a local control surface across two lanes.  ## Human Summary  E1 now has a clearer working state: it is the internal proof that ArchFlow can turn approved product-team raw material into a governed PRD automation package for B2B SaaS product teams. The service sequence is source intake, source-boundary review, sanitized digest, PRD output, task/backlog mapping, AF Review, reporting, and handoff. The buyer-facing service reflected by this work is PRD automation for Directors and VPs of Product who need faster and more reliable PRD quality from messy discovery, meetings, and product-team documents.  The local E1.2.8 run used the private meeting transcript and discovery-methodology document as inputs, but stored only sanitized derived outputs in the public repo. It produced a PRD, source digest, methodology review, back"
+      "text": "# Agent Handout: E1.2 Testmeeting And Dashboard Architecture  Date: 2026-07-02 Status: local execution complete; Notion and Telegram updated on 2026-07-03; OpenRouter comparison completed after provider correction Lane: E1.2 / E1.3.9 dashboard architecture  ## Purpose  This handout records the local/Codex E1.2.8 testmeeting PRD run and the dashboard architecture updates that make Jarvis usable as a local control surface across two lanes.  ## Human Summary  E1 now has a clearer working state: it is the internal proof that ArchFlow can turn approved product-team raw material into a governed PRD automation package for B2B SaaS product teams. The service sequence is source intake, source-boundary review, sanitized digest, PRD output, task/backlog mapping, AF Review, reporting, and handoff. The buyer-facing service reflected by this work is PRD automation for Directors and VPs of Product who need faster and more reliable PRD quality from messy discovery, meetings, and product-team documents.  The local E1.2.8 run used the private meeting transcript and discovery-methodology document as inputs, but stored only sanitized derived outputs in the public repo. It produced a PRD, source digest"
     },
     {
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-screenshot-smoke.md",
       "title": "Dashboard Screenshot Smoke",
-      "text": "# Dashboard Screenshot Smoke  Status: ok  | Route | Breakpoint | File | Bytes | |---|---|---|---:| | service | desktop | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-desktop.png` | 325456 | | service | mobile | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-mobile.png` | 98053 | | schema | desktop | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-desktop.png` | 326684 | | schema | mobile | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-mobile.png` | 96520 |"
+      "text": "# Dashboard Screenshot Smoke  Status: ok  | Route | Breakpoint | File | Bytes | |---|---|---|---:| | service | desktop | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-desktop.png` | 325234 | | service | mobile | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-mobile.png` | 98069 | | schema | desktop | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-desktop.png` | 326471 | | schema | mobile | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-mobile.png` | 96536 |"
     },
     {
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md",
       "title": "Notion Update Packet: E1 And Related Tasks",
-      "text": "# Notion Update Packet: E1 And Related Tasks  Date: 2026-07-02 Status: prepared locally; Notion write blocked by approval reviewer usage limit  ## Blocker  The Notion update operation was attempted through the Notion connector after fetching the current E1 page. The write was rejected by the approval reviewer because the environment usage limit was reached. No retry or workaround was attempted.  ## E1 Page Replacement Content  # Current E1 Summary  E1 is the internal proof block for ArchFlow's own knowledge base and PRD automation service. It shows how the system turns approved product-team raw material into a governed delivery package: source inventory, context digest, PRD, task matrix, acceptance criteria, backlog, decision log, review report, knowledge-base update, PDF output, and next-step handoff.  The service direction is now narrow and explicit. ArchFlow is an AI-native PRD automation service for product teams in B2B SaaS companies, usually Series B-D, 50-500 employees, with 2-5 PMs, where a Director or VP of Product owns PRD quality, discovery-to-delivery speed, and cross-functional alignment. The customer is not buying a generic AI assistant; they are buying a controlled w"
+      "text": "# Notion Update Packet: E1 And Related Tasks  Date: 2026-07-02 Status: applied through Notion connector on 2026-07-03; corrected after OpenRouter provider update  ## Applied Status  The E1 parent summary and related task notes were updated through the Notion connector. No fallback API write was needed. This packet is retained as the sanitized public-safe update record and reflects the corrected OpenRouter provider path.  ## E1 Page Replacement Content  # Current E1 Summary  E1 is the internal proof block for ArchFlow's own knowledge base and PRD automation service. It shows how the system turns approved product-team raw material into a governed delivery package: source inventory, context digest, PRD, task matrix, acceptance criteria, backlog, decision log, review report, knowledge-base update, PDF output, and next-step handoff.  The service direction is now narrow and explicit. ArchFlow is an AI-native PRD automation service for product teams in B2B SaaS companies, usually Series B-D, 50-500 employees, with 2-5 PMs, where a Director or VP of Product owns PRD quality, discovery-to-delivery speed, and cross-functional alignment. The customer is not buying a generic AI assistant; they"
     },
     {
-      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openai-provider-status.md",
-      "title": "OpenAI Provider Comparison Status",
-      "text": "# OpenAI Provider Comparison Status  Date: 2026-07-03T07:58:15.998274+00:00 Status: blocked Reason: openai_http_error_429  ## Boundary  - Input kind: sanitized digest only. - Raw private source sent: false. - API keys are not written to public files. - Cost is not estimated without current pricing proof.  ## Details  ```json {   \"error_excerpt\": \"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\\\",\\n    \\\"type\\\": \\\"insufficient_quota\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"insufficient_quota\\\"\\n  }\\n}\" } ```"
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openrouter-provider-status.md",
+      "title": "OpenRouter Provider Comparison Status",
+      "text": "# OpenRouter Provider Comparison Status  Date: 2026-07-03T08:32:43.150278+00:00 Status: completed Reason: openrouter_comparison_generated  ## Boundary  - Provider path: OpenRouter. - Route: `yushchenko.source_scope_gate`. - Input kind: sanitized digest only. - Raw private source sent: false. - API keys are not written to public files. - Model selection is role/node-based, not Epic-based.  ## Details  ```json {   \"estimated_cost_usd\": 0.007938124999999999,   \"model\": \"qwen/qwen3.6-plus\",   \"selection_reason\": \"first_available_yushchenko_source_scope_execution_model\",   \"usage\": {     \"completion_tokens\": 3866,     \"completion_tokens_details\": {       \"audio_tokens\": 0,       \"image_tokens\": 0,       \"reasoning_tokens\": 2662     },     \"cost\": 0.007938125,     \"cost_details\": {       \"upstream_inference_completions_cost\": 0.0075387,       \"upstream_inference_cost\": 0.007938125,       \"upstream_inference_prompt_cost\": 0.000399425     },     \"is_byok\": false,     \"prompt_tokens\": 1229,     \"prompt_tokens_details\": {       \"audio_tokens\": 0,       \"cache_write_tokens\": 0,       \"cached_tokens\": 0,       \"video_tokens\": 0     },     \"total_tokens\": 5095   } } ```"
     },
     {
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md",
       "title": "Telegram Delivery Status",
-      "text": "# Telegram Delivery Status  Date: 2026-07-03T08:11:44.042143+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
+      "text": "# Telegram Delivery Status  Date: 2026-07-03T08:38:10.697067+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
     },
     {
       "path": "project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md",
       "title": "E1 Notion And Runtime Consolidation Handout",
-      "text": "# E1 Notion And Runtime Consolidation Handout  ## Purpose  This handout records the July 2 E1 cleanup pass: E1 Notion rewrite, duplicate task clarification, local Jarvis API proof, and blocked follow-up tasks for the missing testmeeting/OpenRouter run and hosted runtime.  ## Human Summary  E1 was rewritten in Notion as a current operating page instead of a chronological execution log. The page now explains what E1 is proving, why it matters for the Product Discovery-to-Production PRD Pack, which methods are used, and how the current ICP is narrowed to B2B SaaS product teams with Director or VP Product ownership.  The task cleanup did not delete Visual Reporting rows. It renamed the duplicate-looking Visual Reporting rows under E1.5 reporting/method work and kept them blocked until artifact proof, redaction rules, and owner approval exist. The dashboard/security rows remain E1.3.9 and E1.3.10 in Review.  The local Jarvis API can now run from the repo-local venv after installing FastAPI. Local `/health`, role config, PRD/ICP lane, meeting-test approval block, and voice-chat packet checks passed on `127.0.0.1:8787`. The proof is provider-disabled only: `MODEL_PROVIDER=none`, provider "
+      "text": "# E1 Notion And Runtime Consolidation Handout  ## Purpose  This handout records the July 2 E1 cleanup pass: E1 Notion rewrite, duplicate task clarification, local Jarvis API proof, and the then-current blocked follow-up tasks for the missing private-fixture/OpenRouter run and hosted runtime.  ## Human Summary  E1 was rewritten in Notion as a current operating page instead of a chronological execution log. The page now explains what E1 is proving, why it matters for the Product Discovery-to-Production PRD Pack, which methods are used, and how the current ICP is narrowed to B2B SaaS product teams with Director or VP Product ownership.  The task cleanup did not delete Visual Reporting rows. It renamed the duplicate-looking Visual Reporting rows under E1.5 reporting/method work and kept them blocked until artifact proof, redaction rules, and owner approval exist. The dashboard/security rows remain E1.3.9 and E1.3.10 in Review.  The local Jarvis API can now run from the repo-local venv after installing FastAPI. Local `/health`, role config, PRD/ICP lane, meeting-test approval block, and voice-chat packet checks passed on `127.0.0.1:8787`. The proof is provider-disabled only: `MODEL_PROV"
     },
     {
       "path": "project/runs/2026-07-02-evening-skill-hook-review/agent-handout.md",
@@ -3690,9 +3711,9 @@
       "text": "# E1.2.8 Local Streaming Report  Date: 2026-07-02 Status: complete for local/Codex run  ## Stream Events  | Step | Node | Public-safe progress note | |---:|---|---| | 1 | intake_validate | Private source files present; public output boundary applied. | | 2 | source_summarize | Meeting themes and discovery-methodology themes converted into sanitized digest. | | 3 | architecture_select | Architecture 1 selected for PRD/ICP service-output run. | | 4 | draft_prd | Local/Codex PRD, backlog, decisions, risks, and next tasks generated. | | 5 | af_review | Public-safety and provider-boundary review applied. | | 6 | record_outputs | Run artifacts and PDFs written under public project run folder. |  ## Runtime State  - Architecture: Architecture 1 - PRD/ICP service output. - Model provider: Codex local operator. - Provider calls: 0 for local run. - External writeback: 0. - Raw transcript persistence: off. - Raw DOCX persistence: off.  ## Output State  - Source inventory: `source-inventory.md`. - Context digest: `context-digest.md`. - Local PRD: `E1.2.8_Local_PRD.md`. - Methodology review: `E1.2.8_Source_Methodology_review.md`. - Backlog and questions: `backlog-and-questions.md`. - Review rep"
     },
     {
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_blocked.md",
-      "title": "E1.2.8 OpenRouter Blocked",
-      "text": "# E1.2.8 OpenRouter Blocked  Status: blocked  Reason: OpenRouter comparison was attempted only with the sanitized digest, but the first run hit sandbox DNS/network blocking. The escalation reviewer then rejected the external provider call as a data-exfiltration risk for derived content from private local source materials.  No workaround was attempted. No raw source text, key, credential, or provider response is stored here.  Next safe action: owner must explicitly approve the external OpenRouter comparison after reviewing the risk, or keep E1.2.8 accepted as a local/Codex-only package."
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md",
+      "title": "E1.2.8 OpenRouter Provider Comparison",
+      "text": "# E1.2.8 OpenRouter Provider Comparison  Date: 2026-07-03T08:32:43.098745+00:00 Provider: OpenRouter Model: qwen/qwen3.6-plus Model selection: first_available_yushchenko_source_scope_execution_model Route: yushchenko.source_scope_gate Input kind: sanitized digest only Raw private source sent: false  # Provider Output Summary - **Execution Route:** `source_scope_gate` \u2192 `prd_blocks_graph` \u2192 `risk_gate_graph` - **Model:** `qwen/qwen3.6-plus` (primary execute), with `qwen/qwen3-235b-a22b` as fallback. Selection driven by role/node-based routing, not epic-based. - **Input Scope:** Strictly limited to sanitized digest payloads (`SRC-E128-MEETING-SUMMARY`, `SRC-E128-DISCOVERY-METHOD`, `SRC-E1-PUBLIC-STATE`). Raw private source material was excluded from the provider call. - **Output State:** Structured scope extraction and PRD comparison artifacts generated within the `source_scope_gate` node. Output remains gated pending ledger validation and AF Review before any frontier model routing or external delivery.  # PRD Delta Versus Local Codex Run - **Local Codex Baseline:** Marked `ready_or_review`. Contains the approved E1.2.8 testmeeting architecture, local dashboard selector, persistent "
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.md",
@@ -3702,12 +3723,12 @@
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
       "title": "E1.2.8 Agent Activity Progress Report",
-      "text": "# E1.2.8 Agent Activity Progress Report  ## Run Metadata  | Field | Value | |---|---| | Date | 2026-07-02 | | Lane | E1.2.8 testmeeting local/Codex PRD run | | Epic/task | E1 Build the Knowledge Base on Ourselves / E1.2.8 | | Agent role | Codex local operator | | Status | Complete for local run; OpenRouter status `blocked_by_approval_reviewer` |  ## Source Boundary  - Approved inputs: private test meeting transcript and private discovery-methodology document. - Excluded raw inputs: raw transcript, names, private URLs, screenshots, credentials, account IDs. - Public-safe source IDs: `SRC-E128-MEETING`, `SRC-E128-DISCOVERY`, `SRC-E128-E1-PUBLIC`.  ## Activity Ledger  | Time | Actor | Action | Artifact | Status | |---|---|---|---|---| | 2026-07-02 | Codex | Read private source boundary | `source-inventory.md` | complete | | 2026-07-02 | Codex | Built sanitized digest | `context-digest.md` | complete | | 2026-07-02 | Codex | Generated local PRD | `E1.2.8_Local_PRD.md` | complete | | 2026-07-02 | Codex | Applied methodology review | `E1.2.8_Source_Methodology_review.md` | complete | | 2026-07-02 | Codex | Prepared backlog/questions | `backlog-and-questions.md` | complete | | 2026-07-02 "
+      "text": "# E1.2.8 Agent Activity Progress Report  ## Run Metadata  | Field | Value | |---|---| | Date | 2026-07-02 | | Lane | E1.2.8 testmeeting local/Codex PRD run | | Epic/task | E1 Build the Knowledge Base on Ourselves / E1.2.8 | | Agent role | Codex local operator | | Status | Complete for local run; OpenRouter comparison `completed_review_gated` |  ## Source Boundary  - Approved inputs: private test meeting transcript and private discovery-methodology document. - Excluded raw inputs: raw transcript, names, private URLs, screenshots, credentials, account IDs. - Public-safe source IDs: `SRC-E128-MEETING`, `SRC-E128-DISCOVERY`, `SRC-E128-E1-PUBLIC`.  ## Activity Ledger  | Time | Actor | Action | Artifact | Status | |---|---|---|---|---| | 2026-07-02 | Codex | Read private source boundary | `source-inventory.md` | complete | | 2026-07-02 | Codex | Built sanitized digest | `context-digest.md` | complete | | 2026-07-02 | Codex | Generated local PRD | `E1.2.8_Local_PRD.md` | complete | | 2026-07-02 | Codex | Applied methodology review | `E1.2.8_Source_Methodology_review.md` | complete | | 2026-07-02 | Codex | Prepared backlog/questions | `backlog-and-questions.md` | complete | | 2026-07-02 | "
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
       "title": "E1.2.8 Testmeeting Local PRD Handout",
-      "text": "# E1.2.8 Testmeeting Local PRD Handout  ## Title And Purpose  This handout records the E1.2.8 testmeeting local/Codex PRD package and the dashboard architecture updates that support running it from Jarvis.  ## Human Summary  The run uses the private `testmeeting.md` and discovery-methodology document as source inputs, but stores only sanitized derived outputs in the public repo. The local PRD focuses on release kickoff and discovery-to-delivery handoff modernization for B2B SaaS product teams.  The output demonstrates the ArchFlow service concept: raw product-team conversation and method material become a source boundary, context digest, PRD, backlog, questions, methodology review, process report, and AF Review packet. It extends the earlier June 26 E1.2 proof without replacing it.  OpenRouter status is `blocked_by_approval_reviewer`. The comparison was attempted only on the sanitized digest, but the external provider call was rejected by the escalation reviewer as a data-exfiltration risk for derived private-source content. No workaround was attempted.  ## Current State  - Local/Codex PRD package: complete. - PDFs: rendered for local PRD, streaming report, and methodology review. "
+      "text": "# E1.2.8 Testmeeting Local PRD Handout  ## Title And Purpose  This handout records the E1.2.8 testmeeting local/Codex PRD package and the dashboard architecture updates that support running it from Jarvis.  ## Human Summary  The run uses the private `testmeeting.md` and discovery-methodology document as source inputs, but stores only sanitized derived outputs in the public repo. The local PRD focuses on release kickoff and discovery-to-delivery handoff modernization for B2B SaaS product teams.  The output demonstrates the ArchFlow service concept: raw product-team conversation and method material become a source boundary, context digest, PRD, backlog, questions, methodology review, process report, and AF Review packet. It extends the earlier June 26 E1.2 proof without replacing it.  OpenRouter status is `completed_review_gated`. The comparison used only the sanitized digest, selected `qwen/qwen3.6-plus` through the `yushchenko.source_scope_gate` role/node strategy, wrote a ledger and budget guard, and estimated spend at about `0.00794` USD. No raw private source was sent.  ## Current State  - Local/Codex PRD package: complete. - PDFs: rendered for local PRD, streaming report, and m"
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/backlog-and-questions.md",
@@ -3722,12 +3743,12 @@
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
       "title": "E1.2.8 AF Review Report",
-      "text": "# E1.2.8 AF Review Report  Status: local/Codex output approved for review packet  ## FACT  - Private source files were read from the ArchFlow root. - Public output files contain only sanitized English summaries and derived artifacts. - Local/Codex run used `MODEL_PROVIDER=none`. - OpenRouter status: `blocked_by_approval_reviewer`.  ## INTERPRETATION  The local run satisfies the requested E1.2.8 local PRD/PDF package. It does not replace the June 26 E1.2 proof; it extends E1.2 with a source-specific testmeeting package.  ## HYPOTHESIS  The strongest buyer-facing interpretation is a PRD automation service that turns release/discovery operating discussion into a coherent release kickoff and discovery-to-delivery handoff PRD.  ## GAP  - Owner acceptance is needed before E1.2 can be marked Done. - OpenRouter output remains a separate comparison blocker until explicit owner approval is given after external-provider risk review. - Railway hosted runtime remains E1.7, not part of this local run.  ## Safety Verdict  Approved for public repo storage as sanitized derived output. Not approved for publishing as customer proof, paying-demand proof, or provider-backed runtime proof."
+      "text": "# E1.2.8 AF Review Report  Status: local/Codex output approved for review packet  ## FACT  - Private source files were read from the ArchFlow root. - Public output files contain only sanitized English summaries and derived artifacts. - Local/Codex run used `MODEL_PROVIDER=none`. - OpenRouter status: `completed_review_gated`. - OpenRouter selected model: `qwen/qwen3.6-plus` through `yushchenko.source_scope_gate`. - OpenRouter estimated spend: about `0.00794` USD.  ## INTERPRETATION  The local run satisfies the requested E1.2.8 local PRD/PDF package. It does not replace the June 26 E1.2 proof; it extends E1.2 with a source-specific testmeeting package.  ## HYPOTHESIS  The strongest buyer-facing interpretation is a PRD automation service that turns release/discovery operating discussion into a coherent release kickoff and discovery-to-delivery handoff PRD.  ## GAP  - Owner acceptance is needed before E1.2 can be marked Done. - OpenRouter output remains a separate review-gated comparison until AF Review and owner acceptance. - Railway hosted runtime remains E1.7, not part of this local run.  ## Safety Verdict  Approved for public repo storage as sanitized derived output. Not approved f"
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
       "title": "E1.2.8 Source Inventory",
-      "text": "# E1.2.8 Source Inventory  Date: 2026-07-02 Status: sanitized source boundary accepted for local/Codex run  ## Source Boundary  | Source | Location | Use | Public Storage | |---|---|---|---| | Test meeting transcript | private root `docs/testmeeting.md` | Product-meeting themes and PRD extraction | Raw text not copied | | Discovery methodology document | private root `discovery materials.docx` | Customer discovery, JTBD, PRD, and dual-track method context | Raw body not copied | | Prior E1/E1.3 public artifacts | public repo run notes and reports | E1 architecture, ICP, task-state, and safety boundaries | Linked/summarized only |  ## Public-Safe Rule  Only sanitized English summaries and derived PRD/report artifacts are saved in this folder. The run does not store raw private transcript text, personal names, private URLs, screenshots, credentials, or account identifiers.  ## Provider Rule  OpenRouter comparison, if run, uses only the sanitized digest and must write a provider ledger, model selection proof, budget guard, and comparison report."
+      "text": "# E1.2.8 Source Inventory  Date: 2026-07-02 Status: sanitized source boundary accepted for local/Codex run  ## Source Boundary  | Source | Location | Use | Public Storage | |---|---|---|---| | Approved meeting transcript | private source, filename redacted | Product-meeting themes and PRD extraction | Raw text not copied | | Approved discovery methodology document | private source, filename redacted | Customer discovery, JTBD, PRD, and dual-track method context | Raw body not copied | | Prior E1/E1.3 public artifacts | public repo run notes and reports | E1 architecture, ICP, task-state, and safety boundaries | Linked/summarized only |  ## Public-Safe Rule  Only sanitized English summaries and derived PRD/report artifacts are saved in this folder. The run does not store raw private transcript text, personal names, private URLs, screenshots, credentials, or account identifiers.  ## Provider Rule  OpenRouter comparison, if run, uses only the sanitized digest and must write a provider ledger, model selection proof, budget guard, and comparison report."
     },
     {
       "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-coordination-stream.md",

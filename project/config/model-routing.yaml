@@ -119,7 +119,7 @@ providers:
     current_key_state:
       openrouter: present_only_in_ignored_local_env
       mistral: present_only_in_ignored_local_env
-      openai: removed_not_active
+      openai: not_active_for_archflow_provider_path
     activation_requires:
       - approved_local_bridge_or_backend
       - server_side_secret_access_only
@@ -585,6 +585,34 @@ task_routing:
         execute: ["~anthropic/claude-fable-latest"]
         review: [anthropic/claude-opus-4.7]
         token_efficiency_rationale: "Fable remains qualified-only; no routine use"
+
+active_test_routes:
+  e1_2_8_testmeeting_provider_comparison:
+    provider: openrouter
+    status: completed_review_gated
+    task_role_and_langgraph_node: yushchenko.source_scope_gate
+    crewai_role: yushchenko
+    langgraph_node: source_scope_gate
+    query_shape: "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)"
+    graph_node_path: [source_scope_gate, prd_blocks_graph, risk_gate_graph]
+    epic_level_assignment: prohibited
+    selection_rule: role_node_strategy_first_not_epic
+    selected_model: qwen/qwen3.6-plus
+    fallback_model: qwen/qwen3-235b-a22b
+    selection_evidence:
+      checked_against: openrouter_models_api
+      checked_at_utc: "2026-07-03T08:31:32Z"
+      context_length: 1000000
+      prompt_price_usd_per_token: 0.000000325
+      completion_price_usd_per_token: 0.00000195
+    run_evidence:
+      provider_calls: 1
+      prompt_tokens: 1229
+      output_tokens: 3866
+      estimated_cost_usd: 0.007938125
+      raw_private_source_sent: false
+      input_artifact: project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openrouter-sanitized-provider-payload.json
+      output_artifact: project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md
 
 quality_gates:
   unsupported_model_id: refresh_openrouter_models_before_activation

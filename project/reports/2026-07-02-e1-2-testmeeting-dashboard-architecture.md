@@ -1,7 +1,7 @@
 # E1.2 Testmeeting And Dashboard Architecture Report
 
 Date: 2026-07-02
-Status: local execution complete; OpenRouter comparison blocked
+Status: local execution complete; OpenRouter comparison completed and review-gated after 2026-07-03 provider correction
 
 ## E1 State Summary
 
@@ -20,7 +20,7 @@ This is relevant to the current customer profile because the service is aimed at
 
 The local run is complete. It produced a PRD focused on release kickoff and discovery-to-delivery handoff modernization. It also produced a source methodology review, streaming-style process report, backlog/questions file, review report, agent-activity progress report, and PDFs.
 
-The OpenRouter comparison did not run. It was blocked first by sandbox network resolution and then by the escalation reviewer as an external-provider data-exfiltration risk for derived private-source content. No workaround was attempted. Provider calls and spend are both zero.
+The corrected OpenRouter comparison ran on the sanitized digest only. It used the `yushchenko.source_scope_gate` route with `qwen/qwen3.6-plus` as the selected execution model and `qwen/qwen3-235b-a22b` as fallback. Provider calls: 1. Estimated spend: about `0.00794` USD, under the `1.99` USD run cap. Raw private source sent: false. The output remains review-gated until AF Review and owner acceptance.
 
 ## Dashboard Result
 
@@ -31,7 +31,7 @@ Block-schema nodes were clarified. Approval and parallel nodes now describe thei
 ## Remaining Gates
 
 - Owner review is still needed before E1.2/E1.2.8 can be treated as fully accepted.
-- OpenRouter comparison needs explicit owner approval after external-provider risk review.
-- Railway hosted runtime, auth/CORS, provider routing, durable writeback, Telegram delivery, and production promotion remain separate gated tasks.
-- Notion writeback was prepared but blocked by the approval reviewer usage limit; the exact update packet is saved in `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md`.
-- Browser dashboard smoke was blocked by the same escalation usage limit; in-process API and static syntax/safety/runtime checks passed.
+- OpenRouter comparison output needs AF Review and owner acceptance before it affects Done-state promotion.
+- Railway hosted runtime, auth/CORS, provider routing, durable writeback, production Telegram automation, and production promotion remain separate gated tasks.
+- Notion update succeeded through the connector; the sanitized update packet is saved in `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md`.
+- Browser dashboard static smoke and screenshot smoke passed after approved local verification; provider calls and writeback stayed at zero during dashboard smoke.

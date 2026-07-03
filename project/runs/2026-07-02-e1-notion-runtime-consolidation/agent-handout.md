@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This handout records the July 2 E1 cleanup pass: E1 Notion rewrite, duplicate task clarification, local Jarvis API proof, and blocked follow-up tasks for the missing testmeeting/OpenRouter run and hosted runtime.
+This handout records the July 2 E1 cleanup pass: E1 Notion rewrite, duplicate task clarification, local Jarvis API proof, and the then-current blocked follow-up tasks for the missing private-fixture/OpenRouter run and hosted runtime.
 
 ## Human Summary
 
@@ -12,7 +12,7 @@ The task cleanup did not delete GloomyLord rows. It renamed the duplicate-lookin
 
 The local Jarvis API can now run from the repo-local venv after installing FastAPI. Local `/health`, role config, PRD/ICP lane, meeting-test approval block, and voice-chat packet checks passed on `127.0.0.1:8787`. The proof is provider-disabled only: `MODEL_PROVIDER=none`, provider calls `0`, writeback `0`.
 
-The requested second E1.2 run over `docs/testmeeting.md` was not executed because that fixture file is missing from the repo. A new blocked Notion task `E1.2.8` records the exact fixture/provider/PDF comparison gate. A new Notion task `E1.7` records hosted dashboard/Jarvis/API runtime work without colliding with the existing live `E1.6` personal-KB setup task.
+2026-07-03 supersession: the approved private fixture was later provided outside the public repo and E1.2.8 was executed locally. The OpenRouter comparison also completed on a sanitized digest through `yushchenko.source_scope_gate` using `qwen/qwen3.6-plus`; no raw private source was sent. E1.2.8 is now Review, not blocked. E1.7 remains the hosted dashboard/Jarvis/API runtime backlog lane.
 
 ## Current State
 
@@ -20,7 +20,7 @@ The requested second E1.2 run over `docs/testmeeting.md` was not executed becaus
 |---|---|
 | E1 page | Rewritten with current concept, method, status narrative, questions, outputs, and decisions. |
 | E1.2 | Review; original proof PDFs exist; owner acceptance remains final Done gate. |
-| E1.2.8 | Blocked; `docs/testmeeting.md` missing and OpenRouter disabled/gated. |
+| E1.2.8 | Review; local/Codex package complete and OpenRouter comparison completed on sanitized digest, still AF Review/owner-gated. |
 | E1.3.8 | Review; June 29 docs/tool/market review and ICP correction. |
 | E1.3.9 | Review; local API health works, but hosted/backend/provider/voice/writeback are not complete. |
 | E1.3.10 | Review; local API proof is not full auth/security/runtime completion. |
@@ -72,7 +72,7 @@ Created:
 
 Continue E1 only from evidence-backed state. Read `project/project-plan.md`, `project/reports/2026-07-02-e1-task-consolidation-table.md`, `project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md`, and the live Notion E1 page first.
 
-If asked to run the testmeeting PRD/PDF comparison, stop unless `docs/testmeeting.md` exists or an approved substitute is provided. Run local/Codex output first with `MODEL_PROVIDER=none`; only run OpenRouter after server-side secret handling, fresh model/pricing check, provider-call ledger, budget guard, and AF Review exist.
+If asked to rerun the PRD/PDF comparison, use only an explicitly approved private fixture and keep raw source outside public artifacts. Preserve the current provider rule: OpenRouter is the active provider path, model selection is per execution role/node, and the E1.2.8 Yushchenko source-scope execution route uses the approved Qwen execution pool unless fresh OpenRouter availability/pricing changes it.
 
 If asked to deploy Railway, deploy only `services/jarvis-api`, keep provider calls disabled, verify hosted `/health`, document CORS/auth, and do not point the dashboard to the backend until routing is proven.
 

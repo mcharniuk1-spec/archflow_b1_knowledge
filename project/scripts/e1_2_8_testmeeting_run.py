@@ -751,16 +751,15 @@ def http_json(url: str, payload: dict[str, object] | None = None, headers: dict[
 
 def choose_openrouter_model(models: dict[str, object], preferred: str | None = None) -> tuple[str, dict[str, object]]:
     by_id = {item["id"]: item for item in models.get("data", []) if isinstance(item, dict) and item.get("id")}
-    candidates = [preferred] if preferred else []
+    candidates = [preferred] if preferred in {"qwen/qwen3.6-plus", "qwen/qwen3-235b-a22b"} else []
     candidates += [
-        "z-ai/glm-5.2",
-        "moonshotai/kimi-k2.7-code",
-        "anthropic/claude-sonnet-5",
+        "qwen/qwen3.6-plus",
+        "qwen/qwen3-235b-a22b",
     ]
     for candidate in candidates:
         if candidate and candidate in by_id:
             return candidate, by_id[candidate]
-    raise RuntimeError("no_preferred_openrouter_model_available")
+    raise RuntimeError("no_yushchenko_source_scope_execution_model_available")
 
 
 def estimate_cost(model_meta: dict[str, object], usage: dict[str, object]) -> float | None:
@@ -789,8 +788,11 @@ def run_openrouter(synthesis: dict[str, object], env: dict[str, str]) -> str:
         write_text(RUN_DIR / "openrouter-model-selection.json", json.dumps({
             "checked_at": now(),
             "model_count": len(models.get("data", [])),
+            "task_role_and_langgraph_node": "yushchenko.source_scope_gate",
+            "query_shape": "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)",
+            "selection_rule": "role/node-based Yushchenko source_scope_gate execution model, not Epic-based routing",
+            "allowed_execution_models": ["qwen/qwen3.6-plus", "qwen/qwen3-235b-a22b"],
             "selected_model": model_id,
-            "selection_rule": "preferred env model if present, else first available PRD-suitable candidate",
         }, indent=2))
 
         prompt = f"""Create a concise, source-bound PRD from this sanitized ArchFlow E1.2.8 digest.

@@ -137,9 +137,9 @@ Railway deployment was not started. The API service is a local/backend contract 
 
 - Live FastAPI runtime import is deferred until FastAPI dependencies are installed.
 - Backend persistence, queues, auth, SSE/websocket, and Railway deployment are deferred.
-- Provider-backed OpenRouter calls are deferred.
+- Default provider-backed OpenRouter operation remains deferred, except for the completed 2026-07-03 sanitized E1.2.8 comparison.
 - Live dashboard-driven Notion/GitHub/WikiLLM/Telegram writeback is deferred.
-- Full test cycle over `docs/testmeeting.md` is deferred.
+- The private-fixture E1.2.8 PRD/PDF test cycle is no longer deferred; it completed locally and has a review-gated OpenRouter comparison.
 
 ## 16. What Is Gated By Owner Approval
 
@@ -148,6 +148,6 @@ Railway deployment was not started. The API service is a local/backend contract 
 - Provider-backed CrewAI.
 - Default CrewAI runtime promotion.
 - Railway deployment.
-- Telegram send.
+- Production Telegram automation.
 - Dashboard-driven Notion live writeback.
 - Production promotion and Figma sync.

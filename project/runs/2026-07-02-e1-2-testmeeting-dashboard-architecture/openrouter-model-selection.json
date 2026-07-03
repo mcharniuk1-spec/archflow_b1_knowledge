@@ -1,0 +1,19 @@
+{
+  "allowed_execution_models": [
+    "qwen/qwen3.6-plus",
+    "qwen/qwen3-235b-a22b"
+  ],
+  "checked_at": "2026-07-03T08:31:32.196986+00:00",
+  "context_length": 1000000,
+  "epic_level_assignment": "prohibited",
+  "pricing": {
+    "completion": "0.00000195",
+    "input_cache_write": "0.00000040625",
+    "prompt": "0.000000325"
+  },
+  "provider": "openrouter",
+  "query_shape": "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)",
+  "selected_model": "qwen/qwen3.6-plus",
+  "selection_reason": "first_available_yushchenko_source_scope_execution_model",
+  "task_role_and_langgraph_node": "yushchenko.source_scope_gate"
+}

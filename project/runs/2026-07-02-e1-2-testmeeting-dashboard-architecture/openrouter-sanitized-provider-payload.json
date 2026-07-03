@@ -1,14 +1,21 @@
 {
   "run_id": "2026-07-02-e1-2-testmeeting-dashboard-architecture",
   "payload_status": "sanitized_external_provider_payload",
-  "provider": "openai",
+  "provider": "openrouter",
   "model_route_profile": {
-    "task_role_and_langgraph_node": "jesus.prd_verdict_node",
+    "task_role_and_langgraph_node": "yushchenko.source_scope_gate",
+    "crewai_role": "yushchenko",
+    "langgraph_node": "source_scope_gate",
     "query_shape": "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)",
     "graph_node_path": ["source_scope_gate", "prd_blocks_graph", "risk_gate_graph"],
     "model_selection_rule": "role/node-based, not epic-based",
-    "selected_model": "gpt-4.1-mini",
-    "selection_reason": "low-cost structured comparison over sanitized digest; no frontier council needed because this is a formatting and consistency comparison, not a final architecture/payment/public-claim verdict"
+    "selection_strategy": {
+      "plan": ["~openai/gpt-latest", "anthropic/claude-opus-4.7"],
+      "execute": ["qwen/qwen3.6-plus", "qwen/qwen3-235b-a22b"],
+      "review": ["anthropic/claude-sonnet-4.6", "~openai/gpt-latest"]
+    },
+    "selected_model": "qwen/qwen3.6-plus",
+    "selection_reason": "Yushchenko source_scope_gate uses qwen-first execution for sanitized scope extraction and PRD comparison before any frontier review; qwen/qwen3.6-plus has current OpenRouter availability, 1M context, low input cost, and enough reasoning depth for structured comparison."
   },
   "source_boundary": {
     "input_kind": "sanitized_digest_only",
@@ -65,10 +72,8 @@
       ],
       "blocked_or_gated": [
         "external provider comparison until sanitized payload and ledger pass",
-        "Notion writeback until connector or approved API path succeeds",
         "Railway hosted runtime",
         "durable writeback",
-        "Telegram delivery",
         "production promotion"
       ]
     }

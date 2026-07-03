@@ -1,0 +1,12 @@
+{
+  "actual_or_estimated_spend_usd": 0.007938124999999999,
+  "daily_budget_usd": 5.0,
+  "input_kind": "sanitized_digest_only",
+  "model": "qwen/qwen3.6-plus",
+  "provider": "openrouter",
+  "provider_calls": 1,
+  "raw_private_source_sent": false,
+  "run_budget_usd": 1.99,
+  "run_hard_stop_usd": 1.99,
+  "status": "ok"
+}

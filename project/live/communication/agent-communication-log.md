@@ -5656,3 +5656,112 @@ Remaining blockers:
 Next safe action:
 
 - Commit and push the scoped public-safe continuation artifacts, then execute E1.7 Railway preparation and activation as a separate lane with provider-disabled baseline first.
+
+## 2026-07-03 11:24 - Jesus/Codex - OpenRouter provider correction starting
+
+Status: starting
+
+Task:
+Correct the previous provider switch. The active comparison/runtime planning path must remain OpenRouter, not OpenAI. Verify and preserve the role/node-based model-routing rule: every LangGraph node and corresponding CrewAI role/task gets its own model strategy based on responsibility, reasoning depth, tool usage, context length, latency, and cost. Epic-level model assignment stays prohibited.
+
+Files likely to change:
+
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-01-openrouter-model-routing-plan.md`
+- `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/`
+- `project/scripts/e1_2_8_openai_comparison.py` or replacement OpenRouter runner
+- `services/jarvis-api/app.py`
+- `docs/dashboard-operating-manual.md`
+- `project/dashboard/data.json`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- Provider correction artifacts for the E1.2 testmeeting/dashboard continuation only.
+
+Expected output:
+
+- Current artifacts and docs state OpenRouter as the active provider path.
+- Sanitized provider payload and runner use Yushchenko role plus LangGraph node-level model selection.
+- OpenAI attempt is retained only as historical evidence of the mistaken prompt state.
+- Checks and push update the correction to `main`.
+
+Blockers:
+
+- OpenRouter API/network/model endpoint may be unavailable or quota-limited.
+- Provider calls must use sanitized data only and must not store provider keys or private source.
+
+Next step:
+
+- Inspect current routing config, OpenRouter env state, provider scripts, and run artifacts before edits.
+
+## 2026-07-03 11:43 - Jesus/Codex - OpenRouter provider correction complete
+
+Status: complete
+
+Task:
+Correct the E1.2.8 provider path after the mistaken OpenAI switch. OpenRouter is the active provider path again, and model optimization is recorded per execution role and LangGraph node/CrewAI role-task, not per Epic.
+
+Files changed:
+
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-01-openrouter-model-routing-plan.md`
+- `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/`
+- `project/runs/E1.2/2026-07-02-testmeeting-local/`
+- `project/scripts/e1_2_8_testmeeting_run.py`
+- `project/scripts/e1_2_8_openrouter_comparison.py`
+- `project/dashboard/data.json`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Provider call status:
+
+- OpenRouter comparison completed on sanitized digest only.
+- Route: `yushchenko.source_scope_gate`.
+- Selected model: `qwen/qwen3.6-plus`; fallback: `qwen/qwen3-235b-a22b`.
+- Selection rule: node/role-based execution model choice, with Epic-level model assignment prohibited.
+- Provider calls: 1.
+- Estimated spend: about `0.00794` USD, under the `1.99` USD run cap.
+- Raw private source sent: false.
+
+Notion status:
+
+- Connector update succeeded for E1 parent text and E1.2, E1.2.8, E1.3.9, and E1.7 task notes/statuses.
+- E1.2.8 page body was replaced with a current Review-state brief after the old blocked brief was found during verification.
+- No fallback API write was needed.
+- E1.2.8 is Review for the local/Codex package and corrected OpenRouter comparison, not OpenAI-blocked.
+
+Dashboard and Jarvis status:
+
+- Local Jarvis API health passed with `MODEL_PROVIDER=openrouter`.
+- PRD-lane local API check passed with provider execution still disabled behind approval and budget guards.
+- Dashboard data regenerated after corrected OpenRouter and Telegram artifacts.
+- Dashboard static smoke passed: 8 routes, provider calls 0, writeback 0.
+- Dashboard screenshot smoke passed: 4 desktop/mobile screenshots generated.
+
+Telegram status:
+
+- Corrected sanitized Telegram summary was sent through the approved API path.
+- Bot token, chat ID, and response body were not stored.
+
+Checks run:
+
+- Pass: `node --check project/dashboard/app.js`.
+- Pass: Python bytecode compile for OpenRouter/Jarvis scripts.
+- Pass: JSON parse for sanitized payload, model selection, budget guards, dashboard data, and Telegram delivery status.
+- Pass: public safety scan.
+- Pass: workflow validation.
+- Pass: pre-push runtime guard.
+- Pass: dashboard static smoke.
+- Pass: dashboard screenshot smoke.
+- Pass: `git diff --check`.
+
+Remaining blockers:
+
+- E1.2.8 still needs AF Review and owner acceptance before it can affect Done-state promotion.
+- Railway hosted runtime, auth/CORS, durable writeback, production promotion, and always-responding Jarvis uptime remain the next E1.7 execution lane.
+
+Next safe action:
+
+- Commit and push the corrected OpenRouter provider state to `main`, then run E1.7 Railway preparation as a separate lane with provider-disabled baseline first.

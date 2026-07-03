@@ -190,15 +190,18 @@ GAP:
 FACT:
 - The E1 parent page was verified in Notion with the rewritten current summary, method, output package, readiness state, and next decisions before the task table.
 - E1.2, E1.2.8, E1.3.9, E1.7, and E1.2.9 received connector-backed Notion status/notes updates.
-- The sanitized OpenAI provider payload contains only source labels and derived summaries. The OpenAI comparison reached the API and is blocked by `insufficient_quota`.
-- Local Jarvis API `/health` and PRD/ICP lane checks passed with `MODEL_PROVIDER=openai`, provider calls 0, and writeback 0.
+- Provider correction superseded the mistaken OpenAI path. OpenRouter is the active provider path.
+- The sanitized OpenRouter provider payload contains only source labels and derived summaries.
+- The OpenRouter comparison completed through `yushchenko.source_scope_gate` using `qwen/qwen3.6-plus`; no raw private source was sent.
+- Estimated provider spend was about `0.00794` USD, under the `1.99` USD run cap.
+- Local Jarvis API `/health` and PRD/ICP lane checks passed after env correction to `MODEL_PROVIDER=openrouter`; provider execution remains gated by approval.
 - Dashboard smoke passed for 8 routes, and service/schema screenshots were generated at desktop and mobile breakpoints.
 - Telegram delivery succeeded through the approved API path using a sanitized project-status message.
 
 INTERPRETATION:
-- E1.2/E1.2.8 now have reliable local proof and current Notion reporting. The remaining provider comparison gap is billing/quota, not missing local artifacts.
+- E1.2/E1.2.8 now have reliable local proof, current Notion reporting, and one sanitized OpenRouter comparison. The OpenRouter output is useful comparison evidence, not source of truth until AF Review and owner acceptance.
 - E1.3.9 is review-ready as a local dashboard/Jarvis control surface, not as hosted Railway proof.
 
 GAP:
-- OpenAI quota and provider budget env caps are still required before provider-backed comparison can produce an output.
+- AF Review and owner acceptance are still required before provider output can influence Done-state promotion.
 - E1.7 remains the next execution lane for Railway preparation and always-responding Jarvis API activation.

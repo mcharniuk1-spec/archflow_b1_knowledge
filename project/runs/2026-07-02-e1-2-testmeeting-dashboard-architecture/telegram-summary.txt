@@ -2,7 +2,7 @@ ArchFlow E1 continuation status, 2026-07-03:
 
 E1 page and key E1 tasks were updated in Notion through the connector. E1.2 and E1.2.8 remain Review: local/Codex PRD evidence exists, PDFs are generated, and owner acceptance is still the final Done gate.
 
-OpenAI provider comparison used sanitized data only and reached the API, but the call is blocked by insufficient quota. No raw private source was sent.
+Correction: OpenRouter is the active provider path, not OpenAI. The sanitized provider comparison completed through `yushchenko.source_scope_gate` with `qwen/qwen3.6-plus`; no raw private source was sent. Estimated spend was about 0.00794 USD, under the 1.99 USD run cap.
 
 Jarvis dashboard local proof now has a visible API connection indicator, direct Architecture 1/2 controls, persistent browser-local chat, proactive interview mode, manual transcript fallback, and provider-disabled Jarvis API health/PRD lane responses.
 

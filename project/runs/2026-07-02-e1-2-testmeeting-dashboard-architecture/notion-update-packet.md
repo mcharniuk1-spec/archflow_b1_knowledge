@@ -1,11 +1,11 @@
 # Notion Update Packet: E1 And Related Tasks
 
 Date: 2026-07-02
-Status: prepared locally; Notion write blocked by approval reviewer usage limit
+Status: applied through Notion connector on 2026-07-03; corrected after OpenRouter provider update
 
-## Blocker
+## Applied Status
 
-The Notion update operation was attempted through the Notion connector after fetching the current E1 page. The write was rejected by the approval reviewer because the environment usage limit was reached. No retry or workaround was attempted.
+The E1 parent summary and related task notes were updated through the Notion connector. No fallback API write was needed. This packet is retained as the sanitized public-safe update record and reflects the corrected OpenRouter provider path.
 
 ## E1 Page Replacement Content
 
@@ -41,15 +41,15 @@ This sequence reflects the product we want to provide to customers: a repeatable
 
 # Current Readiness Before The Task Table
 
-E1 is Active. E1.1 is Done. E1.2 remains in Review because the June proof package exists and is review-ready, but owner acceptance is still the final Done gate. E1.2.8 is Review for the local/Codex testmeeting package and Blocked for the OpenRouter comparison. The private root `docs/testmeeting.md` and `discovery materials.docx` inputs were found and used locally, but only sanitized derived outputs were saved in the public repo. OpenRouter did not run: the sandbox first blocked network resolution, then the escalation reviewer rejected the external provider call as a data-exfiltration risk for derived private-source content. Provider calls and spend remain zero.
+E1 is Active. E1.1 is Done. E1.2 remains in Review because the June proof package exists and is review-ready, but owner acceptance is still the final Done gate. E1.2.8 is Review for the local/Codex testmeeting package and the corrected OpenRouter comparison. The private source inputs were found and used locally, but only sanitized derived outputs were saved in the public repo. OpenRouter ran only on a sanitized digest through `yushchenko.source_scope_gate` using `qwen/qwen3.6-plus`; no raw private source was sent. Estimated spend was about `0.00794` USD, under the `1.99` USD run cap. The OpenRouter output remains review-gated until AF Review and owner acceptance.
 
-E1.3 is in Review because public-safe KB writeback and readback proof exist. E1.3.9 is Review for the local dashboard/Jarvis architecture slice: sizing, persistent history, proactive interview behavior, Architecture 1 / Architecture 2 routing, detailed approval/parallel node templates, local API architecture fields, and operating documentation are implemented locally. E1.3.10 remains Review as the access/security/runtime gate. E1.7 remains Backlog because Railway hosted runtime, auth/CORS, provider routing, durable writeback, Telegram delivery, and production promotion are not completed in this lane.
+E1.3 is in Review because public-safe KB writeback and readback proof exist. E1.3.9 is Review for the local dashboard/Jarvis architecture slice: sizing, persistent history, proactive interview behavior, Architecture 1 / Architecture 2 routing, detailed approval/parallel node templates, local API architecture fields, and operating documentation are implemented locally. E1.3.10 remains Review as the access/security/runtime gate. E1.7 remains Backlog because Railway hosted runtime, auth/CORS, provider routing, durable writeback, production Telegram automation, and production promotion are not completed in this lane.
 
 # Next Tasks And Decisions
 
 1. Owner accepts E1.2 or requests exact revisions to the existing June proof PDFs.
 2. Owner reviews E1.2.8 local testmeeting package and decides whether it can be treated as accepted local evidence.
-3. OpenRouter comparison requires explicit owner approval after external-provider risk review, plus provider ledger, model choice, budget guard, and AF Review.
+3. OpenRouter comparison is complete for the sanitized digest and requires AF Review plus owner acceptance before it can affect Done-state promotion.
 4. E1.3.9 can move forward as local dashboard/Jarvis review evidence, not as hosted/provider-backed proof.
 5. E1.7 should start only when Railway deployment, `/health`, CORS/auth, dashboard routing, and provider-disabled baseline are approved and verified.
 6. E2 should use the cleaned ICP direction: B2B SaaS product teams, Series B-D, 50-500 employees, 2-5 PMs, Director/VP Product buyer, PRD quality and speed as the core job.
@@ -62,8 +62,8 @@ Preserve the existing inline `Epic Tasks` database block from the fetched E1 pag
 |---|---|---|
 | E1 | Active | Replace old questions/planning text with current E1 state summary, method sequence, output package, readiness, and next decisions. |
 | E1.2 | Review | June proof package remains review-ready; owner acceptance is the Done gate. E1.2.8 extends it with a new local testmeeting package. |
-| E1.2.8 | Review / provider blocked | Local/Codex PRD/PDF package exists; OpenRouter comparison blocked by approval reviewer. |
+| E1.2.8 | Review | Local/Codex PRD/PDF package exists; OpenRouter comparison completed on sanitized digest with ledger and budget guard. |
 | E1.3.9 | Review | Dashboard/Jarvis architecture selector, persistent chat, proactive interview, schema node details, operating manual, and local API architecture field are implemented locally. |
 | E1.3.10 | Review | Access/security/runtime gate remains review state; no hosted provider/writeback proof was added. |
-| E1.7 | Backlog | Railway hosted runtime, auth/CORS, provider routing, durable writeback, Telegram delivery, and production promotion remain gated. |
+| E1.7 | Backlog | Railway hosted runtime, auth/CORS, provider routing, durable writeback, production Telegram automation, and production promotion remain gated. |
 | E1.2.9 Agent activity and progress report template | Done | `project/content/templates/agent-activity-progress-report-template.md` exists and was used in the E1.2.8 run. |

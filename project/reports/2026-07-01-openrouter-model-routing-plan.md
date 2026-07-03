@@ -370,6 +370,23 @@ Use these only when the activation-time model list and pricing make them worthwh
 
 Map execution, review, and planner models by CrewAI role and LangGraph land-graph node/path.
 
+### 2026-07-03 E1.2.8 Provider Correction
+
+The active provider path is OpenRouter, not OpenAI. The E1.2.8 testmeeting provider comparison is mapped to `yushchenko.source_scope_gate`, not to an Epic label.
+
+Selection result:
+
+- Provider: OpenRouter.
+- Route: `yushchenko.source_scope_gate`.
+- Query shape: `land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)`.
+- Selected execution model: `qwen/qwen3.6-plus`.
+- Fallback execution model: `qwen/qwen3-235b-a22b`.
+- Selection reason: first available Yushchenko source-scope execution model with 1M context and low input cost.
+- Estimated cost: about `0.00794` USD.
+- Raw private source sent: false.
+
+This confirms the current rule: model optimization is performed per role and LangGraph node. Epic-level model assignment is prohibited.
+
 ### Yushchenko
 
 - `source_scope_gate` (`source_graph -> prd_blocks_graph -> risk_gate_graph`)

@@ -2,8 +2,13 @@
   "daily_budget_usd": 5.0,
   "run_budget_usd": 1.99,
   "run_hard_stop_usd": 1.99,
-  "actual_or_estimated_spend_usd": 0.0,
-  "provider_calls": 0,
-  "status": "blocked_by_approval_reviewer",
-  "reason": "OpenRouter comparison requires explicit owner approval after data-exfiltration risk review."
+  "actual_or_estimated_spend_usd": 0.007938124999999999,
+  "provider_calls": 1,
+  "provider": "openrouter",
+  "model": "qwen/qwen3.6-plus",
+  "route": "yushchenko.source_scope_gate",
+  "input_kind": "sanitized_digest_only",
+  "raw_private_source_sent": false,
+  "status": "ok",
+  "reason": "OpenRouter comparison completed on sanitized payload and remains review-gated."
 }
