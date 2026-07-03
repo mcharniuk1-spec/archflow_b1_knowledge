@@ -1,7 +1,7 @@
 # Agent Handout: Epic 1 And Epic 2 Planning Closeout
 
 Date: 2026-07-03
-Status: complete for local reports, validation, Telegram delivery, and Notion updates; Git push follows this handout
+Status: complete for local reports, validation, Telegram delivery, Notion updates, and Git push
 
 ## Purpose
 
@@ -26,7 +26,7 @@ The new report package separates the current service proof from future cloud pro
 | Epic 2 | execution plan and owner questions created |
 | Telegram | four report PDFs sent through the approved sender |
 | Notion | Epic 1 top summary, Epic 2 owner questions, and E2.0A accepted-state notes inserted |
-| Git | staged and ready for commit/push |
+| Git | pushed to `main` at commit `8678232` |
 
 ## Artifacts
 
@@ -57,6 +57,7 @@ Passed:
 
 - Telegram delivery succeeded through the approved sender.
 - Notion append-only updates succeeded for the Epic 1 parent page, Epic 2 parent page, and E2.0A task page.
+- Git push succeeded to `main` at commit `8678232`.
 - Railway MCP is authenticated but no project is linked in this workspace; E1.7 remains a deployment/project-link gate.
 
 ## Agent Continuation Prompt

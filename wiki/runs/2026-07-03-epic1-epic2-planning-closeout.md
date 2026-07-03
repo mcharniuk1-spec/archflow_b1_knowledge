@@ -40,10 +40,9 @@ GAP: Railway MCP is authenticated but no project is linked in this workspace, so
 
 ## Status
 
-Complete for local reports, validation, Telegram delivery, and Notion append-only updates. Git commit/push follows the live communication closeout entry.
+Complete for local reports, validation, Telegram delivery, Notion append-only updates, and Git push to `main` at commit `8678232`.
 
 ## Next Steps
 
-- Push scoped public-safe artifacts.
 - Use the Epic 2 owner questions to decide whether E2.1 may use live public web/search research.
 - Link a Railway project or provide project/service IDs before attempting E1.7 deployment tests.

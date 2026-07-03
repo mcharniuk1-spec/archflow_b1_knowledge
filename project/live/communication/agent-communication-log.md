@@ -6537,7 +6537,7 @@ External closeout:
 
 - Telegram delivery succeeded through the approved sender with sanitized status stored in the run folder.
 - Notion append-only updates succeeded: Epic 1 parent top summary, Epic 2 parent owner questions, and E2.0A accepted-state note.
-- Git commit/push follows this entry.
+- Git push succeeded to `main` at commit `8678232`.
 
 Remaining gaps:
 
@@ -6546,4 +6546,4 @@ Remaining gaps:
 
 Next safe action:
 
-- Commit and push the scoped public-safe artifacts, then use the Epic 2 owner questions to decide whether E2.1 may run live public source research.
+- Use the Epic 2 owner questions to decide whether E2.1 may run live public source research. Link a Railway project or provide a project/service target before attempting E1.7 full-cloud deployment tests.
