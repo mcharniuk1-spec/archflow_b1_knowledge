@@ -1,7 +1,7 @@
 # ArchFlow Dashboard Operating Manual
 
 Status: local/static dashboard operating document
-Date: 2026-07-02
+Date: 2026-07-03
 
 ## Purpose
 
@@ -20,8 +20,8 @@ Use the Architecture selector before giving commands.
 
 | Option | Use For | Effect |
 |---|---|---|
-| Architecture 1 | PRD/ICP service work | Jarvis treats commands as source-to-PRD, discovery synthesis, ICP evidence, backlog, and buyer-output requests. |
-| Architecture 2 | System/control work | Jarvis treats commands as architecture, workflow, logs, memory, Graphify, LlamaIndex, LangGraph, approval, and durable-output requests. |
+| 1 / Architecture 1 | PRD/ICP service work | Jarvis treats commands as source-to-PRD, discovery synthesis, ICP evidence, backlog, and buyer-output requests. |
+| 2 / Architecture 2 | System/control work | Jarvis treats commands as architecture, workflow, logs, memory, Graphify, LlamaIndex, LangGraph, approval, and durable-output requests. |
 
 ### Normal Mode
 
@@ -46,6 +46,8 @@ Clear history removes only the browser-local copy. It does not delete Git, Notio
 ## Voice And Transcript Controls
 
 Voice input uses the browser speech recognition API when available. Manual transcript fallback uses the same Jarvis chat path. Voice output uses browser speech synthesis when enabled.
+
+If the browser reports that the speech recognition network service is unavailable, this is treated as a browser/runtime limitation. Use the manual transcript fallback; no raw audio is stored.
 
 Current limits:
 
@@ -143,6 +145,8 @@ Important config fields:
 ## Local Jarvis API
 
 The local API lives under `services/jarvis-api`. It is provider-disabled by default.
+
+The dashboard header shows the current local API state as `Jarvis API connected` or `Jarvis API disconnected`. Local development defaults to `http://127.0.0.1:8787`; hosted dashboard use should point to the reviewed backend origin after Railway setup.
 
 Expected local checks:
 

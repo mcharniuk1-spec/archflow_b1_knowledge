@@ -13,6 +13,7 @@ Record the current observer state for the ArchFlow model-efficiency lane.
 ## Durable Artifacts
 
 - `2026-07-02-1402-model-efficiency-report.md`
+- `2026-07-02-1845-model-routing-policy-update.md`
 - `project/agents/model-efficiency-advice.md`
 - `project/agents/model-efficiency-issues.md`
 - `wiki/log.md`

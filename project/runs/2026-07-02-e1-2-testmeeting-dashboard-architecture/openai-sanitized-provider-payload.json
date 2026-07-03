@@ -1,0 +1,76 @@
+{
+  "run_id": "2026-07-02-e1-2-testmeeting-dashboard-architecture",
+  "payload_status": "sanitized_external_provider_payload",
+  "provider": "openai",
+  "model_route_profile": {
+    "task_role_and_langgraph_node": "jesus.prd_verdict_node",
+    "query_shape": "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)",
+    "graph_node_path": ["source_scope_gate", "prd_blocks_graph", "risk_gate_graph"],
+    "model_selection_rule": "role/node-based, not epic-based",
+    "selected_model": "gpt-4.1-mini",
+    "selection_reason": "low-cost structured comparison over sanitized digest; no frontier council needed because this is a formatting and consistency comparison, not a final architecture/payment/public-claim verdict"
+  },
+  "source_boundary": {
+    "input_kind": "sanitized_digest_only",
+    "source_ids_used": ["SRC-E128-MEETING-SUMMARY", "SRC-E128-DISCOVERY-METHOD", "SRC-E1-PUBLIC-STATE"],
+    "raw_private_source_sent": false,
+    "redacted_identifiers": [
+      "private source filenames",
+      "personal names",
+      "private URLs",
+      "Notion URLs",
+      "workspace/account/project identifiers",
+      "credentials",
+      "raw transcript text",
+      "raw DOCX body"
+    ]
+  },
+  "task": {
+    "instruction": "Create a concise comparison PRD packet from the sanitized E1.2.8 context. Preserve source boundaries. Do not invent customer validation, ROI, provider readiness, Railway readiness, Telegram delivery, or Notion writeback. Separate FACT, INTERPRETATION, HYPOTHESIS, and GAP. Return Markdown only.",
+    "expected_sections": [
+      "Provider Output Summary",
+      "PRD Delta Versus Local Codex Run",
+      "Evidence And Boundary Review",
+      "Task/Backlog Improvements",
+      "Risks And Gaps",
+      "Recommendation"
+    ]
+  },
+  "sanitized_context": {
+    "e1_summary": "E1 proves ArchFlow on itself as a governed PRD automation service. It turns approved product-team material into source inventory, context digest, PRD, task matrix, acceptance criteria, backlog, decision log, review report, knowledge-base update, PDF output, and handoff.",
+    "service_direction": "AI-native PRD automation for B2B SaaS product teams, usually Series B-D, 50-500 employees, with 2-5 PMs, where Director or VP Product owns PRD quality, discovery-to-delivery speed, and cross-functional alignment.",
+    "method_sequence": [
+      "inventory approved source material",
+      "exclude private raw source from public/provider payloads",
+      "create FACT/INTERPRETATION/HYPOTHESIS/GAP digest",
+      "generate PRD packet from digest, method, ICP, and architecture",
+      "extract tasks, acceptance criteria, risks, missing questions, and review gates",
+      "run AF Review before claims, writeback, provider calls, or external sends",
+      "save reviewed outputs as run artifacts, PDFs, task updates, and handoffs"
+    ],
+    "current_output_package": [
+      "June E1.2 local proof package",
+      "E1.2.8 sanitized local testmeeting package",
+      "E1.3 KB/readback proof",
+      "dashboard/Jarvis Architecture 1 and Architecture 2 local control surface",
+      "agent activity/progress reporting template"
+    ],
+    "current_readiness": {
+      "ready_or_review": [
+        "local Codex PRD package",
+        "local dashboard architecture selector",
+        "persistent browser-local chat",
+        "proactive interview start",
+        "provider-disabled local API contract"
+      ],
+      "blocked_or_gated": [
+        "external provider comparison until sanitized payload and ledger pass",
+        "Notion writeback until connector or approved API path succeeds",
+        "Railway hosted runtime",
+        "durable writeback",
+        "Telegram delivery",
+        "production promotion"
+      ]
+    }
+  }
+}

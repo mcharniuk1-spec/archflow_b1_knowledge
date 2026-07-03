@@ -1,0 +1,41 @@
+{
+  "status": "ok",
+  "screenshots": [
+    {
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-desktop.png",
+      "width": 1440,
+      "height": 1200,
+      "bytes": 324978,
+      "route": "service",
+      "breakpoint": "desktop",
+      "url_shape": "/project/dashboard/#service"
+    },
+    {
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-mobile.png",
+      "width": 390,
+      "height": 1200,
+      "bytes": 97971,
+      "route": "service",
+      "breakpoint": "mobile",
+      "url_shape": "/project/dashboard/#service"
+    },
+    {
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-desktop.png",
+      "width": 1440,
+      "height": 1200,
+      "bytes": 326208,
+      "route": "schema",
+      "breakpoint": "desktop",
+      "url_shape": "/project/dashboard/#schema"
+    },
+    {
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-mobile.png",
+      "width": 390,
+      "height": 1200,
+      "bytes": 96440,
+      "route": "schema",
+      "breakpoint": "mobile",
+      "url_shape": "/project/dashboard/#schema"
+    }
+  ]
+}

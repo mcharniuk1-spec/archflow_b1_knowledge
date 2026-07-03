@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T14:38:42.095305+00:00",
+  "generated_at": "2026-07-03T08:12:59.353275+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "237",
+      "value": "253",
       "tone": "ok"
     },
     {
@@ -556,6 +556,146 @@
   "activity": [
     {
       "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md",
+      "title": "Agent Handout: E1.2 Testmeeting And Dashboard Architecture",
+      "modified": "2026-07-03T08:12:52.099128+00:00",
+      "size": 7713
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md",
+      "title": "Telegram Delivery Status",
+      "modified": "2026-07-03T08:11:44.471355+00:00",
+      "size": 245
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-screenshot-smoke.md",
+      "title": "Dashboard Screenshot Smoke",
+      "modified": "2026-07-03T08:09:44.156216+00:00",
+      "size": 605
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openai-provider-status.md",
+      "title": "OpenAI Provider Comparison Status",
+      "modified": "2026-07-03T07:58:15.999292+00:00",
+      "size": 696
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/agent-handout.md",
+      "title": "Priority Mechanical Work Handout",
+      "modified": "2026-07-03T07:54:28.713473+00:00",
+      "size": 4474
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: Priority Mechanical Work E4 Profile Packet",
+      "modified": "2026-07-03T07:53:49.594053+00:00",
+      "size": 3774
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/review-gate.md",
+      "title": "Review Gate",
+      "modified": "2026-07-03T07:53:49.500253+00:00",
+      "size": 2289
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/profile-field-drafts.md",
+      "title": "E4 Social Profile Field Drafts",
+      "modified": "2026-07-03T07:53:49.406840+00:00",
+      "size": 3766
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "modified": "2026-07-03T07:53:30.086751+00:00",
+      "size": 1879
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "modified": "2026-07-03T07:53:29.989711+00:00",
+      "size": 1915
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-03T07:53:29.892447+00:00",
+      "size": 3250
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "modified": "2026-07-03T07:53:18.239902+00:00",
+      "size": 5901
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-evening-skill-hook-review/summary.md",
+      "title": "2026-07-02 Evening Skill And Hook Review",
+      "modified": "2026-07-03T07:53:13.835371+00:00",
+      "size": 2423
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "modified": "2026-07-03T07:53:02.855568+00:00",
+      "size": 2022
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "modified": "2026-07-03T07:52:51.817122+00:00",
+      "size": 2679
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-03T07:52:39.767091+00:00",
+      "size": 5176
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
+      "title": "OpenRouter Model Routing Plan",
+      "modified": "2026-07-02T15:34:31.550843+00:00",
+      "size": 18076
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
+      "title": "Agent Handout: OpenRouter Model Routing",
+      "modified": "2026-07-02T15:33:37.053364+00:00",
+      "size": 4152
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/agent-handout.md",
+      "title": "Yushchenko Model Efficiency Observer Handout",
+      "modified": "2026-07-02T15:28:14.676990+00:00",
+      "size": 858
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1845-model-routing-policy-update.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "modified": "2026-07-02T15:28:01.269391+00:00",
+      "size": 3696
+    },
+    {
+      "kind": "project_run",
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md",
       "title": "Notion Update Packet: E1 And Related Tasks",
       "modified": "2026-07-02T14:38:35.999157+00:00",
@@ -567,13 +707,6 @@
       "title": "E1.2 Testmeeting And Dashboard Architecture Report",
       "modified": "2026-07-02T14:38:13.398008+00:00",
       "size": 3106
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md",
-      "title": "Agent Handout: E1.2 Testmeeting And Dashboard Architecture",
-      "modified": "2026-07-02T14:38:06.289026+00:00",
-      "size": 6107
     },
     {
       "kind": "project_report",
@@ -948,13 +1081,6 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/yushchenko-model-efficiency/agent-handout.md",
-      "title": "Yushchenko Model Efficiency Observer Handout",
-      "modified": "2026-07-02T11:24:38.836820+00:00",
-      "size": 807
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1402-model-efficiency-report.md",
       "title": "Yushchenko Model Efficiency Report",
       "modified": "2026-07-02T11:24:38.836715+00:00",
@@ -1155,13 +1281,6 @@
       "title": "Agent Handout: PRD/ICP Lane",
       "modified": "2026-07-02T11:24:38.832622+00:00",
       "size": 2429
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
-      "title": "Agent Handout: OpenRouter Model Routing",
-      "modified": "2026-07-02T11:24:38.832480+00:00",
-      "size": 3934
     },
     {
       "kind": "project_run",
@@ -1386,13 +1505,6 @@
       "title": "Public Website Market Research And Minimal Copy Brief",
       "modified": "2026-07-02T11:24:38.826948+00:00",
       "size": 3813
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-01-openrouter-model-routing-plan.md",
-      "title": "OpenRouter Model Routing Plan",
-      "modified": "2026-07-02T11:24:38.826855+00:00",
-      "size": 11399
     },
     {
       "kind": "project_report",
@@ -2565,7 +2677,7 @@
     {
       "path": "project/agents/skills-by-agent.md",
       "title": "Skills By Agent",
-      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fact-interpretation-hypothesis-gap  ## AF Manager  Purpose: convert context into PRD, milestones, owners, and execution tasks.  Skills set up:  - [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md) - decomposes ArchFlow epics and Notion tasks into staged subtasks, gates, checks, and public-safe reports. - [`task-handout`](../../skills/task-handout/SKILL.md) - creates readable execution handouts and continuation prompts for the next agent. - [`outquestions`](../../skills/outquestions/SKILL.md) - reports execution outcomes and the questions/gates needed before moving"
+      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## Shared Project Coordination  Purpose: keep all public project agents aligned on live communication, file claims, local dashboard/Jarvis runtime boundaries, and gated activation rules.  Skills set up:  - [`arcagcom`](../../skills/arcagcom/SKILL.md) - coordinates public project agents through the live communication log, file claims, handoffs, and Prompt 2.1 / Prompt 3 merge gates. - [`archflow1`](../../skills/archflow1/SKILL.md) - defines the local Jarvis dashboard stack contract, provider-disabled runtime boundaries, voice path, OpenRouter budget gates, and Railway migration gates.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fa"
     },
     {
       "path": "project/automation/archflow-priority-task-operator-lane.md",
@@ -3270,7 +3382,7 @@
     {
       "path": "project/runs/2026-07-01-openrouter-model-routing/agent-handout.md",
       "title": "Agent Handout: OpenRouter Model Routing",
-      "text": "# Agent Handout: OpenRouter Model Routing  ## Title And Purpose  This handout records the OpenRouter model-routing architecture for future ArchFlow agents.  ## Human Summary  ArchFlow now has a durable model-routing plan for future OpenRouter use. The plan keeps OpenRouter disabled today and treats cloud execution as approval-gated, server-side work only.  The new architecture uses the strongest Claude, Gemini, and OpenAI models as a frontier council for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts. Cheaper models such as Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, MiniMax, Mercury, Grok, and Gemma are assigned to bounded execution work that must be checked before publication or memory promotion.  ## Current State  Status: complete after validation.  Main artifacts:  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `wiki/runs/2026-07-01-openrouter-model-routing.md` - `wiki/memory.md` - `wiki/insights.md` - `wiki/log.md`  OpenRouter runtime state: disabled.  ## Agent Continuation Prompt  ```text You are continuing ArchFlow model-routing work. Read project/config/model-rou"
+      "text": "# Agent Handout: OpenRouter Model Routing  ## Title And Purpose  This handout records the OpenRouter model-routing architecture for future ArchFlow agents.  ## Human Summary  ArchFlow now has a durable model-routing plan for future OpenRouter use. The plan keeps OpenRouter disabled today and treats cloud execution as approval-gated, server-side work only.  The new architecture uses the strongest Claude, Gemini, and OpenAI models as a frontier council for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts. Cheaper models such as Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, MiniMax, Mercury, Grok, and Gemma are assigned to bounded execution work that must be checked before publication or memory promotion.  Model routing is now explicitly mapped by CrewAI role and LangGraph node shape (not by E1-E7 labels), with a strict frontier-execution split and reserved Fable qualification paths.  ## Current State  Status: complete after validation.  Main artifacts:  - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `wiki/runs/2026-07-01-openrouter-model-routing.md` - `wiki/memory.md` - `wiki/"
     },
     {
       "path": "project/runs/2026-07-01-prd-icp-lane/agent-handout.md",
@@ -3365,7 +3477,12 @@
     {
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md",
       "title": "Agent Handout: E1.2 Testmeeting And Dashboard Architecture",
-      "text": "# Agent Handout: E1.2 Testmeeting And Dashboard Architecture  Date: 2026-07-02 Status: local execution complete; provider comparison blocked by approval reviewer Lane: E1.2 / E1.3.9 dashboard architecture  ## Purpose  This handout records the local/Codex E1.2.8 testmeeting PRD run and the dashboard architecture updates that make Jarvis usable as a local control surface across two lanes.  ## Human Summary  E1 now has a clearer working state: it is the internal proof that ArchFlow can turn approved product-team raw material into a governed PRD automation package for B2B SaaS product teams. The service sequence is source intake, source-boundary review, sanitized digest, PRD output, task/backlog mapping, AF Review, reporting, and handoff. The buyer-facing service reflected by this work is PRD automation for Directors and VPs of Product who need faster and more reliable PRD quality from messy discovery, meetings, and product-team documents.  The local E1.2.8 run used the private meeting transcript and discovery-methodology document as inputs, but stored only sanitized derived outputs in the public repo. It produced a PRD, source digest, methodology review, backlog/questions file, stream"
+      "text": "# Agent Handout: E1.2 Testmeeting And Dashboard Architecture  Date: 2026-07-02 Status: local execution complete; Notion and Telegram updated on 2026-07-03; OpenAI comparison quota-blocked Lane: E1.2 / E1.3.9 dashboard architecture  ## Purpose  This handout records the local/Codex E1.2.8 testmeeting PRD run and the dashboard architecture updates that make Jarvis usable as a local control surface across two lanes.  ## Human Summary  E1 now has a clearer working state: it is the internal proof that ArchFlow can turn approved product-team raw material into a governed PRD automation package for B2B SaaS product teams. The service sequence is source intake, source-boundary review, sanitized digest, PRD output, task/backlog mapping, AF Review, reporting, and handoff. The buyer-facing service reflected by this work is PRD automation for Directors and VPs of Product who need faster and more reliable PRD quality from messy discovery, meetings, and product-team documents.  The local E1.2.8 run used the private meeting transcript and discovery-methodology document as inputs, but stored only sanitized derived outputs in the public repo. It produced a PRD, source digest, methodology review, back"
+    },
+    {
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-screenshot-smoke.md",
+      "title": "Dashboard Screenshot Smoke",
+      "text": "# Dashboard Screenshot Smoke  Status: ok  | Route | Breakpoint | File | Bytes | |---|---|---|---:| | service | desktop | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-desktop.png` | 325456 | | service | mobile | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-mobile.png` | 98053 | | schema | desktop | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-desktop.png` | 326684 | | schema | mobile | `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-mobile.png` | 96520 |"
     },
     {
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md",
@@ -3373,9 +3490,29 @@
       "text": "# Notion Update Packet: E1 And Related Tasks  Date: 2026-07-02 Status: prepared locally; Notion write blocked by approval reviewer usage limit  ## Blocker  The Notion update operation was attempted through the Notion connector after fetching the current E1 page. The write was rejected by the approval reviewer because the environment usage limit was reached. No retry or workaround was attempted.  ## E1 Page Replacement Content  # Current E1 Summary  E1 is the internal proof block for ArchFlow's own knowledge base and PRD automation service. It shows how the system turns approved product-team raw material into a governed delivery package: source inventory, context digest, PRD, task matrix, acceptance criteria, backlog, decision log, review report, knowledge-base update, PDF output, and next-step handoff.  The service direction is now narrow and explicit. ArchFlow is an AI-native PRD automation service for product teams in B2B SaaS companies, usually Series B-D, 50-500 employees, with 2-5 PMs, where a Director or VP of Product owns PRD quality, discovery-to-delivery speed, and cross-functional alignment. The customer is not buying a generic AI assistant; they are buying a controlled w"
     },
     {
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openai-provider-status.md",
+      "title": "OpenAI Provider Comparison Status",
+      "text": "# OpenAI Provider Comparison Status  Date: 2026-07-03T07:58:15.998274+00:00 Status: blocked Reason: openai_http_error_429  ## Boundary  - Input kind: sanitized digest only. - Raw private source sent: false. - API keys are not written to public files. - Cost is not estimated without current pricing proof.  ## Details  ```json {   \"error_excerpt\": \"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\\\",\\n    \\\"type\\\": \\\"insufficient_quota\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"insufficient_quota\\\"\\n  }\\n}\" } ```"
+    },
+    {
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md",
+      "title": "Telegram Delivery Status",
+      "text": "# Telegram Delivery Status  Date: 2026-07-03T08:11:44.042143+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
+    },
+    {
       "path": "project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md",
       "title": "E1 Notion And Runtime Consolidation Handout",
       "text": "# E1 Notion And Runtime Consolidation Handout  ## Purpose  This handout records the July 2 E1 cleanup pass: E1 Notion rewrite, duplicate task clarification, local Jarvis API proof, and blocked follow-up tasks for the missing testmeeting/OpenRouter run and hosted runtime.  ## Human Summary  E1 was rewritten in Notion as a current operating page instead of a chronological execution log. The page now explains what E1 is proving, why it matters for the Product Discovery-to-Production PRD Pack, which methods are used, and how the current ICP is narrowed to B2B SaaS product teams with Director or VP Product ownership.  The task cleanup did not delete Visual Reporting rows. It renamed the duplicate-looking Visual Reporting rows under E1.5 reporting/method work and kept them blocked until artifact proof, redaction rules, and owner approval exist. The dashboard/security rows remain E1.3.9 and E1.3.10 in Review.  The local Jarvis API can now run from the repo-local venv after installing FastAPI. Local `/health`, role config, PRD/ICP lane, meeting-test approval block, and voice-chat packet checks passed on `127.0.0.1:8787`. The proof is provider-disabled only: `MODEL_PROVIDER=none`, provider "
+    },
+    {
+      "path": "project/runs/2026-07-02-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "text": "# Evening Skill And Hook Review Handout  ## Title And Purpose  This handout records the July 2 evening review of ArchFlow public skill registries, hook contracts, and reusable project-local skill coverage.  ## Human Summary  The review found one concrete registry drift item. Recent public work added two project-local skills, `arcagcom` for live-agent communication and `archflow1` for the local Jarvis dashboard stack contract. They were already listed in `skills/skills-used.md` and public run notes, but the per-agent registry and machine-readable roster did not yet expose them.  The fix was intentionally narrow. `project/agents/skills-by-agent.md` now has a shared project coordination section for these cross-role skills, and `project/agents/agent-roster.yaml` now has a `project_local_skills` section that records their scope, paths, users, and safety rules.  No hook behavior was expanded. The task-handout hook remains a routing reminder that writes only an ignored local marker. Provider activation, OpenRouter calls, Railway deployment, live Nexus/writeback, voice proof, Git push, and external publication stayed out of scope.  ## Current State  - Status: complete. - Registry state: `a"
+    },
+    {
+      "path": "project/runs/2026-07-02-evening-skill-hook-review/summary.md",
+      "title": "2026-07-02 Evening Skill And Hook Review",
+      "text": "# 2026-07-02 Evening Skill And Hook Review  Status: complete  ## Task  Review the public ArchFlow skill registries, hook-backed workflow contracts, and reusable skill surface. Refresh only public-safe files when actual drift is verified.  ## FACT  - The required public routing files and live communication files were read before registry edits. - `skills/arcagcom/SKILL.md` and `skills/archflow1/SKILL.md` are active project-local skills recorded in public run notes and `skills/skills-used.md`. - `project/agents/skills-by-agent.md` did not yet assign those skills to a registry section. - `project/agents/agent-roster.yaml` did not yet expose those skills in a machine-readable project-local skill section. - `.codex/hooks.json` still routes `UserPromptSubmit` to `project/scripts/task-handout-hook.py --event UserPromptSubmit`. - `project/scripts/task-handout-hook.py` still writes only an ignored local trigger marker and does not store raw prompt text.  ## INTERPRETATION  The only verified drift was registry coverage for two active project-local skills. Hook behavior, trigger boundaries, workflow validation requirements, and public-safety rules were already aligned.  ## HYPOTHESIS  Future "
     },
     {
       "path": "project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md",
@@ -3406,6 +3543,56 @@
       "path": "project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md",
       "title": "Railway Jarvis API Setup Handout",
       "text": "# Railway Jarvis API Setup Handout  ## Human Summary  Railway MCP is connected in Codex, and the ArchFlow Railway backend lane was initialized for the provider-disabled Jarvis API.  The Railway account was reachable through MCP. A new Railway project and a `jarvis-api` service were created. Initial service variables were set with provider execution disabled. Local deployment config was added under `public/services/jarvis-api/`.  Deployment did not complete because the approval reviewer blocked uploading local workspace code to Railway. This is now an owner approval gate, not a technical setup gap.  This lane is now recorded as future E1 task `E1.7`: make the hosted dashboard, Jarvis, API, and agentic system work without depending on the local machine. `E1.6` remains the separate personal KB setup task in Notion.  ## Files Changed  - `docs/railway.md` - `public/services/jarvis-api/Procfile` - `public/services/jarvis-api/railway.json` - `public/project/live/communication/agent-communication-log.md` - `public/project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md`  ## Runtime State  - Railway MCP: connected. - Railway project: created. - Railway service: created. - Provider"
+    },
+    {
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/agent-handout.md",
+      "title": "Priority Mechanical Work Handout",
+      "text": "# Priority Mechanical Work Handout  ## Title and Purpose  This handout records the July 3 priority mechanical-work automation run. It is for the next operator who needs to continue the highest-ranked safe task without relying on chat history.  ## Human Summary  The run inspected the current public project plan, recent run state, public WikiLLM log/memory/insights, and live communication log. The repo's priority-task operator selected `Package social profiles for LinkedIn, X, and Threads` as the highest-ranked unfinished task because it is overdue, marked `In Progress`, and belongs to the E4 content-launch lane.  The automation did not touch live social accounts or external systems. That would require owner approval. The useful safe work was to prepare a public-safe task packet that makes the next execution boundary explicit: draft and check profile-copy components, keep demand/runtime claims conservative, and stop before login, publication, upload, or external writes.  ## Current State  Status: packet-ready; execution approval-gated.  Main artifacts:  - `project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.md` - `project/runs/2026-07-03-0157-priority-mechanical-work/"
+    },
+    {
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "text": "# KB/Notion/GitHub packet  Selected task: `Package social profiles for LinkedIn, X, and Threads` Current status: `In Progress`  ## Knowledge Base update - Add selected task evidence, ranking rationale, and execution result to `wiki/log.md`. - Keep a no-PII summary of execution status and checks. - Record that this run prepared an execution packet only; it did not perform social-login, publication, Notion write, GitHub push, or account-profile mutation.  ## Notion packet - Prepare a task update entry with: status, owner, blockers, expected output, next action. - Include `priority_score`, `urgency`, and `importance` values. - Suggested public-safe note: `Priority lane selected E4 social-profile packaging as the next overdue ops task. Automation prepared the execution packet and approval boundary. Live account edits/publishing remain owner-gated.` - Suggested GAP: `No approved external account access or publication approval in this run.`  ## GitHub packet - Confirm branch contains updated packet files. - Run local checks and then push only after safety scan passes. - Do not push from this automation lane unless separately approved. - Suggested commit message after review: `Run: priori"
+    },
+    {
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "text": "# New PitAgent Handoff  You are the next operator for the ArchFlow priority-task lane. Use this packet to review previous automation output, verify execution, and run reliability checks before closing the task.  ## Context - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Epic: `E4 - Content` - Planned due: `2026-06-28`  ## Required checks 1. Confirm task scope is still valid in `project/project-plan.md`. 2. Validate all prerequisites from this task row are available. 3. Record KB update evidence in `wiki/log.md` and task-packet fields. 4. Prepare Notion status payload and repository push packet. 5. Mark this task complete only if execution output is observable in repository and checks are documented.  ## Public-safe execution boundary  - Do not log in to LinkedIn, X, Threads, or any external account without owner approval. - Do not publish or update live profiles from this prompt alone. - Do not store handles, private links, account IDs, credentials, recovery details, or screenshots in public files. - Draft only public-safe profile components: positioning line, short bio, offer summary, CTA, proof boundary, and profile consistency checklist.  ## Suggested m"
+    },
+    {
+      "path": "project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-03 08:19:39 Status: packet-ready; execution approval-gated  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 282 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 275 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 264 | 132/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 233 | 150/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 5 | 233 | 126/82 | E2 - Research Engine To ICP | E2.0 Reset research engine for integrated API/tool approach | Backlog | Research | 2026-07-02 | | 6 | 225 | 100/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 202"
+    },
+    {
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: Priority Mechanical Work E4 Profile Packet",
+      "text": "# Agent Handout: Priority Mechanical Work E4 Profile Packet  ## Title And Purpose  This handout covers the 06:30 priority mechanical-work lane for the selected E4 social-profile packaging task. It is for the next operator who needs to continue profile preparation without redoing project-plan and content-gate discovery.  ## Human Summary  The deterministic priority selector was rerun against `project/project-plan.md`. It again selected `Package social profiles for LinkedIn, X, and Threads` as the highest-ranked unfinished task, with score `282`.  This run converted the basic selector output into a concrete public-safe profile package. It added channel-specific profile field drafts for LinkedIn, X, and Threads, recorded the evidence boundary, and created a review gate. The drafts use ArchFlow company voice and the Product Discovery-to-Production PRD Pack positioning for B2B SaaS product teams.  No live platform, Notion, provider, network, Git push, deployment, or publication action was performed. The draft remains blocked until owner decisions are recorded.  ## Current State  - Task status: still `In Progress`. - Main output: public-safe profile draft packet under this run folder. - "
+    },
+    {
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "text": "# KB/Notion/GitHub packet  Selected task: `Package social profiles for LinkedIn, X, and Threads` Current status: `In Progress`  ## Knowledge Base update - Add selected task evidence, ranking rationale, and execution result to `wiki/log.md`. - Keep a no-PII summary of execution status and checks.  Suggested durable update:  ```text The 06:30 priority mechanical-work lane refreshed the deterministic task selection and prepared an E4 social-profile packaging packet. The selected task remains `Package social profiles for LinkedIn, X, and Threads`. The packet records public-safe positioning, channel requirements, review criteria, owner-approval gates, and a next-operator prompt. No live profile, network, provider, Notion, Git push, or publication action was performed. ```  ## Notion packet - Prepare a task update entry with: status, owner, blockers, expected output, next action. - Include `priority_score`, `urgency`, and `importance` values.  Prepared status payload for later approved write:  | Field | Value | |---|---| | Task | Package social profiles for LinkedIn, X, and Threads | | Suggested status | In Progress | | Priority score | 282 | | Urgency / importance | 150 / 90 | | Evidenc"
+    },
+    {
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "text": "# New PitAgent Handoff  You are the next operator for the ArchFlow priority-task lane. Use this packet to review previous automation output, verify execution, and run reliability checks before closing the task.  ## Context - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Epic: `E4 - Content` - Planned due: `2026-06-28`  ## Required checks 1. Confirm task scope is still valid in `project/project-plan.md`. 2. Validate all prerequisites from this task row are available. 3. Record KB update evidence in `wiki/log.md` and task-packet fields. 4. Prepare Notion status payload and repository push packet. 5. Mark this task complete only if execution output is observable in repository and checks are documented.  ## E4 profile-package execution prompt  Use this exact scope unless the owner explicitly widens it:  ```text You are the ArchFlow E4 profile-package operator. Work only from public-safe repo artifacts. Prepare profile field drafts for LinkedIn, X, and Threads, but do not open or edit live social accounts, do not publish posts, do not use network calls, and do not write to Notion unless an approved connector and explicit owner approval are available.  Start by "
+    },
+    {
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/profile-field-drafts.md",
+      "title": "E4 Social Profile Field Drafts",
+      "text": "# E4 Social Profile Field Drafts  Status: draft, not approved for publication Source task: `Package social profiles for LinkedIn, X, and Threads`  ## Shared positioning boundary  FACT: The current offer frame is the Product Discovery-to-Production PRD Pack for B2B SaaS product teams.  INTERPRETATION: Social profiles should communicate a narrow workflow outcome: raw product-team material becomes reviewed execution assets.  HYPOTHESIS: This message will be clearer for product leaders than a generic AI agency or automation claim.  GAP: Demand, ROI, customer proof, and payment validation are not proven yet. Do not include those claims in profile text.  ## LinkedIn draft fields  Use for a company page or founder profile only after owner voice and page type are confirmed.  ### Headline  ArchFlow turns raw product-team material into reviewed PRDs, backlogs, decision logs, and KB handoffs.  ### About  ArchFlow helps B2B SaaS product teams turn scattered discovery material into build-ready execution assets.  The current focus is the Product Discovery-to-Production PRD Pack: source inventory, context digest, production-ready PRD, backlog, acceptance criteria, decision log, risk list, and kno"
+    },
+    {
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/review-gate.md",
+      "title": "Review Gate",
+      "text": "# Review Gate  ## Template Metadata  - Review target: `profile-field-drafts.md` - Source run folder: `project/runs/2026-07-03-0630-priority-mechanical-work/` - Reviewer role: AF Review mechanical precheck - Status: needs owner decision - Date: 2026-07-03  ## Review Inputs  - Draft artifact: `profile-field-drafts.md` - Evidence artifact: `selected-task.md` - Source registry or inventory: `project/project-plan.md`, `project/content/templates/README.md`, `project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md` - Validation result: pending local checks - Screenshot/data checklist: no screenshots or platform data used - Prior gate: E1.5 public-reporting gate blocks publication until AF Review and owner approval  ## Review Checks  | Check | Pass/Fail | Required evidence or edit | |---|---|---| | English-only content | Pass | Draft text is English. | | Public-safe text | Pass | Draft uses only public project positioning. | | No private links, local paths, personal identifiers, IDs, or secrets | Pass | No private values are included. | | No raw transcripts or private source material | Pass | Draft summarizes the public offer only. | | Evidence labels are present | Pass"
+    },
+    {
+      "path": "project/runs/2026-07-03-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-03 10:52:05 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 282 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 275 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 264 | 132/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 233 | 150/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 5 | 233 | 126/82 | E2 - Research Engine To ICP | E2.0 Reset research engine for integrated API/tool approach | Backlog | Research | 2026-07-02 | | 6 | 225 | 100/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 7 | 222 | 95/85"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
@@ -3663,9 +3850,14 @@
       "text": "# Yushchenko Model Efficiency Report  Observer: Yushchenko Model Efficiency Observer  Run window: 2026-07-02 14:02 EEST  ## Evidence Inspected  - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/config/model-routing.yaml` - `project/reports/2026-07-01-openrouter-model-routing-plan.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/runs/2026-07-01-openrouter-model-routing/agent-handout.md` - `project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md` - `project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md` - `project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md` - `project/runs/2026-07-02-crewai-level-3-proof/review-report.md` - `project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json` - `project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl` - `project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md` - `project/runs/yushchenko-model-efficiency/2026-07-02-1112-model-efficiency-report.md` - `wiki"
     },
     {
+      "path": "project/runs/yushchenko-model-efficiency/2026-07-02-1845-model-routing-policy-update.md",
+      "title": "Yushchenko Model Efficiency Report",
+      "text": "# Yushchenko Model Efficiency Report  Observer: Yushchenko Model Efficiency Observer  Run window: 2026-07-02 18:45 EEST  ## Evidence Inspected  - `public/project/config/model-routing.yaml` - `public/project/reports/2026-07-01-openrouter-model-routing-plan.md` - `public/project/runs/yushchenko-model-efficiency/2026-07-02-1402-model-efficiency-report.md` - `public/services/jarvis-api/app.py` - `public/services/jarvis-api/README.md` - `public/project/provider-setup.md`  ## FACT  - OpenRouter remains disabled in runtime (`MODEL_PROVIDER` defaults to `none`), so no live provider inference has occurred yet. - The frontier contract now uses OpenRouter latest aliases for auto-refresh (`~openai/gpt-latest`, `~anthropic/claude-opus-latest`) with explicit fallback pins and a dedicated qualifier path (`~anthropic/claude-fable-latest`). - The most recent frontier council and task routing now explicitly pairs GPT-5.5-equivalent tiers with latest-Opus/Fable where task criticality justifies frontier spend, while preserving hard cost gates (`max_per_run_usd=1.99`, `daily_budget_usd=5.00`). - A technical qualifier slot (`fable`) was added for highly specific tasks with approval gates. - No `provider"
+    },
+    {
       "path": "project/runs/yushchenko-model-efficiency/agent-handout.md",
       "title": "Yushchenko Model Efficiency Observer Handout",
-      "text": "# Yushchenko Model Efficiency Observer Handout  ## Purpose  Record the current observer state for the ArchFlow model-efficiency lane.  ## Current Status  - No active OpenRouter runtime evidence was found in the inspected public-safe project files. - A separate zero-cost local deterministic CrewAI proof ledger exists and must stay labeled as local proof, not OpenRouter runtime. - Telegram delivery was skipped because an approved sender was unavailable.  ## Durable Artifacts  - `2026-07-02-1402-model-efficiency-report.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `wiki/log.md` - `wiki/memory.md`  ## Next Safe Action  Continue reporting only evidence-backed model-use facts. Do not infer provider-backed OpenRouter usage from the local proof ledger."
+      "text": "# Yushchenko Model Efficiency Observer Handout  ## Purpose  Record the current observer state for the ArchFlow model-efficiency lane.  ## Current Status  - No active OpenRouter runtime evidence was found in the inspected public-safe project files. - A separate zero-cost local deterministic CrewAI proof ledger exists and must stay labeled as local proof, not OpenRouter runtime. - Telegram delivery was skipped because an approved sender was unavailable.  ## Durable Artifacts  - `2026-07-02-1402-model-efficiency-report.md` - `2026-07-02-1845-model-routing-policy-update.md` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `wiki/log.md` - `wiki/memory.md`  ## Next Safe Action  Continue reporting only evidence-backed model-use facts. Do not infer provider-backed OpenRouter usage from the local proof ledger."
     },
     {
       "path": "project/workflows/crewai-crew.yaml",

@@ -189,8 +189,8 @@ frontier_council:
     - simple_code_completion
   current_target_families:
     anthropic:
-      primary: anthropic/claude-opus-4.7
-      fallback: anthropic/claude-opus-4.6
+      primary: "~anthropic/claude-opus-latest"
+      fallback: anthropic/claude-opus-4.8
       economical_frontier: anthropic/claude-sonnet-4.6
       strengths:
         - long_form_strategy
@@ -216,8 +216,8 @@ frontier_council:
         - may_need_strict_schema_constraints
         - final_public_claims_need_checker_review
     openai:
-      primary: openai/gpt-5.4-pro
-      fallback: openai/gpt-5.2-pro
+      primary: "~openai/gpt-latest"
+      fallback: openai/gpt-5.5
       economical_frontier: openai/gpt-5.4-mini
       strengths:
         - structured_reasoning
@@ -228,6 +228,62 @@ frontier_council:
         - expensive_for_repeated_drafts
         - may_be_overkill_for_simple_transformations
         - exact_model_availability_must_be_refreshed
+    fable:
+      primary: "~anthropic/claude-fable-latest"
+      fallback: openai/gpt-5.5
+      qualifications:
+        - technical_qualification
+        - regulated_compliance_queries
+        - approval_required_tasks
+      strengths:
+        - deep_technical_reasoning
+        - qualification_traceability
+        - constrained_verdict_support
+      weaknesses:
+        - unavailable_without_activation_list_refresh
+        - high_cost_risk_if_run_without_budget_gates
+
+land_graph_routing:
+  query_shapes:
+    intake_graph:
+      nodes:
+        - raw_request_packet
+        - source_scope_gate
+        - output_shape_contract
+      model_contract:
+        plan: [openai/gpt-5.5, anthropic/claude-opus-4.7]
+        execute: [qwen/qwen3-235b-a22b, moonshotai/kimi-k2-thinking]
+        review: [openai/gpt-5.5, anthropic/claude-sonnet-4.6]
+      role_binding:
+        yushchenko: policy_compliance_guard
+        ronaldo: public_text_risk_review
+    technical_land_graph:
+      nodes:
+        - data_model_query
+        - dependency_graph
+        - qualification_graph
+        - approval_graph
+      model_contract:
+        plan: [anthropic/claude-opus-4.7, openai/gpt-5.5]
+        execute: ["~anthropic/claude-fable-latest"]
+        review: [openai/gpt-5.5, anthropic/claude-opus-4.7]
+      role_binding:
+        yushchenko: frontier_efficiency_and_model_governance
+        security: technical_qualification_checker
+        ronaldinho: architecture_and_quality_review
+    payment_verdict_graph:
+      nodes:
+        - business_constraints
+        - cost_model
+        - risk_gate
+        - final_verdict
+      model_contract:
+        plan: [openai/gpt-5.5, anthropic/claude-opus-4.7, google/gemini-3.1-pro-preview]
+        execute: [qwen/qwen3-235b-a22b]
+        review: [openai/gpt-5.5, anthropic/claude-opus-4.7, google/gemini-3-flash-preview]
+      role_binding:
+        yushchenko: payment_or_architecture_ledger_owner
+        jesus: final_governance_gate
 
 execution_pool:
   purpose: bounded_low_or_medium_risk_execution_before_frontier_review
@@ -398,34 +454,137 @@ execution_pool:
         - final_strategy
 
 task_routing:
-  E1_kb_prd_workflow:
-    plan: [anthropic/claude-opus-4.7, google/gemini-3.1-pro-preview, openai/gpt-5.4-pro]
-    execute: [qwen/qwen3.6-plus, mistralai/mistral-medium-3.1, moonshotai/kimi-k2-thinking]
-    review: [anthropic/claude-sonnet-4.6, openai/gpt-5.4-pro]
-  E2_research_engine:
-    plan: [openai/gpt-5.4-pro, google/gemini-3.1-pro-preview, anthropic/claude-opus-4.7]
-    execute: [qwen/qwen3.6-plus, z-ai/glm-5, perplexity/sonar-pro, deepseek/deepseek-v4-flash]
-    review: [openai/gpt-5.4-pro, anthropic/claude-sonnet-4.6]
-  E3_website_positioning:
-    plan: [anthropic/claude-opus-4.7, openai/gpt-5.4-pro, google/gemini-3.1-pro-preview]
-    execute: [moonshotai/kimi-k2-thinking, mistralai/codestral-2508, mistralai/mistral-medium-3.1]
-    review: [anthropic/claude-sonnet-4.6, google/gemini-3-flash-preview]
-  E4_content:
-    plan: [anthropic/claude-opus-4.7, openai/gpt-5.4-pro]
-    execute: [mistralai/mistral-small-3.2-24b-instruct-2506, qwen/qwen3.6-plus, minimax/minimax-m2.5]
-    review: [anthropic/claude-sonnet-4.6]
-  E5_roi_analytics:
-    plan: [openai/gpt-5.4-pro, google/gemini-3.1-pro-preview]
-    execute: [qwen/qwen3.6-plus, deepseek/deepseek-v4-pro]
-    review: [openai/gpt-5.4-pro, anthropic/claude-sonnet-4.6]
-  E6_outreach:
-    plan: [anthropic/claude-opus-4.7, openai/gpt-5.4-pro]
-    execute: [mistralai/mistral-medium-3.1, qwen/qwen3.6-plus]
-    review: [anthropic/claude-sonnet-4.6, openai/gpt-5.4-pro]
-  E7_payment_verdict:
-    plan: [openai/gpt-5.4-pro, anthropic/claude-opus-4.7, google/gemini-3.1-pro-preview]
-    execute: [qwen/qwen3.6-plus]
-    review: [openai/gpt-5.4-pro, anthropic/claude-opus-4.7]
+  by_crewai_role_and_langgraph_node:
+    yushchenko:
+      source_scope_gate:
+        query_shape: "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)"
+        role_binding: policy_compliance_guard
+        primary: [~openai/gpt-latest, anthropic/claude-opus-4.7]
+        execute: [qwen/qwen3.6-plus, qwen/qwen3-235b-a22b]
+        review: [anthropic/claude-sonnet-4.6, ~openai/gpt-latest]
+        token_efficiency_rationale: "Qwen-first for scope extraction before any frontier call"
+      research_hypothesis_graph:
+        query_shape: "land_graph(source_crosswalk_graph -> hypothesis_graph -> evidence_graph)"
+        role_binding: research_quality_owner
+        primary: [~openai/gpt-latest, anthropic/claude-opus-latest]
+        execute: [qwen/qwen3.6-plus, qwen/qwen3-235b-a22b, deepseek/deepseek-v4-flash]
+        review: [anthropic/claude-sonnet-4.6, ~openai/gpt-latest]
+        token_efficiency_rationale: "Bulk evidence handling with qwen-first execution"
+      roi_metrics_node:
+        query_shape: "land_graph(metrics_graph -> scenario_graph -> variance_gate_graph)"
+        role_binding: roi_and_verification_owner
+        primary: [~openai/gpt-latest, google/gemini-3.1-pro-preview, anthropic/claude-opus-4.7]
+        fable_gate: "~anthropic/claude-fable-latest"
+        execute: [qwen/qwen3.6-plus, qwen/qwen3-235b-a22b, deepseek/deepseek-v4-pro]
+        review: [openai/gpt-5.5, anthropic/claude-sonnet-4.6]
+        token_efficiency_rationale: "Scenario + variance checks stay qwen-first, with frontier only on variance conflicts"
+      payment_node:
+        query_shape: "land_graph(value_graph -> risk_graph -> governance_graph -> signoff_graph)"
+        role_binding: payment_or_architecture_ledger_owner
+        primary: [~openai/gpt-latest, anthropic/claude-opus-4.7, google/gemini-3.1-pro-preview]
+        fable_gate: "~anthropic/claude-fable-latest"
+        execute: [qwen/qwen3.6-plus, qwen/qwen3-235b-a22b]
+        review: [openai/gpt-5.5, anthropic/claude-opus-4.7]
+        token_efficiency_rationale: "Single qwen executor, frontier review only"
+    jesus:
+      prd_verdict_node:
+        query_shape: "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)"
+        role_binding: prd_and_governance_review
+        primary: [~openai/gpt-latest, anthropic/claude-opus-latest]
+        execute: [qwen/qwen3.6-plus, qwen/qwen3-235b-a22b]
+        review: [anthropic/claude-sonnet-4.6, ~openai/gpt-latest]
+        token_efficiency_rationale: "Use qwen for evidence pre-digest before reviewer-stage frontier checks"
+      payment_review_node:
+        query_shape: "land_graph(value_graph -> risk_graph -> governance_graph -> signoff_graph)"
+        role_binding: final_governance_gate
+        primary: [~openai/gpt-latest, anthropic/claude-opus-latest, google/gemini-3.1-pro-preview]
+        fable_gate: "~anthropic/claude-fable-latest"
+        execute: [qwen/qwen3.6-plus, qwen/qwen3-235b-a22b]
+        review: [openai/gpt-5.5, anthropic/claude-opus-4.7]
+        token_efficiency_rationale: "Qwen handles risk-matrix tabulation before final governance frontier checks"
+    messi:
+      offer_positioning_node:
+        query_shape: "land_graph(offer_graph -> narrative_graph -> compliance_gate_graph)"
+        role_binding: message_and_positioning
+        primary: [anthropic/claude-opus-latest, ~openai/gpt-latest]
+        execute: [moonshotai/kimi-k2-thinking, mistralai/mistral-medium-3.1, qwen/qwen3.6-plus]
+        review: [google/gemini-3-flash-preview, anthropic/claude-sonnet-4.6]
+        token_efficiency_rationale: "kimi for structured drafting, mistral-medium for fast variant passes"
+      outreach_node:
+        query_shape: "land_graph(message_graph -> channel_graph -> approval_graph)"
+        role_binding: outreach_risk_review
+        primary: [anthropic/claude-opus-latest, ~openai/gpt-latest]
+        execute: [mistralai/mistral-medium-3.1, mistralai/mistral-small-3.2-24b-instruct-2506]
+        review: [anthropic/claude-sonnet-4.6, ~openai/gpt-latest]
+        token_efficiency_rationale: "Mistral-medium/small gives high-volume message drafts cheaply"
+      style_and_copy_node:
+        query_shape: "land_graph(brief_graph -> draft_graph -> style_graph)"
+        role_binding: copy_and_style
+        primary: [anthropic/claude-opus-latest, ~openai/gpt-latest]
+        execute: [mistralai/mistral-small-3.2-24b-instruct-2506, minimax/minimax-m2.5, qwen/qwen3.6-plus]
+        review: [anthropic/claude-sonnet-4.6]
+        token_efficiency_rationale: "Minimax/mistral small for cheap alternatives; qwen for cleanup"
+    ronaldo:
+      source_risk_node:
+        query_shape: "land_graph(source_graph -> prd_blocks_graph -> risk_gate_graph)"
+        role_binding: public_text_risk_review
+        primary: [google/gemini-3.1-pro-preview, ~openai/gpt-latest]
+        execute: [moonshotai/kimi-k2-thinking, qwen/qwen3.6-plus]
+        review: [anthropic/claude-sonnet-4.6]
+        token_efficiency_rationale: "kimi handles first-pass narrative decomposition at low cost"
+      website_technical_node:
+        query_shape: "land_graph(offer_graph -> narrative_graph -> compliance_gate_graph)"
+        role_binding: website_positioning_critic
+        primary: [anthropic/claude-opus-latest, ~openai/gpt-latest]
+        execute: [mistralai/mistral-medium-3.1, moonshotai/kimi-k2-thinking, qwen/qwen3.6-plus]
+        review: [anthropic/claude-sonnet-4.6]
+        token_efficiency_rationale: "kimi for alternative phrasing trees, then review only if escalated"
+    lol:
+      research_graph_node:
+        query_shape: "land_graph(source_crosswalk_graph -> hypothesis_graph -> evidence_graph)"
+        role_binding: research_engine
+        primary: [~openai/gpt-latest, anthropic/claude-opus-latest, google/gemini-3.1-pro-preview]
+        execute: [qwen/qwen3.6-plus, perplexity/sonar-pro, deepseek/deepseek-v4-flash]
+        review: [openai/gpt-5.5, anthropic/claude-sonnet-4.6]
+        token_efficiency_rationale: "perplexity+qwen front-loads web evidence discovery at minimal cost"
+      positioning_graph_node:
+        query_shape: "land_graph(offer_graph -> narrative_graph -> compliance_gate_graph)"
+        role_binding: website_positioning_editor
+        primary: [~openai/gpt-latest, anthropic/claude-opus-latest]
+        execute: [moonshotai/kimi-k2-thinking, qwen/qwen3.6-plus]
+        review: [anthropic/claude-sonnet-4.6, google/gemini-3-flash-preview]
+        token_efficiency_rationale: "kimi for quick competitive variant coverage"
+      content_review_node:
+        query_shape: "land_graph(brief_graph -> draft_graph -> style_graph)"
+        role_binding: content_editor
+        primary: [~openai/gpt-latest, anthropic/claude-opus-latest]
+        execute: [minimax/minimax-m2.5, qwen/qwen3.6-plus]
+        review: [anthropic/claude-sonnet-4.6]
+        token_efficiency_rationale: "minimax + qwen for high-volume content cleanup"
+    theory:
+      research_hypothesis_node:
+        query_shape: "land_graph(source_crosswalk_graph -> hypothesis_graph -> evidence_graph)"
+        role_binding: analysis_and_variance
+        primary: [~openai/gpt-latest, google/gemini-3.1-pro-preview]
+        execute: [qwen/qwen3.6-plus, deepseek/deepseek-v4-pro, perplexity/sonar-pro]
+        review: [anthropic/claude-sonnet-4.6, ~openai/gpt-latest]
+        token_efficiency_rationale: "defer expensive frontier verdicts; deepseek+qwen do first-pass variance math"
+      roi_node:
+        query_shape: "land_graph(metrics_graph -> scenario_graph -> variance_gate_graph)"
+        role_binding: roi_and_sensitivity
+        primary: [google/gemini-3.1-pro-preview, ~openai/gpt-latest]
+        execute: [qwen/qwen3.6-plus, deepseek/deepseek-v4-pro]
+        review: [openai/gpt-5.5]
+        token_efficiency_rationale: "deepseek and qwen for first-pass simulation tables"
+    security:
+      technical_qualification_node:
+        query_shape: "land_graph(data_model_query -> dependency_graph -> qualification_graph -> approval_graph)"
+        role_binding: technical_qualification_checker
+        primary: [~anthropic/claude-fable-latest]
+        fable_gate: "~anthropic/claude-fable-latest"
+        execute: ["~anthropic/claude-fable-latest"]
+        review: [anthropic/claude-opus-4.7]
+        token_efficiency_rationale: "Fable remains qualified-only; no routine use"
 
 quality_gates:
   unsupported_model_id: refresh_openrouter_models_before_activation
@@ -450,7 +609,7 @@ budget_controls:
     over_cap_behavior: stop_and_request_owner_approval
   frontier_council_quota:
     routine_run: zero
-    substantial_strategy_run: one_to_three_calls_per_family
+    substantial_strategy_run: one_to_two_calls_per_family
     payment_or_architecture_verdict: one_call_per_family_plus_final_codex_review
   execution_pool_quota:
     bulk_account_cards: cheap_models_first
@@ -485,7 +644,10 @@ logging:
     - timestamp
     - timestamp_utc
     - run_id
-    - epic_or_task
+    - task_role_and_langgraph_node
+    - query_shape
+    - graph_node_path
+    - model_route_profile
     - provider
     - model_id
     - model_role
@@ -593,7 +755,7 @@ model_call_ledger_schema:
   minimum_fields:
     - timestamp_utc
     - run_id
-    - epic_or_task
+    - task_role_and_langgraph_node
     - provider
     - model_id
     - model_role

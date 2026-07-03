@@ -33,6 +33,7 @@ const storageKeys = {
   events: "archflow.jarvis.events",
   architectureMode: "archflow.jarvis.architectureMode",
   interviewState: "archflow.jarvis.interviewState",
+  apiBase: "archflow.jarvis.apiBase",
 };
 
 const blockSchemaVersion = "0.5";
@@ -68,6 +69,14 @@ let activeRecognition = null;
 let voiceTimerId = null;
 let voiceStartedAt = null;
 let voiceElapsedSeconds = 0;
+let jarvisApiBase = (localStorage.getItem(storageKeys.apiBase) || defaultJarvisApiBase()).replace(/\/+$/, "");
+let apiHealthTimer = null;
+let jarvisApiState = {
+  status: "checking",
+  label: "Jarvis API checking",
+  detail: "Local Jarvis API has not been checked yet.",
+  tone: "warn",
+};
 migratePersistentChatHistory();
 let chatHistory = loadJson(storageKeys.chatHistory, [
   {
@@ -92,6 +101,7 @@ const view = document.querySelector("#view");
 const nav = document.querySelector("#nav");
 const generatedAt = document.querySelector("#generatedAt");
 const liveStatus = document.querySelector("#liveStatus");
+const apiStatus = document.querySelector("#apiStatus");
 const refreshDataButton = document.querySelector("#refreshData");
 const globalComposer = document.querySelector("#globalComposer");
 const globalInput = document.querySelector("#globalInput");
@@ -128,10 +138,16 @@ function clamp(value, min, max) {
   return Math.min(max, Math.max(min, numeric));
 }
 
+function defaultJarvisApiBase() {
+  const localHostnames = new Set(["127.0.0.1", "localhost", "0.0.0.0"]);
+  if (localHostnames.has(window.location.hostname)) return "http://127.0.0.1:8787";
+  return window.location.origin;
+}
+
 function defaultPromptConfig() {
   return {
     chain_name: "PRD-to-ICP dashboard chain",
-    model_policy: "MODEL_PROVIDER=none by default. Mistral and OpenRouter keys may exist only in ignored local env files; static browser code must not read or call them. OpenAI local key was removed.",
+    model_policy: "MODEL_PROVIDER=none by default. OpenAI, OpenRouter, or Mistral keys may exist only in ignored local/service env files; static browser code must not read or call provider keys.",
     memory_policy: "Summaries and candidates only; no raw transcript, raw recording, or private document persistence by default.",
     normal_prompt: "Answer from verified dashboard state, explain blockers, prepare approval packets, and avoid scope expansion.",
     interview_prompt: "Ask one question at a time, classify answers as fact, preference, hypothesis, gap, decision, or task candidate.",
@@ -852,6 +868,64 @@ function setLiveStatus(text, tone = "ok") {
   liveStatus.className = `pill live-pill ${tone}`;
 }
 
+function setApiStatus(text, tone = "warn", detail = "") {
+  jarvisApiState = {
+    ...jarvisApiState,
+    label: text,
+    tone,
+    detail: detail || jarvisApiState.detail,
+  };
+  if (apiStatus) {
+    apiStatus.textContent = text;
+    apiStatus.className = `pill live-pill ${tone}`;
+    apiStatus.title = detail || text;
+  }
+}
+
+function apiEndpoint(path) {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${jarvisApiBase}${normalized}`;
+}
+
+async function checkJarvisApi(reason = "health check", options = {}) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), options.timeoutMs || 2400);
+  try {
+    const response = await fetch(`${apiEndpoint("/health")}?ts=${Date.now()}`, {
+      cache: "no-store",
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`health returned ${response.status}`);
+    const result = await response.json();
+    jarvisApiState = {
+      status: "connected",
+      label: "Jarvis API connected",
+      detail: `${result.payload?.service || "jarvis-api"} ${result.payload?.version || ""}`.trim(),
+      tone: "ok",
+      payload: result,
+    };
+    setApiStatus(jarvisApiState.label, "ok", jarvisApiState.detail);
+    if (!options.silent) appendEvent("Jarvis API connected", `Health check passed after ${reason}.`, "ok");
+    return jarvisApiState;
+  } catch (error) {
+    const message = error?.name === "AbortError"
+      ? "Local Jarvis API health check timed out."
+      : `Local Jarvis API unavailable: ${error.message || error}.`;
+    jarvisApiState = {
+      status: "disconnected",
+      label: "Jarvis API disconnected",
+      detail: `${message} Start services/jarvis-api on port 8787 or set ${storageKeys.apiBase}.`,
+      tone: "warn",
+      payload: null,
+    };
+    setApiStatus(jarvisApiState.label, "warn", jarvisApiState.detail);
+    if (!options.silent) appendEvent("Jarvis API disconnected", jarvisApiState.detail, "warn");
+    return jarvisApiState;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
 function isEditingControlActive() {
   const element = document.activeElement;
   if (!element) return false;
@@ -954,12 +1028,12 @@ function architectureSelectorMarkup(context = "jarvis") {
   return `
     <div class="architecture-selector" data-context="${escapeHtml(context)}" aria-label="Jarvis architecture selector">
       <button class="${architectureMode === "service" ? "active" : ""}" data-architecture="service" type="button">
-        <strong>Architecture 1</strong>
-        <span>PRD/ICP service output</span>
+        <strong>1</strong>
+        <span>Architecture 1 - PRD/ICP service output</span>
       </button>
       <button class="${architectureMode === "control" ? "active" : ""}" data-architecture="control" type="button">
-        <strong>Architecture 2</strong>
-        <span>Agent control system</span>
+        <strong>2</strong>
+        <span>Architecture 2 - agent control system</span>
       </button>
     </div>
   `;
@@ -1046,6 +1120,10 @@ function startLiveRefresh() {
       setLiveStatus("Static data only", "warn");
     });
   }, 15000);
+  if (apiHealthTimer) window.clearInterval(apiHealthTimer);
+  apiHealthTimer = window.setInterval(() => {
+    checkJarvisApi("scheduled health check", { silent: true }).catch(() => {});
+  }, 30000);
 }
 
 function badge(status) {
@@ -1115,9 +1193,10 @@ function systemCards(data) {
     { label: "Access", value: "hidden link", note: "Google auth planned after Vercel v1", tone: "warn" },
     { label: "Refresh", value: "static polling", note: "Manual, focus, command, and 15s data checks", tone: "ok" },
     { label: "Jarvis", value: jarvisMode, note: "Normal or interview command mode", tone: "ok" },
+    { label: "Jarvis API", value: jarvisApiState.status, note: jarvisApiState.detail, tone: jarvisApiState.tone },
     { label: "Voice input", value: voiceAuthorized ? "browser ready" : "requires permission", note: "Permission is proven only when browser listening starts; no raw audio storage", tone: voiceAuthorized ? "ok" : "warn" },
     { label: "Voice output", value: voiceOutputEnabled ? "speech enabled" : "muted", note: "Browser speech synthesis; human voice depends on installed browser voices", tone: voiceOutputEnabled ? "ok" : "warn" },
-    { label: "Provider keys", value: "local env only", note: "OpenRouter/Mistral are not exposed to static JS; OpenAI key removed", tone: "warn" },
+    { label: "Provider keys", value: "server env only", note: "Provider keys are never exposed to static JS; provider calls require API/budget gates", tone: "warn" },
     { label: "E1.3", value: e13?.derived_status || "unknown", note: e13 ? `${e13.passed_count}/${e13.assertion_count} readback` : "No gate data", tone: e13?.readback_status === "passed" ? "ok" : "warn" },
     { label: "Railway", value: "deferred", note: "Use for backend, SSE, auth, workers, durable writes", tone: "warn" },
   ];
@@ -1520,12 +1599,12 @@ function jarvisReply(input, source = "typed command") {
     return `Jarvis is ready in ${architecture.label}. Ask for status, refresh, a PRD/ICP packet, an architecture-control task, or interview mode.`;
   }
 
-  if (lower.includes("architecture 1") || lower.includes("arch 1") || lower.includes("prd architecture") || lower.includes("service architecture")) {
+  if (lower === "1" || lower.includes("architecture 1") || lower.includes("arch 1") || lower.includes("prd architecture") || lower.includes("service architecture")) {
     setArchitectureMode("service", { switchTab: true });
     return `Architecture 1 is active. Normal commands now bias toward ${architectureMeta().commandBias}.`;
   }
 
-  if (lower.includes("architecture 2") || lower.includes("arch 2") || lower.includes("control architecture") || lower.includes("agent architecture")) {
+  if (lower === "2" || lower.includes("architecture 2") || lower.includes("arch 2") || lower.includes("control architecture") || lower.includes("agent architecture")) {
     setArchitectureMode("control", { switchTab: true });
     return `Architecture 2 is active. Normal commands now bias toward ${architectureMeta().commandBias}.`;
   }
@@ -1575,7 +1654,7 @@ function jarvisReply(input, source = "typed command") {
 
   if (lower.includes("status") || lower.includes("what works") || lower.includes("done")) {
     const e13 = dashboardData?.gates?.e1_3;
-    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard is static/read-only with local browser packets and provider-disabled API proof. OpenRouter, Railway, durable voice/file writes, and writeback remain gated until approved backend/runtime proof exists.`;
+    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard is static/read-only with local browser packets. Jarvis API is ${jarvisApiState.status}; provider calls, Railway, durable voice/file writes, and writeback remain gated until approved backend/runtime proof exists.`;
   }
 
   if (lower.includes("voice") || lower.includes("speak") || lower.includes("sound")) {
@@ -1660,6 +1739,7 @@ function renderJarvis(data) {
           <span>${escapeHtml(architectureMeta().short)}</span>
           <span>Static snapshot</span>
           <span>Browser-local packets</span>
+          <span>${escapeHtml(jarvisApiState.label)}</span>
           <span>Provider disabled</span>
           <span>Writeback gated</span>
         </div>
@@ -1690,6 +1770,7 @@ function renderJarvis(data) {
           </label>
         </div>
         <div id="voiceState" class="callout compact">${voiceAuthorized ? "Browser speech recognition was previously started in this browser. Mic requests a new transcript." : "Voice input requires browser microphone permission when listening starts."} ${voiceOutputEnabled ? "Speaker playback is enabled." : "Speaker playback is off."} ${autoSpeakEnabled ? "Auto-speak is on." : "Auto-speak is off."}</div>
+        <div class="callout compact">API: ${escapeHtml(jarvisApiState.detail)} Base: ${escapeHtml(jarvisApiBase)}.</div>
       </section>
 
       <aside class="panel">
@@ -2671,11 +2752,12 @@ function bindPrdIcpRequestSurface() {
       lane: "prd_icp_flow",
       architecture: architectureMode,
       approved_test_input: false,
-      source_refs: ["docs/testmeeting.md", "approved discovery-call links"],
+      source_refs: ["sanitized E1.2.8 source packet", "approved discovery summary labels"],
     };
     if (status) status.textContent = "Sending to local backend if available...";
     try {
-      const response = await fetch("/api/lanes/prd-icp", {
+      await checkJarvisApi("PRD/ICP backend send", { silent: true });
+      const response = await fetch(apiEndpoint("/api/lanes/prd-icp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -2689,7 +2771,7 @@ function bindPrdIcpRequestSurface() {
         extra: {
           backend_error: String(error.message || error),
           fallback: "preserved as browser-local review packet",
-          openrouter_state: "disabled_until_owner_approval_and_budget_guard",
+          provider_state: "disabled_until_owner_approval_and_budget_guard",
         },
       });
       if (status) status.textContent = `Backend unavailable; local packet staged: ${packet.id}.`;
@@ -3383,6 +3465,7 @@ window.addEventListener("hashchange", () => {
 });
 
 loadDashboardData("initial load")
+  .then(() => checkJarvisApi("initial load", { silent: true }))
   .then(startLiveRefresh)
   .catch((error) => {
     setLiveStatus("Data error", "block");

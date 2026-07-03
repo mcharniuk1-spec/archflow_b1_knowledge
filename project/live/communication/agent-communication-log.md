@@ -5192,3 +5192,467 @@ Remaining gaps:
 
 Next safe action:
 - Commit and push the public-safe dashboard/E1.2 artifacts plus the website handoff records to `main`.
+
+## 2026-07-02 18:45 - Codex - OpenRouter model-routing alias hardening
+
+Status: complete
+
+Task: tighten OpenRouter routing to explicit latest-family aliases for OpenAI/Anthropic/Fable while preserving existing Yushchenko/roles/land-graph usage and budget gates.
+
+Files changed:
+
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-01-openrouter-model-routing-plan.md`
+- `project/runs/yushchenko-model-efficiency/2026-07-02-1845-model-routing-policy-update.md`
+
+FACT:
+
+- OpenRouter runtime remains disabled (`MODEL_PROVIDER` defaults to `none`) so this is specification-only configuration work.
+- `~openai/gpt-latest`, `~anthropic/claude-opus-latest`, and `~anthropic/claude-fable-latest` were made explicit in the frontier and task-routing config.
+- Budget/usage controls remain unchanged: per-run cap `1.99 USD`, daily cap `5.00 USD`, substantial strategy frontier quota reduced to one-to-two calls per family, and execution-first with frontier escalation.
+
+INTERPRETATION:
+
+- Latest aliases reduce manual re-pin overhead while preserving explicit fallback paths and strict fable gating for technical qualification tasks.
+- Role/query-scoped routing (frontier council + land-graph) is now still the primary cost-control mechanism.
+
+GAP:
+
+- No live `/api/v1/models` validation or token ledger exists yet because provider activation gates are still not opened.
+
+Checks run:
+
+- none (runtime is disabled by policy in this branch)
+
+Next:
+
+- Resolve live model/pricing snapshot at activation time, then run one benchmark packet per high-stakes land-graph family and write to `model-call-ledger.jsonl`.
+
+## 2026-07-02 19:45 - Codex - OpenRouter role+node task routing optimization
+
+Status: starting
+
+Task: Replace epic-keyed task routing with role + LangGraph-node routing for OpenRouter execution/frontier handoff, while preserving existing frontier budget gates and strengthening qwen/kimi/mistral assignment for token-efficient execution.
+
+Files likely to change:
+
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-01-openrouter-model-routing-plan.md`
+- `public/project/runs/2026-07-01-openrouter-model-routing/agent-handout.md` (handoff context if changes are structural)
+
+Files claimed:
+
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-01-openrouter-model-routing-plan.md`
+
+Expected output:
+
+- Remove/replace E1-E7 task blocks with role+node task mappings.
+- Explicitly map token-efficient executor models (qwen/kimi/mistral) to CrewAI roles + LangGraph node contexts.
+- Keep frontier calls for high-stakes checks only, with same budget gates and fable qualifiers.
+
+Blockers:
+
+- runtime remains disabled (`MODEL_PROVIDER=none`), so this is routing-spec only.
+
+## 2026-07-02 20:25 - Codex - OpenRouter role+node routing optimization
+
+Status: complete
+
+Task: replace epic-keyed routing with role + LangGraph-node routing and tighten token-efficient model selection for Qwen/Kimi/Mistral usage in execution profiles.
+
+Files changed:
+
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-01-openrouter-model-routing-plan.md`
+- `project/runs/2026-07-01-openrouter-model-routing/agent-handout.md`
+- `project/live/communication/agent-communication-log.md` (this completion entry)
+
+FACT:
+
+- OpenRouter remains disabled (`MODEL_PROVIDER=none`), no live provider calls were enabled.
+- `project/config/model-routing.yaml` routing keys now explicitly pair CrewAI role + LangGraph node for execution/review/frontier selection.
+- Qwen remains the default execution baseline for evidence-heavy tasks (`qwen3.6-plus` preferred, `qwen3-235b-a22b` fallback).
+- Kimi and Mistral usage is now explicit on positioning/content/website/communication nodes where it is cost-effective.
+- Fable remains reserved for qualified technical lanes and payment-sensitive governance checks.
+
+INTERPRETATION:
+
+- The current contract reduces ambiguity versus epic-only routing and gives stronger cost predictability via role/task-specific execution profiles.
+
+GAP:
+
+- The implementation remains specification-only; activation still requires the local bridge/backend, runtime secrets, and a fresh `/api/v1/models` + pricing snapshot at approval time.
+
+Next:
+
+- On activation approval, add a preflight ledger validator that stores actual model IDs, input/output token usage, and effective weighted cost per family.
+
+2026-07-02 15:34 - Codex - OpenRouter role+node token-optimization refinement
+Status: complete
+
+Task: remove epic-based routing references from call logs and keep Qwen/Kimi/Mistral optimization explicit by CrewAI role and LangGraph node.
+
+Files changed:
+
+- `project/config/model-routing.yaml`
+- `project/reports/2026-07-01-openrouter-model-routing-plan.md`
+- `project/live/communication/agent-communication-log.md` (this entry)
+
+FACT:
+
+- OpenRouter remains disabled (`MODEL_PROVIDER=none`); no runtime wiring or secret changes.
+- Model routing remains role + LangGraph node-based for all execution/review plan definitions.
+- Cheap model usage now uses explicit task/role fields (Qwen/Kimi/Mistral) and no longer carries epic-based identifiers in logging schema.
+- Logging fields now require `task_role_and_langgraph_node` instead of `epic_or_task` for model-call audit rows.
+
+INTERPRETATION:
+
+- This keeps the optimization policy durable and queryable by role/node, while preserving frontier allocation for GPT-5.5, Opus, and Fable.
+
+GAP:
+
+- Activation still requires an approved local bridge/backend, provider secret policy, and fresh OpenRouter model/pricing refresh before any live call.
+
+Next:
+
+- When runtime is approved, align backend model-call validator schema to require `task_role_and_langgraph_node`, provider model IDs, and sampled-cost checks from actual calls.
+
+## 2026-07-02 21:30 - Codex - Evening skill and hook drift review
+
+Status: starting
+
+Task: review public skill registries and hook-backed workflow contracts, then refresh only public-safe files when actual drift is found.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-02-evening-skill-hook-review/agent-handout.md`
+- `project/runs/2026-07-02-evening-skill-hook-review/summary.md` if meaningful public-safe change is needed
+- `project/agents/skills-by-agent.md` only if registry drift is verified
+- `project/agents/agent-roster.yaml` only if registry drift is verified
+- `skills/skills-used.md` only if registry drift is verified
+
+Files claimed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-02-evening-skill-hook-review/agent-handout.md`
+
+Expected output:
+
+- Confirm whether skill registry and hook contracts match the current public repo.
+- Update only verified drift.
+- Leave a public-safe handout and completion entry.
+
+Blockers:
+
+- None known. Provider activation, network calls, pushes, and credential changes remain out of scope.
+
+Next:
+
+- Inspect registry, hook, workflow, and validation files before deciding whether any public-safe edits are needed.
+
+## 2026-07-02 21:39 - Codex - Evening skill and hook drift review
+
+Status: in progress
+
+Scope update:
+
+- Verified that `arcagcom` and `archflow1` are active project-local skills from current public run notes and `skills/skills-used.md`.
+- Verified that these skills are not yet represented in the per-agent registry or machine-readable roster.
+
+Files newly claimed:
+
+- `project/agents/skills-by-agent.md`
+- `project/agents/agent-roster.yaml`
+
+Next:
+
+- Add narrow registry entries for the two active project-local skills without changing hook behavior or provider/runtime gates.
+
+## 2026-07-03 06:30 - Codex - Priority mechanical-work E4 profile packet
+
+Status: starting
+
+Task: continue the priority mechanical-work lane by converting the selected E4 social-profile packaging task into a public-safe evidence and handoff packet.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+
+Files claimed:
+
+- `project/runs/2026-07-03-0630-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Expected output:
+
+- Refresh the deterministic priority packet.
+- Add a concrete E4 social-profile packaging evidence checklist and safe execution prompt.
+- Record concise public-safe KB/log and handout state.
+
+Blockers:
+
+- Live social profile edits, Notion writes, network calls, provider calls, Git push, and production deployment remain out of scope.
+
+Next:
+
+- Run the priority selector, inspect E4 content context, create the packet, then run local public-safety checks.
+
+## 2026-07-03 01:57 - Codex - Priority mechanical-work lane
+
+Status: starting
+
+Task: analyze current public project context and perform the next safe mechanical action that needs no owner confirmation.
+
+Files likely to change:
+
+- `project/runs/2026-07-03-0157-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- `project/runs/2026-07-03-0157-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Expected output:
+
+- Public-safe selected-task, PitAgent prompt, KB/Notion/GitHub packet, and agent handout for the next useful mechanical task.
+
+Blockers:
+
+- No network, provider calls, deployment, Notion write, Git push, or credential edits in scope.
+
+Next:
+
+- Inspect project plan, recent runs, wiki memory/logs, and priority-task operator before selecting the task.
+
+## 2026-07-03 10:54 - Codex - Priority mechanical-work lane
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-03-0157-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-03-0157-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.json`
+- `project/runs/2026-07-03-0157-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+
+- The priority-task operator selected E4 `Package social profiles for LinkedIn, X, and Threads` with score `282`.
+- This lane prepared an approval-gated execution packet only.
+- No live social account, Notion, GitHub push, provider call, deployment, credential, or external write was performed.
+
+INTERPRETATION:
+
+- E4 profile packaging is the current highest-ranked safe priority, but actual profile edits/publication are not mechanical without owner approval.
+
+GAP:
+
+- Owner approval is required before login, publication, account edits, external status writeback, or profile-specific final facts.
+- Unrelated pre-existing dirty files remain outside this run's ownership.
+
+Checks:
+
+- Pass: `python3 -m py_compile project/scripts/priority-task-operator.py`
+- Pass: `python3 -m json.tool project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.json`
+- Pass: `python3 scripts/public_safety_scan.py`
+- Reviewed: `git status --short`
+
+Next safe action:
+
+- Use the generated packet to draft platform-specific profile copy and an asset checklist after owner approval for any external account action.
+
+## 2026-07-03 10:51 - Jesus/Codex - E1.2 testmeeting dashboard architecture continuation
+
+Status: starting
+
+Task:
+- Continue `2026-07-02-e1-2-testmeeting-dashboard-architecture` with sanitized external-provider payload, Notion writeback attempt, dashboard/Jarvis reliability checks, headless Chrome smoke evidence, Telegram delivery attempt, and Railway-ready follow-up definition.
+- Review the updated node/role model-routing policy and keep model selection role/node-based, not epic-based.
+- Keep raw private meeting/DOCX source text out of public files, provider payloads, Telegram, Notion, screenshots, and logs.
+
+Files likely to change:
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/`
+- `project/runs/E1.2/2026-07-02-testmeeting-local/`
+- `project/dashboard/app.js`
+- `project/dashboard/styles.css`
+- `project/dashboard/data.json`
+- `services/jarvis-api/app.py`
+- `services/jarvis-api/README.md`
+- `project/config/model-routing.yaml` only if a narrow routing correction is needed after review
+- `project/reports/`
+- `project/issues/`
+
+Files claimed:
+- This continuation run folder and E1.2.8 provider/Notion/smoke/Telegram evidence files.
+- Dashboard/Jarvis local connection status and architecture-selector files.
+- Jarvis API local readiness files.
+
+Expected output:
+- Sanitized external-provider payload and provider-call ledger, or one exact approval blocker.
+- Notion update status, or one exact approval/usage blocker with prepared public-safe fallback packet.
+- Desktop/mobile smoke screenshots for required local dashboard routes, if browser execution is available.
+- Telegram delivery status, if approved sender credentials and network path are available.
+- Dashboard/Jarvis local readiness evidence and Railway activation follow-up task.
+
+Blockers:
+- External provider calls, Notion fallback API, Telegram, and headless browser may require approval or unavailable credentials. If blocked, stop on the blocked step and report the exact blocker text.
+- Existing uncommitted model-routing/skill-registry/priority-mechanical-work changes are present and must not be reverted.
+
+Next:
+- Build the sanitized payload and inspect model-routing/Jarvis runtime files before attempting any external or browser action.
+
+## 2026-07-03 10:53 - Codex - Evening skill and hook drift review
+
+Status: complete
+
+Task: review public skill registries and hook-backed workflow contracts, then refresh only public-safe files when actual drift is found.
+
+Files changed:
+
+- `project/agents/skills-by-agent.md`
+- `project/agents/agent-roster.yaml`
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-02-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-02-evening-skill-hook-review/agent-handout.md`
+
+FACT:
+
+- `arcagcom` and `archflow1` are active project-local skills recorded in public run notes and `skills/skills-used.md`.
+- The per-agent registry and machine-readable roster did not yet expose those two skills.
+- The registry now includes a shared project coordination section for `arcagcom` and `archflow1`.
+- The roster now includes `project_local_skills` entries for both skills.
+- `.codex/hooks.json` and `project/scripts/task-handout-hook.py` were inspected and left unchanged.
+
+Checks run:
+
+- Pass: `.codex/hooks.json` JSON parse.
+- Pass: `project/agents/agent-roster.yaml` YAML parse.
+- Pass: hook script bytecode compile.
+- Pass: workflow validation.
+- Pass: task-handout hook readiness probe.
+- Pass: public safety scan.
+- Pass: ignored local env/runtime checks.
+- Pass: tracked text ASCII check.
+- Pass: `git diff --check`.
+- Checked: `git status --short`.
+
+GAP:
+
+- Provider activation, Railway, OpenRouter calls, live Nexus/writeback, voice proof, Git push, and external publication were out of scope.
+- Unrelated OpenRouter/model-routing changes, priority mechanical-work run folders, and other live-log activity were present or appeared outside this run and were not reviewed or modified here.
+
+Next safe action:
+
+- Next evening run should check only for new concrete skill or hook drift and otherwise record a no-op summary.
+
+## 2026-07-03 11:02 - Codex - Priority mechanical-work E4 profile packet
+
+Status: complete
+
+Task: continue the priority mechanical-work lane by converting the selected E4 social-profile packaging task into a public-safe evidence and handoff packet.
+
+Files changed:
+
+- `project/runs/2026-07-03-0630-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/profile-field-drafts.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/review-gate.md`
+- `project/runs/2026-07-03-0630-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+FACT:
+
+- The priority selector selected `Package social profiles for LinkedIn, X, and Threads` with score `282`.
+- The run now includes LinkedIn, X, and Threads draft profile fields, a review gate, a safe Notion/GitHub packet, and a continuation handout.
+- No live social profile, network, provider, Notion, Git push, deployment, or publication action was performed.
+
+Checks run:
+
+- Pass: `python3 project/scripts/priority-task-operator.py --plan project/project-plan.md --run-id 2026-07-03-0630-priority-mechanical-work --max-recent-completed 8`.
+- Pass: `python3 scripts/public_safety_scan.py`.
+- Pass: `python3 -m py_compile project/scripts/priority-task-operator.py`.
+- Pass: `git diff --check` for the touched run folder, live communication log, and `wiki/log.md`.
+- Checked: `git status --short`.
+
+GAP:
+
+- Owner decisions remain needed before live profile edits: company-only versus personal voice, link target, profile visuals, publication timing, and whether updates wait for E3 diagnostic/analytics readiness.
+- Other uncommitted OpenRouter, skill-registry, and adjacent run-folder changes were present and were not modified by this lane.
+
+Next safe action:
+
+- Future E4 operator should review `profile-field-drafts.md`, run AF Review, and request owner approval before any live platform update.
+
+## 2026-07-03 11:17 - Jesus/Codex - E1.2 testmeeting dashboard architecture continuation complete
+
+Status: complete
+
+Task:
+Continue `2026-07-02-e1-2-testmeeting-dashboard-architecture` by preserving current state, using a sanitized provider payload, switching comparison to OpenAI, updating Notion through the connector, verifying local Jarvis/dashboard behavior, generating route screenshots, sending a sanitized Telegram update, and preparing the project for the next Railway activation lane.
+
+Files changed:
+
+- `project/dashboard/index.html`
+- `project/dashboard/app.js`
+- `project/dashboard/styles.css`
+- `project/dashboard/data.json`
+- `services/jarvis-api/app.py`
+- `project/scripts/e1_2_8_openai_comparison.py`
+- `project/scripts/dashboard-screenshot-smoke.py`
+- `project/scripts/send-telegram-summary.py`
+- `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/`
+- `docs/dashboard-operating-manual.md`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Verification results:
+
+- Provider call status: OpenAI sanitized comparison reached the API and is blocked by `insufficient_quota`; raw private source sent: false; provider calls recorded by Jarvis API: 0.
+- Notion status: connector update succeeded for the E1 page and current E1 task notes/statuses; no fallback API write was needed.
+- Jarvis API status: local `/health` and PRD/ICP lane checks passed on port 8787 with `MODEL_PROVIDER=openai`; provider execution remains disabled behind approval and budget guards.
+- Dashboard status: header now shows Jarvis API connected/disconnected; direct `1` and `2` architecture buttons are visible; persistent chat and manual transcript fallback remain browser-local.
+- Smoke screenshots: generated service/schema screenshots at desktop and mobile breakpoints in the run folder.
+- Route smoke: passed 8 dashboard routes with provider calls 0 and writeback 0.
+- Telegram delivery: sent through the approved API path with sanitized message; bot token, chat ID, and response body were not stored.
+
+Checks run:
+
+- Pass: `node --check project/dashboard/app.js`.
+- Pass: Python bytecode compile for Jarvis API and continuation scripts.
+- Pass: local Jarvis API `/health`.
+- Pass: dashboard static smoke.
+- Pass: dashboard screenshot smoke.
+- Pass: dashboard data JSON parse.
+- Pass: sanitized payload/status JSON parse.
+- Pass: public safety scan.
+- Pass: workflow validation in repo-local runtime.
+- Pass: pre-push runtime guard in repo-local runtime.
+- Pass: touched-text ASCII check.
+- Pass: `git diff --check`.
+
+Remaining blockers:
+
+- OpenAI provider comparison cannot produce output until quota is available.
+- OpenAI provider execution routes still need explicit budget env caps before any approved provider-backed Jarvis execution.
+- Railway hosted runtime, auth/CORS, durable writeback, production promotion, and always-responding Jarvis uptime remain the next E1.7 execution lane.
+
+Next safe action:
+
+- Commit and push the scoped public-safe continuation artifacts, then execute E1.7 Railway preparation and activation as a separate lane with provider-disabled baseline first.

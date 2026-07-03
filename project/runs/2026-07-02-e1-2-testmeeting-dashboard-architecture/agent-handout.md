@@ -1,7 +1,7 @@
 # Agent Handout: E1.2 Testmeeting And Dashboard Architecture
 
 Date: 2026-07-02
-Status: local execution complete; provider comparison blocked by approval reviewer
+Status: local execution complete; Notion and Telegram updated on 2026-07-03; OpenAI comparison quota-blocked
 Lane: E1.2 / E1.3.9 dashboard architecture
 
 ## Purpose
@@ -18,6 +18,25 @@ The dashboard was updated so Jarvis can operate under two explicit architectures
 
 - Architecture 1: PRD/ICP service output. Normal commands stage PRD, evidence, backlog, and report packets. Interview mode starts proactively with source/output questions.
 - Architecture 2: Agent control system. Normal commands stage architecture/workflow packets involving logs, WikiLLM, Graphify, LlamaIndex, LangGraph/CrewAI boundaries, approvals, and durable output control. Interview mode starts proactively with system-change questions.
+
+## 2026-07-03 Continuation Result
+
+FACT:
+- The sanitized external provider payload was created from the Notion update packet and contains only source labels plus derived summaries.
+- OpenAI was configured through ignored local env for the comparison path. The sanitized call reached the API and failed with `insufficient_quota`; no raw private source was sent.
+- The E1 parent page and E1.2, E1.2.8, E1.3.9, E1.7, and E1.2.9 task states were updated through the Notion connector.
+- The local Jarvis API was started with `MODEL_PROVIDER=openai` and returned `/health` plus PRD/ICP lane review packets with provider calls at zero.
+- The dashboard header now shows Jarvis API connected/disconnected state, and the Jarvis architecture controls use direct `1` and `2` buttons.
+- Browser voice remains local SpeechRecognition first; when the browser network speech service is unavailable, the manual transcript fallback remains the supported path and no audio is stored.
+- Telegram delivery succeeded through the approved Bot API path using ignored env credentials and a sanitized message.
+
+INTERPRETATION:
+- This run proves local dashboard-to-API readiness and current Notion/Telegram reporting, but not hosted Railway uptime or provider-backed Jarvis generation.
+
+GAP:
+- OpenAI account quota blocks provider comparison output.
+- OpenAI budget env caps are not yet present for provider execution routes.
+- Railway deployment, hosted auth/CORS, durable writeback, and always-on Jarvis operation remain the next E1.7 execution lane.
 
 ## Outputs
 
@@ -55,13 +74,13 @@ GAP:
 - OpenRouter remains blocked until explicit owner approval after external-provider risk review.
 - Railway deployment, hosted auth/CORS, durable writeback, Telegram delivery, and production/Figma promotion are separate gated tasks.
 
-## OpenRouter State
+## Provider Comparison State
 
-The OpenRouter comparison was attempted only on a sanitized digest. The sandbox first blocked network resolution. The escalation reviewer then rejected the external provider call as a data-exfiltration risk for derived private-source content. No workaround was attempted.
+The OpenAI comparison was attempted only on a sanitized digest. The sandbox first blocked network resolution; after approved network execution, the API returned `insufficient_quota`. No raw private source was sent and no provider output was generated.
 
 Provider calls: 0
 Provider spend: 0.00 USD
-Current status: blocked until explicit owner approval after risk review.
+Current status: blocked until the approved OpenAI account has quota and budget caps are present.
 
 ## Notion Status Candidates
 
@@ -82,15 +101,17 @@ Current status: blocked until explicit owner approval after risk review.
 | `python3 -m py_compile project/scripts/e1_2_8_testmeeting_run.py` | passed |
 | `services/jarvis-api/app.py` AST parse | passed |
 | `budget-guard.json` parse | passed |
-| Dashboard browser smoke | blocked by escalation usage limit |
-| In-process Jarvis API check | passed for health, Architecture 1 lane, Architecture 2 lane, and meeting approval guard |
+| Dashboard browser smoke | passed, 8 routes, provider calls 0, writeback 0 |
+| Dashboard screenshots | passed, service/schema desktop/mobile screenshots generated |
+| Local Jarvis API check | passed for `/health` and PRD/ICP lane with `MODEL_PROVIDER=openai`, provider calls 0 |
 | Public safety scan | passed |
 | Workflow validation | passed |
 | Runtime guard | passed |
 | Dashboard data JSON parse | passed |
 | Git diff whitespace check | passed |
-| Notion update | blocked by approval reviewer usage limit; local update packet saved |
+| Notion update | passed through connector |
+| Telegram delivery | passed through approved API path |
 
 ## Next Safe Action
 
-Append a complete entry to the live communication log, then commit and push the public-safe dashboard/E1.2 artifacts plus the website lane run records that were handed off for post-dashboard commit. A future run should apply `notion-update-packet.md` to Notion after connector usage is available again.
+Append a complete entry to the live communication log, commit/push the scoped public-safe artifacts, and open E1.7 as the next execution task for Railway preparation and activation of an always-responding provider-disabled Jarvis API.

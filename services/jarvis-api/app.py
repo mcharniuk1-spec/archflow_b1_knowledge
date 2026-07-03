@@ -18,10 +18,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 
-APP_VERSION = "2026-07-02-jarvis-dashboard-mvp"
+APP_VERSION = "2026-07-03-jarvis-dashboard-mvp"
 DEFAULT_DAILY_BUDGET = 5.00
 DEFAULT_RUN_BUDGET = 1.99
 DEFAULT_HARD_STOP = 1.99
+LOCAL_ORIGIN_REGEX = r"^http://(127\.0\.0\.1|localhost):\d+$"
 
 REQUIRED_ROLE_IDS = [
     "jesus",
@@ -118,16 +119,21 @@ def model_provider() -> str:
 
 
 def budget_state(provider_requested: bool = False) -> dict[str, Any]:
-    daily = env_float("OPENROUTER_DAILY_BUDGET_USD")
-    run = env_float("OPENROUTER_RUN_BUDGET_USD")
-    hard_stop = env_float("OPENROUTER_RUN_HARD_STOP_USD")
+    provider = model_provider()
+    budget_prefix = "OPENAI" if provider == "openai" else "OPENROUTER"
+    daily_name = f"{budget_prefix}_DAILY_BUDGET_USD"
+    run_name = f"{budget_prefix}_RUN_BUDGET_USD"
+    hard_stop_name = f"{budget_prefix}_RUN_HARD_STOP_USD"
+    daily = env_float(daily_name)
+    run = env_float(run_name)
+    hard_stop = env_float(hard_stop_name)
 
     missing = [
         name
         for name, value in [
-            ("OPENROUTER_DAILY_BUDGET_USD", daily),
-            ("OPENROUTER_RUN_BUDGET_USD", run),
-            ("OPENROUTER_RUN_HARD_STOP_USD", hard_stop),
+            (daily_name, daily),
+            (run_name, run),
+            (hard_stop_name, hard_stop),
         ]
         if value is None
     ]
@@ -222,14 +228,14 @@ def approval_block(reason: str) -> dict[str, Any]:
 app = FastAPI(title="ArchFlow Jarvis API", version=APP_VERSION)
 
 allowed_origin = os.getenv("JARVIS_API_ALLOWED_ORIGIN", "").strip()
-if allowed_origin:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=[allowed_origin],
-        allow_credentials=False,
-        allow_methods=["GET", "POST", "OPTIONS"],
-        allow_headers=["Content-Type", "Authorization"],
-    )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[allowed_origin] if allowed_origin else [],
+    allow_origin_regex=None if allowed_origin else LOCAL_ORIGIN_REGEX,
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
+)
 
 
 @app.middleware("http")
@@ -249,7 +255,8 @@ def health() -> dict[str, Any]:
         {
             "service": "jarvis-api",
             "version": APP_VERSION,
-            "openrouter": "disabled_until_explicit_owner_approval",
+            "model_provider": model_provider(),
+            "provider_calls": "disabled_until_explicit_owner_approval_and_budget_guard",
             "langgraph": "controller_contract",
             "crewai": "proof_passed_not_default_runtime",
             "voice": "local_ui_only",

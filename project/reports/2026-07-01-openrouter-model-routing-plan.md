@@ -27,12 +27,23 @@ INTERPRETATION: This plan is a routing contract for a future approved bridge. It
 
 GAP: Exact model IDs and pricing must be refreshed from the OpenRouter models endpoint before activation because model aliases and preview names change.
 
+Latest model references verified from OpenRouter public model pages (2026-07-02):
+
+- `openai/gpt-5.5`: `5 / 30` USD per million tokens (input/output), `1M` context, text+image input; released `Apr 24, 2026`.
+- `~anthropic/claude-opus-latest`: aliases to latest Claude Opus family model (reported `Claude Opus 4.8`).
+- `~anthropic/claude-fable-latest`: aliases to latest Claude Fable family model and should be used for qualification-only paths.
+- `qwen/qwen3.6-plus`: `0.325 / 1.95` USD per million tokens, `1M` context, released `Apr 2, 2026` (35% discount shown on OpenRouter page).
+- `moonshotai/kimi-k2-thinking`: `0.60 / 2.50` USD per million tokens, `262K` context, released `Nov 6, 2025`.
+- `mistralai/mistral-medium-3.1`: `0.40 / 2` USD per million tokens, `131K` context, released `Aug 13, 2025`.
+- `mistralai/mistral-small-3.2-24b-instruct-2506`: `0.075 / 0.20` USD per million tokens, `128K` context.
+- `mistralai/codestral-2508`: `0.30 / 0.90` USD per million tokens, `256K` context.
+
 ## Frontier Council
 
 Use the strongest available Claude, Gemini, and OpenAI models together for high-stakes work:
 
 - strategy and architecture
-- E1-E7 direction changes
+- high-impact direction changes
 - long-context synthesis
 - payment verdicts
 - public claim approval
@@ -47,6 +58,7 @@ Target role: artifact quality, long-form reasoning, PRD review, writing, agentic
 
 Preferred target models:
 
+- `~anthropic/claude-opus-latest` (currently `anthropic/claude-opus-4.8`)
 - `anthropic/claude-opus-4.7`
 - `anthropic/claude-opus-4.6`
 - `anthropic/claude-sonnet-4.6`
@@ -68,10 +80,10 @@ Poor qualities:
 
 Use Claude for:
 
-- E1 PRD and KB review.
-- E3 positioning and website message quality.
-- E4 final editorial pass.
-- E6 outreach tone and clarity.
+- PRD and KB review.
+- positioning and website message quality.
+- final editorial pass.
+- outreach tone and clarity.
 - Review of any output that becomes public-facing.
 
 ### Gemini Family
@@ -101,9 +113,9 @@ Poor qualities:
 
 Use Gemini for:
 
-- E2 source comparison and research synthesis support.
-- E3 visual/UI or page review after website work.
-- E5 analytics assumptions comparison.
+- source comparison and research synthesis support.
+- visual/UI or page review after website work.
+- analytics assumptions comparison.
 - Second-opinion strategy review in the frontier council.
 
 ### OpenAI Family
@@ -112,14 +124,11 @@ Target role: structured reasoning, conservative verdicts, scoring, schema design
 
 Preferred target models:
 
-- `openai/gpt-5.4-pro`
-- `openai/gpt-5.2-pro`
 - `openai/gpt-5.5`
+- `~openai/gpt-latest` (alias for latest OpenAI frontier model)
+- `openai/gpt-5.4-pro`
 - `openai/gpt-5.4-mini`
 - `openai/gpt-5.4-nano`
-- `openai/gpt-5.2`
-- `openai/gpt-5.1`
-- `openai/gpt-5`
 - `openai/gpt-oss-120b` for open-model comparison if available
 
 Good qualities:
@@ -127,7 +136,7 @@ Good qualities:
 - Strong for structured plans and scorecards.
 - Good for conservative yes/no decisions.
 - Useful for routing logic, schemas, and final verdict checks.
-- Strong fit for E5 and E7 evidence judgment.
+- Strong fit for ROI variance and payment/governance evidence judgment.
 
 Poor qualities:
 
@@ -135,12 +144,38 @@ Poor qualities:
 - Overkill for routine transformations.
 - Exact model availability must be verified before wiring.
 
-Use OpenAI for:
+Use OpenAI primarily for:
 
-- E2 ICP scoring design.
-- E5 ROI and funnel logic.
-- E7 payment verdict.
+- ICP scoring design and consistency checks.
+- ROI and funnel logic.
+- Payment verdicts.
 - Final architecture consistency checks.
+
+### Fable (Technical Qualifier)
+
+Target role: technical qualification for high-specificity, approval-gated, and architecture-sensitive decisions.
+
+Preferred target models:
+
+- `~anthropic/claude-fable-latest`
+
+Good qualities:
+
+- Deep technical reasoning on narrow, high-risk questions.
+- Good fit for qualification packets that need explicit approval before final verdict.
+- Supports technical traceability when evidence and assumptions are contested.
+
+Poor qualities:
+
+- Not available for routine extraction or high-volume batch work.
+- Must be explicitly enabled after OpenRouter model-list refresh.
+- Budget is not for routine calls.
+
+Use for:
+
+- ROI variance edge-case and sensitivity stress checks that affect decisions.
+- Payment verdict or gating decisions requiring technical qualification.
+- Security/compliance or architecture qualification packets before final approval.
 
 ## Execution Pool
 
@@ -215,7 +250,7 @@ Poor qualities:
 
 - Should not be sole final strategy judge.
 - Needs a stronger checker for public claims.
-- Not enough alone for E7 verdicts.
+- Not enough alone for payment/governance verdicts.
 
 Use for:
 
@@ -321,7 +356,7 @@ Use for:
 
 - public web research starting points
 - current-source discovery
-- E2 market input packets
+- market input packets
 
 ### Other Optional Executors
 
@@ -331,17 +366,102 @@ Use these only when the activation-time model list and pricing make them worthwh
 - `inception/mercury-2` for speed-first low-risk transformations.
 - `x-ai/grok-4.3` for contrarian review only.
 
-## E1-E7 Routing
+## Role + Land-Graph Node Routing
 
-| Epic | Frontier Plan/Review | Execution Pool |
-|---|---|---|
-| E1 KB and PRD workflow | Claude Opus/Sonnet, Gemini Pro, OpenAI Pro | Qwen, Mistral, Kimi |
-| E2 research engine | OpenAI Pro, Gemini Pro, Claude Opus | Qwen, GLM, Perplexity, DeepSeek |
-| E3 website and positioning | Claude Opus/Sonnet, OpenAI Pro, Gemini Pro/Flash | Kimi, Codestral, Mistral |
-| E4 content | Claude Opus/Sonnet, OpenAI Pro | Mistral Small/Medium, Qwen, MiniMax |
-| E5 ROI and analytics | OpenAI Pro, Gemini Pro, Claude checker | Qwen, DeepSeek |
-| E6 outreach | Claude Opus/Sonnet, OpenAI Pro | Mistral, Qwen |
-| E7 payment verdict | OpenAI Pro, Claude Opus, Gemini Pro | Qwen only for prep, never verdict |
+Map execution, review, and planner models by CrewAI role and LangGraph land-graph node/path.
+
+### Yushchenko
+
+- `source_scope_gate` (`source_graph -> prd_blocks_graph -> risk_gate_graph`)
+  - Plan: `~openai/gpt-latest` then `anthropic/claude-opus-4.7`.
+  - Execute: `qwen/qwen3.6-plus`, `qwen/qwen3-235b-a22b`.
+  - Review: `anthropic/claude-sonnet-4.6`, `~openai/gpt-latest`.
+- `research_hypothesis_graph` (`source_crosswalk_graph -> hypothesis_graph -> evidence_graph`)
+  - Plan: `~openai/gpt-latest` then `~anthropic/claude-opus-latest`.
+  - Execute: `qwen/qwen3.6-plus`, `qwen/qwen3-235b-a22b`, `deepseek/deepseek-v4-flash`.
+  - Review: `anthropic/claude-sonnet-4.6`, `~openai/gpt-latest`.
+- `roi_metrics_node` (`metrics_graph -> scenario_graph -> variance_gate_graph`)
+  - Plan: `~openai/gpt-latest`, `google/gemini-3.1-pro-preview`, `anthropic/claude-opus-4.7`.
+  - Fable gate: `~anthropic/claude-fable-latest` for contested technical math.
+  - Execute: `qwen/qwen3.6-plus`, `qwen/qwen3-235b-a22b`, `deepseek/deepseek-v4-pro`.
+  - Review: `openai/gpt-5.5`, `anthropic/claude-sonnet-4.6`.
+- `payment_node` (`value_graph -> risk_graph -> governance_graph -> signoff_graph`)
+  - Plan: `~openai/gpt-latest`, `anthropic/claude-opus-4.7`, `google/gemini-3.1-pro-preview`.
+  - Fable gate: `~anthropic/claude-fable-latest`.
+  - Execute: `qwen/qwen3.6-plus`, `qwen/qwen3-235b-a22b`.
+  - Review: `openai/gpt-5.5`, `anthropic/claude-opus-4.7`.
+
+### Jesus
+
+- `prd_verdict_node` (`source_graph -> prd_blocks_graph -> risk_gate_graph`)
+  - Plan: `~openai/gpt-latest`, `anthropic/claude-opus-latest`.
+  - Execute: `qwen/qwen3.6-plus`, `qwen/qwen3-235b-a22b`.
+  - Review: `anthropic/claude-sonnet-4.6`, `~openai/gpt-latest`.
+- `payment_review_node` (`value_graph -> risk_graph -> governance_graph -> signoff_graph`)
+  - Plan: `~openai/gpt-latest`, `anthropic/claude-opus-latest`, `google/gemini-3.1-pro-preview`.
+  - Fable gate: `~anthropic/claude-fable-latest` if qualification is requested.
+  - Execute: `qwen/qwen3.6-plus`, `qwen/qwen3-235b-a22b`.
+  - Review: `openai/gpt-5.5`, `anthropic/claude-opus-4.7`.
+
+### Messi
+
+- `offer_positioning_node` (`offer_graph -> narrative_graph -> compliance_gate_graph`)
+  - Plan: `anthropic/claude-opus-latest`, `~openai/gpt-latest`.
+  - Execute: `moonshotai/kimi-k2-thinking`, `mistralai/mistral-medium-3.1`, `qwen/qwen3.6-plus`.
+  - Review: `google/gemini-3-flash-preview`, `anthropic/claude-sonnet-4.6`.
+- `outreach_node` (`message_graph -> channel_graph -> approval_graph`)
+  - Plan: `anthropic/claude-opus-latest`, `~openai/gpt-latest`.
+  - Execute: `mistralai/mistral-medium-3.1`, `mistralai/mistral-small-3.2-24b-instruct-2506`.
+  - Review: `anthropic/claude-sonnet-4.6`, `~openai/gpt-latest`.
+- `style_and_copy_node` (`brief_graph -> draft_graph -> style_graph`)
+  - Plan: `anthropic/claude-opus-latest`, `~openai/gpt-latest`.
+  - Execute: `mistralai/mistral-small-3.2-24b-instruct-2506`, `minimax/minimax-m2.5`, `qwen/qwen3.6-plus`.
+  - Review: `anthropic/claude-sonnet-4.6`.
+
+### Ronaldo
+
+- `source_risk_node` (`source_graph -> prd_blocks_graph -> risk_gate_graph`)
+  - Plan: `google/gemini-3.1-pro-preview`, `~openai/gpt-latest`.
+  - Execute: `moonshotai/kimi-k2-thinking`, `qwen/qwen3.6-plus`.
+  - Review: `anthropic/claude-sonnet-4.6`.
+- `website_technical_node` (`offer_graph -> narrative_graph -> compliance_gate_graph`)
+  - Plan: `anthropic/claude-opus-latest`, `~openai/gpt-latest`.
+  - Execute: `mistralai/mistral-medium-3.1`, `moonshotai/kimi-k2-thinking`, `qwen/qwen3.6-plus`.
+  - Review: `anthropic/claude-sonnet-4.6`.
+
+### LOL
+
+- `research_graph_node` (`source_crosswalk_graph -> hypothesis_graph -> evidence_graph`)
+  - Plan: `~openai/gpt-latest`, `anthropic/claude-opus-latest`, `google/gemini-3.1-pro-preview`.
+  - Execute: `qwen/qwen3.6-plus`, `perplexity/sonar-pro`, `deepseek/deepseek-v4-flash`.
+  - Review: `openai/gpt-5.5`, `anthropic/claude-sonnet-4.6`.
+- `positioning_graph_node` (`offer_graph -> narrative_graph -> compliance_gate_graph`)
+  - Plan: `~openai/gpt-latest`, `anthropic/claude-opus-latest`.
+  - Execute: `moonshotai/kimi-k2-thinking`, `qwen/qwen3.6-plus`.
+  - Review: `anthropic/claude-sonnet-4.6`, `google/gemini-3-flash-preview`.
+- `content_review_node` (`brief_graph -> draft_graph -> style_graph`)
+  - Plan: `~openai/gpt-latest`, `anthropic/claude-opus-latest`.
+  - Execute: `minimax/minimax-m2.5`, `qwen/qwen3.6-plus`.
+  - Review: `anthropic/claude-sonnet-4.6`.
+
+### Theory
+
+- `research_hypothesis_node` (`source_crosswalk_graph -> hypothesis_graph -> evidence_graph`)
+  - Plan: `~openai/gpt-latest`, `google/gemini-3.1-pro-preview`.
+  - Execute: `qwen/qwen3.6-plus`, `deepseek/deepseek-v4-pro`, `perplexity/sonar-pro`.
+  - Review: `anthropic/claude-sonnet-4.6`, `~openai/gpt-latest`.
+- `roi_node` (`metrics_graph -> scenario_graph -> variance_gate_graph`)
+  - Plan: `google/gemini-3.1-pro-preview`, `~openai/gpt-latest`.
+  - Execute: `qwen/qwen3.6-plus`, `deepseek/deepseek-v4-pro`.
+  - Review: `openai/gpt-5.5`.
+
+### Security
+
+- `technical_qualification_node` (`data_model_query -> dependency_graph -> qualification_graph -> approval_graph`)
+  - Plan: `~anthropic/claude-fable-latest` only.
+  - Fable gate: `~anthropic/claude-fable-latest`.
+  - Execute: `~anthropic/claude-fable-latest`.
+  - Review: `anthropic/claude-opus-4.7`.
 
 ## Maker Checker Pattern
 
@@ -368,9 +488,9 @@ Escalate to frontier review when:
 Budget:
 
 - Routine work uses no frontier council.
-- Substantial strategy work may use one to three calls per frontier family.
+- Substantial strategy work may use one to two calls per frontier family.
 - Payment or architecture verdict uses one call per family plus Codex final review.
-- Bulk E2 account research uses cheap execution first and sampled frontier review.
+- Research and discovery tasks use cheap execution first and sampled frontier review.
 
 Reliability:
 
@@ -385,7 +505,8 @@ Reliability:
 Every model call must log:
 
 - timestamp
-- epic or task
+- task_role_and_langgraph_node
+- query shape and graph node path
 - model ID
 - model role
 - prompt version
@@ -403,7 +524,7 @@ Review the ArchFlow OpenRouter model-routing spec as a strict architecture and c
 
 Assume cloud model runtime is disabled until explicit approval and a backend/local bridge exists. The spec may describe future cloud routing, but must not imply live provider availability, exposed credentials, or frontend access to model APIs.
 
-Check provider boundaries, cost discipline, maker/checker separation, E1-E7 fit, public-safety gates, unsupported model-name risk, frontier-model overuse, budget caps, retry rules, fallback behavior, and whether deterministic scripts or local models should replace model calls.
+Check provider boundaries, cost discipline, maker/checker separation, role-node fit, public-safety gates, unsupported model-name risk, frontier-model overuse, budget caps, retry rules, fallback behavior, and whether deterministic scripts or local models should replace model calls.
 
 Return severity-ranked issues with required corrections. Do not edit files unless explicitly assigned.
 ```

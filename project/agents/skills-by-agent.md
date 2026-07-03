@@ -14,6 +14,15 @@ Skills set up:
 - git-publication-check
 - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.
 
+## Shared Project Coordination
+
+Purpose: keep all public project agents aligned on live communication, file claims, local dashboard/Jarvis runtime boundaries, and gated activation rules.
+
+Skills set up:
+
+- [`arcagcom`](../../skills/arcagcom/SKILL.md) - coordinates public project agents through the live communication log, file claims, handoffs, and Prompt 2.1 / Prompt 3 merge gates.
+- [`archflow1`](../../skills/archflow1/SKILL.md) - defines the local Jarvis dashboard stack contract, provider-disabled runtime boundaries, voice path, OpenRouter budget gates, and Railway migration gates.
+
 ## AF Context
 
 Purpose: turn approved source material into structured English context.

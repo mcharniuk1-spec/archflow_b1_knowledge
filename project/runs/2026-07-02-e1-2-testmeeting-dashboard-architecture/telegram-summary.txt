@@ -1,0 +1,9 @@
+ArchFlow E1 continuation status, 2026-07-03:
+
+E1 page and key E1 tasks were updated in Notion through the connector. E1.2 and E1.2.8 remain Review: local/Codex PRD evidence exists, PDFs are generated, and owner acceptance is still the final Done gate.
+
+OpenAI provider comparison used sanitized data only and reached the API, but the call is blocked by insufficient quota. No raw private source was sent.
+
+Jarvis dashboard local proof now has a visible API connection indicator, direct Architecture 1/2 controls, persistent browser-local chat, proactive interview mode, manual transcript fallback, and provider-disabled Jarvis API health/PRD lane responses.
+
+Smoke status: dashboard route smoke passed for the required service/schema routes, and desktop/mobile screenshots were generated. Next execution task is E1.7 Railway preparation and activation for an always-responding Jarvis API with auth/CORS, health, provider-disabled baseline, and runbook proof.

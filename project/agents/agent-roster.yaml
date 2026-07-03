@@ -180,6 +180,35 @@ agents:
       - telegram_summary_only_when_approved_sender_exists
       - openrouter_runtime_stays_disabled_without_explicit_approval
 
+project_local_skills:
+  arcagcom:
+    title: Arcagcom
+    purpose: live communication, file claims, handoffs, and Prompt 2.1 / Prompt 3 merge gates for public project agents.
+    scope: shared_coordination_contract
+    skill_path: skills/arcagcom/SKILL.md
+    used_by:
+      - all_public_project_agents
+      - scheduled_automation_lanes
+    rules:
+      - read_live_communication_before_edits
+      - append_starting_update_before_edits
+      - keep_updates_public_safe
+      - coordinate_before_editing_claimed_files
+  archflow1:
+    title: Archflow1
+    purpose: local Jarvis dashboard stack contract, provider-disabled runtime boundaries, voice path, OpenRouter budget gates, and Railway migration gates.
+    scope: dashboard_and_jarvis_runtime_contract
+    skill_path: skills/archflow1/SKILL.md
+    used_by:
+      - dashboard_execution_roles
+      - jarvis_runtime_review
+      - railway_migration_planning
+    rules:
+      - do_not_claim_live_backend_without_health_check
+      - keep_provider_runtime_disabled_without_explicit_approval
+      - keep_raw_voice_and_transcripts_non_persistent_by_default
+      - require_owner_approval_for_railway_or_openrouter_activation
+
 dashboard_execution_roles:
   status: prompt_1_2_architecture_contract_only
   visibility: operator_ui_only_not_customer_facing

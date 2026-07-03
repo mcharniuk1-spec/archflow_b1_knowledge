@@ -10,6 +10,8 @@ ArchFlow now has a durable model-routing plan for future OpenRouter use. The pla
 
 The new architecture uses the strongest Claude, Gemini, and OpenAI models as a frontier council for planning, long reasoning, strategy, architecture, public-claim review, and payment verdicts. Cheaper models such as Kimi, Qwen, Mistral, DeepSeek, GLM, Llama, Perplexity, MiniMax, Mercury, Grok, and Gemma are assigned to bounded execution work that must be checked before publication or memory promotion.
 
+Model routing is now explicitly mapped by CrewAI role and LangGraph node shape (not by E1-E7 labels), with a strict frontier-execution split and reserved Fable qualification paths.
+
 ## Current State
 
 Status: complete after validation.
@@ -35,9 +37,9 @@ You are continuing ArchFlow model-routing work. Read project/config/model-routin
 
 FACT: The live communication log was read and updated before edits.
 
-FACT: An independent reviewer subagent produced a reviewer prompt/checklist covering provider boundaries, cost discipline, maker/checker separation, E1-E7 fit, public safety, unsupported model-name risk, frontier-model overuse, budget controls, and reliability controls.
+FACT: An independent reviewer subagent produced a reviewer prompt/checklist covering provider boundaries, cost discipline, maker/checker separation, role-node fit, public safety, unsupported model-name risk, frontier-model overuse, budget controls, and reliability controls.
 
-FACT: The model-routing YAML now includes activation gates, frontier council routing, execution pool roles, E1-E7 task routing, budget controls, reliability controls, quality gates, and required logging fields.
+FACT: The model-routing YAML now includes activation gates, frontier council routing, execution pool roles, role/node routing, budget controls, reliability controls, quality gates, and required logging fields.
 
 INTERPRETATION: The safest architecture is not one best model. It is a tiered system where expensive models are reserved for expensive decisions and cheaper models perform bounded work.
 
@@ -61,7 +63,7 @@ GAP: The exact OpenRouter model IDs and prices must be rechecked at activation t
 
 1. If model runtime is approved later, design the local bridge/backend before any API call.
 2. Refresh OpenRouter `/api/v1/models`.
-3. Convert the YAML task routing into LangGraph route nodes only after approval.
+3. Keep YAML role/node routing current as OpenRouter model aliases, pricing, and capability shifts are refreshed.
 4. Add deterministic schema validators for model outputs before using execution-pool models at scale.
 
 ## Safety Boundary

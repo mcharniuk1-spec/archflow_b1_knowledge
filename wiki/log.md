@@ -153,3 +153,52 @@ INTERPRETATION:
 
 GAP:
 - Local full-stack Jarvis proof, FastAPI runtime proof, OpenRouter activation, Railway migration, Telegram delivery, production/Figma sync, and dashboard writeback remain owner-gated.
+
+## 2026-07-03 - Priority mechanical-work packet
+
+FACT:
+- The priority-task operator selected E4 `Package social profiles for LinkedIn, X, and Threads` as the highest-ranked unfinished public-plan task.
+- The run created a public-safe packet under `project/runs/2026-07-03-0157-priority-mechanical-work/`.
+- No live social accounts, Notion, GitHub push, provider calls, deployment, credentials, or external writes were touched.
+
+INTERPRETATION:
+- The useful safe action was packet preparation, because account login, profile publication, and platform-specific final facts require owner approval.
+
+GAP:
+- Owner approval is still required before live profile edits, publication, or external status writeback.
+
+Checks:
+- Passed Python syntax check for the priority-task operator.
+- Passed JSON parse for the selected-task packet.
+- Passed public-safety scan.
+
+## 2026-07-03 - Priority mechanical-work E4 profile packet
+
+FACT:
+- The 06:30 priority mechanical-work lane reran the deterministic selector and again selected `Package social profiles for LinkedIn, X, and Threads`.
+- The run created a public-safe E4 profile packet with channel drafts, a review gate, a next-operator prompt, and a KB/Notion/GitHub payload under `project/runs/2026-07-03-0630-priority-mechanical-work/`.
+- No live social profile, Notion, provider, network, Git push, deployment, or publication action was performed.
+
+INTERPRETATION:
+- The useful no-approval action was preparing owner-ready profile materials and approval gates, not editing external platforms.
+
+GAP:
+- Owner decisions are still needed for company-only versus personal profile voice, profile link target, visual usage, timing, and any live platform update.
+
+## 2026-07-03 - E1.2 testmeeting dashboard architecture continuation
+
+FACT:
+- The E1 parent page was verified in Notion with the rewritten current summary, method, output package, readiness state, and next decisions before the task table.
+- E1.2, E1.2.8, E1.3.9, E1.7, and E1.2.9 received connector-backed Notion status/notes updates.
+- The sanitized OpenAI provider payload contains only source labels and derived summaries. The OpenAI comparison reached the API and is blocked by `insufficient_quota`.
+- Local Jarvis API `/health` and PRD/ICP lane checks passed with `MODEL_PROVIDER=openai`, provider calls 0, and writeback 0.
+- Dashboard smoke passed for 8 routes, and service/schema screenshots were generated at desktop and mobile breakpoints.
+- Telegram delivery succeeded through the approved API path using a sanitized project-status message.
+
+INTERPRETATION:
+- E1.2/E1.2.8 now have reliable local proof and current Notion reporting. The remaining provider comparison gap is billing/quota, not missing local artifacts.
+- E1.3.9 is review-ready as a local dashboard/Jarvis control surface, not as hosted Railway proof.
+
+GAP:
+- OpenAI quota and provider budget env caps are still required before provider-backed comparison can produce an output.
+- E1.7 remains the next execution lane for Railway preparation and always-responding Jarvis API activation.
