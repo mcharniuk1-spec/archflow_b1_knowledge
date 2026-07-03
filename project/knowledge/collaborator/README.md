@@ -40,3 +40,7 @@ If the collaborator agent receives private material elsewhere, the output saved 
 ## Current E1.6 Scope
 
 This folder completes the collaborator side of the E1.6 split. It gives the collaborator agent a clean home without exposing private identities or raw sources in the public repository.
+
+## Current Notes
+
+- `daily-founder-notes-2026-07-03.md`: collaborator brief derived from the Daily Founder Notes sequence and the later E1.7 cloud proof.

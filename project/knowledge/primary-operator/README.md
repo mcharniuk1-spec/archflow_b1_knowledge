@@ -34,3 +34,7 @@ The primary operator knowledge base stores reviewed operating summaries for the 
 ## Current E1.6 Scope
 
 This folder completes the lead-role side of the E1.6 split. It exists to keep execution ownership clear while preserving WikiLLM as the durable shared memory layer.
+
+## Current Notes
+
+- `daily-founder-notes-retrospective-2026-07-03.md`: primary-operator correction after the later E1.7 hosted Railway proof and Vercel freshness review.

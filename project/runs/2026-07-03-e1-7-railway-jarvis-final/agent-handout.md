@@ -75,6 +75,10 @@ Completed or queued in this closeout:
 - PDF rendering;
 - git diff check.
 
+## Closeout Addendum
+
+Notion append-only updates, validation, Git push, and public-safe Telegram file delivery were completed in the E1.7 closeout lane. A later cloud/KB retrospective verified that Railway remains healthy for provider-disabled review packets, while Vercel production still needs a freshness recheck because the latest E1.7 dashboard data is present on the review preview before production proof.
+
 ## Next Safe Action
 
-Complete Notion append-only updates, rerun the final validation stack, commit/push, and send the private Telegram closeout message with the report and review links.
+Keep E1.7 in Review for provider-disabled hosted runtime, recheck production dashboard freshness after the final main push, and do not claim full product runtime until auth, persistence, provider ledgering, durable writeback, raw voice handling, client workspaces, and buyer proof are implemented.

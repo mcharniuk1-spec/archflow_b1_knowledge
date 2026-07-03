@@ -131,6 +131,6 @@ The current setup is useful but fragile if described as a finished product. It i
 | `/health` passes from the Railway domain | Passed |
 | Provider calls remain zero | Passed |
 | Writeback remains disabled | Passed |
-| Dashboard can store/check hosted API base | Passed locally; live Vercel redeploy remains review-link dependent |
-| Public safety scan, runtime guard, dashboard JSON parse, and diff check pass | To be rerun after final report updates |
-| Run handout and Notion/GitHub/Telegram packets are created | In progress in the closeout lane |
+| Dashboard can store/check hosted API base | Passed locally and browser-verified on the production dashboard Config screen; latest E1.7 dashboard data remains preview-current before production freshness proof |
+| Public safety scan, runtime guard, dashboard JSON parse, and diff check pass | Passed in E1.7 closeout; rerun required after the later cloud/KB retrospective files |
+| Run handout and Notion/GitHub/Telegram packets are created | Passed for E1.7 closeout; later cloud/KB retrospective adds a separate packet |

@@ -278,6 +278,24 @@ FACT:
 - Wrote the KB update principle report at `project/reports/2026-07-03-kb-update-principle.md`.
 - Defined WikiLLM as the only durable memory, LlamaIndex as retrieval only, Graphify as generated reference, and external surfaces as non-memory until agent review.
 - Added promotion test, per-file WikiLLM writing table, provenance rules, error/traceback procedure, and closeout workflow.
+
+## 2026-07-03 - Cloud and KB retrospective
+
+FACT:
+- Verified Railway Jarvis again for provider-disabled review packets: health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, voice text, and meeting-test approval gate behaved as expected.
+- Provider calls and external writeback stayed at `0`.
+- Browser QA confirmed the production dashboard loads, the Config screen is usable, local save works, and no console or page errors were returned.
+- Found a freshness gap: production dashboard data is older than the current E1.7 review-preview data.
+- Added substantive E1.6 notes for the collaborator and primary-operator knowledge-base folders.
+- Refreshed Graphify after the new files landed in the working tree; refreshed output reported 4,913 nodes, 5,086 links, and 461 communities.
+
+INTERPRETATION:
+- Railway is working for the provider-disabled cloud review-packet baseline.
+- Vercel production should be treated as reachable but stale until a post-push freshness check proves otherwise.
+- E1.6 is stronger now because the collaborator lane has role-specific substance, not only folder scaffolding.
+
+GAP:
+- Full product runtime remains gated: auth, persistence, provider ledgering, provider calls, durable writeback, raw voice, client workspaces, and buyer proof.
 - Run note: `wiki/runs/2026-07-03-kb-update-principle.md`.
 
 INTERPRETATION:

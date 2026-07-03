@@ -758,5 +758,2640 @@
     "mtime": 1782748130.0229836,
     "ast_hash": "7fc635c48c657afe031212bf1e83dc7f",
     "semantic_hash": ""
+  },
+  "<repo>/vercel.json": {
+    "mtime": 1783069797.7149112,
+    "ast_hash": "9773e78e168fad263235ee6b654e8417",
+    "semantic_hash": ""
+  },
+  "<repo>/quiz.js": {
+    "mtime": 1782991478.8378725,
+    "ast_hash": "4cdaf14f6d08848dc625b915ed5e5a97",
+    "semantic_hash": ""
+  },
+  "<repo>/main.js": {
+    "mtime": 1782992571.5742426,
+    "ast_hash": "d56738f1380a67dfd2c9acd66e9438ea",
+    "semantic_hash": ""
+  },
+  "<repo>/hover-depth.js": {
+    "mtime": 1782992583.2641804,
+    "ast_hash": "ecdcfd5200783e1bced1d1cb95a4e9c2",
+    "semantic_hash": ""
+  },
+  "<repo>/.vercel/project.json": {
+    "mtime": 1782824376.764549,
+    "ast_hash": "30c12ec854432661cbacb2d98085c1b7",
+    "semantic_hash": ""
+  },
+  "<repo>/.githooks/pre-push": {
+    "mtime": 1782469247.3471162,
+    "ast_hash": "bfb6a03a3480ef73d5cf4d1a2b8c6ed4",
+    "semantic_hash": ""
+  },
+  "<repo>/.githooks/pre-commit": {
+    "mtime": 1782996537.3197448,
+    "ast_hash": "0c0456e426f117867ccb518671a65d10",
+    "semantic_hash": ""
+  },
+  "<repo>/project/local/home/Library/Application Support/archflow_level3_proof/.crewai_user.json": {
+    "mtime": 1782987985.9726462,
+    "ast_hash": "00f4a828fb7ee7cfa26b6ffef1df3661",
+    "semantic_hash": ""
+  },
+  "<repo>/project/local/rag_index/approved-corpus-benchmark.json": {
+    "mtime": 1783079897.8711176,
+    "ast_hash": "593c38ebe448daa9e9e65bf40f57902a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/local/rag_index/approved-corpus-summary.json": {
+    "mtime": 1783092044.518679,
+    "ast_hash": "19a5dd0b172b708df002b4b560f0607e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/local/task-handout-hook/last-trigger.json": {
+    "mtime": 1782929051.6379294,
+    "ast_hash": "d49971dd960c7ae67b31cb6518a79cbc",
+    "semantic_hash": ""
+  },
+  "<repo>/project/dashboard/data.json": {
+    "mtime": 1783092885.2522895,
+    "ast_hash": "78b044ecc7c58377ed1df25e9221caf8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/dashboard/app.js": {
+    "mtime": 1783089790.4479594,
+    "ast_hash": "6f76f7a3589c00cf88a02dc658dcdb71",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/send-telegram-files.py": {
+    "mtime": 1783078782.3468037,
+    "ast_hash": "250330d55172e13dfec206b21a89d0e2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/validate-workflows.py": {
+    "mtime": 1782747278.2719438,
+    "ast_hash": "f174b746d26d4994edb4e28a61eb7491",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/priority-task-operator.py": {
+    "mtime": 1782991478.8373628,
+    "ast_hash": "1b0ec787d9ee4eed72ce6c22e2973308",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/langsmith-smoke-trace.py": {
+    "mtime": 1782399574.457375,
+    "ast_hash": "782aecb6839c1edfcafbcc0970c65e20",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/crewai-level-3-proof.py": {
+    "mtime": 1782991478.8369672,
+    "ast_hash": "4c48f0b1556a87726408a39ccc15eb03",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/llamaindex-approved-corpus.py": {
+    "mtime": 1783073532.3552403,
+    "ast_hash": "cb2b5d2af3e28f62f6d879900757afe3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/smoke-test-ollama-qwythos.sh": {
+    "mtime": 1782375997.701219,
+    "ast_hash": "45cea1fdc5071f9a19ca56aca57b7218",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/check-ollama.sh": {
+    "mtime": 1782375997.5654552,
+    "ast_hash": "2aee753a0750d558ead3d8cc3bd4c98f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/dashboard-screenshot-smoke.py": {
+    "mtime": 1783066157.2764316,
+    "ast_hash": "67e6c890c0cb5a7d25ca86c4bff40e56",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/jarvis-api-contract-smoke.py": {
+    "mtime": 1783089029.7229204,
+    "ast_hash": "37e3266e47c62e93475439006f0baf7b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/dashboard-static-smoke.py": {
+    "mtime": 1783002515.3246799,
+    "ast_hash": "51c4eec34ba987ada16f73f369046134",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/llamaindex-rag-benchmark.py": {
+    "mtime": 1783073555.475078,
+    "ast_hash": "c66d14d93d0e1605becd6b03578e3da1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/langgraph-smoke-run.py": {
+    "mtime": 1782469246.6906085,
+    "ast_hash": "488c00f60ccc6ba57da581b8e0f27765",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/task-handout-hook.py": {
+    "mtime": 1782472758.9578261,
+    "ast_hash": "9f9a87d41105b62a4b6615e8df265c68",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/pre-push-runtime-guard.py": {
+    "mtime": 1782469593.7614925,
+    "ast_hash": "f82bf16327ba8fba07631bd5c79f066f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/generate-dashboard-data.py": {
+    "mtime": 1783073481.4559884,
+    "ast_hash": "63dc488d377f60e5e7c05c6cf1d42130",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/e1_2_full_test.py": {
+    "mtime": 1782473505.7525382,
+    "ast_hash": "bc275e457ecb5df85c1fe860be327498",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/e1_2_8_testmeeting_run.py": {
+    "mtime": 1783067450.9290211,
+    "ast_hash": "414e875f282d5ca908b1e23c3ba724d5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/render-e1-2-next-steps-pdf.py": {
+    "mtime": 1782476727.0536256,
+    "ast_hash": "c83358f5502ef3a276e328ef75ec1ced",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/render-e1-2-pdfs.py": {
+    "mtime": 1782473948.6271896,
+    "ast_hash": "424dddc29ff60dab65e9279c7fceb89c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/e1_2_8_openrouter_comparison.py": {
+    "mtime": 1783067450.8398135,
+    "ast_hash": "c5701ddf1de9b7840fec0ec2c4e47b1d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/send-telegram-summary.py": {
+    "mtime": 1783066285.066629,
+    "ast_hash": "0c079e9933c90c6f09cf77e0b6df9b64",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/render-markdown-report-pdfs.py": {
+    "mtime": 1783087722.969518,
+    "ast_hash": "f1411db4626b028094a6ec4eeb62a5c2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/e1_3_kb_readback.py": {
+    "mtime": 1782820888.1620517,
+    "ast_hash": "754dc79deb24684dd1f61219854b3eb2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/scripts/crewai-config-check.py": {
+    "mtime": 1782469593.6160796,
+    "ast_hash": "38559835ebb272f29d96f8565492e672",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-daily-founder-notes/telegram-delivery-status.json": {
+    "mtime": 1783077218.181781,
+    "ast_hash": "402172fa9e15ad9c673867c7e8322ba4",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-delivery-status.json": {
+    "mtime": 1783087994.334984,
+    "ast_hash": "90020d56e70b0b2f0b630fd8fefcbaf2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.json": {
+    "mtime": 1783092831.3620665,
+    "ast_hash": "0f77f1f1b7b8a7b12e77cfcd79e08bf9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/budget-guard.json": {
+    "mtime": 1783067804.0853841,
+    "ast_hash": "760148d4109694703ac88a8c024dd049",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/e1_2_8_local_run.json": {
+    "mtime": 1783089556.955217,
+    "ast_hash": "2ded4f5fed63b51cd696a989b2798188",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/openrouter-budget-guard.json": {
+    "mtime": 1783067563.1011672,
+    "ast_hash": "43b92c4a68f07e6bab52f1259acb184e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/e1_2_langgraph_output.json": {
+    "mtime": 1783073600.3516955,
+    "ast_hash": "03564b5472d4bc7e592d1e0f1403f3ee",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-crewai-level-3-proof/budget-guard.json": {
+    "mtime": 1782991478.8343785,
+    "ast_hash": "ed55a226fc0464cf9f0355ada32ec6d5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json": {
+    "mtime": 1782991478.8349903,
+    "ast_hash": "0891b4d466be154aea99830c998ea810",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/e1_3_readback_results.json": {
+    "mtime": 1782821138.9407594,
+    "ast_hash": "5830f861af42403599dc6464c90cfe4a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-kb-update-principle/telegram-delivery-status.json": {
+    "mtime": 1783082889.850441,
+    "ast_hash": "524af38d953035949119aa063bfdd342",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.json": {
+    "mtime": 1783055979.6216788,
+    "ast_hash": "af48b36ccfc427cd0340e02152b244a1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/notion-delivery-status.json": {
+    "mtime": 1783090940.2294142,
+    "ast_hash": "5de692ee157680ae9404502ddfcced11",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/telegram-delivery-status.json": {
+    "mtime": 1783091960.7344706,
+    "ast_hash": "2f3f3f167546ac8058e455c8a7ac6328",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/railway-deployment-status.json": {
+    "mtime": 1783090627.5758777,
+    "ast_hash": "f5d8065815035ba19f49b4c55d9f1ce7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/api-smoke-status.json": {
+    "mtime": 1783090627.7577252,
+    "ast_hash": "6586f2f02ada970760a45827de870441",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/website-preview-status.json": {
+    "mtime": 1783091960.9073613,
+    "ast_hash": "118cb21896fbcb6992dd83d63d9edd85",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.json": {
+    "mtime": 1783070633.294759,
+    "ast_hash": "79e31321e1572edc566d5a7e04244563",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-screenshot-smoke.json": {
+    "mtime": 1783070083.0552354,
+    "ast_hash": "b8ab092807bd7d79e2055fa61e68720c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openrouter-model-selection.json": {
+    "mtime": 1783067492.1973748,
+    "ast_hash": "ffddee871075a7434df16d4ec51636ef",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openrouter-sanitized-provider-payload.json": {
+    "mtime": 1783067450.751011,
+    "ast_hash": "57f07b25c0157bef3de92289b730853c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0630-priority-mechanical-work/selected-task.json": {
+    "mtime": 1783065125.7562492,
+    "ast_hash": "2fb6131768f5577f1f9efda78343414e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/telegram-file-delivery-status.json": {
+    "mtime": 1783079998.852135,
+    "ast_hash": "982755c68d8f0de7a779de78706db356",
+    "semantic_hash": ""
+  },
+  "<repo>/.codex/hooks.json": {
+    "mtime": 1782472758.8691125,
+    "ast_hash": "5f5aa45289e5507529a0d2d0b30018b7",
+    "semantic_hash": ""
+  },
+  "<repo>/workflow/automation/latest-figma-sync.json": {
+    "mtime": 1782991478.842044,
+    "ast_hash": "a1baddb68d96284363e5296b3189161d",
+    "semantic_hash": ""
+  },
+  "<repo>/scripts/public_safety_scan.py": {
+    "mtime": 1782991478.83802,
+    "ast_hash": "712902b3f52489d98116ef671741e471",
+    "semantic_hash": ""
+  },
+  "<repo>/api/health.py": {
+    "mtime": 1783070407.5175006,
+    "ast_hash": "92d1bf2c463daeb4353aa3702a8b4964",
+    "semantic_hash": ""
+  },
+  "<repo>/api/chat.py": {
+    "mtime": 1783070407.609501,
+    "ast_hash": "7387ee0635f7fee7883f60b40ec23d2d",
+    "semantic_hash": ""
+  },
+  "<repo>/api/_jarvis_contract.py": {
+    "mtime": 1783089576.2350657,
+    "ast_hash": "838f51a41d16db05627120859c278016",
+    "semantic_hash": ""
+  },
+  "<repo>/api/config/roles.py": {
+    "mtime": 1783070407.6983068,
+    "ast_hash": "99af474d80ded1c4c0e91437f95de6d2",
+    "semantic_hash": ""
+  },
+  "<repo>/api/lanes/agent-orchestra.py": {
+    "mtime": 1783070407.8791816,
+    "ast_hash": "f4ecea08dddcc57a7dbe90c293b0f1fb",
+    "semantic_hash": ""
+  },
+  "<repo>/api/lanes/prd-icp.py": {
+    "mtime": 1783070407.788593,
+    "ast_hash": "f1698637b15dd90815eb82e60d438e62",
+    "semantic_hash": ""
+  },
+  "<repo>/api/voice/chat.py": {
+    "mtime": 1783070407.971734,
+    "ast_hash": "48cd3afd5e6e72b7fac3bd3f266fc610",
+    "semantic_hash": ""
+  },
+  "<repo>/services/jarvis-api/__init__.py": {
+    "mtime": 1782991478.8382533,
+    "ast_hash": "026958068a6cf2859ec3654589235f0d",
+    "semantic_hash": ""
+  },
+  "<repo>/services/jarvis-api/app.py": {
+    "mtime": 1783065954.274841,
+    "ast_hash": "e0509bbbf23b41d5b1aaf7200602f4d4",
+    "semantic_hash": ""
+  },
+  "<repo>/services/jarvis-api/railway.json": {
+    "mtime": 1782997281.3722923,
+    "ast_hash": "162e0efcf670f1e6252446b81060c4bf",
+    "semantic_hash": ""
+  },
+  "<repo>/index.html": {
+    "mtime": 1782992826.8356361,
+    "ast_hash": "8212851793a307d4dc7c8771adb20461",
+    "semantic_hash": ""
+  },
+  "<repo>/CHANGELOG.md": {
+    "mtime": 1782474090.5215316,
+    "ast_hash": "d35844c4b157583c99484550056d71aa",
+    "semantic_hash": ""
+  },
+  "<repo>/dashboard.html": {
+    "mtime": 1782991478.8204818,
+    "ast_hash": "70f9d5b4c654c825333f3038abda68d1",
+    "semantic_hash": ""
+  },
+  "<repo>/quiz.html": {
+    "mtime": 1782991478.8377557,
+    "ast_hash": "5e8506c9d3bcf2aca835bd6f47431694",
+    "semantic_hash": ""
+  },
+  "<repo>/README.md": {
+    "mtime": 1782379018.2265348,
+    "ast_hash": "2bc4248552dae463845ee050a1274c57",
+    "semantic_hash": ""
+  },
+  "<repo>/PUBLICATION_REVIEW.md": {
+    "mtime": 1782379043.8054287,
+    "ast_hash": "d50cb7329df0b503969c1c23146d4020",
+    "semantic_hash": ""
+  },
+  "<repo>/AGENTS.md": {
+    "mtime": 1782472759.140187,
+    "ast_hash": "83f8245183b906bd5f90100e06761f0f",
+    "semantic_hash": ""
+  },
+  "<repo>/CLAUDE.md": {
+    "mtime": 1782375996.1993515,
+    "ast_hash": "d3d3887cd88b8d1e875d410a1f857816",
+    "semantic_hash": ""
+  },
+  "<repo>/.vercel/README.txt": {
+    "mtime": 1782824376.765,
+    "ast_hash": "2b13c79d37d6ed82a3255b83b6815034",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/insights.md": {
+    "mtime": 1783092870.825956,
+    "ast_hash": "117ea8631c002a2b29d99e35ed72ab26",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/log.md": {
+    "mtime": 1783092870.65103,
+    "ast_hash": "d52cc884bc1e52d9d0d61b0ad00b2a70",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/memory.md": {
+    "mtime": 1783092870.738388,
+    "ast_hash": "e0ca4029dd95fa3e736e5ebd2d840705",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/index.md": {
+    "mtime": 1782469899.1374426,
+    "ast_hash": "0087150b5b482c555bfb621963788744",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md": {
+    "mtime": 1782473617.875404,
+    "ast_hash": "43286f40ced225052ffbd1ae44de277f",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/decisions/2026-06-30-live-dashboard-voice-hosting-onyx.md": {
+    "mtime": 1782819196.8162656,
+    "ast_hash": "bee31157029d245ab6a2db8a0764a415",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/decisions/2026-06-30-dashboard-jarvis-vercel-shell.md": {
+    "mtime": 1782991478.8395112,
+    "ast_hash": "72569df22e9e658c2bb5819a4f06c5f6",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/decisions/2026-06-29-tool-memory-model-routing.md": {
+    "mtime": 1782748680.439443,
+    "ast_hash": "8c3bfb8b1f39b764a52d21c84e5e22f2",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/decisions/2026-06-26-e1-runtime-guard-and-agent-stack.md": {
+    "mtime": 1782469912.3463817,
+    "ast_hash": "365a127f608205e9bfc8ee4e09b10001",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/decisions/2026-06-30-e1-3-readback-and-public-reporting-gates.md": {
+    "mtime": 1782820768.092513,
+    "ast_hash": "7fad97c1cecded90a8173b30f0d0c715",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/rules/public-wikillm-contract.md": {
+    "mtime": 1782379018.9556592,
+    "ast_hash": "5fa73cea9c2668c838299654097e97f9",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/issues/2026-06-25-langsmith-api-key-missing.md": {
+    "mtime": 1782469899.6742513,
+    "ast_hash": "7f5b999ee3a4324adaeac392410ddf69",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-26-task-handout-skill.md": {
+    "mtime": 1782472759.6921127,
+    "ast_hash": "6337a6f34e6cfcb1a863d6c4c018656b",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-dashboard-operator-ux-optimization.md": {
+    "mtime": 1782991478.8404036,
+    "ast_hash": "908360b9c284659276a34be87a9abc06",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-competitor-dashboard-website-plan.md": {
+    "mtime": 1782991478.8403199,
+    "ast_hash": "b018a5cb3162a889ef5e742ffce3c6e7",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-25-current-setup-methods-and-agent-plan.md": {
+    "mtime": 1782380805.3865542,
+    "ast_hash": "bb8d01e491150a49a76e035e0607fb00",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-02-arcflow-v1-final-release.md": {
+    "mtime": 1782994930.1645007,
+    "ast_hash": "ee83be9a212ae66155ab1f3fcfab792f",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-30-e1-3-kb-readback.md": {
+    "mtime": 1782820768.092427,
+    "ast_hash": "8c6ea6485f1b4dccd4fedbd363b93de5",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-agent-communication-channel.md": {
+    "mtime": 1782991478.8401613,
+    "ast_hash": "c1488114e429644320769f7de051480e",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-26-e1-2-notion-sync.md": {
+    "mtime": 1782476791.472599,
+    "ast_hash": "26ac32c9cd8729fcc26561b43073e739",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md": {
+    "mtime": 1782819196.7096806,
+    "ast_hash": "b9f6eec0f900231f0da40090a1be9fd7",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-02-dashboard-execution-architecture.md": {
+    "mtime": 1782991478.8417761,
+    "ast_hash": "8bc5229da6ccc31b511cd9223d3cfc41",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-dashboard-two-layer-schema.md": {
+    "mtime": 1782991478.8405092,
+    "ast_hash": "e02ec5c8867640f0c27a6773e9443cf1",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-kb-update-principle.md": {
+    "mtime": 1783087520.1395888,
+    "ast_hash": "357d1aea616e7852fb1d0e3d43d14ae1",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-30-evening-skill-hook-audit.md": {
+    "mtime": 1782825631.4830735,
+    "ast_hash": "5a6db681ca5906726bc059f69080209c",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-02-crewai-level-3-proof.md": {
+    "mtime": 1782991478.8416853,
+    "ast_hash": "9a9ce621106edc604e693f5add3e6188",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md": {
+    "mtime": 1783088173.8511982,
+    "ast_hash": "82ac1325fc3014facb8e5c931e0b825c",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-27-evening-skill-audit.md": {
+    "mtime": 1782656023.394706,
+    "ast_hash": "5fd9e39d6f31c4afc1799270836594d4",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-yushchenko-model-efficiency-observer.md": {
+    "mtime": 1782991478.8415952,
+    "ast_hash": "d5a254c0928240f2f0a6ae1b6c9b67ce",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-daily-founder-notes.md": {
+    "mtime": 1783077245.9330616,
+    "ast_hash": "0cc5ec2d6d9cfd62608098c347415b31",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-25-dashboard-setup-and-operation.md": {
+    "mtime": 1782399980.0272415,
+    "ast_hash": "268cc75b0f499f0b92307fcf6bd189c8",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-28-evening-status-refresh.md": {
+    "mtime": 1782715336.013801,
+    "ast_hash": "f6f4096ca85931f79e5fcbbcb6ea5795",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-lol-agent-coordination-and-kb-brief.md": {
+    "mtime": 1782991478.8411741,
+    "ast_hash": "1d264b543ea7bf8edb222ae1cfa9b283",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md": {
+    "mtime": 1783073955.5095077,
+    "ast_hash": "c4641dda15c326e198058b4ceec07d4f",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-public-website-prd-icp-landing.md": {
+    "mtime": 1782991478.841519,
+    "ast_hash": "284416330845782b933ce4ca5ee25495",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-june30-transfer-provider-dashboard.md": {
+    "mtime": 1782991478.8409753,
+    "ast_hash": "6edb259f1cf6c2b1ed6685819b55aef9",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-25-integrated-knowledge-and-safety-hook.md": {
+    "mtime": 1782399149.7784307,
+    "ast_hash": "a44af2a3dd171e941698a00fadd3546c",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md": {
+    "mtime": 1782992407.1449542,
+    "ast_hash": "441f796d7a152a5ef152e60bf073e34d",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-30-dashboard-jarvis-vercel-shell.md": {
+    "mtime": 1782991478.840069,
+    "ast_hash": "9b05249f62a3472667a8d6fa57412257",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-30-dashboard-reliability-sync.md": {
+    "mtime": 1782829354.432017,
+    "ast_hash": "0bf41ffaaf6ab006a2f85c3303dcbc9d",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-claude-continuation-stabilization.md": {
+    "mtime": 1783081176.508934,
+    "ast_hash": "fca44788244708a72606e5305baa2946",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-02-jarvis-dashboard-mvp-implementation.md": {
+    "mtime": 1782991478.84186,
+    "ast_hash": "f9ae83bb6f56f257cb5830d3be5fe6d9",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-26-evening-skill-refresh.md": {
+    "mtime": 1782497007.2099419,
+    "ast_hash": "49c56d4332c01d221e6b37af627ea184",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-26-e1-2-full-test.md": {
+    "mtime": 1782473861.6964824,
+    "ast_hash": "269463234cd24e954fa81f68cf5f95ed",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-blue-archflow-automate-website.md": {
+    "mtime": 1782991478.8402414,
+    "ast_hash": "b93ea65cbdccacb13d7ee706056a68d2",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-final-integration-notion-closeout.md": {
+    "mtime": 1782991478.8407931,
+    "ast_hash": "22e5714c557cfcc383dda243067985d8",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-dashboard-website-strategy-qa.md": {
+    "mtime": 1782991478.840696,
+    "ast_hash": "d2f54ceeb9ae4e33c6b78b3265fe2e42",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-29-tool-and-market-integration.md": {
+    "mtime": 1782751130.8685784,
+    "ast_hash": "391a3438ccd4bd528588c3b4693b3b23",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-openrouter-model-routing.md": {
+    "mtime": 1782991478.8414369,
+    "ast_hash": "e4f1d1c0f674453b4bf117fa1ad88952",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-06-25-langsmith-wikillm-setup.md": {
+    "mtime": 1782473617.8730512,
+    "ast_hash": "43d8b4ac91348ae3b284425bbf3d30a1",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-e1-7-railway-jarvis-final.md": {
+    "mtime": 1783090628.1177428,
+    "ast_hash": "19a8275a6e5d77fcc03242ffb967e836",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-messi-task-architecture-review.md": {
+    "mtime": 1782991478.8413599,
+    "ast_hash": "6d6aa312c23b31d3952d478846cfdca0",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-cloud-kb-retrospective.md": {
+    "mtime": 1783092832.0651476,
+    "ast_hash": "a78f71d1cb7cf3e9a5e8cff8a3542d9d",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-legacy-design-reference-and-prd-calculator.md": {
+    "mtime": 1782991478.841078,
+    "ast_hash": "b1b7e1ffb54e50be4ccb18e52c90c39e",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-infra-status-and-next-setup.md": {
+    "mtime": 1782991478.8408833,
+    "ast_hash": "7af0805f12ee6e22d675397cfa4b9d01",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-03-prd-icp-dry-run.md": {
+    "mtime": 1783087520.2337582,
+    "ast_hash": "ee90f9ba4dfe0c16d403be15579f3be4",
+    "semantic_hash": ""
+  },
+  "<repo>/wiki/runs/2026-07-01-messi-coordination-review.md": {
+    "mtime": 1782991478.8412714,
+    "ast_hash": "6d53398c02424751dd0f61562ac59134",
+    "semantic_hash": ""
+  },
+  "<repo>/docs/dashboard-local-jarvis-stack-manual.md": {
+    "mtime": 1782992371.0757926,
+    "ast_hash": "a4bee7f24f423ac79b5bc48e0caea156",
+    "semantic_hash": ""
+  },
+  "<repo>/docs/prd-icp-output-template.md": {
+    "mtime": 1782991478.8209763,
+    "ast_hash": "404e8014a7843efcd6dc630e9d974bcf",
+    "semantic_hash": ""
+  },
+  "<repo>/docs/testmeeting-prd-runbook.md": {
+    "mtime": 1783002596.2198896,
+    "ast_hash": "eaecbea2d8c9132a34c8b71f592dd342",
+    "semantic_hash": ""
+  },
+  "<repo>/docs/crewai-langgraph-operations.md": {
+    "mtime": 1782991478.8206244,
+    "ast_hash": "bc59350b79a2849dfa7ea591e71aa13f",
+    "semantic_hash": ""
+  },
+  "<repo>/docs/dashboard-role-configuration.md": {
+    "mtime": 1782991478.8208523,
+    "ast_hash": "4d387f9d0c4835fcfda00db8239cdd79",
+    "semantic_hash": ""
+  },
+  "<repo>/docs/dashboard-operating-manual.md": {
+    "mtime": 1783070277.3528202,
+    "ast_hash": "9c3286efd94516759f24f9ff7e1f819c",
+    "semantic_hash": ""
+  },
+  "<repo>/docs/reporting-daily-weekly-template.md": {
+    "mtime": 1782991478.8210828,
+    "ast_hash": "8da0b28f9706af022290753f11042a00",
+    "semantic_hash": ""
+  },
+  "<repo>/project/integration-plan.md": {
+    "mtime": 1782470353.7309248,
+    "ast_hash": "3e130346ae60a8f6827a858ef15000be",
+    "semantic_hash": ""
+  },
+  "<repo>/project/project-plan.md": {
+    "mtime": 1783090492.5704465,
+    "ast_hash": "c88af06b1c9409d647ce842dae6a74ce",
+    "semantic_hash": ""
+  },
+  "<repo>/project/future-actions-and-parameters.md": {
+    "mtime": 1782473639.8387823,
+    "ast_hash": "04b201f0b873c998703a3c3cbec236e3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/langsmith-setup.md": {
+    "mtime": 1782473617.8767796,
+    "ast_hash": "80f2df843de18b515f192322978ae8aa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/README.md": {
+    "mtime": 1783073472.50318,
+    "ast_hash": "e3a40d65780f437516b29bc0a7198d43",
+    "semantic_hash": ""
+  },
+  "<repo>/project/agentic-stack.md": {
+    "mtime": 1783073467.6195276,
+    "ast_hash": "c9763d194047ca09107d73fc815ebf54",
+    "semantic_hash": ""
+  },
+  "<repo>/project/provider-setup.md": {
+    "mtime": 1782991478.8257055,
+    "ast_hash": "56871e41fd8b96534cabd98f4630a175",
+    "semantic_hash": ""
+  },
+  "<repo>/project/operating-rules.md": {
+    "mtime": 1782991478.8254972,
+    "ast_hash": "287f7fa17642a7f1dfcf6f7ec4ef223a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/config/model-routing.yaml": {
+    "mtime": 1783067804.180087,
+    "ast_hash": "3015d529a5290726bcbbd94e91bf28d0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/workflows/market-research-engine.yaml": {
+    "mtime": 1782750587.2966492,
+    "ast_hash": "40224734ac986b4e545496949e637aed",
+    "semantic_hash": ""
+  },
+  "<repo>/project/workflows/crewai-crew.yaml": {
+    "mtime": 1782991478.8375154,
+    "ast_hash": "856b0a119a417dd4ac50d4e242172da9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/workflows/langgraph-controller.yaml": {
+    "mtime": 1782991478.8376563,
+    "ast_hash": "9893e9277811d9df0eb11fc6f74114d9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/workflows/knowledge-integration.yaml": {
+    "mtime": 1783073457.8452878,
+    "ast_hash": "6b5a2604873138c6934d1d9988d90992",
+    "semantic_hash": ""
+  },
+  "<repo>/project/workflows/llamaindex-rag.yaml": {
+    "mtime": 1783073450.7923985,
+    "ast_hash": "a5da1588b81bda21e8ef154e35f096c7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/agents/skills-by-agent.md": {
+    "mtime": 1783030925.8766956,
+    "ast_hash": "5efc43b0a0fa4ff1da89f6958d4e87cf",
+    "semantic_hash": ""
+  },
+  "<repo>/project/agents/README.md": {
+    "mtime": 1782991478.8218024,
+    "ast_hash": "82ea90d91ba26fbb270e1a9ea99bdf01",
+    "semantic_hash": ""
+  },
+  "<repo>/project/agents/model-efficiency-advice.md": {
+    "mtime": 1782991478.822012,
+    "ast_hash": "adb34ef229a403f1512cb85d33389385",
+    "semantic_hash": ""
+  },
+  "<repo>/project/agents/model-efficiency-issues.md": {
+    "mtime": 1782991478.8220942,
+    "ast_hash": "bd026bcb11338961d3407873f11f796b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/agents/agent-roster.yaml": {
+    "mtime": 1783030937.2635696,
+    "ast_hash": "254e07728d546fd68e87ced789be5abb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/research-check-task-template.md": {
+    "mtime": 1782823225.4374113,
+    "ast_hash": "cd38425906b126e5d2e6fe6d6d4875aa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/README.md": {
+    "mtime": 1782823225.0322669,
+    "ast_hash": "205fe54c752f00746c2abb522283d6df",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/dashboard-update-template.md": {
+    "mtime": 1782823225.3373032,
+    "ast_hash": "6a0052907642eb4637b1cde59f1f5711",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/carousel-template.md": {
+    "mtime": 1782823225.1328733,
+    "ast_hash": "ee211c8e0061641acaffe79b80fffbcd",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/agent-activity-progress-report-template.md": {
+    "mtime": 1783003221.8147273,
+    "ast_hash": "252f3feb07ead223adb59b8373443340",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/after-execution-report-template.md": {
+    "mtime": 1782823225.6392753,
+    "ast_hash": "d9e6cee1189741e7b24ee6812b43a475",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/implementation-proof-post-template.md": {
+    "mtime": 1782823225.2314522,
+    "ast_hash": "3b8df5bd4e09accf4698e5b4b13914e0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/content/templates/review-gate-template.md": {
+    "mtime": 1782823225.540628,
+    "ast_hash": "418c4a746b1c83a81937605b8869c5c2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/local/rag_index/approved-corpus-benchmark.md": {
+    "mtime": 1783079897.871412,
+    "ast_hash": "fe6094bfb0806a0372c280e9f8041796",
+    "semantic_hash": ""
+  },
+  "<repo>/project/dashboard/index.html": {
+    "mtime": 1783065954.0935357,
+    "ast_hash": "c9cd57e35ca129e3091ad3b8dc9d551d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/dashboard/README.md": {
+    "mtime": 1783090540.2521415,
+    "ast_hash": "0c6de5eb3d1cf1e79b2eddefd0cadaa3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/knowledge/README.md": {
+    "mtime": 1783089541.4741924,
+    "ast_hash": "596152d35203cd7821d7e6887e0b70ba",
+    "semantic_hash": ""
+  },
+  "<repo>/project/knowledge/primary-operator/README.md": {
+    "mtime": 1783092870.5630207,
+    "ast_hash": "df49a8c42051fc4cbf529847e3be6dfb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/knowledge/primary-operator/daily-founder-notes-retrospective-2026-07-03.md": {
+    "mtime": 1783092831.9779239,
+    "ast_hash": "c629f693e7394cdb86d7d863c30d9562",
+    "semantic_hash": ""
+  },
+  "<repo>/project/knowledge/collaborator/agent-instructions.md": {
+    "mtime": 1783089541.8791902,
+    "ast_hash": "1d273e42eeca4c37b89ae5d135a0941b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/knowledge/collaborator/README.md": {
+    "mtime": 1783092870.4782033,
+    "ast_hash": "e7543cc537b5ad5e3fc78709ab3ed4ae",
+    "semantic_hash": ""
+  },
+  "<repo>/project/knowledge/collaborator/daily-founder-notes-2026-07-03.md": {
+    "mtime": 1783092831.8897557,
+    "ast_hash": "b8c1159421afd0454b997053be47a3a4",
+    "semantic_hash": ""
+  },
+  "<repo>/project/live/communication/agent-communication-log.md": {
+    "mtime": 1783092253.199774,
+    "ast_hash": "c39745d63c34e807800418087a30d77c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/live/communication/current-agent-notice.md": {
+    "mtime": 1782991478.8251033,
+    "ast_hash": "57807872f92fd394c0c505fdc13838b8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/live/communication/pattern-change-log.md": {
+    "mtime": 1782991478.8253145,
+    "ast_hash": "18f5976ba6f1dc51b9ce8c2a5ab35e62",
+    "semantic_hash": ""
+  },
+  "<repo>/project/live/communication/README.md": {
+    "mtime": 1782991478.8246667,
+    "ast_hash": "c305654be9e60ffd4104e801db77f764",
+    "semantic_hash": ""
+  },
+  "<repo>/project/live/communication/messi-fast-final-task.md": {
+    "mtime": 1782991478.8252423,
+    "ast_hash": "c2014df630c329057ae282bedd732bad",
+    "semantic_hash": ""
+  },
+  "<repo>/project/live/communication/message-template.md": {
+    "mtime": 1782991478.8251712,
+    "ast_hash": "7dbf4e0fcb01e185da8719045d8be70b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/live/communication/system-prompt-append.md": {
+    "mtime": 1782991478.8253856,
+    "ast_hash": "731a69c14d6af2bc5f4dcf9e524e135c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/prompts/af-graph.md": {
+    "mtime": 1782375997.9259803,
+    "ast_hash": "0ad5335aee47d006a0d036f860be8b9b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/prompts/analytical-writing-agent-framework.md": {
+    "mtime": 1782991478.8255856,
+    "ast_hash": "e11d31f64206b9fa2ff69c6a9760766d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/prompts/af-review.md": {
+    "mtime": 1782375998.0629106,
+    "ast_hash": "f7ee7a37f3aefa1629cd6d9637ba1c99",
+    "semantic_hash": ""
+  },
+  "<repo>/project/loops/LOOP.md": {
+    "mtime": 1782748680.435766,
+    "ast_hash": "2e8af888696e9cfc70bd946ee3f3c767",
+    "semantic_hash": ""
+  },
+  "<repo>/project/loops/loop-run-log.md": {
+    "mtime": 1782748680.436432,
+    "ast_hash": "a2ea7a6282992a1577227a6640073019",
+    "semantic_hash": ""
+  },
+  "<repo>/project/loops/loop-readiness-review.md": {
+    "mtime": 1782748680.4362078,
+    "ast_hash": "83a900f4ef056182ccd4ddf7b7c9920a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/loops/loop-budget.md": {
+    "mtime": 1782748680.4359927,
+    "ast_hash": "662e76e662cdb2dc8157056fb36e9183",
+    "semantic_hash": ""
+  },
+  "<repo>/project/loops/loop-state.schema.yaml": {
+    "mtime": 1782748680.4366405,
+    "ast_hash": "1a9cc1a24a2333e5e5b38e5b8571eb71",
+    "semantic_hash": ""
+  },
+  "<repo>/project/automation/archflow-priority-task-operator-lane.md": {
+    "mtime": 1782991478.8223128,
+    "ast_hash": "6c43e73477bebef5a8437b8f25a433c0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/automation/yushchenko-model-efficiency-observer.md": {
+    "mtime": 1782991478.8226714,
+    "ast_hash": "48eca1f367f500dfaba40039cf6f0eda",
+    "semantic_hash": ""
+  },
+  "<repo>/project/automation/archflow-public-evening-skill-and-hook-update.md": {
+    "mtime": 1782991478.822412,
+    "ast_hash": "2670095af4cfb9aec418f8585001a0f8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/automation/daily-skill-retrospective-and-rag-knowledge-review.md": {
+    "mtime": 1782991478.822506,
+    "ast_hash": "3e74cd7cf45a7c16cf4a4a1b5edc2f82",
+    "semantic_hash": ""
+  },
+  "<repo>/project/issues/2026-07-02-testmeeting-openrouter-prd-run-blocked.md": {
+    "mtime": 1783068463.4641454,
+    "ast_hash": "e8b1d9e84da42d7c60e88036ed9b0e90",
+    "semantic_hash": ""
+  },
+  "<repo>/project/issues/2026-07-01-dashboard-website-improvement-issues.md": {
+    "mtime": 1782991478.8245387,
+    "ast_hash": "3e6644f6a1e25f45fa506c8a40db8f8e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md": {
+    "mtime": 1782991478.8244216,
+    "ast_hash": "72a1269b8d4e052b404243fb7a89b84b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/README.md": {
+    "mtime": 1782377331.0180233,
+    "ast_hash": "4b4b10b880def543311b2ba6c4f4faf4",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/prd.md": {
+    "mtime": 1782377277.864107,
+    "ast_hash": "fbbfa9a1e3c29a8b575d37f969a71b2e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/review-report.md": {
+    "mtime": 1782377278.3006642,
+    "ast_hash": "d78034e39025548a6a0389f4611a63f3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/run-summary.md": {
+    "mtime": 1782377278.4479632,
+    "ast_hash": "41978475717a6a9f2fc131d057a79871",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/retrieval-log.md": {
+    "mtime": 1782377277.5731893,
+    "ast_hash": "6aecb117c9fe60f7d911cad7db6ab7b6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/source-inventory.md": {
+    "mtime": 1782377277.426248,
+    "ast_hash": "c5fe6297cd9f62efc4e810b8c394942f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/knowledge-base-update.md": {
+    "mtime": 1782377278.15484,
+    "ast_hash": "69243e7a8acb76ef6efac202c5a0acc5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/responsibility-matrix.md": {
+    "mtime": 1782377331.2556915,
+    "ast_hash": "9e7438d4b23fc24adf08f876b5efe144",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/templates/context-digest.md": {
+    "mtime": 1782377277.7192276,
+    "ast_hash": "8cb762a54f2906f2384da32c6ddcac68",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-onyx-dashboard-voice-hosting-execution.md": {
+    "mtime": 1782819196.602458,
+    "ast_hash": "05716e607951ba47d721578b3ae9459a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-25-integrated-knowledge-and-safety-hook.md": {
+    "mtime": 1782399155.4022694,
+    "ast_hash": "913616b057d545b82947df95f7ad5053",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-25-provider-github-automation.md": {
+    "mtime": 1782376675.1783369,
+    "ast_hash": "f0ac9aa972f0f4c9bf20dbef2a0244eb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/README.md": {
+    "mtime": 1782375998.2926414,
+    "ast_hash": "f9b8bc9c747a9dcb72f657bec21462d7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/20260701_run_daily_skill_retrospective.md": {
+    "mtime": 1782991478.8356922,
+    "ast_hash": "0c45a9bdfa03fdcec7fcc0cb963d2ad6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-25-evening-skill-registry-refresh.md": {
+    "mtime": 1782414046.8279505,
+    "ast_hash": "a1da7c1fd68baa9d0844982caa292cde",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-25-clean-public-resetup.md": {
+    "mtime": 1782376102.9414496,
+    "ast_hash": "b108f397b1d05f71e320485b35d230fa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/20260701_daily_skill_retrospective.md": {
+    "mtime": 1782991478.8356097,
+    "ast_hash": "53a7031a38876975691920399c6ea3ab",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-25-codex-main-agentic-workflow.md": {
+    "mtime": 1782377653.1412542,
+    "ast_hash": "24ee5a70082ed1fff099b9990d1a42da",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-25-langsmith-wikillm-setup.md": {
+    "mtime": 1782473617.8748786,
+    "ast_hash": "a48d26174a372cf28f90172a3227363d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-27-evening-skill-audit/run-summary.md": {
+    "mtime": 1782656023.2249234,
+    "ast_hash": "dc69e204b2062efc11760824f5050f46",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-27-evening-skill-audit/agent-handout.md": {
+    "mtime": 1782656023.309882,
+    "ast_hash": "88e9a35390bceef7778de5227a0222f7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-yushchenko-model-efficiency-observer/agent-handout.md": {
+    "mtime": 1782991478.834179,
+    "ast_hash": "843994583b49351aca4fc438f39dee04",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-scheduled-automation-audit/run-summary.md": {
+    "mtime": 1782991478.8337245,
+    "ast_hash": "e72df5187d41e5346a95e53365215ecf",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-scheduled-automation-audit/agent-handout.md": {
+    "mtime": 1782991478.8336277,
+    "ast_hash": "a6b185fcfa8db2d7c050a3ab017d06f3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-product-team-icp-correction/run-summary.md": {
+    "mtime": 1782751016.398773,
+    "ast_hash": "ccf4601f7bc7a4c0e1dacb1be2fe19b1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-messi-coordination-review/agent-handout.md": {
+    "mtime": 1782991478.8320205,
+    "ast_hash": "124016aff335c7541c9ef19c41f06ba5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dev-orchestration-lane/agent-handout.md": {
+    "mtime": 1782991478.8306522,
+    "ast_hash": "d14a2ba73d1230b131a33251da23094a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-jarvis-dashboard-icp-task-consolidation/agent-handout.md": {
+    "mtime": 1782991478.8353627,
+    "ast_hash": "02a23840b21b52140481265fff998e06",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-agent-communication-channel/agent-handout.md": {
+    "mtime": 1782991478.8288016,
+    "ast_hash": "aabc5d50af0c5db4cc2bdf40454ac2b6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-lol-agent-coordination-and-kb-brief/agent-handout.md": {
+    "mtime": 1782991478.831891,
+    "ast_hash": "75e88a7bc0835a6fd94d5fc1fae2f3aa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/yushchenko-model-efficiency/2026-07-02-1014-model-efficiency-report.md": {
+    "mtime": 1782991478.8365126,
+    "ast_hash": "3c2d38a1cd9fcc678bc94d9a4db820eb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/yushchenko-model-efficiency/2026-07-01-2247-model-efficiency-report.md": {
+    "mtime": 1782991478.8363051,
+    "ast_hash": "458dab50eb959a7049fa4a80b93bf4aa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/yushchenko-model-efficiency/2026-07-02-1402-model-efficiency-report.md": {
+    "mtime": 1782991478.8367155,
+    "ast_hash": "3d2b50049cc17683e6fb8bad57c15e65",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/yushchenko-model-efficiency/2026-07-02-1845-model-routing-policy-update.md": {
+    "mtime": 1783006081.269391,
+    "ast_hash": "684c3dc758471c305ce3bcafefe9986f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/yushchenko-model-efficiency/2026-07-02-1112-model-efficiency-report.md": {
+    "mtime": 1782991478.836615,
+    "ast_hash": "dd0c7fe5e9f362cf687c02210286cd40",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/yushchenko-model-efficiency/agent-handout.md": {
+    "mtime": 1783006094.67699,
+    "ast_hash": "1fd1f85c09fbb0ed971a3d400f81c992",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/yushchenko-model-efficiency/2026-07-01-initial-model-efficiency-report.md": {
+    "mtime": 1782991478.8364158,
+    "ast_hash": "1a4bd97e089f5fe14c9dbed967852bf2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-ronaldinho-technical-advisor/agent-handout.md": {
+    "mtime": 1782991478.833371,
+    "ast_hash": "222e6412042eb9e7f4fdae1b695a8acd",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-final-integration-notion-closeout/agent-handout.md": {
+    "mtime": 1782991478.831193,
+    "ast_hash": "430df6df5e4d2c29514951220a817481",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md": {
+    "mtime": 1783087519.7675908,
+    "ast_hash": "56bf95319aaf945ceed48c7b07344f0b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md": {
+    "mtime": 1783087519.67328,
+    "ast_hash": "5f096bc84d5e73968da7603e57322bdd",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md": {
+    "mtime": 1783087520.045552,
+    "ast_hash": "dbef2c5143e9b86be50874ec88979193",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md": {
+    "mtime": 1783087519.9519255,
+    "ast_hash": "3f9e4a355b09bb2dad6191ee8641f759",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md": {
+    "mtime": 1783087519.8597484,
+    "ast_hash": "c7582076d90566aae8b9dc5193c3b618",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md": {
+    "mtime": 1783087519.5780566,
+    "ast_hash": "2bc5c471cb44f2fd4d0f1d5972c2bc96",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-skill-registry-and-rag-review/run-summary.md": {
+    "mtime": 1782991478.8340654,
+    "ast_hash": "6ad4d862829ca1ae2b1cd6a7c93aafb5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-skill-registry-and-rag-review/agent-handout.md": {
+    "mtime": 1782991478.833866,
+    "ast_hash": "ee0e2fbbd1511c1de0967dc703d01ac9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/market-engine.md": {
+    "mtime": 1782750555.63585,
+    "ast_hash": "df246b7242adcb7b92c8b9d15059cb8c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/review-report.md": {
+    "mtime": 1782748148.2109275,
+    "ast_hash": "4c29500a89f1e51d549fd6f0416e4750",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/run-summary.md": {
+    "mtime": 1782748158.2877076,
+    "ast_hash": "a0f424d6535a54735ccae563909109d2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/anti-looping-review.md": {
+    "mtime": 1782748680.4372663,
+    "ast_hash": "98cca1ac3b03e515fbc1d5e7e89033fc",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/source-inventory.md": {
+    "mtime": 1782748680.4386137,
+    "ast_hash": "ac8ad011bf337c30b15b798092b1af76",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/notion-update-plan.md": {
+    "mtime": 1782750573.5393167,
+    "ast_hash": "342c8732da09e9f32346fb6bdda0b878",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/memory-architecture.md": {
+    "mtime": 1782748680.4378874,
+    "ast_hash": "c483a246d06fdd9e3d61db57b5547019",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/model-routing-recommendation.md": {
+    "mtime": 1782748680.4381564,
+    "ast_hash": "6172a37ee124ca141fe14e80f29fbab4",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/tool-role-map.md": {
+    "mtime": 1782748680.4389648,
+    "ast_hash": "82c41bce5d7f7f1b922b4d8af939bfaa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/context-digest.md": {
+    "mtime": 1782750625.315113,
+    "ast_hash": "51a347ed3976bc671f9d242ee9c2f45e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/agent-handout.md": {
+    "mtime": 1782748680.4370713,
+    "ast_hash": "06f81e29b3055ac7b4f0636fbfde45bd",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-29-tool-market-integration/security-push-review.md": {
+    "mtime": 1782748680.438391,
+    "ast_hash": "e11351e79a4563ad9ca70913602dd344",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-prd-icp-lane/agent-handout.md": {
+    "mtime": 1782991478.8326223,
+    "ast_hash": "5b3457bc5be9be3f01e5e89ace3f37b5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dashboard-two-layer-schema/run-summary.md": {
+    "mtime": 1782991478.8295712,
+    "ast_hash": "6df8b8ffeb7aa7d1510e7e11706c1405",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dashboard-two-layer-schema/agent-handout.md": {
+    "mtime": 1782991478.8294742,
+    "ast_hash": "55cf4f12c7a3dc75a183e9cf742a2932",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-jarvis-dashboard-mvp-implementation/agent-handout.md": {
+    "mtime": 1782991478.83549,
+    "ast_hash": "bd43b01c2eed1814b819167f86f07cfc",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-blue-archflow-automate-website/agent-handout.md": {
+    "mtime": 1782991478.828936,
+    "ast_hash": "657b84601103d2116a803e8b98980ab5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-evening-skill-hook-review/summary.md": {
+    "mtime": 1783065193.835371,
+    "ast_hash": "0f4b00fc6c0d68859a298cfbada89be4",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-evening-skill-hook-review/agent-handout.md": {
+    "mtime": 1783065198.2399015,
+    "ast_hash": "d84735ea13185b51be028e8480c92213",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-jarvis-voice-dashboard-review/run-summary.md": {
+    "mtime": 1782991478.8286545,
+    "ast_hash": "87e32db1454beba4d83d74c3ac4f7172",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-jarvis-voice-dashboard-review/agent-handout.md": {
+    "mtime": 1782991478.8285406,
+    "ast_hash": "c83a5a0b630fa8bfaf9d09e9230114b0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-daily-founder-notes/telegram-delivery-status.md": {
+    "mtime": 1783077218.1823385,
+    "ast_hash": "66cf0453a4db4f979e2a0360223d0b6a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-daily-founder-notes/current-state-report.md": {
+    "mtime": 1783076849.5361135,
+    "ast_hash": "aef3f1868d97ca97051518d789590cba",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-daily-founder-notes/daily-founder-notes-packet.md": {
+    "mtime": 1783076849.4447682,
+    "ast_hash": "957c17ec86594d4038e9339186ecbdf1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-daily-founder-notes/agent-handout.md": {
+    "mtime": 1783077245.8406637,
+    "ast_hash": "f290aeb753351b603be8daf02033a2ff",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-daily-founder-notes/telegram-summary.txt": {
+    "mtime": 1783076849.6322188,
+    "ast_hash": "e57bb41c6988a0fae1040b7aa3674f67",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-delivery-status.md": {
+    "mtime": 1783087994.3358076,
+    "ast_hash": "d2140f8a7f83468428fd3c5a47d6f4d6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-message.md": {
+    "mtime": 1783087723.6803098,
+    "ast_hash": "7a22c66cf2242b488d387812f6e91207",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-epic1-epic2-planning-closeout/notion-update-packet.md": {
+    "mtime": 1783087723.587699,
+    "ast_hash": "a033cc9103c04093f18b89c756ad3e66",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-epic1-epic2-planning-closeout/agent-handout.md": {
+    "mtime": 1783088173.756815,
+    "ast_hash": "c8d278d4243a0a148ba223d68d0a090f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md": {
+    "mtime": 1782998820.067929,
+    "ast_hash": "c4d92a029939d7f88b711c36d23cbc3e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md": {
+    "mtime": 1783073941.3650377,
+    "ast_hash": "72678fd0ebaa03ed3c37007690b51d6e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.md": {
+    "mtime": 1782991478.8300128,
+    "ast_hash": "e3c9923fd8ab0cbbe1f54acf11a54376",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.html": {
+    "mtime": 1782991478.8298957,
+    "ast_hash": "9e522629d8cb5eb7b50e38b0e256ece3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dashboard-website-strategy-qa/agent-handout.md": {
+    "mtime": 1782991478.829695,
+    "ast_hash": "6ce0e38636e97da48717d9dcd7feb92d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.md": {
+    "mtime": 1783092831.4485097,
+    "ast_hash": "b3ef6b5a76988114b61f84c871a0a93a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-cloud-kb-retrospective/telegram-message.md": {
+    "mtime": 1783092831.713774,
+    "ast_hash": "59e69c1d2d48fd500b8e9edf590bcc2a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-cloud-kb-retrospective/notion-update-packet.md": {
+    "mtime": 1783092831.6251986,
+    "ast_hash": "a42b15d0320fc0c3c930eedea4a03b73",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-cloud-kb-retrospective/agent-handout.md": {
+    "mtime": 1783092831.5367942,
+    "ast_hash": "2440c8cca91c4d69c21c48015e726b97",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-jarvis-agentbrowser-blockschema/run-summary.md": {
+    "mtime": 1782991478.8281882,
+    "ast_hash": "5068e4172e34817d79d221d1a72f452b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-prompt-2-1-notion-local-stack-contract/agent-handout.md": {
+    "mtime": 1782992683.5367832,
+    "ast_hash": "7b09b2785693e9d7e4eb0a0746c53e33",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-dashboard-reliability-sync/run-summary.md": {
+    "mtime": 1782829354.326895,
+    "ast_hash": "6ed14d46ef72472a5e962c3e5097cf34",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-dashboard-reliability-sync/agent-handout.md": {
+    "mtime": 1782829443.355081,
+    "ast_hash": "3b0fe1a8a17362124b909194dd811ec3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-vercel-jarvis-connection/agent-handout.md": {
+    "mtime": 1783070650.3008883,
+    "ast_hash": "1ee0cd36145858a530eb3e3f0ca199d1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.md": {
+    "mtime": 1783089556.9540346,
+    "ast_hash": "783e9eb8cd0ba5e9a10c24e1e195b0b7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md": {
+    "mtime": 1783089556.9559674,
+    "ast_hash": "a8d131cfb9d9c6baa465d6cdb65292db",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/backlog-and-questions.md": {
+    "mtime": 1783089556.9544885,
+    "ast_hash": "be7560094d2f418313e279add8f5efb6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.md": {
+    "mtime": 1783089556.953319,
+    "ast_hash": "16450ead4b5fb9825076b4cbbca42140",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md": {
+    "mtime": 1783089556.949374,
+    "ast_hash": "df3c8c62403b006c696de5ebc21da3e8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md": {
+    "mtime": 1783089556.9569144,
+    "ast_hash": "1ab954b283a010a2882c2f2bd6b034ba",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.md": {
+    "mtime": 1783089556.952667,
+    "ast_hash": "1d3985cb6621e859aef518ef54c413d9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/context-digest.md": {
+    "mtime": 1783089556.9504406,
+    "ast_hash": "f4a52971761ad7ffd384d8135e49ab18",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md": {
+    "mtime": 1783089556.9577456,
+    "ast_hash": "029b20fa9d6b9567a9ed93aa1aea11fc",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md": {
+    "mtime": 1783067563.100091,
+    "ast_hash": "124da6f9f4d44ca62317d10daa859e8a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-notion-sync/run-summary.md": {
+    "mtime": 1782476726.8038163,
+    "ast_hash": "9cc458e63cde4ce1898b88ec10934f5c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-notion-sync/agent-handout.md": {
+    "mtime": 1782476726.8879666,
+    "ast_hash": "d363b180fd761461a5044303e9f9317e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.md": {
+    "mtime": 1782476791.3940194,
+    "ast_hash": "fbf001124ab613dd444b7afd4aad5872",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/E1.2_Streaming_report.md": {
+    "mtime": 1782473861.1109362,
+    "ast_hash": "24efe808c00c33a8b48817b61e415cbe",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/review-report.md": {
+    "mtime": 1782473861.4463692,
+    "ast_hash": "a87794572f5c8982bfc2379cdd85c414",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/run-summary.md": {
+    "mtime": 1782473861.5281413,
+    "ast_hash": "39d47003543785fdc2588e7a3824192d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md": {
+    "mtime": 1782473861.0267832,
+    "ast_hash": "93d1da0eba51f825d65014f386e2cf7a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/summary.md": {
+    "mtime": 1782473860.944026,
+    "ast_hash": "ff2fb2dffd11783744177b1bdca3b090",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/kb-update.md": {
+    "mtime": 1782473861.3626242,
+    "ast_hash": "a13ecd5914072efa189060e6dd6bdff7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/retrieval-log.md": {
+    "mtime": 1782473860.7803519,
+    "ast_hash": "990a7fdeb167dee8528cdf63f64a630a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/source-inventory.md": {
+    "mtime": 1782473860.6957312,
+    "ast_hash": "de242bab653e859724056ed52a69bec1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/responsibility-matrix.md": {
+    "mtime": 1782473861.2796805,
+    "ast_hash": "3c51e4f869b0d0d717c5296a4141533f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/context-digest.md": {
+    "mtime": 1782473860.8624384,
+    "ast_hash": "8e23cc2c3b3e79c5bb3a96fb1aebfc8e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/agent-handout.md": {
+    "mtime": 1782473861.610415,
+    "ast_hash": "5a6f96f782bc7e352610ed17b06c20de",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.md": {
+    "mtime": 1782473861.1949182,
+    "ast_hash": "39a43aad60927187af65e7271de7ba54",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-public-reporting-gate/public-reporting-gate.md": {
+    "mtime": 1782820768.0920055,
+    "ast_hash": "8b0a9df06ecf96f2bd42289c81c95494",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-public-reporting-gate/run-summary.md": {
+    "mtime": 1782820768.0921524,
+    "ast_hash": "b81b0ed7ca27ae65ad3756ae935b11d7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-public-reporting-gate/gloomylord-brief.md": {
+    "mtime": 1782820768.0920792,
+    "ast_hash": "7b7ee0d79c6ab21e726698cceaf1f05b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-public-reporting-gate/agent-handout.md": {
+    "mtime": 1782820768.0923083,
+    "ast_hash": "db348f07f315f3c7a3d54764fefc8dc3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-content-agent-templates/run-summary.md": {
+    "mtime": 1782823225.7414458,
+    "ast_hash": "27d4084d263fb15a04422bb75129be0b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-content-agent-templates/agent-handout.md": {
+    "mtime": 1782823225.8454242,
+    "ast_hash": "87c37fa876368ce054221160f8adde04",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/coordination-stream.md": {
+    "mtime": 1782991478.835908,
+    "ast_hash": "cb497f0161fa8f79db962429e2da6ca1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/run-summary.md": {
+    "mtime": 1782991478.836033,
+    "ast_hash": "606b6b6f514d2d0e0e2ef904467fa405",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.5/2026-06-30-dashboard-jarvis-vercel/agent-handout.md": {
+    "mtime": 1782991478.8357966,
+    "ast_hash": "9997bec19f2ecfbe35fba17785fc6de9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md": {
+    "mtime": 1783068552.8346279,
+    "ast_hash": "c288f5e8c891665cfd2a449569c28826",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dashboard-operator-ux-optimization/agent-handout.md": {
+    "mtime": 1782991478.8293567,
+    "ast_hash": "5519b49968b3869b0fab0bc82054eea2",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-integrator-review/run-summary.md": {
+    "mtime": 1782991478.828016,
+    "ast_hash": "2e42a6fefce61c1a169377dc5fc26d05",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-public-website-visual-delivery/agent-handout.md": {
+    "mtime": 1782993050.2599146,
+    "ast_hash": "3844500dd2e088dbdd9efe5150475234",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-messi-task-architecture-review/agent-handout.md": {
+    "mtime": 1782991478.8322508,
+    "ast_hash": "74be5de18ba6275ea37d5e97a872ab0c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-crewai-level-3-proof/review-report.md": {
+    "mtime": 1782991478.8349125,
+    "ast_hash": "4ed0583864a07c0506a8094960a522b6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-crewai-level-3-proof/crew-output.md": {
+    "mtime": 1782991478.834462,
+    "ast_hash": "906296efa22fd1cf687515350b72d593",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-crewai-level-3-proof/input-fixture.md": {
+    "mtime": 1782991478.8347363,
+    "ast_hash": "ca5e6bfcc05f6ab026ba4b0aeb22f595",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-crewai-level-3-proof/dashboard-state.md": {
+    "mtime": 1782991478.834654,
+    "ast_hash": "95d4abdc1b5d252fd1cc6cb6e42d7742",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-crewai-level-3-proof/agent-handout.md": {
+    "mtime": 1782991478.8342903,
+    "ast_hash": "f093dc6fe4d6bebc607d948ea8f3a85d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/review-report.md": {
+    "mtime": 1782821138.941076,
+    "ast_hash": "df339dbc8c643591de21fbabc528278a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/run-summary.md": {
+    "mtime": 1782821138.941163,
+    "ast_hash": "69575ac8aa0c1dcc8000f755ad179134",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/outquestions.md": {
+    "mtime": 1782821021.137252,
+    "ast_hash": "15c19dedfb36b49e1671fb4682260b38",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/agent-coordination-stream.md": {
+    "mtime": 1782821138.9413073,
+    "ast_hash": "f73a173fd0422e134940bcc7ec962461",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/kb-writeback-report.md": {
+    "mtime": 1782821138.4876692,
+    "ast_hash": "9b0f25fc558f68dc46935be84206689e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/source-registry.md": {
+    "mtime": 1782821138.4874823,
+    "ast_hash": "23b21a4c7e2f2484f745add095694a98",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/validation-report.md": {
+    "mtime": 1782821021.1371427,
+    "ast_hash": "a9466c64e5a50c9ebae5631609c00ba7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/agent-handout.md": {
+    "mtime": 1782821138.9412346,
+    "ast_hash": "b80bf449752539940cfe163286b1ccf3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.3/2026-06-30-kb-readback/kb-readback-report.md": {
+    "mtime": 1782821138.940984,
+    "ast_hash": "c2f7765fa42c5818ef89453e6fa35b3e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-kb-update-principle/telegram-delivery-status.md": {
+    "mtime": 1783082889.8508782,
+    "ast_hash": "2d933f7692a61f3b50d6da8ef95a4e76",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-kb-update-principle/telegram-message.md": {
+    "mtime": 1783082889.8177388,
+    "ast_hash": "228de2f81eb6b101e8b06ed72f28da7f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-kb-update-principle/agent-handout.md": {
+    "mtime": 1783087519.482371,
+    "ast_hash": "e186c3ae345ef754c01acf7bf3cd08e8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0157-priority-mechanical-work/selected-task.md": {
+    "mtime": 1783065209.8924468,
+    "ast_hash": "690972d8309bfc8846a689af225dfb10",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0157-priority-mechanical-work/kb-notion-github-packet.md": {
+    "mtime": 1783065210.0867507,
+    "ast_hash": "9a88503aa2312ffbb5f4848a50cc6fc7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0157-priority-mechanical-work/pitagent-chat-prompt.md": {
+    "mtime": 1783065209.9897113,
+    "ast_hash": "9c48303a0717d326be763e7a4ceb5dfb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0157-priority-mechanical-work/agent-handout.md": {
+    "mtime": 1783065268.7134728,
+    "ast_hash": "f9c41004b4e273ac6479cb256863cdbb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/prd.md": {
+    "mtime": 1782469808.4846675,
+    "ast_hash": "daf289f7325fd4caa0de95c2c809e900",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/review-report.md": {
+    "mtime": 1782469809.0249197,
+    "ast_hash": "7e08ac98c9fdccf06c31dea899cc8eea",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/run-summary.md": {
+    "mtime": 1782469809.1606808,
+    "ast_hash": "bf73dc57e49c116474f552bce06cdc61",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/summary.md": {
+    "mtime": 1782469808.347688,
+    "ast_hash": "0223ffbc71b11eb51f9f98d017181776",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/retrieval-log.md": {
+    "mtime": 1782469808.8896894,
+    "ast_hash": "a903bbf01d4f68346f35def308fe9da8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/source-inventory.md": {
+    "mtime": 1782469808.0747828,
+    "ast_hash": "2ab9ea3da7587bec7641b1afb9b6c2df",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/knowledge-base-update.md": {
+    "mtime": 1782469808.754689,
+    "ast_hash": "9aa8b3033f0eda310523c475bd5df7fd",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/responsibility-matrix.md": {
+    "mtime": 1782469808.619755,
+    "ast_hash": "d66d1c72f267926a8b489bf0002d7fc1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/context-digest.md": {
+    "mtime": 1782469808.2115316,
+    "ast_hash": "b935249227ae3db803a69fded419e9fc",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-june24-next-steps-proof/agent-handout.md": {
+    "mtime": 1782472787.5371807,
+    "ast_hash": "ed5d6c1ec750975735a9128e0af2578c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-public-website-live-delivery/agent-handout.md": {
+    "mtime": 1783001724.5667548,
+    "ast_hash": "93aaa477e1e95771fe5f6b56821aba80",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-messi-fast-final-closeout/agent-handout.md": {
+    "mtime": 1782991478.8321378,
+    "ast_hash": "77f3883240b1ac9b846ea68b6b8a1366",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-28-evening-status-refresh/run-summary.md": {
+    "mtime": 1782715335.8240778,
+    "ast_hash": "9fd18a38e4cc86079e66038ee85b34eb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-28-evening-status-refresh/agent-handout.md": {
+    "mtime": 1782715335.9177444,
+    "ast_hash": "00865d6e4c7bd8c5570e65910bbe271a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/telegram-delivery-status.md": {
+    "mtime": 1783091960.6467516,
+    "ast_hash": "c545672198f95f918571db5151220385",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/telegram-message.md": {
+    "mtime": 1783091851.588399,
+    "ast_hash": "c52c9fe6030b8cd591e8782e3ceb81aa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/notion-update-packet.md": {
+    "mtime": 1783090627.848604,
+    "ast_hash": "6cb0d7777d26df26c429c062a806f041",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/api-smoke-status.md": {
+    "mtime": 1783090627.6675706,
+    "ast_hash": "dd0f9a8c4e34a63286fe9e5e32b28ef8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/notion-delivery-status.md": {
+    "mtime": 1783090940.1409092,
+    "ast_hash": "57479e8407d1582c900a3f2d2621bca7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/railway-deployment-status.md": {
+    "mtime": 1783090627.4832475,
+    "ast_hash": "32cebfceccaae2818e8870fa89898add",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/agent-handout.md": {
+    "mtime": 1783092870.309262,
+    "ast_hash": "2b6cd7006b4263cba2a5501e9251ac99",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-e1-7-railway-jarvis-final/website-preview-status.md": {
+    "mtime": 1783091960.8204715,
+    "ast_hash": "0f9247ea0114a825f1a83c69dcdea381",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-evening-skill-refresh/run-summary.md": {
+    "mtime": 1782497007.037621,
+    "ast_hash": "578042b3fb8ad8839c69a6c52771815a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-26-evening-skill-refresh/agent-handout.md": {
+    "mtime": 1782497007.120597,
+    "ast_hash": "22ddac364eb0f1abd033c2dd199538d6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md": {
+    "mtime": 1783070633.2955985,
+    "ast_hash": "1fbf4db07b1e4e1817a9dcdee09dca87",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/openrouter-provider-status.md": {
+    "mtime": 1783067563.1504097,
+    "ast_hash": "61bbca1dd432218ccae67a9507a6886a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/notion-update-packet.md": {
+    "mtime": 1783068366.328074,
+    "ast_hash": "6723aa7beabf9df22aa1975f253154b0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md": {
+    "mtime": 1783068372.2816877,
+    "ast_hash": "25bec51ceea448d098c21dc8004c620c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-summary.txt": {
+    "mtime": 1783070565.2970583,
+    "ast_hash": "13e21bd3cde03634d3edd34ff88f8feb",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-screenshot-smoke.md": {
+    "mtime": 1783070083.056661,
+    "ast_hash": "d47d2a19e2e952813ef851b56ec376d1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-june30-transfer-provider-dashboard/run-summary.md": {
+    "mtime": 1782991478.8317676,
+    "ast_hash": "27a502e624e5d488b620c277d40583c6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-jesus-merge-handoff/agent-handout.md": {
+    "mtime": 1782991478.831511,
+    "ast_hash": "212f02d3e6ac6e309efb1b47ef045a0c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-evening-skill-hook-audit/run-summary.md": {
+    "mtime": 1782825631.4817622,
+    "ast_hash": "55a0cdcfd441a83db59429600949dec5",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-06-30-evening-skill-hook-audit/agent-handout.md": {
+    "mtime": 1782825631.4824696,
+    "ast_hash": "ebde5ffe553f3188537d8cd9bd352633",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-priority-task-lane-setup/run-summary.md": {
+    "mtime": 1782991478.8328967,
+    "ast_hash": "2a0511139f4ec76085f08608d5949efc",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-priority-task-lane-setup/agent-handout.md": {
+    "mtime": 1782991478.8327546,
+    "ast_hash": "d3b10b44742b325aacfd1ebfa9ce12b0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0630-priority-mechanical-work/selected-task.md": {
+    "mtime": 1783065159.7670913,
+    "ast_hash": "612e174898fe835751dbd4742d6c714f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0630-priority-mechanical-work/kb-notion-github-packet.md": {
+    "mtime": 1783065182.855568,
+    "ast_hash": "e2d356b389b0ed68cf5d27a341eff05d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0630-priority-mechanical-work/pitagent-chat-prompt.md": {
+    "mtime": 1783065171.8171215,
+    "ast_hash": "d13db1f6c6700b86ef617a045c901ee0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0630-priority-mechanical-work/agent-handout.md": {
+    "mtime": 1783065229.5940528,
+    "ast_hash": "a4dcf2c701fed638c7620e95684db2f0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0630-priority-mechanical-work/profile-field-drafts.md": {
+    "mtime": 1783065229.4068396,
+    "ast_hash": "78e734df91707b74bd1b932fdc870b6a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-0630-priority-mechanical-work/review-gate.md": {
+    "mtime": 1783065229.5002527,
+    "ast_hash": "9e461944395a96fd91f7745fd25b163d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-final-completion-audit/agent-handout.md": {
+    "mtime": 1782991478.8310528,
+    "ast_hash": "3bf7a3915b1efb40ba50def695d0d657",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md": {
+    "mtime": 1783078782.6116323,
+    "ast_hash": "4a7777056888200fee98b4697cbe8ae6",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md": {
+    "mtime": 1783081127.7455862,
+    "ast_hash": "bc74eaabb4c183963eb4a44ca8ea8f21",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/telegram-file-delivery-status.md": {
+    "mtime": 1783079998.8523724,
+    "ast_hash": "4d27f3bd3bc0476e43e5c9a9b04fe01f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md": {
+    "mtime": 1783081105.0638525,
+    "ast_hash": "ccc4179a4ecdb852f7cc19f3304f890b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md": {
+    "mtime": 1783081105.1629822,
+    "ast_hash": "0b7f782dd6d61adcf057d0d81692c171",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md": {
+    "mtime": 1783081105.2628155,
+    "ast_hash": "8bc81a7f8ec0882f2e2bca365974bba0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.md": {
+    "mtime": 1783078782.9690306,
+    "ast_hash": "cd9e9c782c2dc30bb300f13197c637ab",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/telegram-files-message.txt": {
+    "mtime": 1783079577.8064315,
+    "ast_hash": "1427118f64ca50e3d198382e2fdd449b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md": {
+    "mtime": 1783081176.4156656,
+    "ast_hash": "99251568bafcfd0c1f05d2415a51b623",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/project-checkup-evidence.md": {
+    "mtime": 1783078782.5130305,
+    "ast_hash": "95160f1bfc6bb273bfa40e61fbaa31f0",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md": {
+    "mtime": 1783082648.421708,
+    "ast_hash": "130dbc69f934d7d09b9929d63ff5ba02",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md": {
+    "mtime": 1783078782.7759223,
+    "ast_hash": "e727fa628e2d5fe5098ffb38aee00e16",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md": {
+    "mtime": 1783078782.8723712,
+    "ast_hash": "9c09331ba5b08562271e6086cfbba4a9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-openrouter-model-routing/agent-handout.md": {
+    "mtime": 1783006417.0533636,
+    "ast_hash": "a97852d53f4fb4a475c5964e24605f90",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-public-website-prd-icp-landing/run-summary.md": {
+    "mtime": 1782991478.8332129,
+    "ast_hash": "f9d2c7c046cc712e4a17fe168e5c1888",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-public-website-prd-icp-landing/agent-handout.md": {
+    "mtime": 1782991478.833013,
+    "ast_hash": "6b1221392bacf5435df6c5ba3b75a92f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-arcflow-v1-final-release/agent-handout.md": {
+    "mtime": 1782994990.9765077,
+    "ast_hash": "1939f58c19f8f8ffa8aecb8688fbcb5a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-competitor-dashboard-website-plan/agent-handout.md": {
+    "mtime": 1782991478.8290863,
+    "ast_hash": "4cb22b68b49d6e58b4bab2e6bb9d7c9c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-evening-skill-hook-review/run-summary.md": {
+    "mtime": 1782991478.8308454,
+    "ast_hash": "0b6fe17c9580aca0d0dfdcb0d9da48ca",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-evening-skill-hook-review/agent-handout.md": {
+    "mtime": 1782991478.830769,
+    "ast_hash": "0c7427416e04b35b40bded41d4e678e4",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-infra-status-and-next-setup/agent-handout.md": {
+    "mtime": 1782991478.831312,
+    "ast_hash": "d3a1788987e846ec9160586563e6e6a9",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-dashboard-execution-architecture/agent-handout.md": {
+    "mtime": 1782991478.8351295,
+    "ast_hash": "89cf03d62a2899570f5a9e53e2922875",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-competitor-dashboard-website-plan.md": {
+    "mtime": 1782991478.8259146,
+    "ast_hash": "5e47410261822a947c957634f9dedf62",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-25-current-setup-methods-and-agent-plan.md": {
+    "mtime": 1782715335.5969322,
+    "ast_hash": "120b59c6fbeab544b1b76bb54ccd5c0d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md": {
+    "mtime": 1783090476.2410405,
+    "ast_hash": "b64c94ad61aeb6222b672114e4c74804",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-arcflow-v1-final-release.md": {
+    "mtime": 1782994929.9218504,
+    "ast_hash": "47ea4cf78b81519cdc6671865615d389",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-dashboard-execution-architecture.md": {
+    "mtime": 1782991478.827315,
+    "ast_hash": "b4f92854ca027e07fb9773291134ee7f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-current-state-e1-e7-vercel-railway-jarvis.md": {
+    "mtime": 1782991478.8260508,
+    "ast_hash": "41b350b9181dde5ea4f7a11438d1bd8c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-kb-update-principle.md": {
+    "mtime": 1783087519.388075,
+    "ast_hash": "a6dd31894cc4b8c69dc01723659c4ff7",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-notion-update-package.md": {
+    "mtime": 1782991478.827846,
+    "ast_hash": "85a28501c794519d3594c17e53e2c783",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-jarvis-dashboard-mvp-layer-report.md": {
+    "mtime": 1783068629.1546636,
+    "ast_hash": "50dee854cfd378adbb491de894de0675",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md": {
+    "mtime": 1783090411.8538663,
+    "ast_hash": "042154328cd283bb1f8b244b05f19f1f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-25-chat-execution-report.md": {
+    "mtime": 1782473617.8739426,
+    "ast_hash": "bdae561909fd87ca9cf2ff47b625658d",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-two-paradigm-execution-plan.md": {
+    "mtime": 1782991478.8271859,
+    "ast_hash": "eeee6880ae4c5a44c9f79b6531b65049",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-lol-agent-coordination-and-kb-brief.md": {
+    "mtime": 1782991478.8264236,
+    "ast_hash": "96e545f67ee1b593e48eb28751a5fc91",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-public-website-visual-delivery.md": {
+    "mtime": 1782993050.1708689,
+    "ast_hash": "95bfaebe50e75e82a5108a6f679d6148",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-29-tool-and-market-integration-plan.md": {
+    "mtime": 1782750544.365729,
+    "ast_hash": "6628fefdbec6ded683cb3428bfed985e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md": {
+    "mtime": 1782992608.310014,
+    "ast_hash": "5bfdb3a97f2959dc9bfdeec42ba8a100",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-25-dashboard-setup-and-operation-report.md": {
+    "mtime": 1782715335.6819637,
+    "ast_hash": "c6c91bb03d806add3aa14f75c2ac408a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-25-layer-setup-report.md": {
+    "mtime": 1782715335.5139632,
+    "ast_hash": "e571716d5544ae0a18f2cf4825fa6d7c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-openrouter-model-routing-plan.md": {
+    "mtime": 1783067804.2722461,
+    "ast_hash": "24724f5edc3b4aaed720408a7052c232",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md": {
+    "mtime": 1783090521.0784914,
+    "ast_hash": "2ffc29a5fffb9b961fe4544eca3d64ee",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-messi-final-delivery-sequence-and-notion-review.md": {
+    "mtime": 1782991478.826624,
+    "ast_hash": "13670074249f52fa561c26d395b1497c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-e1-task-consolidation-table.md": {
+    "mtime": 1783002550.6946783,
+    "ast_hash": "a15e8509f398b06d56f99349ee707145",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-public-website-live-delivery.md": {
+    "mtime": 1783001724.4728494,
+    "ast_hash": "2892898188b3ba619451e4bd62be052e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md": {
+    "mtime": 1783092870.3956099,
+    "ast_hash": "2128051d6818015b5416f394aadeaa12",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-e1-2-testmeeting-dashboard-architecture.md": {
+    "mtime": 1783068594.0097406,
+    "ast_hash": "6d5530eef25e9096ebeef97ad7abcd7b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-30-jarvis-device-bridge-global-wall.md": {
+    "mtime": 1782828478.1663623,
+    "ast_hash": "0299316b247ad988e96c000f2f3d403a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-dashboard-jdb-10-acceptance-audit.md": {
+    "mtime": 1782991478.826136,
+    "ast_hash": "6bb0a560d91b1608f1e7d34dabbd65a3",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-ronaldo-dashboard-website-execution-plan.md": {
+    "mtime": 1782991478.8270857,
+    "ast_hash": "422fb234e9d314e93607c586fc651b0f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-legacy-design-reference-and-prd-calculator-brief.md": {
+    "mtime": 1782991478.82632,
+    "ast_hash": "23dd277e8b1ec72faf80162f01cbe4da",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-public-website-market-research-and-minimal-copy.md": {
+    "mtime": 1782991478.8269477,
+    "ast_hash": "73142db198b302e959b1b1e7f72e362f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-jarvis-dashboard-icp-task-consolidation.md": {
+    "mtime": 1782991478.8275423,
+    "ast_hash": "ef00667e413a8b852ca4d8f3b4c57d67",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-messi-task-architecture-review.md": {
+    "mtime": 1782991478.826728,
+    "ast_hash": "29df991a45db7dceba0d433666769997",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md": {
+    "mtime": 1783087723.0617003,
+    "ast_hash": "584abbe33285f0ac530682dbde5d605f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-blue-archflow-automate-website-review.md": {
+    "mtime": 1782991478.8258083,
+    "ast_hash": "2bf8dfa3af8a7705e6d8e2fd0a4f7450",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-cloud-kb-retrospective.md": {
+    "mtime": 1783092831.8016899,
+    "ast_hash": "95fcfabd3a3c0e456dfe3aa9e2729f40",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-infra-status-and-next-setup.md": {
+    "mtime": 1782991478.8262115,
+    "ast_hash": "5c88ce47389f88bfb286585b25aebc89",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-01-messi-coordination-review.md": {
+    "mtime": 1782991478.826528,
+    "ast_hash": "977c44af02d3e3b1adbfe8ef039a9b43",
+    "semantic_hash": ""
+  },
+  "<repo>/history/legacy-file-inventory.md": {
+    "mtime": 1782375998.7930753,
+    "ast_hash": "f7567d4fb3122d5c223f487f099ac8b5",
+    "semantic_hash": ""
+  },
+  "<repo>/history/resetup-summary-2026-06-24.md": {
+    "mtime": 1782375998.9344923,
+    "ast_hash": "e0fd967b3a18508a555cd797888cecb5",
+    "semantic_hash": ""
+  },
+  "<repo>/history/notion-plan-ingest-2026-06-25.md": {
+    "mtime": 1782375999.070771,
+    "ast_hash": "f04c50eda1039febb9d133bb9d46d631",
+    "semantic_hash": ""
+  },
+  "<repo>/history/README.md": {
+    "mtime": 1782375998.521167,
+    "ast_hash": "3abcb1d1efb36a1f8a6eed7bc239258b",
+    "semantic_hash": ""
+  },
+  "<repo>/history/previous-work-summary.md": {
+    "mtime": 1782375998.6577873,
+    "ast_hash": "e39a6ca9f107db07bc097aa7d4814371",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/skills-used.md": {
+    "mtime": 1782992332.7872193,
+    "ast_hash": "608ce6ade16f7acff5d07fc4ef9eb559",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/arcagcom/SKILL.md": {
+    "mtime": 1782992332.5427182,
+    "ast_hash": "1685da78e72d635ec89715244722bf3a",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/task-handout/SKILL.md": {
+    "mtime": 1782472759.0479512,
+    "ast_hash": "6ad7c7d7b74172bf4efcee07b5d3ebfa",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/archflow-e1-runtime-guard/SKILL.md": {
+    "mtime": 1782469540.28824,
+    "ast_hash": "0bdeac3d347bde1a4de67642dee7d244",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/daily-public-project-review/SKILL.md": {
+    "mtime": 1782991478.8386137,
+    "ast_hash": "4623c9a4cc1cbe8e5bbb5c4584d31dfa",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/priority-task-operator/SKILL.md": {
+    "mtime": 1782991478.8389704,
+    "ast_hash": "17ec50884e1ca4d0059fb71c4981cd46",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/outquestions/SKILL.md": {
+    "mtime": 1782819196.4982502,
+    "ast_hash": "77a5b09b0fe54d21d463a94f17e004a3",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/evening-skill-registry-update/SKILL.md": {
+    "mtime": 1782991478.838847,
+    "ast_hash": "87a0703bdced22bfe4067fe65695ec0b",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/archflow1/SKILL.md": {
+    "mtime": 1782992332.6962433,
+    "ast_hash": "f482cd776cd735895b898dd752132116",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/archflow-task-breakdown/SKILL.md": {
+    "mtime": 1782381959.8515325,
+    "ast_hash": "795f0899864eba3743fb314074b74e2f",
+    "semantic_hash": ""
+  },
+  "<repo>/skills/archflow-task-breakdown/agents/openai.yaml": {
+    "mtime": 1782381934.309827,
+    "ast_hash": "a718b50f8a8c989ac248444d2fa63dd8",
+    "semantic_hash": ""
+  },
+  "<repo>/services/jarvis-api/requirements.txt": {
+    "mtime": 1782991478.8384204,
+    "ast_hash": "b7caf32574ae26ad78eb19c433a3bce5",
+    "semantic_hash": ""
+  },
+  "<repo>/services/jarvis-api/README.md": {
+    "mtime": 1783090547.1052186,
+    "ast_hash": "b76fdaee4708f96997a6f1fe4d1738e8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf": {
+    "mtime": 1783076893.515545,
+    "ast_hash": "98a431bfcb3d0408190521f1d0081e17",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-01-dashboard-website-strategy-qa/review-report.pdf": {
+    "mtime": 1782991478.8304794,
+    "ast_hash": "2caf83060a78b9ed26841a9de0c8c243",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.pdf": {
+    "mtime": 1783089557.0003076,
+    "ast_hash": "3569f23848f6d1abb1789d1b8d4a671e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.pdf": {
+    "mtime": 1783089556.9851358,
+    "ast_hash": "ba34bfd576ad4604997ad629739b4642",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.pdf": {
+    "mtime": 1783089556.9803295,
+    "ast_hash": "16c77b34643e959b1acf577a497e10a1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.pdf": {
+    "mtime": 1783089556.9901004,
+    "ast_hash": "135309a443e58f5b33d7de90eb56e8fa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/review-report.pdf": {
+    "mtime": 1783067815.352884,
+    "ast_hash": "caed3ce28b285606a1bdff3db246621a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.pdf": {
+    "mtime": 1783067815.3742406,
+    "ast_hash": "df6a8dd8f60ef3aff55416535428a611",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-notion-sync/next-steps-e1-2.pdf": {
+    "mtime": 1782476802.0429788,
+    "ast_hash": "931a8b90599969e73ba5ed66404d556e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.pdf": {
+    "mtime": 1782473956.0288014,
+    "ast_hash": "77d24565152317a9fdce8f0cd8a73a29",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/E1.2_System_report.pdf": {
+    "mtime": 1782473956.0495377,
+    "ast_hash": "1b5bc2856841e75d5048f9945825ef4f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/E1.2/2026-06-26-full-test/E1.2_Streaming_report.pdf": {
+    "mtime": 1782473956.0375946,
+    "ast_hash": "324b1710c63436fdc894179898833d4a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf": {
+    "mtime": 1783081137.0682118,
+    "ast_hash": "6a6cd11ecea3c7917afd75d4f064774b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.pdf": {
+    "mtime": 1783078940.1906931,
+    "ast_hash": "1a940129e8cd73a9029533aca0913a7c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf": {
+    "mtime": 1783081181.8300555,
+    "ast_hash": "40ac2c0f4fab4e752aa06e2612c61798",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.pdf": {
+    "mtime": 1783081137.110116,
+    "ast_hash": "8d7e9ec5c429c7e12f4dc1a97aefc163",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.pdf": {
+    "mtime": 1783081137.1198945,
+    "ast_hash": "60872807218b67614121e40a97c25821",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.pdf": {
+    "mtime": 1783081137.094619,
+    "ast_hash": "7ed5d6746bd509fbd9e3a90efd72a935",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf": {
+    "mtime": 1783092902.3167794,
+    "ast_hash": "59c7eb74f5d34bb6287179090c7313cf",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf": {
+    "mtime": 1783090664.1602402,
+    "ast_hash": "4a1e82479486cc2ace3f7c4ce1ff3860",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-dashboard-operating-manual.pdf": {
+    "mtime": 1783002492.742638,
+    "ast_hash": "6c47a4955c9da6a213b387f1c23582fd",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-26-e1-2-prd.pdf": {
+    "mtime": 1782473956.0288014,
+    "ast_hash": "77d24565152317a9fdce8f0cd8a73a29",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf": {
+    "mtime": 1783090664.2136135,
+    "ast_hash": "f51f534529435d787482007e07edb519",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-e1-2-8-local-streaming-report.pdf": {
+    "mtime": 1783089556.9853542,
+    "ast_hash": "ba34bfd576ad4604997ad629739b4642",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-e1-2-8-source-methodology-review.pdf": {
+    "mtime": 1783089556.9904456,
+    "ast_hash": "135309a443e58f5b33d7de90eb56e8fa",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-e1-2-8-openrouter-comparison.pdf": {
+    "mtime": 1783067832.4350152,
+    "ast_hash": "df6a8dd8f60ef3aff55416535428a611",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-e1-2-8-agent-activity-progress-report.pdf": {
+    "mtime": 1783089557.0005257,
+    "ast_hash": "3569f23848f6d1abb1789d1b8d4a671e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-26-e1-2-system-report.pdf": {
+    "mtime": 1782473956.0495377,
+    "ast_hash": "1b5bc2856841e75d5048f9945825ef4f",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.pdf": {
+    "mtime": 1783087854.959724,
+    "ast_hash": "a7e9358d5daf26a6f6ecd6788d37415b",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-25-e1-block1-subtask-execution-plan.pdf": {
+    "mtime": 1782382269.3695884,
+    "ast_hash": "2281f702407dd86d0e2acc0f88769c67",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-26-e1-2-streaming-report.pdf": {
+    "mtime": 1782473956.0375946,
+    "ast_hash": "324b1710c63436fdc894179898833d4a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-kb-update-principle.pdf": {
+    "mtime": 1783082878.2991652,
+    "ast_hash": "d33c8ff1419390354cbb16c56d8b0030",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-cloud-kb-retrospective.pdf": {
+    "mtime": 1783092902.300302,
+    "ast_hash": "1be792b28b261755e08298251bad2196",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-02-e1-2-8-local-prd.pdf": {
+    "mtime": 1783089556.9807093,
+    "ast_hash": "16c77b34643e959b1acf577a497e10a1",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-06-26-e1-2-next-steps.pdf": {
+    "mtime": 1782476802.0429788,
+    "ast_hash": "931a8b90599969e73ba5ed66404d556e",
+    "semantic_hash": ""
+  },
+  "<repo>/project/reports/2026-07-03-e1-7-railway-jarvis-final-report.pdf": {
+    "mtime": 1783090664.1737452,
+    "ast_hash": "4fb0247a38846414f929ac956550f021",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/qa-public-desktop.png": {
+    "mtime": 1782902793.5686493,
+    "ast_hash": "52c5780f9a9a39caa65eb16339d3d20c",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/qa-public-mobile.png": {
+    "mtime": 1782903238.0177977,
+    "ast_hash": "55b7a68feaa80dc086bcc5d8f834b4b8",
+    "semantic_hash": ""
+  },
+  "<repo>/project/outputs/qa-quiz-mobile.png": {
+    "mtime": 1782903289.0462546,
+    "ast_hash": "462cab93da947e034de49a370d5a0393",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-mobile.png": {
+    "mtime": 1783070076.7088737,
+    "ast_hash": "d4f18ca13a44e7f37051aec989e4c59a",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-service-desktop.png": {
+    "mtime": 1783070073.8659968,
+    "ast_hash": "8f790fea9e7450fe5a4763c74d0ceb90",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-mobile.png": {
+    "mtime": 1783070082.6316931,
+    "ast_hash": "f87a846023c0bb53725df9f54eba3037",
+    "semantic_hash": ""
+  },
+  "<repo>/project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/dashboard-schema-desktop.png": {
+    "mtime": 1783070079.73727,
+    "ast_hash": "8bbae270c1895cb895cbc9961b982b1d",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/apple-touch-icon.png": {
+    "mtime": 1782991478.8193278,
+    "ast_hash": "3a7c12c419104667297e158628e1e910",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/icon-192.png": {
+    "mtime": 1782991478.8200839,
+    "ast_hash": "e731f203b4766cb46cd026d77224d364",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/archflow-system-map.png": {
+    "mtime": 1782991478.8199089,
+    "ast_hash": "e05fe5afd13757019481861e34276942",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/favicon-32.png": {
+    "mtime": 1782991478.8200076,
+    "ast_hash": "ba87eb56fe82cb9ff90d0a1c2476004b",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/archflow-mark.svg": {
+    "mtime": 1782991478.8194067,
+    "ast_hash": "6a9d07cc1acf93375a00cab4f31b1eae",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/icon-512.png": {
+    "mtime": 1782991478.8203397,
+    "ast_hash": "d25e72c736b0678ee3888bcfb2e9c2db",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp": {
+    "mtime": 1782991478.8192081,
+    "ast_hash": "68429bbaf200f39b2f045541251364d2",
+    "semantic_hash": ""
+  },
+  "<repo>/assets/3d-arcs/archflow-3d-arc-05-offset-twin-frames.webp": {
+    "mtime": 1782991478.819002,
+    "ast_hash": "16d802b5d1993a0a97213f6ae639517d",
+    "semantic_hash": ""
   }
 }

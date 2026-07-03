@@ -134,3 +134,11 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: this preserves momentum on PRD/ICP workflow design while preventing the dashboard from implying Railway, OpenRouter, Telegram, Notion, or default CrewAI runtime readiness.
 - Where applicable: Jarvis API activation, Screen 1 PRD/ICP tests, Screen 2 Agent Orchestra, OpenRouter budget guard, and future Railway deployment planning.
 - Limitation: until FastAPI dependencies are installed and a backend is run, the service remains an implementation contract rather than runtime proof.
+
+## Insight - Cloud Freshness Is A Separate Reliability Gate
+
+- Observation: Railway can be healthy and Vercel production can load while production dashboard data remains older than the current review preview.
+- Interpretation: hosted reliability has at least three layers: backend health, frontend availability, and deployed evidence freshness. All three must pass before claiming an always-current cloud surface.
+- Why it matters: this prevents the project from treating a 200 response as proof that users see the latest verified state.
+- Where applicable: E1.7 closeout, future Vercel production promotion, dashboard data generation, Notion/GitHub links, Telegram reporting, and any client review surface.
+- Limitation: production freshness can only be closed by a post-push check or an explicit production deployment/promotion step.

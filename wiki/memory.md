@@ -273,3 +273,10 @@ ArchFlow Block 1 is the first public solution:
 - Jarvis currently works for local and hosted provider-disabled review packets. Architecture 1 routes PRD/ICP service-output requests; Architecture 2 routes agent-control and workflow/knowledge-system requests.
 - Provider-backed Jarvis, Railway always-on workers, live Nexus/writeback, raw audio storage, autonomous Notion/GitHub updates, and production promotion remain separate approval-gated lanes.
 - NVIDIA RAG/NeMo skills are future evaluation candidates for guardrails, retriever evaluation, performance, and speech. They are not active in the current public RAG runtime.
+
+## Cloud And KB Retrospective Memory - 2026-07-03
+
+- Railway Jarvis is verified for the provider-disabled hosted review-packet baseline, including health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate packets, voice text packets, and the meeting-test approval gate.
+- Vercel production availability is a separate fact from Vercel production freshness. On this continuation, production loaded without browser errors but served older dashboard data than the current E1.7 review preview.
+- Future agents must not claim "always-current cloud product" from API availability alone; production `data.json` freshness must be checked after pushes.
+- E1.6 role-split KB should not be called substantive until each role lane contains actual reviewed notes. The collaborator lane now has a founder-note-derived brief; before this continuation it was mostly routing scaffolding.

@@ -6643,3 +6643,90 @@ Remaining gaps:
 Next safe action:
 
 - Review the pushed reports and Vercel preview. Answer the Epic 2 Planning questions before starting live account research or provider-backed synthesis.
+
+## 2026-07-03 20:50 - Codex - starting - Cloud reliability review, E1.6 collaborator KB note, daily-note/KB retrospective, Notion audit, and delivery closeout
+
+Status: starting
+
+Task:
+
+- Verify whether the Jarvis cloud path remains reliable across Railway and Vercel, including hosted API endpoints, dashboard browser behavior, and current static/public update state.
+- If gaps are found, record or fix only public-safe and approval-safe items.
+- Update the E1.6 collaborator knowledge-base lane from the latest daily founder-note summary available to the public project.
+- Refresh primary-operator daily-note/KB retrospective surfaces, then run Notion audit/update, GitHub push, and public-safe Telegram delivery.
+
+Files likely to change:
+
+- `project/knowledge/collaborator/`
+- `project/knowledge/primary-operator/`
+- `project/reports/`
+- `project/runs/2026-07-03-cloud-kb-retrospective/`
+- `wiki/runs/`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- New cloud-review, daily-note, KB retrospective, and E1.6 collaborator KB artifacts for this continuation window only.
+
+Expected output:
+
+- Public-safe cloud reliability report with exact pass/gap status, updated E1.6 collaborator KB note, primary-operator daily-note/KB retrospective, Notion audit/update notes, committed/pushed source state, and public-safe Telegram delivery packet.
+
+Blockers:
+
+- Private service links, private Notion links, account IDs, deployment IDs, raw screenshots, raw private notes, and credential values cannot be stored in the public repo or exported through public delivery.
+- Production promotion remains gated unless explicitly approved.
+
+Next step:
+
+- Run Railway/API/Vercel/browser verification, dispatch a read-only review agent for Notion/task consistency, then edit the public-safe KB and report artifacts.
+
+## 2026-07-03 21:42 - Codex - complete - Cloud reliability review, E1.6 KB substance, daily-note/KB retrospective, Notion, Graphify, and Obsidian sync
+
+Status: complete
+
+Files changed:
+
+- `project/reports/2026-07-03-cloud-kb-retrospective.md` and `.pdf`
+- `project/runs/2026-07-03-cloud-kb-retrospective/`
+- `project/knowledge/collaborator/daily-founder-notes-2026-07-03.md`
+- `project/knowledge/primary-operator/daily-founder-notes-retrospective-2026-07-03.md`
+- `project/knowledge/collaborator/README.md`
+- `project/knowledge/primary-operator/README.md`
+- `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` and `.pdf`
+- `project/runs/2026-07-03-e1-7-railway-jarvis-final/agent-handout.md`
+- `wiki/runs/2026-07-03-cloud-kb-retrospective.md`
+- `wiki/log.md`, `wiki/memory.md`, `wiki/insights.md`
+- `project/dashboard/data.json`
+- `graphify-out/`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Railway CLI status check: passed; private IDs omitted from public files.
+- Hosted Jarvis checks: health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, voice text, and meeting-test approval gate passed.
+- Agent-browser production dashboard QA: page loaded, Config screen inspected, local save clicked, console/page errors none.
+- Vercel data freshness check: production reachable but stale against the current review preview.
+- Notion append-only updates: sent for Epic 1, E1.6, E1.7, Daily Founder Notes, collaborator-side founder log, and primary-operator founder log.
+- Obsidian/WikiLLM external sync: public-safe retrospective note copied to reviewed external memory targets.
+- Graphify update: refreshed, then sanitized generated local-path output.
+- Report PDF render: passed.
+- Dashboard data regeneration and JSON parses: passed.
+- Jarvis API in-process contract smoke: passed, 17 endpoints, provider calls `0`, writeback `0`.
+- Workflow validation: passed.
+- Runtime guard: passed.
+- `node --check project/dashboard/app.js`: passed.
+- Public safety scan: passed after Graphify sanitization.
+- `git diff --check`: passed.
+
+Remaining gaps:
+
+- Vercel production dashboard data freshness remains stale until post-push auto-deploy proof or explicit production promotion.
+- Full product runtime remains gated: auth, persistence, provider ledgering, provider calls, durable writeback, raw voice, client workspaces, and buyer proof.
+- Private Notion/Railway/Figma links are not exported through Telegram or stored in public files.
+
+Next safe action:
+
+- Commit and push `main`, send public-safe Telegram report/PDF, then recheck whether production Vercel picked up the new dashboard data automatically.

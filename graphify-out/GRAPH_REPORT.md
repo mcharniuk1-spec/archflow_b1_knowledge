@@ -1,15 +1,16 @@
-# Graph Report - .  (2026-06-29)
+# Graph Report - public  (2026-07-03)
 
 ## Corpus Check
-- cluster-only mode -- file stats not available
+- 457 files · ~453,312 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1198 nodes | 1252 edges | 144 communities (130 shown, 14 thin omitted)
-- Extraction: 100% EXTRACTED | 0% INFERRED | 0% AMBIGUOUS | INFERRED: 2 edges (avg confidence: 0.8)
-- Token cost: 0 input | 0 output
+- 4913 nodes · 5086 edges · 461 communities (428 shown, 33 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.68)
+- Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f111fa92`
+- Built from commit: `d0e75504`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -154,46 +155,364 @@
 - [[_COMMUNITY_Community 137|Community 137]]
 - [[_COMMUNITY_Community 138|Community 138]]
 - [[_COMMUNITY_Community 139|Community 139]]
+- [[_COMMUNITY_Community 144|Community 144]]
+- [[_COMMUNITY_Community 145|Community 145]]
+- [[_COMMUNITY_Community 146|Community 146]]
+- [[_COMMUNITY_Community 147|Community 147]]
+- [[_COMMUNITY_Community 148|Community 148]]
+- [[_COMMUNITY_Community 149|Community 149]]
+- [[_COMMUNITY_Community 150|Community 150]]
+- [[_COMMUNITY_Community 151|Community 151]]
+- [[_COMMUNITY_Community 152|Community 152]]
+- [[_COMMUNITY_Community 153|Community 153]]
+- [[_COMMUNITY_Community 154|Community 154]]
+- [[_COMMUNITY_Community 155|Community 155]]
+- [[_COMMUNITY_Community 156|Community 156]]
+- [[_COMMUNITY_Community 157|Community 157]]
+- [[_COMMUNITY_Community 158|Community 158]]
+- [[_COMMUNITY_Community 159|Community 159]]
+- [[_COMMUNITY_Community 160|Community 160]]
+- [[_COMMUNITY_Community 161|Community 161]]
+- [[_COMMUNITY_Community 162|Community 162]]
+- [[_COMMUNITY_Community 163|Community 163]]
+- [[_COMMUNITY_Community 164|Community 164]]
+- [[_COMMUNITY_Community 165|Community 165]]
+- [[_COMMUNITY_Community 166|Community 166]]
+- [[_COMMUNITY_Community 167|Community 167]]
+- [[_COMMUNITY_Community 168|Community 168]]
+- [[_COMMUNITY_Community 169|Community 169]]
+- [[_COMMUNITY_Community 170|Community 170]]
+- [[_COMMUNITY_Community 171|Community 171]]
+- [[_COMMUNITY_Community 172|Community 172]]
+- [[_COMMUNITY_Community 173|Community 173]]
+- [[_COMMUNITY_Community 174|Community 174]]
+- [[_COMMUNITY_Community 175|Community 175]]
+- [[_COMMUNITY_Community 176|Community 176]]
+- [[_COMMUNITY_Community 177|Community 177]]
+- [[_COMMUNITY_Community 178|Community 178]]
+- [[_COMMUNITY_Community 179|Community 179]]
+- [[_COMMUNITY_Community 180|Community 180]]
+- [[_COMMUNITY_Community 181|Community 181]]
+- [[_COMMUNITY_Community 182|Community 182]]
+- [[_COMMUNITY_Community 183|Community 183]]
+- [[_COMMUNITY_Community 184|Community 184]]
+- [[_COMMUNITY_Community 185|Community 185]]
+- [[_COMMUNITY_Community 186|Community 186]]
+- [[_COMMUNITY_Community 187|Community 187]]
+- [[_COMMUNITY_Community 188|Community 188]]
+- [[_COMMUNITY_Community 189|Community 189]]
+- [[_COMMUNITY_Community 190|Community 190]]
+- [[_COMMUNITY_Community 191|Community 191]]
+- [[_COMMUNITY_Community 192|Community 192]]
+- [[_COMMUNITY_Community 193|Community 193]]
+- [[_COMMUNITY_Community 194|Community 194]]
+- [[_COMMUNITY_Community 195|Community 195]]
+- [[_COMMUNITY_Community 196|Community 196]]
+- [[_COMMUNITY_Community 197|Community 197]]
+- [[_COMMUNITY_Community 198|Community 198]]
+- [[_COMMUNITY_Community 199|Community 199]]
+- [[_COMMUNITY_Community 200|Community 200]]
+- [[_COMMUNITY_Community 201|Community 201]]
+- [[_COMMUNITY_Community 202|Community 202]]
+- [[_COMMUNITY_Community 203|Community 203]]
+- [[_COMMUNITY_Community 204|Community 204]]
+- [[_COMMUNITY_Community 205|Community 205]]
+- [[_COMMUNITY_Community 206|Community 206]]
+- [[_COMMUNITY_Community 207|Community 207]]
+- [[_COMMUNITY_Community 208|Community 208]]
+- [[_COMMUNITY_Community 209|Community 209]]
+- [[_COMMUNITY_Community 210|Community 210]]
+- [[_COMMUNITY_Community 211|Community 211]]
+- [[_COMMUNITY_Community 212|Community 212]]
+- [[_COMMUNITY_Community 213|Community 213]]
+- [[_COMMUNITY_Community 214|Community 214]]
+- [[_COMMUNITY_Community 215|Community 215]]
+- [[_COMMUNITY_Community 216|Community 216]]
+- [[_COMMUNITY_Community 217|Community 217]]
+- [[_COMMUNITY_Community 218|Community 218]]
+- [[_COMMUNITY_Community 219|Community 219]]
+- [[_COMMUNITY_Community 220|Community 220]]
+- [[_COMMUNITY_Community 221|Community 221]]
+- [[_COMMUNITY_Community 222|Community 222]]
+- [[_COMMUNITY_Community 223|Community 223]]
+- [[_COMMUNITY_Community 224|Community 224]]
+- [[_COMMUNITY_Community 225|Community 225]]
+- [[_COMMUNITY_Community 226|Community 226]]
+- [[_COMMUNITY_Community 227|Community 227]]
+- [[_COMMUNITY_Community 228|Community 228]]
+- [[_COMMUNITY_Community 229|Community 229]]
+- [[_COMMUNITY_Community 230|Community 230]]
+- [[_COMMUNITY_Community 231|Community 231]]
+- [[_COMMUNITY_Community 232|Community 232]]
+- [[_COMMUNITY_Community 233|Community 233]]
+- [[_COMMUNITY_Community 234|Community 234]]
+- [[_COMMUNITY_Community 235|Community 235]]
+- [[_COMMUNITY_Community 236|Community 236]]
+- [[_COMMUNITY_Community 237|Community 237]]
+- [[_COMMUNITY_Community 238|Community 238]]
+- [[_COMMUNITY_Community 239|Community 239]]
+- [[_COMMUNITY_Community 240|Community 240]]
+- [[_COMMUNITY_Community 241|Community 241]]
+- [[_COMMUNITY_Community 242|Community 242]]
+- [[_COMMUNITY_Community 243|Community 243]]
+- [[_COMMUNITY_Community 244|Community 244]]
+- [[_COMMUNITY_Community 245|Community 245]]
+- [[_COMMUNITY_Community 246|Community 246]]
+- [[_COMMUNITY_Community 247|Community 247]]
+- [[_COMMUNITY_Community 248|Community 248]]
+- [[_COMMUNITY_Community 249|Community 249]]
+- [[_COMMUNITY_Community 250|Community 250]]
+- [[_COMMUNITY_Community 251|Community 251]]
+- [[_COMMUNITY_Community 252|Community 252]]
+- [[_COMMUNITY_Community 253|Community 253]]
+- [[_COMMUNITY_Community 254|Community 254]]
+- [[_COMMUNITY_Community 255|Community 255]]
+- [[_COMMUNITY_Community 256|Community 256]]
+- [[_COMMUNITY_Community 257|Community 257]]
+- [[_COMMUNITY_Community 258|Community 258]]
+- [[_COMMUNITY_Community 259|Community 259]]
+- [[_COMMUNITY_Community 260|Community 260]]
+- [[_COMMUNITY_Community 261|Community 261]]
+- [[_COMMUNITY_Community 262|Community 262]]
+- [[_COMMUNITY_Community 263|Community 263]]
+- [[_COMMUNITY_Community 264|Community 264]]
+- [[_COMMUNITY_Community 265|Community 265]]
+- [[_COMMUNITY_Community 266|Community 266]]
+- [[_COMMUNITY_Community 267|Community 267]]
+- [[_COMMUNITY_Community 268|Community 268]]
+- [[_COMMUNITY_Community 269|Community 269]]
+- [[_COMMUNITY_Community 270|Community 270]]
+- [[_COMMUNITY_Community 271|Community 271]]
+- [[_COMMUNITY_Community 272|Community 272]]
+- [[_COMMUNITY_Community 273|Community 273]]
+- [[_COMMUNITY_Community 274|Community 274]]
+- [[_COMMUNITY_Community 275|Community 275]]
+- [[_COMMUNITY_Community 276|Community 276]]
+- [[_COMMUNITY_Community 277|Community 277]]
+- [[_COMMUNITY_Community 278|Community 278]]
+- [[_COMMUNITY_Community 279|Community 279]]
+- [[_COMMUNITY_Community 280|Community 280]]
+- [[_COMMUNITY_Community 281|Community 281]]
+- [[_COMMUNITY_Community 282|Community 282]]
+- [[_COMMUNITY_Community 283|Community 283]]
+- [[_COMMUNITY_Community 284|Community 284]]
+- [[_COMMUNITY_Community 285|Community 285]]
+- [[_COMMUNITY_Community 286|Community 286]]
+- [[_COMMUNITY_Community 287|Community 287]]
+- [[_COMMUNITY_Community 288|Community 288]]
+- [[_COMMUNITY_Community 289|Community 289]]
+- [[_COMMUNITY_Community 290|Community 290]]
+- [[_COMMUNITY_Community 291|Community 291]]
+- [[_COMMUNITY_Community 292|Community 292]]
+- [[_COMMUNITY_Community 293|Community 293]]
+- [[_COMMUNITY_Community 294|Community 294]]
+- [[_COMMUNITY_Community 295|Community 295]]
+- [[_COMMUNITY_Community 296|Community 296]]
+- [[_COMMUNITY_Community 297|Community 297]]
+- [[_COMMUNITY_Community 298|Community 298]]
+- [[_COMMUNITY_Community 299|Community 299]]
+- [[_COMMUNITY_Community 300|Community 300]]
+- [[_COMMUNITY_Community 301|Community 301]]
+- [[_COMMUNITY_Community 302|Community 302]]
+- [[_COMMUNITY_Community 303|Community 303]]
+- [[_COMMUNITY_Community 304|Community 304]]
+- [[_COMMUNITY_Community 305|Community 305]]
+- [[_COMMUNITY_Community 306|Community 306]]
+- [[_COMMUNITY_Community 307|Community 307]]
+- [[_COMMUNITY_Community 308|Community 308]]
+- [[_COMMUNITY_Community 309|Community 309]]
+- [[_COMMUNITY_Community 310|Community 310]]
+- [[_COMMUNITY_Community 311|Community 311]]
+- [[_COMMUNITY_Community 312|Community 312]]
+- [[_COMMUNITY_Community 313|Community 313]]
+- [[_COMMUNITY_Community 314|Community 314]]
+- [[_COMMUNITY_Community 315|Community 315]]
+- [[_COMMUNITY_Community 316|Community 316]]
+- [[_COMMUNITY_Community 317|Community 317]]
+- [[_COMMUNITY_Community 318|Community 318]]
+- [[_COMMUNITY_Community 319|Community 319]]
+- [[_COMMUNITY_Community 320|Community 320]]
+- [[_COMMUNITY_Community 321|Community 321]]
+- [[_COMMUNITY_Community 322|Community 322]]
+- [[_COMMUNITY_Community 323|Community 323]]
+- [[_COMMUNITY_Community 324|Community 324]]
+- [[_COMMUNITY_Community 325|Community 325]]
+- [[_COMMUNITY_Community 326|Community 326]]
+- [[_COMMUNITY_Community 327|Community 327]]
+- [[_COMMUNITY_Community 328|Community 328]]
+- [[_COMMUNITY_Community 329|Community 329]]
+- [[_COMMUNITY_Community 330|Community 330]]
+- [[_COMMUNITY_Community 331|Community 331]]
+- [[_COMMUNITY_Community 332|Community 332]]
+- [[_COMMUNITY_Community 333|Community 333]]
+- [[_COMMUNITY_Community 334|Community 334]]
+- [[_COMMUNITY_Community 335|Community 335]]
+- [[_COMMUNITY_Community 336|Community 336]]
+- [[_COMMUNITY_Community 337|Community 337]]
+- [[_COMMUNITY_Community 338|Community 338]]
+- [[_COMMUNITY_Community 339|Community 339]]
+- [[_COMMUNITY_Community 340|Community 340]]
+- [[_COMMUNITY_Community 341|Community 341]]
+- [[_COMMUNITY_Community 342|Community 342]]
+- [[_COMMUNITY_Community 343|Community 343]]
+- [[_COMMUNITY_Community 344|Community 344]]
+- [[_COMMUNITY_Community 345|Community 345]]
+- [[_COMMUNITY_Community 346|Community 346]]
+- [[_COMMUNITY_Community 347|Community 347]]
+- [[_COMMUNITY_Community 348|Community 348]]
+- [[_COMMUNITY_Community 349|Community 349]]
+- [[_COMMUNITY_Community 350|Community 350]]
+- [[_COMMUNITY_Community 351|Community 351]]
+- [[_COMMUNITY_Community 352|Community 352]]
+- [[_COMMUNITY_Community 353|Community 353]]
+- [[_COMMUNITY_Community 354|Community 354]]
+- [[_COMMUNITY_Community 355|Community 355]]
+- [[_COMMUNITY_Community 356|Community 356]]
+- [[_COMMUNITY_Community 357|Community 357]]
+- [[_COMMUNITY_Community 358|Community 358]]
+- [[_COMMUNITY_Community 359|Community 359]]
+- [[_COMMUNITY_Community 360|Community 360]]
+- [[_COMMUNITY_Community 361|Community 361]]
+- [[_COMMUNITY_Community 362|Community 362]]
+- [[_COMMUNITY_Community 363|Community 363]]
+- [[_COMMUNITY_Community 364|Community 364]]
+- [[_COMMUNITY_Community 365|Community 365]]
+- [[_COMMUNITY_Community 366|Community 366]]
+- [[_COMMUNITY_Community 367|Community 367]]
+- [[_COMMUNITY_Community 368|Community 368]]
+- [[_COMMUNITY_Community 369|Community 369]]
+- [[_COMMUNITY_Community 370|Community 370]]
+- [[_COMMUNITY_Community 371|Community 371]]
+- [[_COMMUNITY_Community 372|Community 372]]
+- [[_COMMUNITY_Community 373|Community 373]]
+- [[_COMMUNITY_Community 374|Community 374]]
+- [[_COMMUNITY_Community 375|Community 375]]
+- [[_COMMUNITY_Community 376|Community 376]]
+- [[_COMMUNITY_Community 377|Community 377]]
+- [[_COMMUNITY_Community 378|Community 378]]
+- [[_COMMUNITY_Community 379|Community 379]]
+- [[_COMMUNITY_Community 380|Community 380]]
+- [[_COMMUNITY_Community 381|Community 381]]
+- [[_COMMUNITY_Community 382|Community 382]]
+- [[_COMMUNITY_Community 383|Community 383]]
+- [[_COMMUNITY_Community 384|Community 384]]
+- [[_COMMUNITY_Community 385|Community 385]]
+- [[_COMMUNITY_Community 386|Community 386]]
+- [[_COMMUNITY_Community 387|Community 387]]
+- [[_COMMUNITY_Community 388|Community 388]]
+- [[_COMMUNITY_Community 389|Community 389]]
+- [[_COMMUNITY_Community 390|Community 390]]
+- [[_COMMUNITY_Community 391|Community 391]]
+- [[_COMMUNITY_Community 392|Community 392]]
+- [[_COMMUNITY_Community 393|Community 393]]
+- [[_COMMUNITY_Community 394|Community 394]]
+- [[_COMMUNITY_Community 395|Community 395]]
+- [[_COMMUNITY_Community 396|Community 396]]
+- [[_COMMUNITY_Community 397|Community 397]]
+- [[_COMMUNITY_Community 398|Community 398]]
+- [[_COMMUNITY_Community 399|Community 399]]
+- [[_COMMUNITY_Community 400|Community 400]]
+- [[_COMMUNITY_Community 401|Community 401]]
+- [[_COMMUNITY_Community 402|Community 402]]
+- [[_COMMUNITY_Community 403|Community 403]]
+- [[_COMMUNITY_Community 404|Community 404]]
+- [[_COMMUNITY_Community 405|Community 405]]
+- [[_COMMUNITY_Community 406|Community 406]]
+- [[_COMMUNITY_Community 407|Community 407]]
+- [[_COMMUNITY_Community 408|Community 408]]
+- [[_COMMUNITY_Community 409|Community 409]]
+- [[_COMMUNITY_Community 410|Community 410]]
+- [[_COMMUNITY_Community 411|Community 411]]
+- [[_COMMUNITY_Community 412|Community 412]]
+- [[_COMMUNITY_Community 413|Community 413]]
+- [[_COMMUNITY_Community 414|Community 414]]
+- [[_COMMUNITY_Community 415|Community 415]]
+- [[_COMMUNITY_Community 416|Community 416]]
+- [[_COMMUNITY_Community 417|Community 417]]
+- [[_COMMUNITY_Community 418|Community 418]]
+- [[_COMMUNITY_Community 419|Community 419]]
+- [[_COMMUNITY_Community 420|Community 420]]
+- [[_COMMUNITY_Community 421|Community 421]]
+- [[_COMMUNITY_Community 422|Community 422]]
+- [[_COMMUNITY_Community 423|Community 423]]
+- [[_COMMUNITY_Community 424|Community 424]]
+- [[_COMMUNITY_Community 425|Community 425]]
+- [[_COMMUNITY_Community 426|Community 426]]
+- [[_COMMUNITY_Community 427|Community 427]]
+- [[_COMMUNITY_Community 428|Community 428]]
+- [[_COMMUNITY_Community 429|Community 429]]
+- [[_COMMUNITY_Community 430|Community 430]]
+- [[_COMMUNITY_Community 431|Community 431]]
+- [[_COMMUNITY_Community 432|Community 432]]
+- [[_COMMUNITY_Community 433|Community 433]]
+- [[_COMMUNITY_Community 434|Community 434]]
+- [[_COMMUNITY_Community 435|Community 435]]
+- [[_COMMUNITY_Community 436|Community 436]]
+- [[_COMMUNITY_Community 437|Community 437]]
+- [[_COMMUNITY_Community 438|Community 438]]
+- [[_COMMUNITY_Community 439|Community 439]]
+- [[_COMMUNITY_Community 440|Community 440]]
+- [[_COMMUNITY_Community 441|Community 441]]
+- [[_COMMUNITY_Community 442|Community 442]]
+- [[_COMMUNITY_Community 443|Community 443]]
+- [[_COMMUNITY_Community 444|Community 444]]
+- [[_COMMUNITY_Community 445|Community 445]]
+- [[_COMMUNITY_Community 446|Community 446]]
+- [[_COMMUNITY_Community 447|Community 447]]
+- [[_COMMUNITY_Community 448|Community 448]]
+- [[_COMMUNITY_Community 449|Community 449]]
+- [[_COMMUNITY_Community 450|Community 450]]
+- [[_COMMUNITY_Community 451|Community 451]]
+- [[_COMMUNITY_Community 452|Community 452]]
+- [[_COMMUNITY_Community 453|Community 453]]
+- [[_COMMUNITY_Community 454|Community 454]]
+- [[_COMMUNITY_Community 455|Community 455]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `final_state` - 22 edges
-2. `Current Setup Methods And Agent Plan` - 17 edges
-3. `E1.2 PRD - Dialogue-To-PRD Full Test` - 16 edges
-4. `Insights` - 14 edges
-5. `Dashboard Setup And Operation Report` - 14 edges
-6. `Memory` - 13 edges
-7. `main()` - 12 edges
-8. `event()` - 12 edges
-9. `Project Plan` - 12 edges
-10. `E1.2 System Report` - 12 edges
+1. `Agent Communication Log` - 209 edges
+2. `Memory` - 31 edges
+3. `render()` - 30 edges
+4. `Log` - 25 edges
+5. `Insights` - 24 edges
+6. `appendEvent()` - 23 edges
+7. `final_state` - 22 edges
+8. `renderSchema()` - 19 edges
+9. `packet()` - 18 edges
+10. `Yushchenko Model Efficiency Report` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `parse_table()` --calls--> `table()`  [INFERRED]
-  project/scripts/render-e1-2-next-steps-pdf.py -> project/dashboard/app.js
-- `parse_table()` --calls--> `table()`  [INFERRED]
-  project/scripts/render-e1-2-pdfs.py -> project/dashboard/app.js
+- `main()` --calls--> `render_pdf()`  [INFERRED]
+  project/scripts/e1_2_8_openrouter_comparison.py → project/scripts/e1_2_8_testmeeting_run.py
+- `handler` --uses--> `JsonHandler`  [INFERRED]
+  api/health.py → api/_jarvis_contract.py
+- `handler` --uses--> `JsonHandler`  [INFERRED]
+  api/chat.py → api/_jarvis_contract.py
+- `handler` --uses--> `JsonHandler`  [INFERRED]
+  api/config/roles.py → api/_jarvis_contract.py
+- `handler` --uses--> `JsonHandler`  [INFERRED]
+  api/lanes/agent-orchestra.py → api/_jarvis_contract.py
 
-## Communities (144 total, 14 thin omitted)
+## Communities (461 total, 33 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
 Nodes (44): 10. Output Document Method, 11. Agent Structure Options, 12. Recommended Implementation Plan, 13. Technology Stack To Know, 14. Source List, 15. Current Gaps, 16. Recommended Next Approval, 1. Executive Summary (+36 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.27
-Nodes (20): badge(), card(), escapeHtml(), generatedAt, nav, pathLink(), render(), renderCrew() (+12 more)
+Cohesion: 0.19
+Nodes (22): card(), generatedAt, handleFiles(), nav, render(), renderConfig(), renderCrew(), renderEnv() (+14 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.15
-Nodes (14): Flowable, clean_inline(), HR, main(), markdown_to_flowables(), parse_table(), styles(), clean_inline() (+6 more)
+Cohesion: 0.10
+Nodes (21): Flowable, clean_inline(), HR, main(), markdown_to_flowables(), parse_table(), styles(), clean_inline() (+13 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.17
-Nodes (17): analyze_agents(), analyze_architecture(), analyze_knowledge(), analyze_runtime(), analyze_trends(), build_graph(), draft_documents(), E12State (+9 more)
+Cohesion: 0.11
+Nodes (31): analyze_agents(), analyze_architecture(), analyze_knowledge(), analyze_runtime(), analyze_trends(), build_graph(), draft_documents(), E12State (+23 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.38
-Nodes (18): activity_items(), corpus(), env_status(), first_match(), graphify_status(), list_files(), main(), package_status() (+10 more)
+Cohesion: 0.31
+Nodes (22): activity_items(), corpus(), e13_gate_status(), env_status(), first_match(), graphify_status(), jarvis_api_status(), list_files() (+14 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.11
@@ -216,28 +535,28 @@ Cohesion: 0.12
 Nodes (15): Agent Continuation Prompt, Agent Handout: E1.1 Runtime Setup And E1.2 Dialogue Proof Preparation, Artifacts, code:text (You are continuing ArchFlow Block 1 from the public project ), code:text (workflow_validation=ok), code:bash (python3 scripts/public_safety_scan.py), Current State, Decisions (+7 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.18
-Nodes (10): BaseModel, CrewWorkflow, KnowledgeIntegration, LangGraphWorkflow, LlamaIndexWorkflow, load_yaml(), main(), ModelRouting (+2 more)
+Cohesion: 0.09
+Nodes (35): BaseModel, agent_orchestra_lane(), approval_block(), budget_state(), chat(), daily_form(), default_roles(), env_float() (+27 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.31
-Nodes (14): after_intake(), after_review(), ArchFlowState, build_graph(), intake_validate(), load_env(), main(), publish_or_revise() (+6 more)
+Cohesion: 0.01
+Nodes (209): 2026-07-01 12:29 - Messi - coordination and product-owner review, 2026-07-01 12:40 - Messi - coordination review complete, 2026-07-01 12:43 - LOL - dashboard schema approval closeout, 2026-07-01 12:43 - LOL - final approval supersession, 2026-07-01 12:44 - Messi - active push coordinator, 2026-07-01 12:45 - LOL - dashboard schema continuation, 2026-07-01 12:49 - Messi - push blocked by active lane, 2026-07-01 12:50 - LOL - competitor-backed dashboard and website planning (+201 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.13
 Nodes (14): Blockschema, code:text (START), code:json ({"index":1,"node":"intake_validate","signal":"sanitized E1.2), code:json ({), E1.2 Streaming Report, Failed, Skipped, Or Deferred Steps, LangGraph Output Summary, Next Actions (+6 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.13
-Nodes (14): Block 1 Execution Insight, CrewAI Boundary Insight, Dashboard Sequencing Insight, Demand Validation Insight, E1.2 Agent Configuration Insight, E1.2 Proof Insight, E1.2 Streaming Insight, E1.2 To E1.3 Handoff Insight (+6 more)
+Cohesion: 0.08
+Nodes (24): Block 1 Execution Insight, CrewAI Boundary Insight, Dashboard Sequencing Insight, Demand Validation Insight, E1.2 Agent Configuration Insight, E1.2 Proof Insight, E1.2 Streaming Insight, E1.2 To E1.3 Handoff Insight (+16 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.14
 Nodes (13): code:bash (python3 project/scripts/task-handout-hook.py --event UserPro), code:bash (python3 project/scripts/task-handout-hook.py --event executi), code:text (project/runs/<run-id>/agent-handout.md), code:text (project/runs/<YYYY-MM-DD-short-run-name>/agent-handout.md), Done Criteria, Hook Trigger Contract, Output Location, Purpose (+5 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.14
-Nodes (13): Current Runtime Decisions, Dashboard Memory, E1.2 Full Test Memory, E1.2 Preparation Memory, LangSmith Memory, LangSmith Trace Memory, Memory, Public Repo Rules (+5 more)
+Cohesion: 0.06
+Nodes (31): Cloud And KB Retrospective Memory - 2026-07-03, Current Runtime Decisions, Daily Skill/RAG Retrospective Maintenance Memory - 2026-07-01, Dashboard Jarvis Vercel Memory - 2026-06-30, Dashboard Memory, Dashboard Reliability Sync Memory - 2026-06-30, Dashboard Two-Layer Schema Memory - 2026-07-01, Dashboard Voice Hosting Memory - 2026-06-30 (+23 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.15
@@ -252,8 +571,8 @@ Cohesion: 0.15
 Nodes (11): Acceptance Criteria, Functional Requirements, Goal, LangGraph Nodes, LangGraph State, Next Execution, Non-Goals, Problem (+3 more)
 
 ### Community 19 - "Community 19"
-Cohesion: 0.15
-Nodes (12): Agent Hooks, Agentic Stack, code:text (Codex-authenticated operator prompt), Current Workflow Configs, First Proof Run, Layer Decision, Loop And Parallelism Rules, Model Routing (+4 more)
+Cohesion: 0.10
+Nodes (19): Agent Hooks, Agentic Stack, code:text (Codex-authenticated operator prompt), Configuration Surface, Current Workflow Configs, Dashboard Execution Contract - Prompt 1.2, First Proof Run, Layer Decision (+11 more)
 
 ### Community 20 - "Community 20"
 Cohesion: 0.15
@@ -280,28 +599,28 @@ Cohesion: 0.17
 Nodes (11): 2026-06-28 Evening Status Refresh Handout, Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions (+3 more)
 
 ### Community 26 - "Community 26"
-Cohesion: 0.17
-Nodes (11): Conclusive Changes, E2.0 Draft, E2 Market Evidence Draft, E2 Parent Append, Guardrails, ICP / Shortlist Append, Notion Execution Result, Notion Update Plan (+3 more)
+Cohesion: 0.15
+Nodes (12): Conclusive Changes, E2.0 Draft, E2 Market Evidence Draft, E2 Parent Append, Guardrails, ICP / Shortlist Append, Notion Execution Result, Notion Update Plan (+4 more)
 
 ### Community 27 - "Community 27"
 Cohesion: 0.18
 Nodes (10): Approved Corpus, Boundary, code:bash (project/local/venv/bin/python project/scripts/llamaindex-app), code:text (llamaindex_documents=ok), code:text (retrieve_context:), Command, E1.2 Graph Retrieval Event, Expected Evidence (+2 more)
 
 ### Community 28 - "Community 28"
-Cohesion: 0.18
-Nodes (10): AF Context, AF Copy, AF Knowledge, AF Manager, AF Publisher, AF Research, AF Review, AF Tools (+2 more)
+Cohesion: 0.15
+Nodes (12): AF Context, AF Copy, AF Knowledge, AF Manager, AF Publisher, AF Research, AF Review, AF Tools (+4 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.18
 Nodes (9): Agent Responsibilities, ArchFlow E1 Runtime Guard, code:bash (python3 scripts/public_safety_scan.py), Done Criteria, Failure Handling, Hook Connection, Purpose, Required Checks (+1 more)
 
 ### Community 30 - "Community 30"
-Cohesion: 0.18
-Nodes (11): crewai, agents, cache, limitations, memory, path, planning, process (+3 more)
+Cohesion: 0.13
+Nodes (15): crewai, agents, cache, level_3_cost, level_3_ledger, level_3_proof, level_3_status, limitations (+7 more)
 
 ### Community 31 - "Community 31"
-Cohesion: 0.18
-Nodes (11): llamaindex, chunk_overlap, chunk_size, exclude, include, limitations, path, persist_dir (+3 more)
+Cohesion: 0.12
+Nodes (17): llamaindex, chunk_overlap, chunk_size, exclude, fallback_to_lexical, include, lexical_top_k, limitations (+9 more)
 
 ### Community 32 - "Community 32"
 Cohesion: 0.20
@@ -344,16 +663,16 @@ Cohesion: 0.22
 Nodes (8): code:text (Continue ArchFlow E1 after the E1.2 Notion sync.), Continuation Prompt, E1.2 Notion Sync Agent Handout, Files, Human Summary, Purpose, Safety Boundary, Status Decisions
 
 ### Community 42 - "Community 42"
-Cohesion: 0.22
-Nodes (7): Boundary, Change Config, code:bash (python3 project/scripts/generate-dashboard-data.py), code:text (http://127.0.0.1:8765/project/dashboard/), Local Operator Dashboard, Run, What It Shows
+Cohesion: 0.12
+Nodes (17): Boundary, Change Config, code:text (https://<protected-preview-host>/project/dashboard/), code:text (http://127.0.0.1:8765/project/dashboard/#jarvis), code:bash (python3 project/scripts/generate-dashboard-data.py), code:text (http://127.0.0.1:8765/project/dashboard/), code:bash (python3 project/scripts/dashboard-static-smoke.py), code:bash (python3 project/scripts/generate-dashboard-data.py) (+9 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.22
 Nodes (8): CrewAI Parameters To Review, Done Criteria For Next Implementation Step, Future Actions And Parameters, Immediate Actions, LangGraph Parameters To Review, LlamaIndex Parameters To Review, Provider Options, UI Options
 
 ### Community 44 - "Community 44"
-Cohesion: 0.22
-Nodes (8): Agentic Stack Rule, Approval Rule, Folder Rule, Language Rule, Operating Rules, Public-Safety Rule, Source Rule, Task Handout Hook Rule
+Cohesion: 0.18
+Nodes (10): Actor And Reviewer Rule, Agentic Stack Rule, Approval Rule, Folder Rule, Language Rule, Live Agent Communication Rule, Operating Rules, Public-Safety Rule (+2 more)
 
 ### Community 45 - "Community 45"
 Cohesion: 0.22
@@ -380,8 +699,8 @@ Cohesion: 0.25
 Nodes (6): Approved Inputs, Boundary, Questions The Source Must Answer, Scope, Source Conclusion, Source Inventory
 
 ### Community 51 - "Community 51"
-Cohesion: 0.25
-Nodes (7): activity, corpus, env, generated_at, packages, sources, status_cards
+Cohesion: 0.17
+Nodes (11): activity, corpus, env, generated_at, graphify, paths, recommended_next, status (+3 more)
 
 ### Community 52 - "Community 52"
 Cohesion: 0.25
@@ -404,8 +723,8 @@ Cohesion: 0.25
 Nodes (7): Durable Conclusion, Inputs, Next Step, Outputs, Run - E1.2 Notion Status Sync And Owner Next Steps, Status, Task
 
 ### Community 57 - "Community 57"
-Cohesion: 0.61
-Nodes (6): approved_file(), load_documents(), main(), rel(), retrieve(), tokenize()
+Cohesion: 0.19
+Nodes (22): approved_file(), build_summary(), candidate(), chunk_text(), cosine(), enforce_source_paths(), lexical_candidates(), load_documents() (+14 more)
 
 ### Community 58 - "Community 58"
 Cohesion: 0.46
@@ -464,16 +783,16 @@ Cohesion: 0.29
 Nodes (6): Evidence Engine, First Offer Hypothesis, Market Engine, Not Demand, Primary ICP, Subaudiences
 
 ### Community 72 - "Community 72"
-Cohesion: 0.29
-Nodes (7): langgraph, edges, nodes, path, purpose, runtime, status
+Cohesion: 0.17
+Nodes (12): langgraph, edges, nodes, params, path, purpose, runtime, status (+4 more)
 
 ### Community 73 - "Community 73"
 Cohesion: 0.29
 Nodes (5): Consequences, Context, Decision, Decision - E1 Runtime Guard And Agent Stack, Rationale
 
 ### Community 74 - "Community 74"
-Cohesion: 0.29
-Nodes (6): Approval Needed, Current Verified State, LangSmith Status, Provider Setup, Qwythos Status, Recommended Mode
+Cohesion: 0.25
+Nodes (7): Approval Needed, Current Verified State, LangSmith Status, OpenRouter / Mistral Status, Provider Setup, Qwythos Status, Recommended Mode
 
 ### Community 75 - "Community 75"
 Cohesion: 0.29
@@ -512,8 +831,8 @@ Cohesion: 0.29
 Nodes (5): Active Layers, ArchFlow Public WikiLLM, Project Identity, Read Order, Safety Boundary
 
 ### Community 84 - "Community 84"
-Cohesion: 0.29
-Nodes (6): 2026-06-25, 2026-06-26, 2026-06-27, 2026-06-28, 2026-06-29, Log
+Cohesion: 0.08
+Nodes (25): 2026-06-25, 2026-06-26, 2026-06-27, 2026-06-28, 2026-06-29, 2026-06-30, 2026-07-01, 2026-07-01 (+17 more)
 
 ### Community 85 - "Community 85"
 Cohesion: 0.33
@@ -616,8 +935,8 @@ Cohesion: 0.60
 Nodes (5): blocked_path(), build_patterns(), git_files(), main(), read_text()
 
 ### Community 110 - "Community 110"
-Cohesion: 0.33
-Nodes (5): Agent Roles, Per-Agent Skill Registry, Planned For Execution, Skills And Methods Used, Used In This Setup
+Cohesion: 0.25
+Nodes (7): Agent Roles, Inefficiency And Relevance Controls, Lane-Specific Irrelevance Blacklist (Not to Reuse by Default), Per-Agent Skill Registry, Planned For Execution, Skills And Methods Used, Used In This Setup
 
 ### Community 111 - "Community 111"
 Cohesion: 0.33
@@ -644,8 +963,8 @@ Cohesion: 0.40
 Nodes (4): 2026-06-25, Changelog, 2026-06-25, Changelog
 
 ### Community 117 - "Community 117"
-Cohesion: 0.40
-Nodes (5): params, checkpointer, human_approval_required_before_publication, max_revision_loops, observability
+Cohesion: 0.05
+Nodes (42): apiStatus, bindArchitectureSelectors(), bindNodeControlPanel(), bindPrdIcpRequestSurface(), bindRoleConfigPanels(), bindSchemaEditor(), blockSchemas, chatHistory (+34 more)
 
 ### Community 118 - "Community 118"
 Cohesion: 0.40
@@ -676,28 +995,1200 @@ Cohesion: 0.50
 Nodes (3): Boundary, Inputs, Source Inventory
 
 ### Community 126 - "Community 126"
+Cohesion: 0.05
+Nodes (40): captures, landingDesktop, landingMobile, quizDesktop, quizMobile, figmaFileKey, figmaFileUrl, nodeId (+32 more)
+
+### Community 144 - "Community 144"
+Cohesion: 0.10
+Nodes (37): api_request(), choose_model(), estimated_cost(), extract_content(), load_env(), main(), model_by_id(), now_utc() (+29 more)
+
+### Community 145 - "Community 145"
+Cohesion: 0.05
+Nodes (37): conclusion, dashboard_browser_qa, agent_browser_snapshot_passed, config_export_control_present, config_tab_present, save_locally_clicked, screenshots_committed, date (+29 more)
+
+### Community 146 - "Community 146"
+Cohesion: 0.09
+Nodes (19): handler, handler, agent_orchestra_payload(), approval_block(), chat_payload(), default_roles(), health_payload(), JsonHandler (+11 more)
+
+### Community 147 - "Community 147"
+Cohesion: 0.06
+Nodes (34): API Or Jarvis Changes, Architecture And Research Mode, Claude Cowork Whole-Project Instructions, Closeout Contract, code:bash (python3 scripts/public_safety_scan.py), code:bash (python3 scripts/public_safety_scan.py), code:bash (python3 scripts/public_safety_scan.py), code:bash (python3 scripts/public_safety_scan.py) (+26 more)
+
+### Community 148 - "Community 148"
+Cohesion: 0.06
+Nodes (33): ArchFlow Current State Report, code:text (approved source material), Codex, CrewAI, Current Architecture, Current Daily Founder Notes Coverage, Current Proof State, Current Transfer State (+25 more)
+
+### Community 149 - "Community 149"
+Cohesion: 0.06
+Nodes (33): 1. Dashboard UX Execution Plan, 2. Public Website Sitemap And First-Page Wireframe/Copy Outline, 3. Brand-System Adaptation Brief, 4. Issue Priority And Acceptance Criteria, Calculator-First Proof Interaction, Claim Guardrails, Confidence, Design Constraints (+25 more)
+
+### Community 150 - "Community 150"
+Cohesion: 0.06
+Nodes (32): blocked_or_gated, ready_or_review, model_route_profile, crewai_role, graph_node_path, langgraph_node, model_selection_rule, query_shape (+24 more)
+
+### Community 151 - "Community 151"
+Cohesion: 0.06
+Nodes (32): 2026-07-03 E1.2.8 Provider Correction, Activation Boundary, Budget And Reliability Rules, Claude Family, code:text (Review the ArchFlow OpenRouter model-routing spec as a stric), Decision, DeepSeek, Execution Pool (+24 more)
+
+### Community 152 - "Community 152"
+Cohesion: 0.07
+Nodes (28): Before Edits, Claude Execution Prompt, Closeout Required, code:text (project/operating-rules.md), code:bash (python3 scripts/public_safety_scan.py), code:bash (project/local/venv/bin/python project/scripts/validate-workf), code:bash (node --check project/dashboard/app.js), code:text (FACT:) (+20 more)
+
+### Community 153 - "Community 153"
+Cohesion: 0.07
+Nodes (27): Acceptance Criteria For The Next Pass, Competitor-Backed Dashboard And Website Improvement Plan, Confidence Level, Contextual And Logical Improvements, Contextual And Logical Website Structure, Current Risk, Customer And Stakeholder Job, Dashboard Issue Backlog (+19 more)
+
+### Community 154 - "Community 154"
+Cohesion: 0.12
+Nodes (25): BOTTLENECK_LABELS, budgetDisplay(), buildSubmission(), calculateResult(), checkedValues(), collectState(), displayChoice(), displayChoices() (+17 more)
+
+### Community 155 - "Community 155"
+Cohesion: 0.08
+Nodes (25): Claude Project Setup Prompt, code:bash (git status --short --branch), code:text (project/runs/2026-07-03-claude-continuation-stabilization/), code:text (FACT:), code:text (project/operating-rules.md), code:text (project/live/communication/agent-communication-log.md), code:text (skills/arcagcom/SKILL.md), code:text (GAP: <connector> unavailable or not configured; fallback is ) (+17 more)
+
+### Community 156 - "Community 156"
+Cohesion: 0.16
+Nodes (25): advanceInterview(), appendChat(), appendEvent(), architectureMeta(), cancelVoiceTranscript(), clearChatHistory(), currentInterviewQuestion(), dashboardSignature() (+17 more)
+
+### Community 157 - "Community 157"
+Cohesion: 0.08
+Nodes (22): date, Hosted Checks, Public-Safe Result, public_safety, stores_account_id, stores_credentials, stores_deployment_id, stores_private_notion_url (+14 more)
+
+### Community 158 - "Community 158"
+Cohesion: 0.08
+Nodes (23): Agent Nodes, Approval Nodes, ArchFlow Dashboard Operating Manual, Architecture Selector, Block-Schema Nodes, Chat History, Config Page, Current Boundaries (+15 more)
+
+### Community 159 - "Community 159"
+Cohesion: 0.09
+Nodes (22): Calculator Copy Draft, Calculator Name, Change From Legacy, Confidence Level, Executive Answer, Formula Boundary, Four New Service Cards, Goal (+14 more)
+
+### Community 160 - "Community 160"
+Cohesion: 0.10
+Nodes (20): Blockers, Checks, Daily Form, Decisions, E1-E7 / Notion Update Candidates, FACT, Files Changed, GAP (+12 more)
+
+### Community 161 - "Community 161"
+Cohesion: 0.10
+Nodes (20): Allowed Screenshots And Data, Approval Checklist, Carousel Template, code:text (Most product teams do not need another meeting summary.), code:text (The first gate is not generation.), code:text (ArchFlow turns approved inputs into four execution assets:), code:text (Every output gets reviewed for evidence level, safety, and w), code:text (The proof is not that AI wrote text.) (+12 more)
+
+### Community 162 - "Community 162"
+Cohesion: 0.10
+Nodes (20): Allowed Screenshots And Data, Approval Checklist, Close / CTA, code:text (ArchFlow implemented a new proof gate for turning messy prod), code:text (ArchFlow tested whether the knowledge base can read back the), code:text (ArchFlow added a content gate so internal proof does not bec), code:text (The task produced:), code:text (FACT: [artifact exists or check passed]) (+12 more)
+
+### Community 163 - "Community 163"
+Cohesion: 0.10
+Nodes (20): boundary, chunk_count, document_count, embedding_model, generated_at, mode_used, parameters, chunk_overlap (+12 more)
+
+### Community 164 - "Community 164"
+Cohesion: 0.10
+Nodes (20): 10. Confidence Level, 11. Ronaldinho Technical Audit Integration, 12. Source-State Correction After Ronaldo Continuation, 13. Dashboard Smoke Failure And Resolution After Sample-Output Change, 14. Current Verification Snapshot, 15. Latest Jesus Decision And Remaining Closeout, 1. Executive Answer, 2. Situation And Complication (+12 more)
+
+### Community 165 - "Community 165"
+Cohesion: 0.10
+Nodes (19): ArchFlow System Review And Stabilization Plan, Company Goal, Current Stage, Current strengths, Current weaknesses, Dashboard Optimality, Deep Improvement Plan, Executive Conclusion (+11 more)
+
+### Community 166 - "Community 166"
+Cohesion: 0.10
+Nodes (19): Agent Continuation Prompt, Agent Handout: Hybrid RAG And Jarvis Readiness, Current State, Files Changed Or Expected, Human Summary, P0 Coordination And Safety, P1 Source Boundary And Knowledge Routing, P2 LlamaIndex Hybrid RAG (+11 more)
+
+### Community 167 - "Community 167"
+Cohesion: 0.17
+Nodes (14): BaseLLM, append_ledger(), BudgetGuard, configure_runtime(), count_text_tokens(), DeterministicProofLLM, main(), CrewAI-compatible local LLM that returns fixed public-safe outputs. (+6 more)
+
+### Community 168 - "Community 168"
+Cohesion: 0.11
+Nodes (18): buyer, created_at, detected_signals, customer_interviews, discovery_sprint, dogfooding, dual_track, performance (+10 more)
+
+### Community 169 - "Community 169"
+Cohesion: 0.11
+Nodes (18): date, figma_sync, figma_urls_stored_in_repo, landing_desktop_capture, landing_mobile_capture, node_ids_stored_in_repo, quiz_desktop_capture, quiz_mobile_result_capture (+10 more)
+
+### Community 170 - "Community 170"
+Cohesion: 0.11
+Nodes (18): Allowed Screenshots And Data, Approval Checklist, code:text (ArchFlow uses the dashboard as a read-only proof surface, no), code:text (FACT: [dashboard-related artifact or status changed]), code:text (INTERPRETATION: This helps future operators see which proof ), code:text (GAP: This does not prove customer demand, ROI, or production), code:text (For product leaders, the useful dashboard question is simple), Copy Blocks (+10 more)
+
+### Community 171 - "Community 171"
+Cohesion: 0.11
+Nodes (18): Cheaper Substitute, Efficiency Score, Evidence Inspected, FACT, Frontier Escalation, GAP, Hypothesis, Interpretation (+10 more)
+
+### Community 172 - "Community 172"
+Cohesion: 0.23
+Nodes (18): assertion_passed(), collect_docs(), coordination_stream(), doc_title(), e12_state(), handout(), kb_writeback(), main() (+10 more)
+
+### Community 173 - "Community 173"
+Cohesion: 0.11
+Nodes (16): ArchFlow Priority Task Operator Run, Completed tasks reviewed, Mechanical execution result, Profile package requirements, Ranked candidates, Ready criteria before marking the E4 task Review or Done, run_timestamp, Selected task (+8 more)
+
+### Community 174 - "Community 174"
+Cohesion: 0.11
+Nodes (17): Config Changes Made, Configuration Model, CrewAI Role, Dashboard Execution Architecture, Evidence Reviewed, Execution Levels, Executive Decision, FACT (+9 more)
+
+### Community 175 - "Community 175"
+Cohesion: 0.11
+Nodes (17): 10. Retrieval/Memory Layer, 11. Notion/GitHub/WikiLLM Reporting Layer, 12. Env/Secret Layer, 13. Deployment/Railway Readiness Layer, 14. What Works Now, 15. What Is Mocked/Deferred, 16. What Is Gated By Owner Approval, 1. Public Website Layer (+9 more)
+
+### Community 176 - "Community 176"
+Cohesion: 0.12
+Nodes (16): Backlog, Decisions, E1.2.8 Local PRD - Release Kickoff And Discovery-To-Delivery Handoff, Existing Workflow, ICP, Meeting Summary, Next Tasks, Pains/JTBD (+8 more)
+
+### Community 177 - "Community 177"
+Cohesion: 0.12
+Nodes (16): About, Bio option A, Bio option A, Bio option B, Bio option B, Blocked until owner decision, E4 Social Profile Field Drafts, Featured / pinned idea (+8 more)
+
+### Community 178 - "Community 178"
+Cohesion: 0.12
+Nodes (16): date, hosted_contract, agent_orchestra_lane, chat, cors_preflight, health, prd_icp_lane, role_config (+8 more)
+
+### Community 179 - "Community 179"
+Cohesion: 0.12
+Nodes (16): Backlog, Decisions, Existing Workflow, ICP, Meeting Summary, Next Tasks, Pains/JTBD, PRD/ICP Output Template (+8 more)
+
+### Community 180 - "Community 180"
+Cohesion: 0.12
+Nodes (16): 1. E3.3 - Solution Page Workstream, 2026-07-01 Messi Final Delivery Sequence And Notion Review, 2. E3.3.1 - Public PRD/ICP Landing And Diagnostic, 3. E3.3.1A - Source And Deploy Reconciliation, 4. E3.3.1B - Deploy, Figma, Notion, Git Closeout, 5. JDB-9 - Dashboard Operator UX, 6. JDB-10 - Dashboard Proof And Backlog Visibility, 7. JDB-11 - Ronaldinho Technical Advisor Review (+8 more)
+
+### Community 181 - "Community 181"
+Cohesion: 0.12
+Nodes (16): Acceptance Criteria, Agent Distribution For Epic 2, Audience Analysis Plan, Competitor Analysis Plan, Competitor And Market Analysis Method, Current Starting Point, Data Types To Collect, E2 Stage Plan (+8 more)
+
+### Community 182 - "Community 182"
+Cohesion: 0.19
+Nodes (13): capture(), find_chrome(), main(), QuietHandler, run(), assert_markers(), find_chrome(), main() (+5 more)
+
+### Community 183 - "Community 183"
+Cohesion: 0.12
+Nodes (14): ArchFlow Priority Task Operator Run, Completed tasks reviewed, Mechanical action selected, Ranked candidates, run_timestamp, Selected task, due, due_date (+6 more)
+
+### Community 184 - "Community 184"
+Cohesion: 0.16
+Nodes (16): addPacket(), apiEndpoint(), checkJarvisApi(), createLocalPacket(), defaultJarvisApiBase(), downloadPacket(), exportBlockSchemaPacket(), exportChatHistory() (+8 more)
+
+### Community 185 - "Community 185"
+Cohesion: 0.21
+Nodes (16): architectureSelectorMarkup(), badge(), escapeHtml(), incomingSchemaEdges(), outgoingSchemaEdges(), pathLink(), prdIcpOutputBlocks(), queueSelectedSchemaNode() (+8 more)
+
+### Community 186 - "Community 186"
+Cohesion: 0.12
+Nodes (15): Approval Checklist, Approved, Approved With Edits, Blocked, code:text (Status: approved), code:text (Status: approved with edits), code:text (Status: blocked), code:text (Status: needs owner decision) (+7 more)
+
+### Community 187 - "Community 187"
+Cohesion: 0.12
+Nodes (15): full_vector_default_gate, generated_at, hits, hybrid, lexical, no_hybrid_regression, query_count, recall_at_5 (+7 more)
+
+### Community 188 - "Community 188"
+Cohesion: 0.12
+Nodes (15): Confidence Level, Current State: E1-E7, Vercel, Railway, Jarvis, And Knowledge System, Customer / Stakeholder Job, Dashboard And Jarvis State, E1-E7 Current State, Executive Answer, External Repos And NVIDIA Safety, Knowledge System State (+7 more)
+
+### Community 189 - "Community 189"
+Cohesion: 0.12
+Nodes (15): 10. Confidence Level, 1. Executive Answer, 2. Situation And Complication, 3. Customer / Stakeholder Job, 4. Evidence And Assumptions, 5. Structured Analysis, 6. Recommendation, 7. Requirements And Acceptance Criteria (+7 more)
+
+### Community 190 - "Community 190"
+Cohesion: 0.12
+Nodes (15): Already Done, Dashboard Service Model, Duplicate Task Merge Decisions, E1 Task Conclusions, Evidence Reviewed, Executive Decision, GloomyLord Document Conclusions, ICP (+7 more)
+
+### Community 191 - "Community 191"
+Cohesion: 0.12
+Nodes (15): Acceptance Criteria, Agent Workflow, Dashboard Packet Rules, Error And Traceback Rules, Executive Rule, KB Update Principle, Layer Responsibilities, Next Actions (+7 more)
+
+### Community 192 - "Community 192"
+Cohesion: 0.13
+Nodes (14): Dashboard QA, Dashboard, Website, Strategy, And Workflow QA Review, Essential Links, Executive Review, Knowledge Base State, LangGraph, API, And Implemented Layers, Maxibook Telegram Bot Review, Next Steps (+6 more)
+
+### Community 193 - "Community 193"
+Cohesion: 0.13
+Nodes (14): 2026-06-24 - Reset direction, 2026-06-25 - Public-safe foundation and first runtime spine, 2026-06-26 - E1.1/E1.2 proof path, 2026-06-27 - Maintenance audit and cleanup, 2026-06-28 - Status refresh and dashboard data, 2026-06-29 - Tool-market integration and ICP correction, 2026-06-30 - Dashboard, Jarvis, and reliability boundaries, 2026-07-01 - Operator dashboard and coordination system (+6 more)
+
+### Community 194 - "Community 194"
+Cohesion: 0.13
+Nodes (14): Archflow1, Dashboard Screen Mapping, Env Names, Expected Local Endpoints, Fallback Behavior, LangGraph / CrewAI Levels, Local Health Check Sequence, Must Not Claim Unless Verified (+6 more)
+
+### Community 195 - "Community 195"
+Cohesion: 0.16
+Nodes (15): defaultBlockSchema(), defaultControlBlockSchema(), defaultNodeConfig(), defaultServiceBlockSchema(), draftSchemaNode(), loadBlockSchemaFromStorage(), loadJson(), normalizeBlockSchema() (+7 more)
+
+### Community 196 - "Community 196"
+Cohesion: 0.13
+Nodes (14): Approval Checklist, code:md (# Research Check: <topic>), code:text (FACT: [source-backed observation]), code:text (A recurring PRD bottleneck is not the document format. It is), Content Hook, Copy Blocks, Eligible Subtopics, Proof Required (+6 more)
+
+### Community 197 - "Community 197"
+Cohesion: 0.13
+Nodes (14): Dashboard Status Vocabulary, Facts, Jarvis Device Bridge And Capture Global Wall, JDB-1 - Dashboard Runtime State Panel, JDB-2 - Local Codex/Jarvis Bridge Contract, JDB-3 - Voice And Screen Capture Policy, JDB-4 - Meeting-To-Tasks Flow, JDB-5 - OpenAI Provider Setup Gate (+6 more)
+
+### Community 198 - "Community 198"
+Cohesion: 0.13
+Nodes (14): AF Review Result, Dashboard Manual, Duplicate And Drift Map, Evidence Read, Git And Merge State, Local Jarvis Stack Contract, Notion E1-E7 State, Notion Rows Updated (+6 more)
+
+### Community 199 - "Community 199"
+Cohesion: 0.13
+Nodes (14): Acceptance Criteria, code:text (Vercel static dashboard), Critique, Current Cloud Readiness, Dashboard Routing Update, Deployment Architecture, Executed Endpoint Test Matrix, Executive Answer (+6 more)
+
+### Community 200 - "Community 200"
+Cohesion: 0.13
+Nodes (14): Cheaper Substitute, Efficiency Score, Evidence Inspected, Frontier Escalation, Missing Logging Fields, Models Used, Next Actions, Outcome Quality (+6 more)
+
+### Community 201 - "Community 201"
+Cohesion: 0.14
+Nodes (13): allowed_execution_models, checked_at, context_length, epic_level_assignment, pricing, completion, input_cache_write, prompt (+5 more)
+
+### Community 202 - "Community 202"
+Cohesion: 0.14
+Nodes (13): Dashboard Local Jarvis Stack Manual, Failure Interpretation, LangGraph And CrewAI, Local Backend, Local Test Sequence, OpenRouter, Owner Decisions, Purpose (+5 more)
+
+### Community 203 - "Community 203"
+Cohesion: 0.14
+Nodes (13): Acceptance For Update Completion, E1.3.10 Access/Security, E1.3.8, E1.3.9 Dashboard/Jarvis, E1.3 Parent, GloomyLord Reporting Rows, Notion Update Package, Prompt 2 Readiness (+5 more)
+
+### Community 204 - "Community 204"
+Cohesion: 0.14
+Nodes (13): Acceptance Position, Cloud And KB Retrospective, Cloud Function Proof, code:text (Railway Jarvis review packets: working), code:text (Review for provider-disabled hosted runtime), Critique, E1.6 Collaborator KB Update, Executive Verdict (+5 more)
+
+### Community 205 - "Community 205"
+Cohesion: 0.14
+Nodes (13): code:text (Epic 1 status, 2026-07-03: internal PRD/KB proof is complete), Critique, Current Configuration Overview, E1.7 Final Hosted Proof, Epic 1 Scorecard, Epic 1 Summary And Final Test Plan, Epic 1 Task State, Executive Summary (+5 more)
+
+### Community 206 - "Community 206"
+Cohesion: 0.14
+Nodes (13): 0. Source Boundary, 10. Output Package, 11. Review Verdict, 1. Executive Decision, 2. Context Digest, 3. Product Context, 4. ICP Card, 5. Problem And Jobs To Be Done (+5 more)
+
+### Community 207 - "Community 207"
+Cohesion: 0.14
+Nodes (13): Cheaper Substitute, Efficiency Score, Evidence Inspected, Frontier Escalation, Missing Logging Fields, Models Used, Next Actions, Outcome Quality (+5 more)
+
+### Community 208 - "Community 208"
+Cohesion: 0.14
+Nodes (13): Cheaper Substitute, Efficiency Score, Evidence Inspected, Frontier Escalation, Missing Logging Fields, Models Used, Next Actions, Outcome Quality (+5 more)
+
+### Community 209 - "Community 209"
+Cohesion: 0.15
+Nodes (12): Agent Continuation Prompt, Agent Handout: E1.5 Content Agent Templates, Artifacts, code:text (You are the ArchFlow content execution agent. Work only with), Current State, Decisions, Execution Trace, Human Summary (+4 more)
+
+### Community 210 - "Community 210"
+Cohesion: 0.15
+Nodes (12): Agent Continuation Prompt, Agent Handout: Messi Coordination Review, Artifacts, code:text (Continue the ArchFlow July 1 coordination review from `proje), Current State, Decisions, Execution Trace, Human Summary (+4 more)
+
+### Community 211 - "Community 211"
+Cohesion: 0.15
+Nodes (12): Agent Handout: Minimal Public PRD/ICP Services Landing, Checks Passed, Current State, Figma, Files In Scope, Files Out Of Scope, Guardrails, Important Design Notes (+4 more)
+
+### Community 212 - "Community 212"
+Cohesion: 0.15
+Nodes (12): Checks, Design Changes, Figma Sync, Files Changed, Guardrails, Inputs, Market Positioning, Notion (+4 more)
+
+### Community 213 - "Community 213"
+Cohesion: 0.15
+Nodes (12): budget_guard, default_runtime, deterministic_output_path, direct_crewai_task_run_pass, model_call_ledger, provider_runtime, public_safe_fixture, recommended_level_3_status (+4 more)
+
+### Community 214 - "Community 214"
+Cohesion: 0.15
+Nodes (12): Agent Continuation Prompt, Artifacts, code:text (You are continuing ArchFlow Prompt 2 after Prompt 1 and Prom), Current State, Dashboard Execution Architecture Handout, Decisions, Execution Trace, Human Summary (+4 more)
+
+### Community 215 - "Community 215"
+Cohesion: 0.15
+Nodes (12): actual_or_estimated_spend_usd, daily_budget_usd, input_kind, model, provider, provider_calls, raw_private_source_sent, reason (+4 more)
+
+### Community 216 - "Community 216"
+Cohesion: 0.15
+Nodes (12): Agent Continuation Prompt, Agent Handout: Priority Mechanical Work E4 Profile Packet, Artifacts, code:text (You are the next ArchFlow E4 content/profile operator. Start), Current State, Decisions, Execution Trace, Human Summary (+4 more)
+
+### Community 217 - "Community 217"
+Cohesion: 0.15
+Nodes (12): Current Stage And Next Sequence, Files Read, GAP, MCP / Connectors Discovered, Next Safe Action, Run: Claude Cowork Setup Readiness, Runtime Truth Table (confirmed against files this run), Setup Scope Note (+4 more)
+
+### Community 218 - "Community 218"
+Cohesion: 0.17
+Nodes (6): clamp(), finePointer, observer, pointMetrics(), reducedMotion, selectors
+
+### Community 219 - "Community 219"
+Cohesion: 0.15
+Nodes (12): 1. Executive Answer, 2. Current Situation, 3. Operating Model To Preserve, 4. Instructions To Jesus, 5. Instructions To Ronaldo, 6. Instructions To Messi, 7. Next Execution Order, 8. Acceptance Criteria (+4 more)
+
+### Community 220 - "Community 220"
+Cohesion: 0.15
+Nodes (12): Acceptance, Architecture Proven, code:text (dashboard browser), Critique, Current Service Representation, Dashboard And Configuration, E1.7 Railway Jarvis Final Report, Endpoint Evidence (+4 more)
+
+### Community 221 - "Community 221"
+Cohesion: 0.17
+Nodes (11): Blockers And Limits, Content Agent Output, Current Status By Epic, Dashboard Capabilities Added, Decisions Applied, Hosted Preview, Needed From Parallel Executor, Outputs (+3 more)
+
+### Community 222 - "Community 222"
+Cohesion: 0.17
+Nodes (11): 2026-06-30 Evening Skill And Hook Audit Handout, Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 223 - "Community 223"
+Cohesion: 0.17
+Nodes (11): Agent History Written To KB, E1.3 KB Writeback Report, E1.4 And E2 Handoff, FACT, Forbidden Actions Readback, GAP, HYPOTHESIS, INTERPRETATION (+3 more)
+
+### Community 224 - "Community 224"
+Cohesion: 0.17
+Nodes (11): Agent Handout: Competitor-Backed Dashboard And Website Plan, Checks For This Planning Pass, code:text (You are Ronaldo, a separate Codex thread for ArchFlow planni), Competitor Lessons, Confidence, Context To Preserve, Current State, Key Decision (+3 more)
+
+### Community 225 - "Community 225"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Artifacts, Current State, Decisions, Evening Skill And Hook Review Handout, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 226 - "Community 226"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Agent Handout: OpenRouter Model Routing, code:text (You are continuing ArchFlow model-routing work. Read project), Current State, Decisions, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 227 - "Community 227"
+Cohesion: 0.17
+Nodes (11): Agent Handout: Ronaldinho Technical Advisor Review, Checks Run, FACT, GAP, HYPOTHESIS, INTERPRETATION, Mission, Next Safe Action (+3 more)
+
+### Community 228 - "Community 228"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions, Safety Boundary (+3 more)
+
+### Community 229 - "Community 229"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Agent Handout: Yushchenko Model Efficiency Observer, code:text (You are continuing the ArchFlow Yushchenko model-efficiency ), Current State, Decisions, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 230 - "Community 230"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, ArcFlow v1 Final Release Handout, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 231 - "Community 231"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Artifacts, Current State, Decisions, Evening Skill And Hook Review Handout, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 232 - "Community 232"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Jarvis Dashboard ICP Task Consolidation Handout, Next Actions (+3 more)
+
+### Community 233 - "Community 233"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Jarvis Dashboard MVP Implementation Handout, Next Actions (+3 more)
+
+### Community 234 - "Community 234"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions, Prompt 2.1 Notion And Local Jarvis Stack Contract Handout (+3 more)
+
+### Community 235 - "Community 235"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Agent Handout: Public Website Visual Delivery, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 236 - "Community 236"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions, Priority Mechanical Work Handout (+3 more)
+
+### Community 237 - "Community 237"
+Cohesion: 0.17
+Nodes (11): Agent Continuation Prompt, Agent Handout: Claude Code Continuation And Stabilization, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Next Actions (+3 more)
+
+### Community 238 - "Community 238"
+Cohesion: 0.17
+Nodes (11): Claude Code Continuation Prompt - ArchFlow, Closeout, code:bash (python3 scripts/public_safety_scan.py), Current System State, First Recommended Task, Identity, Mandatory Project Boundary, Model Policy (+3 more)
+
+### Community 239 - "Community 239"
+Cohesion: 0.17
+Nodes (11): Cheap Structured Execution, Coding And Implementation Suggestions, Config Recommendation, Current Rule, Default, High-Stakes Final Review, Long-Context And Agentic Planning, Mandatory Ledger (+3 more)
+
+### Community 240 - "Community 240"
+Cohesion: 0.17
+Nodes (12): jarvis_api, endpoints, openrouter_budget, path, provider_runtime, required_files, runtime, status (+4 more)
+
+### Community 241 - "Community 241"
+Cohesion: 0.17
+Nodes (11): ArchFlow Evening Skill Registry And Hook Update, Done Criteria, Failure Handling, Inefficiency And Relevance Controls (Long-Term), Irrelevant Tool Blacklist for Recurring Evening Maintenance, Lane Efficiency Note, Output, Procedure (+3 more)
+
+### Community 242 - "Community 242"
+Cohesion: 0.17
+Nodes (11): Acceptance Criteria For The Deep Research, Business Metrics To Estimate, Competitor And Alternative Set, Current Evidence Baseline, Delivery-Model Evaluation, Executive Decision, PRD Pack Business Evaluation Research Plan, Research Lenses (+3 more)
+
+### Community 243 - "Community 243"
+Cohesion: 0.17
+Nodes (11): Checks, Daily Skill Retrospective And RAG Knowledge Review, Decision And Issue Handling, Evidence Reviewed, Executive Summary, Inefficiency And Do-Not-Repeat Notes, Ownership Routing, Pipeline Review (+3 more)
+
+### Community 244 - "Community 244"
+Cohesion: 0.18
+Nodes (10): Audience Default, Blocking Questions, Carousel Eligibility, Channel Default, CTA Default, E1.5 Public Reporting Gate, First Allowed Report Types, GloomyLord Boundary (+2 more)
+
+### Community 245 - "Community 245"
+Cohesion: 0.18
+Nodes (10): Agent Continuation Prompt, Agent Handout: Live Communication Channel, code:text (You are continuing ArchFlow public project work. Before edit), Current State, Decisions, Execution Trace, Human Summary, Safety Boundary (+2 more)
+
+### Community 246 - "Community 246"
+Cohesion: 0.18
+Nodes (10): Agent Handout: Blue ArcFlow Automate Website, Checks, FACT, Files Changed, GAP, HYPOTHESIS, INTERPRETATION, Next Safe Action (+2 more)
+
+### Community 247 - "Community 247"
+Cohesion: 0.18
+Nodes (10): Agent Continuation Prompt, Current State, Dashboard Website Strategy QA Handout, Decisions, Execution Trace, Human Summary, Next Actions, Safety Boundary (+2 more)
+
+### Community 248 - "Community 248"
+Cohesion: 0.18
+Nodes (10): Agent Continuation Prompt, Artifacts, Current State, Decisions, Execution Trace, Human Summary, Safety Boundary, Skill Registry And Daily RAG Review Hardening Handout (+2 more)
+
+### Community 249 - "Community 249"
+Cohesion: 0.18
+Nodes (10): 2026-07-03 Continuation Result, Agent Handout: E1.2 Testmeeting And Dashboard Architecture, Checks, Dashboard Changes, Human Summary, Next Safe Action, Notion Status Candidates, Outputs (+2 more)
+
+### Community 250 - "Community 250"
+Cohesion: 0.18
+Nodes (10): actual_or_estimated_spend_usd, daily_budget_usd, input_kind, model, provider, provider_calls, raw_private_source_sent, run_budget_usd (+2 more)
+
+### Community 251 - "Community 251"
+Cohesion: 0.18
+Nodes (10): Attachments, code:text (Epic 1 status, 2026-07-03: internal PRD/KB proof is complete), code:text (2026-07-03 update: public-safe role split is in place under ), code:text (2026-07-03 update: provider-disabled hosted runtime is verif), code:text (2026-07-03 Planning package: define approved source universe), E1.6 Task Update, E1.7 Task Update, Epic 1 Top Summary (+2 more)
+
+### Community 252 - "Community 252"
+Cohesion: 0.25
+Nodes (11): applyInitialPanelDeepLink(), deleteSchemaNode(), duplicateSchemaNode(), getSchemaNode(), listFromTextarea(), makeId(), moveSelectedSchemaNode(), parseLastRuns() (+3 more)
+
+### Community 253 - "Community 253"
+Cohesion: 0.18
+Nodes (11): assertion_count, derived_status, label, passed_count, planned_status, readback_assertions, readback_status, required_evidence (+3 more)
+
+### Community 254 - "Community 254"
+Cohesion: 0.18
+Nodes (10): Confidence Level, Coordination Gate, Dashboard And Website Improvement Issues, Dashboard Issues, Dashboard Progress Update - 2026-07-01 13:47, Gated Dependencies, Implementation Order, Ronaldo Priority Pass (+2 more)
+
+### Community 255 - "Community 255"
+Cohesion: 0.18
+Nodes (10): Blue ArcFlow Automate Website Review, FACT, Files Changed, GAP, HYPOTHESIS, INTERPRETATION, Next Safe Action, Task (+2 more)
+
+### Community 256 - "Community 256"
+Cohesion: 0.18
+Nodes (10): Advice, Efficiency Assessment, Evidence Inspected, Initial Model Efficiency Report, Model Usage, Next Actions, Risks, Run Window (+2 more)
+
+### Community 257 - "Community 257"
+Cohesion: 0.18
+Nodes (10): 2026-07-01 LOL Agent Coordination And Knowledge-Base Brief, Checks, Confidence, FACT, GAP, HYPOTHESIS, INTERPRETATION, Next Steps (+2 more)
+
+### Community 258 - "Community 258"
+Cohesion: 0.18
+Nodes (10): 2026-07-01 Messi Task Architecture Review, Dashboard D-8 Consistency, FACT, GAP, HYPOTHESIS, INTERPRETATION, Next, Ronaldinho Audit (+2 more)
+
+### Community 259 - "Community 259"
+Cohesion: 0.18
+Nodes (10): 2026-07-01 Public Website PRD/ICP Landing, Coordination, Figma, Guardrails, Notion, Positioning, Research Summary, Result (+2 more)
+
+### Community 260 - "Community 260"
+Cohesion: 0.18
+Nodes (10): 2026-07-02 Dashboard Execution Architecture, FACT, GAP, Inputs, INTERPRETATION, Level 3 CrewAI Proof, Next, Outputs (+2 more)
+
+### Community 261 - "Community 261"
+Cohesion: 0.20
+Nodes (9): Agent Handout: Two-Layer Dashboard Schema Control Panel, code:text (Continue ArchFlow dashboard review from the July 1 two-layer), Continuation Prompt, Current State, Evidence, Human Summary, Safety Boundary, Title And Purpose (+1 more)
+
+### Community 262 - "Community 262"
+Cohesion: 0.20
+Nodes (9): Confidence, Executive Answer, FACT, GAP, HYPOTHESIS, INTERPRETATION, Jesus Next Action, Messi Fast Final Closeout Handout (+1 more)
+
+### Community 263 - "Community 263"
+Cohesion: 0.20
+Nodes (9): Agent Continuation Prompt, CrewAI Level 3 Proof Handout, Current State, Execution Trace, Human Summary, Integrated Surfaces, Safety Boundary, Title And Purpose (+1 more)
+
+### Community 264 - "Community 264"
+Cohesion: 0.20
+Nodes (9): Applied Status, Current E1 Summary, Current Method And Sequence, Current Output Package, Current Readiness Before The Task Table, E1 Page Replacement Content, Next Tasks And Decisions, Notion Update Packet: E1 And Related Tasks (+1 more)
+
+### Community 265 - "Community 265"
+Cohesion: 0.20
+Nodes (9): 2026-07-02 Evening Skill And Hook Review, Checks, FACT, Files Changed, GAP, HYPOTHESIS, INTERPRETATION, Safety Boundary (+1 more)
+
+### Community 266 - "Community 266"
+Cohesion: 0.20
+Nodes (9): Agent Continuation Prompt, Agent Handout: Public Website Live Delivery, Artifacts, Current State, Execution Trace, Human Summary, Purpose, Safety Boundary (+1 more)
+
+### Community 267 - "Community 267"
+Cohesion: 0.20
+Nodes (9): Activity Ledger, Artifact Table, Checks To Run, E1.2.8 Agent Activity Progress Report, Next Safe Action, Notion Status Candidates, Provider Ledger, Run Metadata (+1 more)
+
+### Community 268 - "Community 268"
+Cohesion: 0.20
+Nodes (9): code:text (2026-07-03 cloud reliability addendum: Railway Jarvis remain), code:text (2026-07-03 E1.6 addendum: the collaborator knowledge-base la), code:text (2026-07-03 daily-note addendum: after the daily founder-note), code:text (2026-07-03 KB retrospective: WikiLLM remains the durable mem), Daily Founder Notes Addendum, E1.6 Collaborator KB Addendum, Epic 1 / E1.7 Cloud Reliability Addendum, KB / Graphify / Obsidian Retrospective Addendum (+1 more)
+
+### Community 269 - "Community 269"
+Cohesion: 0.20
+Nodes (9): Agent Continuation Prompt, Agent Handout: Epic 1 And Epic 2 Planning Closeout, Artifacts, Current State, External Closeout, Human Summary, Purpose, Safety Boundary (+1 more)
+
+### Community 270 - "Community 270"
+Cohesion: 0.20
+Nodes (9): MEI-1 - No Canonical Model-Call Ledger Yet, MEI-2 - Telegram Sender Not Proven, MEI-3 - OpenRouter Runtime Disabled, MEI-4 - Model IDs And Pricing Can Drift, MEI-5 - Frontier Overuse Risk, MEI-6 - No Runtime Context Window Telemetry, MEI-7 - Local Proof Ledger Must Stay Separate From Provider Ledger, Model Efficiency Issues (+1 more)
+
+### Community 271 - "Community 271"
+Cohesion: 0.20
+Nodes (9): Arcagcom, Checks, Completion Update, During Work, Prompt 2.1 / Prompt 3 Coordination, Public-Safety Rules, Purpose, Required Read Order (+1 more)
+
+### Community 272 - "Community 272"
+Cohesion: 0.20
+Nodes (9): Agent Notification Rule, Failure Handling, OpenRouter Rule, Purpose, Required Report Sections, Safety Checks, Scope, Telegram Rule (+1 more)
+
+### Community 273 - "Community 273"
+Cohesion: 0.20
+Nodes (9): Allowed Outputs, code:text (FACT:), Collaborator Agent Instructions, Mission, Read First, Required Reasoning Labels, Review Checklist, Safety Rules (+1 more)
+
+### Community 274 - "Community 274"
+Cohesion: 0.20
+Nodes (9): Allowed Next Actions, code:text (ArchFlow has a controlled PRD/ICP operating method,), Collaborator Brief From Daily Founder Notes, Collaborator Review Questions, FACT, GAP, HYPOTHESIS, INTERPRETATION (+1 more)
+
+### Community 275 - "Community 275"
+Cohesion: 0.20
+Nodes (9): Cross-Lane Inefficiency And Tool Limitation Section, Daily Skill Retrospective And RAG Knowledge Review, Done Criteria, Long-Term Knowledge Update Gate, Output, Purpose, Required Inputs, Retrospective Workflow (+1 more)
+
+### Community 276 - "Community 276"
+Cohesion: 0.20
+Nodes (9): build, builder, deploy, healthcheckPath, healthcheckTimeout, restartPolicyMaxRetries, restartPolicyType, startCommand (+1 more)
+
+### Community 277 - "Community 277"
+Cohesion: 0.20
+Nodes (9): 1. Executive Answer, 2. Sources Reviewed, 3. Current Command State, 4. Requirement Evidence Matrix, 5. Validation Evidence, 6. Decision State, 7. Remaining Gated Work, 8. Confidence Level (+1 more)
+
+### Community 278 - "Community 278"
+Cohesion: 0.20
+Nodes (9): Branch And Merge Pattern, Codex Local Implementation Route, Done Criteria, Executive Answer, Lane 1: PRD/ICP Service Product, Lane 2: Reliable Development / Control System, Test Comparison, Two-Paradigm Execution Plan (+1 more)
+
+### Community 279 - "Community 279"
+Cohesion: 0.20
+Nodes (9): ArcFlow v1 Final Release Report, Checks, Git And Branch Cleanup, Notion Closeout, Prompt 2.1 Verification, Prompt 3 Verification, Remaining Work, Summary (+1 more)
+
+### Community 280 - "Community 280"
+Cohesion: 0.20
+Nodes (9): Assets Used, Deployment And Alias Notes, Figma Sync, Live Result, Public Website Live Delivery Report, Remaining Risks, Scope, Validation (+1 more)
+
+### Community 281 - "Community 281"
+Cohesion: 0.20
+Nodes (9): Blockers, Checks, Files Changed, Findings, Inputs, Next Steps, Outputs, Run Note - Daily Skill Retrospective And RAG Knowledge Review (+1 more)
+
+### Community 282 - "Community 282"
+Cohesion: 0.20
+Nodes (9): Blocking Questions, Checks, Decisions Recorded, Execution Summary, Immediate Next Steps, Notion Tasks Created, Run: Onyx Dashboard Voice Hosting Execution Plan, Skill Added (+1 more)
+
+### Community 283 - "Community 283"
+Cohesion: 0.20
+Nodes (9): Agent Execution Template, Agent Identity, Execution Plan, Output, Required Preflight, Review Gate, Source Boundary, Stop Conditions (+1 more)
+
+### Community 284 - "Community 284"
+Cohesion: 0.38
+Nodes (9): format_task_row(), importance_score(), parse_due_date(), parse_tasks(), run(), score_task(), status_score(), urgency_score() (+1 more)
+
+### Community 285 - "Community 285"
+Cohesion: 0.20
+Nodes (9): 2026-07-01 Dashboard Website Strategy QA, Artifacts, FACT, GAP, HYPOTHESIS, INTERPRETATION, Result, Task (+1 more)
+
+### Community 286 - "Community 286"
+Cohesion: 0.20
+Nodes (9): 2026-07-03 E1.7 Railway Jarvis Final, FACT, Files, GAP, HYPOTHESIS, INTERPRETATION, Next, Status (+1 more)
+
+### Community 287 - "Community 287"
+Cohesion: 0.22
+Nodes (8): Checks, code:bash (python3 project/scripts/generate-dashboard-data.py), Inputs, Next Step, Outputs, Run: Dashboard Reliability Sync, Task, Verified State
+
+### Community 288 - "Community 288"
+Cohesion: 0.22
+Nodes (8): Answer First, Checks, Dashboard Behavior, Outputs, Reviewer Gate, Run Summary: Two-Layer Dashboard Schema Control Panel, Task, Third-Party Tool Review
+
+### Community 289 - "Community 289"
+Cohesion: 0.22
+Nodes (8): Agent Handout: Dev Orchestration Lane, FACT, GAP, HYPOTHESIS, INTERPRETATION, Lane Contract, Next Safe Action, Validation Summary
+
+### Community 290 - "Community 290"
+Cohesion: 0.22
+Nodes (8): Current Validation, FACT, Final Completion Audit Handout, GAP, HYPOTHESIS, INTERPRETATION, Next Safe Action, Task
+
+### Community 291 - "Community 291"
+Cohesion: 0.22
+Nodes (8): FACT, Final Integration And Notion Closeout Handout, GAP, HYPOTHESIS, INTERPRETATION, Next Safe Action, Summary, Validation Evidence
+
+### Community 292 - "Community 292"
+Cohesion: 0.22
+Nodes (8): Confidence, Current Evidence, Done, Executive Answer, Jesus Merge Handoff, Jesus Merge Sequence, Roles, Still Gated
+
+### Community 293 - "Community 293"
+Cohesion: 0.22
+Nodes (8): Checks, Facts Transferred From June 30, Gaps, Inputs, Outputs, Parallel Review Integration, Run Summary: June 30 Transfer, Provider Cleanup, And Dashboard Completion, Task
+
+### Community 294 - "Community 294"
+Cohesion: 0.22
+Nodes (8): Agent Handout: LOL Agent Coordination And Knowledge-Base Brief, Agent Instructions, Checks, Inputs, Next Safe Action, Outputs, Public-Safety Boundaries, Task
+
+### Community 295 - "Community 295"
+Cohesion: 0.22
+Nodes (8): Agent Handout: Messi Task Architecture Review, Current Correction, Evidence, Gaps, Main Decision, Next Safe Action, Outputs, Task
+
+### Community 296 - "Community 296"
+Cohesion: 0.22
+Nodes (8): Agent Handout: PRD/ICP Lane, FACT, GAP, HYPOTHESIS, INTERPRETATION, Lane Contract, Next Safe Action, Outputs
+
+### Community 297 - "Community 297"
+Cohesion: 0.22
+Nodes (8): actual_spend_usd, daily_budget_usd, max_per_run_usd, openrouter_calls, provider_calls, rule, run_id, status
+
+### Community 298 - "Community 298"
+Cohesion: 0.22
+Nodes (8): Agent Continuation Prompt, Current State, E1 Notion And Runtime Consolidation Handout, Human Summary, Local Backend Proof, Notion Updates, Purpose, Safety Boundary
+
+### Community 299 - "Community 299"
+Cohesion: 0.22
+Nodes (8): code:bash (uvicorn app:app --host 0.0.0.0 --port $PORT), code:text (/health), Files Changed, Human Summary, Local Service Config, Next Safe Action, Railway Jarvis API Setup Handout, Runtime State
+
+### Community 300 - "Community 300"
+Cohesion: 0.22
+Nodes (8): E1.2.8 OpenRouter Provider Comparison, Evidence And Boundary Review, FACT / INTERPRETATION / HYPOTHESIS / GAP Separation, PRD Delta Versus Local Codex Run, Provider Output Summary, Recommendation, Risks And Gaps, Task/Backlog Improvements
+
+### Community 301 - "Community 301"
+Cohesion: 0.22
+Nodes (8): Agent Handout: E1.7 Railway Jarvis Final, Checks, Closeout Addendum, Inputs, Next Safe Action, Outputs, Task, Verified Facts
+
+### Community 302 - "Community 302"
+Cohesion: 0.22
+Nodes (8): files, private_link_delivery, private_links_stored_in_repo, reason, status, reason, status, timestamp_utc
+
+### Community 303 - "Community 303"
+Cohesion: 0.22
+Nodes (8): Acceptance, E2.0A Executive Decision, If Unresolved, One-Sentence Decision, Owner Of The Decision, What This Decision Enables, What This Decision Explicitly Does Not Do, Why Now
+
+### Community 304 - "Community 304"
+Cohesion: 0.22
+Nodes (8): Analytical Writing Agent Framework, Confidence Scale, Core Instruction, Default Output Structure, Jobs To Be Done, Minto / SCQA / MECE, Working Backwards / PR-FAQ, Writing Rules
+
+### Community 305 - "Community 305"
+Cohesion: 0.22
+Nodes (8): Buyer Pain, Competitor Pattern, Guardrails, ICP, Public Website Copy Constraint, Public Website Market Research And Minimal Copy Brief, Scope, Sources
+
+### Community 306 - "Community 306"
+Cohesion: 0.22
+Nodes (8): By Land-Graph Role, By Task, Efficiency Assessment, Evidence Inspected, FACT, Model Priority Update, Required Next Step Before Live OpenRouter Activation, Yushchenko Model Efficiency Report
+
+### Community 307 - "Community 307"
+Cohesion: 0.22
+Nodes (8): 2026-07-01 Blue ArcFlow Automate Website, FACT, GAP, HYPOTHESIS, INTERPRETATION, Next, Result, Validation
+
+### Community 308 - "Community 308"
+Cohesion: 0.22
+Nodes (8): 2026-07-01 Competitor Dashboard And Website Plan, Confidence, Current Recommendation, Evidence, Executive Answer, Result, Ronaldo Output, Task
+
+### Community 309 - "Community 309"
+Cohesion: 0.22
+Nodes (8): 2026-07-02 ArcFlow v1 Final Release, Checks, Decision, FACT, GAP, INTERPRETATION, Outputs, Task
+
+### Community 310 - "Community 310"
+Cohesion: 0.22
+Nodes (8): 2026-07-02 CrewAI Level 3 Proof, Decision, FACT, GAP, Integrated Surfaces, INTERPRETATION, Outputs, Task
+
+### Community 311 - "Community 311"
+Cohesion: 0.22
+Nodes (8): FACT, GAP, Inputs, INTERPRETATION, Next Safe Action, Outputs, Run - Claude Continuation And Stabilization, Task
+
+### Community 312 - "Community 312"
+Cohesion: 0.22
+Nodes (8): FACT, GAP, Inputs, INTERPRETATION, Next Safe Action, Outputs, Run - Daily Founder Notes And Current-State Report, Task
+
+### Community 313 - "Community 313"
+Cohesion: 0.25
+Nodes (7): Changes Made, Decisions, Next Steps, Notion State, Run - Product-Team ICP Correction, Source Summary, Task
+
+### Community 314 - "Community 314"
+Cohesion: 0.25
+Nodes (7): Gitignore Coverage, Hook Coverage, Residual Risk, Scope, Security Push Review, Skill And Safety Coverage, Validation Result
+
+### Community 315 - "Community 315"
+Cohesion: 0.25
+Nodes (7): Checks, Inputs, Next Actions, Outputs, Proof, Run: E1.5 Content Agent Templates, Task
+
+### Community 316 - "Community 316"
+Cohesion: 0.25
+Nodes (7): Decisions, Included Lanes, Next Steps, Push Boundary, Run: June 30 Integrator Review, Task, Validation
+
+### Community 317 - "Community 317"
+Cohesion: 0.25
+Nodes (7): Agent Continuation Prompt, Current State, E1.2.8 Testmeeting Local PRD Handout, Human Summary, Safety Boundary, Title And Purpose, Validation
+
+### Community 318 - "Community 318"
+Cohesion: 0.25
+Nodes (7): code:text (Source packet: E1.2.8 testmeeting local run.), E1.2.8 Context Digest, FACT, GAP, HYPOTHESIS, INTERPRETATION, Sanitized Digest For Provider-Eligible Comparison
+
+### Community 319 - "Community 319"
+Cohesion: 0.25
+Nodes (7): Context, Git packet, New PitAgent Handoff, Notion packet, Public-safe execution boundary, Required checks, Suggested mechanical output
+
+### Community 320 - "Community 320"
+Cohesion: 0.25
+Nodes (7): code:text (You are the ArchFlow E4 profile-package operator. Work only ), Context, E4 profile-package execution prompt, Git packet, New PitAgent Handoff, Notion packet, Required checks
+
+### Community 321 - "Community 321"
+Cohesion: 0.25
+Nodes (7): Agent Handout: Cloud And KB Retrospective, Inputs, Next Safe Action, Outputs, Reviewer-Agent Result, Task, Verification
+
+### Community 322 - "Community 322"
+Cohesion: 0.25
+Nodes (7): Agent Handout: Daily Founder Notes And Current-State Report, Notion Plan, Outputs, Purpose, Remaining Checks, Safety Boundary, Source Basis
+
+### Community 323 - "Community 323"
+Cohesion: 0.25
+Nodes (7): Agent Handout: E1.4 KB Update Principle, Checks, Continuation Prompt, Decisions Made, Files Changed, Gaps, Human Summary
+
+### Community 324 - "Community 324"
+Cohesion: 0.25
+Nodes (7): Approved Source Types, E2.0A Source Boundary, Evidence Rules (inherited), Excluded Raw Inputs, Private Material Handling, Provider And Tool State, Public-Safe Output Level
+
+### Community 325 - "Community 325"
+Cohesion: 0.25
+Nodes (7): Agent Handout: Vercel Dashboard And Jarvis Connection, Current Implementation, Deployment Notes, Files In Scope, Final State, Goal, Verification Plan
+
+### Community 326 - "Community 326"
+Cohesion: 0.25
+Nodes (7): ArchFlow Priority Task Operator Lane, Failure Handling, Notion / KB / GitHub follow-up protocol, Procedure, Purpose, Scope, Validation
+
+### Community 327 - "Community 327"
+Cohesion: 0.25
+Nodes (7): ArchFlow Public Evening Skill And Hook Update, Failure Handling, Long-Term Relevance Review Gate, Procedure, Purpose, Required Review Standards, Scope
+
+### Community 328 - "Community 328"
+Cohesion: 0.25
+Nodes (7): FACT, INTERPRETATION, Original Issue, Related Artifacts, Required Follow-up, Resolution, Testmeeting OpenRouter Comparison Resolved
+
+### Community 330 - "Community 330"
+Cohesion: 0.25
+Nodes (7): code:md (## What changed), Output Shape, Outquestions, Question Types, Reliability Rules, Short Template, Trigger
+
+### Community 331 - "Community 331"
+Cohesion: 0.25
+Nodes (7): code:text (Epic 1 has a real provider-disabled operating proof and a ho), FACT, GAP, INTERPRETATION, Primary-Operator Daily Notes Retrospective, Primary-Operator Rules, Purpose
+
+### Community 332 - "Community 332"
+Cohesion: 0.25
+Nodes (7): After-Execution Report Template, Approval Checklist, code:md (# Run: <title>), Proof Required, Required Report Structure, Save After Execution, Template Metadata
+
+### Community 333 - "Community 333"
+Cohesion: 0.25
+Nodes (7): Decision, Executive Answer, FACT, GAP, Infra Status And Next Setup, INTERPRETATION, Recommended Next Bridge Contract
+
+### Community 334 - "Community 334"
+Cohesion: 0.25
+Nodes (7): Assets Used, Changes, Coordination, Public Website Visual Delivery Report, Remaining Risks, Scope, Validation
+
+### Community 335 - "Community 335"
+Cohesion: 0.25
+Nodes (7): 2026-07-01 Dashboard Operator UX Optimization, Checks, FACT, GAP, HYPOTHESIS, INTERPRETATION, Summary
+
+### Community 336 - "Community 336"
+Cohesion: 0.25
+Nodes (7): 2026-07-02 Jarvis Dashboard MVP Implementation, Decision, FACT, GAP, INTERPRETATION, Outputs, Task
+
+### Community 337 - "Community 337"
+Cohesion: 0.25
+Nodes (7): 2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract, Decision, FACT, GAP, INTERPRETATION, Outputs, Task
+
+### Community 338 - "Community 338"
+Cohesion: 0.25
+Nodes (7): 2026-07-03 Cloud And KB Retrospective, FACT, GAP, HYPOTHESIS, INTERPRETATION, Outputs, Task
+
+### Community 339 - "Community 339"
+Cohesion: 0.25
+Nodes (7): Inputs, Key Content, Next Steps, Outputs, Run: Epic 1 And Epic 2 Planning Closeout, Status, Task
+
+### Community 340 - "Community 340"
+Cohesion: 0.25
+Nodes (7): Inputs, Key Content, Next Steps, Outputs, Run: E1.4 KB Update Principle, Status, Task
+
+### Community 341 - "Community 341"
+Cohesion: 0.25
+Nodes (7): Inputs, Key Content, Next Steps, Outputs, Run: E2.0A PRD-to-ICP Dry-Run Packet, Status, Task
+
+### Community 342 - "Community 342"
+Cohesion: 0.29
+Nodes (6): Agent Handout: Dashboard Jarvis Vercel Shell, Changed Files, Continue Prompt, Current Decisions, Safety Boundary, Summary
+
+### Community 343 - "Community 343"
+Cohesion: 0.29
+Nodes (6): Agent Handout: Dashboard Reliability Sync, Continuation Prompt, Current State, Files To Review, Human Summary, Next Action
+
+### Community 344 - "Community 344"
+Cohesion: 0.29
+Nodes (6): 2026-06-30 Evening Skill And Hook Audit, Goal, Inputs, Next Step, Outcome, Validation
+
+### Community 345 - "Community 345"
+Cohesion: 0.29
+Nodes (6): Changes, Checks, Jarvis Agentbrowser Voice And Block Schema Review, Remaining Gates, Task, Verification
+
+### Community 346 - "Community 346"
+Cohesion: 0.29
+Nodes (6): Agent Handout: Jarvis Voice Dashboard Review Branch, Changed Areas, Current Branch, Do Not Claim Yet, Suggested Next Check, What To Review
+
+### Community 347 - "Community 347"
+Cohesion: 0.29
+Nodes (6): Boundaries, Implemented On Review Branch, Remaining Gaps, Run: Jarvis Voice Dashboard Review Branch, Summary, Verification
+
+### Community 348 - "Community 348"
+Cohesion: 0.29
+Nodes (6): assertion_count, generated_at, passed_count, results, source_boundary, status
+
+### Community 349 - "Community 349"
+Cohesion: 0.29
+Nodes (6): Artifacts, Blocking Questions And Defaults, Next Stage Gate, Outquestions: E1.3 Readback And E1.5 Gate, Risks And Gaps, What Changed
+
+### Community 350 - "Community 350"
+Cohesion: 0.29
+Nodes (6): Current Status, Next Step, Outputs, Run: E1.3 KB Writeback And Readback, Task, What Changed
+
+### Community 351 - "Community 351"
+Cohesion: 0.29
+Nodes (6): Dashboard Integration, Default Slide Pattern, First Work Package, GloomyLord Internal Reporting Brief, Role, Visual Rules
+
+### Community 352 - "Community 352"
+Cohesion: 0.29
+Nodes (6): Agent Handout: Dashboard Operator UX Optimization, Checks, Coordination, Gaps, Scope, Task
+
+### Community 353 - "Community 353"
+Cohesion: 0.29
+Nodes (6): Checks, Evening Skill And Hook Review, Files Changed, Findings, Next Action, Task
+
+### Community 354 - "Community 354"
+Cohesion: 0.29
+Nodes (6): Agent Handout: Infra Status And Next Setup, Blocked Or Gated, Current Result, Files To Review Next, Next Safe Actions, Verified Infra State
+
+### Community 355 - "Community 355"
+Cohesion: 0.29
+Nodes (6): Changes Made, Next Action, Output Files, Priority Task Lane Setup, Task, Validation Notes
+
+### Community 356 - "Community 356"
+Cohesion: 0.29
+Nodes (6): Changes Made, Findings, Next Actions, Scheduled Automation Audit, Task, Validation
+
+### Community 357 - "Community 357"
+Cohesion: 0.29
+Nodes (6): Changes Made, Findings, Next Actions, Skill Registry And Daily RAG Review Hardening, Task, Validation
+
+### Community 358 - "Community 358"
+Cohesion: 0.29
+Nodes (6): E1.2.8 AF Review Report, FACT, GAP, HYPOTHESIS, INTERPRETATION, Safety Verdict
+
+### Community 359 - "Community 359"
+Cohesion: 0.29
+Nodes (6): Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet, Checks, Continuation Prompt, Files Changed, Gaps, Human Summary
+
+### Community 360 - "Community 360"
+Cohesion: 0.29
+Nodes (6): Collaborator Knowledge Base, Current E1.6 Scope, Current Notes, Operating Boundary, Relationship To Other Memory Layers, Role
+
+### Community 361 - "Community 361"
+Cohesion: 0.29
+Nodes (6): Expected Handout, Files To Avoid Editing, Goal, Messi Fast Final Task, Required Scope, Timebox
+
+### Community 362 - "Community 362"
+Cohesion: 0.29
+Nodes (6): Gated Preconditions, Inputs, Purpose, Steps, Stop Conditions, Test Meeting PRD Runbook
+
+### Community 363 - "Community 363"
+Cohesion: 0.29
+Nodes (6): Daily Retrospective Open Operational Gaps, FACT, INTERPRETATION, Issue, Next Action, Required Closure Evidence
+
+### Community 364 - "Community 364"
+Cohesion: 0.29
+Nodes (6): Current E1.6 Scope, Current Notes, Do Not Store, Primary Operator Knowledge Base, Role, Use
+
+### Community 365 - "Community 365"
+Cohesion: 0.29
+Nodes (6): Execution Contract, Input scope, Outputs, Priority Task Operator, Purpose, Reliability Rules
+
+### Community 366 - "Community 366"
+Cohesion: 0.29
+Nodes (6): ArchFlow Content Template Library, Global Defaults, Minimum Approval Checklist, Purpose, Save Locations After Each Execution, Template Set
+
+### Community 367 - "Community 367"
+Cohesion: 0.29
+Nodes (6): Current Outputs, Dashboard Result, E1.2.8 Result, E1.2 Testmeeting And Dashboard Architecture Report, E1 State Summary, Remaining Gates
+
+### Community 368 - "Community 368"
+Cohesion: 0.52
+Nodes (6): load_env(), main(), post_document(), post_form(), safe_repo_path(), write_status()
+
+### Community 369 - "Community 369"
+Cohesion: 0.29
+Nodes (6): Confidence, Result, Run Note: Two-Layer Dashboard Schema Control Panel, Status, Task, Validation
+
+### Community 370 - "Community 370"
+Cohesion: 0.29
+Nodes (6): 2026-07-01 Final Integration And Notion Closeout, FACT, GAP, HYPOTHESIS, INTERPRETATION, Result
+
+### Community 371 - "Community 371"
+Cohesion: 0.29
+Nodes (6): Checks, Durable Interpretation, Parallel Review Integration, Remaining Gates, Summary, Wiki Run: June 30 Transfer, Provider Cleanup, And Dashboard Completion
+
+### Community 372 - "Community 372"
+Cohesion: 0.29
+Nodes (6): 2026-07-01 Legacy Design Reference And PRD Calculator, Confidence, Key Finding, Recommendation, Result, Task
+
+### Community 373 - "Community 373"
+Cohesion: 0.29
+Nodes (6): 2026-07-01 Messi Coordination Review, Durable Interpretation, Follow-Up, Key State, Result, Task
+
+### Community 374 - "Community 374"
+Cohesion: 0.29
+Nodes (6): 2026-07-03 Hybrid RAG And Jarvis Readiness, FACT, GAP, INTERPRETATION, Next Safe Action, Outputs
+
+### Community 375 - "Community 375"
+Cohesion: 0.33
+Nodes (5): Agent Handout: E1.3 KB Readback, Blocked Actions, Current State, Required Read Order, Safe Next Actions
+
+### Community 376 - "Community 376"
+Cohesion: 0.33
+Nodes (5): E1.3 Source Registry, Purpose, Retrieval Metadata, Source Packet Status, Sources
+
+### Community 377 - "Community 377"
+Cohesion: 0.33
+Nodes (5): Checks, Execution Continuation Prompt, Human Summary, Priority Task Lane Setup Handout, Title and Purpose
+
+### Community 378 - "Community 378"
+Cohesion: 0.33
+Nodes (5): E1.2.8 Source Methodology Review, How The Method Was Applied, Method Inputs, Remaining Method Gaps, Strategic Fit
+
+### Community 379 - "Community 379"
+Cohesion: 0.33
+Nodes (5): Follow-up task brief, GitHub packet, KB/Notion/GitHub packet, Knowledge Base update, Notion packet
+
+### Community 380 - "Community 380"
+Cohesion: 0.33
+Nodes (5): code:text (The 06:30 priority mechanical-work lane refreshed the determ), GitHub packet, KB/Notion/GitHub packet, Knowledge Base update, Notion packet
+
+### Community 381 - "Community 381"
+Cohesion: 0.33
+Nodes (5): Review Checks, Review Gate, Review Inputs, Template Metadata, Verdict
+
+### Community 382 - "Community 382"
+Cohesion: 0.33
+Nodes (5): Cloud Verification Status, FACT, GAP, INTERPRETATION, NEXT
+
+### Community 383 - "Community 383"
+Cohesion: 0.33
+Nodes (5): API Smoke Status, Boundary, code:text (jarvis_api_contract_smoke=ok endpoints=17 provider_calls=0 w), Hosted Smoke, Local Contract Smoke
+
+### Community 384 - "Community 384"
+Cohesion: 0.33
+Nodes (5): date, private_notion_urls_stored_in_repo, status, updates, workspace_user_ids_stored_in_repo
+
+### Community 385 - "Community 385"
+Cohesion: 0.33
+Nodes (5): Confidence Discipline, E2.0A ICP Profile Outline, Offer Mapping, Open Questions, Primary ICP (dry-run baseline)
+
+### Community 386 - "Community 386"
+Cohesion: 0.33
+Nodes (5): first_execution_at, first_execution_done, machine_id, trace_consent, user_id
+
+### Community 387 - "Community 387"
+Cohesion: 0.33
+Nodes (5): Daily Skill Retrospective And RAG Knowledge Review, Failure Handling, Long-Term Knowledge Update Gate, Required Review Sections, Safety and Quality Constraints
+
+### Community 388 - "Community 388"
+Cohesion: 0.33
+Nodes (5): Agent Rule, Current Execution Pointer, Live Agent Communication, Pattern Changes, Required Files
+
+### Community 389 - "Community 389"
+Cohesion: 0.33
+Nodes (6): hosted_api, hosted_api_scope, local_api, railway, static_dashboard, hosting
+
+### Community 390 - "Community 390"
+Cohesion: 0.33
+Nodes (5): Consequences, Decision, Decision: Dashboard Jarvis Vercel Shell, Follow-Up, Rationale
+
+### Community 391 - "Community 391"
+Cohesion: 0.33
+Nodes (5): Consequences, Decision, Decision: Live Dashboard Voice Hosting And Onyx Boundary, Open Questions, Rationale
+
+### Community 392 - "Community 392"
+Cohesion: 0.33
+Nodes (5): API Boundary, CrewAI / LangGraph Operations, CrewAI Proof Boundary, Current Runtime Split, OpenRouter Budget Rules
+
+### Community 393 - "Community 393"
+Cohesion: 0.33
+Nodes (5): ArchFlow Knowledge Base Split, Common Rules, Folders, Purpose, Relationship To Epic 1
+
+### Community 394 - "Community 394"
+Cohesion: 0.33
+Nodes (5): event, reasons, required_action, skill, triggered_at
+
+### Community 395 - "Community 395"
+Cohesion: 0.33
+Nodes (5): Current Status, Durable Artifacts, Next Safe Action, Purpose, Yushchenko Model Efficiency Observer Handout
+
+### Community 396 - "Community 396"
+Cohesion: 0.33
+Nodes (5): Artifacts, Next, Run: Dashboard Jarvis Vercel Shell, Status, Summary
+
+### Community 397 - "Community 397"
+Cohesion: 0.33
+Nodes (5): Artifacts, Decisions, Next Steps, Run: E1.3 KB Writeback And Readback, Summary
+
+### Community 398 - "Community 398"
+Cohesion: 0.33
+Nodes (5): 2026-06-30 Evening Skill And Hook Audit, Follow-Up, Result, Task, Validation
+
+### Community 399 - "Community 399"
+Cohesion: 0.33
+Nodes (5): Decision, Next, Outputs, Run: Onyx Dashboard Voice Hosting Execution, Summary
+
+### Community 400 - "Community 400"
+Cohesion: 0.33
+Nodes (5): 2026-07-01 Infra Status And Next Setup, FACT, GAP, Next, Summary
+
+### Community 401 - "Community 401"
+Cohesion: 0.33
+Nodes (5): 2026-07-01 OpenRouter Model Routing, Follow-Up, Result, Review, Task
+
+### Community 402 - "Community 402"
+Cohesion: 0.33
+Nodes (5): 2026-07-01 Yushchenko Model Efficiency Observer, Current Finding, Follow-Up, Result, Task
+
+### Community 403 - "Community 403"
+Cohesion: 0.40
+Nodes (4): Coordination Stream: Dashboard Jarvis Vercel Shell, Main Executor Work, Merge Notes, Parallel Agents
+
+### Community 404 - "Community 404"
+Cohesion: 0.40
+Nodes (4): E1.3 Agent Coordination Stream, Integration Decisions, Main Operator Stream, Sidecar Assignments
+
+### Community 405 - "Community 405"
+Cohesion: 0.40
+Nodes (4): Assertions, E1.3 KB Readback Report, Method, Result
+
+### Community 406 - "Community 406"
+Cohesion: 0.40
+Nodes (4): Blocked From This Review, Checks Required Before Git Push, E1.3 Review Report, Review Verdict
+
+### Community 407 - "Community 407"
+Cohesion: 0.40
+Nodes (4): Checks Performed, E1.3 Validation Report, Evidence, Remaining Gates
+
+### Community 408 - "Community 408"
+Cohesion: 0.40
+Nodes (4): Agent Handout: E1.5 Public Reporting Gate, Current State, Next Agent Task, Rules
+
+### Community 409 - "Community 409"
+Cohesion: 0.40
+Nodes (4): Next Gate, Run: E1.5 Public Reporting Gate Start, Task, What Changed
+
+### Community 410 - "Community 410"
+Cohesion: 0.40
+Nodes (4): Expected Proof Output, Product-Team Brief, Source Boundary, Tiny Public-Safe PRD/ICP Fixture
+
+### Community 411 - "Community 411"
+Cohesion: 0.40
+Nodes (4): Boundary, code:json ({), Details, OpenRouter Provider Comparison Status
+
+### Community 412 - "Community 412"
+Cohesion: 0.40
+Nodes (4): E1.2.8 Local Streaming Report, Output State, Runtime State, Stream Events
+
+### Community 413 - "Community 413"
+Cohesion: 0.40
+Nodes (4): E1.2.8 Source Inventory, Provider Rule, Public-Safe Rule, Source Boundary
+
+### Community 414 - "Community 414"
+Cohesion: 0.40
+Nodes (4): Hosted Checks, Local Checks, Notion Task Review, Project Checkup Evidence - 2026-07-03
+
+### Community 415 - "Community 415"
+Cohesion: 0.40
+Nodes (4): files, reason, status, timestamp_utc
+
+### Community 416 - "Community 416"
+Cohesion: 0.40
+Nodes (4): Boundary, Figma, Preview, Website Preview And Figma Sync Status
+
+### Community 417 - "Community 417"
+Cohesion: 0.40
+Nodes (4): E2 Task Insert, Epic 1 Top Insert, Notion Update Packet, Status Notes
+
+### Community 418 - "Community 418"
+Cohesion: 0.40
+Nodes (4): files, reason, status, timestamp_utc
+
+### Community 419 - "Community 419"
+Cohesion: 0.40
+Nodes (4): files, reason, status, timestamp_utc
+
+### Community 420 - "Community 420"
+Cohesion: 0.40
+Nodes (4): E2.0A Source Grade Rubric, Grades, Grading Rules, Scoring Interaction
+
+### Community 421 - "Community 421"
+Cohesion: 0.40
+Nodes (4): Efficiency Scoring, Model Efficiency Advice, Report Advice, Standing Advice
+
+### Community 422 - "Community 422"
+Cohesion: 0.40
+Nodes (4): Consequences, Decision, Decision: E1.3 Readback And E1.5 Public Reporting Gates, Rationale
+
+### Community 423 - "Community 423"
+Cohesion: 0.40
+Nodes (4): Dashboard Role Configuration, Editable Safe Fields, Required Roles, Stages
+
+### Community 424 - "Community 424"
+Cohesion: 0.40
+Nodes (4): Agent Activity Progress Report Template, code:md (# Agent Activity Progress Report - <run title>), Required Structure, Rules
+
+### Community 425 - "Community 425"
+Cohesion: 0.70
+Nodes (4): load_retriever(), main(), source_hit(), validate_source_paths()
+
+### Community 426 - "Community 426"
+Cohesion: 0.70
+Nodes (4): load_env(), main(), send(), write_status()
+
+### Community 427 - "Community 427"
+Cohesion: 0.40
+Nodes (4): Durable Facts, Operational Rule, Run: Dashboard Reliability Sync, Summary
+
+### Community 428 - "Community 428"
+Cohesion: 0.40
+Nodes (4): 2026-07-01 Agent Communication Channel, Follow-Up, Result, Task
+
+### Community 429 - "Community 429"
 Cohesion: 0.50
-Nodes (4): graphify, paths, recommended_next, status
+Nodes (3): reason, status, timestamp_utc
+
+### Community 430 - "Community 430"
+Cohesion: 0.50
+Nodes (3): E1.2.8 Backlog And Missing Questions, Missing Questions, Suggested Backlog
+
+### Community 431 - "Community 431"
+Cohesion: 0.50
+Nodes (3): reason, status, timestamp_utc
+
+### Community 432 - "Community 432"
+Cohesion: 0.50
+Nodes (3): Notion Delivery Status, Public-Safe Boundary, Updates Applied
+
+### Community 433 - "Community 433"
+Cohesion: 0.50
+Nodes (3): Card Fields, Card Rules, E2.0A Account Evidence Card Schema
+
+### Community 434 - "Community 434"
+Cohesion: 0.50
+Nodes (4): prd_templates, output_blocks, paths, status
+
+### Community 435 - "Community 435"
+Cohesion: 0.50
+Nodes (3): code:bash (uvicorn app:app --reload --host 127.0.0.1 --port 8787), code:bash (railway up services/jarvis-api --path-as-root --service jarv), Jarvis API Service
+
+### Community 436 - "Community 436"
+Cohesion: 0.50
+Nodes (3): cleanUrls, headers, rewrites
+
+### Community 437 - "Community 437"
+Cohesion: 0.50
+Nodes (3): orgId, projectId, projectName
 
 ## Knowledge Gaps
-- **710 isolated node(s):** `generated_at`, `name`, `mode`, `operator`, `memory_layer` (+705 more)
-  These have <=1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** -- run `graphify query` to explore isolated nodes.
+- **3321 isolated node(s):** `cleanUrls`, `rewrites`, `headers`, `QUIZ_PACKAGES`, `SOURCE_LABELS` (+3316 more)
+  These have ≤1 connection - possible missing edges or undocumented components.
+- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `final_state` connect `Community 7` to `Community 46`, `Community 112`, `Community 113`, `Community 87`, `Community 88`, `Community 89`?**
+- **Why does `table()` connect `Community 1` to `Community 144`, `Community 185`, `Community 2`, `Community 117`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **Why does `table()` connect `Community 1` to `Community 2`?**
+- **Why does `render_table()` connect `Community 144` to `Community 1`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
-- **What connects `generated_at`, `name`, `mode` to the rest of the system?**
-  _710 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `cleanUrls`, `rewrites`, `headers` to the rest of the system?**
+  _3323 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.1471861471861472 - nodes in this community are weakly interconnected._
-- **Should `Community 5` be split into smaller, more focused modules?**
+  _Cohesion score 0.09848484848484848 - nodes in this community are weakly interconnected._
+- **Should `Community 3` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
-- **Should `Community 6` be split into smaller, more focused modules?**
+- **Should `Community 5` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
