@@ -7,6 +7,5 @@ from _jarvis_contract import JsonHandler, health_payload
 
 
 class handler(JsonHandler):
-    def handle(self, method, body):
+    def route(self, method, body):
         return health_payload()
-

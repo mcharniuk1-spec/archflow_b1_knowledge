@@ -7,6 +7,5 @@ from _jarvis_contract import JsonHandler, chat_payload
 
 
 class handler(JsonHandler):
-    def handle(self, method, body):
+    def route(self, method, body):
         return chat_payload(body)
-

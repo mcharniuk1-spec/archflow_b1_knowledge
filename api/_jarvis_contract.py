@@ -121,15 +121,15 @@ class JsonHandler(BaseHTTPRequestHandler):
         send_json(self, {"status": "ok"})
 
     def do_GET(self) -> None:
-        send_json(self, self.handle("GET", {}))
+        send_json(self, self.route("GET", {}))
 
     def do_POST(self) -> None:
-        send_json(self, self.handle("POST", read_json_body(self)))
+        send_json(self, self.route("POST", read_json_body(self)))
 
     def log_message(self, format: str, *args: Any) -> None:
         return
 
-    def handle(self, method: str, body: dict[str, Any]) -> dict[str, Any]:
+    def route(self, method: str, body: dict[str, Any]) -> dict[str, Any]:
         return packet("jarvis-api", "ok", {"method": method, "body": body})
 
 
@@ -212,4 +212,3 @@ def agent_orchestra_payload(body: dict[str, Any]) -> dict[str, Any]:
             "roles": default_roles(),
         },
     )
-

@@ -7,6 +7,5 @@ from _jarvis_contract import JsonHandler, agent_orchestra_payload
 
 
 class handler(JsonHandler):
-    def handle(self, method, body):
+    def route(self, method, body):
         return agent_orchestra_payload(body)
-

@@ -7,7 +7,7 @@ from _jarvis_contract import JsonHandler, packet
 
 
 class handler(JsonHandler):
-    def handle(self, method, body):
+    def route(self, method, body):
         return packet(
             "voice-chat",
             "review_packet_created",
@@ -16,4 +16,3 @@ class handler(JsonHandler):
                 "transcript_excerpt": str(body.get("transcript") or body.get("request") or "")[:900],
             },
         )
-

@@ -7,6 +7,5 @@ from _jarvis_contract import JsonHandler, default_roles, packet
 
 
 class handler(JsonHandler):
-    def handle(self, method, body):
+    def route(self, method, body):
         return packet("role-config", "ok", {"roles": default_roles()})
-
