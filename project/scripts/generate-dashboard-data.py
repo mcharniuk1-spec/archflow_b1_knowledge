@@ -350,16 +350,9 @@ def jarvis_api_status() -> dict:
         "/health",
         "/api/chat",
         "/api/config/roles",
-        "/api/config/roles/update",
         "/api/lanes/prd-icp",
         "/api/lanes/agent-orchestra",
-        "/api/reports/daily-form",
-        "/api/reports/weekly-form",
-        "/api/reports/whole-block",
-        "/api/test-runs/meeting-prd",
-        "/api/voice/transcribe",
         "/api/voice/chat",
-        "/api/voice/tts",
     ]
     return {
         "status": "vercel_and_local_contract_present_provider_disabled" if all(path.exists() for path in required) else "missing_or_partial",
@@ -370,6 +363,7 @@ def jarvis_api_status() -> dict:
         "hosting": {
             "static_dashboard": "vercel",
             "hosted_api": "vercel_provider_disabled_contract",
+            "hosted_api_scope": "core_health_chat_prd_agent_voice_review_packet",
             "local_api": "fastapi_local_development",
             "railway": "future_always_on_runtime_lane",
         },

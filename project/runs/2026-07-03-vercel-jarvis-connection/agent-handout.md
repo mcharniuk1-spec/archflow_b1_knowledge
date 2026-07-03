@@ -14,6 +14,7 @@ FACT:
 - The static dashboard remains served by Vercel through `/dashboard`.
 - A Vercel serverless Jarvis contract now exists under `api/`.
 - `/health` rewrites to `/api/health` on Vercel.
+- The Vercel-hosted API was reduced to the core dashboard connection surface after the first deploy hit the hosting-plan serverless function limit.
 - The hosted API returns review packets only.
 - Provider calls, durable writeback, raw audio storage, Telegram automation, and production publication remain disabled.
 - Local FastAPI Jarvis was restarted on port `8787` with OpenRouter selected in status and provider calls still disabled behind budget/approval guards.
@@ -48,4 +49,3 @@ GAP:
 6. Deploy to Vercel.
 7. Verify hosted `/health`, `/api/lanes/prd-icp`, and `/dashboard`.
 8. Update Notion and Telegram.
-

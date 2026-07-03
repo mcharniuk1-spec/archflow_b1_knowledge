@@ -154,8 +154,10 @@ The Vercel API contract is intentionally conservative:
 - `/api/lanes/prd-icp` returns a PRD/ICP review packet.
 - `/api/lanes/agent-orchestra` returns an agent-workflow review packet.
 - `/api/config/roles` returns configured role metadata.
-- `/api/voice/*` accepts text/transcript review packets only.
+- `/api/voice/chat` accepts text/transcript review packets only.
 - Provider calls, raw audio storage, durable writeback, and external sends remain disabled.
+
+The local FastAPI service keeps the broader endpoint set for development and future Railway migration. The Vercel surface is intentionally smaller so it fits the current hosting plan and supports the dashboard connection path reliably.
 
 Expected local checks:
 

@@ -213,6 +213,7 @@ FACT:
 - `/health` now rewrites to the Vercel Jarvis health endpoint.
 - The hosted dashboard can use the same-origin Vercel Jarvis contract instead of relying only on local `127.0.0.1:8787`.
 - Local FastAPI Jarvis remains available for development on port `8787`.
+- The hosted Vercel API surface is intentionally limited to the core dashboard connection endpoints to fit the current serverless function limit.
 
 INTERPRETATION:
 - Vercel now covers the static dashboard and a review-packet Jarvis API surface.
