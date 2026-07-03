@@ -1,0 +1,22 @@
+{
+  "date": "2026-07-03",
+  "status": "passed",
+  "vercel_preview": {
+    "ready": true,
+    "dashboard_http_200": true,
+    "current_dashboard_data": true,
+    "production_promoted": false,
+    "preview_url_stored_in_repo": false,
+    "deployment_id_stored_in_repo": false,
+    "inspector_url_stored_in_repo": false
+  },
+  "figma_sync": {
+    "landing_desktop_capture": "passed",
+    "landing_mobile_capture": "passed",
+    "quiz_desktop_capture": "passed",
+    "quiz_mobile_result_capture": "passed",
+    "sync_summary_frame": "passed",
+    "figma_urls_stored_in_repo": false,
+    "node_ids_stored_in_repo": false
+  }
+}

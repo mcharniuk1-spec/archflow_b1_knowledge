@@ -6585,3 +6585,61 @@ Blockers:
 Next step:
 
 - Audit current runtime code and Railway/GitHub/Notion state, dispatch read-only reviewer agents, then implement only the missing pieces needed to complete the E1.7 proof path.
+
+## 2026-07-03 19:55 - Codex - complete - E1.7 Railway/Jarvis hosted baseline and Epic 2 Planning
+
+Status: complete
+
+Files changed:
+
+- `api/_jarvis_contract.py`
+- `services/jarvis-api/README.md`
+- `project/scripts/jarvis-api-contract-smoke.py`
+- `project/dashboard/app.js`
+- `project/dashboard/README.md`
+- `project/dashboard/data.json`
+- `project/knowledge/`
+- `project/project-plan.md`
+- `project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md` and `.pdf`
+- `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` and `.pdf`
+- `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` and `.pdf`
+- `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md` and `.pdf`
+- `project/runs/2026-07-03-e1-7-railway-jarvis-final/`
+- `wiki/runs/2026-07-03-e1-7-railway-jarvis-final.md`
+- `wiki/log.md`
+- final `testmeeting` PDF/status artifacts refreshed
+
+Checks run:
+
+- Hosted Railway service status: passed.
+- Hosted Railway `/health`: passed with provider calls `0` and external writeback `0`.
+- Hosted CORS preflight from dashboard origin: passed.
+- Hosted `/api/chat`, `/api/config/roles`, `/api/lanes/prd-icp`, `/api/lanes/agent-orchestra`, and `/api/voice/chat`: passed.
+- In-process Jarvis API contract smoke: passed across 17 endpoint checks.
+- Final `testmeeting` local baseline rerun: passed with provider disabled.
+- Dashboard static smoke: passed, 8 routes, provider calls `0`, writeback `0`.
+- `node --check project/dashboard/app.js`: passed.
+- Python compile check: passed.
+- Workflow validation: passed.
+- Runtime guard: passed.
+- Dashboard JSON parse: passed.
+- Public safety scan: passed.
+- `git diff --check`: passed.
+
+External closeout:
+
+- Notion append-only updates completed for Epic 1, E1.6, E1.7, Epic 2, and new Epic 2 `Planning` task.
+- GitHub `main` pushed at commit `fefddd7`.
+- Vercel preview deployment completed for review; production was not promoted.
+- Figma baseline sync completed for the Vercel preview.
+- Telegram report/PDF delivery succeeded through the approved sender.
+
+Remaining gaps:
+
+- Private Notion/Figma/Railway review links were not sent through Telegram; private-link export to the external service was blocked by the safety reviewer.
+- Provider-backed Jarvis, auth, persistence, durable writeback, raw voice handling, client workspaces, and buyer demand proof remain gated.
+- Epic 2 execution has not started; it waits for owner answers to the Planning task questions.
+
+Next safe action:
+
+- Review the pushed reports and Vercel preview. Answer the Epic 2 Planning questions before starting live account research or provider-backed synthesis.

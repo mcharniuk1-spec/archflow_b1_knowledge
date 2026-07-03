@@ -1,11 +1,28 @@
 {
-  "date": "2026-07-03",
-  "status": "pending_final_send",
-  "private_links_stored_in_repo": false,
-  "send_after": [
-    "notion_update",
-    "pdf_render",
-    "validation",
-    "github_push"
-  ]
+  "timestamp_utc": "2026-07-03T15:17:55.938005+00:00",
+  "status": "sent",
+  "reason": "telegram_api_ok",
+  "files": [
+    {
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
+      "status": "sent"
+    }
+  ],
+  "private_link_delivery": {
+    "status": "blocked",
+    "reason": "safety_reviewer_blocked_private_link_export_to_external_service",
+    "private_links_stored_in_repo": false
+  }
 }
