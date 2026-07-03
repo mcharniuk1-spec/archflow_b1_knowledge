@@ -1,0 +1,21 @@
+ArchFlow file delivery and Claude Code continuation pack.
+
+Links after Git push:
+- Current-state report PDF: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf
+- Claude continuation handout: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md
+- Claude continuation handout PDF: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf
+- System stabilization plan: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.md
+- System stabilization plan PDF: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.pdf
+- Claude Code prompt: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md
+- Claude Code prompt PDF: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf
+- OpenRouter routing plan: https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md
+
+Current conclusion:
+- E1 proof stack is stable.
+- Dashboard and hosted Jarvis review-packet endpoints work with provider calls disabled.
+- LlamaIndex hybrid fallback benchmark passes.
+- Website direction is aligned to the PRD/ICP service.
+- Notion tasks need short-term sequence cleanup around E1.4, E2.0A, E3.1, E4.1, and TG cleanup.
+- Railway, provider-backed Jarvis, vector defaulting, dashboard writeback, raw voice storage, and autonomous external updates remain gated.
+
+Attached files are sanitized project artifacts. No credentials, chat IDs, private destinations, private Notion links, raw sources, or response bodies are included.

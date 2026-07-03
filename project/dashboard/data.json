@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T11:14:16.569343+00:00",
+  "generated_at": "2026-07-03T11:53:06.569814+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "51 files",
+      "value": "52 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "265",
+      "value": "276",
       "tone": "ok"
     },
     {
@@ -585,6 +585,83 @@
     }
   ],
   "activity": [
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-claude-continuation-stabilization.md",
+      "title": "Run - Claude Continuation And Stabilization",
+      "modified": "2026-07-03T11:52:58.009299+00:00",
+      "size": 2398
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md",
+      "title": "Agent Handout: Claude Code Continuation And Stabilization",
+      "modified": "2026-07-03T11:52:57.909041+00:00",
+      "size": 6069
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf",
+      "title": "claude-code-continuation-prompt.pdf",
+      "modified": "2026-07-03T11:42:20.201336+00:00",
+      "size": 7390
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.pdf",
+      "title": "system-review-stabilization-plan.pdf",
+      "modified": "2026-07-03T11:42:20.190693+00:00",
+      "size": 12868
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf",
+      "title": "agent-handout.pdf",
+      "modified": "2026-07-03T11:42:20.176665+00:00",
+      "size": 8000
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md",
+      "title": "Claude Code Continuation Prompt - ArchFlow",
+      "modified": "2026-07-03T11:39:43.069091+00:00",
+      "size": 5050
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.md",
+      "title": "ArchFlow System Review And Stabilization Plan",
+      "modified": "2026-07-03T11:39:42.969031+00:00",
+      "size": 9828
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md",
+      "title": "Agent Execution Template",
+      "modified": "2026-07-03T11:39:42.872371+00:00",
+      "size": 1441
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md",
+      "title": "PRD/ICP Service Packet Template",
+      "modified": "2026-07-03T11:39:42.775922+00:00",
+      "size": 2008
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md",
+      "title": "OpenRouter Model Routing Optimization - 2026-07-03",
+      "modified": "2026-07-03T11:39:42.611632+00:00",
+      "size": 3182
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/project-checkup-evidence.md",
+      "title": "Project Checkup Evidence - 2026-07-03",
+      "modified": "2026-07-03T11:39:42.513031+00:00",
+      "size": 3776
+    },
     {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
@@ -2445,7 +2522,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 51,
+    "file_count": 52,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -2691,6 +2768,11 @@
         "path": "wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
         "title": "2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract",
         "excerpt": "# 2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract  Status: complete for docs, skills, Notion clarification, and local stack contract scope  ## Task  Optimize the Notion/task architecture, create local Jarvis stack operating contracts, and define Prompt 2.1 / Prompt 3 coordination without activating gated runtime.  ## FACT  - `arcagcom` was added as the live-agent communication skill. - `archflow1` was ad"
+      },
+      {
+        "path": "wiki/runs/2026-07-03-claude-continuation-stabilization.md",
+        "title": "Run - Claude Continuation And Stabilization",
+        "excerpt": "# Run - Claude Continuation And Stabilization  Date: 2026-07-03 Status: in progress until final checks, Telegram files, commit, and push complete  ## Task  Send current report files to Telegram, then create a detailed Claude Code continuation handout and stabilization plan covering the project structure, current company goal, dashboard, website, Notion tasks, knowledge system, LlamaIndex, second-brain boundaries, Ope"
       },
       {
         "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
@@ -3720,6 +3802,41 @@
       "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-03 10:52:05 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 282 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 275 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 264 | 132/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 233 | 150/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 5 | 233 | 126/82 | E2 - Research Engine To ICP | E2.0 Reset research engine for integrated API/tool approach | Backlog | Research | 2026-07-02 | | 6 | 225 | 100/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 7 | 222 | 95/85"
     },
     {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md",
+      "title": "Agent Handout: Claude Code Continuation And Stabilization",
+      "text": "# Agent Handout: Claude Code Continuation And Stabilization  Date: 2026-07-03 Status: created for next-agent continuation Lane: Claude Code handoff, full-system review, stabilization plan, Telegram file delivery  ## Title And Purpose  This handout is for Claude Code or any next local agent continuing ArchFlow. It summarizes the current system, the company goal, the reliable architecture, the best next tasks, and the exact rules for using the knowledge base, second-brain layers, LlamaIndex, dashboard, Notion, Telegram, and OpenRouter.  ## Human Summary  ArchFlow is no longer just a project reset. It has a working public-safe proof stack: Codex-operated repo, WikiLLM durable memory, live communication log, LlamaIndex bounded hybrid retrieval, LangGraph/CrewAI contracts, static/browser-local dashboard, and hosted provider-disabled Jarvis review-packet endpoints. The website now communicates the B2B SaaS product-team PRD/ICP service direction.  The project is not yet a fully autonomous runtime. Railway, provider-backed Jarvis, dashboard-driven writeback, raw voice storage, full vector defaulting, live Nexus writeback, and payment-test validation remain gated. The next agent must not ov"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md",
+      "title": "Claude Code Continuation Prompt - ArchFlow",
+      "text": "# Claude Code Continuation Prompt - ArchFlow  Use this prompt for Claude Code or another local agent continuing ArchFlow.  ## Identity  You are Claude Code continuing the ArchFlow public-safe project. You are not the owner, not a production backend, and not an autonomous publisher. You are an implementation/review agent working under the Codex/owner approval boundary.  ## Mandatory Project Boundary  The public project is English-only and public-safe. Do not store:  - API keys, tokens, cookies, passwords, or credentials; - private Notion links; - account IDs or workspace IDs; - local absolute paths; - raw transcripts, raw private docs, screenshots, browser logs, or PDFs; - raw voice/audio; - private profile data; - personal identifiers; - unreviewed provider outputs as facts.  Use repo-relative paths in public artifacts.  ## Required Preflight  1. Read `project/operating-rules.md`. 2. Read `project/live/communication/README.md`. 3. Read `project/live/communication/current-agent-notice.md`. 4. Read the latest section of `project/live/communication/agent-communication-log.md`. 5. Run `git status --short --branch`. 6. Append a starting update to `project/live/communication/agent-commun"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md",
+      "title": "OpenRouter Model Routing Optimization - 2026-07-03",
+      "text": "# OpenRouter Model Routing Optimization - 2026-07-03  Status: planning and routing recommendation only. Provider runtime remains disabled.  Source checked: `https://openrouter.ai/api/v1/models` on 2026-07-03.  ## Current Rule  FACT: - Browser JavaScript must not receive provider keys. - OpenRouter provider calls are disabled by default. - Existing budget rule is 5.00 USD daily cap and 1.99 USD per-run hard stop. - Hosted Jarvis API returns review packets with provider calls 0.  INTERPRETATION: - OpenRouter should be a server-side or local-bridge execution option only after owner approval, source screening, model-list refresh, ledger, and budget guard.  ## Recommended Routing  ### Default  Use `MODEL_PROVIDER=none`.  Use Codex for operator work, Git edits, public-safety review, and final promotion.  ### Cheap Structured Execution  Use only after provider approval and for sanitized packets:  - `qwen/qwen3.6-plus`: strong cost/context tradeoff for source-scope comparison, PRD/ICP synthesis, and long packet review. - `openai/gpt-5.4-mini`: structured reasoning and schema repair when a cheaper OpenAI-family model is enough. - `poolside/laguna-xs-2.1`: very cheap coding-agent candidate f"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/project-checkup-evidence.md",
+      "title": "Project Checkup Evidence - 2026-07-03",
+      "text": "# Project Checkup Evidence - 2026-07-03  Status: completed for local/static/provider-disabled checks.  ## Local Checks  FACT: - Public safety scan passed. - Workflow validation passed for LangGraph, LlamaIndex RAG, CrewAI, knowledge integration, market research engine, and model routing. - Pre-push runtime guard passed: LangGraph smoke verified, LlamaIndex corpus verified, CrewAI config verified. - LlamaIndex smoke passed with 321 documents and 2419 chunks in the approved corpus. - LlamaIndex 20-query benchmark passed: lexical recall@5 20/20, hybrid recall@5 20/20, source-path filtering pass, no hybrid regression. - Vector availability is false because the local embedder endpoint was unavailable; fallback behaved as designed. - Dashboard static smoke passed after loopback binding was allowed: 8 routes, provider calls 0, writeback 0. - Dashboard JavaScript syntax check passed. - Python syntax checks passed for Vercel API routes, local Jarvis API app, dashboard data generator, and Telegram sender scripts. - Dashboard JSON parsed successfully.  INTERPRETATION: - The current project is stable for public-safe source, static dashboard, provider-disabled Jarvis review packets, bounded RAG"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.md",
+      "title": "ArchFlow System Review And Stabilization Plan",
+      "text": "# ArchFlow System Review And Stabilization Plan  Date: 2026-07-03 Status: planning and handoff artifact for the next agent.  ## Executive Conclusion  ArchFlow is at a useful but fragile transition point. The E1 proof system works. The public-safe repository is structured. WikiLLM holds durable project memory. LlamaIndex is now a bounded hybrid retrieval layer with lexical fallback. The dashboard is a static/browser-local Jarvis control surface with hosted provider-disabled review-packet endpoints. The website now communicates the PRD/ICP service direction. Notion has a coherent E1-E7 board with Agent Tags, but several short-term tasks need sequence cleanup and owner acceptance.  The next agent should not add more broad architecture. The next agent should stabilize the current stage, then execute the first commercial-learning lane:  1. Finish E1.4 as the repeatable KB update principle. 2. Run E2.0A as a local PRD-to-ICP outcome packet from approved sources. 3. Tighten E3.1 positioning and make website claims match the accepted ICP. 4. Convert E4.1 into a five-week content calendar tied to measurable demand signals. 5. Close TG-1/TG-2/TG-3 with the new Telegram file-sender evidence a"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md",
+      "title": "Agent Execution Template",
+      "text": "# Agent Execution Template  Use this for Architecture 2: agent orchestration and project-system work.  ## Agent Identity  - Agent name: - Role: - Lane: - Claimed files: - Allowed tools: - Forbidden actions: - Expected output:  ## Required Preflight  1. Read `project/operating-rules.md`. 2. Read `project/live/communication/README.md`. 3. Read `project/live/communication/current-agent-notice.md`. 4. Read the latest section of `project/live/communication/agent-communication-log.md`. 5. Append a starting entry before editing. 6. Read relevant run handouts and WikiLLM run notes. 7. Check `git status --short --branch`.  ## Source Boundary  - Approved public files: - Sanitized summaries: - Private source for local reasoning only: - Blocked sources: - Required source filters:  ## Task Packet  FACT: -  INTERPRETATION: -  HYPOTHESIS: -  GAP: -  ## Execution Plan  1. 2. 3.  ## Review Gate  - Public safety: - English-only: - Source paths: - Runtime boundary: - Provider/writeback/external send approval: - Tests/checks:  ## Output  - Files changed: - Run note: - Handout: - Notion update candidate: - Telegram message candidate: - Git commit candidate:  ## Stop Conditions  Stop before:  - provider"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md",
+      "title": "PRD/ICP Service Packet Template",
+      "text": "# PRD/ICP Service Packet Template  Use this for Architecture 1: PRD/ICP service output.  ## 0. Source Boundary  - Source packet name: - Approved source types: - Excluded raw inputs: - Private material handling: - Public-safe output level: - Source refs: - Reviewer: - Status: Draft / Review / Approved / Blocked  ## 1. Executive Decision  - One-sentence product decision: - Why now: - Buyer or owner of the decision: - Decision deadline: - What will happen if unresolved:  ## 2. Context Digest  FACT: -  INTERPRETATION: -  HYPOTHESIS: -  GAP: -  ## 3. Product Context  - Product: - Segment: - User: - Buyer: - Workflow: - Existing tools: - Constraints: - Non-goals:  ## 4. ICP Card  | Field | Answer | Evidence | Confidence | |---|---|---|---| | Account shape |  |  | Low/Medium/High | | Buyer role |  |  | Low/Medium/High | | Trigger |  |  | Low/Medium/High | | Pain |  |  | Low/Medium/High | | Current workaround |  |  | Low/Medium/High | | Disqualifier |  |  | Low/Medium/High | | Budget path |  |  | Low/Medium/High |  ## 5. Problem And Jobs To Be Done  - Current job: - Pain: - Cost of pain: - Desired outcome: - Proof needed: - Objection:  ## 6. Requirements  | ID | Requirement | Type | Accept"
+    },
+    {
       "path": "project/runs/2026-07-03-daily-founder-notes/agent-handout.md",
       "title": "Agent Handout: Daily Founder Notes And Current-State Report",
       "text": "# Agent Handout: Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; Git/check closeout pending in this run Lane: founder notes, current-state report, public-safe closeout  ## Purpose  This handout records the daily founder-note reconstruction and current-state reporting pass. It is for the next operator who needs to verify what was created, where it was synchronized, and what remains gated.  ## Source Basis  Evidence used:  - `wiki/log.md` - `wiki/runs/` - `project/runs/` - `project/README.md` - `project/agentic-stack.md` - `project/workflows/llamaindex-rag.yaml` - `project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md` - `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md` - Daily Founder Notes database schema from the Notion connector  ## Outputs  - `project/runs/2026-07-03-daily-founder-notes/daily-founder-notes-packet.md` - `project/runs/2026-07-03-daily-founder-notes/current-state-report.md` - `project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf` - `project/runs/2026-07-03-daily-founder-notes/telegram-summary.txt` - `project/r"
@@ -4363,6 +4480,11 @@
       "path": "wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
       "title": "2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract",
       "text": "# 2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract  Status: complete for docs, skills, Notion clarification, and local stack contract scope  ## Task  Optimize the Notion/task architecture, create local Jarvis stack operating contracts, and define Prompt 2.1 / Prompt 3 coordination without activating gated runtime.  ## FACT  - `arcagcom` was added as the live-agent communication skill. - `archflow1` was added as the local Jarvis stack operating skill. - `docs/dashboard-local-jarvis-stack-manual.md` was added. - `project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md` records the duplicate/drift map and owner gates. - Notion updates were kept append-only or note-only against exact rows. - OpenRouter remains disabled with the `5.00` USD daily cap and `1.99` USD run hard stop. - CrewAI Level 3 remains `proof_passed_not_default_runtime`.  ## INTERPRETATION  Prompt 2.1 makes the system easier to operate and review. It does not make the dashboard a live backend, provider runtime, Telegram sender, production deployment, or autonomous writeback layer.  ## GAP  - Full PRD/ICP test cycle requires owner approval. - FastAPI runtime proof requires owner-approved depende"
+    },
+    {
+      "path": "wiki/runs/2026-07-03-claude-continuation-stabilization.md",
+      "title": "Run - Claude Continuation And Stabilization",
+      "text": "# Run - Claude Continuation And Stabilization  Date: 2026-07-03 Status: in progress until final checks, Telegram files, commit, and push complete  ## Task  Send current report files to Telegram, then create a detailed Claude Code continuation handout and stabilization plan covering the project structure, current company goal, dashboard, website, Notion tasks, knowledge system, LlamaIndex, second-brain boundaries, OpenRouter routing, PRD/ICP templates, and next execution sequence.  ## Inputs  - Public project plan, agent stack, model routing, agent roster, workflow contracts, dashboard and website code. - Notion task schema and task state from the approved connector. - Prior current-state report and hybrid RAG/Jarvis readiness handout. - Live communication log and operating rules. - OpenRouter public model list checked on 2026-07-03.  ## Outputs  - `project/scripts/send-telegram-files.py` - `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md` - `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf` - `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md` - `project/runs/2026-07-03-claude-continuat"
     },
     {
       "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
