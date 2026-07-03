@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T10:19:31.309280+00:00",
+  "generated_at": "2026-07-03T11:14:16.569343+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "50 files",
+      "value": "51 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "259",
+      "value": "265",
       "tone": "ok"
     },
     {
@@ -585,6 +585,48 @@
     }
   ],
   "activity": [
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
+      "title": "Run - Daily Founder Notes And Current-State Report",
+      "modified": "2026-07-03T11:14:05.933062+00:00",
+      "size": 2529
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-daily-founder-notes/agent-handout.md",
+      "title": "Agent Handout: Daily Founder Notes And Current-State Report",
+      "modified": "2026-07-03T11:14:05.840664+00:00",
+      "size": 2935
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-daily-founder-notes/telegram-delivery-status.md",
+      "title": "Telegram Delivery Status",
+      "modified": "2026-07-03T11:13:38.182338+00:00",
+      "size": 245
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf",
+      "title": "current-state-report.pdf",
+      "modified": "2026-07-03T11:08:13.515545+00:00",
+      "size": 15514
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-daily-founder-notes/current-state-report.md",
+      "title": "ArchFlow Current State Report",
+      "modified": "2026-07-03T11:07:29.536114+00:00",
+      "size": 11174
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-daily-founder-notes/daily-founder-notes-packet.md",
+      "title": "Founder Notes Packet - ArchFlow",
+      "modified": "2026-07-03T11:07:29.444768+00:00",
+      "size": 20876
+    },
     {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md",
@@ -2403,7 +2445,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 50,
+    "file_count": 51,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -2649,6 +2691,11 @@
         "path": "wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
         "title": "2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract",
         "excerpt": "# 2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract  Status: complete for docs, skills, Notion clarification, and local stack contract scope  ## Task  Optimize the Notion/task architecture, create local Jarvis stack operating contracts, and define Prompt 2.1 / Prompt 3 coordination without activating gated runtime.  ## FACT  - `arcagcom` was added as the live-agent communication skill. - `archflow1` was ad"
+      },
+      {
+        "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
+        "title": "Run - Daily Founder Notes And Current-State Report",
+        "excerpt": "# Run - Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; final Git/check closeout recorded in live communication  ## Task  Reconstruct day-by-day founder notes for the ArchFlow project and produce a current-state report that explains the knowledge-system methodology, architecture layers, current setup, proof evidence, traceba"
       },
       {
         "path": "wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md",
@@ -3673,6 +3720,26 @@
       "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-03 10:52:05 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 282 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 275 | 150/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 264 | 132/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 233 | 150/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 5 | 233 | 126/82 | E2 - Research Engine To ICP | E2.0 Reset research engine for integrated API/tool approach | Backlog | Research | 2026-07-02 | | 6 | 225 | 100/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 7 | 222 | 95/85"
     },
     {
+      "path": "project/runs/2026-07-03-daily-founder-notes/agent-handout.md",
+      "title": "Agent Handout: Daily Founder Notes And Current-State Report",
+      "text": "# Agent Handout: Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; Git/check closeout pending in this run Lane: founder notes, current-state report, public-safe closeout  ## Purpose  This handout records the daily founder-note reconstruction and current-state reporting pass. It is for the next operator who needs to verify what was created, where it was synchronized, and what remains gated.  ## Source Basis  Evidence used:  - `wiki/log.md` - `wiki/runs/` - `project/runs/` - `project/README.md` - `project/agentic-stack.md` - `project/workflows/llamaindex-rag.yaml` - `project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md` - `project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md` - Daily Founder Notes database schema from the Notion connector  ## Outputs  - `project/runs/2026-07-03-daily-founder-notes/daily-founder-notes-packet.md` - `project/runs/2026-07-03-daily-founder-notes/current-state-report.md` - `project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf` - `project/runs/2026-07-03-daily-founder-notes/telegram-summary.txt` - `project/r"
+    },
+    {
+      "path": "project/runs/2026-07-03-daily-founder-notes/current-state-report.md",
+      "title": "ArchFlow Current State Report",
+      "text": "# ArchFlow Current State Report  Prepared: 2026-07-03 Scope: public-safe founder briefing, current architecture, knowledge-system methodology, proof evidence, and next transfer state.  ## Executive Summary  ArchFlow is now organized around a single reliable operating path:  ```text approved source material -> source boundary review -> structured context -> PRD and ICP output -> task and responsibility plan -> knowledge-base update -> review gate -> optional external action only after approval ```  The project has moved from a reset and documentation state into a working proof system. The current reliable surface is static/browser-local dashboard plus provider-disabled Jarvis review packets, Codex-operated execution, WikiLLM durable memory, Graphify structural reference, bounded LlamaIndex retrieval, LangGraph routing, CrewAI role structure, and public-safe Notion/Git reporting.  The system is not yet a fully autonomous production runtime. Provider-backed Jarvis generation, Railway always-on workers, dashboard-driven writeback, full vector defaulting, raw voice storage, live Nexus actions, broad external repo ingestion, and autonomous Notion/GitHub/Telegram updates remain gated.  ##"
+    },
+    {
+      "path": "project/runs/2026-07-03-daily-founder-notes/daily-founder-notes-packet.md",
+      "title": "Founder Notes Packet - ArchFlow",
+      "text": "# Founder Notes Packet - ArchFlow  Date prepared: 2026-07-03 Scope: ArchFlow public-safe project history from the 2026-06-24 reset through the 2026-07-03 knowledge-system and Jarvis readiness work.  ## Purpose  This packet translates the project evidence into daily founder-note entries for the Daily Founder Notes database. It uses repo logs, run handouts, WikiLLM notes, dashboard reports, and approved Notion connector evidence. It does not include private workspace links, local absolute paths, credentials, raw transcripts, account identifiers, or raw private source text.  ## Daily Entries  ### 2026-06-24 - Reset direction  Blocks: E1 KB, E2 Research/ICP, E3 Site, E4 Content, E5 Analytics/ROI  What I did: - I used the reset direction to move ArchFlow away from scattered legacy work and toward one operating product: messy dialogue, chat, meeting, or planning input into structured context, PRD, tasks, knowledge-base update, and review. - I accepted that the internal knowledge workflow had to be proven before outward market research, content, outreach, or payment testing could be credible. - I preserved older STR and finance automation work as historical context instead of letting it d"
+    },
+    {
+      "path": "project/runs/2026-07-03-daily-founder-notes/telegram-delivery-status.md",
+      "title": "Telegram Delivery Status",
+      "text": "# Telegram Delivery Status  Date: 2026-07-03T11:13:37.760439+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
+    },
+    {
       "path": "project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md",
       "title": "Agent Handout: Hybrid RAG And Jarvis Readiness",
       "text": "# Agent Handout: Hybrid RAG And Jarvis Readiness  Date: 2026-07-03 Status: implementation complete for bounded hybrid retrieval and Jarvis readiness verification Lane: LlamaIndex RAG upgrade plus Jarvis architecture-mode readiness  ## Title And Purpose  This handout records the widened plan and implementation pass for the ArchFlow public knowledge system. It is for the next operator who must continue Graphify, RAG, LlamaIndex, Jarvis, dashboard, Notion, GitHub, and future tool-integration work without relying on chat history.  ## Human Summary  The current reliable architecture remains public-safe first. Codex is the local operator and approval boundary. WikiLLM is the durable curated memory. Graphify is generated structural reference. LlamaIndex is the bounded retrieval layer. LangGraph controls execution paths and gates. CrewAI provides named role structure. Jarvis is the dashboard communication/control surface, with Architecture 1 for PRD/ICP output and Architecture 2 for architecture/agent-system work.  This run upgraded the LlamaIndex approved-corpus path from keyword-only proof to bounded hybrid retrieval. The script now creates stable document and chunk metadata, enforces re"
@@ -4296,6 +4363,11 @@
       "path": "wiki/runs/2026-07-02-prompt-2-1-notion-local-stack-contract.md",
       "title": "2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract",
       "text": "# 2026-07-02 Prompt 2.1 Notion And Local Jarvis Stack Contract  Status: complete for docs, skills, Notion clarification, and local stack contract scope  ## Task  Optimize the Notion/task architecture, create local Jarvis stack operating contracts, and define Prompt 2.1 / Prompt 3 coordination without activating gated runtime.  ## FACT  - `arcagcom` was added as the live-agent communication skill. - `archflow1` was added as the local Jarvis stack operating skill. - `docs/dashboard-local-jarvis-stack-manual.md` was added. - `project/reports/2026-07-02-prompt-2-1-notion-local-stack-contract.md` records the duplicate/drift map and owner gates. - Notion updates were kept append-only or note-only against exact rows. - OpenRouter remains disabled with the `5.00` USD daily cap and `1.99` USD run hard stop. - CrewAI Level 3 remains `proof_passed_not_default_runtime`.  ## INTERPRETATION  Prompt 2.1 makes the system easier to operate and review. It does not make the dashboard a live backend, provider runtime, Telegram sender, production deployment, or autonomous writeback layer.  ## GAP  - Full PRD/ICP test cycle requires owner approval. - FastAPI runtime proof requires owner-approved depende"
+    },
+    {
+      "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
+      "title": "Run - Daily Founder Notes And Current-State Report",
+      "text": "# Run - Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; final Git/check closeout recorded in live communication  ## Task  Reconstruct day-by-day founder notes for the ArchFlow project and produce a current-state report that explains the knowledge-system methodology, architecture layers, current setup, proof evidence, traceback gains, and next transfer state.  ## Inputs  - Public WikiLLM log and run notes. - Public project run handouts. - Current agentic stack and LlamaIndex workflow. - Current Jarvis/dashboard proof handouts. - Daily Founder Notes Notion database schema.  ## Outputs  - Founder notes packet under `project/runs/2026-07-03-daily-founder-notes/`. - Current-state report Markdown and PDF. - Daily Founder Notes Notion rows for the reset through 2026-07-03. - Current-state report page added under Daily Founder Notes. - Telegram status summary sent through the approved sender path.  ## FACT  - The public project has evidence from the 2026-06-24 reset through 2026-07-03. - The current architecture is public-safe first: Codex operator, WikiLLM memory, Graphify structure, LlamaIndex b"
     },
     {
       "path": "wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md",

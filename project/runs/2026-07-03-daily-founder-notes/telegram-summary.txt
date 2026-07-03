@@ -1,0 +1,20 @@
+ArchFlow founder notes and current-state report are prepared.
+
+Scope covered:
+- Daily founder notes from the 2026-06-24 reset through 2026-07-03.
+- Current architecture report for WikiLLM, Graphify, LlamaIndex hybrid RAG, LangGraph, CrewAI, Jarvis, dashboard, Notion, Git, and Telegram boundaries.
+- Knowledge-base traceback wins: provider-path correction, Telegram credential-boundary cleanup, public-safe dashboard claims, and bounded hybrid RAG fallback.
+
+Current state:
+- Static/browser-local dashboard and provider-disabled Jarvis review packets are working.
+- Architecture 1 is PRD/ICP.
+- Architecture 2 is agent orchestration and architecture work.
+- LlamaIndex hybrid mode is available with lexical fallback.
+- Vector defaulting, turbovec, Railway always-on Jarvis, provider-backed generation, live writeback, raw voice storage, and autonomous external updates remain gated.
+
+Artifacts:
+- project/runs/2026-07-03-daily-founder-notes/daily-founder-notes-packet.md
+- project/runs/2026-07-03-daily-founder-notes/current-state-report.md
+- project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf
+
+No credentials, chat IDs, private links, raw sources, or private destination details are included in this message.
