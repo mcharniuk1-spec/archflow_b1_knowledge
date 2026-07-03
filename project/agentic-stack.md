@@ -22,8 +22,8 @@ Codex-authenticated operator prompt
 | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. |
 | Loop Engineering | State, attempt caps, budget, maker/checker split, stop conditions. | L1 report-only loop contract under `project/loops/`. |
 | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Research, AF Manager, AF Knowledge, AF Copy, AF Review, AF Publisher. |
-| LlamaIndex | Bounded retrieval and RAG. | Search only approved public-safe project and sanitized history. |
-| turbovec | Future local vector store under LlamaIndex. | Deferred until stable source IDs, embeddings, metadata, and benchmark exist. |
+| LlamaIndex | Bounded hybrid retrieval and RAG. | Search only approved public-safe project and sanitized history with source-grounded semantic plus lexical retrieval, stable chunk metadata, and lexical fallback. |
+| turbovec | Future local vector store under LlamaIndex. | Deferred until stable source IDs, chunk IDs, embeddings, metadata, source filters, and the 20-query benchmark pass. |
 | WikiLLM | Canonical curated memory. | Source of truth for approved runs, decisions, memory, insights, and issues. |
 | Cognee | Future operational recall and knowledge graph. | Deferred until E1.3 readback passes; never replaces WikiLLM. |
 | Ollama | Local model serving. | Minor/background tasks only; active model is Qwythos and fallback is `gemma4:e4b`. |
@@ -58,6 +58,26 @@ Not allowed by default:
 - Local machine paths.
 - Credentials.
 - Private or scraped profile data.
+
+## LlamaIndex Retrieval Contract
+
+LlamaIndex is the retrieval layer, not the durable knowledge store. WikiLLM remains the curated memory source of truth.
+
+Current role:
+
+- bounded approved-corpus retrieval over `project/`, `history/`, `skills/`, and `wiki/`;
+- hybrid query mode when a local embedding adapter is available;
+- deterministic lexical retrieval as the smoke path and fallback;
+- stable `doc_id` and `chunk_id` metadata for every result;
+- required `source_path`, `document_type`, and `updated_at` provenance fields;
+- refusal of private-source matches by default.
+
+Retrieval guarantees:
+
+- no raw private ingestion by default;
+- source-grounded output only;
+- auditable result sources and scores;
+- full vector defaulting remains blocked until the 20-query benchmark passes with no regression against lexical retrieval.
 
 ## Loop And Parallelism Rules
 

@@ -3233,11 +3233,14 @@ function renderLlamaIndex(data) {
     <div class="grid cols-3">
       ${card({ label: "Status", value: data.llamaindex.status, tone: "warn" })}
       ${card({ label: "Approved corpus", value: data.llamaindex.include.join(", "), tone: "ok" })}
-      ${card({ label: "Top K", value: data.llamaindex.similarity_top_k || "5", note: "Contract value", tone: "ok" })}
+      ${card({ label: "Mode", value: data.llamaindex.query_mode || "hybrid", note: data.llamaindex.query_engine || "approved corpus", tone: "ok" })}
+      ${card({ label: "Vector top K", value: data.llamaindex.vector_top_k || "5", note: "Semantic candidates when local embedder is available", tone: "ok" })}
+      ${card({ label: "Lexical top K", value: data.llamaindex.lexical_top_k || "5", note: "Deterministic fallback and traceability path", tone: "ok" })}
+      ${card({ label: "Rerank top K", value: data.llamaindex.rerank_top_k || "5", note: `Fallback to lexical: ${data.llamaindex.fallback_to_lexical || "true"}`, tone: "ok" })}
     </div>
     <section class="panel" style="margin-top:16px">
       <h2 class="section-title">Local Query Test</h2>
-      <p class="muted">This is a lexical dashboard test over approved public files. It is not a vector index and does not replace LlamaIndex runtime.</p>
+      <p class="muted">This browser preview is lexical over generated dashboard data. The repo LlamaIndex script owns bounded hybrid retrieval, stable source/chunk provenance, and lexical fallback.</p>
       <div class="query-box">
         <input type="search" id="queryInput" value="LangGraph CrewAI WikiLLM" aria-label="Search approved corpus" />
         <button class="primary" id="queryButton">Search</button>

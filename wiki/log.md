@@ -223,3 +223,22 @@ INTERPRETATION:
 
 GAP:
 - Provider calls, durable writeback, raw audio storage, and production automation remain disabled until separate approval and runtime proof.
+
+## 2026-07-03 - Hybrid RAG and Jarvis readiness
+
+FACT:
+- Upgraded LlamaIndex approved-corpus retrieval to bounded hybrid mode with stable document/chunk metadata, required source paths, lexical fallback, and local embedding adapter probing.
+- Added a 20-query retrieval benchmark. It passed with lexical recall@5 20/20, hybrid recall@5 20/20, source-path filtering pass, and no hybrid regression.
+- The local embedder endpoint was unavailable, so hybrid mode correctly used lexical fallback and reported the fallback reason.
+- Local and hosted Jarvis health checks passed with provider calls disabled and writeback disabled.
+- Hosted Architecture 1 PRD/ICP and Architecture 2 agent-orchestra routes returned review packets.
+- E1.2 Codex proof was rerun through the deterministic LangGraph proof script and returned approved status with 11 stream events.
+- Append-only Notion evidence updates were applied to E1.1.7, E1.3.9, and E1.7.
+
+INTERPRETATION:
+- LlamaIndex is now a bounded hybrid retrieval layer with auditable fallback. It is still not the durable knowledge store.
+- Jarvis is connected for review-packet operation, not provider-backed automation.
+
+GAP:
+- Full vector defaulting, turbovec, Railway uptime, provider-backed Jarvis, live writeback, raw voice storage, and autonomous Notion/GitHub updates remain gated.
+- No broad Notion rewrite or Done-state promotion was performed.

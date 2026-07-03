@@ -1,5 +1,5 @@
 name: archflow_block1_rag
-status: runtime_installed_approved_corpus_smoke_passed
+status: runtime_installed_bounded_hybrid_retrieval_available
 runtime: llamaindex_python
 official_docs_checked:
   - https://developers.llamaindex.ai/python/framework/getting_started/concepts/
@@ -38,11 +38,17 @@ indexing_parameters:
   persist_dir_git_status: ignored
 
 retrieval_parameters:
-  query_engine: approved_corpus_keyword_smoke_first
+  query_engine: approved_corpus_hybrid
+  query_mode: hybrid
+  vector_top_k: 5
+  lexical_top_k: 5
+  rerank_top_k: 5
+  fallback_to_lexical: true
   similarity_top_k: 5
   response_mode: compact
   require_source_paths: true
   refuse_on_private_source: true
+  deterministic_smoke_mode: lexical
 
 model_routing:
   primary_operator: codex_operator
@@ -58,16 +64,26 @@ outputs:
   context_digest: project/outputs/templates/context-digest.md
   smoke_summary_local: project/local/rag_index/approved-corpus-summary.json
   smoke_script: project/scripts/llamaindex-approved-corpus.py
+  benchmark_script: project/scripts/llamaindex-rag-benchmark.py
+  benchmark_summary_local: project/local/rag_index/approved-corpus-benchmark.json
 
 current_limitations:
-  - Vector embeddings are not generated yet.
-  - First proof uses deterministic local keyword retrieval over LlamaIndex documents.
+  - Vector embeddings run only when the configured local embedder is already available.
+  - Deterministic lexical retrieval remains the required fallback and smoke path.
   - Only sanitized public files are approved for indexing by default.
+  - Full vector defaulting requires a passing 20-query retrieval benchmark.
+
+benchmark_requirements:
+  fixed_query_count: 20
+  minimum_hybrid_recall_at_k: 0.70
+  no_regression_against_lexical: true
+  source_path_filtering_required: true
+  pass_required_before_full_vector_default: true
 
 future_vector_store:
   candidate: turbovec
   integration_rule: use_under_llamaindex_adapter_only
-  status: deferred_until_source_ids_embeddings_and_metadata_exist
+  status: deferred_until_benchmark_stable_ids_embeddings_metadata_and_filters_pass
   required_before_pilot:
     - stable_source_id_doc_id_chunk_id
     - fixed_embedding_model_and_dimensions

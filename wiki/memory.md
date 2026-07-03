@@ -264,3 +264,12 @@ ArchFlow Block 1 is the first public solution:
 - `docs/tgapi.md` was removed after a Telegram-token-shaped value was detected outside env flow.
 - OpenRouter remains disabled with a `5.00` USD daily cap and `1.99` USD run hard stop. Provider activation still requires owner approval, backend/local bridge, server-side secrets, fresh pricing, provider ledger proof, live budget guard, and expanded AF Review.
 - CrewAI Level 3 remains `proof_passed_not_default_runtime`; it is not default runtime and not provider runtime.
+
+## Hybrid RAG And Jarvis Readiness Memory - 2026-07-03
+
+- LlamaIndex is now the bounded hybrid retrieval layer for the approved public corpus, with stable `doc_id`/`chunk_id`, source-path enforcement, lexical fallback, and local embedding adapter probing.
+- The 20-query benchmark is the gate before full vector defaulting. A pass without vector availability proves fallback reliability, not vector readiness.
+- Turbovec remains deferred until benchmark, stable chunk metadata, embedding dimensions, source filters, ignored local persistence, and lexical rollback are proven.
+- Jarvis currently works for local and hosted provider-disabled review packets. Architecture 1 routes PRD/ICP service-output requests; Architecture 2 routes agent-control and workflow/knowledge-system requests.
+- Provider-backed Jarvis, Railway always-on workers, live Nexus/writeback, raw audio storage, autonomous Notion/GitHub updates, and production promotion remain separate approval-gated lanes.
+- NVIDIA RAG/NeMo skills are future evaluation candidates for guardrails, retriever evaluation, performance, and speech. They are not active in the current public RAG runtime.

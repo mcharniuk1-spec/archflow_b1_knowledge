@@ -285,6 +285,12 @@ def parse_llamaindex() -> dict:
         "exclude": exclude,
         "chunk_size": first_match(text, r"^\s{2}chunk_size:\s*(.*)$"),
         "chunk_overlap": first_match(text, r"^\s{2}chunk_overlap:\s*(.*)$"),
+        "query_mode": first_match(text, r"^\s{2}query_mode:\s*(.*)$", "keyword"),
+        "query_engine": first_match(text, r"^\s{2}query_engine:\s*(.*)$", "unknown"),
+        "vector_top_k": first_match(text, r"^\s{2}vector_top_k:\s*(.*)$"),
+        "lexical_top_k": first_match(text, r"^\s{2}lexical_top_k:\s*(.*)$"),
+        "rerank_top_k": first_match(text, r"^\s{2}rerank_top_k:\s*(.*)$"),
+        "fallback_to_lexical": first_match(text, r"^\s{2}fallback_to_lexical:\s*(.*)$", "true"),
         "similarity_top_k": first_match(text, r"^\s{2}similarity_top_k:\s*(.*)$"),
         "persist_dir": first_match(text, r"^\s{2}persist_dir:\s*(.*)$"),
         "limitations": re.findall(r"^\s{2}-\s*(.*)$", text.split("current_limitations:", 1)[-1], re.MULTILINE)

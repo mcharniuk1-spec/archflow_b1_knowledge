@@ -36,7 +36,7 @@ Qwythos is installed and now generates text through Ollama.
 `gemma4:e4b` remains the verified local fallback model.
 LangSmith tracing is configured for project ID `masked_langsmith_project_id`; keys stay only in ignored local env files.
 LangGraph is installed and has passed a sanitized smoke workflow.
-LlamaIndex is installed and has passed approved-corpus retrieval over public files.
+LlamaIndex is installed and has passed approved-corpus retrieval over public files. The retrieval path now supports bounded hybrid mode with source-grounded lexical fallback; the old deterministic keyword proof remains the required smoke path.
 CrewAI is installed and has passed config/import validation without LLM task execution.
 Graphify output exists for the public repository.
 E1.2 full-test artifacts exist under `project/runs/E1.2/2026-06-26-full-test/`, including the PRD, streaming report, system report, task matrix, KB update, review report, and agent handout.

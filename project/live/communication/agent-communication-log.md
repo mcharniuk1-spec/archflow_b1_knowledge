@@ -5887,3 +5887,102 @@ Verification:
 Remaining blocker:
 
 - No Railway always-on backend is active yet. Vercel is ready for dashboard plus provider-disabled Jarvis review-packet operations; Railway remains the next execution task for always-responding Jarvis, workers, queues, long provider calls, writeback, and production Telegram automation.
+
+
+## 2026-07-03 13:20 - Codex - Hybrid RAG and Jarvis readiness plan starting
+
+Status: starting
+
+Task:
+Upgrade the approved-corpus LlamaIndex path from keyword-only proof to bounded hybrid retrieval, refresh public architecture/status docs, and verify the Jarvis dashboard/API readiness surface without enabling provider calls, private ingestion, or durable writeback.
+
+Files likely to change:
+
+- `project/scripts/llamaindex-approved-corpus.py`
+- `project/scripts/llamaindex-rag-benchmark.py`
+- `project/workflows/llamaindex-rag.yaml`
+- `project/workflows/knowledge-integration.yaml`
+- `project/agentic-stack.md`
+- `project/README.md`
+- `project/dashboard/data.json`
+- `project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md`
+- `wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- Hybrid LlamaIndex/RAG contract and benchmark lane.
+- Jarvis readiness status documentation only; no provider-backed runtime activation.
+
+Expected output:
+
+- Hybrid retrieval script with stable source/chunk metadata, lexical fallback, vector-availability reporting, and ignored local summary output.
+- Workflow/docs aligned to bounded hybrid retrieval with turbovec still gated until benchmark and source filters pass.
+- Widened transfer plan captured in a public-safe handout, including Graphify/RAG/LlamaIndex/Jarvis sequencing and remaining external gates.
+- Local checks for retrieval smoke, fallback, workflow validation, dashboard JSON, Jarvis API contract syntax, and public safety.
+
+Blockers:
+
+- No private corpus ingestion, provider-backed execution, Notion/GitHub push, or always-on Railway activation will be performed without the relevant approval/tool state.
+- If local embeddings or Ollama are unavailable, hybrid mode must report fallback to lexical rather than fail the safety smoke.
+
+Next step:
+
+- Patch LlamaIndex script/config/docs, add benchmark evidence, regenerate dashboard data, run validation, then append complete status.
+
+## 2026-07-03 13:58 - Codex - Hybrid RAG and Jarvis readiness complete
+
+Status: complete
+
+Task:
+Upgraded the approved-corpus LlamaIndex path to bounded hybrid retrieval, refreshed architecture/dashboard/WikiLLM state, verified Jarvis local and hosted review-packet routes, reran E1.2 Codex proof, and recorded the widened transfer plan.
+
+Files changed:
+
+- `project/scripts/llamaindex-approved-corpus.py`
+- `project/scripts/llamaindex-rag-benchmark.py`
+- `project/workflows/llamaindex-rag.yaml`
+- `project/workflows/knowledge-integration.yaml`
+- `project/agentic-stack.md`
+- `project/README.md`
+- `project/scripts/generate-dashboard-data.py`
+- `project/dashboard/app.js`
+- `project/dashboard/data.json`
+- `project/runs/E1.2/2026-06-26-full-test/e1_2_langgraph_output.json`
+- `project/runs/E1.2/2026-06-26-full-test/e1_2_stream_events.jsonl`
+- `project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md`
+- `wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Pass: LlamaIndex hybrid retrieval smoke with lexical fallback and source paths.
+- Pass: LlamaIndex deterministic smoke mode.
+- Pass: 20-query RAG benchmark, recall@5 20/20 for lexical and hybrid fallback, source-path filtering pass, no hybrid regression.
+- Pass: local Jarvis `/health`, provider calls 0, writeback disabled.
+- Pass: hosted Jarvis `/health`, provider calls 0, writeback disabled.
+- Pass: hosted Architecture 1 PRD/ICP lane returned `review_packet_created`.
+- Pass: hosted Architecture 2 agent-orchestra lane returned `review_packet_created`.
+- Pass: E1.2 deterministic LangGraph proof, approved status, 11 stream events.
+- Pass: dashboard data regenerated and JSON parsed.
+- Pass: workflow validation.
+- Pass: pre-push runtime guard.
+- Pass: public safety scan.
+- Pass: dashboard static smoke, 8 routes, provider calls 0, writeback 0.
+- Pass: Python syntax checks for changed scripts and API routes.
+- Pass: `node --check project/dashboard/app.js`.
+- Pass: `git diff --check`.
+- Pass: append-only Notion updates to E1.1.7, E1.3.9, and E1.7.
+
+Remaining gaps:
+
+- Local vector embeddings did not run because the local embedder endpoint was unavailable; hybrid mode fell back to lexical as designed.
+- Full vector defaulting, turbovec, Railway uptime, provider-backed Jarvis execution, live Nexus/writeback, raw audio storage, and autonomous Notion/GitHub updates remain gated.
+- Broad Notion rewrite, Done-state promotion, and dashboard-driven Notion/GitHub writeback remain gated.
+
+Next safe action:
+
+- Review the scoped diff, then commit and push `main` if owner-approved Git publication should proceed.
