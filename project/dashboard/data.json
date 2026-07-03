@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T16:41:03.562297+00:00",
+  "generated_at": "2026-07-03T16:52:56.817183+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -586,6 +586,48 @@
   ],
   "activity": [
     {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-vercel-production-cure-report.pdf",
+      "title": "2026-07-03-vercel-production-cure-report.pdf",
+      "modified": "2026-07-03T16:52:56.979085+00:00",
+      "size": 9651
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.md",
+      "title": "Notion Update Packet: Vercel Production Cure",
+      "modified": "2026-07-03T16:52:50.856083+00:00",
+      "size": 3562
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
+      "title": "2026-07-03 Vercel Production Cure",
+      "modified": "2026-07-03T16:52:50.773185+00:00",
+      "size": 1888
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/agent-handout.md",
+      "title": "Agent Handout: Vercel Production Cure",
+      "modified": "2026-07-03T16:52:50.689528+00:00",
+      "size": 2922
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-vercel-production-cure-report.md",
+      "title": "Vercel Production Cure Report",
+      "modified": "2026-07-03T16:52:50.606183+00:00",
+      "size": 6912
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.pending.md",
+      "title": "Pending Notion Update Packet: Vercel Production Cure",
+      "modified": "2026-07-03T16:46:04.608266+00:00",
+      "size": 4022
+    },
+    {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-vercel-production-cure/notion-delivery-status.md",
       "title": "Notion Delivery Status",
@@ -621,46 +663,11 @@
       "size": 11939
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-vercel-production-cure-report.pdf",
-      "title": "2026-07-03-vercel-production-cure-report.pdf",
-      "modified": "2026-07-03T16:33:40.669349+00:00",
-      "size": 9099
-    },
-    {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-vercel-production-cure/documentation-sync-packet.md",
       "title": "Documentation Sync Packet: Vercel Production Cure",
       "modified": "2026-07-03T16:33:00.110679+00:00",
       "size": 9034
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
-      "title": "2026-07-03 Vercel Production Cure",
-      "modified": "2026-07-03T16:32:27.119727+00:00",
-      "size": 1884
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.md",
-      "title": "Notion Update Packet: Vercel Production Cure",
-      "modified": "2026-07-03T16:32:27.035224+00:00",
-      "size": 3581
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-vercel-production-cure/agent-handout.md",
-      "title": "Agent Handout: Vercel Production Cure",
-      "modified": "2026-07-03T16:32:26.953443+00:00",
-      "size": 2905
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-vercel-production-cure-report.md",
-      "title": "Vercel Production Cure Report",
-      "modified": "2026-07-03T16:32:26.871368+00:00",
-      "size": 6110
     },
     {
       "kind": "project_report",
@@ -689,13 +696,6 @@
       "title": "Cloud And KB Retrospective",
       "modified": "2026-07-03T16:29:59.086462+00:00",
       "size": 8414
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.pending.md",
-      "title": "Pending Notion Update Packet: Vercel Production Cure",
-      "modified": "2026-07-03T16:07:11.180404+00:00",
-      "size": 3689
     },
     {
       "kind": "project_run",
@@ -3253,7 +3253,7 @@
       {
         "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
         "title": "2026-07-03 Vercel Production Cure",
-        "excerpt": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run, generated at `2026-07-03T16:15:05.906911+00:00`. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes pass"
+        "excerpt": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run and was regenerated during the final deployment sync. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes "
       }
     ]
   },
@@ -4575,7 +4575,7 @@
     {
       "path": "project/runs/2026-07-03-vercel-production-cure/agent-handout.md",
       "title": "Agent Handout: Vercel Production Cure",
-      "text": "# Agent Handout: Vercel Production Cure  Date: 2026-07-03 Status: complete for production-current guarded review flow  ## Task  Cure the Vercel production setup without destructive cleanup, make the public dashboard current, verify Jarvis on Vercel and Railway, and keep OpenRouter/provider/writeback boundaries explicit.  ## Results  FACT:  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run: `2026-07-03T16:15:05.906911+00:00`. - Vercel same-origin Jarvis API health passed. - Railway Jarvis deployed successfully after using the service directory as deployment root. - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate checks passed. - Vercel and Railway both report `MODEL_PROVIDER=openrouter`. - Provider calls remained `0`. - External writeback remained `0`. - Approved provider-route tests stopped at `openrouter_api_key_missing` because external credential storage was not approved. - No Vercel projects were deleted.  INTERPRETATION:  The cloud review flow is now reliable for Epic 1: production-current dashboard plus guarded Jarvis endpoin"
+      "text": "# Agent Handout: Vercel Production Cure  Date: 2026-07-03 Status: complete for production-current guarded review flow  ## Task  Cure the Vercel production setup without destructive cleanup, make the public dashboard current, verify Jarvis on Vercel and Railway, and keep OpenRouter/provider/writeback boundaries explicit.  ## Results  FACT:  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run and was regenerated during the final deployment sync. - Vercel same-origin Jarvis API health passed. - Railway Jarvis deployed successfully after using the service directory as deployment root. - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate checks passed. - Vercel and Railway both report `MODEL_PROVIDER=openrouter`. - Provider calls remained `0`. - External writeback remained `0`. - Approved provider-route tests stopped at `openrouter_api_key_missing` because external credential storage was not approved. - No Vercel projects were deleted.  INTERPRETATION:  The cloud review flow is now reliable for Epic 1: production-current dashboard plus guard"
     },
     {
       "path": "project/runs/2026-07-03-vercel-production-cure/documentation-sync-packet.md",
@@ -4595,7 +4595,7 @@
     {
       "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.pending.md",
       "title": "Pending Notion Update Packet: Vercel Production Cure",
-      "text": "# Pending Notion Update Packet: Vercel Production Cure  Date: 2026-07-03 Status: pending final deployment evidence  ## Use Boundary  Do not send this packet until the lead records final Vercel/Railway cure facts. Replace bracketed values with verified results. Keep all updates append-only.  ## Epic 1 Parent Page  ```text 2026-07-03 deployment cure addendum: the Epic 1 cloud review surface was rechecked after the Vercel/Railway cure. Public dashboard production freshness is [current / still stale]. Railway Jarvis is [healthy / blocked / degraded] for the documented endpoint set. Jarvis Architecture 1 PRD/ICP checks [passed / failed / not run]. Jarvis Architecture 2 agent-orchestra checks [passed / failed / not run]. Provider mode is [provider-disabled / approved server-side OpenRouter with budget ledger / not enabled]. Durable writeback is [disabled / approval-gated / implemented with audit].  Decision: Epic 1 should be treated as [Review / Done for provider-disabled cloud flow / Done for full product runtime] based on the checks above. Do not infer full product readiness from public-site reachability alone. ```  ## E1.7 Task  ```text 2026-07-03 E1.7 deployment cure evidence: produc"
+      "text": "# Pending Notion Update Packet: Vercel Production Cure  Date: 2026-07-03 Status: superseded by `notion-update-packet.md` and `notion-delivery-status.md`  ## Superseded Notice  This was the documentation subagent's pre-cure draft. It is kept only as an audit trail for the placeholders that existed before final deployment evidence was recorded. Do not use it for current Notion state; use `notion-update-packet.md` and `notion-delivery-status.md`.  ## Use Boundary  Do not send this packet until the lead records final Vercel/Railway cure facts. Replace bracketed values with verified results. Keep all updates append-only.  ## Epic 1 Parent Page  ```text 2026-07-03 deployment cure addendum: the Epic 1 cloud review surface was rechecked after the Vercel/Railway cure. Public dashboard production freshness is [current / still stale]. Railway Jarvis is [healthy / blocked / degraded] for the documented endpoint set. Jarvis Architecture 1 PRD/ICP checks [passed / failed / not run]. Jarvis Architecture 2 agent-orchestra checks [passed / failed / not run]. Provider mode is [provider-disabled / approved server-side OpenRouter with budget ledger / not enabled]. Durable writeback is [disabled / appr"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
@@ -5255,7 +5255,7 @@
     {
       "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
       "title": "2026-07-03 Vercel Production Cure",
-      "text": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run, generated at `2026-07-03T16:15:05.906911+00:00`. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes passed. - Railway Jarvis deployed successfully with the service directory as archive root and Nixpacks as builder. - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate routes passed. - Both Vercel and Railway report `MODEL_PROVIDER=openrouter`. - Provider calls remained `0`; external writeback remained `0`. - Provider-approved route tests returned review packets with `openrouter_api_key_missing`. - No legacy Vercel project was deleted because safe deletion evidence was not complete.  ## INTERPRETATION  The public cloud surface is now reliable for Epic 1's guarded review-flow scope: current dashboard, Vercel API, Railway API, and architecture-specific Jarvis packets. It is not yet a full product runtime because provider e"
+      "text": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run and was regenerated during the final deployment sync. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes passed. - Railway Jarvis deployed successfully with the service directory as archive root and Nixpacks as builder. - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate routes passed. - Both Vercel and Railway report `MODEL_PROVIDER=openrouter`. - Provider calls remained `0`; external writeback remained `0`. - Provider-approved route tests returned review packets with `openrouter_api_key_missing`. - No legacy Vercel project was deleted because safe deletion evidence was not complete.  ## INTERPRETATION  The public cloud surface is now reliable for Epic 1's guarded review-flow scope: current dashboard, Vercel API, Railway API, and architecture-specific Jarvis packets. It is not yet a full product runtime because provid"
     }
   ],
   "sources": [

@@ -12,7 +12,7 @@ Cure the Vercel production setup without destructive cleanup, make the public da
 FACT:
 
 - The exact public dashboard URL now points to the current Vercel production deployment.
-- Production dashboard data is current for this cure run: `2026-07-03T16:15:05.906911+00:00`.
+- Production dashboard data is current for this cure run and was regenerated during the final deployment sync.
 - Vercel same-origin Jarvis API health passed.
 - Railway Jarvis deployed successfully after using the service directory as deployment root.
 - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate checks passed.

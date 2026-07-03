@@ -14,7 +14,7 @@ Decision: Epic 1 can be treated as Done for the production-current guarded revie
 ## E1.7 Task
 
 ```text
-2026-07-03 E1.7 deployment cure evidence: production dashboard route passed; production dashboard data freshness passed with generated_at 2026-07-03T16:15:05.906911+00:00; backend authority is split between Vercel same-origin API and Railway Jarvis API; Railway health passed; Architecture 1 PRD/ICP passed; Architecture 2 agent-orchestra passed; voice-text packet passed; role config and role-update candidate checks passed; provider calls stayed 0; writeback stayed 0.
+2026-07-03 E1.7 deployment cure evidence: production dashboard route passed; production dashboard data freshness passed after the final deployment sync; backend authority is split between Vercel same-origin API and Railway Jarvis API; Railway health passed; Architecture 1 PRD/ICP passed; Architecture 2 agent-orchestra passed; voice-text packet passed; role config and role-update candidate checks passed; provider calls stayed 0; writeback stayed 0.
 
 Status recommendation: mark E1.7 Done for production-current guarded cloud review flow. Keep full product runtime gated until provider key storage approval, provider ledgering, auth, persistence, durable writeback, and raw voice policy are implemented and verified.
 ```

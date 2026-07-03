@@ -30,7 +30,7 @@ OpenRouter execution is wired but not activated. Both Vercel and Railway report 
 | Surface | Check | Result | Interpretation |
 |---|---|---|---|
 | Public dashboard | `GET /project/dashboard/` | Passed | Current review surface is reachable |
-| Public dashboard data | `GET /project/dashboard/data.json` | Passed | Generated at `2026-07-03T16:15:05.906911+00:00` |
+| Public dashboard data | `GET /project/dashboard/data.json` | Passed | Regenerated during the final deployment sync and served with no-store caching |
 | Vercel API | `GET /api/health` | Passed | `MODEL_PROVIDER=openrouter`, provider calls `0`, writeback `0` |
 | Vercel Architecture 1 | `POST /api/lanes/prd-icp` with provider approval flags | Passed as review packet | Route is wired; provider execution blocked at missing approved server-side key |
 | Vercel Architecture 2 | `POST /api/lanes/agent-orchestra` with provider approval flags | Passed as review packet | Agent-control route is wired; provider execution blocked at missing approved server-side key |
@@ -51,14 +51,19 @@ FACT:
 - That deployment crashed because `uvicorn` was unavailable.
 - The previous healthy Railway instance continued serving while the replacement failed.
 - Redeploying with the service directory as the archive root made Railway detect the Python/Nixpacks service correctly.
+- A follow-up Vercel publish wrapper run targeted the older parent Vercel project because it executes from the parent ArchFlow folder.
+- The canonical public URL was corrected by deploying directly from the `public` repo root and assigning the public alias to that deployment.
+- Health metadata was corrected from older provider-disabled wording to `guarded_openrouter_review_packet`.
 
 INTERPRETATION:
 
 The reliable Railway deploy command for this service must force the service directory as the deployment root. Otherwise Railway may infer the public repository as a static app and ignore the Python requirements.
 
+The reliable Vercel deploy command for this public dashboard must run from the public repo root when the target is `archflowautomate.vercel.app`. Parent-folder deploy wrappers can be useful for their own linked project, but they are not proof that the canonical public dashboard was updated.
+
 NEXT:
 
-Use the path-root Railway deploy pattern for future `services/jarvis-api` deploys.
+Use the path-root Railway deploy pattern for future `services/jarvis-api` deploys. Use direct public-root Vercel deploy plus alias verification for the canonical dashboard URL.
 
 ## Vercel Legacy Cleanup Decision
 

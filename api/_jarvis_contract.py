@@ -9,7 +9,7 @@ from http.server import BaseHTTPRequestHandler
 from typing import Any
 
 
-APP_VERSION = "2026-07-03-vercel-jarvis-provider-disabled"
+APP_VERSION = "2026-07-03-vercel-jarvis-guarded-openrouter"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_OPENROUTER_MODEL = "openrouter/auto"
 
@@ -53,7 +53,7 @@ def packet(
         "model_provider": model_provider(),
         "provider_calls": 0,
         "external_writeback": 0,
-        "default_runtime": "provider_disabled_review_packet",
+        "default_runtime": "guarded_openrouter_review_packet",
     }
     if runtime_update:
         runtime.update(runtime_update)
@@ -284,7 +284,7 @@ def health_payload() -> dict[str, Any]:
             "crewai": "proof_passed_not_default_runtime",
             "voice": "browser_text_only",
             "writeback": "disabled",
-            "deployment": "vercel_provider_disabled_contract",
+            "deployment": "vercel_guarded_openrouter_review_contract",
         },
     )
 

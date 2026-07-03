@@ -5,7 +5,7 @@ Status: complete for production-current guarded cloud review flow
 ## FACT
 
 - The exact public dashboard URL now points to the current Vercel production deployment.
-- Production dashboard data is current for this cure run, generated at `2026-07-03T16:15:05.906911+00:00`.
+- Production dashboard data is current for this cure run and was regenerated during the final deployment sync.
 - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes passed.
 - Railway Jarvis deployed successfully with the service directory as archive root and Nixpacks as builder.
 - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate routes passed.

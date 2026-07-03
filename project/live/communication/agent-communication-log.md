@@ -6909,3 +6909,40 @@ Remaining gaps:
 Next safe action:
 
 - If provider-backed model execution is required, approve installing the OpenRouter key as a server-side secret in Vercel and Railway, then rerun the Architecture 1/2 canary with explicit owner/provider approvals and provider-call budget evidence.
+
+## 2026-07-03 19:52 EEST - Codex lead - complete - Guarded OpenRouter health metadata redeployed
+
+Status: complete
+
+Files changed:
+
+- `api/_jarvis_contract.py`
+- `services/jarvis-api/app.py`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Python syntax check for Vercel and Railway Jarvis API files: passed.
+- Public safety scan: passed.
+- Runtime guard and workflow validation: passed.
+- Dashboard static smoke: passed for eight routes with zero provider calls and zero writeback.
+- Vercel production redeploy from the public repo root: passed.
+- Vercel public alias: repointed to the current public deployment.
+- Vercel health: reports `guarded_openrouter_review_packet`, `MODEL_PROVIDER=openrouter`, provider calls `0`, writeback `0`.
+- Vercel Architecture 1 route: review packet returned with `openrouter_api_key_missing`, provider calls `0`, writeback `0`.
+- Vercel Architecture 2 route: review packet returned with `openrouter_api_key_missing`, provider calls `0`, writeback `0`.
+- Railway redeploy from `services/jarvis-api` with `--path-as-root`: accepted and service returned online.
+- Railway health, Architecture 1, Architecture 2, voice-text, and CORS from the public dashboard origin: passed.
+
+Outcome:
+
+- The health metadata now matches the implemented contract: guarded OpenRouter review packets, not the older provider-disabled label.
+- A parent-folder deploy wrapper first targeted the older parent Vercel project; the canonical public URL was corrected by directly deploying the `public` repo and reassigning the public alias. No legacy project was deleted.
+
+Remaining gaps:
+
+- OpenRouter provider execution remains blocked by missing approved server-side secret installation. This is intentional; the API returns review packets instead of silently calling or faking the provider.
+
+Next safe action:
+
+- Commit and push the health-metadata correction to `main`.

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Provider-disabled Jarvis API contract for the ArchFlow dashboard.
+"""Guarded OpenRouter Jarvis API contract for the ArchFlow dashboard.
 
 This service is intentionally conservative. It can answer health/config
-requests and create review packets, but it does not call OpenRouter, write
-Notion/WikiLLM/GitHub, store raw transcripts, or run the full PRD/ICP test
-cycle without explicit owner approval and a live budget guard.
+requests and create review packets. It calls OpenRouter only with explicit
+owner/provider approval, a server-side key, and a live budget guard; it never
+writes Notion/WikiLLM/GitHub, stores raw transcripts, or runs the full PRD/ICP
+test cycle without explicit durable-write approval.
 """
 
 from __future__ import annotations
@@ -21,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 
-APP_VERSION = "2026-07-03-jarvis-dashboard-mvp"
+APP_VERSION = "2026-07-03-jarvis-guarded-openrouter"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_OPENROUTER_MODEL = "openrouter/auto"
 DEFAULT_DAILY_BUDGET = 5.00
@@ -311,7 +312,7 @@ def packet(
         "provider_calls": 0,
         "external_writeback": 0,
         "crewai_level_3": "proof_passed_not_default_runtime",
-        "default_runtime": "langgraph_controlled_static_packet",
+        "default_runtime": "guarded_openrouter_review_packet",
     }
     if runtime_update:
         runtime.update(runtime_update)
