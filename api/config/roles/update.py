@@ -1,0 +1,19 @@
+from pathlib import Path
+import sys
+
+sys.path.insert(0, str(next(parent for parent in Path(__file__).resolve().parents if (parent / '_jarvis_contract.py').exists())))
+
+from _jarvis_contract import JsonHandler, packet
+
+
+class handler(JsonHandler):
+    def handle(self, method, body):
+        return packet(
+            "role-config-update",
+            "review_packet_created",
+            {
+                "roles": body.get("roles", []),
+                "write_policy": "hosted role updates are review candidates only until Codex writes source files",
+            },
+        )
+

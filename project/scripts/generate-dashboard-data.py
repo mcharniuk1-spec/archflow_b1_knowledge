@@ -331,12 +331,21 @@ def env_status() -> list[dict]:
 
 def jarvis_api_status() -> dict:
     service_root = ROOT / "services" / "jarvis-api"
-    required = [
+    local_required = [
         service_root / "app.py",
         service_root / "README.md",
         service_root / "requirements.txt",
         service_root / ".env.example",
     ]
+    vercel_required = [
+        ROOT / "api" / "_jarvis_contract.py",
+        ROOT / "api" / "health.py",
+        ROOT / "api" / "chat.py",
+        ROOT / "api" / "lanes" / "prd-icp.py",
+        ROOT / "api" / "lanes" / "agent-orchestra.py",
+        ROOT / "api" / "voice" / "chat.py",
+    ]
+    required = local_required + vercel_required
     endpoints = [
         "/health",
         "/api/chat",
@@ -353,11 +362,17 @@ def jarvis_api_status() -> dict:
         "/api/voice/tts",
     ]
     return {
-        "status": "contract_present_provider_disabled" if all(path.exists() for path in required) else "missing_or_partial",
-        "path": "services/jarvis-api",
-        "runtime": "fastapi_local_or_future_backend",
+        "status": "vercel_and_local_contract_present_provider_disabled" if all(path.exists() for path in required) else "missing_or_partial",
+        "path": "services/jarvis-api and api/",
+        "runtime": "vercel_serverless_plus_local_fastapi_contract",
         "provider_runtime": "disabled",
         "writeback_runtime": "disabled",
+        "hosting": {
+            "static_dashboard": "vercel",
+            "hosted_api": "vercel_provider_disabled_contract",
+            "local_api": "fastapi_local_development",
+            "railway": "future_always_on_runtime_lane",
+        },
         "openrouter_budget": {
             "daily_budget_usd": 5.00,
             "run_hard_stop_usd": 1.99,
@@ -562,6 +577,7 @@ def main() -> None:
     crewai = parse_crewai()
     llamaindex = parse_llamaindex()
     e13_gate = e13_gate_status()
+    jarvis_api = jarvis_api_status()
     data = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "project": {
@@ -575,7 +591,7 @@ def main() -> None:
             {"label": "LangGraph", "value": langgraph["status"], "tone": "ok"},
             {"label": "CrewAI", "value": crewai["status"], "tone": "ok"},
             {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "ok"},
-            {"label": "Jarvis API", "value": jarvis_api_status()["status"], "tone": "warn"},
+            {"label": "Jarvis API", "value": jarvis_api["status"], "tone": "ok" if "provider_disabled" in jarvis_api["status"] else "warn"},
             {"label": "WikiLLM files", "value": f"{wiki_summary()['file_count']} files", "tone": "ok"},
             {"label": "Activity files", "value": str(len(activity_items())), "tone": "ok"},
             {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},
@@ -584,7 +600,7 @@ def main() -> None:
         "langgraph": langgraph,
         "crewai": crewai,
         "llamaindex": llamaindex,
-        "jarvis_api": jarvis_api_status(),
+        "jarvis_api": jarvis_api,
         "prd_templates": prd_template_status(),
         "env": env_status(),
         "packages": package_status(),

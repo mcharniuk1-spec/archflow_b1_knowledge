@@ -12,6 +12,10 @@
     {
       "source": "/dashboard/",
       "destination": "/project/dashboard/index.html"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/health"
     }
   ],
   "headers": [

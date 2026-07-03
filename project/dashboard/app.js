@@ -3337,9 +3337,11 @@ function renderLangSmith(data) {
 }
 
 function renderEnv(data) {
+  const jarvisStatus = data.jarvis_api?.status || "unknown";
+  const jarvisTone = jarvisStatus.includes("provider_disabled") ? "ok" : "warn";
   view.innerHTML = `
     <div class="grid cols-3">
-      ${card({ label: "Jarvis API", value: data.jarvis_api?.status || "unknown", note: data.jarvis_api?.path || "services/jarvis-api", tone: data.jarvis_api?.status === "contract_present_provider_disabled" ? "ok" : "warn" })}
+      ${card({ label: "Jarvis API", value: jarvisStatus, note: data.jarvis_api?.path || "services/jarvis-api", tone: jarvisTone })}
       ${card({ label: "Provider runtime", value: data.jarvis_api?.provider_runtime || "disabled", note: "OpenRouter server-side only after approval", tone: "warn" })}
       ${card({ label: "Run hard stop", value: `${data.jarvis_api?.openrouter_budget?.run_hard_stop_usd || "1.99"} USD`, note: "Stop and ask approval above cap", tone: "ok" })}
     </div>

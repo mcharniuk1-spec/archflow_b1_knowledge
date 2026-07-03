@@ -205,3 +205,18 @@ INTERPRETATION:
 GAP:
 - AF Review and owner acceptance are still required before provider output can influence Done-state promotion.
 - E1.7 remains the next execution lane for Railway preparation and always-responding Jarvis API activation.
+
+## 2026-07-03 - Vercel dashboard and Jarvis connection
+
+FACT:
+- Added a Vercel provider-disabled Jarvis API contract under `api/`.
+- `/health` now rewrites to the Vercel Jarvis health endpoint.
+- The hosted dashboard can use the same-origin Vercel Jarvis contract instead of relying only on local `127.0.0.1:8787`.
+- Local FastAPI Jarvis remains available for development on port `8787`.
+
+INTERPRETATION:
+- Vercel now covers the static dashboard and a review-packet Jarvis API surface.
+- This does not replace Railway for always-on workers, long-running tasks, durable queues, stronger auth, provider execution, or writeback.
+
+GAP:
+- Provider calls, durable writeback, raw audio storage, and production automation remain disabled until separate approval and runtime proof.

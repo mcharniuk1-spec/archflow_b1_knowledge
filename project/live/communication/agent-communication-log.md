@@ -5765,3 +5765,42 @@ Remaining blockers:
 Next safe action:
 
 - Commit and push the corrected OpenRouter provider state to `main`, then run E1.7 Railway preparation as a separate lane with provider-disabled baseline first.
+
+## 2026-07-03 12:08 - Jesus/Codex - Vercel dashboard/Jarvis connection starting
+
+Status: starting
+
+Task:
+Connect the pushed dashboard/website/Jarvis surface to Vercel so the hosted dashboard can show a working Jarvis API connection instead of depending only on local `127.0.0.1:8787`. Preserve provider-disabled safety unless explicit provider execution is separately approved.
+
+Files likely to change:
+
+- `vercel.json`
+- `api/` or equivalent Vercel API route files
+- `project/dashboard/app.js`
+- `project/dashboard/data.json`
+- `services/jarvis-api/`
+- `docs/dashboard-operating-manual.md`
+- `project/runs/2026-07-03-vercel-jarvis-connection/`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- Vercel/Jarvis connection lane only.
+
+Expected output:
+
+- Hosted Vercel dashboard has a working provider-disabled Jarvis API health path.
+- Local Jarvis is checked and restored if stopped.
+- Vercel deployment is created and smoke-tested.
+- Notion, Telegram, Git, and project knowledge artifacts are updated.
+
+Blockers:
+
+- Vercel deploy or protected deployment access may require connector/CLI authorization.
+- Provider-backed Jarvis execution remains gated; this lane should not expose provider keys or raw private source to browser code.
+
+Next step:
+
+- Inspect dashboard API calls, add Vercel-safe Jarvis endpoints, run local checks, deploy, then update Notion and Telegram.
