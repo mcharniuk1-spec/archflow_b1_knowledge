@@ -2253,9 +2253,12 @@ function renderSchema(data) {
           <button class="button" id="schemaZoomIn" type="button">Zoom in</button>
           <button class="button" id="schemaZoomReset" type="button">Reset zoom</button>
           <button class="button" id="schemaZoomFit" type="button">Fit</button>
+          <button class="button" id="schemaBackendSend" type="button">Send to backend</button>
           <button class="primary" id="schemaExport" type="button">Export review packet</button>
         </div>
       </div>
+
+      <div class="callout" id="schemaBackendStatus">Backend send is provider-disabled and creates a review packet only. Durable writes still require Codex/operator approval.</div>
 
       <div class="schema-stage-rail" aria-label="Workflow stage rail">
         ${(kind === "service"
@@ -2689,6 +2692,7 @@ function bindSchemaEditor() {
   view.querySelector("#schemaZoomFit")?.addEventListener("click", () => setSchemaZoom(0.72));
 
   view.querySelector("#schemaExport")?.addEventListener("click", exportBlockSchemaPacket);
+  view.querySelector("#schemaBackendSend")?.addEventListener("click", sendBlockSchemaToBackend);
   view.querySelector("#schemaQueueSelected")?.addEventListener("click", queueSelectedSchemaNode);
   view.querySelector("#schemaReset")?.addEventListener("click", () => {
     const kind = schemaKindForActiveTab();
@@ -3016,6 +3020,44 @@ function exportBlockSchemaPacket() {
   downloadPacket(packet.id);
 }
 
+async function sendBlockSchemaToBackend() {
+  const kind = schemaKindForActiveTab();
+  const meta = schemaScreenMeta[kind];
+  const status = view.querySelector("#schemaBackendStatus");
+  const endpoint = kind === "service" ? "/api/lanes/prd-icp" : "/api/lanes/agent-orchestra";
+  const payload = {
+    request: `${meta.packetInput}\n\n${blockSchema.title}`,
+    lane: kind === "service" ? "prd_icp_flow" : "agent_orchestra",
+    architecture: kind,
+    approved_test_input: false,
+    source_refs: ["dashboard block-schema editor", "browser-local schema candidate"],
+  };
+  if (status) status.textContent = "Sending provider-disabled schema packet to backend if available...";
+  try {
+    await checkJarvisApi("block schema backend send", { silent: true });
+    const response = await fetch(apiEndpoint(endpoint), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) throw new Error(`backend returned ${response.status}`);
+    const result = await response.json();
+    appendEvent("Schema backend response", `${kind} backend returned ${result.status || "ok"}.`, "ok");
+    if (status) status.textContent = `Backend response: ${result.status || "ok"}. Provider calls and writeback remain disabled.`;
+  } catch (error) {
+    const packet = createLocalPacket(`${kind}-schema-backend-unavailable`, "dashboard block-schema editor", meta.packetInput, {
+      extra: {
+        architecture: kind,
+        backend_error: String(error.message || error),
+        block_schema: blockSchema,
+        fallback: "preserved as browser-local review packet",
+      },
+    });
+    appendEvent("Schema backend unavailable", `${packet.id} staged locally for Codex review.`, "warn");
+    if (status) status.textContent = `Backend unavailable; local packet staged: ${packet.id}.`;
+  }
+}
+
 function savePromptConfigFromForm() {
   promptConfig = {
     chain_name: document.querySelector("#cfgChain")?.value || "",
@@ -3034,10 +3076,20 @@ function exportPromptConfig() {
   const packet = createLocalPacket("jarvis-subprompt-config-candidate", "dashboard config page", "Export browser-local Jarvis chain and subprompt config for Codex review.", {
     extra: {
       prompt_config: promptConfig,
+      jarvis_api_base: jarvisApiBase,
       persistence: "localStorage only until exported and reviewed",
     },
   });
   downloadPacket(packet.id);
+}
+
+function saveJarvisApiBaseFromForm() {
+  const value = (document.querySelector("#cfgApiBase")?.value || "").trim().replace(/\/+$/, "");
+  jarvisApiBase = value || defaultJarvisApiBase();
+  localStorage.setItem(storageKeys.apiBase, jarvisApiBase);
+  appendEvent("Jarvis API base saved", `API base saved in browser localStorage: ${jarvisApiBase}`, "ok");
+  checkJarvisApi("config save", { silent: false });
+  render();
 }
 
 function renderConfig() {
@@ -3046,12 +3098,20 @@ function renderConfig() {
       <div class="section-header">
         <div>
           <h2 class="section-title">Chain Configuration And Subprompting</h2>
-          <p class="muted">Edit browser-local prompt candidates. Export creates a review packet; it does not mutate GitHub, Notion, WikiLLM, or runtime services.</p>
+          <p class="muted">Edit browser-local prompt and API candidates. Export creates a review packet; it does not mutate GitHub, Notion, WikiLLM, or runtime services.</p>
         </div>
         <div class="row-actions">
+          <button class="button" id="cfgApiCheck" type="button">Check API</button>
+          <button class="button" id="cfgApiSave" type="button">Save API base</button>
           <button class="primary" id="cfgSave" type="button">Save locally</button>
           <button class="button" id="cfgExport" type="button">Export config packet</button>
         </div>
+      </div>
+      <div class="callout">
+        <strong>Jarvis API base</strong>
+        <p>Use the deployed Railway or Vercel API origin here. This value is saved only in this browser and lets the dashboard check hosted <span class="code">/health</span> and submit provider-disabled review packets.</p>
+        <label>API base URL<input id="cfgApiBase" value="${escapeHtml(jarvisApiBase)}" placeholder="https://example.up.railway.app" /></label>
+        <p class="muted">Current API state: ${escapeHtml(jarvisApiState.label)} - ${escapeHtml(jarvisApiState.detail)}</p>
       </div>
       <div class="config-grid">
         <label>Chain name<input id="cfgChain" value="${escapeHtml(promptConfig.chain_name)}" /></label>
@@ -3074,6 +3134,8 @@ function renderConfig() {
       ].map((row) => row.map(escapeHtml)))}
     </section>
   `;
+  document.querySelector("#cfgApiSave")?.addEventListener("click", saveJarvisApiBaseFromForm);
+  document.querySelector("#cfgApiCheck")?.addEventListener("click", () => checkJarvisApi("manual config check", { silent: false }));
   document.querySelector("#cfgSave")?.addEventListener("click", savePromptConfigFromForm);
   document.querySelector("#cfgExport")?.addEventListener("click", exportPromptConfig);
 }

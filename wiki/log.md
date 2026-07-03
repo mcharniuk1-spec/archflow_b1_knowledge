@@ -303,3 +303,21 @@ GAP:
 - Run note: `wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md`
 - Reports: `project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md`, `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md`, `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md`, `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md`
 - Status: E1.4 and E2.0A accepted; testmeeting local baseline rerun with provider disabled; Railway full-cloud E1.7 remains deployment/project-link gated; Epic 2 owner questions prepared before execution.
+
+## 2026-07-03 - E1.7 Railway Jarvis final
+
+FACT:
+- Added the E1.6 public-safe role split under `project/knowledge/`.
+- Deployed the provider-disabled `jarvis-api` service from `services/jarvis-api`.
+- Hosted health, CORS, chat, role config, PRD/ICP, agent-orchestra, and voice-safe text checks passed.
+- Hosted health reported `MODEL_PROVIDER=none`, provider calls `0`, and external writeback `0`.
+- Updated Epic 1 critique/reporting and the Railway/Jarvis executed setup report.
+- Expanded the Epic 2 Planning report with source types, competitor/audience method, agent roles, owner-question analysis, and execution gates.
+- Run note: `wiki/runs/2026-07-03-e1-7-railway-jarvis-final.md`.
+
+INTERPRETATION:
+- E1.7 is review-ready for the provider-disabled hosted runtime baseline.
+- Epic 1 can be summarized as an internal PRD/KB proof plus hosted review-packet bridge, not as a full customer SaaS.
+
+GAP:
+- Provider-backed Jarvis, auth, persistence, durable writeback, raw voice handling, and buyer demand proof remain gated.

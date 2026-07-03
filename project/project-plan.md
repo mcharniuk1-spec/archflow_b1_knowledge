@@ -16,7 +16,7 @@ Latest tool and market integration plan: [`reports/2026-06-29-tool-and-market-in
 | E5 | Analytics and ROI method | Active | 2026-06-24 to 2026-07-07 |
 | E4 | Content | Active | 2026-06-24 to 2026-08-01 |
 | E3 | Website and positioning | Not started | 2026-07-01 to 2026-07-14 |
-| E2 | Research engine to ICP | Not started | 2026-07-01 to 2026-07-11 |
+| E2 | Research engine to ICP | Planning | 2026-07-01 to 2026-07-11 |
 | E6 | Outreach | Not started | 2026-07-14 to 2026-07-28 |
 | E7 | Payment test to verdict | Not started | 2026-07-15 to 2026-08-01 |
 
@@ -63,8 +63,8 @@ Tasks:
 | E1.3 Record the PRD and agent history in the KB | Review | Docs | 2026-06-30 | Public-safe KB writeback, source registry, and readback proof. |
 | E1.4 Write the KB update principle | Accepted | Docs | 2026-07-03 | Accepted KB update principle with promotion test, layer table, WikiLLM writing rules, provenance rules, dashboard-packet gate, and traceback procedure. |
 | E1.5 Document the process for case study and content | Review | Docs | 2026-07-04 | Public-reporting gate, GloomyLord brief, content templates, and Jarvis dashboard shell documented; publication remains owner/AF Review gated. |
-| E1.6 Set up personal KB: Obsidian + WikiLLM | To Do | Docs | 2026-07-04 | Personal operating KB setup preserved as a separate Notion row; not the hosted runtime task. |
-| E1.7 Make hosted dashboard, Jarvis, API, and agentic system work without local runtime | Planned / deployment gated | Runtime | After E1.5 owner acceptance and E1.6 personal-KB setup decision | Vercel provider-disabled review-packet path is proven; Railway `jarvis-api` scaffold and setup plan exist; Railway deploy, `/health`, CORS/auth, and dashboard routing remain required before Done. |
+| E1.6 Set up role-split KB: primary operator + collaborator | Review | Docs | 2026-07-04 | Public-safe split exists under `project/knowledge/`; private vault/Obsidian wiring remains outside the public repo. |
+| E1.7 Make hosted dashboard, Jarvis, API, and agentic system work without local runtime | Review / provider-disabled runtime verified | Runtime | After E1.5 owner acceptance and E1.6 KB split decision | Railway `jarvis-api` deployed from `services/jarvis-api`; hosted `/health`, CORS, chat, role config, PRD/ICP, agent-orchestra, and voice-safe text routes passed with provider calls and writeback at zero. |
 
 E1.1 through E1.3 now have a finer staged sequence:
 
@@ -73,7 +73,7 @@ E1.1 through E1.3 now have a finer staged sequence:
 3. E1.2.8 comparison rule: do not claim a testmeeting PRD/PDF run until the fixture exists and provider/local-run gates pass.
 4. E1.3 KB order: approved PRD write, agent history, source registry, retrieval metadata, loop state, readback test, memory candidates, E1.4/E2 handoff.
 5. E1.3 loop rule: keep the loop at L1 report-only until readback proves the KB can answer current mission, next step, forbidden actions, existing outputs, and open gaps from memory.
-6. E1.7 runtime rule: hosted dashboard/Jarvis/API work must remain provider-disabled first, prove Railway `/health`, CORS, auth, budget guards, and dashboard API routing, and only then become eligible for provider activation or writeback approvals.
+6. E1.7 runtime rule: hosted dashboard/Jarvis/API work must remain provider-disabled first. The first Railway baseline now passes hosted `/health`, CORS, budget-guarded review packets, and dashboard API-base routing controls. Provider activation, auth hardening, persistence, and writeback remain separate approvals.
 
 E1.3 review update on 2026-06-30:
 
@@ -88,7 +88,7 @@ E1.3 review update on 2026-06-30:
 | Jarvis dashboard shell | In Progress | `project/dashboard/` supports normal/interview mode, browser-local packets, and in-page refresh |
 | GloomyLord reporting package | In Progress | starts under E1.5 public-reporting gate and `project/content/templates/` |
 | Testmeeting/OpenRouter PRD comparison | Review / provider comparison review-gated | `project/runs/E1.2/2026-07-02-testmeeting-local/`; local PRD/PDF package exists, final provider-disabled baseline rerun completed on 2026-07-03, and the sanitized OpenRouter comparison remains separate review-gated evidence |
-| Hosted Jarvis/API runtime without local machine | Planned / deployment gated | `project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md`; Railway project/service initialized in a prior setup lane, deployment approval-gated; canonical task is E1.7 because E1.6 remains personal KB setup |
+| Hosted Jarvis/API runtime without local machine | Review / provider-disabled runtime verified | E1.7 Railway hosted API deployed from `services/jarvis-api`; health, CORS, chat, role config, PRD/ICP, agent-orchestra, and voice-safe text routes passed; provider activation, auth, persistence, and writeback remain gated |
 
 E1.3 review caveat: E1.2 remains in Review until owner acceptance. The E1.3 readback proof can pass without marking E1.2 Done.
 

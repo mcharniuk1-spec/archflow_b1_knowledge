@@ -1,0 +1,11 @@
+{
+  "date": "2026-07-03",
+  "status": "pending_final_send",
+  "private_links_stored_in_repo": false,
+  "send_after": [
+    "notion_update",
+    "pdf_render",
+    "validation",
+    "github_push"
+  ]
+}

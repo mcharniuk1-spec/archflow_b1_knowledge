@@ -1,0 +1,27 @@
+{
+  "date": "2026-07-03",
+  "status": "passed",
+  "local_contract": {
+    "tool": "project/scripts/jarvis-api-contract-smoke.py",
+    "endpoints": 17,
+    "provider_calls": 0,
+    "external_writeback": 0
+  },
+  "hosted_contract": {
+    "health": "passed",
+    "cors_preflight": "passed",
+    "chat": "passed",
+    "role_config": "passed",
+    "prd_icp_lane": "passed",
+    "agent_orchestra_lane": "passed",
+    "voice_text_lane": "passed"
+  },
+  "not_proven": [
+    "provider_calls",
+    "auth",
+    "durable_storage",
+    "dashboard_writeback",
+    "raw_audio",
+    "client_workspace_isolation"
+  ]
+}

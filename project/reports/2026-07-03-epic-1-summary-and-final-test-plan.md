@@ -1,14 +1,14 @@
 # Epic 1 Summary And Final Test Plan
 
 Date: 2026-07-03
-Status: Epic 1 closeout package prepared; E1.7 live Railway deployment remains gated
+Status: Epic 1 closeout package updated; E1.7 provider-disabled Railway runtime verified
 Scope: E1.1-E1.7 knowledge base, PRD workflow, dashboard/Jarvis, final testmeeting rerun, critique
 
 ## Executive Summary
 
 Epic 1 built the internal ArchFlow proof engine: approved product material can become source inventory, context digest, PRD, task/backlog package, review report, KB update, and dashboard/Jarvis review packet without storing raw private material in public files.
 
-The strongest result is method reliability, not market demand. Epic 1 proves that ArchFlow can operate a controlled PRD/KB workflow on itself. It does not prove that buyers will pay, that the cloud runtime is complete, or that provider-backed Jarvis is safe to run by default.
+The strongest result is method reliability, not market demand. Epic 1 proves that ArchFlow can operate a controlled PRD/KB workflow on itself and now has a minimal hosted Jarvis API for provider-disabled review packets. It does not prove that buyers will pay, that provider-backed Jarvis is safe to run by default, or that autonomous writeback is ready.
 
 ## Epic 1 Scorecard
 
@@ -18,8 +18,8 @@ The strongest result is method reliability, not market demand. Epic 1 proves tha
 | PRD artifact generation | 5/5 | ##### | E1.2 and E1.2.8 PRD/PDF packages |
 | KB governance | 4/5 | ####. | WikiLLM run notes, E1.3 readback, E1.4 accepted principle |
 | Dashboard/Jarvis review surface | 4/5 | ####. | Vercel provider-disabled API and local dashboard packets |
-| Cloud runtime independence | 2/5 | ##... | Railway scaffold exists; deployment and health proof pending |
-| Provider/model readiness | 2/5 | ##... | OpenRouter comparison exists as review-gated artifact; default provider disabled |
+| Cloud runtime independence | 4/5 | ####. | Railway `jarvis-api` deployed and `/health`, CORS, PRD/ICP, agent-orchestra, role config, chat, and voice-safe text routes passed |
+| Provider/model readiness | 3/5 | ###.. | Provider-disabled hosted contract works; provider-backed calls remain gated |
 | Market/customer proof | 1/5 | #.... | No outreach, payment, or firm paid intent yet |
 
 ## Epic 1 Task State
@@ -32,8 +32,8 @@ The strongest result is method reliability, not market demand. Epic 1 proves tha
 | E1.3 KB write/readback | Review | E1.3 readback run notes | Owner acceptance and future memory hygiene |
 | E1.4 KB update principle | Accepted | `project/reports/2026-07-03-kb-update-principle.md` | Apply consistently |
 | E1.5 Case-study/content process | In progress/review | Reporting gate, content templates, dashboard reports | Final content pack after E2 evidence |
-| E1.6 Personal KB | Separate task | Project plan keeps it separate | Not part of Railway runtime |
-| E1.7 Hosted dashboard/Jarvis/API | Plan/scaffold, not complete | Vercel proof and Railway scaffold | Railway deploy, health, CORS/auth, dashboard routing |
+| E1.6 Role-split KB | Review | `project/knowledge/` public-safe primary-operator and collaborator folders | Private vault wiring remains outside the public repo |
+| E1.7 Hosted dashboard/Jarvis/API | Review for provider-disabled runtime | Railway hosted API checks and dashboard API-base routing controls | Provider activation, auth hardening, persistent writeback, and raw voice storage remain later gates |
 
 ## Final Test Run: testmeeting
 
@@ -48,6 +48,25 @@ The final local test reran `project/scripts/e1_2_8_testmeeting_run.py` against t
 | Raw private text stored in public output | No by design; public output is sanitized |
 | Main product focus | Release kickoff and discovery-to-delivery handoff modernization |
 | Buyer hypothesis | Director/VP Product in B2B SaaS product team |
+
+## E1.7 Final Hosted Proof
+
+The final E1.7 run deployed only the `services/jarvis-api` service root and kept the runtime provider-disabled.
+
+| Check | Result | Evidence meaning |
+|---|---|---|
+| Railway service status | Passed | Latest service deployment reached running success state |
+| Service domain | Passed | HTTPS Railway service domain generated and reachable |
+| `GET /health` | Passed | `status=ok`, `MODEL_PROVIDER=none`, provider calls `0`, external writeback `0` |
+| CORS preflight | Passed | Vercel dashboard origin allowed for POST traffic |
+| `/api/chat` | Passed | Review packet returned without model call |
+| `/api/config/roles` | Passed | Agent-orchestra role config returned |
+| `/api/lanes/prd-icp` | Passed | Architecture 1 service packet returned |
+| `/api/lanes/agent-orchestra` | Passed | Architecture 2 control packet returned |
+| `/api/voice/chat` | Passed | Text-only voice-safe packet returned; no raw audio storage |
+| Recent HTTP error logs | Passed | No recent hosted HTTP errors returned for the validation probes |
+
+This proves the smallest cloud runtime needed for dashboard-to-backend review packets. It does not prove authenticated client portals, provider-backed generation, durable database writes, or autonomous Notion/GitHub/WikiLLM updates.
 
 ## What The Setup Provides
 
@@ -84,13 +103,13 @@ For clients:
 | LlamaIndex | bounded retrieval layer | lexical/hybrid fallback, not memory |
 | WikiLLM | durable public-safe memory | accepted facts only |
 | Dashboard | static/operator UI | browser-local packets until reviewed |
-| Jarvis API | Vercel provider-disabled review contract; Railway scaffold | provider calls zero |
-| Railway | planned E1.7 backend | not deployed until approved |
+| Jarvis API | hosted Railway provider-disabled review contract plus Vercel-compatible local API-base control | provider calls zero |
+| Railway | E1.7 provider-disabled backend deployed and verified | no provider secrets, no writeback, no raw voice storage |
 | Providers | disabled by default | `MODEL_PROVIDER=none` |
 
 ## Critique
 
-Epic 1 is strong as an internal operating proof and service-delivery method. It is weak as a product proof. The cloud runtime is not yet independent enough to call it a product, and the market proof is not started. The project should resist adding more dashboard features until E2 proves which buyer pain matters and E1.7 proves the smallest hosted backend safely.
+Epic 1 is strong as an internal operating proof and service-delivery method. It is still weak as a product proof. The smallest hosted backend now works, but the system is not yet a customer-ready SaaS because auth, persistence, client workspaces, provider budget ledgers, and buyer evidence remain unproven. The project should resist adding more dashboard surface until E2 proves which buyer pain matters and which workflow should become the paid product.
 
 ## Finish Criteria For Epic 1
 
@@ -99,15 +118,16 @@ Epic 1 can be considered complete for internal proof when:
 - E1.4 accepted principle is applied.
 - E1.2/E1.2.8 testmeeting artifacts pass validation.
 - Epic 1 summary PDF is attached to Notion/GitHub.
-- E1.7 Railway setup/test plan exists.
-- Any remaining runtime deployment gap is explicitly moved to E1.7 follow-up, not hidden.
+- E1.6 role-split KB setup exists in the public-safe repo layer.
+- E1.7 Railway provider-disabled runtime passes hosted health, CORS, and endpoint checks.
+- Any remaining provider/writeback/auth/productization gap is explicitly moved to later follow-up, not hidden.
 
-Epic 1 cannot be considered complete for full cloud runtime until Railway `/health`, CORS/auth, dashboard routing, and provider-disabled endpoint tests pass from the hosted service.
+Epic 1 is now complete for the provider-disabled hosted review-packet runtime. It cannot be considered complete for provider-backed full product runtime until authentication, persistence, budget ledgering, provider activation, writeback approval, and customer-data handling are separately implemented and verified.
 
 ## Notion Top-Of-Page Summary
 
 Insert this at the top of the Epic 1 Notion page after push:
 
 ```text
-Epic 1 status, 2026-07-03: internal PRD/KB proof is complete for method scope. E1.4 is accepted. The testmeeting PRD/PDF package was rerun locally with provider disabled. The system now provides a public-safe PRD Pack proof engine, dashboard/Jarvis review packets, and KB governance. Remaining gap: E1.7 Railway full-cloud deployment and health proof are planned but not executed in this run.
+Epic 1 status, 2026-07-03: internal PRD/KB proof is complete for method scope. E1.4 is accepted. E1.6 now has a public-safe role-split KB layer for the primary operator and collaborator lanes. The testmeeting PRD/PDF package was rerun locally with provider disabled. E1.7 now has a hosted Railway Jarvis API verified for provider-disabled review packets across health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text endpoints. Remaining gaps are productization gates: auth, persistence, provider activation, durable writeback, raw voice policy, and market demand proof.
 ```

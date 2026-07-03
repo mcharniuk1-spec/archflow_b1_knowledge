@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T14:11:09.247037+00:00",
+  "generated_at": "2026-07-03T15:02:44.426064+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "55 files",
+      "value": "56 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "309",
+      "value": "319",
       "tone": "ok"
     },
     {
@@ -586,25 +586,249 @@
   ],
   "activity": [
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
-      "title": "2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
-      "modified": "2026-07-03T14:10:55.001433+00:00",
-      "size": 10357
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/notion-delivery-status.md",
+      "title": "Notion Delivery Status",
+      "modified": "2026-07-03T15:02:20.140909+00:00",
+      "size": 623
     },
     {
       "kind": "project_report",
-      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf",
-      "title": "2026-07-03-epic-1-summary-and-final-test-plan.pdf",
-      "modified": "2026-07-03T14:10:54.987525+00:00",
-      "size": 10179
+      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
+      "title": "2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
+      "modified": "2026-07-03T14:57:44.213614+00:00",
+      "size": 16078
     },
     {
       "kind": "project_report",
       "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
       "title": "2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
-      "modified": "2026-07-03T14:10:54.973382+00:00",
-      "size": 9148
+      "modified": "2026-07-03T14:57:44.190048+00:00",
+      "size": 11940
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.pdf",
+      "title": "2026-07-03-e1-7-railway-jarvis-final-report.pdf",
+      "modified": "2026-07-03T14:57:44.173745+00:00",
+      "size": 9268
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "title": "2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "modified": "2026-07-03T14:57:44.160240+00:00",
+      "size": 12683
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-e1-7-railway-jarvis-final.md",
+      "title": "2026-07-03 E1.7 Railway Jarvis Final",
+      "modified": "2026-07-03T14:57:08.117743+00:00",
+      "size": 1909
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/telegram-delivery-status.md",
+      "title": "Telegram Delivery Status",
+      "modified": "2026-07-03T14:57:07.937574+00:00",
+      "size": 415
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/notion-update-packet.md",
+      "title": "Notion Update Packet",
+      "modified": "2026-07-03T14:57:07.848604+00:00",
+      "size": 2966
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/api-smoke-status.md",
+      "title": "API Smoke Status",
+      "modified": "2026-07-03T14:57:07.667571+00:00",
+      "size": 709
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/railway-deployment-status.md",
+      "title": "Railway Deployment Status",
+      "modified": "2026-07-03T14:57:07.483248+00:00",
+      "size": 1286
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/agent-handout.md",
+      "title": "Agent Handout: E1.7 Railway Jarvis Final",
+      "modified": "2026-07-03T14:57:07.391284+00:00",
+      "size": 3444
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md",
+      "title": "E1.7 Railway Jarvis Final Report",
+      "modified": "2026-07-03T14:55:21.078491+00:00",
+      "size": 5754
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md",
+      "title": "Epic 2 Delivery Plan And Owner Questions",
+      "modified": "2026-07-03T14:54:36.241040+00:00",
+      "size": 11010
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
+      "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
+      "modified": "2026-07-03T14:54:09.374878+00:00",
+      "size": 7535
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
+      "title": "Epic 1 Summary And Final Test Plan",
+      "modified": "2026-07-03T14:53:31.853866+00:00",
+      "size": 8751
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
+      "title": "2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
+      "modified": "2026-07-03T14:39:17.000526+00:00",
+      "size": 5856
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.pdf",
+      "title": "agent-activity-progress-report.pdf",
+      "modified": "2026-07-03T14:39:17.000308+00:00",
+      "size": 5856
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-source-methodology-review.pdf",
+      "title": "2026-07-02-e1-2-8-source-methodology-review.pdf",
+      "modified": "2026-07-03T14:39:16.990446+00:00",
+      "size": 3920
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.pdf",
+      "title": "E1.2.8_Source_Methodology_review.pdf",
+      "modified": "2026-07-03T14:39:16.990100+00:00",
+      "size": 3920
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-local-streaming-report.pdf",
+      "title": "2026-07-02-e1-2-8-local-streaming-report.pdf",
+      "modified": "2026-07-03T14:39:16.985354+00:00",
+      "size": 3295
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.pdf",
+      "title": "E1.2.8_Local_Streaming_report.pdf",
+      "modified": "2026-07-03T14:39:16.985136+00:00",
+      "size": 3295
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-local-prd.pdf",
+      "title": "2026-07-02-e1-2-8-local-prd.pdf",
+      "modified": "2026-07-03T14:39:16.980709+00:00",
+      "size": 13231
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.pdf",
+      "title": "E1.2.8_Local_PRD.pdf",
+      "modified": "2026-07-03T14:39:16.980330+00:00",
+      "size": 13231
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
+      "title": "E1.2.8 Testmeeting Local PRD Handout",
+      "modified": "2026-07-03T14:39:16.957746+00:00",
+      "size": 1965
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
+      "title": "E1.2.8 Agent Activity Progress Report",
+      "modified": "2026-07-03T14:39:16.956914+00:00",
+      "size": 2915
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
+      "title": "E1.2.8 AF Review Report",
+      "modified": "2026-07-03T14:39:16.955967+00:00",
+      "size": 1118
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/backlog-and-questions.md",
+      "title": "E1.2.8 Backlog And Missing Questions",
+      "modified": "2026-07-03T14:39:16.954489+00:00",
+      "size": 1479
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.md",
+      "title": "E1.2.8 Source Methodology Review",
+      "modified": "2026-07-03T14:39:16.954035+00:00",
+      "size": 2306
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.md",
+      "title": "E1.2.8 Local Streaming Report",
+      "modified": "2026-07-03T14:39:16.953319+00:00",
+      "size": 1225
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.md",
+      "title": "E1.2.8 Local PRD - Release Kickoff And Discovery-To-Delivery Handoff",
+      "modified": "2026-07-03T14:39:16.952667+00:00",
+      "size": 9602
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/context-digest.md",
+      "title": "E1.2.8 Context Digest",
+      "modified": "2026-07-03T14:39:16.950441+00:00",
+      "size": 3622
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
+      "title": "E1.2.8 Source Inventory",
+      "modified": "2026-07-03T14:39:16.949374+00:00",
+      "size": 1059
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md",
+      "title": "Run: Epic 1 And Epic 2 Planning Closeout",
+      "modified": "2026-07-03T14:16:13.851198+00:00",
+      "size": 2574
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/agent-handout.md",
+      "title": "Agent Handout: Epic 1 And Epic 2 Planning Closeout",
+      "modified": "2026-07-03T14:16:13.756815+00:00",
+      "size": 4073
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "modified": "2026-07-03T14:13:14.335808+00:00",
+      "size": 617
     },
     {
       "kind": "project_report",
@@ -612,27 +836,6 @@
       "title": "2026-07-03-prd-pack-business-evaluation-research-plan.pdf",
       "modified": "2026-07-03T14:10:54.959724+00:00",
       "size": 11530
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md",
-      "title": "Run: Epic 1 And Epic 2 Planning Closeout",
-      "modified": "2026-07-03T14:10:27.040062+00:00",
-      "size": 2566
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/agent-handout.md",
-      "title": "Agent Handout: Epic 1 And Epic 2 Planning Closeout",
-      "modified": "2026-07-03T14:10:26.945707+00:00",
-      "size": 2977
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
-      "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
-      "modified": "2026-07-03T14:10:26.851302+00:00",
-      "size": 6001
     },
     {
       "kind": "project_run",
@@ -647,20 +850,6 @@
       "title": "Notion Update Packet",
       "modified": "2026-07-03T14:08:43.587699+00:00",
       "size": 1420
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md",
-      "title": "Epic 2 Delivery Plan And Owner Questions",
-      "modified": "2026-07-03T14:08:43.339896+00:00",
-      "size": 6364
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
-      "title": "Epic 1 Summary And Final Test Plan",
-      "modified": "2026-07-03T14:08:43.246926+00:00",
-      "size": 6511
     },
     {
       "kind": "project_report",
@@ -738,125 +927,6 @@
       "title": "KB Update Principle",
       "modified": "2026-07-03T14:05:19.388075+00:00",
       "size": 12108
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
-      "title": "2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
-      "modified": "2026-07-03T14:02:22.551473+00:00",
-      "size": 5856
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.pdf",
-      "title": "agent-activity-progress-report.pdf",
-      "modified": "2026-07-03T14:02:22.551215+00:00",
-      "size": 5856
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-source-methodology-review.pdf",
-      "title": "2026-07-02-e1-2-8-source-methodology-review.pdf",
-      "modified": "2026-07-03T14:02:22.541779+00:00",
-      "size": 3920
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.pdf",
-      "title": "E1.2.8_Source_Methodology_review.pdf",
-      "modified": "2026-07-03T14:02:22.541434+00:00",
-      "size": 3920
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-local-streaming-report.pdf",
-      "title": "2026-07-02-e1-2-8-local-streaming-report.pdf",
-      "modified": "2026-07-03T14:02:22.537070+00:00",
-      "size": 3295
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.pdf",
-      "title": "E1.2.8_Local_Streaming_report.pdf",
-      "modified": "2026-07-03T14:02:22.536964+00:00",
-      "size": 3295
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-local-prd.pdf",
-      "title": "2026-07-02-e1-2-8-local-prd.pdf",
-      "modified": "2026-07-03T14:02:22.533229+00:00",
-      "size": 13231
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.pdf",
-      "title": "E1.2.8_Local_PRD.pdf",
-      "modified": "2026-07-03T14:02:22.533004+00:00",
-      "size": 13231
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
-      "title": "E1.2.8 Testmeeting Local PRD Handout",
-      "modified": "2026-07-03T14:02:22.513422+00:00",
-      "size": 1965
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
-      "title": "E1.2.8 Agent Activity Progress Report",
-      "modified": "2026-07-03T14:02:22.512521+00:00",
-      "size": 2915
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
-      "title": "E1.2.8 AF Review Report",
-      "modified": "2026-07-03T14:02:22.511633+00:00",
-      "size": 1118
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/backlog-and-questions.md",
-      "title": "E1.2.8 Backlog And Missing Questions",
-      "modified": "2026-07-03T14:02:22.509852+00:00",
-      "size": 1479
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.md",
-      "title": "E1.2.8 Source Methodology Review",
-      "modified": "2026-07-03T14:02:22.509259+00:00",
-      "size": 2306
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.md",
-      "title": "E1.2.8 Local Streaming Report",
-      "modified": "2026-07-03T14:02:22.508437+00:00",
-      "size": 1225
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.md",
-      "title": "E1.2.8 Local PRD - Release Kickoff And Discovery-To-Delivery Handoff",
-      "modified": "2026-07-03T14:02:22.507808+00:00",
-      "size": 9602
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/context-digest.md",
-      "title": "E1.2.8 Context Digest",
-      "modified": "2026-07-03T14:02:22.505366+00:00",
-      "size": 3622
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
-      "title": "E1.2.8 Source Inventory",
-      "modified": "2026-07-03T14:02:22.504291+00:00",
-      "size": 1059
     },
     {
       "kind": "project_run",
@@ -2753,7 +2823,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 55,
+    "file_count": 56,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -3011,6 +3081,11 @@
         "excerpt": "# Run - Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; final Git/check closeout recorded in live communication  ## Task  Reconstruct day-by-day founder notes for the ArchFlow project and produce a current-state report that explains the knowledge-system methodology, architecture layers, current setup, proof evidence, traceba"
       },
       {
+        "path": "wiki/runs/2026-07-03-e1-7-railway-jarvis-final.md",
+        "title": "2026-07-03 E1.7 Railway Jarvis Final",
+        "excerpt": "# 2026-07-03 E1.7 Railway Jarvis Final  ## Task  Finish E1.4-E1.7 closeout after owner acceptance, including E1.6 role-split KB, hosted Railway Jarvis API validation, final `testmeeting` baseline rerun, Epic 1 critique/report, and Epic 2 Planning packet.  ## Status  Complete for provider-disabled hosted runtime. Review for full product runtime.  ## FACT  - E1.4 is accepted. - E1.6 public-safe role split exists under "
+      },
+      {
         "path": "wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md",
         "title": "Run: Epic 1 And Epic 2 Planning Closeout",
         "excerpt": "# Run: Epic 1 And Epic 2 Planning Closeout  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Codex Support agents/tools: read-only subagent audits for Railway/Jarvis and Epic 2 planning; local deterministic scripts only for testmeeting rerun.  ## Task  Continue after owner acceptance of E1.4 and E2.0A. Create the PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup test plan, Epic 1 summ"
@@ -3228,6 +3303,26 @@
       "text": "# Testmeeting OpenRouter Comparison Resolved  Date: 2026-07-02 Status: resolved on 2026-07-03; OpenRouter comparison completed and review-gated  ## Original Issue  The E1.2.8 local/Codex PRD/PDF package was complete, but the separate OpenRouter comparison was originally blocked by network/provider-approval constraints.  ## Resolution  The OpenRouter comparison was rerun on 2026-07-03 using only the sanitized digest. The active route is `yushchenko.source_scope_gate`; the selected execution model is `qwen/qwen3.6-plus`, with `qwen/qwen3-235b-a22b` as fallback. The comparison wrote a model ledger, budget guard, status file, Markdown output, and PDF output. It remains review-gated until AF Review and owner acceptance.  ## FACT  - The approved private meeting source was used locally. - The approved private discovery-method source was used locally. - Public repo outputs store only sanitized English summaries and derived artifacts. - Local/Codex artifacts were written under `project/runs/E1.2/2026-07-02-testmeeting-local/`. - Local PDFs were copied to `project/reports/`. - The completed OpenRouter run used only the sanitized digest. - Provider calls: 1. - Provider spend: about `0.00794` "
     },
     {
+      "path": "project/knowledge/README.md",
+      "title": "ArchFlow Knowledge Base Split",
+      "text": "# ArchFlow Knowledge Base Split  Date: 2026-07-03 Status: E1.6 review-ready public-safe structure  ## Purpose  This folder defines the public-safe split between the primary operator knowledge base and the collaborator knowledge base. It is a routing layer, not a raw source archive.  The split exists so each operator/agent can keep role-specific context, decisions, questions, and handoffs without mixing private notes, credentials, raw transcripts, or unreviewed claims into the public project.  ## Folders  | Folder | Role | Write rule | |---|---|---| | `primary-operator/` | Lead operator context, decisions, approvals, final integration notes | Reviewed summaries only | | `collaborator/` | Collaborator-agent context, open questions, review notes, and handoff instructions | Reviewed summaries only |  ## Common Rules  - Keep all text English-only. - Use public-safe role labels, not private personal names. - Do not store raw transcripts, private documents, private URLs, account IDs, screenshots, credentials, or API keys. - Store only summaries, decisions, questions, gaps, task candidates, and links to public-safe repo artifacts. - Promote durable facts to WikiLLM only after review. - Tre"
+    },
+    {
+      "path": "project/knowledge/collaborator/README.md",
+      "title": "Collaborator Knowledge Base",
+      "text": "# Collaborator Knowledge Base  Date: 2026-07-03 Status: E1.6 review-ready  ## Role  The collaborator knowledge base is the public-safe workspace for the collaborator agent. It keeps collaborator-specific context separate from the primary operator lane.  Use it for:  - collaborator questions and assumptions; - review notes for product, market, delivery, and critique; - handoff summaries from the collaborator agent; - owner-approved task candidates; - gaps that should be answered before Epic 2 execution.  ## Operating Boundary  The collaborator agent may read public-safe project files and approved summaries. It must not ingest or store raw private material by default.  If the collaborator agent receives private material elsewhere, the output saved here must be only a sanitized summary with:  - source category; - date; - FACT / INTERPRETATION / HYPOTHESIS / GAP split; - allowed next action; - review status.  ## Relationship To Other Memory Layers  | Layer | Use | |---|---| | This folder | Collaborator-specific public-safe summaries and questions | | `wiki/` | Durable shared memory and run history | | `project/runs/` | Execution proof, handouts, checks, and blockers | | Notion | Privat"
+    },
+    {
+      "path": "project/knowledge/collaborator/agent-instructions.md",
+      "title": "Collaborator Agent Instructions",
+      "text": "# Collaborator Agent Instructions  Date: 2026-07-03 Status: active for E1.6 review  ## Mission  Act as the collaborator-side reviewer and context partner for ArchFlow. Your job is to make the service, reports, research plan, critique, and client-facing logic clearer before the primary operator commits or publishes changes.  ## Read First  1. `project/operating-rules.md` 2. `project/project-plan.md` 3. `project/agentic-stack.md` 4. Latest relevant `project/runs/*/agent-handout.md` 5. Latest relevant `wiki/runs/*.md` 6. Current report or task file under review  ## Allowed Outputs  - collaborator review note; - questions for the owner; - critique summary; - risk list; - Epic 2 source and method suggestions; - product/client application notes; - handoff to the primary operator.  ## Required Reasoning Labels  Use this split whenever the output affects strategy, status, market analysis, product claims, or client-facing explanation:  ```text FACT: INTERPRETATION: HYPOTHESIS: GAP: NEXT: ```  ## Safety Rules  - Do not store private personal names in public files. - Do not store raw private source text, private URLs, account IDs, screenshots, credentials, or local absolute paths. - Do not cl"
+    },
+    {
+      "path": "project/knowledge/primary-operator/README.md",
+      "title": "Primary Operator Knowledge Base",
+      "text": "# Primary Operator Knowledge Base  Date: 2026-07-03 Status: E1.6 review-ready  ## Role  The primary operator knowledge base stores reviewed operating summaries for the lead execution role:  - current goal and accepted scope; - decisions and approval boundaries; - final integration notes; - deployment, GitHub, Notion, and Telegram closeout status; - critique summaries and next-step gates.  ## Use  1. Start from `project/project-plan.md`. 2. Read the latest run handout under `project/runs/`. 3. Read the latest WikiLLM run note under `wiki/runs/`. 4. Use this folder for role-specific summaries only when the information is useful for future operator decisions. 5. If the note is broadly useful, promote the reviewed summary to `wiki/memory.md`, `wiki/insights.md`, or a dated `wiki/runs/` note instead of duplicating it here.  ## Do Not Store  - raw private source text; - private names or identities; - private Notion links; - credentials or token values; - local machine paths; - raw transcripts, raw audio, screenshots, or private documents; - unreviewed market or customer claims as facts.  ## Current E1.6 Scope  This folder completes the lead-role side of the E1.6 split. It exists to keep "
+    },
+    {
       "path": "project/langsmith-setup.md",
       "title": "LangSmith Setup",
       "text": "# LangSmith Setup  Status: configured; local ignored API key present; sanitized smoke trace submitted.  ## Current Parameters  | Parameter | Value | |---|---| | Purpose | Observability and tracing only. | | Model execution | Ollama local only. | | Cloud model keys | Not configured. | | Project name | `ArchFlow` | | Project ID | `masked_langsmith_project_id` | | Endpoint | `https://eu.api.smith.langchain.com` | | Local env file | `project/.env.langsmith.local` | | Public example | `project/config/langsmith.env.example` |  ## Local Env File  Store the API key only in:  `project/.env.langsmith.local`  Keep this line blank in Git-tracked files:  ```env LANGSMITH_API_KEY= ```  ## Active Env Block  ```env LANGSMITH_TRACING=true LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com LANGSMITH_PROJECT=ArchFlow LANGSMITH_PROJECT_ID=masked_langsmith_project_id LANGSMITH_API_KEY= LANGGRAPH_CONTROL_MODE=codex_supervised LANGGRAPH_LLM_PROVIDER=ollama_local OLLAMA_BASE_URL=http://127.0.0.1:11434 OLLAMA_CHAT_MODEL=hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M OLLAMA_FALLBACK_CHAT_MODEL=gemma4:e4b OLLAMA_EMBED_MODEL=nomic-embed-text LANGSMITH_RUN_TAGS=archflow,block1,ollama,qwythos,publ"
@@ -3340,7 +3435,7 @@
     {
       "path": "project/project-plan.md",
       "title": "Project Plan",
-      "text": "# Project Plan  Source: private project board reviewed on 2026-06-25.  This file is an English public-safe translation and synthesis. It does not include private page URLs, user IDs, owner names, or raw source content.  Latest detailed E1 breakdown: [`reports/2026-06-25-e1-block1-subtask-execution-plan.pdf`](reports/2026-06-25-e1-block1-subtask-execution-plan.pdf).  Latest tool and market integration plan: [`reports/2026-06-29-tool-and-market-integration-plan.md`](reports/2026-06-29-tool-and-market-integration-plan.md).  ## Epic Timeline  | Epic | Public English Name | Status | Window | |---|---|---|---| | E1 | Build the knowledge base on ourselves | Active | 2026-06-24 to 2026-07-04 | | E5 | Analytics and ROI method | Active | 2026-06-24 to 2026-07-07 | | E4 | Content | Active | 2026-06-24 to 2026-08-01 | | E3 | Website and positioning | Not started | 2026-07-01 to 2026-07-14 | | E2 | Research engine to ICP | Not started | 2026-07-01 to 2026-07-11 | | E6 | Outreach | Not started | 2026-07-14 to 2026-07-28 | | E7 | Payment test to verdict | Not started | 2026-07-15 to 2026-08-01 |  ## Current Execution Logic  1. Prove the knowledge-base and PRD workflow internally. 2. Turn internal"
+      "text": "# Project Plan  Source: private project board reviewed on 2026-06-25.  This file is an English public-safe translation and synthesis. It does not include private page URLs, user IDs, owner names, or raw source content.  Latest detailed E1 breakdown: [`reports/2026-06-25-e1-block1-subtask-execution-plan.pdf`](reports/2026-06-25-e1-block1-subtask-execution-plan.pdf).  Latest tool and market integration plan: [`reports/2026-06-29-tool-and-market-integration-plan.md`](reports/2026-06-29-tool-and-market-integration-plan.md).  ## Epic Timeline  | Epic | Public English Name | Status | Window | |---|---|---|---| | E1 | Build the knowledge base on ourselves | Active | 2026-06-24 to 2026-07-04 | | E5 | Analytics and ROI method | Active | 2026-06-24 to 2026-07-07 | | E4 | Content | Active | 2026-06-24 to 2026-08-01 | | E3 | Website and positioning | Not started | 2026-07-01 to 2026-07-14 | | E2 | Research engine to ICP | Planning | 2026-07-01 to 2026-07-11 | | E6 | Outreach | Not started | 2026-07-14 to 2026-07-28 | | E7 | Payment test to verdict | Not started | 2026-07-15 to 2026-08-01 |  ## Current Execution Logic  1. Prove the knowledge-base and PRD workflow internally. 2. Turn internal pr"
     },
     {
       "path": "project/prompts/af-graph.md",
@@ -3513,14 +3608,19 @@
       "text": "# Public Website Visual Delivery Report  Date: 2026-07-02 Status: implemented and locally validated  ## Scope  This pass updates the public homepage visual/code implementation only. It does not edit Notion, dashboard backend, provider routing, Telegram, model runtime, CrewAI/LangGraph config, skills, or Prompt 2.1 task-state docs.  ## Changes  - Replaced the first-screen boxed system-map visual with the transparent 3D arch object `assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp`. - Added four visible process stages around or near the arch: raw material, knowledge base, PRD/ICP output, and agent oversight. - Moved the primary `Readiness Diagnostic` call to action under the arch/stage visual and made it wider. - Updated homepage copy for the current ICP: B2B SaaS, Series B-D, 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed. - Preserved cautious runtime wording: browser-local diagnostic first; provider runtime, Railway, voice, and writeback stay gated until verified. - Kept the `Estimate the first useful wedge` calculator block stable and removed calculator hover-depth behavior. - Added mobile-specific layout rules so the arch, stag"
     },
     {
+      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md",
+      "title": "E1.7 Railway Jarvis Final Report",
+      "text": "# E1.7 Railway Jarvis Final Report  Date: 2026-07-03 Status: Review / provider-disabled hosted runtime verified Scope: hosted Jarvis API, dashboard API routing, agent-orchestra review packets, final Epic 1 runtime gate  ## Executive Result  E1.7 is complete for the provider-disabled hosted runtime baseline. The Railway `jarvis-api` service was deployed from the service root, reached running success state, received a Railway service domain, and passed hosted HTTPS checks for health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text routes.  This is not a full customer SaaS runtime yet. Provider calls, durable writeback, raw voice storage, authenticated client portals, and persistent client data remain gated.  ## Proof Scorecard  | Capability | Score | Visual | Current result | |---|---:|---|---| | Hosted API availability | 5/5 | ##### | Railway service running and health route passed | | Provider safety | 5/5 | ##### | `MODEL_PROVIDER=none`, provider calls `0` | | Writeback safety | 5/5 | ##### | external writeback `0`; dashboard writeback still gated | | Dashboard routing | 4/5 | ####. | API-base config and lane send controls implemented; latest site deploy rem"
+    },
+    {
       "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
       "title": "Epic 1 Summary And Final Test Plan",
-      "text": "# Epic 1 Summary And Final Test Plan  Date: 2026-07-03 Status: Epic 1 closeout package prepared; E1.7 live Railway deployment remains gated Scope: E1.1-E1.7 knowledge base, PRD workflow, dashboard/Jarvis, final testmeeting rerun, critique  ## Executive Summary  Epic 1 built the internal ArchFlow proof engine: approved product material can become source inventory, context digest, PRD, task/backlog package, review report, KB update, and dashboard/Jarvis review packet without storing raw private material in public files.  The strongest result is method reliability, not market demand. Epic 1 proves that ArchFlow can operate a controlled PRD/KB workflow on itself. It does not prove that buyers will pay, that the cloud runtime is complete, or that provider-backed Jarvis is safe to run by default.  ## Epic 1 Scorecard  | Dimension | Score | Visual | Evidence | |---|---:|---|---| | Source boundary discipline | 5/5 | ##### | E1.4 principle, public safety scan, testmeeting sanitizer | | PRD artifact generation | 5/5 | ##### | E1.2 and E1.2.8 PRD/PDF packages | | KB governance | 4/5 | ####. | WikiLLM run notes, E1.3 readback, E1.4 accepted principle | | Dashboard/Jarvis review surface | 4/5 |"
+      "text": "# Epic 1 Summary And Final Test Plan  Date: 2026-07-03 Status: Epic 1 closeout package updated; E1.7 provider-disabled Railway runtime verified Scope: E1.1-E1.7 knowledge base, PRD workflow, dashboard/Jarvis, final testmeeting rerun, critique  ## Executive Summary  Epic 1 built the internal ArchFlow proof engine: approved product material can become source inventory, context digest, PRD, task/backlog package, review report, KB update, and dashboard/Jarvis review packet without storing raw private material in public files.  The strongest result is method reliability, not market demand. Epic 1 proves that ArchFlow can operate a controlled PRD/KB workflow on itself and now has a minimal hosted Jarvis API for provider-disabled review packets. It does not prove that buyers will pay, that provider-backed Jarvis is safe to run by default, or that autonomous writeback is ready.  ## Epic 1 Scorecard  | Dimension | Score | Visual | Evidence | |---|---:|---|---| | Source boundary discipline | 5/5 | ##### | E1.4 principle, public safety scan, testmeeting sanitizer | | PRD artifact generation | 5/5 | ##### | E1.2 and E1.2.8 PRD/PDF packages | | KB governance | 4/5 | ####. | WikiLLM run notes, E"
     },
     {
       "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md",
       "title": "Epic 2 Delivery Plan And Owner Questions",
-      "text": "# Epic 2 Delivery Plan And Owner Questions  Date: 2026-07-03 Status: plan complete, execution not started Scope: E2 Research Engine To ICP  ## Executive Goal  Epic 2 converts the PRD Pack hypothesis into a source-graded market evidence engine before outreach, positioning upgrades, or demand claims.  The first goal is not to browse widely. The first goal is to define approved sources, data types, agent roles, scoring, competitor comparison, audience analysis, and owner decisions so real account research can proceed without contaminating the public repo or overstating evidence.  ## Current Starting Point  FACT:  - E2.0A is accepted. - Primary ICP hypothesis is B2B SaaS product teams, Series B-D, 50-500 employees, 2-5 PMs, Director/VP Product owner. - First offer hypothesis is the Product Discovery-to-Production PRD Pack. - Approved source types are public company websites, public jobs, public reviews, public directories/lists, authorized LinkedIn summaries, approved search queries, and the internal approved corpus. - Gated tools remain gated: Tavily, Exa, SerpAPI, Firecrawl, Apify, Playwright/browserless, Clay, Apollo, Cognism, Clearbit, People Data Labs.  GAP:  - No account universe"
+      "text": "# Epic 2 Delivery Plan And Owner Questions  Date: 2026-07-03 Status: Planning task prepared; execution not started Scope: E2 Research Engine To ICP  ## Executive Goal  Epic 2 converts the PRD Pack hypothesis into a source-graded market evidence engine before outreach, positioning upgrades, or demand claims.  The first goal is not to browse widely. The first goal is to define approved sources, data types, agent roles, scoring, competitor comparison, audience analysis, and owner decisions so real account research can proceed without contaminating the public repo or overstating evidence.  ## Current Starting Point  FACT:  - E2.0A is accepted. - Primary ICP hypothesis is B2B SaaS product teams, Series B-D, 50-500 employees, 2-5 PMs, Director/VP Product owner. - First offer hypothesis is the Product Discovery-to-Production PRD Pack. - Approved source types are public company websites, public jobs, public reviews, public directories/lists, authorized LinkedIn summaries, approved search queries, and the internal approved corpus. - Gated tools remain gated: Tavily, Exa, SerpAPI, Firecrawl, Apify, Playwright/browserless, Clay, Apollo, Cognism, Clearbit, People Data Labs.  GAP:  - No account"
     },
     {
       "path": "project/reports/2026-07-03-kb-update-principle.md",
@@ -3535,7 +3635,7 @@
     {
       "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
       "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
-      "text": "# Railway Dashboard And Jarvis Full-Cloud Setup Test Plan  Date: 2026-07-03 Status: setup/test plan complete, deployment not executed in this run Scope: E1.7 hosted dashboard, Jarvis API, and agentic control surface  ## Executive Answer  Railway is the right next backend host only for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.  Current proven state is Vercel-connected and provider-disabled. Railway has service scaffolding and prior MCP/project initialization evidence, but no deployment or `/health` proof. E1.7 should finish when Railway runs a provider-disabled Jarvis API with health, CORS/auth, budget guard, and dashboard routing verified without local Codex/Jarvis.  ## Live Railway Check On 2026-07-03  FACT: The official Railway MCP is reachable and authenticated in this Codex session. Public report wording intentionally excludes account-identifying details.  GAP: The current local workspace is not linked to a Railway project. Environment status, deployment list, and service config queries fail becau"
+      "text": "# Railway Dashboard And Jarvis Full-Cloud Setup Test Plan  Date: 2026-07-03 Status: setup/test plan executed; provider-disabled hosted runtime verified Scope: E1.7 hosted dashboard, Jarvis API, and agentic control surface  ## Executive Answer  Railway is the right backend host for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.  Current proven state is Vercel-connected and provider-disabled, with a Railway-hosted Jarvis API now verified for the review-packet contract. The deployment proves the smallest cloud runtime for dashboard-to-backend operation without local Codex/Jarvis. It does not activate provider models, autonomous writeback, raw voice storage, or customer-facing auth/persistence.  ## Live Railway Check On 2026-07-03  FACT:  - Railway MCP was reachable, but not link-aware for this local project in the active session. - Railway CLI was linked to the project/service and used for service status, variables, deployment, domain generation, and logs. - Only non-secret provider-disabled runtime variables"
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -4153,14 +4253,49 @@
       "text": "# Telegram Delivery Status  Date: 2026-07-03T11:13:37.760439+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
     },
     {
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/agent-handout.md",
+      "title": "Agent Handout: E1.7 Railway Jarvis Final",
+      "text": "# Agent Handout: E1.7 Railway Jarvis Final  Date: 2026-07-03 Status: complete for provider-disabled hosted runtime; review for full product runtime  ## Task  Finish E1.4-E1.7 after acceptance of E1.4 and E2.0A, deploy and test the hosted Jarvis API, complete the E1.6 role-split KB layer, rerun the final `testmeeting` baseline, update Epic 1 critique/reporting, prepare the Epic 2 Planning package, and leave Notion/GitHub/Telegram closeout packets.  ## Inputs  - accepted E1.4 KB update principle; - accepted E2.0A dry-run packet; - existing dashboard/Jarvis provider-disabled contract; - Railway `jarvis-api` project/service lane; - final `testmeeting` local runner; - public-safe project plan and live communication rules.  ## Outputs  | Output | File | |---|---| | E1.6 role split | `project/knowledge/` | | Hosted API smoke script | `project/scripts/jarvis-api-contract-smoke.py` | | Epic 1 summary/critique | `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` | | E1.7 final report | `project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md` | | Railway/Jarvis executed setup report | `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` | | Ep"
+    },
+    {
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/api-smoke-status.md",
+      "title": "API Smoke Status",
+      "text": "# API Smoke Status  Date: 2026-07-03 Status: passed  ## Local Contract Smoke  The in-process FastAPI TestClient smoke passed across 17 endpoint checks. It verified that the provider-disabled contract returns review packets without provider calls or external writeback.  Summary:  ```text jarvis_api_contract_smoke=ok endpoints=17 provider_calls=0 writeback=0 ```  ## Hosted Smoke  The hosted Railway API passed:  - health; - CORS preflight; - chat; - role config; - PRD/ICP lane; - agent-orchestra lane; - voice-safe text lane.  ## Boundary  The smoke does not prove:  - provider-backed model calls; - auth; - durable storage; - dashboard-driven writeback; - raw audio handling; - client workspace isolation."
+    },
+    {
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/notion-delivery-status.md",
+      "title": "Notion Delivery Status",
+      "text": "# Notion Delivery Status  Date: 2026-07-03 Status: passed  ## Updates Applied  - Epic 1 page: inserted final provider-disabled runtime summary at the top. - E1.6 task: moved to Review and appended public-safe role-split evidence. - E1.7 task: kept Review and appended hosted Railway validation evidence. - Epic 2 page: moved to Planning and inserted the planning gate. - Epic 2 `Planning` task: created in the Epic 2 task database with source/data/tool/agent questions and default execution boundary.  ## Public-Safe Boundary  This file intentionally does not store private Notion URLs, user IDs, or workspace identifiers."
+    },
+    {
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/notion-update-packet.md",
+      "title": "Notion Update Packet",
+      "text": "# Notion Update Packet  Date: 2026-07-03 Status: ready for append-only Notion update  ## Epic 1 Top Summary  ```text Epic 1 status, 2026-07-03: internal PRD/KB proof is complete for method scope. E1.4 is accepted. E1.6 now has a public-safe role-split KB layer for the primary operator and collaborator lanes. The testmeeting PRD/PDF package was rerun locally with provider disabled. E1.7 now has a hosted Railway Jarvis API verified for provider-disabled review packets across health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text endpoints. Remaining gaps are productization gates: auth, persistence, provider activation, durable writeback, raw voice policy, and market demand proof. ```  ## E1.6 Task Update  Status: Review  Append:  ```text 2026-07-03 update: public-safe role split is in place under project/knowledge/. The primary-operator lane and collaborator lane are separated with instructions and safety rules. Private vault/Obsidian wiring remains outside the public repo. ```  ## E1.7 Task Update  Status: Review  Append:  ```text 2026-07-03 update: provider-disabled hosted runtime is verified. Railway jarvis-api runs from services/jarvis-api and passed hoste"
+    },
+    {
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/railway-deployment-status.md",
+      "title": "Railway Deployment Status",
+      "text": "# Railway Deployment Status  Date: 2026-07-03 Status: passed for provider-disabled E1.7 runtime  ## Public-Safe Result  Railway `jarvis-api` deployed successfully from the service root and reached running success state. The hosted service domain was generated and used for endpoint validation, but the public repository does not store the domain, deployment ID, project ID, service ID, account ID, or log URL.  ## Runtime Policy  | Policy | Result | |---|---| | `MODEL_PROVIDER=none` | Passed | | provider calls | `0` | | external writeback | `0` | | raw audio storage | disabled | | raw transcript storage | disabled | | provider secrets in repo | none |  ## Hosted Checks  | Check | Result | |---|---| | Railway service running | passed | | service domain reachable | passed | | `/health` | passed | | CORS preflight from dashboard origin | passed | | `/api/chat` | passed | | `/api/config/roles` | passed | | `/api/lanes/prd-icp` | passed | | `/api/lanes/agent-orchestra` | passed | | `/api/voice/chat` | passed | | recent HTTP error log query | passed |  ## Remaining Runtime Gaps  - auth and workspace isolation; - durable storage; - provider budget ledger; - approved provider activation; - dur"
+    },
+    {
+      "path": "project/runs/2026-07-03-e1-7-railway-jarvis-final/telegram-delivery-status.md",
+      "title": "Telegram Delivery Status",
+      "text": "# Telegram Delivery Status  Date: 2026-07-03 Status: pending final send  Telegram delivery must be sent only after:  - Notion updates complete or gaps are recorded; - reports/PDFs are rendered; - validation passes; - GitHub push completes.  The public repository stores only this sanitized status. The actual Telegram message may include private review links and must be generated outside the tracked public files."
+    },
+    {
       "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/agent-handout.md",
       "title": "Agent Handout: Epic 1 And Epic 2 Planning Closeout",
-      "text": "# Agent Handout: Epic 1 And Epic 2 Planning Closeout  Date: 2026-07-03 Status: in progress until validation, Notion, push, and Telegram closeout are recorded  ## Purpose  This handout records the continuation after owner acceptance of E1.4 and E2.0A. It covers the PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup plan, Epic 1 summary/final-test plan, and Epic 2 owner-question plan.  ## Human Summary  E1.4 and E2.0A are now recorded as accepted. The local `testmeeting` final baseline was rerun through the provider-disabled script; it completed and wrote only sanitized derived outputs. The run did not rerun OpenRouter because provider use remains a separate approval-gated lane.  The new report package separates the current service proof from future cloud productization. Epic 1 is strong as an internal PRD/KB proof engine, while E1.7 remains open for Railway full-cloud runtime proof. Epic 2 is now structured as an evidence engine with source boundaries, account-card schema, competitor analysis, audience analysis, and owner questions before execution.  ## Current State  | Area | State | |---|---| | E1.4 | accepted on 2026-07-03 | | E2.0A | accepted on 2026-07-03 | "
+      "text": "# Agent Handout: Epic 1 And Epic 2 Planning Closeout  Date: 2026-07-03 Status: complete for local reports, validation, Telegram delivery, Notion updates, and Git push  ## Purpose  This handout records the continuation after owner acceptance of E1.4 and E2.0A. It covers the PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup plan, Epic 1 summary/final-test plan, and Epic 2 owner-question plan.  ## Human Summary  E1.4 and E2.0A are now recorded as accepted. The local `testmeeting` final baseline was rerun through the provider-disabled script; it completed and wrote only sanitized derived outputs. The run did not rerun OpenRouter because provider use remains a separate approval-gated lane.  The new report package separates the current service proof from future cloud productization. Epic 1 is strong as an internal PRD/KB proof engine, while E1.7 remains open for Railway full-cloud runtime proof. Epic 2 is now structured as an evidence engine with source boundaries, account-card schema, competitor analysis, audience analysis, and owner questions before execution.  ## Current State  | Area | State | |---|---| | E1.4 | accepted on 2026-07-03 | | E2.0A | accepted on 2026"
     },
     {
       "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/notion-update-packet.md",
       "title": "Notion Update Packet",
       "text": "# Notion Update Packet  Date: 2026-07-03 Status: prepared, pending live Notion update  ## Epic 1 Top Insert  Epic 1 status, 2026-07-03: internal PRD/KB proof is complete for method scope. E1.4 is accepted. The testmeeting PRD/PDF package was rerun locally with provider disabled. The system now provides a public-safe PRD Pack proof engine, dashboard/Jarvis review packets, and KB governance. Remaining gap: E1.7 Railway full-cloud deployment and health proof are planned but not executed in this run.  Report files:  - `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` - `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf` - `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` - `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf`  ## E2 Task Insert  Epic 2 should start with source and execution decisions before account research. Add the owner questions from `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md` to the E2 task page and keep the task out of Done until the source boundary and first account-universe method are approved.  ## Status Notes  - E1.4: accepted. - E2.0A: accepted"
+    },
+    {
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "text": "# Telegram File Delivery Status  Date: 2026-07-03T14:13:12.666358+00:00 Status: sent Reason: telegram_api_ok  Files: - project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.pdf: sent - project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf: sent - project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf: sent - project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf: sent  Boundary: - Message and files are sanitized project status artifacts only. - Bot token, chat ID, private destination, and Telegram response body are not stored in public files."
     },
     {
       "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-message.md",
@@ -4846,6 +4981,11 @@
       "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
       "title": "Run - Daily Founder Notes And Current-State Report",
       "text": "# Run - Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; final Git/check closeout recorded in live communication  ## Task  Reconstruct day-by-day founder notes for the ArchFlow project and produce a current-state report that explains the knowledge-system methodology, architecture layers, current setup, proof evidence, traceback gains, and next transfer state.  ## Inputs  - Public WikiLLM log and run notes. - Public project run handouts. - Current agentic stack and LlamaIndex workflow. - Current Jarvis/dashboard proof handouts. - Daily Founder Notes Notion database schema.  ## Outputs  - Founder notes packet under `project/runs/2026-07-03-daily-founder-notes/`. - Current-state report Markdown and PDF. - Daily Founder Notes Notion rows for the reset through 2026-07-03. - Current-state report page added under Daily Founder Notes. - Telegram status summary sent through the approved sender path.  ## FACT  - The public project has evidence from the 2026-06-24 reset through 2026-07-03. - The current architecture is public-safe first: Codex operator, WikiLLM memory, Graphify structure, LlamaIndex b"
+    },
+    {
+      "path": "wiki/runs/2026-07-03-e1-7-railway-jarvis-final.md",
+      "title": "2026-07-03 E1.7 Railway Jarvis Final",
+      "text": "# 2026-07-03 E1.7 Railway Jarvis Final  ## Task  Finish E1.4-E1.7 closeout after owner acceptance, including E1.6 role-split KB, hosted Railway Jarvis API validation, final `testmeeting` baseline rerun, Epic 1 critique/report, and Epic 2 Planning packet.  ## Status  Complete for provider-disabled hosted runtime. Review for full product runtime.  ## FACT  - E1.4 is accepted. - E1.6 public-safe role split exists under `project/knowledge/`. - E1.7 Railway `jarvis-api` reached running success state. - Hosted health, CORS, chat, role config, PRD/ICP, agent-orchestra, and voice-safe text checks passed. - Provider calls and external writeback remained at zero. - Final local `testmeeting` baseline reran and regenerated the PDF package. - Epic 2 Planning packet now defines sources, data types, competitor/audience methods, agent roles, and owner questions.  ## INTERPRETATION  Epic 1 is now strong as a provider-disabled operating proof and service-delivery method. It still should not be described as full SaaS runtime because auth, persistence, provider ledgering, writeback, raw voice handling, and buyer demand proof are not complete.  ## HYPOTHESIS  The next useful step is Epic 2 source-grade"
     },
     {
       "path": "wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md",

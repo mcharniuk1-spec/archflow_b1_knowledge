@@ -63,7 +63,8 @@ What it does not prove:
 
 - real microphone permission or speaker output on the owner's browser;
 - node-modal click-through quality on mobile;
-- Railway/local bridge, provider, Nexus, Notion, GitHub, or WikiLLM writeback.
+- provider, Nexus, Notion, GitHub, or WikiLLM writeback;
+- authenticated Railway client sessions, persistent storage, provider calls, or raw voice processing.
 
 ## Vercel Preview
 
@@ -104,6 +105,7 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 - `(2) Agent Orchestra` block-schema page for the local Codex/LangGraph/WikiLLM/Graphify control system.
 - Full node control panels with overview, inputs, outputs, run notes, system prompts, comments, config dropdowns, runtime gates, and connection summaries.
 - Config/subprompting page for browser-local prompt candidates and exportable review packets.
+- Browser-local Jarvis API base configuration for hosted Railway checks and provider-disabled backend packet submission.
 - Project Plan page for the E1-E7 spine and current source links.
 - Browser-local file metadata packet creation.
 - In-page refresh: manual button, Jarvis refresh command, focus refresh, and timed polling of `data.json`.
@@ -120,6 +122,12 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 Regenerate `project/dashboard/data.json` after changing any workflow, config, WikiLLM, report, or run file.
 
 On Vercel, the dashboard can update in-page without reloading the page after a new `data.json` has been deployed. It cannot observe local file changes, write to GitHub/Notion/WikiLLM, process private uploads, or run live voice execution without a backend.
+
+## Hosted Jarvis API
+
+As of 2026-07-03, the Railway `jarvis-api` service has passed the provider-disabled E1.7 baseline: hosted health, CORS from the Vercel dashboard origin, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text packet routes.
+
+The dashboard does not commit a hosted API URL. Use `#config` to paste the current approved backend origin into browser-local storage, then check `/health`. Service-mode packets route to `/api/lanes/prd-icp`; control-mode packets route to `/api/lanes/agent-orchestra`.
 
 ## Reliability Sync
 
@@ -152,7 +160,7 @@ Voice verification boundary:
 - A real microphone/speaker test requires the owner's interactive browser permission on the local device.
 - Browser speech voices are device/browser dependent. The dashboard can request a natural English voice when one is installed, but it cannot guarantee a specific human voice without an approved voice provider or local TTS runtime.
 
-Deferred to Vercel server/auth or Railway backend:
+Deferred to Vercel server/auth or later Railway backend phases:
 
 - Google account auth;
 - durable file uploads;

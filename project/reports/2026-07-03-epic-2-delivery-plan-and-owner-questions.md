@@ -1,7 +1,7 @@
 # Epic 2 Delivery Plan And Owner Questions
 
 Date: 2026-07-03
-Status: plan complete, execution not started
+Status: Planning task prepared; execution not started
 Scope: E2 Research Engine To ICP
 
 ## Executive Goal
@@ -108,6 +108,69 @@ Use later only with approval:
 7. Are any regions, industries, or account types excluded for the first pass?
 8. Is provider-backed summarization allowed after public-source collection, or must the first pass be deterministic/local only?
 
+## Planning Task Question Analysis
+
+The E2 Notion task named `Planning` should contain both the questions and the analysis below. The default is conservative: do only public-source, public-safe, source-graded research until the owner explicitly approves live search, enrichment, provider-backed synthesis, or personal-contact handling.
+
+| Question | Why it matters | Default if unanswered | Risk if skipped |
+|---|---|---|---|
+| Live public web/search now or local-plan-only? | Decides whether E2 starts evidence collection or stays a method package | Local-plan-only plus approved source list | Accidental unbounded browsing or weak provenance |
+| First source universe | Determines where accounts come from and what bias the sample has | SaaS directories plus public careers pages | Random account list with inconsistent fit |
+| LinkedIn role-title currentness | Helps confirm buyer role without storing personal lead data | Authorized summaries only, role/title only | Stale or unverifiable buyer-owner assumptions |
+| 50-500 vs 100-300 employees | Controls segment breadth and product-team maturity | Keep 50-500, tag sub-segments | Overfitting too early or noisy ICP |
+| Evidence threshold for E6 | Prevents outreach based on weak signals | Require two independent B-or-better signals plus owner judgment | Low-quality outreach list |
+| E3 before E4 publication | Decides whether positioning and diagnostic should precede content | Finish E3 diagnostic/analytics before heavy publication | Content drives attention without conversion path |
+| Exclusions | Prevents wasted research in bad-fit markets | Exclude regulated/high-security accounts until trust model matures | Privacy/security objections dominate too early |
+| Provider summarization | Controls cost, privacy, and traceability | Deterministic/local first, provider only on sanitized digests after approval | Unlogged model use or contaminated source boundaries |
+
+## Agent Distribution For Epic 2
+
+| Agent role | Responsibility | Required output |
+|---|---|---|
+| Source Boundary Agent | Define allowed public sources, forbidden data, and source-grade rubric | E2.1 source boundary packet |
+| Universe Builder | Build the first company universe from approved public lists | Account universe table with source dates |
+| Competitor Analyst | Compare alternatives and positioning gaps | Competitor comparison matrix |
+| Audience Analyst | Score account shape, trigger, pain, and buying path | ICP signal cards |
+| Evidence QA Agent | Grade provenance and separate fact/hypothesis/gap | Evidence-card audit notes |
+| Offer Strategist | Translate evidence into PRD Pack offer, objections, and CTA | ICP card and offer hypothesis |
+| Outreach Gatekeeper | Prepare E6 handoff only after evidence threshold passes | 10-15 reviewed target candidates, no personal-contact dump |
+
+## Competitor And Market Analysis Method
+
+Use direct, dated public evidence first. Each competitor row should include the buyer, artifact workflow, AI/review boundary, integrations, pricing/CTA, proof assets, privacy/trust posture, and ArchFlow gap.
+
+Compare competitors in three groups:
+
+| Group | Examples | What to learn |
+|---|---|---|
+| Product management suites | Productboard, Aha!, Zeda, Cycle | Existing budget category and integration expectations |
+| Research/insight tools | Dovetail, BuildBetter, Notion AI, Glean | Evidence handling, synthesis claims, trust posture |
+| AI artifact/workflow tools | ChatPRD, Dust, Fibery, internal AI assistants | Speed expectations and AI-review objections |
+
+## Market And Audience Analysis Sources
+
+| Source type | Use | Handling rule |
+|---|---|---|
+| Company sites | Segment, product category, positioning, workflow hints | Summaries with dated URLs |
+| Careers pages and public jobs | Product-team maturity, tooling, pain language | Job text summarized, no raw dumps |
+| Review sites | Pain/workaround language | Short summaries only |
+| Public pricing/CTA pages | Budget and buying motion proxy | Dated capture and interpretation |
+| Public directories/lists | Universe construction | Keep list provenance and inclusion rule |
+| Authorized LinkedIn summaries | Role-title currentness | Role/title only by default |
+| Internal approved corpus | Offer and method alignment | Public-safe derived summaries |
+
+## Epic 2 Execution Gate
+
+E2 execution should start only after the `Planning` task records:
+
+- approved source universe;
+- allowed/disallowed data types;
+- first segment boundaries;
+- evidence threshold for E6 handoff;
+- provider/use-of-search decision;
+- excluded account classes;
+- reviewer who can approve source cards.
+
 ## Acceptance Criteria
 
 - E2.1 source list and segment model are approved before collection.
@@ -120,4 +183,4 @@ Use later only with approval:
 
 ## Notion Task Packet
 
-Create or update the E2 Notion task page with this plan, then add the owner questions as the first execution checklist. Do not flip E2 tasks to Done. E2 should move from Backlog/To Do to Review/In Progress only after the owner answers the source and execution questions.
+Create or update the E2 Notion task page named `Planning` with this plan, then add the owner questions as the first execution checklist. Do not flip E2 tasks to Done. E2 should move from Backlog/To Do to Review/In Progress only after the owner answers the source and execution questions.

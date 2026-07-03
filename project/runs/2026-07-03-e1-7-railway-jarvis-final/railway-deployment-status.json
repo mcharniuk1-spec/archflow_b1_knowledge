@@ -1,0 +1,40 @@
+{
+  "date": "2026-07-03",
+  "task": "E1.7 Railway Jarvis final",
+  "status": "passed_provider_disabled_runtime",
+  "public_safety": {
+    "stores_railway_url": false,
+    "stores_deployment_id": false,
+    "stores_project_id": false,
+    "stores_account_id": false,
+    "stores_private_notion_url": false,
+    "stores_credentials": false
+  },
+  "runtime": {
+    "model_provider": "none",
+    "provider_calls": 0,
+    "external_writeback": 0,
+    "raw_audio_storage": false,
+    "raw_transcript_storage": false
+  },
+  "hosted_checks": [
+    {"name": "railway_service_running", "result": "passed"},
+    {"name": "service_domain_reachable", "result": "passed"},
+    {"name": "health", "result": "passed"},
+    {"name": "cors_preflight_dashboard_origin", "result": "passed"},
+    {"name": "chat", "result": "passed"},
+    {"name": "role_config", "result": "passed"},
+    {"name": "prd_icp_lane", "result": "passed"},
+    {"name": "agent_orchestra_lane", "result": "passed"},
+    {"name": "voice_text_lane", "result": "passed"},
+    {"name": "http_error_log_query", "result": "passed"}
+  ],
+  "remaining_gates": [
+    "auth",
+    "durable_storage",
+    "provider_budget_ledger",
+    "provider_activation",
+    "durable_writeback",
+    "raw_voice_policy"
+  ]
+}

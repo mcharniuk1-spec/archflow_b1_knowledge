@@ -5,6 +5,7 @@ Provider-disabled FastAPI contract for the ArchFlow dashboard MVP.
 Current state:
 
 - `MODEL_PROVIDER=none` is the default.
+- Railway E1.7 baseline passed on 2026-07-03 for hosted health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text packet routes.
 - OpenRouter is server-side only and disabled until owner approval, server-side secrets, fresh pricing, ledger proof, and budget guard are live.
 - CrewAI Level 3 is represented only as `proof_passed_not_default_runtime`.
 - Browser requests create review packets; they do not write Git, Notion, WikiLLM, Telegram, or deployment state.
@@ -16,3 +17,11 @@ uvicorn app:app --reload --host 127.0.0.1 --port 8787
 ```
 
 Required endpoints are implemented in `app.py`.
+
+Railway deploy root:
+
+```bash
+railway up services/jarvis-api --path-as-root --service jarvis-api --environment production --detach
+```
+
+Public reports must not store Railway account IDs, deployment IDs, or service-domain metadata. Record endpoint status and safety state instead.

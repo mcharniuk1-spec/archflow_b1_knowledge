@@ -6547,3 +6547,41 @@ Remaining gaps:
 Next safe action:
 
 - Use the Epic 2 owner questions to decide whether E2.1 may run live public source research. Link a Railway project or provide a project/service target before attempting E1.7 full-cloud deployment tests.
+
+## 2026-07-03 19:20 - Codex - starting - E1.4-E1.7 Railway/Jarvis full-cloud execution and Epic 2 planning package
+
+Status: starting
+
+Task:
+
+- Execute the owner-approved E1.4-E1.7 completion run: verify and finish dashboard, Jarvis API, configurable website actions, multi-agent architecture surfaces, E1.6 primary-operator/collaborator knowledge-base split, E1.7 final `testmeeting` run, Railway deployment, GitHub push, Notion updates, Epic 2 Planning task, report PDFs, and Telegram delivery.
+
+Files likely to change:
+
+- `services/jarvis-api/`
+- `project/dashboard/`
+- `project/knowledge/`
+- `project/project-plan.md`
+- `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` plus PDF
+- `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md` plus PDF
+- `project/runs/2026-07-03-e1-7-railway-jarvis-final/`
+- `wiki/runs/`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- Runtime/dashboard files listed above for this E1.7 execution window, plus new report/run/wiki artifacts for the same run.
+
+Expected output:
+
+- Public-safe deployed-state package with local and hosted verification, updated Epic 1 critique/report, Epic 2 Planning document/PDF, Notion append-only updates, GitHub push, and final Telegram message with review links.
+
+Blockers:
+
+- External services may still require live project scope, service variables, or connector access. Any credential/account values, private URLs, or deployment metadata must stay out of public repo files.
+
+Next step:
+
+- Audit current runtime code and Railway/GitHub/Notion state, dispatch read-only reviewer agents, then implement only the missing pieces needed to complete the E1.7 proof path.

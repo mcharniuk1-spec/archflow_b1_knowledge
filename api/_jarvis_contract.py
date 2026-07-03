@@ -24,7 +24,7 @@ PRD_BLOCKS = [
 
 
 def model_provider() -> str:
-    return os.getenv("MODEL_PROVIDER", "openrouter").strip().lower() or "openrouter"
+    return os.getenv("MODEL_PROVIDER", "none").strip().lower() or "none"
 
 
 def packet(kind: str, status: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:

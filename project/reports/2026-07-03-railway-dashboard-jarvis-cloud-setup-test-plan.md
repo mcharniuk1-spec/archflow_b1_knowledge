@@ -1,28 +1,37 @@
 # Railway Dashboard And Jarvis Full-Cloud Setup Test Plan
 
 Date: 2026-07-03
-Status: setup/test plan complete, deployment not executed in this run
+Status: setup/test plan executed; provider-disabled hosted runtime verified
 Scope: E1.7 hosted dashboard, Jarvis API, and agentic control surface
 
 ## Executive Answer
 
-Railway is the right next backend host only for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.
+Railway is the right backend host for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.
 
-Current proven state is Vercel-connected and provider-disabled. Railway has service scaffolding and prior MCP/project initialization evidence, but no deployment or `/health` proof. E1.7 should finish when Railway runs a provider-disabled Jarvis API with health, CORS/auth, budget guard, and dashboard routing verified without local Codex/Jarvis.
+Current proven state is Vercel-connected and provider-disabled, with a Railway-hosted Jarvis API now verified for the review-packet contract. The deployment proves the smallest cloud runtime for dashboard-to-backend operation without local Codex/Jarvis. It does not activate provider models, autonomous writeback, raw voice storage, or customer-facing auth/persistence.
 
 ## Live Railway Check On 2026-07-03
 
-FACT: The official Railway MCP is reachable and authenticated in this Codex session. Public report wording intentionally excludes account-identifying details.
+FACT:
 
-GAP: The current local workspace is not linked to a Railway project. Environment status, deployment list, and service config queries fail because no `project_id` is available in this session. No Railway deployment or hosted `/health` test was executed in this run.
+- Railway MCP was reachable, but not link-aware for this local project in the active session.
+- Railway CLI was linked to the project/service and used for service status, variables, deployment, domain generation, and logs.
+- Only non-secret provider-disabled runtime variables were set.
+- The service root deployed was `services/jarvis-api`.
+- The hosted service reached running success state and passed HTTPS endpoint checks.
+
+GAP:
+
+- Railway URL, deployment IDs, project IDs, and account-identifying details are intentionally excluded from this public report.
+- Authentication, persistent storage, provider activation, and durable writeback remain outside this E1.7 provider-disabled baseline.
 
 ## Current Cloud Readiness
 
 | Layer | Current proof | Status |
 |---|---|---|
-| Static dashboard | Vercel-hosted dashboard/provider-disabled API contract recorded in prior handout | Working for review packets |
-| Local Jarvis API | FastAPI contract under `services/jarvis-api/` | Code scaffold exists |
-| Railway | Prior run created project/service and variables; deployment blocked by approval | Not deployed |
+| Static dashboard | Vercel-hosted dashboard plus browser-local API-base control for a hosted backend | Working for review packets |
+| Local Jarvis API | FastAPI contract under `services/jarvis-api/` plus in-process smoke test | Passed |
+| Railway | `jarvis-api` service deployed from `services/jarvis-api` with provider-disabled variables | Passed |
 | Provider calls | `MODEL_PROVIDER=none` default; provider routes disabled | Gated |
 | Writeback | Git/Notion/WikiLLM/Telegram dashboard writeback disabled | Gated |
 | Voice | Browser-local controls and text path only | Gated for raw audio/storage |
@@ -31,7 +40,7 @@ GAP: The current local workspace is not linked to a Railway project. Environment
 
 E1.7 means: hosted dashboard, Jarvis API, and agentic system can run the provider-disabled review-packet contract without relying on the local machine.
 
-It does not mean provider-backed automation, autonomous Notion/GitHub/WikiLLM writeback, raw voice storage, or paid customer runtime.
+It does not mean provider-backed automation, autonomous Notion/GitHub/WikiLLM writeback, raw voice storage, authenticated client portals, or paid customer runtime.
 
 ## Deployment Architecture
 
@@ -57,16 +66,31 @@ Vercel static dashboard
 | R7 | Point dashboard to Railway test backend | dashboard state shows connected and no provider calls | No production promotion |
 | R8 | Record run | run note, PDF, dashboard data, wiki log, validation | Public safety scan |
 
-## Endpoint Test Matrix
+## Executed Endpoint Test Matrix
 
-| Endpoint | Expected result | Failure meaning |
+| Endpoint | Result | Evidence meaning |
 |---|---|---|
-| `/health` | service ok, model provider none or gated, provider calls 0 | service not ready |
-| `/api/chat` | review packet, no provider output | provider gate broken if it calls model |
-| `/api/config/roles` | role config payload | dashboard cannot configure orchestra |
-| `/api/lanes/prd-icp` | PRD/ICP review packet | Architecture 1 cloud route broken |
-| `/api/lanes/agent-orchestra` | agent-orchestra review packet | Architecture 2 cloud route broken |
-| `/api/voice/chat` | text review packet only | voice storage/provider risk if raw audio stored |
+| `/health` | Passed | service ok, model provider `none`, provider calls `0`, external writeback `0` |
+| CORS preflight | Passed | Vercel dashboard origin can POST to the hosted API |
+| `/api/chat` | Passed | review packet, no provider output |
+| `/api/config/roles` | Passed | role config payload available for dashboard configuration |
+| `/api/lanes/prd-icp` | Passed | Architecture 1 PRD/ICP cloud route works |
+| `/api/lanes/agent-orchestra` | Passed | Architecture 2 agent-orchestra cloud route works |
+| `/api/voice/chat` | Passed | text review packet only; no raw audio storage |
+| Railway deploy logs | Passed | Uvicorn started and listened on the assigned port |
+| Railway HTTP error logs | Passed | no recent hosted HTTP error entries returned for the validation probes |
+
+## Dashboard Routing Update
+
+The dashboard now includes a browser-local Jarvis API base setting. The operator can paste the hosted backend origin, save it to local browser storage, check `/health`, and send provider-disabled packets to the correct lane:
+
+| Dashboard mode | Backend endpoint | Purpose |
+|---|---|---|
+| Architecture 1 / service | `/api/lanes/prd-icp` | PRD/ICP review packet |
+| Architecture 2 / control | `/api/lanes/agent-orchestra` | agent role/configuration review packet |
+| Config | `/health` | hosted runtime readiness |
+
+The browser setting is not a secret and is not committed as environment state.
 
 ## Provider Activation Gate
 
@@ -84,7 +108,7 @@ Provider activation is a later lane. Required before any model call:
 
 For ArchFlow:
 
-- a durable operator dashboard when local Codex/Jarvis is off;
+- a durable provider-disabled operator API when local Codex/Jarvis is off;
 - a cloud review-packet API for PRD/ICP and Agent Orchestra lanes;
 - a future bridge for provider-backed tasks after budget/safety gates;
 - a cleaner demo of the operating system behind the PRD Pack.
@@ -97,14 +121,16 @@ For clients:
 
 ## Critique
 
-The current setup is useful but fragile if described as a finished product. It is an operator control system plus service-delivery proof, not yet a customer-ready cloud app. Railway should be used to prove backend reliability and policy enforcement first. Productization should wait until E2/E6/E7 prove buyer demand.
+The current setup is useful but fragile if described as a finished product. It is an operator control system plus service-delivery proof with a small hosted runtime, not yet a customer-ready cloud app. Railway has now proved backend reachability and policy enforcement for provider-disabled packets. Productization should still wait until E2/E6/E7 prove buyer demand and until auth, persistence, and provider budget ledgers are implemented.
 
 ## Acceptance Criteria
 
-- Railway deployment uses only `services/jarvis-api`.
-- `/health` passes from the Railway domain.
-- Provider calls remain zero.
-- Writeback remains disabled.
-- Dashboard connects to Railway backend in a test environment.
-- Public safety scan, runtime guard, dashboard JSON parse, and diff check pass.
-- Run handout and Notion/GitHub/Telegram packets are created.
+| Criterion | Result |
+|---|---|
+| Railway deployment uses only `services/jarvis-api` | Passed |
+| `/health` passes from the Railway domain | Passed |
+| Provider calls remain zero | Passed |
+| Writeback remains disabled | Passed |
+| Dashboard can store/check hosted API base | Passed locally; live Vercel redeploy remains review-link dependent |
+| Public safety scan, runtime guard, dashboard JSON parse, and diff check pass | To be rerun after final report updates |
+| Run handout and Notion/GitHub/Telegram packets are created | In progress in the closeout lane |

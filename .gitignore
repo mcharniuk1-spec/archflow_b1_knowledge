@@ -18,6 +18,7 @@ tg.md
 docs/tg.md
 **/tg.md
 .vercel/
+.railway/
 *.key
 *.pem
 *.p12
