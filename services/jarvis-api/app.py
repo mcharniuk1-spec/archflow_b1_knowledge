@@ -10,6 +10,9 @@ cycle without explicit owner approval and a live budget guard.
 from __future__ import annotations
 
 import os
+import json
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from typing import Any, Literal
 
@@ -19,6 +22,8 @@ from pydantic import BaseModel, Field
 
 
 APP_VERSION = "2026-07-03-jarvis-dashboard-mvp"
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+DEFAULT_OPENROUTER_MODEL = "openrouter/auto"
 DEFAULT_DAILY_BUDGET = 5.00
 DEFAULT_RUN_BUDGET = 1.99
 DEFAULT_HARD_STOP = 1.99
@@ -90,7 +95,9 @@ class RoleUpdateRequest(BaseModel):
 
 class VoiceRequest(BaseModel):
     transcript: str = Field(default="", max_length=12000)
+    architecture: Literal["service", "control"] = "service"
     owner_approval: bool = False
+    provider_approval: bool = False
     auto_speak: bool = False
 
 
@@ -152,13 +159,109 @@ def budget_state(provider_requested: bool = False) -> dict[str, Any]:
 
     over_cap = daily > DEFAULT_DAILY_BUDGET or hard_stop >= 2.00 or run >= 2.00
     return {
-        "status": "blocked_over_cap" if over_cap else "ready_disabled",
+        "status": "blocked_over_cap" if over_cap else ("ready_for_approved_provider_call" if provider_requested else "ready_disabled"),
         "daily_budget_usd": daily,
         "run_budget_usd": run,
         "run_hard_stop_usd": hard_stop,
         "actual_spend_usd": 0.00,
         "over_cap_behavior": "stop_and_request_owner_approval",
-        "provider_calls_allowed": False,
+        "provider_calls_allowed": bool(provider_requested and not over_cap),
+    }
+
+
+def openrouter_model() -> str:
+    return os.getenv("OPENROUTER_MODEL", "").strip() or DEFAULT_OPENROUTER_MODEL
+
+
+def provider_ready(provider_requested: bool) -> tuple[bool, str]:
+    if model_provider() != "openrouter":
+        return False, "model_provider_not_openrouter"
+    if not provider_requested:
+        return False, "owner_and_provider_approval_required"
+    if not os.getenv("OPENROUTER_API_KEY", "").strip():
+        return False, "openrouter_api_key_missing"
+    budget = budget_state(provider_requested=True)
+    if budget["status"] != "ready_for_approved_provider_call":
+        return False, f"budget_not_ready:{budget['status']}"
+    return True, "ready"
+
+
+def architecture_context(kind: str, request: JarvisRequest | VoiceRequest) -> dict[str, Any]:
+    architecture = getattr(request, "architecture", "service")
+    if kind == "agent-orchestra" or architecture == "control":
+        return {
+            "architecture": "Architecture 2 - Agent Control",
+            "langgraph_lane": "agent_orchestra",
+            "crewai_roles": ["af_tools", "af_context", "af_manager", "af_review", "af_knowledge", "af_publisher"],
+            "kb_contract": "Return facts, interpretation, gaps, next action, and KB update candidates only after review.",
+        }
+    return {
+        "architecture": "Architecture 1 - PRD/ICP Service",
+        "langgraph_lane": "prd_icp_flow",
+        "crewai_roles": ["af_context", "af_research", "af_manager", "af_review"],
+        "kb_contract": "Return PRD/ICP output blocks, evidence gaps, owner questions, and KB update candidates only after review.",
+    }
+
+
+def openrouter_prompt(kind: str, request: JarvisRequest | VoiceRequest) -> list[dict[str, str]]:
+    context = architecture_context(kind, request)
+    raw_request = getattr(request, "request", "") or getattr(request, "transcript", "")
+    system = (
+        "You are ArchFlow Jarvis running server-side under explicit owner/provider approval. "
+        "Follow the ArchFlow LangGraph lane and CrewAI role contract. "
+        "Never claim durable writeback, Notion sync, GitHub updates, customer validation, or raw private-source processing. "
+        "Return concise structured Markdown with FACT, INTERPRETATION, GAP, NEXT, and KB_UPDATE_CANDIDATES."
+    )
+    user = (
+        f"Runtime architecture: {context['architecture']}\n"
+        f"LangGraph lane: {context['langgraph_lane']}\n"
+        f"CrewAI roles: {', '.join(context['crewai_roles'])}\n"
+        f"KB contract: {context['kb_contract']}\n\n"
+        f"User request:\n{str(raw_request)[:4000]}"
+    )
+    return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+
+
+def call_openrouter(kind: str, request_model: JarvisRequest | VoiceRequest) -> dict[str, Any]:
+    provider_requested = bool(
+        getattr(request_model, "owner_approval", False)
+        and getattr(request_model, "provider_approval", False)
+    )
+    ready, reason = provider_ready(provider_requested)
+    if not ready:
+        return {"provider_executed": False, "reason": reason}
+    payload = {
+        "model": openrouter_model(),
+        "messages": openrouter_prompt(kind, request_model),
+        "temperature": float(os.getenv("OPENROUTER_TEMPERATURE", "0.2")),
+        "max_tokens": int(os.getenv("OPENROUTER_MAX_TOKENS", "900")),
+    }
+    request = urllib.request.Request(
+        OPENROUTER_URL,
+        data=json.dumps(payload).encode("utf-8"),
+        method="POST",
+        headers={
+            "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": os.getenv("OPENROUTER_HTTP_REFERER", "https://archflowautomate.vercel.app"),
+            "X-Title": os.getenv("OPENROUTER_APP_TITLE", "ArchFlow Jarvis"),
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=int(os.getenv("OPENROUTER_TIMEOUT_SECONDS", "35"))) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")[:500]
+        return {"provider_executed": False, "reason": f"openrouter_http_{exc.code}", "detail": detail}
+    except Exception as exc:  # noqa: BLE001
+        return {"provider_executed": False, "reason": f"openrouter_error:{type(exc).__name__}"}
+    choice = (data.get("choices") or [{}])[0]
+    message = choice.get("message") or {}
+    return {
+        "provider_executed": True,
+        "model": data.get("model") or payload["model"],
+        "reply": str(message.get("content") or "").strip(),
+        "usage": data.get("usage") or {},
     }
 
 
@@ -197,21 +300,51 @@ def default_roles() -> list[dict[str, str]]:
     ]
 
 
-def packet(kind: str, status: str, payload: dict[str, Any]) -> dict[str, Any]:
+def packet(
+    kind: str,
+    status: str,
+    payload: dict[str, Any],
+    runtime_update: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    runtime = {
+        "model_provider": model_provider(),
+        "provider_calls": 0,
+        "external_writeback": 0,
+        "crewai_level_3": "proof_passed_not_default_runtime",
+        "default_runtime": "langgraph_controlled_static_packet",
+    }
+    if runtime_update:
+        runtime.update(runtime_update)
     return {
         "kind": kind,
         "status": status,
         "created_at": now_utc(),
-        "runtime": {
-            "model_provider": model_provider(),
-            "provider_calls": 0,
-            "external_writeback": 0,
-            "crewai_level_3": "proof_passed_not_default_runtime",
-            "default_runtime": "langgraph_controlled_static_packet",
-        },
-        "budget": budget_state(provider_requested=model_provider() != "none"),
+        "runtime": runtime,
+        "budget": budget_state(provider_requested=bool(runtime.get("provider_calls"))),
         "payload": payload,
     }
+
+
+def provider_packet(kind: str, request_model: JarvisRequest | VoiceRequest, payload: dict[str, Any]) -> dict[str, Any]:
+    provider = call_openrouter(kind, request_model)
+    full_payload = {
+        **payload,
+        "architecture_runtime": architecture_context(kind, request_model),
+        "provider_result": {key: value for key, value in provider.items() if key != "detail"},
+        "writeback": "disabled_until_review_and_explicit_durable_write_approval",
+    }
+    if provider.get("provider_executed"):
+        return packet(
+            kind,
+            "provider_response_created",
+            full_payload,
+            {
+                "provider_calls": 1,
+                "default_runtime": "openrouter_guarded_langgraph_crewai_packet",
+                "model": provider.get("model", openrouter_model()),
+            },
+        )
+    return packet(kind, "review_packet_created", full_payload)
 
 
 def approval_block(reason: str) -> dict[str, Any]:
@@ -267,13 +400,11 @@ def health() -> dict[str, Any]:
 
 @app.post("/api/chat")
 def chat(request: JarvisRequest) -> dict[str, Any]:
-    if model_provider() != "none" and not request.provider_approval:
-        return approval_block("provider_route_requested_without_approval")
-    return packet(
+    return provider_packet(
         "chat",
-        "review_packet_created",
+        request,
         {
-            "reply": "Jarvis API received the request. Provider calls and writeback remain disabled; this is a review packet.",
+            "reply": "Jarvis API received the request. Provider calls require owner/provider approval; writeback remains disabled.",
             "request_excerpt": request.request[:900],
             "lane": request.lane,
             "architecture": request.architecture,
@@ -307,9 +438,9 @@ def update_roles(request: RoleUpdateRequest) -> dict[str, Any]:
 @app.post("/api/lanes/prd-icp")
 def prd_icp_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
     request = request or JarvisRequest(lane="prd_icp_flow")
-    return packet(
+    return provider_packet(
         "prd-icp-flow",
-        "review_packet_created",
+        request,
         {
             "lane": "prd_icp_flow",
             "architecture": request.architecture,
@@ -325,9 +456,9 @@ def prd_icp_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
 @app.post("/api/lanes/agent-orchestra")
 def agent_orchestra_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
     request = request or JarvisRequest(lane="agent_orchestra")
-    return packet(
+    return provider_packet(
         "agent-orchestra",
-        "review_packet_created",
+        request,
         {
             "lane": "agent_orchestra",
             "architecture": request.architecture,
@@ -377,11 +508,11 @@ def voice_transcribe(request: VoiceRequest) -> dict[str, Any]:
 
 @app.post("/api/voice/chat")
 def voice_chat(request: VoiceRequest) -> dict[str, Any]:
-    return packet(
+    return provider_packet(
         "voice-chat",
-        "review_packet_created",
+        request,
         {
-            "reply": "Voice transcript received as text only. Raw audio is not stored and provider calls remain disabled.",
+            "reply": "Voice transcript received as text only. Raw audio is not stored; provider calls require owner/provider approval.",
             "transcript_excerpt": request.transcript[:900],
         },
     )

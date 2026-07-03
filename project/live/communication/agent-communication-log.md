@@ -6756,3 +6756,156 @@ Remaining gaps:
 Next safe action:
 
 - Commit and push the Telegram delivery status proof to `main`.
+
+## 2026-07-03 19:04 EEST - Codex - starting - Vercel production cure, Jarvis runtime integration, and Epic 1 cloud flow finalization
+
+Status: starting
+
+Task:
+
+- Cure the Vercel setup so the public dashboard URL serves current dashboard data and current Jarvis API behavior.
+- Preserve the existing Railway provider-disabled baseline while adding a safe path for provider-backed Jarvis only through server-side approval, budget, and evidence gates.
+- Identify legacy Vercel surfaces without destructive deletion unless they are unambiguously safe to remove.
+- Verify Architecture 1 and Architecture 2 Jarvis request paths against the deployed runtime.
+- Coordinate a separate documentation/Notion synchronization worker for review and summary artifacts.
+
+Files likely to change:
+
+- `project/dashboard/`
+- `api/`
+- `services/jarvis-api/`
+- `project/config/`
+- `project/scripts/`
+- `project/runs/2026-07-03-vercel-production-cure/`
+- `project/reports/`
+- `wiki/`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- Deployment/runtime cure files and final integration artifacts for this continuation.
+
+Expected output:
+
+- Current production Vercel deployment proof, Railway proof, Jarvis architecture request proof, public-safe run handout/report, GitHub push, Notion update packet, and clear remaining gates if any.
+
+Blockers:
+
+- Do not delete Vercel projects/domains without unambiguous ownership and current-use proof.
+- Do not store private Vercel/Railway/Notion IDs, private URLs, secrets, or account metadata in public files.
+- Full provider-backed execution requires server-side keys, budget ledgering, approval gates, and no secret exposure to browser code.
+
+Next step:
+
+- Inspect Vercel project/domain mapping, production deployment path, current API routing, OpenRouter/provider gate code, then implement the minimal non-destructive deployment cure.
+
+## 2026-07-03 19:14 EEST - Codex docs-sync worker - starting - Vercel production cure documentation and Notion packet review
+
+Status: starting
+
+Task:
+
+- Inspect current public-safe E1.7, cloud retrospective, Railway/Vercel, and Notion update artifacts.
+- Identify documentation and Notion updates needed after the lead completes deployment cure.
+- Prepare only non-overlapping public-safe documentation under the Vercel production cure run folder if safe.
+
+Files likely to change:
+
+- `project/runs/2026-07-03-vercel-production-cure/`
+- `project/reports/`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- Documentation sync packet files only. Runtime, deployment, dashboard, API, config, and Git operations remain lead-owned.
+
+Expected output:
+
+- Public-safe documentation/Notion sync status, update packet, and list of docs that need post-cure updates.
+
+Blockers:
+
+- Lead owns deployment/runtime cure and may still change final facts.
+- No private URLs, account IDs, deployment IDs, local paths, secrets, or raw private material may be stored in tracked files.
+
+Next step:
+
+- Inspect existing E1.7/cloud retrospective reports, run notes, and update packets before editing documentation artifacts.
+
+## 2026-07-03 19:20 EEST - Codex docs-sync worker - complete - Pending documentation and Notion packet prepared
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-03-vercel-production-cure/documentation-sync-packet.md`
+- `project/runs/2026-07-03-vercel-production-cure/notion-update-packet.pending.md`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Public safety scan: passed.
+- `git diff --check`: passed.
+
+Findings:
+
+- Existing reports consistently say Railway is verified for provider-disabled review packets and Vercel production is reachable but stale.
+- Existing Notion packets already cover Epic 1, E1.6, E1.7, Epic 2 Planning, and Daily Founder Notes for the pre-cure state.
+- Existing reports should not be edited to claim the cure until the lead records final production freshness, API authority, and runtime evidence.
+
+Remaining gaps:
+
+- Final Vercel production cure facts are not yet recorded in this run folder.
+- No documentation proof yet exists for production freshness, canonical Vercel mapping, provider-backed OpenRouter execution, live LangGraph/CrewAI runtime, durable config persistence, or autonomous KB/Notion/GitHub writeback.
+
+Next safe action:
+
+- Lead completes deployment cure and records final facts; then use the pending Notion packet and documentation sync packet to update reports, dashboard data, WikiLLM, and Notion append-only.
+
+## 2026-07-03 19:45 EEST - Codex lead - complete - Vercel production cure and guarded Jarvis flow
+
+Status: complete
+
+Files changed:
+
+- `api/_jarvis_contract.py`
+- `api/voice/chat.py`
+- `services/jarvis-api/app.py`
+- `project/dashboard/app.js`
+- `project/dashboard/data.json`
+- `project/scripts/generate-dashboard-data.py`
+- `project/scripts/dashboard-static-smoke.py`
+- `project/reports/2026-07-03-vercel-production-cure-report.md`
+- `project/reports/2026-07-03-vercel-production-cure-report.pdf`
+- `project/runs/2026-07-03-vercel-production-cure/`
+- `wiki/runs/2026-07-03-vercel-production-cure.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+
+Checks run:
+
+- Public safety scan: passed.
+- Runtime guard and workflow validation: passed.
+- Dashboard static smoke: passed for eight routes with zero provider calls and zero writeback.
+- `git diff --check`: passed.
+- Vercel production custom domain: current dashboard data and API health verified.
+- Vercel Architecture 1 request: review packet returned with provider budget counters at zero.
+- Vercel Architecture 2 request: review packet returned with provider budget counters at zero.
+- Railway Jarvis service: health, CORS, Architecture 1, Architecture 2, voice, roles, and role update candidate routes verified after corrected path-root deploy.
+
+Outcome:
+
+- The public dashboard is production reachable at `https://archflowautomate.vercel.app/project/dashboard/` and now serves the current regenerated dashboard data.
+- The production alias was moved to the current Vercel deployment for the active public project. Legacy Vercel projects were not deleted because unused ownership was not proven; the safe cure was alias correction and documented cleanup guidance.
+- Jarvis now has a guarded OpenRouter review contract across Vercel API routes and the Railway service. Requests can ask for Architecture 1 or Architecture 2 execution, but provider calls remain server-gated and stay at zero unless the backend has an approved server-side OpenRouter secret, request-level approval, owner approval, and budget headroom.
+- Notion was updated append-only for E1.7, Epic 1, Epic 2 Planning, Daily Founder Notes, and the links page with current deployment-cure evidence.
+
+Remaining gaps:
+
+- Live OpenRouter model execution is not claimed because platform secret installation was not approved in this run. Current behavior correctly returns review packets with `openrouter_api_key_missing` instead of exposing or faking provider execution.
+- Full autonomous writeback into Notion/GitHub from the website remains gated; the public service proves review packets and update candidates, not unsupervised external mutation.
+
+Next safe action:
+
+- If provider-backed model execution is required, approve installing the OpenRouter key as a server-side secret in Vercel and Railway, then rerun the Architecture 1/2 canary with explicit owner/provider approvals and provider-call budget evidence.

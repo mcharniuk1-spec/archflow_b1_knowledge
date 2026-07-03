@@ -1,23 +1,23 @@
 # E1.7 Railway Jarvis Final Report
 
 Date: 2026-07-03
-Status: Review / provider-disabled hosted runtime verified
+Status: Done for production-current guarded cloud review flow; Review for full product runtime
 Scope: hosted Jarvis API, dashboard API routing, agent-orchestra review packets, final Epic 1 runtime gate
 
 ## Executive Result
 
-E1.7 is complete for the provider-disabled hosted runtime baseline. The Railway `jarvis-api` service was deployed from the service root, reached running success state, received a Railway service domain, and passed hosted HTTPS checks for health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text routes.
+E1.7 is complete for the production-current guarded cloud review-flow baseline. The exact public dashboard URL now points to the current Vercel production deployment, serves regenerated July 3 dashboard data, and exposes the same-origin Jarvis API. The Railway `jarvis-api` service was deployed from the service root with Nixpacks, reached running success state, and passed hosted HTTPS checks for health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, and voice-safe text routes.
 
-This is not a full customer SaaS runtime yet. Provider calls, durable writeback, raw voice storage, authenticated client portals, and persistent client data remain gated.
+This is not a full customer SaaS runtime yet. OpenRouter routing is wired and guarded, but live provider execution was blocked because copying the local OpenRouter key into Vercel/Railway external environment storage requires explicit credential-storage approval. Provider calls, durable writeback, raw voice storage, authenticated client portals, and persistent client data remain gated.
 
 ## Proof Scorecard
 
 | Capability | Score | Visual | Current result |
 |---|---:|---|---|
 | Hosted API availability | 5/5 | ##### | Railway service running and health route passed |
-| Provider safety | 5/5 | ##### | `MODEL_PROVIDER=none`, provider calls `0` |
+| Provider safety | 5/5 | ##### | `MODEL_PROVIDER=openrouter`, provider calls `0`, provider execution blocked at missing approved server-side key |
 | Writeback safety | 5/5 | ##### | external writeback `0`; dashboard writeback still gated |
-| Dashboard routing | 4/5 | ####. | API-base config and lane send controls implemented; latest site deploy remains a review-link step |
+| Dashboard routing | 5/5 | ##### | public Vercel dashboard is current and same-origin API routes pass |
 | Multi-agent control surface | 4/5 | ####. | Architecture 2 packet route passes; real autonomous execution remains gated |
 | Voice runtime | 2/5 | ##... | text-only voice-safe packet passes; raw audio, STT, TTS, and storage are not productized |
 | Product readiness | 2/5 | ##... | backend proof exists; auth, persistence, billing, and customer workspaces are missing |
@@ -26,9 +26,9 @@ This is not a full customer SaaS runtime yet. Provider calls, durable writeback,
 
 ```text
 dashboard browser
-  -> local API-base setting
-  -> hosted Railway Jarvis API
-  -> provider-disabled review packet
+  -> current Vercel production dashboard
+  -> Vercel same-origin API and hosted Railway Jarvis API
+  -> guarded OpenRouter review packet
   -> owner/Codex review before any durable write
 ```
 
@@ -38,7 +38,7 @@ dashboard browser
 |---|---|---|
 | Railway service status | Passed | latest deployment running successfully |
 | Railway service domain | Passed | HTTPS domain generated and reachable |
-| `GET /health` | Passed | runtime reports ok, provider none, zero model calls, zero writeback |
+| `GET /health` | Passed | runtime reports ok, provider openrouter, zero model calls, zero writeback |
 | CORS preflight | Passed | Vercel dashboard origin allowed for POST traffic |
 | `POST /api/chat` | Passed | returns review packet without provider call |
 | `GET /api/config/roles` | Passed | role configuration available for dashboard control |
@@ -95,7 +95,7 @@ The main risk is overclaiming. The hosted runtime works, but it is intentionally
 
 | Gate | Status | Required before Done |
 |---|---|---|
-| Provider-backed Jarvis | Gated | server-side secrets, budget ledger, sanitized input policy, owner approval |
+| Provider-backed Jarvis | Gated | explicit approval to store the OpenRouter key in external runtime env, server-side secrets, budget ledger, sanitized input policy, owner approval |
 | Durable writeback | Gated | authenticated action approvals, audit log, rollback policy |
 | Raw voice/audio | Gated | raw audio policy, retention limits, STT/TTS provider decision |
 | Client portal | Gated | auth, workspace isolation, data policy, billing path |
@@ -103,4 +103,4 @@ The main risk is overclaiming. The hosted runtime works, but it is intentionally
 
 ## Acceptance
 
-E1.7 can move to Review for the provider-disabled hosted runtime. It should not move to Done for full cloud product runtime until the remaining gates are implemented and verified.
+E1.7 can move to Done for the production-current guarded cloud review flow. It should not move to Done for full cloud product runtime until the remaining gates are implemented and verified.

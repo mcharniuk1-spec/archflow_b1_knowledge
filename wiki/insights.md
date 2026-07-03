@@ -142,3 +142,11 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: this prevents the project from treating a 200 response as proof that users see the latest verified state.
 - Where applicable: E1.7 closeout, future Vercel production promotion, dashboard data generation, Notion/GitHub links, Telegram reporting, and any client review surface.
 - Limitation: production freshness can only be closed by a post-push check or an explicit production deployment/promotion step.
+
+## Insight - Guarded Provider Routing Is Not Provider Execution
+
+- Observation: Vercel and Railway can both be configured for `MODEL_PROVIDER=openrouter` while still making zero provider calls if the server-side key is absent.
+- Interpretation: this is a useful intermediate state: route shape, approval fields, budget guards, and architecture-specific packets can be verified without moving secrets or spending money.
+- Why it matters: it prevents the project from confusing "OpenRouter route wired" with "OpenRouter output generated" and keeps credential-storage risk explicit.
+- Where applicable: E1.7 cloud closeout, Epic 2 research planning, model-call ledger setup, and future Jarvis provider activation.
+- Limitation: the next proof must be an explicitly approved, ledgered, low-cost provider call with sanitized input and no durable writeback.

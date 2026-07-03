@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T15:53:47.867539+00:00",
+  "generated_at": "2026-07-03T16:41:03.562297+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,17 +25,17 @@
     },
     {
       "label": "Jarvis API",
-      "value": "vercel_and_local_contract_present_provider_disabled",
+      "value": "vercel_railway_guarded_openrouter_review_contract",
       "tone": "ok"
     },
     {
       "label": "WikiLLM files",
-      "value": "57 files",
+      "value": "58 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "331",
+      "value": "339",
       "tone": "ok"
     },
     {
@@ -395,17 +395,17 @@
     ]
   },
   "jarvis_api": {
-    "status": "vercel_and_local_contract_present_provider_disabled",
+    "status": "vercel_railway_guarded_openrouter_review_contract",
     "path": "services/jarvis-api and api/",
     "runtime": "vercel_serverless_plus_local_fastapi_contract",
-    "provider_runtime": "disabled",
+    "provider_runtime": "server_side_openrouter_approval_gated",
     "writeback_runtime": "disabled",
     "hosting": {
       "static_dashboard": "vercel",
-      "hosted_api": "vercel_provider_disabled_contract",
+      "hosted_api": "vercel_and_railway_guarded_review_contract",
       "hosted_api_scope": "core_health_chat_prd_agent_voice_review_packet",
       "local_api": "fastapi_local_development",
-      "railway": "future_always_on_runtime_lane"
+      "railway": "always_on_jarvis_review_packet_runtime"
     },
     "openrouter_budget": {
       "daily_budget_usd": 5.0,
@@ -587,6 +587,118 @@
   "activity": [
     {
       "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-delivery-status.md",
+      "title": "Notion Delivery Status",
+      "modified": "2026-07-03T16:40:49.439510+00:00",
+      "size": 919
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
+      "title": "2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
+      "modified": "2026-07-03T16:33:40.715461+00:00",
+      "size": 12214
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "title": "2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "modified": "2026-07-03T16:33:40.703537+00:00",
+      "size": 13174
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.pdf",
+      "title": "2026-07-03-e1-7-railway-jarvis-final-report.pdf",
+      "modified": "2026-07-03T16:33:40.690139+00:00",
+      "size": 9463
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-cloud-kb-retrospective.pdf",
+      "title": "2026-07-03-cloud-kb-retrospective.pdf",
+      "modified": "2026-07-03T16:33:40.680736+00:00",
+      "size": 11939
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-vercel-production-cure-report.pdf",
+      "title": "2026-07-03-vercel-production-cure-report.pdf",
+      "modified": "2026-07-03T16:33:40.669349+00:00",
+      "size": 9099
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/documentation-sync-packet.md",
+      "title": "Documentation Sync Packet: Vercel Production Cure",
+      "modified": "2026-07-03T16:33:00.110679+00:00",
+      "size": 9034
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
+      "title": "2026-07-03 Vercel Production Cure",
+      "modified": "2026-07-03T16:32:27.119727+00:00",
+      "size": 1884
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.md",
+      "title": "Notion Update Packet: Vercel Production Cure",
+      "modified": "2026-07-03T16:32:27.035224+00:00",
+      "size": 3581
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/agent-handout.md",
+      "title": "Agent Handout: Vercel Production Cure",
+      "modified": "2026-07-03T16:32:26.953443+00:00",
+      "size": 2905
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-vercel-production-cure-report.md",
+      "title": "Vercel Production Cure Report",
+      "modified": "2026-07-03T16:32:26.871368+00:00",
+      "size": 6110
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
+      "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
+      "modified": "2026-07-03T16:31:05.626043+00:00",
+      "size": 7926
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
+      "title": "Epic 1 Summary And Final Test Plan",
+      "modified": "2026-07-03T16:30:50.564472+00:00",
+      "size": 9367
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md",
+      "title": "E1.7 Railway Jarvis Final Report",
+      "modified": "2026-07-03T16:30:18.606311+00:00",
+      "size": 6358
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-cloud-kb-retrospective.md",
+      "title": "Cloud And KB Retrospective",
+      "modified": "2026-07-03T16:29:59.086462+00:00",
+      "size": 8414
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.pending.md",
+      "title": "Pending Notion Update Packet: Vercel Production Cure",
+      "modified": "2026-07-03T16:07:11.180404+00:00",
+      "size": 3689
+    },
+    {
+      "kind": "project_run",
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/telegram-delivery-status.md",
       "title": "Telegram File Delivery Status",
       "modified": "2026-07-03T15:53:02.636863+00:00",
@@ -598,13 +710,6 @@
       "title": "Notion Delivery Status",
       "modified": "2026-07-03T15:51:35.772030+00:00",
       "size": 867
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-cloud-kb-retrospective.pdf",
-      "title": "2026-07-03-cloud-kb-retrospective.pdf",
-      "modified": "2026-07-03T15:50:25.585689+00:00",
-      "size": 11500
     },
     {
       "kind": "project_run",
@@ -628,13 +733,6 @@
       "size": 3713
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-cloud-kb-retrospective.md",
-      "title": "Cloud And KB Retrospective",
-      "modified": "2026-07-03T15:50:16.758968+00:00",
-      "size": 7908
-    },
-    {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.md",
       "title": "Cloud Verification Status",
@@ -647,20 +745,6 @@
       "title": "Obsidian And Graphify Retrospective",
       "modified": "2026-07-03T15:36:32.913292+00:00",
       "size": 2153
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
-      "title": "2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
-      "modified": "2026-07-03T15:35:02.316779+00:00",
-      "size": 12053
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
-      "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
-      "modified": "2026-07-03T15:34:30.395610+00:00",
-      "size": 7723
     },
     {
       "kind": "project_run",
@@ -712,20 +796,6 @@
       "size": 16078
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.pdf",
-      "title": "2026-07-03-e1-7-railway-jarvis-final-report.pdf",
-      "modified": "2026-07-03T14:57:44.173745+00:00",
-      "size": 9268
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf",
-      "title": "2026-07-03-epic-1-summary-and-final-test-plan.pdf",
-      "modified": "2026-07-03T14:57:44.160240+00:00",
-      "size": 12683
-    },
-    {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-03-e1-7-railway-jarvis-final.md",
       "title": "2026-07-03 E1.7 Railway Jarvis Final",
@@ -755,24 +825,10 @@
     },
     {
       "kind": "project_report",
-      "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md",
-      "title": "E1.7 Railway Jarvis Final Report",
-      "modified": "2026-07-03T14:55:21.078491+00:00",
-      "size": 5754
-    },
-    {
-      "kind": "project_report",
       "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md",
       "title": "Epic 2 Delivery Plan And Owner Questions",
       "modified": "2026-07-03T14:54:36.241040+00:00",
       "size": 11010
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
-      "title": "Epic 1 Summary And Final Test Plan",
-      "modified": "2026-07-03T14:53:31.853866+00:00",
-      "size": 8751
     },
     {
       "kind": "project_report",
@@ -2907,7 +2963,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 57,
+    "file_count": 58,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -3193,6 +3249,11 @@
         "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
         "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
         "excerpt": "# Run: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls, no gated tools.  ## Task  Create the local PRD-to-ICP dry-run outcome packet (E2.0A) using approved public-safe sources only.  ## Inputs  - `project/workflows/market-research-engine.yaml` - `project/runs/2026-07-03-claude-contin"
+      },
+      {
+        "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
+        "title": "2026-07-03 Vercel Production Cure",
+        "excerpt": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run, generated at `2026-07-03T16:15:05.906911+00:00`. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes pass"
       }
     ]
   },
@@ -3709,17 +3770,17 @@
     {
       "path": "project/reports/2026-07-03-cloud-kb-retrospective.md",
       "title": "Cloud And KB Retrospective",
-      "text": "# Cloud And KB Retrospective  Date: 2026-07-03 Status: Review Scope: Jarvis cloud reliability, Vercel freshness, E1.6 collaborator KB, daily founder-note addendum, Graphify/Obsidian knowledge-system retrospective  ## Executive Verdict  The Jarvis cloud path is working for the current provider-disabled review-packet baseline. Railway is running and the hosted API passed all checks used in this continuation.  It is not perfect yet. Vercel production is reachable and browser-clean, but it serves an older dashboard data bundle than the current E1.7 review preview. Therefore the correct status is:  ```text Railway Jarvis review packets: working Vercel production availability: working Vercel production freshness: stale Vercel current preview: ready and fresh Full product runtime: gated ```  ## Scorecard  | Area | Score | Visual | Result | |---|---:|---|---| | Railway API availability | 5/5 | ##### | service running, health passed | | Provider safety | 5/5 | ##### | provider calls stayed `0` | | Writeback safety | 5/5 | ##### | external writeback stayed `0` | | Endpoint coverage | 5/5 | ##### | health, CORS, chat, PRD/ICP, orchestra, roles, voice text, approval gate checked | | Dashboard "
+      "text": "# Cloud And KB Retrospective  Date: 2026-07-03 Status: Review Scope: Jarvis cloud reliability, Vercel freshness, E1.6 collaborator KB, daily founder-note addendum, Graphify/Obsidian knowledge-system retrospective  ## Executive Verdict  Deployment cure addendum: after the Vercel/Railway cure, the exact public dashboard URL is production-current and serves the regenerated July 3 dashboard data. The Vercel same-origin API and Railway hosted API both report `MODEL_PROVIDER=openrouter`, provider calls `0`, and external writeback `0`.  The Jarvis cloud path is working for a guarded OpenRouter review-packet baseline. Railway is running and the hosted API passed all checks used in this continuation.  It is not perfect yet. Vercel production is reachable, browser-clean, and current after the cure, but full product runtime remains gated. Therefore the correct status is:  ```text Railway Jarvis guarded review packets: working Vercel production availability: working Vercel production freshness: current after cure Vercel current public alias: points to the current production deployment OpenRouter provider execution: wired but blocked until external credential storage is explicitly approved Full"
     },
     {
       "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md",
       "title": "E1.7 Railway Jarvis Final Report",
-      "text": "# E1.7 Railway Jarvis Final Report  Date: 2026-07-03 Status: Review / provider-disabled hosted runtime verified Scope: hosted Jarvis API, dashboard API routing, agent-orchestra review packets, final Epic 1 runtime gate  ## Executive Result  E1.7 is complete for the provider-disabled hosted runtime baseline. The Railway `jarvis-api` service was deployed from the service root, reached running success state, received a Railway service domain, and passed hosted HTTPS checks for health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text routes.  This is not a full customer SaaS runtime yet. Provider calls, durable writeback, raw voice storage, authenticated client portals, and persistent client data remain gated.  ## Proof Scorecard  | Capability | Score | Visual | Current result | |---|---:|---|---| | Hosted API availability | 5/5 | ##### | Railway service running and health route passed | | Provider safety | 5/5 | ##### | `MODEL_PROVIDER=none`, provider calls `0` | | Writeback safety | 5/5 | ##### | external writeback `0`; dashboard writeback still gated | | Dashboard routing | 4/5 | ####. | API-base config and lane send controls implemented; latest site deploy rem"
+      "text": "# E1.7 Railway Jarvis Final Report  Date: 2026-07-03 Status: Done for production-current guarded cloud review flow; Review for full product runtime Scope: hosted Jarvis API, dashboard API routing, agent-orchestra review packets, final Epic 1 runtime gate  ## Executive Result  E1.7 is complete for the production-current guarded cloud review-flow baseline. The exact public dashboard URL now points to the current Vercel production deployment, serves regenerated July 3 dashboard data, and exposes the same-origin Jarvis API. The Railway `jarvis-api` service was deployed from the service root with Nixpacks, reached running success state, and passed hosted HTTPS checks for health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, and voice-safe text routes.  This is not a full customer SaaS runtime yet. OpenRouter routing is wired and guarded, but live provider execution was blocked because copying the local OpenRouter key into Vercel/Railway external environment storage requires explicit credential-storage approval. Provider calls, durable writeback, raw voice storage, authenticated client portals, and persistent client data remain gated.  ## Proof Scorecard  | Ca"
     },
     {
       "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
       "title": "Epic 1 Summary And Final Test Plan",
-      "text": "# Epic 1 Summary And Final Test Plan  Date: 2026-07-03 Status: Epic 1 closeout package updated; E1.7 provider-disabled Railway runtime verified Scope: E1.1-E1.7 knowledge base, PRD workflow, dashboard/Jarvis, final testmeeting rerun, critique  ## Executive Summary  Epic 1 built the internal ArchFlow proof engine: approved product material can become source inventory, context digest, PRD, task/backlog package, review report, KB update, and dashboard/Jarvis review packet without storing raw private material in public files.  The strongest result is method reliability, not market demand. Epic 1 proves that ArchFlow can operate a controlled PRD/KB workflow on itself and now has a minimal hosted Jarvis API for provider-disabled review packets. It does not prove that buyers will pay, that provider-backed Jarvis is safe to run by default, or that autonomous writeback is ready.  ## Epic 1 Scorecard  | Dimension | Score | Visual | Evidence | |---|---:|---|---| | Source boundary discipline | 5/5 | ##### | E1.4 principle, public safety scan, testmeeting sanitizer | | PRD artifact generation | 5/5 | ##### | E1.2 and E1.2.8 PRD/PDF packages | | KB governance | 4/5 | ####. | WikiLLM run notes, E"
+      "text": "# Epic 1 Summary And Final Test Plan  Date: 2026-07-03 Status: Epic 1 closeout package updated; E1.7 production-current guarded cloud review flow verified Scope: E1.1-E1.7 knowledge base, PRD workflow, dashboard/Jarvis, final testmeeting rerun, critique  ## Executive Summary  Epic 1 built the internal ArchFlow proof engine: approved product material can become source inventory, context digest, PRD, task/backlog package, review report, KB update, and dashboard/Jarvis review packet without storing raw private material in public files.  The strongest result is method reliability, not market demand. Epic 1 proves that ArchFlow can operate a controlled PRD/KB workflow on itself and now has a production-current public dashboard plus hosted Jarvis APIs for guarded OpenRouter review packets. It does not prove that buyers will pay, that provider-backed Jarvis is safe to run by default, or that autonomous writeback is ready.  ## Epic 1 Scorecard  | Dimension | Score | Visual | Evidence | |---|---:|---|---| | Source boundary discipline | 5/5 | ##### | E1.4 principle, public safety scan, testmeeting sanitizer | | PRD artifact generation | 5/5 | ##### | E1.2 and E1.2.8 PRD/PDF packages | | KB g"
     },
     {
       "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md",
@@ -3739,7 +3800,12 @@
     {
       "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
       "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
-      "text": "# Railway Dashboard And Jarvis Full-Cloud Setup Test Plan  Date: 2026-07-03 Status: setup/test plan executed; provider-disabled hosted runtime verified Scope: E1.7 hosted dashboard, Jarvis API, and agentic control surface  ## Executive Answer  Railway is the right backend host for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.  Current proven state is Vercel-connected and provider-disabled, with a Railway-hosted Jarvis API now verified for the review-packet contract. The deployment proves the smallest cloud runtime for dashboard-to-backend operation without local Codex/Jarvis. It does not activate provider models, autonomous writeback, raw voice storage, or customer-facing auth/persistence.  ## Live Railway Check On 2026-07-03  FACT:  - Railway MCP was reachable, but not link-aware for this local project in the active session. - Railway CLI was linked to the project/service and used for service status, variables, deployment, domain generation, and logs. - Only non-secret provider-disabled runtime variables"
+      "text": "# Railway Dashboard And Jarvis Full-Cloud Setup Test Plan  Date: 2026-07-03 Status: setup/test plan executed; production-current guarded OpenRouter review runtime verified Scope: E1.7 hosted dashboard, Jarvis API, and agentic control surface  ## Executive Answer  Railway is the right backend host for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.  Current proven state is Vercel-connected, Railway-hosted, and guarded for OpenRouter review packets. The deployment proves the smallest cloud runtime for dashboard-to-backend operation without local Codex/Jarvis. It does not execute provider models, autonomous writeback, raw voice storage, or customer-facing auth/persistence because the OpenRouter key was not approved for external SaaS env storage in this run.  ## Live Railway Check On 2026-07-03  FACT:  - Railway MCP was reachable, but not link-aware for this local project in the active session. - Railway CLI was linked to the project/service and used for service status, variables, deployment, domain generation,"
+    },
+    {
+      "path": "project/reports/2026-07-03-vercel-production-cure-report.md",
+      "title": "Vercel Production Cure Report",
+      "text": "# Vercel Production Cure Report  Date: 2026-07-03 Status: complete for production-current guarded review flow; blocked for live provider execution Scope: Vercel production alias, Railway Jarvis API, guarded OpenRouter routes, dashboard freshness, and Epic 1 cloud closeout  ## Executive Verdict  The public dashboard cure succeeded for the review-flow scope. The exact public URL now points to the current Vercel production deployment, loads the dashboard, serves regenerated July 3 dashboard data, and exposes the Vercel same-origin Jarvis API.  Railway is also healthy for the Jarvis API. The service uses the Python/Nixpacks deployment path, passes health checks, stays awake, and serves the Architecture 1 PRD/ICP, Architecture 2 agent-orchestra, role config, role-update candidate, chat, and voice-text routes.  OpenRouter execution is wired but not activated. Both Vercel and Railway report `MODEL_PROVIDER=openrouter`, but provider calls remain `0` because copying the local OpenRouter key into external SaaS runtime env storage was blocked by approval review. That is the correct safety outcome until explicit credential-storage approval is given.  ## What Changed  | Area | Result | |---|---"
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -4507,6 +4573,31 @@
       "text": "# Agent Handout: Vercel Dashboard And Jarvis Connection  Date: 2026-07-03 Status: complete for Vercel provider-disabled dashboard/Jarvis connection Lane: E1.7 hosted dashboard/Jarvis connection  ## Goal  Make the hosted Vercel dashboard connect to a working provider-disabled Jarvis API surface while keeping local Jarvis working on `127.0.0.1:8787`.  ## Current Implementation  FACT: - The static dashboard remains served by Vercel through `/dashboard`. - A Vercel serverless Jarvis contract now exists under `api/`. - `/health` rewrites to `/api/health` on Vercel. - The Vercel-hosted API was reduced to the core dashboard connection surface after the first deploy hit the hosting-plan serverless function limit. - The hosted API returns review packets only. - Provider calls, durable writeback, raw audio storage, Telegram automation, and production publication remain disabled. - Local FastAPI Jarvis was restarted on port `8787` with OpenRouter selected in status and provider calls still disabled behind budget/approval guards. - Production Vercel deployment is ready at `https://<protected-preview-host>`. - Production alias is `https://<protected-preview-host>`. - Hosted `/health` returns `s"
     },
     {
+      "path": "project/runs/2026-07-03-vercel-production-cure/agent-handout.md",
+      "title": "Agent Handout: Vercel Production Cure",
+      "text": "# Agent Handout: Vercel Production Cure  Date: 2026-07-03 Status: complete for production-current guarded review flow  ## Task  Cure the Vercel production setup without destructive cleanup, make the public dashboard current, verify Jarvis on Vercel and Railway, and keep OpenRouter/provider/writeback boundaries explicit.  ## Results  FACT:  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run: `2026-07-03T16:15:05.906911+00:00`. - Vercel same-origin Jarvis API health passed. - Railway Jarvis deployed successfully after using the service directory as deployment root. - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate checks passed. - Vercel and Railway both report `MODEL_PROVIDER=openrouter`. - Provider calls remained `0`. - External writeback remained `0`. - Approved provider-route tests stopped at `openrouter_api_key_missing` because external credential storage was not approved. - No Vercel projects were deleted.  INTERPRETATION:  The cloud review flow is now reliable for Epic 1: production-current dashboard plus guarded Jarvis endpoin"
+    },
+    {
+      "path": "project/runs/2026-07-03-vercel-production-cure/documentation-sync-packet.md",
+      "title": "Documentation Sync Packet: Vercel Production Cure",
+      "text": "# Documentation Sync Packet: Vercel Production Cure  Date: 2026-07-03 Status: complete after lead deployment facts Scope: public-safe documentation and Notion synchronization for the Vercel/Railway deployment cure  ## Role Boundary  This packet was prepared by the documentation/Notion synchronization worker and finalized after the lead recorded deployment evidence. It does not contain private deployment IDs, account IDs, secrets, or private URLs.  ## Final Cure Facts  FACT:  - Public dashboard production freshness is current after the cure. - The public dashboard URL points to the current Vercel production deployment. - Vercel same-origin API and Railway Jarvis API both passed Architecture 1 and Architecture 2 review-packet checks. - Vercel and Railway both report `MODEL_PROVIDER=openrouter`, provider calls `0`, and external writeback `0`. - Provider-approved checks correctly stop at `openrouter_api_key_missing` because external OpenRouter key storage was not approved. - No legacy Vercel project was deleted because safe deletion evidence was incomplete.  INTERPRETATION:  E1.7 can be marked Done for the production-current guarded review-flow baseline. It should remain Review for ful"
+    },
+    {
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-delivery-status.md",
+      "title": "Notion Delivery Status",
+      "text": "# Notion Delivery Status  Date: 2026-07-03 Status: delivered  ## Updated Surfaces  - Epic 1 parent page: top deployment-cure summary inserted. - E1.7 task: status updated to `Done`; notes and top evidence block inserted. - Daily Founder Notes: founder addendum inserted. - Links page: current public dashboard and report links inserted. - Epic 2 parent page: dependency note inserted. - Epic 2 Planning task: dependency note inserted.  ## Verification  - E1.7 fetch after update showed `Status=Done`. - E1.7 page content begins with `2026-07-03 Deployment Cure Final`. - Links page content begins with `Current ArchFlow Cloud Review Surface - 2026-07-03`. - Epic 2 Planning content begins with the deployment-cure dependency note.  ## Boundary  No private Notion URLs, private preview URLs, deployment IDs, account IDs, Railway project/service IDs, API keys, chat IDs, or secrets are stored in this public status file."
+    },
+    {
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.md",
+      "title": "Notion Update Packet: Vercel Production Cure",
+      "text": "# Notion Update Packet: Vercel Production Cure  Date: 2026-07-03 Status: ready for append-only Notion sync  ## Epic 1 Parent Page  ```text 2026-07-03 deployment cure addendum: Epic 1 is now complete for the production-current guarded cloud review-flow scope. The exact public dashboard URL points to the current Vercel production deployment and serves regenerated July 3 dashboard data. Railway Jarvis is healthy for the documented endpoint set. Jarvis Architecture 1 PRD/ICP and Architecture 2 agent-orchestra checks passed on Vercel and Railway as review packets. Provider mode is OpenRouter-wired but guarded: provider calls remain 0 because external runtime storage of the local OpenRouter key was not approved in this run. Durable writeback remains disabled.  Decision: Epic 1 can be treated as Done for the production-current guarded review-flow baseline, but still Review for full product runtime. Do not infer SaaS readiness from this proof until auth, persistence, provider ledgering, writeback, raw voice policy, and buyer proof are separately completed. ```  ## E1.7 Task  ```text 2026-07-03 E1.7 deployment cure evidence: production dashboard route passed; production dashboard data fresh"
+    },
+    {
+      "path": "project/runs/2026-07-03-vercel-production-cure/notion-update-packet.pending.md",
+      "title": "Pending Notion Update Packet: Vercel Production Cure",
+      "text": "# Pending Notion Update Packet: Vercel Production Cure  Date: 2026-07-03 Status: pending final deployment evidence  ## Use Boundary  Do not send this packet until the lead records final Vercel/Railway cure facts. Replace bracketed values with verified results. Keep all updates append-only.  ## Epic 1 Parent Page  ```text 2026-07-03 deployment cure addendum: the Epic 1 cloud review surface was rechecked after the Vercel/Railway cure. Public dashboard production freshness is [current / still stale]. Railway Jarvis is [healthy / blocked / degraded] for the documented endpoint set. Jarvis Architecture 1 PRD/ICP checks [passed / failed / not run]. Jarvis Architecture 2 agent-orchestra checks [passed / failed / not run]. Provider mode is [provider-disabled / approved server-side OpenRouter with budget ledger / not enabled]. Durable writeback is [disabled / approval-gated / implemented with audit].  Decision: Epic 1 should be treated as [Review / Done for provider-disabled cloud flow / Done for full product runtime] based on the checks above. Do not infer full product readiness from public-site reachability alone. ```  ## E1.7 Task  ```text 2026-07-03 E1.7 deployment cure evidence: produc"
+    },
+    {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
       "title": "Daily Skill Retrospective And RAG Knowledge Review",
       "text": "# Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-01 Status: complete Scope: ArchFlow public-safe operations  ## Executive Summary  FACT: - The 21:00 evening skill and hook lane completed before this review and found no registry drift beyond narrow priority-task path hygiene. - The 22:30 daily lane is now distinct from the registry lane in the public agent roster, skill registry, and current local automation TOML. - Today's public artifacts heavily used `task-handout`, FACT/INTERPRETATION/HYPOTHESIS/GAP structure, live communication updates, run summaries, issue lists, and WikiLLM-style memory surfaces. - Static website/dashboard proof is strong for route and rendered-dashboard scope; provider-backed Jarvis, Railway/backend, live Nexus/writeback, owner-device voice proof, autonomous writeback, model-call cost logging, and Telegram delivery remain gated.  INTERPRETATION: - The useful operating pattern is now stable: live communication first, bounded run artifacts second, WikiLLM memory only for durable constraints, and no-op-safe scheduled maintenance when evidence does not justify churn. - The main risk for future agents is not missing a skill registry entry. The "
@@ -5160,6 +5251,11 @@
       "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
       "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
       "text": "# Run: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls, no gated tools.  ## Task  Create the local PRD-to-ICP dry-run outcome packet (E2.0A) using approved public-safe sources only.  ## Inputs  - `project/workflows/market-research-engine.yaml` - `project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md` - `docs/prd-icp-output-template.md` - `project/reports/2026-07-03-kb-update-principle.md` (E1.4 principle, applied)  ## Outputs  - `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` - `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` - `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` - `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` - `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` - `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md`  ## Key Content  FACT: The packet defines the research method only \u2014 source boundary, evidence card schema with provenance, A-D grade rubric, low-confidence ICP outline, and a scoping executi"
+    },
+    {
+      "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
+      "title": "2026-07-03 Vercel Production Cure",
+      "text": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run, generated at `2026-07-03T16:15:05.906911+00:00`. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes passed. - Railway Jarvis deployed successfully with the service directory as archive root and Nixpacks as builder. - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate routes passed. - Both Vercel and Railway report `MODEL_PROVIDER=openrouter`. - Provider calls remained `0`; external writeback remained `0`. - Provider-approved route tests returned review packets with `openrouter_api_key_missing`. - No legacy Vercel project was deleted because safe deletion evidence was not complete.  ## INTERPRETATION  The public cloud surface is now reliable for Epic 1's guarded review-flow scope: current dashboard, Vercel API, Railway API, and architecture-specific Jarvis packets. It is not yet a full product runtime because provider e"
     }
   ],
   "sources": [

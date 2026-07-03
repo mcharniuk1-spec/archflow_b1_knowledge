@@ -340,3 +340,21 @@ INTERPRETATION:
 
 GAP:
 - Provider-backed Jarvis, auth, persistence, durable writeback, raw voice handling, and buyer demand proof remain gated.
+
+## 2026-07-03 - Vercel production cure
+
+FACT:
+- The exact public dashboard URL now points to the current Vercel production deployment.
+- Production dashboard data was regenerated and verified current for the cure run.
+- Vercel same-origin Jarvis API and Railway Jarvis API both report `MODEL_PROVIDER=openrouter`, provider calls `0`, and external writeback `0`.
+- Architecture 1 PRD/ICP and Architecture 2 agent-orchestra routes passed on both Vercel and Railway as review packets.
+- Railway initially failed when deployed from the wrong archive root as a static app; redeploying with the service directory as root restored the Python/Nixpacks path and passed health checks.
+- No legacy Vercel projects were deleted because safe deletion evidence was incomplete.
+- Run note: `wiki/runs/2026-07-03-vercel-production-cure.md`.
+
+INTERPRETATION:
+- Epic 1 is Done for the production-current guarded cloud review-flow baseline.
+- Full product runtime remains gated because live OpenRouter execution, auth, persistence, writeback, raw voice, and buyer proof are not complete.
+
+GAP:
+- External OpenRouter key storage in Vercel/Railway needs explicit approval before any provider-backed run.

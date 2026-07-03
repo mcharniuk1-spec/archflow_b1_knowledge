@@ -280,3 +280,11 @@ ArchFlow Block 1 is the first public solution:
 - Vercel production availability is a separate fact from Vercel production freshness. On this continuation, production loaded without browser errors but served older dashboard data than the current E1.7 review preview.
 - Future agents must not claim "always-current cloud product" from API availability alone; production `data.json` freshness must be checked after pushes.
 - E1.6 role-split KB should not be called substantive until each role lane contains actual reviewed notes. The collaborator lane now has a founder-note-derived brief; before this continuation it was mostly routing scaffolding.
+
+## Vercel Production Cure Memory - 2026-07-03
+
+- The public dashboard URL now points to the current Vercel production deployment and served regenerated July 3 dashboard data during the cure.
+- Vercel and Railway Jarvis APIs are now guarded OpenRouter review-packet runtimes: `MODEL_PROVIDER=openrouter`, provider calls `0`, writeback `0`, and approved provider-route tests stop at `openrouter_api_key_missing`.
+- Do not describe this as live provider-backed Jarvis until external OpenRouter key storage is explicitly approved, a budget ledger is active, and a low-cost provider call is recorded.
+- Future Railway deploys for `services/jarvis-api` should use the service directory as the archive root; deploying from the wrong root can make Railway infer a static/Caddy app and crash because `uvicorn` is missing.
+- Legacy Vercel cleanup is destructive and requires a separate owner-approved inventory before deleting old projects.

@@ -6,15 +6,18 @@ Scope: Jarvis cloud reliability, Vercel freshness, E1.6 collaborator KB, daily f
 
 ## Executive Verdict
 
-The Jarvis cloud path is working for the current provider-disabled review-packet baseline. Railway is running and the hosted API passed all checks used in this continuation.
+Deployment cure addendum: after the Vercel/Railway cure, the exact public dashboard URL is production-current and serves the regenerated July 3 dashboard data. The Vercel same-origin API and Railway hosted API both report `MODEL_PROVIDER=openrouter`, provider calls `0`, and external writeback `0`.
 
-It is not perfect yet. Vercel production is reachable and browser-clean, but it serves an older dashboard data bundle than the current E1.7 review preview. Therefore the correct status is:
+The Jarvis cloud path is working for a guarded OpenRouter review-packet baseline. Railway is running and the hosted API passed all checks used in this continuation.
+
+It is not perfect yet. Vercel production is reachable, browser-clean, and current after the cure, but full product runtime remains gated. Therefore the correct status is:
 
 ```text
-Railway Jarvis review packets: working
+Railway Jarvis guarded review packets: working
 Vercel production availability: working
-Vercel production freshness: stale
-Vercel current preview: ready and fresh
+Vercel production freshness: current after cure
+Vercel current public alias: points to the current production deployment
+OpenRouter provider execution: wired but blocked until external credential storage is explicitly approved
 Full product runtime: gated
 ```
 
@@ -27,7 +30,7 @@ Full product runtime: gated
 | Writeback safety | 5/5 | ##### | external writeback stayed `0` |
 | Endpoint coverage | 5/5 | ##### | health, CORS, chat, PRD/ICP, orchestra, roles, voice text, approval gate checked |
 | Dashboard browser QA | 5/5 | ##### | production and current preview UI load, expected controls present, no browser errors found |
-| Vercel update freshness | 3/5 | ###.. | current preview fresh after push; production still stale |
+| Vercel update freshness | 5/5 | ##### | production now serves the regenerated July 3 dashboard data |
 | Full SaaS product runtime | 2/5 | ##... | auth, persistence, provider ledger, writeback, voice storage, client workspaces remain gated |
 
 ## Cloud Function Proof
@@ -35,7 +38,7 @@ Full product runtime: gated
 | Function | Result | Meaning |
 |---|---|---|
 | Railway service state | Passed | hosted backend is running; private IDs are not stored in public files |
-| `GET /health` | Passed | model provider `none`, provider calls `0`, writeback `0` |
+| `GET /health` | Passed | model provider `openrouter`, provider calls `0`, writeback `0` |
 | CORS preflight from Vercel production origin | Passed | production dashboard origin can call the hosted API |
 | `POST /api/chat` | Passed | returns review packet only |
 | `GET /api/config/roles` | Passed | role config is available |
@@ -57,19 +60,18 @@ FACT:
 - Production Config screen exposed editable chain fields, `Save locally`, and `Export config packet`.
 - `Save locally` was clicked successfully in the production browser session.
 - Browser console and page-error probes returned no errors.
-- Production dashboard data was generated on July 2.
-- Review preview dashboard data was generated on July 3 after the E1.7 artifacts.
-- Current preview dashboard data was generated on July 3 after the final cloud/KB retrospective update.
+- Before the cure, production dashboard data was generated on July 2 and was stale.
+- After the cure, the exact public production URL serves dashboard data generated on July 3 at `2026-07-03T16:15:05.906911+00:00`.
 - Current preview URL and private deployment metadata are not stored in the public repo.
 
 INTERPRETATION:
 
-The user-facing production dashboard shell is healthy, but the production data bundle is stale. A current non-production preview exists for review. The main reliability defect is still production freshness, because production did not automatically reflect the latest pushed state during this continuation.
+The user-facing production dashboard shell is healthy and production freshness is now repaired for the linked Vercel project and public alias. The remaining reliability defect is not freshness; it is that provider execution cannot be completed until storing the OpenRouter key in Vercel/Railway is explicitly approved after credential-storage risk review.
 
 GAP:
 
-- No production promotion was performed in this continuation because production promotion remains gated.
-- Production should either be promoted explicitly from the current preview or have its Git-to-Vercel freshness repaired before it is treated as the always-current review surface.
+- No live OpenRouter model response was executed because copying the local key into external SaaS env storage was blocked by approval review.
+- Durable writeback, auth, persistence, raw voice handling, provider ledgering, and client workspaces remain productization gates.
 
 ## E1.6 Collaborator KB Update
 
@@ -92,7 +94,7 @@ The primary-operator note records the corrected July 3 interpretation:
 
 - earlier daily founder notes were accurate for the pre-E1.7 state;
 - the later E1.7 run moved Railway from gated to provider-disabled hosted baseline verified;
-- Vercel production freshness remains the new problem;
+- Vercel production freshness was the problem before the cure and is now repaired for the public alias;
 - full product runtime remains gated.
 
 This prevents future agents from reading the earlier current-state report and missing the later cloud proof.

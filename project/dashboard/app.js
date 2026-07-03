@@ -887,6 +887,46 @@ function apiEndpoint(path) {
   return `${jarvisApiBase}${normalized}`;
 }
 
+function cloudApprovalRequested(input) {
+  const lower = String(input || "").toLowerCase();
+  return lower.includes("openrouter") || lower.includes("cloud model") || lower.includes("provider approved") || lower.includes("use provider");
+}
+
+function providerRequestPayload(input, source = "typed command") {
+  const useProvider = cloudApprovalRequested(input);
+  return {
+    request: String(input || "").slice(0, 12000),
+    lane: architectureMode === "control" ? "agent_orchestra" : "prd_icp_flow",
+    architecture: architectureMode,
+    approved_test_input: false,
+    owner_approval: useProvider,
+    provider_approval: useProvider,
+    source_refs: [source, "dashboard command"],
+  };
+}
+
+async function sendJarvisCloudCommand(input, source = "typed command") {
+  const endpoint = architectureMode === "control" ? "/api/lanes/agent-orchestra" : "/api/lanes/prd-icp";
+  await checkJarvisApi("Jarvis command submit", { silent: true, timeoutMs: 4000 });
+  const response = await fetch(apiEndpoint(endpoint), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(providerRequestPayload(input, source)),
+  });
+  if (!response.ok) throw new Error(`backend returned ${response.status}`);
+  return response.json();
+}
+
+function cloudResultText(result) {
+  const provider = result?.payload?.provider_result;
+  const runtime = result?.payload?.architecture_runtime;
+  if (provider?.provider_executed && provider.reply) {
+    return `${runtime?.architecture || "Cloud Jarvis"} returned via ${result.runtime?.model || "OpenRouter"}:\n\n${provider.reply}`;
+  }
+  const reason = provider?.reason ? ` Provider route: ${provider.reason}.` : "";
+  return `${runtime?.architecture || "Cloud Jarvis"} returned ${result?.status || "a review packet"}.${reason} Writeback remains disabled until review.`;
+}
+
 async function checkJarvisApi(reason = "health check", options = {}) {
   const controller = new AbortController();
   const timeoutId = window.setTimeout(() => controller.abort(), options.timeoutMs || 2400);
@@ -1654,7 +1694,7 @@ function jarvisReply(input, source = "typed command") {
 
   if (lower.includes("status") || lower.includes("what works") || lower.includes("done")) {
     const e13 = dashboardData?.gates?.e1_3;
-    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard is static/read-only with local browser packets. Jarvis API is ${jarvisApiState.status}; provider calls, Railway, durable voice/file writes, and writeback remain gated until approved backend/runtime proof exists.`;
+    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard keeps local browser packets, while Jarvis API is ${jarvisApiState.status}; OpenRouter execution is server-side only and requires explicit owner/provider approval plus budget guards. Durable voice/file writes and writeback remain gated.`;
   }
 
   if (lower.includes("voice") || lower.includes("speak") || lower.includes("sound")) {
@@ -1708,7 +1748,7 @@ function jarvisReply(input, source = "typed command") {
   return `Architecture 1 command staged: ${packet.id}. I will treat this as a PRD/ICP service-output request and preserve missing information as questions or gaps.`;
 }
 
-function handleGlobalSubmit(value, source = "typed command") {
+async function handleGlobalSubmit(value, source = "typed command") {
   const input = String(value || "").trim();
   if (!input) return;
   const previousTab = activeTab;
@@ -1717,6 +1757,18 @@ function handleGlobalSubmit(value, source = "typed command") {
   appendChat("assistant", reply, "Jarvis static command shell");
   appendEvent("Jarvis command", `${input.slice(0, 120)} -> ${reply.slice(0, 160)}`, "ok");
   if (autoSpeakEnabled) speakText(reply);
+  if (!["refresh", "reload", "update dashboard"].some((phrase) => input.toLowerCase().includes(phrase))) {
+    try {
+      appendEvent("Jarvis cloud route", `Sending ${architectureMeta().label} request to ${jarvisApiBase}.`, "ok");
+      const result = await sendJarvisCloudCommand(input, source);
+      const cloudReply = cloudResultText(result);
+      appendChat("assistant", cloudReply, "Jarvis cloud API");
+      appendEvent("Jarvis cloud response", `${result.status || "ok"} from ${architectureMeta().label}.`, result.status === "provider_response_created" ? "ok" : "warn");
+      if (autoSpeakEnabled) speakText(cloudReply);
+    } catch (error) {
+      appendEvent("Jarvis cloud fallback", `Cloud request unavailable: ${error.message || error}. Local packet preserved.`, "warn");
+    }
+  }
   if (activeTab === previousTab && activeTab !== "jarvis") activeTab = "jarvis";
   window.history.replaceState(null, "", `#${activeTab}`);
   render();
@@ -1740,7 +1792,7 @@ function renderJarvis(data) {
           <span>Static snapshot</span>
           <span>Browser-local packets</span>
           <span>${escapeHtml(jarvisApiState.label)}</span>
-          <span>Provider disabled</span>
+          <span>OpenRouter approval-gated</span>
           <span>Writeback gated</span>
         </div>
         <form class="voice-fallback voice-control-panel" id="voiceFallbackForm" data-testid="voice-fallback-form" aria-label="Voice and transcript controls">
@@ -2472,7 +2524,7 @@ function renderNodeControlPanel(node) {
                 <div class="row"><span class="row-title">Evidence</span><div class="row-meta">${escapeHtml(node.evidence || "Evidence pending.")}</div></div>
               </div>
               <div class="schema-runtime-gates compact">
-                <span>Provider calls blocked</span>
+                <span>Provider calls require approval</span>
                 <span>Raw capture blocked</span>
                 <span>Writeback requires approval</span>
                 <span>Export creates local packet</span>
@@ -2547,7 +2599,7 @@ function renderNodeControlPanel(node) {
               <label>Pain / risk reduced<textarea id="nodePainInput" rows="3">${escapeHtml(node.pain || "")}</textarea></label>
               <label>Evidence<textarea id="nodeEvidenceInput" rows="4">${escapeHtml(node.evidence || "")}</textarea></label>
               <label>Business objective<textarea id="nodeBusinessObjectiveInput" rows="3">${escapeHtml(node.businessObjective || "")}</textarea></label>
-              <div class="callout compact">Provider calls, writeback, deployment, raw capture, and third-party tool installation remain blocked until explicitly approved and verified.</div>
+              <div class="callout compact">Provider calls, writeback, deployment, raw capture, and third-party tool installation require explicit approval and verification before execution.</div>
             </section>
           </div>
         </form>
@@ -2756,6 +2808,8 @@ function bindPrdIcpRequestSurface() {
       lane: "prd_icp_flow",
       architecture: architectureMode,
       approved_test_input: false,
+      owner_approval: cloudApprovalRequested(input.value),
+      provider_approval: cloudApprovalRequested(input.value),
       source_refs: ["sanitized E1.2.8 source packet", "approved discovery summary labels"],
     };
     if (status) status.textContent = "Sending to local backend if available...";
@@ -3030,6 +3084,8 @@ async function sendBlockSchemaToBackend() {
     lane: kind === "service" ? "prd_icp_flow" : "agent_orchestra",
     architecture: kind,
     approved_test_input: false,
+    owner_approval: false,
+    provider_approval: false,
     source_refs: ["dashboard block-schema editor", "browser-local schema candidate"],
   };
   if (status) status.textContent = "Sending provider-disabled schema packet to backend if available...";
@@ -3109,7 +3165,7 @@ function renderConfig() {
       </div>
       <div class="callout">
         <strong>Jarvis API base</strong>
-        <p>Use the deployed Railway or Vercel API origin here. This value is saved only in this browser and lets the dashboard check hosted <span class="code">/health</span> and submit provider-disabled review packets.</p>
+        <p>Use the deployed Railway or Vercel API origin here. This value is saved only in this browser and lets the dashboard check hosted <span class="code">/health</span> and submit guarded review/provider packets.</p>
         <label>API base URL<input id="cfgApiBase" value="${escapeHtml(jarvisApiBase)}" placeholder="https://example.up.railway.app" /></label>
         <p class="muted">Current API state: ${escapeHtml(jarvisApiState.label)} - ${escapeHtml(jarvisApiState.detail)}</p>
       </div>
@@ -3391,7 +3447,7 @@ function renderLangSmith(data) {
       <div class="list">
         <div class="row"><span class="row-title">Allowed</span><div class="row-meta">Sanitized run metadata, node names, public-safe source packet IDs, approval status, trace links.</div></div>
         <div class="row"><span class="row-title">Blocked</span><div class="row-meta">Raw private dialogue, real secrets, private workspace links, local-only paths, unapproved source text.</div></div>
-        <div class="row"><span class="row-title">Next check</span><div class="row-meta">Use the existing local runtime for sanitized traces only. Hosted provider calls stay gated.</div></div>
+        <div class="row"><span class="row-title">Next check</span><div class="row-meta">Use the existing local runtime for sanitized traces only. Hosted provider calls require approval and budget proof.</div></div>
       </div>
     </section>
     <section class="panel" style="margin-top:16px">
@@ -3403,7 +3459,7 @@ function renderLangSmith(data) {
 
 function renderEnv(data) {
   const jarvisStatus = data.jarvis_api?.status || "unknown";
-  const jarvisTone = jarvisStatus.includes("provider_disabled") ? "ok" : "warn";
+  const jarvisTone = jarvisStatus.includes("provider_disabled") || jarvisStatus.includes("guarded_openrouter") ? "ok" : "warn";
   view.innerHTML = `
     <div class="grid cols-3">
       ${card({ label: "Jarvis API", value: jarvisStatus, note: data.jarvis_api?.path || "services/jarvis-api", tone: jarvisTone })}

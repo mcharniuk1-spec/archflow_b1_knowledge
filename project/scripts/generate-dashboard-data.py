@@ -361,17 +361,17 @@ def jarvis_api_status() -> dict:
         "/api/voice/chat",
     ]
     return {
-        "status": "vercel_and_local_contract_present_provider_disabled" if all(path.exists() for path in required) else "missing_or_partial",
+        "status": "vercel_railway_guarded_openrouter_review_contract" if all(path.exists() for path in required) else "missing_or_partial",
         "path": "services/jarvis-api and api/",
         "runtime": "vercel_serverless_plus_local_fastapi_contract",
-        "provider_runtime": "disabled",
+        "provider_runtime": "server_side_openrouter_approval_gated",
         "writeback_runtime": "disabled",
         "hosting": {
             "static_dashboard": "vercel",
-            "hosted_api": "vercel_provider_disabled_contract",
+            "hosted_api": "vercel_and_railway_guarded_review_contract",
             "hosted_api_scope": "core_health_chat_prd_agent_voice_review_packet",
             "local_api": "fastapi_local_development",
-            "railway": "future_always_on_runtime_lane",
+            "railway": "always_on_jarvis_review_packet_runtime",
         },
         "openrouter_budget": {
             "daily_budget_usd": 5.00,
@@ -591,7 +591,7 @@ def main() -> None:
             {"label": "LangGraph", "value": langgraph["status"], "tone": "ok"},
             {"label": "CrewAI", "value": crewai["status"], "tone": "ok"},
             {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "ok"},
-            {"label": "Jarvis API", "value": jarvis_api["status"], "tone": "ok" if "provider_disabled" in jarvis_api["status"] else "warn"},
+            {"label": "Jarvis API", "value": jarvis_api["status"], "tone": "ok" if "guarded_openrouter" in jarvis_api["status"] else "warn"},
             {"label": "WikiLLM files", "value": f"{wiki_summary()['file_count']} files", "tone": "ok"},
             {"label": "Activity files", "value": str(len(activity_items())), "tone": "ok"},
             {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},

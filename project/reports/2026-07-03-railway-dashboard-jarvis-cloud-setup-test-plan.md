@@ -1,14 +1,14 @@
 # Railway Dashboard And Jarvis Full-Cloud Setup Test Plan
 
 Date: 2026-07-03
-Status: setup/test plan executed; provider-disabled hosted runtime verified
+Status: setup/test plan executed; production-current guarded OpenRouter review runtime verified
 Scope: E1.7 hosted dashboard, Jarvis API, and agentic control surface
 
 ## Executive Answer
 
 Railway is the right backend host for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.
 
-Current proven state is Vercel-connected and provider-disabled, with a Railway-hosted Jarvis API now verified for the review-packet contract. The deployment proves the smallest cloud runtime for dashboard-to-backend operation without local Codex/Jarvis. It does not activate provider models, autonomous writeback, raw voice storage, or customer-facing auth/persistence.
+Current proven state is Vercel-connected, Railway-hosted, and guarded for OpenRouter review packets. The deployment proves the smallest cloud runtime for dashboard-to-backend operation without local Codex/Jarvis. It does not execute provider models, autonomous writeback, raw voice storage, or customer-facing auth/persistence because the OpenRouter key was not approved for external SaaS env storage in this run.
 
 ## Live Railway Check On 2026-07-03
 
@@ -16,7 +16,7 @@ FACT:
 
 - Railway MCP was reachable, but not link-aware for this local project in the active session.
 - Railway CLI was linked to the project/service and used for service status, variables, deployment, domain generation, and logs.
-- Only non-secret provider-disabled runtime variables were set.
+- Only non-secret guarded-provider runtime variables were set.
 - The service root deployed was `services/jarvis-api`.
 - The hosted service reached running success state and passed HTTPS endpoint checks.
 
@@ -29,10 +29,10 @@ GAP:
 
 | Layer | Current proof | Status |
 |---|---|---|
-| Static dashboard | Vercel-hosted dashboard plus browser-local API-base control for a hosted backend | Working for review packets |
+| Static dashboard | Vercel-hosted dashboard plus browser-local API-base control for a hosted backend | Working and production-current for review packets |
 | Local Jarvis API | FastAPI contract under `services/jarvis-api/` plus in-process smoke test | Passed |
 | Railway | `jarvis-api` service deployed from `services/jarvis-api` with provider-disabled variables | Passed |
-| Provider calls | `MODEL_PROVIDER=none` default; provider routes disabled | Gated |
+| Provider calls | `MODEL_PROVIDER=openrouter`; provider route blocks at missing approved server-side key | Gated |
 | Writeback | Git/Notion/WikiLLM/Telegram dashboard writeback disabled | Gated |
 | Voice | Browser-local controls and text path only | Gated for raw audio/storage |
 
@@ -46,9 +46,9 @@ It does not mean provider-backed automation, autonomous Notion/GitHub/WikiLLM wr
 
 ```text
 Vercel static dashboard
-  -> configured backend URL
+  -> same-origin Vercel API and configured Railway backend URL
   -> Railway jarvis-api service
-  -> provider-disabled review packet endpoints
+  -> guarded OpenRouter review packet endpoints
   -> logs/status packets
   -> Codex/owner review before any writeback
 ```
@@ -59,7 +59,7 @@ Vercel static dashboard
 |---|---|---|---|
 | R1 | Confirm Railway project/service from prior setup or link/create project | `railway status` or Railway MCP project/service list | Owner approval for cloud work |
 | R2 | Deploy only `services/jarvis-api` | Railway deploy logs show build/start | Approval for code upload |
-| R3 | Set env variables from placeholders | `MODEL_PROVIDER=none`, allowed origin, budget defaults | No secrets in repo |
+| R3 | Set env variables from placeholders | `MODEL_PROVIDER=openrouter`, allowed origin, budget defaults | No secrets in repo; no external key storage without explicit approval |
 | R4 | Verify health | `GET /health` returns ok, provider calls 0, writeback disabled | Required before dashboard routing |
 | R5 | Verify CORS/auth boundary | Allowed origin works; disallowed origin blocked where applicable | Required before public URL use |
 | R6 | Exercise endpoints | chat, roles, PRD/ICP, agent-orchestra, voice text route return review packets | Provider disabled |
@@ -70,7 +70,7 @@ Vercel static dashboard
 
 | Endpoint | Result | Evidence meaning |
 |---|---|---|
-| `/health` | Passed | service ok, model provider `none`, provider calls `0`, external writeback `0` |
+| `/health` | Passed | service ok, model provider `openrouter`, provider calls `0`, external writeback `0` |
 | CORS preflight | Passed | Vercel dashboard origin can POST to the hosted API |
 | `/api/chat` | Passed | review packet, no provider output |
 | `/api/config/roles` | Passed | role config payload available for dashboard configuration |
@@ -131,6 +131,6 @@ The current setup is useful but fragile if described as a finished product. It i
 | `/health` passes from the Railway domain | Passed |
 | Provider calls remain zero | Passed |
 | Writeback remains disabled | Passed |
-| Dashboard can store/check hosted API base | Passed locally and browser-verified on the production dashboard Config screen; latest E1.7 dashboard data remains preview-current before production freshness proof |
+| Dashboard can store/check hosted API base | Passed locally and browser-verified on the production dashboard Config screen; production dashboard data is current after the Vercel alias/deploy cure |
 | Public safety scan, runtime guard, dashboard JSON parse, and diff check pass | Passed in E1.7 closeout; rerun required after the later cloud/KB retrospective files |
 | Run handout and Notion/GitHub/Telegram packets are created | Passed for E1.7 closeout; later cloud/KB retrospective adds a separate packet |
