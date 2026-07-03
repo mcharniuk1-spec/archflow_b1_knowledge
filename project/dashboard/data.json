@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T11:53:06.569814+00:00",
+  "generated_at": "2026-07-03T12:06:12.270345+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "276",
+      "value": "277",
       "tone": "ok"
     },
     {
@@ -586,18 +586,32 @@
   ],
   "activity": [
     {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf",
+      "title": "agent-handout.pdf",
+      "modified": "2026-07-03T12:06:08.923122+00:00",
+      "size": 9119
+    },
+    {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-03-claude-continuation-stabilization.md",
       "title": "Run - Claude Continuation And Stabilization",
-      "modified": "2026-07-03T11:52:58.009299+00:00",
-      "size": 2398
+      "modified": "2026-07-03T12:05:59.597648+00:00",
+      "size": 2997
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md",
       "title": "Agent Handout: Claude Code Continuation And Stabilization",
-      "modified": "2026-07-03T11:52:57.909041+00:00",
-      "size": 6069
+      "modified": "2026-07-03T12:05:59.504972+00:00",
+      "size": 6395
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/telegram-file-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "modified": "2026-07-03T11:59:58.852372+00:00",
+      "size": 1356
     },
     {
       "kind": "project_run",
@@ -612,13 +626,6 @@
       "title": "system-review-stabilization-plan.pdf",
       "modified": "2026-07-03T11:42:20.190693+00:00",
       "size": 12868
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf",
-      "title": "agent-handout.pdf",
-      "modified": "2026-07-03T11:42:20.176665+00:00",
-      "size": 8000
     },
     {
       "kind": "project_run",
@@ -2772,7 +2779,7 @@
       {
         "path": "wiki/runs/2026-07-03-claude-continuation-stabilization.md",
         "title": "Run - Claude Continuation And Stabilization",
-        "excerpt": "# Run - Claude Continuation And Stabilization  Date: 2026-07-03 Status: in progress until final checks, Telegram files, commit, and push complete  ## Task  Send current report files to Telegram, then create a detailed Claude Code continuation handout and stabilization plan covering the project structure, current company goal, dashboard, website, Notion tasks, knowledge system, LlamaIndex, second-brain boundaries, Ope"
+        "excerpt": "# Run - Claude Continuation And Stabilization  Date: 2026-07-03 Status: complete; final Telegram audit commit pending push  ## Task  Send current report files to Telegram, then create a detailed Claude Code continuation handout and stabilization plan covering the project structure, current company goal, dashboard, website, Notion tasks, knowledge system, LlamaIndex, second-brain boundaries, OpenRouter routing, PRD/IC"
       },
       {
         "path": "wiki/runs/2026-07-03-daily-founder-notes.md",
@@ -3804,7 +3811,7 @@
     {
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md",
       "title": "Agent Handout: Claude Code Continuation And Stabilization",
-      "text": "# Agent Handout: Claude Code Continuation And Stabilization  Date: 2026-07-03 Status: created for next-agent continuation Lane: Claude Code handoff, full-system review, stabilization plan, Telegram file delivery  ## Title And Purpose  This handout is for Claude Code or any next local agent continuing ArchFlow. It summarizes the current system, the company goal, the reliable architecture, the best next tasks, and the exact rules for using the knowledge base, second-brain layers, LlamaIndex, dashboard, Notion, Telegram, and OpenRouter.  ## Human Summary  ArchFlow is no longer just a project reset. It has a working public-safe proof stack: Codex-operated repo, WikiLLM durable memory, live communication log, LlamaIndex bounded hybrid retrieval, LangGraph/CrewAI contracts, static/browser-local dashboard, and hosted provider-disabled Jarvis review-packet endpoints. The website now communicates the B2B SaaS product-team PRD/ICP service direction.  The project is not yet a fully autonomous runtime. Railway, provider-backed Jarvis, dashboard-driven writeback, raw voice storage, full vector defaulting, live Nexus writeback, and payment-test validation remain gated. The next agent must not ov"
+      "text": "# Agent Handout: Claude Code Continuation And Stabilization  Date: 2026-07-03 Status: complete and sent through approved Telegram sender Lane: Claude Code handoff, full-system review, stabilization plan, Telegram file delivery  ## Title And Purpose  This handout is for Claude Code or any next local agent continuing ArchFlow. It summarizes the current system, the company goal, the reliable architecture, the best next tasks, and the exact rules for using the knowledge base, second-brain layers, LlamaIndex, dashboard, Notion, Telegram, and OpenRouter.  ## Human Summary  ArchFlow is no longer just a project reset. It has a working public-safe proof stack: Codex-operated repo, WikiLLM durable memory, live communication log, LlamaIndex bounded hybrid retrieval, LangGraph/CrewAI contracts, static/browser-local dashboard, and hosted provider-disabled Jarvis review-packet endpoints. The website now communicates the B2B SaaS product-team PRD/ICP service direction.  The project is not yet a fully autonomous runtime. Railway, provider-backed Jarvis, dashboard-driven writeback, raw voice storage, full vector defaulting, live Nexus writeback, and payment-test validation remain gated. The next ag"
     },
     {
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md",
@@ -3825,6 +3832,11 @@
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.md",
       "title": "ArchFlow System Review And Stabilization Plan",
       "text": "# ArchFlow System Review And Stabilization Plan  Date: 2026-07-03 Status: planning and handoff artifact for the next agent.  ## Executive Conclusion  ArchFlow is at a useful but fragile transition point. The E1 proof system works. The public-safe repository is structured. WikiLLM holds durable project memory. LlamaIndex is now a bounded hybrid retrieval layer with lexical fallback. The dashboard is a static/browser-local Jarvis control surface with hosted provider-disabled review-packet endpoints. The website now communicates the PRD/ICP service direction. Notion has a coherent E1-E7 board with Agent Tags, but several short-term tasks need sequence cleanup and owner acceptance.  The next agent should not add more broad architecture. The next agent should stabilize the current stage, then execute the first commercial-learning lane:  1. Finish E1.4 as the repeatable KB update principle. 2. Run E2.0A as a local PRD-to-ICP outcome packet from approved sources. 3. Tighten E3.1 positioning and make website claims match the accepted ICP. 4. Convert E4.1 into a five-week content calendar tied to measurable demand signals. 5. Close TG-1/TG-2/TG-3 with the new Telegram file-sender evidence a"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/telegram-file-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "text": "# Telegram File Delivery Status  Date: 2026-07-03T11:59:54.789103+00:00 Status: sent Reason: telegram_api_ok  Files: - project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf: sent - project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf: sent - project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md: sent - project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.pdf: sent - project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.md: sent - project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf: sent - project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md: sent - project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md: sent - project/runs/2026-07-03-claude-continuation-stabilization/project-checkup-evidence.md: sent - project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md: sent - project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md: sent  Boundary: - Message a"
     },
     {
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md",
@@ -4484,7 +4496,7 @@
     {
       "path": "wiki/runs/2026-07-03-claude-continuation-stabilization.md",
       "title": "Run - Claude Continuation And Stabilization",
-      "text": "# Run - Claude Continuation And Stabilization  Date: 2026-07-03 Status: in progress until final checks, Telegram files, commit, and push complete  ## Task  Send current report files to Telegram, then create a detailed Claude Code continuation handout and stabilization plan covering the project structure, current company goal, dashboard, website, Notion tasks, knowledge system, LlamaIndex, second-brain boundaries, OpenRouter routing, PRD/ICP templates, and next execution sequence.  ## Inputs  - Public project plan, agent stack, model routing, agent roster, workflow contracts, dashboard and website code. - Notion task schema and task state from the approved connector. - Prior current-state report and hybrid RAG/Jarvis readiness handout. - Live communication log and operating rules. - OpenRouter public model list checked on 2026-07-03.  ## Outputs  - `project/scripts/send-telegram-files.py` - `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md` - `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf` - `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md` - `project/runs/2026-07-03-claude-continuat"
+      "text": "# Run - Claude Continuation And Stabilization  Date: 2026-07-03 Status: complete; final Telegram audit commit pending push  ## Task  Send current report files to Telegram, then create a detailed Claude Code continuation handout and stabilization plan covering the project structure, current company goal, dashboard, website, Notion tasks, knowledge system, LlamaIndex, second-brain boundaries, OpenRouter routing, PRD/ICP templates, and next execution sequence.  ## Inputs  - Public project plan, agent stack, model routing, agent roster, workflow contracts, dashboard and website code. - Notion task schema and task state from the approved connector. - Prior current-state report and hybrid RAG/Jarvis readiness handout. - Live communication log and operating rules. - OpenRouter public model list checked on 2026-07-03.  ## Outputs  - `project/scripts/send-telegram-files.py` - `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md` - `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf` - `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md` - `project/runs/2026-07-03-claude-continuation-stabilization/claud"
     },
     {
       "path": "wiki/runs/2026-07-03-daily-founder-notes.md",

@@ -1,7 +1,7 @@
 # Agent Handout: Claude Code Continuation And Stabilization
 
 Date: 2026-07-03
-Status: created for next-agent continuation
+Status: complete and sent through approved Telegram sender
 Lane: Claude Code handoff, full-system review, stabilization plan, Telegram file delivery
 
 ## Title And Purpose
@@ -72,6 +72,7 @@ INTERPRETATION:
 | `project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md` | Architecture 2 template. |
 | `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md` | Copy-ready Claude Code prompt. |
 | `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf` | Sendable PDF version of the prompt. |
+| `project/runs/2026-07-03-claude-continuation-stabilization/telegram-file-delivery-status.md` | Sanitized delivery proof for Telegram files. |
 
 ## Validation
 
@@ -93,17 +94,21 @@ Passed before artifact creation:
 - hosted agent-orchestra lane;
 - hosted chat review packet.
 
-Required after artifact creation:
+Passed after artifact creation:
 
-- regenerate dashboard data;
-- rerun public safety;
-- rerun workflow validation;
-- rerun runtime guard;
-- parse dashboard JSON;
-- Python syntax check for the new Telegram file sender;
+- regenerated dashboard data;
+- public safety scan;
+- workflow validation;
+- runtime guard;
+- LlamaIndex smoke;
+- LlamaIndex benchmark;
+- dashboard static smoke after loopback permission;
+- dashboard JSON parse;
+- Python syntax check for the Telegram file sender and Jarvis API files;
+- JavaScript syntax check;
 - `git diff --check`;
-- Telegram file delivery;
-- commit and push if checks pass.
+- Telegram file delivery with sanitized status only;
+- first commit and push for the handoff packet.
 
 ## Next Actions
 

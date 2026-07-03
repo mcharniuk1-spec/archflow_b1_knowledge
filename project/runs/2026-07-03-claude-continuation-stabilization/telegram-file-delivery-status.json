@@ -1,0 +1,51 @@
+{
+  "timestamp_utc": "2026-07-03T11:59:54.789103+00:00",
+  "status": "sent",
+  "reason": "telegram_api_ok",
+  "files": [
+    {
+      "path": "project/runs/2026-07-03-daily-founder-notes/current-state-report.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.md",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/project-checkup-evidence.md",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md",
+      "status": "sent"
+    }
+  ]
+}
