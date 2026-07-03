@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T09:18:07.103173+00:00",
+  "generated_at": "2026-07-03T09:24:16.364356+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -582,8 +582,15 @@
       "kind": "project_run",
       "path": "project/runs/2026-07-03-vercel-jarvis-connection/agent-handout.md",
       "title": "Agent Handout: Vercel Dashboard And Jarvis Connection",
-      "modified": "2026-07-03T09:17:57.446008+00:00",
-      "size": 2063
+      "modified": "2026-07-03T09:24:10.300888+00:00",
+      "size": 3571
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md",
+      "title": "Telegram Delivery Status",
+      "modified": "2026-07-03T09:23:53.295599+00:00",
+      "size": 245
     },
     {
       "kind": "project_run",
@@ -633,13 +640,6 @@
       "title": "Notion Update Packet: E1 And Related Tasks",
       "modified": "2026-07-03T08:46:06.328074+00:00",
       "size": 7294
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md",
-      "title": "Telegram Delivery Status",
-      "modified": "2026-07-03T08:38:11.050809+00:00",
-      "size": 245
     },
     {
       "kind": "project_report",
@@ -3549,7 +3549,7 @@
     {
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/telegram-delivery-status.md",
       "title": "Telegram Delivery Status",
-      "text": "# Telegram Delivery Status  Date: 2026-07-03T08:38:10.697067+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
+      "text": "# Telegram Delivery Status  Date: 2026-07-03T09:23:52.913728+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
     },
     {
       "path": "project/runs/2026-07-02-e1-notion-runtime-consolidation/agent-handout.md",
@@ -3649,7 +3649,7 @@
     {
       "path": "project/runs/2026-07-03-vercel-jarvis-connection/agent-handout.md",
       "title": "Agent Handout: Vercel Dashboard And Jarvis Connection",
-      "text": "# Agent Handout: Vercel Dashboard And Jarvis Connection  Date: 2026-07-03 Status: in progress Lane: E1.7 hosted dashboard/Jarvis connection  ## Goal  Make the hosted Vercel dashboard connect to a working provider-disabled Jarvis API surface while keeping local Jarvis working on `127.0.0.1:8787`.  ## Current Implementation  FACT: - The static dashboard remains served by Vercel through `/dashboard`. - A Vercel serverless Jarvis contract now exists under `api/`. - `/health` rewrites to `/api/health` on Vercel. - The Vercel-hosted API was reduced to the core dashboard connection surface after the first deploy hit the hosting-plan serverless function limit. - The hosted API returns review packets only. - Provider calls, durable writeback, raw audio storage, Telegram automation, and production publication remain disabled. - Local FastAPI Jarvis was restarted on port `8787` with OpenRouter selected in status and provider calls still disabled behind budget/approval guards.  INTERPRETATION: - Vercel can now make the dashboard show `Jarvis API connected` without needing the local machine. - This is not a full always-on agent runtime. It is a hosted review/control contract.  GAP: - Railway or"
+      "text": "# Agent Handout: Vercel Dashboard And Jarvis Connection  Date: 2026-07-03 Status: complete for Vercel provider-disabled dashboard/Jarvis connection Lane: E1.7 hosted dashboard/Jarvis connection  ## Goal  Make the hosted Vercel dashboard connect to a working provider-disabled Jarvis API surface while keeping local Jarvis working on `127.0.0.1:8787`.  ## Current Implementation  FACT: - The static dashboard remains served by Vercel through `/dashboard`. - A Vercel serverless Jarvis contract now exists under `api/`. - `/health` rewrites to `/api/health` on Vercel. - The Vercel-hosted API was reduced to the core dashboard connection surface after the first deploy hit the hosting-plan serverless function limit. - The hosted API returns review packets only. - Provider calls, durable writeback, raw audio storage, Telegram automation, and production publication remain disabled. - Local FastAPI Jarvis was restarted on port `8787` with OpenRouter selected in status and provider calls still disabled behind budget/approval guards. - Production Vercel deployment is ready at `https://<protected-preview-host>`. - Production alias is `https://<protected-preview-host>`. - Hosted `/health` returns `s"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",

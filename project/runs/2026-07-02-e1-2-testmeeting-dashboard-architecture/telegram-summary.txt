@@ -6,4 +6,6 @@ Correction: OpenRouter is the active provider path, not OpenAI. The sanitized pr
 
 Jarvis dashboard local proof now has a visible API connection indicator, direct Architecture 1/2 controls, persistent browser-local chat, proactive interview mode, manual transcript fallback, and provider-disabled Jarvis API health/PRD lane responses.
 
-Smoke status: dashboard route smoke passed for the required service/schema routes, and desktop/mobile screenshots were generated. Next execution task is E1.7 Railway preparation and activation for an always-responding Jarvis API with auth/CORS, health, provider-disabled baseline, and runbook proof.
+Vercel connection status: production deployment is ready at https://public-meacasjjm-mcharniuk1-4994s-projects.vercel.app/dashboard . Hosted `/health` and `/api/lanes/prd-icp` passed with `model_provider=openrouter`, provider calls 0, and writeback disabled. The stable alias is https://public-ruddy-nine-40.vercel.app/dashboard .
+
+Smoke status: dashboard route smoke passed for the required service/schema routes, desktop/mobile screenshots were generated, and hosted dashboard/data routes returned 200. Railway remains the next lane for always-on workers, durable queues, long provider tasks, stronger auth/CORS, and writeback.

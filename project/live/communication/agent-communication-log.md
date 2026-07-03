@@ -5804,3 +5804,68 @@ Blockers:
 Next step:
 
 - Inspect dashboard API calls, add Vercel-safe Jarvis endpoints, run local checks, deploy, then update Notion and Telegram.
+
+## 2026-07-03 12:21 - Jesus/Codex - Vercel dashboard/Jarvis connection deployed
+
+Status: complete
+
+Task:
+Connect the dashboard/website/Jarvis surface to Vercel with a hosted provider-disabled Jarvis API contract, restore local Jarvis, and verify both local and hosted connection paths.
+
+Files changed:
+
+- `api/`
+- `vercel.json`
+- `project/dashboard/app.js`
+- `project/scripts/generate-dashboard-data.py`
+- `project/dashboard/data.json`
+- `docs/dashboard-operating-manual.md`
+- `project/runs/2026-07-03-vercel-jarvis-connection/agent-handout.md`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Verification:
+
+- Local Jarvis API restored on port `8787`.
+- Local `/health` passed with `MODEL_PROVIDER=openrouter`, provider calls 0, writeback 0.
+- Local PRD/ICP lane POST passed with `review_packet_created`.
+- Dashboard static smoke passed: 8 routes, provider calls 0, writeback 0.
+- Dashboard screenshot smoke passed: 4 screenshots.
+- Vercel production deployment ready.
+- Hosted `/health` passed with `hosting=vercel_serverless`, `model_provider=openrouter`, provider calls 0, writeback disabled.
+- Hosted `/api/lanes/prd-icp` passed with `review_packet_created`.
+- Hosted `/dashboard` returned 200.
+- Hosted `/project/dashboard/data.json` returned 200.
+
+Deployment:
+
+- Production URL: `https://public-meacasjjm-mcharniuk1-4994s-projects.vercel.app`
+- Production alias: `https://public-ruddy-nine-40.vercel.app`
+
+Remaining gaps:
+
+- Hosted Vercel Jarvis is a provider-disabled review packet contract, not full provider execution.
+- Railway or another always-on backend remains needed for workers, durable queues, long provider tasks, stronger auth/CORS, and writeback.
+
+Next safe action:
+
+- Update Notion and Telegram with the Vercel connection result, then commit/push the deployment evidence.
+
+## 2026-07-03 12:23 - Jesus/Codex - Vercel dashboard/Jarvis connection final sync
+
+Status: complete
+
+Final sync:
+
+- Notion E1 parent page updated with Vercel provider-disabled Jarvis connection state.
+- Notion E1.3.9 updated to Review with local plus hosted Jarvis proof.
+- Notion E1.7 updated to Review/In Progress for Vercel-hosted provider-disabled connection, with Railway/always-on worker gaps preserved.
+- Telegram summary sent through the approved API path.
+
+Final remaining gap:
+
+- Vercel now hosts the dashboard and provider-disabled Jarvis review-packet API. It does not run provider-backed automation, durable writeback, long jobs, or production Telegram automation. Those remain the Railway/always-on backend lane.
+
+Next safe action:
+
+- Commit and push the final evidence, then redeploy once more so Vercel includes the final dashboard data and run record.

@@ -214,6 +214,8 @@ FACT:
 - The hosted dashboard can use the same-origin Vercel Jarvis contract instead of relying only on local `127.0.0.1:8787`.
 - Local FastAPI Jarvis remains available for development on port `8787`.
 - The hosted Vercel API surface is intentionally limited to the core dashboard connection endpoints to fit the current serverless function limit.
+- Production Vercel deployment passed at `https://public-meacasjjm-mcharniuk1-4994s-projects.vercel.app` with alias `https://public-ruddy-nine-40.vercel.app`.
+- Hosted `/health`, `/api/lanes/prd-icp`, `/dashboard`, and `/project/dashboard/data.json` smoke checks passed.
 
 INTERPRETATION:
 - Vercel now covers the static dashboard and a review-packet Jarvis API surface.
