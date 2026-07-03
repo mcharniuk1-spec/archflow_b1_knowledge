@@ -7,9 +7,7 @@ Status: local/Codex output approved for review packet
 - Private source files were read from the ArchFlow root.
 - Public output files contain only sanitized English summaries and derived artifacts.
 - Local/Codex run used `MODEL_PROVIDER=none`.
-- OpenRouter status: `completed_review_gated`.
-- OpenRouter selected model: `qwen/qwen3.6-plus` through `yushchenko.source_scope_gate`.
-- OpenRouter estimated spend: about `0.00794` USD.
+- OpenRouter status: `not_run`.
 
 ## INTERPRETATION
 
@@ -22,7 +20,7 @@ The strongest buyer-facing interpretation is a PRD automation service that turns
 ## GAP
 
 - Owner acceptance is needed before E1.2 can be marked Done.
-- OpenRouter output remains a separate review-gated comparison until AF Review and owner acceptance.
+- OpenRouter output, if unavailable or failed, remains a separate comparison blocker.
 - Railway hosted runtime remains E1.7, not part of this local run.
 
 ## Safety Verdict

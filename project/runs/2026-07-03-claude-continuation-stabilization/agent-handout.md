@@ -38,7 +38,13 @@ GAP:
 
 ## Agent Continuation Prompt
 
-Use `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md`.
+Use the separated Claude cowork packet in this order:
+
+1. `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md`
+2. `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md`
+3. `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md`
+
+The older compact prompt remains available at `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md`, but the separated packet is the better handoff for Claude Code.
 
 ## Execution Trace
 
@@ -70,6 +76,12 @@ INTERPRETATION:
 | `project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md` | Provider-routing recommendation. |
 | `project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md` | Architecture 1 template. |
 | `project/runs/2026-07-03-claude-continuation-stabilization/templates/agent-execution-template.md` | Architecture 2 template. |
+| `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md` | Whole-project operating instructions for Claude Code cowork use. |
+| `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.pdf` | Sendable PDF version of the whole-project instructions. |
+| `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md` | Setup/onboarding prompt for skills, MCPs, connectors, checks, and readiness. |
+| `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.pdf` | Sendable PDF version of the setup prompt. |
+| `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md` | Execution prompt for E1.4 and E2.0A after setup readiness. |
+| `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.pdf` | Sendable PDF version of the execution prompt. |
 | `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md` | Copy-ready Claude Code prompt. |
 | `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf` | Sendable PDF version of the prompt. |
 | `project/runs/2026-07-03-claude-continuation-stabilization/telegram-file-delivery-status.md` | Sanitized delivery proof for Telegram files. |
@@ -109,6 +121,16 @@ Passed after artifact creation:
 - `git diff --check`;
 - Telegram file delivery with sanitized status only;
 - first commit and push for the handoff packet.
+
+Passed after Claude prompt split:
+
+- separated Claude cowork instructions, setup prompt, and execution prompt created;
+- PDF versions rendered for the separated files;
+- dashboard data regenerated;
+- public safety scan passed;
+- workflow validation passed;
+- dashboard JSON parsed successfully;
+- `git diff --check` passed.
 
 ## Next Actions
 

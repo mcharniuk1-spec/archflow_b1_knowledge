@@ -7,8 +7,8 @@ Status: sanitized source boundary accepted for local/Codex run
 
 | Source | Location | Use | Public Storage |
 |---|---|---|---|
-| Approved meeting transcript | private source, filename redacted | Product-meeting themes and PRD extraction | Raw text not copied |
-| Approved discovery methodology document | private source, filename redacted | Customer discovery, JTBD, PRD, and dual-track method context | Raw body not copied |
+| Test meeting transcript | private root `docs/testmeeting.md` | Product-meeting themes and PRD extraction | Raw text not copied |
+| Discovery methodology document | private root `discovery materials.docx` | Customer discovery, JTBD, PRD, and dual-track method context | Raw body not copied |
 | Prior E1/E1.3 public artifacts | public repo run notes and reports | E1 architecture, ICP, task-state, and safety boundaries | Linked/summarized only |
 
 ## Public-Safe Rule

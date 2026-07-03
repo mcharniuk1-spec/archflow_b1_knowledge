@@ -1,0 +1,23 @@
+{
+  "timestamp_utc": "2026-07-03T14:13:12.666358+00:00",
+  "status": "sent",
+  "reason": "telegram_api_ok",
+  "files": [
+    {
+      "path": "project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
+      "status": "sent"
+    }
+  ]
+}

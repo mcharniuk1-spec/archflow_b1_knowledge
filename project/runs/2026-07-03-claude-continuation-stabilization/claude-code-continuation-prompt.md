@@ -1,5 +1,11 @@
 # Claude Code Continuation Prompt - ArchFlow
 
+Status note: this is the compact continuation prompt. For a more detailed Claude Code cowork handoff, use the separated packet in this order:
+
+1. `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md`
+2. `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md`
+3. `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md`
+
 Use this prompt for Claude Code or another local agent continuing ArchFlow.
 
 ## Identity

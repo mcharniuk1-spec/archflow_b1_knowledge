@@ -1,0 +1,1 @@
+ArchFlow update 2026-07-03: E1.4 KB update principle is complete (report attached as PDF) and the E2.0A PRD-to-ICP dry-run packet is written. All documentation checks passed. Pending: owner acceptance of E1.4 and E2.0A. Next: E2.1 source-list planning, E3.1 positioning, E4.1 content plan. No provider calls or external writes were made.

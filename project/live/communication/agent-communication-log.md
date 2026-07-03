@@ -6147,3 +6147,403 @@ Remaining gaps:
 Next safe action:
 
 - Push the final Telegram audit status and live completion entry, then hand the project to Claude Code using the run packet.
+
+
+## 2026-07-03 16:10 - Codex - Split Claude cowork instructions and prompts starting
+
+Status: starting
+
+Task:
+Split the Claude continuation material into three separate, more explicit artifacts: whole-project cowork instructions, setup/onboarding prompt for skills and MCPs, and the execution prompt for project work.
+
+Files likely to change:
+
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md`
+- `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md`
+- `wiki/runs/2026-07-03-claude-continuation-stabilization.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- Claude continuation/stabilization run packet only.
+
+Expected output:
+
+- Three separated, copy-ready Claude artifacts with deeper operating instructions, setup/MCP/skills instructions, and execution prompt.
+- Updated handout/run note and validation checks.
+
+Blockers:
+
+- Public-safe boundary remains strict: no secrets, private URLs, account IDs, local absolute paths, or raw private source text.
+
+Next step:
+
+- Read existing handoff packet, create the three separated artifacts, update run references, validate, and close the live log.
+
+
+## 2026-07-03 16:25 - Codex - Split Claude cowork instructions and prompts complete
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.pdf`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.pdf`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.pdf`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md`
+- `project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md`
+- `wiki/runs/2026-07-03-claude-continuation-stabilization.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- `python3 scripts/public_safety_scan.py` passed.
+- `project/local/venv/bin/python project/scripts/validate-workflows.py` passed.
+- Dashboard JSON parse passed.
+- `git diff --check` passed.
+
+Remaining gaps:
+
+- This split improves the Claude handoff only. It does not complete E1.4, E2.0A, E3.1, E4.1, or TG task cleanup.
+- Provider-backed Jarvis, Railway, vector defaulting, turbovec, dashboard writeback, raw voice storage, live Nexus, and autonomous external updates remain gated.
+
+Next safe action:
+
+- Give Claude the separated packet in order: whole-project instructions, setup prompt, then execution prompt.
+
+
+## 2026-07-03 15:35 - Claude (Cowork) - starting - setup readiness audit
+
+Status: starting
+
+Task:
+
+- Claude Cowork onboarding/setup readiness audit only. No feature edits, no provider calls, no external writes, no push.
+
+Files likely to change:
+
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md` (new run artifact)
+- `project/live/communication/agent-communication-log.md` (this entry + closeout)
+
+Files claimed:
+
+- The Claude setup-readiness note only. Not claiming dashboard, workflows, config, or prior-agent continuation packet files.
+
+Expected output:
+
+- Concise readiness report with FACT/INTERPRETATION/GAP, connector status, validation results, runtime truth table, and next safe action.
+
+Blockers:
+
+- Sandbox environment cannot exec `project/local/venv/bin/python` (symlinks to an unavailable local pyenv path). venv-dependent checks (validate-workflows, pre-push-runtime-guard, llamaindex smoke/benchmark) are environment-blocked. Package install is not permitted during setup.
+- Most MCP connectors (Notion, Slack, Linear, Asana, Figma, etc.) require interactive OAuth and are unavailable in this non-interactive session.
+
+Next step:
+
+- Write readiness note, run the venv-free checks (already passing), append a complete entry.
+
+
+## 2026-07-03 15:45 - Claude (Cowork) - complete - setup readiness audit
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md` (new)
+- `project/live/communication/agent-communication-log.md` (start + this entry)
+- `project/dashboard/data.json` (regenerated during validation; matches prior generated state)
+
+Checks run:
+
+- `python3 scripts/public_safety_scan.py` passed.
+- `python3 project/scripts/generate-dashboard-data.py` passed; dashboard JSON parse passed.
+- `git diff --check` passed.
+- venv validators (validate-workflows, pre-push-runtime-guard, llamaindex smoke/benchmark) NOT run: sandbox cannot exec `project/local/venv/bin/python`; install not permitted during setup. Recorded as environment GAP.
+
+Remaining gaps:
+
+- Provider-backed Jarvis, Railway, live Nexus writeback, vector defaulting/turbovec, dashboard writeback, raw voice storage, autonomous external updates remain gated.
+- GitHub/Notion/Nexus MCP unavailable in this non-interactive session.
+
+Next safe action:
+
+- Execute E1.4 (KB update principle) with a fresh starting entry and narrow file claims. Then E2.0A, E3.1, E4.1, TG cleanup. No push/provider/external write without owner approval.
+
+## 2026-07-03 17:05 - Claude (Cowork) - starting - E1.4 KB update principle
+
+Status: starting
+
+Task:
+
+- Execute E1.4: define the principle for building and updating the knowledge base. Secondary: E2.0A PRD-to-ICP dry-run packet after E1.4 validates. Owner also requested a Telegram delivery of the plan PDF via the approved sender.
+
+Files likely to change:
+
+- `project/reports/2026-07-03-kb-update-principle.md` (new)
+- `project/reports/2026-07-03-kb-update-principle.pdf` (new)
+- `project/runs/2026-07-03-kb-update-principle/agent-handout.md` (new)
+- `wiki/runs/2026-07-03-kb-update-principle.md` (new)
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+- If E1.4 validates: `project/runs/2026-07-03-prd-icp-dry-run/*` and `wiki/runs/2026-07-03-prd-icp-dry-run.md`
+
+Files claimed:
+
+- The E1.4 report/run/wiki files above only. Not claiming workflows, scripts, config, dashboard UI, or website files.
+
+Expected output:
+
+- Public-safe KB update principle report with the required structure, run handout, wiki run note, validation results, and Telegram delivery proof (sanitized) for the plan PDF.
+
+Blockers:
+
+- Sandbox may not exec `project/local/venv/bin/python`; venv-dependent checks recorded as GAP if blocked. Telegram send depends on ignored local env credentials and network reachability.
+
+Next step:
+
+- Write the E1.4 report, run the documentation validation bundle, close out, then attempt E2.0A and Telegram delivery.
+
+## 2026-07-03 17:20 - Claude (Cowork) - complete - E1.4 KB update principle
+
+Status: complete
+
+Files changed:
+
+- `project/reports/2026-07-03-kb-update-principle.md` (new)
+- `project/runs/2026-07-03-kb-update-principle/agent-handout.md` (new)
+- `wiki/runs/2026-07-03-kb-update-principle.md` (new)
+- `wiki/log.md` (E1.4 section appended)
+- `project/dashboard/data.json` (regenerated)
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md` (sanitized: removed a host-machine absolute path that failed the public safety scan; corrected in-run per the new traceback rule)
+- `project/live/communication/agent-communication-log.md` (this entry)
+
+Checks run:
+
+- `python3 scripts/public_safety_scan.py` passed (after sanitization).
+- `python3 project/scripts/generate-dashboard-data.py` passed; dashboard JSON parse passed.
+- `git diff --check` passed.
+- venv validators not run: sandbox cannot exec `project/local/venv/bin/python` (environment GAP; no workflow/runtime/RAG files touched, so not required for this change class).
+
+Remaining gaps:
+
+- Owner acceptance of E1.4 pending.
+- Gated runtime claims unchanged.
+
+Next safe action:
+
+- E2.0A PRD-to-ICP dry-run packet (starting entry follows).
+
+## 2026-07-03 17:25 - Claude (Cowork) - starting - E2.0A PRD-to-ICP dry-run packet
+
+Status: starting
+
+Task:
+
+- Create the local PRD-to-ICP dry-run outcome packet using approved public-safe sources only. No provider calls, no external writes.
+
+Files likely to change:
+
+- `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md`
+- `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md`
+- `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md`
+- `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md`
+- `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md`
+- `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md`
+- `wiki/runs/2026-07-03-prd-icp-dry-run.md`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- The E2.0A dry-run packet files above only.
+
+Expected output:
+
+- A complete dry-run packet: source boundary, evidence card schema, source grade rubric, ICP profile outline, executive decision, handout.
+
+Blockers:
+
+- None beyond standing gates. Packet stays run evidence per the E1.4 KB update principle until reviewed.
+
+Next step:
+
+- Write the packet from the PRD/ICP templates and market-research-engine workflow, validate, close out.
+
+## 2026-07-03 17:40 - Claude (Cowork) - complete - E2.0A PRD-to-ICP dry-run packet
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` (new)
+- `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` (new)
+- `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` (new)
+- `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` (new)
+- `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` (new)
+- `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md` (new)
+- `wiki/runs/2026-07-03-prd-icp-dry-run.md` (new)
+- `wiki/log.md` (E2.0A section appended)
+- `project/dashboard/data.json` (regenerated)
+- `project/live/communication/agent-communication-log.md` (this entry)
+
+Checks run:
+
+- `python3 scripts/public_safety_scan.py` passed.
+- `python3 project/scripts/generate-dashboard-data.py` passed; dashboard JSON parse passed.
+- `git diff --check` passed.
+- venv validators not run (environment GAP; no workflow/runtime/RAG files touched).
+
+Remaining gaps:
+
+- Owner acceptance pending for E1.4 and E2.0A.
+- No outreach, demand, or payment-test claims exist; gated tools remain gated.
+
+Next safe action:
+
+- Owner review; then E2.1 source-list planning, E3.1 positioning, E4.1 content plan, TG cleanup. Telegram delivery of the E1.4 plan PDF follows via the approved sender.
+
+## 2026-07-03 17:50 - Claude (Cowork) - handoff - Telegram delivery of E1.4 plan PDF blocked by sandbox network
+
+Status: handoff
+
+Files changed:
+
+- `project/reports/2026-07-03-kb-update-principle.pdf` (new, rendered from the E1.4 report)
+- `project/runs/2026-07-03-kb-update-principle/telegram-message.md` (sanitized message, new)
+- `project/runs/2026-07-03-kb-update-principle/telegram-delivery-status.json` / `.md` (blocked status, new)
+- `project/live/communication/agent-communication-log.md` (this entry)
+
+Checks run:
+
+- `python3 scripts/public_safety_scan.py` re-run after new files: see final validation below.
+
+Remaining gaps:
+
+- GAP: the Cowork sandbox egress proxy returns 403 for api.telegram.org, so the approved sender could not deliver. Credentials and script are intact; this is an environment limit, not a project defect.
+
+Next safe action:
+
+- Owner or a host-side agent runs from the public repo root:
+  `python3 project/scripts/send-telegram-files.py --message project/runs/2026-07-03-kb-update-principle/telegram-message.md --file project/reports/2026-07-03-kb-update-principle.pdf --status project/runs/2026-07-03-kb-update-principle/telegram-delivery-status.json --status-md project/runs/2026-07-03-kb-update-principle/telegram-delivery-status.md`
+
+## 2026-07-03 18:05 - Claude (Cowork) - starting - Deep-research plan for PRD-Pack business evaluation
+
+Status: starting
+
+Task:
+
+- Owner requested a plan (plan only, not the research itself) for a deep-research business evaluation of the PRD Pack offering: service evaluation, key audience, and delivery-model perspectives (done-for-you service vs productized service vs product).
+
+Files likely to change:
+
+- `project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md` (new) + `.pdf`
+- `project/runs/2026-07-03-prd-pack-research-plan/agent-handout.md` (new)
+- `wiki/runs/2026-07-03-prd-pack-research-plan.md` (new)
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- The research-plan report/run/wiki files above only.
+
+Expected output:
+
+- Public-safe deep-research plan with lenses, phases, sources per the E2.0A source boundary, methods, gates, and acceptance criteria. No research executed, no demand claims.
+
+Blockers:
+
+- None beyond standing gates.
+
+Next step:
+
+- Write the plan, render PDF, validate, close out.
+
+## 2026-07-03 18:35 - Codex - starting - accepted E1.4/E2.0A, PRD Pack plan, Epic 1/Epic 2 completion package
+
+Status: starting
+
+Task:
+
+- Continue after owner acceptance of E1.4 and E2.0A. Execute the PRD Pack business-evaluation research plan package, then create a Railway full-cloud dashboard/Jarvis setup-and-test plan, an Epic 1 closeout plan/report package covering E1.4-E1.7 and the testmeeting final-test path, and an Epic 2 delivery-planning package with owner questions before execution.
+
+Files likely to change:
+
+- `project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md` plus PDF if rendering works
+- `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` plus PDF if rendering works
+- `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` plus PDF if rendering works
+- `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md` plus PDF if rendering works
+- `project/runs/2026-07-03-epic1-epic2-planning-closeout/agent-handout.md`
+- `wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- The new report/run/wiki files listed above only. Existing Fable/Claude artifacts will be referenced and status-updated only if needed; no unrelated cleanup or rewrites.
+
+Expected output:
+
+- Public-safe accepted-state continuation package: business-evaluation deep-research plan, Railway/Jarvis cloud setup plan, Epic 1 closeout summary/final-test plan, Epic 2 execution plan with owner questions, validation results, and safe handoff for Notion, Git push, and Telegram.
+
+Blockers:
+
+- Live Railway provisioning, external Notion writes, Git push, and Telegram send require external connectivity/approved credentials. If unavailable, this run will leave sanitized packets and exact next commands rather than claiming delivery.
+
+Next step:
+
+- Write the reports, integrate read-only auditor findings, run validation, and close out with gaps separated from completed local work.
+
+## 2026-07-03 18:58 - Codex - complete - accepted E1.4/E2.0A, PRD Pack plan, Epic 1/Epic 2 closeout package
+
+Status: complete
+
+Files changed:
+
+- `project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md` and `.pdf`
+- `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` and `.pdf`
+- `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` and `.pdf`
+- `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md` and `.pdf`
+- `project/runs/2026-07-03-epic1-epic2-planning-closeout/`
+- `wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md`
+- `project/project-plan.md`
+- Accepted-state updates to E1.4 and E2.0A run/wiki artifacts
+- Refreshed testmeeting local baseline artifacts and dashboard data
+
+Checks run:
+
+- `python3 project/scripts/generate-dashboard-data.py`: passed.
+- Dashboard JSON parse: passed.
+- `python3 scripts/public_safety_scan.py`: passed after Telegram status.
+- `project/local/venv/bin/python project/scripts/validate-workflows.py`: passed.
+- `project/local/venv/bin/python project/scripts/pre-push-runtime-guard.py`: passed.
+- Python compile check for renderer, testmeeting runner, and Jarvis API: passed.
+- `node --check project/dashboard/app.js`: passed.
+- `git diff --check`: passed.
+- PDF existence checks for four new reports: passed.
+
+External closeout:
+
+- Telegram delivery succeeded through the approved sender with sanitized status stored in the run folder.
+- Notion append-only updates succeeded: Epic 1 parent top summary, Epic 2 parent owner questions, and E2.0A accepted-state note.
+- Git commit/push follows this entry.
+
+Remaining gaps:
+
+- E1.7 full Railway cloud runtime is not complete. Railway MCP is authenticated, but no project is linked in this workspace; Railway deploy, `/health`, CORS/auth, dashboard routing, and provider-disabled endpoint tests still require a linked project/service target and owner approval.
+- Epic 2 execution has not started. It should start with the owner answering the E2 source/tool questions before live public account research.
+
+Next safe action:
+
+- Commit and push the scoped public-safe artifacts, then use the Epic 2 owner questions to decide whether E2.1 may run live public source research.

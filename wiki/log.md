@@ -264,9 +264,42 @@ FACT:
 - Added PRD/ICP and agent-execution templates for the next stage.
 - Added a reusable Telegram file sender that stores only sanitized delivery status.
 - Sent the current-state report and Claude continuation packet to Telegram through the approved sender path, with sanitized delivery proof stored in the run folder.
+- Split the Claude Code continuation package into whole-project cowork instructions, setup/MCP onboarding prompt, and execution prompt so the next agent can separate readiness from implementation.
 
 INTERPRETATION:
 - The next agent should focus on E1.4, E2.0A, E3.1, E4.1, and Telegram task cleanup instead of widening architecture.
 
 GAP:
 - Railway/provider-backed Jarvis, vector defaulting, dashboard-driven writeback, raw voice storage, live Nexus, and autonomous external updates remain gated.
+
+## 2026-07-03 - E1.4 KB update principle
+
+FACT:
+- Wrote the KB update principle report at `project/reports/2026-07-03-kb-update-principle.md`.
+- Defined WikiLLM as the only durable memory, LlamaIndex as retrieval only, Graphify as generated reference, and external surfaces as non-memory until agent review.
+- Added promotion test, per-file WikiLLM writing table, provenance rules, error/traceback procedure, and closeout workflow.
+- Run note: `wiki/runs/2026-07-03-kb-update-principle.md`.
+
+INTERPRETATION:
+- E1.4 is content-complete; the gate is owner acceptance. E2.0A can proceed applying this principle.
+
+GAP:
+- Owner acceptance pending. Gated runtime claims (provider Jarvis, Railway, live Nexus, vector defaulting, dashboard writeback) unchanged.
+
+## 2026-07-03 - E2.0A PRD-to-ICP dry-run packet
+
+FACT:
+- Created the E2.0A dry-run packet under `project/runs/2026-07-03-prd-icp-dry-run/`: source boundary, account evidence card schema, source grade rubric, ICP profile outline, executive decision, and handout.
+- No provider calls, gated tools, real-account research, or outreach claims.
+- Run note: `wiki/runs/2026-07-03-prd-icp-dry-run.md`.
+
+INTERPRETATION:
+- E2.1 can now run with enforceable evidence discipline; the fact_check_gate has concrete rules.
+
+GAP:
+- Owner acceptance pending for E1.4 and E2.0A. ICP trigger/workaround/budget rows remain HYPOTHESIS.
+## 2026-07-03 - Epic 1/Epic 2 planning closeout
+
+- Run note: `wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md`
+- Reports: `project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md`, `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md`, `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md`, `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md`
+- Status: E1.4 and E2.0A accepted; testmeeting local baseline rerun with provider disabled; Railway full-cloud E1.7 remains deployment/project-link gated; Epic 2 owner questions prepared before execution.

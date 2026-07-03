@@ -1,0 +1,6 @@
+{
+  "timestamp_utc": "2026-07-03T12:48:10.308455+00:00",
+  "status": "blocked",
+  "reason": "url_error:Tunnel connection failed: 403 Forbidden",
+  "files": []
+}

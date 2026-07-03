@@ -10,18 +10,18 @@ The run uses the private `testmeeting.md` and discovery-methodology document as 
 
 The output demonstrates the ArchFlow service concept: raw product-team conversation and method material become a source boundary, context digest, PRD, backlog, questions, methodology review, process report, and AF Review packet. It extends the earlier June 26 E1.2 proof without replacing it.
 
-OpenRouter status is `completed_review_gated`. The comparison used only the sanitized digest, selected `qwen/qwen3.6-plus` through the `yushchenko.source_scope_gate` role/node strategy, wrote a ledger and budget guard, and estimated spend at about `0.00794` USD. No raw private source was sent.
+OpenRouter status is `not_run`. If provider output exists, it is a separate comparison against the sanitized digest, not a raw-source run.
 
 ## Current State
 
 - Local/Codex PRD package: complete.
 - PDFs: rendered for local PRD, streaming report, and methodology review.
 - Dashboard: Architecture 1/2 selector, persistent chat, proactive interview, and schema node improvements are part of this lane.
-- Notion: update E1/E1.2/E1.2.8/E1.3.9/E1.7 after checks and keep OpenRouter output in Review until AF Review/owner acceptance.
+- Notion: update E1/E1.2/E1.2.8/E1.3.9/E1.7 after checks.
 
 ## Agent Continuation Prompt
 
-Continue from `project/runs/E1.2/2026-07-02-testmeeting-local/`. Do not reread or copy raw private source into public files. OpenRouter comparison output exists and must remain separate from the local/Codex baseline until AF Review and owner acceptance.
+Continue from `project/runs/E1.2/2026-07-02-testmeeting-local/`. Do not reread or copy raw private source into public files. If asked to run or rerun OpenRouter, send only `context-digest.md` sanitized digest or a shorter approved packet, then write model ledger, budget guard, comparison report, and AF Review.
 
 ## Validation
 

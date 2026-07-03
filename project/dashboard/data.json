@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T12:06:12.270345+00:00",
+  "generated_at": "2026-07-03T14:11:09.247037+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "52 files",
+      "value": "55 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "277",
+      "value": "309",
       "tone": "ok"
     },
     {
@@ -586,25 +586,382 @@
   ],
   "activity": [
     {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
+      "title": "2026-07-03-epic-2-delivery-plan-and-owner-questions.pdf",
+      "modified": "2026-07-03T14:10:55.001433+00:00",
+      "size": 10357
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "title": "2026-07-03-epic-1-summary-and-final-test-plan.pdf",
+      "modified": "2026-07-03T14:10:54.987525+00:00",
+      "size": 10179
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
+      "title": "2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf",
+      "modified": "2026-07-03T14:10:54.973382+00:00",
+      "size": 9148
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.pdf",
+      "title": "2026-07-03-prd-pack-business-evaluation-research-plan.pdf",
+      "modified": "2026-07-03T14:10:54.959724+00:00",
+      "size": 11530
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md",
+      "title": "Run: Epic 1 And Epic 2 Planning Closeout",
+      "modified": "2026-07-03T14:10:27.040062+00:00",
+      "size": 2566
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/agent-handout.md",
+      "title": "Agent Handout: Epic 1 And Epic 2 Planning Closeout",
+      "modified": "2026-07-03T14:10:26.945707+00:00",
+      "size": 2977
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
+      "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
+      "modified": "2026-07-03T14:10:26.851302+00:00",
+      "size": 6001
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-message.md",
+      "title": "telegram-message.md",
+      "modified": "2026-07-03T14:08:43.680310+00:00",
+      "size": 412
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/notion-update-packet.md",
+      "title": "Notion Update Packet",
+      "modified": "2026-07-03T14:08:43.587699+00:00",
+      "size": 1420
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md",
+      "title": "Epic 2 Delivery Plan And Owner Questions",
+      "modified": "2026-07-03T14:08:43.339896+00:00",
+      "size": 6364
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
+      "title": "Epic 1 Summary And Final Test Plan",
+      "modified": "2026-07-03T14:08:43.246926+00:00",
+      "size": 6511
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md",
+      "title": "PRD Pack Business Evaluation Research Plan",
+      "modified": "2026-07-03T14:08:43.061700+00:00",
+      "size": 7663
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
+      "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
+      "modified": "2026-07-03T14:05:20.233758+00:00",
+      "size": 1771
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-kb-update-principle.md",
+      "title": "Run: E1.4 KB Update Principle",
+      "modified": "2026-07-03T14:05:20.139589+00:00",
+      "size": 1475
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md",
+      "title": "Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet",
+      "modified": "2026-07-03T14:05:20.045552+00:00",
+      "size": 2325
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md",
+      "title": "E2.0A Executive Decision",
+      "modified": "2026-07-03T14:05:19.951926+00:00",
+      "size": 1558
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md",
+      "title": "E2.0A ICP Profile Outline",
+      "modified": "2026-07-03T14:05:19.859748+00:00",
+      "size": 2056
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md",
+      "title": "E2.0A Source Grade Rubric",
+      "modified": "2026-07-03T14:05:19.767591+00:00",
+      "size": 1781
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md",
+      "title": "E2.0A Account Evidence Card Schema",
+      "modified": "2026-07-03T14:05:19.673280+00:00",
+      "size": 2209
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md",
+      "title": "E2.0A Source Boundary",
+      "modified": "2026-07-03T14:05:19.578057+00:00",
+      "size": 1988
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-kb-update-principle/agent-handout.md",
+      "title": "Agent Handout: E1.4 KB Update Principle",
+      "modified": "2026-07-03T14:05:19.482371+00:00",
+      "size": 2460
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-kb-update-principle.md",
+      "title": "KB Update Principle",
+      "modified": "2026-07-03T14:05:19.388075+00:00",
+      "size": 12108
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
+      "title": "2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
+      "modified": "2026-07-03T14:02:22.551473+00:00",
+      "size": 5856
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.pdf",
+      "title": "agent-activity-progress-report.pdf",
+      "modified": "2026-07-03T14:02:22.551215+00:00",
+      "size": 5856
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-source-methodology-review.pdf",
+      "title": "2026-07-02-e1-2-8-source-methodology-review.pdf",
+      "modified": "2026-07-03T14:02:22.541779+00:00",
+      "size": 3920
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.pdf",
+      "title": "E1.2.8_Source_Methodology_review.pdf",
+      "modified": "2026-07-03T14:02:22.541434+00:00",
+      "size": 3920
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-local-streaming-report.pdf",
+      "title": "2026-07-02-e1-2-8-local-streaming-report.pdf",
+      "modified": "2026-07-03T14:02:22.537070+00:00",
+      "size": 3295
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.pdf",
+      "title": "E1.2.8_Local_Streaming_report.pdf",
+      "modified": "2026-07-03T14:02:22.536964+00:00",
+      "size": 3295
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-02-e1-2-8-local-prd.pdf",
+      "title": "2026-07-02-e1-2-8-local-prd.pdf",
+      "modified": "2026-07-03T14:02:22.533229+00:00",
+      "size": 13231
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.pdf",
+      "title": "E1.2.8_Local_PRD.pdf",
+      "modified": "2026-07-03T14:02:22.533004+00:00",
+      "size": 13231
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
+      "title": "E1.2.8 Testmeeting Local PRD Handout",
+      "modified": "2026-07-03T14:02:22.513422+00:00",
+      "size": 1965
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
+      "title": "E1.2.8 Agent Activity Progress Report",
+      "modified": "2026-07-03T14:02:22.512521+00:00",
+      "size": 2915
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
+      "title": "E1.2.8 AF Review Report",
+      "modified": "2026-07-03T14:02:22.511633+00:00",
+      "size": 1118
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/backlog-and-questions.md",
+      "title": "E1.2.8 Backlog And Missing Questions",
+      "modified": "2026-07-03T14:02:22.509852+00:00",
+      "size": 1479
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.md",
+      "title": "E1.2.8 Source Methodology Review",
+      "modified": "2026-07-03T14:02:22.509259+00:00",
+      "size": 2306
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.md",
+      "title": "E1.2.8 Local Streaming Report",
+      "modified": "2026-07-03T14:02:22.508437+00:00",
+      "size": 1225
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.md",
+      "title": "E1.2.8 Local PRD - Release Kickoff And Discovery-To-Delivery Handoff",
+      "modified": "2026-07-03T14:02:22.507808+00:00",
+      "size": 9602
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/context-digest.md",
+      "title": "E1.2.8 Context Digest",
+      "modified": "2026-07-03T14:02:22.505366+00:00",
+      "size": 3622
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
+      "title": "E1.2.8 Source Inventory",
+      "modified": "2026-07-03T14:02:22.504291+00:00",
+      "size": 1059
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-kb-update-principle/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "modified": "2026-07-03T12:48:09.850878+00:00",
+      "size": 332
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-kb-update-principle/telegram-message.md",
+      "title": "telegram-message.md",
+      "modified": "2026-07-03T12:48:09.817739+00:00",
+      "size": 338
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-kb-update-principle.pdf",
+      "title": "2026-07-03-kb-update-principle.pdf",
+      "modified": "2026-07-03T12:47:58.299165+00:00",
+      "size": 14832
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md",
+      "title": "Run: Claude Cowork Setup Readiness",
+      "modified": "2026-07-03T12:44:08.421708+00:00",
+      "size": 8843
+    },
+    {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.pdf",
       "title": "agent-handout.pdf",
-      "modified": "2026-07-03T12:06:08.923122+00:00",
-      "size": 9119
+      "modified": "2026-07-03T12:19:41.830055+00:00",
+      "size": 10085
     },
     {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-03-claude-continuation-stabilization.md",
       "title": "Run - Claude Continuation And Stabilization",
-      "modified": "2026-07-03T12:05:59.597648+00:00",
-      "size": 2997
+      "modified": "2026-07-03T12:19:36.508934+00:00",
+      "size": 3880
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/agent-handout.md",
       "title": "Agent Handout: Claude Code Continuation And Stabilization",
-      "modified": "2026-07-03T12:05:59.504972+00:00",
-      "size": 6395
+      "modified": "2026-07-03T12:19:36.415666+00:00",
+      "size": 8121
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.pdf",
+      "title": "claude-execution-prompt.pdf",
+      "modified": "2026-07-03T12:18:57.119895+00:00",
+      "size": 11760
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.pdf",
+      "title": "claude-project-setup-prompt.pdf",
+      "modified": "2026-07-03T12:18:57.110116+00:00",
+      "size": 12692
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.pdf",
+      "title": "claude-cowork-whole-project-instructions.pdf",
+      "modified": "2026-07-03T12:18:57.094619+00:00",
+      "size": 21746
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf",
+      "title": "claude-code-continuation-prompt.pdf",
+      "modified": "2026-07-03T12:18:57.068212+00:00",
+      "size": 8308
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md",
+      "title": "Claude Code Continuation Prompt - ArchFlow",
+      "modified": "2026-07-03T12:18:47.745586+00:00",
+      "size": 5485
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md",
+      "title": "Claude Execution Prompt",
+      "modified": "2026-07-03T12:18:25.262815+00:00",
+      "size": 9274
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md",
+      "title": "Claude Project Setup Prompt",
+      "modified": "2026-07-03T12:18:25.162982+00:00",
+      "size": 9468
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md",
+      "title": "Claude Cowork Whole-Project Instructions",
+      "modified": "2026-07-03T12:18:25.063853+00:00",
+      "size": 16527
     },
     {
       "kind": "project_run",
@@ -615,24 +972,10 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.pdf",
-      "title": "claude-code-continuation-prompt.pdf",
-      "modified": "2026-07-03T11:42:20.201336+00:00",
-      "size": 7390
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/system-review-stabilization-plan.pdf",
       "title": "system-review-stabilization-plan.pdf",
       "modified": "2026-07-03T11:42:20.190693+00:00",
       "size": 12868
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md",
-      "title": "Claude Code Continuation Prompt - ArchFlow",
-      "modified": "2026-07-03T11:39:43.069091+00:00",
-      "size": 5050
     },
     {
       "kind": "project_run",
@@ -769,13 +1112,6 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
-      "title": "E1.2.8 Source Inventory",
-      "modified": "2026-07-03T08:47:50.664946+00:00",
-      "size": 1065
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-02-e1-2-testmeeting-dashboard-architecture/agent-handout.md",
       "title": "Agent Handout: E1.2 Testmeeting And Dashboard Architecture",
       "modified": "2026-07-03T08:46:12.281688+00:00",
@@ -796,25 +1132,11 @@
       "size": 8123
     },
     {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
-      "title": "2026-07-02-e1-2-8-agent-activity-progress-report.pdf",
-      "modified": "2026-07-03T08:37:12.433476+00:00",
-      "size": 6280
-    },
-    {
       "kind": "project_run",
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.pdf",
       "title": "E1.2.8_OpenRouter_Comparison.pdf",
       "modified": "2026-07-03T08:36:55.374241+00:00",
       "size": 8123
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.pdf",
-      "title": "agent-activity-progress-report.pdf",
-      "modified": "2026-07-03T08:36:55.363116+00:00",
-      "size": 6280
     },
     {
       "kind": "project_run",
@@ -829,27 +1151,6 @@
       "title": "OpenRouter Model Routing Plan",
       "modified": "2026-07-03T08:36:44.272246+00:00",
       "size": 18872
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
-      "title": "E1.2.8 Agent Activity Progress Report",
-      "modified": "2026-07-03T08:35:03.351108+00:00",
-      "size": 3251
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
-      "title": "E1.2.8 AF Review Report",
-      "modified": "2026-07-03T08:35:03.258794+00:00",
-      "size": 1288
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
-      "title": "E1.2.8 Testmeeting Local PRD Handout",
-      "modified": "2026-07-03T08:35:03.165463+00:00",
-      "size": 2133
     },
     {
       "kind": "project_run",
@@ -983,83 +1284,6 @@
       "title": "2026-07-02-dashboard-operating-manual.pdf",
       "modified": "2026-07-02T14:28:12.742638+00:00",
       "size": 11584
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-source-methodology-review.pdf",
-      "title": "2026-07-02-e1-2-8-source-methodology-review.pdf",
-      "modified": "2026-07-02T14:25:05.559507+00:00",
-      "size": 3920
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.pdf",
-      "title": "E1.2.8_Source_Methodology_review.pdf",
-      "modified": "2026-07-02T14:25:05.559402+00:00",
-      "size": 3920
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-local-streaming-report.pdf",
-      "title": "2026-07-02-e1-2-8-local-streaming-report.pdf",
-      "modified": "2026-07-02T14:25:05.555674+00:00",
-      "size": 3295
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.pdf",
-      "title": "E1.2.8_Local_Streaming_report.pdf",
-      "modified": "2026-07-02T14:25:05.555503+00:00",
-      "size": 3295
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-02-e1-2-8-local-prd.pdf",
-      "title": "2026-07-02-e1-2-8-local-prd.pdf",
-      "modified": "2026-07-02T14:25:05.552199+00:00",
-      "size": 13231
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.pdf",
-      "title": "E1.2.8_Local_PRD.pdf",
-      "modified": "2026-07-02T14:25:05.551967+00:00",
-      "size": 13231
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/backlog-and-questions.md",
-      "title": "E1.2.8 Backlog And Missing Questions",
-      "modified": "2026-07-02T14:25:05.520259+00:00",
-      "size": 1479
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.md",
-      "title": "E1.2.8 Source Methodology Review",
-      "modified": "2026-07-02T14:25:05.519927+00:00",
-      "size": 2306
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_Streaming_report.md",
-      "title": "E1.2.8 Local Streaming Report",
-      "modified": "2026-07-02T14:25:05.519546+00:00",
-      "size": 1225
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Local_PRD.md",
-      "title": "E1.2.8 Local PRD - Release Kickoff And Discovery-To-Delivery Handoff",
-      "modified": "2026-07-02T14:25:05.519196+00:00",
-      "size": 9602
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/context-digest.md",
-      "title": "E1.2.8 Context Digest",
-      "modified": "2026-07-02T14:25:05.517576+00:00",
-      "size": 3622
     },
     {
       "kind": "project_run",
@@ -2529,7 +2753,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 52,
+    "file_count": 55,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -2787,9 +3011,24 @@
         "excerpt": "# Run - Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; final Git/check closeout recorded in live communication  ## Task  Reconstruct day-by-day founder notes for the ArchFlow project and produce a current-state report that explains the knowledge-system methodology, architecture layers, current setup, proof evidence, traceba"
       },
       {
+        "path": "wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md",
+        "title": "Run: Epic 1 And Epic 2 Planning Closeout",
+        "excerpt": "# Run: Epic 1 And Epic 2 Planning Closeout  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Codex Support agents/tools: read-only subagent audits for Railway/Jarvis and Epic 2 planning; local deterministic scripts only for testmeeting rerun.  ## Task  Continue after owner acceptance of E1.4 and E2.0A. Create the PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup test plan, Epic 1 summ"
+      },
+      {
         "path": "wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md",
         "title": "2026-07-03 Hybrid RAG And Jarvis Readiness",
         "excerpt": "# 2026-07-03 Hybrid RAG And Jarvis Readiness  Status: complete for bounded hybrid retrieval implementation and Jarvis review-packet verification  ## FACT  - LlamaIndex approved-corpus retrieval now supports hybrid mode with stable `doc_id` and `chunk_id` metadata, required source paths, lexical fallback, and local embedding adapter probing. - The approved corpus remains `project/`, `history/`, `skills/`, and `wiki/`."
+      },
+      {
+        "path": "wiki/runs/2026-07-03-kb-update-principle.md",
+        "title": "Run: E1.4 KB Update Principle",
+        "excerpt": "# Run: E1.4 KB Update Principle  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls.  ## Task  Define the principle for building and updating the knowledge base (E1.4).  ## Inputs  - `project/operating-rules.md` - `project/workflows/knowledge-integration.yaml` - `wiki/memory.md`, `wiki/insights.md` - `project/runs/2026"
+      },
+      {
+        "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
+        "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
+        "excerpt": "# Run: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls, no gated tools.  ## Task  Create the local PRD-to-ICP dry-run outcome packet (E2.0A) using approved public-safe sources only.  ## Inputs  - `project/workflows/market-research-engine.yaml` - `project/runs/2026-07-03-claude-contin"
       }
     ]
   },
@@ -3272,6 +3511,31 @@
       "path": "project/reports/2026-07-02-public-website-visual-delivery.md",
       "title": "Public Website Visual Delivery Report",
       "text": "# Public Website Visual Delivery Report  Date: 2026-07-02 Status: implemented and locally validated  ## Scope  This pass updates the public homepage visual/code implementation only. It does not edit Notion, dashboard backend, provider routing, Telegram, model runtime, CrewAI/LangGraph config, skills, or Prompt 2.1 task-state docs.  ## Changes  - Replaced the first-screen boxed system-map visual with the transparent 3D arch object `assets/3d-arcs/archflow-3d-arc-06-modular-viaduct-segment.webp`. - Added four visible process stages around or near the arch: raw material, knowledge base, PRD/ICP output, and agent oversight. - Moved the primary `Readiness Diagnostic` call to action under the arch/stage visual and made it wider. - Updated homepage copy for the current ICP: B2B SaaS, Series B-D, 50-500 employees, 2-5 PMs, and Director/VP Product ownership of PRD quality and speed. - Preserved cautious runtime wording: browser-local diagnostic first; provider runtime, Railway, voice, and writeback stay gated until verified. - Kept the `Estimate the first useful wedge` calculator block stable and removed calculator hover-depth behavior. - Added mobile-specific layout rules so the arch, stag"
+    },
+    {
+      "path": "project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md",
+      "title": "Epic 1 Summary And Final Test Plan",
+      "text": "# Epic 1 Summary And Final Test Plan  Date: 2026-07-03 Status: Epic 1 closeout package prepared; E1.7 live Railway deployment remains gated Scope: E1.1-E1.7 knowledge base, PRD workflow, dashboard/Jarvis, final testmeeting rerun, critique  ## Executive Summary  Epic 1 built the internal ArchFlow proof engine: approved product material can become source inventory, context digest, PRD, task/backlog package, review report, KB update, and dashboard/Jarvis review packet without storing raw private material in public files.  The strongest result is method reliability, not market demand. Epic 1 proves that ArchFlow can operate a controlled PRD/KB workflow on itself. It does not prove that buyers will pay, that the cloud runtime is complete, or that provider-backed Jarvis is safe to run by default.  ## Epic 1 Scorecard  | Dimension | Score | Visual | Evidence | |---|---:|---|---| | Source boundary discipline | 5/5 | ##### | E1.4 principle, public safety scan, testmeeting sanitizer | | PRD artifact generation | 5/5 | ##### | E1.2 and E1.2.8 PRD/PDF packages | | KB governance | 4/5 | ####. | WikiLLM run notes, E1.3 readback, E1.4 accepted principle | | Dashboard/Jarvis review surface | 4/5 |"
+    },
+    {
+      "path": "project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md",
+      "title": "Epic 2 Delivery Plan And Owner Questions",
+      "text": "# Epic 2 Delivery Plan And Owner Questions  Date: 2026-07-03 Status: plan complete, execution not started Scope: E2 Research Engine To ICP  ## Executive Goal  Epic 2 converts the PRD Pack hypothesis into a source-graded market evidence engine before outreach, positioning upgrades, or demand claims.  The first goal is not to browse widely. The first goal is to define approved sources, data types, agent roles, scoring, competitor comparison, audience analysis, and owner decisions so real account research can proceed without contaminating the public repo or overstating evidence.  ## Current Starting Point  FACT:  - E2.0A is accepted. - Primary ICP hypothesis is B2B SaaS product teams, Series B-D, 50-500 employees, 2-5 PMs, Director/VP Product owner. - First offer hypothesis is the Product Discovery-to-Production PRD Pack. - Approved source types are public company websites, public jobs, public reviews, public directories/lists, authorized LinkedIn summaries, approved search queries, and the internal approved corpus. - Gated tools remain gated: Tavily, Exa, SerpAPI, Firecrawl, Apify, Playwright/browserless, Clay, Apollo, Cognism, Clearbit, People Data Labs.  GAP:  - No account universe"
+    },
+    {
+      "path": "project/reports/2026-07-03-kb-update-principle.md",
+      "title": "KB Update Principle",
+      "text": "# KB Update Principle  Date: 2026-07-03 Status: accepted by owner on 2026-07-03  ## Executive Rule  The knowledge base exists so that a future agent can act correctly without reading chat history. Every KB write must therefore answer one question: \"Will a future agent make a better decision because this exists?\" If yes, write it to the correct layer with provenance. If no, leave it as transient run evidence or do not record it at all.  WikiLLM is the only durable memory. LlamaIndex is retrieval only. Graphify is generated structural reference only. Dashboard packets, Notion rows, Obsidian/Nexus notes, and Telegram deliveries are surfaces, not memory: nothing on a surface counts as knowledge until an agent reviews it and writes it into WikiLLM.  All KB content is public-safe English. No secrets, private URLs, account IDs, local absolute paths, raw transcripts, screenshots, or personal identifiers ever enter any KB layer.  ## Layer Responsibilities  | Layer | Role | Write authority | Durability | |---|---|---|---| | WikiLLM (`wiki/`) | Canonical durable public-safe project memory | Agents, after review, through the writing rules below | Durable | | Run artifacts (`project/runs/<run-i"
+    },
+    {
+      "path": "project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md",
+      "title": "PRD Pack Business Evaluation Research Plan",
+      "text": "# PRD Pack Business Evaluation Research Plan  Date: 2026-07-03 Status: plan complete, research not executed Scope: Product Discovery-to-Production PRD Pack as service, productized service, and future product  ## Executive Decision  The next business-plan report should evaluate ArchFlow as a service first, productized service second, and software product third. Current evidence proves the internal method and the provider-disabled operating surface; it does not yet prove demand, willingness to pay, or a repeatable cloud product.  The research plan therefore asks one main question: can the PRD Pack become a paid wedge for B2B SaaS product teams, and which delivery model should be tested first?  ## Current Evidence Baseline  | Layer | Evidence | Status | Business meaning | |---|---|---|---| | Method | E1.2 and E1.2.8 convert approved material into PRD, backlog, questions, review packet | Proven locally | Service delivery can be demonstrated | | KB | E1.4 defines memory promotion, traceback, provenance, and dashboard-packet gates | Accepted | Repeatability has governance | | Research | E2.0A defines source boundary, evidence cards, and grading | Accepted | Market research can start with"
+    },
+    {
+      "path": "project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md",
+      "title": "Railway Dashboard And Jarvis Full-Cloud Setup Test Plan",
+      "text": "# Railway Dashboard And Jarvis Full-Cloud Setup Test Plan  Date: 2026-07-03 Status: setup/test plan complete, deployment not executed in this run Scope: E1.7 hosted dashboard, Jarvis API, and agentic control surface  ## Executive Answer  Railway is the right next backend host only for runtime features that Vercel static/serverless review packets cannot honestly provide: long-running workers, queues, provider calls, SSE/websocket events, durable uploads, persistent run state, auth, and controlled writeback.  Current proven state is Vercel-connected and provider-disabled. Railway has service scaffolding and prior MCP/project initialization evidence, but no deployment or `/health` proof. E1.7 should finish when Railway runs a provider-disabled Jarvis API with health, CORS/auth, budget guard, and dashboard routing verified without local Codex/Jarvis.  ## Live Railway Check On 2026-07-03  FACT: The official Railway MCP is reachable and authenticated in this Codex session. Public report wording intentionally excludes account-identifying details.  GAP: The current local workspace is not linked to a Railway project. Environment status, deployment list, and service config queries fail becau"
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -3816,7 +4080,27 @@
     {
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-code-continuation-prompt.md",
       "title": "Claude Code Continuation Prompt - ArchFlow",
-      "text": "# Claude Code Continuation Prompt - ArchFlow  Use this prompt for Claude Code or another local agent continuing ArchFlow.  ## Identity  You are Claude Code continuing the ArchFlow public-safe project. You are not the owner, not a production backend, and not an autonomous publisher. You are an implementation/review agent working under the Codex/owner approval boundary.  ## Mandatory Project Boundary  The public project is English-only and public-safe. Do not store:  - API keys, tokens, cookies, passwords, or credentials; - private Notion links; - account IDs or workspace IDs; - local absolute paths; - raw transcripts, raw private docs, screenshots, browser logs, or PDFs; - raw voice/audio; - private profile data; - personal identifiers; - unreviewed provider outputs as facts.  Use repo-relative paths in public artifacts.  ## Required Preflight  1. Read `project/operating-rules.md`. 2. Read `project/live/communication/README.md`. 3. Read `project/live/communication/current-agent-notice.md`. 4. Read the latest section of `project/live/communication/agent-communication-log.md`. 5. Run `git status --short --branch`. 6. Append a starting update to `project/live/communication/agent-commun"
+      "text": "# Claude Code Continuation Prompt - ArchFlow  Status note: this is the compact continuation prompt. For a more detailed Claude Code cowork handoff, use the separated packet in this order:  1. `project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md` 2. `project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md` 3. `project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md`  Use this prompt for Claude Code or another local agent continuing ArchFlow.  ## Identity  You are Claude Code continuing the ArchFlow public-safe project. You are not the owner, not a production backend, and not an autonomous publisher. You are an implementation/review agent working under the Codex/owner approval boundary.  ## Mandatory Project Boundary  The public project is English-only and public-safe. Do not store:  - API keys, tokens, cookies, passwords, or credentials; - private Notion links; - account IDs or workspace IDs; - local absolute paths; - raw transcripts, raw private docs, screenshots, browser logs, or PDFs; - raw voice/audio; - private profile data; - personal identifiers; - unreviewed provid"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-cowork-whole-project-instructions.md",
+      "title": "Claude Cowork Whole-Project Instructions",
+      "text": "# Claude Cowork Whole-Project Instructions  Date: 2026-07-03 Status: copy-ready operating contract for Claude Code or another local cowork agent.  ## Purpose  Use this document as the whole-project operating contract before Claude Code works on ArchFlow. It is not a single-task prompt. It explains how the project is organized, what the company is trying to prove, how the knowledge system works, how the dashboard and website should be treated, which skills and MCP-style connectors matter, and which claims remain gated.  The main rule is simple: improve the current system without inventing a parallel architecture. ArchFlow already has a public-safe project spine. The next cowork agent should read it, respect it, stabilize it, and execute the next stage.  ## Identity  You are a cowork implementation and review agent working inside the ArchFlow public-safe project. You are not the owner, not an autonomous publisher, not a production backend, and not the source of truth for private information.  Your job is to:  - read the current public-safe state before acting; - preserve public-safety boundaries; - coordinate with the live agent log before edits; - execute bounded tasks; - leave dura"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-execution-prompt.md",
+      "title": "Claude Execution Prompt",
+      "text": "# Claude Execution Prompt  Date: 2026-07-03 Status: copy-ready prompt for actual project work after setup readiness is complete.  ## Copy This Prompt Into Claude Code For Execution  You are Claude Code continuing ArchFlow after completing the setup/readiness pass. Work as a senior system architect/operator and pragmatic implementation agent. Your goal is to execute the next safe project task while preserving the knowledge system, public-safety boundary, dashboard truth, and live coordination discipline.  Do not restart from scratch. Use the existing project structure and run artifacts.  ## Execution Goal  Primary next task:  Complete E1.4: define the principle for building and updating the knowledge base.  Secondary task only after E1.4 is complete and validated:  Run E2.0A: create the local PRD-to-ICP dry-run outcome packet.  Do not start E3.1, E4.1, provider activation, Railway, vector defaulting, Nexus writeback, dashboard writeback, or autonomous external sync until the primary task is complete or explicitly reprioritized.  ## Required Context Files  Read these first:  ```text project/operating-rules.md project/live/communication/README.md project/live/communication/current-age"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-project-setup-prompt.md",
+      "title": "Claude Project Setup Prompt",
+      "text": "# Claude Project Setup Prompt  Date: 2026-07-03 Status: copy-ready prompt for onboarding Claude Code to the project, skills, MCPs, and local checks.  ## Copy This Prompt Into Claude Code For Setup  You are Claude Code being onboarded into the ArchFlow public-safe project. Your first task is setup and readiness, not feature implementation.  Do not edit feature files yet. Do not run provider calls. Do not write external systems. Do not send Telegram. Do not push. First, prove you understand the project, available skills, MCP/connectors, safety boundary, validation commands, and next execution sequence.  ## Setup Goal  Create a reliable local cowork setup so you can later execute ArchFlow tasks without breaking the knowledge system, dashboard, public-safety boundary, or live agent coordination.  Your setup output must be a concise readiness report and, only if useful, small project-safe setup notes. The setup must answer:  - Which project files define the operating contract? - Which project-local skills must be read before work? - Which MCP/connectors are available in this Claude environment? - Which connectors are missing or gated? - Which validation commands are available? - Which r"
+    },
+    {
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md",
+      "title": "Run: Claude Cowork Setup Readiness",
+      "text": "# Run: Claude Cowork Setup Readiness  Date: 2026-07-03 Project: ArchFlow Block 1 Knowledge (public-safe) Owner agent: Claude (Cowork) Support tools: local filesystem, sandboxed shell, git (read), MCP registry.  ## Task  Onboard Claude Cowork to the ArchFlow public-safe project: prove understanding of the operating contract, project-local skills, connector availability, safety boundary, validation path, runtime truth, and the next execution task. Setup only \u2014 no feature edits, no provider calls, no external writes, no push.  ## Setup Scope Note  The setup prompt paths are relative to the git root, which in this workspace is the `public/` folder (that is where `.git` lives). All references below use `public/`-relative paths. The top-level `ArchFlow/` folder additionally holds pre-reset root files that are out of scope for current public work.  ## Files Read  - `project/operating-rules.md` - `project/live/communication/README.md`, `current-agent-notice.md`, latest `agent-communication-log.md` - `project/project-plan.md` - `project/agentic-stack.md` - `project/config/model-routing.yaml` - `project/agents/agent-roster.yaml` - `wiki/index.md`, `wiki/memory.md`, `wiki/insights.md` - All n"
     },
     {
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md",
@@ -3869,9 +4153,69 @@
       "text": "# Telegram Delivery Status  Date: 2026-07-03T11:13:37.760439+00:00 Status: sent Reason: telegram_api_ok  Boundary: - Message file is sanitized project status only. - Bot token, chat ID, and Telegram response body are not stored in public files."
     },
     {
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/agent-handout.md",
+      "title": "Agent Handout: Epic 1 And Epic 2 Planning Closeout",
+      "text": "# Agent Handout: Epic 1 And Epic 2 Planning Closeout  Date: 2026-07-03 Status: in progress until validation, Notion, push, and Telegram closeout are recorded  ## Purpose  This handout records the continuation after owner acceptance of E1.4 and E2.0A. It covers the PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup plan, Epic 1 summary/final-test plan, and Epic 2 owner-question plan.  ## Human Summary  E1.4 and E2.0A are now recorded as accepted. The local `testmeeting` final baseline was rerun through the provider-disabled script; it completed and wrote only sanitized derived outputs. The run did not rerun OpenRouter because provider use remains a separate approval-gated lane.  The new report package separates the current service proof from future cloud productization. Epic 1 is strong as an internal PRD/KB proof engine, while E1.7 remains open for Railway full-cloud runtime proof. Epic 2 is now structured as an evidence engine with source boundaries, account-card schema, competitor analysis, audience analysis, and owner questions before execution.  ## Current State  | Area | State | |---|---| | E1.4 | accepted on 2026-07-03 | | E2.0A | accepted on 2026-07-03 | "
+    },
+    {
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/notion-update-packet.md",
+      "title": "Notion Update Packet",
+      "text": "# Notion Update Packet  Date: 2026-07-03 Status: prepared, pending live Notion update  ## Epic 1 Top Insert  Epic 1 status, 2026-07-03: internal PRD/KB proof is complete for method scope. E1.4 is accepted. The testmeeting PRD/PDF package was rerun locally with provider disabled. The system now provides a public-safe PRD Pack proof engine, dashboard/Jarvis review packets, and KB governance. Remaining gap: E1.7 Railway full-cloud deployment and health proof are planned but not executed in this run.  Report files:  - `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` - `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.pdf` - `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` - `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.pdf`  ## E2 Task Insert  Epic 2 should start with source and execution decisions before account research. Add the owner questions from `project/reports/2026-07-03-epic-2-delivery-plan-and-owner-questions.md` to the E2 task page and keep the task out of Done until the source boundary and first account-universe method are approved.  ## Status Notes  - E1.4: accepted. - E2.0A: accepted"
+    },
+    {
+      "path": "project/runs/2026-07-03-epic1-epic2-planning-closeout/telegram-message.md",
+      "title": "telegram-message.md",
+      "text": "ArchFlow update 2026-07-03: E1.4 and E2.0A are accepted. The testmeeting final local baseline was rerun with provider disabled. New reports are ready: PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup test plan, Epic 1 summary/final-test plan, and Epic 2 delivery plan with owner questions. No provider-backed runtime, Railway deployment, outreach, or demand claim was executed in this run."
+    },
+    {
       "path": "project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md",
       "title": "Agent Handout: Hybrid RAG And Jarvis Readiness",
       "text": "# Agent Handout: Hybrid RAG And Jarvis Readiness  Date: 2026-07-03 Status: implementation complete for bounded hybrid retrieval and Jarvis readiness verification Lane: LlamaIndex RAG upgrade plus Jarvis architecture-mode readiness  ## Title And Purpose  This handout records the widened plan and implementation pass for the ArchFlow public knowledge system. It is for the next operator who must continue Graphify, RAG, LlamaIndex, Jarvis, dashboard, Notion, GitHub, and future tool-integration work without relying on chat history.  ## Human Summary  The current reliable architecture remains public-safe first. Codex is the local operator and approval boundary. WikiLLM is the durable curated memory. Graphify is generated structural reference. LlamaIndex is the bounded retrieval layer. LangGraph controls execution paths and gates. CrewAI provides named role structure. Jarvis is the dashboard communication/control surface, with Architecture 1 for PRD/ICP output and Architecture 2 for architecture/agent-system work.  This run upgraded the LlamaIndex approved-corpus path from keyword-only proof to bounded hybrid retrieval. The script now creates stable document and chunk metadata, enforces re"
+    },
+    {
+      "path": "project/runs/2026-07-03-kb-update-principle/agent-handout.md",
+      "title": "Agent Handout: E1.4 KB Update Principle",
+      "text": "# Agent Handout: E1.4 KB Update Principle  Date: 2026-07-03 Run: 2026-07-03-kb-update-principle Owner agent: Claude (Cowork) Status: accepted by owner on 2026-07-03  ## Human Summary  E1.4 is written. The report `project/reports/2026-07-03-kb-update-principle.md` defines the single durable rule for the knowledge system: WikiLLM is the only durable memory; LlamaIndex is retrieval only; Graphify is generated reference; dashboard packets, Notion, Obsidian/Nexus, and Telegram are surfaces whose content becomes knowledge only after agent review and a WikiLLM write. The report includes a promotion test, a per-file WikiLLM decision table, provenance rules, retrieval rules, error/traceback procedure (including credential-boundary incidents), the agent closeout workflow, and validation bundles.  ## Decisions Made  - One promotion test governs all durable writes: the content must change future agent behavior, be public-safe English, and carry repo-relative provenance. - Errors are corrected in place in durable memory, never left standing; incidents get masked issue records. - No new architecture was invented; the report codifies the existing layer contract.  ## Files Changed  - `project/repo"
+    },
+    {
+      "path": "project/runs/2026-07-03-kb-update-principle/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "text": "# Telegram File Delivery Status  Date: 2026-07-03T12:48:10.308455+00:00 Status: blocked Reason: url_error:Tunnel connection failed: 403 Forbidden  Files:  Boundary: - Message and files are sanitized project status artifacts only. - Bot token, chat ID, private destination, and Telegram response body are not stored in public files."
+    },
+    {
+      "path": "project/runs/2026-07-03-kb-update-principle/telegram-message.md",
+      "title": "telegram-message.md",
+      "text": "ArchFlow update 2026-07-03: E1.4 KB update principle is complete (report attached as PDF) and the E2.0A PRD-to-ICP dry-run packet is written. All documentation checks passed. Pending: owner acceptance of E1.4 and E2.0A. Next: E2.1 source-list planning, E3.1 positioning, E4.1 content plan. No provider calls or external writes were made."
+    },
+    {
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md",
+      "title": "E2.0A Account Evidence Card Schema",
+      "text": "# E2.0A Account Evidence Card Schema  Date: 2026-07-03 Status: accepted dry-run schema on 2026-07-03 Basis: `project/workflows/market-research-engine.yaml` account_card_schema, extended with provenance fields required by the E1.4 KB update principle.  ## Card Fields  | Field | Type | Rule | |---|---|---| | account_id | stable domain id | Derived from domain; never an internal or private ID | | company_name | string | Public name only | | domain | string | Public website domain | | segment_primary | string | From segment model (B2B SaaS product teams first) | | segment_secondary | string | Optional adjacent segment | | source_seed | string | Which public directory/list produced the account | | website_signal | string | English summary of public website evidence | | job_signal_score | integer 0-20 | From public job postings only | | linkedin_signal_summary | string | Authorized summary only; no raw profile text | | social_signal_summary | string | HYPOTHESIS-only field; never graded above C | | pain_type | enum | customer_research_overload, prd_rework, roadmap_ambiguity, handoff_loss, decision_memory_gap | | decision_roles | string | Role names and currentness status; verify live bef"
+    },
+    {
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md",
+      "title": "Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet",
+      "text": "# Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Run: 2026-07-03-prd-icp-dry-run Owner agent: Claude (Cowork) Status: accepted by owner on 2026-07-03  ## Human Summary  The E2.0A dry-run packet is written. It converts the market-research-engine workflow into executable research discipline: a source boundary (public sources only, gated tools listed), an account evidence card schema with provenance and review fields, an A-D source grade rubric wired to the scoring model and fact-check gate, an honest low-confidence ICP profile outline for Series B-D B2B SaaS product teams, and an executive decision that scopes what E2.0A enables and forbids. No provider calls were made; no external accounts were researched \u2014 this is the method packet that makes the first real pass (E2.1) safe.  ## Files Changed  - `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` (new) - `proje"
+    },
+    {
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md",
+      "title": "E2.0A Executive Decision",
+      "text": "# E2.0A Executive Decision  Date: 2026-07-03 Status: accepted by owner on 2026-07-03  ## One-Sentence Decision  ArchFlow will run its first market-facing research loop as a bounded PRD-to-ICP evidence pipeline over public sources only, using the account evidence card schema and source grade rubric from this packet, before any outreach, provider spend, or paid-test claims.  ## Why Now  - E1.1-E1.3 proved the infrastructure spine; E1.4 defined the KB update principle. The system is ready for disciplined research proof, not wider architecture. - Positioning (E3.1) and content (E4.1) need graded evidence to avoid overclaiming.  ## Owner Of The Decision  Project owner. AF Review gates fact-checking; agents execute bounded stages per `project/workflows/market-research-engine.yaml`.  ## What This Decision Enables  - E2.1: approved source list and segment data model. - First real account universe pass with deduplicated card table. - Honest ICP confidence upgrades from graded signals.  ## What This Decision Explicitly Does Not Do  - No outreach, no payment-test claims, no demand validation claims. - No gated tools (search APIs, crawlers, enrichment vendors) without separate approval. - No p"
+    },
+    {
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md",
+      "title": "E2.0A ICP Profile Outline",
+      "text": "# E2.0A ICP Profile Outline  Date: 2026-07-03 Status: accepted dry-run baseline on 2026-07-03 Basis: `project/workflows/market-research-engine.yaml` segment model; `docs/prd-icp-output-template.md` ICP block.  ## Primary ICP (dry-run baseline)  | Field | Answer | Evidence | Confidence | |---|---|---|---| | Account shape | Series B-D B2B SaaS, 50-500 employees, 2-5 PMs | Workflow segment model (internal, approved) | Medium | | Buyer role | Director or VP of Product accountable for PRD quality and speed | Workflow segment model | Medium | | Trigger | New funding, PM team growth, discovery-to-delivery handoff failures, PRD rework complaints | HYPOTHESIS until account evidence exists | Low | | Pain | Customer research overload, PRD rework, roadmap ambiguity, handoff loss, decision memory gap | pain_type enum; needs per-account evidence | Low-Medium | | Current workaround | Docs/Notion templates, ad hoc AI chats, manual synthesis by senior PM | HYPOTHESIS | Low | | Disqualifier | No dedicated product function; single-founder pre-seed; agencies without recurring product work; regulated data that cannot be sanitized | Boundary decision, this run | Medium | | Budget path | Product org tool"
+    },
+    {
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md",
+      "title": "E2.0A Source Boundary",
+      "text": "# E2.0A Source Boundary  Date: 2026-07-03 Status: accepted dry-run boundary on 2026-07-03 Reviewer: owner (pending)  ## Approved Source Types  - Public company websites (product, pricing, careers, blog pages). - Public job postings (company career pages, public job boards). - Public review sites (G2, Capterra-class public review text; summaries only). - Public directories and public market lists. - Authorized LinkedIn views summarized in English (no raw exports, no scraped profile text). - Approved search queries over public pages. - Internal approved corpus: `project/`, `history/`, `skills/`, `wiki/`.  ## Excluded Raw Inputs  - Private transcripts, emails, chat logs, or meeting recordings. - Scraped private profiles or logged-in-only content. - Purchased lead databases (Apollo, Clearbit, PDL and similar remain gated per `project/workflows/market-research-engine.yaml` tool policy). - Raw private lead data of any kind in the public repo. - Screenshots, account IDs, private URLs.  ## Private Material Handling  Private context may be read for understanding only. Anything entering this packet must be a translated public-safe English summary with a generic source description and repo-re"
+    },
+    {
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md",
+      "title": "E2.0A Source Grade Rubric",
+      "text": "# E2.0A Source Grade Rubric  Date: 2026-07-03 Status: accepted dry-run rubric on 2026-07-03  ## Grades  | Grade | Definition | Examples | Allowed use | |---|---|---|---| | A | Direct, current, first-party public statement | Company website product/pricing page, official careers page posting, official announcement | FACT with citation; can support outreach and ICP claims | | B | Independent third-party public evidence, dated and attributable | Public review text, public directory entry, public conference talk, funding announcement | FACT with citation when corroborating; needs one more independent signal for outreach | | C | Indirect or aging public evidence | Job posting older than 90 days, secondhand blog commentary, aggregated market lists | INTERPRETATION support only; never sole basis for a claim | | D | Unverifiable, social-only, or anonymous | Social posts, forum comments, uncited claims | HYPOTHESIS only; monitor, never assert |  ## Grading Rules  - Every signal on an account evidence card gets exactly one grade. - Two independent signals of grade B or better are required before any outreach-facing claim (inherited from evidence_rules). - A social-only account is capped at g"
     },
     {
       "path": "project/runs/2026-07-03-vercel-jarvis-connection/agent-handout.md",
@@ -3986,12 +4330,12 @@
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-activity-progress-report.md",
       "title": "E1.2.8 Agent Activity Progress Report",
-      "text": "# E1.2.8 Agent Activity Progress Report  ## Run Metadata  | Field | Value | |---|---| | Date | 2026-07-02 | | Lane | E1.2.8 testmeeting local/Codex PRD run | | Epic/task | E1 Build the Knowledge Base on Ourselves / E1.2.8 | | Agent role | Codex local operator | | Status | Complete for local run; OpenRouter comparison `completed_review_gated` |  ## Source Boundary  - Approved inputs: private test meeting transcript and private discovery-methodology document. - Excluded raw inputs: raw transcript, names, private URLs, screenshots, credentials, account IDs. - Public-safe source IDs: `SRC-E128-MEETING`, `SRC-E128-DISCOVERY`, `SRC-E128-E1-PUBLIC`.  ## Activity Ledger  | Time | Actor | Action | Artifact | Status | |---|---|---|---|---| | 2026-07-02 | Codex | Read private source boundary | `source-inventory.md` | complete | | 2026-07-02 | Codex | Built sanitized digest | `context-digest.md` | complete | | 2026-07-02 | Codex | Generated local PRD | `E1.2.8_Local_PRD.md` | complete | | 2026-07-02 | Codex | Applied methodology review | `E1.2.8_Source_Methodology_review.md` | complete | | 2026-07-02 | Codex | Prepared backlog/questions | `backlog-and-questions.md` | complete | | 2026-07-02 | "
+      "text": "# E1.2.8 Agent Activity Progress Report  ## Run Metadata  | Field | Value | |---|---| | Date | 2026-07-02 | | Lane | E1.2.8 testmeeting local/Codex PRD run | | Epic/task | E1 Build the Knowledge Base on Ourselves / E1.2.8 | | Agent role | Codex local operator | | Status | Complete for local run; OpenRouter status `not_run` |  ## Source Boundary  - Approved inputs: private test meeting transcript and private discovery-methodology document. - Excluded raw inputs: raw transcript, names, private URLs, screenshots, credentials, account IDs. - Public-safe source IDs: `SRC-E128-MEETING`, `SRC-E128-DISCOVERY`, `SRC-E128-E1-PUBLIC`.  ## Activity Ledger  | Time | Actor | Action | Artifact | Status | |---|---|---|---|---| | 2026-07-02 | Codex | Read private source boundary | `source-inventory.md` | complete | | 2026-07-02 | Codex | Built sanitized digest | `context-digest.md` | complete | | 2026-07-02 | Codex | Generated local PRD | `E1.2.8_Local_PRD.md` | complete | | 2026-07-02 | Codex | Applied methodology review | `E1.2.8_Source_Methodology_review.md` | complete | | 2026-07-02 | Codex | Prepared backlog/questions | `backlog-and-questions.md` | complete | | 2026-07-02 | Codex | Ran AF Revi"
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/agent-handout.md",
       "title": "E1.2.8 Testmeeting Local PRD Handout",
-      "text": "# E1.2.8 Testmeeting Local PRD Handout  ## Title And Purpose  This handout records the E1.2.8 testmeeting local/Codex PRD package and the dashboard architecture updates that support running it from Jarvis.  ## Human Summary  The run uses the private `testmeeting.md` and discovery-methodology document as source inputs, but stores only sanitized derived outputs in the public repo. The local PRD focuses on release kickoff and discovery-to-delivery handoff modernization for B2B SaaS product teams.  The output demonstrates the ArchFlow service concept: raw product-team conversation and method material become a source boundary, context digest, PRD, backlog, questions, methodology review, process report, and AF Review packet. It extends the earlier June 26 E1.2 proof without replacing it.  OpenRouter status is `completed_review_gated`. The comparison used only the sanitized digest, selected `qwen/qwen3.6-plus` through the `yushchenko.source_scope_gate` role/node strategy, wrote a ledger and budget guard, and estimated spend at about `0.00794` USD. No raw private source was sent.  ## Current State  - Local/Codex PRD package: complete. - PDFs: rendered for local PRD, streaming report, and m"
+      "text": "# E1.2.8 Testmeeting Local PRD Handout  ## Title And Purpose  This handout records the E1.2.8 testmeeting local/Codex PRD package and the dashboard architecture updates that support running it from Jarvis.  ## Human Summary  The run uses the private `testmeeting.md` and discovery-methodology document as source inputs, but stores only sanitized derived outputs in the public repo. The local PRD focuses on release kickoff and discovery-to-delivery handoff modernization for B2B SaaS product teams.  The output demonstrates the ArchFlow service concept: raw product-team conversation and method material become a source boundary, context digest, PRD, backlog, questions, methodology review, process report, and AF Review packet. It extends the earlier June 26 E1.2 proof without replacing it.  OpenRouter status is `not_run`. If provider output exists, it is a separate comparison against the sanitized digest, not a raw-source run.  ## Current State  - Local/Codex PRD package: complete. - PDFs: rendered for local PRD, streaming report, and methodology review. - Dashboard: Architecture 1/2 selector, persistent chat, proactive interview, and schema node improvements are part of this lane. - Notio"
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/backlog-and-questions.md",
@@ -4006,12 +4350,12 @@
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/review-report.md",
       "title": "E1.2.8 AF Review Report",
-      "text": "# E1.2.8 AF Review Report  Status: local/Codex output approved for review packet  ## FACT  - Private source files were read from the ArchFlow root. - Public output files contain only sanitized English summaries and derived artifacts. - Local/Codex run used `MODEL_PROVIDER=none`. - OpenRouter status: `completed_review_gated`. - OpenRouter selected model: `qwen/qwen3.6-plus` through `yushchenko.source_scope_gate`. - OpenRouter estimated spend: about `0.00794` USD.  ## INTERPRETATION  The local run satisfies the requested E1.2.8 local PRD/PDF package. It does not replace the June 26 E1.2 proof; it extends E1.2 with a source-specific testmeeting package.  ## HYPOTHESIS  The strongest buyer-facing interpretation is a PRD automation service that turns release/discovery operating discussion into a coherent release kickoff and discovery-to-delivery handoff PRD.  ## GAP  - Owner acceptance is needed before E1.2 can be marked Done. - OpenRouter output remains a separate review-gated comparison until AF Review and owner acceptance. - Railway hosted runtime remains E1.7, not part of this local run.  ## Safety Verdict  Approved for public repo storage as sanitized derived output. Not approved f"
+      "text": "# E1.2.8 AF Review Report  Status: local/Codex output approved for review packet  ## FACT  - Private source files were read from the ArchFlow root. - Public output files contain only sanitized English summaries and derived artifacts. - Local/Codex run used `MODEL_PROVIDER=none`. - OpenRouter status: `not_run`.  ## INTERPRETATION  The local run satisfies the requested E1.2.8 local PRD/PDF package. It does not replace the June 26 E1.2 proof; it extends E1.2 with a source-specific testmeeting package.  ## HYPOTHESIS  The strongest buyer-facing interpretation is a PRD automation service that turns release/discovery operating discussion into a coherent release kickoff and discovery-to-delivery handoff PRD.  ## GAP  - Owner acceptance is needed before E1.2 can be marked Done. - OpenRouter output, if unavailable or failed, remains a separate comparison blocker. - Railway hosted runtime remains E1.7, not part of this local run.  ## Safety Verdict  Approved for public repo storage as sanitized derived output. Not approved for publishing as customer proof, paying-demand proof, or provider-backed runtime proof."
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/source-inventory.md",
       "title": "E1.2.8 Source Inventory",
-      "text": "# E1.2.8 Source Inventory  Date: 2026-07-02 Status: sanitized source boundary accepted for local/Codex run  ## Source Boundary  | Source | Location | Use | Public Storage | |---|---|---|---| | Approved meeting transcript | private source, filename redacted | Product-meeting themes and PRD extraction | Raw text not copied | | Approved discovery methodology document | private source, filename redacted | Customer discovery, JTBD, PRD, and dual-track method context | Raw body not copied | | Prior E1/E1.3 public artifacts | public repo run notes and reports | E1 architecture, ICP, task-state, and safety boundaries | Linked/summarized only |  ## Public-Safe Rule  Only sanitized English summaries and derived PRD/report artifacts are saved in this folder. The run does not store raw private transcript text, personal names, private URLs, screenshots, credentials, or account identifiers.  ## Provider Rule  OpenRouter comparison, if run, uses only the sanitized digest and must write a provider ledger, model selection proof, budget guard, and comparison report."
+      "text": "# E1.2.8 Source Inventory  Date: 2026-07-02 Status: sanitized source boundary accepted for local/Codex run  ## Source Boundary  | Source | Location | Use | Public Storage | |---|---|---|---| | Test meeting transcript | private root `docs/testmeeting.md` | Product-meeting themes and PRD extraction | Raw text not copied | | Discovery methodology document | private root `discovery materials.docx` | Customer discovery, JTBD, PRD, and dual-track method context | Raw body not copied | | Prior E1/E1.3 public artifacts | public repo run notes and reports | E1 architecture, ICP, task-state, and safety boundaries | Linked/summarized only |  ## Public-Safe Rule  Only sanitized English summaries and derived PRD/report artifacts are saved in this folder. The run does not store raw private transcript text, personal names, private URLs, screenshots, credentials, or account identifiers.  ## Provider Rule  OpenRouter comparison, if run, uses only the sanitized digest and must write a provider ledger, model selection proof, budget guard, and comparison report."
     },
     {
       "path": "project/runs/E1.3/2026-06-30-kb-readback/agent-coordination-stream.md",
@@ -4504,9 +4848,24 @@
       "text": "# Run - Daily Founder Notes And Current-State Report  Date: 2026-07-03 Status: completed for Notion, PDF, Telegram, and public-safe report artifacts; final Git/check closeout recorded in live communication  ## Task  Reconstruct day-by-day founder notes for the ArchFlow project and produce a current-state report that explains the knowledge-system methodology, architecture layers, current setup, proof evidence, traceback gains, and next transfer state.  ## Inputs  - Public WikiLLM log and run notes. - Public project run handouts. - Current agentic stack and LlamaIndex workflow. - Current Jarvis/dashboard proof handouts. - Daily Founder Notes Notion database schema.  ## Outputs  - Founder notes packet under `project/runs/2026-07-03-daily-founder-notes/`. - Current-state report Markdown and PDF. - Daily Founder Notes Notion rows for the reset through 2026-07-03. - Current-state report page added under Daily Founder Notes. - Telegram status summary sent through the approved sender path.  ## FACT  - The public project has evidence from the 2026-06-24 reset through 2026-07-03. - The current architecture is public-safe first: Codex operator, WikiLLM memory, Graphify structure, LlamaIndex b"
     },
     {
+      "path": "wiki/runs/2026-07-03-epic1-epic2-planning-closeout.md",
+      "title": "Run: Epic 1 And Epic 2 Planning Closeout",
+      "text": "# Run: Epic 1 And Epic 2 Planning Closeout  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Codex Support agents/tools: read-only subagent audits for Railway/Jarvis and Epic 2 planning; local deterministic scripts only for testmeeting rerun.  ## Task  Continue after owner acceptance of E1.4 and E2.0A. Create the PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup test plan, Epic 1 summary/final-test package, and Epic 2 delivery plan with owner questions.  ## Inputs  - `project/reports/2026-07-03-kb-update-principle.md` - `project/runs/2026-07-03-prd-icp-dry-run/` - `project/project-plan.md` - `project/agentic-stack.md` - `project/runs/E1.2/2026-07-02-testmeeting-local/` - `project/runs/2026-07-02-railway-jarvis-api-setup/agent-handout.md` - `project/runs/2026-07-03-vercel-jarvis-connection/agent-handout.md` - `project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md`  ## Outputs  - `project/reports/2026-07-03-prd-pack-business-evaluation-research-plan.md` - `project/reports/2026-07-03-railway-dashboard-jarvis-cloud-setup-test-plan.md` - `project/reports/2026-07-03-epic-1-summary-and-final-test-plan.md` - `project/reports/2026-07-03-epic-2"
+    },
+    {
       "path": "wiki/runs/2026-07-03-hybrid-rag-jarvis-readiness.md",
       "title": "2026-07-03 Hybrid RAG And Jarvis Readiness",
       "text": "# 2026-07-03 Hybrid RAG And Jarvis Readiness  Status: complete for bounded hybrid retrieval implementation and Jarvis review-packet verification  ## FACT  - LlamaIndex approved-corpus retrieval now supports hybrid mode with stable `doc_id` and `chunk_id` metadata, required source paths, lexical fallback, and local embedding adapter probing. - The approved corpus remains `project/`, `history/`, `skills/`, and `wiki/`. - The deterministic smoke mode still passes through lexical retrieval. - The 20-query benchmark passed with lexical recall@5 20/20, hybrid recall@5 20/20, source-path filtering pass, and no hybrid regression. - The local embedder endpoint was unavailable, so hybrid mode correctly reported lexical fallback. - Local and hosted Jarvis health checks passed with provider calls disabled and writeback disabled. - Hosted Architecture 1 PRD/ICP and Architecture 2 agent-orchestra routes returned review packets. - E1.2 Codex proof was rerun through the deterministic LangGraph proof script and returned approved status with 11 stream events. - Append-only Notion evidence updates were applied to E1.1.7, E1.3.9, and E1.7.  ## INTERPRETATION  LlamaIndex is now a bounded hybrid retriev"
+    },
+    {
+      "path": "wiki/runs/2026-07-03-kb-update-principle.md",
+      "title": "Run: E1.4 KB Update Principle",
+      "text": "# Run: E1.4 KB Update Principle  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls.  ## Task  Define the principle for building and updating the knowledge base (E1.4).  ## Inputs  - `project/operating-rules.md` - `project/workflows/knowledge-integration.yaml` - `wiki/memory.md`, `wiki/insights.md` - `project/runs/2026-07-03-claude-continuation-stabilization/` packet  ## Outputs  - `project/reports/2026-07-03-kb-update-principle.md` - `project/runs/2026-07-03-kb-update-principle/agent-handout.md`  ## Key Content  FACT: The report defines WikiLLM as the only durable memory, LlamaIndex as retrieval only, Graphify as generated reference, and all external surfaces (dashboard packets, Notion, Obsidian/Nexus, Telegram) as non-memory until agent review promotes content into WikiLLM with provenance.  INTERPRETATION: This closes the E1.3-to-E1.4 gap: the KB now has an explicit promotion test, per-file writing table, and traceback procedure, so a new agent can update memory correctly without chat history.  FACT: Owner acceptance was recorded on 2026-07-03. GAP: Venv-dependent validators may be"
+    },
+    {
+      "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
+      "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
+      "text": "# Run: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls, no gated tools.  ## Task  Create the local PRD-to-ICP dry-run outcome packet (E2.0A) using approved public-safe sources only.  ## Inputs  - `project/workflows/market-research-engine.yaml` - `project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md` - `docs/prd-icp-output-template.md` - `project/reports/2026-07-03-kb-update-principle.md` (E1.4 principle, applied)  ## Outputs  - `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` - `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` - `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` - `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` - `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` - `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md`  ## Key Content  FACT: The packet defines the research method only \u2014 source boundary, evidence card schema with provenance, A-D grade rubric, low-confidence ICP outline, and a scoping executi"
     }
   ],
   "sources": [
