@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T15:51:39.886588+00:00",
+  "generated_at": "2026-07-03T15:53:47.867539+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "330",
+      "value": "331",
       "tone": "ok"
     },
     {
@@ -585,6 +585,13 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-cloud-kb-retrospective/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "modified": "2026-07-03T15:53:02.636863+00:00",
+      "size": 521
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/notion-delivery-status.md",
@@ -4353,6 +4360,11 @@
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/obsidian-retrospective.md",
       "title": "Obsidian And Graphify Retrospective",
       "text": "# Obsidian And Graphify Retrospective  Date: 2026-07-03 Status: public-safe sync note  ## Purpose  This note is the reviewed summary for the global Obsidian control vault and the external WikiLLM ArchFlow project memory. It should be stored as synthesis only, not as raw logs, private links, credentials, account IDs, or screenshots.  ## FACT  - Railway Jarvis is verified for provider-disabled review packets. - Vercel production is reachable and browser-clean, but its dashboard data was older than the current E1.7 review preview during this continuation. - E1.6 now has substantive role-specific notes for both the collaborator and primary-operator lanes. - Graphify was refreshed after the new files landed in the working tree. - Refreshed Graphify output recorded 4,913 nodes, 5,086 links, and 461 communities.  ## INTERPRETATION  The current knowledge system works best when it stays layered:  - WikiLLM: durable facts, memory, insights, and run notes. - Project run folders: proof packets, handouts, and validation state. - Reports/PDFs: human executive explanation. - Dashboard data: public evidence index, freshness-dependent. - Graphify: generated structure and navigation, not final seman"
+    },
+    {
+      "path": "project/runs/2026-07-03-cloud-kb-retrospective/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "text": "# Telegram File Delivery Status  Date: 2026-07-03T15:53:01.515238+00:00 Status: sent Reason: telegram_api_ok  Files: - project/reports/2026-07-03-cloud-kb-retrospective.pdf: sent - project/knowledge/collaborator/daily-founder-notes-2026-07-03.md: sent - project/knowledge/primary-operator/daily-founder-notes-retrospective-2026-07-03.md: sent  Boundary: - Message and files are sanitized project status artifacts only. - Bot token, chat ID, private destination, and Telegram response body are not stored in public files."
     },
     {
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/telegram-message.md",
