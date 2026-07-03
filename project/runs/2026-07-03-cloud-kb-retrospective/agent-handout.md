@@ -16,6 +16,7 @@ Continue after the E1.7 closeout by verifying cloud reliability, populating the 
 - live Railway/API checks
 - Vercel production and review-preview dashboard checks
 - agent-browser production dashboard QA
+- current non-production Vercel preview deploy and agent-browser QA
 - read-only reviewer-agent audit
 
 ## Outputs
@@ -39,17 +40,19 @@ FACT:
 - Hosted Jarvis endpoint checks passed for health, CORS, chat, PRD/ICP, agent-orchestra, role config, role update candidate, voice text, and meeting-test approval gate.
 - Agent-browser opened the production dashboard, captured the accessibility tree, opened the Config screen, clicked `Save locally`, and found no console or page errors.
 - Vercel production loads, but production `data.json` is older than the current review preview `data.json`.
+- A current non-production Vercel preview was created after the main push, reached `Ready`, and served the July 3 dashboard data bundle.
+- Agent-browser verified the current preview dashboard controls and found no console or page errors.
 - Graphify refreshed successfully and reported 4,913 nodes, 5,086 links, and 461 communities.
 
 INTERPRETATION:
 
 - The cloud setup is reliable for provider-disabled review packets.
-- It is not perfect as an always-current hosted product because Vercel production is stale relative to the latest E1.7 dashboard data.
+- It is not perfect as an always-current hosted product because Vercel production is stale relative to the latest dashboard data, even though a current preview is ready.
 
 GAP:
 
 - Full SaaS runtime remains gated: auth, persistence, provider ledger, provider calls, durable writeback, raw voice, client workspaces, and buyer proof.
-- Production freshness needs a post-push recheck or explicit production promotion.
+- Production freshness needs explicit promotion from the current preview or a repaired Git-to-Vercel production update path.
 
 ## Reviewer-Agent Result
 
@@ -57,4 +60,4 @@ The read-only reviewer confirmed that the earlier E1.7 package was well covered,
 
 ## Next Safe Action
 
-Regenerate dashboard data, run validation, update Notion append-only, push main, send only public-safe Telegram files, then recheck whether production Vercel picked up the new dashboard data automatically.
+Send only public-safe Telegram files, record delivery status, regenerate dashboard data if the status files change, and push that final delivery-status commit. Keep production promotion gated unless explicitly approved.

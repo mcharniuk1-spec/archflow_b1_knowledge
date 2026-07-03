@@ -13,22 +13,24 @@ Verify whether Jarvis is reliably delivered on cloud across Railway and Vercel, 
 - External writeback remained `0`.
 - Production Vercel dashboard loads and browser QA found no console or page errors.
 - Production Vercel dashboard data is older than the current E1.7 review preview data.
+- A current non-production Vercel preview was created after the main push, reached `Ready`, and served the July 3 cloud/KB dashboard data.
 - The E1.6 collaborator lane now contains a daily-founder-note-derived brief.
 - The primary-operator lane now records the corrected July 3 interpretation after the later E1.7 proof.
 
 ## INTERPRETATION
 
-The cloud setup is reliable for provider-disabled review packets, not for full product runtime. The main reliability defect is production freshness, not API availability.
+The cloud setup is reliable for provider-disabled review packets, not for full product runtime. The main reliability defect is production freshness, not API availability or preview deployability.
 
 The knowledge-base split is now more useful because the collaborator lane has substantive context rather than only routing scaffolding.
 
 ## HYPOTHESIS
 
-If production auto-deploys after the final main push, the stale Vercel data gap may close without manual production promotion. If it does not, an explicit production-promotion or deployment-freshness task is needed.
+If production is explicitly promoted from the current preview, the stale Vercel data gap can close quickly. Without that approval, the remaining work is to repair or prove Git-to-Vercel production freshness.
 
 ## GAP
 
 - Full SaaS gates remain open: auth, persistence, provider ledger, provider calls, durable writeback, raw voice, client workspaces, and buyer proof.
+- Production promotion was not performed because it remains gated.
 - Graphify was stale before this continuation and was refreshed after the new files landed in the working tree. The refreshed graph reported 4,913 nodes, 5,086 links, and 461 communities.
 - Obsidian/Nexus sync should remain public-safe and summary-only.
 

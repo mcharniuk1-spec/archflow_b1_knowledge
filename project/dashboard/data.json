@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T15:40:11.832166+00:00",
+  "generated_at": "2026-07-03T15:51:39.886588+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -589,36 +589,50 @@
       "kind": "project_run",
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/notion-delivery-status.md",
       "title": "Notion Delivery Status",
-      "modified": "2026-07-03T15:39:52.777954+00:00",
-      "size": 710
+      "modified": "2026-07-03T15:51:35.772030+00:00",
+      "size": 867
     },
     {
       "kind": "project_report",
       "path": "project/reports/2026-07-03-cloud-kb-retrospective.pdf",
       "title": "2026-07-03-cloud-kb-retrospective.pdf",
-      "modified": "2026-07-03T15:37:05.014364+00:00",
-      "size": 11174
+      "modified": "2026-07-03T15:50:25.585689+00:00",
+      "size": 11500
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-cloud-kb-retrospective/telegram-message.md",
+      "title": "telegram-message.md",
+      "modified": "2026-07-03T15:50:17.016595+00:00",
+      "size": 1146
     },
     {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-03-cloud-kb-retrospective.md",
       "title": "2026-07-03 Cloud And KB Retrospective",
-      "modified": "2026-07-03T15:36:33.165990+00:00",
-      "size": 2272
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-03-cloud-kb-retrospective.md",
-      "title": "Cloud And KB Retrospective",
-      "modified": "2026-07-03T15:36:33.081241+00:00",
-      "size": 7197
+      "modified": "2026-07-03T15:50:16.929803+00:00",
+      "size": 2495
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/agent-handout.md",
       "title": "Agent Handout: Cloud And KB Retrospective",
-      "modified": "2026-07-03T15:36:32.996570+00:00",
-      "size": 3316
+      "modified": "2026-07-03T15:50:16.843803+00:00",
+      "size": 3713
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-03-cloud-kb-retrospective.md",
+      "title": "Cloud And KB Retrospective",
+      "modified": "2026-07-03T15:50:16.758968+00:00",
+      "size": 7908
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.md",
+      "title": "Cloud Verification Status",
+      "modified": "2026-07-03T15:50:16.671635+00:00",
+      "size": 1894
     },
     {
       "kind": "project_run",
@@ -650,24 +664,10 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-03-cloud-kb-retrospective/telegram-message.md",
-      "title": "telegram-message.md",
-      "modified": "2026-07-03T15:33:51.713774+00:00",
-      "size": 839
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/notion-update-packet.md",
       "title": "Notion Update Packet",
       "modified": "2026-07-03T15:33:51.625199+00:00",
       "size": 2328
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.md",
-      "title": "Cloud Verification Status",
-      "modified": "2026-07-03T15:33:51.448510+00:00",
-      "size": 1437
     },
     {
       "kind": "project_run",
@@ -3702,7 +3702,7 @@
     {
       "path": "project/reports/2026-07-03-cloud-kb-retrospective.md",
       "title": "Cloud And KB Retrospective",
-      "text": "# Cloud And KB Retrospective  Date: 2026-07-03 Status: Review Scope: Jarvis cloud reliability, Vercel freshness, E1.6 collaborator KB, daily founder-note addendum, Graphify/Obsidian knowledge-system retrospective  ## Executive Verdict  The Jarvis cloud path is working for the current provider-disabled review-packet baseline. Railway is running and the hosted API passed all checks used in this continuation.  It is not perfect yet. Vercel production is reachable and browser-clean, but it serves an older dashboard data bundle than the current E1.7 review preview. Therefore the correct status is:  ```text Railway Jarvis review packets: working Vercel production availability: working Vercel production freshness: stale Full product runtime: gated ```  ## Scorecard  | Area | Score | Visual | Result | |---|---:|---|---| | Railway API availability | 5/5 | ##### | service running, health passed | | Provider safety | 5/5 | ##### | provider calls stayed `0` | | Writeback safety | 5/5 | ##### | external writeback stayed `0` | | Endpoint coverage | 5/5 | ##### | health, CORS, chat, PRD/ICP, orchestra, roles, voice text, approval gate checked | | Dashboard browser QA | 4/5 | ####. | production UI"
+      "text": "# Cloud And KB Retrospective  Date: 2026-07-03 Status: Review Scope: Jarvis cloud reliability, Vercel freshness, E1.6 collaborator KB, daily founder-note addendum, Graphify/Obsidian knowledge-system retrospective  ## Executive Verdict  The Jarvis cloud path is working for the current provider-disabled review-packet baseline. Railway is running and the hosted API passed all checks used in this continuation.  It is not perfect yet. Vercel production is reachable and browser-clean, but it serves an older dashboard data bundle than the current E1.7 review preview. Therefore the correct status is:  ```text Railway Jarvis review packets: working Vercel production availability: working Vercel production freshness: stale Vercel current preview: ready and fresh Full product runtime: gated ```  ## Scorecard  | Area | Score | Visual | Result | |---|---:|---|---| | Railway API availability | 5/5 | ##### | service running, health passed | | Provider safety | 5/5 | ##### | provider calls stayed `0` | | Writeback safety | 5/5 | ##### | external writeback stayed `0` | | Endpoint coverage | 5/5 | ##### | health, CORS, chat, PRD/ICP, orchestra, roles, voice text, approval gate checked | | Dashboard "
     },
     {
       "path": "project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md",
@@ -4332,17 +4332,17 @@
     {
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/agent-handout.md",
       "title": "Agent Handout: Cloud And KB Retrospective",
-      "text": "# Agent Handout: Cloud And KB Retrospective  Date: 2026-07-03 Status: Review / continuation packet complete  ## Task  Continue after the E1.7 closeout by verifying cloud reliability, populating the E1.6 collaborator knowledge-base lane from the daily founder-note packet, updating the primary-operator daily-note retrospective, recording Graphify/Obsidian knowledge-system findings, preparing Notion update text, and delivering a public-safe closeout packet.  ## Inputs  - `project/runs/2026-07-03-e1-7-railway-jarvis-final/` - `project/runs/2026-07-03-daily-founder-notes/` - `project/knowledge/` - `project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md` - live Railway/API checks - Vercel production and review-preview dashboard checks - agent-browser production dashboard QA - read-only reviewer-agent audit  ## Outputs  | Output | File | |---|---| | Cloud status JSON | `project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.json` | | Cloud status note | `project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.md` | | Main report | `project/reports/2026-07-03-cloud-kb-retrospective.md` | | Collaborator KB note | `project/knowledge/collaborator/dai"
+      "text": "# Agent Handout: Cloud And KB Retrospective  Date: 2026-07-03 Status: Review / continuation packet complete  ## Task  Continue after the E1.7 closeout by verifying cloud reliability, populating the E1.6 collaborator knowledge-base lane from the daily founder-note packet, updating the primary-operator daily-note retrospective, recording Graphify/Obsidian knowledge-system findings, preparing Notion update text, and delivering a public-safe closeout packet.  ## Inputs  - `project/runs/2026-07-03-e1-7-railway-jarvis-final/` - `project/runs/2026-07-03-daily-founder-notes/` - `project/knowledge/` - `project/reports/2026-07-03-e1-7-railway-jarvis-final-report.md` - live Railway/API checks - Vercel production and review-preview dashboard checks - agent-browser production dashboard QA - current non-production Vercel preview deploy and agent-browser QA - read-only reviewer-agent audit  ## Outputs  | Output | File | |---|---| | Cloud status JSON | `project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.json` | | Cloud status note | `project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.md` | | Main report | `project/reports/2026-07-03-cloud-kb-retrospectiv"
     },
     {
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/cloud-verification-status.md",
       "title": "Cloud Verification Status",
-      "text": "# Cloud Verification Status  Date: 2026-07-03 Status: Review  ## FACT  - Railway `jarvis-api` is running and passed the provider-disabled endpoint checks. - Hosted `/health`, CORS from the Vercel production origin, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, voice text, and meeting-test approval gate checks behaved as expected. - Provider calls remained `0`. - External writeback remained `0`. - The production dashboard page loads and browser QA found no console or page errors. - The production dashboard data bundle is older than the current E1.7 data bundle. - The current E1.7 dashboard data bundle is present on the Vercel review preview.  ## INTERPRETATION  Railway is reliable for the current cloud review-packet baseline. Vercel production is reachable, but not fully current for the latest July 3 E1.7 artifacts. That means the cloud setup is useful, but it should stay in Review until production data freshness is proven after a main push or explicit production promotion.  ## GAP  - No provider-backed model execution. - No persistent client workspace. - No dashboard-driven durable Notion/GitHub/WikiLLM writeback. - No raw voice/audio storage or STT/TTS produc"
+      "text": "# Cloud Verification Status  Date: 2026-07-03 Status: Review  ## FACT  - Railway `jarvis-api` is running and passed the provider-disabled endpoint checks. - Hosted `/health`, CORS from the Vercel production origin, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, voice text, and meeting-test approval gate checks behaved as expected. - Provider calls remained `0`. - External writeback remained `0`. - The production dashboard page loads and browser QA found no console or page errors. - The production dashboard data bundle is older than the current E1.7 data bundle. - The current E1.7 dashboard data bundle is present on the Vercel review preview. - After the main push, a non-production Vercel preview was created from the current tree and reached `Ready`. - Agent-browser verified the current preview dashboard shell and current preview `data.json` generated on July 3. - The current preview URL and private deployment metadata are not stored in public files.  ## INTERPRETATION  Railway is reliable for the current cloud review-packet baseline. Vercel now has a current preview for review, but production is still not proven current for the latest July 3 E1.7 artifacts. Tha"
     },
     {
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/notion-delivery-status.md",
       "title": "Notion Delivery Status",
-      "text": "# Notion Delivery Status  Date: 2026-07-03 Status: sent  ## Updated  - Epic 1 parent: cloud/KB retrospective addendum. - E1.6 task: collaborator KB addendum, Review status/property note. - E1.7 task: cloud reliability recheck, Review status/property note. - Daily Founder Notes parent: cloud/KB addendum. - Collaborator-side founder log: new daily addendum row. - Primary-operator founder log: new daily addendum row.  ## Verified  - E1.6 page was fetched after update and showed the new property note plus inserted section. - E1.7 page was fetched after update and showed the new property note plus inserted section.  ## Boundary  Private Notion page URLs and IDs are intentionally omitted from public files."
+      "text": "# Notion Delivery Status  Date: 2026-07-03 Status: sent  ## Updated  - Epic 1 parent: cloud/KB retrospective addendum. - E1.6 task: collaborator KB addendum, Review status/property note. - E1.7 task: cloud reliability recheck, Review status/property note. - Daily Founder Notes parent: cloud/KB addendum. - Collaborator-side founder log: new daily addendum row. - Primary-operator founder log: new daily addendum row. - Final after-push preview addendum: appended to Epic 1, E1.7, and Daily Founder Notes.  ## Verified  - E1.6 page was fetched after update and showed the new property note plus inserted section. - E1.7 page was fetched after update and showed the new property note plus inserted section. - Final Notion addendum calls returned page update acknowledgements.  ## Boundary  Private Notion page URLs and IDs are intentionally omitted from public files."
     },
     {
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/notion-update-packet.md",
@@ -4357,7 +4357,7 @@
     {
       "path": "project/runs/2026-07-03-cloud-kb-retrospective/telegram-message.md",
       "title": "telegram-message.md",
-      "text": "ArchFlow cloud and KB retrospective is ready.  Public-safe result: - Railway Jarvis: running and verified for provider-disabled review packets. - Jarvis functions checked: health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, voice text, and meeting-test approval gate. - Provider calls: 0. - External writeback: 0. - Vercel production: reachable and browser-clean, but dashboard data is stale against the current E1.7 preview data. - E1.6 collaborator KB: now populated with a founder-note-derived brief, not only routing scaffolding.  Attached: - Cloud and KB retrospective report PDF. - E1.6 collaborator KB note. - Primary-operator daily-note retrospective.  Private Notion/Railway/Figma/account links are intentionally not included in Telegram. See the repo and Notion task pages for private review links."
+      "text": "ArchFlow cloud and KB retrospective is ready.  Public-safe result: - Railway Jarvis: running and verified for provider-disabled review packets. - Jarvis functions checked: health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate, voice text, and meeting-test approval gate. - Provider calls: 0. - External writeback: 0. - Vercel production: reachable and browser-clean, but dashboard data is stale against the current E1.7 preview data. - Vercel current preview: ready after push and serves the July 3 dashboard data. - E1.6 collaborator KB: now populated with a founder-note-derived brief, not only routing scaffolding.  Public website: - https://<protected-preview-host> (production, reachable, not yet current for the latest dashboard data)  Attached files: - Cloud and KB retrospective report PDF. - E1.6 collaborator KB note. - Primary-operator daily-note retrospective.  Private Notion/Railway/Figma/account links and current preview deployment metadata are intentionally not written into this public-safe packet. See the repo, Vercel dashboard, and Notion task pages for private review links."
     },
     {
       "path": "project/runs/2026-07-03-daily-founder-notes/agent-handout.md",
@@ -5117,7 +5117,7 @@
     {
       "path": "wiki/runs/2026-07-03-cloud-kb-retrospective.md",
       "title": "2026-07-03 Cloud And KB Retrospective",
-      "text": "# 2026-07-03 Cloud And KB Retrospective  Status: Review / continuation complete after validation  ## Task  Verify whether Jarvis is reliably delivered on cloud across Railway and Vercel, populate the E1.6 collaborator knowledge-base lane from the daily founder-note packet, update the primary-operator daily-note retrospective, and record the KB/Graphify/Obsidian retrospective.  ## FACT  - Railway Jarvis is running and passed provider-disabled checks for health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate packets, voice text packets, and the meeting-test approval gate. - Provider calls remained `0`. - External writeback remained `0`. - Production Vercel dashboard loads and browser QA found no console or page errors. - Production Vercel dashboard data is older than the current E1.7 review preview data. - The E1.6 collaborator lane now contains a daily-founder-note-derived brief. - The primary-operator lane now records the corrected July 3 interpretation after the later E1.7 proof.  ## INTERPRETATION  The cloud setup is reliable for provider-disabled review packets, not for full product runtime. The main reliability defect is production freshness, not API a"
+      "text": "# 2026-07-03 Cloud And KB Retrospective  Status: Review / continuation complete after validation  ## Task  Verify whether Jarvis is reliably delivered on cloud across Railway and Vercel, populate the E1.6 collaborator knowledge-base lane from the daily founder-note packet, update the primary-operator daily-note retrospective, and record the KB/Graphify/Obsidian retrospective.  ## FACT  - Railway Jarvis is running and passed provider-disabled checks for health, CORS, chat, PRD/ICP, agent-orchestra, role config, role-update candidate packets, voice text packets, and the meeting-test approval gate. - Provider calls remained `0`. - External writeback remained `0`. - Production Vercel dashboard loads and browser QA found no console or page errors. - Production Vercel dashboard data is older than the current E1.7 review preview data. - A current non-production Vercel preview was created after the main push, reached `Ready`, and served the July 3 cloud/KB dashboard data. - The E1.6 collaborator lane now contains a daily-founder-note-derived brief. - The primary-operator lane now records the corrected July 3 interpretation after the later E1.7 proof.  ## INTERPRETATION  The cloud setup is "
     },
     {
       "path": "wiki/runs/2026-07-03-daily-founder-notes.md",

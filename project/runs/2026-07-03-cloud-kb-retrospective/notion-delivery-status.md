@@ -11,11 +11,13 @@ Status: sent
 - Daily Founder Notes parent: cloud/KB addendum.
 - Collaborator-side founder log: new daily addendum row.
 - Primary-operator founder log: new daily addendum row.
+- Final after-push preview addendum: appended to Epic 1, E1.7, and Daily Founder Notes.
 
 ## Verified
 
 - E1.6 page was fetched after update and showed the new property note plus inserted section.
 - E1.7 page was fetched after update and showed the new property note plus inserted section.
+- Final Notion addendum calls returned page update acknowledgements.
 
 ## Boundary
 

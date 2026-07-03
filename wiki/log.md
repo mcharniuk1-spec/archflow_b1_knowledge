@@ -286,12 +286,13 @@ FACT:
 - Provider calls and external writeback stayed at `0`.
 - Browser QA confirmed the production dashboard loads, the Config screen is usable, local save works, and no console or page errors were returned.
 - Found a freshness gap: production dashboard data is older than the current E1.7 review-preview data.
+- Created a current non-production Vercel preview after the main push; Vercel inspect reported `Ready`, and agent-browser confirmed the current preview dashboard/data state with no console or page errors.
 - Added substantive E1.6 notes for the collaborator and primary-operator knowledge-base folders.
 - Refreshed Graphify after the new files landed in the working tree; refreshed output reported 4,913 nodes, 5,086 links, and 461 communities.
 
 INTERPRETATION:
 - Railway is working for the provider-disabled cloud review-packet baseline.
-- Vercel production should be treated as reachable but stale until a post-push freshness check proves otherwise.
+- Vercel production should be treated as reachable but stale; the current preview is the fresh review surface until explicit production promotion or repaired auto-deploy freshness.
 - E1.6 is stronger now because the collaborator lane has role-specific substance, not only folder scaffolding.
 
 GAP:

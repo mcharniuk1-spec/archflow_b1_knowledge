@@ -8,11 +8,13 @@
     "E1.7 task received cloud reliability recheck and Review status/property note",
     "Daily Founder Notes parent received cloud/KB addendum",
     "Collaborator-side founder log row was created",
-    "Primary-operator founder log row was created"
+    "Primary-operator founder log row was created",
+    "Final after-push preview addendum appended to Epic 1, E1.7, and Daily Founder Notes"
   ],
   "verification": [
     "E1.6 page fetched after update and showed the new property note and inserted section",
-    "E1.7 page fetched after update and showed the new property note and inserted section"
+    "E1.7 page fetched after update and showed the new property note and inserted section",
+    "Final Notion addendum calls returned page update acknowledgements"
   ],
   "gap": "Private Notion page URLs and page IDs are intentionally omitted from public repo files."
 }

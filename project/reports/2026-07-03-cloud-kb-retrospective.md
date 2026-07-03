@@ -14,6 +14,7 @@ It is not perfect yet. Vercel production is reachable and browser-clean, but it 
 Railway Jarvis review packets: working
 Vercel production availability: working
 Vercel production freshness: stale
+Vercel current preview: ready and fresh
 Full product runtime: gated
 ```
 
@@ -25,8 +26,8 @@ Full product runtime: gated
 | Provider safety | 5/5 | ##### | provider calls stayed `0` |
 | Writeback safety | 5/5 | ##### | external writeback stayed `0` |
 | Endpoint coverage | 5/5 | ##### | health, CORS, chat, PRD/ICP, orchestra, roles, voice text, approval gate checked |
-| Dashboard browser QA | 4/5 | ####. | production UI loads, Config screen works, no browser errors found |
-| Vercel update freshness | 2/5 | ##... | production data older than current preview data |
+| Dashboard browser QA | 5/5 | ##### | production and current preview UI load, expected controls present, no browser errors found |
+| Vercel update freshness | 3/5 | ###.. | current preview fresh after push; production still stale |
 | Full SaaS product runtime | 2/5 | ##... | auth, persistence, provider ledger, writeback, voice storage, client workspaces remain gated |
 
 ## Cloud Function Proof
@@ -50,21 +51,25 @@ FACT:
 
 - Production dashboard route returned HTTP 200.
 - Review preview dashboard route returned HTTP 200.
+- After the main push, a non-production Vercel preview was created and reached `Ready`.
 - Production browser snapshot showed the dashboard, Jarvis, PRD/ICP, Agent Orchestra, Config, Project Plan, WikiLLM, Graphify, LangGraph, LlamaIndex, CrewAI, LangSmith, Env, and Gates surfaces.
+- Current preview browser snapshot showed the Jarvis command center, PRD/ICP, agent-orchestra, Config, project plan, WikiLLM, Graphify, LangGraph, LlamaIndex, CrewAI, LangSmith, Env, and Gates controls.
 - Production Config screen exposed editable chain fields, `Save locally`, and `Export config packet`.
 - `Save locally` was clicked successfully in the production browser session.
 - Browser console and page-error probes returned no errors.
 - Production dashboard data was generated on July 2.
 - Review preview dashboard data was generated on July 3 after the E1.7 artifacts.
+- Current preview dashboard data was generated on July 3 after the final cloud/KB retrospective update.
+- Current preview URL and private deployment metadata are not stored in the public repo.
 
 INTERPRETATION:
 
-The user-facing production dashboard shell is healthy, but the production data bundle is stale. The review preview is the current E1.7 review surface. This is the main reliability defect to fix before claiming that Vercel is always current.
+The user-facing production dashboard shell is healthy, but the production data bundle is stale. A current non-production preview exists for review. The main reliability defect is still production freshness, because production did not automatically reflect the latest pushed state during this continuation.
 
 GAP:
 
 - No production promotion was performed in this continuation because production promotion remains gated.
-- After the main push, production should be rechecked for automatic redeploy/freshness.
+- Production should either be promoted explicitly from the current preview or have its Git-to-Vercel freshness repaired before it is treated as the always-current review surface.
 
 ## E1.6 Collaborator KB Update
 
@@ -120,7 +125,7 @@ The current knowledge system is stronger when every layer has one job:
 
 The system is now better than a static dashboard, because Railway can serve review packets without the local machine. But it is still not a finished cloud product.
 
-The biggest weakness is state freshness. A backend can be healthy while the public dashboard still shows stale generated data. This creates a subtle overclaiming risk: "production loads" is not the same as "production reflects the latest verified project state."
+The biggest weakness is state freshness. A backend can be healthy while the public dashboard still shows stale generated data. A preview can be current while production remains stale. This creates a subtle overclaiming risk: "production loads" is not the same as "production reflects the latest verified project state."
 
 The second weakness is durability. Role updates, dashboard config, and Jarvis packets are candidates until Codex reviews and writes files. That is safe, but it is not yet a true web app with durable state.
 
@@ -137,7 +142,6 @@ E1.6 should move from structural Review to stronger Review because the collabora
 
 ## Next Gates
 
-- Recheck production Vercel data after the final main push.
 - Promote production only with explicit approval.
 - Add an always-current deploy/freshness proof if production should be the primary review surface.
 - Add auth, persistence, provider budget ledger, durable writeback approvals, audit logs, and client workspace isolation before SaaS claims.

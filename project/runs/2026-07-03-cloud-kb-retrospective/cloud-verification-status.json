@@ -28,8 +28,16 @@
     "production_dashboard_console_errors": 0,
     "production_data_generated_at": "2026-07-02T13:27:05.482787+00:00",
     "preview_data_generated_at": "2026-07-03T15:02:44.426064+00:00",
+    "current_preview_after_push_created": true,
+    "current_preview_target": "preview",
+    "current_preview_status": "ready",
+    "current_preview_data_generated_at": "2026-07-03T15:40:11.832166+00:00",
+    "current_preview_browser_errors": 0,
+    "current_preview_console_errors": 0,
+    "current_preview_url_stored_in_public_repo": false,
     "production_current_for_e1_7": false,
     "preview_current_for_e1_7": true,
+    "production_deployment_after_push_observed": false,
     "production_promotion_performed": false
   },
   "dashboard_browser_qa": {
@@ -39,5 +47,5 @@
     "config_export_control_present": true,
     "screenshots_committed": false
   },
-  "conclusion": "Railway Jarvis is reliable for provider-disabled review packets. Vercel production is reachable but stale relative to the latest E1.7 data, so cloud delivery is Review, not Done for full always-current product runtime."
+  "conclusion": "Railway Jarvis is reliable for provider-disabled review packets. A current Vercel preview is ready after push, but production remains reachable and stale. Cloud delivery is Review, not Done for full always-current product runtime."
 }
