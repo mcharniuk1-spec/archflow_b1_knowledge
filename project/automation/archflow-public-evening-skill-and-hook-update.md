@@ -1,6 +1,6 @@
 # ArchFlow Public Evening Skill And Hook Update
 
-Automation ID: `archflow-evening-skill-and-hook-update`
+Automation ID: `archflow-public-evening-skill-update`
 
 Status: active in Codex app automation.
 

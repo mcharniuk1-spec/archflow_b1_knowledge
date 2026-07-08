@@ -1,0 +1,13 @@
+{
+  "run_timestamp": "2026-07-04T07:43:44",
+  "selected_task": {
+    "epic": "E4 - Content",
+    "task": "Package social profiles for LinkedIn, X, and Threads",
+    "status": "In Progress",
+    "type": "Ops",
+    "due": "2026-06-28",
+    "public_output": "Profiles prepared for content launch.",
+    "due_date": "2026-06-28"
+  },
+  "selected_task_score": 288
+}

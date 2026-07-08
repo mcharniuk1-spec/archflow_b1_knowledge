@@ -21,7 +21,25 @@ def main() -> int:
     client = TestClient(app)
     checks = [
         ("GET", "/health", None),
-        ("POST", "/api/chat", {"request": "test", "architecture": "service"}),
+        (
+            "POST",
+            "/api/chat",
+            {
+                "request": "test",
+                "architecture": "service",
+                "conversation": [{"role": "user", "source": "smoke", "text": "previous"}],
+                "attachments": [
+                    {
+                        "id": "smoke-attachment",
+                        "name": "sample.txt",
+                        "mime_type": "text/plain",
+                        "size": 24,
+                        "transfer_mode": "text_excerpt",
+                        "text_excerpt": "public smoke attachment",
+                    }
+                ],
+            },
+        ),
         ("POST", "/api/chat", {"request": "test", "architecture": "control"}),
         ("GET", "/api/config/roles", None),
         ("POST", "/api/config/roles/update", {"roles": []}),

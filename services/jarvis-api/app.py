@@ -22,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 
-APP_VERSION = "2026-07-03-jarvis-guarded-openrouter"
+APP_VERSION = "2026-07-07-jarvis-chat-files-voice-disabled"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_OPENROUTER_MODEL = "openrouter/auto"
 DEFAULT_DAILY_BUDGET = 5.00
@@ -65,12 +65,30 @@ PRD_BLOCKS = [
 ]
 
 
+class JarvisAttachment(BaseModel):
+    id: str = Field(default="", max_length=120)
+    name: str = Field(default="", max_length=260)
+    mime_type: str = Field(default="unknown", max_length=120)
+    size: int = Field(default=0, ge=0)
+    transfer_mode: Literal["metadata_only", "text_excerpt"] = "metadata_only"
+    text_excerpt: str = Field(default="", max_length=6000)
+
+
+class JarvisMessage(BaseModel):
+    role: Literal["user", "assistant", "system"] = "user"
+    source: str = Field(default="", max_length=160)
+    time: str = Field(default="", max_length=80)
+    text: str = Field(default="", max_length=1400)
+
+
 class JarvisRequest(BaseModel):
     request: str = Field(default="", max_length=12000)
     lane: str = "general"
     architecture: Literal["service", "control"] = "service"
     approved_test_input: bool = False
     source_refs: list[str] = Field(default_factory=list)
+    conversation: list[JarvisMessage] = Field(default_factory=list, max_length=8)
+    attachments: list[JarvisAttachment] = Field(default_factory=list, max_length=6)
     owner_approval: bool = False
     provider_approval: bool = False
 
@@ -204,6 +222,43 @@ def architecture_context(kind: str, request: JarvisRequest | VoiceRequest) -> di
     }
 
 
+def attachment_summary(attachments: list[JarvisAttachment]) -> list[dict[str, Any]]:
+    return [
+        {
+            "name": attachment.name,
+            "mime_type": attachment.mime_type,
+            "size": attachment.size,
+            "transfer_mode": attachment.transfer_mode,
+            "text_excerpt": attachment.text_excerpt[:900],
+        }
+        for attachment in attachments[:6]
+    ]
+
+
+def prompt_attachment_context(request: JarvisRequest | VoiceRequest) -> str:
+    attachments = getattr(request, "attachments", []) or []
+    if not attachments:
+        return "No files attached."
+    lines = []
+    for index, attachment in enumerate(attachments[:6], start=1):
+        text = attachment.text_excerpt[:1200] if attachment.transfer_mode == "text_excerpt" else ""
+        lines.append(
+            f"{index}. {attachment.name} ({attachment.mime_type}, {attachment.size} bytes, {attachment.transfer_mode})"
+            + (f"\nExcerpt:\n{text}" if text else "")
+        )
+    return "\n".join(lines)
+
+
+def prompt_conversation_context(request: JarvisRequest | VoiceRequest) -> str:
+    messages = getattr(request, "conversation", []) or []
+    if not messages:
+        return "No prior chat context supplied."
+    return "\n".join(
+        f"{message.role} via {message.source}: {message.text[:700]}"
+        for message in messages[-6:]
+    )
+
+
 def openrouter_prompt(kind: str, request: JarvisRequest | VoiceRequest) -> list[dict[str, str]]:
     context = architecture_context(kind, request)
     raw_request = getattr(request, "request", "") or getattr(request, "transcript", "")
@@ -218,6 +273,8 @@ def openrouter_prompt(kind: str, request: JarvisRequest | VoiceRequest) -> list[
         f"LangGraph lane: {context['langgraph_lane']}\n"
         f"CrewAI roles: {', '.join(context['crewai_roles'])}\n"
         f"KB contract: {context['kb_contract']}\n\n"
+        f"Recent chat context:\n{prompt_conversation_context(request)}\n\n"
+        f"Attached files:\n{prompt_attachment_context(request)}\n\n"
         f"User request:\n{str(raw_request)[:4000]}"
     )
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
@@ -393,7 +450,8 @@ def health() -> dict[str, Any]:
             "provider_calls": "disabled_until_explicit_owner_approval_and_budget_guard",
             "langgraph": "controller_contract",
             "crewai": "proof_passed_not_default_runtime",
-            "voice": "local_ui_only",
+            "voice": "disabled_text_chat_only",
+            "file_transfer": "bounded_chat_attachments_no_persistence",
             "writeback": "disabled",
         },
     )
@@ -409,6 +467,9 @@ def chat(request: JarvisRequest) -> dict[str, Any]:
             "request_excerpt": request.request[:900],
             "lane": request.lane,
             "architecture": request.architecture,
+            "conversation_count": len(request.conversation),
+            "attachment_count": len(request.attachments),
+            "attachments": attachment_summary(request.attachments),
             "architecture_contract": (
                 "Architecture 1: PRD/ICP service output"
                 if request.architecture == "service"
@@ -446,6 +507,8 @@ def prd_icp_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
             "lane": "prd_icp_flow",
             "architecture": request.architecture,
             "request_excerpt": request.request[:900],
+            "attachment_count": len(request.attachments),
+            "attachments": attachment_summary(request.attachments),
             "output_blocks": PRD_BLOCKS,
             "required_outputs": ["suggested Jira/GitLab backlog", "missing-info questions", "review gates"],
             "test_cycle": "blocked_until_owner_approval",
@@ -464,6 +527,8 @@ def agent_orchestra_lane(request: JarvisRequest | None = None) -> dict[str, Any]
             "lane": "agent_orchestra",
             "architecture": request.architecture,
             "request_excerpt": request.request[:900],
+            "attachment_count": len(request.attachments),
+            "attachments": attachment_summary(request.attachments),
             "stages": ["Intake", "Role Assignment", "Active Work", "QA Gate", "Docs/Reports", "Git/Deploy", "Notion/Memory", "Final Decision"],
             "roles": default_roles(),
         },
@@ -502,19 +567,22 @@ def meeting_prd_test(request: JarvisRequest) -> dict[str, Any]:
 
 @app.post("/api/voice/transcribe")
 def voice_transcribe(request: VoiceRequest) -> dict[str, Any]:
-    if not request.owner_approval:
-        return approval_block("voice_transcription_requires_owner_approval_and_storage_policy")
-    return packet("voice-transcribe", "review_packet_created", {"transcript_excerpt": request.transcript[:900]})
+    return packet(
+        "voice-transcribe",
+        "disabled",
+        {"reason": "voice_mode_disabled_use_text_chat_and_file_attachments", "raw_audio_storage": "disabled"},
+    )
 
 
 @app.post("/api/voice/chat")
 def voice_chat(request: VoiceRequest) -> dict[str, Any]:
-    return provider_packet(
+    return packet(
         "voice-chat",
-        request,
+        "disabled",
         {
-            "reply": "Voice transcript received as text only. Raw audio is not stored; provider calls require owner/provider approval.",
+            "reply": "Voice mode is disabled. Use /api/chat with text and attachments.",
             "transcript_excerpt": request.transcript[:900],
+            "raw_audio_storage": "disabled",
         },
     )
 
@@ -523,9 +591,9 @@ def voice_chat(request: VoiceRequest) -> dict[str, Any]:
 def voice_tts(request: VoiceRequest) -> dict[str, Any]:
     return packet(
         "voice-tts",
-        "browser_tts_only",
+        "disabled",
         {
             "text_excerpt": request.transcript[:900],
-            "tts_runtime": "browser_speech_synthesis_or_later_approved_provider",
+            "tts_runtime": "disabled_text_chat_only",
         },
     )

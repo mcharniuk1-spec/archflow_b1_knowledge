@@ -356,7 +356,7 @@ automation:
     schedule: daily_evening
     schedule_time: "21:00"
     provider: codex_operator
-    automation_id: archflow-evening-skill-and-hook-update
+    automation_id: archflow-public-evening-skill-update
     skills:
       - evening-skill-registry-update
       - archflow-e1-runtime-guard

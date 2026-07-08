@@ -42,9 +42,14 @@ let dashboardData = null;
 let activeTab = window.location.hash?.replace(/^#/, "") || "jarvis";
 let jarvisMode = localStorage.getItem(storageKeys.mode) || "normal";
 let architectureMode = localStorage.getItem(storageKeys.architectureMode) || "service";
-let voiceAuthorized = localStorage.getItem(storageKeys.voiceAuthorized) === "true";
-let voiceOutputEnabled = localStorage.getItem(storageKeys.voiceOutput) === "true";
-let autoSpeakEnabled = localStorage.getItem(storageKeys.autoSpeak) === "true";
+const voiceModeDisabled = true;
+localStorage.removeItem(storageKeys.voiceAuthorized);
+localStorage.removeItem(storageKeys.voiceOutput);
+localStorage.removeItem(storageKeys.autoSpeak);
+localStorage.removeItem(storageKeys.voiceTranscriptPreview);
+let voiceAuthorized = false;
+let voiceOutputEnabled = false;
+let autoSpeakEnabled = false;
 let dataSignature = "";
 let refreshTimer = null;
 let localPackets = loadJson(storageKeys.packets, []);
@@ -63,7 +68,7 @@ let nodeControlPanelId = null;
 let initialPanelDeepLinkApplied = false;
 const initialPanelDeepLinkId = new URLSearchParams(window.location.search).get("panel");
 let voiceFallbackDraft = "";
-let voiceTranscriptPreview = localStorage.getItem(storageKeys.voiceTranscriptPreview) || "";
+let voiceTranscriptPreview = "";
 let interviewState = loadJson(storageKeys.interviewState, defaultInterviewState());
 let activeRecognition = null;
 let voiceTimerId = null;
@@ -77,6 +82,7 @@ let jarvisApiState = {
   detail: "Local Jarvis API has not been checked yet.",
   tone: "warn",
 };
+let pendingAttachments = [];
 migratePersistentChatHistory();
 let chatHistory = loadJson(storageKeys.chatHistory, [
   {
@@ -84,7 +90,7 @@ let chatHistory = loadJson(storageKeys.chatHistory, [
     role: "assistant",
     source: "system",
     time: new Date().toISOString(),
-    text: "Jarvis is ready. Use chat, voice, interview mode, block schema, config, or project plan. Writes stay approval-gated.",
+    text: "Jarvis is ready in text chat mode. Ask for status, PRD/ICP work, agent orchestration, file review packets, or API checks. Writes stay approval-gated.",
   },
 ]);
 let liveEvents = loadJson(storageKeys.events, [
@@ -457,13 +463,13 @@ function defaultControlBlockSchema() {
     connectSourceId: null,
     queue: [],
     nodes: [
-      schemaNode("intake", "start", "Operator command intake", 60, 80, "Owner + Jarvis", "Capture typed command, voice transcript candidate, file metadata, correction, or approval.", "One sanitized command packet; raw audio and raw transcript storage stay off.", {
+      schemaNode("intake", "start", "Operator command intake", 60, 80, "Owner + Jarvis", "Capture typed command, file attachment summary, correction, or approval.", "One sanitized command packet; audio and raw transcript paths stay off.", {
         workflowLayer: "control system",
         job: "Let the owner direct local execution without losing state.",
         pain: "Agent work becomes unreliable when commands, approvals, and blockers stay only in chat.",
         evidence: "June 30 dashboard branch proved session-local Jarvis packets and block-schema editing.",
         businessObjective: "Make the local agentic operating system observable and controllable.",
-        inputs: ["typed command", "manual transcript fallback", "file metadata", "approval state"],
+        inputs: ["typed command", "file attachment summary", "file metadata", "approval state"],
         outputs: ["sanitized command packet", "local event log"]
       }),
       schemaNode("classify", "router", "Classify request", 350, 80, "Jarvis router", "Separate status, interview, research, config, block-schema, and approval requests.", "Route key plus fact/interpretation/hypothesis/gap label.", {
@@ -892,21 +898,43 @@ function cloudApprovalRequested(input) {
   return lower.includes("openrouter") || lower.includes("cloud model") || lower.includes("provider approved") || lower.includes("use provider");
 }
 
+function attachmentRequestPayload() {
+  return pendingAttachments.slice(0, 6).map((attachment) => ({
+    id: attachment.id,
+    name: attachment.name,
+    mime_type: attachment.mime_type,
+    size: attachment.size,
+    transfer_mode: attachment.transfer_mode,
+    text_excerpt: attachment.text_excerpt || "",
+  }));
+}
+
+function conversationRequestPayload() {
+  return chatHistory.slice(-8).map((message) => ({
+    role: message.role,
+    source: message.source,
+    time: message.time,
+    text: String(message.text || "").slice(0, 1400),
+  }));
+}
+
 function providerRequestPayload(input, source = "typed command") {
   const useProvider = cloudApprovalRequested(input);
   return {
     request: String(input || "").slice(0, 12000),
-    lane: architectureMode === "control" ? "agent_orchestra" : "prd_icp_flow",
+    lane: "jarvis_chat",
     architecture: architectureMode,
     approved_test_input: false,
     owner_approval: useProvider,
     provider_approval: useProvider,
-    source_refs: [source, "dashboard command"],
+    source_refs: [source, "dashboard chat"],
+    conversation: conversationRequestPayload(),
+    attachments: attachmentRequestPayload(),
   };
 }
 
 async function sendJarvisCloudCommand(input, source = "typed command") {
-  const endpoint = architectureMode === "control" ? "/api/lanes/agent-orchestra" : "/api/lanes/prd-icp";
+  const endpoint = "/api/chat";
   await checkJarvisApi("Jarvis command submit", { silent: true, timeoutMs: 4000 });
   const response = await fetch(apiEndpoint(endpoint), {
     method: "POST",
@@ -923,8 +951,11 @@ function cloudResultText(result) {
   if (provider?.provider_executed && provider.reply) {
     return `${runtime?.architecture || "Cloud Jarvis"} returned via ${result.runtime?.model || "OpenRouter"}:\n\n${provider.reply}`;
   }
+  const fallbackReply = result?.payload?.reply;
+  const attachmentCount = Number(result?.payload?.attachment_count || 0);
+  const attachmentText = attachmentCount ? ` Attachments received: ${attachmentCount}.` : "";
   const reason = provider?.reason ? ` Provider route: ${provider.reason}.` : "";
-  return `${runtime?.architecture || "Cloud Jarvis"} returned ${result?.status || "a review packet"}.${reason} Writeback remains disabled until review.`;
+  return `${fallbackReply || `${runtime?.architecture || "Cloud Jarvis"} returned ${result?.status || "a review packet"}.`}${attachmentText}${reason} Writeback remains disabled until review.`;
 }
 
 async function checkJarvisApi(reason = "health check", options = {}) {
@@ -1234,8 +1265,8 @@ function systemCards(data) {
     { label: "Refresh", value: "static polling", note: "Manual, focus, command, and 15s data checks", tone: "ok" },
     { label: "Jarvis", value: jarvisMode, note: "Normal or interview command mode", tone: "ok" },
     { label: "Jarvis API", value: jarvisApiState.status, note: jarvisApiState.detail, tone: jarvisApiState.tone },
-    { label: "Voice input", value: voiceAuthorized ? "browser ready" : "requires permission", note: "Permission is proven only when browser listening starts; no raw audio storage", tone: voiceAuthorized ? "ok" : "warn" },
-    { label: "Voice output", value: voiceOutputEnabled ? "speech enabled" : "muted", note: "Browser speech synthesis; human voice depends on installed browser voices", tone: voiceOutputEnabled ? "ok" : "warn" },
+    { label: "Voice", value: "disabled", note: "Text chat and file transfer only on this dashboard", tone: "warn" },
+    { label: "File transfer", value: pendingAttachments.length ? "pending" : "ready", note: pendingAttachments.length ? `${pendingAttachments.length} attachment(s) staged for next chat message` : "Bounded text excerpts or metadata-only packets", tone: pendingAttachments.length ? "ok" : "warn" },
     { label: "Provider keys", value: "server env only", note: "Provider keys are never exposed to static JS; provider calls require API/budget gates", tone: "warn" },
     { label: "E1.3", value: e13?.derived_status || "unknown", note: e13 ? `${e13.passed_count}/${e13.assertion_count} readback` : "No gate data", tone: e13?.readback_status === "passed" ? "ok" : "warn" },
     { label: "Railway", value: "deferred", note: "Use for backend, SSE, auth, workers, durable writes", tone: "warn" },
@@ -1284,8 +1315,8 @@ function proofBacklogItems() {
       id: "D-1",
       title: "Jarvis first-screen operating area",
       status: "proved",
-      proof: "Jarvis command core, manual transcript fallback, chat, packet queue, and operating states render on #jarvis.",
-      next: "Keep voice proof gated to owner-device browser permission.",
+      proof: "Jarvis text chat, file transfer, packet queue, and operating states render on #jarvis.",
+      next: "Keep voice mode disabled unless a new owner-approved audio lane is opened.",
     },
     {
       id: "D-2",
@@ -1694,14 +1725,12 @@ function jarvisReply(input, source = "typed command") {
 
   if (lower.includes("status") || lower.includes("what works") || lower.includes("done")) {
     const e13 = dashboardData?.gates?.e1_3;
-    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard keeps local browser packets, while Jarvis API is ${jarvisApiState.status}; OpenRouter execution is server-side only and requires explicit owner/provider approval plus budget guards. Durable voice/file writes and writeback remain gated.`;
+    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard keeps local browser packets, while Jarvis API is ${jarvisApiState.status}; OpenRouter execution is server-side only and requires explicit owner/provider approval plus budget guards. Voice is disabled; durable file writes and writeback remain gated.`;
   }
 
   if (lower.includes("voice") || lower.includes("speak") || lower.includes("sound")) {
     activeTab = "jarvis";
-    return speechSynthesisAvailable()
-      ? "Voice input uses the browser speech recognition API when available. Voice output uses browser speech synthesis when you enable Speak replies. Raw audio and raw transcript persistence remain off by default."
-      : "This browser does not expose speech synthesis or speech recognition reliably. Use the text composer here; live voice remains a local/provider-gated implementation task.";
+    return "Voice mode is disabled on this dashboard. Use Jarvis text chat and file attachments; raw audio capture, browser speech recognition, speaker playback, and voice API routes stay off.";
   }
 
   if (lower.includes("schema") || lower.includes("block") || lower.includes("graph")) {
@@ -1754,21 +1783,23 @@ async function handleGlobalSubmit(value, source = "typed command") {
   const previousTab = activeTab;
   appendChat("user", input, source);
   const reply = jarvisReply(input, source);
-  appendChat("assistant", reply, "Jarvis static command shell");
-  appendEvent("Jarvis command", `${input.slice(0, 120)} -> ${reply.slice(0, 160)}`, "ok");
-  if (autoSpeakEnabled) speakText(reply);
+  let finalReply = reply;
+  let finalSource = "Jarvis local packet";
+  appendEvent("Jarvis command", input.slice(0, 160), "ok");
   if (!["refresh", "reload", "update dashboard"].some((phrase) => input.toLowerCase().includes(phrase))) {
     try {
       appendEvent("Jarvis cloud route", `Sending ${architectureMeta().label} request to ${jarvisApiBase}.`, "ok");
       const result = await sendJarvisCloudCommand(input, source);
       const cloudReply = cloudResultText(result);
-      appendChat("assistant", cloudReply, "Jarvis cloud API");
+      finalReply = `${reply}\n\nAPI: ${cloudReply}`;
+      finalSource = "Jarvis API + local packet";
       appendEvent("Jarvis cloud response", `${result.status || "ok"} from ${architectureMeta().label}.`, result.status === "provider_response_created" ? "ok" : "warn");
-      if (autoSpeakEnabled) speakText(cloudReply);
+      pendingAttachments = [];
     } catch (error) {
       appendEvent("Jarvis cloud fallback", `Cloud request unavailable: ${error.message || error}. Local packet preserved.`, "warn");
     }
   }
+  appendChat("assistant", finalReply, finalSource);
   if (activeTab === previousTab && activeTab !== "jarvis") activeTab = "jarvis";
   window.history.replaceState(null, "", `#${activeTab}`);
   render();
@@ -1776,62 +1807,79 @@ async function handleGlobalSubmit(value, source = "typed command") {
 
 function renderJarvis(data) {
   const latestPacket = localPackets[0];
+  const recentMessages = chatHistory.slice(-24);
   view.innerHTML = `
-    <div class="jarvis-layout">
-      <section class="panel jarvis-main">
+    <div class="jarvis-chat-layout">
+      <section class="panel jarvis-chat-panel" aria-label="Jarvis chat">
+        <div class="jarvis-chat-header">
+          <div>
+            <div class="jarvis-title-row">
+              <div class="jarvis-avatar" aria-hidden="true">JV</div>
+              <div>
+                <h2>Jarvis Chat</h2>
+                <p>${escapeHtml(architectureMeta().label)} - ${escapeHtml(jarvisApiState.label)} - text only</p>
+              </div>
+            </div>
+          </div>
+          <div class="jarvis-header-actions">
+            <button class="button" id="jarvisRefresh" type="button">Refresh data</button>
+            <button class="button" id="exportChat" type="button">Export chat packet</button>
+            <button class="button" id="clearChat" type="button">Clear history</button>
+          </div>
+        </div>
         ${architectureSelectorMarkup("jarvis")}
-        <div class="mode-bar" aria-label="Jarvis mode">
+        <div class="mode-bar inline" aria-label="Jarvis mode">
           <button class="${jarvisMode === "normal" ? "active" : ""}" data-mode="normal" type="button">Normal</button>
           <button class="${jarvisMode === "interview" ? "active" : ""}" data-mode="interview" type="button">Interview</button>
         </div>
-        <div class="jarvis-orb" aria-hidden="true">JV</div>
-        <h2>Jarvis Command Center</h2>
-        <p class="muted">Selected: ${escapeHtml(architectureMeta().label)}. Normal mode acts under this architecture; Interview mode asks one question at a time from the selected flow.</p>
-        <div class="operator-strip" aria-label="Dashboard operating states">
+        <div class="operator-strip chat-strip" aria-label="Dashboard operating states">
           <span>${escapeHtml(architectureMeta().short)}</span>
-          <span>Static snapshot</span>
-          <span>Browser-local packets</span>
-          <span>${escapeHtml(jarvisApiState.label)}</span>
-          <span>OpenRouter approval-gated</span>
+          <span>/api/chat</span>
+          <span>File transfer</span>
+          <span>Voice disabled</span>
+          <span>Provider gated</span>
           <span>Writeback gated</span>
         </div>
-        <form class="voice-fallback voice-control-panel" id="voiceFallbackForm" data-testid="voice-fallback-form" aria-label="Voice and transcript controls">
-          <div class="voice-toolbar" role="group" aria-label="Voice controls">
-            <button class="primary" id="voiceToggle" type="button">${voiceAuthorized ? "Mic" : "Request mic"}</button>
-            <button class="button" id="voiceStop" type="button">Stop</button>
-            <button class="button" id="voiceCancel" type="button">Cancel</button>
-            <span class="voice-timer" id="voiceTimer" aria-live="polite">${formatVoiceTimer()}</span>
-          </div>
-          <label for="voiceTranscriptPreview">Manual transcript fallback / editable transcript preview</label>
-          <textarea id="voiceTranscriptPreview" data-testid="voice-fallback-input" rows="4" placeholder="Transcript appears here, or type it manually before sending.">${escapeHtml(voiceTranscriptPreview || voiceFallbackDraft)}</textarea>
-          <div class="voice-toolbar" role="group" aria-label="Transcript and playback controls">
-            <button class="button" id="voiceFallbackSubmit" data-testid="voice-fallback-submit" type="button">Send transcript</button>
-            <button class="button" id="voicePlayLast" type="button">Play last reply</button>
-            <button class="button" id="voiceStopPlayback" type="button">Stop playback</button>
-            <label class="toggle-control"><input id="autoSpeakToggle" type="checkbox" ${autoSpeakEnabled ? "checked" : ""} /> Auto-speak</label>
-          </div>
-          <p class="form-status" id="voiceFallbackStatus" aria-live="polite">Transcribing state is local. Fallback uses the same visible chat path as the bottom composer.</p>
-        </form>
-        <div class="jarvis-actions">
-          <button class="primary" id="jarvisRefresh" type="button">Refresh data</button>
-          <button class="button" id="voiceOutputToggle" type="button">${voiceOutputEnabled ? "Speaker on" : "Speaker off"}</button>
-          <button class="button" id="voiceTestOutput" type="button">Speaker test</button>
-          <label class="button file-button">
-            Attach file
-            <input id="fileInput" type="file" multiple />
-          </label>
+        <div class="chat-thread main-chat" id="chatThread" aria-live="polite">
+          ${recentMessages.length ? recentMessages.map((message) => `
+            <article class="chat-message ${escapeHtml(message.role)}">
+              <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleTimeString()}</div>
+              <p>${escapeHtml(message.text)}</p>
+            </article>
+          `).join("") : `<div class="callout">No local chat history in this browser.</div>`}
         </div>
-        <div id="voiceState" class="callout compact">${voiceAuthorized ? "Browser speech recognition was previously started in this browser. Mic requests a new transcript." : "Voice input requires browser microphone permission when listening starts."} ${voiceOutputEnabled ? "Speaker playback is enabled." : "Speaker playback is off."} ${autoSpeakEnabled ? "Auto-speak is on." : "Auto-speak is off."}</div>
+        <div class="attachment-tray" id="attachmentTray">
+          ${pendingAttachments.length ? pendingAttachments.map((attachment) => `
+            <span class="attachment-chip">
+              ${escapeHtml(attachment.name)} <small>${escapeHtml(formatFileSize(attachment.size))}</small>
+              <button type="button" data-remove-attachment="${escapeHtml(attachment.id)}" aria-label="Remove ${escapeHtml(attachment.name)}">x</button>
+            </span>
+          `).join("") : `<span class="muted">No files attached.</span>`}
+        </div>
+        <form class="jarvis-chat-form" id="jarvisChatForm" aria-label="Send message to Jarvis">
+          <label class="button icon-file-button" title="Attach files for this Jarvis message">
+            Attach
+            <input id="jarvisFileInput" type="file" multiple />
+          </label>
+          <textarea id="jarvisMessageInput" rows="3" placeholder="Message Jarvis about PRD/ICP work, agent orchestration, API checks, attached files, or current blockers."></textarea>
+          <button class="primary" type="submit">Send</button>
+        </form>
         <div class="callout compact">API: ${escapeHtml(jarvisApiState.detail)} Base: ${escapeHtml(jarvisApiBase)}.</div>
       </section>
 
-      <aside class="panel">
-        <h2 class="section-title">Execution Contract</h2>
+      <aside class="panel jarvis-side-panel">
+        <h2 class="section-title">Context</h2>
         <div class="list">
-          <div class="row"><span class="row-title">Dashboard</span><div class="row-meta">Hidden-link Vercel static view first. Google auth and server-side access come next.</div></div>
-          <div class="row"><span class="row-title">Jarvis actions</span><div class="row-meta">Research/check packets can be created locally; durable writes require Codex or Railway authority.</div></div>
-          <div class="row"><span class="row-title">Voice</span><div class="row-meta">Authorized browser transcript only. No raw audio or raw transcript storage by default.</div></div>
-          <div class="row"><span class="row-title">ICP</span><div class="row-meta">One lane: B2B SaaS product leaders and PRD workflow quality.</div></div>
+          <div class="row"><span class="row-title">Dashboard</span><div class="row-meta">Static Vercel view with API-backed review packets when available.</div></div>
+          <div class="row"><span class="row-title">Jarvis actions</span><div class="row-meta">Chat can stage packets, use /api/chat, and include file excerpts without durable writeback.</div></div>
+          <div class="row"><span class="row-title">Voice</span><div class="row-meta">Disabled on this dashboard. Use text chat and attachments only.</div></div>
+          <div class="row"><span class="row-title">ICP</span><div class="row-meta">Primary lane remains B2B SaaS product-team PRD workflow quality.</div></div>
+        </div>
+        <div class="row-actions compact-actions">
+          <a class="button active-soft" href="#service">PRD/ICP Flow</a>
+          <a class="button active-soft" href="#schema">Agent Orchestra</a>
+          <a class="button" href="#gates">Gates</a>
+          <a class="button" href="#history">History</a>
         </div>
       </aside>
     </div>
@@ -1947,28 +1995,6 @@ function renderJarvis(data) {
 
     <div class="grid cols-6" style="margin-top:16px">${systemCards(data).map((item) => card(item)).join("")}</div>
 
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header">
-      <div>
-          <h2 class="section-title">Jarvis Chat</h2>
-          <p class="muted">Persistent browser-local chat history. It stays available until explicitly cleared; export before moving it into a reviewed Codex packet.</p>
-        </div>
-        <div class="row-actions">
-          <button class="button" id="exportChat" type="button">Export chat packet</button>
-          <button class="button" id="clearChat" type="button">Clear persistent history</button>
-        </div>
-      </div>
-      <div class="chat-thread" id="chatThread">
-        ${chatHistory.length ? chatHistory.slice(-18).map((message) => `
-          <article class="chat-message ${escapeHtml(message.role)}">
-            <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleTimeString()}</div>
-            <p>${escapeHtml(message.text)}</p>
-          </article>
-        `).join("") : `<div class="callout">No persistent chat history in this browser. Use the bottom composer, voice input, or Interview mode.</div>`}
-      </div>
-      ${chatHistory.length > 18 ? `<div class="row-actions" style="margin-top:10px"><a class="button" href="#history">Open full history (${chatHistory.length})</a></div>` : ""}
-    </section>
-
     <div class="split" style="margin-top:16px">
       <section class="panel">
         <h2 class="section-title">Session Event Stream</h2>
@@ -2025,53 +2051,30 @@ function renderJarvis(data) {
       render();
     });
   });
-
-  document.querySelector("#voiceToggle")?.addEventListener("click", startVoice);
-  document.querySelector("#voiceStop")?.addEventListener("click", () => stopVoiceRecognition("Voice capture stopped. Review or send the transcript preview."));
-  document.querySelector("#voiceCancel")?.addEventListener("click", cancelVoiceTranscript);
-  document.querySelector("#voiceOutputToggle")?.addEventListener("click", () => {
-    voiceOutputEnabled = !voiceOutputEnabled;
-    localStorage.setItem(storageKeys.voiceOutput, String(voiceOutputEnabled));
-    appendEvent("Voice output changed", voiceOutputEnabled ? "Jarvis replies will use browser speech synthesis." : "Jarvis speech output muted.", voiceOutputEnabled ? "ok" : "warn");
-    render();
-  });
-  document.querySelector("#voiceTestOutput")?.addEventListener("click", () => {
-    voiceOutputEnabled = true;
-    localStorage.setItem(storageKeys.voiceOutput, "true");
-    const text = "Jarvis speaker test. Browser speech synthesis is working if you hear this sentence.";
-    appendEvent("Speaker test requested", "Browser speech synthesis test started from the Jarvis panel.", "ok");
-    speakText(text, { force: true });
-    const state = document.querySelector("#voiceState");
-    if (state) state.textContent = speechSynthesisAvailable()
-      ? "Speaker test started. If there is no sound, check system output, browser audio permission, and available speech voices."
-      : "Speech synthesis is unavailable in this browser. Use text mode or an approved provider-backed voice runtime later.";
-  });
-  document.querySelector("#voicePlayLast")?.addEventListener("click", () => {
-    const lastReply = [...chatHistory].reverse().find((message) => message.role === "assistant");
-    if (lastReply) speakText(lastReply.text, { force: true });
-  });
-  document.querySelector("#voiceStopPlayback")?.addEventListener("click", stopSpeechPlayback);
-  document.querySelector("#autoSpeakToggle")?.addEventListener("change", (event) => {
-    autoSpeakEnabled = event.target.checked;
-    localStorage.setItem(storageKeys.autoSpeak, String(autoSpeakEnabled));
-    appendEvent("Auto-speak changed", autoSpeakEnabled ? "Jarvis replies will play automatically." : "Jarvis replies will stay text-only.", autoSpeakEnabled ? "ok" : "warn");
-  });
-  const fallbackForm = view.querySelector("#voiceFallbackForm");
-  const fallbackSubmit = view.querySelector("#voiceFallbackSubmit");
-  const fallbackInput = view.querySelector("#voiceTranscriptPreview");
-  fallbackInput?.addEventListener("input", () => {
-    voiceFallbackDraft = fallbackInput.value;
-    voiceTranscriptPreview = fallbackInput.value;
-    localStorage.setItem(storageKeys.voiceTranscriptPreview, voiceTranscriptPreview);
-  });
-  fallbackForm?.addEventListener("submit", (event) => {
+  const chatForm = view.querySelector("#jarvisChatForm");
+  const chatInput = view.querySelector("#jarvisMessageInput");
+  chatForm?.addEventListener("submit", (event) => {
     event.preventDefault();
-    submitVoiceFallback();
+    const value = chatInput?.value || "";
+    chatInput.value = "";
+    handleGlobalSubmit(value, pendingAttachments.length ? "Jarvis chat with file transfer" : "Jarvis chat");
   });
-  fallbackSubmit?.addEventListener("click", submitVoiceFallback);
+  chatInput?.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+      event.preventDefault();
+      chatForm?.requestSubmit();
+    }
+  });
+  view.querySelector("#jarvisFileInput")?.addEventListener("change", handleFiles);
+  view.querySelectorAll("[data-remove-attachment]").forEach((button) => {
+    button.addEventListener("click", () => {
+      pendingAttachments = pendingAttachments.filter((attachment) => attachment.id !== button.dataset.removeAttachment);
+      appendEvent("Attachment removed", "Pending Jarvis attachment was removed before send.", "warn");
+      render();
+    });
+  });
   document.querySelector("#exportChat")?.addEventListener("click", exportChatHistory);
   document.querySelector("#clearChat")?.addEventListener("click", clearChatHistory);
-  document.querySelector("#fileInput")?.addEventListener("change", handleFiles);
   view.querySelectorAll(".packet-download").forEach((button) => {
     button.addEventListener("click", () => downloadPacket(button.dataset.packet));
   });
@@ -2090,6 +2093,10 @@ function submitVoiceFallback() {
 }
 
 function startVoice() {
+  if (voiceModeDisabled) {
+    appendEvent("Voice disabled", "Voice mode is disabled for this dashboard. Use text chat and file attachments.", "warn");
+    return;
+  }
   const state = document.querySelector("#voiceState");
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SpeechRecognition) {
@@ -2224,24 +2231,67 @@ function cancelVoiceTranscript() {
   if (input) input.value = "";
 }
 
-function handleFiles(event) {
+function fileLooksText(file) {
+  const name = String(file.name || "").toLowerCase();
+  return Boolean(
+    (file.type || "").startsWith("text/")
+    || [
+      ".md", ".txt", ".csv", ".json", ".yaml", ".yml", ".xml", ".html", ".css", ".js", ".ts", ".tsx", ".jsx", ".py", ".toml", ".log"
+    ].some((extension) => name.endsWith(extension))
+  );
+}
+
+function readFileTextExcerpt(file, maxChars = 6000) {
+  if (!fileLooksText(file)) {
+    return Promise.resolve("");
+  }
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    const blob = file.slice(0, Math.min(file.size, maxChars * 4));
+    reader.onload = () => resolve(String(reader.result || "").slice(0, maxChars));
+    reader.onerror = () => resolve("");
+    reader.readAsText(blob);
+  });
+}
+
+function formatFileSize(size) {
+  const bytes = Number(size || 0);
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+async function handleFiles(event) {
   const files = Array.from(event.target.files || []);
-  files.forEach((file) => {
+  for (const file of files.slice(0, 6)) {
+    const textExcerpt = await readFileTextExcerpt(file);
+    const attachment = {
+      id: makeId("attachment"),
+      name: file.name || "unnamed file",
+      mime_type: file.type || "unknown",
+      size: file.size,
+      transfer_mode: textExcerpt ? "text_excerpt" : "metadata_only",
+      text_excerpt: textExcerpt,
+    };
+    pendingAttachments = [attachment, ...pendingAttachments].slice(0, 6);
     const packet = createLocalPacket(
-      "file-metadata-check",
-      "local browser file metadata",
-      "File selected for future review. The static dashboard captured metadata only and did not read or store document text.",
+      "file-transfer-check",
+      "local browser file transfer",
+      textExcerpt
+        ? "File selected for Jarvis chat. The dashboard prepared a bounded text excerpt for the next API message and did not write it durably."
+        : "File selected for Jarvis chat. The dashboard prepared metadata only for the next API message.",
       {
         extra: {
-          file_name: file.name,
-          file_type: file.type || "unknown",
-          file_size: file.size,
-          privacy: "metadata only; use Codex or a future approved backend to process document contents",
+          file_name: attachment.name,
+          file_type: attachment.mime_type,
+          file_size: attachment.size,
+          transfer_mode: attachment.transfer_mode,
+          privacy: "session attachment only; no durable dashboard writeback",
         },
       },
     );
-    appendEvent("File metadata prepared", `${file.name} staged as ${packet.id}.`, "ok");
-  });
+    appendEvent("File transfer prepared", `${attachment.name} staged as ${packet.id}.`, "ok");
+  }
   render();
   event.target.value = "";
 }
@@ -3181,7 +3231,7 @@ function renderConfig() {
     <section class="panel" style="margin-top:16px">
       <h2 class="section-title">Agent Chain Links</h2>
       ${table(["Chain link", "Role", "Persistence"], [
-        ["Jarvis intake", "Collect text, voice transcript, file metadata, and explicit approval.", "session/local packet"],
+        ["Jarvis intake", "Collect text, file transfer metadata/excerpts, and explicit approval.", "session/local packet"],
         ["Context analyzer", "Summarize and classify fact, interpretation, hypothesis, gap, decision, task.", "review packet"],
         ["Research/ICP agent", "Create source-backed evidence cards and market questions.", "run note after review"],
         ["Manager/PRD agent", "Convert accepted context into tasks, owners, PRD deltas, deadlines.", "Notion candidates"],
@@ -3520,6 +3570,7 @@ function renderGates(data) {
 
 function render() {
   if (!dashboardData) return;
+  document.body.dataset.activeTab = activeTab;
   renderNav();
   const data = dashboardData;
   generatedAt.textContent = `Generated ${new Date(data.generated_at).toLocaleString()}`;

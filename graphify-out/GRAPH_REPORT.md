@@ -1,13 +1,13 @@
 # Graph Report - public  (2026-07-03)
 
 ## Corpus Check
-- 457 files · ~453,312 words
+- 457 files - ~453,312 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 4913 nodes · 5086 edges · 461 communities (428 shown, 33 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.68)
-- Token cost: 0 input · 0 output
+- 4913 nodes - 5086 edges - 461 communities (428 shown, 33 thin omitted)
+- Extraction: 100% EXTRACTED - 0% INFERRED - 0% AMBIGUOUS - INFERRED: 15 edges (avg confidence: 0.68)
+- Token cost: 0 input - 0 output
 
 ## Graph Freshness
 - Built from commit: `d0e75504`
@@ -482,15 +482,15 @@
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --calls--> `render_pdf()`  [INFERRED]
-  project/scripts/e1_2_8_openrouter_comparison.py → project/scripts/e1_2_8_testmeeting_run.py
+  project/scripts/e1_2_8_openrouter_comparison.py -> project/scripts/e1_2_8_testmeeting_run.py
 - `handler` --uses--> `JsonHandler`  [INFERRED]
-  api/health.py → api/_jarvis_contract.py
+  api/health.py -> api/_jarvis_contract.py
 - `handler` --uses--> `JsonHandler`  [INFERRED]
-  api/chat.py → api/_jarvis_contract.py
+  api/chat.py -> api/_jarvis_contract.py
 - `handler` --uses--> `JsonHandler`  [INFERRED]
-  api/config/roles.py → api/_jarvis_contract.py
+  api/config/roles.py -> api/_jarvis_contract.py
 - `handler` --uses--> `JsonHandler`  [INFERRED]
-  api/lanes/agent-orchestra.py → api/_jarvis_contract.py
+  api/lanes/agent-orchestra.py -> api/_jarvis_contract.py
 
 ## Communities (461 total, 33 thin omitted)
 
@@ -2172,8 +2172,8 @@ Nodes (3): orgId, projectId, projectName
 
 ## Knowledge Gaps
 - **3321 isolated node(s):** `cleanUrls`, `rewrites`, `headers`, `QUIZ_PACKAGES`, `SOURCE_LABELS` (+3316 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have <=1 connection - possible missing edges or undocumented components.
+- **33 thin communities (<3 nodes) omitted from report** - run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

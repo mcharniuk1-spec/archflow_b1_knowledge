@@ -7,7 +7,7 @@ Support tools: local filesystem, sandboxed shell, git (read), MCP registry.
 
 ## Task
 
-Onboard Claude Cowork to the ArchFlow public-safe project: prove understanding of the operating contract, project-local skills, connector availability, safety boundary, validation path, runtime truth, and the next execution task. Setup only — no feature edits, no provider calls, no external writes, no push.
+Onboard Claude Cowork to the ArchFlow public-safe project: prove understanding of the operating contract, project-local skills, connector availability, safety boundary, validation path, runtime truth, and the next execution task. Setup only - no feature edits, no provider calls, no external writes, no push.
 
 ## Setup Scope Note
 
@@ -28,10 +28,10 @@ The setup prompt paths are relative to the git root, which in this workspace is 
 
 | Skill | When to use | Applies to current setup |
 |---|---|---|
-| `arcagcom` | Before any parallel/shared-file edit; live-log claims and handoffs. | Yes — used to post start/complete entries. |
-| `task-handout` | Substantial/multi-agent/subtask work; hook trigger. | Partial — this run is a bounded audit; readiness note serves as the handout. |
-| `archflow-e1-runtime-guard` | Before push or after workflow/runtime changes. | Reference only — not pushing; guard is environment-blocked here. |
-| `archflow1` | Dashboard/Jarvis/OpenRouter/Railway runtime work. | Reference only — no runtime work this run. |
+| `arcagcom` | Before any parallel/shared-file edit; live-log claims and handoffs. | Yes - used to post start/complete entries. |
+| `task-handout` | Substantial/multi-agent/subtask work; hook trigger. | Partial - this run is a bounded audit; readiness note serves as the handout. |
+| `archflow-e1-runtime-guard` | Before push or after workflow/runtime changes. | Reference only - not pushing; guard is environment-blocked here. |
+| `archflow1` | Dashboard/Jarvis/OpenRouter/Railway runtime work. | Reference only - no runtime work this run. |
 | `priority-task-operator` | 00:30/06:30 priority-task automation lane. | Not this run. |
 | `archflow-task-breakdown` | Decomposing epics/tasks into staged subtasks. | Useful for E1.4/E2.0A next. |
 | `outquestions` | Closeout with open decision questions. | Applicable at closeout. |
@@ -44,16 +44,16 @@ The setup prompt paths are relative to the git root, which in this workspace is 
 |---|---|---|---|
 | Local filesystem / shell | Available | Read/write public folder, run deterministic scripts. | Primary safe surface. |
 | Git (local) | Available (read) | `git status`, diff, log. | Remote is `mcharniuk1-spec/archflow_b1_knowledge` over SSH. Push is gated (owner approval). A stale `.git/index.lock` could not be removed in-sandbox; harmless for read-only audit. |
-| GitHub MCP | Not connected here | — | GAP: no GitHub MCP tool in this session; git CLI is the fallback. No force push, no history rewrite, no push without approval. |
-| Notion | Gated (needs OAuth) | — | GAP: requires interactive authorization; unavailable in this non-interactive session. Append-evidence-only rule applies when connected; never mark Done without proof + approval. |
-| Obsidian / Nexus | Not present | — | GAP: no Nexus runtime; use filesystem `wiki/` as durable memory fallback. Live writeback stays gated. |
-| Figma | Gated (needs OAuth) | — | Only for explicit design/deploy-sync tasks; not needed now. |
-| Vercel | Not exposed as MCP | — | Static hosted review-packet proof exists per prior runs; no production promotion without approval. |
-| Railway | Not present | — | Gated always-on backend lane; not required for static proof. |
-| Telegram / sender | Not present | — | External send only via approved sender + ignored env; store sanitized status only. |
-| OpenRouter / provider bridge | Disabled by contract | — | Disabled until owner approval, backend/bridge, fresh model list, ledger, budget caps, reviewer. |
+| GitHub MCP | Not connected here | - | GAP: no GitHub MCP tool in this session; git CLI is the fallback. No force push, no history rewrite, no push without approval. |
+| Notion | Gated (needs OAuth) | - | GAP: requires interactive authorization; unavailable in this non-interactive session. Append-evidence-only rule applies when connected; never mark Done without proof + approval. |
+| Obsidian / Nexus | Not present | - | GAP: no Nexus runtime; use filesystem `wiki/` as durable memory fallback. Live writeback stays gated. |
+| Figma | Gated (needs OAuth) | - | Only for explicit design/deploy-sync tasks; not needed now. |
+| Vercel | Not exposed as MCP | - | Static hosted review-packet proof exists per prior runs; no production promotion without approval. |
+| Railway | Not present | - | Gated always-on backend lane; not required for static proof. |
+| Telegram / sender | Not present | - | External send only via approved sender + ignored env; store sanitized status only. |
+| OpenRouter / provider bridge | Disabled by contract | - | Disabled until owner approval, backend/bridge, fresh model list, ledger, budget caps, reviewer. |
 | Browser (Claude-in-Chrome) | Available if needed | Web read/testing | Not needed for setup. |
-| MCP registry | Available | Discover connectors on request. | — |
+| MCP registry | Available | Discover connectors on request. | - |
 
 Connectors requiring OAuth that are currently unavailable (non-interactive session): Notion, Slack, Linear, Asana, ClickUp, Monday, Figma, HubSpot, Atlassian, BigQuery, Amplitude, and others listed by the environment. These must be authorized in claude.ai connector settings or an interactive `claude mcp` / `/mcp` session before use.
 
@@ -65,10 +65,10 @@ Connectors requiring OAuth that are currently unavailable (non-interactive sessi
 | `python3 project/scripts/generate-dashboard-data.py` | PASS ("wrote project/dashboard/data.json") |
 | `python3 -c 'json.load(open("project/dashboard/data.json"))'` | PASS ("dashboard_json_ok") |
 | `git diff --check` | PASS (no whitespace/conflict errors) |
-| `validate-workflows.py` | BLOCKED — env |
-| `pre-push-runtime-guard.py` | BLOCKED — env |
-| `llamaindex-approved-corpus.py --mode smoke` | BLOCKED — env |
-| `llamaindex-rag-benchmark.py` | BLOCKED — env |
+| `validate-workflows.py` | BLOCKED - env |
+| `pre-push-runtime-guard.py` | BLOCKED - env |
+| `llamaindex-approved-corpus.py --mode smoke` | BLOCKED - env |
+| `llamaindex-rag-benchmark.py` | BLOCKED - env |
 
 Environment cause: `project/local/venv/bin/python` symlinks to a host-machine pyenv interpreter path that does not exist inside the Linux sandbox. System `python3` (3.10) lacks `pydantic`, `langgraph`, and `llama_index` (venv-only). Package installation is not permitted during setup, so these four checks were not run. This is an environment limitation, not a project defect.
 
@@ -108,7 +108,7 @@ Complete (setup audit).
 
 - venv-dependent validators (workflow validation, pre-push runtime guard, LlamaIndex smoke/benchmark) cannot run in this sandbox; fallback is deterministic filesystem checks + system-python `public_safety_scan` and dashboard JSON checks, which pass.
 - No GitHub/Notion/Nexus MCP available in this non-interactive session; fallback is git CLI (read) and local `wiki/` writes; external sync stays gated.
-- Provider-backed Jarvis, Railway, live Nexus writeback, vector defaulting/turbovec, dashboard-driven writeback, raw voice storage, and autonomous external updates remain gated — unchanged this run.
+- Provider-backed Jarvis, Railway, live Nexus writeback, vector defaulting/turbovec, dashboard-driven writeback, raw voice storage, and autonomous external updates remain gated - unchanged this run.
 - Worktree was already dirty with a prior-agent continuation-stabilization run; not overwritten.
 
 ## Next Safe Action

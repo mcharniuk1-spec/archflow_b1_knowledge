@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T16:52:56.817183+00:00",
+  "generated_at": "2026-07-07T15:22:17.381501+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "339",
+      "value": "386",
       "tone": "ok"
     },
     {
@@ -586,6 +586,363 @@
   ],
   "activity": [
     {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-07-jarvis-chat-api-rebuild/agent-handout.md",
+      "title": "Jarvis Chat API Rebuild Handout",
+      "modified": "2026-07-07T15:21:52.545096+00:00",
+      "size": 6983
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-07-jarvis-chat-api-rebuild/railway-state.md",
+      "title": "Railway State - Jarvis Chat Rebuild",
+      "modified": "2026-07-07T15:21:52.461895+00:00",
+      "size": 2100
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260706_run_daily_skill_retrospective.md",
+      "title": "2026-07-06 Run Note: Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-06T22:37:50.672117+00:00",
+      "size": 4182
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260706_daily_skill_retrospective.md",
+      "title": "2026-07-06 Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-06T22:35:49.552330+00:00",
+      "size": 8967
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/agent-handout.md",
+      "title": "2026-07-06 06:30 Priority Mechanical Work Handout",
+      "modified": "2026-07-06T07:43:03.986880+00:00",
+      "size": 4720
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub Packet",
+      "modified": "2026-07-06T07:43:03.899163+00:00",
+      "size": 2004
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "PitAgent Continuation Prompt",
+      "modified": "2026-07-06T07:43:03.810856+00:00",
+      "size": 1804
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/e5-3-review-gate.md",
+      "title": "E5.3 Review Gate",
+      "modified": "2026-07-06T07:43:03.721830+00:00",
+      "size": 1258
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/e5-3-inbound-qualification-scoring.md",
+      "title": "E5.3 Inbound Qualification Scoring Packet",
+      "modified": "2026-07-06T07:43:03.632993+00:00",
+      "size": 5455
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-06T07:43:03.542827+00:00",
+      "size": 3799
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "modified": "2026-07-06T07:42:00.449385+00:00",
+      "size": 5622
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-evening-skill-hook-review/summary.md",
+      "title": "Evening Skill And Hook Review",
+      "modified": "2026-07-06T07:42:00.357245+00:00",
+      "size": 4815
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/agent-handout.md",
+      "title": "Priority Mechanical Work Handout",
+      "modified": "2026-07-06T07:39:56.700482+00:00",
+      "size": 4597
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub Packet",
+      "modified": "2026-07-06T07:39:10.922911+00:00",
+      "size": 1720
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "PitAgent Continuation Prompt",
+      "modified": "2026-07-06T07:39:10.830563+00:00",
+      "size": 1760
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-diagnostic-event-schema.md",
+      "title": "E5.2 Diagnostic Event Schema",
+      "modified": "2026-07-06T07:39:10.738084+00:00",
+      "size": 4229
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-lead-funnel-metrics.md",
+      "title": "E5.2 Lead Funnel Metrics Packet",
+      "modified": "2026-07-06T07:39:10.650879+00:00",
+      "size": 5455
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-06T07:39:10.562501+00:00",
+      "size": 3494
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "modified": "2026-07-06T07:37:01.579979+00:00",
+      "size": 5068
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-evening-skill-hook-review/summary.md",
+      "title": "Evening Skill And Hook Review",
+      "modified": "2026-07-06T07:37:01.487730+00:00",
+      "size": 5189
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: 2026-07-05 Priority Mechanical Work",
+      "modified": "2026-07-06T03:01:08.547225+00:00",
+      "size": 5096
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/e4-5-weekly-review-scorecard.md",
+      "title": "E4.5 Weekly Review Scorecard",
+      "modified": "2026-07-06T01:44:11.836760+00:00",
+      "size": 2612
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/e4-1-five-week-content-plan.md",
+      "title": "E4.1 Five-Week Content Plan",
+      "modified": "2026-07-06T01:44:11.741967+00:00",
+      "size": 5970
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/e4-live-profile-gate.md",
+      "title": "E4 Live Profile Gate",
+      "modified": "2026-07-06T01:44:11.652345+00:00",
+      "size": 1775
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "modified": "2026-07-06T01:44:11.563659+00:00",
+      "size": 1468
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "modified": "2026-07-06T01:44:11.476333+00:00",
+      "size": 1920
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-05T12:49:19.127483+00:00",
+      "size": 2271
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "modified": "2026-07-05T09:46:27.978718+00:00",
+      "size": 731
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "modified": "2026-07-05T09:46:27.978657+00:00",
+      "size": 1058
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-05-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-05T09:46:27.978390+00:00",
+      "size": 2271
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: Priority Mechanical Work E4 Decision Packet",
+      "modified": "2026-07-04T05:36:43.411506+00:00",
+      "size": 4010
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "modified": "2026-07-04T05:36:43.318506+00:00",
+      "size": 2092
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "modified": "2026-07-04T05:36:43.228070+00:00",
+      "size": 2174
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/operator-side-profile-checklist.md",
+      "title": "Operator-Side Social Profile Checklist",
+      "modified": "2026-07-04T05:36:43.140901+00:00",
+      "size": 2110
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/owner-decision-request.md",
+      "title": "E4 Social Profile Owner Decision Request",
+      "modified": "2026-07-04T05:36:43.053881+00:00",
+      "size": 2174
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-04T05:36:42.968970+00:00",
+      "size": 4727
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: 2026-07-04 Priority Mechanical Work",
+      "modified": "2026-07-04T05:14:08.175982+00:00",
+      "size": 4882
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "modified": "2026-07-04T05:13:21.765528+00:00",
+      "size": 1320
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/e4-social-profile-gap.md",
+      "title": "E4 Social Profile Gap",
+      "modified": "2026-07-04T05:13:21.661709+00:00",
+      "size": 936
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/e2-1-blank-account-card-template.md",
+      "title": "E2.1 Blank Account Card Template",
+      "modified": "2026-07-04T05:13:21.561198+00:00",
+      "size": 1489
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/e2-1-source-api-data-model-packet.md",
+      "title": "E2.1 Source/API/Data Model Packet",
+      "modified": "2026-07-04T05:13:21.461909+00:00",
+      "size": 5346
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "modified": "2026-07-04T05:13:21.362760+00:00",
+      "size": 3251
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "modified": "2026-07-04T04:43:16.168195+00:00",
+      "size": 1058
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260703_run_daily_skill_retrospective.md",
+      "title": "Run Note: 2026-07-03 Daily Skill Retrospective",
+      "modified": "2026-07-03T19:35:54.917003+00:00",
+      "size": 3294
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260703_daily_skill_retrospective.md",
+      "title": "2026-07-03 Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-03T19:35:54.830487+00:00",
+      "size": 8746
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-evening-skill-hook-review/agent-handout.md",
+      "title": "Agent Handout: Evening Skill And Hook Review",
+      "modified": "2026-07-03T18:07:33.178082+00:00",
+      "size": 5221
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-evening-skill-hook-review/summary.md",
+      "title": "2026-07-03 Evening Skill And Hook Review",
+      "modified": "2026-07-03T18:07:33.093993+00:00",
+      "size": 3401
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
+      "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
+      "modified": "2026-07-03T18:06:04.292036+00:00",
+      "size": 1769
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md",
+      "title": "E1.2.8 OpenRouter Provider Comparison",
+      "modified": "2026-07-03T18:06:04.291483+00:00",
+      "size": 5929
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md",
+      "title": "Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet",
+      "modified": "2026-07-03T18:06:04.291255+00:00",
+      "size": 2323
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md",
+      "title": "Run: Claude Cowork Setup Readiness",
+      "modified": "2026-07-03T18:06:04.290177+00:00",
+      "size": 8805
+    },
+    {
       "kind": "project_report",
       "path": "project/reports/2026-07-03-vercel-production-cure-report.pdf",
       "title": "2026-07-03-vercel-production-cure-report.pdf",
@@ -1000,24 +1357,10 @@
     },
     {
       "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
-      "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
-      "modified": "2026-07-03T14:05:20.233758+00:00",
-      "size": 1771
-    },
-    {
-      "kind": "wiki_run",
       "path": "wiki/runs/2026-07-03-kb-update-principle.md",
       "title": "Run: E1.4 KB Update Principle",
       "modified": "2026-07-03T14:05:20.139589+00:00",
       "size": 1475
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md",
-      "title": "Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet",
-      "modified": "2026-07-03T14:05:20.045552+00:00",
-      "size": 2325
     },
     {
       "kind": "project_run",
@@ -1088,13 +1431,6 @@
       "title": "2026-07-03-kb-update-principle.pdf",
       "modified": "2026-07-03T12:47:58.299165+00:00",
       "size": 14832
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md",
-      "title": "Run: Claude Cowork Setup Readiness",
-      "modified": "2026-07-03T12:44:08.421708+00:00",
-      "size": 8843
     },
     {
       "kind": "project_run",
@@ -1368,13 +1704,6 @@
       "title": "OpenRouter Provider Comparison Status",
       "modified": "2026-07-03T08:32:43.150410+00:00",
       "size": 1176
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md",
-      "title": "E1.2.8 OpenRouter Provider Comparison",
-      "modified": "2026-07-03T08:32:43.100091+00:00",
-      "size": 5938
     },
     {
       "kind": "project_run",
@@ -3365,7 +3694,7 @@
     {
       "path": "project/automation/archflow-public-evening-skill-and-hook-update.md",
       "title": "ArchFlow Public Evening Skill And Hook Update",
-      "text": "# ArchFlow Public Evening Skill And Hook Update  Automation ID: `archflow-evening-skill-and-hook-update`  Status: active in Codex app automation.  Schedule: daily at 21:00.  Contract source: `project/agents/agent-roster.yaml` (`archflow_evening_skill_and_hook_update`).  ## Purpose  Run a bounded, no-amnesia nightly maintenance lane that keeps skill registries and handout hook contracts aligned and updates only when needed.  ## Scope  Read:  - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `skills/evening-skill-registry-update/SKILL.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `wiki/log.md` and `project/runs/` as needed for continuity. - `project/automation/archflow-public-evening-skill-and-hook-update.md`  Write:  - `project/agents/agent-roster.yaml` (if needed), - `project/agents/skills-by-agent.md` (if needed), - `skills/skills-used.md` (if needed), - `project/runs/<run-id>/run-summary.md`, - `project/runs/<run-id>/agen"
+      "text": "# ArchFlow Public Evening Skill And Hook Update  Automation ID: `archflow-public-evening-skill-update`  Status: active in Codex app automation.  Schedule: daily at 21:00.  Contract source: `project/agents/agent-roster.yaml` (`archflow_evening_skill_and_hook_update`).  ## Purpose  Run a bounded, no-amnesia nightly maintenance lane that keeps skill registries and handout hook contracts aligned and updates only when needed.  ## Scope  Read:  - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `skills/evening-skill-registry-update/SKILL.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `wiki/log.md` and `project/runs/` as needed for continuity. - `project/automation/archflow-public-evening-skill-and-hook-update.md`  Write:  - `project/agents/agent-roster.yaml` (if needed), - `project/agents/skills-by-agent.md` (if needed), - `skills/skills-used.md` (if needed), - `project/runs/<run-id>/run-summary.md`, - `project/runs/<run-id>/agent-"
     },
     {
       "path": "project/automation/daily-skill-retrospective-and-rag-knowledge-review.md",
@@ -3425,7 +3754,7 @@
     {
       "path": "project/dashboard/README.md",
       "title": "Local Operator Dashboard",
-      "text": "# Local Operator Dashboard  This is the Phase 2 dashboard for ArchFlow Block 1.  It is a static source-state control panel and Jarvis command shell generated from public project files. It can hold browser-local draft graph edits and review packets, but it cannot write back to source files by itself. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  Protected review route format:  ```text https://<protected-preview-host>/project/dashboard/ ```  Review-branch local deep links:  ```text http://127.0.0.1:8765/project/dashboard/#jarvis http://127.0.0.1:8765/project/dashboard/#history http://127.0.0.1:8765/project/dashboard/#service http://127.0.0.1:8765/project/dashboard/#schema http://127.0.0.1:8765/project/dashboard/#config http://127.0.0.1:8765/project/dashboard/#plan ```  Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3"
+      "text": "# Local Operator Dashboard  This is the Phase 2 dashboard for ArchFlow Block 1.  It is a static source-state control panel and Jarvis command shell generated from public project files. It can hold browser-local draft graph edits and review packets, but it cannot write back to source files by itself. It is not the project brain and it does not replace WikiLLM, Obsidian, LangSmith, GitHub, or Codex.  Protected review route format:  ```text https://<protected-preview-host>/project/dashboard/ ```  Review-branch local deep links:  ```text http://127.0.0.1:8765/project/dashboard/#jarvis http://127.0.0.1:8765/project/dashboard/#history http://127.0.0.1:8765/project/dashboard/#service http://127.0.0.1:8765/project/dashboard/#schema http://127.0.0.1:8765/project/dashboard/#config http://127.0.0.1:8765/project/dashboard/#plan ```  Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, memory controls, or non-public data.  ## Run  From the repository root:  ```bash python3 project/scripts/generate-dashboard-data.py python3 -m http.server 8"
     },
     {
       "path": "project/future-actions-and-parameters.md",
@@ -3440,7 +3769,7 @@
     {
       "path": "project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md",
       "title": "Daily Retrospective Open Operational Gaps",
-      "text": "# Daily Retrospective Open Operational Gaps  Date: 2026-07-01 Status: open  ## Issue  The July 1 daily retrospective found several remaining blockers that are already referenced across reports, but they need one concise operational issue for future scheduled runs.  ## FACT  - The `priority-task-operator` skill and script are configured, but the first scheduled 00:30 and 06:30 outputs have not yet been observed. - The Yushchenko observer found no active OpenRouter runtime evidence and no canonical model-call ledger. - Telegram delivery remains conditional on an approved sender outside the public repo. - Live Nexus/writeback remains unproven in public-safe evidence. - Static website/dashboard proof is strong, but backend/provider/writeback readiness remains gated.  ## INTERPRETATION  These are operational proof gaps, not registry drift. The daily retrospective should track them until the relevant lane closes each gap with artifacts and checks.  ## Required Closure Evidence  | Gap | Closure evidence | |---|---| | Priority-task runtime | Generated `selected-task.md`, `pitagent-chat-prompt.md`, and `selected-task.json` from scheduled execution | | Model-call ledger | Public-safe schema "
+      "text": "# Daily Retrospective Open Operational Gaps  Date: 2026-07-01 Status: open, partially updated on 2026-07-07  ## Issue  The July 1 daily retrospective found several remaining blockers that are already referenced across reports, but they need one concise operational issue for future scheduled runs.  ## FACT  - The `priority-task-operator` skill and script are configured, but the first scheduled 00:30 and 06:30 outputs have not yet been observed. - The Yushchenko observer found no active OpenRouter runtime evidence and no canonical model-call ledger. - Telegram delivery remains conditional on an approved sender outside the public repo. - Live Nexus/writeback remains unproven in public-safe evidence. - Static website/dashboard proof is strong, but backend/provider/writeback readiness remains gated.  ## INTERPRETATION  These are operational proof gaps, not registry drift. The daily retrospective should track them until the relevant lane closes each gap with artifacts and checks.  ## Required Closure Evidence  | Gap | Closure evidence | |---|---| | Priority-task runtime | Generated `selected-task.md`, `pitagent-chat-prompt.md`, and `selected-task.json` from scheduled execution | | Model-"
     },
     {
       "path": "project/issues/2026-07-01-dashboard-website-improvement-issues.md",
@@ -4370,7 +4699,7 @@
     {
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md",
       "title": "Run: Claude Cowork Setup Readiness",
-      "text": "# Run: Claude Cowork Setup Readiness  Date: 2026-07-03 Project: ArchFlow Block 1 Knowledge (public-safe) Owner agent: Claude (Cowork) Support tools: local filesystem, sandboxed shell, git (read), MCP registry.  ## Task  Onboard Claude Cowork to the ArchFlow public-safe project: prove understanding of the operating contract, project-local skills, connector availability, safety boundary, validation path, runtime truth, and the next execution task. Setup only \u2014 no feature edits, no provider calls, no external writes, no push.  ## Setup Scope Note  The setup prompt paths are relative to the git root, which in this workspace is the `public/` folder (that is where `.git` lives). All references below use `public/`-relative paths. The top-level `ArchFlow/` folder additionally holds pre-reset root files that are out of scope for current public work.  ## Files Read  - `project/operating-rules.md` - `project/live/communication/README.md`, `current-agent-notice.md`, latest `agent-communication-log.md` - `project/project-plan.md` - `project/agentic-stack.md` - `project/config/model-routing.yaml` - `project/agents/agent-roster.yaml` - `wiki/index.md`, `wiki/memory.md`, `wiki/insights.md` - All n"
+      "text": "# Run: Claude Cowork Setup Readiness  Date: 2026-07-03 Project: ArchFlow Block 1 Knowledge (public-safe) Owner agent: Claude (Cowork) Support tools: local filesystem, sandboxed shell, git (read), MCP registry.  ## Task  Onboard Claude Cowork to the ArchFlow public-safe project: prove understanding of the operating contract, project-local skills, connector availability, safety boundary, validation path, runtime truth, and the next execution task. Setup only - no feature edits, no provider calls, no external writes, no push.  ## Setup Scope Note  The setup prompt paths are relative to the git root, which in this workspace is the `public/` folder (that is where `.git` lives). All references below use `public/`-relative paths. The top-level `ArchFlow/` folder additionally holds pre-reset root files that are out of scope for current public work.  ## Files Read  - `project/operating-rules.md` - `project/live/communication/README.md`, `current-agent-notice.md`, latest `agent-communication-log.md` - `project/project-plan.md` - `project/agentic-stack.md` - `project/config/model-routing.yaml` - `project/agents/agent-roster.yaml` - `wiki/index.md`, `wiki/memory.md`, `wiki/insights.md` - All n"
     },
     {
       "path": "project/runs/2026-07-03-claude-continuation-stabilization/openrouter-model-routing-optimization.md",
@@ -4518,6 +4847,16 @@
       "text": "ArchFlow update 2026-07-03: E1.4 and E2.0A are accepted. The testmeeting final local baseline was rerun with provider disabled. New reports are ready: PRD Pack business-evaluation research plan, Railway/Jarvis cloud setup test plan, Epic 1 summary/final-test plan, and Epic 2 delivery plan with owner questions. No provider-backed runtime, Railway deployment, outreach, or demand claim was executed in this run."
     },
     {
+      "path": "project/runs/2026-07-03-evening-skill-hook-review/agent-handout.md",
+      "title": "Agent Handout: Evening Skill And Hook Review",
+      "text": "# Agent Handout: Evening Skill And Hook Review  Date: 2026-07-03 Status: complete  ## Title And Purpose  This handout covers the July 3 evening maintenance review for ArchFlow public skill registries, hook contracts, and validation hygiene. Use it when the next operator needs to continue the recurring registry/hook lane without redoing broad discovery.  ## Human Summary  The review found no functional skill registry drift. The project-local skill contracts under `skills/` are represented in the public registry files, and the agent roster configures them through agent roles, project-local skills, or automation lanes. The recent Vercel, Railway, Jarvis, hybrid RAG, and PRD/ICP work is already covered by existing skills, especially `archflow1`, `arcagcom`, `archflow-e1-runtime-guard`, `task-handout`, and `outquestions`.  The task-handout hook remains aligned. `.codex/hooks.json` still calls `project/scripts/task-handout-hook.py`, the script still writes only an ignored local marker plus a console reminder, and `skills/task-handout/SKILL.md` still makes the executing agent responsible for the actual run handout.  The only meaningful maintenance change was validation hygiene. A strict t"
+    },
+    {
+      "path": "project/runs/2026-07-03-evening-skill-hook-review/summary.md",
+      "title": "2026-07-03 Evening Skill And Hook Review",
+      "text": "# 2026-07-03 Evening Skill And Hook Review  Status: complete  ## Task  Review the public ArchFlow skill registries, agent roster skill setup, prompt/task-handout hook contracts, hook-backed workflows, and validation requirements. Update only public-safe files when actual drift is found.  ## Result  FACT:  - All nine local skill contracts under `skills/` are represented in the public skill registry and linked from the human-readable registry files. - `project/agents/agent-roster.yaml` configures all local skill contracts either through agent roles, project-local skills, or automation lanes. - `.codex/hooks.json` still routes `UserPromptSubmit` to `project/scripts/task-handout-hook.py`. - `skills/task-handout/SKILL.md`, `.codex/hooks.json`, and `project/scripts/task-handout-hook.py` remain aligned. - `.githooks/pre-push` still runs the public safety scan and runtime guard. - Recent July 3 Vercel/Railway/Jarvis work is already covered by `archflow1`, `archflow-e1-runtime-guard`, `arcagcom`, and `task-handout`; no new reusable skill was needed. - Strict tracked-text ASCII validation found punctuation drift in six existing public files. The run normalized punctuation only.  INTERPRETATI"
+    },
+    {
       "path": "project/runs/2026-07-03-hybrid-rag-jarvis-readiness/agent-handout.md",
       "title": "Agent Handout: Hybrid RAG And Jarvis Readiness",
       "text": "# Agent Handout: Hybrid RAG And Jarvis Readiness  Date: 2026-07-03 Status: implementation complete for bounded hybrid retrieval and Jarvis readiness verification Lane: LlamaIndex RAG upgrade plus Jarvis architecture-mode readiness  ## Title And Purpose  This handout records the widened plan and implementation pass for the ArchFlow public knowledge system. It is for the next operator who must continue Graphify, RAG, LlamaIndex, Jarvis, dashboard, Notion, GitHub, and future tool-integration work without relying on chat history.  ## Human Summary  The current reliable architecture remains public-safe first. Codex is the local operator and approval boundary. WikiLLM is the durable curated memory. Graphify is generated structural reference. LlamaIndex is the bounded retrieval layer. LangGraph controls execution paths and gates. CrewAI provides named role structure. Jarvis is the dashboard communication/control surface, with Architecture 1 for PRD/ICP output and Architecture 2 for architecture/agent-system work.  This run upgraded the LlamaIndex approved-corpus path from keyword-only proof to bounded hybrid retrieval. The script now creates stable document and chunk metadata, enforces re"
@@ -4545,7 +4884,7 @@
     {
       "path": "project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md",
       "title": "Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet",
-      "text": "# Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Run: 2026-07-03-prd-icp-dry-run Owner agent: Claude (Cowork) Status: accepted by owner on 2026-07-03  ## Human Summary  The E2.0A dry-run packet is written. It converts the market-research-engine workflow into executable research discipline: a source boundary (public sources only, gated tools listed), an account evidence card schema with provenance and review fields, an A-D source grade rubric wired to the scoring model and fact-check gate, an honest low-confidence ICP profile outline for Series B-D B2B SaaS product teams, and an executive decision that scopes what E2.0A enables and forbids. No provider calls were made; no external accounts were researched \u2014 this is the method packet that makes the first real pass (E2.1) safe.  ## Files Changed  - `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` (new) - `proje"
+      "text": "# Agent Handout: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Run: 2026-07-03-prd-icp-dry-run Owner agent: Claude (Cowork) Status: accepted by owner on 2026-07-03  ## Human Summary  The E2.0A dry-run packet is written. It converts the market-research-engine workflow into executable research discipline: a source boundary (public sources only, gated tools listed), an account evidence card schema with provenance and review fields, an A-D source grade rubric wired to the scoring model and fact-check gate, an honest low-confidence ICP profile outline for Series B-D B2B SaaS product teams, and an executive decision that scopes what E2.0A enables and forbids. No provider calls were made; no external accounts were researched - this is the method packet that makes the first real pass (E2.1) safe.  ## Files Changed  - `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` (new) - `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` (new) - `proje"
     },
     {
       "path": "project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md",
@@ -4598,6 +4937,211 @@
       "text": "# Pending Notion Update Packet: Vercel Production Cure  Date: 2026-07-03 Status: superseded by `notion-update-packet.md` and `notion-delivery-status.md`  ## Superseded Notice  This was the documentation subagent's pre-cure draft. It is kept only as an audit trail for the placeholders that existed before final deployment evidence was recorded. Do not use it for current Notion state; use `notion-update-packet.md` and `notion-delivery-status.md`.  ## Use Boundary  Do not send this packet until the lead records final Vercel/Railway cure facts. Replace bracketed values with verified results. Keep all updates append-only.  ## Epic 1 Parent Page  ```text 2026-07-03 deployment cure addendum: the Epic 1 cloud review surface was rechecked after the Vercel/Railway cure. Public dashboard production freshness is [current / still stale]. Railway Jarvis is [healthy / blocked / degraded] for the documented endpoint set. Jarvis Architecture 1 PRD/ICP checks [passed / failed / not run]. Jarvis Architecture 2 agent-orchestra checks [passed / failed / not run]. Provider mode is [provider-disabled / approved server-side OpenRouter with budget ledger / not enabled]. Durable writeback is [disabled / appr"
     },
     {
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: Priority Mechanical Work E4 Decision Packet",
+      "text": "# Agent Handout: Priority Mechanical Work E4 Decision Packet  ## Title And Purpose  This handout covers the 00:30 priority mechanical-work lane for E4 social-profile packaging. It is for the next operator who needs to move from draft profile copy to an owner-approved live-update path without repeating prior work.  ## Human Summary  The deterministic selector was rerun against `project/project-plan.md`. It still selected `Package social profiles for LinkedIn, X, and Threads` as the highest-ranked unfinished task, with score `288`.  The prior `2026-07-03-0630-priority-mechanical-work` run had already produced the safe mechanical profile drafts and review gate. This run did not duplicate that copy. It packaged the missing owner decisions and created an operator-side checklist for a future approved live-update pass.  No social platform, Notion, provider, network, Git push, deployment, credential, or publication action was performed. The task should remain `In Progress` until owner decisions are recorded.  ## Current State  - Selected task: `Package social profiles for LinkedIn, X, and Threads`. - Task status: `In Progress`. - Draft profile copy: exists in `project/runs/2026-07-03-0630-"
+    },
+    {
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "text": "# KB/Notion/GitHub packet  Selected task: `Package social profiles for LinkedIn, X, and Threads` Current status: `In Progress`  ## Knowledge Base update - Add selected task evidence, ranking rationale, and execution result to `wiki/log.md`. - Keep a no-PII summary of execution status and checks.  Suggested durable update:  ```text The 00:30 priority mechanical-work lane reran the deterministic selector. The top task remains E4 social-profile packaging, but the prior 06:30 packet already produced public-safe LinkedIn, X, and Threads drafts plus a review gate. This run therefore prepared the missing owner-decision request and operator-side live-update checklist. No live profile, network, provider, Notion, Git push, deployment, credential, or publication action was performed. ```  ## Notion packet - Prepare a task update entry with: status, owner, blockers, expected output, next action. - Include `priority_score`, `urgency`, and `importance` values.  Prepared status payload for later approved write:  | Field | Value | |---|---| | Task | Package social profiles for LinkedIn, X, and Threads | | Suggested status | In Progress | | Priority score | 288 | | Urgency / importance | 156 / 90 |"
+    },
+    {
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/operator-side-profile-checklist.md",
+      "title": "Operator-Side Social Profile Checklist",
+      "text": "# Operator-Side Social Profile Checklist  Status: prepared, not executed Task: `Package social profiles for LinkedIn, X, and Threads, operator-side`  ## Use Only After Approval  This checklist is for a future approved operator. It does not authorize live social-profile edits.  ## Preflight  1. Confirm owner decisions in an approval record beside this run or the approved execution run. 2. Read `project/runs/2026-07-03-0630-priority-mechanical-work/profile-field-drafts.md`. 3. Read `project/runs/2026-07-03-0630-priority-mechanical-work/review-gate.md`. 4. Confirm the final copy still contains no unsupported demand, ROI, customer, revenue, or market-validation claims. 5. Confirm the selected link target is public-safe and approved. 6. Confirm any visual asset is approved and contains no private source material, private URLs, account IDs, target names, or screenshots.  ## Channel Execution Fields  | Channel | Fields to prepare | Approval-sensitive fields | |---|---|---| | LinkedIn | headline, about text, featured or pinned idea, optional banner/avatar note | page type, personal-vs-company lane, link target, visual | | X | bio, pinned-post idea, optional banner/avatar note | link target"
+    },
+    {
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/owner-decision-request.md",
+      "title": "E4 Social Profile Owner Decision Request",
+      "text": "# E4 Social Profile Owner Decision Request  Status: owner decision needed before live profile updates Related draft packet: `project/runs/2026-07-03-0630-priority-mechanical-work/`  ## Purpose  This packet converts the already drafted E4 profile package into a short decision request. It is safe to use as an owner-facing prompt, but it is not approval by itself.  ## Decisions Needed  | Decision | Options | Safe default | |---|---|---| | Voice lane | ArchFlow company-only, owner/founder personal lane, or both with separate copy | ArchFlow company-only | | Link target | Current website, future diagnostic page, no link yet | No link yet | | Visuals | No visual, public-safe artifact card, approved screenshot, approved brand asset | No visual | | Launch timing | Update now after review, wait for E3 diagnostic, wait for E4.1 content plan | Wait for owner approval | | Status target | Keep In Progress, move to Review after approved drafts, mark Done after live updates | Keep In Progress |  ## Recommended Safe Path  FACT: The profile drafts already exist and passed a mechanical review gate.  INTERPRETATION: The safest next step is owner approval of company-only profile copy, no private visua"
+    },
+    {
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "text": "# New PitAgent Handoff  You are the next operator for the ArchFlow priority-task lane. Use this packet to review previous automation output, verify execution, and run reliability checks before closing the task.  ## Context - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Epic: `E4 - Content` - Planned due: `2026-06-28` - Current state: public-safe drafts and review gate already exist in `project/runs/2026-07-03-0630-priority-mechanical-work/`; this run adds the owner-decision and operator-side checklist packet.  ## Required checks 1. Confirm task scope is still valid in `project/project-plan.md`. 2. Validate all prerequisites from this task row are available. 3. Record KB update evidence in `wiki/log.md` and task-packet fields. 4. Prepare Notion status payload and repository push packet. 5. Mark this task complete only if execution output is observable in repository and checks are documented.  ## Continuation prompt  ```text You are the next ArchFlow E4 profile operator. Start from `project/runs/2026-07-03-0630-priority-mechanical-work/` and `project/runs/2026-07-04-0030-priority-mechanical-work/`. Do not open or edit live social accounts, publish content, "
+    },
+    {
+      "path": "project/runs/2026-07-04-0030-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-04 07:43:44 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 288 | 156/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 281 | 156/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 270 | 138/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 251 | 126/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 5 | 239 | 156/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 6 | 239 | 132/82 | E2 - Research Engine To ICP | E2.0 Reset research engine for integrated API/tool approach | Backlog | Research | 2026-07-02 | | 7 | 227 | 144/5"
+    },
+    {
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: 2026-07-04 Priority Mechanical Work",
+      "text": "# Agent Handout: 2026-07-04 Priority Mechanical Work  Date: 2026-07-04 Run: 2026-07-04-0630-priority-mechanical-work Status: complete for no-approval mechanical work  ## Human Summary  The priority selector was run against `project/project-plan.md`. It again selected the E4 social profile packaging task, now with score `288`. That task is still important, but the previous 06:30 run already produced the detailed public-safe profile draft and review-gate packet. Live profile changes remain blocked by owner choices about voice, link target, visuals, timing, and whether profile changes wait for E3 diagnostic/analytics readiness.  To avoid repeating the same packet, this run kept the selector result as evidence and advanced the next safe mechanical task that needs no external confirmation: E2.1 source/API/data-model preparation. The new packet defines source classes, gated tool/API classes, segment fields, evidence promotion rules, and a blank account-card template. It does not collect real accounts, call providers, run crawlers, enrich leads, write to Notion, or publish anything.  ## Current State  - E4 social profile execution: blocked for live action, packet already prepared in the p"
+    },
+    {
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/e2-1-blank-account-card-template.md",
+      "title": "E2.1 Blank Account Card Template",
+      "text": "# E2.1 Blank Account Card Template  Date: 2026-07-04 Status: blank template only  This file is a no-data template for the next approved E2.2 evidence-card pass. It intentionally contains no real accounts, personal identifiers, private links, raw review text, or scraped content.  | account_id | company_name | domain | segment_primary | segment_secondary | source_seed | website_signal | job_signal_score | linkedin_signal_summary | social_signal_summary | pain_type | decision_roles | offer_fit | evidence_grade | independent_signal_count | provenance | risk_notes | next_action | card_status | reviewed_by | |---|---|---|---|---|---|---|---:|---|---|---|---|---|---|---:|---|---|---|---|---| | example_domain_id | Example Company | example.com | b2b_saas_product_teams | - | example public directory | Placeholder summary only | 0 | Authorized summary only | HYPOTHESIS only | unknown | Role titles only; verify live before outreach | prd_pack | D | 0 | [] | Template row; replace only after approved public-source collection | monitor | draft | - |  ## Fill Rules  - Delete the example row before any real account-card pass. - Use public URLs or repo-relative references in `provenance`. - Keep ra"
+    },
+    {
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/e2-1-source-api-data-model-packet.md",
+      "title": "E2.1 Source/API/Data Model Packet",
+      "text": "# E2.1 Source/API/Data Model Packet  Date: 2026-07-04 Status: prepared for review Basis: accepted E2.0A dry-run packet and `project/workflows/market-research-engine.yaml`  ## Purpose  This packet turns the accepted E2.0A source boundary into an E2.1-ready operating artifact. It defines the approved public source classes, the gated API/tool classes, the segment data model, and the fact-check route for the first ICP research pass.  No live research, provider call, crawler, lead-enrichment tool, external write, Notion update, outreach, or profile publication happened in this run.  ## Selected Source Classes  | Source class | Status | Allowed use | Required fields | Notes | |---|---|---|---|---| | Company website | allowed now | First-party product, pricing, use-case, integration, blog, and security evidence | domain, URL, observed date, page type, short summary, grade | Grade A when current and directly attributable. | | Company careers page | allowed now | Hiring signal and team-growth proxy | domain, URL, role title, function, observed date, summary, grade | Grade A when official and current. | | Public job board posting | allowed now | Hiring signal when company source is absent or"
+    },
+    {
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/e4-social-profile-gap.md",
+      "title": "E4 Social Profile Gap",
+      "text": "# E4 Social Profile Gap  Date: 2026-07-04 Status: blocked for live execution  ## Deterministic Selector Result  The priority selector ranked `Package social profiles for LinkedIn, X, and Threads` first with score `288`.  ## Existing Packet  The previous 06:30 mechanical run already prepared:  - `selected-task.md` - `pitagent-chat-prompt.md` - `kb-notion-github-packet.md` - `profile-field-drafts.md` - `review-gate.md` - `agent-handout.md`  Those files remain the current safe packet for E4 profile preparation.  ## Blocking Decisions  - Company-only voice versus personal voice. - Link target. - Profile visuals. - Publication timing. - Whether profile changes wait for E3 diagnostic and analytics readiness.  ## Safe Next Action  Do not perform live social profile edits in this automation. Use the existing E4 packet for owner review, and use this run for the E2.1 source/API/data-model packet that needs no external confirmation."
+    },
+    {
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "text": "# KB/Notion/GitHub packet  Selected task: `Package social profiles for LinkedIn, X, and Threads` Current status: `In Progress`  ## Mechanical follow-up decision  - Selector result: E4 social profile packaging remains the top-ranked plan row. - Current lane result: live profile execution is blocked because the required owner decisions are unchanged and the previous 06:30 packet already contains public-safe field drafts plus review gate. - No-approval work completed in this run: prepared the E2.1 source/API/data-model packet and blank account-card template.  ## Knowledge Base update - Add selected task evidence, ranking rationale, and execution result to `wiki/log.md`. - Keep a no-PII summary of execution status and checks.  ## Notion packet - Prepare a task update entry with: status, owner, blockers, expected output, next action. - Include `priority_score`, `urgency`, and `importance` values. - Suggested public-safe note: `E4 profile publication remains owner-gated; E2.1 source/data-model packet is prepared for review with no live collection.`  ## GitHub packet - Confirm branch contains updated packet files. - Run local checks and then push only after safety scan passes. - Push comm"
+    },
+    {
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "text": "# New PitAgent Handoff  You are the next operator for the ArchFlow priority-task lane. Use this packet to review previous automation output, verify execution, and run reliability checks before closing the task.  ## Context - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Epic: `E4 - Content` - Planned due: `2026-06-28`  ## Required checks 1. Confirm task scope is still valid in `project/project-plan.md`. 2. Validate all prerequisites from this task row are available. 3. Record KB update evidence in `wiki/log.md` and task-packet fields. 4. Prepare Notion status payload and repository push packet. 5. Mark this task complete only if execution output is observable in repository and checks are documented.  ## Notion packet - Task status target: `In Progress` before execution, `Done/Review` after execution. - Blocked fields: keep GAP notes in a separate bullet if task cannot be executed automatically.  ## Git packet - `git status --short` - `git add -A` - `git commit -m \"Run: priority task operator execution\"` - `git push`"
+    },
+    {
+      "path": "project/runs/2026-07-04-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-04 07:43:16 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 288 | 156/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 281 | 156/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 270 | 138/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 251 | 126/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 5 | 239 | 156/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 6 | 239 | 132/82 | E2 - Research Engine To ICP | E2.0 Reset research engine for integrated API/tool approach | Backlog | Research | 2026-07-02 | | 7 | 227 | 144/5"
+    },
+    {
+      "path": "project/runs/2026-07-04-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "text": "# Evening Skill And Hook Review Handout  ## Title And Purpose  This handout covers the 2026-07-04 evening skill and hook review lane. Use it to continue the next registry or hook drift pass without repeating broad discovery.  ## Human Summary  This run reviewed the public ArchFlow registry and hook surfaces against current project evidence. The three skill registries already match the actual configured and used public project skills. The task-handout prompt hook still points to the correct script, and the script still uses an ignored local marker instead of storing prompt text.  No registry, hook, or skill documentation edits were needed. Recent public runs did not show a new concrete repeated workflow that should become a public skill. The existing skills already cover live communication, Jarvis/runtime boundaries, runtime guard checks, priority mechanical work, daily retrospectives, task handouts, and closeout questions.  The run produced a no-op summary because the review itself is useful cadence evidence. Validation passed for hook JSON, scripts, workflow YAML, roster YAML, ignored env/runtime paths, public safety, diff whitespace, and text ASCII.  ## Current State  Status: com"
+    },
+    {
+      "path": "project/runs/2026-07-04-evening-skill-hook-review/summary.md",
+      "title": "Evening Skill And Hook Review",
+      "text": "# Evening Skill And Hook Review  Date: 2026-07-05 01:10 EEST Automation lane: 2026-07-04 evening skill and hook review Status: complete, no registry or hook drift found  ## Task  Review the public ArchFlow skill registries, hook configuration, hook-backed workflows, and recent public run evidence. Update only public-safe project files when actual used or configured skills changed.  ## Inputs Reviewed  - `AGENTS.md` - `README.md` - `project/README.md` - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/project-plan.md` - `project/agentic-stack.md` - `project/provider-setup.md` - `project/future-actions-and-parameters.md` - `project/workflows/langgraph-controller.yaml` - `project/workflows/crewai-crew.yaml` - `project/workflows/llamaindex-rag.yaml` - `project/reports/2026-06-25-layer-setup-report.md` - `wiki/index.md` - `wiki/memory.md` - `wiki/rules/public-wikillm-contract.md` - `skills/task-handout/SKILL.md` - `skills/evening-skill-registry-update/SKILL.md` - `skills/daily-public-project-review/SKILL.md` - `skills/priority-task-operator/SKI"
+    },
+    {
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/agent-handout.md",
+      "title": "Agent Handout: 2026-07-05 Priority Mechanical Work",
+      "text": "# Agent Handout: 2026-07-05 Priority Mechanical Work  Date: 2026-07-05 Run: 2026-07-05-0030-priority-mechanical-work Status: complete for no-approval mechanical work  ## Human Summary  The deterministic selector was run against `project/project-plan.md`. It again selected E4 social profile packaging, this time with score `294`. That task remains important, but earlier priority runs already produced public-safe profile packaging, an owner-decision request, and an operator-side checklist. Live account changes remain gated.  This run kept the selector evidence and moved to the next useful content-lane mechanical work that does not require external approval: an E4.1 five-week content plan and an E4.5 weekly review scorecard. These artifacts are drafts for review only. They do not publish, schedule, edit profiles, call providers, write to Notion, push to GitHub, or collect real market/account data.  ## Current State  - E4 profile packaging: still `In Progress`; live execution is owner-gated. - E4.1 five-week content plan: draft prepared for AF Review. - E4.5 weekly review: template prepared for future attention-versus-demand   review. - E2.1: previous run prepared a source/API/data-mode"
+    },
+    {
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/e4-1-five-week-content-plan.md",
+      "title": "E4.1 Five-Week Content Plan",
+      "text": "# E4.1 Five-Week Content Plan  Date: 2026-07-05 Status: draft for AF Review Audience: B2B SaaS product leaders Offer frame: Product Discovery-to-Production PRD Pack Publication status: not approved  ## Purpose  This draft turns the current ArchFlow proof state into a five-week content plan. It is a planning artifact only. It does not publish content, schedule content, edit profiles, or claim validated demand.  ## Content Rules  - Lead with category education and proof, not founder-build narration. - Use ArchFlow company voice by default. - Label evidence as FACT, INTERPRETATION, HYPOTHESIS, or GAP. - Use artifact-backed claims from public-safe run folders. - Treat buyer pain and ICP fit as HYPOTHESIS until E2/E6/E7 evidence upgrades   them. - Do not claim customers, revenue, ROI, production impact, or validated demand.  ## Weekly Sequence  | Week | Theme | Primary question | Anchor artifact | Main format | CTA | |---|---|---|---|---|---| | 1 | Source boundary before PRD generation | What can safely become product context? | E1.4 KB update principle and E2.1 source/API packet | Carousel plus short post | Ask where source context is lost. | | 2 | From messy source material to reviewe"
+    },
+    {
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/e4-5-weekly-review-scorecard.md",
+      "title": "E4.5 Weekly Review Scorecard",
+      "text": "# E4.5 Weekly Review Scorecard  Date: 2026-07-05 Status: draft template Publication status: not applicable  ## Purpose  This scorecard separates attention from demand. It is designed for weekly content review after E4 publication begins. It can also be used before publication to check whether drafts route toward the correct evidence.  ## Weekly Metadata  | Field | Value | |---|---| | Week reviewed |  | | Date range |  | | Channels reviewed | LinkedIn / X / Threads / other | | Content status | draft / published / blocked / owner-approved | | Reviewer | AF Review / operator / owner |  ## Content Inventory  | Item | Channel | Theme | Evidence label | CTA | Status | |---|---|---|---|---|---| |  |  |  | FACT / INTERPRETATION / HYPOTHESIS / GAP |  |  |  ## Attention Signals  Track attention, but do not treat it as demand.  | Signal | Count | Notes | |---|---:|---| | Views or impressions |  |  | | Likes or reactions |  |  | | Comments |  |  | | Saves or bookmarks |  |  | | Follows |  |  | | Shares or reposts |  |  |  ## Demand Signals  Only these can move the project toward E6/E7 learning.  | Signal | Count | Evidence | Follow-up action | |---|---:|---|---| | Source-packet willingness |  "
+    },
+    {
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/e4-live-profile-gate.md",
+      "title": "E4 Live Profile Gate",
+      "text": "# E4 Live Profile Gate  Date: 2026-07-05 Status: owner-gated Selected task: Package social profiles for LinkedIn, X, and Threads  ## Purpose  This gate records why the deterministic priority selector keeps choosing E4 profile packaging, and why this automation lane did not perform live profile edits.  ## Current Evidence  FACT: - The selector ranked `Package social profiles for LinkedIn, X, and Threads`   first with score `294`. - Earlier priority runs already prepared public-safe profile packaging and   owner-decision artifacts. - Live profile edits, visual uploads, social account changes, link changes, and   publication-like work require owner approval.  INTERPRETATION: - The task remains high priority, but additional no-approval work on the same   profile copy would duplicate existing packets. - The safer mechanical continuation is to prepare adjacent content-lane assets   that can be reviewed before publication.  HYPOTHESIS: - A stronger five-week content plan will make profile setup decisions easier   because the profile CTA, voice, and visual policy can point to a coherent   content sequence.  GAP: - Owner decisions are still needed for company-only versus personal voice, CTA"
+    },
+    {
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "text": "# KB/Notion/GitHub packet  Selected task: `Package social profiles for LinkedIn, X, and Threads` Current status: `In Progress` Selector score: `294`  ## Run decision  The deterministic selector still ranks E4 social-profile packaging first. Earlier priority runs already prepared the public-safe profile drafts, owner-decision request, and operator-side checklist. Live account edits, profile publication, visual uploads, link changes, and social-platform work still require owner approval.  This run therefore preserved the selector evidence and prepared the next safe mechanical content-lane artifacts:  - `e4-live-profile-gate.md` - `e4-1-five-week-content-plan.md` - `e4-5-weekly-review-scorecard.md`  ## Knowledge Base update - Add selected task evidence, ranking rationale, and execution result to `wiki/log.md`. - Keep a no-PII summary of execution status and checks.  ## Notion packet - Prepare a task update entry with: status, blockers, expected output, next action. - Include `priority_score`, `urgency`, and `importance` values. - Do not write to Notion from this automation lane. - Status suggestion: keep E4 social profile packaging `In Progress`; E4.1 content plan is `Review-ready dra"
+    },
+    {
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "text": "# New PitAgent Handoff  You are the next operator for the ArchFlow priority-task lane. Use this packet to review previous automation output, verify execution, and run reliability checks before closing the task. This is a public-safe no-approval packet. Do not publish, push, write to Notion, edit live profiles, call providers, run crawlers, or collect private source material.  ## Context - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Epic: `E4 - Content` - Planned due: `2026-06-28` - Selector score: `294` - Run decision: live E4 profile work is owner-gated and already packetized   in earlier runs, so this run prepared the next safe E4.1/E4.5 content   planning artifacts instead of repeating profile drafts.  ## Required checks 1. Confirm task scope is still valid in `project/project-plan.md`. 2. Read `e4-live-profile-gate.md` before any profile-related action. 3. Review `e4-1-five-week-content-plan.md` and `e4-5-weekly-review-scorecard.md`. 4. Record KB update evidence in `wiki/log.md` and task-packet fields. 5. Mark live E4 profile execution complete only if owner decisions are recorded and execution output is observable in repository. 6. Keep E4.1/E4.5 as"
+    },
+    {
+      "path": "project/runs/2026-07-05-0030-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-05 15:49:19 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 294 | 162/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 287 | 162/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 276 | 144/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 257 | 132/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 5 | 253 | 126/85 | E3 - Website And Positioning | E3.1 Fix positioning and message | In Progress | Website | 2026-07-04 | | 6 | 245 | 162/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 7 | 245 | 138/82 | E2 - Research Engin"
+    },
+    {
+      "path": "project/runs/2026-07-05-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub packet",
+      "text": "# KB/Notion/GitHub packet  Selected task: `Package social profiles for LinkedIn, X, and Threads` Current status: `In Progress`  ## Knowledge Base update - Add selected task evidence, ranking rationale, and execution result to `wiki/log.md`. - Keep a no-PII summary of execution status and checks.  ## Notion packet - Prepare a task update entry with: status, owner, blockers, expected output, next action. - Include `priority_score`, `urgency`, and `importance` values.  ## GitHub packet - Confirm branch contains updated packet files. - Run local checks and then push only after safety scan passes. - Push commands:   - `git status --short`   - `git add -A`   - `git commit -m \"Run: priority task operator packet\"`   - `git push`"
+    },
+    {
+      "path": "project/runs/2026-07-05-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "New PitAgent Handoff",
+      "text": "# New PitAgent Handoff  You are the next operator for the ArchFlow priority-task lane. Use this packet to review previous automation output, verify execution, and run reliability checks before closing the task.  ## Context - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Epic: `E4 - Content` - Planned due: `2026-06-28`  ## Required checks 1. Confirm task scope is still valid in `project/project-plan.md`. 2. Validate all prerequisites from this task row are available. 3. Record KB update evidence in `wiki/log.md` and task-packet fields. 4. Prepare Notion status payload and repository push packet. 5. Mark this task complete only if execution output is observable in repository and checks are documented.  ## Notion packet - Task status target: `In Progress` before execution, `Done/Review` after execution. - Blocked fields: keep GAP notes in a separate bullet if task cannot be executed automatically.  ## Git packet - `git status --short` - `git add -A` - `git commit -m \"Run: priority task operator execution\"` - `git push`"
+    },
+    {
+      "path": "project/runs/2026-07-05-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-05 12:46:27 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 294 | 162/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 287 | 162/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 276 | 144/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 257 | 132/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 5 | 253 | 126/85 | E3 - Website And Positioning | E3.1 Fix positioning and message | In Progress | Website | 2026-07-04 | | 6 | 245 | 162/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 7 | 245 | 138/82 | E2 - Research Engin"
+    },
+    {
+      "path": "project/runs/2026-07-05-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "text": "# Evening Skill And Hook Review Handout  ## Title And Purpose  This handout covers the 2026-07-05 evening skill and hook review lane. Use it to continue the next registry or hook drift pass without repeating broad discovery.  ## Human Summary  This run reviewed the public ArchFlow registry and hook surfaces against current project evidence and the active automation metadata. The skill registry files still match the concrete public project skills currently in use. The task-handout prompt hook still points to the expected script, and the script still uses an ignored local marker instead of storing prompt text.  One narrow drift item was found and fixed: the active automation metadata uses `archflow-public-evening-skill-update`, while the public automation contract and roster still recorded the older `archflow-evening-skill-and-hook-update` value. The fix only aligns the metadata. It does not change hook behavior, skill membership, runtime behavior, provider state, deployment state, or external writeback.  No new public skill was created. Recent public work still maps to existing reusable skills for live communication, Jarvis/runtime boundaries, runtime guard checks, priority mechanic"
+    },
+    {
+      "path": "project/runs/2026-07-05-evening-skill-hook-review/summary.md",
+      "title": "Evening Skill And Hook Review",
+      "text": "# Evening Skill And Hook Review  Date: 2026-07-06 06:10 EEST Automation lane: 2026-07-05 evening skill and hook review Status: complete, narrow automation contract drift fixed  ## Task  Review the public ArchFlow skill registries, hook configuration, hook-backed workflows, and recent public run evidence. Update only public-safe project files when actual used or configured skills changed.  ## Inputs Reviewed  - `AGENTS.md` - `README.md` - `project/README.md` - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/project-plan.md` - `project/agentic-stack.md` - `project/provider-setup.md` - `project/future-actions-and-parameters.md` - `project/workflows/langgraph-controller.yaml` - `project/workflows/crewai-crew.yaml` - `project/workflows/llamaindex-rag.yaml` - `project/reports/2026-06-25-layer-setup-report.md` - `wiki/index.md` - `wiki/memory.md` - `wiki/rules/public-wikillm-contract.md` - `skills/task-handout/SKILL.md` - `skills/evening-skill-registry-update/SKILL.md` - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - "
+    },
+    {
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/agent-handout.md",
+      "title": "Priority Mechanical Work Handout",
+      "text": "# Priority Mechanical Work Handout  ## Title And Purpose  This handout covers the `2026-07-06-0030-priority-mechanical-work` run. It is for the next ArchFlow operator who needs to continue the priority mechanical lane without redoing selector and packet discovery.  ## Human Summary  The deterministic priority selector still ranked E4 social profile packaging as the top task. That work is blocked at the live execution layer because profile edits, social account changes, media upload, and publication require owner approval.  Prior priority runs already prepared the useful no-approval E4 artifacts: profile drafts, live-profile gate, operator-side checklist, five-week content plan, and weekly content review scorecard. Repeating those drafts would not add much future value.  This run converted the safe mechanical action into E5.2 measurement work. It added a lead funnel metrics packet and diagnostic event-schema contract so E3 diagnostic, E4 content, E6 outreach, and E7 payment verdict work can distinguish attention from buyer-risk evidence.  ## Current State  - E4 social profiles: `In Progress`, live execution owner-gated. - E5.2 lead funnel metrics: no-code packet prepared for review."
+    },
+    {
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-diagnostic-event-schema.md",
+      "title": "E5.2 Diagnostic Event Schema",
+      "text": "# E5.2 Diagnostic Event Schema  Date: 2026-07-06 Status: draft contract Implementation status: not installed  ## Purpose  This schema defines public-safe event names and payload fields for a future E3 diagnostic page and E5 funnel review. It is intentionally tool-neutral. No analytics provider, database, CRM, tag manager, or external write was configured in this run.  ## Event Names  | Event | When it fires | Demand status | |---|---|---| | `diagnostic_viewed` | A visitor opens the diagnostic route. | Attention only. | | `diagnostic_started` | A visitor starts answering diagnostic questions. | Attention plus weak intent. | | `diagnostic_completed` | A visitor finishes the diagnostic. | Qualification candidate. | | `source_packet_willingness_marked` | A visitor says whether they can share source material. | Demand signal if paired with fit. | | `privacy_concern_marked` | A visitor selects or states a source/privacy concern. | Qualification signal. | | `cta_clicked` | A visitor clicks a call-to-action. | Attention unless tied to buyer-risk fields. | | `lead_review_created` | An operator creates a public-safe review packet from a submitted signal. | Internal review signal. | | `paid_i"
+    },
+    {
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-lead-funnel-metrics.md",
+      "title": "E5.2 Lead Funnel Metrics Packet",
+      "text": "# E5.2 Lead Funnel Metrics Packet  Date: 2026-07-06 Status: prepared for review Scope: no-code measurement contract for ArchFlow lead quality  ## Purpose  This packet defines the lead funnel and demand-quality metrics that should exist before E4 content, E3 diagnostic forms, or E6 outreach create meaningful inbound traffic. It is a planning artifact only. It does not install analytics, collect leads, write to external systems, or claim validated demand.  ## Funnel Stages  | Stage | Definition | Required evidence | Owner-safe next action | |---|---|---|---| | Visitor | A person reaches an approved public page or content route. | Page route, source channel, observed date. | Measure route quality only. | | Engaged visitor | A visitor reads, clicks, saves, replies, or interacts with a diagnostic/calculator. | Event name, page/asset, channel, evidence label. | Route to content review, not demand claim. | | Diagnostic starter | A visitor begins a diagnostic or submits an initial workflow question. | Segment, trigger event, current tools, source-boundary concern. | Check fit before any sales claim. | | Qualified lead | A lead matches the first ICP hypothesis and gives a concrete workflow "
+    },
+    {
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub Packet",
+      "text": "# KB/Notion/GitHub Packet  Run: `2026-07-06-0030-priority-mechanical-work`  ## Selector Evidence  - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Selector score: `300` - Selector status: `In Progress` - Execution result: owner-gated live task; safe E5.2 measurement packet prepared instead.  ## Knowledge Base Update  Append a concise public-safe note to `wiki/log.md`:  - The selector still ranks E4 social profile packaging first. - Existing E4 packets already cover drafts, gates, operator checklist, content plan, and weekly scorecard. - Live account/profile/publication actions remain owner-gated. - This run added E5.2 lead funnel metrics and diagnostic event schema artifacts to prepare the measurement layer for E3/E4/E6/E7.  ## Notion Packet  No Notion write was performed in this run.  Prepared task-update summary:  - E4 social profiles: keep `In Progress`; blocker is owner approval for live account/profile/publication choices. - E5.2 lead funnel with metrics: move toward `Review` if the board accepts no-code funnel metrics, demand-quality rules, minimal lead record, and diagnostic event schema as the public output. - Remaining gated actions: analytics acti"
+    },
+    {
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "PitAgent Continuation Prompt",
+      "text": "# PitAgent Continuation Prompt  You are the next operator for the ArchFlow priority-task lane. Continue from `project/runs/2026-07-06-0030-priority-mechanical-work/`.  ## Context  - The deterministic selector ranked `Package social profiles for LinkedIn, X, and Threads` first with score `300`. - Prior runs already prepared E4 profile drafts, live-profile gates, operator-side checklist, a five-week content plan, and weekly review scorecard. - Live profile edits, social-platform login, account changes, media uploads, publication, external writes, provider calls, Git push, and Notion writes remain owner-gated. - This run therefore prepared E5.2 lead funnel metrics and diagnostic event-schema packets as the next useful no-approval artifact.  ## First Files To Read  1. `project/project-plan.md` 2. `project/runs/2026-07-06-0030-priority-mechanical-work/selected-task.md` 3. `project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-lead-funnel-metrics.md` 4. `project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-diagnostic-event-schema.md` 5. `project/runs/2026-07-05-0030-priority-mechanical-work/e4-5-weekly-review-scorecard.md`  ## Safe Next Action  Prepare E3.4 diagnostic copy and"
+    },
+    {
+      "path": "project/runs/2026-07-06-0030-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-06 10:36:59 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 300 | 168/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 293 | 168/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 282 | 150/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 263 | 138/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 5 | 259 | 132/85 | E3 - Website And Positioning | E3.1 Fix positioning and message | In Progress | Website | 2026-07-04 | | 6 | 251 | 168/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 7 | 251 | 144/82 | E2 - Research Engin"
+    },
+    {
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/agent-handout.md",
+      "title": "2026-07-06 06:30 Priority Mechanical Work Handout",
+      "text": "# 2026-07-06 06:30 Priority Mechanical Work Handout  ## Title And Purpose  This handout covers the 06:30 ArchFlow priority mechanical-work lane. It is for the next operator who needs to understand why the repeated top-ranked E4 task was not executed and how the run advanced E5.3 without owner approval.  ## Human Summary  The deterministic selector again ranked `Package social profiles for LinkedIn, X, and Threads` first with score `300`. That task remains important, but prior priority runs already prepared the profile drafts, operator checklist, live-profile gate, five-week content plan, and weekly review scorecard. Live profile edits, media choices, publication, and social-platform changes still need owner approval.  The run therefore preserved the selector evidence and pivoted to the next useful safe mechanical artifact: E5.3 inbound qualification scoring. This directly extends the 00:30 E5.2 lead funnel and diagnostic event schema by defining how future inbound signals should be scored, reviewed, monitored, or excluded.  No live leads were collected. No analytics, CRM, Notion, provider, publication, or external-write action was performed.  ## Current State  Task status: implemen"
+    },
+    {
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/e5-3-inbound-qualification-scoring.md",
+      "title": "E5.3 Inbound Qualification Scoring Packet",
+      "text": "# E5.3 Inbound Qualification Scoring Packet  Date: 2026-07-06 Status: prepared for review Scope: no-code qualification rules for ArchFlow inbound signals  ## Purpose  This packet defines how ArchFlow should classify inbound signals before any lead is treated as demand evidence. It extends the E5.2 funnel and diagnostic event schema without installing analytics, collecting real leads, writing to external systems, or claiming validated demand.  ## Qualification Principle  Inbound interest becomes useful only when it shows buyer-risk evidence or a concrete workflow problem. Attention alone stays separate from demand.  FACT: - The project plan defines validated demand as a paid diagnostic, prepayment,   approved paid start, or firm paid intent with source packet, timeline, scope,   and budget-owner path. - The E5.2 packet separates visitor, engagement, diagnostic starter, qualified   lead, conversation, paid-intent lead, and verdict input.  INTERPRETATION: - E5.3 should decide whether a signal deserves owner review, follow-up,   exclusion, or E7 tracking.  HYPOTHESIS: - The strongest early lead quality signal is source-packet willingness paired   with a first-ICP role or team fit and a"
+    },
+    {
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/e5-3-review-gate.md",
+      "title": "E5.3 Review Gate",
+      "text": "# E5.3 Review Gate  Date: 2026-07-06 Status: ready for owner or AF Review  ## Review Question  Should the E5.3 inbound qualification model be accepted as the no-code scoring gate for early ArchFlow inbound signals?  ## Accept If  - The 100-point model reflects the first ICP and the Product   Discovery-to-Production PRD Pack offer. - The bands make it clear that attention is not demand. - The fields are safe enough for public run artifacts when real identities and   raw lead text are omitted. - The next-action values match the current owner-review and outreach gates.  ## Revise If  - The score gives too much weight to generic engagement. - The first ICP definition changes before E6. - The diagnostic form asks materially different questions from the current   E5.2 event schema. - A CRM, analytics, or Notion workflow is approved and needs different fields.  ## Blocked Until Approval  - Analytics installation. - CRM or spreadsheet storage of real leads. - Notion writeback. - Diagnostic form implementation. - Outreach or follow-up messages. - Any claim that a signal proves demand.  ## Next Safe Action  Use this model to draft the E3 diagnostic form field map or E6 outreach review criter"
+    },
+    {
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/kb-notion-github-packet.md",
+      "title": "KB/Notion/GitHub Packet",
+      "text": "# KB/Notion/GitHub Packet  Run: `2026-07-06-0630-priority-mechanical-work`  ## Selector Evidence  - Selected task: `Package social profiles for LinkedIn, X, and Threads` - Selector score: `300` - Selector status: `In Progress` - Execution result: owner-gated live task; safe E5.3 qualification packet prepared instead.  ## Knowledge Base Update  Append a concise public-safe note to `wiki/log.md`:  - The selector still ranks E4 social profile packaging first. - Existing E4 packets already cover profile drafts, live-profile gates,   operator checklist, content plan, and weekly review scorecard. - The 00:30 priority lane already prepared E5.2 funnel metrics and diagnostic   event schema. - This run added E5.3 inbound qualification scoring and a review gate to turn   future inbound signals into owner-review, follow-up, monitor, or exclude   decisions without collecting real leads.  ## Notion Packet  No Notion write was performed in this run.  Prepared task-update summary:  - E4 social profiles: keep `In Progress`; blocker is owner approval for live   account/profile/publication choices. - E5.2 lead funnel with metrics: packet exists and should be reviewed before   diagnostic or content t"
+    },
+    {
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/pitagent-chat-prompt.md",
+      "title": "PitAgent Continuation Prompt",
+      "text": "# PitAgent Continuation Prompt  You are the next operator for the ArchFlow priority mechanical-work lane.  Goal: - Review the 2026-07-06 06:30 packet and continue only with safe mechanical   work that needs no owner confirmation.  Context files: - `project/project-plan.md` - `project/runs/2026-07-06-0630-priority-mechanical-work/selected-task.md` - `project/runs/2026-07-06-0630-priority-mechanical-work/e5-3-inbound-qualification-scoring.md` - `project/runs/2026-07-06-0630-priority-mechanical-work/e5-3-review-gate.md` - `project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-lead-funnel-metrics.md` - `project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-diagnostic-event-schema.md`  Current decision: - The selector ranked `Package social profiles for LinkedIn, X, and Threads`   first at score `300`. - That live task remains owner-gated and already packetized by prior runs. - This run prepared E5.3 inbound qualification scoring as the next useful   no-approval artifact after E5.2.  Constraints: - Do not perform network calls, provider/API calls, live crawls, production   deploys, Git push, credential edits, private-source ingestion, live account   changes, external writes, N"
+    },
+    {
+      "path": "project/runs/2026-07-06-0630-priority-mechanical-work/selected-task.md",
+      "title": "ArchFlow Priority Task Operator Run",
+      "text": "# ArchFlow Priority Task Operator Run  Timestamp: 2026-07-06 10:41:11 Status: implemented  ## Completed tasks reviewed  - E1 - Build The Knowledge Base On Ourselves | E1.1 Set up a separate KB project from scratch (Done) - E5 - Analytics And ROI Method | E5.1 Daily operational log template and habit (Done)  ## Ranked candidates  | Rank | Score | Urgency/Importance | Epic | Task | Status | Type | Due | |---|---:|---:|---|---|---|---|---| | 1 | 300 | 168/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads | In Progress | Ops | 2026-06-28 | | 2 | 293 | 168/90 | E4 - Content | Package social profiles for LinkedIn, X, and Threads, operator-side | To Do | Ops | 2026-06-28 | | 3 | 282 | 150/90 | E4 - Content | E4.1 Five-week content plan | In Progress | Ops | 2026-07-01 | | 4 | 263 | 138/90 | E4 - Content | E4.5 Weekly review of what worked | To Do | Ops | 2026-07-03 | | 5 | 259 | 132/85 | E3 - Website And Positioning | E3.1 Fix positioning and message | In Progress | Website | 2026-07-04 | | 6 | 251 | 168/55 | E1 - Build The Knowledge Base On Ourselves | E1.2 Run cycle: dialogue to summary to PRD | Review | Docs | 2026-06-28 | | 7 | 251 | 144/82 | E2 - Research Engin"
+    },
+    {
+      "path": "project/runs/2026-07-07-jarvis-chat-api-rebuild/agent-handout.md",
+      "title": "Jarvis Chat API Rebuild Handout",
+      "text": "# Jarvis Chat API Rebuild Handout  ## Title And Purpose  This handout covers the 2026-07-07 Jarvis dashboard rebuild that makes the first screen a large text-first chat, disables voice mode, adds bounded file transfer to Jarvis chat, and checks Railway/Vercel API state.  ## Human Summary  The dashboard Jarvis tab was changed from a hero-style command center with voice controls into a large chat-first workspace. The first screen now shows the conversation, architecture selector, mode selector, attachment tray, file attach control, and send box. The old fixed bottom composer is hidden on the Jarvis tab so there is one primary chat surface.  Voice mode is disabled in the dashboard UI and API contract. Browser mic, browser speech synthesis, STT, TTS, and `/api/voice/*` runtime behavior are no longer presented as active Jarvis features. The backend voice routes now return disabled packets and point operators back to `/api/chat`.  File handling now stages pending attachments for the next Jarvis message. Text-like files transfer a bounded text excerpt; binary or unsupported files transfer metadata only. The dashboard does not write uploaded content durably.  Live production was checked bu"
+    },
+    {
+      "path": "project/runs/2026-07-07-jarvis-chat-api-rebuild/railway-state.md",
+      "title": "Railway State - Jarvis Chat Rebuild",
+      "text": "# Railway State - Jarvis Chat Rebuild  Date: 2026-07-07 Status: reviewed; no Railway mutation performed  ## FACT  - Railway MCP account access is available. - The account contains an ArchFlow project with one `jarvis-api` service. - The current local directory is not linked to a Railway project, so generic Railway project-scoped calls fail unless the project is passed explicitly. - The `jarvis-api` service has a latest successful deployment from 2026-07-03 16:50 UTC. - Deploy logs show the container started, Uvicorn ran on port 8080, `/health` returned 200, and the Railway healthcheck succeeded. - Recent Railway HTTP log summary tools returned no HTTP log sample for the latest deployment. - Deploy logs show a 2026-07-07 `/favicon.ico` 404 only; this is not an API failure. - Listing production variables was blocked by the approval reviewer because it could expose secret values. No retry or workaround was attempted.  ## INTERPRETATION  - Railway is deployed for the provider-disabled Jarvis API baseline, but it is not linked to this local checkout. - The Railway service appears running from deployment evidence, but there is no current evidence that the dashboard production URL is usin"
+    },
+    {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
       "title": "Daily Skill Retrospective And RAG Knowledge Review",
       "text": "# Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-01 Status: complete Scope: ArchFlow public-safe operations  ## Executive Summary  FACT: - The 21:00 evening skill and hook lane completed before this review and found no registry drift beyond narrow priority-task path hygiene. - The 22:30 daily lane is now distinct from the registry lane in the public agent roster, skill registry, and current local automation TOML. - Today's public artifacts heavily used `task-handout`, FACT/INTERPRETATION/HYPOTHESIS/GAP structure, live communication updates, run summaries, issue lists, and WikiLLM-style memory surfaces. - Static website/dashboard proof is strong for route and rendered-dashboard scope; provider-backed Jarvis, Railway/backend, live Nexus/writeback, owner-device voice proof, autonomous writeback, model-call cost logging, and Telegram delivery remain gated.  INTERPRETATION: - The useful operating pattern is now stable: live communication first, bounded run artifacts second, WikiLLM memory only for durable constraints, and no-op-safe scheduled maintenance when evidence does not justify churn. - The main risk for future agents is not missing a skill registry entry. The "
@@ -4606,6 +5150,26 @@
       "path": "project/runs/20260701_run_daily_skill_retrospective.md",
       "title": "Run Note - Daily Skill Retrospective And RAG Knowledge Review",
       "text": "# Run Note - Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-01 Status: complete  ## Task  Review July 1 ArchFlow public-safe skill usage, hooks, automations, coordination files, run notes, reports, issues, and knowledge surfaces. Produce a daily retrospective and update only useful local project surfaces.  ## Inputs  - `AGENTS.md` - `project/README.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - July 1 run handouts and run summaries under `project/runs/` - July 1 reports under `project/reports/` - `project/issues/` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `skills/task-handout/SKILL.md` - `skills/daily-public-project-review/SKILL.md` - `skills/evening-skill-registry-update/SKILL.md` - local automation TOML definitions - `wiki/memory.md`, `wiki/insights.md`, and `wiki/log.md`  ## Outputs  - `project/runs/20260701_daily_skill_retrospective.md` - `project/runs/20260701_run_daily_skill"
+    },
+    {
+      "path": "project/runs/20260703_daily_skill_retrospective.md",
+      "title": "2026-07-03 Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# 2026-07-03 Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-03 Status: complete Lane: daily skill/RAG/KB retrospective after the 21:00 registry and hook review  ## Executive Summary  FACT:  - The 21:00 evening skill and hook lane found no functional registry or hook drift. It only normalized tracked-text ASCII punctuation in existing public files and reran the validation stack. - The 00:30 and 06:30 priority-task automations produced concrete E4 social-profile packets: selected-task evidence, PitAgent prompts, KB/Notion/GitHub packets, profile drafts, and a review gate. - The E1.4 KB update principle was accepted on 2026-07-03. WikiLLM remains the only durable memory; LlamaIndex is retrieval only; Graphify is generated reference only; dashboard, Notion, Obsidian/Nexus, and Telegram are surfaces until reviewed and promoted. - The E2.0A PRD-to-ICP packet was accepted on 2026-07-03. E2.1 should start from approved public source lists, account evidence cards, source grades, and fact-check gates. - Cloud/Jarvis work proved production-current guarded review packets on Vercel and Railway. Provider routes are wired, but provider calls remain `0` until explicit server-sid"
+    },
+    {
+      "path": "project/runs/20260703_run_daily_skill_retrospective.md",
+      "title": "Run Note: 2026-07-03 Daily Skill Retrospective",
+      "text": "# Run Note: 2026-07-03 Daily Skill Retrospective  Date: 2026-07-03 Status: complete Owner: Codex automation  ## Task  Review how ArchFlow public skills, hooks, automations, agent coordination files, run notes, decisions, issues, reports, RAG state, and durable memory surfaces were used today. Produce a concise daily retrospective and update local project knowledge only where useful.  ## Inputs  - `AGENTS.md` - `project/README.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `.codex/automations/*/automation.toml` - `skills/daily-public-project-review/SKILL.md` - `skills/task-handout/SKILL.md` - `skills/arcagcom/SKILL.md` - `skills/priority-task-operator/SKILL.md` - `skills/evening-skill-registry-update/SKILL.md` - `skills/outquestions/SKILL.md` - July 3 run handouts, reports, issue notes, RAG summaries, and WikiLLM log/memory/insights.  ## Outputs  - `project/runs/20260703_daily_skill_retrospective.md` - `project/runs/20260703_run_daily_skill_retrospective.md` - Updated `project/issues/2026-07-01-daily-retrospectiv"
+    },
+    {
+      "path": "project/runs/20260706_daily_skill_retrospective.md",
+      "title": "2026-07-06 Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# 2026-07-06 Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-06 Status: complete, continued at 2026-07-07 01:33 EEST Lane: daily skill/RAG/KB retrospective after the evening registry and hook review  ## Executive Summary  FACT:  - The 2026-07-05 evening skill and hook review, completed on 2026-07-06 06:10 EEST, found stable skill membership and hook behavior, then fixed one narrow automation-ID metadata drift. - The configured automation set includes two paused priority mechanical lanes, the paused evening skill/hook lane, the paused Yushchenko observer, one paused Real Estate drift lane outside this scope, and this active daily retrospective. - The priority selector kept ranking E4 social-profile packaging first: score `294` on 2026-07-05 and score `300` on 2026-07-06. - The 2026-07-05 00:30 run correctly avoided live profile edits and created useful no-approval artifacts: an E4.1 five-week content plan and an E4.5 weekly review scorecard. - The 2026-07-05 06:30 priority folder remains packet-only at review time; the 2026-07-06 00:30 and 06:30 priority folders now include `agent-handout.md`. - A 2026-07-05 daily retrospective start entry exists in the live log, b"
+    },
+    {
+      "path": "project/runs/20260706_run_daily_skill_retrospective.md",
+      "title": "2026-07-06 Run Note: Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# 2026-07-06 Run Note: Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-06 Status: complete, continued at 2026-07-07 01:33 EEST Owner: Codex automation Scope: ArchFlow public-safe operational retrospective  ## Task  Review how skills, hooks, automations, agent coordination files, run notes, decisions, issues, and durable memory surfaces were used during the current ArchFlow public daily evidence window. Produce a concise future-agent retrospective and update local public knowledge surfaces where useful.  ## Inputs  - `AGENTS.md` - `project/README.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `skills/daily-public-project-review/SKILL.md` - `skills/skills-used.md` - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/local/rag_index/approved-corpus-summary.json` - `project/runs/2026-07-05-evening-skill-hook-review/summary.md` - `project/runs/2026-07-06-0030-priority-mechanic"
     },
     {
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
@@ -4695,7 +5259,7 @@
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md",
       "title": "E1.2.8 OpenRouter Provider Comparison",
-      "text": "# E1.2.8 OpenRouter Provider Comparison  Date: 2026-07-03T08:32:43.098745+00:00 Provider: OpenRouter Model: qwen/qwen3.6-plus Model selection: first_available_yushchenko_source_scope_execution_model Route: yushchenko.source_scope_gate Input kind: sanitized digest only Raw private source sent: false  # Provider Output Summary - **Execution Route:** `source_scope_gate` \u2192 `prd_blocks_graph` \u2192 `risk_gate_graph` - **Model:** `qwen/qwen3.6-plus` (primary execute), with `qwen/qwen3-235b-a22b` as fallback. Selection driven by role/node-based routing, not epic-based. - **Input Scope:** Strictly limited to sanitized digest payloads (`SRC-E128-MEETING-SUMMARY`, `SRC-E128-DISCOVERY-METHOD`, `SRC-E1-PUBLIC-STATE`). Raw private source material was excluded from the provider call. - **Output State:** Structured scope extraction and PRD comparison artifacts generated within the `source_scope_gate` node. Output remains gated pending ledger validation and AF Review before any frontier model routing or external delivery.  # PRD Delta Versus Local Codex Run - **Local Codex Baseline:** Marked `ready_or_review`. Contains the approved E1.2.8 testmeeting architecture, local dashboard selector, persistent "
+      "text": "# E1.2.8 OpenRouter Provider Comparison  Date: 2026-07-03T08:32:43.098745+00:00 Provider: OpenRouter Model: qwen/qwen3.6-plus Model selection: first_available_yushchenko_source_scope_execution_model Route: yushchenko.source_scope_gate Input kind: sanitized digest only Raw private source sent: false  # Provider Output Summary - **Execution Route:** `source_scope_gate` -> `prd_blocks_graph` -> `risk_gate_graph` - **Model:** `qwen/qwen3.6-plus` (primary execute), with `qwen/qwen3-235b-a22b` as fallback. Selection driven by role/node-based routing, not epic-based. - **Input Scope:** Strictly limited to sanitized digest payloads (`SRC-E128-MEETING-SUMMARY`, `SRC-E128-DISCOVERY-METHOD`, `SRC-E1-PUBLIC-STATE`). Raw private source material was excluded from the provider call. - **Output State:** Structured scope extraction and PRD comparison artifacts generated within the `source_scope_gate` node. Output remains gated pending ledger validation and AF Review before any frontier model routing or external delivery.  # PRD Delta Versus Local Codex Run - **Local Codex Baseline:** Marked `ready_or_review`. Contains the approved E1.2.8 testmeeting architecture, local dashboard selector, persisten"
     },
     {
       "path": "project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_Source_Methodology_review.md",
@@ -4935,7 +5499,7 @@
     {
       "path": "skills/archflow1/SKILL.md",
       "title": "Archflow1",
-      "text": "--- name: archflow1 description: Local ArchFlow Jarvis stack operating contract for dashboard, jarvis-api, LangGraph, CrewAI, voice services, OpenRouter budget gates, and later Railway migration. ---  # Archflow1  ## Purpose  Use `archflow1` when running, reviewing, or extending the local ArchFlow Jarvis stack from the dashboard.  This skill is a local operating contract, not proof that the full runtime is live.  ## Stack Topology  Layer order:  1. Dashboard local UI: static browser surface under `project/dashboard/`. 2. `jarvis-api`: FastAPI backend contract under `services/jarvis-api/`. 3. LangGraph controller: routing, state, gates, lane execution, and review stops. 4. CrewAI roles: role/team structure orchestrated through LangGraph by default. 5. Optional voice services:    - `stt-faster-whisper` for speech-to-text;    - `tts-kokoro` for text-to-speech;    - Piper as a lower-complexity fallback. 6. OpenRouter: server-side only, disabled unless owner-approved budget and ledger gates pass. 7. Railway: later deployment target after local proof, auth, secrets, budget, and review gates pass.  ## Expected Local Endpoints  If `jarvis-api` is running, expected endpoints are:  - `/healt"
+      "text": "--- name: archflow1 description: Local ArchFlow Jarvis stack operating contract for dashboard, jarvis-api, LangGraph, CrewAI, voice services, OpenRouter budget gates, and later Railway migration. ---  # Archflow1  ## Purpose  Use `archflow1` when running, reviewing, or extending the local ArchFlow Jarvis stack from the dashboard.  This skill is a local operating contract, not proof that the full runtime is live.  ## Stack Topology  Layer order:  1. Dashboard local UI: static browser surface under `project/dashboard/`. 2. `jarvis-api`: FastAPI backend contract under `services/jarvis-api/`. 3. LangGraph controller: routing, state, gates, lane execution, and review stops. 4. CrewAI roles: role/team structure orchestrated through LangGraph by default. 5. Optional voice services, currently disabled in the main dashboard:    - `stt-faster-whisper` for speech-to-text;    - `tts-kokoro` for text-to-speech;    - Piper as a lower-complexity fallback. 6. OpenRouter: server-side only, disabled unless owner-approved budget and ledger gates pass. 7. Railway: later deployment target after local proof, auth, secrets, budget, and review gates pass.  ## Expected Local Endpoints  If `jarvis-api` is r"
     },
     {
       "path": "skills/daily-public-project-review/SKILL.md",
@@ -5250,7 +5814,7 @@
     {
       "path": "wiki/runs/2026-07-03-prd-icp-dry-run.md",
       "title": "Run: E2.0A PRD-to-ICP Dry-Run Packet",
-      "text": "# Run: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls, no gated tools.  ## Task  Create the local PRD-to-ICP dry-run outcome packet (E2.0A) using approved public-safe sources only.  ## Inputs  - `project/workflows/market-research-engine.yaml` - `project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md` - `docs/prd-icp-output-template.md` - `project/reports/2026-07-03-kb-update-principle.md` (E1.4 principle, applied)  ## Outputs  - `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` - `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` - `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` - `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` - `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` - `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md`  ## Key Content  FACT: The packet defines the research method only \u2014 source boundary, evidence card schema with provenance, A-D grade rubric, low-confidence ICP outline, and a scoping executi"
+      "text": "# Run: E2.0A PRD-to-ICP Dry-Run Packet  Date: 2026-07-03 Project: archflow-b1-knowledge Owner agent: Claude (Cowork) Support agents/tools: local deterministic scripts only; no provider calls, no gated tools.  ## Task  Create the local PRD-to-ICP dry-run outcome packet (E2.0A) using approved public-safe sources only.  ## Inputs  - `project/workflows/market-research-engine.yaml` - `project/runs/2026-07-03-claude-continuation-stabilization/templates/prd-icp-service-template.md` - `docs/prd-icp-output-template.md` - `project/reports/2026-07-03-kb-update-principle.md` (E1.4 principle, applied)  ## Outputs  - `project/runs/2026-07-03-prd-icp-dry-run/source-boundary.md` - `project/runs/2026-07-03-prd-icp-dry-run/account-evidence-card-schema.md` - `project/runs/2026-07-03-prd-icp-dry-run/source-grade-rubric.md` - `project/runs/2026-07-03-prd-icp-dry-run/icp-profile-outline.md` - `project/runs/2026-07-03-prd-icp-dry-run/executive-decision.md` - `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md`  ## Key Content  FACT: The packet defines the research method only - source boundary, evidence card schema with provenance, A-D grade rubric, low-confidence ICP outline, and a scoping executi"
     },
     {
       "path": "wiki/runs/2026-07-03-vercel-production-cure.md",

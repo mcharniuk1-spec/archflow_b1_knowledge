@@ -21,7 +21,7 @@ http://127.0.0.1:8765/project/dashboard/#config
 http://127.0.0.1:8765/project/dashboard/#plan
 ```
 
-Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, voice execution, memory controls, or non-public data.
+Current deployment target: hidden-link Vercel preview first. Hidden link is convenience, not security. Use Vercel platform protection or a server-side auth gate before exposing private state, commands, uploads, memory controls, or non-public data.
 
 ## Run
 
@@ -61,10 +61,9 @@ What it proves:
 
 What it does not prove:
 
-- real microphone permission or speaker output on the owner's browser;
 - node-modal click-through quality on mobile;
 - provider, Nexus, Notion, GitHub, or WikiLLM writeback;
-- authenticated Railway client sessions, persistent storage, provider calls, or raw voice processing.
+- authenticated Railway client sessions, persistent storage, provider calls, or audio processing.
 
 ## Vercel Preview
 
@@ -99,15 +98,15 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 - First-screen Proof And Backlog Drawer that summarizes dashboard issue states, latest proof, remaining gates, and validation commands.
 - Public-safe sample outputs for sanitized source packet, PRD excerpt, evidence card, task matrix, agent node config, and approval log.
 - Current-session Jarvis chat history with export/clear controls.
-- Browser-local voice input through Web Speech recognition where supported.
-- Browser-local speech output through Web Speech synthesis where supported.
+- Text-only Jarvis chat as the main first-screen interaction.
+- Browser-local file transfer staging with bounded text excerpts for text-like files and metadata-only packets for binary files.
 - `(1) PRD/ICP Flow` block-schema page for the externally showable service product path.
 - `(2) Agent Orchestra` block-schema page for the local Codex/LangGraph/WikiLLM/Graphify control system.
 - Full node control panels with overview, inputs, outputs, run notes, system prompts, comments, config dropdowns, runtime gates, and connection summaries.
 - Config/subprompting page for browser-local prompt candidates and exportable review packets.
 - Browser-local Jarvis API base configuration for hosted Railway checks and provider-disabled backend packet submission.
 - Project Plan page for the E1-E7 spine and current source links.
-- Browser-local file metadata packet creation.
+- Browser-local file transfer packet creation.
 - In-page refresh: manual button, Jarvis refresh command, focus refresh, and timed polling of `data.json`.
 
 ## Change Config
@@ -121,13 +120,13 @@ The root `vercel.json` sets `noindex` headers and disables cache for dashboard f
 
 Regenerate `project/dashboard/data.json` after changing any workflow, config, WikiLLM, report, or run file.
 
-On Vercel, the dashboard can update in-page without reloading the page after a new `data.json` has been deployed. It cannot observe local file changes, write to GitHub/Notion/WikiLLM, process private uploads, or run live voice execution without a backend.
+On Vercel, the dashboard can update in-page without reloading the page after a new `data.json` has been deployed. It cannot observe local file changes, write to GitHub/Notion/WikiLLM, process private uploads durably, or run audio execution.
 
 ## Hosted Jarvis API
 
-As of 2026-07-03, the Railway `jarvis-api` service has passed the provider-disabled E1.7 baseline: hosted health, CORS from the Vercel dashboard origin, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text packet routes.
+As of 2026-07-07, the dashboard defaults to the deployed Vercel `/api/chat` route when hosted. The Railway `jarvis-api` service remains deployed and running from the E1.7 provider-disabled baseline, but it is not the default dashboard API unless the operator saves the Railway origin in `#config`.
 
-The dashboard does not commit a hosted API URL. Use `#config` to paste the current approved backend origin into browser-local storage, then check `/health`. Service-mode packets route to `/api/lanes/prd-icp`; control-mode packets route to `/api/lanes/agent-orchestra`.
+The dashboard does not commit a hosted Railway API URL. Use `#config` to paste the current approved backend origin into browser-local storage, then check `/health`. Main Jarvis chat routes to `/api/chat`; service-mode packets route to `/api/lanes/prd-icp`; control-mode packets route to `/api/lanes/agent-orchestra`.
 
 ## Reliability Sync
 
@@ -149,16 +148,14 @@ Allowed in the static preview:
 - status/readback answers from deployed `data.json`;
 - manual refresh and polling without page reload;
 - current-session Jarvis chat history in browser session storage;
-- browser-local voice transcript command during the current browser session when the user authorizes voice and the browser supports recognition;
-- browser-local speech output when the user enables spoken replies and the browser exposes speech synthesis voices;
-- browser-local file metadata packet creation without reading document bodies;
+- browser-local file transfer staging for the next Jarvis message, using bounded text excerpts for text-like files and metadata-only transfer for binary files;
 - downloadable local packets for later Codex/Railway writeback.
 
-Voice verification boundary:
+Voice boundary:
 
-- Headless checks can verify that the voice controls render and JavaScript syntax passes.
-- A real microphone/speaker test requires the owner's interactive browser permission on the local device.
-- Browser speech voices are device/browser dependent. The dashboard can request a natural English voice when one is installed, but it cannot guarantee a specific human voice without an approved voice provider or local TTS runtime.
+- Voice mode is disabled in the main dashboard.
+- Browser microphone capture, Web Speech recognition, speaker playback, TTS, STT, and voice API use are off unless a new owner-approved audio lane is opened.
+- `/api/voice/*` routes return disabled packets; use `/api/chat` with text and attachments.
 
 Deferred to Vercel server/auth or later Railway backend phases:
 

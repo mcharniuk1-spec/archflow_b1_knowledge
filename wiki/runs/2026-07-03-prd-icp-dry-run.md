@@ -27,7 +27,7 @@ Create the local PRD-to-ICP dry-run outcome packet (E2.0A) using approved public
 
 ## Key Content
 
-FACT: The packet defines the research method only — source boundary, evidence card schema with provenance, A-D grade rubric, low-confidence ICP outline, and a scoping executive decision. No real accounts were researched and no outreach or demand claims exist.
+FACT: The packet defines the research method only - source boundary, evidence card schema with provenance, A-D grade rubric, low-confidence ICP outline, and a scoping executive decision. No real accounts were researched and no outreach or demand claims exist.
 
 INTERPRETATION: E2.1 (approved source list + segment data model) is now executable with enforceable evidence discipline; the fact_check_gate has concrete rules to check against.
 

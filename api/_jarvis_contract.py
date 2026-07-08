@@ -9,7 +9,7 @@ from http.server import BaseHTTPRequestHandler
 from typing import Any
 
 
-APP_VERSION = "2026-07-03-vercel-jarvis-guarded-openrouter"
+APP_VERSION = "2026-07-07-vercel-jarvis-chat-files-voice-disabled"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_OPENROUTER_MODEL = "openrouter/auto"
 
@@ -104,6 +104,52 @@ def architecture_context(kind: str, body: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def attachment_summary(body: dict[str, Any]) -> list[dict[str, Any]]:
+    attachments = body.get("attachments") if isinstance(body.get("attachments"), list) else []
+    summary = []
+    for attachment in attachments[:6]:
+        if not isinstance(attachment, dict):
+            continue
+        summary.append(
+            {
+                "name": str(attachment.get("name") or "")[:260],
+                "mime_type": str(attachment.get("mime_type") or "unknown")[:120],
+                "size": int(attachment.get("size") or 0),
+                "transfer_mode": str(attachment.get("transfer_mode") or "metadata_only")[:40],
+                "text_excerpt": str(attachment.get("text_excerpt") or "")[:900],
+            }
+        )
+    return summary
+
+
+def prompt_attachment_context(body: dict[str, Any]) -> str:
+    attachments = attachment_summary(body)
+    if not attachments:
+        return "No files attached."
+    lines = []
+    for index, attachment in enumerate(attachments, start=1):
+        text = attachment["text_excerpt"][:1200] if attachment["transfer_mode"] == "text_excerpt" else ""
+        lines.append(
+            f"{index}. {attachment['name']} ({attachment['mime_type']}, {attachment['size']} bytes, {attachment['transfer_mode']})"
+            + (f"\nExcerpt:\n{text}" if text else "")
+        )
+    return "\n".join(lines)
+
+
+def prompt_conversation_context(body: dict[str, Any]) -> str:
+    conversation = body.get("conversation") if isinstance(body.get("conversation"), list) else []
+    if not conversation:
+        return "No prior chat context supplied."
+    lines = []
+    for message in conversation[-6:]:
+        if not isinstance(message, dict):
+            continue
+        lines.append(
+            f"{str(message.get('role') or 'user')[:20]} via {str(message.get('source') or '')[:80]}: {str(message.get('text') or '')[:700]}"
+        )
+    return "\n".join(lines) or "No prior chat context supplied."
+
+
 def openrouter_prompt(kind: str, body: dict[str, Any]) -> list[dict[str, str]]:
     context = architecture_context(kind, body)
     request = str(body.get("request") or body.get("transcript") or "")[:4000]
@@ -118,6 +164,8 @@ def openrouter_prompt(kind: str, body: dict[str, Any]) -> list[dict[str, str]]:
         f"LangGraph lane: {context['langgraph_lane']}\n"
         f"CrewAI roles: {', '.join(context['crewai_roles'])}\n"
         f"KB contract: {context['kb_contract']}\n\n"
+        f"Recent chat context:\n{prompt_conversation_context(body)}\n\n"
+        f"Attached files:\n{prompt_attachment_context(body)}\n\n"
         f"User request:\n{request}"
     )
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
@@ -282,7 +330,8 @@ def health_payload() -> dict[str, Any]:
             "provider_calls": "disabled_until_explicit_owner_approval_and_budget_guard",
             "langgraph": "controller_contract",
             "crewai": "proof_passed_not_default_runtime",
-            "voice": "browser_text_only",
+            "voice": "disabled_text_chat_only",
+            "file_transfer": "bounded_chat_attachments_no_persistence",
             "writeback": "disabled",
             "deployment": "vercel_guarded_openrouter_review_contract",
         },
@@ -300,6 +349,9 @@ def chat_payload(body: dict[str, Any]) -> dict[str, Any]:
             "request_excerpt": request,
             "lane": body.get("lane", "chat"),
             "architecture": architecture,
+            "conversation_count": len(body.get("conversation") if isinstance(body.get("conversation"), list) else []),
+            "attachment_count": len(attachment_summary(body)),
+            "attachments": attachment_summary(body),
             "architecture_contract": (
                 "Architecture 1: PRD/ICP service output"
                 if architecture == "service"
@@ -317,6 +369,8 @@ def prd_icp_payload(body: dict[str, Any]) -> dict[str, Any]:
             "lane": "prd_icp_flow",
             "architecture": body.get("architecture", "service"),
             "request_excerpt": str(body.get("request") or "")[:900],
+            "attachment_count": len(attachment_summary(body)),
+            "attachments": attachment_summary(body),
             "output_blocks": PRD_BLOCKS,
             "required_outputs": [
                 "suggested backlog",
@@ -337,6 +391,8 @@ def agent_orchestra_payload(body: dict[str, Any]) -> dict[str, Any]:
             "lane": "agent_orchestra",
             "architecture": body.get("architecture", "system"),
             "request_excerpt": str(body.get("request") or "")[:900],
+            "attachment_count": len(attachment_summary(body)),
+            "attachments": attachment_summary(body),
             "stages": [
                 "Intake",
                 "Role Assignment",
@@ -353,11 +409,11 @@ def agent_orchestra_payload(body: dict[str, Any]) -> dict[str, Any]:
 
 
 def voice_payload(body: dict[str, Any]) -> dict[str, Any]:
-    return provider_packet(
+    return packet(
         "voice-chat",
-        body,
+        "disabled",
         {
-            "reply": "Voice transcript received as text only. Raw audio is not stored; provider calls require owner/provider approval.",
+            "reply": "Voice mode is disabled. Use /api/chat with text and attachments.",
             "transcript_excerpt": str(body.get("transcript") or body.get("request") or "")[:900],
             "raw_audio_storage": "disabled",
         },

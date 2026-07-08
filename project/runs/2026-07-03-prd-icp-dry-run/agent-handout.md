@@ -7,7 +7,7 @@ Status: accepted by owner on 2026-07-03
 
 ## Human Summary
 
-The E2.0A dry-run packet is written. It converts the market-research-engine workflow into executable research discipline: a source boundary (public sources only, gated tools listed), an account evidence card schema with provenance and review fields, an A-D source grade rubric wired to the scoring model and fact-check gate, an honest low-confidence ICP profile outline for Series B-D B2B SaaS product teams, and an executive decision that scopes what E2.0A enables and forbids. No provider calls were made; no external accounts were researched — this is the method packet that makes the first real pass (E2.1) safe.
+The E2.0A dry-run packet is written. It converts the market-research-engine workflow into executable research discipline: a source boundary (public sources only, gated tools listed), an account evidence card schema with provenance and review fields, an A-D source grade rubric wired to the scoring model and fact-check gate, an honest low-confidence ICP profile outline for Series B-D B2B SaaS product teams, and an executive decision that scopes what E2.0A enables and forbids. No provider calls were made; no external accounts were researched - this is the method packet that makes the first real pass (E2.1) safe.
 
 ## Files Changed
 

@@ -252,6 +252,10 @@ a {
   backdrop-filter: blur(10px);
 }
 
+body[data-active-tab="jarvis"] .global-composer {
+  display: none;
+}
+
 .grid {
   display: grid;
   gap: 16px;
@@ -281,6 +285,150 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.7fr);
   gap: 16px;
+}
+
+.jarvis-chat-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 16px;
+}
+
+.jarvis-chat-panel {
+  min-height: calc(100vh - 180px);
+  display: grid;
+  grid-template-rows: auto auto auto minmax(360px, 1fr) auto auto;
+  gap: 12px;
+}
+
+.jarvis-chat-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.jarvis-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.jarvis-title-row h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.jarvis-title-row p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.jarvis-avatar {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #ffffff;
+  font-weight: 820;
+}
+
+.jarvis-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.mode-bar.inline {
+  position: static;
+  width: fit-content;
+}
+
+.chat-strip {
+  width: 100%;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.main-chat {
+  min-height: 360px;
+  max-height: none;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.jarvis-chat-form {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.jarvis-chat-form textarea {
+  min-height: 74px;
+  resize: vertical;
+}
+
+.icon-file-button {
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.icon-file-button input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.attachment-tray {
+  min-height: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.attachment-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+  color: var(--ink);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.attachment-chip small {
+  color: var(--muted);
+}
+
+.attachment-chip button {
+  border: 0;
+  border-radius: 6px;
+  background: #e6e9ed;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.jarvis-side-panel {
+  align-self: start;
+}
+
+.compact-actions {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .jarvis-main {
@@ -1858,6 +2006,7 @@ button.primary:hover {
 
   .split,
   .jarvis-layout,
+  .jarvis-chat-layout,
   .schema-workspace,
   .schema-layer-brief,
   .operator-strip,
@@ -1910,6 +2059,18 @@ button.primary:hover {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .jarvis-chat-form {
+    grid-template-columns: 1fr;
+  }
+
+  .jarvis-chat-header {
+    flex-direction: column;
+  }
+
+  .chat-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
@@ -1926,6 +2087,8 @@ button.primary:hover {
   .view,
   .panel,
   .jarvis-layout,
+  .jarvis-chat-layout,
+  .jarvis-chat-panel,
   .jarvis-main,
   .global-composer {
     max-width: 100%;
@@ -2009,6 +2172,28 @@ button.primary:hover {
 
   .jarvis-layout {
     gap: 14px;
+  }
+
+  .jarvis-chat-panel {
+    min-height: auto;
+    grid-template-rows: auto;
+  }
+
+  .jarvis-chat-header,
+  .jarvis-header-actions,
+  .compact-actions,
+  .jarvis-chat-form {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .jarvis-title-row {
+    align-items: flex-start;
+  }
+
+  .main-chat {
+    min-height: 320px;
+    max-height: 60vh;
   }
 
   .node {

@@ -358,3 +358,131 @@ INTERPRETATION:
 
 GAP:
 - External OpenRouter key storage in Vercel/Railway needs explicit approval before any provider-backed run.
+
+## 2026-07-03 - Daily skill/RAG retrospective
+
+FACT:
+- Ran the daily skill/RAG retrospective after the 21:00 registry/hook lane.
+- Report: `project/runs/20260703_daily_skill_retrospective.md`.
+- Run note: `project/runs/20260703_run_daily_skill_retrospective.md`.
+- Updated the July 1 operational gaps issue with partial closures for priority-task packet generation and continued gates for provider-backed execution, Telegram, Nexus/writeback, and full product runtime.
+
+INTERPRETATION:
+- No new skill is justified today; existing `daily-public-project-review`, `priority-task-operator`, `arcagcom`, `task-handout`, `outquestions`, `archflow1`, and runtime-guard skills cover the observed workflows.
+
+GAP:
+- E4 profile publication, provider-backed Jarvis, canonical provider ledger, live Nexus/writeback, dashboard-driven durable writes, raw voice storage, auth, persistence, and buyer proof remain gated.
+
+## 2026-07-04 - Priority mechanical-work E4 decision packet
+
+FACT:
+- Reran the deterministic priority-task selector for the 00:30 lane.
+- The selected task remains `Package social profiles for LinkedIn, X, and Threads`, score `288`.
+- The prior 06:30 packet already contains public-safe LinkedIn, X, and Threads drafts plus a review gate.
+- This run added an owner-decision request and operator-side profile checklist under `project/runs/2026-07-04-0030-priority-mechanical-work/`.
+
+INTERPRETATION:
+- The next safe mechanical action is owner-decision packaging, not live profile editing or duplicate copy drafting.
+
+GAP:
+- Owner approval remains required for voice lane, link target, visual policy, timing, and live profile updates.
+- No network, provider, social-platform, Notion, deployment, Git push, credential, or publication action was performed.
+
+## 2026-07-04 - Priority mechanical E2.1 packet
+
+FACT:
+- Ran `project/scripts/priority-task-operator.py` for `2026-07-04-0630-priority-mechanical-work`.
+- The selector again ranked `Package social profiles for LinkedIn, X, and Threads` first, score `288`.
+- The previous 06:30 run already packetized E4 profile drafts and review gates, so this run recorded E4 live execution as owner-gated instead of duplicating the packet.
+- Prepared E2.1 source/API/data-model artifacts under `project/runs/2026-07-04-0630-priority-mechanical-work/`.
+
+INTERPRETATION:
+- The next no-approval mechanical value was to make E2.1 review-ready while preserving the deterministic E4 priority evidence.
+
+GAP:
+- Live E4 profile changes, real account collection, gated APIs/crawlers/enrichment, provider calls, external writeback, outreach, and demand claims remain blocked until separately approved.
+
+## 2026-07-06 - Priority mechanical E5.2 funnel packet
+
+FACT:
+- Ran `project/scripts/priority-task-operator.py` for `2026-07-06-0030-priority-mechanical-work`.
+- The selector again ranked `Package social profiles for LinkedIn, X, and Threads` first, score `300`.
+- Prior runs already prepared E4 profile drafts, live-profile gates, operator checklist, five-week content plan, and weekly review scorecard.
+- This run prepared E5.2 lead funnel metrics and diagnostic event-schema packets under `project/runs/2026-07-06-0030-priority-mechanical-work/`.
+
+INTERPRETATION:
+- The next useful no-approval mechanical value is the measurement layer that separates attention from buyer-risk evidence before E3/E4/E6/E7 traffic increases.
+
+GAP:
+- Live E4 profile changes, analytics activation, diagnostic implementation, CRM/storage, real lead capture, Notion writeback, Git push, provider calls, external publication, and demand claims remain blocked until separately approved.
+
+## 2026-07-05 - Priority mechanical E4.1 content packet
+
+FACT:
+- Ran `project/scripts/priority-task-operator.py` for `2026-07-05-0030-priority-mechanical-work`.
+- The selector again ranked `Package social profiles for LinkedIn, X, and Threads` first, score `294`.
+- Earlier priority runs already prepared E4 profile packaging and owner-decision artifacts, so this run kept live profile execution owner-gated.
+- Prepared E4.1 and E4.5 planning artifacts under `project/runs/2026-07-05-0030-priority-mechanical-work/`.
+
+INTERPRETATION:
+- The next no-approval mechanical value was a review-ready content plan and weekly review scorecard, not more profile-copy drafting or live account work.
+
+GAP:
+- Profile edits, publication, social account changes, Notion writes, Git push, provider calls, live crawls, real account collection, outreach, and demand claims remain blocked until separately approved and evidenced.
+
+## 2026-07-06 - Daily skill/RAG retrospective
+
+FACT:
+- Ran the daily skill/RAG retrospective after the latest evening registry/hook review.
+- Report: `project/runs/20260706_daily_skill_retrospective.md`.
+- Run note: `project/runs/20260706_run_daily_skill_retrospective.md`.
+- Updated the daily retrospective operational gaps issue with priority selector de-duplication and scheduled-lane closeout quality findings.
+
+INTERPRETATION:
+- No new skill is justified. The concrete improvement belongs inside the existing `priority-task-operator` workflow: preserve top-score evidence, then skip or penalize already-packetized owner-gated tasks for the next no-approval artifact.
+
+GAP:
+- Provider-backed execution, canonical model-call ledger, Telegram sender, live Nexus/writeback, vector-default retrieval, social publication, and buyer proof remain gated.
+
+## 2026-07-06 - Priority mechanical E5.3 qualification packet
+
+FACT:
+- Ran `project/scripts/priority-task-operator.py` for `2026-07-06-0630-priority-mechanical-work`.
+- The selector again ranked `Package social profiles for LinkedIn, X, and Threads` first, score `300`.
+- Prior runs already prepared E4 profile drafts, live-profile gates, operator checklist, content plan, weekly review scorecard, and the E5.2 funnel/event-schema packet.
+- This run prepared E5.3 inbound qualification scoring and review-gate artifacts under `project/runs/2026-07-06-0630-priority-mechanical-work/`.
+
+INTERPRETATION:
+- The next useful no-approval mechanical value is a lead-quality decision gate that keeps attention separate from demand before E3 diagnostics, E4 content, E6 outreach, or E7 verdict tracking create real signals.
+
+GAP:
+- Live E4 profile changes, analytics activation, diagnostic implementation, CRM/storage, real lead capture, Notion writeback, Git push, provider calls, outreach, external publication, and demand claims remain blocked until separately approved.
+
+## 2026-07-07 - Daily retrospective evidence correction
+
+FACT:
+- Continued the July 6 daily skill/RAG retrospective after late lane evidence was available.
+- The latest evening skill/hook lane fixed only automation-ID metadata drift; skill membership and hook behavior stayed unchanged.
+- The July 6 priority folders now include handout evidence. The 2026-07-05 06:30 priority folder remains packet-only.
+
+INTERPRETATION:
+- The durable improvement remains selector de-duplication for already-packetized owner-gated tasks, not a new skill.
+
+GAP:
+- Provider-backed execution, canonical model-call ledger, Telegram sender, live Nexus/writeback, vector-default retrieval, E4 publication, and buyer proof remain gated.
+
+## 2026-07-07 - Jarvis chat API rebuild
+
+FACT:
+- Rebuilt the Jarvis dashboard first screen into a large text-first chat surface.
+- Disabled dashboard voice mode and updated API voice routes to return disabled packets.
+- Added bounded file transfer for `/api/chat`: text-like files send excerpts; binary files stay metadata-only.
+- Updated Vercel and Railway API contracts, dashboard docs, smoke markers, the API smoke, and the `archflow1` skill policy.
+- Railway MCP showed the prior `jarvis-api` deployment is successful and running from the July 3 provider-disabled baseline.
+- Production Vercel still reports the older July 3 API contract, so the live URL is not yet updated to this local code.
+
+INTERPRETATION:
+- Local source is ready for review as a chat/file Jarvis surface, but live production requires explicit deployment approval before it changes.
+
+GAP:
+- No production deploy, Git push, Railway redeploy, provider activation, durable upload storage, auth hardening, writeback, or Figma sync was performed.

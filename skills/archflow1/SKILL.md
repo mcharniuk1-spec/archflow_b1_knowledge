@@ -19,7 +19,7 @@ Layer order:
 2. `jarvis-api`: FastAPI backend contract under `services/jarvis-api/`.
 3. LangGraph controller: routing, state, gates, lane execution, and review stops.
 4. CrewAI roles: role/team structure orchestrated through LangGraph by default.
-5. Optional voice services:
+5. Optional voice services, currently disabled in the main dashboard:
    - `stt-faster-whisper` for speech-to-text;
    - `tts-kokoro` for text-to-speech;
    - Piper as a lower-complexity fallback.
@@ -83,7 +83,13 @@ Browser JavaScript must never receive provider keys.
 
 ## Voice Path
 
-Approved local voice flow:
+Current policy:
+
+- main dashboard voice mode is disabled;
+- use text chat and bounded file attachments through `/api/chat`;
+- `/api/voice/*` returns disabled packets unless a new owner-approved audio lane is opened.
+
+Historical approved local voice flow, not active now:
 
 1. Browser captures audio through explicit user action.
 2. `MediaRecorder` creates a local audio packet.
@@ -106,13 +112,12 @@ If backend is unavailable:
 - Screen 2 can export role config packets;
 - no local file write is implied.
 
-If STT fails:
+If voice is requested:
 
-- use manual transcript entry.
-
-If TTS fails:
-
-- show text response and keep speaker playback disabled.
+- keep text chat active;
+- do not request microphone permission;
+- do not start browser speech synthesis;
+- do not store audio or transcripts.
 
 If model provider is disabled:
 
@@ -185,7 +190,7 @@ Local proof is strong enough to plan Railway migration only after:
 - auth and allowed origin policy are defined;
 - env values are in approved secret storage;
 - OpenRouter is either disabled or fully budget-guarded;
-- voice storage policy is explicit;
+- voice storage policy is explicit and currently disabled;
 - AF Review passes;
 - public safety scan and runtime guard pass;
 - owner approves deployment.

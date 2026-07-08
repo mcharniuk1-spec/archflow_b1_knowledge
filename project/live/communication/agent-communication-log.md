@@ -6946,3 +6946,1174 @@ Remaining gaps:
 Next safe action:
 
 - Commit and push the health-metadata correction to `main`.
+
+## 2026-07-03 21:02 EEST - Codex automation - starting - Evening skill and hook drift review
+
+Status: starting
+
+Task:
+
+- Review public-safe skill registries, agent roster skill setup, prompt/task-handout hook contracts, hook-backed workflows, and validation requirements.
+- Update only files with concrete skill or hook drift.
+- Record a no-op run summary if the review finds no meaningful drift.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-03-evening-skill-hook-review/`
+- `project/agents/skills-by-agent.md` only if actual used/configured skills changed.
+- `project/agents/agent-roster.yaml` only if actual used/configured skills changed.
+- `skills/skills-used.md` only if actual used/configured skills changed.
+- `.codex/hooks.json`, `project/scripts/*hook*.py`, `.githooks/`, `AGENTS.md`, `project/operating-rules.md`, or skill docs only if concrete hook-contract drift is found.
+
+Files claimed:
+
+- Evening skill and hook drift review artifacts for this run.
+- Skill registry and hook contract files only for drift-review edits, not runtime/deployment work.
+
+Expected output:
+
+- Public-safe review result, run handout, concise run summary if meaningful, validation evidence, and complete log entry.
+
+Blockers:
+
+- Do not run network operations, push, install packages, start services, alter credentials, expose private values, or touch private source material.
+- Do not modify runtime/deployment files from the earlier Vercel/Railway lane.
+
+Next step:
+
+- Inspect registries, hook configs, hook scripts, workflow validation, and recent run artifacts for concrete reusable workflow or hook drift.
+
+## 2026-07-03 21:12 EEST - Codex automation - update - ASCII validation drift found
+
+Status: running
+
+Scope change:
+
+- Strict tracked-text ASCII validation found non-ASCII punctuation in existing public files.
+- This is validation drift, not skill registry drift.
+
+Additional files likely to change:
+
+- `graphify-out/GRAPH_REPORT.md`
+- `graphify-out/graph.html`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md`
+- `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md`
+- `project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md`
+- `wiki/runs/2026-07-03-prd-icp-dry-run.md`
+
+Expected output:
+
+- Mechanical ASCII punctuation normalization only; no content, runtime, provider, deployment, or registry contract change.
+
+Next step:
+
+- Normalize punctuation and rerun validation.
+
+## 2026-07-03 21:18 EEST - Codex automation - complete - Evening skill and hook review with ASCII cleanup
+
+Status: complete
+
+Files changed:
+
+- `graphify-out/GRAPH_REPORT.md`
+- `graphify-out/graph.html`
+- `project/runs/2026-07-03-claude-continuation-stabilization/claude-setup-readiness.md`
+- `project/runs/2026-07-03-prd-icp-dry-run/agent-handout.md`
+- `project/runs/E1.2/2026-07-02-testmeeting-local/E1.2.8_OpenRouter_Comparison.md`
+- `wiki/runs/2026-07-03-prd-icp-dry-run.md`
+- `project/runs/2026-07-03-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-03-evening-skill-hook-review/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- JSON parse for `.codex/hooks.json`: passed.
+- Python compile for hook, workflow validation, runtime guard, and public safety scripts: passed.
+- YAML parse for agent roster and key workflow files: passed.
+- Workflow validation: passed.
+- Runtime guard: passed.
+- Forced task-handout hook probe: passed.
+- Public safety scan: passed.
+- Ignored local env/runtime check: passed.
+- Tracked-text ASCII check: passed after punctuation normalization.
+- `git diff --check`: passed.
+- `git status --short`: reviewed.
+
+Findings:
+
+- Skill registries and hook contracts remain aligned; no registry, hook, skill, or operating-rule functional edits were needed.
+- Recent cloud/Jarvis work is already covered by existing project skills and did not justify a new speculative skill.
+- Strict ASCII validation found punctuation drift in existing public files; the cleanup was mechanical only.
+
+Remaining gaps:
+
+- None for this lane.
+- Provider-backed execution, external credential storage, durable writeback, destructive cleanup, and Git push remain outside this automation lane.
+
+Next safe action:
+
+- Daily retrospective can decide whether recurring ASCII drift needs a durable inefficiency note; future evening runs should stay focused on real registry drift, hook drift, reusable workflow evidence, or validation findings.
+
+## 2026-07-03 22:33 EEST - Codex automation - starting - Daily skill retrospective and RAG review
+
+Status: starting
+
+Task:
+
+- Review today's ArchFlow public skill, hook, automation, coordination, run-note, report, decision, issue, and memory-surface evidence.
+- Keep this lane separate from the 21:00 registry/hook drift review.
+
+Files likely to change:
+
+- `project/runs/20260703_daily_skill_retrospective.md`
+- `project/runs/20260703_run_daily_skill_retrospective.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md` only if a concise local knowledge update is useful.
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- Daily skill retrospective artifacts for 2026-07-03.
+- This live-log entry and final closeout entry for the retrospective lane.
+
+Expected output:
+
+- Concise public-safe retrospective, run note, ownership summary, checks, blockers, and next safe action.
+
+Blockers:
+
+- No network, installs, provider calls, deploys, pushes, service starts, private-source ingestion, or broad device reads.
+
+Next step:
+
+- Inspect recent run/report/issue/decision artifacts and configured automation scopes, then write the dated retrospective.
+
+## 2026-07-03 22:36 EEST - Codex automation - complete - Daily skill retrospective and RAG review
+
+Status: complete
+
+Files changed:
+
+- `project/runs/20260703_daily_skill_retrospective.md`
+- `project/runs/20260703_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+
+Checks run:
+
+- Dated retrospective and run-note paths exist.
+- Dashboard data regenerated.
+- Dashboard JSON parse: passed.
+- Public safety scan: passed.
+- `git diff --check`: passed.
+
+Findings:
+
+- No new skill is justified today; existing daily review, priority-task, communication, handout, outquestions, Jarvis/runtime, and guard skills cover the observed workflows.
+- The 21:00 lane already handled registry/hook drift and found no functional drift.
+- The priority-task lane now has packet-generation proof, but E4 publication remains owner-gated.
+- Guarded OpenRouter routes are wired on Vercel/Railway with provider calls `0`; this is not live provider-backed Jarvis.
+
+Remaining gaps:
+
+- Provider-backed Jarvis, canonical provider ledger, live Nexus/writeback, dashboard durable writes, raw voice storage, auth, persistence, client workspaces, buyer proof, and E4 profile publication remain gated.
+
+Next safe action:
+
+- Start E2.1 from the accepted E2.0A source boundary, and refresh model-efficiency issues before any provider activation.
+
+## 2026-07-04 00:30 EEST - Codex automation - starting - Priority mechanical work lane
+
+Status: starting
+
+Task:
+
+- Run the ArchFlow priority mechanical-work lane and choose the next useful public-safe mechanical action that needs no owner confirmation.
+
+Files likely to change:
+
+- `project/runs/2026-07-04-0030-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- `project/runs/2026-07-04-0030-priority-mechanical-work/`
+- This live-log entry and final closeout entry for the 00:30 priority lane.
+
+Expected output:
+
+- Public-safe selected-task packet, owner-gated handoff or next mechanical task packet, run handout, concise wiki log update, and validation results.
+
+Blockers:
+
+- No network calls, provider/API calls, live crawls, deploys, Git push, credential edits, private-source ingestion, external writes, or production actions.
+
+Next step:
+
+- Inspect the latest priority-task packet and current plan evidence, then prepare the safest useful continuation artifact.
+
+## 2026-07-04 08:37 EEST - Codex automation - complete - Priority mechanical work E4 decision packet
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-04-0030-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-04-0030-priority-mechanical-work/selected-task.json`
+- `project/runs/2026-07-04-0030-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-04-0030-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-04-0030-priority-mechanical-work/owner-decision-request.md`
+- `project/runs/2026-07-04-0030-priority-mechanical-work/operator-side-profile-checklist.md`
+- `project/runs/2026-07-04-0030-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for the 00:30 priority lane.
+
+Checks run:
+
+- `python3 project/scripts/priority-task-operator.py --plan project/project-plan.md --run-id 2026-07-04-0030-priority-mechanical-work --max-recent-completed 8`: passed.
+- `python3 -m py_compile project/scripts/priority-task-operator.py`: passed.
+- `python3 -m json.tool project/runs/2026-07-04-0030-priority-mechanical-work/selected-task.json`: passed.
+- `python3 project/scripts/generate-dashboard-data.py`: passed.
+- `python3 -m json.tool project/dashboard/data.json`: passed.
+- `python3 scripts/public_safety_scan.py`: passed.
+- `git diff --check`: passed.
+- `git status --short`: reviewed.
+
+Findings:
+
+- The deterministic selector still ranks E4 social-profile packaging first, but the 06:30 packet already produced public-safe profile drafts and a review gate.
+- This run prepared the missing owner-decision request and operator-side checklist instead of duplicating draft copy or performing approval-gated external edits.
+
+Remaining gaps:
+
+- Owner decisions are still required for voice lane, link target, visual policy, timing, and live profile updates.
+- No live social profile, Notion, provider, network, deployment, Git push, credential, or publication action was performed.
+
+Next safe action:
+
+- Ask owner to choose the E4 profile setup path, or move the next mechanical lane to E4.1/E2.1 if owner input is not available.
+
+## 2026-07-04 07:42 EEST - Codex automation - starting - Priority mechanical E2.1 packet
+
+Status: starting
+
+Task:
+
+- Run the 06:30 priority mechanical-work lane and select the next safe no-approval action from the current plan, recent runs, wiki memory, insights, and live communication state.
+
+Files likely to change:
+
+- `project/runs/2026-07-04-0630-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- The 2026-07-04 06:30 priority mechanical-work run folder and closeout entries only.
+
+Expected output:
+
+- Public-safe selected-task packet, PitAgent continuation prompt, KB/Notion/GitHub packet, run handout, concise wiki log update, and validation evidence.
+
+Blockers:
+
+- No network calls, provider/API calls, live crawls, production deploys, Git push, credential edits, private-source ingestion, live account changes, or Notion writes.
+
+Next step:
+
+- Run the priority selector, inspect whether the selected task is already packetized or approval-gated, then prepare the next safe mechanical packet.
+
+## 2026-07-04 08:14 EEST - Codex automation - complete - Priority mechanical E2.1 packet
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-04-0630-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-04-0630-priority-mechanical-work/selected-task.json`
+- `project/runs/2026-07-04-0630-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-04-0630-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-04-0630-priority-mechanical-work/e4-social-profile-gap.md`
+- `project/runs/2026-07-04-0630-priority-mechanical-work/e2-1-source-api-data-model-packet.md`
+- `project/runs/2026-07-04-0630-priority-mechanical-work/e2-1-blank-account-card-template.md`
+- `project/runs/2026-07-04-0630-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Priority selector run: passed.
+- JSON parse for `selected-task.json`: passed.
+- Python compile for `project/scripts/priority-task-operator.py`: passed.
+- Dashboard data regeneration: passed.
+- Public safety scan: passed.
+- `git diff --check`: passed.
+- `git status --short`: reviewed; earlier uncommitted automation artifacts remain outside this run.
+
+Findings:
+
+- The selector again ranked E4 social profile packaging first, score `288`.
+- The E4 profile task is already packetized from the previous 06:30 run and still owner-gated for live profile decisions.
+- This run prepared the next safe no-approval artifact: an E2.1 source/API/data-model packet and blank account-card template.
+
+Remaining gaps:
+
+- Live E4 profile edits, real account collection, gated search/crawler/enrichment tools, provider calls, Notion writes, Git push, outreach, and demand claims remain blocked until separately approved.
+
+Next safe action:
+
+- Review or accept the E2.1 source/API/data-model packet, then start E2.2 only with explicit public-source collection boundaries.
+
+## 2026-07-04 22:30 EEST - Codex automation - starting - Daily skill retrospective and RAG review
+
+Status: starting
+
+Task:
+
+- Review today's ArchFlow public skill, hook, automation, coordination, run-note, report, issue, decision, and local memory-surface evidence.
+- Keep this lane separate from the evening registry/hook drift automation and from approval-gated provider, deploy, crawl, push, or external-write work.
+
+Files likely to change:
+
+- `project/runs/20260704_daily_skill_retrospective.md`
+- `project/runs/20260704_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md` only if a blocker update is useful.
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md` only if a concise local knowledge update is useful.
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- Daily skill retrospective artifacts for 2026-07-04.
+- This live-log entry and the final closeout entry for the daily retrospective lane.
+
+Expected output:
+
+- Public-safe dated retrospective, run note, ownership summary, checks, blockers, and next safe action.
+
+Blockers:
+
+- No network, installs, provider calls, deploys, pushes, service starts, private-source ingestion, or broad device reads.
+
+Next step:
+
+- Inspect today's priority-lane artifacts, recent reports, issue state, and automation configs, then write the dated retrospective.
+
+## 2026-07-05 12:47 EEST - Codex automation - starting - Priority mechanical work lane
+
+Status: starting
+
+Task:
+
+- Run the 00:30 priority mechanical-work lane and choose the next useful public-safe mechanical action that needs no owner confirmation.
+
+Files likely to change:
+
+- `project/runs/2026-07-05-0030-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- `project/runs/2026-07-05-0030-priority-mechanical-work/`
+- This live-log entry and final closeout entry for the 00:30 priority lane.
+
+Expected output:
+
+- Public-safe selected-task packet, continuation prompt, KB/Notion/GitHub packet or equivalent next mechanical evidence, run handout, concise wiki log update, and validation evidence.
+
+Blockers:
+
+- No network calls, provider/API calls, live crawls, production deploys, Git push, credential edits, private-source ingestion, live account changes, external writes, or Notion writes.
+
+Next step:
+
+- Run the priority selector, compare against existing E4/E2.1 packets and the untracked 06:30 run folder, then prepare the safest non-duplicative artifact.
+
+## 2026-07-05 12:58 EEST - Codex automation - complete - Priority mechanical E4.1 content packet
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-05-0030-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/selected-task.json`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/e4-live-profile-gate.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/e4-1-five-week-content-plan.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/e4-5-weekly-review-scorecard.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Priority selector run: passed.
+- JSON parse for `selected-task.json`: passed.
+- Python compile for `project/scripts/priority-task-operator.py`: passed.
+- Dashboard data regeneration and JSON parse: passed.
+- Public safety scan: passed.
+- `git diff --check`: passed.
+
+Findings:
+
+- The selector again ranked E4 social profile packaging first, score `294`.
+- E4 live profile work remains owner-gated and already packetized from earlier runs.
+- This run prepared the next safe no-approval content-lane artifacts: an E4.1 five-week content plan and an E4.5 weekly review scorecard.
+
+Remaining gaps:
+
+- Live profile edits, publication, social account changes, Notion writes, Git push, provider calls, live crawls, real account collection, outreach, and demand claims remain blocked until separately approved and evidenced.
+
+Next safe action:
+
+- Run AF Review on the E4.1 plan, then ask owner for profile voice, CTA link target, visual policy, and publication timing decisions.
+
+## 2026-07-05 06:30 EEST - Codex automation - starting - Priority mechanical E2.2 packet
+
+Status: starting
+
+Task:
+
+- Run the 06:30 priority mechanical-work lane and select the next safe no-approval artifact from the current plan, recent run folders, wiki log, memory, insights, and live communication state.
+
+Files likely to change:
+
+- `project/runs/2026-07-05-0630-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- The 2026-07-05 06:30 priority mechanical-work run folder and this lane's append-only closeout entries.
+
+Expected output:
+
+- Public-safe selected-task packet, no-approval E2.2 preparation artifact, KB/Notion/GitHub packet, run handout, concise wiki log update, and validation evidence.
+
+Blockers:
+
+- No network calls, provider/API calls, live crawls, production deploys, Git push, credential edits, private-source ingestion, live account changes, outreach, or Notion writes.
+
+Next step:
+
+- Run the priority selector, inspect whether the deterministic top task is already packetized or owner-gated, then prepare the next safe mechanical packet without duplicating prior E4 or E2.1 outputs.
+
+## 2026-07-05 01:10 EEST - Codex automation - starting - Evening skill and hook review
+
+Status: starting
+
+Task:
+
+- Review public-safe skill registry, hook configuration, hook-backed workflow, and reusable-skill drift for the evening automation lane.
+
+Files likely to change:
+
+- `project/runs/2026-07-04-evening-skill-hook-review/`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+- `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, `skills/skills-used.md`, `.codex/hooks.json`, `project/operating-rules.md`, `AGENTS.md`, and skill docs only if concrete drift is found.
+
+Files claimed:
+
+- The 2026-07-04 evening skill/hook review run folder and this run's append-only live-log entries.
+- Skill registry and hook-contract files only for verified drift corrections in this lane.
+
+Expected output:
+
+- Public-safe drift review, any necessary narrow registry or hook updates, run summary, run handout, validation evidence, and automation memory update.
+
+Blockers:
+
+- No network, installs, service starts, provider calls, credential edits, private-source ingestion, deployments, Git push, or external writeback.
+
+Next step:
+
+- Inspect configured and used skills, hook scripts, githooks, validation contracts, and recent public run evidence before deciding whether edits are needed.
+
+## 2026-07-06 06:07 EEST - Codex automation - update - Evening automation ID drift
+
+Status: running
+
+Scope change:
+
+- The active automation metadata for this run uses `archflow-public-evening-skill-update`.
+- The public automation contract and roster still record `archflow-evening-skill-and-hook-update`.
+- This is automation-contract drift, not a new skill or hook behavior change.
+
+Additional files likely to change:
+
+- `project/automation/archflow-public-evening-skill-and-hook-update.md`
+- `project/agents/agent-roster.yaml`
+
+Expected output:
+
+- Narrow automation ID alignment only; no hook trigger, skill list, provider, deployment, or runtime behavior change.
+
+Next step:
+
+- Patch the automation ID fields, then rerun targeted YAML/JSON/script and safety validation.
+
+## 2026-07-06 06:15 EEST - Codex automation - complete - Evening skill and hook review
+
+Status: complete
+
+Files changed:
+
+- `project/agents/agent-roster.yaml`
+- `project/automation/archflow-public-evening-skill-and-hook-update.md`
+- `project/runs/2026-07-05-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-05-evening-skill-hook-review/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+
+Checks run:
+
+- Hooks JSON parse: passed.
+- Hook and guard script compile: passed.
+- Workflow validation: passed.
+- Agent roster and workflow YAML parse: passed.
+- Ignored local env/runtime check: passed.
+- Task-handout execution probe: passed and wrote only ignored local marker state.
+- Public safety scan: passed.
+- `git diff --check`: passed.
+- Tracked text ASCII check: passed.
+- `git status --short`: reviewed.
+
+Findings:
+
+- Skill registries and hook behavior remain aligned; no new skill and no hook behavior change were needed.
+- The active automation metadata uses `archflow-public-evening-skill-update`, while the public automation contract and roster still recorded the older `archflow-evening-skill-and-hook-update` ID.
+- The ID drift was corrected only in the roster and automation contract.
+
+Remaining gaps:
+
+- Existing dirty/untracked artifacts from other automation lanes remain outside this lane.
+- Provider activation, deployment, Git push, Notion writeback, Telegram delivery, live crawler/search/API use, and credential changes remain outside this lane.
+
+Next safe action:
+
+- Keep the next evening pass narrow: compare actual configured/used skills, hook wiring, automation IDs, and recent reusable workflow evidence before creating or changing any skill.
+
+## 2026-07-06 10:39 EEST - Codex automation - handoff - 2026-07-04 evening lane closeout visible
+
+Status: handoff
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/agent-handout.md`
+- Automation memory for this scheduled job.
+
+Checks run:
+
+- Same validation set recorded in the 2026-07-04 evening lane complete entry: hook JSON parse, script compile, workflow validation, roster YAML parse, ignored env/runtime check, task-handout execution probe, public safety scan, `git diff --check`, tracked text ASCII check, and `git status --short` review all passed or were reviewed.
+
+Remaining gaps:
+
+- No registry, hook, or skill-doc drift remains for the 2026-07-04 evening lane.
+- A newer 2026-07-05 evening skill/hook lane is active separately and owns its own run folder.
+
+Next safe action:
+
+- Continue the newer evening lane separately; do not duplicate the 2026-07-04 no-op review artifacts.
+
+## 2026-07-06 10:37 EEST - Codex automation - complete - 2026-07-04 evening skill and hook review
+
+Status: complete
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/agent-handout.md`
+- Automation memory for this scheduled job.
+
+Checks run:
+
+- Hooks JSON parse: passed.
+- Hook, runtime guard, workflow validation, and public safety script compile: passed.
+- Workflow validation: passed.
+- Agent roster YAML parse: passed.
+- Ignored local env/runtime check: passed.
+- Task-handout execution probe: passed.
+- Public safety scan: passed.
+- `git diff --check`: passed.
+- Tracked text ASCII check: passed after excluding binary asset extensions.
+- `git status --short`: reviewed.
+
+Findings:
+
+- Skill registries, task-handout hook wiring, hook script behavior, githooks, operating rules, and skill docs remain aligned.
+- No public-safe registry, hook, or skill-doc edit was needed for the 2026-07-04 evening lane.
+- No new concrete repeated workflow justified a new skill under `skills/`.
+- Newer priority, daily, and 2026-07-05 evening lane entries appeared while this run was active; this run did not modify their claimed artifacts.
+
+Remaining gaps:
+
+- Provider activation, deployment, Git push, Notion writeback, Telegram delivery, live crawls/search/API use, and credential changes remain outside this lane.
+- The newer 2026-07-05 evening review lane should close its own run folder and memory entry separately.
+
+Next safe action:
+
+- Keep future evening passes narrow: compare actual configured/used skills and hook wiring, then write a no-op summary unless concrete public-safe drift exists.
+
+## 2026-07-06 04:45 EEST - Codex automation - starting - Daily skill retrospective and RAG review
+
+Status: starting
+
+Task:
+
+- Review the 2026-07-05 ArchFlow public skill, hook, automation, coordination, run-note, issue, report, and durable-memory evidence.
+- Keep this lane separate from the evening skill/hook registry drift lane and from approval-gated provider, deploy, push, crawl, service-start, or external-write work.
+
+Files likely to change:
+
+- `project/runs/20260705_daily_skill_retrospective.md`
+- `project/runs/20260705_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- Daily skill retrospective artifacts for the 2026-07-05 evidence window.
+- This live-log entry and the final closeout entry for the daily retrospective lane.
+
+Expected output:
+
+- Public-safe dated retrospective, run note, issue/log updates if useful, checks, blockers, and next safe action.
+
+Blockers:
+
+- No network, installs, provider calls, deploys, pushes, service starts, live crawls, private-source ingestion, or external writes.
+
+Next step:
+
+- Write the dated retrospective from targeted run evidence, then validate Markdown paths and public safety.
+
+## 2026-07-06 10:42 EEST - Codex automation - handoff - 2026-07-04 evening lane no-op complete
+
+Status: handoff
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/agent-handout.md`
+- Automation memory for this scheduled job.
+
+Checks run:
+
+- Hook JSON parse, script compile, workflow validation, roster YAML parse, ignored env/runtime check, task-handout execution probe, public safety scan, `git diff --check`, tracked text ASCII check, and `git status --short` review.
+
+Remaining gaps:
+
+- None for the 2026-07-04 evening skill/hook lane.
+- Newer evening and daily lanes are separate and should close their own artifacts.
+
+Next safe action:
+
+- Do not duplicate the 2026-07-04 no-op review; continue newer lanes from their own run folders.
+
+## 2026-07-06 04:44 EEST - Codex automation - starting - Priority mechanical work lane
+
+Status: starting
+
+Task:
+
+- Run the 00:30 priority mechanical-work lane and choose the next useful public-safe mechanical action that needs no owner confirmation.
+
+Files likely to change:
+
+- `project/runs/2026-07-06-0030-priority-mechanical-work/`
+- `wiki/log.md`
+- `project/dashboard/data.json` if dashboard data must be regenerated after public log changes.
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- `project/runs/2026-07-06-0030-priority-mechanical-work/`
+- This live-log entry and final closeout entry for the 00:30 priority lane.
+
+Expected output:
+
+- Public-safe selected-task packet, continuation prompt, KB/Notion/GitHub packet or equivalent no-approval artifact, run handout, concise wiki log update, and validation evidence.
+
+Blockers:
+
+- No network calls, provider/API calls, live crawls, production deploys, Git push, credential edits, private-source ingestion, live account changes, external writes, or Notion writes.
+
+Next step:
+
+- Run the priority selector, inspect July 5 packets for duplication, then prepare the highest-value safe mechanical artifact.
+
+## 2026-07-06 06:00 EEST - Codex automation - complete - Priority mechanical E4.1 content packet late closeout
+
+Status: complete
+
+Files changed:
+
+- `project/runs/2026-07-05-0030-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/selected-task.json`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/e4-live-profile-gate.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/e4-1-five-week-content-plan.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/e4-5-weekly-review-scorecard.md`
+- `project/runs/2026-07-05-0030-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Priority selector run: passed.
+- JSON parse for `selected-task.json`: passed.
+- Python compile for `project/scripts/priority-task-operator.py`: passed.
+- Dashboard data regeneration and JSON parse: passed.
+- Public safety scan: passed.
+- `git diff --check`: passed.
+- `git status --short`: reviewed; unrelated pre-existing dirty/untracked files remain outside this run.
+
+Findings:
+
+- The selector ranked E4 social profile packaging first, score `294`.
+- E4 live profile work remains owner-gated and already packetized from earlier runs.
+- This run prepared the next safe no-approval E4.1/E4.5 content-lane artifacts.
+- A newer 2026-07-06 00:30 priority lane entry already exists and was not modified beyond this append-only closeout.
+
+Remaining gaps:
+
+- Live profile edits, publication, social account changes, Notion writes, Git push, provider calls, live crawls, real account collection, outreach, and demand claims remain blocked until separately approved and evidenced.
+
+Next safe action:
+
+- Run AF Review on the E4.1 plan, then ask owner for profile voice, CTA link target, visual policy, and publication timing decisions.
+
+## 2026-07-06 06:00 EEST - Codex automation - starting - Evening skill and hook review
+
+Status: starting
+
+Task:
+
+- Review public-safe skill registries, hook configuration, hook-backed workflows, and reusable-skill drift for the evening automation lane.
+
+Files likely to change:
+
+- `project/runs/2026-07-05-evening-skill-hook-review/`
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+- `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, `skills/skills-used.md`, `.codex/hooks.json`, `project/operating-rules.md`, `AGENTS.md`, and skill docs only if concrete drift is found.
+
+Files claimed:
+
+- The 2026-07-05 evening skill/hook review run folder and this lane's append-only live-log entries.
+- Skill registry and hook-contract files only for verified drift corrections in this lane.
+
+Expected output:
+
+- Public-safe drift review, any necessary narrow registry or hook updates, run summary, run handout, validation evidence, and automation memory update.
+
+Blockers:
+
+- No network, installs, service starts, provider calls, credential edits, private-source ingestion, deployments, Git push, external writeback, or destructive cleanup.
+
+Next step:
+
+- Inspect configured and used skills, hook scripts, githooks, validation contracts, and recent public run evidence before deciding whether edits are needed.
+
+## 2026-07-06 10:37 EEST - Codex automation - starting - Daily skill retrospective and RAG review
+
+Status: starting
+
+Task:
+
+- Review ArchFlow public-safe skill, hook, automation, coordination, run-note, issue, report, and durable-memory evidence for the current daily retrospective window.
+- Keep this lane separate from the evening skill/hook registry drift lane and from approval-gated provider, deploy, push, crawl, service-start, or external-write work.
+
+Files likely to change:
+
+- `project/runs/20260706_daily_skill_retrospective.md`
+- `project/runs/20260706_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- Daily skill retrospective artifacts for the 2026-07-05 to 2026-07-06 evidence window.
+- This live-log entry and final closeout entry for the daily retrospective lane.
+
+Expected output:
+
+- Public-safe dated retrospective, run note, issue/log updates where useful, checks, blockers, and next safe action.
+
+Blockers:
+
+- No network, installs, provider calls, deploys, pushes, service starts, live crawls, private-source ingestion, or external writes.
+
+Next step:
+
+- Write the dated retrospective from targeted run evidence, then validate Markdown paths and public safety.
+
+## 2026-07-06 10:45 EEST - Codex automation - handoff - 2026-07-04 evening lane no-op complete
+
+Status: handoff
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-04-evening-skill-hook-review/agent-handout.md`
+- Automation memory for this scheduled job.
+
+Checks run:
+
+- Hook JSON parse, script compile, workflow validation, roster YAML parse, ignored env/runtime check, task-handout execution probe, public safety scan, `git diff --check`, tracked text ASCII check, and `git status --short` review.
+
+Remaining gaps:
+
+- None for the 2026-07-04 evening skill/hook lane.
+- Newer evening and daily lanes are separate and should close their own artifacts.
+
+Next safe action:
+
+- Do not duplicate the 2026-07-04 no-op review; continue newer lanes from their own run folders.
+
+## 2026-07-06 10:40 EEST - Codex automation - starting - Priority mechanical work lane
+
+Status: starting
+
+Task:
+
+- Run the 06:30 priority mechanical-work lane and choose the next useful public-safe mechanical action that needs no owner confirmation.
+- Keep this lane separate from the active daily retrospective and evening skill/hook lanes.
+
+Files likely to change:
+
+- `project/runs/2026-07-06-0630-priority-mechanical-work/`
+- `wiki/log.md` only as a concise append-only result if coordination remains safe.
+- `project/dashboard/data.json` only if a public log/data refresh is needed after public text changes.
+- `project/live/communication/agent-communication-log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- `project/runs/2026-07-06-0630-priority-mechanical-work/`
+- This live-log entry and the final closeout entry for the 06:30 priority lane.
+- No claim on the daily retrospective run artifacts or evening skill/hook run artifacts.
+
+Expected output:
+
+- Public-safe selected-task packet, PitAgent continuation prompt, KB/Notion/GitHub packet or equivalent no-approval artifact, run handout, concise durable result, and validation evidence.
+
+Blockers:
+
+- No network calls, provider/API calls, live crawls, production deploys, Git push, credential edits, private-source ingestion, live account changes, external writes, Notion writes, analytics activation, or public publication.
+- If the top-ranked task remains owner-gated and already packetized, preserve selector evidence and pivot to the next bounded no-approval artifact.
+
+Next step:
+
+- Run the priority selector for the 06:30 run, compare recent packet folders, then prepare the highest-value non-duplicative mechanical artifact.
+
+## 2026-07-06 10:40 EEST - Codex automation - complete - Priority mechanical E5.2 packet
+
+Status: complete
+
+Task:
+
+- Closed the 00:30 priority mechanical-work lane after choosing the highest-value no-approval follow-on for `project/runs/2026-07-06-0030-priority-mechanical-work/`.
+
+Files changed:
+
+- `project/runs/2026-07-06-0030-priority-mechanical-work/selected-task.md`
+- `project/runs/2026-07-06-0030-priority-mechanical-work/selected-task.json`
+- `project/runs/2026-07-06-0030-priority-mechanical-work/pitagent-chat-prompt.md`
+- `project/runs/2026-07-06-0030-priority-mechanical-work/kb-notion-github-packet.md`
+- `project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-lead-funnel-metrics.md`
+- `project/runs/2026-07-06-0030-priority-mechanical-work/e5-2-diagnostic-event-schema.md`
+- `project/runs/2026-07-06-0030-priority-mechanical-work/agent-handout.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- Automation memory for the 00:30 scheduled job.
+
+Checks run:
+
+- `python3 -m json.tool project/runs/2026-07-06-0030-priority-mechanical-work/selected-task.json` passed.
+- `python3 -m py_compile project/scripts/priority-task-operator.py project/scripts/generate-dashboard-data.py` passed.
+- `python3 project/scripts/generate-dashboard-data.py` passed and regenerated `project/dashboard/data.json`.
+- `python3 -m json.tool project/dashboard/data.json` passed.
+- `python3 scripts/public_safety_scan.py` passed after final edits.
+- `git diff --check` passed after final edits.
+
+Remaining gaps:
+
+- E4 live profile edits, publication, social account changes, analytics activation, diagnostic implementation, CRM/storage, real lead capture, provider calls, Notion writeback, Git push, and demand claims remain gated.
+- A separate 06:30 priority lane has started and owns `project/runs/2026-07-06-0630-priority-mechanical-work/`; do not merge the two run folders.
+
+Next safe action:
+
+- Use the E5.2 funnel and diagnostic event schema to prepare E3.4 diagnostic form-field mapping, or get owner approval for the blocked E4 live profile decisions.
+
+## 2026-07-07 01:33 EEST - Codex automation - starting - Daily skill retrospective continuation
+
+Status: starting
+
+Task:
+
+- Continue the July 6 daily skill retrospective and RAG knowledge review from the existing same-lane claim.
+- Review recent ArchFlow public-safe run notes, reports, automation TOML, coordination entries, and evening skill/hook outputs without duplicating the registry drift lane.
+
+Files likely to change:
+
+- `project/runs/20260706_daily_skill_retrospective.md`
+- `project/runs/20260706_run_daily_skill_retrospective.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md`
+- Automation memory for this scheduled job.
+
+Files claimed:
+
+- The July 6 daily retrospective artifacts, this continuation entry, the final closeout entry, and this automation memory update.
+
+Expected output:
+
+- Public-safe retrospective, run note, concise durable log update if useful, validation evidence, blockers, and next safe action.
+
+Blockers:
+
+- No network, installs, provider calls, deploys, pushes, service starts, live crawls, private-source ingestion, Nexus/writeback actions, or external writes.
+
+Next step:
+
+- Inspect existing July 6 draft artifacts and recent run evidence, then finalize the retrospective with targeted checks.
+
+## 2026-07-07 01:39 EEST - Codex automation - complete - Daily skill retrospective evidence correction
+
+Status: complete
+
+Task:
+
+- Completed the July 6 daily skill/RAG retrospective and corrected stale closeout evidence after the latest priority and evening-lane artifacts were available.
+
+Files changed:
+
+- `project/runs/20260706_daily_skill_retrospective.md`
+- `project/runs/20260706_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- Automation memory for this scheduled job.
+
+Checks run:
+
+- Markdown path existence checks for the report, run note, and issue file: passed.
+- Dashboard data regeneration: passed.
+- Dashboard JSON parse: passed.
+- Automation TOML parse: passed.
+- Public safety scan: passed.
+- `git diff --check` from the scoped public project repository: passed.
+- `git status --short` from the scoped public project repository: reviewed; unrelated pre-existing modified and untracked files remain outside this run.
+
+Findings:
+
+- The latest evening skill/hook lane fixed only automation-ID metadata drift; skill membership and hook behavior stayed unchanged.
+- The July 6 priority folders now include handout evidence. The 2026-07-05 06:30 priority folder remains packet-only.
+- No new skill is justified. The concrete improvement belongs in the existing `priority-task-operator` workflow: preserve deterministic top-score evidence, then skip or penalize already-packetized owner-gated tasks for the next no-approval artifact.
+
+Remaining gaps:
+
+- Provider-backed execution, canonical model-call ledger, Telegram sender, live Nexus/writeback, vector-default retrieval, E4 publication, external writes, and buyer proof remain gated.
+
+Next safe action:
+
+- Patch or configure priority-task de-duplication, then run AF Review on the E5.2/E5.3 measurement packets before E3 diagnostic or E6 outreach mapping.
+## 2026-07-07 18:05 EEST - Codex - starting - Jarvis chat rebuild and Railway state check
+
+Status: starting
+
+Task:
+
+- Rework the dashboard Jarvis surface into a large text-first chat, disable browser voice mode, add public-safe file attachment handling, verify the API wiring, and report the current Railway hosted-runtime state.
+
+Files likely to change:
+
+- `project/dashboard/index.html`
+- `project/dashboard/app.js`
+- `project/dashboard/styles.css`
+- `services/jarvis-api/app.py`
+- `project/runs/2026-07-07-jarvis-chat-api-rebuild/`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- The Jarvis dashboard files, the Jarvis API app file, this live-log entry and closeout entry, and the new Jarvis chat rebuild run folder.
+
+Expected output:
+
+- Voice controls removed from the main Jarvis experience, a larger chat-first UI with file attachments, corrected API request handling, Railway state evidence, validation checks, and a public-safe run handout.
+
+Blockers:
+
+- No production promotion, Git push, provider activation, persistence, private-source ingestion, live writeback, or credential changes without separate approval.
+
+Next step:
+
+- Inspect the current dashboard/API implementation and local dependency footprint, then patch only the Jarvis chat and API surfaces needed for this request.
+
+## 2026-07-07 18:32 EEST - Codex - update - Jarvis scope includes public skill contract
+
+Status: update
+
+Task:
+
+- Extend the Jarvis chat rebuild scope to align the public `archflow1` skill contract with the new text-chat and file-transfer dashboard policy.
+
+Files additionally likely to change:
+
+- `skills/archflow1/SKILL.md`
+
+Files additionally claimed:
+
+- `skills/archflow1/SKILL.md` for the narrow voice-disabled and file-transfer wording update only.
+
+Expected output:
+
+- Future Jarvis/API agents should no longer assume the main dashboard has browser mic, speaker, STT, or TTS enabled.
+
+Blockers:
+
+- No change to provider activation, Railway deployment, external writeback, or credential policy.
+
+Next step:
+
+- Patch the skill wording after the dashboard/API code is aligned.
+
+## 2026-07-07 18:38 EEST - Codex - update - Dashboard smoke markers
+
+Status: update
+
+Task:
+
+- Update the dashboard static smoke script markers so validation checks the new chat-first Jarvis screen instead of the removed voice controls.
+
+Files additionally likely to change:
+
+- `project/scripts/dashboard-static-smoke.py`
+
+Files additionally claimed:
+
+- `project/scripts/dashboard-static-smoke.py` for marker updates only.
+
+Expected output:
+
+- The smoke test should validate `Jarvis Chat`, `/api/chat`, file transfer, and disabled voice markers.
+
+Blockers:
+
+- No change to deployment, production promotion, provider activation, or external writeback.
+
+Next step:
+
+- Patch the marker list and rerun the static smoke test.
+
+## 2026-07-07 18:45 EEST - Codex - update - Jarvis API smoke attachment coverage
+
+Status: update
+
+Task:
+
+- Extend the existing Jarvis API contract smoke with one bounded file-attachment payload for `/api/chat`.
+
+Files additionally likely to change:
+
+- `project/scripts/jarvis-api-contract-smoke.py`
+
+Files additionally claimed:
+
+- `project/scripts/jarvis-api-contract-smoke.py` for attachment smoke coverage only.
+
+Expected output:
+
+- API validation should prove provider calls and writeback remain zero while `/api/chat` accepts conversation context and attachment summary input.
+
+Blockers:
+
+- No provider activation, no external API call, no Railway mutation, no persistent file storage.
+
+Next step:
+
+- Run the API smoke plus final public-safety and diff checks.
+
+## 2026-07-07 18:56 EEST - Codex - complete - Jarvis chat API rebuild
+
+Status: complete
+
+Task:
+
+- Rebuilt Jarvis into a large text-first chat, disabled voice mode, added bounded file transfer to `/api/chat`, aligned Vercel/Railway API contracts, checked live Vercel and Railway state, and wrote durable run artifacts.
+
+Files changed:
+
+- `project/dashboard/index.html` was inspected only.
+- `project/dashboard/app.js`
+- `project/dashboard/styles.css`
+- `project/dashboard/README.md`
+- `api/_jarvis_contract.py`
+- `services/jarvis-api/app.py`
+- `services/jarvis-api/README.md`
+- `project/scripts/dashboard-static-smoke.py`
+- `project/scripts/jarvis-api-contract-smoke.py`
+- `skills/archflow1/SKILL.md`
+- `project/runs/2026-07-07-jarvis-chat-api-rebuild/agent-handout.md`
+- `project/runs/2026-07-07-jarvis-chat-api-rebuild/railway-state.md`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- `node --check project/dashboard/app.js` passed.
+- Python compile for Vercel API, Railway API, and smoke scripts passed.
+- `python3 project/scripts/generate-dashboard-data.py` passed.
+- `jq -e 'type == "object"' project/dashboard/data.json` passed.
+- `python3 project/scripts/dashboard-static-smoke.py` passed after approved local HTTP/headless Chrome permission: routes `8`, provider calls `0`, writeback `0`.
+- `project/local/venv/bin/python project/scripts/jarvis-api-contract-smoke.py` passed: endpoints `17`, provider calls `0`, writeback `0`.
+- `python3 scripts/public_safety_scan.py` passed.
+- `git diff --check` passed.
+
+Findings:
+
+- Local source now supports text chat, `/api/chat`, conversation context, and bounded file attachments.
+- Voice mode is disabled in the dashboard and API contract.
+- Live production Vercel still serves the older July 3 API contract and has not received this local update.
+- Railway `jarvis-api` has a successful prior deployment and running evidence from July 3, but no 2026-07-07 redeploy was performed.
+
+Remaining gaps:
+
+- Production deploy, Git push, Railway redeploy, provider activation, auth/persistence, durable upload storage, dashboard writeback, and Figma sync remain gated.
+- Existing unrelated modified and untracked public-project files remain in the worktree from prior lanes.
+
+Next safe action:
+
+- Get explicit deployment approval, then deploy through the approved Vercel/Railway path and rerun hosted `/health`, `/api/chat` attachment, and `/api/voice/chat` disabled-packet checks.

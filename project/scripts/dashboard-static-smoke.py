@@ -7,8 +7,8 @@ surfaces without a live backend:
 - (1) PRD/ICP Flow
 - (2) Agent Orchestra
 
-It intentionally does not test provider calls, durable writeback, microphone
-permission, or deployment. Those remain gated runtime checks.
+It intentionally does not test provider calls, durable writeback, audio
+capture/playback, or deployment. Those remain gated runtime checks.
 """
 
 from __future__ import annotations
@@ -39,10 +39,13 @@ SECRET_PATTERNS = [
 
 ROUTE_MARKERS = {
     "#jarvis": [
-        "Jarvis Command Center",
+        "Jarvis Chat",
         "Architecture 1",
         "Architecture 2",
-        "Manual transcript fallback",
+        "/api/chat",
+        "File transfer",
+        "Voice disabled",
+        "Attach",
         "Operating Switchboard",
         "PRD/ICP service product",
         "Reliable agent orchestra",
@@ -53,8 +56,7 @@ ROUTE_MARKERS = {
         "Public-Safe Sample Outputs",
         "Sanitized PRD excerpt",
         "Agent node config",
-        "Jarvis Chat",
-        "Voice input requires browser microphone permission",
+        "text chat and attachments only",
     ],
     "#history": [
         "Chat History",

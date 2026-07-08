@@ -6,6 +6,8 @@ Current state:
 
 - `MODEL_PROVIDER=none` is the default.
 - Railway E1.7 baseline passed on 2026-07-03 for hosted health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text packet routes.
+- The 2026-07-07 dashboard contract uses text chat and bounded file attachments through `/api/chat`.
+- `/api/voice/*` now returns disabled packets; voice mode is off in the main dashboard.
 - OpenRouter is server-side only and disabled until owner approval, server-side secrets, fresh pricing, ledger proof, and budget guard are live.
 - CrewAI Level 3 is represented only as `proof_passed_not_default_runtime`.
 - Browser requests create review packets; they do not write Git, Notion, WikiLLM, Telegram, or deployment state.
@@ -16,7 +18,7 @@ Run locally after installing dependencies in an approved environment:
 uvicorn app:app --reload --host 127.0.0.1 --port 8787
 ```
 
-Required endpoints are implemented in `app.py`.
+Required endpoints are implemented in `app.py`. Main Jarvis chat uses `/api/chat`; PRD/ICP and Agent Orchestra screens keep their lane endpoints.
 
 Railway deploy root:
 
