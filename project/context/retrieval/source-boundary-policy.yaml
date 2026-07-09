@@ -1,0 +1,53 @@
+version: 2026-07-08
+status: active
+purpose: >
+  Source-boundary policy for RAG evidence used inside CAG/RAG context capsules.
+
+approved_corpus:
+  include:
+    - project/
+    - history/
+    - skills/
+    - wiki/
+  exclude:
+    - .git/
+    - project/.env.local
+    - project/local/
+    - raw/
+    - source_exports/
+    - secrets/
+    - private/
+    - tmp/
+
+retrieval_rules:
+  require_source_path: true
+  require_repo_relative_path: true
+  refuse_private_source: true
+  retrieval_is_read_only: true
+  no_source_path_means_no_evidence: true
+  provider_output_is_not_fact_without_review: true
+  lexical_fallback_required: true
+  vector_default_requires_twenty_query_benchmark: true
+
+forbidden_outputs:
+  - secrets
+  - credentials
+  - local_absolute_paths
+  - private_urls
+  - raw_private_text
+  - account_ids
+  - deployment_ids
+  - personal_identifiers
+
+review_gate:
+  owner_agent: af_review
+  approve_if:
+    - all_refs_are_repo_relative
+    - source_boundary_status_pass
+    - facts_have_evidence
+    - unsupported_claims_zero
+  block_if:
+    - private_data_detected
+    - external_action_required_without_approval
+    - retrieved_context_missing_source_path
+    - provider_or_writeback_activation_requested

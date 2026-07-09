@@ -1,0 +1,161 @@
+{
+  "capsule_version": "v2",
+  "run_id": "2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration",
+  "generated_at": "2026-07-08T15:33:00Z",
+  "created_by": "codex",
+  "workspace_scope": "public_project",
+  "user_goal": "Integrate the Founder Meeting v2, Hermes Watchdog, CAG/RAG, service-company, market-content-sales, and E1-E7 package into the ArchFlow public project.",
+  "execution_type": "Implementation",
+  "risk_level": "high",
+  "source_boundary_status": "pass",
+  "cag_core_version": "2026-07-08-founder-meeting-v2",
+  "cag_core_hash": "sha256:c666a3c25033467166de26e0a5339061f3ca0c0f2877ebf6a29a645e5eecdc07",
+  "cag_core_refs": [
+    {
+      "source_path": "project/operating-rules.md",
+      "purpose": "public safety, live communication, approval, and task handout rules"
+    },
+    {
+      "source_path": "project/agentic-stack.md",
+      "purpose": "current architecture and runtime boundaries"
+    },
+    {
+      "source_path": "project/project-plan.md",
+      "purpose": "E1-E7 spine and current task state"
+    },
+    {
+      "source_path": "project/agents/agent-roster.yaml",
+      "purpose": "role registry and automation ownership"
+    },
+    {
+      "source_path": "project/workflows/llamaindex-rag.yaml",
+      "purpose": "bounded RAG corpus and retrieval contract"
+    }
+  ],
+  "approved_corpus_refs": [
+    "project/",
+    "history/",
+    "skills/",
+    "wiki/"
+  ],
+  "retrieval_required": true,
+  "rag_queries": [
+    "current ArchFlow agentic stack and runtime boundaries",
+    "current E1-E7 task state",
+    "skills governance and role mappings",
+    "LlamaIndex bounded retrieval contract"
+  ],
+  "retrieved_context_refs": [
+    {
+      "source_path": "project/workflows/llamaindex-rag.yaml",
+      "doc_id": "llamaindex-rag",
+      "chunk_id": "approved-corpus",
+      "retrieval_mode": "manual_read",
+      "score": 1.0,
+      "public_safety_status": "pass"
+    },
+    {
+      "source_path": "project/project-plan.md",
+      "doc_id": "project-plan",
+      "chunk_id": "e1-e7-spine",
+      "retrieval_mode": "manual_read",
+      "score": 1.0,
+      "public_safety_status": "pass"
+    }
+  ],
+  "facts": [
+    "Codex remains the executor, reviewer, file editor, validator, and final integration boundary.",
+    "Hermes is planned as watchdog/controller/reviewer, not executor.",
+    "Provider calls, external writeback, deploys, Notion mutation, Railway actions, Telegram sends, Linear mirrors, Figma sync, Git push, and production promotion require explicit owner approval.",
+    "The latest owner content instruction is 70% static educational or analytical posts, 20% carousel/checklist/template posts, and 10% short video or scripted demo posts."
+  ],
+  "interpretations": [
+    "The package should be integrated additively into current architecture rather than copied over existing rules.",
+    "CAG/RAG should become a compact pre-execution context method, not a broad memory or ingestion system."
+  ],
+  "hypotheses": [
+    "The first paid offer should be tested as a productized service before SaaS readiness is claimed.",
+    "Hermes can later supervise Codex and subagents through task contracts without becoming an executor."
+  ],
+  "gaps": [
+    "No external actions are approved in this run.",
+    "Validated demand is not proven before E7 payment or firm paid-intent evidence."
+  ],
+  "allowed_files": [
+    "AGENTS.md",
+    "project/operating-rules.md",
+    "project/agentic-stack.md",
+    "project/workflows/",
+    "project/agents/",
+    "project/context/",
+    "project/content/templates/",
+    "project/project-plan.md",
+    "project/reports/",
+    "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/",
+    "wiki/"
+  ],
+  "forbidden_actions": [
+    "provider activation",
+    "external writeback",
+    "notion mutation",
+    "linear mirror",
+    "telegram send",
+    "railway action",
+    "git push",
+    "deployment",
+    "production promotion",
+    "figma sync",
+    "copying raw private source text"
+  ],
+  "role_assignment": [
+    {
+      "role": "codex",
+      "scope": "implementation and final integration",
+      "output": "repo files, checks, and handoff"
+    },
+    {
+      "role": "hermes_watchdog",
+      "scope": "planned classification, task contract, review, and stop control",
+      "output": "controller prompt and workflow nodes"
+    },
+    {
+      "role": "af_review",
+      "scope": "public safety, evidence, runtime boundary review",
+      "output": "final QA decision"
+    }
+  ],
+  "acceptance_criteria": [
+    "Hermes is documented as watchdog/controller/reviewer only.",
+    "CAG/RAG schema, procedure, and run capsule exist.",
+    "Agent roster and skills governance distinguish shared and role-specific skills.",
+    "Service-company, market/content/sales, and E1-E7 packets are present.",
+    "Validation results are recorded.",
+    "No unsupported runtime, demand, ROI, or customer claim is promoted."
+  ],
+  "evidence_required": [
+    "repo-relative file paths",
+    "subagent findings",
+    "validation command results",
+    "run handout",
+    "public safety scan"
+  ],
+  "validation_checks": [
+    "YAML parse for changed workflow/agent files",
+    "JSON parse for schema, capsule, and dashboard data",
+    "Python compile for changed Python files",
+    "dashboard data regeneration",
+    "public safety scan",
+    "git diff --check"
+  ],
+  "stop_conditions": [
+    "private or secret data would enter public files",
+    "same check fails twice",
+    "external side effect is required without approval",
+    "broad unrelated refactor would be needed"
+  ],
+  "review_gate": "AF Review",
+  "review_decision": "pending",
+  "provider_policy": "disabled_until_explicit_approval",
+  "external_side_effects_policy": "blocked_without_explicit_owner_approval",
+  "linear_policy": "not_required_optional_free_only"
+}

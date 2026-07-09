@@ -5,6 +5,7 @@ Default ICP: B2B SaaS product leaders for the Product Discovery-to-Production PR
 Default channel: LinkedIn first, then adapted excerpts for X and Threads after review
 Default voice: ArchFlow company content first
 Default visual style: product-system and research-lab
+Default content mix: 70 percent static educational or analytical posts, 20 percent carousel/checklist/template posts, 10 percent short video or scripted demo posts
 
 ## Purpose
 
@@ -20,12 +21,20 @@ These templates turn executed ArchFlow work into public-safe content planning as
 | `research-check-task-template.md` | A research, ICP, market-signal, or account-evidence task runs | Evidence-card style research/check task write-up |
 | `review-gate-template.md` | AF Review or another gate approves, blocks, or requests edits | Review verdict with issue list and required next action |
 | `after-execution-report-template.md` | Any executed task needs durable reporting | Run report with proof, outputs, checks, approvals, and save locations |
+| `distribution-70-20-10-template.md` | Planning a weekly or five-week content batch | Distribution plan that keeps video at 10 percent and routes every post to a reviewed CTA |
+| `icp-card-template.md` | E2 produces or revises ICP evidence | ICP card with facts, hypotheses, gaps, buyer pains, current alternatives, and evidence needs |
+| `competitor-objection-script-template.md` | Positioning against current alternatives | Objection scripts for roadmap suites, insight repositories, PRD drafting tools, workspace AI/search, status quo, junior PM, and consultants |
+| `discovery-call-script-template.md` | Preparing E6 calls or diagnostics | 45-minute JTBD/customer-forces call script |
+| `qualification-checklist-template.md` | Reviewing inbound or outbound fit | Source-packet willingness, trigger, authority, privacy, budget path, and next action checklist |
+| `five-week-content-calendar-template.md` | Planning E4 content | Five-week static/carousel/video calendar with review gates and demand metrics |
+| `diagnostic-offer-template.md` | Packaging the first service offer | Productized diagnostic offer and PRD Rescue Sprint conversion path |
 
 ## Global Defaults
 
 - Audience: Directors or VPs of Product, Heads of Product, Product Ops leads, and senior PM leaders in B2B SaaS scaleups.
 - Offer frame: raw product-team material becomes a reviewed PRD, backlog, acceptance criteria, decision log, and KB handoff.
 - Content identity: ArchFlow company content first, not personal build-in-public content.
+- Content operating mix: 70% static educational/analytical, 20% carousel/checklist/template, 10% short video/scripted demo. Every video needs a static companion.
 - Evidence labels: FACT, INTERPRETATION, HYPOTHESIS, GAP.
 - Allowed style: source boundaries, artifact before/after blocks, redaction bars, source-status chips, simple process diagrams, proof cards.
 - Blocked style: private screenshots, raw transcripts, private links, credentials, operational IDs, local paths, customer logos, named target accounts, fake dashboards, demand or ROI claims before E6/E7 proof.

@@ -1,7 +1,7 @@
 # Daily Retrospective Open Operational Gaps
 
 Date: 2026-07-01
-Status: open, partially updated on 2026-07-07
+Status: open, partially updated on 2026-07-08
 
 ## Issue
 
@@ -85,3 +85,32 @@ Updated closure table:
 | Live Nexus/writeback | Open |
 | Runtime/backend claims | Open for full product runtime; guarded packet routes are not provider execution |
 | Scheduled-lane closeout quality | Open for packet-only lanes such as 2026-07-05 06:30; July 6 priority lanes have handout evidence |
+
+## 2026-07-08 Status Update
+
+FACT:
+
+- The daily and evening ArchFlow public review automations are active in current automation TOML metadata.
+- The priority mechanical-work 00:30 and 06:30 automations are paused in current automation TOML metadata.
+- The Yushchenko model-efficiency observer automation is paused in current automation TOML metadata.
+- `project/agents/agent-roster.yaml` and project automation docs contain stale or mismatched automation IDs/status descriptions for some lanes.
+- The July 8 evening skill/hook review found no registry or hook drift, but this daily retrospective found automation metadata drift by comparing project docs to TOML state.
+- Latest RAG evidence remains bounded to approved public folders and currently uses lexical fallback because vector embedding was unavailable.
+
+INTERPRETATION:
+
+- Missing same-day priority or model-efficiency outputs should not be treated as fresh scheduled-run failures while those automations are paused.
+- Automation metadata reconciliation is now a concrete project-local gap, not a new skill requirement.
+- Provider, Telegram, Nexus/writeback, full runtime/backend, vector-default retrieval, social publication, and buyer proof gaps remain open.
+
+Updated closure table:
+
+| Gap | 2026-07-08 state |
+|---|---|
+| Priority-task runtime | Closed for packet generation; automation currently paused; owner-gated de-duplication remains open for reactivation |
+| Model-call ledger | Open for canonical provider-backed Jarvis/OpenRouter ledger; observer automation currently paused |
+| Telegram sender | Open for recurring automation sender proof |
+| Live Nexus/writeback | Open |
+| Runtime/backend claims | Open for full product runtime; guarded packet routes are not provider execution |
+| Scheduled-lane closeout quality | Open for old packet-only lane evidence; do not apply as a July 8 scheduled-run failure while paused |
+| Automation metadata reconciliation | Open; project docs/registry should be patched to match TOML IDs, statuses, and working directories |

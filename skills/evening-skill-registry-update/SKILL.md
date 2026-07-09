@@ -34,6 +34,8 @@ Read all of:
 - `.codex/hooks.json`
 - `skills/task-handout/SKILL.md`
 - `project/scripts/task-handout-hook.py`
+- `project/scripts/post-execution-skill-update.py`
+- `skills/evening-skill-registry-update/stop-rules.md`
 
 Optional but recommended:
 
@@ -61,7 +63,14 @@ Optional but recommended:
    - Record `FACT/INTERPRETATION/HYPOTHESIS/GAP`.
    - Add explicit no-op confirmation when files are intentionally unchanged.
    - Add a short "inefficiency evidence" note when a recurrent step is not value-bearing.
-6. Update the lane inefficiency list:
+6. Run the post-execution skill update review:
+   - Use `project/scripts/post-execution-skill-update.py --run-dir project/runs/<run-id>` for a run folder, or pass a single run note file when that is the existing artifact.
+   - Use `--latest` only when the latest run folder is the intended target.
+   - The script must decide one of `NO_UPDATE`, `APPEND_PATTERN`, or `PATCH_EXISTING_SKILL`.
+   - Default to review-only output. Use `--apply` only when the evidence is public-safe, reusable, and points to an existing skill or support file.
+   - If the target skill has no matching support file, store the candidate under this skill's `candidate-patterns.md` instead of creating a new skill or rewriting `SKILL.md`.
+   - Keep `SKILL.md` edits manual and reviewed; the script appends only to support files.
+7. Update the lane inefficiency list:
    - Keep a short do-not-repeat list for this lane.
    - Promote only repeated, durable non-value patterns into `wiki/insights.md` via the daily review handoff.
 
@@ -105,6 +114,8 @@ If changes are needed, update only:
 - `project/agents/agent-roster.yaml`
 - `skills/skills-used.md`
 - `.codex/hooks.json`
+- `skills/evening-skill-registry-update/*.md` support files
+- existing target skill support files when the post-execution review produces evidence-backed `APPEND_PATTERN`
 
 If no changes are needed, add a `run-summary` proving no drift and preserve no-op cadence.
 
@@ -120,5 +131,6 @@ The pass is complete when:
 
 - configured agents/skills are synchronized,
 - hook command and script path are aligned,
+- post-execution skill update review has produced a `NO_UPDATE`, `APPEND_PATTERN`, or `PATCH_EXISTING_SKILL` decision,
 - irrelevant-tool constraints are recorded,
 - and a concise report is available for next-day review.

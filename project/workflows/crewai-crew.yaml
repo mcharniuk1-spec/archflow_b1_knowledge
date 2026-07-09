@@ -22,6 +22,17 @@ telemetry_for_guard_runs: disabled
 config_check_script: project/scripts/crewai-config-check.py
 
 agents:
+  hermes_watchdog:
+    role: Planned watchdog, controller, and reviewer
+    goal: Classify work, assemble CAG/RAG context capsules, write task contracts, review evidence, and stop or escalate without executing files or external actions.
+    status: planned_not_runtime_executor
+    skills:
+      - execution-type-classification
+      - context-capsule-review
+      - task-contract-writing
+      - evidence-review
+      - stop-rule-enforcement
+
   af_tools:
     role: Source and tooling analyst
     goal: Verify available sources, providers, and safe boundaries before work starts.
@@ -38,6 +49,8 @@ agents:
       - notion-knowledge-capture
       - english-public-summary
       - fact-interpretation-hypothesis-gap
+      - cag-core-assembly
+      - bounded-rag-evidence-selection
   af_manager:
     role: PRD and execution manager
     goal: Produce the PRD, task matrix, milestones, and acceptance criteria.
@@ -46,6 +59,40 @@ agents:
       - responsibility-assignment-extraction
       - milestone-planning
       - acceptance-criteria-writing
+      - service-operations-modeling
+
+  af_discovery:
+    role: Founder-meeting discovery analyst
+    goal: Extract JTBD, 90-day stories, switching triggers, current alternatives, customer forces, and evidence gaps from approved source packets.
+    status: level_1_configured_role
+    skills:
+      - jtbd-discovery
+      - ninety-day-story-extraction
+      - customer-forces-analysis
+      - five-whys
+      - source-boundary-control
+
+  af_prd_architect:
+    role: Evidence-backed PRD architect
+    goal: Convert approved discovery evidence into PRD structure, acceptance criteria, Definition of Done, and reviewable artifact package.
+    status: level_1_configured_role
+    skills:
+      - prd-from-dialogue
+      - evidence-backed-requirements
+      - definition-of-done-writing
+      - acceptance-criteria-writing
+      - review-gate-preparation
+
+  af_task_translator:
+    role: Spec-to-tasks translator
+    goal: Turn reviewed PRD/spec material into task packets, checkbox subtasks, dependencies, evidence requirements, and owner decision gates.
+    status: level_1_configured_role
+    skills:
+      - archflow-task-breakdown
+      - spec-to-tasks-logic
+      - task-packet-writing
+      - notion-ready-markdown
+      - blocker-and-approval-gate-writing
   af_knowledge:
     role: Knowledge-base maintainer
     goal: Turn accepted outputs into reusable KB updates and public-safe history.
@@ -90,6 +137,18 @@ agents:
       - runtime-boundary-review
 
 tasks:
+  - id: classify_execution
+    agent: hermes_watchdog
+    expected_output: execution_type_risk_and_stop_gate_summary
+    execution_level: level_1_configured_roles
+  - id: context_capsule
+    agent: hermes_watchdog
+    expected_output: project/context/capsules/<run-id>.json
+    execution_level: level_1_configured_roles
+  - id: task_contracts
+    agent: hermes_watchdog
+    expected_output: project/runs/<date>-<run-name>/task-contracts.md
+    execution_level: level_1_configured_roles
   - id: source_inventory
     agent: af_tools
     expected_output: project/outputs/templates/source-inventory.md
@@ -99,6 +158,15 @@ tasks:
   - id: prd
     agent: af_manager
     expected_output: project/outputs/templates/prd.md
+  - id: founder_discovery_digest
+    agent: af_discovery
+    expected_output: project/outputs/templates/founder-discovery-digest.md
+  - id: evidence_backed_prd
+    agent: af_prd_architect
+    expected_output: project/outputs/templates/evidence-backed-prd.md
+  - id: spec_to_tasks_packet
+    agent: af_task_translator
+    expected_output: project/outputs/templates/task-packet.md
   - id: task_matrix
     agent: af_manager
     expected_output: project/outputs/templates/responsibility-matrix.md
@@ -148,6 +216,7 @@ execution_levels:
     current_source_of_truth:
       - project/workflows/crewai-crew.yaml
       - project/agents/agent-roster.yaml
+      - project/context/context-capsule.schema.json
   level_2_langgraph_wrapped_workers:
     status: target_architecture_after_approval
     execution: langgraph_calls_worker_functions_using_crewai_role_task_config
@@ -222,6 +291,20 @@ execution_levels:
 
 task_execution_policy:
   default_level: level_1_configured_roles
+  hermes_policy:
+    status: planned_controller_not_executor
+    may:
+      - classify_execution
+      - assemble_context_capsule
+      - write_task_contracts
+      - review_evidence
+      - decide_accept_repair_split_escalate_stop
+    must_not:
+      - execute_code
+      - edit_files
+      - deploy
+      - mutate_external_systems
+      - activate_provider_runtime
   implementation_target_for_prompt_2: static_dashboard_display_of_level_1_and_level_2_contracts
   level_2_requires:
     - approved_worker_scope

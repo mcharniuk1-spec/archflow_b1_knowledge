@@ -150,3 +150,19 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: it prevents the project from confusing "OpenRouter route wired" with "OpenRouter output generated" and keeps credential-storage risk explicit.
 - Where applicable: E1.7 cloud closeout, Epic 2 research planning, model-call ledger setup, and future Jarvis provider activation.
 - Limitation: the next proof must be an explicitly approved, ledgered, low-cost provider call with sanitized input and no durable writeback.
+
+## Insight - Watchdog Control Is Separate From Execution
+
+- Observation: The Founder Meeting v2 package is strongest when Hermes controls classification, context capsules, task contracts, evidence review, and stop decisions while Codex remains the executor and integration boundary.
+- Interpretation: a watchdog can improve reliability without becoming an autonomous executor. This preserves safety gates and avoids confusing planning authority with file/runtime authority.
+- Why it matters: provider calls, writeback, Notion mutation, deployment, and production promotion remain explicit owner decisions instead of hidden side effects.
+- Where applicable: LangGraph controller updates, subagent task contracts, CAG/RAG capsules, E1-E7 task packets, skills governance, and future Jarvis provider activation.
+- Limitation: Hermes is currently a documented architecture and prompt contract, not a running controller service.
+
+## Insight - CAG Prevents RAG From Becoming Unbounded Memory
+
+- Observation: The integration separates CAG stable context from RAG task-specific evidence retrieval.
+- Interpretation: CAG gives every subagent the current operating rules, architecture boundaries, E1-E7 state, and gated claims before retrieval adds only the evidence needed for the task.
+- Why it matters: this prevents broad source ingestion, stale assumptions, and evidence-free completion claims.
+- Where applicable: all broad ArchFlow architecture, content, task-board, provider, and KB work.
+- Limitation: capsules must be regenerated when core project rules or task state changes.

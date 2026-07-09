@@ -8,6 +8,17 @@ purpose: >
   Connect agents and LLMs to approved project data. LlamaIndex owns bounded
   loading, indexing, retrieval, and source-grounded answers.
 
+context_method:
+  cag_role: >
+    CAG is Controlled Context Assembly Generation. It assembles stable project
+    rules, role/skill governance, architecture boundaries, E1-E7 state, and
+    gated claims before task-specific retrieval.
+  rag_role: >
+    RAG is task-specific evidence retrieval into a context capsule. It must
+    return source paths and metadata or the result is not accepted as evidence.
+  capsule_schema: project/context/context-capsule.schema.json
+  source_boundary_policy: project/context/retrieval/source-boundary-policy.yaml
+
 approved_corpus:
   include:
     - project/
@@ -49,6 +60,7 @@ retrieval_parameters:
   require_source_paths: true
   refuse_on_private_source: true
   deterministic_smoke_mode: lexical
+  no_source_path_means_no_evidence: true
 
 model_routing:
   primary_operator: codex_operator
@@ -66,12 +78,15 @@ outputs:
   smoke_script: project/scripts/llamaindex-approved-corpus.py
   benchmark_script: project/scripts/llamaindex-rag-benchmark.py
   benchmark_summary_local: project/local/rag_index/approved-corpus-benchmark.json
+  context_capsule: project/context/capsules/<run-id>.json
 
 current_limitations:
   - Vector embeddings run only when the configured local embedder is already available.
   - Deterministic lexical retrieval remains the required fallback and smoke path.
   - Only sanitized public files are approved for indexing by default.
   - Full vector defaulting requires a passing 20-query retrieval benchmark.
+  - Retrieval does not create durable memory. Reviewed conclusions must be promoted through WikiLLM rules.
+  - Retrieval must not include private raw source, secrets, ignored local runtime files, account IDs, deployment IDs, screenshots, or absolute local paths.
 
 benchmark_requirements:
   fixed_query_count: 20

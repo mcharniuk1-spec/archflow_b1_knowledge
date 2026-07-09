@@ -10,13 +10,16 @@ This project uses the following skills and methods.
 | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. |
 | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. |
 | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. |
-| [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, and run-note targets synchronized for recurring maintenance. |
+| [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, post-execution skill update decisions, and run-note targets synchronized for recurring maintenance. |
 | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. |
 | [`priority-task-operator`](priority-task-operator/SKILL.md) | Select highest-priority actionable task by urgency and importance, create a PitAgent handoff packet, and prepare KB/Notion/GitHub follow-up evidence. |
 | [`task-handout`](task-handout/SKILL.md) | Produce readable human summaries and copy-ready continuation prompts after substantial executions. |
 | [`outquestions`](outquestions/SKILL.md) | Report what changed after each substantial execution and list the decision questions required before the next stage. |
 | [`arcagcom`](arcagcom/SKILL.md) | Coordinate parallel ArchFlow public project agents through the live communication log, file claims, handoffs, checks, and Prompt 2.1/Prompt 3 merge gates. |
 | [`archflow1`](archflow1/SKILL.md) | Operate and review the local Jarvis dashboard stack, including jarvis-api, LangGraph, CrewAI levels, voice paths, OpenRouter budget gates, and Railway migration gates. |
+| CAG/RAG context capsule method | Assemble stable project context plus bounded retrieval evidence before subagent prompting; schema lives in `project/context/context-capsule.schema.json`. |
+| Hermes watchdog/controller method | Classify tasks, assign contracts, review evidence, and stop or escalate without executing, editing, deploying, or mutating external systems. |
+| Skills governance policy | Keep skill visibility role-aware, deduplicated, and audit-backed through `project/agents/skills-governance.md`. |
 | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. |
 | Loop Engineering operating contract | Keep agent workflows bounded with state, attempt caps, budget, maker/checker separation, and stop conditions. |
 | Market evidence engine | Turn E2 into account universe, public-signal extraction, scoring, role verification, and reviewed ICP/output handoff. |
@@ -53,6 +56,7 @@ Allowed default checks are:
 - targeted file diffs,
 - YAML/JSON parse on edited files,
 - hook alignment checks,
+- post-execution skill update review decisions,
 - concise run-note generation for no-op or changed states.
 
 ## Lane-Specific Irrelevance Blacklist (Not to Reuse by Default)

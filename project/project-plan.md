@@ -65,6 +65,7 @@ Tasks:
 | E1.5 Document the process for case study and content | Review | Docs | 2026-07-04 | Public-reporting gate, GloomyLord brief, content templates, and Jarvis dashboard shell documented; publication remains owner/AF Review gated. |
 | E1.6 Set up role-split KB: primary operator + collaborator | Review | Docs | 2026-07-04 | Public-safe split exists under `project/knowledge/`; private vault/Obsidian wiring remains outside the public repo. |
 | E1.7 Make hosted dashboard, Jarvis, API, and agentic system work without local runtime | Review / provider-disabled runtime verified | Runtime | After E1.5 owner acceptance and E1.6 KB split decision | Railway `jarvis-api` deployed from `services/jarvis-api`; hosted `/health`, CORS, chat, role config, PRD/ICP, agent-orchestra, and voice-safe text routes passed with provider calls and writeback at zero. |
+| E1.8 Hermes Watchdog and CAG/RAG architecture finalization | Review | Docs / Architecture | 2026-07-08 | Founder Meeting v2 package integrated as public-safe architecture, context capsule schema, Hermes prompt, Codex prompt, role/skill governance, service/content/sales packets, E1-E7 Notion-ready blocks, and validation handout. |
 
 E1.1 through E1.3 now have a finer staged sequence:
 
@@ -74,6 +75,7 @@ E1.1 through E1.3 now have a finer staged sequence:
 4. E1.3 KB order: approved PRD write, agent history, source registry, retrieval metadata, loop state, readback test, memory candidates, E1.4/E2 handoff.
 5. E1.3 loop rule: keep the loop at L1 report-only until readback proves the KB can answer current mission, next step, forbidden actions, existing outputs, and open gaps from memory.
 6. E1.7 runtime rule: hosted dashboard/Jarvis/API work must remain provider-disabled first. The first Railway baseline now passes hosted `/health`, CORS, budget-guarded review packets, and dashboard API-base routing controls. Provider activation, auth hardening, persistence, and writeback remain separate approvals.
+7. E1.8 watchdog rule: Hermes is planned as watchdog/controller/reviewer only. Codex remains executor/integrator. CAG assembles stable context before bounded RAG evidence retrieval and subagent task contracts. Provider calls, writeback, Notion mutation, Linear mirror, Git push, deploy, Telegram, Railway, Figma, and production promotion remain owner-gated.
 
 E1.3 review update on 2026-06-30:
 
@@ -109,6 +111,8 @@ E5 demand-quality update:
 
 1. Track source-packet willingness, paid diagnostic interest, price/scope/privacy questions, proposal requests, budget-owner referrals, and existing-tool integration questions.
 2. ROI should estimate PM/BA hours saved, meetings avoided, rework reduced, proposal approval speed, and sprint-readiness improvement.
+3. ROI remains a hypothesis until E7 evidence exists. Content attention and internal proof do not count as validated demand.
+4. Diagnostic events should capture segment, role, trigger, source-packet willingness, current alternatives, privacy concern, budget-owner path, and next requested artifact before any real analytics activation.
 
 ## E4 - Content
 
@@ -128,6 +132,8 @@ E4 content update:
 1. Prioritize category education and proof over founder-build narration.
 2. Content angles: messy-source transformations, product discovery cleanup, PRD quality checklist, job-post signal breakdowns, why meeting assistants stop too early, and how review gates protect AI-assisted work.
 3. Weekly review must separate content attention from demand signals such as source-packet willingness, paid diagnostic interest, proposal requests, and budget-owner referrals.
+4. Use the current content mix: 70% static educational/analytical posts, 20% carousel/checklist/template posts, and 10% short video or scripted demo posts. Every video needs a static companion.
+5. Default CTAs should route to source-packet review, diagnostic, PRD Rescue Sprint, or discovery call only after AF Review and owner approval.
 
 ## E2 - Research Engine To ICP
 
@@ -161,6 +167,7 @@ E2.2 now includes dashboard planning and market-evidence workflow as supporting 
 5. E2.2.3 parallel work rule: universe building, website parsing, job-signal capture, review mining, and social-language mining can run in parallel; synthesis, role verification, message approval, memory promotion, and outreach handoff remain sequential and reviewed.
 6. E2.2.4 evidence rule: account qualification should use at least two independent public signals before outreach, such as website/service page plus job post, review theme plus case study, or founder/company post plus careers signal.
 7. E2.2.5 fact-check gate: every ICP, offer, or outreach claim must be downgraded to HYPOTHESIS if it lacks source support or current role verification.
+8. E2 founder-meeting discovery addendum: each evidence card should include JTBD, 90-day trigger, customer forces, current alternative, source grade, two-signal status, and competitor objection notes before E6 handoff.
 
 ## E3 - Website And Positioning
 
@@ -181,6 +188,7 @@ E3 positioning update:
 1. Primary message should narrow around `raw product-team material -> reviewed production-ready PRD/backlog/KB pack`.
 2. The product-team solution page should show before/after artifact proof, redaction/source-boundary rules, review gates, and existing-tool handoff.
 3. The diagnostic form should ask for segment, trigger event, current tools, source-packet willingness, privacy concerns, budget-owner path, and preferred output destination.
+4. Do not imply autonomous agents, live provider-backed runtime, guaranteed ROI, validated demand, writeback, or SaaS readiness unless current evidence exists.
 
 ## E6 - Outreach
 
@@ -201,6 +209,7 @@ E6 first-wave targeting update:
 1. Start with 10 to 15 people in the same ICP: Directors or VPs of Product, Heads of Product, Product Ops leads, or senior PM leaders inside B2B SaaS companies with roughly 50-500 employees and 2-5 PMs.
 2. Every message must cite one public signal, name one pain hypothesis, offer one concrete artifact, and use one low-friction CTA.
 3. Do not send generic AI automation pitches.
+4. Use the 45-minute discovery call script to capture JTBD, 90-day story, current alternatives, customer forces, anxieties, source-packet willingness, and budget path.
 
 ## E7 - Payment Test To Verdict
 
@@ -220,6 +229,8 @@ Validated demand means one of:
 - prepayment
 - signed or approved paid start
 - firm paid intent with source packet, timeline, scope, and budget-owner path
+
+E7 payment-verdict addendum: the verdict must explicitly separate content attention, discovery interest, sales evidence, and validated demand. Likes, replies, compliments, market size, internal proof, and generic interest are not validated demand.
 
 Not validated demand: directory universe size, market-size math, job counts, social posts, named sample accounts, competitor features, internal E1 proof, content engagement, ICP ranking, compliments, replies, or "interesting" feedback.
 

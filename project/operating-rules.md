@@ -37,11 +37,39 @@ Private sources can be read for understanding, but public files must contain onl
 
 Use this layering:
 
+- Hermes is the planned watchdog/controller/reviewer. Hermes plans, classifies, assigns, reviews, and stops; it does not execute code, edit files, deploy, mutate task boards, activate providers, or write externally.
+- CAG assembles stable project context before task-specific retrieval and subagent prompting.
 - LangGraph controls path, state, routing, and review gates.
 - CrewAI organizes named team roles and task handoff.
-- LlamaIndex handles bounded retrieval and RAG.
-- Codex remains the local operator and approval boundary.
+- LlamaIndex handles bounded retrieval and RAG; it is not durable memory.
+- WikiLLM remains durable reviewed memory after promotion.
+- Codex remains the local executor, reviewer, file editor, validator, final integrator, and approval boundary.
 - Ollama is the local model provider once approved and started.
+
+## Watchdog Execution Rule
+
+For broad, architecture, multi-agent, task-board, market/content/sales, provider, dashboard, or KB work, use a watchdog loop:
+
+1. Classify execution type and risk.
+2. Assemble CAG core from stable rules, roles, skills, architecture, E1-E7 state, and gated claims.
+3. Retrieve task-specific RAG evidence only from the approved public corpus when needed.
+4. Build a compact context capsule.
+5. Create bounded task contracts before assigning subagents.
+6. Require evidence before completion.
+7. Accept, repair, split, escalate, or stop.
+
+Maximum repair attempts per task: 3. If the same error appears twice, stop and escalate.
+
+## CAG/RAG Source Rule
+
+Approved default retrieval corpus:
+
+- `project/`
+- `history/`
+- `skills/`
+- `wiki/`
+
+RAG results without repo-relative source paths are not evidence. Do not retrieve from or store raw private exports, local runtime data, secrets, private URLs, raw transcripts, screenshots, account IDs, deployment IDs, personal identifiers, or absolute local paths in public files.
 
 ## Live Agent Communication Rule
 
@@ -90,3 +118,4 @@ Ask for approval before:
 - Installing dependencies from the network.
 - Writing outside this public folder.
 - Publishing or pushing to a remote Git repository.
+- Deploying, promoting production, mutating Notion, mirroring to Linear, sending Telegram, taking Railway action, syncing Figma, or performing any external writeback.

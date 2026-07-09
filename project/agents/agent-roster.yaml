@@ -1,4 +1,35 @@
 agents:
+  hermes_watchdog:
+    title: Hermes Watchdog
+    provider: planned_controller
+    local_model: none
+    mode: watchdog_controller_reviewer_not_executor
+    skills:
+      - execution-type-classification
+      - cag-core-assembly
+      - context-capsule-review
+      - task-contract-writing
+      - evidence-review
+      - stop-rule-enforcement
+    outputs:
+      - execution_type_and_risk
+      - context_capsule_path
+      - task_contracts
+      - accept_repair_split_escalate_stop_decision
+    allowed_actions:
+      - classify_tasks
+      - assemble_context_capsules
+      - assign_bounded_task_contracts
+      - review_evidence
+      - stop_or_escalate
+    forbidden_actions:
+      - execute_code
+      - edit_files
+      - deploy
+      - mutate_external_systems
+      - activate_provider_runtime
+      - approve_own_high_risk_output
+
   af_tools:
     title: AF Tools
     provider: codex_operator
@@ -24,6 +55,8 @@ agents:
       - notion-knowledge-capture
       - english-public-summary
       - fact-interpretation-hypothesis-gap
+      - cag-core-assembly
+      - bounded-rag-evidence-selection
     outputs:
       - context_digest
       - translated_plan
@@ -45,6 +78,57 @@ agents:
       - prd
       - task_matrix
       - milestone_plan
+
+  af_discovery:
+    title: AF Discovery
+    provider: codex_operator
+    local_model: gemma4:e4b
+    mode: founder_meeting_discovery_role
+    skills:
+      - jtbd-discovery
+      - ninety-day-story-extraction
+      - customer-forces-analysis
+      - five-whys
+      - source-boundary-control
+    outputs:
+      - discovery_digest
+      - trigger_story_map
+      - current_alternatives
+      - evidence_gaps
+
+  af_prd_architect:
+    title: AF PRD Architect
+    provider: codex_operator
+    local_model: gemma4:e4b
+    mode: evidence_backed_prd_role
+    skills:
+      - prd-from-dialogue
+      - evidence-backed-requirements
+      - definition-of-done-writing
+      - acceptance-criteria-writing
+      - review-gate-preparation
+    outputs:
+      - evidence_backed_prd
+      - definition_of_done
+      - acceptance_criteria
+      - review_packet
+
+  af_task_translator:
+    title: AF Task Translator
+    provider: codex_operator
+    local_model: gemma4:e4b
+    mode: spec_to_tasks_role
+    skills:
+      - archflow-task-breakdown
+      - spec-to-tasks-logic
+      - task-packet-writing
+      - notion-ready-markdown
+      - blocker-and-approval-gate-writing
+    outputs:
+      - task_packet
+      - checkbox_subtasks
+      - blocker_list
+      - owner_decisions
 
   af_research:
     title: AF Research
@@ -209,6 +293,45 @@ project_local_skills:
       - keep_raw_voice_and_transcripts_non_persistent_by_default
       - require_owner_approval_for_railway_or_openrouter_activation
 
+skill_governance:
+  status: active_policy
+  policy_file: project/agents/skills-governance.md
+  contracted_skills:
+    - arcagcom
+    - archflow1
+    - archflow-task-breakdown
+    - archflow-e1-runtime-guard
+    - daily-public-project-review
+    - evening-skill-registry-update
+    - outquestions
+    - priority-task-operator
+    - task-handout
+  shared_project_skills:
+    - arcagcom
+    - archflow1
+    - task-handout
+    - outquestions
+  inspect_all_skills_allowed_for:
+    - hermes_watchdog
+    - codex_operator
+    - af_review
+    - af_knowledge
+    - skills_governance_reviewer
+  subagent_policy:
+    default_visibility: role_specific_plus_shared_coordination
+    do_not_pass_all_skills_by_default: true
+    require_task_contract: true
+  add_skill_requires:
+    - unique_name
+    - duplicate_audit
+    - purpose_and_when_to_use
+    - forbidden_actions
+    - evidence_and_validation
+    - owner_role
+    - role_mapping
+    - hook_documentation_if_mandatory
+    - af_review
+
 dashboard_execution_roles:
   status: prompt_1_2_architecture_contract_only
   visibility: operator_ui_only_not_customer_facing
@@ -216,6 +339,23 @@ dashboard_execution_roles:
     Map the named operator roles used in ArchFlow coordination to stable AF roles
     and dashboard responsibilities for the two block-schema screens.
   roles:
+    hermes:
+      title: Watchdog Controller
+      af_role: hermes_watchdog
+      responsibilities:
+        - execution_type_classification
+        - cag_rag_context_capsule
+        - task_contract_assignment
+        - evidence_review
+        - stop_or_escalate_decision
+      allowed_actions:
+        - plan_and_prompt
+        - review_and_stop
+      gated_actions:
+        - execute_code
+        - edit_files
+        - mutate_external_systems
+        - activate_provider_runtime
     jesus:
       title: Lead Integrator
       af_role: codex_operator
@@ -348,7 +488,7 @@ dashboard_execution_roles:
     - static_snapshot
     - browser_local
     - provider_disabled
-    - backend_absent
+    - provider_disabled_hosted_review_packet
     - writeback_gated
 
 automation:
@@ -368,6 +508,11 @@ automation:
       - skills/skills-used.md
       - project/automation/archflow-public-evening-skill-and-hook-update.md
       - .codex/hooks.json
+      - project/scripts/post-execution-skill-update.py
+      - skills/evening-skill-registry-update/stop-rules.md
+      - skills/evening-skill-registry-update/successful-patterns.md
+      - skills/evening-skill-registry-update/failed-patterns.md
+      - skills/evening-skill-registry-update/candidate-patterns.md
       - project/live/communication/agent-communication-log.md
   daily_skill_rag_retrospective:
     schedule: daily_evening

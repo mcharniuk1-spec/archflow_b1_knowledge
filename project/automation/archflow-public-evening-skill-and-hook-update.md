@@ -23,6 +23,11 @@ Read:
 - `.codex/hooks.json`
 - `skills/task-handout/SKILL.md`
 - `project/scripts/task-handout-hook.py`
+- `project/scripts/post-execution-skill-update.py`
+- `skills/evening-skill-registry-update/stop-rules.md`
+- `skills/evening-skill-registry-update/successful-patterns.md`
+- `skills/evening-skill-registry-update/failed-patterns.md`
+- `skills/evening-skill-registry-update/candidate-patterns.md`
 - `project/live/communication/README.md`
 - `project/live/communication/current-agent-notice.md`
 - `project/live/communication/agent-communication-log.md`
@@ -34,6 +39,7 @@ Write:
 - `project/agents/agent-roster.yaml` (if needed),
 - `project/agents/skills-by-agent.md` (if needed),
 - `skills/skills-used.md` (if needed),
+- existing skill support files when a post-execution review has evidence,
 - `project/runs/<run-id>/run-summary.md`,
 - `project/runs/<run-id>/agent-handout.md`,
 - `project/live/communication/agent-communication-log.md`.
@@ -59,13 +65,19 @@ Ineffective tools are moved into the lane's recurring `do-not-repeat` list and p
    - each skill used in configured agents must have a SKILL contract,
    - each scheduled skill must be auditable through run artifacts,
    - hook command path must still target `project/scripts/task-handout-hook.py`.
-4. Apply only targeted edits.
-5. Run minimal safety checks on edited files.
-6. Append a `complete` update in the live communication log with:
+4. Run the post-execution skill update gate:
+   - `python3 project/scripts/post-execution-skill-update.py --run-dir project/runs/<run-id>` for the run folder or run note being closed.
+   - The gate must return `NO_UPDATE`, `APPEND_PATTERN`, or `PATCH_EXISTING_SKILL`.
+   - Review-only is the default. Add `--apply` only when the evidence is concrete, public-safe, reusable, and mapped to an existing skill support file.
+   - If the gate returns `NO_UPDATE`, record the reason and stop skill mutation.
+   - If the gate returns `PATCH_EXISTING_SKILL`, store the candidate in an existing support file or this lane's `candidate-patterns.md` unless a human-reviewed patch to the existing skill is explicitly in scope.
+5. Apply only targeted edits.
+6. Run minimal safety checks on edited files.
+7. Append a `complete` update in the live communication log with:
    - files touched,
    - what stayed unchanged,
    - and next safe actions.
-7. Create or update the same-day run summary and agent handout.
+8. Create or update the same-day run summary and agent handout.
 
 ## Required Review Standards
 
@@ -74,8 +86,10 @@ Ineffective tools are moved into the lane's recurring `do-not-repeat` list and p
 - No production deployment activity.
 - No private credentials, paths, or external IDs in public files.
 - The hook remains a reminder, not an auto-writing executor.
+- The post-execution review is evidence-gated and must not create a new skill automatically.
 
 ## Failure Handling
 
 - If a file is missing, report exact `GAP` and do not continue speculative edits.
 - If hook script path is invalid, create a corrective task in the same run summary and stop after logging the blocker.
+- If post-execution evidence is insufficient, choose `NO_UPDATE`.

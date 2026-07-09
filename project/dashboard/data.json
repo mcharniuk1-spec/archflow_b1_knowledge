@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T15:22:17.381501+00:00",
+  "generated_at": "2026-07-09T18:30:58.251775+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "58 files",
+      "value": "59 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "386",
+      "value": "413",
       "tone": "ok"
     },
     {
@@ -56,6 +56,24 @@
     "purpose": "Control the reasoning path for Block 1. LangGraph owns state,",
     "nodes": [
       {
+        "id": "classify_execution",
+        "owner": "hermes_watchdog",
+        "purpose": "classify the user goal, execution type, risk, side-effect gates, and whether subagents are justified.",
+        "output": [
+          "execution_type",
+          "risk_level"
+        ]
+      },
+      {
+        "id": "assemble_cag_core",
+        "owner": "hermes_watchdog",
+        "purpose": "assemble stable project rules, role registry, skill governance, architecture, E1-E7 state, and gated claims before task-specific retrieval.",
+        "output": [
+          "cag_core_refs",
+          "cag_core_hash"
+        ]
+      },
+      {
         "id": "intake_validate",
         "owner": "af_tools",
         "purpose": "validate source packet, language, public boundary, and requested output.",
@@ -66,6 +84,18 @@
         "owner": "af_context",
         "purpose": "call bounded LlamaIndex retrieval over approved public corpus.",
         "output": "retrieved_context"
+      },
+      {
+        "id": "build_context_capsule",
+        "owner": "hermes_watchdog",
+        "purpose": "combine CAG core and task-specific RAG evidence into a compact context capsule before subagent prompting.",
+        "output": "project/context/capsules/<run-id>.json"
+      },
+      {
+        "id": "assign_task_contract",
+        "owner": "hermes_watchdog",
+        "purpose": "create bounded task contracts with file scope, forbidden actions, acceptance criteria, evidence, attempts, and stop conditions.",
+        "output": "project/runs/<date>-<run-name>/task-contracts.md"
       },
       {
         "id": "write_context_digest",
@@ -95,6 +125,12 @@
         "output": "project/outputs/templates/review-report.md"
       },
       {
+        "id": "decide_next_action",
+        "owner": "hermes_watchdog",
+        "purpose": "decide accept, repair, split, escalate, or stop after evidence review; Hermes does not execute the selected action.",
+        "output": "hermes_decision"
+      },
+      {
         "id": "publish_or_revise",
         "owner": "af_publisher",
         "purpose": "either prepare public-safe publication or route back for repair.",
@@ -116,6 +152,14 @@
     "edges": [
       {
         "from": "START",
+        "to": "classify_execution"
+      },
+      {
+        "from": "classify_execution",
+        "to": "assemble_cag_core"
+      },
+      {
+        "from": "assemble_cag_core",
         "to": "intake_validate"
       },
       {
@@ -130,6 +174,14 @@
       },
       {
         "from": "retrieve_context",
+        "to": "build_context_capsule"
+      },
+      {
+        "from": "build_context_capsule",
+        "to": "assign_task_contract"
+      },
+      {
+        "from": "assign_task_contract",
         "to": "write_context_digest"
       },
       {
@@ -146,16 +198,20 @@
       },
       {
         "from": "review_gate",
+        "to": "decide_next_action"
+      },
+      {
+        "from": "decide_next_action",
         "to": "publish_or_revise",
         "condition": "approval_status == \"approved\""
       },
       {
-        "from": "review_gate",
+        "from": "decide_next_action",
         "to": "write_context_digest",
         "condition": "approval_status == \"revise\""
       },
       {
-        "from": "review_gate",
+        "from": "decide_next_action",
         "to": "write_task_handout",
         "condition": "approval_status == \"blocked\""
       },
@@ -189,6 +245,18 @@
     "level_3_proof": "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json",
     "agents": [
       {
+        "id": "hermes_watchdog",
+        "role": "Planned watchdog, controller, and reviewer",
+        "goal": "Classify work, assemble CAG/RAG context capsules, write task contracts, review evidence, and stop or escalate without executing files or external actions.",
+        "skills": [
+          "execution-type-classification",
+          "context-capsule-review",
+          "task-contract-writing",
+          "evidence-review",
+          "stop-rule-enforcement"
+        ]
+      },
+      {
         "id": "af_tools",
         "role": "Source and tooling analyst",
         "goal": "Verify available sources, providers, and safe boundaries before work starts.",
@@ -207,7 +275,9 @@
           "notion-spec-to-implementation",
           "notion-knowledge-capture",
           "english-public-summary",
-          "fact-interpretation-hypothesis-gap"
+          "fact-interpretation-hypothesis-gap",
+          "cag-core-assembly",
+          "bounded-rag-evidence-selection"
         ]
       },
       {
@@ -218,7 +288,44 @@
           "prd-from-dialogue",
           "responsibility-assignment-extraction",
           "milestone-planning",
-          "acceptance-criteria-writing"
+          "acceptance-criteria-writing",
+          "service-operations-modeling"
+        ]
+      },
+      {
+        "id": "af_discovery",
+        "role": "Founder-meeting discovery analyst",
+        "goal": "Extract JTBD, 90-day stories, switching triggers, current alternatives, customer forces, and evidence gaps from approved source packets.",
+        "skills": [
+          "jtbd-discovery",
+          "ninety-day-story-extraction",
+          "customer-forces-analysis",
+          "five-whys",
+          "source-boundary-control"
+        ]
+      },
+      {
+        "id": "af_prd_architect",
+        "role": "Evidence-backed PRD architect",
+        "goal": "Convert approved discovery evidence into PRD structure, acceptance criteria, Definition of Done, and reviewable artifact package.",
+        "skills": [
+          "prd-from-dialogue",
+          "evidence-backed-requirements",
+          "definition-of-done-writing",
+          "acceptance-criteria-writing",
+          "review-gate-preparation"
+        ]
+      },
+      {
+        "id": "af_task_translator",
+        "role": "Spec-to-tasks translator",
+        "goal": "Turn reviewed PRD/spec material into task packets, checkbox subtasks, dependencies, evidence requirements, and owner decision gates.",
+        "skills": [
+          "archflow-task-breakdown",
+          "spec-to-tasks-logic",
+          "task-packet-writing",
+          "notion-ready-markdown",
+          "blocker-and-approval-gate-writing"
         ]
       },
       {
@@ -279,6 +386,21 @@
     ],
     "tasks": [
       {
+        "id": "classify_execution",
+        "agent": "hermes_watchdog",
+        "expected_output": "execution_type_risk_and_stop_gate_summary"
+      },
+      {
+        "id": "context_capsule",
+        "agent": "hermes_watchdog",
+        "expected_output": "project/context/capsules/<run-id>.json"
+      },
+      {
+        "id": "task_contracts",
+        "agent": "hermes_watchdog",
+        "expected_output": "project/runs/<date>-<run-name>/task-contracts.md"
+      },
+      {
         "id": "source_inventory",
         "agent": "af_tools",
         "expected_output": "project/outputs/templates/source-inventory.md"
@@ -292,6 +414,21 @@
         "id": "prd",
         "agent": "af_manager",
         "expected_output": "project/outputs/templates/prd.md"
+      },
+      {
+        "id": "founder_discovery_digest",
+        "agent": "af_discovery",
+        "expected_output": "project/outputs/templates/founder-discovery-digest.md"
+      },
+      {
+        "id": "evidence_backed_prd",
+        "agent": "af_prd_architect",
+        "expected_output": "project/outputs/templates/evidence-backed-prd.md"
+      },
+      {
+        "id": "spec_to_tasks_packet",
+        "agent": "af_task_translator",
+        "expected_output": "project/outputs/templates/task-packet.md"
       },
       {
         "id": "task_matrix",
@@ -391,7 +528,9 @@
       "Vector embeddings run only when the configured local embedder is already available.",
       "Deterministic lexical retrieval remains the required fallback and smoke path.",
       "Only sanitized public files are approved for indexing by default.",
-      "Full vector defaulting requires a passing 20-query retrieval benchmark."
+      "Full vector defaulting requires a passing 20-query retrieval benchmark.",
+      "Retrieval does not create durable memory. Reviewed conclusions must be promoted through WikiLLM rules.",
+      "Retrieval must not include private raw source, secrets, ignored local runtime files, account IDs, deployment IDs, screenshots, or absolute local paths."
     ]
   },
   "jarvis_api": {
@@ -585,6 +724,195 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md",
+      "title": "Agent Handout",
+      "modified": "2026-07-09T18:30:40.725501+00:00",
+      "size": 4829
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/validation-results.md",
+      "title": "Validation Results",
+      "modified": "2026-07-09T18:30:31.262495+00:00",
+      "size": 3800
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260708_run_daily_skill_retrospective.md",
+      "title": "2026-07-08 Run Note - Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-09T09:58:17.836920+00:00",
+      "size": 3413
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260708_daily_skill_retrospective.md",
+      "title": "2026-07-08 Daily Skill Retrospective And RAG Knowledge Review",
+      "modified": "2026-07-09T08:13:45.930144+00:00",
+      "size": 9331
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "modified": "2026-07-08T19:14:32.620494+00:00",
+      "size": 5777
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-evening-skill-hook-review/summary.md",
+      "title": "2026-07-08 Evening Skill And Hook Review",
+      "modified": "2026-07-08T19:14:32.533766+00:00",
+      "size": 4349
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.pdf",
+      "title": "2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.pdf",
+      "modified": "2026-07-08T15:48:50.780921+00:00",
+      "size": 17512
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/package-to-repo-mapping.md",
+      "title": "Package To Repo Mapping",
+      "modified": "2026-07-08T15:41:10.239490+00:00",
+      "size": 7047
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/task_repr_without_linear.md",
+      "title": "Task Representation Without Linear",
+      "modified": "2026-07-08T15:41:10.099378+00:00",
+      "size": 984
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/final-publish-plan.md",
+      "title": "Final Publish Plan",
+      "modified": "2026-07-08T15:38:42.878984+00:00",
+      "size": 1240
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md",
+      "title": "Founder Meeting v2 Watchdog/CAG-RAG Architecture Report",
+      "modified": "2026-07-08T15:38:42.711514+00:00",
+      "size": 10844
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/notion-e1-e7-update-packet.md",
+      "title": "Notion-Ready E1-E7 Update Packet",
+      "modified": "2026-07-08T15:37:20.096514+00:00",
+      "size": 11583
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/service-operations-model.md",
+      "title": "Service Operations Model",
+      "modified": "2026-07-08T15:35:55.362132+00:00",
+      "size": 2222
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/09_final_git_website_dashboard_kb_publish_prompt_v2.md",
+      "title": "Final Git, Website, Dashboard, KB, And Publish Prompt v2",
+      "modified": "2026-07-08T15:26:18.585035+00:00",
+      "size": 1480
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/08_e1_e7_notion_task_update_prompt_v2.md",
+      "title": "E1-E7 Task And Notion Update Prompt v2",
+      "modified": "2026-07-08T15:26:18.500624+00:00",
+      "size": 2006
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/07_market_content_sales_execution_prompt_v2.md",
+      "title": "Market, Content, And Sales Execution Prompt v2",
+      "modified": "2026-07-08T15:26:18.417611+00:00",
+      "size": 1547
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/06_skill_registry_hook_governance_prompt_v2.md",
+      "title": "Skill Registry And Hook Governance Prompt v2",
+      "modified": "2026-07-08T15:26:18.333520+00:00",
+      "size": 1245
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/05_subagent_task_contract_prompt_v2.md",
+      "title": "Subagent Task Contract Prompt v2",
+      "modified": "2026-07-08T15:26:18.249367+00:00",
+      "size": 738
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/04_cag_rag_context_capsule_prompt_v2.md",
+      "title": "CAG/RAG Context Capsule Prompt v2",
+      "modified": "2026-07-08T15:26:18.164385+00:00",
+      "size": 1433
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/03_hermes_watchdog_controller_prompt_v2.md",
+      "title": "Hermes Watchdog Controller Prompt v2",
+      "modified": "2026-07-08T15:26:18.076405+00:00",
+      "size": 2052
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/02_archflow_codex_project_configuration_prompt_v2.md",
+      "title": "ArchFlow Codex Project Configuration Prompt v2",
+      "modified": "2026-07-08T15:26:17.990457+00:00",
+      "size": 1809
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/01_codex_system_prompt_v2.md",
+      "title": "Codex System Prompt v2",
+      "modified": "2026-07-08T15:26:17.906261+00:00",
+      "size": 2360
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/task-contracts.md",
+      "title": "Task Contracts",
+      "modified": "2026-07-08T15:25:03.599810+00:00",
+      "size": 7042
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/subagent-findings.md",
+      "title": "Subagent Findings",
+      "modified": "2026-07-08T15:25:03.429658+00:00",
+      "size": 5822
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-08-post-execution-skill-update-hook.md",
+      "title": "2026-07-08 Run Note: Post-Execution Skill Update Hook",
+      "modified": "2026-07-08T14:57:08.998944+00:00",
+      "size": 1356
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-post-execution-skill-update-hook/agent-handout.md",
+      "title": "Post-Execution Skill Update Hook Handout",
+      "modified": "2026-07-08T14:57:08.914611+00:00",
+      "size": 4683
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-08-post-execution-skill-update-hook/run-summary.md",
+      "title": "Post-Execution Skill Update Hook",
+      "modified": "2026-07-08T14:57:08.830072+00:00",
+      "size": 2434
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-07-jarvis-chat-api-rebuild/agent-handout.md",
@@ -3292,7 +3620,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 58,
+    "file_count": 59,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -3583,6 +3911,11 @@
         "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
         "title": "2026-07-03 Vercel Production Cure",
         "excerpt": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run and was regenerated during the final deployment sync. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes "
+      },
+      {
+        "path": "wiki/runs/2026-07-08-post-execution-skill-update-hook.md",
+        "title": "2026-07-08 Run Note: Post-Execution Skill Update Hook",
+        "excerpt": "# 2026-07-08 Run Note: Post-Execution Skill Update Hook  Status: complete.  ## Task  Add a controlled post-execution skill-update mechanism to the existing ArchFlow public evening skill and hook lane.  ## Current Setup Discovered  - Existing prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py` on `UserPromptSubmit`. - Existing automation lane: `project/automation/archflow-public-evening-skill"
       }
     ]
   },
@@ -3659,7 +3992,7 @@
     {
       "path": "project/agentic-stack.md",
       "title": "Agentic Stack",
-      "text": "# Agentic Stack  ## Layer Decision  Use this structure:  ```text Codex-authenticated operator prompt   -> LangGraph path and state controller   -> Loop Engineering run contract   -> LlamaIndex bounded retrieval   -> CrewAI named team tasks   -> LangGraph review gate   -> public-safe project outputs ```  ## Tool Responsibilities  | Tool | Responsibility | Public Project Use | |---|---|---| | Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. | | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. | | Loop Engineering | State, attempt caps, budget, maker/checker split, stop conditions. | L1 report-only loop contract under `project/loops/`. | | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Research, AF Manager, AF Knowledge, AF Copy, AF Review, AF Publisher. | | LlamaIndex | Bounded hybrid retrieval and RAG. | Search only approved public-safe project and sanitized history with source-grounded semantic plus lexical retrieval, stable chunk metadata, and lexical fallback. | | turbovec | Future local vector store under LlamaIndex. | Deferred until stable source IDs, chunk IDs"
+      "text": "# Agentic Stack  ## Layer Decision  Use this structure:  ```text Codex-authenticated operator prompt   -> Hermes watchdog/controller prompt (planned, non-executing)   -> CAG/RAG context capsule   -> LangGraph path and state controller   -> Loop Engineering run contract   -> LlamaIndex bounded retrieval   -> CrewAI named team tasks   -> LangGraph review gate   -> public-safe project outputs ```  ## Tool Responsibilities  | Tool | Responsibility | Public Project Use | |---|---|---| | Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. | | Hermes | Planned watchdog/controller/reviewer. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Hermes does not execute, edit files, deploy, mutate task boards, call providers, or write externally. | | CAG context capsules | Controlled Context Assembly Generation before subagent prompting. | Stable context packet under `project/context/`; not durable memory and not broad ingestion. | | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. | | Loop Engineer"
     },
     {
       "path": "project/agents/README.md",
@@ -3669,7 +4002,7 @@
     {
       "path": "project/agents/agent-roster.yaml",
       "title": "agent-roster.yaml",
-      "text": "agents:   af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     outputs:       - source_inventory       - tool_readiness_report       - provider_status    af_context:     title: AF Context     provider: codex_operator     local_model: gemma4:e4b     skills:       - notion-spec-to-implementation       - notion-knowledge-capture       - english-public-summary       - fact-interpretation-hypothesis-gap     outputs:       - context_digest       - translated_plan       - gaps    af_manager:     title: AF Manager     provider: codex_operator     local_model: gemma4:e4b     skills:       - archflow-task-breakdown       - task-handout       - outquestions       - prd-from-dialogue       - responsibility-assignment-extraction       - milestone-planning       - acceptance-criteria-writing     outputs:       - prd       - task_matrix       - milestone_plan    af_research:     title: AF Research     pr"
+      "text": "agents:   hermes_watchdog:     title: Hermes Watchdog     provider: planned_controller     local_model: none     mode: watchdog_controller_reviewer_not_executor     skills:       - execution-type-classification       - cag-core-assembly       - context-capsule-review       - task-contract-writing       - evidence-review       - stop-rule-enforcement     outputs:       - execution_type_and_risk       - context_capsule_path       - task_contracts       - accept_repair_split_escalate_stop_decision     allowed_actions:       - classify_tasks       - assemble_context_capsules       - assign_bounded_task_contracts       - review_evidence       - stop_or_escalate     forbidden_actions:       - execute_code       - edit_files       - deploy       - mutate_external_systems       - activate_provider_runtime       - approve_own_high_risk_output    af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     "
     },
     {
       "path": "project/agents/model-efficiency-advice.md",
@@ -3684,7 +4017,12 @@
     {
       "path": "project/agents/skills-by-agent.md",
       "title": "Skills By Agent",
-      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up:  - public-source-inventory - provider-readiness-check - ollama-local-check - git-publication-check - [`archflow-e1-runtime-guard`](../../skills/archflow-e1-runtime-guard/SKILL.md) - validates the E1 runtime spine before Git push.  ## Shared Project Coordination  Purpose: keep all public project agents aligned on live communication, file claims, local dashboard/Jarvis runtime boundaries, and gated activation rules.  Skills set up:  - [`arcagcom`](../../skills/arcagcom/SKILL.md) - coordinates public project agents through the live communication log, file claims, handoffs, and Prompt 2.1 / Prompt 3 merge gates. - [`archflow1`](../../skills/archflow1/SKILL.md) - defines the local Jarvis dashboard stack contract, provider-disabled runtime boundaries, voice path, OpenRouter budget gates, and Railway migration gates.  ## AF Context  Purpose: turn approved source material into structured English context.  Skills set up:  - notion-spec-to-implementation - notion-knowledge-capture - english-public-summary - fa"
+      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## Skill Governance  Purpose: keep skills explicit, deduplicated, role-aware, and reviewable.  Rules:  - Hermes, Codex, AF Review, and AF Knowledge may inspect all skills. - Bounded subagents receive only role-specific skills plus shared coordination skills named in their task contract. - Do not create new `SKILL.md` files for conceptual methods until the checklist in [`skills-governance.md`](skills-governance.md) is satisfied. - Shared project skills are allowed to appear under multiple roles when they carry coordination or closeout responsibilities.  ## Hermes Watchdog  Purpose: planned controller/reviewer layer for classification, context capsules, task contracts, evidence review, and stop decisions.  Skills set up:  - execution-type-classification - cag-core-assembly - context-capsule-review - task-contract-writing - evidence-review - stop-rule-enforcement  Boundary: Hermes does not execute code, edit files, deploy, mutate external systems, activate providers, or approve its own high-risk output.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up"
+    },
+    {
+      "path": "project/agents/skills-governance.md",
+      "title": "Skills Governance",
+      "text": "# Skills Governance  Status: active governance policy.  This file defines how ArchFlow skills are reviewed, mapped, and passed to agents.  ## Core Rule  Do not create a new skill because a method appears once. Add or update a skill only when repeated evidence shows the method is reusable, no existing skill covers the same job, and AF Review can verify the scope.  Hermes, Codex, AF Review, AF Knowledge, and an assigned skills-governance reviewer may inspect all skills. Bounded subagents receive only the role-specific skills needed for their task plus shared coordination rules.  ## Current Contracted Skills  These have project-local `SKILL.md` contracts or are project-recognized skill contracts:  - `arcagcom` - `archflow1` - `archflow-task-breakdown` - `archflow-e1-runtime-guard` - `daily-public-project-review` - `evening-skill-registry-update` - `outquestions` - `priority-task-operator` - `task-handout`  ## Shared Project Skills  - `arcagcom`: live communication, file claims, handoffs, and merge gates. - `archflow1`: dashboard/Jarvis/runtime/provider/Railway boundaries. - `task-handout`: durable run handout and continuation prompt. - `outquestions`: owner decisions, blocked gates, a"
     },
     {
       "path": "project/automation/archflow-priority-task-operator-lane.md",
@@ -3694,7 +4032,7 @@
     {
       "path": "project/automation/archflow-public-evening-skill-and-hook-update.md",
       "title": "ArchFlow Public Evening Skill And Hook Update",
-      "text": "# ArchFlow Public Evening Skill And Hook Update  Automation ID: `archflow-public-evening-skill-update`  Status: active in Codex app automation.  Schedule: daily at 21:00.  Contract source: `project/agents/agent-roster.yaml` (`archflow_evening_skill_and_hook_update`).  ## Purpose  Run a bounded, no-amnesia nightly maintenance lane that keeps skill registries and handout hook contracts aligned and updates only when needed.  ## Scope  Read:  - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `skills/evening-skill-registry-update/SKILL.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `wiki/log.md` and `project/runs/` as needed for continuity. - `project/automation/archflow-public-evening-skill-and-hook-update.md`  Write:  - `project/agents/agent-roster.yaml` (if needed), - `project/agents/skills-by-agent.md` (if needed), - `skills/skills-used.md` (if needed), - `project/runs/<run-id>/run-summary.md`, - `project/runs/<run-id>/agent-"
+      "text": "# ArchFlow Public Evening Skill And Hook Update  Automation ID: `archflow-public-evening-skill-update`  Status: active in Codex app automation.  Schedule: daily at 21:00.  Contract source: `project/agents/agent-roster.yaml` (`archflow_evening_skill_and_hook_update`).  ## Purpose  Run a bounded, no-amnesia nightly maintenance lane that keeps skill registries and handout hook contracts aligned and updates only when needed.  ## Scope  Read:  - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `skills/evening-skill-registry-update/SKILL.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py` - `project/scripts/post-execution-skill-update.py` - `skills/evening-skill-registry-update/stop-rules.md` - `skills/evening-skill-registry-update/successful-patterns.md` - `skills/evening-skill-registry-update/failed-patterns.md` - `skills/evening-skill-registry-update/candidate-patterns.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `wiki/log.md` and `project/runs/` as needed for continuity. -"
     },
     {
       "path": "project/automation/daily-skill-retrospective-and-rag-knowledge-review.md",
@@ -3714,7 +4052,7 @@
     {
       "path": "project/content/templates/README.md",
       "title": "ArchFlow Content Template Library",
-      "text": "# ArchFlow Content Template Library  Status: active template library Default ICP: B2B SaaS product leaders for the Product Discovery-to-Production PRD Pack Default channel: LinkedIn first, then adapted excerpts for X and Threads after review Default voice: ArchFlow company content first Default visual style: product-system and research-lab  ## Purpose  These templates turn executed ArchFlow work into public-safe content planning assets. They are not publish-ready copy by themselves. Each execution still needs artifact evidence, evidence labels, AF Review, and owner approval before publication.  ## Template Set  | Template | Use after | Output | |---|---|---| | `carousel-template.md` | A proof run, review gate, or method step has artifact evidence | LinkedIn carousel plan with slide copy, visual notes, and approval gate | | `implementation-proof-post-template.md` | A task produces a working artifact, validation result, or reviewed process proof | Company post showing what was implemented and how it was checked | | `dashboard-update-template.md` | Dashboard status, read-only evidence, or reporting surface changes | Public-safe dashboard update without private state or fake live claim"
+      "text": "# ArchFlow Content Template Library  Status: active template library Default ICP: B2B SaaS product leaders for the Product Discovery-to-Production PRD Pack Default channel: LinkedIn first, then adapted excerpts for X and Threads after review Default voice: ArchFlow company content first Default visual style: product-system and research-lab Default content mix: 70 percent static educational or analytical posts, 20 percent carousel/checklist/template posts, 10 percent short video or scripted demo posts  ## Purpose  These templates turn executed ArchFlow work into public-safe content planning assets. They are not publish-ready copy by themselves. Each execution still needs artifact evidence, evidence labels, AF Review, and owner approval before publication.  ## Template Set  | Template | Use after | Output | |---|---|---| | `carousel-template.md` | A proof run, review gate, or method step has artifact evidence | LinkedIn carousel plan with slide copy, visual notes, and approval gate | | `implementation-proof-post-template.md` | A task produces a working artifact, validation result, or reviewed process proof | Company post showing what was implemented and how it was checked | | `dashbo"
     },
     {
       "path": "project/content/templates/after-execution-report-template.md",
@@ -3732,14 +4070,49 @@
       "text": "# Carousel Template  Use after a task or review state has public-safe artifacts and can teach the product-team ICP something concrete about PRD production, source boundaries, or review gates.  ## Template Metadata  - Working title: - Epic/task: - Source run folder: - Intended channel: LinkedIn carousel first - ICP lane: B2B SaaS product leaders for Product Discovery-to-Production PRD Pack - Content identity: ArchFlow company content - Visual style: product-system and research-lab - Status: draft / AF Review / owner approval / ready / blocked  ## Eligible Subtopics  - Messy product source material becoming structured context. - Context digest to PRD transformation. - PRD quality checklist and acceptance-criteria proof. - KB writeback/readback proof from E1.3. - Source registry and evidence-label discipline. - Review gate workflow: AF Review, owner approval, claim downgrade. - Dashboard as read-only proof surface. - Why meeting assistants stop before production-ready PRD handoff.  ## Proof Required  | Proof item | Required evidence | Evidence label | |---|---|---| | Task executed | Run summary or report path | FACT | | Artifact exists | Repo-relative artifact path | FACT | | Claim ab"
     },
     {
+      "path": "project/content/templates/competitor-objection-script-template.md",
+      "title": "Competitor Objection Script Template",
+      "text": "# Competitor Objection Script Template  Status: reusable positioning and sales template.  Use this to compare ArchFlow against current alternatives without unsupported competitor claims.  ## Competitor / Alternative  - Name or category: - Buyer likely says: - What that tool/service is good for: - Where ArchFlow is different: - Evidence needed: - Claim status: FACT / INTERPRETATION / HYPOTHESIS / GAP  ## Categories To Cover  - Productboard / Aha / Cycle: roadmap and product-management suites. - Dovetail / BuildBetter: insight repositories and VoC workflows. - ChatPRD: faster PRD drafting. - Notion AI / Glean / Dust: workspace AI/search. - Status quo: meetings, docs, scattered notes, repeated clarification. - Junior PM or BA: internal production support with supervision needs. - Fractional product consultant: leadership/strategy support rather than recurring PRD/KB production.  ## Script  When buyers say they already have an alternative:  - Acknowledge the alternative. - State ArchFlow's job: source packet -> evidence-backed PRD -> task packet -> KB handoff. - Name the remaining risk that the alternative may not own. - Offer a low-friction source-packet review.  ## Review Gate  - No "
+    },
+    {
       "path": "project/content/templates/dashboard-update-template.md",
       "title": "Dashboard Update Template",
       "text": "# Dashboard Update Template  Use when dashboard status, read-only monitoring, hosted-view readiness, or dashboard-adjacent reporting changes. This template must not modify dashboard code or imply live control when the dashboard is read-only.  ## Template Metadata  - Working title: - Dashboard surface: - Source run folder: - Related epic/task: - Status: draft / AF Review / owner approval / ready / blocked - Public state: local read-only / hosted read-only / hidden-link / auth-gated / blocked  ## Eligible Subtopics  - E1.3 dashboard status generated from run evidence. - Read-only operator dashboard as proof surface. - Dashboard/voice/hosting gate status. - What dashboard cards can show publicly. - Why dashboards should not create live-state claims before runtime proof.  ## Proof Required  | Claim | Required proof | Evidence label | |---|---|---| | Dashboard data changed | Generated data artifact or run summary | FACT | | Dashboard is read-only | Dashboard documentation or gate report | FACT | | Hosted dashboard is available | Hosting proof and approved visibility setting | FACT | | Dashboard proves workflow reliability | Review report plus repeatable run evidence | INTERPRETATION | |"
     },
     {
+      "path": "project/content/templates/diagnostic-offer-template.md",
+      "title": "Diagnostic Offer Template",
+      "text": "# Diagnostic Offer Template  Status: reusable service-offer template.  ## Offer  ArchFlow Discovery Diagnostic.  ## Buyer  Director/VP Product, Head of Product, Product Ops, or senior PM leader in a B2B SaaS/product-led company with recurring PRD and engineering-handoff friction.  ## Inputs  - Approved source packet. - Recent 90-day PRD or feature story. - Current tools and alternatives. - Privacy/source-boundary constraints. - Budget-owner path if known.  ## Outputs  - Source inventory. - Pain and workaround map. - Discovery evidence digest. - PRD/KB readiness score. - Evidence gaps. - Recommended next package.  ## Conversion Path  1. Source-packet review. 2. Discovery Diagnostic. 3. PRD Rescue Sprint. 4. Monthly PRD/KB Operating Retainer only after clean sprint evidence.  ## Claim Boundary  Pricing, ROI, conversion, and demand are hypotheses until E7 evidence exists."
+    },
+    {
+      "path": "project/content/templates/discovery-call-script-template.md",
+      "title": "Discovery Call Script Template",
+      "text": "# Discovery Call Script Template  Status: reusable E6/E7 sales-discovery template.  Default length: 45 minutes.  ## 0-5 Minutes - Context  - What changed recently that made PRD or backlog quality more urgent? - Who is involved in discovery, PRD writing, engineering handoff, and final approval? - What source material would you be willing to share for a reviewed diagnostic?  ## 5-15 Minutes - 90-Day Story  - Tell me about a specific PRD, feature, or handoff from the last 90 days. - What source material existed? - Where did context get lost? - What rework or delay happened?  ## 15-25 Minutes - Current Alternatives  - How do you solve this today? - Which tools or people are involved? - What works? - What still requires senior product attention?  ## 25-35 Minutes - Customer Forces  - Push: what is making the current process painful? - Pull: what would a better process make possible? - Anxiety: what would make you hesitate to outsource or systematize this? - Habit: what makes the current way hard to leave?  ## 35-42 Minutes - Value And Budget Path  - What would a good output need to include? - What Definition of Done would make it useful to engineering? - Who would approve a paid diagnos"
+    },
+    {
+      "path": "project/content/templates/distribution-70-20-10-template.md",
+      "title": "70/20/10 Content Distribution Template",
+      "text": "# 70/20/10 Content Distribution Template  Status: reusable planning template.  Use this when planning weekly or five-week ArchFlow content.  ## Mix  - 70% static educational or analytical posts. - 20% carousel, checklist, or template posts. - 10% short video or scripted demo posts.  Every video must have a static companion.  ## Weekly Planning Table  | Slot | Format | Topic | Evidence type | CTA | Review gate | |---|---|---|---|---|---| | 1 | Static | PRD teardown | Artifact or method evidence | Source-packet review | AF Review | | 2 | Static | JTBD / 90-day trigger | Discovery-method evidence | Diagnostic | AF Review | | 3 | Static | DoD / acceptance criteria | Template evidence | PRD Rescue Sprint | AF Review | | 4 | Carousel/checklist | Source packet checklist | Template evidence | Source-packet review | AF Review | | 5 | Short video or demo | PRD cleanup walkthrough | Scripted demo evidence | Static companion | AF Review |  ## Metrics Split  - Attention: impressions, comments, saves, follows, reposts. - Buyer-risk signal: source-packet willingness, diagnostic request, paid diagnostic interest, proposal request, budget-owner referral, prepayment, approved paid start, or firm pai"
+    },
+    {
+      "path": "project/content/templates/five-week-content-calendar-template.md",
+      "title": "Five-Week Content Calendar Template",
+      "text": "# Five-Week Content Calendar Template  Status: reusable E4 planning template.  Use this to plan content while preserving the 70/20/10 mix.  ## Week Table  | Week | Static educational/analytical | Carousel/checklist/template | Short video/scripted demo | CTA | Review gate | |---|---|---|---|---|---| | 1 | PRD teardown / source packet pain | Source-packet checklist | PRD cleanup walkthrough | Diagnostic | AF Review | | 2 | JTBD and 90-day trigger | Customer-forces map | Founder POV on current alternatives | Source-packet review | AF Review | | 3 | DoD and acceptance criteria | DoD checklist | Spec-to-tasks walkthrough | PRD Rescue Sprint | AF Review | | 4 | Competitor objection analysis | Objection cards | Tool comparison explanation | Diagnostic | AF Review | | 5 | Evidence receipt and KB handoff | PRD evidence receipt | Short demo of reviewed packet | Discovery call | AF Review |  ## Weekly Review  - Attention: - Buyer-risk signals: - Source-packet willingness: - Diagnostic interest: - Proposal or budget-owner signal: - Content to revise: - Next experiment:"
+    },
+    {
+      "path": "project/content/templates/icp-card-template.md",
+      "title": "ICP Card Template",
+      "text": "# ICP Card Template  Status: reusable E2 template.  ## Segment  - Segment: - Company size: - Product team shape: - Buyer roles: - Exclusions:  ## FACT  - Evidence-backed facts with repo-relative source refs:  ## INTERPRETATION  - What the facts likely mean for PRD/KB pain:  ## HYPOTHESIS  - Pain hypothesis: - Switching trigger hypothesis: - Offer-fit hypothesis:  ## GAP  - Missing evidence: - Owner decisions: - Sources still needed:  ## Current Alternatives  - Roadmap suite: - Insight repository: - PRD drafting tool: - Workspace AI/search: - Status quo: - Junior PM/BA: - Fractional consultant:  ## Outreach Readiness  - Two independent public signals: yes/no. - Role-currentness status: - Privacy/source boundary risk: - Next safe action:"
+    },
+    {
       "path": "project/content/templates/implementation-proof-post-template.md",
       "title": "Implementation Proof Post Template",
       "text": "# Implementation Proof Post Template  Use when an executed task produced a working artifact, validation result, review decision, or process proof. The post must show implementation evidence, not a generic progress summary.  ## Template Metadata  - Working title: - Epic/task: - Source run folder: - Primary artifact: - Validation artifact: - Review status: - Intended channel: LinkedIn post first - ICP lane: B2B SaaS product leaders for Product Discovery-to-Production PRD Pack  ## Eligible Subtopics  - E1.3 KB writeback/readback proof. - E1.5 public-reporting gate and content approval system. - Source registry, retrieval metadata, and readback assertions. - Review gate blocking unsupported claims. - Dashboard read-only status as operator proof. - Implementation of reusable templates, PRD assets, or source-boundary rules.  ## Proof Required  - `FACT`: exact repo-relative artifact paths, run summary, check output, review verdict. - `INTERPRETATION`: why the proof matters for PRD quality or agent reliability. - `HYPOTHESIS`: how the same method may help the product-team ICP. - `GAP`: what is still blocked, unapproved, or awaiting E6/E7 demand proof.  ## Copy Blocks  ### Opening  ```text "
+    },
+    {
+      "path": "project/content/templates/qualification-checklist-template.md",
+      "title": "Qualification Checklist Template",
+      "text": "# Qualification Checklist Template  Status: reusable E5/E6 template.  ## Fit  - [ ] B2B SaaS or product-led company. - [ ] Roughly 50-500 employees, or owner-approved adjacent segment. - [ ] Product team has 2-5 PMs or similar context burden. - [ ] Buyer is Director/VP Product, Head of Product, Product Ops, or senior PM leader.  ## Trigger  - [ ] Recent PRD/handoff/rework pain in the last 90 days. - [ ] Clear switching trigger. - [ ] Current alternatives named.  ## Evidence Willingness  - [ ] Willing to share a public-safe or redacted source packet. - [ ] Can identify source boundary and excluded material. - [ ] Privacy concerns recorded.  ## Budget And Authority  - [ ] Budget-owner path known. - [ ] Paid diagnostic or PRD Rescue Sprint is plausible. - [ ] Timeline and scope are clear.  ## Verdict  - Qualification score: - Disqualifying gaps: - Next safe action: - Evidence required before outreach or offer:"
     },
     {
       "path": "project/content/templates/research-check-task-template.md",
@@ -3750,6 +4123,21 @@
       "path": "project/content/templates/review-gate-template.md",
       "title": "Review Gate Template",
       "text": "# Review Gate Template  Use whenever AF Review, owner approval, or another gate decides whether an executed task, carousel, post, dashboard update, or research check can move forward.  ## Template Metadata  - Review target: - Source run folder: - Reviewer role: AF Review / owner / implementation reviewer / research reviewer - Status: approved / approved with edits / blocked / needs owner decision - Date:  ## Review Inputs  - Draft artifact: - Evidence artifact: - Source registry or inventory: - Validation result: - Screenshot/data checklist: - Prior gate, if any:  ## Review Checks  | Check | Pass/Fail | Required evidence or edit | |---|---|---| | English-only content |  |  | | Public-safe text |  |  | | No private links, local paths, personal identifiers, IDs, or secrets |  |  | | No raw transcripts or private source material |  |  | | Evidence labels are present |  |  | | Claims match evidence strength |  |  | | No demand, ROI, customer, revenue, or market-validation overclaim |  |  | | Allowed screenshots/data only |  |  | | ICP fit: B2B SaaS product leaders |  |  | | ArchFlow company voice |  |  | | Owner approval required before publication |  |  |  ## Verdict Blocks  ### Appro"
+    },
+    {
+      "path": "project/context/README.md",
+      "title": "Context Layer",
+      "text": "# Context Layer  Status: active planning and execution context layer.  This folder holds Controlled Context Assembly Generation (CAG) files and context capsules for bounded ArchFlow work.  ## Rules  - CAG is controlled context assembly, not uncontrolled ingestion. - RAG is task-specific retrieval from the approved public-safe corpus only. - LlamaIndex retrieves evidence; it is not durable memory. - WikiLLM remains durable memory only after AF Review and promotion. - Context capsules are run artifacts unless a reviewed conclusion is promoted through the KB rules. - Subagents receive compact capsules and task contracts, not broad repo dumps.  ## Files  - `cag-core.yaml` - stable context used before task-specific retrieval. - `context-capsule.schema.json` - schema for run/task capsules. - `retrieval/source-boundary-policy.yaml` - retrieval allowlist and rejection policy. - `capsules/` - per-run or per-task context capsules.  ## Approval Gates  The context layer never authorizes provider calls, Notion mutation, Linear sync, Telegram send, Railway action, deployment, production promotion, Figma sync, Git push, or external writeback. Those actions still require explicit owner approval."
+    },
+    {
+      "path": "project/context/cag-core.yaml",
+      "title": "cag-core.yaml",
+      "text": "version: 2026-07-08-founder-meeting-v2 status: active_planning_context purpose: >   Stable ArchFlow context assembled before task-specific RAG retrieval and   subagent prompting. This file is a compact control packet, not durable memory.  execution_boundary:   codex: executor_reviewer_file_editor_validator_final_integration_boundary   hermes: planned_watchdog_controller_reviewer_not_executor   subagents: bounded_task_contracts_only   af_review: public_safety_claim_support_runtime_boundary_gate  architecture:   langgraph: path_state_routing_review_gates   crewai: named_roles_and_task_sequence_proof_not_default_autonomous_runtime   llamaindex: bounded_retrieval_not_memory   wikillm: durable_reviewed_memory_after_promotion   dashboard: operator_control_surface_not_primary_brain   jarvis: provider_disabled_review_packet_surface_unless_approved  source_boundaries:   approved_public_corpus:     - project/     - history/     - skills/     - wiki/   forbidden_public_storage:     - secrets     - credentials     - private_urls     - local_absolute_paths     - raw_private_exports     - raw_transcripts     - screenshots     - account_ids     - deployment_ids     - personal_identifiers   path_p"
+    },
+    {
+      "path": "project/context/retrieval/source-boundary-policy.yaml",
+      "title": "source-boundary-policy.yaml",
+      "text": "version: 2026-07-08 status: active purpose: >   Source-boundary policy for RAG evidence used inside CAG/RAG context capsules.  approved_corpus:   include:     - project/     - history/     - skills/     - wiki/   exclude:     - .git/     - project/.env.local     - project/local/     - raw/     - source_exports/     - secrets/     - private/     - tmp/  retrieval_rules:   require_source_path: true   require_repo_relative_path: true   refuse_private_source: true   retrieval_is_read_only: true   no_source_path_means_no_evidence: true   provider_output_is_not_fact_without_review: true   lexical_fallback_required: true   vector_default_requires_twenty_query_benchmark: true  forbidden_outputs:   - secrets   - credentials   - local_absolute_paths   - private_urls   - raw_private_text   - account_ids   - deployment_ids   - personal_identifiers  review_gate:   owner_agent: af_review   approve_if:     - all_refs_are_repo_relative     - source_boundary_status_pass     - facts_have_evidence     - unsupported_claims_zero   block_if:     - private_data_detected     - external_action_required_without_approval     - retrieved_context_missing_source_path     - provider_or_writeback_activation_reque"
     },
     {
       "path": "project/dashboard/README.md",
@@ -3769,7 +4157,7 @@
     {
       "path": "project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md",
       "title": "Daily Retrospective Open Operational Gaps",
-      "text": "# Daily Retrospective Open Operational Gaps  Date: 2026-07-01 Status: open, partially updated on 2026-07-07  ## Issue  The July 1 daily retrospective found several remaining blockers that are already referenced across reports, but they need one concise operational issue for future scheduled runs.  ## FACT  - The `priority-task-operator` skill and script are configured, but the first scheduled 00:30 and 06:30 outputs have not yet been observed. - The Yushchenko observer found no active OpenRouter runtime evidence and no canonical model-call ledger. - Telegram delivery remains conditional on an approved sender outside the public repo. - Live Nexus/writeback remains unproven in public-safe evidence. - Static website/dashboard proof is strong, but backend/provider/writeback readiness remains gated.  ## INTERPRETATION  These are operational proof gaps, not registry drift. The daily retrospective should track them until the relevant lane closes each gap with artifacts and checks.  ## Required Closure Evidence  | Gap | Closure evidence | |---|---| | Priority-task runtime | Generated `selected-task.md`, `pitagent-chat-prompt.md`, and `selected-task.json` from scheduled execution | | Model-"
+      "text": "# Daily Retrospective Open Operational Gaps  Date: 2026-07-01 Status: open, partially updated on 2026-07-08  ## Issue  The July 1 daily retrospective found several remaining blockers that are already referenced across reports, but they need one concise operational issue for future scheduled runs.  ## FACT  - The `priority-task-operator` skill and script are configured, but the first scheduled 00:30 and 06:30 outputs have not yet been observed. - The Yushchenko observer found no active OpenRouter runtime evidence and no canonical model-call ledger. - Telegram delivery remains conditional on an approved sender outside the public repo. - Live Nexus/writeback remains unproven in public-safe evidence. - Static website/dashboard proof is strong, but backend/provider/writeback readiness remains gated.  ## INTERPRETATION  These are operational proof gaps, not registry drift. The daily retrospective should track them until the relevant lane closes each gap with artifacts and checks.  ## Required Closure Evidence  | Gap | Closure evidence | |---|---| | Priority-task runtime | Generated `selected-task.md`, `pitagent-chat-prompt.md`, and `selected-task.json` from scheduled execution | | Model-"
     },
     {
       "path": "project/issues/2026-07-01-dashboard-website-improvement-issues.md",
@@ -4135,6 +4523,11 @@
       "path": "project/reports/2026-07-03-vercel-production-cure-report.md",
       "title": "Vercel Production Cure Report",
       "text": "# Vercel Production Cure Report  Date: 2026-07-03 Status: complete for production-current guarded review flow; blocked for live provider execution Scope: Vercel production alias, Railway Jarvis API, guarded OpenRouter routes, dashboard freshness, and Epic 1 cloud closeout  ## Executive Verdict  The public dashboard cure succeeded for the review-flow scope. The exact public URL now points to the current Vercel production deployment, loads the dashboard, serves regenerated July 3 dashboard data, and exposes the Vercel same-origin Jarvis API.  Railway is also healthy for the Jarvis API. The service uses the Python/Nixpacks deployment path, passes health checks, stays awake, and serves the Architecture 1 PRD/ICP, Architecture 2 agent-orchestra, role config, role-update candidate, chat, and voice-text routes.  OpenRouter execution is wired but not activated. Both Vercel and Railway report `MODEL_PROVIDER=openrouter`, but provider calls remain `0` because copying the local OpenRouter key into external SaaS runtime env storage was blocked by approval review. That is the correct safety outcome until explicit credential-storage approval is given.  ## What Changed  | Area | Result | |---|---"
+    },
+    {
+      "path": "project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md",
+      "title": "Founder Meeting v2 Watchdog/CAG-RAG Architecture Report",
+      "text": "# Founder Meeting v2 Watchdog/CAG-RAG Architecture Report  Status: public-safe architecture report.  Generated: 2026-07-08.  Run folder: `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/`  ## Executive Summary  ArchFlow now has a documented final architecture direction for the Founder Meeting v2 package:  - Codex remains the executor, reviewer, file editor, validator, and final integration boundary. - Hermes is planned as watchdog/controller/reviewer, not executor. - CAG is Controlled Context Assembly Generation: stable, compact context before task work. - RAG is bounded, task-specific retrieval into the capsule from approved public-safe corpus only. - LlamaIndex remains retrieval, not memory. - WikiLLM remains durable reviewed memory after promotion. - CrewAI organizes roles and proof packages, but is not the default autonomous runtime. - LangGraph owns route/state/gate architecture. - Dashboard/Jarvis are operator/control surfaces, not the primary brain. - Provider calls, external writeback, Notion mutation, Telegram, Railway, Linear, Figma, Git push, deploy, and production promotion remain blocked without explicit owner approval.  The project is service-f"
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -5142,6 +5535,116 @@
       "text": "# Railway State - Jarvis Chat Rebuild  Date: 2026-07-07 Status: reviewed; no Railway mutation performed  ## FACT  - Railway MCP account access is available. - The account contains an ArchFlow project with one `jarvis-api` service. - The current local directory is not linked to a Railway project, so generic Railway project-scoped calls fail unless the project is passed explicitly. - The `jarvis-api` service has a latest successful deployment from 2026-07-03 16:50 UTC. - Deploy logs show the container started, Uvicorn ran on port 8080, `/health` returned 200, and the Railway healthcheck succeeded. - Recent Railway HTTP log summary tools returned no HTTP log sample for the latest deployment. - Deploy logs show a 2026-07-07 `/favicon.ico` 404 only; this is not an API failure. - Listing production variables was blocked by the approval reviewer because it could expose secret values. No retry or workaround was attempted.  ## INTERPRETATION  - Railway is deployed for the provider-disabled Jarvis API baseline, but it is not linked to this local checkout. - The Railway service appears running from deployment evidence, but there is no current evidence that the dashboard production URL is usin"
     },
     {
+      "path": "project/runs/2026-07-08-evening-skill-hook-review/agent-handout.md",
+      "title": "Evening Skill And Hook Review Handout",
+      "text": "# Evening Skill And Hook Review Handout  ## Title And Purpose  This handout covers the 2026-07-08 evening skill and hook review lane. Use it to continue the next registry or hook drift pass without repeating broad discovery.  ## Human Summary  This run reviewed the public ArchFlow skill registries, hook configuration, hook scripts, githooks, and recent July 8 run evidence after the completed post-execution skill-update lane and the completed Founder Meeting v2 integration.  No registry or hook patch was needed. The current registry surfaces already include the post-execution skill-update review mechanism, the task-handout prompt hook still points to the expected script, and the script now correctly emits a skill-governance reminder for skill or hook maintenance prompts. The post-execution reviewer returned `NO_UPDATE` for the two fresh completed July 8 run folders reviewed in this lane and for this lane's own run folder after artifact creation.  The run changed only this lane's live-log entry and run artifacts. It preserved earlier uncommitted July 8 integration work and did not run network operations, provider calls, deployment, Git push, external writeback, credential changes, or"
+    },
+    {
+      "path": "project/runs/2026-07-08-evening-skill-hook-review/summary.md",
+      "title": "2026-07-08 Evening Skill And Hook Review",
+      "text": "# 2026-07-08 Evening Skill And Hook Review  Status: complete  ## Task  Review the public ArchFlow skill registries, hook configuration, hook-backed workflows, and recent public-safe run evidence after the latest completed integration. Update only when actual used or configured skills changed.  ## Result  FACT:  - All nine public skill contracts under `skills/` are represented by the current governance and registry surfaces. - `project/agents/skills-by-agent.md`, `project/agents/agent-roster.yaml`, and `skills/skills-used.md` already include the new post-execution skill-update review mechanism from the earlier completed lane. - `.codex/hooks.json` still routes `UserPromptSubmit` to `project/scripts/task-handout-hook.py`. - `project/scripts/task-handout-hook.py` now emits both task-handout and skill-governance reminders for skill or hook maintenance prompts without storing raw prompt text. - `.githooks/pre-push` still runs the public safety scan and runtime guard. - `.githooks/pre-commit` still blocks tracked env/private files and common credential-value patterns. - The post-execution reviewer returned `NO_UPDATE` for both current completed July 8 run folders reviewed in this lane an"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md",
+      "title": "Agent Handout",
+      "text": "# Agent Handout  Run: `2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration`  Status: implementation, final QA repair, approved local closeout validation, and live-log closeout complete pending Git commit/push.  ## Goal  Integrate the Founder Meeting v2 / Hermes Watchdog / CAG-RAG / service-company / market-content-sales / E1-E7 package into the ArchFlow public project without blindly copying it, without activating external systems, and without overwriting the prior completed skill-update lane.  ## What Changed  - Added CAG/RAG context layer under `project/context/`. - Added planned Hermes watchdog/controller/reviewer role in workflows, roster, and prompts. - Added skills governance policy and role-specific visibility rules. - Extended hook recognition for skill/hook governance prompts without raw prompt storage or automatic skill creation. - Hardened the Vercel Jarvis provider guard so approved provider calls require explicit budget env values and cap checks. - Updated architecture, workflow, roster, skill, and task-plan docs. - Added content/sales templates using the latest 70/20/10 content mix. - Added service operations model and Notion-ready E1-E7 update packet. - Added "
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/final-publish-plan.md",
+      "title": "Final Publish Plan",
+      "text": "# Final Publish Plan  Status: prepared only. No external action is approved or executed by this file.  ## Preconditions  - Implementation files exist. - Validation checks pass or gaps are recorded. - Final QA reviewer approves or required fixes are completed. - Owner explicitly approves the specific side effect.  ## Approval-Gated Sequence  1. Show `git status` and diff summary. 2. Run final validation:    - public safety scan;    - dashboard data regeneration and JSON parse;    - YAML/JSON parse checks;    - Python compile for changed Python files;    - `git diff --check`. 3. Update run handout, KB/log candidates, and validation results. 4. Commit with message: `founder-method hermes-cag-rag architecture update`. 5. Push to Git only after owner approval. 6. Deploy or promote website only after owner approval. 7. Perform Notion update only after owner approval and connector/writeback access. 8. Perform Railway, Telegram, Linear, Figma, or provider actions only after explicit approval for that specific target.  ## Blocked By Default  - Git push. - Website deployment. - Production promotion. - Provider calls. - Notion mutation. - Linear mirror. - Telegram send. - Railway action. - Fi"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/notion-e1-e7-update-packet.md",
+      "title": "Notion-Ready E1-E7 Update Packet",
+      "text": "# Notion-Ready E1-E7 Update Packet  Status: prepared only. No Notion mutation was performed.  ## E1 - Internal Proof And Architecture Finalization  Strategic purpose: preserve the internal PRD/KB proof engine and add Hermes/CAG/RAG control without claiming autonomous runtime.  Current status: active/review. E1.7 provider-disabled hosted review packets are verified; provider-backed product runtime is not active.  Tasks to keep: E1.1 through E1.7, especially E1.2/E1.2.8 proof packages, E1.4 KB principle, E1.7 provider-disabled Jarvis/API baseline.  Tasks to revise: E1.5 becomes case study/content from accepted evidence. E1.7 wording stays provider-disabled review-packet runtime.  New tasks to add:  - E1.8 Hermes Watchdog and CAG/RAG architecture finalization.  Subtasks:  - [x] Inspect package reports 00-05 and prompts 01-09. - [x] Run bounded read-only architecture, CAG/RAG, skills, service, market/content, and E1-E7 reviews. - [x] Add context capsule schema and run capsule. - [x] Add Hermes planned watchdog/controller role. - [x] Update workflow, agent, and skill governance candidates without duplicate execution roles. - [x] Prepare Codex and Hermes prompts. - [ ] Regenerate dashboa"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/package-to-repo-mapping.md",
+      "title": "Package To Repo Mapping",
+      "text": "# Package To Repo Mapping  Run: `2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration`  This file records how the owner-approved package was integrated without blindly copying it.  ## Package Summary  Source package: `archflow_8_07/`  Package files inspected:  - `README.md` - `reports/ArchFlow_00_Source_Register_and_Founder_Meeting_Delta_v2.*` - `reports/ArchFlow_01_Current_Architecture_and_Setup_v2.*` - `reports/ArchFlow_02_Service_Company_and_Operations_Model_v2.*` - `reports/ArchFlow_03_Market_ICP_Positioning_Content_and_Sales_v2.*` - `reports/ArchFlow_04_Tools_Automation_Agent_Strategy_and_Roadmap_v2.*` - `reports/ArchFlow_05_Hermes_Watchdog_CAG_RAG_Integration_Plan_v2.*` - `prompts/01_codex_global_agent_loop_prompt_v2.md` - `prompts/02_archflow_codex_project_configuration_prompt_v2.md` - `prompts/03_hermes_watchdog_controller_prompt_v2.md` - `prompts/04_cag_rag_context_capsule_prompt_v2.md` - `prompts/05_subagent_task_contract_prompt_v2.md` - `prompts/06_skill_registry_hook_governance_prompt_v2.md` - `prompts/07_market_content_sales_execution_prompt_v2.md` - `prompts/08_e1_e7_notion_task_update_prompt_v2.md` - `prompts/09_final_git_website_dashboard_kb_publish_prompt_v2."
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/01_codex_system_prompt_v2.md",
+      "title": "Codex System Prompt v2",
+      "text": "# Codex System Prompt v2  Use this as a complement to the existing project and global Codex rules.  ## Identity  You are Codex, the ArchFlow public project executor, reviewer, file editor, validator, and final integration boundary.  Hermes may plan, classify, assign, review, and stop work. Hermes does not execute, edit files, deploy, mutate task boards, activate providers, or write to external systems.  ## Operating Loop  1. Restate the goal operationally. 2. Read the project routing files and live communication state. 3. Classify the task as Discovery, Planning, Implementation, Repair, Verification, Refactor, Documentation, Deployment, Monitoring, Sales/Content, or Task-Board Update. 4. Classify risk: low, medium, or high. 5. Assemble a compact context capsule from stable CAG rules and task-specific RAG evidence. 6. Create bounded task contracts before using subagents or actors. 7. Execute only the current file scope. 8. Collect evidence: file paths, diffs, check output, rendered artifacts, logs, or source citations. 9. Verify acceptance criteria. 10. Decide: accept, repair, split, escalate, or stop. 11. Write a handoff for substantial work.  ## Stop Rules  Stop and ask for approv"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/02_archflow_codex_project_configuration_prompt_v2.md",
+      "title": "ArchFlow Codex Project Configuration Prompt v2",
+      "text": "# ArchFlow Codex Project Configuration Prompt v2  Use this after the global Codex loop prompt when working in the public ArchFlow project.  ## Required Read Order  1. `AGENTS.md` 2. `project/operating-rules.md` 3. `project/project-plan.md` 4. `project/live/communication/README.md` 5. `project/live/communication/current-agent-notice.md` 6. Latest entries in `project/live/communication/agent-communication-log.md` 7. `project/agentic-stack.md` 8. `project/workflows/langgraph-controller.yaml` 9. `project/workflows/crewai-crew.yaml` 10. `project/workflows/llamaindex-rag.yaml` 11. `project/agents/agent-roster.yaml` 12. `project/agents/skills-by-agent.md` 13. Relevant skills and latest run handout.  ## Required Behavior  - Append a public-safe starting update before edits. - Preserve unrelated user or other-agent changes. - Use repo-relative paths in public files. - Keep AGENTS and routing rules short; put details in project docs and run packets. - Prefer Markdown/YAML/JSON task packets over external task systems. - Keep provider, writeback, deploy, Notion, Telegram, Railway, Linear, Figma, and Git push approval-gated.  ## Required Update Areas For This Package  - Reports and prompt summa"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/03_hermes_watchdog_controller_prompt_v2.md",
+      "title": "Hermes Watchdog Controller Prompt v2",
+      "text": "# Hermes Watchdog Controller Prompt v2  You are Hermes, the ArchFlow watchdog/controller/reviewer.  You do not execute code, edit files, deploy, mutate task boards, activate model providers, change secrets, write to external systems, push to Git, or publish content. Codex is the executor and integration boundary.  ## Mission  Turn high-level ArchFlow goals into controlled execution plans, CAG/RAG context capsules, bounded task contracts, subagent prompts, evidence review, and stop/repair/escalation decisions.  ## Context Method  Before prompting any subagent:  1. Classify the user goal and execution type. 2. Classify risk. 3. Assemble CAG core from stable project rules, founder meeting methodology, role registry, skill governance, current architecture, E1-E7 state, and gated claims. 4. Retrieve task-specific evidence through bounded RAG from the approved public-safe corpus. 5. Build a compact context capsule. 6. Generate one bounded task contract per subagent.  ## Execution Types  Discovery, Planning, Implementation, Repair, Verification, Refactor, Documentation, Deployment, Monitoring, Sales/Content, Task-Board Update.  ## Required Task Contract  - Title - Execution type - Risk le"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/04_cag_rag_context_capsule_prompt_v2.md",
+      "title": "CAG/RAG Context Capsule Prompt v2",
+      "text": "# CAG/RAG Context Capsule Prompt v2  Build a context capsule before any subagent is prompted.  ## CAG Core  CAG means Controlled Context Assembly Generation. It is a stable, compact context packet for one run or task. It is not a vector index, a memory store, or broad ingestion.  CAG includes:  - Project operating rules. - Founder meeting methodology. - Current architecture boundaries. - Role and skill maps. - Source boundaries. - E1-E7 state. - Gated claims and stop conditions. - Acceptance criteria.  ## RAG Layer  RAG retrieves task-specific evidence from the approved public-safe corpus. Retrieval must return source paths and metadata or it is not accepted as evidence.  Approved default corpus:  - `project/` - `history/` - `skills/` - `wiki/`  Forbidden by default:  - ignored local runtime data; - raw private exports; - secrets or credentials; - raw transcripts or screenshots; - private URLs; - absolute local paths; - provider output as fact.  ## Capsule Fields  Use `project/context/context-capsule.schema.json`.  The capsule must include run ID, goal, execution type, risk, CAG refs, RAG refs, facts, interpretations, hypotheses, gaps, allowed files, forbidden actions, role assignm"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/05_subagent_task_contract_prompt_v2.md",
+      "title": "Subagent Task Contract Prompt v2",
+      "text": "# Subagent Task Contract Prompt v2  Use this for every bounded subagent or actor.  ## Template  ```text Task title: Execution type: Risk level: Goal: Context capsule summary: Allowed files/areas: Forbidden actions: Inputs: Expected outputs: Acceptance criteria: Evidence required: Maximum attempts: Stop condition: Reviewer: Output format: ```  ## Rules  - Do not exceed file scope. - Do not use paid or external tools unless explicitly approved. - Do not modify production, secrets, environment variables, deployment settings, private data, or unrelated files. - Do not claim completion without evidence. - Stop when acceptance criteria are met. - If blocked, report blocker and next safe action. - Codex reviews and integrates outputs."
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/06_skill_registry_hook_governance_prompt_v2.md",
+      "title": "Skill Registry And Hook Governance Prompt v2",
+      "text": "# Skill Registry And Hook Governance Prompt v2  Use this when adding, updating, or reviewing ArchFlow skills.  ## Goal  Make skill use explicit, deduplicated, role-aware, and reviewable.  Hermes, Codex, AF Review, and AF Knowledge may inspect all skills. Bounded subagents receive only their role-specific skills and shared coordination rules.  ## Read First  - `project/agents/skills-governance.md` - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - relevant `skills/*/SKILL.md` - `.codex/hooks.json` - hook scripts if hook behavior changes  ## Add Or Update A Skill Only If  1. No existing skill covers the same job. 2. The skill has a unique name. 3. `SKILL.md` defines purpose, when to use, forbidden actions, evidence, validation, owner role, and examples. 4. The skill is mapped to roles. 5. The hook trigger is documented if mandatory. 6. AF Review passes.  ## Required Outputs  - Duplicate-skill audit. - Proposed registry changes. - Role-specific skill map. - Hook recommendation or patch. - Validation checks. - Run handout update.  ## Forbidden  - No automatic new skill creation from one run. - No raw prompt storage. - No broad rewrite"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/07_market_content_sales_execution_prompt_v2.md",
+      "title": "Market, Content, And Sales Execution Prompt v2",
+      "text": "# Market, Content, And Sales Execution Prompt v2  Use this to update ArchFlow market, ICP, content, and sales assets.  ## Core Positioning  ArchFlow turns messy product-team material into evidence-backed PRDs, task packets, and a maintained knowledge base. Tools make PMs draft faster. ArchFlow removes the PRD production burden and makes context compound.  ## Target ICP  - B2B SaaS scaleups and product-led companies. - Roughly 50-500 employees. - Teams with 2-5 PMs. - Buyers: Director or VP Product, Head of Product, Product Ops, and senior PM leaders.  ## Method  Use the founder meeting discovery method:  - JTBD. - 90-day story. - 45-minute discovery call. - 5 Whys. - Customer forces. - Current alternatives. - Measurable requirements. - Definition of Done. - Dual-track discovery/delivery. - Demo-Sell-Build.  ## Content Rule  Use the latest owner-approved mix:  - 70% static educational/analytical posts. - 20% carousel/checklist/template posts. - 10% short video or scripted demo posts.  Every video must have a static companion.  ## Required Outputs  - ICP card. - Competitor objection scripts. - Static template library. - Five-week content calendar. - Discovery call script. - Qualifica"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/08_e1_e7_notion_task_update_prompt_v2.md",
+      "title": "E1-E7 Task And Notion Update Prompt v2",
+      "text": "# E1-E7 Task And Notion Update Prompt v2  Use this to update the ArchFlow task plan and prepare Notion task-page updates.  Do not mutate Notion unless owner explicitly approves connector/writeback.  ## Required Updates  ### E1 - Internal Proof And Architecture Finalization  Add `E1.8 Hermes Watchdog and CAG/RAG architecture finalization`.  Include reports/prompts summary, context capsule schema, short AGENTS routing, workflow/role/skill candidates, dashboard data regeneration, public safety scan, diff check, and run handout.  ### E2 - Research Engine To ICP  Add customer-discovery method, competitor evidence work, JTBD and customer forces, 90-day trigger tags, two-signal evidence gate, competitor objection scripts, and no personal lead data in public repo.  ### E3 - Website And Positioning  Use the message: source packet -> evidence -> PRD -> tasks -> KB.  Add readiness diagnostic CTA, proof blocks, review gates, and no autonomous-agent or ROI overclaim.  ### E4 - Content  Add static content template system:  - 70% static educational/analytical. - 20% carousel/checklist/template. - 10% short video or scripted demo.  Template subjects: PRD teardown, JTBD, customer forces, DoD, Claud"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/prompts/09_final_git_website_dashboard_kb_publish_prompt_v2.md",
+      "title": "Final Git, Website, Dashboard, KB, And Publish Prompt v2",
+      "text": "# Final Git, Website, Dashboard, KB, And Publish Prompt v2  Use this only after implementation tasks are complete and owner approval is explicit.  ## Preflight  Read operating rules, live communication files, latest run handout, git status, and all changed files.  ## Required Actions Before Any External Side Effect  1. Verify reports, prompts, schemas, implementation summaries, project-plan updates, content templates, and skill registry updates are present. 2. Regenerate dashboard data if public text changed. 3. Verify dashboard/site copy does not imply validated demand, autonomous runtime, provider-backed execution, writeback, or SaaS readiness without evidence. 4. Update WikiLLM only with stable public-safe summaries that pass promotion rules. 5. Prepare E1-E7 Notion update candidates. Execute Notion update only if connector/writeback is explicitly approved. 6. Run public safety scan, dashboard data parse, relevant JS/Python/YAML/JSON checks, and `git diff --check`. 7. Create or update `agent-handout.md`.  ## Approval-Gated Actions  Do not run without explicit owner approval:  - Git commit or push. - Website deployment or production promotion. - Provider activation. - Notion muta"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/service-operations-model.md",
+      "title": "Service Operations Model",
+      "text": "# Service Operations Model  Status: integrated planning artifact.  ## Operating Model  ArchFlow is framed first as a customer-discovery-to-PRD operating service:  1. Intake and source boundary. 2. JTBD, 90-day story, and 45-minute discovery. 3. Evidence digest using FACT / INTERPRETATION / HYPOTHESIS / GAP. 4. Measurable PRD with Definition of Done. 5. Markdown/JSON task packet. 6. AF Review gate. 7. Client handoff. 8. KB promotion only after review. 9. Weekly learning loop from delivery, content, and discovery.  ## Offer Ladder  ### Discovery Diagnostic  Output: pain map, workaround map, readiness score, evidence gaps, next package recommendation.  Status: research/free or low-friction test first. Paid diagnostic is a hypothesis until E7 evidence exists.  ### PRD Rescue Sprint  Output: source inventory, context digest, evidence-backed PRD, acceptance criteria, Definition of Done, task package, review report, and KB update candidate.  Status: first paid package candidate.  ### Monthly PRD/KB Operating Retainer  Output: recurring PRD updates, backlog handoffs, decision/risk log, monthly KB update, and optional approved content/sales snippets.  Status: later offer after clean sprint "
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/subagent-findings.md",
+      "title": "Subagent Findings",
+      "text": "# Subagent Findings  Run: `2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration`  Status: read-only review phase complete with one timeout gap.  ## Architecture Reviewer  Status: complete.  Findings:  - Current stack is still aligned: Codex is execution boundary, LangGraph controls state/gates, CrewAI defines roles and proof-only runtime, LlamaIndex is bounded retrieval, WikiLLM is durable reviewed memory. - Hermes should be added as planned watchdog/controller/reviewer before the existing execution path. It must classify, assemble context, assign contracts, review evidence, and stop or escalate. It must not edit files, run code, deploy, mutate Notion, or activate providers. - Add planned LangGraph nodes for `classify_execution`, `assemble_cag_core`, `build_context_capsule`, `assign_task_contract`, and `decide_next_action`. - Existing E1.7 hosted Jarvis/API proof is provider-disabled review-packet proof, not provider-backed product runtime. - Vercel provider-call guard should fail closed on budget gate, matching the stricter FastAPI service path.  Risks:  - Provider routes can be misread as active runtime unless labels stay precise. - CAG capsules can become stale unless vers"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/task-contracts.md",
+      "title": "Task Contracts",
+      "text": "# Task Contracts  Run: `2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration`  ## Contract Template  - Title: - Execution type: - Goal: - Context: - Allowed files: - Forbidden actions: - Acceptance criteria: - Required evidence: - Maximum attempts: - Stop condition: - Expected output format:  ## Architecture Reviewer  - Title: Architecture Reviewer - Execution type: Discovery / Planning - Goal: Review current LangGraph, CrewAI, Codex, Hermes, Jarvis, dashboard, CAG/RAG, writeback, provider, and Railway architecture. - Context: Public project architecture and owner package are planning sources; runtime claims require repo evidence. - Allowed files: `archflow_8_07/**`, `project/agentic-stack.md`, `project/workflows/**`, `project/agents/**`, `project/config/**`, `services/jarvis-api/**`, `api/**`, relevant reports/runs. - Forbidden actions: edits, provider calls, deploys, pushes, external writeback. - Acceptance criteria: return architecture delta, risks, file update recommendations, and evidence. - Required evidence: repo-relative file references and clear claim boundaries. - Maximum attempts: 1. - Stop condition: missing source or need for external side effect. - Expected outp"
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/task_repr_without_linear.md",
+      "title": "Task Representation Without Linear",
+      "text": "# Task Representation Without Linear  Status: active policy for this integration.  Linear is optional only and not required for ArchFlow execution.  ## Default Artifacts  - `project/project-plan.md` - `project/tasks/*.md` if task files are later added - `project/tasks/*.json` if structured task packets are later added - `project/runs/<run-id>/task-contracts.md` - `project/runs/<run-id>/agent-handout.md` - `project/runs/<run-id>/notion-e1-e7-update-packet.md` - generated `project/dashboard/data.json` - GitHub Issues only if owner approves - Linear mirror only if owner approves and free limits are acceptable  ## Required Task Fields  - ID. - Title. - Epic. - Execution type. - Role. - Source boundary. - Inputs. - Outputs. - Acceptance criteria. - Evidence required. - Review gate. - Status. - Blockers. - Owner decisions.  ## External Sync Rule  If Notion, GitHub Issues, Linear, or another task system is not explicitly approved, save update text as a repo artifact and stop."
+    },
+    {
+      "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/validation-results.md",
+      "title": "Validation Results",
+      "text": "# Validation Results  Run: `2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration`  ## Checks Run  | Check | Command | Result | |---|---|---| | Python syntax | `python3 -m py_compile api/_jarvis_contract.py project/scripts/task-handout-hook.py project/scripts/post-execution-skill-update.py project/scripts/render-markdown-report-pdfs.py` | Pass | | Context schema JSON parse | `python3 -m json.tool project/context/context-capsule.schema.json` | Pass | | Run capsule JSON parse | `python3 -m json.tool project/context/capsules/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration.json` | Pass | | Workflow validation with system Python | `python3 project/scripts/validate-workflows.py` | GAP: failed because system Python lacks PyYAML | | Workflow validation with project Python | `project/local/venv/bin/python project/scripts/validate-workflows.py` | Pass | | Architecture PDF render with project Python | `project/local/venv/bin/python project/scripts/render-markdown-report-pdfs.py ...` | GAP: failed because project Python lacks ReportLab | | Architecture PDF render with system Python | `python3 project/scripts/render-markdown-report-pdfs.py ...` | GAP: failed because system Pytho"
+    },
+    {
+      "path": "project/runs/2026-07-08-post-execution-skill-update-hook/agent-handout.md",
+      "title": "Post-Execution Skill Update Hook Handout",
+      "text": "# Post-Execution Skill Update Hook Handout  ## Title And Purpose  This handout covers the July 8 post-execution skill update mechanism added to the existing ArchFlow evening skill and hook lane.  ## Human Summary  The project already had a prompt hook, an evening skill/hook maintenance lane, a daily retrospective lane, project-local skills, run artifacts, and validation scripts. This run did not create a new automation system. It extended the existing evening lane with a controlled post-execution review gate.  The new script reviews a completed run folder or run note and returns one of three decisions: `NO_UPDATE`, `APPEND_PATTERN`, or `PATCH_EXISTING_SKILL`. It defaults to review-only output. It appends only to existing support files when `--apply` is passed, and it refuses to create a new skill automatically.  The controlling prompt hook remains a reminder only. Skill learning is evidence-gated and routed through the existing evening skill registry update skill.  ## Current State  - Status: complete. - Main script: `project/scripts/post-execution-skill-update.py`. - Main lane contract: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Main skill contract: `"
+    },
+    {
+      "path": "project/runs/2026-07-08-post-execution-skill-update-hook/run-summary.md",
+      "title": "Post-Execution Skill Update Hook",
+      "text": "# Post-Execution Skill Update Hook  Date: 2026-07-08 Status: complete  ## Current Setup Discovered  - Existing Codex prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py`. - Existing evening automation: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Existing daily retrospective: `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`. - Existing skill/prompt structure: project-local skills under `skills/`, with registry references in `skills/skills-used.md`, `project/agents/skills-by-agent.md`, and `project/agents/agent-roster.yaml`. - Existing logs/wiki structure: active run records under `project/runs/`, durable public notes under `wiki/runs/`, and chronological state in `wiki/log.md`. - Existing execution flow: read communication files, append a starting update, perform bounded drift/review work, run validation, append completion, and write run artifacts.  ## What Changed  - Added `project/scripts/post-execution-skill-update.py`. - Added support files under `skills/evening-skill-registry-update/`. - Updated the evening skill and automation contract to require a post-execution decision: `NO_UPDATE`, `APPEND_PATT"
+    },
+    {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
       "title": "Daily Skill Retrospective And RAG Knowledge Review",
       "text": "# Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-01 Status: complete Scope: ArchFlow public-safe operations  ## Executive Summary  FACT: - The 21:00 evening skill and hook lane completed before this review and found no registry drift beyond narrow priority-task path hygiene. - The 22:30 daily lane is now distinct from the registry lane in the public agent roster, skill registry, and current local automation TOML. - Today's public artifacts heavily used `task-handout`, FACT/INTERPRETATION/HYPOTHESIS/GAP structure, live communication updates, run summaries, issue lists, and WikiLLM-style memory surfaces. - Static website/dashboard proof is strong for route and rendered-dashboard scope; provider-backed Jarvis, Railway/backend, live Nexus/writeback, owner-device voice proof, autonomous writeback, model-call cost logging, and Telegram delivery remain gated.  INTERPRETATION: - The useful operating pattern is now stable: live communication first, bounded run artifacts second, WikiLLM memory only for durable constraints, and no-op-safe scheduled maintenance when evidence does not justify churn. - The main risk for future agents is not missing a skill registry entry. The "
@@ -5170,6 +5673,16 @@
       "path": "project/runs/20260706_run_daily_skill_retrospective.md",
       "title": "2026-07-06 Run Note: Daily Skill Retrospective And RAG Knowledge Review",
       "text": "# 2026-07-06 Run Note: Daily Skill Retrospective And RAG Knowledge Review  Date: 2026-07-06 Status: complete, continued at 2026-07-07 01:33 EEST Owner: Codex automation Scope: ArchFlow public-safe operational retrospective  ## Task  Review how skills, hooks, automations, agent coordination files, run notes, decisions, issues, and durable memory surfaces were used during the current ArchFlow public daily evidence window. Produce a concise future-agent retrospective and update local public knowledge surfaces where useful.  ## Inputs  - `AGENTS.md` - `project/README.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `skills/daily-public-project-review/SKILL.md` - `skills/skills-used.md` - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `project/agents/model-efficiency-advice.md` - `project/agents/model-efficiency-issues.md` - `project/local/rag_index/approved-corpus-summary.json` - `project/runs/2026-07-05-evening-skill-hook-review/summary.md` - `project/runs/2026-07-06-0030-priority-mechanic"
+    },
+    {
+      "path": "project/runs/20260708_daily_skill_retrospective.md",
+      "title": "2026-07-08 Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# 2026-07-08 Daily Skill Retrospective And RAG Knowledge Review  Status: complete.  ## Scope  This review covers ArchFlow public-safe operational evidence from 2026-07-08 and recent prior daily lanes. It intentionally does not repeat the 21:00 evening skill and hook drift review.  Reviewed sources:  - `AGENTS.md` - `project/README.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/` - `project/runs/2026-07-08-post-execution-skill-update-hook/` - `project/runs/2026-07-08-evening-skill-hook-review/` - `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md` - `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md` - `project/agents/skills-by-agent.md` - `project/agents/skills-governance.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `skills/daily-public-project-review/SKILL.md` - `skills/evening-skill-registry-update/SKILL.md` - `project/automation/daily-skill-retrospective-and-rag-kn"
+    },
+    {
+      "path": "project/runs/20260708_run_daily_skill_retrospective.md",
+      "title": "2026-07-08 Run Note - Daily Skill Retrospective And RAG Knowledge Review",
+      "text": "# 2026-07-08 Run Note - Daily Skill Retrospective And RAG Knowledge Review  Status: complete.  ## Task  Run the end-of-day ArchFlow public-safe skill, hook, automation, RAG, coordination, run-note, report, issue, and memory-surface retrospective.  ## Inputs  - `AGENTS.md` - `project/README.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - `project/live/communication/agent-communication-log.md` - `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/` - `project/runs/2026-07-08-post-execution-skill-update-hook/` - `project/runs/2026-07-08-evening-skill-hook-review/` - `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md` - `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md` - `project/agents/skills-by-agent.md` - `project/agents/skills-governance.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `skills/daily-public-project-review/SKILL.md` - `skills/evening-skill-registry-update/SKILL.md` - `project/workflows/llamaindex-rag.yaml` - `project/context/retrieval/source-boundary-policy.yaml` "
     },
     {
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
@@ -5429,7 +5942,7 @@
     {
       "path": "project/workflows/crewai-crew.yaml",
       "title": "crewai-crew.yaml",
-      "text": "name: archflow_block1_crew status: runtime_installed_config_import_passed_level_3_proof_passed runtime: crewai_python official_docs_checked:   - https://docs.crewai.com/en/concepts/crews  purpose: >   Organize the Block 1 agents as a named team. CrewAI owns role clarity,   task sequence, expected outputs, and per-task accountability.  process: sequential manager_mode: codex_operator_supervised memory: false cache: true planning: false output_log_file: project/outputs/crew-log.json max_rpm: null observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted model_execution: level_3_direct_crewai_proof_passed_deterministic_local storage_boundary: project/local/home telemetry_for_guard_runs: disabled config_check_script: project/scripts/crewai-config-check.py  agents:   af_tools:     role: Source and tooling analyst     goal: Verify available sources, providers, and safe boundaries before work starts.     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check   af_context:     role: Context analyst     goal: Convert approved inputs into structured English facts, interpretations, hypotheses,"
+      "text": "name: archflow_block1_crew status: runtime_installed_config_import_passed_level_3_proof_passed runtime: crewai_python official_docs_checked:   - https://docs.crewai.com/en/concepts/crews  purpose: >   Organize the Block 1 agents as a named team. CrewAI owns role clarity,   task sequence, expected outputs, and per-task accountability.  process: sequential manager_mode: codex_operator_supervised memory: false cache: true planning: false output_log_file: project/outputs/crew-log.json max_rpm: null observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted model_execution: level_3_direct_crewai_proof_passed_deterministic_local storage_boundary: project/local/home telemetry_for_guard_runs: disabled config_check_script: project/scripts/crewai-config-check.py  agents:   hermes_watchdog:     role: Planned watchdog, controller, and reviewer     goal: Classify work, assemble CAG/RAG context capsules, write task contracts, review evidence, and stop or escalate without executing files or external actions.     status: planned_not_runtime_executor     skills:       - execution-type-classification       - context-capsule-review       - task-contract-writing       - eviden"
     },
     {
       "path": "project/workflows/knowledge-integration.yaml",
@@ -5439,12 +5952,12 @@
     {
       "path": "project/workflows/langgraph-controller.yaml",
       "title": "langgraph-controller.yaml",
-      "text": "name: archflow_block1_langgraph_controller status: runtime_installed_smoke_passed runtime: langgraph_python official_docs_checked:   - https://docs.langchain.com/oss/python/langgraph/overview  purpose: >   Control the reasoning path for Block 1. LangGraph owns state,   conditional routing, review loops, and human approval gates.  state_schema:   run_id: string   source_packet: object   source_boundary_status: pass_or_fail   retrieved_context: list   context_digest_path: string   prd_path: string   task_matrix_path: string   kb_update_path: string   review_report_path: string   task_handout_path: string   loop_state_path: string   loop_attempt_number: integer   max_attempts_per_item: integer   maker_agent: string   verifier_agent: string   market_research_packet_path: string   langsmith_trace_id: string   langsmith_trace_url: string   approval_status: approved_revise_or_blocked   gaps: list  nodes:   intake_validate:     owner_agent: af_tools     purpose: validate source packet, language, public boundary, and requested output.     output: source_boundary_status   retrieve_context:     owner_agent: af_context     purpose: call bounded LlamaIndex retrieval over approved public corpus."
+      "text": "name: archflow_block1_langgraph_controller status: runtime_installed_smoke_passed runtime: langgraph_python official_docs_checked:   - https://docs.langchain.com/oss/python/langgraph/overview  purpose: >   Control the reasoning path for Block 1. LangGraph owns state,   conditional routing, review loops, and human approval gates.  state_schema:   run_id: string   execution_type: string   risk_level: low_medium_or_high   source_packet: object   source_boundary_status: pass_or_fail   cag_core_refs: list   cag_core_hash: string   retrieved_context: list   context_capsule_path: string   task_contract_path: string   context_digest_path: string   prd_path: string   task_matrix_path: string   kb_update_path: string   review_report_path: string   task_handout_path: string   loop_state_path: string   loop_attempt_number: integer   max_attempts_per_item: integer   maker_agent: string   verifier_agent: string   market_research_packet_path: string   langsmith_trace_id: string   langsmith_trace_url: string   approval_status: approved_revise_or_blocked   hermes_decision: accept_repair_split_escalate_or_stop   gaps: list  nodes:   classify_execution:     owner_agent: hermes_watchdog     status: pl"
     },
     {
       "path": "project/workflows/llamaindex-rag.yaml",
       "title": "llamaindex-rag.yaml",
-      "text": "name: archflow_block1_rag status: runtime_installed_bounded_hybrid_retrieval_available runtime: llamaindex_python official_docs_checked:   - https://developers.llamaindex.ai/python/framework/getting_started/concepts/  purpose: >   Connect agents and LLMs to approved project data. LlamaIndex owns bounded   loading, indexing, retrieval, and source-grounded answers.  approved_corpus:   include:     - project/     - history/     - skills/     - wiki/   exclude:     - .git/     - project/.env.local     - project/local/     - raw/     - source_exports/     - secrets/     - private/     - tmp/  indexing_parameters:   loader: simple_directory_reader   document_language: english   chunk_size: 800   chunk_overlap: 120   metadata_fields:     - source_path     - document_type     - public_safety_status     - updated_at   persist_dir: project/local/rag_index   persist_dir_git_status: ignored  retrieval_parameters:   query_engine: approved_corpus_hybrid   query_mode: hybrid   vector_top_k: 5   lexical_top_k: 5   rerank_top_k: 5   fallback_to_lexical: true   similarity_top_k: 5   response_mode: compact   require_source_paths: true   refuse_on_private_source: true   deterministic_smoke_mode: lexic"
+      "text": "name: archflow_block1_rag status: runtime_installed_bounded_hybrid_retrieval_available runtime: llamaindex_python official_docs_checked:   - https://developers.llamaindex.ai/python/framework/getting_started/concepts/  purpose: >   Connect agents and LLMs to approved project data. LlamaIndex owns bounded   loading, indexing, retrieval, and source-grounded answers.  context_method:   cag_role: >     CAG is Controlled Context Assembly Generation. It assembles stable project     rules, role/skill governance, architecture boundaries, E1-E7 state, and     gated claims before task-specific retrieval.   rag_role: >     RAG is task-specific evidence retrieval into a context capsule. It must     return source paths and metadata or the result is not accepted as evidence.   capsule_schema: project/context/context-capsule.schema.json   source_boundary_policy: project/context/retrieval/source-boundary-policy.yaml  approved_corpus:   include:     - project/     - history/     - skills/     - wiki/   exclude:     - .git/     - project/.env.local     - project/local/     - raw/     - source_exports/     - secrets/     - private/     - tmp/  indexing_parameters:   loader: simple_directory_reader   d"
     },
     {
       "path": "project/workflows/market-research-engine.yaml",
@@ -5509,7 +6022,27 @@
     {
       "path": "skills/evening-skill-registry-update/SKILL.md",
       "title": "ArchFlow Evening Skill Registry And Hook Update",
-      "text": "--- name: evening-skill-registry-update description: Review and align the public ArchFlow skill registry and handout hook with actual configured agents, skills, and evidence surfaces so recurring maintenance stays stable and low-entropy across days. ---  # ArchFlow Evening Skill Registry And Hook Update  ## Purpose  Use this skill for the nightly ArchFlow public maintenance job that keeps:  - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `.codex/hooks.json`  in consistent sync for a stable handoff workflow and predictable daily output.  ## When To Use  - In the nightly public maintenance lane before any broad report or dashboard update. - When skill names drift between code and registry files. - After any hook or skill contract change. - When automation notes report that no functional change is needed and a low-entropy no-op is valid.  ## Required Inputs  Read all of:  - `project/operating-rules.md` - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py`  Optional but recommended:  - `proj"
+      "text": "--- name: evening-skill-registry-update description: Review and align the public ArchFlow skill registry and handout hook with actual configured agents, skills, and evidence surfaces so recurring maintenance stays stable and low-entropy across days. ---  # ArchFlow Evening Skill Registry And Hook Update  ## Purpose  Use this skill for the nightly ArchFlow public maintenance job that keeps:  - `project/agents/skills-by-agent.md` - `project/agents/agent-roster.yaml` - `skills/skills-used.md` - `.codex/hooks.json`  in consistent sync for a stable handoff workflow and predictable daily output.  ## When To Use  - In the nightly public maintenance lane before any broad report or dashboard update. - When skill names drift between code and registry files. - After any hook or skill contract change. - When automation notes report that no functional change is needed and a low-entropy no-op is valid.  ## Required Inputs  Read all of:  - `project/operating-rules.md` - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `skills/skills-used.md` - `.codex/hooks.json` - `skills/task-handout/SKILL.md` - `project/scripts/task-handout-hook.py` - `project/scripts/post-execution-s"
+    },
+    {
+      "path": "skills/evening-skill-registry-update/candidate-patterns.md",
+      "title": "Candidate Patterns",
+      "text": "# Candidate Patterns  This file stores candidate post-execution lessons when the evidence points to a possible skill update but the target skill or final rule still needs review.  Candidate entries are not active controlling rules. Promote them only after repeated evidence or explicit review.  ## Entry Template  - Candidate title: - Proposed target skill or prompt: - Proposed update mode: - Evidence: - Why this might improve future runs: - Why this is not yet active:  ## 20260706_run_daily_skill_retrospective  - Date recorded: 2026-07-08T14:56:04+00:00 - Candidate target: `priority-task-operator` - Proposed mode: `PATCH_EXISTING_SKILL` - Required human review: confirm this belongs in an existing support file or `SKILL.md` before promotion. - Evidence from execution: - No new skill is justified. The concrete improvement belongs inside the existing `priority-task-operator` workflow. - Priority mechanical runs repeatedly ranked an owner-gated profile task even after earlier packets already prepared profile drafts and decision artifacts. - Checks passed in the source run note, including Markdown path existence, dashboard data regeneration, dashboard JSON parse, public safety scan, and "
+    },
+    {
+      "path": "skills/evening-skill-registry-update/failed-patterns.md",
+      "title": "Failed Patterns",
+      "text": "# Failed Patterns  This file stores reviewed, reusable failure modes discovered by the post-execution skill update gate.  Append only. A failure pattern must be evidence-backed and must not turn a one-off issue into a global rule.  ## Entry Template  - Failure title: - Trigger condition: - Observed error or behavior: - Likely cause, if supported by evidence: - Required stop or repair behavior: - Evidence: - Maximum retry rule, if relevant:"
+    },
+    {
+      "path": "skills/evening-skill-registry-update/stop-rules.md",
+      "title": "Evening Skill Update Stop Rules",
+      "text": "# Evening Skill Update Stop Rules  These rules apply to the post-execution skill update review inside the existing evening skill and hook lane.  ## Loop Control  - Maximum 3 repair attempts per task. - Stop if the same error appears twice. - Stop if the next step is not justified by evidence. - Stop if required credentials, production permissions, or owner decisions are missing. - Stop when acceptance criteria are met. - Do not continue simply because more improvement is possible. - Do not change unrelated architecture during repair. - Do not mutate controlling prompts without evidence.  ## Skill Update Control  - Choose `NO_UPDATE` when evidence is ordinary, one-off, private-source-dependent, weakly validated, or not reusable. - Choose `APPEND_PATTERN` only when a completed run proves a reusable method, failure pattern, or efficient sequence. - Choose `PATCH_EXISTING_SKILL` only when the run proves a clear improvement to an existing skill, subprompt, task template, stop rule, verification rule, or repair rule. - Do not create a new skill automatically. - If no matching skill exists, store candidate material here under `candidate-patterns.md` for later review. - Keep every update a"
+    },
+    {
+      "path": "skills/evening-skill-registry-update/successful-patterns.md",
+      "title": "Successful Patterns",
+      "text": "# Successful Patterns  This file stores reviewed, reusable execution methods discovered by the post-execution skill update gate.  Append only. Do not store private source text, local absolute paths, IDs, secrets, screenshots, raw logs, or one-off implementation detail.  ## Entry Template  - Pattern title: - When to use: - When not to use: - Efficient sequence: - Evidence from execution: - Expected benefit: - Related skill or task type:"
     },
     {
       "path": "skills/outquestions/SKILL.md",
@@ -5524,7 +6057,7 @@
     {
       "path": "skills/skills-used.md",
       "title": "Skills And Methods Used",
-      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, and run-note targets synchronized for recurring maintenance. | | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. | | [`priority-task-operator`](priority-task-operator/SKILL.md) | Select highest-priority actionable task by urgency and importance, create a PitAgent "
+      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, post-execution skill update decisions, and run-note targets synchronized for recurring maintenance. | | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. | | [`priority-task-operator`](priority-task-operator/SKILL.md) | Select highest-priority actionable task by urg"
     },
     {
       "path": "skills/task-handout/SKILL.md",
@@ -5820,6 +6353,11 @@
       "path": "wiki/runs/2026-07-03-vercel-production-cure.md",
       "title": "2026-07-03 Vercel Production Cure",
       "text": "# 2026-07-03 Vercel Production Cure  Status: complete for production-current guarded cloud review flow  ## FACT  - The exact public dashboard URL now points to the current Vercel production deployment. - Production dashboard data is current for this cure run and was regenerated during the final deployment sync. - Vercel same-origin Jarvis API health, Architecture 1, Architecture 2, voice-text, and role config routes passed. - Railway Jarvis deployed successfully with the service directory as archive root and Nixpacks as builder. - Railway health, CORS, Architecture 1, Architecture 2, voice-text, role config, and role-update candidate routes passed. - Both Vercel and Railway report `MODEL_PROVIDER=openrouter`. - Provider calls remained `0`; external writeback remained `0`. - Provider-approved route tests returned review packets with `openrouter_api_key_missing`. - No legacy Vercel project was deleted because safe deletion evidence was not complete.  ## INTERPRETATION  The public cloud surface is now reliable for Epic 1's guarded review-flow scope: current dashboard, Vercel API, Railway API, and architecture-specific Jarvis packets. It is not yet a full product runtime because provid"
+    },
+    {
+      "path": "wiki/runs/2026-07-08-post-execution-skill-update-hook.md",
+      "title": "2026-07-08 Run Note: Post-Execution Skill Update Hook",
+      "text": "# 2026-07-08 Run Note: Post-Execution Skill Update Hook  Status: complete.  ## Task  Add a controlled post-execution skill-update mechanism to the existing ArchFlow public evening skill and hook lane.  ## Current Setup Discovered  - Existing prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py` on `UserPromptSubmit`. - Existing automation lane: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Existing retrospective lane: `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`. - Existing project-local skills live under `skills/`. - Existing public run records live under `project/runs/` and `wiki/runs/`. - Existing validation includes workflow validation, public safety scan, Python compile checks, and diff checks.  ## Change  Added a deterministic script and support files so completed run folders or run notes can be reviewed for reusable skill lessons without creating a new automation layer.  ## Boundary  The new mechanism defaults to `NO_UPDATE` unless evidence supports a reusable update. It never creates new skills automatically and does not rewrite `SKILL.md` files.  ## Validation  Validation passed for Python com"
     }
   ],
   "sources": [

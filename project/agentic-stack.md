@@ -6,6 +6,8 @@ Use this structure:
 
 ```text
 Codex-authenticated operator prompt
+  -> Hermes watchdog/controller prompt (planned, non-executing)
+  -> CAG/RAG context capsule
   -> LangGraph path and state controller
   -> Loop Engineering run contract
   -> LlamaIndex bounded retrieval
@@ -19,6 +21,8 @@ Codex-authenticated operator prompt
 | Tool | Responsibility | Public Project Use |
 |---|---|---|
 | Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. |
+| Hermes | Planned watchdog/controller/reviewer. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Hermes does not execute, edit files, deploy, mutate task boards, call providers, or write externally. |
+| CAG context capsules | Controlled Context Assembly Generation before subagent prompting. | Stable context packet under `project/context/`; not durable memory and not broad ingestion. |
 | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. |
 | Loop Engineering | State, attempt caps, budget, maker/checker split, stop conditions. | L1 report-only loop contract under `project/loops/`. |
 | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Research, AF Manager, AF Knowledge, AF Copy, AF Review, AF Publisher. |
@@ -59,6 +63,38 @@ Not allowed by default:
 - Credentials.
 - Private or scraped profile data.
 
+## Hermes Watchdog And CAG/RAG Contract
+
+Status: planned controller architecture, not runtime execution.
+
+Hermes is allowed to:
+
+- classify the execution type and risk;
+- assemble CAG core from stable project rules, role registry, skill governance, current architecture, E1-E7 task state, and gated claims;
+- request bounded RAG evidence from the approved corpus;
+- build or review context capsules;
+- generate task contracts for Codex or subagents;
+- decide accept, repair, split, escalate, or stop.
+
+Hermes is not allowed to:
+
+- edit files;
+- run commands;
+- deploy;
+- mutate Notion, Linear, GitHub, WikiLLM, Obsidian, Nexus, Telegram, Railway, Figma, or production systems;
+- activate provider calls;
+- approve its own high-risk output.
+
+CAG is the stable context assembly layer. RAG is task-specific retrieval with required repo-relative source paths. WikiLLM remains durable reviewed memory only after promotion.
+
+Current context files:
+
+- `project/context/README.md`
+- `project/context/cag-core.yaml`
+- `project/context/context-capsule.schema.json`
+- `project/context/retrieval/source-boundary-policy.yaml`
+- `project/context/capsules/`
+
 ## LlamaIndex Retrieval Contract
 
 LlamaIndex is the retrieval layer, not the durable knowledge store. WikiLLM remains the curated memory source of truth.
@@ -78,6 +114,20 @@ Retrieval guarantees:
 - source-grounded output only;
 - auditable result sources and scores;
 - full vector defaulting remains blocked until the 20-query benchmark passes with no regression against lexical retrieval.
+
+Retrieval feeds context capsules only after source-boundary checks. A retrieved snippet without a repo-relative source path is not acceptable evidence.
+
+## Service Company Operating Model
+
+Status: active strategy, proof-backed method, not validated demand.
+
+ArchFlow is positioned first as a productized service:
+
+1. Discovery Diagnostic.
+2. PRD Rescue Sprint.
+3. Monthly PRD/KB Operating Retainer.
+
+The service core is customer discovery to evidence-backed PRD, task packet, and KB handoff. SaaS readiness, autonomous runtime, provider-backed execution, writeback, customer demand, paid clients, and ROI claims remain gated until current evidence exists.
 
 ## Loop And Parallelism Rules
 
@@ -120,9 +170,9 @@ The dashboard control surface has two screens:
 |---|---|---|
 | Level 1: Configured roles | YAML/config and documentation define roles, responsibilities, tasks, outputs, dashboard fields, and review gates. No LLM execution is claimed. | Active. |
 | Level 2: LangGraph-wrapped role execution | LangGraph selects the lane, owns execution state, calls bounded role worker functions, records artifacts, and stops for AF Review/Jesus approval before any external side effect. Workers may use server-side OpenRouter only after explicit approval, backend/local-bridge proof, ledger proof, and budget gates. | Target architecture for the next implementation contract. |
-| Level 3: CrewAI runtime execution | CrewAI directly executes role/task flows, either directly or through LangGraph, with local proof artifacts and safety checks. | Deferred until direct CrewAI task execution is proven on a public-safe fixture. |
+| Level 3: CrewAI runtime execution | CrewAI directly executes role/task flows, either directly or through LangGraph, with local proof artifacts and safety checks. | Direct deterministic public-safe fixture proof passed; not default runtime and not provider-backed runtime. |
 
-For now, build toward Level 2 while preserving Level 1 as the source of truth. Do not describe Level 3 as active.
+For now, build toward Level 2 while preserving Level 1 as the source of truth. Describe Level 3 only as proof passed, not as default active runtime.
 
 ### Screen (1): PRD/ICP Flow
 

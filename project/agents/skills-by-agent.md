@@ -2,6 +2,32 @@
 
 Only skills used or set up for this public project are listed here.
 
+## Skill Governance
+
+Purpose: keep skills explicit, deduplicated, role-aware, and reviewable.
+
+Rules:
+
+- Hermes, Codex, AF Review, and AF Knowledge may inspect all skills.
+- Bounded subagents receive only role-specific skills plus shared coordination skills named in their task contract.
+- Do not create new `SKILL.md` files for conceptual methods until the checklist in [`skills-governance.md`](skills-governance.md) is satisfied.
+- Shared project skills are allowed to appear under multiple roles when they carry coordination or closeout responsibilities.
+
+## Hermes Watchdog
+
+Purpose: planned controller/reviewer layer for classification, context capsules, task contracts, evidence review, and stop decisions.
+
+Skills set up:
+
+- execution-type-classification
+- cag-core-assembly
+- context-capsule-review
+- task-contract-writing
+- evidence-review
+- stop-rule-enforcement
+
+Boundary: Hermes does not execute code, edit files, deploy, mutate external systems, activate providers, or approve its own high-risk output.
+
 ## AF Tools
 
 Purpose: inspect allowed sources and tools without broad ingestion.
@@ -33,6 +59,8 @@ Skills set up:
 - notion-knowledge-capture
 - english-public-summary
 - fact-interpretation-hypothesis-gap
+- cag-core-assembly
+- bounded-rag-evidence-selection
 
 ## AF Manager
 
@@ -47,6 +75,42 @@ Skills set up:
 - responsibility-assignment-extraction
 - milestone-planning
 - acceptance-criteria-writing
+
+## AF Discovery
+
+Purpose: turn approved customer/product source packets into founder-meeting discovery evidence.
+
+Skills set up:
+
+- jtbd-discovery
+- ninety-day-story-extraction
+- customer-forces-analysis
+- five-whys
+- source-boundary-control
+
+## AF PRD Architect
+
+Purpose: turn approved discovery evidence into evidence-backed PRD artifacts.
+
+Skills set up:
+
+- prd-from-dialogue
+- evidence-backed-requirements
+- definition-of-done-writing
+- acceptance-criteria-writing
+- review-gate-preparation
+
+## AF Task Translator
+
+Purpose: convert reviewed specs/PRDs into task packets, checkbox subtasks, blockers, and owner-decision gates.
+
+Skills set up:
+
+- [`archflow-task-breakdown`](../../skills/archflow-task-breakdown/SKILL.md)
+- spec-to-tasks-logic
+- task-packet-writing
+- notion-ready-markdown
+- blocker-and-approval-gate-writing
 
 ## AF Research
 

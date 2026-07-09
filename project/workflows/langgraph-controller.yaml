@@ -10,9 +10,15 @@ purpose: >
 
 state_schema:
   run_id: string
+  execution_type: string
+  risk_level: low_medium_or_high
   source_packet: object
   source_boundary_status: pass_or_fail
+  cag_core_refs: list
+  cag_core_hash: string
   retrieved_context: list
+  context_capsule_path: string
+  task_contract_path: string
   context_digest_path: string
   prd_path: string
   task_matrix_path: string
@@ -28,9 +34,24 @@ state_schema:
   langsmith_trace_id: string
   langsmith_trace_url: string
   approval_status: approved_revise_or_blocked
+  hermes_decision: accept_repair_split_escalate_or_stop
   gaps: list
 
 nodes:
+  classify_execution:
+    owner_agent: hermes_watchdog
+    status: planned_controller_node
+    purpose: classify the user goal, execution type, risk, side-effect gates, and whether subagents are justified.
+    output:
+      - execution_type
+      - risk_level
+  assemble_cag_core:
+    owner_agent: hermes_watchdog
+    status: planned_controller_node
+    purpose: assemble stable project rules, role registry, skill governance, architecture, E1-E7 state, and gated claims before task-specific retrieval.
+    output:
+      - cag_core_refs
+      - cag_core_hash
   intake_validate:
     owner_agent: af_tools
     purpose: validate source packet, language, public boundary, and requested output.
@@ -39,6 +60,16 @@ nodes:
     owner_agent: af_context
     purpose: call bounded LlamaIndex retrieval over approved public corpus.
     output: retrieved_context
+  build_context_capsule:
+    owner_agent: hermes_watchdog
+    status: planned_controller_node
+    purpose: combine CAG core and task-specific RAG evidence into a compact context capsule before subagent prompting.
+    output: project/context/capsules/<run-id>.json
+  assign_task_contract:
+    owner_agent: hermes_watchdog
+    status: planned_controller_node
+    purpose: create bounded task contracts with file scope, forbidden actions, acceptance criteria, evidence, attempts, and stop conditions.
+    output: project/runs/<date>-<run-name>/task-contracts.md
   write_context_digest:
     owner_agent: af_context
     purpose: separate facts, interpretations, hypotheses, and gaps.
@@ -57,6 +88,11 @@ nodes:
     owner_agent: af_review
     purpose: check safety, support, English-only output, and unsupported claims.
     output: project/outputs/templates/review-report.md
+  decide_next_action:
+    owner_agent: hermes_watchdog
+    status: planned_controller_node
+    purpose: decide accept, repair, split, escalate, or stop after evidence review; Hermes does not execute the selected action.
+    output: hermes_decision
   publish_or_revise:
     owner_agent: af_publisher
     purpose: either prepare public-safe publication or route back for repair.
@@ -72,6 +108,10 @@ nodes:
 
 edges:
   - from: START
+    to: classify_execution
+  - from: classify_execution
+    to: assemble_cag_core
+  - from: assemble_cag_core
     to: intake_validate
   - from: intake_validate
     to: retrieve_context
@@ -80,6 +120,10 @@ edges:
     to: review_gate
     condition: source_boundary_status == "fail"
   - from: retrieve_context
+    to: build_context_capsule
+  - from: build_context_capsule
+    to: assign_task_contract
+  - from: assign_task_contract
     to: write_context_digest
   - from: write_context_digest
     to: run_crew_prd
@@ -88,12 +132,14 @@ edges:
   - from: write_kb_update
     to: review_gate
   - from: review_gate
+    to: decide_next_action
+  - from: decide_next_action
     to: publish_or_revise
     condition: approval_status == "approved"
-  - from: review_gate
+  - from: decide_next_action
     to: write_context_digest
     condition: approval_status == "revise"
-  - from: review_gate
+  - from: decide_next_action
     to: write_task_handout
     condition: approval_status == "blocked"
   - from: publish_or_revise
@@ -110,6 +156,9 @@ current_parameters:
   default_loop_level: l1_report_only
   verifier_same_as_maker_allowed: false
   final_runtime_owner: codex_operator
+  planned_watchdog_controller: hermes_watchdog
+  context_capsule_schema: project/context/context-capsule.schema.json
+  cag_core: project/context/cag-core.yaml
   local_minor_task_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
   primary_publication_auth: codex_operated_git_ssh
   model_execution_provider: ollama_local_only
@@ -122,6 +171,8 @@ screen_contracts:
   status: level_3_proof_integrated_not_default_runtime
   provider_runtime: disabled
   writeback_runtime: disabled
+  watchdog_controller: planned_hermes_non_executing
+  context_method: cag_core_plus_bounded_rag_context_capsule
   current_execution_route: codex_operator_packets_and_static_dashboard_state
   shared_state:
     run_id: string
@@ -130,6 +181,11 @@ screen_contracts:
     source_packet: object
     source_ids: list
     public_boundary_status: pass_fail_or_needs_review
+    execution_type: string
+    risk_level: string
+    cag_core_refs: list
+    context_capsule_path: string
+    task_contract_path: string
     project_context_refs: list
     runtime_mode: static_snapshot_browser_local_codex_operator_or_disabled_provider
     provider_route: mock_codex_operator_ollama_minor_or_disabled_cloud
@@ -142,6 +198,7 @@ screen_contracts:
     review_report_path: string
     handoff_packet_path: string
     gaps: list
+    hermes_decision: accept_repair_split_escalate_or_stop
   lanes:
     prd_icp_flow:
       purpose: client_product_flow_for_product_discovery_to_production_prd_pack
@@ -177,8 +234,10 @@ screen_contracts:
           output: request_class
         load_project_context:
           owner_agent: af_context
-          purpose: load approved public-safe project context and source refs.
-          output: project_context_refs
+          purpose: load CAG core and approved public-safe project context refs before task-specific retrieval.
+          output:
+            - project_context_refs
+            - context_capsule_path
         select_model_or_mock:
           owner_agent: af_tools
           purpose: choose Codex/manual packet today; block cloud provider route until approved backend, ledger, and budget gates exist.
@@ -317,7 +376,7 @@ screen_contracts:
           output: task_packet_path
         run_role_workers:
           owner_agent: actor
-          purpose: execute bounded local worker slices or record read-only findings; provider-backed workers are disabled.
+          purpose: execute bounded local worker slices only when Codex assigns them with a task contract, or record read-only findings; provider-backed workers are disabled.
           output: worker_outputs
         run_crewai_level_3_proof:
           owner_agent: af_manager

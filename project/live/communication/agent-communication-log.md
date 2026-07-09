@@ -8117,3 +8117,520 @@ Remaining gaps:
 Next safe action:
 
 - Get explicit deployment approval, then deploy through the approved Vercel/Railway path and rerun hosted `/health`, `/api/chat` attachment, and `/api/voice/chat` disabled-packet checks.
+
+## 2026-07-08 17:49 EEST - Codex - starting - Post-execution skill update hook
+
+Status: starting
+
+Task:
+
+- Add a controlled post-execution skill-update review mechanism to the existing evening skill and hook lane without creating a parallel automation system.
+
+Files likely to change:
+
+- `project/automation/archflow-public-evening-skill-and-hook-update.md`
+- `skills/evening-skill-registry-update/SKILL.md`
+- `skills/evening-skill-registry-update/successful-patterns.md`
+- `skills/evening-skill-registry-update/failed-patterns.md`
+- `skills/evening-skill-registry-update/stop-rules.md`
+- `skills/evening-skill-registry-update/candidate-patterns.md`
+- `project/scripts/post-execution-skill-update.py`
+- `project/agents/agent-roster.yaml`
+- `skills/skills-used.md`
+- `project/runs/2026-07-08-post-execution-skill-update-hook/agent-handout.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- The files listed above for this hook update only.
+
+Expected output:
+
+- A bounded review script and skill-lane contract that decide `NO_UPDATE`, `APPEND_PATTERN`, or `PATCH_EXISTING_SKILL` from run evidence, default to no mutation, and keep updates inside existing skill/support files.
+
+Blockers:
+
+- No provider calls, network checks, deployment, push, credential changes, or external writes are in scope.
+
+Next step:
+
+- Patch the existing evening lane and add the smallest script/support files, then run parse, compile, workflow, safety, and diff checks.
+
+## 2026-07-08 18:01 EEST - Codex - complete - Post-execution skill update hook
+
+Status: complete
+
+Task:
+
+- Added a controlled post-execution skill-update review mechanism to the existing evening skill and hook lane.
+
+Files changed:
+
+- `project/scripts/post-execution-skill-update.py`
+- `skills/evening-skill-registry-update/SKILL.md`
+- `skills/evening-skill-registry-update/stop-rules.md`
+- `skills/evening-skill-registry-update/successful-patterns.md`
+- `skills/evening-skill-registry-update/failed-patterns.md`
+- `skills/evening-skill-registry-update/candidate-patterns.md`
+- `project/automation/archflow-public-evening-skill-and-hook-update.md`
+- `project/agents/agent-roster.yaml`
+- `skills/skills-used.md`
+- `project/runs/2026-07-08-post-execution-skill-update-hook/run-summary.md`
+- `project/runs/2026-07-08-post-execution-skill-update-hook/agent-handout.md`
+- `wiki/runs/2026-07-08-post-execution-skill-update-hook.md`
+- `wiki/log.md`
+- `project/live/communication/agent-communication-log.md`
+
+Checks run:
+
+- Python compile passed for the new post-execution script and existing hook/validation scripts.
+- Post-execution script smoke returned `NO_UPDATE` for this run.
+- Post-execution script smoke returned `PATCH_EXISTING_SKILL` for the July 6 daily retrospective and mapped it to candidate storage.
+- One `--apply` smoke appended a candidate to the evening skill candidate file.
+- Workflow validation passed with the project local Python environment.
+- Public safety scan passed.
+- `git diff --check` passed.
+
+Remaining gaps:
+
+- No provider calls, network checks, deployment, push, credential changes, external writes, or controlling `SKILL.md` rewrite were performed.
+- Candidate entries still require repeated evidence or explicit review before promotion into a controlling skill rule.
+
+Next safe action:
+
+- Use the script during the next evening skill/hook run and record the decision in that run summary.
+
+## 2026-07-08 18:09 EEST - Codex - starting - Founder Meeting v2 Watchdog CAG/RAG integration
+
+Status: starting
+
+Task:
+
+- Integrate the Founder Meeting v2 / Hermes Watchdog / CAG-RAG / service-company / market-content-sales / E1-E7 package into the public project with bounded subagent reviews, public-safe docs, prompts, role/skill governance, run handout, and validation.
+
+Files likely to change:
+
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/`
+- `project/agentic-stack.md`
+- `project/operating-rules.md`
+- `AGENTS.md`
+- `project/workflows/langgraph-controller.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `project/workflows/llamaindex-rag.yaml`
+- `project/agents/agent-roster.yaml`
+- `project/agents/skills-by-agent.md`
+- `project/agents/skills-governance.md`
+- `skills/skills-used.md`
+- `skills/archflow1/SKILL.md`
+- `project/context/`
+- `project/content/templates/`
+- `project/project-plan.md`
+- `project/dashboard/data.json`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- The files listed above for this founder package integration only.
+
+Coordination:
+
+- FACT: The post-execution skill-update hook lane posted `complete` before this start entry and left uncommitted registry/automation changes.
+- INTERPRETATION: This run can proceed if it preserves that lane's completed changes and does not revert its new files.
+- GAP: Git push, deployment, Notion mutation, Telegram send, provider activation, Railway action, and production/Figma sync remain unapproved.
+
+Expected output:
+
+- Watchdog/CAG/RAG architecture setup, role and skill governance updates, service/content/sales/E1-E7 packets, final Codex system prompt, Hermes prompt, detailed architecture PDF, run handout, validation evidence, and approval-gated publish plan.
+
+Blockers:
+
+- No external writeback, provider calls, paid tools, deployment, push, Notion mutation, Telegram send, Railway action, or production promotion without explicit owner approval.
+
+Next step:
+
+- Launch read-only specialist subagents, integrate their findings, then edit in small batches with checks after each batch.
+
+## 2026-07-08 18:33 EEST - Codex - scope update - Founder Meeting v2 implementation batch
+
+Status: implementation
+
+Task:
+
+- Move from read-only subagent reviews into implementation for architecture/context, role and skill governance, content/sales, E1-E7 task packets, prompts, reports, and validation.
+
+Files claimed for this batch:
+
+- `AGENTS.md`
+- `project/operating-rules.md`
+- `project/agentic-stack.md`
+- `project/workflows/langgraph-controller.yaml`
+- `project/workflows/crewai-crew.yaml`
+- `project/workflows/llamaindex-rag.yaml`
+- `project/config/model-routing.yaml`
+- `api/_jarvis_contract.py`
+- `project/agents/agent-roster.yaml`
+- `project/agents/skills-by-agent.md`
+- `project/agents/skills-governance.md`
+- `project/scripts/task-handout-hook.py`
+- `project/scripts/post-execution-skill-update.py`
+- `skills/skills-used.md`
+- `project/project-plan.md`
+- `project/context/`
+- `project/content/templates/`
+- `project/reports/`
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+- generated `project/dashboard/data.json`
+
+Coordination:
+
+- Six read-only reviewers completed. The package-diff reviewer timed out after a direct finalize request and was closed, so Codex will perform the package-to-repo mapping locally and record the gap.
+- The package source folder remains untouched as owner-approved input. Public project updates will be adapted summaries and repo-native artifacts only.
+- Prior completed post-execution skill-update hook lane changes remain preserved.
+
+Blockers:
+
+- No push, deploy, provider activation, external writeback, Notion mutation, Linear mirror, Telegram send, Railway action, production promotion, or Figma sync without explicit owner approval.
+
+Next step:
+
+- Write run evidence files first, then patch architecture/context/governance/content/task docs and run validation.
+
+## 2026-07-08 18:49 EEST - Codex - complete - Founder Meeting v2 Watchdog CAG/RAG integration
+
+Status: complete for repo-local integration and validation; external actions remain approval-gated.
+
+Files changed by this integration:
+
+- `AGENTS.md`
+- `api/_jarvis_contract.py`
+- `project/agentic-stack.md`
+- `project/agents/agent-roster.yaml`
+- `project/agents/skills-by-agent.md`
+- `project/agents/skills-governance.md`
+- `project/config/model-routing.yaml`
+- `project/content/templates/README.md`
+- new content templates under `project/content/templates/`
+- `project/context/`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+- `project/operating-rules.md`
+- `project/project-plan.md`
+- `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md`
+- `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.pdf`
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/`
+- `project/scripts/task-handout-hook.py`
+- `project/workflows/crewai-crew.yaml`
+- `project/workflows/langgraph-controller.yaml`
+- `project/workflows/llamaindex-rag.yaml`
+- `skills/skills-used.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+
+Preserved parallel-lane changes:
+
+- Existing uncommitted post-execution skill-update hook lane files remain present and were not reverted.
+
+Subagents:
+
+- Architecture Reviewer: complete.
+- Package Diff Analyst: timed out and was closed; mapping completed locally in the run folder.
+- CAG/RAG Architect: complete.
+- Skills Governance Reviewer: complete.
+- Service Operations Strategist: complete.
+- Market And Content Strategist: complete.
+- E1-E7 PM Reviewer: complete.
+- Final QA Reviewer: returned `Revise`; stale CrewAI Level 3 wording was repaired.
+
+Checks run:
+
+- Python compile: pass.
+- Context schema/capsule/dashboard JSON parse: pass.
+- Workflow validation with project Python: pass.
+- Runtime guard: pass.
+- Dashboard JS syntax: pass.
+- Architecture PDF render with bundled Python: pass.
+- Dashboard data regeneration: pass.
+- Public safety scan: pass.
+- `git diff --check`: pass.
+
+Gaps:
+
+- System Python lacks PyYAML for workflow validation; project Python passed.
+- System and project Python lack ReportLab; bundled workspace Python rendered the PDF.
+- Future provider activation must use server-side auth and owner gating, not only request-body approval flags.
+- Hermes remains a planned controller architecture and prompt contract, not a running autonomous service.
+
+Blocked external actions:
+
+- No Git commit/push, deployment, production promotion, Notion mutation, Linear mirror, Telegram send, Railway action, provider activation/model call, Figma sync, or durable external writeback was performed.
+
+Next safe action:
+
+- Owner review of the diff and run handout, then explicit approval if Git commit/push, website/dashboard publication, KB promotion, or Notion update should be executed.
+
+## 2026-07-08 21:42 EEST - Codex - starting - Evening skill and hook drift review
+
+Status: starting
+
+Task:
+
+- Review the public skill registries, hook configuration, hook-backed workflows, and recent public-safe run evidence after the latest completed integration.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-08-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-08-evening-skill-hook-review/agent-handout.md`
+
+Files claimed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-08-evening-skill-hook-review/`
+
+Read-only unless concrete drift is found:
+
+- `project/agents/skills-by-agent.md`
+- `project/agents/agent-roster.yaml`
+- `skills/skills-used.md`
+- `.codex/hooks.json`
+- `project/scripts/task-handout-hook.py`
+- `project/scripts/post-execution-skill-update.py`
+- `.githooks/`
+- `AGENTS.md`
+- `project/operating-rules.md`
+- `skills/`
+
+Expected output:
+
+- A public-safe drift finding, validation evidence, and a run summary/handout if meaningful project evidence exists.
+
+Blockers:
+
+- No network operations, provider activation, credential edits, deployment, push, external writeback, private-source copying, or speculative skill creation are approved.
+
+Next step:
+
+- Compare actual configured/used skills and hook contracts against recent completed work, then validate the narrow closeout stack.
+
+## 2026-07-08 22:13 EEST - Codex - complete - Evening skill and hook drift review
+
+Status: complete
+
+Task:
+
+- Completed the evening skill and hook drift review after the July 8 post-execution skill-update lane and Founder Meeting v2 integration.
+
+Files changed by this lane:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-08-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-08-evening-skill-hook-review/agent-handout.md`
+
+Files reviewed and left unchanged by this lane:
+
+- `project/agents/skills-by-agent.md`
+- `project/agents/agent-roster.yaml`
+- `skills/skills-used.md`
+- `.codex/hooks.json`
+- `project/scripts/task-handout-hook.py`
+- `project/scripts/post-execution-skill-update.py`
+- `.githooks/`
+- `AGENTS.md`
+- `project/operating-rules.md`
+- `skills/`
+
+Result:
+
+- No registry, hook, githook, or skill-doc drift required a patch.
+- Post-execution skill-update review returned `NO_UPDATE` for the current July 8 Founder integration run, the current July 8 post-execution skill-update run, and this evening review run.
+- No new skill was created and no support file was appended.
+
+Checks run:
+
+- Hook JSON parse: pass.
+- Python compile for hook, post-execution, workflow validation, and runtime guard scripts: pass.
+- Task-handout and skill-governance hook probe: pass.
+- Workflow validation: pass.
+- Runtime guard: pass.
+- Public safety scan: pass.
+- Ignored local env/runtime check: pass.
+- Text-only ASCII sweep: pass.
+- `git diff --check`: pass.
+- `git status --short`: reviewed.
+
+Remaining gaps:
+
+- Earlier uncommitted July 8 integration files remain present and outside this lane's ownership.
+- No Git push, deployment, provider activation, external writeback, credential edits, browser automation, or network checks were performed.
+
+Next safe action:
+
+- Keep the next evening review narrow and patch only actual registry or hook drift backed by public-safe evidence.
+
+## 2026-07-08 23:58 EEST - Codex - starting - Daily skill retrospective and RAG review
+
+Status: starting
+
+Task:
+
+- Review today's public-safe skill, hook, automation, coordination, run-note, report, issue, decision, and memory-surface evidence without duplicating the 21:00 registry drift lane.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/20260708_daily_skill_retrospective.md`
+- `project/runs/20260708_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `wiki/log.md`
+
+Files claimed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/20260708_daily_skill_retrospective.md`
+- `project/runs/20260708_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `wiki/log.md`
+
+FACT:
+
+- The 21:00 evening lane already completed today's registry and hook drift review.
+
+INTERPRETATION:
+
+- This lane should focus on cross-run lessons, missed handoff/preflight patterns, and concrete future skill candidates.
+
+HYPOTHESIS:
+
+- July 8 evidence will likely support governance/process recommendations rather than a new standalone skill.
+
+GAP:
+
+- Report and run-note findings are not written yet.
+
+Checks:
+
+- Pending.
+
+Next:
+
+- Inspect today's and recent run/report/issue/decision evidence, then write the dated retrospective and run note.
+
+## 2026-07-09 12:58 EEST - Codex - complete - Daily skill retrospective and RAG review
+
+Status: complete
+
+Task:
+
+- Completed the daily skill/RAG retrospective for July 8 public ArchFlow work without duplicating the evening registry drift lane.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/20260708_daily_skill_retrospective.md`
+- `project/runs/20260708_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `wiki/log.md`
+
+FACT:
+
+- The daily and evening review automations are active in current TOML metadata; priority mechanical-work and Yushchenko observer automations are paused.
+- Project registry docs still contain stale or mismatched automation IDs/status descriptions for some lanes.
+- No new skill is justified by today's evidence.
+
+INTERPRETATION:
+
+- The next useful improvement is automation metadata reconciliation inside existing project-local docs and review checklists.
+
+HYPOTHESIS:
+
+- Adding a TOML-vs-registry comparison step will prevent future agents from treating paused lanes as failed scheduled runs.
+
+GAP:
+
+- Provider-backed execution, canonical model-call ledger, Telegram sender proof, live Nexus/writeback, vector-default retrieval, production promotion, social publication, and buyer proof remain gated.
+
+Checks:
+
+- Edited Markdown paths exist: pass.
+- Automation TOML parse: pass.
+- Public safety scan: pass.
+- `git diff --check`: pass.
+
+Next:
+
+- Patch project-local automation registry/docs to match actual TOML IDs, statuses, and working directories.
+
+## 2026-07-09 13:10 EEST - Codex - starting - Approved integration closeout, commit, and push
+
+Status: starting
+
+Task:
+
+- Execute the approved local closeout for the Founder Meeting v2 / Hermes watchdog / CAG-RAG integration and the adjacent completed hook-governance lane.
+- Rerun final validation checks, regenerate dashboard data if needed, commit the public-safe repo changes, and push the active branch.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json`
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md`
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/validation-results.md`
+
+Files claimed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json`
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/`
+
+Expected output:
+
+- Final validation evidence, a Git commit, a pushed branch, and a concise owner handoff.
+
+Blockers:
+
+- Provider activation, Notion mutation, Railway action, Telegram send, production promotion, Figma sync, and external writeback remain gated unless a specific external target/action is separately requested.
+
+Next:
+
+- Run the final local validation set, inspect Git status, then commit and push if checks pass.
+
+## 2026-07-09 13:20 EEST - Codex - complete - Approved local validation before commit and push
+
+Status: complete
+
+Task:
+
+- Completed the approved local validation closeout for the Founder Meeting v2 / Hermes watchdog / CAG-RAG integration and adjacent completed hook-governance lane.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json`
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md`
+- `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/validation-results.md`
+
+Checks:
+
+- Dashboard data regeneration: pass.
+- JSON parse for dashboard data, context capsule schema, and run context capsule: pass.
+- Workflow validation with project Python: pass.
+- Runtime guard: pass.
+- Python syntax checks for changed scripts: pass.
+- Dashboard JS syntax check with bundled Node: pass.
+- Public safety scan: pass.
+- `git diff --check`: pass.
+
+Gaps:
+
+- Deployment, production promotion, Notion mutation, Linear mirror, Telegram send, Railway action, provider activation, Figma sync, and external writeback remain gated.
+
+Next:
+
+- Commit and push the approved public-safe changes.

@@ -704,12 +704,14 @@ prompt_1_2_dashboard_boundary:
   openrouter_role: server_side_model_provider_after_approval
   current_runtime_state:
     provider_runtime: disabled
-    backend_or_local_bridge: absent
+    backend_or_local_bridge: provider_disabled_hosted_review_packet_verified_not_provider_runtime
     static_dashboard_provider_calls: forbidden
     no_active_openrouter_runtime_evidence_found: true
     canonical_model_call_ledger: absent_for_provider_runtime_required_before_activation
     crewai_level_3_proof_ledger: project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl
     crewai_level_3_status: proof_passed_not_default_runtime
+    jarvis_hosted_review_packet_status: provider_calls_zero_writeback_zero
+    provider_activation_requires_context_capsule_and_af_review: true
   allowed_current_behavior:
     - render_disabled_provider_gate
     - export_browser_local_packet_for_codex_review
@@ -723,6 +725,7 @@ prompt_1_2_dashboard_boundary:
     - unsanitized_upload_to_provider
     - provider_response_to_external_write_without_review
     - token_or_cost_claim_without_ledger
+    - provider_call_without_context_capsule_and_af_review
 
 crewai_level_3_proof:
   status: proof_passed_not_default_runtime

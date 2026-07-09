@@ -486,3 +486,47 @@ INTERPRETATION:
 
 GAP:
 - No production deploy, Git push, Railway redeploy, provider activation, durable upload storage, auth hardening, writeback, or Figma sync was performed.
+
+## 2026-07-08 - Post-execution skill update hook
+
+FACT:
+- Added a controlled post-execution skill update review gate to the existing evening skill/hook lane.
+- The new mechanism returns `NO_UPDATE`, `APPEND_PATTERN`, or `PATCH_EXISTING_SKILL`, defaults to no mutation, and appends only to existing skill support files when evidence and `--apply` justify it.
+
+INTERPRETATION:
+- The improvement complements the current automation setup because it extends the evening skill registry lane instead of creating a parallel scheduler, registry, or self-modifying agent loop.
+
+GAP:
+- Semantic LLM review is not part of this first patch; the script is deterministic and conservative.
+
+## 2026-07-08 - Founder Meeting v2 Hermes/CAG-RAG integration
+
+FACT:
+- Integrated the Founder Meeting v2 package into repo-native public-safe architecture, context, workflow, role, skill, service, content, and E1-E7 artifacts.
+- Added `project/context/` with CAG core, context capsule schema, retrieval source-boundary policy, and a run capsule.
+- Added Hermes as planned watchdog/controller/reviewer only. Codex remains executor/integrator.
+- Added role and skill governance, service operating model, content/sales templates, Notion-ready E1-E7 update packet, prompt pack, architecture Markdown report, and Architecture PDF.
+- No provider call, external writeback, Notion mutation, Linear mirror, Telegram send, Railway action, Git push, deployment, production promotion, or Figma sync was performed.
+
+INTERPRETATION:
+- The package is now integrated as a controlled operating method rather than copied as raw planning material.
+- The stable architecture is service-first: customer discovery -> evidence-backed PRD -> task packet -> KB handoff, with Hermes controlling review loops later and Codex executing now.
+
+GAP:
+- Final external publish, Notion sync, Git push, deployment, provider activation, and production/dashboard promotion remain owner-approval gates.
+
+## 2026-07-08 - Daily skill/RAG retrospective
+
+FACT:
+- Ran the daily skill/RAG retrospective after the evening skill/hook review.
+- Report: `project/runs/20260708_daily_skill_retrospective.md`.
+- Run note: `project/runs/20260708_run_daily_skill_retrospective.md`.
+- Current automation TOML shows the daily and evening review lanes active, while priority mechanical-work and Yushchenko observer lanes are paused.
+- The retrospective updated the open operational gaps issue with automation metadata reconciliation and paused-lane status.
+
+INTERPRETATION:
+- No new skill is justified today. The useful follow-up is to reconcile project registry docs with actual automation TOML IDs, statuses, and working directories.
+- CAG/RAG is now a useful architecture method, but should not become a standalone skill until repeated task-level capsule use proves stable.
+
+GAP:
+- Provider-backed execution, canonical model-call ledger, Telegram sender proof, live Nexus/writeback, vector-default retrieval, production promotion, social publication, and buyer proof remain gated.

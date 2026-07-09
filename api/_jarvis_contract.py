@@ -12,6 +12,9 @@ from typing import Any
 APP_VERSION = "2026-07-07-vercel-jarvis-chat-files-voice-disabled"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_OPENROUTER_MODEL = "openrouter/auto"
+DEFAULT_DAILY_BUDGET = 5.00
+DEFAULT_RUN_BUDGET = 1.99
+DEFAULT_HARD_STOP = 1.99
 
 PRD_BLOCKS = [
     "Product context",
@@ -31,14 +34,62 @@ def model_provider() -> str:
     return os.getenv("MODEL_PROVIDER", "none").strip().lower() or "none"
 
 
+def env_float(name: str) -> tuple[float | None, str | None]:
+    value = os.getenv(name, "").strip()
+    if not value:
+        return None, None
+    try:
+        return float(value), None
+    except ValueError:
+        return None, name
+
+
 def budget_payload(provider_allowed: bool = False) -> dict[str, Any]:
+    daily_name = "OPENROUTER_DAILY_BUDGET_USD"
+    run_name = "OPENROUTER_RUN_BUDGET_USD"
+    hard_stop_name = "OPENROUTER_RUN_HARD_STOP_USD"
+    daily, invalid_daily = env_float(daily_name)
+    run, invalid_run = env_float(run_name)
+    hard_stop, invalid_hard_stop = env_float(hard_stop_name)
+    invalid = [name for name in [invalid_daily, invalid_run, invalid_hard_stop] if name]
+    if invalid:
+        return {
+            "status": "invalid_budget_env",
+            "invalid": invalid,
+            "provider_calls_allowed": False,
+            "over_cap_behavior": "stop_and_request_owner_approval",
+        }
+
+    missing = [
+        name
+        for name, value in [
+            (daily_name, daily),
+            (run_name, run),
+            (hard_stop_name, hard_stop),
+        ]
+        if value is None
+    ]
+    if provider_allowed and missing:
+        return {
+            "status": "approval_required",
+            "reason": "budget_env_missing_for_provider_route",
+            "missing": missing,
+            "provider_calls_allowed": False,
+            "over_cap_behavior": "stop_and_request_owner_approval",
+        }
+
+    daily = daily if daily is not None else DEFAULT_DAILY_BUDGET
+    run = run if run is not None else DEFAULT_RUN_BUDGET
+    hard_stop = hard_stop if hard_stop is not None else DEFAULT_HARD_STOP
+    over_cap = daily > DEFAULT_DAILY_BUDGET or run >= 2.0 or hard_stop >= 2.0
     return {
-        "status": "ready_for_approved_provider_call" if provider_allowed else "ready_disabled",
-        "daily_budget_usd": float(os.getenv("OPENROUTER_DAILY_BUDGET_USD", "5.00")),
-        "run_budget_usd": float(os.getenv("OPENROUTER_RUN_BUDGET_USD", "1.99")),
-        "run_hard_stop_usd": float(os.getenv("OPENROUTER_RUN_HARD_STOP_USD", "1.99")),
+        "status": "blocked_over_cap" if over_cap else ("ready_for_approved_provider_call" if provider_allowed else "ready_disabled"),
+        "daily_budget_usd": daily,
+        "run_budget_usd": run,
+        "run_hard_stop_usd": hard_stop,
         "actual_spend_usd": 0.0,
-        "provider_calls_allowed": provider_allowed,
+        "provider_calls_allowed": bool(provider_allowed and not over_cap),
+        "over_cap_behavior": "stop_and_request_owner_approval",
     }
 
 
@@ -82,8 +133,9 @@ def provider_ready(body: dict[str, Any]) -> tuple[bool, str]:
         return False, "owner_and_provider_approval_required"
     if not os.getenv("OPENROUTER_API_KEY", "").strip():
         return False, "openrouter_api_key_missing"
-    if float(os.getenv("OPENROUTER_RUN_HARD_STOP_USD", "1.99")) >= 2.0:
-        return False, "run_hard_stop_over_policy_cap"
+    budget = budget_payload(provider_allowed=True)
+    if budget["status"] != "ready_for_approved_provider_call":
+        return False, f"budget_not_ready:{budget['status']}"
     return True, "ready"
 
 

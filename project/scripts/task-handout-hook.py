@@ -41,6 +41,12 @@ SUBTASK_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("execution_stage", re.compile(r"\b(solve|execute|start|continue|finish|review)\b.{0,80}\b(tasks?|subtasks?)\b", re.I | re.S)),
 ]
 
+SKILL_GOVERNANCE_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
+    ("skill_governance", re.compile(r"\b(skill registry|skills governance|skill governance|hook governance)\b", re.I)),
+    ("skill_change", re.compile(r"\b(add|create|update|deduplicate|remove|route|map)\b.{0,80}\bskills?\b", re.I | re.S)),
+    ("hook_change", re.compile(r"\b(add|create|update|deduplicate|remove|route|map)\b.{0,80}\bhooks?\b", re.I | re.S)),
+]
+
 
 def read_payload() -> str:
     try:
@@ -96,7 +102,7 @@ def detect_reasons(text: str, force: bool) -> list[str]:
     if force:
         return ["forced_execution_trigger"]
     reasons: list[str] = []
-    for group in (DIRECT_PATTERNS, AGENT_PATTERNS, SUBTASK_PATTERNS):
+    for group in (DIRECT_PATTERNS, AGENT_PATTERNS, SUBTASK_PATTERNS, SKILL_GOVERNANCE_PATTERNS):
         for name, pattern in group:
             if pattern.search(text):
                 reasons.append(name)
@@ -110,10 +116,15 @@ def write_marker(event: str, reasons: list[str]) -> None:
         "triggered_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "reasons": reasons,
         "skill": "skills/task-handout/SKILL.md",
+        "skill_governance": "project/agents/skills-governance.md"
+        if any(reason.startswith("skill_") or reason.startswith("hook_") for reason in reasons)
+        else None,
         "required_action": (
             "Read the task-handout skill now. If this prompt uses one or more "
             "agent roles or solves one or more subtasks, create or update the "
-            "run agent-handout.md before final response."
+            "run agent-handout.md before final response. If this prompt changes "
+            "skills or hooks, read project/agents/skills-governance.md and run a "
+            "skill audit before editing."
         ),
     }
     STATE_FILE.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
@@ -135,6 +146,10 @@ def emit_notice(event: str, reasons: list[str]) -> None:
             ]
         )
     )
+    if any(reason.startswith("skill_") or reason.startswith("hook_") for reason in reasons):
+        print("SKILL_GOVERNANCE_HOOK_TRIGGER=required")
+        print("required_governance=project/agents/skills-governance.md")
+        print("required_action=Run a duplicate-skill and hook-governance audit before skill or hook edits.")
 
 
 def main() -> int:

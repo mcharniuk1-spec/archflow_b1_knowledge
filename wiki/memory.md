@@ -288,3 +288,13 @@ ArchFlow Block 1 is the first public solution:
 - Do not describe this as live provider-backed Jarvis until external OpenRouter key storage is explicitly approved, a budget ledger is active, and a low-cost provider call is recorded.
 - Future Railway deploys for `services/jarvis-api` should use the service directory as the archive root; deploying from the wrong root can make Railway infer a static/Caddy app and crash because `uvicorn` is missing.
 - Legacy Vercel cleanup is destructive and requires a separate owner-approved inventory before deleting old projects.
+
+## Founder Meeting v2 Watchdog/CAG-RAG Memory - 2026-07-08
+
+- Codex remains ArchFlow's executor, reviewer, file editor, validator, and final integration boundary.
+- Hermes is a planned watchdog/controller/reviewer only. It may classify, assemble CAG/RAG context capsules, assign task contracts, review evidence, and stop/escalate, but it must not execute, edit files, deploy, mutate boards, activate providers, or write externally.
+- CAG means Controlled Context Assembly Generation: stable project rules, founder method, architecture boundaries, roles, skills, E1-E7 state, gated claims, and stop rules before task-specific work.
+- RAG remains bounded retrieval from the approved public-safe corpus: `project/`, `history/`, `skills/`, and `wiki/`. LlamaIndex is retrieval, not durable memory. WikiLLM is durable reviewed memory after promotion.
+- Linear is optional only. Repo-native Markdown/YAML/JSON task packets, run handouts, generated dashboard data, and Notion-ready text are default.
+- The active content mix is 70% static educational/analytical, 20% carousel/checklist/template, and 10% short video/scripted demo. The package's older 90/10 wording is superseded by the latest owner instruction.
+- Service positioning is productized service first: Discovery Diagnostic, PRD Rescue Sprint, and later Monthly PRD/KB Operating Retainer. SaaS, provider runtime, writeback, customer demand, paid clients, and ROI claims remain gated until evidence exists.
