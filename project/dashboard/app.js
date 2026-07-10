@@ -894,8 +894,9 @@ function apiEndpoint(path) {
 }
 
 function cloudApprovalRequested(input) {
-  const lower = String(input || "").toLowerCase();
-  return lower.includes("openrouter") || lower.includes("cloud model") || lower.includes("provider approved") || lower.includes("use provider");
+  void input;
+  // Static dashboard text is never enough to approve provider execution.
+  return false;
 }
 
 function attachmentRequestPayload() {

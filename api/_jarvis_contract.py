@@ -11,7 +11,7 @@ from typing import Any
 
 APP_VERSION = "2026-07-07-vercel-jarvis-chat-files-voice-disabled"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_OPENROUTER_MODEL = "openrouter/auto"
+DEFAULT_OPENROUTER_MODEL = ""
 DEFAULT_DAILY_BUDGET = 5.00
 DEFAULT_RUN_BUDGET = 1.99
 DEFAULT_HARD_STOP = 1.99
@@ -133,6 +133,8 @@ def provider_ready(body: dict[str, Any]) -> tuple[bool, str]:
         return False, "owner_and_provider_approval_required"
     if not os.getenv("OPENROUTER_API_KEY", "").strip():
         return False, "openrouter_api_key_missing"
+    if not openrouter_model():
+        return False, "openrouter_model_required"
     budget = budget_payload(provider_allowed=True)
     if budget["status"] != "ready_for_approved_provider_call":
         return False, f"budget_not_ready:{budget['status']}"

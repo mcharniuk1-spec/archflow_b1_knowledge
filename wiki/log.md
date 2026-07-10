@@ -544,3 +544,19 @@ INTERPRETATION:
 
 GAP:
 - Specialist lane outputs, Notion mutation, Linear mirror, Railway action, provider activation, production deployment, and content/design completion remain pending until the new watchdog verifies targets and executes or records blockers.
+
+## 2026-07-10 - Watchdog supervisor integration review
+
+FACT:
+- Reviewed the July 10 continuation handoff, recent commits, live communication state, and specialist lane contracts.
+- Prior specialist dispatch was recorded, but discoverable specialist output artifacts were not available in this run.
+- Coordinated replacement specialist reviews for architecture/Jarvis, OpenRouter/model routing, Railway/deploy, market/content architecture, content operations/mockups, and Notion/Linear sync.
+- Integrated public-safe corrections: dashboard text no longer implies provider approval, OpenRouter requires explicit model selection, voice docs now match disabled runtime, and content-operation/mockup planning contracts were added.
+- No Notion, Linear, Railway, Vercel, provider/model, Telegram, Figma, social posting, or external writeback mutation was performed.
+
+INTERPRETATION:
+- The repo now separates static/browser-local proof, guarded API review packets, historical provider-disabled runtime evidence, and future activation gates more clearly.
+- Content work is ready for reviewed planning/mockups, not publication.
+
+GAP:
+- Production freshness, provider activation, external writeback, account-level market evidence, buyer proof, paid diagnostic proof, and social publication remain blocked until separately approved and verified.

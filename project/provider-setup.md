@@ -73,7 +73,9 @@ Allowed future route:
 2. Codex or an approved local bridge reviews the packet;
 3. a backend/local bridge reads provider keys from ignored env or secret store;
 4. the provider call uses only sanitized, approved input;
-5. the result returns as a reviewed run note, issue, decision, or dashboard data update.
+5. `OPENROUTER_MODEL` is explicitly selected from a fresh model/pricing check;
+6. budget and ledger paths are verified before the call;
+7. the result returns as a reviewed run note, issue, decision, or dashboard data update.
 
 Blocked route:
 

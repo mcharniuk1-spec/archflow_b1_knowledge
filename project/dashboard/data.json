@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T10:08:47.201642+00:00",
+  "generated_at": "2026-07-10T11:13:54.320671+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "418",
+      "value": "424",
       "tone": "ok"
     },
     {
@@ -724,6 +724,48 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/validation-results.md",
+      "title": "Validation Results",
+      "modified": "2026-07-10T11:13:44.230147+00:00",
+      "size": 852
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/agent-handout.md",
+      "title": "Agent Handout",
+      "modified": "2026-07-10T11:13:44.094918+00:00",
+      "size": 2502
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/watchdog-completion-report.md",
+      "title": "Watchdog Completion Report",
+      "modified": "2026-07-10T11:13:43.960013+00:00",
+      "size": 3352
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/market-content-source-review.md",
+      "title": "Market And Content Source Review",
+      "modified": "2026-07-10T11:12:50.517768+00:00",
+      "size": 3364
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/external-action-status.md",
+      "title": "External Action Status",
+      "modified": "2026-07-10T11:12:50.377840+00:00",
+      "size": 2499
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/specialist-findings.md",
+      "title": "Specialist Findings",
+      "modified": "2026-07-10T11:12:50.235557+00:00",
+      "size": 3525
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md",
@@ -4085,6 +4127,51 @@
       "text": "provider_mode: codex_operator_primary_openrouter_spec_only  status:   runtime_activation: disabled_until_explicit_approval   reason: static dashboard and public repo must not call model providers directly   model_ids: target_ids_require_activation_time_verification_against_openrouter_models_api   activation_requires:     - approved_local_bridge_or_backend     - server_side_secret_access_only     - fresh_openrouter_model_list_check     - budget_limit_per_run     - model_id_and_cost_logging     - public_safety_screen     - human_approval_before_external_or_memory_write     - retry_and_timeout_policy  providers:   codex_operator:     status: active_as_primary_operator_runtime     mode: codex_app     auth_scope: codex_app_authenticated_tools     exports_api_key: false     use_for:       - file_edits       - approvals       - public_safety_review       - orchestration       - final_outputs       - github_publication     github_publication:       repository: mcharniuk1-spec/archflow_b1_knowledge       verified_method: codex_operated_git_ssh       local_https_push_status: blocked_missing_git_credentials       ssh_push_status: verified    ollama_local:     status: service_started_qwythos_l"
     },
     {
+      "path": "project/content/calendar/2026-07-five-week-70-20-10-plan.md",
+      "title": "2026-07 Five-Week 70/20/10 Content Plan",
+      "text": "# 2026-07 Five-Week 70/20/10 Content Plan  Status: planning draft, not publish-ready Date: 2026-07-10  ## Rules  - Default channel: LinkedIn first, then reviewed excerpts for X and Threads-style formats. - Default voice: ArchFlow company content. - Mix: 70 percent static educational/analytical, 20 percent carousel/checklist/template, 10 percent short video or scripted demo. - Every item requires AF Review and owner approval before publication. - Demand, ROI, customer, revenue, and live-runtime claims remain blocked unless separately verified.  ## Calendar  | Week | Static Educational / Analytical | Carousel / Checklist / Template | Short Video / Scripted Demo | CTA | Review Gate | |---|---|---|---|---|---| | 1 | Source packet boundary: why PRD work starts before writing | PRD evidence receipt checklist | Source-boundary walkthrough with static companion | Source-packet review | AF Review | | 2 | PRD bottleneck is source lineage, not writing speed | FACT / INTERPRETATION / HYPOTHESIS / GAP label card | Redacted PRD cleanup walkthrough with static companion | Diagnostic | AF Review | | 3 | Insight repositories still need delivery handoff | Acceptance-criteria checklist | Spec-to-task"
+    },
+    {
+      "path": "project/content/mockups/mockup-review-checklist.md",
+      "title": "Mockup Review Checklist",
+      "text": "# Mockup Review Checklist  Status: review checklist Date: 2026-07-10  Use before any static post, carousel, or video-cover mockup is promoted.  | Check | Pass/Fail | Evidence or edit | |---|---|---| | Public-safe source summary only |  |  | | No private screenshots or raw source text |  |  | | No private URLs, local paths, account IDs, deployment IDs, or secrets |  |  | | No customer logos or named target accounts without approval |  |  | | FACT / INTERPRETATION / HYPOTHESIS / GAP labels visible where needed |  |  | | No demand, ROI, revenue, or customer-proof overclaim |  |  | | Runtime/provider/writeback/deploy claims match verified evidence |  |  | | CTA does not imply unverified live service |  |  | | Text fits at target dimensions |  |  | | Color contrast and labels support readability |  |  | | AF Review verdict recorded |  |  | | Owner approval recorded before publication |  |  |  Verdict:  - Approved: - Approved with edits: - Blocked: - Needs owner decision:"
+    },
+    {
+      "path": "project/content/mockups/post-design-system.md",
+      "title": "Static Post Design System",
+      "text": "# Static Post Design System  Status: planning design system Date: 2026-07-10  ## Purpose  Define public-safe static post and carousel visuals for ArchFlow content operations.  ## Visual Direction  - Background: light gray or white operational surface. - Panels: white with 8px radius or less. - Text: dark ink, compact hierarchy, no oversized hero treatment for operational posts. - Accent colors: red for risk/blocker, blue for process, green for pass, amber for review, muted gray for pending. - Typography: Inter or system sans-serif. - Mood: product-system and research-lab, not decorative marketing.  ## Motifs  - Source-status chips. - Redaction bars. - Before/after artifact panels. - FACT / INTERPRETATION / HYPOTHESIS / GAP labels. - Stage rails. - Proof cards. - Review-gate stamps. - Evidence receipt blocks.  ## Prohibited Visuals  - Private screenshots. - Raw transcripts. - Account IDs, deployment IDs, private URLs, or personal identifiers. - Customer logos or named target accounts without approval. - Fake live dashboards or unsupported runtime claims. - Decorative gradient blobs or visual noise that hides the artifact.  ## Dimensions  | Format | Size | Notes | |---|---|---| | Lin"
+    },
+    {
+      "path": "project/content/mockups/static-post-mockup-specs.md",
+      "title": "Static Post Mockup Specs",
+      "text": "# Static Post Mockup Specs  Status: planning specs Date: 2026-07-10  ## Spec 1: Source Packet Boundary  - Format: LinkedIn portrait, 1080 x 1350. - Headline: \"The PRD problem is not just writing speed.\" - Visual: three-column source packet, PRD draft, review gate. - Labels: FACT for source packet, HYPOTHESIS for buyer pain, GAP for missing proof. - CTA: source-packet review.  ## Spec 2: PRD Evidence Receipt  - Format: carousel, 6 slides, 1080 x 1350. - Slide arc: input, evidence labels, decisions, questions, backlog, approval gate. - Visual: evidence receipt cards and stage rail. - CTA: diagnostic.  ## Spec 3: Roadmap Suite Objection  - Format: LinkedIn square, 1200 x 1200. - Headline: \"Roadmap tools do not remove source-lineage work.\" - Visual: roadmap item beside evidence packet and acceptance criteria. - Claim status: INTERPRETATION. - CTA: PRD Rescue Sprint.  ## Spec 4: Insight Repository Objection  - Format: X image, 1600 x 900. - Headline: \"Searchable research still needs a delivery handoff.\" - Visual: insight repository, PRD, engineering task packet. - Claim status: INTERPRETATION. - CTA: source-packet review.  ## Spec 5: AI PRD Tool Objection  - Format: LinkedIn portrait, 1"
+    },
+    {
+      "path": "project/content/operations/competitor-analyzer-role.md",
+      "title": "Competitor Analyzer Role",
+      "text": "# Competitor Analyzer Role  Status: planning contract Date: 2026-07-10  ## Job  Map current alternatives and objections for the ArchFlow PRD automation service using public sources only.  ## Current Alternative Categories  | Category | Examples | What They Usually Own | ArchFlow Wedge | |---|---|---|---| | Product management suites | Productboard, Aha, Cycle | Roadmaps, ideas, feedback, planning workflows | Source packet to reviewed PRD/task/KB handoff service | | Insight and customer-intelligence repositories | Dovetail, BuildBetter | Research, customer signals, searchable insights | Translation of signals into delivery-ready PRD and acceptance criteria | | AI PRD drafting tools | ChatPRD | Fast PRD/story/spec drafting and PM coaching | Evidence labels, review gates, backlog/KB handoff, and source-boundary discipline | | Workspace AI and enterprise search | Notion AI, Glean, Dust | Search, agents, workspace context, knowledge access | Accountable product artifact production from approved sources | | Human alternatives | Status quo, junior PM/BA, fractional consultant | Manual synthesis, rewrite loops, expert judgment | Productized diagnostic and reviewed delivery packet |  ## Requ"
+    },
+    {
+      "path": "project/content/operations/content-bot-role-contracts.md",
+      "title": "Content Bot Role Contracts",
+      "text": "# Content Bot Role Contracts  Status: planning contract Date: 2026-07-10  ## Purpose  These roles turn reviewed ArchFlow run evidence into public-safe content planning assets. They do not publish, scrape, send messages, mutate social profiles, or claim buyer proof.  ## Shared Rules  - Source of truth: repo-visible run folders, reviewed content templates, public source inventory, and owner-approved notes. - Default ICP: B2B SaaS product leaders responsible for PRD quality, product discovery, and delivery handoff. - Default mix: 70 percent static educational or analytical posts, 20 percent carousel/checklist/template posts, 10 percent short video or scripted demo posts. - Required labels: FACT, INTERPRETATION, HYPOTHESIS, GAP. - Required gates: AF Review, public-safety check, and owner approval before publication. - Forbidden output: demand proof, revenue proof, customer proof, ROI claims, raw private source material, private screenshots, scraped personal profile data, or unpublished account details.  ## Content Planner Bot  Responsibility:  - Turn approved run evidence into weekly and five-week calendars. - Preserve the 70/20/10 content mix. - Map every idea to an evidence source, r"
+    },
+    {
+      "path": "project/content/operations/content-planner-workflow.md",
+      "title": "Content Planner Workflow",
+      "text": "# Content Planner Workflow  Status: planning workflow Date: 2026-07-10  ## Goal  Turn reviewed ArchFlow work into a public-safe content backlog and calendar.  ## Stages  1. Evidence intake.    - Read run handout, review gate, and source inventory.    - Mark each claim as FACT, INTERPRETATION, HYPOTHESIS, or GAP.  2. Topic scoring.    - Score ICP fit, pain relevance, currentness, differentiation, source strength, CTA fit, and risk.    - Reject topics that need private evidence or unsupported buyer proof.  3. Calendar mapping.    - Assign items to 70 percent static, 20 percent carousel/checklist/template, and 10 percent short video or scripted demo.    - Every short video needs a static companion.  4. CTA mapping.    - Match each item to diagnostic, source-packet review, PRD Rescue Sprint, discovery call, or review checklist.    - Do not use CTAs that imply live automation, deployment, or buyer proof before validation.  5. Review packet.    - Attach source inventory.    - List unsupported claims.    - Send to AF Review before drafting.  ## Topic Scoring Rubric  | Field | 0 | 1 | 2 | |---|---|---|---| | ICP fit | Generic | Product-adjacent | B2B SaaS product leader pain | | Pain relev"
+    },
+    {
+      "path": "project/content/operations/social-monitoring-source-policy.md",
+      "title": "Social Monitoring Source Policy",
+      "text": "# Social Monitoring Source Policy  Status: planning policy Date: 2026-07-10  ## Purpose  This policy defines what content operations may learn from public social and web sources without crossing into unsafe collection, scraping, or unsupported claims.  ## Allowed Sources  - Public company and product pages. - Public blogs, docs, changelogs, and newsletters. - Public pricing pages and public help-center pages. - Public directories and review pages, when terms allow review. - Search-result summaries used only as routing hints before opening primary sources. - Manually observed public posts used as language or format examples. - Official APIs only after approval, current terms review, scope definition, and budget/rate-limit proof.  ## Blocked Sources And Methods  - Private communities, private groups, private messages, or private workspaces. - Scraped personal profiles, comments, followers, or engagement graphs. - Downloaded social videos or screenshots from private contexts. - Raw personal identifiers or account-level details not approved for public use. - Automated collection from LinkedIn, X, Threads, Instagram, TikTok, or Reels-style surfaces without explicit API/terms approval. -"
+    },
+    {
+      "path": "project/content/operations/writing-editing-workflow.md",
+      "title": "Writing And Editing Workflow",
+      "text": "# Writing And Editing Workflow  Status: planning workflow Date: 2026-07-10  ## Goal  Create public-safe ArchFlow company-voice drafts from approved content planner packets.  ## Draft Sequence  1. Load the planner packet and evidence checklist. 2. Choose the format: static post, carousel, checklist, template, short video script, or companion static post. 3. Write a concise company-voice draft for B2B SaaS product leaders. 4. Add a claim table with FACT, INTERPRETATION, HYPOTHESIS, and GAP labels. 5. Remove unsupported demand, ROI, customer, revenue, or production-runtime claims. 6. Prepare an AF Review packet.  ## Voice Rules  - Use direct product-operations language. - Focus on source lineage, PRD clarity, review gates, acceptance criteria, backlog handoff, and decision memory. - Do not write personal build-in-public diary content unless owner-approved. - Do not overstate automation: Codex is the current operator; Jarvis/provider/writeback/deploy are gated unless proven.  ## Format Rules  LinkedIn static:  - One sharp opening. - One concrete problem. - One source-boundary or review-gate lesson. - One CTA.  Carousel:  - 5 to 7 slides. - One claim per slide. - Proof or gap marker on "
+    },
+    {
       "path": "project/content/templates/README.md",
       "title": "ArchFlow Content Template Library",
       "text": "# ArchFlow Content Template Library  Status: active template library Default ICP: B2B SaaS product leaders for the Product Discovery-to-Production PRD Pack Default channel: LinkedIn first, then adapted excerpts for X and Threads after review Default voice: ArchFlow company content first Default visual style: product-system and research-lab Default content mix: 70 percent static educational or analytical posts, 20 percent carousel/checklist/template posts, 10 percent short video or scripted demo posts  ## Purpose  These templates turn executed ArchFlow work into public-safe content planning assets. They are not publish-ready copy by themselves. Each execution still needs artifact evidence, evidence labels, AF Review, and owner approval before publication.  ## Template Set  | Template | Use after | Output | |---|---|---| | `carousel-template.md` | A proof run, review gate, or method step has artifact evidence | LinkedIn carousel plan with slide copy, visual notes, and approval gate | | `implementation-proof-post-template.md` | A task produces a working artifact, validation result, or reviewed process proof | Company post showing what was implemented and how it was checked | | `dashbo"
@@ -5703,6 +5790,36 @@
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",
       "title": "Thread Contracts",
       "text": "# Thread Contracts  Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`  These contracts are for separate Codex specialist threads created by the supervisor. Thread identifiers are not stored in this public file.  ## Shared Context For All Threads  Start from the current ArchFlow public project. The active public project root is `public/`.  Required reads before edits:  - `AGENTS.md` - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - latest entries in `project/live/communication/agent-communication-log.md` - `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md` - `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md` - `project/agentic-stack.md` - `project/config/model-routing.yaml`  ## 1. Architecture Reliability And Jarvis Runtime Review  Execution type: Discovery, Verification, Repair, Documentation.  Goal:  - Review the architecture stage by stage and make sure Architecture 1, Architecture 2, and the planned Content Agent architecture have reliable Jarvis/control-surface behavior.  Allowed files:  - `api/` - `services/jarvis-api"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/agent-handout.md",
+      "title": "Agent Handout",
+      "text": "# Agent Handout  Status: complete Date: 2026-07-10 Agent role: watchdog supervisor / integrator  ## Objective  Supervise the July 10 specialist-lane review, identify unexecuted or stale work, integrate only public-safe justified changes, and leave a durable handoff.  ## Completed  - Reviewed current handoff, commit history, live communication state, and specialist-lane contracts. - Searched for existing specialist outputs and treated them as not discoverable from this run. - Coordinated replacement bounded specialist reviews. - Integrated safe changes:   - static dashboard no longer infers provider approval from command text;   - OpenRouter requires explicit model selection;   - voice documentation now matches disabled runtime;   - content-operation role contracts and mockup specs now exist;   - current-source competitor/content review is recorded. - Prepared external-action blocker packet.  ## Changed Files  - `docs/dashboard-operating-manual.md` - `project/dashboard/app.js` - `api/_jarvis_contract.py` - `services/jarvis-api/app.py` - `project/provider-setup.md` - `project/content/operations/content-bot-role-contracts.md` - `project/content/operations/social-monitoring-source-poli"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/external-action-status.md",
+      "title": "External Action Status",
+      "text": "# External Action Status  Status: blocker packet Date: 2026-07-10  ## Summary  No external mutation was executed in this supervisor pass. Connector/tool availability alone is not enough to mutate external systems. Each target needs current schema, target scope, idempotency, approval, and public-safety review.  ## Status Table  | External action | Status | Reason | Next safe action | |---|---|---|---| | Notion update | Blocked for automated mutation | Existing packet is prepared only; current workspace/page/data-source mapping was not verified in this run. | Use the existing Notion-ready packet as a manual update source or run a private approved connector pass with schema fetch first. | | Linear mirror | Blocked for automated mutation | Linear is optional; no verified team/project/state/label/idempotency map. | Keep repo-native Markdown/YAML/JSON as source of truth. If approved later, create a small mirror only for E1-E7 epics, blockers, and owner decisions. | | Railway deploy | Blocked | July 3 provider-disabled baseline is historical only; July 7 chat/file/voice-disabled contract was not redeployed or verified live. | After approval, confirm exact target privately, run safety scan"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/market-content-source-review.md",
+      "title": "Market And Content Source Review",
+      "text": "# Market And Content Source Review  Status: current-source review snapshot Date checked: 2026-07-10  ## Sources Checked  | Source | Public URL | Category Observation | Claim Status | |---|---|---|---| | Productboard | https://www.productboard.com/ | Product management suite with feedback, roadmaps, PRD/spec generation, feedback synthesis, and competitive intelligence positioning. | Public-source FACT about positioning | | Aha | https://www.aha.io/ | Product development suite spanning discovery, ideas, roadmaps, knowledge, AI builder, and product operations. | Public-source FACT about positioning | | Dovetail | https://dovetail.com/ | Customer intelligence and research repository category, with AI search/analysis over customer and research signals. | Public-source FACT about positioning | | BuildBetter | https://www.buildbetter.ai/ | B2B customer-signal and customer-led development layer across product, success, engineering, feedback, research, workflows, and coding context. | Public-source FACT about positioning | | ChatPRD | https://www.chatprd.ai/ | AI PM documentation, PRD/story/spec generation, coaching, and product-tool integrations. | Public-source FACT about positioning | | "
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/specialist-findings.md",
+      "title": "Specialist Findings",
+      "text": "# Specialist Findings  Status: integrated review Date: 2026-07-10  ## Scope  The watchdog supervisor reviewed the July 10 continuation handoff and coordinated bounded specialist reviews for:  - Architecture reliability and Jarvis runtime. - Yushchenko/OpenRouter/model routing. - Railway and production deployment. - Market, ICP, competitor, and content-agent architecture. - Content operations, writing bots, competitor analyzer, and post mockups. - Notion and Linear external-sync readiness. - Daily Founder Notes evidence review.  Previously requested specialist outputs were recorded as dispatched in the public handout, but no discoverable output artifacts were available in this run. Replacement specialist reviews were used for evidence gathering. No specialist IDs or private thread details are stored here.  ## Decisions By Lane  | Lane | Decision | Accepted Now | Blocked Or Revised | |---|---|---|---| | Architecture and Jarvis runtime | Revise | Static/browser-local dashboard plus guarded review-packet API contracts are accepted. | Do not claim autonomous Jarvis, provider runtime, durable writeback, or production-current July 7 contract without fresh hosted proof. | | OpenRouter and "
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/validation-results.md",
+      "title": "Validation Results",
+      "text": "# Validation Results  Status: pass Date: 2026-07-10  ## Checks  | Check | Result | |---|---| | Dashboard data regeneration: `python3 project/scripts/generate-dashboard-data.py` | pass | | Dashboard JSON parse | pass | | JavaScript syntax: `node --check project/dashboard/app.js` | pass | | API Python syntax: `python3 -m py_compile api/_jarvis_contract.py services/jarvis-api/app.py` | pass | | Jarvis API contract smoke: `python3 project/scripts/jarvis-api-contract-smoke.py` | pass | | Workflow validation: `python3 project/scripts/validate-workflows.py` | pass | | Public safety scan: `python3 scripts/public_safety_scan.py` | pass | | Whitespace diff check: `git diff --check` | pass |  ## Notes  - No external mutation, deployment, provider call, or social publication was performed. - Untracked `.codex/environments/` exists and was not touched."
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/watchdog-completion-report.md",
+      "title": "Watchdog Completion Report",
+      "text": "# Watchdog Completion Report  Status: integration complete, validation passed Date: 2026-07-10  ## Task  Review the July 10 watchdog continuation package, detect unexecuted specialist work, run bounded specialist reviews where needed, integrate only public-safe justified changes, and prepare final status without unsafe external mutation.  ## Inputs  - Latest public handoff and continuation prompt. - July 4-10 Daily Founder Notes report. - Founder Meeting v2 architecture and CAG/RAG integration artifacts. - July 10 specialist execution lane contracts. - Current runtime/provider/dashboard/source files. - Current public-source competitor and API pages. - Six bounded specialist reviews plus local Daily Founder Notes review.  ## Files Changed  - `docs/dashboard-operating-manual.md` - `project/dashboard/app.js` - `api/_jarvis_contract.py` - `services/jarvis-api/app.py` - `project/provider-setup.md` - `project/content/operations/` - `project/content/mockups/` - `project/content/calendar/2026-07-five-week-70-20-10-plan.md` - `project/runs/2026-07-10-watchdog-supervisor-integration-review/` - `wiki/log.md` - `project/dashboard/data.json` - `project/live/communication/agent-communication-log"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",

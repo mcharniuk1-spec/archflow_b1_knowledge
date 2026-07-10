@@ -8772,3 +8772,113 @@ Gaps:
 Next:
 
 - Commit and push the handoff, then create the new watchdog continuation chat.
+
+## 2026-07-10 14:01 EEST - Codex Watchdog Supervisor - starting - Specialist lane review and integration
+
+Status: starting
+
+Task:
+
+- Review the latest watchdog handoff, inspect the previously requested specialist lanes, create or use bounded subagents where needed, integrate only public-safe evidence-backed changes, run checks, and prepare final closeout.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-10-watchdog-supervisor-integration-review/`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+
+Files claimed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-10-watchdog-supervisor-integration-review/`
+
+Expected output:
+
+- Watchdog completion report, specialist findings, external-action blocker/status packet, validation record, and agent handout.
+
+Blockers:
+
+- External mutations remain gated unless connector schema, target scope, credentials, budget, and safety checks are unambiguous. Public files must not contain secrets, private URLs, account IDs, deployment IDs, raw private source text, or local absolute paths.
+
+Next:
+
+- Inspect existing specialist threads if discoverable, launch bounded subagents for missing/stale lanes, then review outputs before any integration.
+
+## 2026-07-10 14:34 EEST - Codex Watchdog Supervisor - update - Integration scope narrowed
+
+Status: in progress
+
+Task update:
+
+- Specialist review outputs are available and agree on a conservative integration path.
+- Proceeding with repo-local, public-safe documentation/status/spec changes only.
+
+Files to edit:
+
+- `docs/dashboard-operating-manual.md`
+- `project/dashboard/app.js`
+- `api/_jarvis_contract.py`
+- `services/jarvis-api/app.py`
+- `project/content/operations/`
+- `project/content/mockups/`
+- `project/content/calendar/`
+- `project/runs/2026-07-10-watchdog-supervisor-integration-review/`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+
+Blocked actions:
+
+- No Notion or Linear mutation.
+- No Railway or Vercel deploy.
+- No provider call or model activation.
+- No social posting, scraping, private-source capture, or external send.
+
+Next:
+
+- Apply the bounded fixes, create the integration handout/report, regenerate dashboard data, then run validation and safety checks.
+
+## 2026-07-10 14:58 EEST - Codex Watchdog Supervisor - complete - Specialist lane review integrated
+
+Status: complete
+
+Task:
+
+- Reviewed latest continuation handoff, recent commits, specialist-lane contracts, and available specialist outputs.
+- Coordinated replacement bounded specialist reviews where outputs were not discoverable.
+- Integrated public-safe documentation, runtime-boundary, provider-gate, content-operations, and mockup-spec changes.
+
+Files changed:
+
+- `docs/dashboard-operating-manual.md`
+- `project/dashboard/app.js`
+- `api/_jarvis_contract.py`
+- `services/jarvis-api/app.py`
+- `project/provider-setup.md`
+- `project/content/operations/`
+- `project/content/mockups/`
+- `project/content/calendar/2026-07-five-week-70-20-10-plan.md`
+- `project/runs/2026-07-10-watchdog-supervisor-integration-review/`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks:
+
+- Dashboard data regeneration: pass.
+- Dashboard JSON parse: pass.
+- JavaScript syntax check: pass.
+- API Python syntax check: pass.
+- Jarvis API contract smoke: pass.
+- Workflow validation: pass.
+- Public safety scan: pass.
+- `git diff --check`: pass.
+
+Remaining gaps:
+
+- Notion, Linear, Railway, Vercel, provider/model activation, Telegram, Figma, social posting, and external writeback remain blocked until target, schema, approval, and safety gates are proven.
+- Production freshness, account-level market evidence, buyer proof, paid diagnostic proof, and social publication remain unverified.
+
+Next:
+
+- Stage only the public-safe repo changes, commit, push, and close with the supervisor handoff summary.

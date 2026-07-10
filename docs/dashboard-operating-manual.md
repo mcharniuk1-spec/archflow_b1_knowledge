@@ -45,14 +45,15 @@ Clear history removes only the browser-local copy. It does not delete Git, Notio
 
 ## Voice And Transcript Controls
 
-Voice input uses the browser speech recognition API when available. Manual transcript fallback uses the same Jarvis chat path. Voice output uses browser speech synthesis when enabled.
+Voice mode is disabled in the current dashboard and API contract. Use Jarvis text chat and bounded file attachments instead.
 
-If the browser reports that the speech recognition network service is unavailable, this is treated as a browser/runtime limitation. Use the manual transcript fallback; no raw audio is stored.
+Manual transcript text can be pasted into Jarvis chat as normal text. It is not treated as an audio capture lane, and it does not approve speech recognition, raw recording, browser speech synthesis, provider transcription, or TTS.
 
 Current limits:
 
 - Raw audio is not stored.
 - Raw transcript persistence is off by default.
+- Browser speech recognition and speaker playback remain off.
 - Provider-backed transcription or TTS is not enabled.
 - Owner approval and storage policy are required before durable voice capture.
 
@@ -154,7 +155,7 @@ The Vercel API contract is intentionally conservative:
 - `/api/lanes/prd-icp` returns a PRD/ICP review packet.
 - `/api/lanes/agent-orchestra` returns an agent-workflow review packet.
 - `/api/config/roles` returns configured role metadata.
-- `/api/voice/chat` accepts text/transcript review packets only.
+- `/api/voice/chat` returns a disabled-mode review packet.
 - Provider calls, raw audio storage, durable writeback, and external sends remain disabled.
 
 The local FastAPI service keeps the broader endpoint set for development and future Railway migration. The Vercel surface is intentionally smaller so it fits the current hosting plan and supports the dashboard connection path reliably.
@@ -166,9 +167,9 @@ Expected local checks:
 - `/api/lanes/prd-icp`
 - `/api/lanes/agent-orchestra`
 - `/api/test-runs/meeting-prd`
-- `/api/voice/chat`
+- `/api/voice/chat` disabled packet
 
-The API can return review packets and approval gates. It does not call OpenRouter, write Notion/WikiLLM/GitHub, store raw transcripts, or run full provider-backed PRD cycles without approval.
+The API can return review packets and approval gates. It does not call OpenRouter, write Notion/WikiLLM/GitHub, store raw transcripts, or run full provider-backed PRD cycles without approval, explicit server-side model selection, and budget proof.
 
 ## Railway Readiness
 
