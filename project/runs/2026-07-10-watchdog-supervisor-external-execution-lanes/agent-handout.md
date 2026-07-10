@@ -2,7 +2,7 @@
 
 Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`
 
-Status: supervisor delegation prepared.
+Status: supervisor delegation prepared and six specialist worktree chats dispatched.
 
 ## Goal
 
@@ -75,3 +75,20 @@ Each specialist must produce:
 ## Integration Rule
 
 Specialist outputs must be reviewed by a final integrator before merging to `main`, pushing, deploying, mutating Notion/Linear, activating providers, or promoting production.
+
+## Dispatch Completion
+
+Six separate specialist chats were dispatched from the current `main` baseline:
+
+- Architecture Reliability and Jarvis Runtime Review.
+- Yushchenko OpenRouter and Model Routing Review.
+- Railway and Production Deployment Review/Execution.
+- Market, ICP, Competitor, and Content-Agent Architecture Research.
+- Content Operations, Writing Bots, Competitor Analyzer, and Post Design Mockups.
+- Notion and Linear External-Sync Review.
+
+Thread identifiers are intentionally not stored in public project files.
+
+Next safe action:
+
+- Review each specialist output, integrate only justified changes, rerun validation, and require explicit final integrator approval before merge, production promotion, provider activation, Notion/Linear mutation, Railway changes, or other external writeback.

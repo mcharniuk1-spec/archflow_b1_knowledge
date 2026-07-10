@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T09:44:06.962704+00:00",
+  "generated_at": "2026-07-10T09:47:12.140288+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -726,17 +726,17 @@
   "activity": [
     {
       "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
+      "title": "Agent Handout",
+      "modified": "2026-07-10T09:47:05.719038+00:00",
+      "size": 4662
+    },
+    {
+      "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",
       "title": "Thread Contracts",
       "modified": "2026-07-10T09:43:43.456558+00:00",
       "size": 7445
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
-      "title": "Agent Handout",
-      "modified": "2026-07-10T09:43:43.313997+00:00",
-      "size": 3808
     },
     {
       "kind": "project_run",
@@ -5661,7 +5661,7 @@
     {
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
       "title": "Agent Handout",
-      "text": "# Agent Handout  Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`  Status: supervisor delegation prepared.  ## Goal  Create bounded specialist execution lanes for the next stage after the Founder Meeting v2 / Hermes watchdog / CAG-RAG integration.  The supervisor role is initiator/watchdog only. Specialist agents perform discovery, implementation, verification, and handoff inside separate Codex threads/worktrees.  ## Baseline  Current pushed baseline before this supervisor run:  - Commit: `135dc6f` - Summary: Founder Meeting v2 / Hermes watchdog / CAG-RAG architecture update is committed and pushed on `main`.  Important current boundaries:  - Codex remains executor, reviewer, file editor, validator, and final integration boundary. - Hermes remains planned watchdog/controller/reviewer only. - Dashboard/Jarvis are operator/control surfaces, not the primary brain. - OpenRouter is spec-ready but disabled by default. - Railway and production deployment require fresh proof before claims. - Notion and Linear are optional external surfaces, not required project control planes. - Content strategy is service-first, not SaaS-first.  ## Supervisor Dispatch Lanes  1. Architecture "
+      "text": "# Agent Handout  Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`  Status: supervisor delegation prepared and six specialist worktree chats dispatched.  ## Goal  Create bounded specialist execution lanes for the next stage after the Founder Meeting v2 / Hermes watchdog / CAG-RAG integration.  The supervisor role is initiator/watchdog only. Specialist agents perform discovery, implementation, verification, and handoff inside separate Codex threads/worktrees.  ## Baseline  Current pushed baseline before this supervisor run:  - Commit: `135dc6f` - Summary: Founder Meeting v2 / Hermes watchdog / CAG-RAG architecture update is committed and pushed on `main`.  Important current boundaries:  - Codex remains executor, reviewer, file editor, validator, and final integration boundary. - Hermes remains planned watchdog/controller/reviewer only. - Dashboard/Jarvis are operator/control surfaces, not the primary brain. - OpenRouter is spec-ready but disabled by default. - Railway and production deployment require fresh proof before claims. - Notion and Linear are optional external surfaces, not required project control planes. - Content strategy is service-first, not SaaS-first.  #"
     },
     {
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",

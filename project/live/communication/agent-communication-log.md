@@ -8665,3 +8665,44 @@ Blockers:
 Next:
 
 - Create the supervisor run folder and dispatch bounded specialist threads.
+
+## 2026-07-10 10:22 EEST - Codex Supervisor - complete - Specialist execution lanes dispatched
+
+Status: complete
+
+Task:
+
+- Created the supervisor run folder and dispatched six separate worktree chat agents for next-stage execution.
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/dashboard/data.json`
+- `project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md`
+- `project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md`
+
+Threads dispatched:
+
+- Architecture Reliability and Jarvis Runtime Review.
+- Yushchenko OpenRouter and Model Routing Review.
+- Railway and Production Deployment Review/Execution.
+- Market, ICP, Competitor, and Content-Agent Architecture Research.
+- Content Operations, Writing Bots, Competitor Analyzer, and Post Design Mockups.
+- Notion and Linear External-Sync Review.
+
+Gaps:
+
+- Thread identifiers are kept out of public files.
+- Final integration still requires reviewing each specialist output before merging, deploying, mutating Notion/Linear, activating providers, or promoting production.
+
+Checks:
+
+- Dashboard data regeneration before dispatch: pass.
+- Dashboard JSON parse before dispatch: pass.
+- Public safety scan before dispatch: pass.
+- `git diff --check` before dispatch: pass.
+- Pre-push public safety and runtime guard for supervisor baseline commit: pass.
+
+Next:
+
+- Wait for specialist thread outputs, then run final integrator QA before any merge or external action.
