@@ -31,3 +31,6 @@ Delivery rule: local-only. The approved Telegram file sender accepts reviewed pu
 - Broader read-only planning-package PDFs: 6.
 - Blocked safety patterns found in extracted text: 0.
 - Newly generated public closeout PDFs: 3.
+- Final public linked PDF count: 4.
+- Final local-only planning-package count: 6.
+- Final identified PDF count for this delivery packet: 10.

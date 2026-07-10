@@ -9347,3 +9347,38 @@ GAP:
 Next:
 
 - Render the revised closeout PDF, rerun final safety/diff checks, commit and push, deploy the linked public Vercel target, verify hosted freshness, then send only the reviewed public-repository PDF packet.
+
+## 2026-07-10 18:31 CEST - Codex Jarvis Closeout - complete - Current dashboard, Jarvis, PDFs, deployment, and Telegram
+
+Status: complete
+
+Files changed:
+
+- Dashboard freshness/claim generator, generated data, favicon/accessibility repair, and screenshot-smoke portability.
+- Public Jarvis closeout Markdown/PDF, PRD/ICP architecture PDF, watchdog completion PDF, runtime verification, PDF inventory, validation, Telegram packet/status, handout, and WikiLLM run/log/memory.
+
+FACT:
+
+- Git push succeeded.
+- The linked Vercel production build reached Ready and the canonical dashboard alias now serves the July 10 generated snapshot.
+- Canonical dashboard, API health, hosted closeout PDF, and all four public Git PDF links return HTTP 200.
+- Hosted Playwright passes persistence, desktop/mobile layout, accessibility basics, and zero console/page/request failures.
+- Vercel and Railway Jarvis review-packet routes pass point-in-time checks with provider calls 0 and writeback 0.
+- Telegram message plus four reviewed public PDFs were sent successfully to the verified private target.
+
+INTERPRETATION:
+
+- The approved static/provider-disabled Jarvis scope is operating and current. Browser-local saving and Git-backed artifact saving are proven; durable external persistence is not.
+
+GAP:
+
+- Six broader planning-package PDFs remain local-only and were not transmitted because they have no stable public links and sit outside the approved sender boundary.
+- Continuous monitoring, provider execution, auth-backed persistence, cross-device state, and autonomous writeback remain separate future lanes.
+
+Checks:
+
+- Required generation, workflow, runtime, syntax, Jarvis, rendered-route, browser, PDF, public-safety, diff, hosted route/link, deployment, and Telegram checks passed within the stated boundary.
+
+Next:
+
+- Preserve the current proof boundary. Open separate approved lanes for continuous monitoring or durable persistence rather than expanding this static/provider-disabled closeout silently.

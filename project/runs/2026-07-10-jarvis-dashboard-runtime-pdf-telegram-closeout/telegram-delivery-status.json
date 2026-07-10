@@ -1,0 +1,23 @@
+{
+  "timestamp_utc": "2026-07-10T16:28:17.747637+00:00",
+  "status": "sent",
+  "reason": "telegram_api_ok",
+  "files": [
+    {
+      "path": "project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-10-prd-icp-delivery-product-architecture.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.pdf",
+      "status": "sent"
+    },
+    {
+      "path": "project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf",
+      "status": "sent"
+    }
+  ]
+}

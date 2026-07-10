@@ -1,0 +1,11 @@
+ArchFlow Jarvis final verification - 2026-07-10
+
+The canonical dashboard is now serving the July 10 snapshot and the corrected Jarvis runtime labels:
+https://archflowautomate.vercel.app/project/dashboard/
+
+The dashboard, API health, hosted closeout PDF, and all four public Git report links return HTTP 200. Hosted browser QA passes reload persistence, desktop/mobile layout, accessibility basics, and zero console/network errors.
+
+Final closeout PDF:
+https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf
+
+Provider calls and durable external writeback remain disabled. Six broader planning-package PDFs remain local-only and were not transmitted.

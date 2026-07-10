@@ -57,9 +57,20 @@ A bounded inventory covers PDFs generated on or after 2026-07-04. Public Git rep
 
 Telegram sender and private-target preflight passed without storing or exposing credentials, target identifiers, names, or response bodies. Only reviewed public-repository artifacts may be sent. Final delivery status is recorded in the companion run artifacts.
 
+## Deployment And Delivery Result
+
+- The reviewed source and four public PDF reports were pushed to `main`.
+- A production Vercel build completed successfully from the linked public project.
+- The canonical ArchFlow dashboard alias was moved from the July 3 deployment to the verified July 10 deployment with the prior deployment retained as rollback evidence.
+- The live dashboard serves the July 10 generated snapshot, corrected Jarvis status, and current closeout artifact.
+- Canonical dashboard, API health, hosted closeout PDF, and all four public Git PDF links return HTTP 200.
+- Hosted Playwright passes reload persistence, desktop/mobile layout, accessibility basics, and zero console/page/request failures.
+- Telegram message plus four public-safe PDF documents were sent successfully through the approved sender to the verified private target.
+- The six broader planning-package PDFs remain local-only and were not transmitted.
+
 ## Remaining Gaps
 
 - Provider execution remains disabled and was not needed for this closeout.
 - Durable external writeback, client workspaces, auth-backed storage, and cross-device persistence are not implemented.
 - A current successful health check is not continuous monitoring or an uptime guarantee.
-- Production deployment freshness and Telegram delivery require final post-action verification before the run can close.
+- Six broader planning-package PDFs have no stable public links and remain outside the approved publication and Telegram file-sender boundary.

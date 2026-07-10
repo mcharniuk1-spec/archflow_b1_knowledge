@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T16:24:03.493334+00:00",
+  "generated_at": "2026-07-10T16:29:34.829947+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "467",
+      "value": "468",
       "tone": "ok"
     },
     {
@@ -725,32 +725,53 @@
   ],
   "activity": [
     {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
-      "title": "Run: Jarvis Dashboard Runtime And Delivery Closeout",
-      "modified": "2026-07-10T16:23:58.288106+00:00",
-      "size": 1576
-    },
-    {
       "kind": "project_report",
       "path": "project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf",
       "title": "2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf",
-      "modified": "2026-07-10T16:23:10.497283+00:00",
-      "size": 6847
+      "modified": "2026-07-10T16:29:28.532236+00:00",
+      "size": 8129
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
+      "title": "Run: Jarvis Dashboard Runtime And Delivery Closeout",
+      "modified": "2026-07-10T16:29:20.870555+00:00",
+      "size": 1904
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/agent-handout.md",
       "title": "Jarvis Dashboard Runtime, PDF, and Telegram Closeout Handout",
-      "modified": "2026-07-10T16:23:05.279468+00:00",
-      "size": 3366
+      "modified": "2026-07-10T16:29:20.588956+00:00",
+      "size": 3909
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/validation-results.md",
       "title": "Validation Results",
-      "modified": "2026-07-10T16:23:05.136682+00:00",
-      "size": 1296
+      "modified": "2026-07-10T16:29:20.449778+00:00",
+      "size": 1786
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/pdf-inventory.md",
+      "title": "PDF Inventory From 2026-07-04",
+      "modified": "2026-07-10T16:29:20.311434+00:00",
+      "size": 2055
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
+      "title": "Jarvis Dashboard Runtime And Delivery Closeout",
+      "modified": "2026-07-10T16:29:20.172443+00:00",
+      "size": 5365
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "modified": "2026-07-10T16:28:18.541154+00:00",
+      "size": 643
     },
     {
       "kind": "project_run",
@@ -758,20 +779,6 @@
       "title": "Jarvis Runtime Verification",
       "modified": "2026-07-10T16:23:04.995083+00:00",
       "size": 1472
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/pdf-inventory.md",
-      "title": "PDF Inventory From 2026-07-04",
-      "modified": "2026-07-10T16:23:04.705406+00:00",
-      "size": 1914
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
-      "title": "Jarvis Dashboard Runtime And Delivery Closeout",
-      "modified": "2026-07-10T16:23:04.558138+00:00",
-      "size": 4404
     },
     {
       "kind": "project_run",
@@ -6130,7 +6137,7 @@
     {
       "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/agent-handout.md",
       "title": "Jarvis Dashboard Runtime, PDF, and Telegram Closeout Handout",
-      "text": "# Jarvis Dashboard Runtime, PDF, and Telegram Closeout Handout  ## Title and Purpose  This handout tracks the July 10 closeout for dashboard freshness, Jarvis operation, saving boundaries, post-July-4 PDF links, and Telegram delivery.  ## Human Summary  The run begins from the pushed three-architecture watchdog state. It will regenerate the dashboard, test Jarvis and browser behavior, distinguish browser-local persistence from external writeback, check hosted freshness, and publish only reports that are demonstrably public-safe.  Telegram delivery is owner-authorized for the verified public-safe link packet, but the sender and target still need current proof. No private planning-package PDF will be published or sent merely because it exists locally.  ## Current State  - Task status: implementation and local validation complete; deployment and Telegram delivery pending. - Git baseline: `main` aligned with `origin/main` before this run. - Dashboard boundary: static/read-only with verified browser-local persistence and current generated data. - Provider/writeback boundary: disabled unless separately proven. - External action: Telegram pending sender, target, link, and safety validatio"
+      "text": "# Jarvis Dashboard Runtime, PDF, and Telegram Closeout Handout  ## Title and Purpose  This handout tracks the July 10 closeout for dashboard freshness, Jarvis operation, saving boundaries, post-July-4 PDF links, and Telegram delivery.  ## Human Summary  The run begins from the pushed three-architecture watchdog state. It will regenerate the dashboard, test Jarvis and browser behavior, distinguish browser-local persistence from external writeback, check hosted freshness, and publish only reports that are demonstrably public-safe.  Telegram delivery is owner-authorized for the verified public-safe link packet, but the sender and target still need current proof. No private planning-package PDF will be published or sent merely because it exists locally.  ## Current State  - Task status: complete for the approved public dashboard, provider-disabled Jarvis, public PDF, Git, deployment, and Telegram scope. - Git baseline: `main` aligned with `origin/main` before this run. - Dashboard boundary: static/read-only with verified browser-local persistence and current generated data. - Provider/writeback boundary: disabled unless separately proven. - External action: Telegram message and four re"
     },
     {
       "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/context-capsule.md",
@@ -6153,9 +6160,14 @@
       "text": "# Jarvis Closeout Task Contracts  ## Actor Contract  Goal: inspect the current dashboard and Jarvis implementation, identify stale or defective behavior, and propose or implement only the smallest evidence-backed corrections.  Evidence required:  - file and line references; - generation/runtime/browser commands and results; - explicit browser-local versus external-save classification; - changed-file list and diff summary when edits are justified.  Forbidden:  - provider activation; - secret handling in public output; - deployment or Telegram action; - unsupported always-online, persistence, or writeback claims.  ## Reviewer Contract  Goal: independently audit dashboard/Jarvis proof, hosted-state evidence, PDF publication safety, public-link availability, and Telegram sender/target readiness.  Evidence required:  - pass/fail/block per proof lane; - exact commands or connector checks; - public-safe PDF inclusion/exclusion rationale; - Telegram send recommendation: approve, revise, or block.  Forbidden:  - file edits; - deployment; - Telegram send; - disclosure of private targets, URLs, identifiers, or credentials.  ## Integrator Contract  Goal: review both outputs, apply justified fi"
     },
     {
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/telegram-delivery-status.md",
+      "title": "Telegram File Delivery Status",
+      "text": "# Telegram File Delivery Status  Date: 2026-07-10T16:28:17.747637+00:00 Status: sent Reason: telegram_api_ok  Files: - project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.pdf: sent - project/reports/2026-07-10-prd-icp-delivery-product-architecture.pdf: sent - project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.pdf: sent - project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf: sent  Boundary: - Message and files are sanitized project status artifacts only. - Bot token, chat ID, private destination, and Telegram response body are not stored in public files."
+    },
+    {
       "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/validation-results.md",
       "title": "Validation Results",
-      "text": "# Validation Results  ## Pre-Deployment Validation  | Check | Result | |---|---| | Dashboard regeneration | Pass | | Dashboard JSON parse, current closeout artifact, and Jarvis claim assertion | Pass | | Workflow validation | Pass | | Runtime guard | Pass | | Python compilation | Pass | | JavaScript syntax | Pass | | Jarvis API contract smoke | Pass: 17 endpoints, provider calls 0, writeback 0 | | Rendered dashboard smoke | Pass: 8 routes, provider calls 0, writeback 0 | | Playwright persistence/browser QA | Pass: reload persistence, desktop/mobile, accessibility basics, no errors | | PDF render and first-page visual inspection | Pass | | Public safety scan | Pass | | Git diff check | Pass |  The initial dashboard JSON assertion was too broad because it also searched historical report prose describing removal of an old label. The corrected assertion targets only `jarvis_api`; it passes. This was a test-quality correction, not a product failure.  ## External Validation  - Pre-deployment Vercel and Railway route checks: pass, point-in-time only. - Hosted dashboard freshness: pending production deployment from the verified public root. - Telegram bot/private-target preflight: pass wit"
+      "text": "# Validation Results  ## Pre-Deployment Validation  | Check | Result | |---|---| | Dashboard regeneration | Pass | | Dashboard JSON parse, current closeout artifact, and Jarvis claim assertion | Pass | | Workflow validation | Pass | | Runtime guard | Pass | | Python compilation | Pass | | JavaScript syntax | Pass | | Jarvis API contract smoke | Pass: 17 endpoints, provider calls 0, writeback 0 | | Rendered dashboard smoke | Pass: 8 routes, provider calls 0, writeback 0 | | Playwright persistence/browser QA | Pass: reload persistence, desktop/mobile, accessibility basics, no errors | | PDF render and first-page visual inspection | Pass | | Public safety scan | Pass | | Git diff check | Pass |  The initial dashboard JSON assertion was too broad because it also searched historical report prose describing removal of an old label. The corrected assertion targets only `jarvis_api`; it passes. This was a test-quality correction, not a product failure.  ## External Validation  - Pre-deployment Vercel and Railway route checks: pass, point-in-time only. - Git push: pass. - Vercel production deployment from the linked public root: pass. - Canonical dashboard alias update with prior deployment"
     },
     {
       "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md",

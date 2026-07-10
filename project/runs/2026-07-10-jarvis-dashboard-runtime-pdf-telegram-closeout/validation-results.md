@@ -22,6 +22,12 @@ The initial dashboard JSON assertion was too broad because it also searched hist
 ## External Validation
 
 - Pre-deployment Vercel and Railway route checks: pass, point-in-time only.
-- Hosted dashboard freshness: pending production deployment from the verified public root.
+- Git push: pass.
+- Vercel production deployment from the linked public root: pass.
+- Canonical dashboard alias update with prior deployment retained for rollback: pass.
+- Live dashboard snapshot: pass; July 10 generated timestamp and current closeout artifact present.
+- Canonical dashboard, API health, hosted closeout PDF, and four public Git PDF links: HTTP 200.
+- Hosted Playwright persistence, desktop/mobile, accessibility basics, and console/network checks: pass.
 - Telegram bot/private-target preflight: pass without exposing identifiers.
-- Telegram send: pending public Git links and post-deployment proof.
+- Telegram message and four reviewed public-repository PDFs: sent; API result ok.
+- Six broader planning-package PDFs: not sent; local-only and outside approved sender boundary.

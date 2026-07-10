@@ -18,7 +18,16 @@ Date: 2026-07-10
 ## GAP
 
 - Durable external persistence, autonomous writeback, provider execution, cross-device state, and uptime monitoring remain unimplemented.
-- Hosted dashboard freshness and Telegram delivery require the final external-action sequence recorded in the run handout.
+- Durable external persistence, provider execution, cross-device state, and continuous monitoring remain outside the completed public dashboard scope.
+
+## External Closeout
+
+- Git push: pass.
+- Canonical Vercel deployment and July 10 dashboard freshness: pass.
+- Four public report links: HTTP 200.
+- Hosted browser QA: pass.
+- Telegram message and four reviewed public PDFs: sent.
+- Six broader planning-package PDFs: local-only and not transmitted.
 
 ## Evidence
 

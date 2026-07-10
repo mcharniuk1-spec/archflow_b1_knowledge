@@ -12,11 +12,11 @@ Telegram delivery is owner-authorized for the verified public-safe link packet, 
 
 ## Current State
 
-- Task status: implementation and local validation complete; deployment and Telegram delivery pending.
+- Task status: complete for the approved public dashboard, provider-disabled Jarvis, public PDF, Git, deployment, and Telegram scope.
 - Git baseline: `main` aligned with `origin/main` before this run.
 - Dashboard boundary: static/read-only with verified browser-local persistence and current generated data.
 - Provider/writeback boundary: disabled unless separately proven.
-- External action: Telegram pending sender, target, link, and safety validation.
+- External action: Telegram message and four reviewed public PDF documents sent to the verified private target.
 
 ## Agent Continuation Prompt
 
@@ -30,6 +30,8 @@ Continue this run from the public repository. Read the context capsule, task con
 4. Integrator removed the favicon console 404 and added an accessible Jarvis message label.
 5. Reviewer approved local/runtime/PDF safety evidence but required hosted freshness and public-link correction before Telegram.
 6. Local generation, runtime, browser, PDF, safety, and diff checks passed.
+7. Pushed the public report pack, deployed the linked Vercel project, updated the canonical dashboard alias, and verified current hosted data and report links.
+8. Sent the verified public PDF packet through Telegram; six local-only planning PDFs remained excluded by the approved sender boundary.
 
 ## Decisions
 
@@ -44,15 +46,15 @@ Continue this run from the public repository. Read the context capsule, task con
 ## Validation
 
 - Local and point-in-time hosted validation pass within the provider-disabled/read-only boundary.
-- Hosted dashboard freshness and Telegram send remain pending external closeout.
+- Hosted dashboard freshness, public links, and Telegram delivery pass.
+- Durable external writeback and continuous monitoring remain outside the implemented scope.
 
 ## Next Actions
 
-1. Complete Actor and Reviewer audits.
-2. Apply justified fixes and regenerate dashboard data.
-3. Run local/browser/hosted/safety/link checks.
-4. Build the public PDF index and push.
-5. Send Telegram and verify delivery, or record the exact blocker.
+1. Preserve the current canonical deployment and point-in-time proof boundary.
+2. Add continuous monitoring only under a separate approved contract.
+3. Keep the six broader planning PDFs local-only unless the owner approves a separate sanitized publication workflow.
+4. Build durable auth-backed persistence only as a separate reviewed product lane.
 
 ## Safety Boundary
 
