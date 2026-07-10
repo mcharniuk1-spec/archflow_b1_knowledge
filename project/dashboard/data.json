@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T18:30:58.251775+00:00",
+  "generated_at": "2026-07-10T09:44:06.962704+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "413",
+      "value": "415",
       "tone": "ok"
     },
     {
@@ -724,6 +724,20 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",
+      "title": "Thread Contracts",
+      "modified": "2026-07-10T09:43:43.456558+00:00",
+      "size": 7445
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
+      "title": "Agent Handout",
+      "modified": "2026-07-10T09:43:43.313997+00:00",
+      "size": 3808
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md",
@@ -5643,6 +5657,16 @@
       "path": "project/runs/2026-07-08-post-execution-skill-update-hook/run-summary.md",
       "title": "Post-Execution Skill Update Hook",
       "text": "# Post-Execution Skill Update Hook  Date: 2026-07-08 Status: complete  ## Current Setup Discovered  - Existing Codex prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py`. - Existing evening automation: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Existing daily retrospective: `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`. - Existing skill/prompt structure: project-local skills under `skills/`, with registry references in `skills/skills-used.md`, `project/agents/skills-by-agent.md`, and `project/agents/agent-roster.yaml`. - Existing logs/wiki structure: active run records under `project/runs/`, durable public notes under `wiki/runs/`, and chronological state in `wiki/log.md`. - Existing execution flow: read communication files, append a starting update, perform bounded drift/review work, run validation, append completion, and write run artifacts.  ## What Changed  - Added `project/scripts/post-execution-skill-update.py`. - Added support files under `skills/evening-skill-registry-update/`. - Updated the evening skill and automation contract to require a post-execution decision: `NO_UPDATE`, `APPEND_PATT"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
+      "title": "Agent Handout",
+      "text": "# Agent Handout  Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`  Status: supervisor delegation prepared.  ## Goal  Create bounded specialist execution lanes for the next stage after the Founder Meeting v2 / Hermes watchdog / CAG-RAG integration.  The supervisor role is initiator/watchdog only. Specialist agents perform discovery, implementation, verification, and handoff inside separate Codex threads/worktrees.  ## Baseline  Current pushed baseline before this supervisor run:  - Commit: `135dc6f` - Summary: Founder Meeting v2 / Hermes watchdog / CAG-RAG architecture update is committed and pushed on `main`.  Important current boundaries:  - Codex remains executor, reviewer, file editor, validator, and final integration boundary. - Hermes remains planned watchdog/controller/reviewer only. - Dashboard/Jarvis are operator/control surfaces, not the primary brain. - OpenRouter is spec-ready but disabled by default. - Railway and production deployment require fresh proof before claims. - Notion and Linear are optional external surfaces, not required project control planes. - Content strategy is service-first, not SaaS-first.  ## Supervisor Dispatch Lanes  1. Architecture "
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",
+      "title": "Thread Contracts",
+      "text": "# Thread Contracts  Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`  These contracts are for separate Codex specialist threads created by the supervisor. Thread identifiers are not stored in this public file.  ## Shared Context For All Threads  Start from the current ArchFlow public project. The active public project root is `public/`.  Required reads before edits:  - `AGENTS.md` - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - latest entries in `project/live/communication/agent-communication-log.md` - `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md` - `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md` - `project/agentic-stack.md` - `project/config/model-routing.yaml`  ## 1. Architecture Reliability And Jarvis Runtime Review  Execution type: Discovery, Verification, Repair, Documentation.  Goal:  - Review the architecture stage by stage and make sure Architecture 1, Architecture 2, and the planned Content Agent architecture have reliable Jarvis/control-surface behavior.  Allowed files:  - `api/` - `services/jarvis-api"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",

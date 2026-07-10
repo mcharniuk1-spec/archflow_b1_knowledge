@@ -8634,3 +8634,34 @@ Gaps:
 Next:
 
 - Commit and push the approved public-safe changes.
+
+## 2026-07-10 10:05 EEST - Codex Supervisor - starting - External execution lane delegation
+
+Status: starting
+
+Task:
+
+- Act only as watchdog/supervisor initiator for the next-stage execution lanes after the Founder Meeting v2 / Hermes watchdog / CAG-RAG integration.
+- Create bounded new chat agents for architecture reliability, Jarvis/OpenRouter/Railway/runtime, content-agent architecture, market/ICP/content planning, post-design mockups, Notion/Linear sync review, and final QA.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/`
+
+Files claimed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/`
+
+Expected output:
+
+- Public-safe supervisor handout, bounded thread contracts, and newly created Codex threads for specialist agents.
+
+Blockers:
+
+- Production deployment, Notion mutation, Linear external writeback, Railway actions, provider activation/model calls, Telegram sends, and Figma sync still require unambiguous target evidence and must stop if secrets, account IDs, private URLs, or paid/provider actions would be exposed or activated unsafely.
+
+Next:
+
+- Create the supervisor run folder and dispatch bounded specialist threads.
