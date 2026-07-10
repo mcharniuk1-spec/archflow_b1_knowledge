@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T09:47:12.140288+00:00",
+  "generated_at": "2026-07-10T10:08:47.201642+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -35,7 +35,7 @@
     },
     {
       "label": "Activity files",
-      "value": "415",
+      "value": "418",
       "tone": "ok"
     },
     {
@@ -724,6 +724,27 @@
     }
   ],
   "activity": [
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md",
+      "title": "Continuation Prompt For New Watchdog Agent",
+      "modified": "2026-07-10T10:07:40.945151+00:00",
+      "size": 4304
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/daily-founder-notes-2026-07-04-to-2026-07-10.md",
+      "title": "Daily Founder Notes: 2026-07-04 To 2026-07-10",
+      "modified": "2026-07-10T10:07:40.798208+00:00",
+      "size": 7770
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md",
+      "title": "Master Watchdog Continuation Handout",
+      "modified": "2026-07-10T10:07:40.652211+00:00",
+      "size": 11294
+    },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
@@ -5657,6 +5678,21 @@
       "path": "project/runs/2026-07-08-post-execution-skill-update-hook/run-summary.md",
       "title": "Post-Execution Skill Update Hook",
       "text": "# Post-Execution Skill Update Hook  Date: 2026-07-08 Status: complete  ## Current Setup Discovered  - Existing Codex prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py`. - Existing evening automation: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Existing daily retrospective: `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`. - Existing skill/prompt structure: project-local skills under `skills/`, with registry references in `skills/skills-used.md`, `project/agents/skills-by-agent.md`, and `project/agents/agent-roster.yaml`. - Existing logs/wiki structure: active run records under `project/runs/`, durable public notes under `wiki/runs/`, and chronological state in `wiki/log.md`. - Existing execution flow: read communication files, append a starting update, perform bounded drift/review work, run validation, append completion, and write run artifacts.  ## What Changed  - Added `project/scripts/post-execution-skill-update.py`. - Added support files under `skills/evening-skill-registry-update/`. - Updated the evening skill and automation contract to require a post-execution decision: `NO_UPDATE`, `APPEND_PATT"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md",
+      "title": "Master Watchdog Continuation Handout",
+      "text": "# Master Watchdog Continuation Handout  Run: `2026-07-10-watchdog-master-continuation-handoff`  Status: prepared for a new watchdog monitoring and approving agent.  ## Goal  Continue the ArchFlow next-stage execution as a watchdog/supervisor agent.  The next watchdog must:  - review this handout and the prior supervisor handout; - inspect any already-created specialist threads before duplicating work; - initiate or resume specialist agent chats with their own subagents where needed; - monitor evidence, repair loops, and stop conditions; - integrate only justified changes; - update Git after validation; - update Notion Epics, tasks, subtasks, and Links page only after connector/target review; - produce and verify the requested production, Railway, provider, content, market, ICP, Linear, and daily-notes outputs.  ## Current Repo State  Known pushed commits from this chat:  - `135dc6f` - Founder Meeting v2 / Hermes watchdog / CAG-RAG architecture update. - `f2a5942` - Watchdog supervisor execution lane contracts. - `f1e7185` - Specialist thread dispatch record.  The active public project is under `public/` relative to the saved ArchFlow project. Worktree setup should enter `public/` b"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md",
+      "title": "Continuation Prompt For New Watchdog Agent",
+      "text": "# Continuation Prompt For New Watchdog Agent  You are the ArchFlow Watchdog Monitoring and Approving Agent.  You are not a normal executor. You are the supervisor/controller that reviews prior work, initiates specialist chats with subagents, monitors evidence, approves or rejects outputs, and triggers final integration only after checks pass.  The saved project may open at the broader ArchFlow root. For public project Git work, enter `public/` first when needed.  Start by reading:  1. `public/AGENTS.md` 2. `public/project/operating-rules.md` 3. `public/project/live/communication/README.md` 4. `public/project/live/communication/current-agent-notice.md` 5. Latest entries in `public/project/live/communication/agent-communication-log.md` 6. `public/project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md` 7. `public/project/runs/2026-07-10-watchdog-master-continuation-handoff/daily-founder-notes-2026-07-04-to-2026-07-10.md` 8. `public/project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md` 9. `public/project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md` 10. `public/project/runs/2026-07-08-founder-me"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/daily-founder-notes-2026-07-04-to-2026-07-10.md",
+      "title": "Daily Founder Notes: 2026-07-04 To 2026-07-10",
+      "text": "# Daily Founder Notes: 2026-07-04 To 2026-07-10  Status: public-safe evidence report for watchdog continuation.  Scope: repo-visible ArchFlow public project actions only. This report does not include private founder notes or private source material.  ## 2026-07-04  FACT:  - The priority mechanical lane reran the deterministic selector. - E4 social profile packaging remained the top selected task, but live profile changes stayed owner-gated. - The run created an owner-decision request and operator-side checklist for LinkedIn, X, and Threads profile packaging. - A second July 4 priority lane preserved the E4 score evidence and produced E2.1 source/API/data-model artifacts.  INTERPRETATION:  - The useful founder action was moving from duplicate profile copy to decision gates and source-model preparation.  GAP:  - No live social edits, publication, provider calls, Notion mutation, deployment, or external writeback were performed.  Evidence:  - `wiki/log.md` - `project/runs/2026-07-04-0030-priority-mechanical-work/` - `project/runs/2026-07-04-0630-priority-mechanical-work/`  ## 2026-07-05  FACT:  - The priority selector again ranked E4 social-profile packaging highest. - The run avoided"
     },
     {
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
