@@ -9226,3 +9226,124 @@ Checks:
 Next:
 
 - Stage reviewed public-safe closeout files, exclude `.codex/environments/`, commit, push `main` once, verify the remote, then launch the three read-only Notion planning reviews.
+
+## 2026-07-10 18:04 CEST - Codex Jarvis Closeout - starting - Dashboard refresh, runtime proof, PDF inventory, and Telegram delivery
+
+Status: running
+
+Task:
+
+- Refresh the Jarvis dashboard from the latest public repository state, optimize only evidence-backed UI/runtime issues, verify local and hosted Jarvis boundaries, inventory report PDFs generated since 2026-07-04, and send a public-safe link packet through the approved Telegram path after validation.
+
+Files likely to change:
+
+- `project/dashboard/data.json` and dashboard source files only when discovery proves a stale or defective surface
+- `project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/`
+- `wiki/runs/`, `wiki/log.md`, and this live communication log
+
+Files claimed:
+
+- The new closeout run folder, regenerated dashboard snapshot, and any narrowly justified dashboard/Jarvis corrections found during verification.
+
+Expected output:
+
+- Current dashboard data, local/browser/runtime validation evidence, hosted-state proof or an explicit gap, a public-safe July 4 onward PDF link index, and Telegram delivery evidence or an exact sender/target blocker.
+
+Blockers:
+
+- Hosted deployment, durable saving/writeback, and Telegram sender/target readiness are not yet re-verified.
+- Existing untracked `.codex/environments/` content is outside this task and will remain untouched.
+
+Next:
+
+- Inspect dashboard/Jarvis/deployment/Telegram contracts and current report artifacts, then create the bounded run handout before any implementation batch.
+
+## 2026-07-10 18:08 CEST - Codex Jarvis Closeout - update - Actor and Reviewer task claims
+
+Status: running
+
+Task:
+
+- Start the required maker-checker split for dashboard freshness, Jarvis operation, browser-local saving, hosted proof, PDF publication, and Telegram delivery.
+
+Files claimed:
+
+- Actor: `project/dashboard/`, `api/_jarvis_contract.py`, `services/jarvis-api/`, and dashboard generation/runtime scripts for read-only inspection; edits require a concrete defect and remain integrator-controlled.
+- Reviewer: read-only audit of runtime/deploy evidence, report PDFs, public-link availability, Telegram sender/target gates, and the Actor's evidence.
+- Integrator: `project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/`, `wiki/runs/`, `wiki/log.md`, and live-log closeout.
+
+FACT:
+
+- The public dashboard is designed as a static/read-only surface with browser-local state.
+- Durable external writeback remains disabled unless a separately verified target, auth, audit, and rollback path exists.
+
+INTERPRETATION:
+
+- The run may prove browser-local persistence and public artifact saving without claiming Notion, database, or autonomous writeback.
+
+GAP:
+
+- Hosted deployment freshness, approved Telegram sender/target, and publication safety of locally generated planning-package PDFs still require current evidence.
+
+Next:
+
+- Run the two audits in parallel, then integrate only verified fixes and public-safe report links.
+
+## 2026-07-10 18:17 CEST - Codex Jarvis Closeout - update - Browser QA accessibility and console repair
+
+Status: running
+
+Task:
+
+- Repair the two bounded defects found by the integrator's local Playwright pass before deployment.
+
+Files likely to change:
+
+- `project/dashboard/index.html`
+- `project/dashboard/app.js`
+
+FACT:
+
+- Desktop and mobile layouts have no horizontal overflow.
+- Browser-local chat persists across reload and the local Jarvis API returns HTTP 200.
+- The only console error is a missing favicon request, and one visible Jarvis message field lacks its own accessible name.
+
+INTERPRETATION:
+
+- An inline public-safe favicon and an explicit field label are sufficient; no visual redesign or runtime change is justified.
+
+Next:
+
+- Apply the two fixes, rerun browser/static/runtime checks, and review the independent Reviewer result.
+
+## 2026-07-10 18:23 CEST - Codex Jarvis Closeout - update - Local release gate passed
+
+Status: running
+
+Task:
+
+- Close the local Actor/Reviewer gate and prepare the public Git/PDF/deployment sequence.
+
+Files changed:
+
+- Dashboard generator/data and screenshot-smoke portability from the Actor.
+- Dashboard favicon and Jarvis message accessibility label from the Integrator.
+- Public closeout report/PDF, PRD/ICP PDF, watchdog completion PDF, runtime verification, PDF inventory, validation results, Telegram message, and run handout.
+
+FACT:
+
+- Generator, JSON, workflows, runtime guard, Python/JavaScript syntax, 17-endpoint Jarvis contract, eight-route rendered smoke, Playwright persistence/mobile/accessibility, PDF visual review, public safety, and diff checks pass.
+- Current Vercel and Railway health/chat/PRD/orchestra routes return HTTP 200 with provider calls and writeback at zero.
+- The hosted dashboard still serves a July 3 data snapshot until the new public-root deployment is completed.
+
+INTERPRETATION:
+
+- Local changes are ready to commit and push. Telegram must wait for public PDF links and hosted dashboard freshness.
+
+GAP:
+
+- Six broader read-only planning-package PDFs have no stable public links and remain outside the approved sender boundary.
+
+Next:
+
+- Render the revised closeout PDF, rerun final safety/diff checks, commit and push, deploy the linked public Vercel target, verify hosted freshness, then send only the reviewed public-repository PDF packet.

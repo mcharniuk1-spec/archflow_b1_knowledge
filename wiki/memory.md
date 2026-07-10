@@ -306,3 +306,10 @@ ArchFlow Block 1 is the first public solution:
 - The client-facing PRD/ICP delivery product is the second architecture in the full company model even when the dashboard calls it Architecture 1.
 - The content-agent architecture is preparation-only and uses an exact 70% static, 20% carousel/checklist, and 10% short-script mix with current blue/ivory visual specifications.
 - Provider, Railway/Vercel, Notion/Linear, social, and other external actions remain target-specific gates rather than implied completion from architecture documents.
+
+## Jarvis Runtime Proof And Delivery Memory - 2026-07-10
+
+- Dashboard generation must infer only file/config readiness. It must not convert a historical Railway deployment into an always-online or current-health claim.
+- Current hosted proof requires a point-in-time route check; a successful health response is not continuous monitoring or an uptime guarantee.
+- Jarvis chat/config may persist in browser `localStorage`, while transient packets/events use `sessionStorage`. Neither proves durable server, database, Notion, WikiLLM, or cross-device persistence.
+- The approved Telegram file sender accepts reviewed public-repository artifacts only. Broader-workspace files without stable public links remain local-only even when their extracted text passes the public-safety pattern scan.

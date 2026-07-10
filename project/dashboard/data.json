@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T15:51:26.004610+00:00",
+  "generated_at": "2026-07-10T16:24:03.493334+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -25,17 +25,17 @@
     },
     {
       "label": "Jarvis API",
-      "value": "vercel_railway_guarded_openrouter_review_contract",
+      "value": "guarded_review_contract_files_present",
       "tone": "ok"
     },
     {
       "label": "WikiLLM files",
-      "value": "62 files",
+      "value": "63 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "456",
+      "value": "467",
       "tone": "ok"
     },
     {
@@ -534,17 +534,17 @@
     ]
   },
   "jarvis_api": {
-    "status": "vercel_railway_guarded_openrouter_review_contract",
+    "status": "guarded_review_contract_files_present",
     "path": "services/jarvis-api and api/",
     "runtime": "vercel_serverless_plus_local_fastapi_contract",
-    "provider_runtime": "server_side_openrouter_approval_gated",
+    "provider_runtime": "openrouter_route_approval_gated_contract_not_live_proof",
     "writeback_runtime": "disabled",
     "hosting": {
       "static_dashboard": "vercel",
-      "hosted_api": "vercel_and_railway_guarded_review_contract",
+      "hosted_api": "vercel_and_railway_contract_targets_live_check_required",
       "hosted_api_scope": "core_health_chat_prd_agent_voice_review_packet",
       "local_api": "fastapi_local_development",
-      "railway": "always_on_jarvis_review_packet_runtime"
+      "railway": "historical_provider_disabled_baseline_not_continuous_monitoring"
     },
     "openrouter_budget": {
       "daily_budget_usd": 5.0,
@@ -725,6 +725,153 @@
   ],
   "activity": [
     {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
+      "title": "Run: Jarvis Dashboard Runtime And Delivery Closeout",
+      "modified": "2026-07-10T16:23:58.288106+00:00",
+      "size": 1576
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf",
+      "title": "2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf",
+      "modified": "2026-07-10T16:23:10.497283+00:00",
+      "size": 6847
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/agent-handout.md",
+      "title": "Jarvis Dashboard Runtime, PDF, and Telegram Closeout Handout",
+      "modified": "2026-07-10T16:23:05.279468+00:00",
+      "size": 3366
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/validation-results.md",
+      "title": "Validation Results",
+      "modified": "2026-07-10T16:23:05.136682+00:00",
+      "size": 1296
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/runtime-verification.md",
+      "title": "Jarvis Runtime Verification",
+      "modified": "2026-07-10T16:23:04.995083+00:00",
+      "size": 1472
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/pdf-inventory.md",
+      "title": "PDF Inventory From 2026-07-04",
+      "modified": "2026-07-10T16:23:04.705406+00:00",
+      "size": 1914
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
+      "title": "Jarvis Dashboard Runtime And Delivery Closeout",
+      "modified": "2026-07-10T16:23:04.558138+00:00",
+      "size": 4404
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.pdf",
+      "title": "watchdog-completion-report.pdf",
+      "modified": "2026-07-10T16:19:39.031421+00:00",
+      "size": 4843
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-10-prd-icp-delivery-product-architecture.pdf",
+      "title": "2026-07-10-prd-icp-delivery-product-architecture.pdf",
+      "modified": "2026-07-10T16:19:39.025237+00:00",
+      "size": 14642
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/task-contracts.md",
+      "title": "Jarvis Closeout Task Contracts",
+      "modified": "2026-07-10T16:06:29.032199+00:00",
+      "size": 1472
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/context-capsule.md",
+      "title": "Jarvis Dashboard Runtime, PDF, and Telegram Closeout Context Capsule",
+      "modified": "2026-07-10T16:06:28.881797+00:00",
+      "size": 2009
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-10-watchdog-three-architecture-orchestra.md",
+      "title": "Run: Watchdog Three-Architecture Orchestra",
+      "modified": "2026-07-10T15:52:30.732837+00:00",
+      "size": 1361
+    },
+    {
+      "kind": "wiki_issue",
+      "path": "wiki/issues/2026-07-10-post-git-external-action-gates.md",
+      "title": "Issue: Post-Git External Action Gates",
+      "modified": "2026-07-10T15:52:30.732533+00:00",
+      "size": 717
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-07-10-role-based-agent-orchestra.md",
+      "title": "Decision: Role-Based Agent Orchestra",
+      "modified": "2026-07-10T15:52:30.732243+00:00",
+      "size": 1120
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.md",
+      "title": "Watchdog Completion Report",
+      "modified": "2026-07-10T15:52:30.731903+00:00",
+      "size": 2857
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/prior-work-review.md",
+      "title": "Prior Work Review",
+      "modified": "2026-07-10T15:52:30.731577+00:00",
+      "size": 2448
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/post-git-notion-review-contract.md",
+      "title": "Post-Git Notion Review Contract",
+      "modified": "2026-07-10T15:52:30.731248+00:00",
+      "size": 1320
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/external-action-gate-review.md",
+      "title": "External Action Gate Review",
+      "modified": "2026-07-10T15:52:30.730869+00:00",
+      "size": 2251
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-c-watchdog-review.md",
+      "title": "Branch C Watchdog Review",
+      "modified": "2026-07-10T15:52:30.730552+00:00",
+      "size": 1586
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b-watchdog-review.md",
+      "title": "Branch B Watchdog Review",
+      "modified": "2026-07-10T15:52:30.730221+00:00",
+      "size": 1862
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a-watchdog-review.md",
+      "title": "Branch A Watchdog Review",
+      "modified": "2026-07-10T15:52:30.729903+00:00",
+      "size": 2037
+    },
+    {
       "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/agent-handout.md",
       "title": "Agent Handout",
@@ -737,48 +884,6 @@
       "title": "Validation Results",
       "modified": "2026-07-10T15:51:17.223595+00:00",
       "size": 2569
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-10-watchdog-three-architecture-orchestra.md",
-      "title": "Run: Watchdog Three-Architecture Orchestra",
-      "modified": "2026-07-10T15:49:08.422780+00:00",
-      "size": 1362
-    },
-    {
-      "kind": "wiki_issue",
-      "path": "wiki/issues/2026-07-10-post-git-external-action-gates.md",
-      "title": "Issue: Post-Git External Action Gates",
-      "modified": "2026-07-10T15:49:08.280187+00:00",
-      "size": 718
-    },
-    {
-      "kind": "wiki_decision",
-      "path": "wiki/decisions/2026-07-10-role-based-agent-orchestra.md",
-      "title": "Decision: Role-Based Agent Orchestra",
-      "modified": "2026-07-10T15:49:08.136641+00:00",
-      "size": 1121
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.md",
-      "title": "Watchdog Completion Report",
-      "modified": "2026-07-10T15:49:07.993117+00:00",
-      "size": 2858
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/post-git-notion-review-contract.md",
-      "title": "Post-Git Notion Review Contract",
-      "modified": "2026-07-10T15:49:07.851527+00:00",
-      "size": 1321
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/external-action-gate-review.md",
-      "title": "External Action Gate Review",
-      "modified": "2026-07-10T15:49:07.713144+00:00",
-      "size": 2252
     },
     {
       "kind": "project_run",
@@ -852,20 +957,6 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-c-watchdog-review.md",
-      "title": "Branch C Watchdog Review",
-      "modified": "2026-07-10T15:43:53.226457+00:00",
-      "size": 1587
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a-watchdog-review.md",
-      "title": "Branch A Watchdog Review",
-      "modified": "2026-07-10T15:43:53.085150+00:00",
-      "size": 2038
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-review-ledger.md",
       "title": "Branch Review Ledger",
       "modified": "2026-07-10T15:43:52.943022+00:00",
@@ -915,24 +1006,10 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b-watchdog-review.md",
-      "title": "Branch B Watchdog Review",
-      "modified": "2026-07-10T15:39:14.856452+00:00",
-      "size": 1863
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-task-contracts.md",
       "title": "Branch Task Contracts",
       "modified": "2026-07-10T15:32:11.165292+00:00",
       "size": 3381
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/prior-work-review.md",
-      "title": "Prior Work Review",
-      "modified": "2026-07-10T15:31:51.553383+00:00",
-      "size": 2449
     },
     {
       "kind": "project_run",
@@ -3921,7 +3998,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 62,
+    "file_count": 63,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -4227,6 +4304,11 @@
         "path": "wiki/runs/2026-07-08-post-execution-skill-update-hook.md",
         "title": "2026-07-08 Run Note: Post-Execution Skill Update Hook",
         "excerpt": "# 2026-07-08 Run Note: Post-Execution Skill Update Hook  Status: complete.  ## Task  Add a controlled post-execution skill-update mechanism to the existing ArchFlow public evening skill and hook lane.  ## Current Setup Discovered  - Existing prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py` on `UserPromptSubmit`. - Existing automation lane: `project/automation/archflow-public-evening-skill"
+      },
+      {
+        "path": "wiki/runs/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
+        "title": "Run: Jarvis Dashboard Runtime And Delivery Closeout",
+        "excerpt": "# Run: Jarvis Dashboard Runtime And Delivery Closeout  Date: 2026-07-10  ## FACT  - Removed the generated dashboard's unsupported Railway always-online inference and regenerated the current public snapshot. - Current local, Vercel, and Railway provider-disabled Jarvis checks pass within the review-packet boundary. - Browser chat/config persistence across reload, session packet persistence, desktop/mobile layout, acce"
       },
       {
         "path": "wiki/runs/2026-07-10-watchdog-three-architecture-orchestra.md",
@@ -4919,6 +5001,11 @@
       "path": "project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md",
       "title": "Founder Meeting v2 Watchdog/CAG-RAG Architecture Report",
       "text": "# Founder Meeting v2 Watchdog/CAG-RAG Architecture Report  Status: public-safe architecture report.  Generated: 2026-07-08.  Run folder: `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/`  ## Executive Summary  ArchFlow now has a documented final architecture direction for the Founder Meeting v2 package:  - Codex remains the executor, reviewer, file editor, validator, and final integration boundary. - Hermes is planned as watchdog/controller/reviewer, not executor. - CAG is Controlled Context Assembly Generation: stable, compact context before task work. - RAG is bounded, task-specific retrieval into the capsule from approved public-safe corpus only. - LlamaIndex remains retrieval, not memory. - WikiLLM remains durable reviewed memory after promotion. - CrewAI organizes roles and proof packages, but is not the default autonomous runtime. - LangGraph owns route/state/gate architecture. - Dashboard/Jarvis are operator/control surfaces, not the primary brain. - Provider calls, external writeback, Notion mutation, Telegram, Railway, Linear, Figma, Git push, deploy, and production promotion remain blocked without explicit owner approval.  The project is service-f"
+    },
+    {
+      "path": "project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
+      "title": "Jarvis Dashboard Runtime And Delivery Closeout",
+      "text": "# Jarvis Dashboard Runtime And Delivery Closeout  Date: 2026-07-10  ## Executive Result  The ArchFlow Jarvis dashboard has been refreshed from the latest public repository state and corrected so it no longer presents a historical Railway deployment as continuous always-online proof. Local dashboard generation, provider-disabled Jarvis behavior, browser-local persistence, desktop/mobile layout, accessibility basics, and public-safety checks pass.  Current hosted checks also return HTTP 200 for the Vercel and Railway health, chat, PRD/ICP, and agent-orchestra review-packet routes. Provider calls and external writeback remain zero. These are current point-in-time health checks, not continuous monitoring or durable writeback proof.  ## Dashboard Corrections  - Removed the unsupported `always_on` Railway label from generated dashboard data. - Separated implementation-contract presence from current hosted-health proof. - Classified Railway as a historical provider-disabled baseline that requires a live check. - Regenerated the dashboard from the latest plans, reports, runs, decisions, issues, and WikiLLM state. - Added an inline favicon to eliminate the only browser console 404. - Added "
     },
     {
       "path": "project/reports/2026-07-10-prd-icp-delivery-product-architecture.md",
@@ -6041,6 +6128,36 @@
       "text": "# Post-Execution Skill Update Hook  Date: 2026-07-08 Status: complete  ## Current Setup Discovered  - Existing Codex prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py`. - Existing evening automation: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Existing daily retrospective: `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`. - Existing skill/prompt structure: project-local skills under `skills/`, with registry references in `skills/skills-used.md`, `project/agents/skills-by-agent.md`, and `project/agents/agent-roster.yaml`. - Existing logs/wiki structure: active run records under `project/runs/`, durable public notes under `wiki/runs/`, and chronological state in `wiki/log.md`. - Existing execution flow: read communication files, append a starting update, perform bounded drift/review work, run validation, append completion, and write run artifacts.  ## What Changed  - Added `project/scripts/post-execution-skill-update.py`. - Added support files under `skills/evening-skill-registry-update/`. - Updated the evening skill and automation contract to require a post-execution decision: `NO_UPDATE`, `APPEND_PATT"
     },
     {
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/agent-handout.md",
+      "title": "Jarvis Dashboard Runtime, PDF, and Telegram Closeout Handout",
+      "text": "# Jarvis Dashboard Runtime, PDF, and Telegram Closeout Handout  ## Title and Purpose  This handout tracks the July 10 closeout for dashboard freshness, Jarvis operation, saving boundaries, post-July-4 PDF links, and Telegram delivery.  ## Human Summary  The run begins from the pushed three-architecture watchdog state. It will regenerate the dashboard, test Jarvis and browser behavior, distinguish browser-local persistence from external writeback, check hosted freshness, and publish only reports that are demonstrably public-safe.  Telegram delivery is owner-authorized for the verified public-safe link packet, but the sender and target still need current proof. No private planning-package PDF will be published or sent merely because it exists locally.  ## Current State  - Task status: implementation and local validation complete; deployment and Telegram delivery pending. - Git baseline: `main` aligned with `origin/main` before this run. - Dashboard boundary: static/read-only with verified browser-local persistence and current generated data. - Provider/writeback boundary: disabled unless separately proven. - External action: Telegram pending sender, target, link, and safety validatio"
+    },
+    {
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/context-capsule.md",
+      "title": "Jarvis Dashboard Runtime, PDF, and Telegram Closeout Context Capsule",
+      "text": "# Jarvis Dashboard Runtime, PDF, and Telegram Closeout Context Capsule  ## Goal  Refresh the public Jarvis dashboard from the latest repository state, verify the smallest honest operating and saving boundaries, publish a public-safe report index for PDFs generated since 2026-07-04, and send a verified link packet through the approved Telegram path.  ## Stable Context  - The dashboard is a public static/read-only control surface. - Browser-local chat and preferences may persist locally; this is not durable external writeback. - Provider calls and external writeback remain disabled unless separately approved and proven. - Hosted dashboard and API claims require current HTTP/runtime evidence. - Public files may not contain secrets, private URLs, identifiers, local absolute paths, screenshots, or raw private planning material.  ## Current Facts  - `main` starts aligned with `origin/main` at the completed three-architecture watchdog integration. - The only unrelated working-tree item is ignored from this run: `.codex/environments/`. - A public PDF from the Founder Meeting v2 integration exists in the repository. - Additional PDFs exist in the broader read-only planning package, but publ"
+    },
+    {
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/pdf-inventory.md",
+      "title": "PDF Inventory From 2026-07-04",
+      "text": "# PDF Inventory From 2026-07-04  Cutoff: 2026-07-04 00:00 local time  ## Public Repository PDFs  | PDF | Status | Delivery | |---|---|---| | `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.pdf` | Tracked and public-safe | Public Git link and Telegram | | `project/reports/2026-07-10-prd-icp-delivery-product-architecture.pdf` | Generated from the accepted public report | Public Git link and Telegram | | `project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.pdf` | Generated from the public watchdog closeout | Public Git link and Telegram | | `project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf` | Generated from this public closeout | Public Git link and Telegram |  ## Broader Read-Only Planning-Package PDFs  These six reports existed after the cutoff and passed the repository safety-pattern scan when their extracted text was reviewed. They remain outside the public repository and are not given public Git links.  - `ArchFlow_00_Source_Register_and_Founder_Meeting_Delta_v2.pdf` - `ArchFlow_01_Current_Architecture_and_Setup_v2.pdf` - `ArchFlow_02_Service_Company_and_Operations_Model_v2.pdf` - `ArchFlow"
+    },
+    {
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/runtime-verification.md",
+      "title": "Jarvis Runtime Verification",
+      "text": "# Jarvis Runtime Verification  Date: 2026-07-10  ## Point-In-Time Hosted Proof  | Target | Routes | Result | Provider calls | Writeback | |---|---|---|---:|---:| | Vercel Jarvis | health, chat, PRD/ICP, agent orchestra | HTTP 200 | 0 | 0 | | Railway Jarvis | health, chat, PRD/ICP, agent orchestra | HTTP 200 | 0 | 0 |  The linked Railway service reports one running provider-disabled deployment at the time of review. This is current point-in-time evidence only. It is not a monitoring result, uptime guarantee, or authorization to redeploy the service.  ## Local Proof  - Dashboard generator: pass. - Dashboard JSON parse and current report presence: pass. - Unsupported `always_on` Jarvis field absent: pass. - Jarvis API contract: 17 endpoints pass with provider calls 0 and writeback 0. - Temporary loopback Jarvis health and chat: HTTP 200. - Eight rendered dashboard routes: pass. - Browser chat/config persistence across reload: pass through `localStorage`. - Session packet persistence across same-tab reload: pass through `sessionStorage`. - Desktop and 390-pixel mobile overflow: pass. - Browser console, page errors, and failed requests after repair: zero. - Accessible visible controls: "
+    },
+    {
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/task-contracts.md",
+      "title": "Jarvis Closeout Task Contracts",
+      "text": "# Jarvis Closeout Task Contracts  ## Actor Contract  Goal: inspect the current dashboard and Jarvis implementation, identify stale or defective behavior, and propose or implement only the smallest evidence-backed corrections.  Evidence required:  - file and line references; - generation/runtime/browser commands and results; - explicit browser-local versus external-save classification; - changed-file list and diff summary when edits are justified.  Forbidden:  - provider activation; - secret handling in public output; - deployment or Telegram action; - unsupported always-online, persistence, or writeback claims.  ## Reviewer Contract  Goal: independently audit dashboard/Jarvis proof, hosted-state evidence, PDF publication safety, public-link availability, and Telegram sender/target readiness.  Evidence required:  - pass/fail/block per proof lane; - exact commands or connector checks; - public-safe PDF inclusion/exclusion rationale; - Telegram send recommendation: approve, revise, or block.  Forbidden:  - file edits; - deployment; - Telegram send; - disclosure of private targets, URLs, identifiers, or credentials.  ## Integrator Contract  Goal: review both outputs, apply justified fi"
+    },
+    {
+      "path": "project/runs/2026-07-10-jarvis-dashboard-runtime-pdf-telegram-closeout/validation-results.md",
+      "title": "Validation Results",
+      "text": "# Validation Results  ## Pre-Deployment Validation  | Check | Result | |---|---| | Dashboard regeneration | Pass | | Dashboard JSON parse, current closeout artifact, and Jarvis claim assertion | Pass | | Workflow validation | Pass | | Runtime guard | Pass | | Python compilation | Pass | | JavaScript syntax | Pass | | Jarvis API contract smoke | Pass: 17 endpoints, provider calls 0, writeback 0 | | Rendered dashboard smoke | Pass: 8 routes, provider calls 0, writeback 0 | | Playwright persistence/browser QA | Pass: reload persistence, desktop/mobile, accessibility basics, no errors | | PDF render and first-page visual inspection | Pass | | Public safety scan | Pass | | Git diff check | Pass |  The initial dashboard JSON assertion was too broad because it also searched historical report prose describing removal of an old label. The corrected assertion targets only `jarvis_api`; it passes. This was a test-quality correction, not a product failure.  ## External Validation  - Pre-deployment Vercel and Railway route checks: pass, point-in-time only. - Hosted dashboard freshness: pending production deployment from the verified public root. - Telegram bot/private-target preflight: pass wit"
+    },
+    {
       "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md",
       "title": "Corrected Watchdog Supervisor Continuation Handout",
       "text": "# Corrected Watchdog Supervisor Continuation Handout  Run: `2026-07-10-watchdog-master-continuation-handoff`  Status: corrected for the next ArchFlow Public watchdog supervisor.  ## Purpose  This handout is for a new watchdog supervisor agent working inside the ArchFlow Public Git project. It must not behave like a single linear executor. It must supervise a branch-based agent orchestra:  1. create or resume specialist chats for each branch; 2. require each branch agent to use its own planning, execution, verification, and safety-review subagents or bounded subagent sections; 3. review all branch outputs and diffs; 4. merge only accepted branch work; 5. run validation; 6. push Git only after reviewed merge; 7. update Notion only after the pushed Git state is verified and separate Notion-planning agents prepare the mutation packet.  The earlier `d889d84` watchdog run is useful evidence, but it was a single integration pass. It must be reviewed, not treated as full completion of the requested branch/subagent execution model.  ## Sol/Terra/Luna Token Hierarchy  The next run should use a model hierarchy to preserve the owner token budget:  - `5.6 Sol`: top watchdog supervisor. Sol thin"
@@ -6688,7 +6805,7 @@
     {
       "path": "wiki/decisions/2026-07-10-role-based-agent-orchestra.md",
       "title": "Decision: Role-Based Agent Orchestra",
-      "text": "# Decision: Role-Based Agent Orchestra  Date: 2026-07-10 Status: accepted.  ## Decision  ArchFlow authority is defined by bounded roles, not permanently assigned runtime or agent names. Watchdog, executor, verifier, safety-reviewer, integrator, and external-action roles each carry explicit permissions, forbidden actions, evidence duties, and review gates. A compatible runtime may fulfil a role only under that role contract and may not approve its own high-risk output.  Current bindings remain useful operational facts: Codex is the local executor/integrator and Hermes is the planned watchdog label. Those bindings do not create permanent authority or activate providers, deployments, or writeback.  ## Consequences  - The watchdog role remains non-executing. - Substantial work retains maker-checker and independent safety review. - External-action roles are disabled until action-specific owner approval, target/schema proof, secret isolation, budget/rollback evidence, and post-action verification pass. - Historical run reports remain historical; current governing/configuration files carry the corrected rule. "
+      "text": "# Decision: Role-Based Agent Orchestra  Date: 2026-07-10 Status: accepted.  ## Decision  ArchFlow authority is defined by bounded roles, not permanently assigned runtime or agent names. Watchdog, executor, verifier, safety-reviewer, integrator, and external-action roles each carry explicit permissions, forbidden actions, evidence duties, and review gates. A compatible runtime may fulfil a role only under that role contract and may not approve its own high-risk output.  Current bindings remain useful operational facts: Codex is the local executor/integrator and Hermes is the planned watchdog label. Those bindings do not create permanent authority or activate providers, deployments, or writeback.  ## Consequences  - The watchdog role remains non-executing. - Substantial work retains maker-checker and independent safety review. - External-action roles are disabled until action-specific owner approval, target/schema proof, secret isolation, budget/rollback evidence, and post-action verification pass. - Historical run reports remain historical; current governing/configuration files carry the corrected rule."
     },
     {
       "path": "wiki/index.md",
@@ -6708,7 +6825,7 @@
     {
       "path": "wiki/issues/2026-07-10-post-git-external-action-gates.md",
       "title": "Issue: Post-Git External Action Gates",
-      "text": "# Issue: Post-Git External Action Gates  Date: 2026-07-10 Status: open.  ## GAP  - Notion target pages/databases, property schema, idempotency, and rollback mapping are not yet proven. - Linear has no verified lightweight free-level target map. - Railway/Vercel lack a current target-specific deployment, rollback, monitoring, and hosted-freshness packet. - OpenRouter lacks a current model/pricing selection, budget, ledger readback, and approved sanitized call packet. - Social publication lacks account/API/terms and owner publication approval.  ## Next Safe Action  Follow the pushed run's post-Git Notion review contract first. Keep every other external action blocked until its separate evidence packet passes. "
+      "text": "# Issue: Post-Git External Action Gates  Date: 2026-07-10 Status: open.  ## GAP  - Notion target pages/databases, property schema, idempotency, and rollback mapping are not yet proven. - Linear has no verified lightweight free-level target map. - Railway/Vercel lack a current target-specific deployment, rollback, monitoring, and hosted-freshness packet. - OpenRouter lacks a current model/pricing selection, budget, ledger readback, and approved sanitized call packet. - Social publication lacks account/API/terms and owner publication approval.  ## Next Safe Action  Follow the pushed run's post-Git Notion review contract first. Keep every other external action blocked until its separate evidence packet passes."
     },
     {
       "path": "wiki/log.md",
@@ -6959,6 +7076,11 @@
       "path": "wiki/runs/2026-07-08-post-execution-skill-update-hook.md",
       "title": "2026-07-08 Run Note: Post-Execution Skill Update Hook",
       "text": "# 2026-07-08 Run Note: Post-Execution Skill Update Hook  Status: complete.  ## Task  Add a controlled post-execution skill-update mechanism to the existing ArchFlow public evening skill and hook lane.  ## Current Setup Discovered  - Existing prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py` on `UserPromptSubmit`. - Existing automation lane: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Existing retrospective lane: `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`. - Existing project-local skills live under `skills/`. - Existing public run records live under `project/runs/` and `wiki/runs/`. - Existing validation includes workflow validation, public safety scan, Python compile checks, and diff checks.  ## Change  Added a deterministic script and support files so completed run folders or run notes can be reviewed for reusable skill lessons without creating a new automation layer.  ## Boundary  The new mechanism defaults to `NO_UPDATE` unless evidence supports a reusable update. It never creates new skills automatically and does not rewrite `SKILL.md` files.  ## Validation  Validation passed for Python com"
+    },
+    {
+      "path": "wiki/runs/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.md",
+      "title": "Run: Jarvis Dashboard Runtime And Delivery Closeout",
+      "text": "# Run: Jarvis Dashboard Runtime And Delivery Closeout  Date: 2026-07-10  ## FACT  - Removed the generated dashboard's unsupported Railway always-online inference and regenerated the current public snapshot. - Current local, Vercel, and Railway provider-disabled Jarvis checks pass within the review-packet boundary. - Browser chat/config persistence across reload, session packet persistence, desktop/mobile layout, accessibility basics, and zero-error browser diagnostics pass. - Generated three new public-safe PDFs and inventoried the seven PDFs that existed after the July 4 cutoff before this closeout. - Telegram bot/private-target preflight passes, but raw broader-workspace planning PDFs remain outside the approved public-repository sender boundary.  ## INTERPRETATION  - Contract files, point-in-time health, continuous monitoring, browser-local persistence, Git-backed saving, and durable external writeback must remain separate dashboard states. - A public Telegram link packet can include reviewed Git artifacts after push and link checks; local-only planning files must not be silently uploaded or copied to public storage.  ## GAP  - Durable external persistence, autonomous writeback,"
     },
     {
       "path": "wiki/runs/2026-07-10-watchdog-three-architecture-orchestra.md",

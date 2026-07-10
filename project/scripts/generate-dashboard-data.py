@@ -361,17 +361,17 @@ def jarvis_api_status() -> dict:
         "/api/voice/chat",
     ]
     return {
-        "status": "vercel_railway_guarded_openrouter_review_contract" if all(path.exists() for path in required) else "missing_or_partial",
+        "status": "guarded_review_contract_files_present" if all(path.exists() for path in required) else "missing_or_partial",
         "path": "services/jarvis-api and api/",
         "runtime": "vercel_serverless_plus_local_fastapi_contract",
-        "provider_runtime": "server_side_openrouter_approval_gated",
+        "provider_runtime": "openrouter_route_approval_gated_contract_not_live_proof",
         "writeback_runtime": "disabled",
         "hosting": {
             "static_dashboard": "vercel",
-            "hosted_api": "vercel_and_railway_guarded_review_contract",
+            "hosted_api": "vercel_and_railway_contract_targets_live_check_required",
             "hosted_api_scope": "core_health_chat_prd_agent_voice_review_packet",
             "local_api": "fastapi_local_development",
-            "railway": "always_on_jarvis_review_packet_runtime",
+            "railway": "historical_provider_disabled_baseline_not_continuous_monitoring",
         },
         "openrouter_budget": {
             "daily_budget_usd": 5.00,
@@ -591,7 +591,7 @@ def main() -> None:
             {"label": "LangGraph", "value": langgraph["status"], "tone": "ok"},
             {"label": "CrewAI", "value": crewai["status"], "tone": "ok"},
             {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "ok"},
-            {"label": "Jarvis API", "value": jarvis_api["status"], "tone": "ok" if "guarded_openrouter" in jarvis_api["status"] else "warn"},
+            {"label": "Jarvis API", "value": jarvis_api["status"], "tone": "ok" if jarvis_api["status"].endswith("files_present") else "warn"},
             {"label": "WikiLLM files", "value": f"{wiki_summary()['file_count']} files", "tone": "ok"},
             {"label": "Activity files", "value": str(len(activity_items())), "tone": "ok"},
             {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},

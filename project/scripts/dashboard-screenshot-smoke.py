@@ -74,8 +74,14 @@ def capture(chrome: str, url: str, output_path: Path, size: tuple[int, int], tim
     size_bytes = output_path.stat().st_size
     if size_bytes < 10_000:
         raise RuntimeError(f"screenshot too small: {output_path} ({size_bytes} bytes)")
+    try:
+        report_path = output_path.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        # Temporary QA output may intentionally live outside the public repo.
+        # Keep the generated report portable and free of local absolute paths.
+        report_path = output_path.name
     return {
-        "path": str(output_path.relative_to(REPO_ROOT)),
+        "path": report_path,
         "width": width,
         "height": height,
         "bytes": size_bytes,

@@ -1862,7 +1862,7 @@ function renderJarvis(data) {
             Attach
             <input id="jarvisFileInput" type="file" multiple />
           </label>
-          <textarea id="jarvisMessageInput" rows="3" placeholder="Message Jarvis about PRD/ICP work, agent orchestration, API checks, attached files, or current blockers."></textarea>
+          <textarea id="jarvisMessageInput" rows="3" aria-label="Jarvis message" placeholder="Message Jarvis about PRD/ICP work, agent orchestration, API checks, attached files, or current blockers."></textarea>
           <button class="primary" type="submit">Send</button>
         </form>
         <div class="callout compact">API: ${escapeHtml(jarvisApiState.detail)} Base: ${escapeHtml(jarvisApiBase)}.</div>

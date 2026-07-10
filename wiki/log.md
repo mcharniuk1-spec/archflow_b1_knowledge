@@ -566,3 +566,18 @@ GAP:
 - Integrated role-based governance, honest runtime/provider/deployment gates, a source-backed client delivery architecture, E1-E7/manual Notion planning, and a preparation-only content architecture with exact 70/20/10 and blue/ivory specs.
 - Main-worktree dashboard, workflow, runtime-guard, Python, public-safety, and diff checks passed.
 - Final Git push is the next step; Notion planning/target review comes only after pushed evidence. Linear, Railway/Vercel, providers, and social publication remain blocked by separate gates.
+
+## 2026-07-10 - Jarvis dashboard runtime and delivery closeout
+
+FACT:
+- Refreshed the dashboard from the latest public state and removed an unsupported Railway always-online inference.
+- Local/browser checks pass for Jarvis chat, reload persistence, session packets, desktop/mobile layout, accessibility basics, and provider-disabled API operation.
+- Current point-in-time Vercel and Railway review-packet routes return HTTP 200 with provider calls and writeback at zero.
+- Generated public-safe PDF versions of the July 10 PRD/ICP architecture, three-architecture watchdog completion, and Jarvis closeout reports.
+
+INTERPRETATION:
+- Browser-local saving, reviewed Git saving, point-in-time hosted health, continuous monitoring, and durable external writeback are separate states and must remain visibly distinct.
+
+GAP:
+- Production dashboard freshness and Telegram delivery are pending the final push/deploy/link-check sequence.
+- Six broader planning-package PDFs remain local-only because the approved sender accepts reviewed public-repository artifacts only.

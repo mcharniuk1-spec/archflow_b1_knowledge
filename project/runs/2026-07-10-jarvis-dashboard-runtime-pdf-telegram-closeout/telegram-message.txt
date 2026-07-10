@@ -1,0 +1,34 @@
+ArchFlow Jarvis closeout - 2026-07-10
+
+Dashboard: https://archflowautomate.vercel.app/project/dashboard/
+
+Current result:
+- Dashboard refreshed from the latest public repository state.
+- Vercel and Railway Jarvis health, chat, PRD/ICP, and agent-orchestra routes passed point-in-time checks.
+- Provider calls: 0.
+- External writeback: 0.
+- Browser chat/config saving across reload: passed locally.
+- Durable external persistence remains gated and is not claimed.
+
+Public PDF reports:
+1. Founder Meeting v2 Watchdog/CAG-RAG Architecture
+https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.pdf
+
+2. PRD/ICP Delivery Product Architecture
+https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/reports/2026-07-10-prd-icp-delivery-product-architecture.pdf
+
+3. Three-Architecture Watchdog Completion Report
+https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.pdf
+
+4. Jarvis Dashboard Runtime And Delivery Closeout
+https://github.com/mcharniuk1-spec/archflow_b1_knowledge/blob/main/project/reports/2026-07-10-jarvis-dashboard-runtime-delivery-closeout.pdf
+
+Local-only planning-package reports identified after July 4:
+- Source Register and Founder Meeting Delta v2
+- Current Architecture and Setup v2
+- Service Company and Operations Model v2
+- Market, ICP, Positioning, Content, and Sales v2
+- Tools, Automation, Agent Strategy, and Roadmap v2
+- Watchdog CAG/RAG Integration Plan v2
+
+These six were safety-scanned, but they have no stable public links and were not transmitted because the approved sender accepts reviewed public-repository artifacts only. They were not copied into the public repository.
