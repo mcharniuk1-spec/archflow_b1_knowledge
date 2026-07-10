@@ -166,3 +166,7 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: this prevents broad source ingestion, stale assumptions, and evidence-free completion claims.
 - Where applicable: all broad ArchFlow architecture, content, task-board, provider, and KB work.
 - Limitation: capsules must be regenerated when core project rules or task state changes.
+## Role Authority And External-Action Sequencing - 2026-07-10
+
+- Separating role authority from runtime identity lets Codex, Hermes, or another compatible agent participate without weakening maker-checker separation or turning a named tool into automatic execution authority.
+- Git-first external sequencing makes the public repository the reviewed evidence boundary: branch work is merged and validated before task-board or production mutation is considered.

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T11:13:54.320671+00:00",
+  "generated_at": "2026-07-10T15:51:26.004610+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "59 files",
+      "value": "62 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "424",
+      "value": "456",
       "tone": "ok"
     },
     {
@@ -726,6 +726,251 @@
   "activity": [
     {
       "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/agent-handout.md",
+      "title": "Agent Handout",
+      "modified": "2026-07-10T15:51:17.366353+00:00",
+      "size": 6252
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/validation-results.md",
+      "title": "Validation Results",
+      "modified": "2026-07-10T15:51:17.223595+00:00",
+      "size": 2569
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-10-watchdog-three-architecture-orchestra.md",
+      "title": "Run: Watchdog Three-Architecture Orchestra",
+      "modified": "2026-07-10T15:49:08.422780+00:00",
+      "size": 1362
+    },
+    {
+      "kind": "wiki_issue",
+      "path": "wiki/issues/2026-07-10-post-git-external-action-gates.md",
+      "title": "Issue: Post-Git External Action Gates",
+      "modified": "2026-07-10T15:49:08.280187+00:00",
+      "size": 718
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-07-10-role-based-agent-orchestra.md",
+      "title": "Decision: Role-Based Agent Orchestra",
+      "modified": "2026-07-10T15:49:08.136641+00:00",
+      "size": 1121
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.md",
+      "title": "Watchdog Completion Report",
+      "modified": "2026-07-10T15:49:07.993117+00:00",
+      "size": 2858
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/post-git-notion-review-contract.md",
+      "title": "Post-Git Notion Review Contract",
+      "modified": "2026-07-10T15:49:07.851527+00:00",
+      "size": 1321
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/external-action-gate-review.md",
+      "title": "External Action Gate Review",
+      "modified": "2026-07-10T15:49:07.713144+00:00",
+      "size": 2252
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-c/agent-handout.md",
+      "title": "Branch C Agent Handout: Content Agent Architecture",
+      "modified": "2026-07-10T15:45:47.499423+00:00",
+      "size": 6559
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/verifier-evidence.md",
+      "title": "Branch A Verifier Evidence",
+      "modified": "2026-07-10T15:45:47.477376+00:00",
+      "size": 6278
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/safety-review-evidence.md",
+      "title": "Branch A Safety Review Evidence",
+      "modified": "2026-07-10T15:45:47.477185+00:00",
+      "size": 4932
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/railway-prerequisite-packet.md",
+      "title": "Railway Prerequisite Packet",
+      "modified": "2026-07-10T15:45:47.476978+00:00",
+      "size": 1439
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/planner-evidence.md",
+      "title": "Branch A Planner Evidence",
+      "modified": "2026-07-10T15:45:47.476843+00:00",
+      "size": 10365
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/official-source-evidence.md",
+      "title": "Branch A Official Source Evidence",
+      "modified": "2026-07-10T15:45:47.476626+00:00",
+      "size": 1946
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/executor-evidence.md",
+      "title": "Branch A Executor Evidence",
+      "modified": "2026-07-10T15:45:47.476495+00:00",
+      "size": 14232
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/consistency-scan.md",
+      "title": "Role / Runtime Consistency Scan",
+      "modified": "2026-07-10T15:45:47.476188+00:00",
+      "size": 1378
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/branch-report.md",
+      "title": "Branch A Report - Company Development Agent Architecture",
+      "modified": "2026-07-10T15:45:47.476047+00:00",
+      "size": 6419
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/agent-handout.md",
+      "title": "Branch A Agent Handout - Company Development Agent Architecture",
+      "modified": "2026-07-10T15:45:47.475702+00:00",
+      "size": 6957
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-c-watchdog-review.md",
+      "title": "Branch C Watchdog Review",
+      "modified": "2026-07-10T15:43:53.226457+00:00",
+      "size": 1587
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a-watchdog-review.md",
+      "title": "Branch A Watchdog Review",
+      "modified": "2026-07-10T15:43:53.085150+00:00",
+      "size": 2038
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-review-ledger.md",
+      "title": "Branch Review Ledger",
+      "modified": "2026-07-10T15:43:52.943022+00:00",
+      "size": 935
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/source-register.md",
+      "title": "Branch B Public Source Register",
+      "modified": "2026-07-10T15:41:29.608598+00:00",
+      "size": 2913
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/role-evidence.md",
+      "title": "Branch B Role Evidence",
+      "modified": "2026-07-10T15:41:29.608448+00:00",
+      "size": 2113
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/notion-ready-planning-packet.md",
+      "title": "Notion-Ready Planning Packet: PRD/ICP Delivery Product",
+      "modified": "2026-07-10T15:41:29.608295+00:00",
+      "size": 9863
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/delivery-method-packet.md",
+      "title": "PRD/ICP Delivery Method Packet",
+      "modified": "2026-07-10T15:41:29.608060+00:00",
+      "size": 3608
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/agent-handout.md",
+      "title": "Agent Handout: Branch B PRD/ICP Delivery Product Architecture",
+      "modified": "2026-07-10T15:41:29.607925+00:00",
+      "size": 5365
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-10-prd-icp-delivery-product-architecture.md",
+      "title": "PRD/ICP Delivery Product Architecture",
+      "modified": "2026-07-10T15:41:29.607555+00:00",
+      "size": 13881
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b-watchdog-review.md",
+      "title": "Branch B Watchdog Review",
+      "modified": "2026-07-10T15:39:14.856452+00:00",
+      "size": 1863
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-task-contracts.md",
+      "title": "Branch Task Contracts",
+      "modified": "2026-07-10T15:32:11.165292+00:00",
+      "size": 3381
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/prior-work-review.md",
+      "title": "Prior Work Review",
+      "modified": "2026-07-10T15:31:51.553383+00:00",
+      "size": 2449
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/discovery-and-integration-plan.md",
+      "title": "Discovery And Integration Plan",
+      "modified": "2026-07-10T15:28:59.664434+00:00",
+      "size": 3082
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md",
+      "title": "Corrected Watchdog Supervisor Continuation Handout",
+      "modified": "2026-07-10T15:17:07.005691+00:00",
+      "size": 13747
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md",
+      "title": "Branch Execution Contract For The Watchdog Supervisor",
+      "modified": "2026-07-10T15:16:56.669060+00:00",
+      "size": 9989
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md",
+      "title": "Copy-Ready Prompt For The Next ArchFlow Public Watchdog",
+      "modified": "2026-07-10T15:16:43.241166+00:00",
+      "size": 13725
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",
+      "title": "Thread Contracts",
+      "modified": "2026-07-10T15:03:21.812691+00:00",
+      "size": 8075
+    },
+    {
+      "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/validation-results.md",
       "title": "Validation Results",
       "modified": "2026-07-10T11:13:44.230147+00:00",
@@ -768,13 +1013,6 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md",
-      "title": "Continuation Prompt For New Watchdog Agent",
-      "modified": "2026-07-10T10:07:40.945151+00:00",
-      "size": 4304
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/daily-founder-notes-2026-07-04-to-2026-07-10.md",
       "title": "Daily Founder Notes: 2026-07-04 To 2026-07-10",
       "modified": "2026-07-10T10:07:40.798208+00:00",
@@ -782,24 +1020,10 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md",
-      "title": "Master Watchdog Continuation Handout",
-      "modified": "2026-07-10T10:07:40.652211+00:00",
-      "size": 11294
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md",
       "title": "Agent Handout",
       "modified": "2026-07-10T09:47:05.719038+00:00",
       "size": 4662
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",
-      "title": "Thread Contracts",
-      "modified": "2026-07-10T09:43:43.456558+00:00",
-      "size": 7445
     },
     {
       "kind": "project_run",
@@ -3697,7 +3921,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 59,
+    "file_count": 62,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -3730,6 +3954,11 @@
         "excerpt": "# Decision: Live Dashboard Voice Hosting And Onyx Boundary  Date: 2026-06-30 Status: accepted planning baseline  ## Decision  ArchFlow remains the workflow brain and canonical memory system. Onyx may be tested later as a read-only portal/search/connector layer over approved artifacts after readback and retrieval benchmarks exist.  The first implementation target is a hosted static dashboard. Vercel is preferred for t"
       },
       {
+        "path": "wiki/decisions/2026-07-10-role-based-agent-orchestra.md",
+        "title": "Decision: Role-Based Agent Orchestra",
+        "excerpt": "# Decision: Role-Based Agent Orchestra  Date: 2026-07-10 Status: accepted.  ## Decision  ArchFlow authority is defined by bounded roles, not permanently assigned runtime or agent names. Watchdog, executor, verifier, safety-reviewer, integrator, and external-action roles each carry explicit permissions, forbidden actions, evidence duties, and review gates. A compatible runtime may fulfil a role only under that role co"
+      },
+      {
         "path": "wiki/index.md",
         "title": "ArchFlow Public WikiLLM",
         "excerpt": "# ArchFlow Public WikiLLM  This is the public WikiLLM layer for the ArchFlow Block 1 knowledge project.  It stores durable public-safe project memory, decisions, run records, issues, insights, and operating rules.  ## Read Order  1. `../README.md` 2. `../AGENTS.md` 3. `../project/README.md` 4. `../project/operating-rules.md` 5. `../project/config/model-routing.yaml` 6. `memory.md` 7. `insights.md` 8. `rules/public-wi"
@@ -3743,6 +3972,11 @@
         "path": "wiki/issues/2026-06-25-langsmith-api-key-missing.md",
         "title": "Issue - LangSmith API Key Missing",
         "excerpt": "# Issue - LangSmith API Key Missing  Date: 2026-06-25 Status: closed  ## Issue  LangSmith tracing was configured before the local API key was added.  ## Impact  Resolved for smoke tracing. LangGraph runtime tracing has also been smoke-tested. CrewAI and LlamaIndex are installed, but a full LangGraph-wrapped CrewAI proof run has not executed yet.  ## Resolution  The real key was added locally to:  `project/.env.langsm"
+      },
+      {
+        "path": "wiki/issues/2026-07-10-post-git-external-action-gates.md",
+        "title": "Issue: Post-Git External Action Gates",
+        "excerpt": "# Issue: Post-Git External Action Gates  Date: 2026-07-10 Status: open.  ## GAP  - Notion target pages/databases, property schema, idempotency, and rollback mapping are not yet proven. - Linear has no verified lightweight free-level target map. - Railway/Vercel lack a current target-specific deployment, rollback, monitoring, and hosted-freshness packet. - OpenRouter lacks a current model/pricing selection, budget, le"
       },
       {
         "path": "wiki/log.md",
@@ -3993,6 +4227,11 @@
         "path": "wiki/runs/2026-07-08-post-execution-skill-update-hook.md",
         "title": "2026-07-08 Run Note: Post-Execution Skill Update Hook",
         "excerpt": "# 2026-07-08 Run Note: Post-Execution Skill Update Hook  Status: complete.  ## Task  Add a controlled post-execution skill-update mechanism to the existing ArchFlow public evening skill and hook lane.  ## Current Setup Discovered  - Existing prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py` on `UserPromptSubmit`. - Existing automation lane: `project/automation/archflow-public-evening-skill"
+      },
+      {
+        "path": "wiki/runs/2026-07-10-watchdog-three-architecture-orchestra.md",
+        "title": "Run: Watchdog Three-Architecture Orchestra",
+        "excerpt": "# Run: Watchdog Three-Architecture Orchestra  Date: 2026-07-10 Status: integrated and validated before final push.  ## Summary  Three separate specialist worktree chats executed Company Development, PRD/ICP Delivery Product, and Content Agent architecture branches. Every branch used Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter roles. The watchdog reviewed branch evidence and selective diffs, acce"
       }
     ]
   },
@@ -4069,7 +4308,7 @@
     {
       "path": "project/agentic-stack.md",
       "title": "Agentic Stack",
-      "text": "# Agentic Stack  ## Layer Decision  Use this structure:  ```text Codex-authenticated operator prompt   -> Hermes watchdog/controller prompt (planned, non-executing)   -> CAG/RAG context capsule   -> LangGraph path and state controller   -> Loop Engineering run contract   -> LlamaIndex bounded retrieval   -> CrewAI named team tasks   -> LangGraph review gate   -> public-safe project outputs ```  ## Tool Responsibilities  | Tool | Responsibility | Public Project Use | |---|---|---| | Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. | | Hermes | Planned watchdog/controller/reviewer. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Hermes does not execute, edit files, deploy, mutate task boards, call providers, or write externally. | | CAG context capsules | Controlled Context Assembly Generation before subagent prompting. | Stable context packet under `project/context/`; not durable memory and not broad ingestion. | | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. | | Loop Engineer"
+      "text": "# Agentic Stack  ## Layer Decision  Use this structure:  ```text Codex-authenticated operator prompt   -> Hermes watchdog/controller prompt (planned, non-executing)   -> CAG/RAG context capsule   -> LangGraph path and state controller   -> Loop Engineering run contract   -> LlamaIndex bounded retrieval   -> CrewAI named team tasks   -> LangGraph review gate   -> public-safe project outputs ```  ## Tool Responsibilities  | Tool | Responsibility | Public Project Use | |---|---|---| | Codex | Current local operator binding for execution, editing, verification, and final integration. | Default interface for now; role contracts, not runtime identity, determine authority. | | Hermes | Current label for the planned watchdog/controller/reviewer role. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Any compatible watchdog remains non-executing: no edits, deployment, task-board mutation, provider call, or external write. | | CAG context capsules | Controlled Context Assembly Generation before subagent prompting. | Stable context packet under `project/context/`; not durable memory and n"
     },
     {
       "path": "project/agents/README.md",
@@ -4079,7 +4318,7 @@
     {
       "path": "project/agents/agent-roster.yaml",
       "title": "agent-roster.yaml",
-      "text": "agents:   hermes_watchdog:     title: Hermes Watchdog     provider: planned_controller     local_model: none     mode: watchdog_controller_reviewer_not_executor     skills:       - execution-type-classification       - cag-core-assembly       - context-capsule-review       - task-contract-writing       - evidence-review       - stop-rule-enforcement     outputs:       - execution_type_and_risk       - context_capsule_path       - task_contracts       - accept_repair_split_escalate_stop_decision     allowed_actions:       - classify_tasks       - assemble_context_capsules       - assign_bounded_task_contracts       - review_evidence       - stop_or_escalate     forbidden_actions:       - execute_code       - edit_files       - deploy       - mutate_external_systems       - activate_provider_runtime       - approve_own_high_risk_output    af_tools:     title: AF Tools     provider: codex_operator     local_model: gemma4:e4b     intended_primary_local_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M     skills:       - public-source-inventory       - provider-readiness-check       - ollama-local-check       - git-publication-check       - archflow-e1-runtime-guard     "
+      "text": "runtime_binding_policy:   rule: role_contracts_define_authority_named_providers_and_models_are_current_bindings_not_permanent_authority   compatible_runtime_requirement: must_follow_the_assigned_role_contract_evidence_requirements_and_forbidden_actions   self_review_rule: a_runtime_may_not_approve_its_own_high_risk_output_when_fulfilling_any_role   external_action_rule: disabled_until_action_specific_owner_approval_target_proof_and_post_action_verification  agents:   hermes_watchdog:     title: Hermes Watchdog     provider: planned_controller     local_model: none     mode: watchdog_controller_reviewer_not_executor     skills:       - execution-type-classification       - cag-core-assembly       - context-capsule-review       - task-contract-writing       - evidence-review       - stop-rule-enforcement     outputs:       - execution_type_and_risk       - context_capsule_path       - task_contracts       - accept_repair_split_escalate_stop_decision     allowed_actions:       - classify_tasks       - assemble_context_capsules       - assign_bounded_task_contracts       - review_evidence       - stop_or_escalate     forbidden_actions:       - execute_code       - edit_files       - de"
     },
     {
       "path": "project/agents/model-efficiency-advice.md",
@@ -4094,7 +4333,7 @@
     {
       "path": "project/agents/skills-by-agent.md",
       "title": "Skills By Agent",
-      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## Skill Governance  Purpose: keep skills explicit, deduplicated, role-aware, and reviewable.  Rules:  - Hermes, Codex, AF Review, and AF Knowledge may inspect all skills. - Bounded subagents receive only role-specific skills plus shared coordination skills named in their task contract. - Do not create new `SKILL.md` files for conceptual methods until the checklist in [`skills-governance.md`](skills-governance.md) is satisfied. - Shared project skills are allowed to appear under multiple roles when they carry coordination or closeout responsibilities.  ## Hermes Watchdog  Purpose: planned controller/reviewer layer for classification, context capsules, task contracts, evidence review, and stop decisions.  Skills set up:  - execution-type-classification - cag-core-assembly - context-capsule-review - task-contract-writing - evidence-review - stop-rule-enforcement  Boundary: Hermes does not execute code, edit files, deploy, mutate external systems, activate providers, or approve its own high-risk output.  ## AF Tools  Purpose: inspect allowed sources and tools without broad ingestion.  Skills set up"
+      "text": "# Skills By Agent  Only skills used or set up for this public project are listed here.  ## Skill Governance  Purpose: keep skills explicit, deduplicated, role-aware, and reviewable.  Rules:  - Hermes, Codex, AF Review, and AF Knowledge may inspect all skills. - Bounded subagents receive only role-specific skills plus shared coordination skills named in their task contract. - Do not create new `SKILL.md` files for conceptual methods until the checklist in [`skills-governance.md`](skills-governance.md) is satisfied. - Shared project skills are allowed to appear under multiple roles when they carry coordination or closeout responsibilities.  ## Role / Runtime Binding  The named entries below are current role bindings and skill visibility records, not permanent authority assignments to a particular runtime, provider, model, or branded agent. A compatible runtime may fulfil a bounded role only when it follows that role's task contract, evidence duties, and forbidden actions. A runtime may not approve its own high-risk output merely because it fulfils more than one role.  ## Hermes Watchdog  Purpose: planned controller/reviewer layer for classification, context capsules, task contracts, "
     },
     {
       "path": "project/agents/skills-governance.md",
@@ -4127,9 +4366,39 @@
       "text": "provider_mode: codex_operator_primary_openrouter_spec_only  status:   runtime_activation: disabled_until_explicit_approval   reason: static dashboard and public repo must not call model providers directly   model_ids: target_ids_require_activation_time_verification_against_openrouter_models_api   activation_requires:     - approved_local_bridge_or_backend     - server_side_secret_access_only     - fresh_openrouter_model_list_check     - budget_limit_per_run     - model_id_and_cost_logging     - public_safety_screen     - human_approval_before_external_or_memory_write     - retry_and_timeout_policy  providers:   codex_operator:     status: active_as_primary_operator_runtime     mode: codex_app     auth_scope: codex_app_authenticated_tools     exports_api_key: false     use_for:       - file_edits       - approvals       - public_safety_review       - orchestration       - final_outputs       - github_publication     github_publication:       repository: mcharniuk1-spec/archflow_b1_knowledge       verified_method: codex_operated_git_ssh       local_https_push_status: blocked_missing_git_credentials       ssh_push_status: verified    ollama_local:     status: service_started_qwythos_l"
     },
     {
+      "path": "project/content/architecture/README.md",
+      "title": "Content Agent Architecture",
+      "text": "# Content Agent Architecture  Status: planning specification; no social or API action authorized Date: 2026-07-10  ## Purpose  This architecture prepares evidence-led company content for the ArchFlow Product Discovery-to-Production PRD Pack. It is not a generic AI-agency content engine. Its content explains the operating work between an approved source packet and a reviewable PRD, ICP evidence, acceptance criteria, task handoff, and decision-memory update.  ## Operating Boundary  - The scope is planning, drafting, mockup specification, and review preparation only. - No role posts, schedules, sends messages, calls an API, activates a provider, or writes to an external system. - No role scrapes, browser-automates, downloads, or stores account, profile, follower, comment, direct-message, or engagement-graph data. - Inputs must be public repo artifacts, official public sources, or public-safe owner-approved summaries. Outputs remain repo-relative public-safe summaries. - A source or social observation supplies a topic or language hypothesis, never customer, revenue, ROI, demand, or runtime proof.  ## Content Mix  The initial calendar counts ten publication candidates: seven static post"
+    },
+    {
+      "path": "project/content/architecture/content-operation-model.md",
+      "title": "Content Operation Model",
+      "text": "# Content Operation Model  Status: preparation-only architecture Date: 2026-07-10  ## Positioning Anchor  The intended audience is B2B SaaS product leadership responsible for discovery quality, PRD clarity, and delivery handoff. The content must describe ArchFlow as a Product Discovery-to-Production PRD Pack: approved material becomes a labeled context digest, reviewed PRD/ICP evidence, acceptance criteria, task handoff, and decision-memory candidate. It must not promise autonomous delivery, generic AI transformation, live product access, customer outcomes, or ROI.  ## Controlled Flow  | Stage and role | Bounded inputs | Required output | Stop condition | Human gate | |---|---|---|---|---| | 1. News and trend intake analyst | Official AI/product/company blogs, changelogs, docs, pricing pages, and a manually observed public format | Dated source record: URL, source category, theme, summary, evidence grade, and claim label | The source is private, non-public, untraceable, or the summary would retain personal/account data | Content owner accepts source record | | 2. Competitor content analyzer | Public company positioning and official product material; category map | Alternative categ"
+    },
+    {
+      "path": "project/content/architecture/feedback-and-measurement-specification.md",
+      "title": "Feedback And Measurement Specification",
+      "text": "# Feedback And Measurement Specification  Status: report-only learning loop Date: 2026-07-10  ## Objective  Learn which public-safe explanations of the Product Discovery-to-Production PRD Pack are clear enough to justify the next planning hypothesis. This loop does not evaluate social accounts, automate distribution, or claim validated demand.  ## Input Boundary  The only permissible input after owner-authorized publication is an aggregate summary supplied or approved by the owner. It must exclude names, handles, profile/account data, raw messages, screenshots, and unapproved public or private content.  ## Signal Classes  | Class | Examples | Decision use | |---|---|---| | Attention | Aggregate impressions, saves, shares, or high-level replies | Possible clarity or format hypothesis only | | Buyer-risk signal | A request for a diagnostic, willingness to share a redacted source packet, proposal request, or referral to a budget owner | Candidate for follow-up review; not demand proof | | Stronger commercial evidence | Paid diagnostic interest, firm paid intent, or an approved paid start | Requires separate E6/E7 evidence and review; outside this content architecture |  ## Feedback Re"
+    },
+    {
+      "path": "project/content/architecture/public-source-and-platform-method.md",
+      "title": "Public Source And Platform Method",
+      "text": "# Public Source And Platform Method  Status: research and preparation policy; no integration configured Date checked: 2026-07-10  ## Public-Source Method  The intake role may read public product pages, official docs, public blogs, changelogs, pricing pages, press releases, and public company news. Manually observed public social content can suggest language, format, or objection themes only. It cannot prove buyer pain, market demand, conversion, revenue, ROI, customer outcome, or platform capability.  For each accepted signal, store only a concise public-safe record:  | Field | Requirement | |---|---| | Source category | Official product/company news, official platform guidance, public company page, or public format observation | | URL and date checked | Public URL plus the date it was reviewed | | Extracted theme | A short summary, not copied post/comment text | | Evidence grade | Primary official, public company, or format hypothesis | | Claim status | FACT, INTERPRETATION, HYPOTHESIS, or GAP | | Disposition | Accepted for planning, needs review, or blocked |  Do not retain screenshots, video downloads, copied comment threads, handles, profile data, follower figures, account iden"
+    },
+    {
       "path": "project/content/calendar/2026-07-five-week-70-20-10-plan.md",
       "title": "2026-07 Five-Week 70/20/10 Content Plan",
       "text": "# 2026-07 Five-Week 70/20/10 Content Plan  Status: planning draft, not publish-ready Date: 2026-07-10  ## Rules  - Default channel: LinkedIn first, then reviewed excerpts for X and Threads-style formats. - Default voice: ArchFlow company content. - Mix: 70 percent static educational/analytical, 20 percent carousel/checklist/template, 10 percent short video or scripted demo. - Every item requires AF Review and owner approval before publication. - Demand, ROI, customer, revenue, and live-runtime claims remain blocked unless separately verified.  ## Calendar  | Week | Static Educational / Analytical | Carousel / Checklist / Template | Short Video / Scripted Demo | CTA | Review Gate | |---|---|---|---|---|---| | 1 | Source packet boundary: why PRD work starts before writing | PRD evidence receipt checklist | Source-boundary walkthrough with static companion | Source-packet review | AF Review | | 2 | PRD bottleneck is source lineage, not writing speed | FACT / INTERPRETATION / HYPOTHESIS / GAP label card | Redacted PRD cleanup walkthrough with static companion | Diagnostic | AF Review | | 3 | Insight repositories still need delivery handoff | Acceptance-criteria checklist | Spec-to-task"
+    },
+    {
+      "path": "project/content/calendar/2026-07-watchdog-initial-content-plan.md",
+      "title": "2026-07 Watchdog Initial Content Plan",
+      "text": "# 2026-07 Watchdog Initial Content Plan  Status: preparation-only candidate calendar; not publish-ready Date: 2026-07-10  ## Counting Rule And Mix  This plan contains ten counted deliverables: seven static posts, two carousel/checklist posts, and one short-video script. The short video requires a static companion, counted as static item C09. The result is exactly 70/20/10. All items need AF Review and owner approval before any publication; no item is scheduled or posted by this plan.  | Count | Type | Counted deliverables | Share | |---|---:|---:|---:| | Static | 7 | C01, C02, C03, C05, C06, C07, C09 | 70% | | Carousel/checklist | 2 | C04, C08 | 20% | | Short script | 1 | C10 | 10% |  ## Candidate Calendar  | Week | ID | Format | Topic | Claim label | Evidence path | CTA | Required gate | |---|---|---|---|---|---|---|---| | 1 | C01 | Static | The PRD bottleneck is source lineage, not writing speed | INTERPRETATION | `project/content/operations/content-planner-workflow.md` | Source-packet review | AF Review and owner approval | | 1 | C02 | Static | Four labels that keep assumptions out of a PRD | INTERPRETATION | `project/content/operations/writing-editing-workflow.md` | Review chec"
+    },
+    {
+      "path": "project/content/mockups/2026-07-watchdog-visual-specs.md",
+      "title": "2026-07 Watchdog Visual Specifications",
+      "text": "# 2026-07 Watchdog Visual Specifications  Status: public-safe design specifications; no rendered social assets Date: 2026-07-10  ## Design Direction  Use the current ArchFlow website/dashboard direction: an ivory editorial field, teal architectural system visual, blue process language, dark operational panels, and compact evidence-first hierarchy. The content should feel like a product-system brief for B2B SaaS product teams, not generic AI-agency promotion.  | Token | Value | Use | |---|---|---| | Ivory field | `#f4efe3` or `#fbf7ed` | Editorial background and low-noise space | | Teal architecture | `#0f716e` | Arch/system motif and process signal | | Process blue | `#244e6f` | Stage rail, links, and controlled emphasis | | Dark panel | `#0b3032` | Diagnostic/review surface and dark text contrast | | Type | IBM Plex Sans, IBM Plex Mono, Newsreader | Operational copy, labels, and editorial headline only |  These are style-reference tokens from the current site stylesheet, not a claim about a separate published brand library.  ## Reusable Composition  1. Open with one bounded product-operation problem, not a promise. 2. Show a thin six-stage rail: source packet, evidence labels, PRD"
     },
     {
       "path": "project/content/mockups/mockup-review-checklist.md",
@@ -4254,7 +4523,7 @@
     {
       "path": "project/context/cag-core.yaml",
       "title": "cag-core.yaml",
-      "text": "version: 2026-07-08-founder-meeting-v2 status: active_planning_context purpose: >   Stable ArchFlow context assembled before task-specific RAG retrieval and   subagent prompting. This file is a compact control packet, not durable memory.  execution_boundary:   codex: executor_reviewer_file_editor_validator_final_integration_boundary   hermes: planned_watchdog_controller_reviewer_not_executor   subagents: bounded_task_contracts_only   af_review: public_safety_claim_support_runtime_boundary_gate  architecture:   langgraph: path_state_routing_review_gates   crewai: named_roles_and_task_sequence_proof_not_default_autonomous_runtime   llamaindex: bounded_retrieval_not_memory   wikillm: durable_reviewed_memory_after_promotion   dashboard: operator_control_surface_not_primary_brain   jarvis: provider_disabled_review_packet_surface_unless_approved  source_boundaries:   approved_public_corpus:     - project/     - history/     - skills/     - wiki/   forbidden_public_storage:     - secrets     - credentials     - private_urls     - local_absolute_paths     - raw_private_exports     - raw_transcripts     - screenshots     - account_ids     - deployment_ids     - personal_identifiers   path_p"
+      "text": "version: 2026-07-08-founder-meeting-v2 status: active_planning_context purpose: >   Stable ArchFlow context assembled before task-specific RAG retrieval and   subagent prompting. This file is a compact control packet, not durable memory.  execution_boundary:   role_runtime_rule: role_contracts_control_authority_named_runtimes_are_current_bindings_not_permanent_authority   codex: current_local_executor_reviewer_file_editor_validator_integrator_binding   hermes: current_planned_watchdog_controller_reviewer_binding_not_executor   subagents: bounded_task_contracts_only   af_review: public_safety_claim_support_runtime_boundary_gate   self_review_rule: a_runtime_fulfilling_any_role_must_not_approve_its_own_high_risk_output  architecture:   langgraph: path_state_routing_review_gates   crewai: named_roles_and_task_sequence_proof_not_default_autonomous_runtime   llamaindex: bounded_retrieval_not_memory   wikillm: durable_reviewed_memory_after_promotion   dashboard: operator_control_surface_not_primary_brain   jarvis: provider_disabled_review_packet_surface_unless_approved  source_boundaries:   approved_public_corpus:     - project/     - history/     - skills/     - wiki/   forbidden_public"
     },
     {
       "path": "project/context/retrieval/source-boundary-policy.yaml",
@@ -4454,7 +4723,7 @@
     {
       "path": "project/provider-setup.md",
       "title": "Provider Setup",
-      "text": "# Provider Setup  This project supports four provider concepts:  1. Ollama local model provider. 2. Codex operator authentication. 3. OpenRouter as a future hosted orchestration/model provider. 4. Mistral as a future hosted quality/synthesis provider.  They are not the same thing.  ## Current Verified State  As of 2026-06-25:  - Ollama CLI is installed. - Ollama server is started through the local Homebrew service. - Local Ollama manifests include a Qwythos model: `Qwythos-9B-Claude-Mythos-5-1M-GGUF` with `Q4_K_M` quantization. - Qwythos appears in `ollama list`, but the smoke test failed at model load time with an Ollama 500 error. - Qwythos now loads and generates text through Ollama. - `gemma4:e4b` remains the fallback model. - Codex is available as the operator runtime. - Codex auth should not be treated as an exportable API key. - LangSmith tracing is configured; the API key is present only in the ignored local env file and one sanitized smoke trace has been submitted.  As of 2026-07-01:  - The ignored ArchFlow workspace `.env.local` contains `OPENROUTER_API_KEY` and `MISTRAL_API_KEY`; the public repo root `.env.local` is separate ignored local deploy material. - The Markdown "
+      "text": "# Provider Setup  This project supports four provider concepts:  1. Ollama local model provider. 2. Codex operator authentication. 3. OpenRouter as a future hosted orchestration/model provider. 4. Mistral as a future hosted quality/synthesis provider.  They are not the same thing.  ## Current Verified State  The dated entries in this section are historical local evidence, not a claim that a provider, hosted endpoint, credential, or deployment is currently available. Current hosted or provider readiness must be rechecked in a separately approved run without copying secrets or private target details into this repository.  As of 2026-06-25:  - Ollama CLI is installed. - Ollama server is started through the local Homebrew service. - Local Ollama manifests include a Qwythos model: `Qwythos-9B-Claude-Mythos-5-1M-GGUF` with `Q4_K_M` quantization. - Qwythos appears in `ollama list`, but the smoke test failed at model load time with an Ollama 500 error. - Qwythos now loads and generates text through Ollama. - `gemma4:e4b` remains the fallback model. - Codex is available as the operator runtime. - Codex auth should not be treated as an exportable API key. - LangSmith tracing is configured; t"
     },
     {
       "path": "project/reports/2026-06-25-chat-execution-report.md",
@@ -4650,6 +4919,11 @@
       "path": "project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md",
       "title": "Founder Meeting v2 Watchdog/CAG-RAG Architecture Report",
       "text": "# Founder Meeting v2 Watchdog/CAG-RAG Architecture Report  Status: public-safe architecture report.  Generated: 2026-07-08.  Run folder: `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/`  ## Executive Summary  ArchFlow now has a documented final architecture direction for the Founder Meeting v2 package:  - Codex remains the executor, reviewer, file editor, validator, and final integration boundary. - Hermes is planned as watchdog/controller/reviewer, not executor. - CAG is Controlled Context Assembly Generation: stable, compact context before task work. - RAG is bounded, task-specific retrieval into the capsule from approved public-safe corpus only. - LlamaIndex remains retrieval, not memory. - WikiLLM remains durable reviewed memory after promotion. - CrewAI organizes roles and proof packages, but is not the default autonomous runtime. - LangGraph owns route/state/gate architecture. - Dashboard/Jarvis are operator/control surfaces, not the primary brain. - Provider calls, external writeback, Notion mutation, Telegram, Railway, Linear, Figma, Git push, deploy, and production promotion remain blocked without explicit owner approval.  The project is service-f"
+    },
+    {
+      "path": "project/reports/2026-07-10-prd-icp-delivery-product-architecture.md",
+      "title": "PRD/ICP Delivery Product Architecture",
+      "text": "# PRD/ICP Delivery Product Architecture  Date: 2026-07-10 Status: Branch B architecture and planning packet; no client delivery, provider call, deployment, publication, or Notion mutation occurred.  ## Decision Summary  ArchFlow\u2019s current client-facing proposition should remain a **service-first, productized delivery method**, not a claimed SaaS product: an approved source packet is converted into a reviewed evidence digest, ICP/problem frame, PRD, delivery backlog, Definition of Done, task packets, and a QA handoff. The artifact package is useful only when its source boundary, review gates, and unresolved decisions travel with it.  This document refreshes the planning architecture. It does **not** establish buyer demand, willingness to pay, delivery speed, ROI, paid-client results, current SaaS readiness, or a live Notion connection. The initial ICP is an operating hypothesis to be tested through the existing E2\u2192E6\u2192E7 evidence gates.  Supporting packets:  - [public source register](../runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/source-register.md) - [delivery method packet](../runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/delivery-method-packet."
     },
     {
       "path": "project/runs/2026-06-25-clean-public-resetup.md",
@@ -5768,13 +6042,18 @@
     },
     {
       "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md",
-      "title": "Master Watchdog Continuation Handout",
-      "text": "# Master Watchdog Continuation Handout  Run: `2026-07-10-watchdog-master-continuation-handoff`  Status: prepared for a new watchdog monitoring and approving agent.  ## Goal  Continue the ArchFlow next-stage execution as a watchdog/supervisor agent.  The next watchdog must:  - review this handout and the prior supervisor handout; - inspect any already-created specialist threads before duplicating work; - initiate or resume specialist agent chats with their own subagents where needed; - monitor evidence, repair loops, and stop conditions; - integrate only justified changes; - update Git after validation; - update Notion Epics, tasks, subtasks, and Links page only after connector/target review; - produce and verify the requested production, Railway, provider, content, market, ICP, Linear, and daily-notes outputs.  ## Current Repo State  Known pushed commits from this chat:  - `135dc6f` - Founder Meeting v2 / Hermes watchdog / CAG-RAG architecture update. - `f2a5942` - Watchdog supervisor execution lane contracts. - `f1e7185` - Specialist thread dispatch record.  The active public project is under `public/` relative to the saved ArchFlow project. Worktree setup should enter `public/` b"
+      "title": "Corrected Watchdog Supervisor Continuation Handout",
+      "text": "# Corrected Watchdog Supervisor Continuation Handout  Run: `2026-07-10-watchdog-master-continuation-handoff`  Status: corrected for the next ArchFlow Public watchdog supervisor.  ## Purpose  This handout is for a new watchdog supervisor agent working inside the ArchFlow Public Git project. It must not behave like a single linear executor. It must supervise a branch-based agent orchestra:  1. create or resume specialist chats for each branch; 2. require each branch agent to use its own planning, execution, verification, and safety-review subagents or bounded subagent sections; 3. review all branch outputs and diffs; 4. merge only accepted branch work; 5. run validation; 6. push Git only after reviewed merge; 7. update Notion only after the pushed Git state is verified and separate Notion-planning agents prepare the mutation packet.  The earlier `d889d84` watchdog run is useful evidence, but it was a single integration pass. It must be reviewed, not treated as full completion of the requested branch/subagent execution model.  ## Sol/Terra/Luna Token Hierarchy  The next run should use a model hierarchy to preserve the owner token budget:  - `5.6 Sol`: top watchdog supervisor. Sol thin"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md",
+      "title": "Branch Execution Contract For The Watchdog Supervisor",
+      "text": "# Branch Execution Contract For The Watchdog Supervisor  Run: `2026-07-10-watchdog-master-continuation-handoff`  Status: required support contract for the next watchdog supervisor.  ## Objective  Force the next watchdog run to use monitored branch execution rather than a single-pass review. The watchdog must create or resume separate branch chats for the three architectures, require subagent loops inside each branch, review branch evidence, merge accepted work, push Git, then handle Notion and other external actions.  ## Model Hierarchy  This contract assumes the top watchdog chat runs as `5.6 Sol`.  Use model roles this way:  - `5.6 Sol`: top-level watchdog supervisor. Sol decides, budgets tokens, initiates branch chats, reviews compact Terra packets, approves or blocks merges, and gates external actions. Sol must not perform token-heavy execution. - `5.6 Terra`: branch supervisor. Sol initiates one Terra chat per branch. Terra gives instructions, creates Luna subagent prompts, reviews Luna outputs, requests repairs, and sends compact branch reports to Sol. - `5.6 Luna`: branch subagent model. Luna performs file reads, research, edits, checks, verification, safety scans, and draft"
     },
     {
       "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md",
-      "title": "Continuation Prompt For New Watchdog Agent",
-      "text": "# Continuation Prompt For New Watchdog Agent  You are the ArchFlow Watchdog Monitoring and Approving Agent.  You are not a normal executor. You are the supervisor/controller that reviews prior work, initiates specialist chats with subagents, monitors evidence, approves or rejects outputs, and triggers final integration only after checks pass.  The saved project may open at the broader ArchFlow root. For public project Git work, enter `public/` first when needed.  Start by reading:  1. `public/AGENTS.md` 2. `public/project/operating-rules.md` 3. `public/project/live/communication/README.md` 4. `public/project/live/communication/current-agent-notice.md` 5. Latest entries in `public/project/live/communication/agent-communication-log.md` 6. `public/project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md` 7. `public/project/runs/2026-07-10-watchdog-master-continuation-handoff/daily-founder-notes-2026-07-04-to-2026-07-10.md` 8. `public/project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/agent-handout.md` 9. `public/project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md` 10. `public/project/runs/2026-07-08-founder-me"
+      "title": "Copy-Ready Prompt For The Next ArchFlow Public Watchdog",
+      "text": "# Copy-Ready Prompt For The Next ArchFlow Public Watchdog  You are the ArchFlow Public Watchdog Supervisor Agent running as `5.6 Sol`.  You are working inside the ArchFlow Public Git repository. The broader ArchFlow workspace exists outside this public repo and may contain planning packages and private/non-public context. Use it only as a read-only source when available, and never commit raw private material, local absolute paths, private IDs, private URLs, screenshots, credentials, or personal identifiers.  Your job is not to do one linear review and stop. Your job is also not to perform token-heavy execution yourself. Your job as `5.6 Sol` is to think, decide, supervise, budget, create branch-chat contracts, review compact evidence, approve or block merges, and perform only the final minimal integration decision steps.  ## Model And Token Hierarchy  Use this hierarchy strictly:  | Layer | Required model | Role | Token policy | |---|---|---|---| | Top watchdog | `5.6 Sol` | Overall supervisor, decision maker, branch initiator, merge approver, external-action gatekeeper. | Use minimal reads and compact summaries. Do not execute heavy research, broad file inspection, broad diffs, co"
     },
     {
       "path": "project/runs/2026-07-10-watchdog-master-continuation-handoff/daily-founder-notes-2026-07-04-to-2026-07-10.md",
@@ -5789,7 +6068,7 @@
     {
       "path": "project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md",
       "title": "Thread Contracts",
-      "text": "# Thread Contracts  Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`  These contracts are for separate Codex specialist threads created by the supervisor. Thread identifiers are not stored in this public file.  ## Shared Context For All Threads  Start from the current ArchFlow public project. The active public project root is `public/`.  Required reads before edits:  - `AGENTS.md` - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - latest entries in `project/live/communication/agent-communication-log.md` - `project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/agent-handout.md` - `project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md` - `project/agentic-stack.md` - `project/config/model-routing.yaml`  ## 1. Architecture Reliability And Jarvis Runtime Review  Execution type: Discovery, Verification, Repair, Documentation.  Goal:  - Review the architecture stage by stage and make sure Architecture 1, Architecture 2, and the planned Content Agent architecture have reliable Jarvis/control-surface behavior.  Allowed files:  - `api/` - `services/jarvis-api"
+      "text": "# Thread Contracts  Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`  These contracts are for separate Codex specialist threads created by the supervisor. Thread identifiers are not stored in this public file.  ## 2026-07-10 Correction Note  These six specialist lanes are prior evidence and planning material, not the final controlling execution shape. The corrected watchdog supervisor must map these lanes into the three required architecture branches defined in `project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md`:  - Company Development Agent Architecture. - PRD/ICP Delivery Product Architecture. - Content Agent Architecture.  The watchdog must review any existing lane outputs, but branch execution, branch review, merge-before-push, and Notion-after-Git sequencing now control the next run.  ## Shared Context For All Threads  Start from the current ArchFlow public project. The active public project root is `public/`.  Required reads before edits:  - `AGENTS.md` - `project/operating-rules.md` - `project/live/communication/README.md` - `project/live/communication/current-agent-notice.md` - latest entries in `project/live/communicati"
     },
     {
       "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/agent-handout.md",
@@ -5820,6 +6099,141 @@
       "path": "project/runs/2026-07-10-watchdog-supervisor-integration-review/watchdog-completion-report.md",
       "title": "Watchdog Completion Report",
       "text": "# Watchdog Completion Report  Status: integration complete, validation passed Date: 2026-07-10  ## Task  Review the July 10 watchdog continuation package, detect unexecuted specialist work, run bounded specialist reviews where needed, integrate only public-safe justified changes, and prepare final status without unsafe external mutation.  ## Inputs  - Latest public handoff and continuation prompt. - July 4-10 Daily Founder Notes report. - Founder Meeting v2 architecture and CAG/RAG integration artifacts. - July 10 specialist execution lane contracts. - Current runtime/provider/dashboard/source files. - Current public-source competitor and API pages. - Six bounded specialist reviews plus local Daily Founder Notes review.  ## Files Changed  - `docs/dashboard-operating-manual.md` - `project/dashboard/app.js` - `api/_jarvis_contract.py` - `services/jarvis-api/app.py` - `project/provider-setup.md` - `project/content/operations/` - `project/content/mockups/` - `project/content/calendar/2026-07-five-week-70-20-10-plan.md` - `project/runs/2026-07-10-watchdog-supervisor-integration-review/` - `wiki/log.md` - `project/dashboard/data.json` - `project/live/communication/agent-communication-log"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/agent-handout.md",
+      "title": "Agent Handout",
+      "text": "# Agent Handout  Run: `2026-07-10-watchdog-three-architecture-orchestra`  Status: repository integration and validation complete; final Git push and post-Git Notion review remain in sequence.  ## Purpose  This handout records the three-architecture watchdog run, branch evidence, integration decisions, validation, Git closeout, and post-Git external-action gates.  ## Human Summary  The watchdog executed three separate specialist worktree chats for Company Development, the client-facing PRD/ICP Delivery Product, and the Content Agent architecture. Every chat used real Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter subagents. The collaboration interface did not expose a subagent model selector, so every branch records `GAP - Luna model selection unavailable` rather than misrepresenting the runtime.  Branch A repaired current governing/configuration contracts so authority comes from bounded roles rather than permanent runtime names, and tightened Jarvis/Railway/OpenRouter claim gates. Branch B created the source-backed PRD/ICP delivery architecture, buyer hypothesis, 12-alternative map, delivery method, E1-E7 refresh, and manual Notion packet. Branch C created a prep"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/agent-handout.md",
+      "title": "Branch A Agent Handout - Company Development Agent Architecture",
+      "text": "# Branch A Agent Handout - Company Development Agent Architecture  Status: review complete; merge recommendation: `revise`.  ## Purpose  This handout records Branch A's documentation/configuration hardening for the company-development agent architecture. It is for the watchdog integrator or a later bounded reviewer. The work reconciles named runtime bindings with role-based authority while preserving every existing public-safety, maker-checker, approval, provider, deployment, and writeback gate.  ## Human Summary  Branch A now treats watchdog, executor, verifier, safety-reviewer, integrator, and external-action labels as permission contracts. A compatible runtime may fulfil a bounded role only through that role's task contract, evidence duties, forbidden actions, and independent review requirements. The current Codex and planned Hermes bindings remain documented, but neither runtime identity is treated as permanent authority or as an authorization to activate providers, deploy, or write externally.  The Jarvis/dashboard and Railway wording was made intentionally conservative. The repository documents static/browser-local packets, provider-disabled review contracts, and historical d"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/branch-report.md",
+      "title": "Branch A Report - Company Development Agent Architecture",
+      "text": "# Branch A Report - Company Development Agent Architecture  Status: review complete; documentation and configuration hardening only. No provider call, deployment, hosted-endpoint check, external writeback, commit, or push occurred.  GAP - Luna model selection unavailable  ## Merge Recommendation  `revise`  The Branch A changes are public-safe and retain the required role, maker-checker, approval, provider, deployment, and writeback gates. The recommendation remains conservative because current hosted/provider freshness, a canonical provider-call ledger, and dependency-backed workflow/API checks are not proven in this run. This is not authorization to perform those actions.  ## Files Changed Or Proposed  Branch A-owned architecture/configuration changes in the current diff:  - `AGENTS.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/context/cag-core.yaml` - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `project/agents/skills-governance.md` - `project/workflows/langgraph-controller.yaml` - `project/workflows/crewai-crew.yaml` - `project/provider-setup.md` - `docs/dashboard-operating-manual.md` - `services/jarvis-api/README.md`  B"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/consistency-scan.md",
+      "title": "Role / Runtime Consistency Scan",
+      "text": "# Role / Runtime Consistency Scan  Status: complete on 2026-07-10.  ## Scope  - `AGENTS.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/context/cag-core.yaml` - `project/agents/agent-roster.yaml` - `project/agents/skills-by-agent.md` - `project/workflows/langgraph-controller.yaml` - `project/workflows/crewai-crew.yaml`  ## FACT  - The governing contracts previously contained several current-runtime labels, including Codex, Hermes, and named dashboard roles. - Existing contracts already prohibited watchdog execution, high-risk self-approval, unapproved provider activation, deployment, and external writeback. - The scan added an explicit role/runtime policy where missing and relabeled current bindings so they cannot be read as permanent authority.  ## INTERPRETATION  Named runtimes and agent keys remain useful implementation bindings. Their authority now derives from the assigned role contract, which preserves a separate verifier/safety gate and blocks self-review of high-risk work even if one runtime could technically fulfil multiple roles.  ## GAP  This configuration consistency evidence does not prove a running LangGraph/CrewAI service, a provider route,"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/executor-evidence.md",
+      "title": "Branch A Executor Evidence",
+      "text": "# Branch A Executor Evidence  Status: patch plan only; no shared architecture file was edited by this role.  ## Scope And Execution Boundary  This executor reviewed the Branch A contract, current architecture/configuration, Jarvis API contract, dashboard manual, provider policy, historical Railway plan, and skills-governance policy. The review identifies a bounded implementation plan for the Branch A supervisor. It does not activate a provider, start a service, deploy, publish, push, mutate an external system, or make a network call.  GAP - Luna model selection unavailable  No external calls or external actions occurred.  ## Evidence Observed  ### FACT  - `project/agentic-stack.md` names Hermes as a planned non-executing watchdog, Codex as the local executor and approval boundary, and describes Level 1 as active, Level 2 as a target, and Level 3 only as deterministic fixture proof rather than the default runtime. - `project/workflows/langgraph-controller.yaml` already separates a planned Hermes controller, worker execution, AF Review, merge, handoff, and an integrator decision; its current configuration still binds several nodes to agent-runtime names. - `docs/dashboard-operating-m"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/official-source-evidence.md",
+      "title": "Branch A Official Source Evidence",
+      "text": "# Branch A Official Source Evidence  Status: reference checked on 2026-07-10; documentation only, with no provider or deployment action.  ## OpenRouter  - [Models API](https://openrouter.ai/docs/guides/overview/models) documents that model metadata includes canonical slugs, supported parameters, and pricing fields. Branch A therefore requires activation-time model selection rather than treating a checked-in candidate ID as current. - [API reference](https://openrouter.ai/docs/api/reference/overview) documents normalized usage data and generation statistics. Branch A requires response usage/cost capture and a ledger before provider-backed output can cross an external-action boundary. - [Limits reference](https://openrouter.ai/docs/api/reference/limits) documents key-level credit limits and usage fields. Branch A therefore keeps an explicit hard-stop and observer review requirement rather than inferring available budget.  ## Railway  - [Railway healthchecks](https://docs.railway.com/deployments/healthchecks) documents that traffic is switched after a configured endpoint returns HTTP 200 during deployment, and that this check is not continuous monitoring. Branch A therefore treats a h"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/planner-evidence.md",
+      "title": "Branch A Planner Evidence",
+      "text": "# Branch A Planner Evidence  Status: planning evidence only; no provider, hosting, deployment, or external action was performed.  ## Role Availability Gap  GAP - Luna model selection unavailable  The collaboration interface used for this planning role exposes no model selector. The required bounded planner role was still fulfilled; this note records its repository evidence and recommended implementation boundary.  ## Evidence Reviewed  - `project/runs/2026-07-10-watchdog-three-architecture-orchestra/context-capsule.json` - `project/runs/2026-07-10-watchdog-three-architecture-orchestra/discovery-and-integration-plan.md` - `project/agentic-stack.md` - `project/workflows/langgraph-controller.yaml` - `project/workflows/crewai-crew.yaml` - `project/workflows/llamaindex-rag.yaml` - `project/agents/agent-roster.yaml` - `project/agents/skills-governance.md` - `project/provider-setup.md` - `docs/dashboard-operating-manual.md` - `api/_jarvis_contract.py` - `services/jarvis-api/app.py` - `project/runs/2026-07-10-watchdog-supervisor-integration-review/specialist-findings.md` - `project/runs/2026-07-10-watchdog-supervisor-integration-review/external-action-status.md`  ## Stage Architecture Reco"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/railway-prerequisite-packet.md",
+      "title": "Railway Prerequisite Packet",
+      "text": "# Railway Prerequisite Packet  Status: planning only. No Railway action or hosted freshness check occurred in this Branch A run.  ## Required Before a Deployment Proposal  1. Identify one scoped service and its non-secret build/start contract. 2. Bind the service to the platform-provided port and expose a readiness endpoint. 3. Configure a deployment healthcheck and preserve the response evidence. 4. Keep secrets in Railway variables or another approved server-side secret store; do not copy values into this repository or client code. 5. Define provider-disabled-first behavior, CORS/auth policy, input boundary, request timeout, and retry limit. 6. Define logs, request/model-cost ledger, alert/observability ownership, rollback path, and recovery test. 7. Obtain owner approval before provider activation, external writeback, production promotion, or any deployment action.  ## Required Before an Always-Online Claim  - Current endpoint and deployment evidence. - Deployment-time health evidence plus separate continuous monitoring evidence. - Auth, persistence, backup/recovery, incident ownership, and capacity expectations. - A dated availability window and explicit scope of the claim.  ##"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/safety-review-evidence.md",
+      "title": "Branch A Safety Review Evidence",
+      "text": "# Branch A Safety Review Evidence  Date: 2026-07-10 Role: 5.6 Luna Safety Reviewer Scope: Branch A architecture edits and Branch A evidence only. No provider, deployment, hosted-endpoint check, external writeback, commit, or push was performed.  GAP - Luna model selection unavailable  ## Verdict  Recommendation: `revise`.  The reviewed documentation changes are public-safe and preserve the intended gates. `revise` is required because this run deliberately has no current hosted/provider proof and the final integrator must preserve that distinction in the branch handout and merge decision. It is not a request for provider or deployment work.  ## PASS Findings  | Control | Result | Evidence | |---|---|---| | Scope | Pass | The Branch A material reviewed is limited to its run folder plus the approved architecture, workflow, provider, governance, dashboard-manual, service-README, `AGENTS.md`, and operating-rules scope. `AGENTS.md` and `project/operating-rules.md` are permitted by the explicit scope update. Other uncommitted worktree paths are inherited or concurrent and were not attributed to Branch A. | | Public safety | Pass | `python3 scripts/public_safety_scan.py` passed. A focused "
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a/verifier-evidence.md",
+      "title": "Branch A Verifier Evidence",
+      "text": "# Branch A Verifier Evidence  Date: 2026-07-10 Role: 5.6 Luna Verifier Scope: Branch A architecture and runtime claims only. No external endpoint, provider, deployment, or writeback action was performed.  GAP - Luna model selection unavailable  ## Verification Matrix  | Claim area | Local evidence inspected | Status | Safe conclusion | |---|---|---|---| | Role-based orchestration | `project/agentic-stack.md`, `project/agents/agent-roster.yaml`, `project/workflows/langgraph-controller.yaml`, `project/workflows/crewai-crew.yaml` | Pass, configuration/documentation | Watchdog, executor, verifier, safety-reviewer, integrator, and external-action roles are expressed as roles with constrained responsibilities. Compatible runtimes may fulfill a role; Hermes remains planned and non-executing. | | Watchdog safety boundary | `project/agentic-stack.md`, `project/context/cag-core.yaml`, `project/operating-rules.md` | Pass, documented | Hermes may classify, assemble context, contract, review, and stop; it must not execute, edit, deploy, call providers, write externally, or self-approve high-risk output. | | Jarvis/dashboard behavior | `docs/dashboard-operating-manual.md`, `services/jarvis-api/a"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-a-watchdog-review.md",
+      "title": "Branch A Watchdog Review",
+      "text": "# Branch A Watchdog Review  Decision: **approve documentation/configuration integration; block runtime and external actions**.  ## Evidence Reviewed  - Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter evidence. - Role/runtime consistency scan across governing, CAG, roster, skills, LangGraph, and CrewAI contracts. - Official OpenRouter and Railway source packet plus Railway prerequisite packet. - Branch report, handout, changed-file diff, and branch checks.  ## Acceptance Findings  - Current governing/configuration files now make authority derive from bounded roles rather than permanent runtime names. - Watchdog non-execution, maker-checker separation, independent safety review, and high-risk self-approval prohibition remain intact. - Jarvis/dashboard, Railway, and OpenRouter text clearly separates historical/configuration evidence from current hosted, provider, budget, deployment, or always-online proof. - OpenRouter selection remains activation-time and requires current model/capability/pricing evidence, cost/usage ledger, observer review, independent safety review, and owner approval. - Railway healthcheck evidence is correctly separated from continuous monitorin"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/agent-handout.md",
+      "title": "Agent Handout: Branch B PRD/ICP Delivery Product Architecture",
+      "text": "# Agent Handout: Branch B PRD/ICP Delivery Product Architecture  Run: `2026-07-10-watchdog-three-architecture-orchestra` Branch: B \u2014 PRD/ICP Delivery Product Architecture Status: complete for branch-supervisor review; no external action performed.  ## Purpose  This handout lets the watchdog supervisor or a later reviewer assess and integrate the Branch B documentation without redoing its source, scope, or safety review.  ## Human Summary  Branch B packages the client-facing offer as a service-first delivery method rather than a claimed SaaS product. The method converts an approved source packet into a traceable evidence digest, ICP/problem frame, PRD, backlog, Definition of Done, task packets, QA verdict, and controlled handoff. It explicitly preserves uncertainties and does not assert demand, ROI, paid clients, product readiness, or a Notion integration.  The report contains a first-party, current-source alternative map for nine named products and three human/process alternatives. It uses category boundaries to inform positioning, not to claim that the proposed service outperforms those alternatives. The refreshed E1-E7 packet keeps existing gates intact and provides manual-entry-"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/delivery-method-packet.md",
+      "title": "PRD/ICP Delivery Method Packet",
+      "text": "# PRD/ICP Delivery Method Packet  Status: proposed internal delivery method. No client delivery, source ingestion, provider call, or external writeback was performed.  ## Delivery Boundary  The service begins only after an authorized client source packet is defined. It does not promise automated decisions, a finished software product, a guaranteed time saving, ROI, funding outcome, or implementation completion.  ## Method And Gates  | Stage | Operator action | Required artifact | Gate to proceed | |---|---|---|---| | 0. Scope and consent | Confirm business question, source classes, recipient roles, exclusions, confidentiality, and the desired decision. | Intake brief and source boundary | Named owner approves scope; sensitive or prohibited material is excluded. | | 1. Source inventory | Inventory approved documents, notes, calls, research, and existing tickets without treating model output as a source. | Source register with provenance and coverage gaps | Every assertion can point to an approved source or is labeled as a gap/hypothesis. | | 2. Evidence review | Extract and classify facts, interpretations, hypotheses, risks, assumptions, and open questions. | Evidence digest and dec"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/notion-ready-planning-packet.md",
+      "title": "Notion-Ready Planning Packet: PRD/ICP Delivery Product",
+      "text": "# Notion-Ready Planning Packet: PRD/ICP Delivery Product  Status: prepared for manual review only. No Notion workspace, database, page, or link was read or mutated.  ## Proposed Page Structure  | Page or database | Purpose | Minimum properties | |---|---|---| | Epics | Preserve the E1-E7 spine and gate progression. | Epic, strategic purpose, status, dependency, evidence required, external-action gate, next decision. | | Tasks | Make bounded work reviewable and traceable. | Task, parent epic, status, owner role, input, output, acceptance criteria, evidence link, blocker, next action. | | Subtasks | Record checkable delivery work. | Subtask, parent task, status, completion evidence, dependency, reviewer. | | Links | Keep approved public references and internal artifact pointers discoverable. | Title, link type, source grade, public/private classification, related epic, usage note, checked date. |  ## E1-E7 Refresh Blocks  | Epic | Refreshed purpose | Next bounded task | Evidence / gate | |---|---|---|---| | E1 | Maintain the internal source-to-PRD proof method and review boundary. | Refresh a sample delivery pack against the method packet. | Traceability and public-safety review; no "
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/role-evidence.md",
+      "title": "Branch B Role Evidence",
+      "text": "# Branch B Role Evidence  Status: complete. The collaboration API exposed no model selector, so real bounded subagents performed the required roles with this recorded GAP: **Luna model selection unavailable**.  | Role | Bounded work and evidence | Result | |---|---|---| | Planner | Reviewed the Branch B contract and prior PRD/ICP, source-grade, service, and E1-E7 packets. | Required service-first ICP, full delivery chain, artifact/QA package, epic fields, and no-external-action boundaries identified. | | Executor | Checked current first-party public sources for the nine named software alternatives. | Official URLs and conservative capability statements supplied; vendor positioning was not treated as independent performance or demand proof. | | Verifier | Compared required Branch B outcomes with report/packet acceptance criteria and claim hazards. | Required all 12 alternatives, FIGH method, E1-E7 detail, manual-only Notion structure, and no unsupported demand/ROI/runtime claims. | | Safety Reviewer | Independently checked scope, public safety, sources, FIGH separation, Notion gates, and the draft report. | Revise requested for two need/demand phrasings and completion artifacts; cor"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/source-register.md",
+      "title": "Branch B Public Source Register",
+      "text": "# Branch B Public Source Register  Checked: 2026-07-10 Purpose: current first-party product-positioning evidence for the Branch B alternative map. This is not an independent product evaluation, demand study, price comparison, or buyer-usage proof.  | ID | Alternative | First-party public source | Public product fact used in Branch B | |---|---|---|---| | S1 | Productboard | [Productboard](https://www.productboard.com/) | Productboard positions its product around customer signals, product decisions, delivery-ready specifications, and roadmaps. | | S2 | Aha! | [Aha!](https://www.aha.io/) | Aha! presents discovery, idea management, prioritization, roadmaps, prototypes, applications, and its AI assistant as parts of its product-development suite. | | S3 | Dovetail | [Dovetail](https://dovetail.com/) | Dovetail presents a customer-intelligence platform that centralizes and analyzes customer signals and supports search, analysis, and generated documentation. | | S4 | BuildBetter | [BuildBetter Signals overview](https://docs.buildbetter.ai/pages/Signals/overview) | BuildBetter documents AI identification of customer feedback, feature requests, bugs, action items, and other signal types. |"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b-watchdog-review.md",
+      "title": "Branch B Watchdog Review",
+      "text": "# Branch B Watchdog Review  Decision: **approve for local integration**.  ## Evidence Reviewed  - Architecture report, public source register, delivery method packet, Notion-ready planning packet, role evidence, and branch handout. - Five real role subagents are recorded: Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter. - `GAP - Luna model selection unavailable` is recorded honestly because the collaboration interface exposed no role-model selector.  ## Acceptance Findings  - The target-buyer hypothesis explicitly covers B2B SaaS scaleups, product-led companies, teams with 2-5 PMs, Director/VP Product, Product Ops, Head of Product, and senior PM leaders. - The alternative map covers Productboard, Aha!, Dovetail, BuildBetter, Cycle, ChatPRD, Notion AI, Glean, Dust, status quo, junior PM/BA, and fractional product consultant. - Drift-prone product facts use first-party public sources and are labeled as vendor positioning rather than independent outcome evidence. - The delivery method covers source boundary, discovery, FACT/INTERPRETATION/HYPOTHESIS/GAP, PRD/ICP, backlog, Definition of Done, task packets, QA, handoff, and KB promotion gating. - E1-E7 and Notion Epics"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-c/agent-handout.md",
+      "title": "Branch C Agent Handout: Content Agent Architecture",
+      "text": "# Branch C Agent Handout: Content Agent Architecture  Date: 2026-07-10 Status: complete; review repairs applied Branch recommendation: approve  ## Purpose  This handout records the Branch C preparation-only content architecture for a future integrator. It covers public news/trend intake, competitor-category analysis, planning, writing/editing, visual specifications, QA/publishing preparation, and report-only learning for the Product Discovery-to-Production PRD Pack.  ## Human Summary  Branch C adds a bounded content operation rather than an autonomous social system. It turns public repo evidence and official public platform guidance into reviewed candidate content for B2B SaaS product teams that need source lineage, PRD clarity, acceptance criteria, and task handoff. It does not frame ArchFlow as a generic AI agency and it makes no customer, revenue, ROI, demand, runtime, or platform-integration claim.  The new calendar fixes a pre-existing arithmetic conflict: it explicitly counts ten candidates as seven static posts, two carousel/checklist posts, and one short-video script. The short-video script uses an included static companion, preserving 70/20/10 without silently counting ext"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-c-watchdog-review.md",
+      "title": "Branch C Watchdog Review",
+      "text": "# Branch C Watchdog Review  Decision: **approve for local integration**.  ## Evidence Reviewed  - Content architecture, controlled role flow, public-source/platform policy, feedback specification, exact ten-item calendar, visual specification, and branch handout. - Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter activity and findings. - Branch safety, mix, stylesheet-token, evidence-path, and diff checks.  ## Acceptance Findings  - The architecture covers news/trend intake, competitor analysis, planning, writing/editing, design/mockup, QA/publishing preparation, and aggregate feedback. - The plan is exactly seven static, two carousel/checklist, and one short-video script; the video has a static companion. - Positioning is the source-to-reviewed-PRD/ICP/backlog/Definition-of-Done/task-handoff service, not a generic AI agency. - Visual specs use the current ivory, teal, blue, and dark-panel system without private screenshots or account data. - Official platform guidance is used conservatively; unavailable Meta guidance is recorded as a GAP rather than inferred. - Two over-broad calendar claim labels were repaired after independent safety review. - No scraping, socia"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-review-ledger.md",
+      "title": "Branch Review Ledger",
+      "text": "# Branch Review Ledger  | Branch | Chat/worktree | Roles | Report state | Merge decision | Notes | |---|---|---|---|---|---| | A - Company Development | separate Terra worktree chat complete | Planner, Executor, Verifier, Safety Reviewer, Reporter | complete | approve docs/config; block runtime action | Role-based governance and honest runtime gates accepted; full integrator checks pending; no provider/deploy proof. | | B - PRD/ICP Delivery Product | separate Terra worktree chat complete | Planner, Executor, Verifier, Safety Reviewer, Reporter | complete | approve | Full buyer hypothesis, 12-alternative map, delivery method, E1-E7 and manual Notion packet; checks pass; no external action. | | C - Content Agent | separate Terra worktree chat complete | Planner, Executor, Verifier, Safety Reviewer, Reporter | complete | approve | Preparation-only content architecture, exact 7/2/1 plan, blue/ivory specs; no social action. |"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-task-contracts.md",
+      "title": "Branch Task Contracts",
+      "text": "# Branch Task Contracts  Status: dispatched through separate worktree chats.  ## Shared Contract  Each branch supervisor must use `5.6 Luna` subagents for Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter roles when subagent tools are available. The branch must not push, deploy, activate providers, mutate Notion or Linear, publish social content, or store private material. Maximum three repair attempts; stop if the same error appears twice.  If the subagent API does not expose a model selector, use bounded real subagents anyway and record `GAP - Luna model selection unavailable` rather than skipping the required roles.  Every branch report must list files changed or proposed, diff summary, checks, source evidence, blockers, and one merge recommendation: `approve`, `revise`, or `block`.  ## Branch A - Company Development Agent Architecture  Execution type: Discovery, Planning, Implementation, Verification, Documentation.  Allowed files:  - `AGENTS.md` - `project/operating-rules.md` - `project/agentic-stack.md` - `project/workflows/` - `project/agents/` - `project/context/cag-core.yaml` - `project/provider-setup.md` - `docs/dashboard-operating-manual.md` - `api/` - `s"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/discovery-and-integration-plan.md",
+      "title": "Discovery And Integration Plan",
+      "text": "# Discovery And Integration Plan  Status: execution authorized; external side effects remain gated.  ## Current State  The public repo contains a pushed Founder Meeting v2/CAG-RAG architecture baseline and a later conservative integration review. The current worktree also contains uncommitted owner-directed corrections to the watchdog continuation packet. Those corrections are treated as existing input and must be preserved.  The broader planning package was inspected read-only. Its durable ideas are already largely present in the public repo, while its older 90/10 content ratio and hard runtime-name division are superseded by the current 70/20/10 ratio and role-based orchestration instruction.  ## Branch Plan  1. Branch A owns internal company-development architecture, runtime claims, model routing, deployment gates, role/skill governance, and branch-review mechanics. 2. Branch B owns the client-facing PRD/ICP delivery product, current market/competitor evidence, delivery methodology, E1-E7 updates, and Notion planning packet. 3. Branch C owns the content-agent architecture, public-source policy, planning/writing/design/QA roles, feedback loop, 70/20/10 plan, and public-safe visua"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/external-action-gate-review.md",
+      "title": "External Action Gate Review",
+      "text": "# External Action Gate Review  Status: Git integration ready; external actions remain conditional.  | Action | Current decision | Evidence and blocker | Exact next safe action | |---|---|---|---| | Git commit and push | Approved after final validation | Three selective branch commits are merged locally; integrated validation passed. | Commit supervisor closeout files, rerun checks, and push `main` once. | | Notion mutation | Pending post-Git review | Connector tools are available, but the exact workspace/pages/databases, property schema, idempotency, and rollback mapping have not yet been proven. | After pushed Git evidence, run read-only planning reviews, search/fetch targets, then mutate only if one unambiguous mapping passes all gates. | | Linear mirror | Blocked | Linear is optional; no verified team/project/state/label/idempotency map exists. | Keep repo-native artifacts canonical; prepare a lightweight mirror only after a separate verified free-level target review. | | Railway action | Blocked | No current target/service linkage, endpoint freshness, continuous monitoring, auth/CORS, rollback/recovery, or post-action verification packet exists in this run. | Use `branch-a/rail"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/post-git-notion-review-contract.md",
+      "title": "Post-Git Notion Review Contract",
+      "text": "# Post-Git Notion Review Contract  Status: execute only after the integrated `main` commit is pushed.  ## Planning Lanes  1. **E1-E7 / Tasks / Subtasks** - review Branch B's manual Notion packet, the prior Founder Meeting v2 E1-E7 packet, and the pushed Git evidence. Return exact proposed changes and conflicts; do not mutate. 2. **Links Page** - review public links and repo-relative artifacts proposed for the Links page. Return the minimum safe set; do not include private URLs or IDs and do not mutate. 3. **July 4-10 Daily Founder Notes** - compare the existing daily-notes packet with the pushed completion evidence. Return append/update recommendations without copying raw private notes and without mutation.  ## Required Report  Each planning agent returns: target concept, proposed entries, source artifacts, schema assumptions, conflicts, idempotency concerns, private-data risks, and one recommendation: approve, revise, or block.  ## Watchdog Mutation Gate  The watchdog may mutate Notion only after pushed Git evidence and only if connector search/fetch proves the exact target pages/databases and property schema. The action also needs an unambiguous update set, idempotency/duplicate "
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/prior-work-review.md",
+      "title": "Prior Work Review",
+      "text": "# Prior Work Review  Status: reviewed against the corrected owner instruction.  | Commit | Classification | Evidence-backed conclusion | |---|---|---| | `135dc6f` | accepted foundation, partial for current goal | Added the public-safe Founder Meeting v2, CAG/RAG, skill-governance, service, content, E1-E7, prompt, report, and validation foundation. Its hard Codex/Hermes execution-name split is superseded by the current role-based orchestration instruction, while its safety gates remain valid. | | `f2a5942` | useful but superseded execution shape | Added six specialist-lane contracts. Those lanes remain evidence inputs, but the three architecture branches are now the controlling execution shape. | | `f1e7185` | dispatch evidence only | Recorded specialist chat dispatch. The later integration review did not discover durable branch outputs, so dispatch alone is not completion evidence. | | `c1385d4` | useful handoff, superseded locally | Added a master handoff and July 4-10 Daily Founder Notes. Current uncommitted owner-directed corrections replace its earlier single-supervisor wording and must be preserved. | | `d889d84` | accepted conservative integration, partial for current goal | "
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/validation-results.md",
+      "title": "Validation Results",
+      "text": "# Validation Results  Status: integrated validation passed before final closeout commit and push.  ## Branch Evidence  | Branch | Role loop | Branch checks | Watchdog decision | |---|---|---|---| | A - Company Development | Planner, Executor, Verifier, Safety Reviewer, Branch Reporter | YAML/static/Python/JSON/JS/public-safety checks passed; isolated dependency-backed checks were unavailable | Approve documentation/configuration; block runtime/provider/deploy actions. | | B - PRD/ICP Delivery Product | Planner, Executor, Verifier, Safety Reviewer, Branch Reporter | Public safety, diff, local-link, source, and claim checks passed | Approve. | | C - Content Agent | Planner, Executor, Verifier, Safety Reviewer, Branch Reporter | Public safety, diff, exact 7/2/1 mix, evidence-path, and stylesheet-token checks passed | Approve. |  The collaboration API exposed no subagent model selector. Each branch recorded `GAP - Luna model selection unavailable` and still used real bounded subagents for all required roles.  ## Integrated Main-Worktree Checks  | Check | Result | |---|---| | `python3 project/scripts/generate-dashboard-data.py` | Pass; generated `project/dashboard/data.json`. | | Dashbo"
+    },
+    {
+      "path": "project/runs/2026-07-10-watchdog-three-architecture-orchestra/watchdog-completion-report.md",
+      "title": "Watchdog Completion Report",
+      "text": "# Watchdog Completion Report  Status: repository implementation and integrated validation complete; final commit/push and post-Git Notion review remain in sequence.  ## Goal  Execute the corrected three-architecture program through separate specialist worktree chats, require branch-internal role subagents, review branch evidence and diffs, merge only accepted work, validate, push once, then review post-Git external-action gates.  ## Previous State  The prior Founder Meeting v2 integration and July 10 review supplied a strong CAG/RAG, service, provider-gate, and content-operation foundation. They remained partial for this goal because the corrected Branch A/B/C loop had not been executed and all external actions were still gated.  ## Executed Now  - Launched three separate `5.6 Terra` worktree chats from the current working-tree state. - Required Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter subagents in every branch. - Reviewed first-party public sources for drift-prone OpenRouter, Railway, competitor-product, and content-platform facts. - Repaired role/runtime governance so authority comes from bounded roles rather than permanent runtime names. - Added the comp"
     },
     {
       "path": "project/runs/20260701_daily_skill_retrospective.md",
@@ -6119,7 +6533,7 @@
     {
       "path": "project/workflows/crewai-crew.yaml",
       "title": "crewai-crew.yaml",
-      "text": "name: archflow_block1_crew status: runtime_installed_config_import_passed_level_3_proof_passed runtime: crewai_python official_docs_checked:   - https://docs.crewai.com/en/concepts/crews  purpose: >   Organize the Block 1 agents as a named team. CrewAI owns role clarity,   task sequence, expected outputs, and per-task accountability.  process: sequential manager_mode: codex_operator_supervised memory: false cache: true planning: false output_log_file: project/outputs/crew-log.json max_rpm: null observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted model_execution: level_3_direct_crewai_proof_passed_deterministic_local storage_boundary: project/local/home telemetry_for_guard_runs: disabled config_check_script: project/scripts/crewai-config-check.py  agents:   hermes_watchdog:     role: Planned watchdog, controller, and reviewer     goal: Classify work, assemble CAG/RAG context capsules, write task contracts, review evidence, and stop or escalate without executing files or external actions.     status: planned_not_runtime_executor     skills:       - execution-type-classification       - context-capsule-review       - task-contract-writing       - eviden"
+      "text": "name: archflow_block1_crew status: runtime_installed_config_import_passed_level_3_proof_passed runtime: crewai_python role_runtime_rule: roles_are_permission_contracts_compatible_runtimes_require_the_same_gates named_agent_entries_are_current_role_bindings_not_permanent_runtime_authority: true self_review_prohibited_for_high_risk_output: true role_separation:   watchdog: planned_non_executing_controller_only   executor: bounded_artifact_producer   verifier: separate_from_maker   safety_reviewer: independent_public_safety_and_claim_gate   integrator: current_codex_operator_final_internal_decision   external_action: disabled_until_action_specific_owner_approval official_docs_checked:   - https://docs.crewai.com/en/concepts/crews  purpose: >   Organize the Block 1 agents as a named team. CrewAI owns role clarity,   task sequence, expected outputs, and per-task accountability.  process: sequential manager_mode: current_codex_operator_supervision_binding memory: false cache: true planning: false output_log_file: project/outputs/crew-log.json max_rpm: null observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted model_execution: level_3_direct_crewai_proof_pass"
     },
     {
       "path": "project/workflows/knowledge-integration.yaml",
@@ -6272,6 +6686,11 @@
       "text": "# Decision: Live Dashboard Voice Hosting And Onyx Boundary  Date: 2026-06-30 Status: accepted planning baseline  ## Decision  ArchFlow remains the workflow brain and canonical memory system. Onyx may be tested later as a read-only portal/search/connector layer over approved artifacts after readback and retrieval benchmarks exist.  The first implementation target is a hosted static dashboard. Vercel is preferred for that first stage because the current dashboard is static, generated, and read-only. Railway is reserved for live service needs such as API state, background workers, queues, websocket/SSE streams, and voice-service orchestration.  Voice starts local and read-only. Any write action, deployment, external connector change, outreach action, or memory promotion requires human approval and AF Review.  ## Rationale  The current project risk is not lack of platform power. The risk is losing source boundaries, creating unreviewed memory, leaking credentials, or activating live writes before the workflow is proven.  The staged path keeps each layer accountable:  - Dashboard: visibility and status. - LangGraph and Loop Engineering: control and stop conditions. - WikiLLM: durable me"
     },
     {
+      "path": "wiki/decisions/2026-07-10-role-based-agent-orchestra.md",
+      "title": "Decision: Role-Based Agent Orchestra",
+      "text": "# Decision: Role-Based Agent Orchestra  Date: 2026-07-10 Status: accepted.  ## Decision  ArchFlow authority is defined by bounded roles, not permanently assigned runtime or agent names. Watchdog, executor, verifier, safety-reviewer, integrator, and external-action roles each carry explicit permissions, forbidden actions, evidence duties, and review gates. A compatible runtime may fulfil a role only under that role contract and may not approve its own high-risk output.  Current bindings remain useful operational facts: Codex is the local executor/integrator and Hermes is the planned watchdog label. Those bindings do not create permanent authority or activate providers, deployments, or writeback.  ## Consequences  - The watchdog role remains non-executing. - Substantial work retains maker-checker and independent safety review. - External-action roles are disabled until action-specific owner approval, target/schema proof, secret isolation, budget/rollback evidence, and post-action verification pass. - Historical run reports remain historical; current governing/configuration files carry the corrected rule. "
+    },
+    {
       "path": "wiki/index.md",
       "title": "ArchFlow Public WikiLLM",
       "text": "# ArchFlow Public WikiLLM  This is the public WikiLLM layer for the ArchFlow Block 1 knowledge project.  It stores durable public-safe project memory, decisions, run records, issues, insights, and operating rules.  ## Read Order  1. `../README.md` 2. `../AGENTS.md` 3. `../project/README.md` 4. `../project/operating-rules.md` 5. `../project/config/model-routing.yaml` 6. `memory.md` 7. `insights.md` 8. `rules/public-wikillm-contract.md` 9. latest file in `runs/` 10. open files in `issues/` 11. latest files in `decisions/`  ## Project Identity  | Field | Value | |---|---| | Project | ArchFlow Block 1 Knowledge | | Public repository | `mcharniuk1-spec/archflow_b1_knowledge` | | Active work folder | `project/` | | Public history folder | `history/` | | Skill registry | `skills/` | | WikiLLM folder | `wiki/` |  ## Active Layers  | Layer | Status | |---|---| | Public repository | Published. | | Codex operator | Primary operator and review layer. | | Ollama | Local model execution only. | | Qwythos | Active local model after load verification. | | LangSmith | Tracing configured; sanitized smoke traces submitted. | | LangGraph | Runtime installed; smoke workflow passed. | | CrewAI | Runtime"
@@ -6285,6 +6704,11 @@
       "path": "wiki/issues/2026-06-25-langsmith-api-key-missing.md",
       "title": "Issue - LangSmith API Key Missing",
       "text": "# Issue - LangSmith API Key Missing  Date: 2026-06-25 Status: closed  ## Issue  LangSmith tracing was configured before the local API key was added.  ## Impact  Resolved for smoke tracing. LangGraph runtime tracing has also been smoke-tested. CrewAI and LlamaIndex are installed, but a full LangGraph-wrapped CrewAI proof run has not executed yet.  ## Resolution  The real key was added locally to:  `project/.env.langsmith.local`  Do not commit the key.  Verification:  - The local env file is ignored by Git. - A sanitized LangSmith smoke trace was submitted. - A sanitized LangGraph smoke trace was submitted."
+    },
+    {
+      "path": "wiki/issues/2026-07-10-post-git-external-action-gates.md",
+      "title": "Issue: Post-Git External Action Gates",
+      "text": "# Issue: Post-Git External Action Gates  Date: 2026-07-10 Status: open.  ## GAP  - Notion target pages/databases, property schema, idempotency, and rollback mapping are not yet proven. - Linear has no verified lightweight free-level target map. - Railway/Vercel lack a current target-specific deployment, rollback, monitoring, and hosted-freshness packet. - OpenRouter lacks a current model/pricing selection, budget, ledger readback, and approved sanitized call packet. - Social publication lacks account/API/terms and owner publication approval.  ## Next Safe Action  Follow the pushed run's post-Git Notion review contract first. Keep every other external action blocked until its separate evidence packet passes. "
     },
     {
       "path": "wiki/log.md",
@@ -6535,6 +6959,11 @@
       "path": "wiki/runs/2026-07-08-post-execution-skill-update-hook.md",
       "title": "2026-07-08 Run Note: Post-Execution Skill Update Hook",
       "text": "# 2026-07-08 Run Note: Post-Execution Skill Update Hook  Status: complete.  ## Task  Add a controlled post-execution skill-update mechanism to the existing ArchFlow public evening skill and hook lane.  ## Current Setup Discovered  - Existing prompt hook: `.codex/hooks.json` calls `project/scripts/task-handout-hook.py` on `UserPromptSubmit`. - Existing automation lane: `project/automation/archflow-public-evening-skill-and-hook-update.md`. - Existing retrospective lane: `project/automation/daily-skill-retrospective-and-rag-knowledge-review.md`. - Existing project-local skills live under `skills/`. - Existing public run records live under `project/runs/` and `wiki/runs/`. - Existing validation includes workflow validation, public safety scan, Python compile checks, and diff checks.  ## Change  Added a deterministic script and support files so completed run folders or run notes can be reviewed for reusable skill lessons without creating a new automation layer.  ## Boundary  The new mechanism defaults to `NO_UPDATE` unless evidence supports a reusable update. It never creates new skills automatically and does not rewrite `SKILL.md` files.  ## Validation  Validation passed for Python com"
+    },
+    {
+      "path": "wiki/runs/2026-07-10-watchdog-three-architecture-orchestra.md",
+      "title": "Run: Watchdog Three-Architecture Orchestra",
+      "text": "# Run: Watchdog Three-Architecture Orchestra  Date: 2026-07-10 Status: integrated and validated before final push.  ## Summary  Three separate specialist worktree chats executed Company Development, PRD/ICP Delivery Product, and Content Agent architecture branches. Every branch used Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter roles. The watchdog reviewed branch evidence and selective diffs, accepted all safe documentation/configuration/content work, and blocked unproven provider/deployment/external actions.  ## Main Outputs  - Role-based agent-governance repair across current governing and workflow contracts. - Honest Jarvis/Railway/OpenRouter reliability and activation gates. - Source-backed PRD/ICP delivery product architecture and manual Notion plan. - Content-agent architecture, exact 70/20/10 plan, and blue/ivory visual specs. - Branch evidence, watchdog reviews, validation record, external-action gate review, and required handout.  ## Validation  Dashboard regeneration/parse, workflow validation, pre-push runtime guard, Python compilation, public safety scan, and diff checks passed in the main project environment.  ## Remaining Gap  Notion review/mutatio"
     }
   ],
   "sources": [

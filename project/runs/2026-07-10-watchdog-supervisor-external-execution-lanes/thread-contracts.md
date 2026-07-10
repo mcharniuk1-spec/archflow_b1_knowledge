@@ -4,6 +4,16 @@ Run: `2026-07-10-watchdog-supervisor-external-execution-lanes`
 
 These contracts are for separate Codex specialist threads created by the supervisor. Thread identifiers are not stored in this public file.
 
+## 2026-07-10 Correction Note
+
+These six specialist lanes are prior evidence and planning material, not the final controlling execution shape. The corrected watchdog supervisor must map these lanes into the three required architecture branches defined in `project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md`:
+
+- Company Development Agent Architecture.
+- PRD/ICP Delivery Product Architecture.
+- Content Agent Architecture.
+
+The watchdog must review any existing lane outputs, but branch execution, branch review, merge-before-push, and Notion-after-Git sequencing now control the next run.
+
 ## Shared Context For All Threads
 
 Start from the current ArchFlow public project. The active public project root is `public/`.

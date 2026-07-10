@@ -298,3 +298,11 @@ ArchFlow Block 1 is the first public solution:
 - Linear is optional only. Repo-native Markdown/YAML/JSON task packets, run handouts, generated dashboard data, and Notion-ready text are default.
 - The active content mix is 70% static educational/analytical, 20% carousel/checklist/template, and 10% short video/scripted demo. The package's older 90/10 wording is superseded by the latest owner instruction.
 - Service positioning is productized service first: Discovery Diagnostic, PRD Rescue Sprint, and later Monthly PRD/KB Operating Retainer. SaaS, provider runtime, writeback, customer demand, paid clients, and ROI claims remain gated until evidence exists.
+
+## Three-Architecture Role-Based Orchestra Memory - 2026-07-10
+
+- ArchFlow authority now follows bounded watchdog, executor, verifier, safety-reviewer, integrator, and external-action role contracts rather than permanent runtime names.
+- Current Codex and planned Hermes bindings remain operational labels. A compatible runtime may fulfil a bounded role only with that role's permissions, evidence duties, prohibitions, and independent-review requirements.
+- The client-facing PRD/ICP delivery product is the second architecture in the full company model even when the dashboard calls it Architecture 1.
+- The content-agent architecture is preparation-only and uses an exact 70% static, 20% carousel/checklist, and 10% short-script mix with current blue/ivory visual specifications.
+- Provider, Railway/Vercel, Notion/Linear, social, and other external actions remain target-specific gates rather than implied completion from architecture documents.

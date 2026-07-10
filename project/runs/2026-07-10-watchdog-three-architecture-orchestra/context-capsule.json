@@ -1,0 +1,84 @@
+{
+  "capsule_version": "v2",
+  "run_id": "2026-07-10-watchdog-three-architecture-orchestra",
+  "user_goal": "Execute and supervise three architecture branches, integrate accepted public-safe work, validate, push once, then review post-Git external-action planning gates.",
+  "execution_type": "Implementation",
+  "risk_level": "high",
+  "source_boundary_status": "pass",
+  "cag_core_refs": [
+    "AGENTS.md",
+    "project/operating-rules.md",
+    "project/context/cag-core.yaml",
+    "project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md"
+  ],
+  "rag_queries": [
+    "What earlier watchdog work is accepted, partial, or blocked?",
+    "What public evidence supports current runtime and provider claims?",
+    "What artifacts are missing for the PRD/ICP delivery and content architectures?"
+  ],
+  "retrieved_context_refs": [
+    "project/runs/2026-07-10-watchdog-supervisor-integration-review/specialist-findings.md",
+    "project/runs/2026-07-10-watchdog-supervisor-integration-review/external-action-status.md",
+    "project/reports/2026-07-08-founder-meeting-v2-watchdog-cag-rag-architecture.md",
+    "project/runs/2026-07-08-founder-meeting-v2-watchdog-cag-rag-integration/notion-e1-e7-update-packet.md"
+  ],
+  "facts": [
+    "The public repository baseline is main at commit d889d84 before current uncommitted continuation-packet corrections.",
+    "The prior July 10 integration added conservative runtime-gate and content-operation improvements but did not execute the corrected three-branch loop.",
+    "Separate specialist thread and worktree tools are available.",
+    "Notion, Linear, Railway, provider activation, deployment, and social publication were blocked in the prior review."
+  ],
+  "interpretations": [
+    "Role contracts should govern orchestration; compatible runtimes may fulfill watchdog, executor, verifier, safety-reviewer, integrator, or external-action roles.",
+    "Existing runtime evidence is historical unless revalidated during this run."
+  ],
+  "hypotheses": [
+    "Three disjoint branch scopes can produce mergeable documentation and configuration improvements without unsafe external side effects."
+  ],
+  "gaps": [
+    "Current hosted runtime freshness is unverified.",
+    "Notion connector schema and target mapping are unverified.",
+    "No current buyer, demand, ROI, or paid-client proof exists."
+  ],
+  "allowed_files": [
+    "project/",
+    "wiki/",
+    "docs/",
+    "api/",
+    "services/jarvis-api/"
+  ],
+  "forbidden_actions": [
+    "store private or secret data",
+    "push from a specialist branch",
+    "mutate external systems before the required Git sequence",
+    "make unsupported runtime, demand, ROI, customer, or SaaS-readiness claims"
+  ],
+  "role_assignment": [
+    "Watchdog Supervisor",
+    "Branch A Terra Supervisor with Luna Planner, Executor, Verifier, Safety Reviewer, and Reporter",
+    "Branch B Terra Supervisor with Luna Planner, Executor, Verifier, Safety Reviewer, and Reporter",
+    "Branch C Terra Supervisor with Luna Planner, Executor, Verifier, Safety Reviewer, and Reporter"
+  ],
+  "acceptance_criteria": [
+    "All three branch chats return evidence-backed merge recommendations.",
+    "Accepted branch work is reviewed and integrated before one validation and push sequence.",
+    "Post-Git Notion planning is reviewed before any possible mutation.",
+    "The final handout records completed, partial, blocked, and approval-gated states."
+  ],
+  "evidence_required": [
+    "branch file lists and diff summaries",
+    "branch-specific checks",
+    "public-safe source references",
+    "integrator validation results",
+    "Git commit and push evidence or exact blocker",
+    "external-action gate evidence"
+  ],
+  "stop_conditions": [
+    "private data would enter a public file",
+    "the same failure occurs twice",
+    "an external target, schema, budget, rollback path, or approval is ambiguous",
+    "a branch lacks evidence after one repair request"
+  ],
+  "review_gate": "Watchdog Supervisor plus AF Review",
+  "linear_policy": "not_required_optional_free_only"
+}

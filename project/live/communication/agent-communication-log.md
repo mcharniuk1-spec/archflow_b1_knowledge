@@ -8882,3 +8882,347 @@ Remaining gaps:
 Next:
 
 - Stage only the public-safe repo changes, commit, push, and close with the supervisor handoff summary.
+
+## 2026-07-10 17:59 EEST - Codex - starting - Correct watchdog continuation handoff
+
+Status: in progress
+
+Task:
+
+- Correct the watchdog supervisor handout and continuation prompt so the next ArchFlow Public watchdog executes the full owner-approved task through branch-based specialist chats, verifier subagents, branch review, merge-before-push discipline, and Notion-after-Git sequencing.
+
+Files likely to change:
+
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md`
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md`
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md`
+- `project/live/communication/agent-communication-log.md`
+
+Expected output:
+
+- A corrected copy-ready watchdog prompt and supporting execution contract for the ArchFlow Public project.
+
+Blockers:
+
+- No external writeback, Notion mutation, deployment, provider activation, or branch merge will be performed in this correction run.
+
+Next:
+
+- Patch the handoff packet, run local Markdown/safety checks, and report the corrected files.
+
+## 2026-07-10 18:08 EEST - Codex - complete - Corrected watchdog continuation handoff
+
+Status: complete
+
+Task:
+
+- Corrected the watchdog supervisor continuation packet so the next ArchFlow Public watchdog must use three architecture branches, branch-level subagent loops, branch review, merge-before-push discipline, and Notion-after-Git sequencing.
+
+Files changed:
+
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md`
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md`
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md`
+- `project/runs/2026-07-10-watchdog-supervisor-external-execution-lanes/thread-contracts.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks:
+
+- Dashboard data regeneration: pass.
+- Dashboard JSON parse: pass.
+- Workflow validation: pass.
+- Pre-push runtime guard: pass.
+- Python syntax check for standard API/hook scripts: pass.
+- Public safety scan: pass.
+- `git diff --check`: pass.
+- Focused private path/secret URL scan over corrected handoff files: pass; hits were command names in compile instructions only.
+
+Remaining gaps:
+
+- No branch chats, Notion mutation, Git commit/push, Railway action, provider call, production deploy, Linear writeback, or social posting were executed in this correction run.
+- Existing untracked local `.codex/environments/` remains untouched.
+
+Next:
+
+- Use the corrected continuation prompt in a new ArchFlow Public watchdog chat, or stage/commit this packet after owner review.
+
+## 2026-07-10 18:15 EEST - Codex - starting - Adapt continuation prompt for Sol/Terra/Luna token hierarchy
+
+Status: in progress
+
+Task:
+
+- Adapt the corrected watchdog continuation prompt for a 5.6 Sol supervisor chat that conserves tokens, delegates branch-role chats to 5.6 Terra, and requires execution-heavy subagent work inside those chats to be performed by 5.6 Luna.
+
+Files likely to change:
+
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md`
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Expected output:
+
+- A prompt and support contract that make Sol the low-token decision supervisor, Terra the branch-chat overseer, and Luna the execution/verification worker model.
+
+Blockers:
+
+- No external writeback, branch execution, Git push, Notion mutation, deployment, Railway action, provider call, or social posting will be performed in this prompt-adaptation run.
+
+Next:
+
+- Patch the prompt and support contract, regenerate dashboard data, run safety/diff checks, and report the exact files.
+
+## 2026-07-10 18:25 EEST - Codex - complete - Sol/Terra/Luna continuation prompt adaptation
+
+Status: complete
+
+Task:
+
+- Adapted the watchdog continuation packet so a `5.6 Sol` top-level chat conserves tokens, creates `5.6 Terra` branch-supervisor chats, and requires `5.6 Luna` subagents for branch execution, verification, safety review, and artifact drafting.
+
+Files changed:
+
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/agent-handout.md`
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/continuation-prompt.md`
+- `project/runs/2026-07-10-watchdog-master-continuation-handoff/branch-execution-contract.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Checks:
+
+- Dashboard data regeneration: pass.
+- Dashboard JSON parse: pass.
+- Workflow validation: pass.
+- Pre-push runtime guard: pass.
+- Public safety scan: pass.
+- `git diff --check`: pass.
+- Focused private-path/secret URL scan over the handoff folder: pass; hits were compile command text only.
+
+Remaining gaps:
+
+- No branch chats, Git commit/push, Notion mutation, Railway action, provider call, production deploy, Linear writeback, or social posting were executed in this prompt-adaptation run.
+- Existing untracked local `.codex/environments/` remains untouched.
+
+Next:
+
+- Provide the updated `continuation-prompt.md` to the new ArchFlow Public `5.6 Sol` watchdog chat.
+## 2026-07-10 17:26 CEST - Codex Watchdog Supervisor - starting - Three-architecture branch orchestra
+
+Status: starting
+
+Task:
+
+- Execute the owner-approved Branch A, Branch B, and Branch C architecture work through separate specialist chats with planner, executor, verifier, safety-reviewer, and reporter roles; review their evidence and diffs; integrate accepted work; validate; push once; then prepare and review post-Git Notion planning packets before any possible mutation.
+
+Files likely to change:
+
+- `project/agentic-stack.md`
+- `project/workflows/`
+- `project/agents/`
+- `project/project-plan.md`
+- `project/reports/`
+- `project/content/`
+- `project/runs/2026-07-10-watchdog-three-architecture-orchestra/`
+- `wiki/runs/`
+- `wiki/log.md`
+- `project/dashboard/data.json`
+- `project/live/communication/agent-communication-log.md`
+
+Files claimed:
+
+- `project/runs/2026-07-10-watchdog-three-architecture-orchestra/`
+- final integration edits to the listed architecture, report, content, wiki, dashboard, and communication surfaces after branch review
+
+FACT:
+
+- The current `main` worktree contains uncommitted owner-directed corrections to the watchdog continuation packet; they will be preserved and reviewed as existing input.
+- The broader Founder Meeting v2 planning package is readable as a read-only source.
+- Separate Codex thread/worktree tools are available; no prior Branch A/B/C specialist chats were found.
+
+INTERPRETATION:
+
+- The earlier integration commit is useful but partial because it did not execute the corrected three-branch, branch-subagent, merge-before-push loop.
+
+HYPOTHESIS:
+
+- The safest useful implementation will be documentation/config/content architecture hardening plus explicit external-action blocker packets unless a branch proves current runtime or connector targets.
+
+GAP:
+
+- Notion connector schema and exact target mapping are not yet proven.
+- Current Railway/production/provider state has not yet been re-verified for this run.
+
+Checks:
+
+- Preflight reads and Git baseline inspection completed; implementation checks pending branch integration.
+
+Next:
+
+- Create the run capsule and branch task contracts, then launch three worktree specialist chats from the current working-tree state.
+
+## 2026-07-10 17:39 CEST - Codex Watchdog Supervisor - update - Branch A contract scope correction
+
+Status: running
+
+Task:
+
+- Expand Branch A narrowly so it can reconcile the governing public contracts with the owner-corrected role-based orchestration model.
+
+Files likely to change:
+
+- `AGENTS.md`
+- `project/operating-rules.md`
+- Branch A files already listed in the active task contract
+
+Files claimed:
+
+- Branch A specialist owns the bounded architecture wording repair in these two files; final merge remains owned by the watchdog supervisor.
+
+FACT:
+
+- Both governing contracts currently hard-code Hermes as non-executing and Codex as the only executor.
+- The current owner instruction says compatible runtimes may fulfill bounded watchdog, executor, verifier, safety-reviewer, integrator, and external-action roles.
+
+INTERPRETATION:
+
+- The governing wording must become role-based while retaining all existing approval, public-safety, maker-checker, and external-action gates.
+
+GAP:
+
+- Branch A review and validation are pending.
+
+Checks:
+
+- Scope overlap review: pass; Branches B and C do not own these files.
+
+Next:
+
+- Update the Branch A contract and notify its specialist chat before it finalizes edits.
+
+## 2026-07-10 17:40 CEST - Codex Watchdog Supervisor - update - Branch B approved for merge
+
+Status: running
+
+Task:
+
+- Integrate the reviewed Branch B PRD/ICP Delivery Product Architecture selective commit into `main`.
+
+Files likely to change:
+
+- `project/reports/2026-07-10-prd-icp-delivery-product-architecture.md`
+- `project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-b/`
+
+Files claimed:
+
+- Branch B report and branch packet only.
+
+FACT:
+
+- Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter evidence is complete.
+- Official first-party competitor sources, delivery method, buyer hypotheses, E1-E7 refresh, and manual Notion planning packet passed branch and watchdog review.
+- The specialist made one selective local commit and did not push.
+
+INTERPRETATION:
+
+- Branch B is safe to integrate locally; external mutation remains blocked until the required post-Git review.
+
+GAP:
+
+- No buyer validation, demand, ROI, paid-client, Notion target/schema, or SaaS-readiness proof exists.
+
+Checks:
+
+- Branch public-safety, local-link, and diff checks: pass.
+- Watchdog scope and claim review: pass.
+
+Next:
+
+- Cherry-pick the selective Branch B commit, then continue monitoring Branches A and C.
+
+## 2026-07-10 17:43 CEST - Codex Watchdog Supervisor - update - Branch A and C merge decisions
+
+Status: running
+
+Task:
+
+- Accept Branch A's public-safe documentation/configuration hardening while blocking unproven runtime actions; accept Branch C's content architecture and initial planning/spec package.
+
+Files likely to change:
+
+- Branch A governing/configuration files and `branch-a/` evidence
+- `project/content/architecture/`
+- `project/content/calendar/2026-07-watchdog-initial-content-plan.md`
+- `project/content/mockups/2026-07-watchdog-visual-specs.md`
+- `project/runs/2026-07-10-watchdog-three-architecture-orchestra/branch-c/`
+
+Files claimed:
+
+- Selective Branch A and Branch C commit scopes only; inherited/shared work remains excluded.
+
+FACT:
+
+- Branch A completed all five role reviews, a current-governance consistency scan, official OpenRouter/Railway source review, and public-safety/static checks.
+- Branch A recommends `revise` only because it correctly lacks current hosted/provider/runtime proof and dependency-backed checks in its isolated worktree.
+- Branch C completed all five role reviews, repaired two claim labels, proved an exact 7/2/1 content mix, aligned visual specs to current blue/ivory tokens, and passed safety/diff checks.
+
+INTERPRETATION:
+
+- Branch A documentation/configuration changes are mergeable while provider, Railway, deployment, and always-online claims remain blocked. Full dependency-backed checks will run in the integrator worktree.
+- Branch C is mergeable as preparation-only architecture and planning; it authorizes no social action.
+
+GAP:
+
+- Branch A current hosted/provider/runtime proof remains absent.
+- Branch C Threads/Instagram/Reels official guidance needs a future recheck before implementation.
+
+Checks:
+
+- Branch A and C public-safety/static checks: pass.
+- Watchdog scope, claim, and artifact review: pass for local integration.
+
+Next:
+
+- Request selective local commits, merge them without pushing, then run the integrated validation stack.
+
+## 2026-07-10 17:50 CEST - Codex Watchdog Supervisor - handoff - Integrated Git phase ready for push
+
+Status: handoff
+
+Task:
+
+- Close the repository phase of the three-architecture watchdog run and prepare the required one-time push before post-Git Notion planning.
+
+Files changed:
+
+- Current governing, CAG, roster, skill-governance, LangGraph, CrewAI, provider, dashboard-manual, and Jarvis service documentation from Branch A.
+- PRD/ICP delivery product report and Branch B packets.
+- Content-agent architecture, initial exact 70/20/10 plan, current blue/ivory visual specification, and Branch C handout.
+- Supervisor run capsule, contracts, prior-work review, branch reviews, validation, external-action gates, completion report, handout, wiki decision/issue/run/memory/insights/log, live log, and regenerated dashboard data.
+- Preserved owner-directed master continuation packet corrections.
+
+FACT:
+
+- Three separate worktree chats completed Planner, Executor, Verifier, Safety Reviewer, and Branch Reporter loops.
+- Three selective branch commits are merged locally on `main`.
+- Dashboard regeneration/parse, workflow validation, runtime guard, Python compilation, Jarvis API contract smoke, JavaScript syntax, Markdown links, public-safety scan, and diff checks pass.
+
+INTERPRETATION:
+
+- The public repository architecture and planning work is ready to push. This does not prove or authorize provider, deployment, external writeback, social publication, demand, ROI, paid-client, or SaaS-readiness claims.
+
+GAP:
+
+- Notion planning and target/schema review must occur after pushed Git evidence.
+- Linear, Railway/Vercel, provider, social, Telegram, Figma, and other writeback actions remain blocked by separate gates.
+- The Jarvis smoke emitted a non-failing Starlette/httpx deprecation warning.
+
+Checks:
+
+- Final integrated validation set: pass.
+- Post-execution skill-update gate: `NO_UPDATE`.
+
+Next:
+
+- Stage reviewed public-safe closeout files, exclude `.codex/environments/`, commit, push `main` once, verify the remote, then launch the three read-only Notion planning reviews.
