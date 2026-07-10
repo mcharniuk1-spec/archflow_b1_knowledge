@@ -5,7 +5,7 @@ Provider-disabled FastAPI contract for the ArchFlow dashboard MVP.
 Current state:
 
 - `MODEL_PROVIDER=none` is the default.
-- Railway E1.7 baseline passed on 2026-07-03 for hosted health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text packet routes.
+- A dated Railway E1.7 baseline record exists for hosted health, CORS, chat, PRD/ICP, agent-orchestra, role config, and voice-safe text packet routes. It is historical evidence only, not current hosted-freshness, availability, or always-online proof.
 - The 2026-07-07 dashboard contract uses text chat and bounded file attachments through `/api/chat`.
 - `/api/voice/*` now returns disabled packets; voice mode is off in the main dashboard.
 - OpenRouter is server-side only and disabled until owner approval, server-side secrets, fresh pricing, ledger proof, and budget guard are live.
@@ -27,3 +27,5 @@ railway up services/jarvis-api --path-as-root --service jarvis-api --environment
 ```
 
 Public reports must not store Railway account IDs, deployment IDs, or service-domain metadata. Record endpoint status and safety state instead.
+
+Railway configuration is a future deployment prerequisite, not deployment authorization. A later approved deployment must separately prove the current `/health` result, auth/CORS and secret handling, provider-disabled-first behavior, logs, rollback/recovery, and ongoing observability. A deployment healthcheck is not continuous monitoring.

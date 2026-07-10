@@ -13,6 +13,10 @@ Rules:
 - Do not create new `SKILL.md` files for conceptual methods until the checklist in [`skills-governance.md`](skills-governance.md) is satisfied.
 - Shared project skills are allowed to appear under multiple roles when they carry coordination or closeout responsibilities.
 
+## Role / Runtime Binding
+
+The named entries below are current role bindings and skill visibility records, not permanent authority assignments to a particular runtime, provider, model, or branded agent. A compatible runtime may fulfil a bounded role only when it follows that role's task contract, evidence duties, and forbidden actions. A runtime may not approve its own high-risk output merely because it fulfils more than one role.
+
 ## Hermes Watchdog
 
 Purpose: planned controller/reviewer layer for classification, context capsules, task contracts, evidence review, and stop decisions.

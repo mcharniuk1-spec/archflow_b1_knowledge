@@ -155,8 +155,8 @@ current_parameters:
   max_attempts_per_item: 3
   default_loop_level: l1_report_only
   verifier_same_as_maker_allowed: false
-  final_runtime_owner: codex_operator
-  planned_watchdog_controller: hermes_watchdog
+  current_final_integrator_binding: codex_operator
+  current_watchdog_binding: hermes_watchdog
   context_capsule_schema: project/context/context-capsule.schema.json
   cag_core: project/context/cag-core.yaml
   local_minor_task_model: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
@@ -165,6 +165,16 @@ current_parameters:
   langsmith_project_id: masked_langsmith_project_id
   smoke_script: project/scripts/langgraph-smoke-run.py
   last_smoke_result: langgraph_smoke_ok_approval_approved
+  role_runtime_rule: roles_are_permission_contracts_compatible_runtimes_require_same_gates
+  owner_agent_keys_are_role_bindings_not_permanent_runtime_authority: true
+  self_review_prohibited_for_high_risk_output: true
+  role_separation:
+    watchdog: non_executing_controller_only
+    executor: bounded_artifact_producer
+    verifier: separate_from_maker
+    safety_reviewer: independent_public_safety_and_claim_gate
+    integrator: codex_operator_final_internal_decision
+    external_action: disabled_until_action_specific_owner_approval
 
 screen_contracts:
   version: prompt_1_2

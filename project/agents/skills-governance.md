@@ -47,6 +47,20 @@ Shared does not mean universal execution authority. Shared skills carry coordina
 | AF Publisher | Publication review, Git-ready packets, `task-handout`, `outquestions`; external publication remains owner-gated. |
 | Bounded subagent | Only the skills named in its task contract. |
 
+## Role / Runtime Separation
+
+Roles define authority, evidence, and forbidden actions; they do not reserve work for one named model, framework, or agent brand. A compatible runtime may fulfil watchdog, executor, verifier, safety-reviewer, integrator, or external-action roles only when its task contract grants the same bounded authority and it meets the evidence gates for that role.
+
+- The watchdog role remains non-executing even when fulfilled by a compatible controller.
+- Maker and verifier remain separate for substantial work.
+- A safety reviewer must be independently assigned for public-safety and claim review.
+- The current Codex operator is the active local executor and final integrator, but that assignment is not an automatic provider/runtime activation.
+- An external-action role is disabled by default and needs action-specific owner approval, target proof, and post-action verification.
+
+## Governance Audit - 2026-07-10
+
+Scope: duplicate-skill and hook-governance audit before this Branch A architecture update. Result: the nine discovered project-local `SKILL.md` contracts match the current contracted-skill registry; no duplicate contract or unregistered mandatory hook was identified. No skill or hook file is added, removed, or edited by this branch.
+
 ## Add-Skill Checklist
 
 - Unique name.

@@ -1,3 +1,9 @@
+runtime_binding_policy:
+  rule: role_contracts_define_authority_named_providers_and_models_are_current_bindings_not_permanent_authority
+  compatible_runtime_requirement: must_follow_the_assigned_role_contract_evidence_requirements_and_forbidden_actions
+  self_review_rule: a_runtime_may_not_approve_its_own_high_risk_output_when_fulfilling_any_role
+  external_action_rule: disabled_until_action_specific_owner_approval_target_proof_and_post_action_verification
+
 agents:
   hermes_watchdog:
     title: Hermes Watchdog

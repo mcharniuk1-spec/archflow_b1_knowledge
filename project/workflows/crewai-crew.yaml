@@ -1,6 +1,16 @@
 name: archflow_block1_crew
 status: runtime_installed_config_import_passed_level_3_proof_passed
 runtime: crewai_python
+role_runtime_rule: roles_are_permission_contracts_compatible_runtimes_require_the_same_gates
+named_agent_entries_are_current_role_bindings_not_permanent_runtime_authority: true
+self_review_prohibited_for_high_risk_output: true
+role_separation:
+  watchdog: planned_non_executing_controller_only
+  executor: bounded_artifact_producer
+  verifier: separate_from_maker
+  safety_reviewer: independent_public_safety_and_claim_gate
+  integrator: current_codex_operator_final_internal_decision
+  external_action: disabled_until_action_specific_owner_approval
 official_docs_checked:
   - https://docs.crewai.com/en/concepts/crews
 
@@ -9,7 +19,7 @@ purpose: >
   task sequence, expected outputs, and per-task accountability.
 
 process: sequential
-manager_mode: codex_operator_supervised
+manager_mode: current_codex_operator_supervision_binding
 memory: false
 cache: true
 planning: false

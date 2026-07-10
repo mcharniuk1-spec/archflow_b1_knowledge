@@ -11,6 +11,8 @@ They are not the same thing.
 
 ## Current Verified State
 
+The dated entries in this section are historical local evidence, not a claim that a provider, hosted endpoint, credential, or deployment is currently available. Current hosted or provider readiness must be rechecked in a separately approved run without copying secrets or private target details into this repository.
+
 As of 2026-06-25:
 
 - Ollama CLI is installed.
@@ -83,6 +85,23 @@ Blocked route:
 - no provider call from the static Vercel page;
 - no raw transcript/audio/screen/private document upload to a provider;
 - no automatic Notion/GitHub/WikiLLM writeback after a model response.
+
+## Activation-Time Model And Budget Gate
+
+OpenRouter model IDs, availability, capabilities, and pricing are drift-prone. Do not promote target model names in this repository to active selections. Before any approved server-side activation, the assigned executor and Yushchenko observer must record a public-safe review packet that:
+
+1. Retrieves the current OpenRouter Models API metadata and selects a canonical model ID that satisfies the task capability and approved budget.
+2. Records the selection rationale, input/output/reasoning price dimensions, timeout and retry policy, and an explicit per-run hard stop without storing key material.
+3. Confirms the response usage/cost fields and a durable ledger path before any result can proceed to an external-action role.
+4. Requires an independent safety reviewer and owner approval before a provider result is written outside the bounded run artifact.
+
+OpenRouter documents its Models API, model capabilities and pricing fields, response usage/cost accounting, and key-level limits at public URLs. The project uses those sources only at activation time; this documentation update does not query a key, select a model, or activate the provider.
+
+## Railway / Always-Online Prerequisite Gate
+
+Railway is a future deployment target, not evidence of an always-online ArchFlow service. Before a Railway or any equivalent long-running deployment can be described as ready, an approved deployment packet must prove: a service-specific build/start configuration; bind to the platform-provided port; a readiness endpoint that returns HTTP 200 during deployment; secret isolation in the platform configuration; explicit CORS/auth behavior; provider-disabled-first operation; logs and observability; a rollback/recovery procedure; and post-deploy endpoint verification.
+
+Railway documents that healthchecks control traffic switching during deployment and are not continuous monitoring. Accordingly, a deployment-time health response alone is insufficient for an always-online claim.
 
 ## LangSmith Status
 

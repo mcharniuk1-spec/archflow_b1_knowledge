@@ -37,13 +37,14 @@ Private sources can be read for understanding, but public files must contain onl
 
 Use this layering:
 
-- Hermes is the planned watchdog/controller/reviewer. Hermes plans, classifies, assigns, reviews, and stops; it does not execute code, edit files, deploy, mutate task boards, activate providers, or write externally.
+- Watchdog, executor, verifier, safety-reviewer, integrator, and external-action labels are role contracts rather than permanent runtime assignments. A compatible runtime may fulfil one only under a bounded task contract that preserves the role's authority, evidence requirements, and forbidden actions.
+- Hermes is the current planned watchdog/controller/reviewer label. A compatible watchdog plans, classifies, assigns, reviews, and stops; it does not execute code, edit files, deploy, mutate task boards, activate providers, write externally, or approve its own high-risk output.
 - CAG assembles stable project context before task-specific retrieval and subagent prompting.
 - LangGraph controls path, state, routing, and review gates.
 - CrewAI organizes named team roles and task handoff.
 - LlamaIndex handles bounded retrieval and RAG; it is not durable memory.
 - WikiLLM remains durable reviewed memory after promotion.
-- Codex remains the local executor, reviewer, file editor, validator, final integrator, and approval boundary.
+- Codex remains the current local executor, reviewer, file editor, validator, final integrator, and approval boundary. That current assignment is not an automatic provider, deployment, or external-action authorization.
 - Ollama is the local model provider once approved and started.
 
 ## Watchdog Execution Rule
@@ -89,12 +90,12 @@ For substantial work, still create or update the relevant `project/runs/<run-id>
 
 ## Actor And Reviewer Rule
 
-For substantial dashboard, website, provider, deployment, memory, or architecture work, Jesus/Codex must use an explicit Actor plus Reviewer split when subagent tools are available:
+For substantial dashboard, website, provider, deployment, memory, or architecture work, the lead integrator must use an explicit Actor plus Reviewer split when subagent tools are available. The current Codex/Jesus binding does not make runtime identity itself the authority for either role:
 
 - Actor: owns a bounded implementation or planning slice with a clear file scope.
 - Reviewer: audits evidence, safety, completion claims, and remaining gaps without editing files unless explicitly assigned a separate fix.
 
-The lead integrator remains responsible for merge order, conflict review, validation, durable run notes, and final owner handoff. Actor and Reviewer file claims must be recorded in `project/live/communication/agent-communication-log.md` before edits.
+The lead integrator remains responsible for merge order, conflict review, validation, durable run notes, and final owner handoff. A compatible runtime may fulfil Actor, Reviewer, or Integrator only when the task contract keeps their file scope, maker-checker separation, evidence duties, and approval gates intact. Actor and Reviewer file claims must be recorded in `project/live/communication/agent-communication-log.md` before edits.
 
 ## Task Handout Hook Rule
 

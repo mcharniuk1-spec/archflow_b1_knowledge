@@ -32,9 +32,10 @@ Rules:
 - Put all new active work under `project/`.
 - Put sanitized prior-work summaries under `history/`.
 - Do not copy raw legacy files into this folder unless they pass a public-safety review.
-- Codex authentication is the main operator/publication path.
-- Codex is the executor, reviewer, file editor, validator, and final integration boundary.
-- Hermes is a planned watchdog/controller/reviewer only; it does not execute, edit files, deploy, mutate task boards, or activate providers.
+- Codex authentication is the current main operator/publication path.
+- Watchdog, executor, verifier, safety-reviewer, integrator, and external-action labels are bounded role contracts, not permanent assignments to a named runtime. A compatible runtime may fulfil a role only when its task contract grants the same authority and it meets that role's evidence and safety gates.
+- Codex is the current local executor, reviewer, file editor, validator, and final integration boundary; this does not activate a provider, deployment, or external writeback path.
+- Hermes is the current planned watchdog/controller/reviewer label. Any compatible watchdog runtime remains non-executing: it does not edit files, deploy, mutate task boards, activate providers, or approve its own high-risk output.
 - Before broad or multi-agent work, assemble CAG core, retrieve bounded RAG evidence only when needed, build a context capsule, and create task contracts.
 - Ollama is only for local minor/background tasks unless later approved.
 - Provider actions that start local services, create env files, install packages, repair models, connect external API credentials, call providers, or write externally require explicit approval.

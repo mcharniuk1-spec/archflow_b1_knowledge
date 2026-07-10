@@ -5,10 +5,12 @@ purpose: >
   subagent prompting. This file is a compact control packet, not durable memory.
 
 execution_boundary:
-  codex: executor_reviewer_file_editor_validator_final_integration_boundary
-  hermes: planned_watchdog_controller_reviewer_not_executor
+  role_runtime_rule: role_contracts_control_authority_named_runtimes_are_current_bindings_not_permanent_authority
+  codex: current_local_executor_reviewer_file_editor_validator_integrator_binding
+  hermes: current_planned_watchdog_controller_reviewer_binding_not_executor
   subagents: bounded_task_contracts_only
   af_review: public_safety_claim_support_runtime_boundary_gate
+  self_review_rule: a_runtime_fulfilling_any_role_must_not_approve_its_own_high_risk_output
 
 architecture:
   langgraph: path_state_routing_review_gates

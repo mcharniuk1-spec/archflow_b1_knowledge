@@ -20,8 +20,8 @@ Codex-authenticated operator prompt
 
 | Tool | Responsibility | Public Project Use |
 |---|---|---|
-| Codex | Operator runtime, editor, verifier, approval boundary. | Default interface for now. |
-| Hermes | Planned watchdog/controller/reviewer. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Hermes does not execute, edit files, deploy, mutate task boards, call providers, or write externally. |
+| Codex | Current local operator binding for execution, editing, verification, and final integration. | Default interface for now; role contracts, not runtime identity, determine authority. |
+| Hermes | Current label for the planned watchdog/controller/reviewer role. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Any compatible watchdog remains non-executing: no edits, deployment, task-board mutation, provider call, or external write. |
 | CAG context capsules | Controlled Context Assembly Generation before subagent prompting. | Stable context packet under `project/context/`; not durable memory and not broad ingestion. |
 | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. |
 | Loop Engineering | State, attempt caps, budget, maker/checker split, stop conditions. | L1 report-only loop contract under `project/loops/`. |
@@ -33,6 +33,21 @@ Codex-authenticated operator prompt
 | Ollama | Local model serving. | Minor/background tasks only; active model is Qwythos and fallback is `gemma4:e4b`. |
 | Mistral | Optional cloud quality pass. | Disabled until credentials, sanitized inputs, budget, model metadata logging, and AF Review approval exist. |
 | LangSmith | Observability and trace review. | Configured for tracing only; waits for manual API key insertion. |
+
+## Role-Based Runtime Interpretation
+
+Architecture roles are permission contracts, not exclusive product or model assignments. A compatible runtime may fulfil a role only when it satisfies the role's source boundary, evidence requirement, and forbidden-action list. Naming a runtime in a diagram or configuration therefore does not authorize it to execute the role.
+
+| Architecture stage | Required role | Compatible runtime status | Evidence required before stage completion |
+|---|---|---|---|
+| Classify, assemble CAG, issue task contract, decide stop/repair | Watchdog | Planned Hermes contract or another non-executing controller that follows the same prohibition set. | Context capsule, bounded contract, and decision record. |
+| Produce a bounded artifact | Executor | Codex is the active local executor; a later approved worker may be substituted only through a task contract. | Claimed file scope, artifact, and run trace. |
+| Check correctness and completeness | Verifier | A compatible reviewer separate from the maker; Codex or an approved deterministic check may fulfil it. | Reproducible check output and unresolved-gap list. |
+| Check source boundary, public safety, and claim support | Safety reviewer | AF Review contract or another independently assigned compatible reviewer. | Safety scan plus claim and source review. |
+| Reconcile evidence and choose the next internal action | Integrator | Codex is the current final integration boundary. | Reviewed branch evidence, merge decision, and handout. |
+| Call a provider, deploy, publish, or write externally | External-action role | No default runtime is authorized. A compatible runtime is eligible only after its action-specific approval gates pass. | Owner approval, target/schema proof, secret isolation, budget/rollback evidence, and post-action verification. |
+
+This interpretation replaces any hard division that equates a role name with a permanently assigned runtime. It does not weaken the Hermes prohibition set: the planned watchdog remains non-executing, and the active local operator remains responsible for edits, validation, and final integration.
 
 ## Agent Hooks
 
@@ -66,6 +81,8 @@ Not allowed by default:
 ## Hermes Watchdog And CAG/RAG Contract
 
 Status: planned controller architecture, not runtime execution.
+
+Hermes is the current label for the watchdog permission set, not proof of a hosted or always-online controller. If a compatible controller fulfils the watchdog role later, it must retain every prohibition below and must not self-approve high-risk work.
 
 Hermes is allowed to:
 
@@ -173,6 +190,17 @@ The dashboard control surface has two screens:
 | Level 3: CrewAI runtime execution | CrewAI directly executes role/task flows, either directly or through LangGraph, with local proof artifacts and safety checks. | Direct deterministic public-safe fixture proof passed; not default runtime and not provider-backed runtime. |
 
 For now, build toward Level 2 while preserving Level 1 as the source of truth. Describe Level 3 only as proof passed, not as default active runtime.
+
+### Reliability And Always-Online Status
+
+| Surface | What the repository supports | What this does not prove |
+|---|---|---|
+| Static dashboard and browser-local packets | Public-safe UI and local packet workflow. | A continuously available service, provider execution, durable state, or external writeback. |
+| Provider-disabled Jarvis API contract | Local and serverless review-packet routes with a health contract. | Current hosted freshness, authenticated production traffic, or a Railway deployment in this run. |
+| Railway migration material | Service configuration and a readiness path for a future long-running API/worker lane. | An active Railway service, continuous monitoring, provider activation, or production readiness. |
+| OpenRouter routing policy | Server-side-only activation requirements, budget/ledger gates, and observer review responsibilities. | A selected current model, available credits, a live key, or any provider call. |
+
+Railway healthchecks are deployment-time readiness checks, not continuous monitoring. Any future always-online claim needs current, separately recorded service, health, observability, auth, persistence, and recovery evidence.
 
 ### Screen (1): PRD/ICP Flow
 

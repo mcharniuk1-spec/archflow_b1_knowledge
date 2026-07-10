@@ -10,7 +10,7 @@ The dashboard is the local control and communication surface for ArchFlow's PRD 
 - Architecture 1 - PRD/ICP Service Output: turns approved source material into PRD, task matrix, evidence gaps, ICP logic, reports, and review packets.
 - Architecture 2 - Agent Control System: controls Codex/local execution, LangGraph-style routing, LlamaIndex retrieval, Graphify structure reference, WikiLLM memory candidates, reviews, approvals, run notes, and deployment sequencing.
 
-The dashboard is still static/browser-local by default. It can create local packets, persist browser-local chat, call the local provider-disabled Jarvis API during development, and call the Vercel provider-disabled Jarvis API on the hosted dashboard. It does not safely perform provider calls, Railway deployment, Notion writeback, Telegram sends, raw voice storage, or production publication without separate approval and runtime proof.
+The dashboard is still static/browser-local by default. It can create local packets, persist browser-local chat, and use a provider-disabled Jarvis review-packet contract where an approved local or hosted route is available. This document does not assert that any hosted route is currently fresh or reachable. The dashboard does not safely perform provider calls, Railway deployment, Notion writeback, Telegram sends, raw voice storage, or production publication without separate approval and runtime proof.
 
 ## First Screen: Jarvis
 
@@ -147,7 +147,7 @@ Important config fields:
 
 The local API lives under `services/jarvis-api`. It is provider-disabled by default.
 
-The dashboard header shows the current API state as `Jarvis API connected` or `Jarvis API disconnected`. Local development defaults to `http://127.0.0.1:8787`. Hosted Vercel use defaults to the same Vercel origin and uses the provider-disabled serverless Jarvis contract under `/health` and `/api/...`.
+The dashboard header may show `Jarvis API connected` or `Jarvis API disconnected` for the route it can reach in that browser session. Local development defaults to `http://127.0.0.1:8787`. A hosted same-origin route, when separately verified, uses the provider-disabled serverless Jarvis contract under `/health` and `/api/...`; a UI connection label is not hosted-freshness proof.
 
 The Vercel API contract is intentionally conservative:
 
@@ -173,7 +173,7 @@ The API can return review packets and approval gates. It does not call OpenRoute
 
 ## Railway Readiness
 
-Railway is the future always-on runtime lane. Vercel now covers the static dashboard and provider-disabled serverless Jarvis review contract, but Railway is still needed for durable workers, queues, long-running provider tasks, stronger auth/CORS policy, and always-responding runtime operations. It is not complete until all of the following are proven:
+Railway is a future long-running runtime lane. It may later serve durable workers, queues, long-running provider tasks, stronger auth/CORS policy, and always-responding operations, but no always-online claim is current in this document. A Railway deployment-time healthcheck is not continuous monitoring. The lane remains incomplete until all of the following are proven:
 
 - Only `services/jarvis-api` is deployed.
 - Hosted `/health` is verified.
@@ -182,6 +182,7 @@ Railway is the future always-on runtime lane. Vercel now covers the static dashb
 - Dashboard API routing points to the hosted backend only after review.
 - Logs and budget guards exist.
 - Owner approval is recorded before provider activation.
+- Deployment-time healthcheck and post-deploy endpoint evidence are recorded separately from ongoing observability, recovery, and availability evidence.
 
 ## Required Operator Checks
 
