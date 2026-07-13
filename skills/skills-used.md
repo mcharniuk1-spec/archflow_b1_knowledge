@@ -17,11 +17,15 @@ This project uses the following skills and methods.
 | [`outquestions`](outquestions/SKILL.md) | Report what changed after each substantial execution and list the decision questions required before the next stage. |
 | [`arcagcom`](arcagcom/SKILL.md) | Coordinate parallel ArchFlow public project agents through the live communication log, file claims, handoffs, checks, and Prompt 2.1/Prompt 3 merge gates. |
 | [`archflow1`](archflow1/SKILL.md) | Operate and review the local Jarvis dashboard stack, including jarvis-api, LangGraph, CrewAI levels, voice paths, OpenRouter budget gates, and Railway migration gates. |
+| [`archflow-architecture-operator`](archflow-architecture-operator/SKILL.md) | Convert objectives and company workflows into evidence-gated goal contracts, task graphs, role/skill packs, LangGraph and loop contracts, knowledge boundaries, adoption decisions, and benchmarks. |
 | CAG/RAG context capsule method | Assemble stable project context plus bounded retrieval evidence before subagent prompting; schema lives in `project/context/context-capsule.schema.json`. |
 | Hermes watchdog/controller method | Classify tasks, assign contracts, review evidence, and stop or escalate without executing, editing, deploying, or mutating external systems. |
+| Goal Engineering operating contract | Keep one objective persistent but bounded through observable completion, an independent verifier, lifecycle state, budget, and kill switches under `project/goals/`. |
 | Skills governance policy | Keep skill visibility role-aware, deduplicated, and audit-backed through `project/agents/skills-governance.md`. |
 | ArchFlow resetup contract | Preserve the June 24 company reset and Block 1 direction. |
 | Loop Engineering operating contract | Keep agent workflows bounded with state, attempt caps, budget, maker/checker separation, and stop conditions. |
+| Terra/Luna coordination method | Use Luna roles for bounded read-only work and one Terra integrator for shared-file or external-system reconciliation; role names do not imply a model. |
+| Selective Obsidian second-brain method | Reuse index-first navigation, source preservation, provenance, reconciliation, and write propagation while rejecting permission bypass and uncontrolled background mutation. |
 | Market evidence engine | Turn E2 into account universe, public-signal extraction, scoring, role verification, and reviewed ICP/output handoff. |
 | Public-safety review | Keep public files free of secrets, personal data, local paths, and private IDs. |
 | Ollama local check | Start local Ollama, list models, and run public-safe smoke tests. |
@@ -39,6 +43,7 @@ This project uses the following skills and methods.
 | AF Review | Approve or block output before handoff. |
 | E1 runtime guard | Pre-push runtime validation for workflow YAML, LangGraph, LlamaIndex, CrewAI, and saved skills. |
 | Outquestions | End each substantial run with next-stage decision questions, gates, risks, and a clear nontechnical report. |
+| Architecture factory pilot | Run one provider-disabled goal-to-role architecture through deterministic fixtures and the benchmark contract before any provider-backed graduation. |
 
 ## Inefficiency And Relevance Controls
 

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>ArchFlow Jarvis | Guarded operator chat</title>
+    <meta
+      name="description"
+      content="A public static control surface with owner-gated API actions for the ArchFlow knowledge continuity and agent operating system."
+    />
+    <meta name="theme-color" content="#07111f" />
+    <link rel="icon" type="image/png" href="assets/favicon-32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,550;6..72,650&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="jarvis.css?v=20260713-owner-guard" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conversation">Skip to conversation</a>
+
+    <header class="jarvis-header">
+      <a class="jarvis-brand" href="/" aria-label="ArchFlow home">
+        <img src="assets/archflow-mark.svg" alt="" width="34" height="34" />
+        <span><strong>ArchFlow / Jarvis</strong><small>Public UI / owner-gated API</small></span>
+      </a>
+      <div class="header-truth" aria-label="Runtime boundaries">
+        <span><i class="status-dot" data-status-dot></i><b data-runtime-label>Checking API</b></span>
+        <span>Writeback off</span>
+        <span>Owner token required</span>
+      </div>
+      <nav aria-label="Jarvis navigation">
+        <a href="/dashboard">Operator docs</a>
+        <a href="/">Public surface</a>
+      </nav>
+    </header>
+
+    <main class="jarvis-layout">
+      <section class="chat-panel" aria-labelledby="chat-title">
+        <header class="chat-heading">
+          <div>
+            <p class="eyebrow">Owner console / Text only</p>
+            <h1 id="chat-title">Work with the architecture, with its limits visible.</h1>
+          </div>
+          <div class="conversation-actions">
+            <button type="button" data-check-runtime>Check runtime</button>
+            <button type="button" data-clear-chat>Clear local chat</button>
+          </div>
+        </header>
+
+        <div class="runtime-strip" aria-label="Jarvis runtime state">
+          <div><span>API</span><strong data-runtime="api">Checking</strong></div>
+          <div><span>Provider</span><strong data-runtime="provider">Unknown</strong></div>
+          <div><span>Owner auth</span><strong data-runtime="auth">Unknown</strong></div>
+          <div><span>Execution</span><strong data-runtime="execution">No call yet</strong></div>
+        </div>
+
+        <div class="conversation" id="conversation" data-conversation role="log" aria-live="polite" aria-label="Jarvis conversation" tabindex="-1">
+          <article class="message message-system">
+            <div class="message-meta"><span>Jarvis contract</span><time>Ready for an operator request</time></div>
+            <p>
+              Choose an allowed model and prepare a guarded request. This public UI can create a review packet, but provider execution remains disabled until a server-enforced single-use nonce and durable spend ledger exist; it never fabricates a model response.
+            </p>
+            <ul>
+              <li>Conversation stays in this browser tab unless sent.</li>
+              <li>The browser may search OpenRouter's public catalog; it never receives the provider key.</li>
+              <li>Git, Notion, memory, deployment, and other writeback stay disabled.</li>
+            </ul>
+          </article>
+        </div>
+
+        <form class="composer" data-chat-form>
+          <label for="jarvis-request">Operator request</label>
+          <textarea
+            id="jarvis-request"
+            name="request"
+            rows="3"
+            maxlength="12000"
+            placeholder="Ask Jarvis to inspect, explain, plan, or prepare a reviewed knowledge-system action…"
+            required
+          ></textarea>
+          <div class="composer-controls">
+            <label class="select-control">
+              <span>Architecture</span>
+              <select name="architecture">
+                <option value="control">Agent control</option>
+                <option value="service">Knowledge service</option>
+              </select>
+            </label>
+            <div class="selected-model" aria-live="polite">
+              <span>Selected model</span>
+              <strong data-selected-model>GPT-5.6 Luna</strong>
+            </div>
+            <label class="one-call-approval">
+              <input type="checkbox" name="provider_approval" />
+              <span><strong>Acknowledge provider request</strong><small>Not replay protection</small></span>
+            </label>
+            <button class="send-button" type="submit" data-send>
+              <span>Send to guarded API</span><b aria-hidden="true">↗</b>
+            </button>
+          </div>
+          <p class="composer-status" data-composer-status>No request sent. Provider usage and cost have not been verified.</p>
+        </form>
+      </section>
+
+      <aside class="control-panel" aria-label="Jarvis models and access controls">
+        <section class="control-section access-section">
+          <div class="section-label"><span>01</span><h2>Owner access</h2></div>
+          <label class="field-control">
+            <span>Jarvis owner token</span>
+            <input type="password" name="owner_token" data-owner-token autocomplete="off" spellcheck="false" placeholder="Held in memory for this tab only" />
+          </label>
+          <label class="field-control">
+            <span>API base</span>
+            <input type="url" name="api_base" data-api-base inputmode="url" placeholder="Same origin (default)" />
+          </label>
+          <p>The owner token is compared server-side and is never stored by this page. It is sent only to this origin or an HTTP loopback address; use a same-origin proxy for any hosted API.</p>
+        </section>
+
+        <section class="control-section models-section">
+          <div class="section-label"><span>02</span><h2>Curated routes</h2></div>
+          <div class="model-cards" data-model-cards aria-label="Curated OpenRouter models"></div>
+        </section>
+
+        <section class="control-section catalog-section">
+          <div class="section-label"><span>03</span><h2>Search OpenRouter</h2></div>
+          <label class="search-control">
+            <span class="sr-only">Search model catalog</span>
+            <input type="search" data-model-search placeholder="Search 300+ model routes…" autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+          <p class="catalog-status" data-catalog-status>Loading the live public model catalog…</p>
+          <div class="catalog-results" data-catalog-results></div>
+        </section>
+
+        <section class="control-section boundary-section">
+          <div class="section-label"><span>04</span><h2>Truth boundary</h2></div>
+          <dl>
+            <div><dt>Configured</dt><dd>Server has required environment state.</dd></div>
+            <div><dt>Authorized</dt><dd>Owner token and per-request acknowledgement both pass.</dd></div>
+            <div><dt>Executed</dt><dd>Blocked until single-use nonce and durable spend enforcement exist.</dd></div>
+            <div><dt>Written back</dt><dd>Disabled in this surface.</dd></div>
+          </dl>
+        </section>
+      </aside>
+    </main>
+
+    <script src="jarvis.js?v=20260713-owner-guard" defer></script>
+    <script src="hover-depth.js?v=20260713-owner-guard" defer></script>
+  </body>
+</html>

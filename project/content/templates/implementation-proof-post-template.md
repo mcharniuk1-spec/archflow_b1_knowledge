@@ -11,7 +11,7 @@ Use when an executed task produced a working artifact, validation result, review
 - Validation artifact:
 - Review status:
 - Intended channel: LinkedIn post first
-- ICP lane: B2B SaaS product leaders for Product Discovery-to-Production PRD Pack
+- ICP lane: 30-75-person product-led B2B SaaS product leaders under a verified knowledge-continuity forcing moment
 
 ## Eligible Subtopics
 
@@ -20,14 +20,14 @@ Use when an executed task produced a working artifact, validation result, review
 - Source registry, retrieval metadata, and readback assertions.
 - Review gate blocking unsupported claims.
 - Dashboard read-only status as operator proof.
-- Implementation of reusable templates, PRD assets, or source-boundary rules.
+- Implementation of source maps, knowledge-spine controls, generated output packs, role handoffs, or source-boundary rules.
 
 ## Proof Required
 
 - `FACT`: exact repo-relative artifact paths, run summary, check output, review verdict.
-- `INTERPRETATION`: why the proof matters for PRD quality or agent reliability.
+- `INTERPRETATION`: why the proof matters for knowledge continuity, generated-output quality, or agent reliability.
 - `HYPOTHESIS`: how the same method may help the product-team ICP.
-- `GAP`: what is still blocked, unapproved, or awaiting E6/E7 demand proof.
+- `GAP`: what is still blocked, unapproved, or awaiting E5/E7 demand proof.
 
 ## Copy Blocks
 
@@ -77,7 +77,7 @@ It is preserving source context, separating fact from hypothesis, and handing a 
 ### Close / CTA
 
 ```text
-Question for product teams: where does your current PRD process lose the most context before engineering starts?
+Question for product teams: where does critical product knowledge become hardest to recover during an enterprise deadline, onboarding wave, or team handoff?
 ```
 
 ## Allowed Screenshots And Data
@@ -98,7 +98,7 @@ Blocked:
 - The post names the implementation artifact, not just the activity.
 - Evidence labels appear for proof, interpretation, hypothesis, and gap.
 - The ICP link is framed as hypothesis unless market evidence exists.
-- No customer, revenue, ROI, or market-validation claim appears before E6/E7 proof.
+- No customer, revenue, ROI, or market-validation claim appears before E5/E7 proof.
 - AF Review approved public safety and claim status.
 - Owner approved final text before publication.
 

@@ -5,7 +5,7 @@ Date: 2026-07-10
 
 ## Positioning Anchor
 
-The intended audience is B2B SaaS product leadership responsible for discovery quality, PRD clarity, and delivery handoff. The content must describe ArchFlow as a Product Discovery-to-Production PRD Pack: approved material becomes a labeled context digest, reviewed PRD/ICP evidence, acceptance criteria, task handoff, and decision-memory candidate. It must not promise autonomous delivery, generic AI transformation, live product access, customer outcomes, or ROI.
+The current audience hypothesis is Head/VP Product or CPO in a 30-75-person product-led B2B SaaS company facing enterprise readiness, onboarding, departure continuity, agent-context rework, or chronic retrieval. Product Ops or a senior Product Manager may be a champion; Project Manager/PMO is not the assumed buyer. Content must describe a Product Knowledge Reliability Setup and governed Agent Operating System, with PRD/ICP as downstream artifacts. It must not promise autonomous delivery, generic AI transformation, live product access, customer outcomes, or ROI.
 
 ## Controlled Flow
 
@@ -28,8 +28,8 @@ Use the existing content-planner rubric. Admit an item only when it scores at le
 
 - LinkedIn is the primary draft. X and Threads versions only shorten the approved core claim; they introduce no new claim.
 - A short-video concept is a script and cover specification only. It always has a static companion and passes the same review gates.
-- Use source-lineage, review-gate, acceptance-criteria, task-handoff, and decision-memory language. Avoid generic productivity, disruption, or AI-agency slogans.
-- A CTA may invite a review of a source packet, readiness diagnostic, or scoped PRD Pack discussion. It cannot imply an active provider, automation, production integration, customer proof, or commercial result.
+- Use forcing-moment, source/owner/freshness, provenance, review-gate, task-handoff, and decision-memory language. Avoid generic productivity, disruption, PRD-generator, or AI-agency slogans.
+- A CTA may invite a source/ownership diagnostic, enterprise-answer readiness review, onboarding-continuity map, or scoped knowledge-reliability discussion. It cannot imply an active provider, automation, production integration, customer proof, or commercial result.
 
 ## Required QA Verdict
 

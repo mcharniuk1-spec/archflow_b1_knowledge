@@ -89,7 +89,7 @@ def build_patterns() -> list[tuple[str, re.Pattern[str]]]:
             r"\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b",
         ),
         ("github_token", r"gh[pousr]_[A-Za-z0-9_]{20,}"),
-        ("openai_key", r"sk-(?:proj-)?[A-Za-z0-9_-]{20,}"),
+        ("openai_key", r"(?<![A-Za-z0-9_])sk-(?:proj-)?[A-Za-z0-9_-]{20,}"),
         ("langsmith_key", r"ls(?:v2|__)[A-Za-z0-9_.-]{20,}"),
         ("slack_token", r"xox[baprs]-[A-Za-z0-9-]{20,}"),
         ("aws_access_key", r"AKIA[0-9A-Z]{16}"),

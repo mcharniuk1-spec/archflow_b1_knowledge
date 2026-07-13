@@ -5,16 +5,20 @@
 Use this structure:
 
 ```text
-Codex-authenticated operator prompt
+Authority and safety envelope
+  -> Codex-authenticated operator prompt
   -> Hermes watchdog/controller prompt (planned, non-executing)
-  -> CAG/RAG context capsule
-  -> LangGraph path and state controller
-  -> Loop Engineering run contract
-  -> LlamaIndex bounded retrieval
-  -> CrewAI named team tasks
-  -> LangGraph review gate
-  -> public-safe project outputs
+  -> Goal Engineering objective, verifier, budget, and kill switches
+  -> CAG core plus bounded LlamaIndex retrieval
+  -> LangGraph task graph, checkpoints, and human gates
+  -> Terra integration or Luna bounded worker task
+  -> Loop Engineering maker/checker repair contract
+  -> deterministic verification and AF Review safety gate
+  -> WikiLLM promotion decision and Graphify rebuild policy
+  -> approved public output or action-specific external gate
 ```
+
+The safety envelope applies across every layer. Platform approvals remain authoritative; a future destructive-command hook can add defense in depth but cannot expand authority or replace review.
 
 ## Tool Responsibilities
 
@@ -22,6 +26,7 @@ Codex-authenticated operator prompt
 |---|---|---|
 | Codex | Current local operator binding for execution, editing, verification, and final integration. | Default interface for now; role contracts, not runtime identity, determine authority. |
 | Hermes | Current label for the planned watchdog/controller/reviewer role. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Any compatible watchdog remains non-executing: no edits, deployment, task-board mutation, provider call, or external write. |
+| Goal Engineering | Persistent bounded objective, observable completion, independent verifier, lifecycle, budget, and kill switches. | Active design contract under `project/goals/`; G1 is the new default and G2 remains a fixture target. |
 | CAG context capsules | Controlled Context Assembly Generation before subagent prompting. | Stable context packet under `project/context/`; not durable memory and not broad ingestion. |
 | LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. |
 | Loop Engineering | State, attempt caps, budget, maker/checker split, stop conditions. | L1 report-only loop contract under `project/loops/`. |
@@ -33,6 +38,9 @@ Codex-authenticated operator prompt
 | Ollama | Local model serving. | Minor/background tasks only; active model is Qwythos and fallback is `gemma4:e4b`. |
 | Mistral | Optional cloud quality pass. | Disabled until credentials, sanitized inputs, budget, model metadata logging, and AF Review approval exist. |
 | LangSmith | Observability and trace review. | Configured for tracing only; waits for manual API key insertion. |
+| Destructive command defense | Pre-execution command analysis plus platform approval and sandbox controls. | Platform approval/sandbox is active. Third-party `destructive_command_guard` is trial-only pending a completed scan, pinned release, hook-diff review, fixture tests, and rollback. |
+| Obsidian methods | Index-first navigation, source preservation, provenance, reconciliation, and write propagation. | Selectively adopted through current vault rules. Unattended permission bypass and uncontrolled background vault writes are rejected. |
+| Google and NVIDIA ecosystems | Reference build/evaluate/deploy/govern/observe patterns and task-specific verified skills. | Selective source and skill governance inputs only; no wholesale install or second orchestrator is active. |
 
 ## Role-Based Runtime Interpretation
 
@@ -87,7 +95,7 @@ Hermes is the current label for the watchdog permission set, not proof of a host
 Hermes is allowed to:
 
 - classify the execution type and risk;
-- assemble CAG core from stable project rules, role registry, skill governance, current architecture, E1-E7 task state, and gated claims;
+- assemble CAG core from stable project rules, role registry, skill governance, current architecture, E1-E8 task state, and gated claims;
 - request bounded RAG evidence from the approved corpus;
 - build or review context capsules;
 - generate task contracts for Codex or subagents;
@@ -140,20 +148,31 @@ Status: active strategy, proof-backed method, not validated demand.
 
 ArchFlow is positioned first as a productized service:
 
-1. Discovery Diagnostic.
-2. PRD Rescue Sprint.
-3. Monthly PRD/KB Operating Retainer.
+1. Forcing-Moment Knowledge Diagnostic.
+2. Product Knowledge Reliability Sprint.
+3. Knowledge Continuity Operating Retainer only after paid-start and reliability evidence.
 
-The service core is customer discovery to evidence-backed PRD, task packet, and KB handoff. SaaS readiness, autonomous runtime, provider-backed execution, writeback, customer demand, paid clients, and ROI claims remain gated until current evidence exists.
+The service core is a verified forcing moment to source/owner/freshness map, reviewed knowledge spine, task-specific generated output pack, and governed handoff. PRD, ICP, backlog, and content remain possible downstream outputs. SaaS readiness, autonomous runtime, provider-backed execution, writeback, customer demand, paid clients, and ROI claims remain gated until current evidence exists.
 
 ## Loop And Parallelism Rules
 
 - Default loop level is L1 report-only.
+- Default goal level is G1; a loop may repair a task but may not redefine the goal or broaden its authority.
 - `max_revision_loops` remains 2.
 - Item-level retry cap is 3.
+- Default parallel branch cap is 3 unless the goal contract explicitly lowers or raises it with evidence.
 - A maker cannot approve its own high-risk output.
-- Parallel work is allowed only for independent extraction tasks such as E2 website parsing, job-signal capture, review mining, and social-language mining.
+- Terra is the sole-writer/integrator role for high-impact synthesis. Luna roles are bounded read-only workers by default. These labels do not imply a particular model.
+- Parallel work is allowed only for independent extraction, drafting, or critique tasks such as E2 website parsing, job-signal capture, review mining, and social-language mining.
 - Synthesis, role verification, memory promotion, Notion updates, outreach, and payment verdicts remain sequential and reviewed.
+
+## Architecture Factory Contract
+
+Status: active design baseline; deterministic/provider-disabled pilot still required.
+
+The architecture can generate bounded role architectures for knowledge systems, PRD/ICP, engineering, agent engineering, research, content/growth, sales/outreach, finance/operations, web/interactive media, and long-form publishing. The factory must emit a goal contract, dependency graph, role/skill pack, retrieval profile, state machine, loop budget, verification plan, safety boundary, memory-promotion policy, and benchmark. The reusable procedure lives in `skills/archflow-architecture-operator/`.
+
+An architecture template is not production-ready because it exists. It graduates only after the same provider-disabled fixture and then, when authorized, provider-backed evaluation pass the declared quality, reliability, retrieval, context, cost, safety, and recovery thresholds.
 
 ## Model Routing
 

@@ -1,5 +1,17 @@
 # Memory
 
+## Architecture Factory Memory - 2026-07-13
+
+- ArchFlow's strategic center is maintained, trustworthy knowledge and execution continuity; PRD/ICP is one generated workflow architecture, not the full company identity.
+- Goal Engineering is now a first-class G1 contract under `project/goals/`; it defines objective, observable completion, independent verifier, lifecycle, budget, authority, stop rules, and kill switches.
+- Loop Engineering remains L1 by default and repairs bounded tasks; LangGraph remains the state and routing owner.
+- Terra is the high-impact sole-writer/integrator role and Luna is a bounded read-only worker role by default. These labels do not imply a specific model.
+- The reusable architecture factory is `skills/archflow-architecture-operator/`; it generates goal, task graph, role/skill, retrieval, state, loop, verification, memory, safety, and benchmark contracts.
+- WikiLLM remains canonical. Obsidian is the human semantic layer, Graphify is generated structure, Nexus is a live bridge, and LlamaIndex is bounded retrieval. Cognee and TurboVec remain trial candidates, not defaults.
+- Selective Obsidian patterns are index-first retrieval, source preservation, provenance, reconciliation, and write propagation. Permission-bypass background agents and uncontrolled whole-vault writes are rejected.
+- External tools and skills require provenance, license, security scan, version pin, permission review, rollback, sanitized fixture, benchmark, and independent review before adoption.
+- No performance improvement may be claimed until baseline and candidate run the same benchmark.
+
 ## Stable Project Direction
 
 ArchFlow Block 1 is the first public solution:
@@ -313,3 +325,20 @@ ArchFlow Block 1 is the first public solution:
 - Current hosted proof requires a point-in-time route check; a successful health response is not continuous monitoring or an uptime guarantee.
 - Jarvis chat/config may persist in browser `localStorage`, while transient packets/events use `sessionStorage`. Neither proves durable server, database, Notion, WikiLLM, or cross-device persistence.
 - The approved Telegram file sender accepts reviewed public-repository artifacts only. Broader-workspace files without stable public links remain local-only even when their extracted text passes the public-safety pattern scan.
+
+## Obsidian Graphify Nexus Boundary Memory - 2026-07-10
+
+- Obsidian plugin/config readiness, vault activation, live Nexus socket readiness, and successful Nexus tool calls are separate proof states.
+- A vault should not be treated as live-action ready until both socket/tool listing and a tool-manager or tool-call verifier pass for that specific vault.
+- The ArchFlow repository workspace remains outside the curated second-brain vault graph unless a separate sanitized ArchFlow vault decision is made.
+- Public Graphify output must stay scoped to approved project/repository corpora and pass the public-output sanitizer before it is used as public-safe generated evidence.
+
+## ICP Knowledge-Continuity Product Surface Memory - 2026-07-13
+
+- The current first-cohort hypothesis is roughly 30-75-person product-led B2B SaaS under enterprise-readiness, onboarding/hiring, or key-person-departure forcing moments. It is not validated demand.
+- Head/VP Product or CPO is the first buyer hypothesis; senior Product Manager is usually a champion; Product Ops is a possible user/champion; Project Manager/PMO is a title-confusion exclusion.
+- Active positioning leads with a maintained, source-grounded company brain and bounded agent execution. PRD, ICP, content, and outreach are generated architectures within that system.
+- The current public surface is a three-block website, an eight-route documentation/operator dashboard, and a separate provider-disabled Jarvis UI.
+- Historical PRD-first/50-500 material remains superseded history and should not outrank the canonical audience node in retrieval.
+- E8 is the gated installable repository/MCP/admin product path. E5 buyer/access/paid-start evidence and E7 safety/installability proof must precede implementation.
+- Jarvis provider execution remains blocked until atomic single-use approval and durable projected/actual spend enforcement are implemented and tested.

@@ -42,7 +42,7 @@ NEXT:
 
 - Do not store private personal names in public files.
 - Do not store raw private source text, private URLs, account IDs, screenshots, credentials, or local absolute paths.
-- Do not claim customer demand, revenue, paid intent, or production results without E6/E7 evidence.
+- Do not claim customer demand, revenue, paid intent, or production results without E5/E7 evidence.
 - Do not move E2 into execution until source boundaries, data types, tools, and owner questions are reviewed.
 - Do not promote memory directly; prepare candidates for AF Review.
 

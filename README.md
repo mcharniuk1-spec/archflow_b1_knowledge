@@ -29,8 +29,19 @@ Rules:
 
 ## Current Project Direction
 
-ArchFlow is being reset around a first solution:
+ArchFlow is a knowledge-continuity operating system for companies that need a maintained, source-grounded company brain and bounded agent execution.
 
-`dialogue/chat/meeting material -> structured context -> PRD -> task and responsibility plan -> agent-ready knowledge base`
+The current service wedge is:
 
-The first public-safe implementation goal is to prove this workflow internally before positioning it externally.
+`forcing moment -> source and ownership map -> reviewed knowledge spine -> governed agent workflows -> measured handoff`
+
+PRDs, ICPs, content, outreach, and other execution packs are generated architectures inside that system; they are not the whole product identity.
+
+The current public-safe implementation includes:
+
+- a three-block buyer-facing website built around the seven-layer ArchFlow tower, two delivery lanes, and a disclosed planning calculator;
+- a documentation-first operator dashboard for architecture, knowledge, roles, skills, workflow state, runs, and proof;
+- a separate provider-disabled Jarvis surface with server-side owner, model, budget, and one-call gates;
+- an E1-E8 plan whose final gated milestone is a locally installable repository, least-privilege MCP, administration plane, and lifecycle documentation.
+
+Local implementation proof does not establish production deployment, live provider execution, validated demand, or autonomous writeback.

@@ -1,0 +1,47 @@
+version: 1
+updated_at: 2026-07-13
+canonical_audience_source: project/knowledge/audience/icp-knowledge-continuity.md
+canonical_strategy_source: project/strategic-plan-2026-07-13.md
+retrieval_policy:
+  canonical_sources_first: true
+  contradictory_current_claim: return_gap_and_request_reconciliation
+  dated_runs_and_reports: historical_evidence_only
+  generated_dashboard_data: cache_only_not_authority
+  project_plan_legacy_sections: historical_superseded
+superseded_sources:
+  - path: project/project-plan.md
+    scope: icp_offer_sequence_and_dates
+    superseded_on: 2026-07-13
+    reason: former_50_to_500_prd_first_hypothesis
+  - path: project/knowledge/collaborator/daily-founder-notes-2026-07-03.md
+    scope: former_icp_offer_and_epic_sequence
+    superseded_on: 2026-07-13
+    reason: dated_collaborator_brief_preserved_as_historical_evidence
+current_dependents:
+  - project/context/cag-core.yaml
+  - project/agentic-stack.md
+  - project/workflows/market-research-engine.yaml
+  - project/content/architecture/README.md
+  - project/content/architecture/content-operation-model.md
+  - project/content/templates/README.md
+  - project/content/templates/qualification-checklist-template.md
+  - project/content/templates/implementation-proof-post-template.md
+  - project/content/templates/research-check-task-template.md
+  - project/content/templates/carousel-template.md
+  - project/content/architecture/feedback-and-measurement-specification.md
+  - project/content/calendar/2026-07-watchdog-initial-content-plan.md
+  - project/content/templates/diagnostic-offer-template.md
+  - project/content/templates/discovery-call-script-template.md
+  - project/content/templates/distribution-70-20-10-template.md
+  - project/content/templates/five-week-content-calendar-template.md
+  - project/content/calendar/2026-07-five-week-70-20-10-plan.md
+  - project/content/mockups/static-post-mockup-specs.md
+  - project/content/operations/content-planner-workflow.md
+  - project/content/operations/competitor-analyzer-role.md
+  - project/content/templates/dashboard-update-template.md
+  - project/knowledge/collaborator/agent-instructions.md
+query_aliases:
+  current_icp: project/knowledge/audience/icp-knowledge-continuity.md
+  current_buyer: project/knowledge/audience/icp-knowledge-continuity.md
+  current_offer: project/strategic-plan-2026-07-13.md
+  current_marketing_roles: project/agents/marketing-role-pack.md

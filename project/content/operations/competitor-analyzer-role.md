@@ -30,7 +30,7 @@ Map current alternatives and objections for the ArchFlow PRD automation service 
 
 - Public-source URL or repo artifact exists for each competitor claim.
 - No claim relies on private account access or scraped social data.
-- No demand, market-share, customer, revenue, or ROI claim is made without separate E6/E7 evidence.
+- No demand, market-share, customer, revenue, or ROI claim is made without separate E5/E7 evidence.
 - Product positioning is described as current-source observation, not final market truth.
 - Cycle and any other source that cannot be extracted cleanly remains a GAP until verified.
 

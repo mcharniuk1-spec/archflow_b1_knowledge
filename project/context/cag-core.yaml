@@ -1,4 +1,4 @@
-version: 2026-07-08-founder-meeting-v2
+version: 2026-07-13-knowledge-continuity-icp
 status: active_planning_context
 purpose: >
   Stable ArchFlow context assembled before task-specific RAG retrieval and
@@ -40,7 +40,7 @@ source_boundaries:
   path_policy: repo_relative_paths_only_in_public_files
 
 founder_method:
-  service_core: customer_discovery_to_evidence_backed_prd_task_packet_kb_handoff
+  service_core: forcing_moment_to_source_owner_freshness_map_to_reviewed_knowledge_spine_to_generated_output_and_governed_handoff
   discovery_methods:
     - jtbd
     - ninety_day_story
@@ -52,22 +52,35 @@ founder_method:
     - definition_of_done
     - dual_track_discovery_delivery
   service_offer_ladder:
-    - Discovery Diagnostic
-    - PRD Rescue Sprint
-    - Monthly PRD/KB Operating Retainer
+    - Forcing-Moment Knowledge Diagnostic
+    - Product Knowledge Reliability Sprint
+    - Knowledge Continuity Operating Retainer only after paid-start and reliability evidence
 
 market_content_sales:
-  primary_icp: b2b_saas_product_teams_50_500_employees_2_5_pms
+  primary_icp: product_led_b2b_saas_30_75_employees_under_verified_knowledge_continuity_forcing_moment
   buyers:
-    - Director Product
-    - VP Product
-    - Head of Product
-    - Product Ops
-    - senior PM leaders
+    - Head or VP Product or CPO as first economic-buyer hypothesis
+    - founder as possible buyer below roughly 40 employees
+    - CTO as secondary route
+  champions_and_users:
+    - senior Product Manager as first champion hypothesis
+    - Product Ops as possible user or champion, not assumed economic buyer
+  explicit_exclusion:
+    - Project Manager or PMO title without product-knowledge budget and forcing-moment ownership
+  forcing_moments:
+    - enterprise questionnaire or RFP
+    - onboarding or hiring wave
+    - key-person departure
+  cross_functional_ownership_to_verify:
+    - Product
+    - Security
+    - Sales Engineering
+    - RevOps
   content_mix:
     static_educational_analytical: 70
     carousel_checklist_template: 20
     short_video_scripted_demo: 10
+  evidence_boundary: public_signals_are_not_confirmed_forcing_moments_and_primary_interviews_are_required
   demand_boundary: payment_or_firm_paid_intent_required_before_validated_demand_claim
 
 approval_gates:

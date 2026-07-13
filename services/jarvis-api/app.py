@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Guarded OpenRouter Jarvis API contract for the ArchFlow dashboard.
+"""Provider-disabled OpenRouter Jarvis API contract for ArchFlow.
 
 This service is intentionally conservative. It can answer health/config
-requests and create review packets. It calls OpenRouter only with explicit
-owner/provider approval, a server-side key, and a live budget guard; it never
-writes Notion/WikiLLM/GitHub, stores raw transcripts, or runs the full PRD/ICP
-test cycle without explicit durable-write approval.
+requests and create review packets. Provider execution stays disabled until a
+server-enforced single-use approval nonce and durable spend ledger exist. It
+never writes Notion/WikiLLM/GitHub or stores raw transcripts.
 """
 
 from __future__ import annotations
 
 import os
+import hmac
 import json
 import urllib.error
 import urllib.request
@@ -18,17 +18,29 @@ from datetime import datetime, timezone
 from typing import Any, Literal
 
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 
-APP_VERSION = "2026-07-07-jarvis-chat-files-voice-disabled"
+APP_VERSION = "2026-07-13-owner-auth-model-routing-blocked-ledger"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_OPENROUTER_MODEL = ""
 DEFAULT_DAILY_BUDGET = 5.00
 DEFAULT_RUN_BUDGET = 1.99
 DEFAULT_HARD_STOP = 1.99
 LOCAL_ORIGIN_REGEX = r"^http://(127\.0\.0\.1|localhost):\d+$"
+DEFAULT_ALLOWED_MODELS = [
+    "openai/gpt-5.6-luna",
+    "anthropic/claude-sonnet-5",
+    "qwen/qwen3.7-plus",
+    "deepseek/deepseek-v4-flash",
+]
+CURATED_MODELS = [
+    {"id": "openai/gpt-5.6-luna", "label": "GPT-5.6 Luna", "provider": "OpenAI", "tier": "frontier", "context_length": 1_050_000},
+    {"id": "anthropic/claude-sonnet-5", "label": "Claude Sonnet 5", "provider": "Anthropic", "tier": "frontier", "context_length": 1_000_000},
+    {"id": "qwen/qwen3.7-plus", "label": "Qwen3.7 Plus", "provider": "Qwen", "tier": "economy", "context_length": 1_000_000},
+    {"id": "deepseek/deepseek-v4-flash", "label": "DeepSeek V4 Flash", "provider": "DeepSeek", "tier": "economy", "context_length": 1_048_576},
+]
 
 REQUIRED_ROLE_IDS = [
     "jesus",
@@ -91,6 +103,7 @@ class JarvisRequest(BaseModel):
     attachments: list[JarvisAttachment] = Field(default_factory=list, max_length=6)
     owner_approval: bool = False
     provider_approval: bool = False
+    model_id: str = Field(default="", max_length=180)
 
 
 class RoleConfig(BaseModel):
@@ -144,6 +157,28 @@ def model_provider() -> str:
     return os.getenv("MODEL_PROVIDER", "none").strip().lower() or "none"
 
 
+def env_enabled(name: str) -> bool:
+    return os.getenv(name, "").strip().lower() in {"1", "true", "yes", "on"}
+
+
+def allowed_models() -> list[str]:
+    configured = [value.strip() for value in os.getenv("OPENROUTER_ALLOWED_MODELS", "").split(",") if value.strip()]
+    return configured or list(DEFAULT_ALLOWED_MODELS)
+
+
+def requested_model(request_model: JarvisRequest | VoiceRequest) -> str:
+    return str(getattr(request_model, "model_id", "") or os.getenv("OPENROUTER_MODEL", "")).strip()
+
+
+def owner_authorized(request: Request) -> bool:
+    expected = os.getenv("JARVIS_OWNER_TOKEN", "").strip()
+    if not expected:
+        return False
+    authorization = request.headers.get("authorization", "")
+    scheme, _, supplied = authorization.partition(" ")
+    return scheme.lower() == "bearer" and bool(supplied) and hmac.compare_digest(supplied.strip(), expected)
+
+
 def budget_state(provider_requested: bool = False) -> dict[str, Any]:
     provider = model_provider()
     budget_prefix = "OPENAI" if provider == "openai" else "OPENROUTER"
@@ -177,34 +212,39 @@ def budget_state(provider_requested: bool = False) -> dict[str, Any]:
     hard_stop = hard_stop if hard_stop is not None else DEFAULT_HARD_STOP
 
     over_cap = daily > DEFAULT_DAILY_BUDGET or hard_stop >= 2.00 or run >= 2.00
+    status = "blocked_over_cap" if over_cap else "ready_disabled"
+    if provider_requested and not over_cap:
+        status = "blocked_durable_nonce_and_spend_ledger_required"
     return {
-        "status": "blocked_over_cap" if over_cap else ("ready_for_approved_provider_call" if provider_requested else "ready_disabled"),
+        "status": status,
         "daily_budget_usd": daily,
         "run_budget_usd": run,
         "run_hard_stop_usd": hard_stop,
-        "actual_spend_usd": 0.00,
+        "actual_spend_usd": None,
+        "spend_tracking": "not_durable_across_process_restarts",
         "over_cap_behavior": "stop_and_request_owner_approval",
-        "provider_calls_allowed": bool(provider_requested and not over_cap),
+        "provider_calls_allowed": False,
     }
 
 
-def openrouter_model() -> str:
-    return os.getenv("OPENROUTER_MODEL", "").strip() or DEFAULT_OPENROUTER_MODEL
-
-
-def provider_ready(provider_requested: bool) -> tuple[bool, str]:
+def provider_ready(provider_requested: bool, owner_is_authorized: bool, model: str) -> tuple[bool, str]:
     if model_provider() != "openrouter":
         return False, "model_provider_not_openrouter"
+    if not env_enabled("JARVIS_ENABLE_PROVIDER_CALLS"):
+        return False, "provider_calls_not_enabled_server_side"
+    if not os.getenv("JARVIS_OWNER_TOKEN", "").strip():
+        return False, "owner_auth_not_configured"
+    if not owner_is_authorized:
+        return False, "owner_auth_required"
     if not provider_requested:
-        return False, "owner_and_provider_approval_required"
+        return False, "per_request_provider_acknowledgement_required"
     if not os.getenv("OPENROUTER_API_KEY", "").strip():
         return False, "openrouter_api_key_missing"
-    if not openrouter_model():
+    if not model:
         return False, "openrouter_model_required"
-    budget = budget_state(provider_requested=True)
-    if budget["status"] != "ready_for_approved_provider_call":
-        return False, f"budget_not_ready:{budget['status']}"
-    return True, "ready"
+    if model not in allowed_models():
+        return False, "model_not_in_server_allowlist"
+    return False, "durable_nonce_and_spend_ledger_required"
 
 
 def architecture_context(kind: str, request: JarvisRequest | VoiceRequest) -> dict[str, Any]:
@@ -282,16 +322,14 @@ def openrouter_prompt(kind: str, request: JarvisRequest | VoiceRequest) -> list[
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
-def call_openrouter(kind: str, request_model: JarvisRequest | VoiceRequest) -> dict[str, Any]:
-    provider_requested = bool(
-        getattr(request_model, "owner_approval", False)
-        and getattr(request_model, "provider_approval", False)
-    )
-    ready, reason = provider_ready(provider_requested)
+def call_openrouter(kind: str, request_model: JarvisRequest | VoiceRequest, owner_is_authorized: bool) -> dict[str, Any]:
+    provider_requested = bool(getattr(request_model, "provider_approval", False))
+    model = requested_model(request_model)
+    ready, reason = provider_ready(provider_requested, owner_is_authorized, model)
     if not ready:
-        return {"provider_executed": False, "reason": reason}
+        return {"provider_executed": False, "reason": reason, "requested_model": model}
     payload = {
-        "model": openrouter_model(),
+        "model": model,
         "messages": openrouter_prompt(kind, request_model),
         "temperature": float(os.getenv("OPENROUTER_TEMPERATURE", "0.2")),
         "max_tokens": int(os.getenv("OPENROUTER_MAX_TOKENS", "900")),
@@ -385,8 +423,13 @@ def packet(
     }
 
 
-def provider_packet(kind: str, request_model: JarvisRequest | VoiceRequest, payload: dict[str, Any]) -> dict[str, Any]:
-    provider = call_openrouter(kind, request_model)
+def provider_packet(
+    kind: str,
+    request_model: JarvisRequest | VoiceRequest,
+    payload: dict[str, Any],
+    owner_is_authorized: bool = False,
+) -> dict[str, Any]:
+    provider = call_openrouter(kind, request_model, owner_is_authorized)
     full_payload = {
         **payload,
         "architecture_runtime": architecture_context(kind, request_model),
@@ -401,7 +444,7 @@ def provider_packet(kind: str, request_model: JarvisRequest | VoiceRequest, payl
             {
                 "provider_calls": 1,
                 "default_runtime": "openrouter_guarded_langgraph_crewai_packet",
-                "model": provider.get("model", openrouter_model()),
+                "model": provider.get("model", requested_model(request_model)),
             },
         )
     return packet(kind, "review_packet_created", full_payload)
@@ -436,11 +479,12 @@ async def enforce_origin(request: Request, call_next):
     if allowed_origin and request.method not in {"GET", "OPTIONS"}:
         origin = request.headers.get("origin")
         if origin and origin != allowed_origin:
-            raise HTTPException(status_code=403, detail="origin_not_allowed")
+            return JSONResponse(status_code=403, content={"detail": "origin_not_allowed"})
     return await call_next(request)
 
 
 @app.get("/health")
+@app.get("/api/health")
 def health() -> dict[str, Any]:
     return packet(
         "health",
@@ -449,7 +493,13 @@ def health() -> dict[str, Any]:
             "service": "jarvis-api",
             "version": APP_VERSION,
             "model_provider": model_provider(),
-            "provider_calls": "disabled_until_explicit_owner_approval_and_budget_guard",
+            "provider_enabled": False,
+            "provider_switch_requested": env_enabled("JARVIS_ENABLE_PROVIDER_CALLS"),
+            "provider_key_configured": bool(os.getenv("OPENROUTER_API_KEY", "").strip()),
+            "owner_auth_configured": bool(os.getenv("JARVIS_OWNER_TOKEN", "").strip()),
+            "allowed_models": allowed_models(),
+            "provider_calls": "blocked_until_server_nonce_and_durable_spend_ledger_exist",
+            "spend_tracking": "not_implemented_provider_execution_disabled",
             "langgraph": "controller_contract",
             "crewai": "proof_passed_not_default_runtime",
             "voice": "disabled_text_chat_only",
@@ -459,8 +509,24 @@ def health() -> dict[str, Any]:
     )
 
 
+@app.get("/api/models")
+def models() -> dict[str, Any]:
+    allowed = set(allowed_models())
+    return packet(
+        "model-catalog",
+        "ok",
+        {
+            "curated": [{**model, "allowed": model["id"] in allowed} for model in CURATED_MODELS],
+            "allowed_model_ids": sorted(allowed),
+            "live_catalog_url": "https://openrouter.ai/api/v1/models",
+            "catalog_policy": "search_is_public; execution remains disabled until server nonce and durable spend enforcement exist",
+            "snapshot_date": "2026-07-13",
+        },
+    )
+
+
 @app.post("/api/chat")
-def chat(request: JarvisRequest) -> dict[str, Any]:
+def chat(request: JarvisRequest, http_request: Request) -> dict[str, Any]:
     return provider_packet(
         "chat",
         request,
@@ -478,6 +544,7 @@ def chat(request: JarvisRequest) -> dict[str, Any]:
                 else "Architecture 2: controlled agent/workflow system"
             ),
         },
+        owner_authorized(http_request),
     )
 
 
@@ -500,7 +567,7 @@ def update_roles(request: RoleUpdateRequest) -> dict[str, Any]:
 
 @app.get("/api/lanes/prd-icp")
 @app.post("/api/lanes/prd-icp")
-def prd_icp_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
+def prd_icp_lane(http_request: Request, request: JarvisRequest | None = None) -> dict[str, Any]:
     request = request or JarvisRequest(lane="prd_icp_flow")
     return provider_packet(
         "prd-icp-flow",
@@ -515,12 +582,13 @@ def prd_icp_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
             "required_outputs": ["suggested Jira/GitLab backlog", "missing-info questions", "review gates"],
             "test_cycle": "blocked_until_owner_approval",
         },
+        owner_authorized(http_request),
     )
 
 
 @app.get("/api/lanes/agent-orchestra")
 @app.post("/api/lanes/agent-orchestra")
-def agent_orchestra_lane(request: JarvisRequest | None = None) -> dict[str, Any]:
+def agent_orchestra_lane(http_request: Request, request: JarvisRequest | None = None) -> dict[str, Any]:
     request = request or JarvisRequest(lane="agent_orchestra")
     return provider_packet(
         "agent-orchestra",
@@ -534,6 +602,7 @@ def agent_orchestra_lane(request: JarvisRequest | None = None) -> dict[str, Any]
             "stages": ["Intake", "Role Assignment", "Active Work", "QA Gate", "Docs/Reports", "Git/Deploy", "Notion/Memory", "Final Decision"],
             "roles": default_roles(),
         },
+        owner_authorized(http_request),
     )
 
 

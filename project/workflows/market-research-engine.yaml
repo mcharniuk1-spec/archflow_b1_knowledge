@@ -7,15 +7,23 @@ purpose: >
   message synthesis, learning loop, and AF Review.
 
 primary_icp_hypothesis:
-  segment: b2b_saas_product_teams
-  profile: "Series B-D B2B SaaS companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed"
-  first_offer: product_discovery_to_production_prd_pack
+  canonical_source: project/knowledge/audience/icp-knowledge-continuity.md
+  segment: product_led_b2b_saas_knowledge_continuity
+  profile: "30-75 employee horizontal product-led B2B SaaS; Series A to early B is directional; Head/VP Product or CPO is the buyer hypothesis and must be verified per forcing moment"
+  first_offer: product_knowledge_reliability_setup
+  forcing_moments:
+    - enterprise_rfp_or_questionnaire
+    - onboarding_or_hiring_wave
+    - key_person_departure
+    - ai_agent_context_rework
+    - chronic_retrieval
   later_or_adjacent_segments:
-    - product_software_ai_service_agencies
-    - ai_automation_consultancies
-    - founder_led_b2b_startups
-    - market_research_teams
-    - enterprise_product_ops_later
+    - unresolved_80_to_100_employee_transition
+    - regulated_verticals_after_compliance_architecture
+    - mature_enterprise_knowledge_or_product_ops
+  title_exclusions:
+    - project_manager
+    - pmo
 
 stages:
   hypothesis:
@@ -46,16 +54,28 @@ stages:
     mode: sequential_reviewed
   message_synthesis:
     owner_agent: af_copy
-    output: personalized_outreach_drafts
+    output: forcing_moment_message_and_claim_table
     mode: sequential_reviewed
+  channel_preparation:
+    owner_agent: af_abm_channel
+    output: target_channel_message_and_action_packet
+    mode: sequential_no_send
   fact_check_gate:
     owner_agent: af_review
-    output: approved_or_blocked_research_packet
+    output: approved_repair_or_blocked_claim_target_channel_action_packet
     mode: sequential_blocking
+  owner_action_pause:
+    owner_agent: external_action_role
+    output: owner_approval_or_no_action_receipt
+    mode: external_action_disabled_by_default
   learning_loop:
-    owner_agent: af_knowledge
-    output: response_and_objection_log_update
+    owner_agent: af_growth_evidence
+    output: stage_event_objection_and_payment_evidence_packet
     mode: report_only
+  knowledge_promotion:
+    owner_agent: af_knowledge
+    output: reviewed_audience_delta_and_readback
+    mode: sequential_reviewed
 
 account_card_schema:
   account_id: stable_domain_id
@@ -68,9 +88,9 @@ account_card_schema:
   job_signal_score: integer_0_to_20
   linkedin_signal_summary: authorized_summary_only
   social_signal_summary: hypothesis_only
-  pain_type: customer_research_overload_prd_rework_roadmap_ambiguity_handoff_loss_decision_memory_gap
+  pain_type: enterprise_answer_readiness_onboarding_continuity_departure_continuity_agent_context_rework_chronic_retrieval_artifact_production
   decision_roles: role_names_and_currentness_status
-  offer_fit: product_discovery_to_production_prd_pack_product_ops_workflow_review_ai_kb_handoff
+  offer_fit: product_knowledge_reliability_setup_agent_operating_system_or_defer
   evidence_grade: a_b_c_d
   risk_notes: string
   next_action: exclude_monitor_enrich_verify_people_draft_outreach_interview
@@ -90,6 +110,9 @@ evidence_rules:
   decision_maker_currentness: verify_live_before_outreach
   private_profile_scraping: forbidden
   raw_private_lead_data_in_public_repo: forbidden
+  public_signal_is_confirmed_forcing_moment: false
+  project_manager_or_pmo_is_default_buyer: false
+  product_ops_is_default_economic_buyer: false
 
 tool_policy:
   allowed_now:

@@ -1,19 +1,143 @@
-const tabs = [
-  { id: "jarvis", label: "Jarvis", glyph: "JV" },
-  { id: "history", label: "Chat History", glyph: "CH" },
-  { id: "service", label: "(1) PRD/ICP Flow", glyph: "P1" },
-  { id: "schema", label: "(2) Agent Orchestra", glyph: "A2" },
-  { id: "config", label: "Config", glyph: "CF" },
-  { id: "plan", label: "Project Plan", glyph: "PL" },
+const primaryTabs = [
   { id: "overview", label: "Overview", glyph: "OV" },
-  { id: "wikillm", label: "WikiLLM Memory", glyph: "WK" },
+  { id: "architecture", label: "Architecture", glyph: "AR" },
+  { id: "knowledge", label: "Knowledge", glyph: "KN" },
+  { id: "agents", label: "Agents & Skills", glyph: "AS" },
+  { id: "runs", label: "Runs & Evidence", glyph: "RE" },
+  { id: "reference", label: "Reference", glyph: "RF" },
+];
+
+const secondaryTabs = [
+  { id: "service", label: "PRD / ICP Flow", glyph: "P1" },
+  { id: "schema", label: "Workflow Editor", glyph: "A2" },
+  { id: "config", label: "Configuration", glyph: "CF" },
+  { id: "plan", label: "E1-E8 Plan", glyph: "PL" },
+  { id: "wikillm", label: "WikiLLM", glyph: "WK" },
   { id: "graphify", label: "Graphify", glyph: "GF" },
-  { id: "langgraph", label: "LangGraph Runs", glyph: "LG" },
-  { id: "llamaindex", label: "LlamaIndex Query", glyph: "LI" },
-  { id: "crewai", label: "CrewAI Outputs", glyph: "CR" },
-  { id: "langsmith", label: "LangSmith", glyph: "LS" },
-  { id: "env", label: "Env Config", glyph: "EN" },
-  { id: "gates", label: "Gates", glyph: "GT" },
+  { id: "langgraph", label: "LangGraph", glyph: "LG" },
+  { id: "llamaindex", label: "RAG Query", glyph: "LI" },
+  { id: "crewai", label: "CrewAI", glyph: "CR" },
+  { id: "langsmith", label: "Observability", glyph: "LS" },
+  { id: "env", label: "Runtime Config", glyph: "EN" },
+  { id: "gates", label: "Approval Gates", glyph: "GT" },
+  { id: "history", label: "Legacy Chat History", glyph: "CH" },
+];
+
+const tabs = [...primaryTabs, ...secondaryTabs, { id: "jarvis", label: "Legacy Jarvis", glyph: "JV", hidden: true }];
+
+const architectureLayers = [
+  {
+    id: "authority-goal",
+    number: "01",
+    title: "Authority & Goal",
+    canonical: "Layers 0-1: Authority and goal state",
+    purpose: "Bind every run to an owner, scope, measurable finish condition, budget, and approval boundary before orchestration starts.",
+    inputs: ["Owner request", "project operating contract", "goal-state schema", "current plan and constraints"],
+    outputs: ["Validated goal state", "task contract", "scope and stop rules", "approval map"],
+    parameters: ["objective", "success criteria", "budget", "deadline", "allowed actions", "forbidden actions"],
+    effects: ["Reduces scope drift", "makes completion testable", "routes risky actions to explicit gates"],
+    failureModes: ["Vague success criteria", "authority inferred from intent", "budget treated as telemetry rather than a hard boundary"],
+    proofState: "Configured design baseline",
+    proofTone: "configured",
+    approvalBoundary: "External sends, provider calls, destructive operations, deployment, and durable external writes require explicit authority.",
+    sources: ["project/operating-rules.md", "project/goals/goal-state.schema.yaml", "skills/archflow-architecture-operator/references/architecture-layers.md"],
+  },
+  {
+    id: "context-knowledge",
+    number: "02",
+    title: "Context & Knowledge",
+    canonical: "Layer 2: Context and retrieval",
+    purpose: "Assemble the smallest source-grounded context capsule from bounded WikiLLM, graph, and retrieval layers.",
+    inputs: ["Approved corpus", "routing indexes", "project memory", "source and freshness rules"],
+    outputs: ["Context capsule", "source ledger", "FACT / INTERPRETATION / HYPOTHESIS / GAP split"],
+    parameters: ["include and exclude paths", "chunk size and overlap", "vector top-k", "lexical top-k", "rerank top-k", "freshness policy"],
+    effects: ["Improves source traceability", "limits context expansion", "keeps lexical fallback available when embeddings are absent"],
+    failureModes: ["Whole-repository ingestion", "stale source used as current proof", "retrieval score presented as truth"],
+    proofState: "Bounded hybrid contract; lexical fallback available",
+    proofTone: "partial",
+    approvalBoundary: "Private or newly expanded corpora require a bounded corpus decision before ingestion or provider use.",
+    sources: ["project/workflows/llamaindex-rag.yaml", "project/scripts/llamaindex-approved-corpus.py", "project/scripts/llamaindex-rag-benchmark.py"],
+  },
+  {
+    id: "plan-orchestration",
+    number: "03",
+    title: "Plan & Orchestration",
+    canonical: "Layers 3-4: Planning and orchestration",
+    purpose: "Convert a validated goal and context capsule into a typed, resumable graph with deterministic routes and stop conditions.",
+    inputs: ["Goal state", "context capsule", "task decomposition", "route and retry policy"],
+    outputs: ["Execution graph", "node contracts", "parallel branch scopes", "merge and stop conditions"],
+    parameters: ["node owner", "route condition", "retry cap", "revision loop cap", "checkpoint", "parallel merge policy"],
+    effects: ["Makes sequence inspectable", "supports bounded parallel work", "creates a stable handoff between roles"],
+    failureModes: ["Loops without termination", "parallel agents editing the same file", "router decisions without evidence"],
+    proofState: "Controller contract plus bounded smoke fixtures",
+    proofTone: "partial",
+    approvalBoundary: "A graph can plan gated actions but cannot authorize them; approval nodes remain separate.",
+    sources: ["project/workflows/langgraph-controller.yaml", "project/scripts/langgraph-smoke-run.py", "project/strategic-plan-2026-07-13.md"],
+  },
+  {
+    id: "execution-roles",
+    number: "04",
+    title: "Execution & Roles",
+    canonical: "Layer 5: Role execution",
+    purpose: "Assign bounded work to role packs with explicit tools, skills, sources, outputs, quality criteria, and escalation rules.",
+    inputs: ["Node contract", "role registry", "skill inventory", "allowed tools and sources"],
+    outputs: ["Role-specific artifact", "evidence links", "review recommendation", "escalation when blocked"],
+    parameters: ["role", "skills", "tool allowlist", "source allowlist", "output schema", "reviewer", "effort tier"],
+    effects: ["Reuses specialist context", "separates execution from review", "keeps tasks parametrically editable"],
+    failureModes: ["Role title without a job contract", "skill collection loaded wholesale", "executor self-approves its output"],
+    proofState: "Role registry configured; deterministic CrewAI fixture recorded",
+    proofTone: "partial",
+    approvalBoundary: "Hosted model execution and new tool installation remain gated even when a role is configured.",
+    sources: ["project/agents/skills-by-agent.md", "project/agents/skills-governance.md", "project/workflows/crewai-crew.yaml"],
+  },
+  {
+    id: "loop-verification",
+    number: "05",
+    title: "Loop & Verification",
+    canonical: "Layers 6-7: Execution loop and verification",
+    purpose: "Run bounded produce-check-revise loops and require independent evidence before an artifact can advance.",
+    inputs: ["Candidate artifact", "acceptance criteria", "test command", "review rubric"],
+    outputs: ["Verified artifact", "failure evidence", "revision packet", "stop or escalation decision"],
+    parameters: ["loop level", "max iterations", "test command", "review threshold", "independent reviewer", "failure budget"],
+    effects: ["Catches regressions before handoff", "turns failure into reusable evidence", "prevents infinite refinement"],
+    failureModes: ["Self-reported success", "retries without new evidence", "tests that do not exercise the claimed behavior"],
+    proofState: "Loop contract defined; paired benchmark evidence pending",
+    proofTone: "gated",
+    approvalBoundary: "A passing local check does not approve production, publication, spend, or external writeback.",
+    sources: ["skills/archflow-architecture-operator/references/metrics.md", "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md", "project/operating-rules.md"],
+  },
+  {
+    id: "memory-external-gate",
+    number: "06",
+    title: "Memory & External Gate",
+    canonical: "Layers 8-9: Durable memory and external action",
+    purpose: "Promote only durable, reusable conclusions to memory and hold every external action behind a reviewable approval packet.",
+    inputs: ["Verified result", "provenance", "memory filter", "requested external action"],
+    outputs: ["Run note", "decision or issue", "memory update candidate", "approved or blocked action"],
+    parameters: ["memory destination", "retention class", "sensitivity", "write target", "approver", "rollback path"],
+    effects: ["Preserves cross-run knowledge", "avoids raw transcript dumping", "makes external actions auditable"],
+    failureModes: ["Chat-only completion", "secrets copied into notes", "configured connector mistaken for a live write path"],
+    proofState: "WikiLLM memory active; external writes separately gated",
+    proofTone: "configured",
+    approvalBoundary: "Nexus, Notion, Git, deployment, and provider write paths require current capability proof plus explicit approval where applicable.",
+    sources: ["project/operating-rules.md", "wiki/index.md", "project/workflows/langgraph-controller.yaml"],
+  },
+  {
+    id: "measurement-optimization",
+    number: "07",
+    title: "Measurement & Optimization",
+    canonical: "Layer 10: Measurement and optimization",
+    purpose: "Compare outcomes using evidence-backed quality, cost, latency, context, reliability, and retrieval measures before changing defaults.",
+    inputs: ["Run traces", "quality rubric", "token and cost telemetry", "retrieval evidence", "failure classifications"],
+    outputs: ["Benchmark record", "regression signal", "optimization proposal", "adoption or rollback decision"],
+    parameters: ["paired fixture", "quality score", "success rate", "latency", "token use", "cost", "retrieval precision", "rollback threshold"],
+    effects: ["Makes trade-offs visible", "prevents unmeasured optimization claims", "supports Build / Scale / Govern / Optimize decisions"],
+    failureModes: ["Invented percentage improvements", "single-run comparison", "quality sacrificed for token savings without a rubric"],
+    proofState: "Benchmark contract defined; paired results not yet measured",
+    proofTone: "gated",
+    approvalBoundary: "Optimization is adopted only after representative fixtures and owner-approved thresholds exist.",
+    sources: ["skills/archflow-architecture-operator/references/metrics.md", "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md", "project/strategic-plan-2026-07-13.md"],
+  },
 ];
 
 const storageKeys = {
@@ -34,12 +158,15 @@ const storageKeys = {
   architectureMode: "archflow.jarvis.architectureMode",
   interviewState: "archflow.jarvis.interviewState",
   apiBase: "archflow.jarvis.apiBase",
+  schemaViewMode: "archflow.dashboard.schemaViewMode",
+  schemaInspectorCollapsed: "archflow.dashboard.schemaInspectorCollapsed",
+  architectureLayer: "archflow.dashboard.architectureLayer",
 };
 
-const blockSchemaVersion = "0.5";
+const blockSchemaVersion = "0.6";
 
 let dashboardData = null;
-let activeTab = window.location.hash?.replace(/^#/, "") || "jarvis";
+let activeTab = window.location.hash?.replace(/^#/, "") || "overview";
 let jarvisMode = localStorage.getItem(storageKeys.mode) || "normal";
 let architectureMode = localStorage.getItem(storageKeys.architectureMode) || "service";
 const voiceModeDisabled = true;
@@ -61,6 +188,14 @@ let blockSchemas = {
 };
 let blockSchema = blockSchemas.control;
 let schemaZoom = clamp(Number(localStorage.getItem(storageKeys.schemaZoom) || 1), 0.55, 1.35);
+let schemaFullscreen = false;
+let schemaViewMode = localStorage.getItem(storageKeys.schemaViewMode)
+  || (window.matchMedia("(max-width: 760px)").matches ? "stage" : "canvas");
+const storedInspectorState = localStorage.getItem(storageKeys.schemaInspectorCollapsed);
+let schemaInspectorCollapsed = storedInspectorState === null
+  ? window.matchMedia("(max-width: 760px)").matches
+  : storedInspectorState === "true";
+let selectedArchitectureLayerId = localStorage.getItem(storageKeys.architectureLayer) || architectureLayers[0].id;
 let blockSchemaConnectSource = null;
 let blockSchemaDrag = null;
 let blockSchemaDragMoved = false;
@@ -112,7 +247,7 @@ const refreshDataButton = document.querySelector("#refreshData");
 const globalComposer = document.querySelector("#globalComposer");
 const globalInput = document.querySelector("#globalInput");
 
-if (!tabs.some((tab) => tab.id === activeTab)) activeTab = "jarvis";
+if (!tabs.some((tab) => tab.id === activeTab)) activeTab = "overview";
 if (activeTab === "service") architectureMode = "service";
 if (activeTab === "schema") architectureMode = "control";
 localStorage.setItem(storageKeys.architectureMode, architectureMode);
@@ -340,7 +475,7 @@ function defaultServiceBlockSchema() {
         job: "Produce a decision-ready PRD faster than a product team can assemble by hand.",
         pain: "PRDs become inconsistent when product, engineering, and leadership context are scattered.",
         evidence: "June 24 reset defines dialogue/chat/meeting material into PRD and agent-ready KB as Block 1.",
-        businessObjective: "Prove paid value through a Product Discovery-to-Production PRD Pack.",
+        businessObjective: "Prove whether a forcing-moment Knowledge Reliability Setup creates paid value; treat the PRD as one downstream artifact.",
         inputs: ["sanitized source packet", "product constraints", "acceptance criteria"],
         outputs: ["PRD draft", "task/responsibility matrix", "gap list"]
       }),
@@ -641,8 +776,8 @@ function schemaNode(id, type, title, x, y, owner, prompt, output, options = {}) 
 
 function schemaNodeTypeDefaults(type, title, output) {
   const base = {
-    w: type === "parallel" || type === "router" ? 300 : 260,
-    h: type === "parallel" || type === "approval" ? 188 : 168,
+    w: type === "parallel" || type === "router" ? 220 : 208,
+    h: type === "parallel" || type === "approval" ? 164 : 148,
     owner: "Unassigned",
     status: "planned",
     inputs: ["manual command packet"],
@@ -714,8 +849,10 @@ function schemaEdge(id, from, to, label, condition, mode) {
 function normalizeBlockSchema(schema, kind = "control") {
   const fallback = kind === "service" ? defaultServiceBlockSchema() : defaultBlockSchema();
   const source = schema && Array.isArray(schema.nodes) && Array.isArray(schema.edges) ? schema : fallback;
+  const alreadyCompact = source.compactLayout === true;
   return {
-    version: source.version || blockSchemaVersion,
+    version: blockSchemaVersion,
+    compactLayout: true,
     title: source.title || fallback.title,
     selectedNodeId: source.selectedNodeId || source.nodes?.[0]?.id || null,
     connectSourceId: null,
@@ -738,6 +875,10 @@ function normalizeBlockSchema(schema, kind = "control") {
       };
       normalized.description = normalized.description || normalized.prompt || "No description configured.";
       normalized.systemPrompt = normalized.systemPrompt || normalized.prompt || "";
+      normalized.x = Math.round((Number(normalized.x) || 80) * (alreadyCompact ? 1 : 0.78));
+      normalized.y = Math.round((Number(normalized.y) || 80) * (alreadyCompact ? 1 : 0.86));
+      normalized.w = clamp(Number(normalized.w) || 208, 200, 220);
+      normalized.h = clamp(Number(normalized.h) || 148, 144, 164);
       return normalized;
     }),
     edges: source.edges.map((edge) => ({ ...schemaEdge(edge.id || makeId("edge"), edge.from, edge.to, edge.label || "next", edge.condition || "", edge.mode || "normal"), ...edge }))
@@ -812,10 +953,10 @@ function layoutBlockSchemaByStage() {
   });
   [...grouped.entries()].forEach(([stage, nodes]) => {
     nodes.forEach((node, row) => {
-      node.x = 60 + stage * 360;
-      node.y = 80 + row * 240;
-      node.w = Math.max(node.w || 260, node.type === "parallel" || node.type === "router" ? 300 : 260);
-      node.h = Math.max(node.h || 168, node.type === "parallel" || node.type === "approval" ? 188 : 168);
+      node.x = 48 + stage * 280;
+      node.y = 64 + row * 200;
+      node.w = node.type === "parallel" || node.type === "router" ? 220 : 208;
+      node.h = node.type === "parallel" || node.type === "approval" ? 164 : 148;
     });
   });
 }
@@ -830,8 +971,8 @@ function draftSchemaNode(type) {
     makeId(`schema-${type}`),
     type,
     title,
-    60 + stage * 360,
-    80 + sameStage * 240,
+    48 + stage * 280,
+    64 + sameStage * 200,
     defaults.owner,
     `Define the ${schemaTypeLabel(type).toLowerCase()} prompt, evidence, owner, inputs, outputs, and approval boundary.`,
     defaults.outputs[0] || "Pending review output.",
@@ -1220,7 +1361,7 @@ function pathLink(path) {
 }
 
 function renderNav() {
-  nav.innerHTML = tabs
+  const renderTabButtons = (items) => items
     .map((tab) => `
       <button type="button" class="${tab.id === activeTab ? "active" : ""}" data-tab="${tab.id}" aria-current="${tab.id === activeTab ? "page" : "false"}">
         <span class="glyph">${tab.glyph}</span>
@@ -1229,11 +1370,30 @@ function renderNav() {
     `)
     .join("");
 
-  nav.querySelectorAll("button").forEach((button) => {
+  const secondaryIsActive = secondaryTabs.some((tab) => tab.id === activeTab);
+  nav.innerHTML = `
+    <div class="nav-group" aria-label="Primary dashboard sections">
+      <span class="nav-group-label">Explore</span>
+      ${renderTabButtons(primaryTabs)}
+    </div>
+    <details class="nav-details" ${secondaryIsActive ? "open" : ""}>
+      <summary>Tools & detailed views</summary>
+      <div class="nav-group secondary" aria-label="Detailed dashboard views">
+        ${renderTabButtons(secondaryTabs)}
+      </div>
+    </details>
+    <a class="nav-jarvis-link" href="/jarvis">
+      <span class="glyph">JV</span>
+      <span><strong>Jarvis Chat</strong><small>Dedicated operator workspace</small></span>
+    </a>
+  `;
+
+  nav.querySelectorAll("[data-tab]").forEach((button) => {
     button.addEventListener("click", () => {
       activeTab = button.dataset.tab;
       if (activeTab === "service") setArchitectureMode("service");
       if (activeTab === "schema") setArchitectureMode("control");
+      if (activeTab !== "service" && activeTab !== "schema") schemaFullscreen = false;
       window.history.replaceState(null, "", `#${activeTab}`);
       render();
     });
@@ -1606,7 +1766,7 @@ function createLocalPacket(kind, source, input, extra = {}) {
     target_file: `project/runs/inbox/${id}.md`,
     kb_update: "requires Codex or future Railway writeback approval",
     evidence_label: kind.includes("research") ? "HYPOTHESIS" : "INTERPRETATION",
-    one_icp_lane: "B2B SaaS product leaders for Product Discovery-to-Production PRD Pack",
+    one_icp_lane: "30-75-person product-led B2B SaaS product leaders under a verified knowledge-continuity forcing moment",
     write_gate: "No GitHub, Notion, WikiLLM, or file write occurs from static browser JavaScript. Browser packets are session-only until downloaded by the user.",
     ...extra,
   };
@@ -1751,7 +1911,7 @@ function jarvisReply(input, source = "typed command") {
 
   if (lower.includes("project plan") || lower.includes("plan structure") || lower.includes("prd")) {
     activeTab = "plan";
-    return "Opening the project plan view. It shows the E1-E7 spine, PRD-to-ICP flow, and source links from the committed dashboard data.";
+    return "Opening the project plan view. It shows the E1-E8 spine, knowledge-continuity flow, and source links from the committed dashboard data.";
   }
 
   if (jarvisMode === "interview") {
@@ -2324,6 +2484,31 @@ function renderHistory() {
   document.querySelector("#historyClear")?.addEventListener("click", clearChatHistory);
 }
 
+function renderSchemaStageList(selectedId) {
+  const orderedNodes = [...blockSchema.nodes].sort((a, b) => {
+    const stageDifference = schemaStageIndex(a) - schemaStageIndex(b);
+    return stageDifference || a.y - b.y || a.x - b.x;
+  });
+  return `
+    <div class="schema-stage-list" aria-label="Workflow stage list">
+      ${orderedNodes.map((node, index) => `
+        <button class="schema-stage-card ${node.id === selectedId ? "active" : ""}" type="button" data-stage-node="${escapeHtml(node.id)}">
+          <span class="stage-sequence">${String(index + 1).padStart(2, "0")}</span>
+          <span class="stage-card-copy">
+            <strong>${escapeHtml(node.title)}</strong>
+            <span>${escapeHtml(schemaTypeLabel(node.type))} · ${escapeHtml(node.owner || "Unassigned")}</span>
+            <small>${escapeHtml(node.description || node.prompt || "No description configured.").slice(0, 180)}</small>
+          </span>
+          <span class="stage-card-proof">
+            ${badge(node.status || "planned")}
+            <small>${(node.inputs || []).length} inputs · ${(node.outputs || []).length} outputs</small>
+          </span>
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderSchema(data) {
   const kind = setActiveSchema();
   applyInitialPanelDeepLink();
@@ -2331,12 +2516,30 @@ function renderSchema(data) {
   const selected = getSchemaNode(blockSchema.selectedNodeId) || blockSchema.nodes[0];
   if (selected && blockSchema.selectedNodeId !== selected.id) blockSchema.selectedNodeId = selected.id;
   const validation = validateBlockSchema();
-  const canvasWidth = Math.max(2160, ...blockSchema.nodes.map((node) => node.x + node.w + 80));
+  const canvasWidth = Math.max(1760, ...blockSchema.nodes.map((node) => node.x + node.w + 80));
   const canvasHeight = Math.max(780, ...blockSchema.nodes.map((node) => node.y + node.h + 80));
   const edgeSvg = renderBlockSchemaEdges(canvasWidth, canvasHeight);
+  const inspectorMarkup = schemaInspectorCollapsed
+    ? ""
+    : `<aside class="schema-inspector">
+        <div class="schema-tabs">
+          <button class="active" type="button">Node</button>
+          <button type="button" id="schemaValidateFocus">Validation</button>
+          <button type="button" id="schemaLangSmithFocus">Tracing</button>
+        </div>
+        ${selected ? renderSchemaInspector(selected) : `<div class="callout">Select or add a block to edit it.</div>`}
+      </aside>`;
+  const schemaSurface = schemaViewMode === "stage"
+    ? renderSchemaStageList(selected?.id)
+    : `<div class="schema-canvas-wrap">
+        <div class="schema-canvas" id="schemaCanvas" style="width:${canvasWidth}px;height:${canvasHeight}px;transform:scale(${schemaZoom});transform-origin:top left;">
+          <svg class="schema-edge-layer" width="${canvasWidth}" height="${canvasHeight}" viewBox="0 0 ${canvasWidth} ${canvasHeight}" aria-hidden="true">${edgeSvg}</svg>
+          ${blockSchema.nodes.map((node) => renderSchemaNode(node)).join("")}
+        </div>
+      </div>`;
 
   view.innerHTML = `
-    <section class="panel schema-shell">
+    <section class="panel schema-shell ${schemaFullscreen ? "is-fullscreen" : ""}">
       <div class="section-header">
         <div>
           <h2 class="section-title">${escapeHtml(meta.title)}</h2>
@@ -2344,6 +2547,10 @@ function renderSchema(data) {
           ${architectureSelectorMarkup("schema")}
         </div>
         <div class="row-actions">
+          <button class="button" id="schemaFullscreen" type="button" aria-pressed="${schemaFullscreen}">${schemaFullscreen ? "Exit full screen" : "Full-screen workflow"}</button>
+          <button class="button ${schemaViewMode === "canvas" ? "active-soft" : ""}" id="schemaViewCanvas" type="button" aria-pressed="${schemaViewMode === "canvas"}">Canvas</button>
+          <button class="button ${schemaViewMode === "stage" ? "active-soft" : ""}" id="schemaViewStage" type="button" aria-pressed="${schemaViewMode === "stage"}">Stage list</button>
+          <button class="button" id="schemaInspectorToggle" type="button" aria-pressed="${!schemaInspectorCollapsed}">${schemaInspectorCollapsed ? "Show inspector" : "Hide inspector"}</button>
           <button class="button ${kind === "service" ? "active-soft" : ""}" data-architecture="service" type="button">Screen 1</button>
           <button class="button ${kind === "control" ? "active-soft" : ""}" data-architecture="control" type="button">Screen 2</button>
           <button class="button schema-add" data-type="agent" type="button">Local agent</button>
@@ -2375,6 +2582,7 @@ function renderSchema(data) {
         <span>${badge("static browser local")}</span>
         <span>${badge("browser-local edits only")}</span>
         <span>${badge("MODEL_PROVIDER none")}</span>
+        <span>${badge(`${schemaViewMode} view`)}</span>
         <span>${badge(`zoom ${Math.round(schemaZoom * 100)}%`)}</span>
         <span>${escapeHtml(blockSchemaConnectSource ? `Connect mode: source is ${getSchemaNode(blockSchemaConnectSource)?.title || "unknown"}. Choose target.` : "Click a block to open its control panel. Drag selected blocks to reposition.")}</span>
       </div>
@@ -2405,22 +2613,9 @@ function renderSchema(data) {
         `).join("")}
       </div>
 
-      <div class="schema-workspace">
-        <div class="schema-canvas-wrap">
-          <div class="schema-canvas" id="schemaCanvas" style="width:${canvasWidth}px;height:${canvasHeight}px;transform:scale(${schemaZoom});transform-origin:top left;">
-            <svg class="schema-edge-layer" width="${canvasWidth}" height="${canvasHeight}" viewBox="0 0 ${canvasWidth} ${canvasHeight}" aria-hidden="true">${edgeSvg}</svg>
-            ${blockSchema.nodes.map((node) => renderSchemaNode(node)).join("")}
-          </div>
-        </div>
-
-        <aside class="schema-inspector">
-          <div class="schema-tabs">
-            <button class="active" type="button">Node</button>
-            <button type="button" id="schemaValidateFocus">Validation</button>
-            <button type="button" id="schemaLangSmithFocus">Tracing</button>
-          </div>
-          ${selected ? renderSchemaInspector(selected) : `<div class="callout">Select or add a block to edit it.</div>`}
-        </aside>
+      <div class="schema-workspace ${schemaInspectorCollapsed ? "inspector-collapsed" : ""} ${schemaViewMode === "stage" ? "stage-mode" : "canvas-mode"}">
+        ${schemaSurface}
+        ${inspectorMarkup}
       </div>
     </section>
 
@@ -2495,13 +2690,9 @@ function renderSchemaNode(node) {
       <p>${escapeHtml(node.prompt || "No prompt configured.").slice(0, 150)}</p>
       <div class="schema-node-meta">
         <span>${escapeHtml(node.owner || "Unassigned")}</span>
-        <span>routes ${inCount} in / ${outCount} out</span>
-      </div>
-      <div class="schema-node-meta">
-        <span>ports ${(node.inputs || []).length} in / ${(node.outputs || []).length} out</span>
         <span>${escapeHtml(node.status || "planned")}</span>
       </div>
-      <div class="schema-node-output">${escapeHtml(node.finalOutput || "Pending output").slice(0, 110)}</div>
+      <div class="schema-node-output">${inCount}/${outCount} routes · ${(node.inputs || []).length}/${(node.outputs || []).length} ports · ${escapeHtml(node.finalOutput || "Pending output").slice(0, 68)}</div>
     </article>
   `;
 }
@@ -2735,6 +2926,30 @@ function bindSchemaEditor() {
     });
   });
 
+  view.querySelectorAll("[data-stage-node]").forEach((element) => {
+    element.addEventListener("click", () => activateSchemaNode(element.dataset.stageNode));
+  });
+
+  view.querySelector("#schemaFullscreen")?.addEventListener("click", () => {
+    schemaFullscreen = !schemaFullscreen;
+    render();
+  });
+  view.querySelector("#schemaViewCanvas")?.addEventListener("click", () => {
+    schemaViewMode = "canvas";
+    localStorage.setItem(storageKeys.schemaViewMode, schemaViewMode);
+    render();
+  });
+  view.querySelector("#schemaViewStage")?.addEventListener("click", () => {
+    schemaViewMode = "stage";
+    localStorage.setItem(storageKeys.schemaViewMode, schemaViewMode);
+    render();
+  });
+  view.querySelector("#schemaInspectorToggle")?.addEventListener("click", () => {
+    schemaInspectorCollapsed = !schemaInspectorCollapsed;
+    localStorage.setItem(storageKeys.schemaInspectorCollapsed, String(schemaInspectorCollapsed));
+    render();
+  });
+
   window.onpointermove = (event) => {
     if (!blockSchemaDrag) return;
     const node = getSchemaNode(blockSchemaDrag.id);
@@ -2920,17 +3135,38 @@ function bindRoleConfigPanels() {
 function bindNodeControlPanel() {
   const panel = view.querySelector("#nodeControlPanelForm");
   const closePanel = () => {
+    const returnNodeId = nodeControlPanelId;
     nodeControlPanelId = null;
     render();
+    window.requestAnimationFrame(() => {
+      view.querySelector(`[data-node-id="${CSS.escape(returnNodeId || "")}"]`)?.focus()
+        || view.querySelector(`[data-stage-node="${CSS.escape(returnNodeId || "")}"]`)?.focus();
+    });
   };
   view.querySelector("#nodePanelClose")?.addEventListener("click", closePanel);
   view.querySelector(".node-panel-backdrop")?.addEventListener("click", (event) => {
     if (event.target === event.currentTarget) closePanel();
   });
   view.querySelector(".node-panel")?.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    event.preventDefault();
-    closePanel();
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closePanel();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const focusable = Array.from(view.querySelectorAll(
+      ".node-panel a[href], .node-panel button:not([disabled]), .node-panel input:not([disabled]), .node-panel select:not([disabled]), .node-panel textarea:not([disabled]), .node-panel [tabindex]:not([tabindex='-1'])"
+    )).filter((element) => !element.hidden && element.getClientRects().length > 0);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   });
   view.querySelector("#nodePanelClose")?.focus();
   view.querySelector("#nodePanelQueue")?.addEventListener("click", () => {
@@ -3249,22 +3485,29 @@ function renderConfig() {
 
 function renderPlan(data) {
   const eCards = [
-    ["E1", "Knowledge base on ourselves", "Partly complete; E1.3 readback passed and review gate is active."],
-    ["E2", "Evidence engine and PRD-to-ICP", "Readiness/source visibility only; production evidence cards still missing."],
-    ["E3", "Positioning", "Depends on E2 evidence; do not claim ready."],
-    ["E4", "Content direction", "Planning/reporting gate only; publishing needs proof and approval."],
-    ["E5", "Analytics and ROI", "Dashboard visibility shell exists; ROI methodology and metrics remain future work."],
-    ["E6", "Outreach", "Not started; blocked until E2-E4 proof."],
-    ["E7", "Payment verdict", "Not started; needs demand/conversion evidence."],
+    ["E1", "Knowledge Architecture & Governance", "Active baseline: authority, provenance, promotion, reconciliation, and drift control."],
+    ["E2", "Loop Engineering & Goal Contracts", "Goal Engineering stays G1 and Loop Engineering L1; the evidence-backed ICP decision-contract fixture is Planned."],
+    ["E3", "Safe Tools, Skills & Agent Architecture Factory", "Adoption is gated by provenance, security, rollback, fixture, benchmark, and independent review."],
+    ["E4", "Bounded RAG & Obsidian / Graphify / Nexus", "Lexical fallback remains required; vector, graph, and live-vault claims need bounded current evidence."],
+    ["E5", "Market-To-Payment Execution Packs", "Validate the narrow cohort, buyer, forcing moment, access willingness, proposal, and payment without status inflation."],
+    ["E6", "Dashboard, Editor & Documentation", "The three-block website, API-doc console, and guarded Jarvis have local/browser review proof; production remains gated."],
+    ["E7", "Safety, Observability & Benchmarking", "Paired baseline/candidate evidence is required before efficiency or reliability improvements are claimed."],
+    ["E8", "Installable Knowledge Continuity Product", "Planned only after buyer, access, paid-start, installability, MCP, admin, rollback, and benchmark gates pass."],
   ];
   view.innerHTML = `
     <div class="grid cols-3">
-      ${card({ label: "Current lane", value: "B2B SaaS product teams", note: "One ICP lane unless the owner expands scope", tone: "ok" })}
-      ${card({ label: "Dashboard mode", value: "protected static preview", note: "Not a live control plane", tone: "warn" })}
-      ${card({ label: "Next safe step", value: "E2.0 dry run", note: "No model/provider calls by default", tone: "ok" })}
+      ${card({ label: "Current ICP hypothesis", value: "30-75-person product-led B2B SaaS", note: "Lead with RFP/questionnaire and onboarding forcing moments; validate before treating as demand", tone: "warn" })}
+      ${card({ label: "Operating wedge", value: "maintained company brain", note: "Source boundaries, provenance, continuity, review, and measurable reliability", tone: "ok" })}
+      ${card({ label: "Next safe proof", value: "provider-disabled factory fixture", note: "Typed goal, recovery, independent check, and no unapproved side effects", tone: "ok" })}
     </div>
     <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">E1-E7 Project Plan</h2>
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">July 13 E1-E8 Strategic Spine</h2>
+          <p class="muted">Every epic separates workflow status from evidence state. “Configured,” “planned,” and “proved” are not interchangeable.</p>
+        </div>
+        <a class="button" href="../strategic-plan-2026-07-13.md">Open source plan</a>
+      </div>
       ${table(["Epic", "Scope", "Current status"], eCards.map((row) => row.map(escapeHtml)))}
     </section>
     <section class="panel" style="margin-top:16px">
@@ -3282,46 +3525,305 @@ function renderPlan(data) {
   `;
 }
 
-function renderOverview(data) {
-  const cards = data.status_cards.map((c) => card(c)).join("");
-  const recent = data.activity.slice(0, 7);
-  view.innerHTML = `
-    <div class="grid cols-6">${cards}</div>
-    <div class="split" style="margin-top:16px">
-      <section class="panel">
-        <h2 class="section-title">Current Workflow Spine</h2>
-        <p class="muted">Scroll horizontally inside the node strip to inspect the full path.</p>
-        <div class="node-flow">
-          ${data.langgraph.nodes.map((node) => `
-            <div class="node">
-              <strong>${escapeHtml(node.id)}</strong>
-              <span>${escapeHtml(node.purpose)}</span>
-              <span class="owner">${escapeHtml(node.owner)}</span>
-            </div>
-          `).join("")}
-        </div>
-        <div class="callout">
-          E1.3 readback status: ${escapeHtml(data.gates.e1_3.derived_status.replaceAll("_", " "))}. The dashboard derives this from run and wiki artifacts; it does not store decisions or become memory.
-        </div>
-      </section>
-      <section class="panel">
-        <h2 class="section-title">Phase Decision</h2>
-        <div class="list">
-          <div class="row"><span class="row-title">Phase 1</span><div class="row-meta">Codex, GitHub, LangSmith, Obsidian, and WikiLLM files remain the primary operating surfaces.</div></div>
-          <div class="row"><span class="row-title">Phase 2</span><div class="row-meta">This dashboard is now the Jarvis-facing command shell with static data refresh and local packets.</div></div>
-          <div class="row"><span class="row-title">Phase 3</span><div class="row-meta">Railway/API/SSE, Google auth, durable writes, and provider models after access and storage gates.</div></div>
-        </div>
-      </section>
+function selectedArchitectureLayer() {
+  return architectureLayers.find((layer) => layer.id === selectedArchitectureLayerId) || architectureLayers[0];
+}
+
+function renderStringList(items, className = "docs-list") {
+  return `<ul class="${className}">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+}
+
+function renderArchitectureLayerStack() {
+  return `
+    <div class="architecture-stack" aria-label="Seven grouped architecture layers">
+      ${architectureLayers.map((layer) => `
+        <button class="layer-stack-button ${layer.id === selectedArchitectureLayerId ? "active" : ""}" type="button" data-layer-id="${layer.id}" aria-pressed="${layer.id === selectedArchitectureLayerId}">
+          <span class="layer-number">${layer.number}</span>
+          <span class="layer-stack-copy"><strong>${escapeHtml(layer.title)}</strong><small>${escapeHtml(layer.canonical)}</small></span>
+          <span class="proof-chip ${escapeHtml(layer.proofTone)}">${escapeHtml(layer.proofState)}</span>
+        </button>
+      `).join("")}
     </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Recent Project Activity</h2>
-      ${table(["Kind", "Title", "Path"], recent.map((item) => [
-        badge(item.kind),
-        escapeHtml(item.title),
-        pathLink(item.path),
-      ]))}
+  `;
+}
+
+function renderArchitectureLayerDetail(layer, options = {}) {
+  const detailed = options.detailed === true;
+  return `
+    <article class="layer-detail" aria-labelledby="layer-detail-title">
+      <div class="layer-detail-heading">
+        <div><span class="eyebrow">Grouped layer ${layer.number}</span><h3 id="layer-detail-title" tabindex="-1">${escapeHtml(layer.title)}</h3></div>
+        <span class="proof-chip ${escapeHtml(layer.proofTone)}">${escapeHtml(layer.proofState)}</span>
+      </div>
+      <p class="layer-purpose">${escapeHtml(layer.purpose)}</p>
+      <div class="docs-callout approval"><strong>Approval boundary</strong><p>${escapeHtml(layer.approvalBoundary)}</p></div>
+      <div class="layer-detail-grid">
+        <section><h4>Inputs</h4>${renderStringList(layer.inputs)}</section>
+        <section><h4>Outputs</h4>${renderStringList(layer.outputs)}</section>
+        <section><h4>Parameters</h4>${renderStringList(layer.parameters)}</section>
+        <section><h4>Effects</h4>${renderStringList(layer.effects)}</section>
+      </div>
+      ${detailed ? `
+        <div class="docs-grid two">
+          <section class="docs-section danger-zone"><h4>Failure modes</h4>${renderStringList(layer.failureModes)}</section>
+          <section class="docs-section"><h4>Repository sources</h4><div class="source-list">${layer.sources.map((source) => pathLink(source)).join("")}</div></section>
+        </div>
+        <div class="table-scroll">
+          ${table(["Parameter", "What it influences", "Required review"], layer.parameters.map((parameter, index) => [
+            `<span class="code">${escapeHtml(parameter)}</span>`,
+            escapeHtml(layer.effects[index % layer.effects.length]),
+            escapeHtml(layer.approvalBoundary),
+          ]))}
+        </div>
+      ` : `<a class="text-link" href="#architecture">Open full layer reference →</a>`}
+    </article>
+  `;
+}
+
+function bindArchitectureLayerNavigation() {
+  view.querySelectorAll("[data-layer-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedArchitectureLayerId = button.dataset.layerId;
+      localStorage.setItem(storageKeys.architectureLayer, selectedArchitectureLayerId);
+      if (activeTab === "reference") {
+        activeTab = "architecture";
+        window.history.replaceState(null, "", "#architecture");
+      }
+      render();
+      view.querySelector("#layer-detail-title")?.focus?.();
+    });
+  });
+}
+
+function renderOverview(data) {
+  const layer = selectedArchitectureLayer();
+  const e13 = data.gates?.e1_3 || {};
+  view.innerHTML = `
+    <section class="overview-hero">
+      <div>
+        <span class="eyebrow">Documentation-first architecture console</span>
+        <h2>Build a maintained company brain, then give every agent a bounded way to use it.</h2>
+        <p>ArchFlow connects authority, retrieval, orchestration, specialist roles, verification, memory, external gates, and measurement. This console explains what is configured, what has evidence, and what still requires approval.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#architecture">Inspect architecture</a>
+          <a class="button" href="#schema">Open workflow editor</a>
+          <a class="button" href="/jarvis">Open Jarvis chat</a>
+        </div>
+      </div>
+      <div class="hero-boundary">
+        <span class="eyebrow">Current operating boundary</span>
+        <strong>Static source view + browser-local editor</strong>
+        <p>Provider execution, durable external writeback, deployment, and publication are not implied by a visible control.</p>
+      </div>
+    </section>
+
+    <section class="docs-layout architecture-overview-grid">
+      <div class="panel architecture-map-panel">
+        <div class="section-header">
+          <div><span class="eyebrow">Seven public groups · eleven canonical layers</span><h2 class="section-title">Architecture map</h2></div>
+          <a class="button" href="#reference">Parameter reference</a>
+        </div>
+        ${renderArchitectureLayerStack()}
+      </div>
+      ${renderArchitectureLayerDetail(layer)}
+    </section>
+
+    <section class="panel proof-state-panel">
+      <div class="section-header">
+        <div><span class="eyebrow">Evidence, not marketing percentages</span><h2 class="section-title">Current proof and gate states</h2></div>
+        <a class="button" href="#runs">Open evidence ledger</a>
+      </div>
+      <div class="proof-state-grid">
+        ${card({ label: "Knowledge memory", value: `${data.wiki?.file_count ?? "Unknown"} public files`, note: "WikiLLM is durable public memory; source files remain authoritative", tone: "ok" })}
+        ${card({ label: "Goal readback", value: e13.derived_status || "unknown", note: `${e13.passed_count ?? 0}/${e13.assertion_count ?? 0} recorded assertions in generated data`, tone: e13.readback_status === "passed" ? "ok" : "warn" })}
+        ${card({ label: "Retrieval", value: data.llamaindex?.status || "unknown", note: "Bounded hybrid contract with deterministic lexical fallback", tone: "warn" })}
+        ${card({ label: "Role execution", value: data.crewai?.level_3_status || data.crewai?.status || "unknown", note: "Deterministic fixture is not the default/provider runtime", tone: "warn" })}
+        ${card({ label: "Structural graph", value: data.graphify?.status || "unknown", note: "Generated reference, never canonical human synthesis", tone: data.graphify?.status === "available" ? "ok" : "warn" })}
+        ${card({ label: "Provider and writes", value: "approval gated", note: "MODEL_PROVIDER=none is the safe baseline", tone: "warn" })}
+      </div>
     </section>
   `;
+  bindArchitectureLayerNavigation();
+}
+
+function renderArchitecture(data) {
+  const layer = selectedArchitectureLayer();
+  view.innerHTML = `
+    <section class="docs-hero compact">
+      <div><span class="eyebrow">Architecture reference</span><h2>One operating system, seven grouped layers, explicit proof boundaries.</h2></div>
+      <p>The public groups make the system easier to navigate. The canonical architecture still keeps its eleven layers from authority through measurement, so implementation detail is not lost.</p>
+    </section>
+    <section class="docs-layout architecture-reference-layout">
+      <aside class="panel architecture-index">
+        <h2 class="section-title">Layer index</h2>
+        <p class="muted">Select a layer to inspect its contract. Selection is saved only in this browser.</p>
+        ${renderArchitectureLayerStack()}
+      </aside>
+      ${renderArchitectureLayerDetail(layer, { detailed: true })}
+    </section>
+    <section class="panel architecture-sequence-panel">
+      <h2 class="section-title">End-to-end contract</h2>
+      <div class="sequence-rail" aria-label="Architecture execution sequence">
+        ${architectureLayers.map((item, index) => `
+          <button type="button" data-layer-id="${item.id}" aria-label="Open ${escapeHtml(item.title)}">
+            <span>${item.number}</span><strong>${escapeHtml(item.title)}</strong>${index < architectureLayers.length - 1 ? "<i aria-hidden=\"true\">→</i>" : ""}
+          </button>
+        `).join("")}
+      </div>
+      <div class="docs-callout"><strong>Source-of-truth rule</strong><p>The console is an explanatory and browser-local editing surface. Repository contracts, validated run artifacts, and reviewed memory remain authoritative.</p></div>
+    </section>
+  `;
+  bindArchitectureLayerNavigation();
+}
+
+function renderKnowledge(data) {
+  const rag = data.llamaindex || {};
+  const wiki = data.wiki || {};
+  view.innerHTML = `
+    <section class="docs-hero compact">
+      <div><span class="eyebrow">Knowledge system</span><h2>Retrieve narrowly, preserve provenance, promote conclusions deliberately.</h2></div>
+      <p>ArchFlow uses a cascade rather than one undifferentiated database: routes and source files, WikiLLM memory, human-readable notes, generated structure, and bounded retrieval each have distinct jobs.</p>
+    </section>
+    <div class="proof-state-grid">
+      ${card({ label: "WikiLLM", value: `${wiki.file_count ?? "Unknown"} files`, note: "Durable public cross-run memory", tone: "ok" })}
+      ${card({ label: "Graphify", value: data.graphify?.status || "unknown", note: "Generated structural relationships", tone: data.graphify?.status === "available" ? "ok" : "warn" })}
+      ${card({ label: "Retrieval", value: rag.status || "unknown", note: rag.query_engine || "Bounded approved corpus", tone: "warn" })}
+      ${card({ label: "Nexus / live vault", value: "not asserted here", note: "Config, activation, socket, schema, and real calls require separate proof", tone: "warn" })}
+    </div>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Retrieval cascade</span><h2 class="section-title">Responsibilities and boundaries</h2></div><a class="button" href="#llamaindex">Open local query preview</a></div>
+      ${table(["Layer", "Use it for", "Do not use it for", "Primary source"], [
+        ["Routing and source zones", "Identify authority, project, corpus, and safety boundary", "Uncontrolled whole-repository ingestion", pathLink("project/operating-rules.md")],
+        ["WikiLLM", "Stable memory, runs, issues, decisions, insights", "Raw transcript or secret storage", pathLink(wiki.index_path || "wiki/index.md")],
+        ["Graphify", "Generated file and relationship reference", "Final human synthesis or business truth", pathLink("project/reports/2026-07-10-obsidian-graphify-nexus-setup-review.md")],
+        ["LlamaIndex contract", "Bounded hybrid retrieval with provenance and fallback", "Treating a similarity score as a verified claim", pathLink(rag.path || "project/workflows/llamaindex-rag.yaml")],
+        ["Nexus", "Live Obsidian search and actions after schema discovery", "Assuming configured means reachable or writable", pathLink("project/reports/2026-07-10-obsidian-graphify-nexus-setup-review.md")],
+      ])}
+    </section>
+    <div class="docs-grid two" style="margin-top:16px">
+      <section class="panel"><h2 class="section-title">RAG parameters</h2>${table(["Parameter", "Current contract", "Influence"], [
+        ["query mode", escapeHtml(rag.query_mode || "hybrid"), "Candidate-generation strategy"],
+        ["chunk size / overlap", `${escapeHtml(rag.chunk_size || "unset")} / ${escapeHtml(rag.chunk_overlap || "unset")}`, "Granularity and context continuity"],
+        ["vector top-k", escapeHtml(rag.vector_top_k || "unset"), "Semantic candidate breadth"],
+        ["lexical top-k", escapeHtml(rag.lexical_top_k || "unset"), "Deterministic keyword fallback breadth"],
+        ["rerank top-k", escapeHtml(rag.rerank_top_k || "unset"), "Final context size before synthesis"],
+        ["fallback", escapeHtml(rag.fallback_to_lexical || "unset"), "Availability when embeddings or vector services are absent"],
+      ])}</section>
+      <section class="panel"><h2 class="section-title">Corpus boundary</h2><h4>Included</h4>${renderStringList(rag.include || ["See workflow contract"])}<h4>Excluded</h4>${renderStringList(rag.exclude || ["See workflow contract"])}<div class="docs-callout warning"><strong>Proof note</strong><p>The browser query view is a lexical preview over generated dashboard data. It is not proof that the full hybrid runtime executed.</p></div></section>
+    </div>
+  `;
+}
+
+function renderAgents(data) {
+  const agents = data.crewai?.agents || [];
+  const tasks = data.crewai?.tasks || [];
+  view.innerHTML = `
+    <section class="docs-hero compact">
+      <div><span class="eyebrow">Agents and skills</span><h2>Roles are contracts, not personas.</h2></div>
+      <p>Each role needs an objective, bounded responsibility, allowed sources and tools, a skill set, an output schema, an independent reviewer, and a stop condition.</p>
+    </section>
+    <div class="proof-state-grid">
+      ${card({ label: "Crew configuration", value: data.crewai?.status || "unknown", note: `${agents.length} roles visible in generated data`, tone: "warn" })}
+      ${card({ label: "Process", value: data.crewai?.process || "unknown", note: "LangGraph remains the state and routing owner", tone: "ok" })}
+      ${card({ label: "Memory", value: data.crewai?.memory || "unknown", note: "Role memory does not replace canonical project memory", tone: "warn" })}
+      ${card({ label: "Provider proof", value: data.crewai?.level_3_status || "not recorded", note: "A deterministic fixture is not default runtime", tone: "warn" })}
+    </div>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Role registry</span><h2 class="section-title">Configured specialist roles</h2></div><a class="button" href="#schema">Edit workflow roles</a></div>
+      <div class="agent-doc-grid">
+        ${agents.map((agent) => `
+          <article class="agent-doc-card">
+            <div class="agent-doc-heading"><span class="glyph">${escapeHtml(agent.id).slice(0, 2).toUpperCase()}</span><div><h3>${escapeHtml(agent.role)}</h3><span class="code">${escapeHtml(agent.id)}</span></div></div>
+            <p>${escapeHtml(agent.goal)}</p>
+            <div class="skill-chip-list">${(agent.skills || []).map((skill) => `<span>${escapeHtml(skill)}</span>`).join("")}</div>
+          </article>
+        `).join("") || `<div class="callout">No generated role registry is available.</div>`}
+      </div>
+    </section>
+    <div class="docs-grid two" style="margin-top:16px">
+      <section class="panel"><h2 class="section-title">Task-to-role handoff</h2>${table(["Task", "Role", "Expected artifact"], tasks.map((task) => [escapeHtml(task.id), badge(task.agent), escapeHtml(task.expected_output)]))}</section>
+      <section class="panel"><h2 class="section-title">Skill governance</h2><div class="list">
+        <div class="row"><span class="row-title">Discover</span><div class="row-meta">Find the smallest skill set that matches a bounded responsibility.</div></div>
+        <div class="row"><span class="row-title">Inspect</span><div class="row-meta">Check provenance, permissions, hooks, network behavior, license, and rollback before use.</div></div>
+        <div class="row"><span class="row-title">Prove</span><div class="row-meta">Run a sanitized fixture and independent review before a tool becomes default.</div></div>
+        <div class="row"><span class="row-title">Evolve</span><div class="row-meta">Update a skill only when repeated evidence justifies durable guidance.</div></div>
+      </div><div class="source-list">${pathLink("project/agents/skills-by-agent.md")}${pathLink("project/agents/skills-governance.md")}${pathLink("skills/skills-used.md")}</div></section>
+    </div>
+  `;
+}
+
+function renderRuns(data) {
+  const activity = data.activity || [];
+  const gate = data.gates?.e1_3 || {};
+  const backlog = proofBacklogItems();
+  view.innerHTML = `
+    <section class="docs-hero compact">
+      <div><span class="eyebrow">Runs and evidence</span><h2>Separate configuration, execution, review, and promotion.</h2></div>
+      <p>A visible route or configured tool is not runtime proof. A passing fixture is not a production approval. This ledger keeps those states legible.</p>
+    </section>
+    <div class="proof-state-grid">
+      ${(data.status_cards || []).map((item) => card(item)).join("")}
+      ${card({ label: "E1.3 readback", value: gate.derived_status || "unknown", note: `${gate.passed_count ?? 0}/${gate.assertion_count ?? 0} generated assertions`, tone: gate.readback_status === "passed" ? "ok" : "warn" })}
+    </div>
+    <div class="docs-grid two" style="margin-top:16px">
+      <section class="panel"><h2 class="section-title">Evidence-state vocabulary</h2>${table(["State", "Meaning", "Can advance?"], [
+        [badge("configured"), "Contract or setting exists and parses.", "Only to a bounded fixture."],
+        [badge("executed"), "A declared command ran against a named fixture.", "Only to independent review."],
+        [badge("proved"), "Expected behavior and evidence passed the declared check.", "Only within the proved scope."],
+        [badge("gated"), "Authority, runtime, safety, or evidence is still missing.", "No; prepare the next bounded artifact."],
+        [badge("approved"), "Named approver accepted a specific action and boundary.", "Yes, only for that action."],
+      ])}</section>
+      <section class="panel"><h2 class="section-title">UI acceptance ledger</h2><div class="list">${backlog.map((item) => `<article class="row"><div>${badge(item.status)} <strong>${escapeHtml(item.id)} · ${escapeHtml(item.title)}</strong></div><p>${escapeHtml(item.proof)}</p><div class="row-meta">Next: ${escapeHtml(item.next)}</div></article>`).join("")}</div></section>
+    </div>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Generated source index</span><h2 class="section-title">Recent public-safe activity</h2></div><span class="pill">Generated ${escapeHtml(new Date(data.generated_at).toLocaleString())}</span></div>
+      ${table(["Kind", "Title", "Repository path"], activity.slice(0, 18).map((item) => [badge(item.kind), escapeHtml(item.title), pathLink(item.path)]))}
+    </section>
+    <section class="panel" style="margin-top:16px"><h2 class="section-title">Check registry</h2><p class="muted">These are documented commands and prior registry states. Rerun relevant checks for the current change before making a fresh completion claim.</p>${table(["Check", "Command", "Registry state"], validationCommandItems().map(([label, command, status]) => [escapeHtml(label), `<span class="code">${escapeHtml(command)}</span>`, badge(status)]))}</section>
+  `;
+}
+
+function renderReference(data) {
+  const lifecycle = [
+    ["Build", "Define authority, goal, context, graph, roles, outputs, and checks.", "A provider-disabled fixture with source-linked artifacts."],
+    ["Scale", "Add parallel branches, reusable role packs, checkpoints, queues, and budget controls.", "Representative fixtures without file conflicts or unbounded context."],
+    ["Govern", "Enforce approvals, provenance, memory promotion, sensitivity, observability, and rollback.", "No critical safety or source-boundary regression."],
+    ["Optimize", "Compare quality, reliability, context, tokens, latency, cost, retrieval, and human effort.", "Paired evidence shows a declared benefit without quality loss."],
+  ];
+  view.innerHTML = `
+    <section class="docs-hero compact">
+      <div><span class="eyebrow">Operator reference</span><h2>Configure the architecture without hiding its consequences.</h2></div>
+      <p>Parameters influence retrieval breadth, loop behavior, cost, risk, and output quality. Defaults are hypotheses until tested on the intended workload.</p>
+    </section>
+    <section class="panel lifecycle-panel">
+      <h2 class="section-title">Build · Scale · Govern · Optimize</h2>
+      <div class="lifecycle-grid">${lifecycle.map(([title, purpose, gate], index) => `<article><span>${String(index + 1).padStart(2, "0")}</span><h3>${title}</h3><p>${purpose}</p><small>Graduation gate: ${gate}</small></article>`).join("")}</div>
+    </section>
+    <div class="docs-grid two" style="margin-top:16px">
+      <section class="panel"><h2 class="section-title">Parameter families</h2>${table(["Family", "Examples", "Primary effect", "Failure signal"], [
+        ["Goal", "success criteria, budget, deadline, stop rule", "Defines done and bounded authority", "Work expands without a testable finish"],
+        ["Retrieval", "include/exclude, chunking, top-k, rerank", "Controls source and context breadth", "Missing provenance or irrelevant context"],
+        ["Orchestration", "routes, retries, checkpoints, merge", "Controls sequence and recovery", "Infinite loop or conflicting writes"],
+        ["Role", "skills, tools, source allowlist, output schema", "Controls specialization", "Persona language without bounded output"],
+        ["Verification", "test, rubric, reviewer, loop cap", "Controls reliability", "Self-reported success or no new evidence"],
+        ["Memory", "destination, retention, sensitivity, promotion", "Controls durable learning", "Raw/private content becomes canonical"],
+        ["Optimization", "tokens, cost, latency, quality, retrieval", "Controls trade-off decisions", "Unpaired or invented improvement claim"],
+      ])}</section>
+      <section class="panel"><h2 class="section-title">Status semantics</h2><div class="list">
+        <div class="row"><span class="row-title">FACT</span><div class="row-meta">Directly supported by a current source or observed check.</div></div>
+        <div class="row"><span class="row-title">INTERPRETATION</span><div class="row-meta">A reasoned reading of facts; useful but not the source itself.</div></div>
+        <div class="row"><span class="row-title">HYPOTHESIS</span><div class="row-meta">A testable proposition, including the current ICP lane and forcing-moment assumptions.</div></div>
+        <div class="row"><span class="row-title">GAP</span><div class="row-meta">Missing capability, evidence, authority, or freshness.</div></div>
+      </div><div class="docs-callout warning"><strong>Safe default</strong><p>MODEL_PROVIDER=none. Browser-local edits and exports are review candidates, not external writes.</p></div></section>
+    </div>
+    <section class="panel" style="margin-top:16px"><h2 class="section-title">Canonical architecture sources</h2>${table(["Grouped layer", "Canonical mapping", "Proof state", "Sources"], architectureLayers.map((layer) => [
+      `<button class="text-button" type="button" data-layer-id="${layer.id}">${layer.number} · ${escapeHtml(layer.title)}</button>`,
+      escapeHtml(layer.canonical),
+      `<span class="proof-chip ${escapeHtml(layer.proofTone)}">${escapeHtml(layer.proofState)}</span>`,
+      `<div class="source-list compact">${layer.sources.map((source) => pathLink(source)).join("")}</div>`,
+    ]))}</section>
+  `;
+  bindArchitectureLayerNavigation();
 }
 
 function renderWiki(data) {
@@ -3394,7 +3896,8 @@ function renderLangGraph(data) {
 function scoreResult(query, doc) {
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
   const text = `${doc.title} ${doc.path} ${doc.text}`.toLowerCase();
-  return terms.reduce((sum, term) => sum + (text.includes(term) ? 1 : 0), 0);
+  const lexicalScore = terms.reduce((sum, term) => sum + (text.includes(term) ? 1 : 0), 0);
+  return lexicalScore > 0 ? Math.max(0, lexicalScore + Number(doc.authority_boost || 0)) : 0;
 }
 
 function renderLlamaIndex(data) {
@@ -3439,7 +3942,7 @@ function renderLlamaIndex(data) {
       ? `<div class="list">${scored.map((doc) => `
           <article class="row">
             <span class="row-title">${escapeHtml(doc.title)}</span>
-            <div class="row-meta">${pathLink(doc.path)} - score ${doc.score}</div>
+            <div class="row-meta">${pathLink(doc.path)} - score ${doc.score} - ${escapeHtml(doc.authority_state || "current_or_evidence")}${doc.superseded_by ? ` - superseded by ${pathLink(doc.superseded_by)}` : ""}</div>
             <p>${escapeHtml(doc.text.slice(0, 360))}</p>
           </article>
         `).join("")}</div>`
@@ -3572,10 +4075,11 @@ function renderGates(data) {
 function render() {
   if (!dashboardData) return;
   document.body.dataset.activeTab = activeTab;
+  document.body.classList.toggle("schema-editor-fullscreen", schemaFullscreen && (activeTab === "schema" || activeTab === "service"));
   renderNav();
   const data = dashboardData;
   generatedAt.textContent = `Generated ${new Date(data.generated_at).toLocaleString()}`;
-  globalInput.placeholder = `${architectureMeta().short}: ask Jarvis, run a check, or type refresh`;
+  if (globalInput) globalInput.placeholder = `${architectureMeta().short}: ask Jarvis, run a check, or type refresh`;
   if (activeTab === "jarvis") renderJarvis(data);
   if (activeTab === "history") renderHistory(data);
   if (activeTab === "service") renderSchema(data);
@@ -3583,6 +4087,11 @@ function render() {
   if (activeTab === "config") renderConfig(data);
   if (activeTab === "plan") renderPlan(data);
   if (activeTab === "overview") renderOverview(data);
+  if (activeTab === "architecture") renderArchitecture(data);
+  if (activeTab === "knowledge") renderKnowledge(data);
+  if (activeTab === "agents") renderAgents(data);
+  if (activeTab === "runs") renderRuns(data);
+  if (activeTab === "reference") renderReference(data);
   if (activeTab === "wikillm") renderWiki(data);
   if (activeTab === "graphify") renderGraphify(data);
   if (activeTab === "langgraph") renderLangGraph(data);
@@ -3600,10 +4109,16 @@ refreshDataButton.addEventListener("click", () => {
   });
 });
 
-globalComposer.addEventListener("submit", (event) => {
+globalComposer?.addEventListener("submit", (event) => {
   event.preventDefault();
-  handleGlobalSubmit(globalInput.value, "bottom command input");
-  globalInput.value = "";
+  handleGlobalSubmit(globalInput?.value || "", "bottom command input");
+  if (globalInput) globalInput.value = "";
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !schemaFullscreen || nodeControlPanelId) return;
+  schemaFullscreen = false;
+  render();
 });
 
 window.addEventListener("focus", () => {
@@ -3633,9 +4148,12 @@ document.addEventListener("visibilitychange", () => {
 });
 
 window.addEventListener("hashchange", () => {
-  const nextTab = window.location.hash?.replace(/^#/, "") || "jarvis";
+  const nextTab = window.location.hash?.replace(/^#/, "") || "overview";
   if (!tabs.some((tab) => tab.id === nextTab)) return;
   activeTab = nextTab;
+  if (activeTab === "service") setArchitectureMode("service");
+  if (activeTab === "schema") setArchitectureMode("control");
+  if (activeTab !== "service" && activeTab !== "schema") schemaFullscreen = false;
   render();
 });
 

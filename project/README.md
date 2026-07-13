@@ -4,14 +4,14 @@ This is the active ArchFlow project after the 2026-06-24 reset.
 
 ## Mission
 
-Build a repeatable public-safe system that converts messy work material into execution assets:
+Build a repeatable public-safe knowledge-continuity system that converts fragmented company material into maintained knowledge and governed execution:
 
-1. Source material: dialogue, chat, meeting notes, transcript, or planning note.
-2. Structured context: facts, interpretations, hypotheses, gaps.
-3. PRD: goal, scope, inputs, outputs, acceptance criteria.
-4. Task plan: owners, responsibilities, timeline, blockers.
-5. Knowledge base update: reusable project memory and decisions.
-6. Review gate: public-safety, evidence, and next-action check.
+1. Identify the forcing moment, objective, authority, corpus, owners, and stop conditions.
+2. Assemble source-grounded context with facts, interpretations, hypotheses, and gaps kept distinct.
+3. Connect bounded retrieval, semantic knowledge, generated structure, and durable reviewed memory.
+4. Route work through explicit role, skill, state, approval, verification, and repair contracts.
+5. Produce task-specific architectures such as PRD, ICP, content, outreach, research, or engineering packs.
+6. Promote only reviewed knowledge deltas and record proof, rollback, and the next safe action.
 
 ## Active Folders
 
@@ -20,7 +20,10 @@ Build a repeatable public-safe system that converts messy work material into exe
 | `config/` | Public-safe provider and model configuration templates. |
 | `workflows/` | LangGraph, CrewAI, and LlamaIndex workflow contracts. |
 | `loops/` | Loop Engineering contract, state schema, budget, run log, and readiness review. |
-| `dashboard/` | Phase 2 local read-only operator dashboard. |
+| `goals/` | Goal Engineering contracts, lifecycles, authority, and stop conditions. |
+| `knowledge/` | Public-safe audience and role-specific knowledge routing. |
+| `agents/` | Role, skill, routing, and marketing-division contracts. |
+| `dashboard/` | Documentation-first operator console and browser-local workflow editor. |
 | `outputs/` | Output document templates for proof runs. |
 | `reports/` | Setup and review reports by layer. |
 | `prompts/` | Reusable public-safe prompts. |
@@ -29,23 +32,16 @@ Build a repeatable public-safe system that converts messy work material into exe
 
 ## Current Status
 
-The plan has been imported from the private project board as an English public-safe summary.
-Codex authentication is the main operator and publication path for this setup.
-Ollama is connected for local minor/background tasks.
-Qwythos is installed and now generates text through Ollama.
-`gemma4:e4b` remains the verified local fallback model.
-LangSmith tracing is configured for project ID `masked_langsmith_project_id`; keys stay only in ignored local env files.
-LangGraph is installed and has passed a sanitized smoke workflow.
-LlamaIndex is installed and has passed approved-corpus retrieval over public files. The retrieval path now supports bounded hybrid mode with source-grounded lexical fallback; the old deterministic keyword proof remains the required smoke path.
-CrewAI is installed and has passed config/import validation without LLM task execution.
-Graphify output exists for the public repository.
-E1.2 full-test artifacts exist under `project/runs/E1.2/2026-06-26-full-test/`, including the PRD, streaming report, system report, task matrix, KB update, review report, and agent handout.
-The June 29 tool and market integration adds L1 report-only loop controls and an E2 market-research engine workflow. Cognee, turbovec, and Mistral remain gated future layers, not active runtime dependencies.
+- The E1-E8 strategic spine centers knowledge continuity, with PRD/ICP and marketing execution treated as generated workflow architectures.
+- LangGraph owns orchestration state; Goal Engineering defines observable completion; Loop Engineering repairs bounded work; WikiLLM remains canonical durable public memory.
+- Obsidian is the human semantic layer, Graphify is generated structure, Nexus is a live bridge only after current runtime proof, and LlamaIndex is bounded retrieval with lexical rollback.
+- Cognee, TurboVec, provider-backed Jarvis, autonomous writeback, and the E8 installable product remain gated candidates rather than default runtime claims.
+- The local/public website, dashboard, and guarded Jarvis contracts have implementation and browser/API-contract proof. Production freshness, live owner-authenticated provider execution, durable spend enforcement, and validated demand remain unproven.
+- The current ICP is a 30-75-person product-led B2B SaaS hypothesis led by enterprise-readiness, onboarding, and key-person-departure forcing moments. It requires primary interviews and paid-start evidence.
 
-## Local Dashboard
+## Local Surfaces
 
-The local dashboard is a read-only Phase 2 control panel, not the primary project brain.
-It reads public project files and ignored local env presence, then displays WikiLLM memory, recent run/report activity, LangGraph nodes, CrewAI roles, LlamaIndex corpus boundaries, LangSmith readiness, and env/package status.
+The repository root serves the three-block website. The dashboard explains and edits browser-local architecture packets; it is not a shadow source of truth. The separate Jarvis page prepares guarded model requests; it does not prove provider activation or permit direct writeback.
 
 Run it from the repository root:
 
@@ -55,3 +51,10 @@ python3 -m http.server 8765
 ```
 
 Open `http://127.0.0.1:8765/project/dashboard/`.
+
+Other local routes:
+
+- website: `http://127.0.0.1:8765/`
+- Jarvis: `http://127.0.0.1:8765/jarvis`
+
+Authoritative state remains in repository contracts, reviewed run artifacts, and WikiLLM. Browser-local edits and exports are review candidates only.

@@ -1,0 +1,44 @@
+goal_id: YYYY-MM-DD-short-goal
+objective: Replace with one observable outcome.
+done_condition:
+  - Replace with an objective acceptance statement.
+evidence_state: planned
+lifecycle_state: draft
+accountable_owner_role: terra_integrator
+independent_verifier_role: af_review
+authority_boundary:
+  - public_project_files_only
+forbidden_actions:
+  - provider_calls_without_explicit_approval
+  - external_write_without_target_schema_and_owner_approval
+allowed_corpus:
+  - project/
+  - history/
+  - skills/
+  - wiki/
+task_graph_ref: project/runs/RUN_ID/task-graph.md
+artifacts_required:
+  - run_summary
+  - verification_packet
+  - agent_handout
+acceptance_checks:
+  - public_safety_scan
+  - diff_check
+max_attempts_per_item: 3
+max_revision_loops: 2
+max_parallel_branches: 3
+token_budget: unset
+time_budget_minutes: unset
+cost_budget: 0
+stop_conditions:
+  - no_new_evidence_after_two_repairs
+  - source_or_authority_boundary_unclear
+kill_conditions:
+  - destructive_or_unapproved_external_side_effect
+  - objective_superseded
+rollback_or_recovery: Restore from the last reviewed checkpoint without deleting user work.
+last_checkpoint_ref: unset
+proof_refs: []
+gaps: []
+next_action: Complete preflight and set lifecycle_state to ready.
+updated_at: YYYY-MM-DDTHH:MM:SSZ

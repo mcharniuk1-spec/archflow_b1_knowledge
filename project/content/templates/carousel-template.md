@@ -1,6 +1,6 @@
 # Carousel Template
 
-Use after a task or review state has public-safe artifacts and can teach the product-team ICP something concrete about PRD production, source boundaries, or review gates.
+Use after a task or review state has public-safe artifacts and can teach the product-team ICP something concrete about knowledge continuity, source boundaries, generated output packs, or review gates.
 
 ## Template Metadata
 
@@ -8,21 +8,22 @@ Use after a task or review state has public-safe artifacts and can teach the pro
 - Epic/task:
 - Source run folder:
 - Intended channel: LinkedIn carousel first
-- ICP lane: B2B SaaS product leaders for Product Discovery-to-Production PRD Pack
+- ICP lane: 30-75-person product-led B2B SaaS product leaders under a verified knowledge-continuity forcing moment
 - Content identity: ArchFlow company content
 - Visual style: product-system and research-lab
 - Status: draft / AF Review / owner approval / ready / blocked
 
 ## Eligible Subtopics
 
-- Messy product source material becoming structured context.
-- Context digest to PRD transformation.
-- PRD quality checklist and acceptance-criteria proof.
+- A forcing moment exposing scattered product knowledge.
+- Messy product source material becoming a reviewed knowledge spine.
+- Knowledge spine to PRD, questionnaire, onboarding, or handoff pack.
+- Generated-output quality and acceptance-criteria proof.
 - KB writeback/readback proof from E1.3.
 - Source registry and evidence-label discipline.
 - Review gate workflow: AF Review, owner approval, claim downgrade.
 - Dashboard as read-only proof surface.
-- Why meeting assistants stop before production-ready PRD handoff.
+- Why search and meeting assistants stop before maintained knowledge continuity and reviewed execution handoff.
 
 ## Proof Required
 
@@ -32,7 +33,7 @@ Use after a task or review state has public-safe artifacts and can teach the pro
 | Artifact exists | Repo-relative artifact path | FACT |
 | Claim about usefulness | Review report, readback result, or acceptance check | INTERPRETATION |
 | Claim about market or buyer pain | Public research card or owner-approved research summary | HYPOTHESIS unless validated |
-| Claim about demand, ROI, customers, revenue | E6/E7 payment or firm-intent evidence | FACT only when verified |
+| Claim about demand, ROI, customers, revenue | E5/E7 payment or firm-intent evidence | FACT only when verified |
 
 ## Allowed Screenshots And Data
 
@@ -55,13 +56,13 @@ Blocked:
 Copy block:
 
 ```text
-Most product teams do not need another meeting summary.
-They need a reviewed path from messy source material to a production-ready PRD.
+Most product teams do not need another AI summary.
+They need a reviewed path from scattered sources to an answerable company brain and reliable execution handoff.
 ```
 
 Visual:
 
-- Before/after split: messy inputs -> reviewed PRD pack.
+- Before/after split: scattered inputs -> reviewed knowledge spine -> generated output pack.
 - Evidence chip: `HYPOTHESIS` unless backed by public research.
 
 ### Slide 2: Source Boundary
@@ -84,7 +85,7 @@ Copy block:
 
 ```text
 ArchFlow turns approved inputs into four execution assets:
-context digest, PRD, backlog/acceptance criteria, and KB handoff.
+source map, reviewed knowledge spine, task-specific output pack, and governed handoff.
 ```
 
 Visual:
@@ -123,7 +124,7 @@ Visual:
 Copy block:
 
 ```text
-Where does your PRD process lose the most signal: source collection, synthesis, review, or handoff?
+Where does your product knowledge lose the most signal: source ownership, retrieval, synthesis, review, or handoff?
 ```
 
 Visual:
@@ -136,7 +137,7 @@ Visual:
 - All slide claims have evidence labels.
 - Each artifact reference exists in the source run folder.
 - Any screenshot is sanitized and approved.
-- No demand, customer, revenue, or ROI claim is made unless E6/E7 evidence exists.
+- No demand, customer, revenue, or ROI claim is made unless E5/E7 evidence exists.
 - AF Review approved the carousel plan.
 - Owner approved final slide text and images before publishing.
 

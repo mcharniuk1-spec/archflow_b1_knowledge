@@ -11,13 +11,14 @@ purpose: >
 context_method:
   cag_role: >
     CAG is Controlled Context Assembly Generation. It assembles stable project
-    rules, role/skill governance, architecture boundaries, E1-E7 state, and
+    rules, role/skill governance, architecture boundaries, E1-E8 state, and
     gated claims before task-specific retrieval.
   rag_role: >
     RAG is task-specific evidence retrieval into a context capsule. It must
     return source paths and metadata or the result is not accepted as evidence.
   capsule_schema: project/context/context-capsule.schema.json
   source_boundary_policy: project/context/retrieval/source-boundary-policy.yaml
+  audience_source_routing: project/knowledge/audience/source-routing.yaml
 
 approved_corpus:
   include:
@@ -45,6 +46,8 @@ indexing_parameters:
     - document_type
     - public_safety_status
     - updated_at
+    - authority_state
+    - superseded_by
   persist_dir: project/local/rag_index
   persist_dir_git_status: ignored
 
@@ -61,6 +64,9 @@ retrieval_parameters:
   refuse_on_private_source: true
   deterministic_smoke_mode: lexical
   no_source_path_means_no_evidence: true
+  canonical_source_boost: true
+  superseded_source_penalty: true
+  contradictory_current_claim: return_gap_and_request_reconciliation
 
 model_routing:
   primary_operator: codex_operator

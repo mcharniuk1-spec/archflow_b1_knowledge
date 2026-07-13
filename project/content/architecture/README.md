@@ -5,7 +5,7 @@ Date: 2026-07-10
 
 ## Purpose
 
-This architecture prepares evidence-led company content for the ArchFlow Product Discovery-to-Production PRD Pack. It is not a generic AI-agency content engine. Its content explains the operating work between an approved source packet and a reviewable PRD, ICP evidence, acceptance criteria, task handoff, and decision-memory update.
+This architecture prepares evidence-led company content for ArchFlow's product knowledge-continuity system. It is not a generic AI-agency or PRD-generator content engine. Its content starts with a verified forcing moment, explains source/ownership/retrieval/governance work, and shows reviewable outputs such as evidence packs, onboarding maps, continuity handoffs, PRDs, task packets, and decision-memory updates.
 
 ## Operating Boundary
 

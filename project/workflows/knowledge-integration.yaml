@@ -2,8 +2,8 @@ name: archflow_combined_knowledge_operations
 status: configured
 
 purpose: >
-  Define how public WikiLLM, optional Obsidian/Second Brain mirror, future
-  Graphify output, future Nexus bridge, LlamaIndex RAG, CrewAI, LangGraph,
+  Define how public WikiLLM, the external Obsidian second-brain stack, Graphify
+  output, the Nexus bridge, LlamaIndex RAG, CrewAI, LangGraph,
   LangSmith, and Codex operate together.
 
 operator:
@@ -28,16 +28,26 @@ knowledge_layers:
       - insights
 
   obsidian_second_brain:
-    status: planned_sanitized_mirror_only
-    root: project/reference/obsidian/
+    status: configured_external_control_room_and_project_vault_stack
+    root: external_local_vaults_not_mirrored_into_public_repo
     role: human_strategy_and_semantic_notes
+    canonical_vault_scope:
+      - global_control_vault
+      - real_estate_bulgaria_project_vault
+      - have_website_project_vault
+      - ukraine_dairy_thesis_project_vault
+    repository_workspace_boundary: archflow_repository_workspace_is_not_a_curated_second_brain_vault
+    plugin_baseline:
+      core: graph_canvas_backlinks_properties_templates_search
+      community: nexus_juggl_infranodus_graph_view_3d_graph
     rule: export_or_summarize_public_safe_notes_only
 
   graphify:
-    status: planned_after_runtime_code_exists
-    root: project/reference/graphify/
+    status: installed_and_generated_reference_available
+    root: graphify-out/
     role: generated_structure_map
-    rule: graph_public_repo_only
+    freshness: code_graph_and_html_refreshed_2026_07_10_6671_nodes_650_communities
+    rule: graph_public_repo_only_and_never_raw_private_workspace_ingestion
 
   loop_engineering:
     status: active_contract
@@ -46,8 +56,17 @@ knowledge_layers:
     rule: default_l1_report_only
 
   nexus:
-    status: planned_after_vault_target_is_clear
+    status: connector_config_ready_live_runtime_partial
     role: live_obsidian_bridge
+    canonical_servers:
+      - nexus_global
+      - nexus_real_estate
+      - nexus_have
+      - nexus_thesis
+    readiness:
+      connector_and_file_config: pass_for_four_canonical_vaults
+      live_initialize: real_estate_pass_global_have_thesis_missing
+      tool_manager_get_tools: real_estate_pass_global_have_thesis_not_reachable
     rule: discover_schema_before_use_and_never_write_secrets
 
 runtime_layers:

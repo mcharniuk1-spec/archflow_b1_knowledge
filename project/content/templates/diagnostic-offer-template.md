@@ -4,36 +4,37 @@ Status: reusable service-offer template.
 
 ## Offer
 
-ArchFlow Discovery Diagnostic.
+ArchFlow Forcing-Moment Knowledge Diagnostic.
 
 ## Buyer
 
-Director/VP Product, Head of Product, Product Ops, or senior PM leader in a B2B SaaS/product-led company with recurring PRD and engineering-handoff friction.
+Head/VP Product or CPO in a roughly 30-75-person product-led B2B SaaS company facing a verified enterprise-readiness, onboarding/hiring, or key-person-departure forcing moment. A senior Product Manager or Product Ops lead may champion the work; Product Ops is not assumed to own the budget. Project Manager/PMO is not an assumed buyer.
 
 ## Inputs
 
 - Approved source packet.
-- Recent 90-day PRD or feature story.
+- Recent 90-day enterprise questionnaire, onboarding, departure, or cross-team knowledge-recovery story.
 - Current tools and alternatives.
+- Source owners, freshness expectations, and retrieval failure examples.
 - Privacy/source-boundary constraints.
 - Budget-owner path if known.
 
 ## Outputs
 
 - Source inventory.
-- Pain and workaround map.
-- Discovery evidence digest.
-- PRD/KB readiness score.
+- Source, owner, freshness, permission, and contradiction map.
+- Forcing-moment evidence and workaround digest.
+- Self-reported modeled knowledge-readiness baseline.
 - Evidence gaps.
-- Recommended next package.
+- Recommended knowledge spine, generated output pack, and next controlled experiment.
 
 ## Conversion Path
 
 1. Source-packet review.
-2. Discovery Diagnostic.
-3. PRD Rescue Sprint.
-4. Monthly PRD/KB Operating Retainer only after clean sprint evidence.
+2. Forcing-Moment Knowledge Diagnostic.
+3. Product Knowledge Reliability Sprint.
+4. Knowledge Continuity Operating Retainer only after paid-start and reliability evidence.
 
 ## Claim Boundary
 
-Pricing, ROI, conversion, and demand are hypotheses until E7 evidence exists.
+Pricing, ROI, conversion, and demand are hypotheses until E5 market/payment evidence and E7 measurement evidence exist.

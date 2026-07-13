@@ -1,5 +1,26 @@
 # Insights
 
+## Knowledge Continuity Is The Product Layer
+
+- FACT: the July market package found many low-cost PRD and workspace-AI alternatives but no primary buyer validation for ArchFlow.
+- INTERPRETATION: drafting a PRD is increasingly a feature; the more defensible layer is maintained sources, provenance, cross-feature consistency, role context, review, and safe memory promotion.
+- HYPOTHESIS: ArchFlow should sell diagnosis and repair of knowledge-to-execution continuity, with PRD/ICP, content, outreach, engineering, finance, and media as generated role architectures on the same company brain.
+- GAP: buyer interviews, source-packet willingness, price, access/trust, and payment evidence are still required.
+
+## Goal, Graph, Loop Separation
+
+- FACT: the existing system had a loop contract and LangGraph routing but no first-class goal lifecycle schema.
+- INTERPRETATION: reliability improves when the goal owns objective and completion, LangGraph owns state/dependencies, and Loop Engineering owns bounded repair inside a task.
+- HYPOTHESIS: this separation will reduce false completion, repeated work, and unbounded repair; the benchmark must test the claim.
+- GAP: provider-disabled architecture-factory and recovery fixtures have not yet run.
+
+## Selective Tool Adoption Beats Stack Accumulation
+
+- FACT: Cognee, TurboVec, Google ADK, NVIDIA tools, command guards, Obsidian methods, media models, and 3D builders overlap some current responsibilities.
+- INTERPRETATION: the best architecture is not the one with every framework; it is the one with one state owner, one canonical memory, explicit fallbacks, and measured graduation gates.
+- HYPOTHESIS: one-at-a-time trials will produce clearer attribution and lower integration risk than a full-stack reset.
+- GAP: security scans for the named external repositories did not finish in the bounded review window.
+
 ## Public System Design
 
 The safest current architecture separates three concerns:
@@ -170,3 +191,27 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 
 - Separating role authority from runtime identity lets Codex, Hermes, or another compatible agent participate without weakening maker-checker separation or turning a named tool into automatic execution authority.
 - Git-first external sequencing makes the public repository the reviewed evidence boundary: branch work is merged and validated before task-board or production mutation is considered.
+
+## Nexus Readiness Is A Live Runtime Gate - 2026-07-10
+
+- Observation: The canonical vaults can have the right Obsidian plugins and config while still lacking live Nexus sockets or tool-manager responses.
+- Interpretation: Nexus is a runtime bridge, not a static configuration claim. Agents must verify the target vault's live socket and tool-call readiness before planning vault actions.
+- Why it matters: this prevents architecture reviews from turning installed plugins into unsupported writeback or live-search claims.
+- Where applicable: Obsidian reviews, Graphify routing, WikiLLM promotion, live-vault search, future Nexus writeback, and any agent workflow that depends on current vault state.
+- Limitation: filesystem and public wiki artifacts remain the reliable fallback when a vault is not live.
+
+## Insight - A Forcing Moment Is A Better Wedge Than A Generic Artifact
+
+- Observation: generic PRD generation is widely available, while an enterprise questionnaire, onboarding wave, or key-person departure exposes source, ownership, freshness, and continuity failures across many artifacts.
+- Interpretation: ArchFlow should diagnose and stabilize the knowledge system around the forcing moment, then generate PRDs and other packs downstream.
+- Why it matters: the buyer can evaluate a bounded operational risk and visible proof instead of a broad AI-platform promise.
+- Where applicable: ICP validation, Knowledge Reliability Sprint packaging, website narrative, content, outreach preparation, and buyer interviews.
+- Limitation: the forcing moments and buyer remain hypotheses until primary interviews and paid-start evidence exist.
+
+## Insight - Retrieval Needs Authority And Supersession, Not Similarity Alone
+
+- Observation: old PRD-first and 50-500 cohort documents can remain lexically relevant after the strategy changes.
+- Interpretation: retrieval must carry current/superseded state, canonical pointers, and authority weighting so history remains auditable without controlling current answers.
+- Why it matters: a durable company brain must preserve why decisions changed while preventing stale plans from silently steering agents.
+- Where applicable: LlamaIndex ranking, dashboard search, WikiLLM promotion, audience updates, role briefs, and future Obsidian/Graphify views.
+- Limitation: authority weighting improves routing but does not replace source freshness review or primary evidence.

@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import hmac
 import os
+import re
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -9,12 +11,48 @@ from http.server import BaseHTTPRequestHandler
 from typing import Any
 
 
-APP_VERSION = "2026-07-07-vercel-jarvis-chat-files-voice-disabled"
+APP_VERSION = "2026-07-13-vercel-owner-auth-model-routing-blocked-ledger"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_OPENROUTER_MODEL = ""
 DEFAULT_DAILY_BUDGET = 5.00
 DEFAULT_RUN_BUDGET = 1.99
 DEFAULT_HARD_STOP = 1.99
+LOCAL_ORIGIN_PATTERN = re.compile(r"^http://(127\.0\.0\.1|localhost):\d+$")
+DEFAULT_ALLOWED_MODELS = [
+    "openai/gpt-5.6-luna",
+    "anthropic/claude-sonnet-5",
+    "qwen/qwen3.7-plus",
+    "deepseek/deepseek-v4-flash",
+]
+CURATED_MODELS = [
+    {
+        "id": "openai/gpt-5.6-luna",
+        "label": "GPT-5.6 Luna",
+        "provider": "OpenAI",
+        "tier": "frontier",
+        "context_length": 1_050_000,
+    },
+    {
+        "id": "anthropic/claude-sonnet-5",
+        "label": "Claude Sonnet 5",
+        "provider": "Anthropic",
+        "tier": "frontier",
+        "context_length": 1_000_000,
+    },
+    {
+        "id": "qwen/qwen3.7-plus",
+        "label": "Qwen3.7 Plus",
+        "provider": "Qwen",
+        "tier": "economy",
+        "context_length": 1_000_000,
+    },
+    {
+        "id": "deepseek/deepseek-v4-flash",
+        "label": "DeepSeek V4 Flash",
+        "provider": "DeepSeek",
+        "tier": "economy",
+        "context_length": 1_048_576,
+    },
+]
 
 PRD_BLOCKS = [
     "Product context",
@@ -32,6 +70,32 @@ PRD_BLOCKS = [
 
 def model_provider() -> str:
     return os.getenv("MODEL_PROVIDER", "none").strip().lower() or "none"
+
+
+def env_enabled(name: str) -> bool:
+    return os.getenv(name, "").strip().lower() in {"1", "true", "yes", "on"}
+
+
+def allowed_models() -> list[str]:
+    configured = [
+        value.strip()
+        for value in os.getenv("OPENROUTER_ALLOWED_MODELS", "").split(",")
+        if value.strip()
+    ]
+    return configured or list(DEFAULT_ALLOWED_MODELS)
+
+
+def requested_model(body: dict[str, Any]) -> str:
+    return str(body.get("model_id") or os.getenv("OPENROUTER_MODEL", "")).strip()
+
+
+def owner_authorized(handler: BaseHTTPRequestHandler) -> bool:
+    expected = os.getenv("JARVIS_OWNER_TOKEN", "").strip()
+    if not expected:
+        return False
+    authorization = handler.headers.get("Authorization", "")
+    scheme, _, supplied = authorization.partition(" ")
+    return scheme.lower() == "bearer" and bool(supplied) and hmac.compare_digest(supplied.strip(), expected)
 
 
 def env_float(name: str) -> tuple[float | None, str | None]:
@@ -82,13 +146,17 @@ def budget_payload(provider_allowed: bool = False) -> dict[str, Any]:
     run = run if run is not None else DEFAULT_RUN_BUDGET
     hard_stop = hard_stop if hard_stop is not None else DEFAULT_HARD_STOP
     over_cap = daily > DEFAULT_DAILY_BUDGET or run >= 2.0 or hard_stop >= 2.0
+    status = "blocked_over_cap" if over_cap else "ready_disabled"
+    if provider_allowed and not over_cap:
+        status = "blocked_durable_nonce_and_spend_ledger_required"
     return {
-        "status": "blocked_over_cap" if over_cap else ("ready_for_approved_provider_call" if provider_allowed else "ready_disabled"),
+        "status": status,
         "daily_budget_usd": daily,
         "run_budget_usd": run,
         "run_hard_stop_usd": hard_stop,
-        "actual_spend_usd": 0.0,
-        "provider_calls_allowed": bool(provider_allowed and not over_cap),
+        "actual_spend_usd": None,
+        "spend_tracking": "not_durable_across_serverless_instances",
+        "provider_calls_allowed": False,
         "over_cap_behavior": "stop_and_request_owner_approval",
     }
 
@@ -119,26 +187,32 @@ def packet(
 
 
 def provider_requested(body: dict[str, Any]) -> bool:
-    return bool(body.get("owner_approval") and body.get("provider_approval"))
+    return bool(
+        env_enabled("JARVIS_ENABLE_PROVIDER_CALLS")
+        and body.get("_owner_authorized")
+        and body.get("provider_approval")
+    )
 
 
-def openrouter_model() -> str:
-    return os.getenv("OPENROUTER_MODEL", "").strip() or DEFAULT_OPENROUTER_MODEL
-
-
-def provider_ready(body: dict[str, Any]) -> tuple[bool, str]:
+def provider_ready(body: dict[str, Any]) -> tuple[bool, str, str]:
     if model_provider() != "openrouter":
-        return False, "model_provider_not_openrouter"
-    if not provider_requested(body):
-        return False, "owner_and_provider_approval_required"
+        return False, "model_provider_not_openrouter", ""
+    if not env_enabled("JARVIS_ENABLE_PROVIDER_CALLS"):
+        return False, "provider_calls_not_enabled_server_side", ""
+    if not os.getenv("JARVIS_OWNER_TOKEN", "").strip():
+        return False, "owner_auth_not_configured", ""
+    if not body.get("_owner_authorized"):
+        return False, "owner_auth_required", ""
+    if not body.get("provider_approval"):
+        return False, "per_request_provider_acknowledgement_required", ""
     if not os.getenv("OPENROUTER_API_KEY", "").strip():
-        return False, "openrouter_api_key_missing"
-    if not openrouter_model():
-        return False, "openrouter_model_required"
-    budget = budget_payload(provider_allowed=True)
-    if budget["status"] != "ready_for_approved_provider_call":
-        return False, f"budget_not_ready:{budget['status']}"
-    return True, "ready"
+        return False, "openrouter_api_key_missing", ""
+    model = requested_model(body)
+    if not model:
+        return False, "openrouter_model_required", ""
+    if model not in allowed_models():
+        return False, "model_not_in_server_allowlist", model
+    return False, "durable_nonce_and_spend_ledger_required", model
 
 
 def architecture_context(kind: str, body: dict[str, Any]) -> dict[str, Any]:
@@ -226,11 +300,11 @@ def openrouter_prompt(kind: str, body: dict[str, Any]) -> list[dict[str, str]]:
 
 
 def call_openrouter(kind: str, body: dict[str, Any]) -> dict[str, Any]:
-    ready, reason = provider_ready(body)
+    ready, reason, model = provider_ready(body)
     if not ready:
-        return {"provider_executed": False, "reason": reason}
+        return {"provider_executed": False, "reason": reason, "requested_model": model or requested_model(body)}
     payload = {
-        "model": openrouter_model(),
+        "model": model,
         "messages": openrouter_prompt(kind, body),
         "temperature": float(os.getenv("OPENROUTER_TEMPERATURE", "0.2")),
         "max_tokens": int(os.getenv("OPENROUTER_MAX_TOKENS", "900")),
@@ -285,7 +359,7 @@ def provider_packet(kind: str, body: dict[str, Any], fallback_payload: dict[str,
             {
                 "provider_calls": 1,
                 "default_runtime": "openrouter_guarded_langgraph_crewai_packet",
-                "model": provider.get("model", openrouter_model()),
+                "model": provider.get("model", requested_model(body)),
             },
         )
     return packet(kind, "review_packet_created", payload)
@@ -349,7 +423,12 @@ def send_json(handler: BaseHTTPRequestHandler, payload: dict[str, Any], status: 
     handler.send_response(status)
     handler.send_header("Content-Type", "application/json; charset=utf-8")
     handler.send_header("Cache-Control", "no-store, max-age=0")
-    handler.send_header("Access-Control-Allow-Origin", os.getenv("JARVIS_API_ALLOWED_ORIGIN", "*"))
+    configured_origin = os.getenv("JARVIS_API_ALLOWED_ORIGIN", "").strip()
+    request_origin = handler.headers.get("Origin", "").strip()
+    if configured_origin and request_origin == configured_origin:
+        handler.send_header("Access-Control-Allow-Origin", configured_origin)
+    elif not configured_origin and LOCAL_ORIGIN_PATTERN.fullmatch(request_origin):
+        handler.send_header("Access-Control-Allow-Origin", request_origin)
     handler.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
     handler.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
     handler.end_headers()
@@ -364,13 +443,15 @@ class JsonHandler(BaseHTTPRequestHandler):
         send_json(self, self.route("GET", {}))
 
     def do_POST(self) -> None:
-        send_json(self, self.route("POST", read_json_body(self)))
+        body = read_json_body(self)
+        body["_owner_authorized"] = owner_authorized(self)
+        send_json(self, self.route("POST", body))
 
     def log_message(self, format: str, *args: Any) -> None:
         return
 
     def route(self, method: str, body: dict[str, Any]) -> dict[str, Any]:
-        return packet("jarvis-api", "ok", {"method": method, "body": body})
+        return packet("jarvis-api", "ok", {"method": method})
 
 
 def health_payload() -> dict[str, Any]:
@@ -381,13 +462,35 @@ def health_payload() -> dict[str, Any]:
             "service": "jarvis-api",
             "version": APP_VERSION,
             "model_provider": model_provider(),
-            "provider_calls": "disabled_until_explicit_owner_approval_and_budget_guard",
+            "provider_enabled": False,
+            "provider_switch_requested": env_enabled("JARVIS_ENABLE_PROVIDER_CALLS"),
+            "provider_key_configured": bool(os.getenv("OPENROUTER_API_KEY", "").strip()),
+            "owner_auth_configured": bool(os.getenv("JARVIS_OWNER_TOKEN", "").strip()),
+            "allowed_models": allowed_models(),
+            "provider_calls": "blocked_until_server_nonce_and_durable_spend_ledger_exist",
+            "spend_tracking": "not_implemented_provider_execution_disabled",
             "langgraph": "controller_contract",
             "crewai": "proof_passed_not_default_runtime",
             "voice": "disabled_text_chat_only",
             "file_transfer": "bounded_chat_attachments_no_persistence",
             "writeback": "disabled",
-            "deployment": "vercel_guarded_openrouter_review_contract",
+            "deployment": "vercel_review_packet_contract_provider_execution_disabled",
+        },
+    )
+
+
+def models_payload() -> dict[str, Any]:
+    allowed = set(allowed_models())
+    models = [{**model, "allowed": model["id"] in allowed} for model in CURATED_MODELS]
+    return packet(
+        "model-catalog",
+        "ok",
+        {
+            "curated": models,
+            "allowed_model_ids": sorted(allowed),
+            "live_catalog_url": "https://openrouter.ai/api/v1/models",
+            "catalog_policy": "search_is_public; execution remains disabled until server nonce and durable spend enforcement exist",
+            "snapshot_date": "2026-07-13",
         },
     )
 

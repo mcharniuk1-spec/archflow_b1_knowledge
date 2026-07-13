@@ -1,5 +1,16 @@
 # Log
 
+## 2026-07-13
+
+- Audited the current self-supporting agent architecture and confirmed Loop Engineering was present at L1 while Goal Engineering was not yet a first-class contract.
+- Added Goal Engineering state, lifecycle, verifier, budget, stop, and kill-switch contracts under `project/goals/`.
+- Added the validated `archflow-architecture-operator` skill with architecture layers, role packs, tool-adoption gates, and benchmark metrics.
+- Updated the architecture and role/skill registries for LangGraph state ownership, Terra/Luna coordination, selective Obsidian methods, and defense-in-depth command safety.
+- Reviewed the July market package and reframed the strategic center from PRD generation to maintained knowledge and execution continuity, without claiming buyer or payment validation.
+- Added the renewed E1-E7 strategic plan, architecture report, source register, benchmark contract, decision, issue, run summary, and handout.
+- Kept website/dashboard implementation, provider calls, deployments, broad ingestion, third-party installs, and live vault mutation out of scope.
+- Completed a schema-safe external task-board renewal using Terra as sole writer and Luna agents as read-only auditors: 7 Proven/Done outcomes, 22 Planned contracts, and 90 Superseded legacy rows were verified with zero mutation failures.
+
 ## 2026-06-25
 
 - Public project was created and published.
@@ -584,3 +595,48 @@ GAP:
 
 FINAL:
 - Git push, canonical Vercel deployment, July 10 dashboard freshness, hosted browser QA, public PDF link checks, and Telegram delivery of four reviewed public PDFs passed.
+
+## 2026-07-10 - Obsidian, Graphify, and Nexus setup review
+
+FACT:
+- Verified the four-vault canonical Obsidian plugin/config baseline and found no missing required community plugin.
+- Confirmed Real Estate Nexus live tool-manager readiness; Global, Have Website, and Ukraine Dairy Value Chain Thesis remain socket gaps.
+- Corrected stale local Obsidian vault-map and Graphify/Nexus routing notes.
+
+INTERPRETATION:
+- The active blocker is runtime reload/readiness, not plugin installation.
+- The ArchFlow repository workspace remains outside the curated second-brain graph.
+- Refreshed Graphify artifacts require the public-output sanitizer before they can be treated as public-safe generated evidence.
+
+GAP:
+- Reload the three missing Obsidian vault windows and rerun the Nexus verifiers. The public Graphify code graph and HTML fallback were refreshed under the public-only scope.
+
+## 2026-07-10 - Daily skill/RAG retrospective
+
+FACT:
+- Ran the daily skill/RAG retrospective for the July 10 public evidence window after reviewing project rules, live communication, run artifacts, reports, the open operational gaps issue, skill registry surfaces, RAG summary, and current automation TOML.
+- Report: `project/runs/20260710_daily_skill_retrospective.md`.
+- Run note: `project/runs/20260710_run_daily_skill_retrospective.md`.
+- The completed evening skill/hook review found no drift and returned `NO_UPDATE`; a later evening rerun remained in-progress at review time.
+
+INTERPRETATION:
+- No new skill is justified. July 10 strengthened proof-state separation and Nexus readiness discipline rather than creating a new reusable workflow.
+- Live Nexus should be treated as per-vault runtime readiness, not inferred from plugin/config presence.
+
+GAP:
+- Provider-backed execution, canonical model-call ledger, vector-default retrieval, continuous monitoring, durable external writeback, social publication, buyer proof, and three-vault Nexus live readiness remain gated.
+
+## 2026-07-13 - ICP knowledge-continuity product surface
+
+FACT:
+- Reviewed the owner ICP brief and created a public-safe audience node with explicit facts, hypotheses, exclusions, signals, channels, content, style, and evidence gaps.
+- Aligned active workflows and marketing roles with the current knowledge-continuity cohort and owner-gated action/readback sequence.
+- Implemented the three-block website, eight-route operator dashboard, separate Jarvis UI, public E1-E8 task reconstruction, and external task-board mutation.
+- Independent claim, security, UX/accessibility, and board readback reviews completed; local interaction and provider-disabled API checks passed.
+
+INTERPRETATION:
+- The forcing-moment knowledge system is the current wedge; PRD/ICP and marketing packs are downstream architectures.
+- Current and superseded authority metadata is necessary to keep historical plans useful without allowing them to steer active retrieval.
+
+GAP:
+- Production freshness, provider execution, durable nonce/spend controls, buyer/access/channel/price/payment proof, and E8 productization remain open gates.

@@ -17,16 +17,16 @@ This plan contains ten counted deliverables: seven static posts, two carousel/ch
 
 | Week | ID | Format | Topic | Claim label | Evidence path | CTA | Required gate |
 |---|---|---|---|---|---|---|---|
-| 1 | C01 | Static | The PRD bottleneck is source lineage, not writing speed | INTERPRETATION | `project/content/operations/content-planner-workflow.md` | Source-packet review | AF Review and owner approval |
-| 1 | C02 | Static | Four labels that keep assumptions out of a PRD | INTERPRETATION | `project/content/operations/writing-editing-workflow.md` | Review checklist | AF Review and owner approval |
-| 2 | C03 | Static | A research repository is not yet a delivery handoff | INTERPRETATION | `project/content/operations/competitor-analyzer-role.md` | Readiness diagnostic | AF Review and owner approval |
-| 2 | C04 | Carousel | Evidence receipt: source, decision, question, acceptance criterion, task, review | FACT | `project/content/mockups/static-post-mockup-specs.md` | Readiness diagnostic | AF Review and owner approval |
-| 3 | C05 | Static | What a Product Discovery-to-Production PRD Pack contains | HYPOTHESIS | `project/project-plan.md` | Source-packet review | AF Review and owner approval |
-| 3 | C06 | Static | Acceptance criteria connect discovery work to delivery handoff | INTERPRETATION | `project/content/operations/writing-editing-workflow.md` | Scoped PRD Pack discussion | AF Review and owner approval |
-| 4 | C07 | Static | Roadmap software does not remove evidence work | INTERPRETATION | `project/content/operations/competitor-analyzer-role.md` | Review checklist | AF Review and owner approval |
-| 4 | C08 | Carousel | Redaction-safe PRD quality checklist | FACT | `project/content/mockups/mockup-review-checklist.md` | Source-packet review | AF Review and owner approval |
-| 5 | C09 | Static companion | AI can draft; accountable review creates the handoff | HYPOTHESIS | `project/content/operations/content-bot-role-contracts.md` | Readiness diagnostic | AF Review and owner approval |
-| 5 | C10 | Short-video script | From source packet to task handoff in six stages; use C09 as its static companion | FACT | `project/README.md` | Source-packet review | AF Review and owner approval |
+| 1 | C01 | Static | The knowledge bottleneck is source lineage, not writing speed | INTERPRETATION | `project/knowledge/audience/icp-knowledge-continuity.md` | Forcing-moment check | AF Review and owner approval |
+| 1 | C02 | Static | Four labels that keep assumptions out of enterprise answers | INTERPRETATION | `project/content/operations/writing-editing-workflow.md` | Review checklist | AF Review and owner approval |
+| 2 | C03 | Static | A research repository is not yet an operating company brain | INTERPRETATION | `project/content/operations/competitor-analyzer-role.md` | Knowledge-reliability diagnostic | AF Review and owner approval |
+| 2 | C04 | Carousel | Evidence receipt: source, owner, freshness, decision, task, review | FACT | `project/content/mockups/static-post-mockup-specs.md` | Knowledge-reliability diagnostic | AF Review and owner approval |
+| 3 | C05 | Static | What a Product Knowledge Reliability Setup contains | HYPOTHESIS | `project/strategic-plan-2026-07-13.md` | Forcing-moment check | AF Review and owner approval |
+| 3 | C06 | Static | A reviewed knowledge spine connects discovery, answers, and delivery handoff | INTERPRETATION | `project/agents/marketing-role-pack.md` | Scoped setup discussion | AF Review and owner approval |
+| 4 | C07 | Static | Search and roadmap tools do not resolve authority or freshness | INTERPRETATION | `project/content/operations/competitor-analyzer-role.md` | Review checklist | AF Review and owner approval |
+| 4 | C08 | Carousel | Redaction-safe knowledge continuity checklist | FACT | `project/content/mockups/mockup-review-checklist.md` | Forcing-moment check | AF Review and owner approval |
+| 5 | C09 | Static companion | AI can draft; governed memory and review create continuity | HYPOTHESIS | `project/content/operations/content-bot-role-contracts.md` | Knowledge-reliability diagnostic | AF Review and owner approval |
+| 5 | C10 | Short-video script | From source map to reviewed output and handoff in seven layers; use C09 as its static companion | FACT | `project/README.md` | Forcing-moment check | AF Review and owner approval |
 
 ## QA Before Drafting
 

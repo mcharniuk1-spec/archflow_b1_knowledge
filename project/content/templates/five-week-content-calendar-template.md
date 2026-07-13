@@ -8,11 +8,11 @@ Use this to plan content while preserving the 70/20/10 mix.
 
 | Week | Static educational/analytical | Carousel/checklist/template | Short video/scripted demo | CTA | Review gate |
 |---|---|---|---|---|---|
-| 1 | PRD teardown / source packet pain | Source-packet checklist | PRD cleanup walkthrough | Diagnostic | AF Review |
-| 2 | JTBD and 90-day trigger | Customer-forces map | Founder POV on current alternatives | Source-packet review | AF Review |
-| 3 | DoD and acceptance criteria | DoD checklist | Spec-to-tasks walkthrough | PRD Rescue Sprint | AF Review |
-| 4 | Competitor objection analysis | Objection cards | Tool comparison explanation | Diagnostic | AF Review |
-| 5 | Evidence receipt and KB handoff | PRD evidence receipt | Short demo of reviewed packet | Discovery call | AF Review |
+| 1 | Forcing-moment teardown / source recovery pain | Source-owner-freshness checklist | Enterprise-answer walkthrough | Knowledge Diagnostic | AF Review |
+| 2 | JTBD and 90-day trigger | Customer-forces map | Current-alternatives explanation | Source-packet review | AF Review |
+| 3 | Knowledge Definition of Done | Authority and freshness checklist | Source-to-reviewed-output walkthrough | Reliability Sprint | AF Review |
+| 4 | Competitor objection analysis | Objection cards | Search versus maintained-memory explanation | Knowledge Diagnostic | AF Review |
+| 5 | Evidence receipt and governed handoff | Knowledge evidence receipt | Seven-layer reviewed handoff demo | Discovery call | AF Review |
 
 ## Weekly Review
 

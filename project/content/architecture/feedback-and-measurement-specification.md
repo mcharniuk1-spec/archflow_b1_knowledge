@@ -5,7 +5,7 @@ Date: 2026-07-10
 
 ## Objective
 
-Learn which public-safe explanations of the Product Discovery-to-Production PRD Pack are clear enough to justify the next planning hypothesis. This loop does not evaluate social accounts, automate distribution, or claim validated demand.
+Learn which public-safe explanations of the forcing-moment Product Knowledge Reliability Setup and governed agent operating system are clear enough to justify the next planning hypothesis. This loop does not evaluate social accounts, automate distribution, or claim validated demand.
 
 ## Input Boundary
 
@@ -17,7 +17,7 @@ The only permissible input after owner-authorized publication is an aggregate su
 |---|---|---|
 | Attention | Aggregate impressions, saves, shares, or high-level replies | Possible clarity or format hypothesis only |
 | Buyer-risk signal | A request for a diagnostic, willingness to share a redacted source packet, proposal request, or referral to a budget owner | Candidate for follow-up review; not demand proof |
-| Stronger commercial evidence | Paid diagnostic interest, firm paid intent, or an approved paid start | Requires separate E6/E7 evidence and review; outside this content architecture |
+| Stronger commercial evidence | Paid diagnostic interest, firm paid intent, or an approved paid start | Requires separate E5/E7 evidence and review; outside this content architecture |
 
 ## Feedback Record
 

@@ -16,11 +16,11 @@ Every video must have a static companion.
 
 | Slot | Format | Topic | Evidence type | CTA | Review gate |
 |---|---|---|---|---|---|
-| 1 | Static | PRD teardown | Artifact or method evidence | Source-packet review | AF Review |
-| 2 | Static | JTBD / 90-day trigger | Discovery-method evidence | Diagnostic | AF Review |
-| 3 | Static | DoD / acceptance criteria | Template evidence | PRD Rescue Sprint | AF Review |
-| 4 | Carousel/checklist | Source packet checklist | Template evidence | Source-packet review | AF Review |
-| 5 | Short video or demo | PRD cleanup walkthrough | Scripted demo evidence | Static companion | AF Review |
+| 1 | Static | Forcing-moment knowledge failure teardown | Artifact or method evidence | Source-packet review | AF Review |
+| 2 | Static | JTBD / 90-day enterprise, onboarding, or departure trigger | Discovery-method evidence | Knowledge Diagnostic | AF Review |
+| 3 | Static | Source ownership, freshness, and answer Definition of Done | Template evidence | Reliability Sprint | AF Review |
+| 4 | Carousel/checklist | Source-owner-freshness checklist | Template evidence | Source-packet review | AF Review |
+| 5 | Short video or demo | Seven-layer knowledge handoff walkthrough | Scripted demo evidence | Static companion | AF Review |
 
 ## Metrics Split
 

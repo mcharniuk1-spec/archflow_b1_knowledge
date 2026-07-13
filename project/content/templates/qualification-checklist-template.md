@@ -5,14 +5,17 @@ Status: reusable E5/E6 template.
 ## Fit
 
 - [ ] B2B SaaS or product-led company.
-- [ ] Roughly 50-500 employees, or owner-approved adjacent segment.
-- [ ] Product team has 2-5 PMs or similar context burden.
-- [ ] Buyer is Director/VP Product, Head of Product, Product Ops, or senior PM leader.
+- [ ] Roughly 30-75 employees; adjacent bands are labeled and reviewed separately.
+- [ ] Product knowledge is distributed across people, docs/tasks/chat/code, with an observable continuity risk.
+- [ ] Buyer hypothesis is Head/VP Product or CPO; founder below roughly 40 and CTO/engineering are trigger-specific secondary routes.
+- [ ] Senior Product Manager or Product Ops is recorded as champion/user unless economic authority is verified.
+- [ ] Project Manager/PMO title confusion is excluded.
 
 ## Trigger
 
-- [ ] Recent PRD/handoff/rework pain in the last 90 days.
-- [ ] Clear switching trigger.
+- [ ] Enterprise RFP/questionnaire, onboarding/hiring, departure, agent-context rework, chronic retrieval, or downstream artifact need is observed.
+- [ ] A public signal such as funding, hiring, departure, or enterprise/SOC 2 motion is separated from a confirmed forcing moment.
+- [ ] Clear 90-day forcing moment and consequence are verified.
 - [ ] Current alternatives named.
 
 ## Evidence Willingness
@@ -24,7 +27,7 @@ Status: reusable E5/E6 template.
 ## Budget And Authority
 
 - [ ] Budget-owner path known.
-- [ ] Paid diagnostic or PRD Rescue Sprint is plausible.
+- [ ] Paid Product Knowledge Reliability Setup or bounded diagnostic is plausible.
 - [ ] Timeline and scope are clear.
 
 ## Verdict

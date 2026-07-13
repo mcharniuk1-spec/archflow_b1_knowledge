@@ -15,6 +15,7 @@ The split exists so each operator/agent can keep role-specific context, decision
 |---|---|---|
 | `primary-operator/` | Lead operator context, decisions, approvals, final integration notes | Reviewed summaries only |
 | `collaborator/` | Collaborator-agent context, open questions, review notes, and handoff instructions | Reviewed summaries only |
+| `audience/` | Segmented ICP, buyer, trigger, channel, content, tooling, and evidence knowledge | Evidence-labeled summaries; hypotheses stay explicit |
 
 ## Common Rules
 
@@ -25,6 +26,8 @@ The split exists so each operator/agent can keep role-specific context, decision
 - Promote durable facts to WikiLLM only after review.
 - Treat Notion, private vault notes, and raw meeting files as source zones, not public storage.
 
-## Relationship To Epic 1
+## Relationship To The Architecture
 
 E1.6 is complete for review when this split exists, each folder has instructions, and the dashboard/report state points future agents to the correct role boundary. It is not a new raw-memory system and it does not replace WikiLLM, Obsidian, Notion, or the public run notes.
+
+Audience nodes feed the bounded marketing-role sequence and E5 evidence work. They must be updated through search, reconciliation, source grading, and review; they must not silently turn market signals into customer facts.

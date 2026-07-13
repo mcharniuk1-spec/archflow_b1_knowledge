@@ -1,7 +1,7 @@
 # ArchFlow Content Template Library
 
 Status: active template library
-Default ICP: B2B SaaS product leaders for the Product Discovery-to-Production PRD Pack
+Default ICP: 30-75-person product-led B2B SaaS Product leaders facing a verified knowledge-continuity forcing moment
 Default channel: LinkedIn first, then adapted excerpts for X and Threads after review
 Default voice: ArchFlow company content first
 Default visual style: product-system and research-lab
@@ -27,17 +27,17 @@ These templates turn executed ArchFlow work into public-safe content planning as
 | `discovery-call-script-template.md` | Preparing E6 calls or diagnostics | 45-minute JTBD/customer-forces call script |
 | `qualification-checklist-template.md` | Reviewing inbound or outbound fit | Source-packet willingness, trigger, authority, privacy, budget path, and next action checklist |
 | `five-week-content-calendar-template.md` | Planning E4 content | Five-week static/carousel/video calendar with review gates and demand metrics |
-| `diagnostic-offer-template.md` | Packaging the first service offer | Productized diagnostic offer and PRD Rescue Sprint conversion path |
+| `diagnostic-offer-template.md` | Packaging the first service offer | Forcing-moment diagnostic and Product Knowledge Reliability Sprint conversion path |
 
 ## Global Defaults
 
-- Audience: Directors or VPs of Product, Heads of Product, Product Ops leads, and senior PM leaders in B2B SaaS scaleups.
-- Offer frame: raw product-team material becomes a reviewed PRD, backlog, acceptance criteria, decision log, and KB handoff.
+- Audience: Head/VP Product or CPO as buyer hypothesis; senior Product Manager or Product Ops as possible champion; economic ownership verified per forcing moment. Project Manager/PMO is excluded as an assumed buyer.
+- Offer frame: a forcing moment becomes a bounded source/owner/freshness diagnostic, maintained knowledge spine, governed agent workflow, and reviewed handoff. PRD, ICP, backlog, and content are downstream outputs.
 - Content identity: ArchFlow company content first, not personal build-in-public content.
 - Content operating mix: 70% static educational/analytical, 20% carousel/checklist/template, 10% short video/scripted demo. Every video needs a static companion.
 - Evidence labels: FACT, INTERPRETATION, HYPOTHESIS, GAP.
 - Allowed style: source boundaries, artifact before/after blocks, redaction bars, source-status chips, simple process diagrams, proof cards.
-- Blocked style: private screenshots, raw transcripts, private links, credentials, operational IDs, local paths, customer logos, named target accounts, fake dashboards, demand or ROI claims before E6/E7 proof.
+- Blocked style: private screenshots, raw transcripts, private links, credentials, operational IDs, local paths, customer logos, named target accounts, fake dashboards, demand or ROI claims before E5/E7 proof.
 
 ## Save Locations After Each Execution
 
@@ -54,6 +54,6 @@ For each executed content task:
 - Public-safe source artifacts exist and are repo-relative.
 - Each meaningful claim has an evidence label.
 - No private links, secrets, raw transcripts, personal identifiers, local paths, or unapproved screenshots are present.
-- Demand, customer proof, revenue, or ROI claims are absent unless E6/E7 evidence exists.
+- Demand, customer proof, revenue, or ROI claims are absent unless E5/E7 evidence exists.
 - AF Review has approved safety, claim status, English-only text, and audience fit.
 - Owner approval is recorded before any post, carousel, or dashboard-linked publication.

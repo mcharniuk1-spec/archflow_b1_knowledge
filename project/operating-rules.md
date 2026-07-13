@@ -52,7 +52,7 @@ Use this layering:
 For broad, architecture, multi-agent, task-board, market/content/sales, provider, dashboard, or KB work, use a watchdog loop:
 
 1. Classify execution type and risk.
-2. Assemble CAG core from stable rules, roles, skills, architecture, E1-E7 state, and gated claims.
+2. Assemble CAG core from stable rules, roles, skills, architecture, E1-E8 state, and gated claims.
 3. Retrieve task-specific RAG evidence only from the approved public corpus when needed.
 4. Build a compact context capsule.
 5. Create bounded task contracts before assigning subagents.

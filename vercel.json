@@ -1,17 +1,29 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/dashboard",
+      "destination": "/project/dashboard/",
+      "permanent": false
+    },
+    {
+      "source": "/dashboard/",
+      "destination": "/project/dashboard/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/quiz",
       "destination": "/quiz.html"
     },
     {
-      "source": "/dashboard",
-      "destination": "/project/dashboard/index.html"
+      "source": "/jarvis",
+      "destination": "/jarvis.html"
     },
     {
-      "source": "/dashboard/",
-      "destination": "/project/dashboard/index.html"
+      "source": "/jarvis/",
+      "destination": "/jarvis.html"
     },
     {
       "source": "/health",
@@ -35,8 +47,25 @@
           "value": "nosniff"
         },
         {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
           "key": "Permissions-Policy",
           "value": "camera=(), geolocation=(), payment=()"
+        }
+      ]
+    },
+    {
+      "source": "/jarvis(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://openrouter.ai http://127.0.0.1:* http://localhost:*; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0"
         }
       ]
     },

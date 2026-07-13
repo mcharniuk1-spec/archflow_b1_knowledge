@@ -1,4 +1,12 @@
-# Project Plan
+---
+status: historical_superseded
+superseded_on: 2026-07-13
+current_plan: project/strategic-plan-2026-07-13.md
+current_icp: project/knowledge/audience/icp-knowledge-continuity.md
+retrieval_priority: historical_evidence_only
+---
+
+# Project Plan - Historical Proof Ledger
 
 Source: private project board reviewed on 2026-06-25.
 
@@ -7,6 +15,8 @@ This file is an English public-safe translation and synthesis. It does not inclu
 Latest detailed E1 breakdown: [`reports/2026-06-25-e1-block1-subtask-execution-plan.pdf`](reports/2026-06-25-e1-block1-subtask-execution-plan.pdf).
 
 Latest tool and market integration plan: [`reports/2026-06-29-tool-and-market-integration-plan.md`](reports/2026-06-29-tool-and-market-integration-plan.md).
+
+Current knowledge-architecture-first strategic baseline: [`strategic-plan-2026-07-13.md`](strategic-plan-2026-07-13.md). It supersedes stale dates and task sequencing below for new planning while preserving this file as the historical proof ledger.
 
 ## Epic Timeline
 
@@ -41,11 +51,11 @@ The June 29 tool and market reports do not replace the E1-E7 path. They make it 
 - Mistral models are optional future quality-pass models for sanitized PRDs, research synthesis, and final text after credentials, budget, model metadata logging, and AF Review gates exist.
 - E2 becomes a B2B evidence engine, not a loose browsing task: universe builder, signal collector, social-language miner, review miner, company parser, ICP scorer, and fact-check gate.
 
-FACT: The first ICP hypothesis is one vertical: product teams inside B2B SaaS scaleups, especially Series B-D companies with 50-500 employees, 2-5 PMs, and a Director or VP of Product accountable for PRD quality and speed.
+HISTORICAL FACT - SUPERSEDED: On 2026-06-29, the first ICP hypothesis was product teams inside Series B-D B2B SaaS companies with 50-500 employees. Do not use this range for current qualification; route to `project/knowledge/audience/icp-knowledge-continuity.md`.
 
-INTERPRETATION: The positioning should move from a general AI-native agency/service story to a specific product-team workflow: raw product material becomes a production-ready PRD through a connected knowledge-base and multi-agent execution/review loop.
+HISTORICAL INTERPRETATION - SUPERSEDED: The PRD-first positioning below records the June 29 state. The current category is product knowledge continuity, with PRD as one downstream artifact.
 
-HYPOTHESIS: The first paid entry offer should be a Product Discovery-to-Production PRD Pack: product-team dialogues, customer research, interviews, notes, and docs become a reviewed context digest, production-ready PRD, backlog, acceptance criteria, decision log, and KB/update handoff in days, not weeks.
+HISTORICAL HYPOTHESIS - SUPERSEDED: The Product Discovery-to-Production PRD Pack was the June 29 entry-offer hypothesis. The current service hypothesis is a forcing-moment-led Product Knowledge Reliability Setup.
 
 GAP: Directory counts, job counts, social posts, named company samples, and internal proof are research signals only. Demand is not validated until a real buyer risks time, source material, authority, or money.
 
@@ -206,7 +216,7 @@ Tasks:
 
 E6 first-wave targeting update:
 
-1. Start with 10 to 15 people in the same ICP: Directors or VPs of Product, Heads of Product, Product Ops leads, or senior PM leaders inside B2B SaaS companies with roughly 50-500 employees and 2-5 PMs.
+1. Historical targeting note, superseded on 2026-07-13: the former 50-500 employee and Product Ops buyer range must not drive current qualification. Use the canonical audience node and verify the economic buyer per forcing moment.
 2. Every message must cite one public signal, name one pain hypothesis, offer one concrete artifact, and use one low-friction CTA.
 3. Do not send generic AI automation pitches.
 4. Use the 45-minute discovery call script to capture JTBD, 90-day story, current alternatives, customer forces, anxieties, source-packet willingness, and budget path.

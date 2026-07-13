@@ -27,7 +27,7 @@ Use when dashboard status, read-only monitoring, hosted-view readiness, or dashb
 | Dashboard is read-only | Dashboard documentation or gate report | FACT |
 | Hosted dashboard is available | Hosting proof and approved visibility setting | FACT |
 | Dashboard proves workflow reliability | Review report plus repeatable run evidence | INTERPRETATION |
-| Dashboard proves customer demand | E6/E7 evidence only | FACT when verified, otherwise blocked |
+| Dashboard proves customer demand | E5/E7 evidence only | FACT when verified, otherwise blocked |
 
 ## Allowed Screenshots And Data
 
@@ -66,7 +66,7 @@ INTERPRETATION: This helps future operators see which proof runs, review gates, 
 ### What It Does Not Mean
 
 ```text
-GAP: This does not prove customer demand, ROI, or production buyer value. Those remain blocked until E6/E7 evidence exists.
+GAP: This does not prove customer demand, ROI, or production buyer value. Those remain blocked until E5/E7 evidence exists.
 ```
 
 ### CTA

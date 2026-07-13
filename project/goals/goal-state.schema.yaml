@@ -1,0 +1,47 @@
+name: archflow_goal_state_schema
+status: active_contract
+version: 1
+
+required_fields:
+  goal_id: string
+  objective: string
+  done_condition: list
+  evidence_state: proven_review_planned_blocked_superseded
+  lifecycle_state: draft_ready_running_verifying_complete_blocked_paused_superseded_cancelled
+  accountable_owner_role: string
+  independent_verifier_role: string
+  authority_boundary: list
+  forbidden_actions: list
+  allowed_corpus: list
+  task_graph_ref: string
+  artifacts_required: list
+  acceptance_checks: list
+  max_attempts_per_item: integer
+  max_revision_loops: integer
+  max_parallel_branches: integer
+  token_budget: integer_or_unset
+  time_budget_minutes: integer_or_unset
+  cost_budget: number
+  stop_conditions: list
+  kill_conditions: list
+  rollback_or_recovery: string
+  last_checkpoint_ref: string
+  proof_refs: list
+  gaps: list
+  next_action: string
+  updated_at: iso_datetime
+
+defaults:
+  evidence_state: planned
+  lifecycle_state: draft
+  max_attempts_per_item: 3
+  max_revision_loops: 2
+  max_parallel_branches: 3
+  cost_budget: 0
+
+validation_rules:
+  - independent_verifier_role_must_differ_from_maker_for_high_risk_output
+  - complete_requires_every_done_condition_and_acceptance_check_to_have_a_proof_ref
+  - blocked_requires_gap_and_next_action
+  - provider_or_external_action_requires_explicit_action_specific_approval
+  - budget_exhaustion_requires_stop_or_owner_reapproval

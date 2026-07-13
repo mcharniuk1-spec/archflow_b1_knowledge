@@ -12,6 +12,7 @@ Rules:
 - Bounded subagents receive only role-specific skills plus shared coordination skills named in their task contract.
 - Do not create new `SKILL.md` files for conceptual methods until the checklist in [`skills-governance.md`](skills-governance.md) is satisfied.
 - Shared project skills are allowed to appear under multiple roles when they carry coordination or closeout responsibilities.
+- Backticked catalog names and linked project-local paths are executable skill packages. Plain names are project methods/checklists unless a task contract resolves them to an installed package.
 
 ## Role / Runtime Binding
 
@@ -31,6 +32,32 @@ Skills set up:
 - stop-rule-enforcement
 
 Boundary: Hermes does not execute code, edit files, deploy, mutate external systems, activate providers, or approve its own high-risk output.
+
+## Goal Architect And Architecture Operator
+
+Purpose: turn one objective into a verifiable goal, then generate or review a parameterized agent architecture without confusing design, fixture proof, and runtime proof.
+
+Skills set up:
+
+- [`archflow-architecture-operator`](../../skills/archflow-architecture-operator/SKILL.md) - defines authority, goal, context, task graph, role packs, loops, verification, memory promotion, tool adoption, and benchmark gates.
+- goal-contract-writing
+- acceptance-criteria-writing
+- budget-and-kill-switch-design
+- agent-security-governance
+- skill-creator
+
+Boundary: the role may design a tool or role architecture but may not install external code, activate a provider, or claim performance improvement without the adoption and benchmark gates.
+
+## Terra Integrator And Luna Workers
+
+Purpose: use one high-impact integrator and bounded workers without creating concurrent writers or ambiguous responsibility.
+
+Skills set up:
+
+- Terra: `archflow-architecture-operator`, `archflow-task-breakdown`, `task-handout`, evidence reconciliation, and the specific task-board or artifact skill.
+- Luna: one task-specific skill, source-boundary control, and FACT / INTERPRETATION / HYPOTHESIS / GAP reporting.
+
+Boundary: Luna workers are read-only by default. Terra is the sole writer for a shared artifact or external task-board mutation. A separate AF Review role verifies high-risk output.
 
 ## AF Tools
 
@@ -79,6 +106,7 @@ Skills set up:
 - responsibility-assignment-extraction
 - milestone-planning
 - acceptance-criteria-writing
+- [`archflow-architecture-operator`](../../skills/archflow-architecture-operator/SKILL.md) when the requested output is a reusable role architecture rather than a one-off task list.
 
 ## AF Discovery
 
@@ -86,6 +114,8 @@ Purpose: turn approved customer/product source packets into founder-meeting disc
 
 Skills set up:
 
+- `customer-journey-map`
+- `discovery-process`
 - jtbd-discovery
 - ninety-day-story-extraction
 - customer-forces-analysis
@@ -128,6 +158,9 @@ Skills set up:
 - job-signal-analysis
 - review-mining
 - icp-scoring
+- `company-research`
+- `deep-research`
+- `decision-mapping`
 
 ## AF Knowledge
 
@@ -153,6 +186,58 @@ Skills set up:
 - content-planning
 - outreach-message-drafting
 - claim-status-check
+- `content-strategy`
+- `content-research-writer`
+- `copywriting`
+- copy-editing
+
+## AF ABM Channel
+
+Purpose: prepare the narrowest evidence-backed path to a verified buyer without autonomous contact.
+
+Skills set up:
+
+- `acquisition-channel-advisor`
+- `company-research`
+- `customer-journey-map`
+- cohort segmentation
+- outreach-sequence-design
+- CRM hygiene
+
+Boundary: this role may create a reviewed warm-intro, LinkedIn, or email packet. It may not scrape private data, send, connect, follow, enrich in bulk, or mark contact/demand without owner-approved evidence.
+
+## AF Growth Evidence
+
+Purpose: keep attention, conversation, proposal, paid intent, and payment as separate measurable stages.
+
+Skills set up:
+
+- `data-analytics-insight`
+- `forecast-validation-and-backtesting`
+- `business-health-diagnostic`
+- funnel instrumentation
+- ROI scenario modeling
+- payment-stage classification
+
+Boundary: modeled recovery is not observed savings. The role must show cohort definitions, denominators, missing events, and evidence state and may not invent conversion, causal, revenue, or ROI claims.
+
+## AF Product Packaging Engineer
+
+Purpose: package a validated service contract as an installable repository, least-privilege MCP, admin control plane, and lifecycle documentation after E8.0 and E7.4 pass.
+
+Skills set up:
+
+- `backend-api-architecture`
+- `codebase-design`
+- `code-clarity-and-docs`
+- `agent-security-governance`
+- `deployment-observability`
+- `debugging-checklist`
+- `browser-qa-performance-a11y`
+
+Boundary: this role cannot start productization from desk research alone, enable write tools by default, store secrets, skip uninstall/rollback proof, or approve its own release.
+
+The cross-role sequence, shared state, and stop rules are defined in [`marketing-role-pack.md`](marketing-role-pack.md).
 
 
 ## GloomyLord
@@ -174,10 +259,14 @@ Purpose: block unsafe or unsupported outputs before handoff.
 
 Skills set up:
 
+- `agent-security-governance`
 - public-safety-review
 - secret-and-path-scan
 - english-only-check
 - claim-status-check
+- privacy-and-access-scope review
+- source-freshness review
+- anti-ICP enforcement
 - [`outquestions`](../../skills/outquestions/SKILL.md) - verifies unanswered decisions are visible before approval.
 
 ## AF Publisher

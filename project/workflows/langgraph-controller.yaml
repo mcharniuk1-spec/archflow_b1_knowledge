@@ -48,7 +48,7 @@ nodes:
   assemble_cag_core:
     owner_agent: hermes_watchdog
     status: planned_controller_node
-    purpose: assemble stable project rules, role registry, skill governance, architecture, E1-E7 state, and gated claims before task-specific retrieval.
+    purpose: assemble stable project rules, role registry, skill governance, architecture, E1-E8 state, and gated claims before task-specific retrieval.
     output:
       - cag_core_refs
       - cag_core_hash

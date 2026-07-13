@@ -4,7 +4,86 @@ runtime_binding_policy:
   self_review_rule: a_runtime_may_not_approve_its_own_high_risk_output_when_fulfilling_any_role
   external_action_rule: disabled_until_action_specific_owner_approval_target_proof_and_post_action_verification
 
+skill_binding_policy:
+  executable_skill_packages: names_verified_in_the_operator_skill_catalog_or_cited_project_local_skill_paths
+  method_checklists: plain_project_methods_that_do_not_imply_an_installed_executable_skill
+  assignment_rule: each_runtime_receives_only_the_packages_and_checklists_named_in_its_bounded_task_contract
+
 agents:
+  goal_architect:
+    title: Goal Architect
+    provider: codex_operator
+    local_model: none
+    mode: bounded_objective_and_verification_contract
+    skills:
+      - archflow-architecture-operator
+      - goal-contract-writing
+      - acceptance-criteria-writing
+      - budget-and-kill-switch-design
+    outputs:
+      - goal_state
+      - done_conditions
+      - verifier_assignment
+      - stop_and_kill_conditions
+    forbidden_actions:
+      - broaden_authority
+      - self_verify_high_risk_output
+      - continue_after_budget_exhaustion
+
+  terra_integrator:
+    title: Terra Integrator
+    provider: compatible_runtime_after_task_contract
+    local_model: none
+    mode: high_impact_synthesis_and_sole_writer_integration
+    skills:
+      - archflow-architecture-operator
+      - archflow-task-breakdown
+      - task-handout
+      - evidence-reconciliation
+    outputs:
+      - integrated_architecture
+      - reconciled_task_graph
+      - final_mutation_report
+      - handoff
+    forbidden_actions:
+      - self_approve_high_risk_output
+      - mutate_outside_claimed_scope
+      - infer_external_authority
+
+  luna_worker:
+    title: Luna Worker
+    provider: compatible_runtime_after_task_contract
+    local_model: none
+    mode: bounded_read_only_research_extraction_drafting_or_critique
+    skills:
+      - role_specific_skill_only
+      - source-boundary-control
+      - fact-interpretation-hypothesis-gap
+    outputs:
+      - bounded_evidence_packet
+      - draft_or_critique
+      - gaps
+    forbidden_actions:
+      - edit_shared_files_by_default
+      - mutate_external_systems_by_default
+      - approve_own_output
+
+  architecture_operator:
+    title: Architecture Operator
+    provider: codex_operator
+    local_model: none
+    mode: parameterized_agent_system_design_and_governance
+    skills:
+      - archflow-architecture-operator
+      - agent-security-governance
+      - skill-creator
+      - decision-mapping
+    outputs:
+      - architecture_layers
+      - role_and_skill_pack
+      - tool_adoption_register
+      - benchmark_contract
+
   hermes_watchdog:
     title: Hermes Watchdog
     provider: planned_controller
@@ -91,6 +170,8 @@ agents:
     local_model: gemma4:e4b
     mode: founder_meeting_discovery_role
     skills:
+      - customer-journey-map
+      - discovery-process
       - jtbd-discovery
       - ninety-day-story-extraction
       - customer-forces-analysis
@@ -141,6 +222,9 @@ agents:
     provider: codex_operator
     local_model: gemma4:e4b
     skills:
+      - company-research
+      - deep-research
+      - decision-mapping
       - market-structure-analysis
       - research-source-triage
       - account-evidence-card-writing
@@ -175,6 +259,10 @@ agents:
     provider: codex_operator
     local_model: gemma4:e4b
     skills:
+      - content-strategy
+      - content-research-writer
+      - copywriting
+      - copy-editing
       - source-grounded-copywriting
       - positioning-synthesis
       - content-planning
@@ -185,6 +273,83 @@ agents:
       - content_angles
       - outreach_drafts
       - proposal_copy
+
+  af_abm_channel:
+    title: AF ABM Channel
+    provider: compatible_runtime_after_task_contract
+    local_model: none
+    mode: reviewed_channel_and_outreach_preparation_no_autonomous_send
+    skills:
+      - acquisition-channel-advisor
+      - company-research
+      - customer-journey-map
+      - cohort-segmentation
+      - outreach-sequence-design
+      - crm-hygiene
+    outputs:
+      - channel_hypothesis
+      - warm_intro_request
+      - reviewed_outreach_sequence
+      - send_checklist
+    forbidden_actions:
+      - autonomous_send
+      - bulk_personal_data_enrichment
+      - private_channel_access
+      - bypass_platform_controls
+      - mark_contact_or_demand_without_evidence
+
+  af_growth_evidence:
+    title: AF Growth Evidence
+    provider: compatible_runtime_after_task_contract
+    local_model: none
+    mode: cohort_funnel_and_payment_evidence_analysis
+    skills:
+      - data-analytics-insight
+      - forecast-validation-and-backtesting
+      - business-health-diagnostic
+      - funnel-instrumentation
+      - roi-scenario-modeling
+      - payment-stage-classification
+    outputs:
+      - cohort_funnel
+      - objection_register
+      - modeled_vs_observed_roi
+      - payment_evidence_state
+      - pursue_pivot_stop_recommendation
+    forbidden_actions:
+      - invent_events_or_denominators
+      - combine_attention_with_payment_evidence
+      - claim_causality_from_descriptive_results
+      - present_modeled_roi_as_observed_savings
+
+  af_product_packaging:
+    title: AF Product Packaging Engineer
+    provider: codex_operator
+    local_model: none
+    mode: gated_installable_repo_mcp_admin_and_lifecycle_engineering
+    skills:
+      - backend-api-architecture
+      - codebase-design
+      - code-clarity-and-docs
+      - agent-security-governance
+      - deployment-observability
+      - debugging-checklist
+      - browser-qa-performance-a11y
+    dependencies:
+      - E8.0_productization_gate
+      - E7.4_installability_mcp_admin_writeback_safety_gate
+    outputs:
+      - versioned_installable_package
+      - least_privilege_mcp
+      - admin_control_plane
+      - lifecycle_documentation
+      - sandbox_and_rollback_proof
+    forbidden_actions:
+      - start_from_desk_research_alone
+      - enable_write_tools_by_default
+      - store_secrets_in_repo_or_config
+      - claim_installability_without_sandbox_proof
+      - self_approve_release
 
   af_gloomylord:
     title: GloomyLord
@@ -206,10 +371,14 @@ agents:
     provider: codex_operator
     local_model: gemma4:e4b
     skills:
+      - agent-security-governance
       - public-safety-review
       - secret-and-path-scan
       - english-only-check
       - claim-status-check
+      - privacy-and-access-scope-review
+      - source-freshness-review
+      - anti-icp-enforcement
       - outquestions
     outputs:
       - approval_status

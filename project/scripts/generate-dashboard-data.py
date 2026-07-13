@@ -21,6 +21,8 @@ ROOT = Path(__file__).resolve().parents[2]
 PROJECT = ROOT / "project"
 WIKI = ROOT / "wiki"
 DASHBOARD = PROJECT / "dashboard"
+CANONICAL_AUDIENCE_SOURCE = "project/knowledge/audience/icp-knowledge-continuity.md"
+CANONICAL_STRATEGY_SOURCE = "project/strategic-plan-2026-07-13.md"
 
 
 def rel(path: Path) -> str:
@@ -52,6 +54,26 @@ def public_excerpt(text: str, limit: int = 1200) -> str:
         line = sanitize_public_text(line)
         sanitized_lines.append(line)
     return " ".join(sanitized_lines)[:limit]
+
+
+def corpus_authority(path: Path, text: str) -> tuple[str, str, int]:
+    source_path = rel(path)
+    if source_path in {CANONICAL_AUDIENCE_SOURCE, CANONICAL_STRATEGY_SOURCE}:
+        return "canonical_current", "", 3
+    if re.search(r"(?m)^status:\s*historical_superseded\s*$", text[:900]):
+        return "historical_superseded", CANONICAL_AUDIENCE_SOURCE, -2
+    dated_evidence_prefixes = ("project/reports/", "project/runs/", "wiki/runs/", "history/")
+    if source_path.startswith(dated_evidence_prefixes):
+        stale_icp = re.search(r"50-500|Series B-D|Product Discovery-to-Production PRD Pack", text, re.IGNORECASE)
+        is_current_run = "2026-07-13" in source_path
+        if stale_icp and not is_current_run:
+            return "historical_superseded_icp", CANONICAL_AUDIENCE_SOURCE, -2
+        return "dated_evidence", "", -1
+    if source_path.startswith("project/knowledge/collaborator/") and re.search(
+        r"50-500|Series B-D|Product Discovery-to-Production PRD Pack", text, re.IGNORECASE
+    ):
+        return "historical_superseded_icp", CANONICAL_AUDIENCE_SOURCE, -2
+    return "current_or_evidence", "", 0
 
 
 def title_for(path: Path) -> str:
@@ -506,14 +528,18 @@ def corpus() -> list[dict]:
     for base in [PROJECT, ROOT / "history", ROOT / "skills", WIKI]:
         for path in list_files(base, (".md", ".yaml", ".yml")):
             text = read(path, 1600)
+            authority_state, superseded_by, authority_boost = corpus_authority(path, text)
             docs.append(
                 {
                     "path": rel(path),
                     "title": title_for(path),
                     "text": public_excerpt(text, 1200),
+                    "authority_state": authority_state,
+                    "superseded_by": superseded_by,
+                    "authority_boost": authority_boost,
                 }
             )
-    return docs
+    return sorted(docs, key=lambda item: (-int(item["authority_boost"]), item["path"]))
 
 
 

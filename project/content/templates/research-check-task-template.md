@@ -9,14 +9,15 @@ Use for E2 research, ICP checks, market-signal review, account-evidence cards, o
 - Research/check owner:
 - Source run folder:
 - Target audience: B2B SaaS product leaders
-- Offer frame: Product Discovery-to-Production PRD Pack
+- Offer frame: forcing-moment Product Knowledge Reliability Setup
 - Status: planned / executed / AF Review / blocked / promoted
 
 ## Eligible Subtopics
 
-- Product-team PRD bottlenecks.
-- Job-post signal breakdowns for product documentation, product operations, or delivery handoff.
-- Competitor positioning around product discovery, AI PRD generation, meeting assistants, and product ops.
+- Enterprise questionnaire/RFP, onboarding/hiring, and key-person-departure knowledge bottlenecks.
+- Public-signal breakdowns for funding, hiring, senior-product departure, and enterprise/security motion.
+- Buyer-ownership checks across Product, Security, Sales Engineering, and RevOps.
+- Competitor positioning around enterprise knowledge, product operations, agent context, retrieval, and generated delivery packs.
 - Public social-language themes as hypothesis only.
 - Account evidence cards for future E6 outreach.
 - Claim downgrade when evidence is weak or stale.
@@ -93,7 +94,7 @@ GAP:
 
 ```text
 FACT: [source-backed observation]
-INTERPRETATION: [what this may mean for PRD quality or handoff]
+INTERPRETATION: [what this may mean for knowledge continuity or handoff]
 HYPOTHESIS: [how this may map to B2B SaaS product leaders]
 GAP: [what is not yet verified]
 ```
@@ -101,7 +102,7 @@ GAP: [what is not yet verified]
 ### Content Hook
 
 ```text
-A recurring PRD bottleneck is not the document format. It is weak source lineage: teams cannot tell which requirements came from customers, internal decisions, assumptions, or unresolved gaps.
+A recurring knowledge bottleneck is not the document format. It is weak source lineage: teams cannot tell which answer came from customers, internal decisions, assumptions, or unresolved gaps.
 ```
 
 ## Approval Checklist

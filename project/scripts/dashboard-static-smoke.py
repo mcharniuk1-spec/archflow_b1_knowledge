@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Render-smoke the static ArchFlow dashboard routes with headless Chrome.
 
-This test proves the read-only dashboard can render the two required operating
-surfaces without a live backend:
+This test proves the documentation-first operator console can render its seven
+current routes without a live backend:
 
-- (1) PRD/ICP Flow
-- (2) Agent Orchestra
+- overview, architecture, knowledge, agents, runs, reference, and workflow;
+- the ICP-aligned E1-E8 plan.
 
 It intentionally does not test provider calls, durable writeback, audio
 capture/playback, or deployment. Those remain gated runtime checks.
@@ -28,6 +28,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DASHBOARD_DATA = REPO_ROOT / "project" / "dashboard" / "data.json"
+VERCEL_CONFIG = REPO_ROOT / "vercel.json"
 
 SECRET_PATTERNS = [
     re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
@@ -38,98 +39,54 @@ SECRET_PATTERNS = [
 ]
 
 ROUTE_MARKERS = {
-    "#jarvis": [
-        "Jarvis Chat",
-        "Architecture 1",
-        "Architecture 2",
-        "/api/chat",
-        "File transfer",
-        "Voice disabled",
-        "Attach",
-        "Operating Switchboard",
-        "PRD/ICP service product",
-        "Reliable agent orchestra",
-        "Blocked Gates",
-        "Proof And Backlog Drawer",
-        "D-6 Proof and blocker visibility",
-        "E2.0A dry run",
-        "Public-Safe Sample Outputs",
-        "Sanitized PRD excerpt",
-        "Agent node config",
-        "text chat and attachments only",
+    "#overview": [
+        "Documentation-first architecture console",
+        "Build a maintained company brain",
+        "Seven public groups",
+        "Current proof and gate states",
     ],
-    "#history": [
-        "Chat History",
-        "Full persistent browser-local conversation with Jarvis",
+    "#architecture": [
+        "One operating system, seven grouped layers",
+        "Layer index",
+        "End-to-end contract",
+        "Source-of-truth rule",
     ],
-    "#service": [
-        "(1) PRD/ICP Flow",
-        "Architecture 1",
-        "Architecture 2",
-        "Client source intake",
-        "PRD builder",
-        "ICP evidence cards",
-        "Client-output approval",
-        "Service output packet",
-        "Runtime gate: provider disabled",
-        "Runtime gate: writeback approval required",
-        "MODEL PROVIDER none",
-        "No secrets, raw transcripts, provider calls, backend writes, or deployment actions run here.",
+    "#knowledge": [
+        "Retrieve narrowly, preserve provenance",
+        "Retrieval cascade",
+        "RAG parameters",
+        "Corpus boundary",
     ],
-    "?panel=svc-intake#service": [
-        "(1) PRD/ICP Flow",
-        "Client source intake",
-        "Inputs",
-        "Outputs",
-        "Overview",
-        "Configuration",
-        "Prompts",
-        "Safety And Business Fit",
-        "Provider calls require approval",
-        "Provider calls, writeback, deployment, raw capture, and third-party tool installation require explicit approval and verification before execution.",
-        "MODEL PROVIDER none",
-        "No secrets, raw transcripts, provider calls, backend writes, or deployment actions run here.",
+    "#agents": [
+        "Roles are contracts, not personas",
+        "Configured specialist roles",
+        "Skill governance",
+    ],
+    "#runs": [
+        "Separate configuration, execution, review, and promotion",
+        "Evidence-state vocabulary",
+        "Recent public-safe activity",
+        "Check registry",
+    ],
+    "#reference": [
+        "Configure the architecture",
+        "Build · Scale · Govern · Optimize",
+        "Parameter families",
+        "Status semantics",
+        "Canonical architecture sources",
     ],
     "#schema": [
-        "(2) Agent Orchestra",
-        "Architecture 1",
-        "Architecture 2",
-        "Operator command intake",
-        "Classify request",
-        "Codex development response",
-        "Architecture review",
-        "Safety and source review",
-        "Runtime gate: provider disabled",
-        "Runtime gate: writeback approval required",
+        "Full-screen workflow",
+        "Canvas",
+        "Stage list",
+        "Export review packet",
         "MODEL PROVIDER none",
-        "No secrets, raw transcripts, provider calls, backend writes, or deployment actions run here.",
-    ],
-    "?panel=architecture-review#schema": [
-        "(2) Agent Orchestra",
-        "Architecture review",
-        "Inputs",
-        "Outputs",
-        "Overview",
-        "Configuration",
-        "Prompts",
-        "Safety And Business Fit",
-        "Provider calls require approval",
-        "Provider calls, writeback, deployment, raw capture, and third-party tool installation require explicit approval and verification before execution.",
-        "MODEL PROVIDER none",
-        "No secrets, raw transcripts, provider calls, backend writes, or deployment actions run here.",
-    ],
-    "#config": [
-        "Chain Configuration And Subprompting",
-        "Agent Chain Links",
-        "Export config packet",
-        "Export creates a review packet",
-        "does not mutate GitHub, Notion, WikiLLM, or runtime services",
+        "writeback approval required",
     ],
     "#plan": [
-        "E1-E7 Project Plan",
-        "Recent Source Links",
-        "B2B SaaS product teams",
-        "E2.0 dry run",
+        "July 13 E1-E8 Strategic Spine",
+        "30-75-person product-led B2B SaaS",
+        "Installable Knowledge Continuity Product",
     ],
 }
 
@@ -173,6 +130,21 @@ def validate_dashboard_data() -> None:
     missing = [key for key in required if key not in data]
     if missing:
         raise AssertionError(f"dashboard data missing required keys: {', '.join(missing)}")
+
+
+def validate_vercel_route_contract() -> None:
+    with VERCEL_CONFIG.open("r", encoding="utf-8") as handle:
+        config = json.load(handle)
+    redirects = {
+        item.get("source"): item.get("destination")
+        for item in config.get("redirects", [])
+        if isinstance(item, dict)
+    }
+    for source in ("/dashboard", "/dashboard/"):
+        if redirects.get(source) != "/project/dashboard/":
+            raise AssertionError(
+                f"{source} must redirect to canonical /project/dashboard/ so relative assets and data stay valid"
+            )
 
 
 def render_route(chrome: str, base_url: str, route_hash: str, timeout_seconds: int, retries: int) -> str:
@@ -220,6 +192,7 @@ def assert_markers(route_hash: str, html: str) -> None:
 
 def run_smoke(timeout_seconds: int, retries: int) -> None:
     validate_dashboard_data()
+    validate_vercel_route_contract()
     chrome = find_chrome()
 
     handler = lambda *args, **kwargs: QuietHandler(*args, directory=str(REPO_ROOT), **kwargs)

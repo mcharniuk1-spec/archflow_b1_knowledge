@@ -64,6 +64,8 @@ DEFAULT_RERANK_TOP_K = 5
 DEFAULT_EMBEDDING_MODEL = "nomic-embed-text"
 DEFAULT_OLLAMA_BASE_URL = "http://127.0.0.1:11434"
 VECTOR_SCAN_LIMIT = int(os.getenv("ARCHFLOW_RAG_VECTOR_SCAN_LIMIT", "220"))
+CANONICAL_AUDIENCE_SOURCE = "project/knowledge/audience/icp-knowledge-continuity.md"
+CANONICAL_STRATEGY_SOURCE = "project/strategic-plan-2026-07-13.md"
 
 
 def rel(path: Path) -> str:
@@ -108,6 +110,34 @@ def chunk_text(text: str, chunk_size: int, overlap: int) -> list[str]:
     return chunks
 
 
+def authority_metadata(source_path: str, text: str) -> dict[str, str | float]:
+    if source_path in {CANONICAL_AUDIENCE_SOURCE, CANONICAL_STRATEGY_SOURCE}:
+        return {"authority_state": "canonical_current", "superseded_by": "", "authority_weight": 1.6}
+    if re.search(r"(?m)^status:\s*historical_superseded\s*$", text[:900]):
+        canonical = CANONICAL_AUDIENCE_SOURCE if "icp" in text.lower() else CANONICAL_STRATEGY_SOURCE
+        return {"authority_state": "historical_superseded", "superseded_by": canonical, "authority_weight": 0.15}
+    dated_evidence_prefixes = ("project/reports/", "project/runs/", "wiki/runs/", "history/")
+    if source_path.startswith(dated_evidence_prefixes):
+        stale_icp = re.search(r"50-500|Series B-D|Product Discovery-to-Production PRD Pack", text, re.IGNORECASE)
+        is_current_run = "2026-07-13" in source_path
+        if stale_icp and not is_current_run:
+            return {
+                "authority_state": "historical_superseded_icp",
+                "superseded_by": CANONICAL_AUDIENCE_SOURCE,
+                "authority_weight": 0.15,
+            }
+        return {"authority_state": "dated_evidence", "superseded_by": "", "authority_weight": 0.75}
+    if source_path.startswith("project/knowledge/collaborator/") and re.search(
+        r"50-500|Series B-D|Product Discovery-to-Production PRD Pack", text, re.IGNORECASE
+    ):
+        return {
+            "authority_state": "historical_superseded_icp",
+            "superseded_by": CANONICAL_AUDIENCE_SOURCE,
+            "authority_weight": 0.15,
+        }
+    return {"authority_state": "current_or_evidence", "superseded_by": "", "authority_weight": 1.0}
+
+
 def load_documents(chunk_size: int = DEFAULT_CHUNK_SIZE, chunk_overlap: int = DEFAULT_CHUNK_OVERLAP) -> list[Document]:
     docs: list[Document] = []
     for base in INCLUDE_DIRS:
@@ -120,6 +150,7 @@ def load_documents(chunk_size: int = DEFAULT_CHUNK_SIZE, chunk_overlap: int = DE
             if any(pattern.search(text) for pattern in BLOCKED_TEXT):
                 continue
             source_path = rel(path)
+            authority = authority_metadata(source_path, text)
             doc_id = f"doc_{stable_hash(source_path)}"
             updated_at = datetime.fromtimestamp(path.stat().st_mtime, timezone.utc).isoformat()
             for index, chunk in enumerate(chunk_text(text, chunk_size, chunk_overlap)):
@@ -136,6 +167,7 @@ def load_documents(chunk_size: int = DEFAULT_CHUNK_SIZE, chunk_overlap: int = DE
                             "chunk_id": chunk_id,
                             "chunk_index": index,
                             "chunk_hash": stable_hash(chunk, 20),
+                            **authority,
                         },
                     )
                 )
@@ -154,6 +186,9 @@ def candidate(doc: Document, score: float, score_key: str) -> dict[str, Any]:
         "chunk_id": metadata["chunk_id"],
         "chunk_index": metadata["chunk_index"],
         "chunk_hash": metadata["chunk_hash"],
+        "authority_state": metadata.get("authority_state", "current_or_evidence"),
+        "superseded_by": metadata.get("superseded_by", ""),
+        "authority_weight": float(metadata.get("authority_weight", 1.0)),
         "text_excerpt": re.sub(r"\s+", " ", doc.text).strip()[:240],
     }
 
@@ -173,7 +208,7 @@ def lexical_candidates(docs: list[Document], query: str, limit: int) -> list[dic
             continue
         coverage = sum(1 for term in query_terms if counts[term]) / max(len(query_terms), 1)
         phrase_boost = 1.25 if query.lower() in doc.text.lower() else 1.0
-        score = (raw * (1.0 + coverage) * phrase_boost) / math.sqrt(len(tokens))
+        score = ((raw * (1.0 + coverage) * phrase_boost) / math.sqrt(len(tokens))) * float(doc.metadata.get("authority_weight", 1.0))
         scored.append((score, doc))
     scored.sort(key=lambda item: (-item[0], str(item[1].metadata.get("source_path", "")), str(item[1].metadata.get("chunk_id", ""))))
     return [candidate(doc, score, "lexical_score") for score, doc in scored[:limit]]
@@ -267,7 +302,7 @@ def vector_candidates(docs: list[Document], query: str, limit: int, model_name: 
             if vector is None:
                 vector = ollama_embedding(model_name, doc.text)
                 embeddings[key] = vector
-            scored.append((cosine(query_embedding, vector), doc))
+            scored.append((cosine(query_embedding, vector) * float(doc.metadata.get("authority_weight", 1.0)), doc))
         save_embedding_cache(cache)
     except (OSError, urllib.error.URLError, TimeoutError, RuntimeError, ValueError) as exc:
         return [], {"vector_available": False, "reason": f"embedding_failed:{exc.__class__.__name__}"}
@@ -310,7 +345,8 @@ def merge_candidates(
         sem = semantic_norm.get(key, 0.0)
         item["lexical_score_normalized"] = round(lex, 6)
         item["semantic_score_normalized"] = round(sem, 6)
-        item["score"] = round((0.42 * lex) + (0.58 * sem), 6)
+        authority_weight = float(item.get("authority_weight", 1.0))
+        item["score"] = round(((0.42 * lex) + (0.58 * sem)) * authority_weight, 6)
     return sorted(merged.values(), key=lambda item: (-float(item["score"]), str(item["source_path"]), str(item["chunk_id"])))[:limit]
 
 

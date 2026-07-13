@@ -22,7 +22,7 @@ Turn reviewed ArchFlow work into a public-safe content backlog and calendar.
    - Every short video needs a static companion.
 
 4. CTA mapping.
-   - Match each item to diagnostic, source-packet review, PRD Rescue Sprint, discovery call, or review checklist.
+   - Match each item to a Knowledge Diagnostic, source-packet review, Product Knowledge Reliability Sprint, discovery call, or review checklist.
    - Do not use CTAs that imply live automation, deployment, or buyer proof before validation.
 
 5. Review packet.
@@ -35,9 +35,9 @@ Turn reviewed ArchFlow work into a public-safe content backlog and calendar.
 | Field | 0 | 1 | 2 |
 |---|---|---|---|
 | ICP fit | Generic | Product-adjacent | B2B SaaS product leader pain |
-| Pain relevance | Abstract | Related | PRD, evidence, handoff, or delivery rework |
+| Pain relevance | Abstract | Related | Enterprise answer, onboarding, departure, evidence, retrieval, or handoff failure |
 | Source strength | Unsupported | One public signal | Two public signals or repo proof |
-| Differentiation | Feature comparison only | Partial wedge | Source-lineage/review-gate wedge |
+| Differentiation | Feature comparison only | Partial wedge | Maintained source/authority/review-gate wedge |
 | CTA fit | No next action | Soft learning | Diagnostic or source-packet review |
 | Risk | Unsafe | Needs edits | Public-safe after review |
 

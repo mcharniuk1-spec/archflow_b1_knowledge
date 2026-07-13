@@ -3,26 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ArchFlow Block 1 Operator Dashboard</title>
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="theme-color" content="#0f1c22" />
+    <title>ArchFlow Architecture Console</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5f66'/%3E%3Ctext x='32' y='41' font-size='24' text-anchor='middle' fill='%23f7f1e7' font-family='Arial'%3EAF%3C/text%3E%3C/svg%3E" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#view">Skip to dashboard content</a>
     <div class="app-shell">
       <aside class="sidebar" aria-label="Dashboard navigation">
         <div class="brand">
           <div class="brand-mark">AF</div>
           <div>
             <div class="brand-title">ArchFlow</div>
-            <div class="brand-subtitle">Block 1 operator</div>
+            <div class="brand-subtitle">Architecture console</div>
           </div>
         </div>
         <nav class="nav" id="nav"></nav>
         <div class="sidebar-status">
           <div class="status-dot"></div>
           <div>
-            <strong>Vercel-ready read-only mode</strong>
-            <span>Generated from public project files.</span>
+            <strong>Public-safe source view</strong>
+            <span>Static and browser-local until a gate proves otherwise.</span>
           </div>
         </div>
       </aside>
@@ -30,24 +33,21 @@
       <main class="workspace">
         <header class="topbar">
           <div>
-            <h1>Operator Dashboard</h1>
-            <p><span>Jarvis command center with source-linked E1-E7 state.</span> <span>Static Vercel first; Railway and Google auth remain gated.</span></p>
+            <p class="topbar-kicker">Knowledge and agent operating system</p>
+            <h1>Architecture Console</h1>
+            <p><span>Inspect layers, workflows, knowledge boundaries, roles, proof, and editable parameters.</span> <span>Provider execution and durable writeback remain separately gated.</span></p>
           </div>
           <div class="topbar-actions">
             <span class="pill live-pill" id="liveStatus">Static data starting</span>
             <span class="pill live-pill warn" id="apiStatus">Jarvis API checking</span>
             <span class="pill" id="generatedAt">Loading data</span>
             <button class="button" id="refreshData" type="button">Refresh</button>
-            <a class="button" href="../project-plan.md">Project plan</a>
+            <a class="button" href="../strategic-plan-2026-07-13.md">Strategic plan</a>
+            <a class="primary topbar-jarvis" href="/jarvis">Open Jarvis</a>
           </div>
         </header>
 
-        <section id="view" class="view" aria-live="polite"></section>
-
-        <form id="globalComposer" class="global-composer" aria-label="Jarvis command input">
-          <input id="globalInput" type="text" autocomplete="off" placeholder="Ask Jarvis, run a check, or type refresh" aria-label="Jarvis command" />
-          <button class="primary" type="submit">Send</button>
-        </form>
+        <section id="view" class="view" tabindex="-1" aria-live="polite"></section>
       </main>
     </div>
 
