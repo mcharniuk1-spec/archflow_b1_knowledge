@@ -41,7 +41,7 @@ The current public-safe implementation includes:
 
 - a three-block buyer-facing website built around the seven-layer ArchFlow tower, two delivery lanes, and a disclosed planning calculator;
 - a documentation-first operator dashboard for architecture, knowledge, roles, skills, workflow state, runs, and proof;
-- a separate provider-disabled Jarvis surface with server-side owner, model, budget, and one-call gates;
+- a separate provider-disabled Jarvis surface with owner, model-allowlist, and acknowledgement checks plus a mandatory durable-control execution block;
 - an E1-E8 plan whose final gated milestone is a locally installable repository, least-privilege MCP, administration plane, and lifecycle documentation.
 
 Local implementation proof does not establish production deployment, live provider execution, validated demand, or autonomous writeback.
