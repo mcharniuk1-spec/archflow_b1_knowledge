@@ -10147,6 +10147,41 @@ Next step:
 
 - Register bounded parallel lanes, snapshot the current instruction surface, then implement only the reserved private/runtime areas.
 
+## 2026-07-13 23:50 EEST - Secured Runtime Closeout And Public Architecture Report - starting
+
+Status: owner-requested continuation is active after maker repairs.
+
+Task:
+
+- Reconcile the repaired private/runtime conclusions with the public-safe architecture story, review the public website/dashboard and project setup, create a detailed architecture report plus PDF, and prepare a safe Git/Notion handoff.
+
+Files claimed:
+
+- `project/reports/20260713-secured-runtime-architecture-report.md`
+- `project/reports/20260713-secured-runtime-architecture-report.pdf`
+- `project/runs/20260713-secured-runtime-public-closeout/`
+- This append-only communication log.
+
+Explicitly not claimed:
+
+- Shared README, wiki routing/memory, dashboard/API, generated-data, architecture, agentic-stack, and workflow files still owned by the active ICP integration closeout lane.
+
+Expected output:
+
+- Public-safe, evidence-calibrated architecture report covering the website, dashboard, public repository, private sibling boundary, and each connected layer: Codex, LangGraph, CrewAI, LlamaIndex/RAG, WikiLLM, Obsidian, Graphify, Nexus, LangSmith, skills, roles, and approval gates.
+- PDF companion for the owner’s architecture epic.
+- Explicit issue/gap register separating proven local behavior from planned or gated product claims.
+- Validation, Git push readiness, and Notion update readiness without publishing unproven runtime/provider claims.
+
+Blockers:
+
+- The shared ICP closeout lane must release its claimed files before any reconciliation edit there.
+- Notion/Git push are external writes and remain gated until the local report and public safety checks pass.
+
+Next step:
+
+- Run read-only public/dashboard/architecture inspection, wait for repaired activation review, then write the unique report/PDF and validate.
+
 ## 2026-07-13 16:32 EEST - ICP Website And Dashboard Production Release - starting
 
 Status: owner-approved production release is active.
@@ -10244,3 +10279,323 @@ Remaining gaps:
 Next safe action:
 
 - Run the E6.2 packet-roundtrip fixture without provider execution or source mutation, then use E5 evidence and E7 release gates before any E6.3 or E8 pilot.
+
+## 2026-07-13 - Landing Typography And Calculator Balance - starting
+
+Status: owner-requested visual refinement is active.
+
+Task:
+
+- Refine the public landing page toward the supplied Sandstone reference.
+- Increase readable type scale, strengthen the main-screen message, enlarge calculator text on desktop, and rebalance the calculator on mobile.
+- Improve number fields and horizontal range controls without changing the calculation logic or provider/writeback boundaries.
+
+Files claimed:
+
+- `index.html`
+- `site.css`
+- `project/runs/20260713-landing-type-calculator-refresh/agent-handout.md`
+
+Expected output:
+
+- More editorial, balanced typography.
+- Clearer hero copy.
+- Larger, more legible calculator labels, values, results, and sliders.
+- Desktop and mobile QA evidence with no behavioral change.
+
+Blockers:
+
+- No known blocker. Existing unrelated worktree changes remain outside this bounded claim.
+
+Next step:
+
+- Patch the copy and CSS, then run syntax, static, responsive, and browser checks.
+
+## 2026-07-13 - Landing Typography And Calculator Balance - complete
+
+Status: complete for the bounded local visual refinement; deployment and publication were not requested.
+
+Changed:
+
+- Switched the landing sans stack to DM Sans while retaining Newsreader display type and IBM Plex Mono metadata.
+- Rewrote the hero and calculator headings for a sharper, more precise message.
+- Increased desktop and mobile type scale for hero, lede, calculator labels, inputs, results, and explanation text.
+- Added larger, visible horizontal slider tracks and thumbs.
+- Added deliberate mobile headline wrapping and viewport-safe widths after browser QA found clipping.
+
+Files changed:
+
+- `index.html`
+- `site.css`
+- `project/runs/20260713-landing-type-calculator-refresh/agent-handout.md`
+
+Checks:
+
+- `git diff --check` passed.
+- `node --check site.js` passed.
+- HTML parser and visual contract checks passed.
+- `scripts/public_safety_scan.py` passed.
+- Desktop Chrome capture passed at 1440px.
+- Mobile Chrome capture passed at 390px after repair.
+- ROI anchor capture was incomplete in headless file-mode; calculator behavior was not changed and no full-section visual claim is made.
+
+Remaining gap:
+
+- A live browser session should verify the calculator section at phone width before any future release/deploy step.
+
+Next safe action:
+
+- Owner reviews the local visual pass; if accepted, run the normal public release matrix before deployment.
+
+## 2026-07-13 - Cross-Block Boundary Repair And Live Release - starting
+
+Status: owner-authorized public website repair and Vercel release are active.
+
+Task:
+
+- Repair the clipped transition between the architecture block and the service block shown in the supplied reference.
+- Review all public views at desktop and mobile sizes for the same boundary, overflow, and section-containment failure.
+- Release the verified result to the live Vercel site and refresh the Figma baseline if the deployment succeeds.
+
+Files claimed:
+
+- `index.html`
+- `site.css`
+- `site.js` only if transition logic requires it
+- `project/runs/20260713-cross-block-boundary-release/`
+- This append-only communication log
+
+Expected output:
+
+- Every block contains its content without clipping at the viewport or section boundary.
+- Desktop, mobile, quiz, Jarvis, dashboard, and reduced-motion checks are recorded.
+- Vercel and Figma release state is reported with any remaining gaps.
+
+Blockers:
+
+- No known blocker. Unrelated worktree changes remain outside this bounded claim.
+
+Next step:
+
+- Inspect the section geometry, patch the smallest safe containment rule, and run the release matrix.
+
+## 2026-07-13 - Cross-Block Boundary Repair And Live Release - complete
+
+Status: complete for the public website repair and production Vercel release.
+
+Changed:
+
+- Added a short-desktop viewport mode so the sticky architecture frame remains contained when the viewport is shorter than the original minimum frame height.
+- Kept the architecture layer card, methods, stepper, and tower inside Block 1 before the Service block begins.
+- Added mobile containment for Jarvis and dashboard headlines, hero copy, messages, bullets, and control panels.
+- Bumped Jarvis and dashboard stylesheet query versions to avoid stale edge CSS during release verification.
+- Removed a duplicate service-lane heading discovered during the view audit.
+
+Files changed:
+
+- `index.html`
+- `site.css`
+- `jarvis.html`
+- `jarvis.css`
+- `project/dashboard/index.html`
+- `project/dashboard/styles.css`
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/20260713-cross-block-boundary-release/agent-handout.md`
+
+Checks:
+
+- `git diff --check` passed.
+- `node --check site.js`, `node --check jarvis.js`, and `node --check project/dashboard/app.js` passed.
+- `scripts/public_safety_scan.py` passed.
+- Local landing captures passed at 2048x512, 1440x900, and 390x900.
+- Production landing, quiz result, Jarvis, and dashboard captures were reviewed at desktop and mobile sizes.
+- Production alias `https://archflowautomate.vercel.app` now points to the final READY deployment.
+
+Remaining gap:
+
+- Figma baseline sync is pending because the required external Playwright MCP server is not available in this run. No Figma completion claim was made.
+
+Next safe action:
+
+- Install or connect the approved Playwright MCP, then run the existing Figma sync contract against the current production alias.
+
+## 2026-07-13 - Seven Layer Tower Asset Integration - starting
+
+Status: owner-requested Block 1 visual integration is active.
+
+Task:
+
+- Replace the existing full-tower sprite treatment with the seven supplied transparent layer assets from `towers/layers/`.
+- Assemble top 1 through layer 7 into one connected tower, then animate the layers upward in sequence with synchronized copy changes.
+- Rebalance the Block 1 tower, text, and scroll state for desktop and mobile without changing provider or calculator boundaries.
+
+Files claimed:
+
+- `index.html`
+- `site.css`
+- `site.js`
+- `assets/tower/layers/`
+- `project/runs/20260713-seven-layer-tower-integration/`
+- This append-only communication log
+
+Expected output:
+
+- One visually coherent seven-layer tower at rest.
+- Smooth layer-by-layer upward motion tied to scroll progress.
+- Fully visible, readable switching copy on desktop and mobile.
+
+Blockers:
+
+- Asset visual alignment must be validated after the first assembled render because the supplied files have different aspect ratios and transparent bounds.
+
+Next step:
+
+- Copy the supplied assets into the public asset boundary, patch the tower markup/geometry, and render the first desktop/mobile pass.
+
+## 2026-07-13 - Seven Layer Tower Asset Integration - complete
+
+Status: complete for the Block 1 asset integration and local responsive validation.
+
+Changed:
+
+- Added the supplied `top1.png` and `layer2.png` through `layer7.png` images to the public tower asset boundary.
+- Replaced the repeated full-tower sprite references with seven distinct transparent layer images.
+- Built a connected layered assembly with measured overlap, width progression, depth order, and responsive frame sizing.
+- Preserved the existing scroll-driven upward movement and synchronized layer copy switching.
+
+Files changed:
+
+- `index.html`
+- `site.css`
+- `assets/tower/layers/`
+- `project/runs/20260713-seven-layer-tower-integration/agent-handout.md`
+
+Checks:
+
+- Source asset dimensions and alpha bounds inspected.
+- Desktop and mobile assembled-tower captures reviewed.
+- `node --check site.js` passed.
+- `git diff --check` passed.
+- `scripts/public_safety_scan.py` passed.
+
+Remaining gap:
+
+- Production deployment and Figma baseline sync remain pending for this new tower asset pass.
+
+Next safe action:
+
+- Run the public release matrix, deploy the public project, and complete the existing Figma sync contract when external Playwright MCP is available.
+
+## 2026-07-13 - Seven Layer Tower Asset Integration - release closeout
+
+Status: complete for the requested public website update.
+
+Result:
+
+- Production alias `archflowautomate.vercel.app` now serves the seven-layer tower assembly.
+- Live desktop and mobile captures reviewed after deployment.
+- Static checks and public safety scan passed.
+
+Remaining gap:
+
+- Figma baseline sync is still pending because the required external Playwright MCP is unavailable; no completion claim was made.
+
+Next safe action:
+
+- Run the existing Figma sync workflow when Playwright MCP is available.
+
+## 2026-07-13 - Block 1 architecture naming and ROI calculator refinement - starting
+
+Task:
+
+- Rework Block 1 so each tower layer carries the current ArchFlow knowledge-base and agent-operation architecture, with synchronized scroll copy and a complete visual tower at rest.
+- Rebalance the ROI calculator typography, slider ranges, output states, readiness gradient, and responsive spacing for desktop and mobile.
+
+Files claimed:
+
+- `index.html`
+- `site.css`
+- `site.js`
+- `project/runs/20260713-block1-roi-refinement/`
+- This append-only communication log
+
+Expected output:
+
+- Seven named architecture layers that explain the client pain, operating model, differentiation, and offered outcome.
+- Larger, clearer ROI values with full-range drag controls and a smooth readiness/value visual scale.
+- Responsive Block 1 and calculator states without overflow or excess mobile whitespace.
+
+Blockers:
+
+- None known before code inspection; final motion and responsive behavior require browser captures at multiple scroll positions.
+
+Next step:
+
+- Inspect the existing tower state model and calculator implementation, then patch the smallest shared surfaces needed.
+
+## 2026-07-13 - Block 1 architecture naming and ROI calculator refinement - implementation update
+
+FACT:
+
+- The seven public layers now use the current knowledge-continuity architecture: govern, connect, orchestrate, execute, verify, remember, and measure.
+- All eight ROI controls are range inputs with visible values and disclosed working ranges.
+- Readiness and modeled outcome surfaces now use dynamic red-to-green and darker-to-whiter visual scales.
+- Desktop, tablet, and mobile captures were reviewed; the complete tower is visible on the responsive landing state and the mobile ROI layout is bounded to the viewport frame.
+
+INTERPRETATION:
+
+- The public surface now leads with forcing moments and a maintained knowledge spine, while keeping the calculator explicitly directional.
+
+GAP:
+
+- Production deployment and final live alias verification remain after the local closeout checks. Figma sync remains separately gated on external Playwright MCP availability.
+
+Next step:
+
+- Run syntax, diff, safety, and asset checks; create the run handout; then deploy the public project and verify the live alias.
+
+## 2026-07-13 - Block 1 architecture naming and ROI calculator refinement - complete
+
+Status: complete for the requested design, interaction, and production website update.
+
+Changed:
+
+- Reframed the hero around forcing moments and product-knowledge continuity.
+- Named all seven tower layers against the current ArchFlow architecture and synchronized their pain, solution, methods, status, stepper, and scroll movement.
+- Replaced all ROI numeric text fields with range controls and expanded the relevant ranges, including EUR2,000-EUR30,000 setup investment and 1-100 tool surfaces.
+- Increased calculator typography, added live range-track values, dynamic readiness gradient, outcome lightness feedback, and bounded mobile spacing.
+- Added a small ROI preview query for repeatable visual QA.
+
+Files changed:
+
+- `index.html`
+- `site.css`
+- `site.js`
+- `project/runs/20260713-block1-roi-refinement/agent-handout.md`
+
+Checks:
+
+- `node --check site.js` passed.
+- `git diff --check` passed.
+- `scripts/public_safety_scan.py` passed.
+- Eight range controls confirmed; no ROI numeric text inputs remain.
+- Desktop 1440px, tablet 1024px, mobile 390px, and live production captures reviewed.
+- Production alias returned HTTP 200.
+
+Remaining gap:
+
+- Figma baseline sync is pending because external Playwright MCP is unavailable; no completion claim was made.
+
+Next safe action:
+
+- Run the existing Figma sync workflow when Playwright MCP becomes available.
+
+## 2026-07-13 23:58 EEST - Secured Runtime Closeout And Public Architecture Report - complete
+
+Task: review the public website, dashboard, repository, and secured runtime architecture; publish a public-safe report and PDF.
+
+Files changed: `project/reports/20260713-secured-runtime-architecture-report.md`, `project/reports/20260713-secured-runtime-architecture-report.pdf`, `project/runs/20260713-secured-runtime-public-closeout/agent-handout.md`, and private supervisor install/wrapper files outside the public corpus.
+
+Checks: public safety scan, dashboard JSON parse, site/dashboard JavaScript syntax, and PDF text extraction passed. Dashboard static smoke remains a sandbox `Operation not permitted` gap. Launchd static/import checks passed, but the host heartbeat did not refresh; always-on activation is not claimed.
+
+Next safe action: after the active shared-file lane releases its claim, reconcile older TurboVec wording, review the full public diff, commit, and push the public repository.

@@ -1,7 +1,15 @@
+---
+status: historical_superseded
+superseded_on: 2026-07-13
+current_audience: project/knowledge/audience/icp-knowledge-continuity.md
+current_strategy: project/strategic-plan-2026-07-13.md
+retrieval_priority: historical_evidence_only
+---
+
 # Collaborator Brief From Daily Founder Notes
 
 Date: 2026-07-03
-Status: active E1.6 collaborator KB note
+Status: historical E1.6 collaborator KB note; current ICP and offer are superseded by the files above
 Source category: public-safe daily founder-note packet, current-state report, E1.7 cloud proof, and cloud/KB retrospective
 
 ## Purpose

@@ -6,72 +6,74 @@
       number: "Layer 07",
       short: "Measure",
       title: "Measure & evolve",
-      pain: "Without evidence, “better agents” is only a story.",
+      pain: "You cannot improve what you cannot baseline.",
       outcome:
-        "Benchmark quality, retrieval, cost, safety, recovery, and human effort before promoting a change.",
-      methods: ["Proof ledger", "Benchmark", "Retrospective"]
+        "We pair baseline and candidate traces across quality, retrieval, cost, safety, recovery, and human effort before a change is promoted.",
+      methods: ["Benchmark", "Trace ledger", "Promotion gate"]
     },
     {
       number: "Layer 06",
       short: "Remember",
       title: "Remember & act safely",
-      pain: "A decision that cannot be recovered is already decaying.",
+      pain: "Decisions disappear when nobody owns the memory after delivery.",
       outcome:
-        "Promote reviewed deltas to durable memory, refresh graph navigation, and gate every external action with approval, rollback, and readback.",
-      methods: ["WikiLLM", "Obsidian", "Graphify", "Action gate"]
+        "We promote reviewed deltas into durable memory, refresh navigation, and gate every external action with approval, rollback, and readback.",
+      methods: ["WikiLLM", "Obsidian", "Graphify", "Readback"]
     },
     {
       number: "Layer 05",
       short: "Verify",
       title: "Verify & protect",
-      pain: "Enterprise-facing answers cannot rely on unchecked agent confidence.",
+      pain: "Enterprise answers cannot rest on unchecked agent confidence.",
       outcome:
-        "Run deterministic checks, independent review, provenance, and safety gates before a claim, memory update, or client handoff.",
-      methods: ["Maker-checker", "Provenance", "Safety review"]
+        "We run deterministic checks, independent review, provenance, and safety gates before a claim, memory update, or client handoff.",
+      methods: ["Source proof", "Maker-checker", "Safety gate"]
     },
     {
       number: "Layer 04",
       short: "Execute",
       title: "Execute & repair",
-      pain: "Unbounded agents repeat work, drift, or stop at false completion.",
+      pain: "Agents drift when roles, skills, and limits are vague.",
       outcome:
-        "Give each bounded role the right skills and let repair loops work within attempt, token, time, and cost limits.",
-      methods: ["Role packs", "Skills", "Loop Engineering"]
+        "We give each role the right skills and bounded repair loops with attempt, token, time, cost, and stop limits.",
+      methods: ["Role packs", "Skills", "Repair caps"]
     },
     {
       number: "Layer 03",
       short: "Orchestrate",
       title: "Orchestrate & approve",
-      pain: "Parallel work fails when nobody owns state, dependencies, or approval.",
+      pain: "Parallel work breaks when state, dependencies, and approval have no owner.",
       outcome:
         "LangGraph owns transitions and checkpoints; role teams execute inside the graph; humans approve irreversible edges.",
-      methods: ["LangGraph", "Role routing", "Human gates"]
+      methods: ["LangGraph", "Checkpoints", "Human gates"]
     },
     {
       number: "Layer 02",
       short: "Connect",
       title: "Connect the company brain",
-      pain: "Truth scattered across Notion, Slack, Linear, and GitHub cannot be reliably retrieved.",
+      pain: "Truth scattered across tools and people cannot be reliably retrieved.",
       outcome:
-        "Assemble stable context first, retrieve only from approved sources, and keep each answer linked to provenance and freshness.",
-      methods: ["CAG", "Bounded RAG", "Source IDs", "Knowledge graph"]
+        "We assemble stable context first, retrieve only from approved sources, and keep each answer linked to source IDs and freshness.",
+      methods: ["CAG", "Bounded RAG", "Source IDs", "Freshness"]
     },
     {
       number: "Layer 01",
       short: "Govern",
       title: "Govern goals & sources",
-      pain: "No system is reliable without authority and a shared definition of done.",
+      pain: "No safe automation starts without authority and a shared definition of done.",
       outcome:
-        "Define allowed sources, permissions, one observable goal, budgets, stop conditions, and the verifier before an agent acts.",
-      methods: ["Authority", "Goal contract", "Budgets", "Kill switch"]
+        "We define allowed sources, permissions, one observable goal, budgets, stop conditions, and the verifier before an agent acts.",
+      methods: ["Goal contract", "Permissions", "Budgets", "Stop rules"]
     }
   ];
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
   const captureMode = new URLSearchParams(window.location.search).has("figma");
+  const roiPreviewMode = new URLSearchParams(window.location.search).has("roi-preview");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   if (captureMode) document.documentElement.dataset.capture = "true";
+  if (roiPreviewMode) document.documentElement.dataset.roiPreview = "true";
 
   const header = document.querySelector("[data-site-header]");
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 20);
@@ -80,6 +82,7 @@
 
   const story = document.querySelector("[data-tower-story]");
   const towerElements = Array.from(document.querySelectorAll("[data-tower-layer]"));
+  const towerStack = document.querySelector("[data-tower-stack]");
   const stepButtons = Array.from(document.querySelectorAll("[data-tower-step]"));
   const layerCard = document.querySelector(".layer-card");
   const layerNumber = document.querySelector("[data-layer-number]");
@@ -109,6 +112,8 @@
     if (layerPain) layerPain.textContent = layer.pain;
     if (layerOutcome) layerOutcome.textContent = layer.outcome;
     if (towerStatus) towerStatus.textContent = `${layer.number} in focus`;
+    if (story) story.dataset.currentLayer = layer.number.replace("Layer ", "");
+    if (towerStack) towerStack.dataset.activeLayer = layer.number.replace("Layer ", "");
 
     if (layerMethods) {
       layerMethods.replaceChildren(
@@ -214,6 +219,20 @@
     if (node) node.textContent = value;
   }
 
+  function setControlOutput(name, value) {
+    const node = roiForm.querySelector(`[data-output="${name}"]`);
+    if (node) node.textContent = value;
+  }
+
+  function syncRangeTrack(field) {
+    const min = Number(field.min);
+    const max = Number(field.max);
+    const value = Number(field.value);
+    if (!Number.isFinite(min) || !Number.isFinite(max) || max <= min || !Number.isFinite(value)) return;
+    const progress = ((value - min) / (max - min)) * 100;
+    field.style.setProperty("--range-progress", `${progress}%`);
+  }
+
   function updateRoi() {
     const people = clamp(fieldValue("people", 1), 1, 250);
     const weeklyHours = clamp(fieldValue("hours", 0), 0, 20);
@@ -232,9 +251,22 @@
     const score = Math.round((centralization * 0.4 + governance * 0.4 + toolScore * 0.2) * 10);
     const payback = monthlyValue > 0 ? investment / monthlyValue : Infinity;
 
-    roiForm.querySelector('[data-output="centralization"]').textContent = `${centralization} / 10`;
-    roiForm.querySelector('[data-output="governance"]').textContent = `${governance} / 10`;
-    roiForm.querySelector('[data-output="recovery"]').textContent = `${recovery}%`;
+    setControlOutput("people", `${people} ${people === 1 ? "person" : "people"}`);
+    setControlOutput("hours", `${decimal.format(weeklyHours)} h`);
+    setControlOutput("rate", currency.format(rate));
+    setControlOutput("tools", `${tools} ${tools === 1 ? "surface" : "surfaces"}`);
+    setControlOutput("centralization", `${centralization} / 10`);
+    setControlOutput("governance", `${governance} / 10`);
+    setControlOutput("recovery", `${recovery}%`);
+    setControlOutput("investment", currency.format(investment));
+
+    roiForm.querySelectorAll('input[type="range"]').forEach(syncRangeTrack);
+
+    const modeledQuality = clamp(Math.round(score * 0.35 + recovery * 0.65), 0, 100);
+    roiForm.style.setProperty("--readiness-hue", `${8 + score * 1.16}`);
+    roiForm.style.setProperty("--readiness-lightness", `${69 + score * 0.08}%`);
+    roiForm.style.setProperty("--outcome-lightness", `${88 + modeledQuality * 0.1}%`);
+    roiForm.style.setProperty("--outcome-saturation", `${24 + modeledQuality * 0.12}%`);
 
     setResult("score", String(score));
     setResult("hours", `${decimal.format(recoveredHours)} h`);
@@ -260,4 +292,15 @@
   roiForm.addEventListener("input", updateRoi);
   roiForm.addEventListener("change", updateRoi);
   updateRoi();
+
+  if (window.location.hash === "#roi") {
+    const roiSection = document.querySelector("#roi");
+    const jumpToRoi = () => {
+      if (!roiSection) return;
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, roiSection.getBoundingClientRect().top + window.scrollY);
+    };
+    window.setTimeout(jumpToRoi, 60);
+    window.setTimeout(jumpToRoi, 360);
+  }
 })();

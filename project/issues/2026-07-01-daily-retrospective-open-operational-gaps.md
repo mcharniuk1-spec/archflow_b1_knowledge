@@ -1,7 +1,7 @@
 # Daily Retrospective Open Operational Gaps
 
 Date: 2026-07-01
-Status: open, partially updated on 2026-07-08
+Status: open, partially updated on 2026-07-10
 
 ## Issue
 
@@ -114,3 +114,33 @@ Updated closure table:
 | Runtime/backend claims | Open for full product runtime; guarded packet routes are not provider execution |
 | Scheduled-lane closeout quality | Open for old packet-only lane evidence; do not apply as a July 8 scheduled-run failure while paused |
 | Automation metadata reconciliation | Open; project docs/registry should be patched to match TOML IDs, statuses, and working directories |
+
+## 2026-07-10 Status Update
+
+FACT:
+
+- The July 10 Jarvis/dashboard closeout proved current point-in-time local and hosted provider-disabled review-packet behavior, browser-local persistence, public Git/PDF artifact delivery, and approved Telegram delivery for reviewed public-repository artifacts.
+- The same closeout did not implement provider execution, continuous monitoring, durable external writeback, auth-backed persistence, or cross-device state.
+- The Obsidian/Graphify/Nexus review found required plugin/config baselines present in the four canonical vaults, but only Real Estate had live Nexus socket and tool-manager proof at check time.
+- The completed July 10 evening skill/hook review found no registry or hook drift and returned `NO_UPDATE`.
+- A later July 10 evening skill/hook rerun had a start entry but no visible completion artifact during this daily review.
+- Current automation TOML keeps the daily and evening review lanes active while the priority mechanical-work and Yushchenko observer lanes remain paused.
+
+INTERPRETATION:
+
+- Telegram sender proof is improved for the approved public-repository artifact packet, but recurring automation sender behavior should still be treated as run-local evidence unless the sender path is verified in that run.
+- Live Nexus/writeback should be reframed as a per-vault live readiness gap: config presence is not enough; socket, tool listing, and tool-call proof are required.
+- Continuous monitoring and durable persistence remain separate product lanes, not implied by point-in-time hosted checks.
+- The active evening rerun should be closed or handed off before future daily reviews consume it as completed evidence.
+
+Updated closure table:
+
+| Gap | 2026-07-10 state |
+|---|---|
+| Priority-task runtime | Closed for packet generation; automations currently paused; owner-gated de-duplication remains relevant for reactivation |
+| Model-call ledger | Open for canonical provider-backed Jarvis/OpenRouter ledger; observer automation currently paused |
+| Telegram sender | Improved for one approved public-repository PDF packet; recurring automation sender proof remains run-local |
+| Live Nexus/writeback | Partially improved: Real Estate live tool proof exists; three canonical vaults need reload and verifier proof |
+| Runtime/backend claims | Open for provider execution, continuous monitoring, durable persistence, auth-backed storage, and cross-device state |
+| Scheduled-lane closeout quality | Open for the active evening rerun until completion, blocked, or handoff artifact exists |
+| Automation metadata reconciliation | Open; use TOML state as current schedule proof |

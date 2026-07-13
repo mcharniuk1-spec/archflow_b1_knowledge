@@ -14,14 +14,14 @@
     <link rel="icon" type="image/png" href="assets/favicon-32.png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
-    <link rel="preload" as="image" href="assets/tower/archflow-tower-7-layer.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/tower/layers/top1.png" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,650;6..72,750&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Newsreader:opsz,wght@6..72,500;6..72,650;6..72,750&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="site.css?v=20260713-icp" />
+    <link rel="stylesheet" href="site.css?v=20260713-architecture-roi" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -48,14 +48,14 @@
         <div class="tower-sticky">
           <div class="tower-copy">
             <p class="eyebrow"><span>Architecture / 01</span> Product knowledge reliability</p>
-            <h1 id="tower-title">Your product knowledge should survive the next forcing moment.</h1>
+            <h1 id="tower-title">When pressure hits, your product truth should still hold.</h1>
             <p class="tower-lede">
-              ArchFlow builds the governed company brain that keeps product truth usable when an enterprise buyer asks, a new team joins, or critical context is about to leave.
+              ArchFlow maps sources, owners, decisions, and agent gates into a maintained knowledge spine — so an enterprise deadline, onboarding wave, or key-person exit ends in a reviewed handoff, not a scramble.
             </p>
             <div class="trigger-list" aria-label="Primary forcing moments">
-              <span>Enterprise review</span>
-              <span>Onboarding wave</span>
-              <span>Key-person exit</span>
+              <span>Enterprise readiness</span>
+              <span>Onboarding / hiring</span>
+              <span>Key-person continuity</span>
             </div>
 
             <article class="layer-card" aria-live="polite" aria-atomic="true">
@@ -71,7 +71,7 @@
               </div>
             </article>
 
-            <div class="tower-stepper" role="navigation" aria-label="Architecture layers">
+            <div class="tower-stepper" role="navigation" aria-label="Architecture layers, top to foundation">
               <button type="button" data-tower-step="0" aria-current="step"><span>07</span><strong>Measure</strong></button>
               <button type="button" data-tower-step="1"><span>06</span><strong>Remember</strong></button>
               <button type="button" data-tower-step="2"><span>05</span><strong>Verify</strong></button>
@@ -86,13 +86,13 @@
             <div class="tower-status"><span></span><strong data-tower-status>Layer 07 in focus</strong></div>
             <div class="tower-halo"></div>
             <div class="tower-stack" data-tower-stack>
-              <img class="tower-slice tower-slice-7" data-tower-layer="0" src="assets/tower/archflow-tower-7-layer.webp" alt="" />
-              <img class="tower-slice tower-slice-6" data-tower-layer="1" src="assets/tower/archflow-tower-7-layer.webp" alt="" />
-              <img class="tower-slice tower-slice-5" data-tower-layer="2" src="assets/tower/archflow-tower-7-layer.webp" alt="" />
-              <img class="tower-slice tower-slice-4" data-tower-layer="3" src="assets/tower/archflow-tower-7-layer.webp" alt="" />
-              <img class="tower-slice tower-slice-3" data-tower-layer="4" src="assets/tower/archflow-tower-7-layer.webp" alt="" />
-              <img class="tower-slice tower-slice-2" data-tower-layer="5" src="assets/tower/archflow-tower-7-layer.webp" alt="" />
-              <img class="tower-slice tower-slice-1" data-tower-layer="6" src="assets/tower/archflow-tower-7-layer.webp" alt="" />
+              <img class="tower-slice tower-layer-top" data-tower-layer="0" src="assets/tower/layers/top1.png" alt="" />
+              <img class="tower-slice tower-layer-2" data-tower-layer="1" src="assets/tower/layers/layer2.png" alt="" />
+              <img class="tower-slice tower-layer-3" data-tower-layer="2" src="assets/tower/layers/layer3.png" alt="" />
+              <img class="tower-slice tower-layer-4" data-tower-layer="3" src="assets/tower/layers/layer4.png" alt="" />
+              <img class="tower-slice tower-layer-5" data-tower-layer="4" src="assets/tower/layers/layer5.png" alt="" />
+              <img class="tower-slice tower-layer-6" data-tower-layer="5" src="assets/tower/layers/layer6.png" alt="" />
+              <img class="tower-slice tower-layer-7" data-tower-layer="6" src="assets/tower/layers/layer7.png" alt="" />
             </div>
             <div class="tower-floor-line"></div>
             <p class="scroll-cue"><span></span> Scroll to deconstruct</p>
@@ -181,53 +181,59 @@
         <div class="roi-shell">
           <div class="roi-heading">
             <p class="eyebrow"><span>Model / 03</span> Knowledge-work recovery</p>
-            <h2 id="roi-title">Estimate the drag in the current knowledge system.</h2>
-            <p>Use your own operating assumptions. The model is browser-local and shows the formula; it is not a performance promise.</p>
+            <h2 id="roi-title">Put a number on lost product context.</h2>
+            <p>Drag the controls to model the cost of searching, reconstructing, and re-explaining product context. This browser-local scenario is directional, not a performance promise.</p>
           </div>
 
           <form class="roi-form" data-roi-form aria-label="Knowledge and agent operating system ROI model">
             <div class="roi-inputs">
-              <label>
+              <label class="roi-control">
                 <span>People relying on product knowledge</span>
-                <input name="people" type="number" min="1" max="250" step="1" value="18" inputmode="numeric" />
-                <small>Product, engineering, GTM, and new hires</small>
+                <output data-output="people">30 people</output>
+                <input name="people" type="range" min="1" max="100" step="1" value="30" aria-label="People relying on product knowledge" />
+                <small>1–100 people across product, engineering, GTM, and new hires</small>
               </label>
-              <label>
+              <label class="roi-control">
                 <span>Context recovery hours / person / week</span>
-                <input name="hours" type="number" min="0.5" max="20" step="0.5" value="3" inputmode="decimal" />
-                <small>Search, repeated questions, reconstruction</small>
+                <output data-output="hours">3.5 h</output>
+                <input name="hours" type="range" min="0.5" max="20" step="0.5" value="3.5" aria-label="Context recovery hours per person per week" />
+                <small>0.5–20 hours lost to search, repeated questions, and reconstruction</small>
               </label>
-              <label>
+              <label class="roi-control">
                 <span>Blended hourly cost</span>
-                <span class="input-prefix">€</span>
-                <input class="has-prefix" name="rate" type="number" min="20" max="350" step="5" value="85" inputmode="decimal" />
-                <small>Fully loaded planning assumption</small>
+                <output data-output="rate">€85</output>
+                <input name="rate" type="range" min="20" max="350" step="5" value="85" aria-label="Blended hourly cost" />
+                <small>€20–€350 fully loaded planning assumption</small>
               </label>
-              <label>
+              <label class="roi-control">
                 <span>Active tools and agent surfaces</span>
-                <input name="tools" type="number" min="1" max="30" step="1" value="8" inputmode="numeric" />
-                <small>Docs, tasks, chat, code, AI, CRM</small>
+                <output data-output="tools">12 surfaces</output>
+                <input name="tools" type="range" min="1" max="100" step="1" value="12" aria-label="Active tools and agent surfaces" />
+                <small>1–100 surfaces across docs, tasks, chat, code, AI, CRM, and data</small>
               </label>
-              <label>
+              <label class="roi-control">
                 <span>Knowledge centralization</span>
                 <input name="centralization" type="range" min="1" max="10" step="1" value="4" />
                 <output data-output="centralization">4 / 10</output>
+                <small>How consistently sources, owners, and decisions are connected</small>
               </label>
-              <label>
+              <label class="roi-control">
                 <span>Governance and review maturity</span>
                 <input name="governance" type="range" min="1" max="10" step="1" value="3" />
                 <output data-output="governance">3 / 10</output>
+                <small>How reliably goals, permissions, proof, and approvals are defined</small>
               </label>
-              <label>
+              <label class="roi-control">
                 <span>Modeled recoverable share</span>
-                <input name="recovery" type="range" min="0" max="55" step="5" value="0" />
-                <output data-output="recovery">0%</output>
+                <input name="recovery" type="range" min="0" max="100" step="5" value="55" />
+                <output data-output="recovery">55%</output>
+                <small>0–100% of the diagnosed recovery work you choose to model</small>
               </label>
-              <label>
+              <label class="roi-control">
                 <span>Setup investment scenario</span>
-                <span class="input-prefix">€</span>
-                <input class="has-prefix" name="investment" type="number" min="1000" max="150000" step="1000" value="18000" inputmode="decimal" />
-                <small>Replace with a scoped proposal</small>
+                <output data-output="investment">€18,000</output>
+                <input name="investment" type="range" min="2000" max="30000" step="1000" value="18000" aria-label="Setup investment scenario" />
+                <small>€2,000–€30,000; replace with a scoped proposal</small>
               </label>
             </div>
 
@@ -265,7 +271,7 @@
       </section>
     </main>
 
-    <script src="site.js?v=20260713-icp" defer></script>
-    <script src="hover-depth.js?v=20260713-icp" defer></script>
+    <script src="site.js?v=20260713-architecture-roi" defer></script>
+    <script src="hover-depth.js?v=20260713-architecture-roi" defer></script>
   </body>
 </html>

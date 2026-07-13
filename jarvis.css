@@ -219,6 +219,71 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
   .send-button { min-height: 42px; }
 }
 
+/* Mobile containment: the operator surface must reflow inside the viewport,
+   not expose a desktop-width strip beside it. */
+@media (max-width: 760px) {
+  html,
+  body,
+  .jarvis-layout,
+  .chat-panel,
+  .control-panel {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .chat-heading,
+  .chat-heading > div,
+  .chat-heading h1,
+  .chat-heading p,
+  .composer,
+  .composer-controls,
+  .runtime-strip {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .chat-heading h1 {
+    width: min(330px, calc(100vw - 28px));
+    max-width: min(330px, calc(100vw - 28px));
+    font-size: clamp(30px, 8.6vw, 34px);
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .chat-panel,
+  .control-panel { width: 100vw; }
+
+  .runtime-strip strong,
+  .runtime-strip span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .message p,
+  .message ul,
+  .message li,
+  .control-section > p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .conversation,
+  .message {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .message p,
+  .message ul {
+    width: min(300px, calc(100vw - 60px));
+    max-width: min(300px, calc(100vw - 60px));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }
