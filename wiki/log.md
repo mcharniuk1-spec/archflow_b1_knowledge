@@ -640,3 +640,9 @@ INTERPRETATION:
 
 GAP:
 - Production freshness, provider execution, durable nonce/spend controls, buyer/access/channel/price/payment proof, and E8 productization remain open gates.
+# 2026-07-13 — ICP product surface production release
+
+- Pushed the reviewed three-block ICP website, documentation dashboard, and guarded Jarvis surface.
+- Corrected `/dashboard` to redirect to the canonical asset-safe route and narrowed runtime claims.
+- Deployed from the public repository, verified desktop/mobile/reduced-motion views, synchronized the design baseline, and updated/read back the E6 task family.
+- Provider calls and writeback stayed at zero; E6.2 remains Review and E6.3 remains Planned.

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T13:39:05.692690+00:00",
+  "generated_at": "2026-07-13T13:59:38.039620+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,12 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "71 files",
+      "value": "72 files",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "505",
+      "value": "506",
       "tone": "ok"
     },
     {
@@ -725,25 +725,109 @@
   ],
   "activity": [
     {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-13-icp-production-release.md",
+      "title": "2026-07-13 ICP Product Surface Production Release",
+      "modified": "2026-07-13T13:59:29.363529+00:00",
+      "size": 1099
+    },
+    {
       "kind": "project_run",
       "path": "project/runs/2026-07-13-icp-production-release/agent-handout.md",
       "title": "Agent Handout \u2014 ICP Product Surface Production Release",
-      "modified": "2026-07-13T13:36:14.400828+00:00",
-      "size": 1275
+      "modified": "2026-07-13T13:59:29.278547+00:00",
+      "size": 1910
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-13-icp-production-release/qa-report.md",
       "title": "ICP Product Surface Production Release \u2014 QA Report",
-      "modified": "2026-07-13T13:36:14.315530+00:00",
-      "size": 229
+      "modified": "2026-07-13T13:59:29.082119+00:00",
+      "size": 2708
     },
     {
       "kind": "project_run",
       "path": "project/runs/2026-07-13-icp-production-release/external-action-status.md",
       "title": "ICP Product Surface Production Release \u2014 External Action Status",
-      "modified": "2026-07-13T13:36:14.230462+00:00",
-      "size": 561
+      "modified": "2026-07-13T13:59:28.887417+00:00",
+      "size": 957
+    },
+    {
+      "kind": "wiki_issue",
+      "path": "wiki/issues/2026-07-13-architecture-runtime-proof-gates.md",
+      "title": "Issue - Architecture Runtime Proof Gates",
+      "modified": "2026-07-13T13:41:00.634124+00:00",
+      "size": 1016
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-07-13-goal-loop-architecture-factory-baseline.md",
+      "title": "Decision - Goal, Loop, And Architecture Factory Baseline",
+      "modified": "2026-07-13T13:41:00.633963+00:00",
+      "size": 1593
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-13-architecture-resetup/notion-renewal-report.md",
+      "title": "External Task-Board Renewal Report",
+      "modified": "2026-07-13T13:41:00.632709+00:00",
+      "size": 2552
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md",
+      "title": "Architecture Benchmark Contract",
+      "modified": "2026-07-13T13:41:00.632427+00:00",
+      "size": 2578
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-13-icp-product-surface.md",
+      "title": "Wiki Run - ICP Product Surface",
+      "modified": "2026-07-13T13:41:00.627533+00:00",
+      "size": 2050
+    },
+    {
+      "kind": "wiki_issue",
+      "path": "wiki/issues/2026-07-13-jarvis-durable-execution-controls.md",
+      "title": "Issue - Jarvis Durable Execution Controls",
+      "modified": "2026-07-13T13:41:00.627306+00:00",
+      "size": 1487
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-07-13-icp-forcing-moment-public-surface.md",
+      "title": "Decision - Lead With Knowledge Continuity Under A Forcing Moment",
+      "modified": "2026-07-13T13:41:00.627056+00:00",
+      "size": 1665
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-13-icp-product-surface/qa-report.md",
+      "title": "QA Report - ICP Product Surface",
+      "modified": "2026-07-13T13:41:00.626492+00:00",
+      "size": 4767
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-13-icp-product-surface/notion-mutation-report.md",
+      "title": "External Task-Board ICP Mutation Report",
+      "modified": "2026-07-13T13:41:00.626231+00:00",
+      "size": 2126
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/2026-07-13-icp-product-surface/context-capsule.md",
+      "title": "Context Capsule - ICP Product Surface",
+      "modified": "2026-07-13T13:41:00.625843+00:00",
+      "size": 4063
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/2026-07-13-icp-audience-product-surface.md",
+      "title": "ICP, Audience, And Product Surface Review",
+      "modified": "2026-07-13T13:41:00.625267+00:00",
+      "size": 16577
     },
     {
       "kind": "project_run",
@@ -768,52 +852,10 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-13-icp-product-surface/qa-report.md",
-      "title": "QA Report - ICP Product Surface",
-      "modified": "2026-07-13T12:59:36.125609+00:00",
-      "size": 4773
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/2026-07-13-icp-audience-product-surface.md",
-      "title": "ICP, Audience, And Product Surface Review",
-      "modified": "2026-07-13T12:52:19.340533+00:00",
-      "size": 16581
-    },
-    {
-      "kind": "wiki_run",
-      "path": "wiki/runs/2026-07-13-icp-product-surface.md",
-      "title": "Wiki Run - ICP Product Surface",
-      "modified": "2026-07-13T12:47:09.377316+00:00",
-      "size": 2052
-    },
-    {
-      "kind": "wiki_issue",
-      "path": "wiki/issues/2026-07-13-jarvis-durable-execution-controls.md",
-      "title": "Issue - Jarvis Durable Execution Controls",
-      "modified": "2026-07-13T12:47:09.290986+00:00",
-      "size": 1489
-    },
-    {
-      "kind": "wiki_decision",
-      "path": "wiki/decisions/2026-07-13-icp-forcing-moment-public-surface.md",
-      "title": "Decision - Lead With Knowledge Continuity Under A Forcing Moment",
-      "modified": "2026-07-13T12:47:09.206260+00:00",
-      "size": 1667
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-13-icp-product-surface/agent-handout.md",
       "title": "Agent Handout - ICP Product Surface",
       "modified": "2026-07-13T12:47:09.121799+00:00",
       "size": 2205
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-13-icp-product-surface/notion-mutation-report.md",
-      "title": "External Task-Board ICP Mutation Report",
-      "modified": "2026-07-13T12:47:08.950211+00:00",
-      "size": 2128
     },
     {
       "kind": "project_run",
@@ -828,13 +870,6 @@
       "title": "Task Contracts - ICP Product Surface",
       "modified": "2026-07-13T12:47:08.776826+00:00",
       "size": 2774
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-13-icp-product-surface/context-capsule.md",
-      "title": "Context Capsule - ICP Product Surface",
-      "modified": "2026-07-13T12:47:08.688809+00:00",
-      "size": 4067
     },
     {
       "kind": "project_report",
@@ -894,38 +929,10 @@
     },
     {
       "kind": "project_run",
-      "path": "project/runs/2026-07-13-architecture-resetup/notion-renewal-report.md",
-      "title": "External Task-Board Renewal Report",
-      "modified": "2026-07-13T10:41:12.830954+00:00",
-      "size": 2553
-    },
-    {
-      "kind": "project_run",
       "path": "project/runs/2026-07-13-architecture-resetup/research-source-register.md",
       "title": "Research Source Register",
       "modified": "2026-07-13T10:37:25.804846+00:00",
       "size": 5838
-    },
-    {
-      "kind": "wiki_issue",
-      "path": "wiki/issues/2026-07-13-architecture-runtime-proof-gates.md",
-      "title": "Issue - Architecture Runtime Proof Gates",
-      "modified": "2026-07-13T10:32:43.075427+00:00",
-      "size": 1017
-    },
-    {
-      "kind": "wiki_decision",
-      "path": "wiki/decisions/2026-07-13-goal-loop-architecture-factory-baseline.md",
-      "title": "Decision - Goal, Loop, And Architecture Factory Baseline",
-      "modified": "2026-07-13T10:32:42.930348+00:00",
-      "size": 1594
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md",
-      "title": "Architecture Benchmark Contract",
-      "modified": "2026-07-13T10:32:42.789259+00:00",
-      "size": 2579
     },
     {
       "kind": "project_run",
@@ -4264,7 +4271,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 71,
+    "file_count": 72,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -4314,7 +4321,7 @@
       {
         "path": "wiki/decisions/2026-07-13-icp-forcing-moment-public-surface.md",
         "title": "Decision - Lead With Knowledge Continuity Under A Forcing Moment",
-        "excerpt": "# Decision - Lead With Knowledge Continuity Under A Forcing Moment  Date: 2026-07-13   Status: accepted for the current public and planning baseline  ## Context  The owner ICP brief and current market review indicate that generic PRD generation is inexpensive and weakly differentiated. ArchFlow's stronger system is the maintained, source-grounded company brain plus bounded agent execution, verification, memory promot"
+        "excerpt": "# Decision - Lead With Knowledge Continuity Under A Forcing Moment  Date: 2026-07-13 Status: accepted for the current public and planning baseline  ## Context  The owner ICP brief and current market review indicate that generic PRD generation is inexpensive and weakly differentiated. ArchFlow's stronger system is the maintained, source-grounded company brain plus bounded agent execution, verification, memory promotio"
       },
       {
         "path": "wiki/index.md",
@@ -4344,7 +4351,7 @@
       {
         "path": "wiki/issues/2026-07-13-jarvis-durable-execution-controls.md",
         "title": "Issue - Jarvis Durable Execution Controls",
-        "excerpt": "# Issue - Jarvis Durable Execution Controls  Date opened: 2026-07-13   Status: open; provider execution blocked  ## FACT  - Jarvis can search public model metadata and prepare reviewed request packets. - Both API implementations enforce owner token, request acknowledgement, server allowlist, CORS, and writeback-off checks. - Configured daily/run budget values do not track actual consumption. - A replayable request ac"
+        "excerpt": "# Issue - Jarvis Durable Execution Controls  Date opened: 2026-07-13 Status: open; provider execution blocked  ## FACT  - Jarvis can search public model metadata and prepare reviewed request packets. - Both API implementations enforce owner token, request acknowledgement, server allowlist, CORS, and writeback-off checks. - Configured daily/run budget values do not track actual consumption. - A replayable request ackn"
       },
       {
         "path": "wiki/log.md",
@@ -4619,7 +4626,12 @@
       {
         "path": "wiki/runs/2026-07-13-icp-product-surface.md",
         "title": "Wiki Run - ICP Product Surface",
-        "excerpt": "# Wiki Run - ICP Product Surface  Date: 2026-07-13   Status: local/public implementation and board planning complete; production, market, and provider gates remain open  ## Task  Translate the owner ICP vision into ArchFlow's current knowledge architecture, marketing roles, public product story, operator dashboard, guarded Jarvis contract, and future installable-product plan.  ## Durable result  - Current audience kn"
+        "excerpt": "# Wiki Run - ICP Product Surface  Date: 2026-07-13 Status: local/public implementation and board planning complete; production, market, and provider gates remain open  ## Task  Translate the owner ICP vision into ArchFlow's current knowledge architecture, marketing roles, public product story, operator dashboard, guarded Jarvis contract, and future installable-product plan.  ## Durable result  - Current audience know"
+      },
+      {
+        "path": "wiki/runs/2026-07-13-icp-production-release.md",
+        "title": "2026-07-13 ICP Product Surface Production Release",
+        "excerpt": "# 2026-07-13 ICP Product Surface Production Release  ## FACT  - The ICP website, dashboard, and guarded Jarvis surface were committed and pushed to the public repository. - Vercel production reached READY and the public alias serves the released surface. - Desktop, mobile, and reduced-motion QA passed with zero console errors, failed requests, or horizontal overflow. - Four required production captures and an updated"
       }
     ]
   },
@@ -4691,7 +4703,7 @@
     {
       "path": "project/knowledge/audience/icp-knowledge-continuity.md",
       "title": "ICP Knowledge Node - Product Knowledge Continuity",
-      "text": "# ICP Knowledge Node - Product Knowledge Continuity  Date: 2026-07-13   Status: reviewed hypothesis baseline; not validated demand   Primary source ID: `SRC-ICP-20260713` - owner-supplied ICP brief, summarized without copying raw private material  ## Decision summary  ArchFlow should lead with a forcing moment that exposes product-knowledge risk. It should not lead with generic AI automation or PRD-writing speed.  The narrow first cohort is a hypothesis:  - horizontal, product-led B2B SaaS; - roughly 30-75 employees; - US/EU and English-working teams; - Series A to early Series B as a directional stage proxy; - product knowledge distributed across people, workspace tools, and code; - an active deadline or continuity risk that makes the cost visible.  The likely buyer is Head of Product, VP Product, or CPO. A senior PM is usually the champion; below roughly 40 employees, a founder may buy. CTO or engineering leadership is secondary. The economic owner must be verified for each forcing moment.  In this node, PM means Product Manager. Project Manager and PMO are title-confusion exclusions, not assumed buyers. Product Ops may be a user, operator, or champion for chronic retrieval, but ",
+      "text": "# ICP Knowledge Node - Product Knowledge Continuity  Date: 2026-07-13 Status: reviewed hypothesis baseline; not validated demand Primary source ID: `SRC-ICP-20260713` - owner-supplied ICP brief, summarized without copying raw private material  ## Decision summary  ArchFlow should lead with a forcing moment that exposes product-knowledge risk. It should not lead with generic AI automation or PRD-writing speed.  The narrow first cohort is a hypothesis:  - horizontal, product-led B2B SaaS; - roughly 30-75 employees; - US/EU and English-working teams; - Series A to early Series B as a directional stage proxy; - product knowledge distributed across people, workspace tools, and code; - an active deadline or continuity risk that makes the cost visible.  The likely buyer is Head of Product, VP Product, or CPO. A senior PM is usually the champion; below roughly 40 employees, a founder may buy. CTO or engineering leadership is secondary. The economic owner must be verified for each forcing moment.  In this node, PM means Product Manager. Project Manager and PMO are title-confusion exclusions, not assumed buyers. Product Ops may be a user, operator, or champion for chronic retrieval, but is n",
       "authority_state": "canonical_current",
       "superseded_by": "",
       "authority_boost": 3
@@ -4739,7 +4751,7 @@
     {
       "path": "project/agents/marketing-role-pack.md",
       "title": "Marketing Role Pack - ICP Evidence To Payment Verdict",
-      "text": "# Marketing Role Pack - ICP Evidence To Payment Verdict  Date: 2026-07-13   Status: active role architecture; all contact, publication, access, pricing, and payment actions remain owner-gated  ## Operating sequence  ```text approved audience question   -> ICP Evidence Agent   -> Buyer Discovery Agent   -> Positioning and Copy Agent   -> ABM Channel Agent   -> Claims and Safety Reviewer (claim, target, channel, action)   -> owner approval pause   -> owner/external action or explicit no-action receipt   -> action readback   -> Growth Evidence Agent   -> Claims and Safety Reviewer (measurement and verdict)   -> AF Knowledge promotion review ```  LangGraph owns the state transitions. A role may prepare one bounded packet but cannot promote its own high-risk output or skip an approval edge. Parallel research is allowed only when source ranges do not overlap; one integrator reconciles the evidence before messaging.  ## Shared state contract  Every role reads and writes the same minimal fields:  - `account_or_cohort_id` - `forcing_moment` - `buyer_role_hypothesis` - `evidence_refs` - `evidence_freshness` - `claim_state` - `access_scope` - `message_version` - `approval_state` - `next_commi",
+      "text": "# Marketing Role Pack - ICP Evidence To Payment Verdict  Date: 2026-07-13 Status: active role architecture; all contact, publication, access, pricing, and payment actions remain owner-gated  ## Operating sequence  ```text approved audience question   -> ICP Evidence Agent   -> Buyer Discovery Agent   -> Positioning and Copy Agent   -> ABM Channel Agent   -> Claims and Safety Reviewer (claim, target, channel, action)   -> owner approval pause   -> owner/external action or explicit no-action receipt   -> action readback   -> Growth Evidence Agent   -> Claims and Safety Reviewer (measurement and verdict)   -> AF Knowledge promotion review ```  LangGraph owns the state transitions. A role may prepare one bounded packet but cannot promote its own high-risk output or skip an approval edge. Parallel research is allowed only when source ranges do not overlap; one integrator reconciles the evidence before messaging.  ## Shared state contract  Every role reads and writes the same minimal fields:  - `account_or_cohort_id` - `forcing_moment` - `buyer_role_hypothesis` - `evidence_refs` - `evidence_freshness` - `claim_state` - `access_scope` - `message_version` - `approval_state` - `next_commitm",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5083,7 +5095,7 @@
     {
       "path": "project/dashboard/README.md",
       "title": "Architecture Console",
-      "text": "# Architecture Console  The ArcFlow dashboard is a documentation-first, public-safe view of the maintained knowledge and agent architecture. It reads generated project evidence, supports browser-local workflow editing and export, and keeps execution, provider calls, durable writeback, and promotion behind separate gates.  Canonical routes:  ```text /project/dashboard/ /dashboard  -> redirects to /project/dashboard/ /jarvis ```  ## Current Views  - `#overview` \u2014 architecture status, proof, gates, and current activity. - `#architecture` \u2014 the seven grouped layers and end-to-end contract. - `#knowledge` \u2014 retrieval cascade, RAG parameters, corpus boundaries, and provenance. - `#agents` \u2014 role contracts, skill assignments, and governance. - `#runs` \u2014 configuration, execution, review, promotion, and evidence states. - `#reference` \u2014 editable parameter families, source registry, and operating guidance. - `#schema` \u2014 full-screen, browser-local workflow editor and review-packet export. - `#plan` \u2014 current E1-E8 strategic spine and installable product direction.  The separate `/jarvis` page is the text-only review console. It can inspect public-safe state and prepare bounded requests. Serve",
+      "text": "# Architecture Console  The ArchFlow dashboard is a documentation-first, public-safe view of the maintained knowledge and agent architecture. It reads generated project evidence, supports browser-local workflow editing and export, and keeps execution, provider calls, durable writeback, and promotion behind separate gates.  Canonical routes:  ```text /project/dashboard/ /dashboard  -> redirects to /project/dashboard/ /jarvis ```  ## Current Views  - `#overview` \u2014 architecture status, proof, gates, and current activity. - `#architecture` \u2014 the seven grouped layers and end-to-end contract. - `#knowledge` \u2014 retrieval cascade, RAG parameters, corpus boundaries, and provenance. - `#agents` \u2014 role contracts, skill assignments, and governance. - `#runs` \u2014 configuration, execution, review, promotion, and evidence states. - `#reference` \u2014 editable parameter families, source registry, and operating guidance. - `#schema` \u2014 full-screen, browser-local workflow editor and review-packet export. - `#plan` \u2014 current E1-E8 strategic spine and installable product direction.  The separate `/jarvis` page is the text-only review console. It can inspect public-safe state and prepare bounded requests. Serv",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5419,7 +5431,7 @@
     {
       "path": "project/task-contract-index-2026-07-13.md",
       "title": "E1-E8 Public Task Contract Index",
-      "text": "# E1-E8 Public Task Contract Index  Date: 2026-07-13   Status: public-safe reconstruction source; the external task board is a coordination mirror   Canonical strategy: [`strategic-plan-2026-07-13.md`](strategic-plan-2026-07-13.md)  ## Contract rule  Every task must preserve two separate states:  - workflow status: Not started, Planning, Active, Review, Done, or Blocked; - evidence state: Planned, Configured, Executed, Reviewed, Proven, Superseded, or Gap.  Done never upgrades an unsupported market, runtime, safety, ROI, or deployment claim. External action requires a target-specific owner approval, action receipt, and readback. The accountable role prepares/integrates; the independent reviewer may approve, repair, block, or stop but may not approve its own high-risk output.  ## Preserved baselines  | ID | Evidence | Meaning | |---|---|---| | E2.0 | Done / Proven | Earlier loop/goal baseline retained narrowly; it does not prove the renewed contracts below. | | E5.0 | Done / Proven | Earlier market-planning baseline retained; it does not validate the buyer or demand. | | E6.0 | Done / Proven | Earlier static surface baseline retained; it does not prove current production freshness o",
+      "text": "# E1-E8 Public Task Contract Index  Date: 2026-07-13 Status: public-safe reconstruction source; the external task board is a coordination mirror Canonical strategy: [`strategic-plan-2026-07-13.md`](strategic-plan-2026-07-13.md)  ## Contract rule  Every task must preserve two separate states:  - workflow status: Not started, Planning, Active, Review, Done, or Blocked; - evidence state: Planned, Configured, Executed, Reviewed, Proven, Superseded, or Gap.  Done never upgrades an unsupported market, runtime, safety, ROI, or deployment claim. External action requires a target-specific owner approval, action receipt, and readback. The accountable role prepares/integrates; the independent reviewer may approve, repair, block, or stop but may not approve its own high-risk output.  ## Preserved baselines  | ID | Evidence | Meaning | |---|---|---| | E2.0 | Done / Proven | Earlier loop/goal baseline retained narrowly; it does not prove the renewed contracts below. | | E5.0 | Done / Proven | Earlier market-planning baseline retained; it does not validate the buyer or demand. | | E6.0 | Done / Proven | Earlier static surface baseline retained; it does not prove current production freshness or pr",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5707,7 +5719,7 @@
     {
       "path": "wiki/decisions/2026-07-13-icp-forcing-moment-public-surface.md",
       "title": "Decision - Lead With Knowledge Continuity Under A Forcing Moment",
-      "text": "# Decision - Lead With Knowledge Continuity Under A Forcing Moment  Date: 2026-07-13   Status: accepted for the current public and planning baseline  ## Context  The owner ICP brief and current market review indicate that generic PRD generation is inexpensive and weakly differentiated. ArchFlow's stronger system is the maintained, source-grounded company brain plus bounded agent execution, verification, memory promotion, and lifecycle control.  ## Decision  - Lead the current first-cohort hypothesis with enterprise-readiness, onboarding/hiring, and key-person-departure forcing moments. - Describe PRD, ICP, content, and outreach as generated execution architectures inside the knowledge-continuity system. - Use a seven-layer buyer story on the public website and an eight-route documentation/operator dashboard for exact system state. - Keep the modeled ROI scenario at a zero recovery default and label it as heuristic until an observed baseline exists. - Put installable repository/MCP/admin productization behind E8.0, which depends on E5 market evidence and E7 safety proof. - Keep provider execution disabled until durable single-use approval and spend enforcement exist.  ## Consequence",
+      "text": "# Decision - Lead With Knowledge Continuity Under A Forcing Moment  Date: 2026-07-13 Status: accepted for the current public and planning baseline  ## Context  The owner ICP brief and current market review indicate that generic PRD generation is inexpensive and weakly differentiated. ArchFlow's stronger system is the maintained, source-grounded company brain plus bounded agent execution, verification, memory promotion, and lifecycle control.  ## Decision  - Lead the current first-cohort hypothesis with enterprise-readiness, onboarding/hiring, and key-person-departure forcing moments. - Describe PRD, ICP, content, and outreach as generated execution architectures inside the knowledge-continuity system. - Use a seven-layer buyer story on the public website and an eight-route documentation/operator dashboard for exact system state. - Keep the modeled ROI scenario at a zero recovery default and label it as heuristic until an observed baseline exists. - Put installable repository/MCP/admin productization behind E8.0, which depends on E5 market evidence and E7 safety proof. - Keep provider execution disabled until durable single-use approval and spend enforcement exist.  ## Consequences ",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5747,7 +5759,7 @@
     {
       "path": "wiki/issues/2026-07-13-architecture-runtime-proof-gates.md",
       "title": "Issue - Architecture Runtime Proof Gates",
-      "text": "# Issue - Architecture Runtime Proof Gates  Date: 2026-07-13  Status: open  ## FACT  The design contracts now cover goal, loop, orchestration, roles, skills, knowledge, retrieval, safety, and measurement. The following capabilities remain unproven or incomplete:  - external repository SkillSpector scans did not finish within the bounded window; - no destructive-command hook is installed; - no Cognee or TurboVec benchmark has run; - vector-default retrieval has not passed the 20-query benchmark; - provider-backed architecture-factory execution is not approved; - all-vault live Nexus tool-call proof is incomplete; - dashboard/editor implementation is deferred; - primary buyer and payment validation do not exist.  ## Next safe action  Run the provider-disabled architecture-factory benchmark first. Evaluate one external candidate at a time in a disposable sanitized fixture, preserving platform approval and rollback. Do not bundle the tool trials because the benchmark must attribute gains and regressions. ",
+      "text": "# Issue - Architecture Runtime Proof Gates  Date: 2026-07-13  Status: open  ## FACT  The design contracts now cover goal, loop, orchestration, roles, skills, knowledge, retrieval, safety, and measurement. The following capabilities remain unproven or incomplete:  - external repository SkillSpector scans did not finish within the bounded window; - no destructive-command hook is installed; - no Cognee or TurboVec benchmark has run; - vector-default retrieval has not passed the 20-query benchmark; - provider-backed architecture-factory execution is not approved; - all-vault live Nexus tool-call proof is incomplete; - dashboard/editor implementation is deferred; - primary buyer and payment validation do not exist.  ## Next safe action  Run the provider-disabled architecture-factory benchmark first. Evaluate one external candidate at a time in a disposable sanitized fixture, preserving platform approval and rollback. Do not bundle the tool trials because the benchmark must attribute gains and regressions.",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5755,7 +5767,7 @@
     {
       "path": "wiki/issues/2026-07-13-jarvis-durable-execution-controls.md",
       "title": "Issue - Jarvis Durable Execution Controls",
-      "text": "# Issue - Jarvis Durable Execution Controls  Date opened: 2026-07-13   Status: open; provider execution blocked  ## FACT  - Jarvis can search public model metadata and prepare reviewed request packets. - Both API implementations enforce owner token, request acknowledgement, server allowlist, CORS, and writeback-off checks. - Configured daily/run budget values do not track actual consumption. - A replayable request acknowledgement is not an atomic single-use approval. - The current API therefore returns `durable_nonce_and_spend_ledger_required` before any provider call.  ## Required resolution  1. Issue a server-side approval nonce bound to owner, sanitized request hash, model, cap, and expiry. 2. Consume it atomically once and reject replay, mismatch, expiry, and concurrent reuse. 3. Reserve projected spend before the provider request and reconcile actual usage/cost after the response. 4. Enforce daily and per-run limits in durable storage or with a provider-enforced key limit plus a local receipt ledger. 5. Record a sanitized provider/action receipt without raw secret or private prompt content. 6. Test forgery, replay, concurrency, model mismatch, budget exhaustion, provider error",
+      "text": "# Issue - Jarvis Durable Execution Controls  Date opened: 2026-07-13 Status: open; provider execution blocked  ## FACT  - Jarvis can search public model metadata and prepare reviewed request packets. - Both API implementations enforce owner token, request acknowledgement, server allowlist, CORS, and writeback-off checks. - Configured daily/run budget values do not track actual consumption. - A replayable request acknowledgement is not an atomic single-use approval. - The current API therefore returns `durable_nonce_and_spend_ledger_required` before any provider call.  ## Required resolution  1. Issue a server-side approval nonce bound to owner, sanitized request hash, model, cap, and expiry. 2. Consume it atomically once and reject replay, mismatch, expiry, and concurrent reuse. 3. Reserve projected spend before the provider request and reconcile actual usage/cost after the response. 4. Enforce daily and per-run limits in durable storage or with a provider-enforced key limit plus a local receipt ledger. 5. Record a sanitized provider/action receipt without raw secret or private prompt content. 6. Test forgery, replay, concurrency, model mismatch, budget exhaustion, provider error, ",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -6083,7 +6095,7 @@
     {
       "path": "project/reports/2026-07-13-icp-audience-product-surface.md",
       "title": "ICP, Audience, And Product Surface Review",
-      "text": "# ICP, Audience, And Product Surface Review  Date: 2026-07-13   Status: implementation and planning report; primary buyer and demand remain unvalidated   Scope: owner-supplied ICP review, audience architecture, marketing roles, three-block website, operator dashboard, guarded Jarvis, and installable-product path  ## Outcome  The current ArchFlow message now leads with product-knowledge continuity under a forcing moment. The public website has three deliberate blocks, the operator dashboard is documentation-first, and Jarvis has a separate guarded chat/model surface. The audience plan and role sequence are stored as reusable project knowledge.  No production deployment, live provider response, autonomous writeback, buyer interview, outreach, or payment action is claimed in this report.  ## ICP decision  FACT:  - The owner-supplied brief prioritizes enterprise questionnaire/RFP and onboarding/hiring as the strongest immediate triggers. - It positions key-person departure next and treats AI-agent context, repeated search, and PRD creation as weaker or less schedulable triggers. - The narrow cohort is approximately 30-75-person product-led B2B SaaS, with Head/VP Product or CPO as the f",
+      "text": "# ICP, Audience, And Product Surface Review  Date: 2026-07-13 Status: implementation and planning report; primary buyer and demand remain unvalidated Scope: owner-supplied ICP review, audience architecture, marketing roles, three-block website, operator dashboard, guarded Jarvis, and installable-product path  ## Outcome  The current ArchFlow message now leads with product-knowledge continuity under a forcing moment. The public website has three deliberate blocks, the operator dashboard is documentation-first, and Jarvis has a separate guarded chat/model surface. The audience plan and role sequence are stored as reusable project knowledge.  No production deployment, live provider response, autonomous writeback, buyer interview, outreach, or payment action is claimed in this report.  ## ICP decision  FACT:  - The owner-supplied brief prioritizes enterprise questionnaire/RFP and onboarding/hiring as the strongest immediate triggers. - It positions key-person departure next and treats AI-agent context, repeated search, and PRD creation as weaker or less schedulable triggers. - The narrow cohort is approximately 30-75-person product-led B2B SaaS, with Head/VP Product or CPO as the first",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -8179,7 +8191,7 @@
     {
       "path": "project/runs/2026-07-13-icp-product-surface/context-capsule.md",
       "title": "Context Capsule - ICP Product Surface",
-      "text": "# Context Capsule - ICP Product Surface  Date: 2026-07-13   Status: completed local/public implementation; market and production gates remain open   Authority: current project contracts, reviewed public-safe source summaries, and explicit evidence state  ## Goal  Translate the owner-supplied ICP vision into the ArchFlow knowledge-continuity architecture, marketing-role system, public website, operator dashboard, guarded Jarvis surface, public E1-E8 plan, and external task-board state.  ## FACT  - The owner brief prioritizes enterprise-readiness, onboarding/hiring, and key-person-departure forcing moments. - The first cohort is a roughly 30-75-person product-led B2B SaaS hypothesis. - Head/VP Product or CPO is the first buyer hypothesis; a senior Product Manager is usually a champion; Product Ops is a possible user/champion rather than an assumed economic buyer. - Project Manager and PMO titles are an explicit title-confusion exclusion. - The source brief does not include a complete citation trail for its quantitative assertions. - Existing local/public surfaces and provider-disabled API contracts could be changed without deploying or invoking a provider.  ## INTERPRETATION  - ArchF",
+      "text": "# Context Capsule - ICP Product Surface  Date: 2026-07-13 Status: completed local/public implementation; market and production gates remain open Authority: current project contracts, reviewed public-safe source summaries, and explicit evidence state  ## Goal  Translate the owner-supplied ICP vision into the ArchFlow knowledge-continuity architecture, marketing-role system, public website, operator dashboard, guarded Jarvis surface, public E1-E8 plan, and external task-board state.  ## FACT  - The owner brief prioritizes enterprise-readiness, onboarding/hiring, and key-person-departure forcing moments. - The first cohort is a roughly 30-75-person product-led B2B SaaS hypothesis. - Head/VP Product or CPO is the first buyer hypothesis; a senior Product Manager is usually a champion; Product Ops is a possible user/champion rather than an assumed economic buyer. - Project Manager and PMO titles are an explicit title-confusion exclusion. - The source brief does not include a complete citation trail for its quantitative assertions. - Existing local/public surfaces and provider-disabled API contracts could be changed without deploying or invoking a provider.  ## INTERPRETATION  - ArchFlow ",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -8187,7 +8199,7 @@
     {
       "path": "project/runs/2026-07-13-icp-product-surface/notion-mutation-report.md",
       "title": "External Task-Board ICP Mutation Report",
-      "text": "# External Task-Board ICP Mutation Report  Date: 2026-07-13   Status: mutation and independent readback complete  ## Mutation method  - One Terra agent was the sole writer. - Luna agents reviewed schema, task architecture, and the final state read-only. - Proven/Done baseline rows were preserved; planned work was rewritten around the current ICP and E8 productization gate. - No private board URL, row identifier, or account metadata is reproduced here.  ## Verified result  - Epic statuses: E2 Planning, E5 Not started, E6 Planning, E7 Active, E8 Not started. - E2.0, E5.0, E6.0, and E7.0 remain Done / Proven. - Four existing epic pages and 13 existing Planned task rows were updated. - E2.4, E7.4, E8.0-E8.5, and the E8 epic structure were created; eight new task rows were added. - A linked ICP summary and a filtered E8 view were added. - The ICP-aligned scope contains 25 relevant rows: 4 Proven baselines and 21 Planned tasks. - Independent readback found no missing contract fields, duplicate current task titles, status inflation, or dependency cycle.  ## Current planned contract families  - E2.1-E2.4: goal/evidence schema, bounded loop controller, architecture factory, and ICP decision",
+      "text": "# External Task-Board ICP Mutation Report  Date: 2026-07-13 Status: mutation and independent readback complete  ## Mutation method  - One Terra agent was the sole writer. - Luna agents reviewed schema, task architecture, and the final state read-only. - Proven/Done baseline rows were preserved; planned work was rewritten around the current ICP and E8 productization gate. - No private board URL, row identifier, or account metadata is reproduced here.  ## Verified result  - Epic statuses: E2 Planning, E5 Not started, E6 Planning, E7 Active, E8 Not started. - E2.0, E5.0, E6.0, and E7.0 remain Done / Proven. - Four existing epic pages and 13 existing Planned task rows were updated. - E2.4, E7.4, E8.0-E8.5, and the E8 epic structure were created; eight new task rows were added. - A linked ICP summary and a filtered E8 view were added. - The ICP-aligned scope contains 25 relevant rows: 4 Proven baselines and 21 Planned tasks. - Independent readback found no missing contract fields, duplicate current task titles, status inflation, or dependency cycle.  ## Current planned contract families  - E2.1-E2.4: goal/evidence schema, bounded loop controller, architecture factory, and ICP decision f",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -8195,7 +8207,7 @@
     {
       "path": "project/runs/2026-07-13-icp-product-surface/qa-report.md",
       "title": "QA Report - ICP Product Surface",
-      "text": "# QA Report - ICP Product Surface  Date: 2026-07-13   Result: pass for local/public implementation   Provider calls: 0   Writeback actions: 0  ## Deterministic checks  | Check | Result | |---|---| | Dashboard data regeneration | Pass: `project/dashboard/data.json` regenerated after current audience, role, plan, run, and WikiLLM updates. | | JSON/YAML parsing | Pass: dashboard data, Vercel configuration, agent roster, audience routing, market, RAG, and LangGraph files parse. | | JavaScript syntax | Pass: website, Jarvis, and dashboard application. | | Python compilation | Pass: serverless/FastAPI contracts, generators, retrieval, smoke, and safety scripts. | | Workflow validation | Pass: LangGraph, LlamaIndex, CrewAI, knowledge integration, market research, and model routing. | | Diff hygiene | Pass: `git diff --check`. | | Public safety | Pass: publishable-file scan. The OpenAI-key rule still catches a token-shaped fixture and no longer mistakes `task-contract-index` for a key. | | Current active-routing search | Pass: no old 50-500, Series B-D, PRD-Pack-first, PRD Rescue, Discovery Diagnostic, or E6/E7 market-gate phrase remains in the active CAG, audience, agent, workflow, conten",
+      "text": "# QA Report - ICP Product Surface  Date: 2026-07-13 Result: pass for local/public implementation Provider calls: 0 Writeback actions: 0  ## Deterministic checks  | Check | Result | |---|---| | Dashboard data regeneration | Pass: `project/dashboard/data.json` regenerated after current audience, role, plan, run, and WikiLLM updates. | | JSON/YAML parsing | Pass: dashboard data, Vercel configuration, agent roster, audience routing, market, RAG, and LangGraph files parse. | | JavaScript syntax | Pass: website, Jarvis, and dashboard application. | | Python compilation | Pass: serverless/FastAPI contracts, generators, retrieval, smoke, and safety scripts. | | Workflow validation | Pass: LangGraph, LlamaIndex, CrewAI, knowledge integration, market research, and model routing. | | Diff hygiene | Pass: `git diff --check`. | | Public safety | Pass: publishable-file scan. The OpenAI-key rule still catches a token-shaped fixture and no longer mistakes `task-contract-index` for a key. | | Current active-routing search | Pass: no old 50-500, Series B-D, PRD-Pack-first, PRD Rescue, Discovery Diagnostic, or E6/E7 market-gate phrase remains in the active CAG, audience, agent, workflow, content, das",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -8227,7 +8239,7 @@
     {
       "path": "project/runs/2026-07-13-icp-production-release/agent-handout.md",
       "title": "Agent Handout \u2014 ICP Product Surface Production Release",
-      "text": "# Agent Handout \u2014 ICP Product Surface Production Release  ## Mission  Ship the reviewed ICP website, documentation dashboard, and guarded Jarvis surface through a bounded, evidence-first production release.  ## Current State  - Release contract and explicit scope are recorded. - Git, Vercel, Figma, and Notion actions are pending the local release gate. - Generated Graphify artifacts and unrelated lanes are excluded.  ## Required Completion Evidence  - Passing local and production responsive interaction matrices. - Public-safety scan after the last public edit. - Explicit Git commit and successful remote push. - Current Vercel production route verification. - Required Figma captures and sync-page confirmation. - Read-back confirmation for bounded Notion updates. - Independent review conclusion and recorded residual gaps.  ## Non-Negotiable Boundaries  - Do not enable provider execution or durable action writeback. - Do not expose private identifiers, credentials, local paths, or internal deployment metadata. - Do not stage generated Graphify output or unrelated historical lanes. - Do not convert planned capabilities or projected ROI into proven outcomes.  ## Next Safe Action  Run th",
+      "text": "# Agent Handout \u2014 ICP Product Surface Production Release  ## Outcome  The reviewed ICP website, documentation dashboard, and guarded Jarvis surface are committed, pushed, deployed, responsively verified, synchronized to the established design baseline, and reflected in the external task board.  ## Proven Scope  - Three-block public surface: seven-layer knowledge-continuity tower, two delivery lanes, and disclosed browser-local ROI scenario. - Canonical documentation console with eight views and an asset-safe `/dashboard` redirect. - Mobile-safe fullscreen browser-local workflow editor. - Separate Jarvis console with four curated public model routes and same-origin/loopback API protection. - Guarded serverless health and request contracts with provider calls and writeback at zero. - Git, Vercel, responsive browser QA, design-baseline sync, and task-board readback.  ## Evidence State  - E6.1: Proven. - E6.2: Review until one explicit approve/deny/export/readback packet fixture is recorded. - E6.3: Planned. - Provider execution, durable writeback, MCP/admin product, persistence, tenant isolation, and customer outcome proof: not proven.  ## Important Release Decisions  - Deploy from th",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -8243,7 +8255,7 @@
     {
       "path": "project/runs/2026-07-13-icp-production-release/external-action-status.md",
       "title": "ICP Product Surface Production Release \u2014 External Action Status",
-      "text": "# ICP Product Surface Production Release \u2014 External Action Status  | Action | State | Evidence | | --- | --- | --- | | Git push | Pending | Release manifest and local QA must pass first. | | Vercel production | Pending | Git push and production freshness validation required. | | Figma sync | Pending | Must follow successful production validation. | | Notion update | Pending | Must reflect final evidence without expanding scope. |  Provider-backed Jarvis completion, durable action writeback, and autonomous external execution remain outside this release.",
+      "text": "# ICP Product Surface Production Release \u2014 External Action Status  | Action | State | Evidence | | --- | --- | --- | | Git push | Complete | Product commit `68b60f9` and evidence correction `ae9cc30` are on `origin/main`. | | Vercel production | Complete | The public project reached READY and the production alias serves the released website, dashboard, Jarvis, quiz, and health route. | | Deployed QA | Complete | Desktop, mobile, and reduced-motion checks passed with zero console errors, failed requests, or horizontal overflow. | | Figma sync | Complete | The established website-sync page contains four fresh editable production captures and an updated release summary. | | Notion update | Complete | E6 and E6.1-E6.3 were updated and read back with narrow evidence states. |  Provider-backed Jarvis completion, durable action writeback, installable MCP activation, persistent storage, and autonomous external execution remain outside this release.",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -8251,7 +8263,7 @@
     {
       "path": "project/runs/2026-07-13-icp-production-release/qa-report.md",
       "title": "ICP Product Surface Production Release \u2014 QA Report",
-      "text": "# ICP Product Surface Production Release \u2014 QA Report  Status: In progress.  This report will be finalized after local responsive checks, independent review, Git push, deployed-route validation, Figma sync, and Notion readback.",
+      "text": "# ICP Product Surface Production Release \u2014 QA Report  Status: Passed for the public/static and guarded review-packet scope.  ## Local Release Gate  - Public-safety scan: passed after the last product edit. - Git diff hygiene and staged-manifest review: passed. - JavaScript syntax: website, dashboard, and Jarvis passed. - Python compilation: serverless contract, service, and QA scripts passed. - Workflow/config validation: passed. - Dashboard rendered-route smoke: eight views passed; the short dashboard alias contract points to the canonical asset-safe route. - Jarvis API contract smoke: passed with 18 endpoints, five owner-guard cases, provider calls 0, and writeback 0. - Serverless owner-guard smoke: passed; execution fails closed until durable controls exist. - Interaction QA: tower selection, ROI truth state, mobile dashboard, fullscreen editor, dialog focus, Jarvis composer, API-origin blocking, and operational typography passed.  ## Independent Review  The reviewer initially blocked release for a broken dashboard alias, stale dashboard documentation, an incorrect deployment-wrapper target, over-broad staging risk, and evidence wording. The alias now redirects to `/project/dash",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -9147,7 +9159,15 @@
     {
       "path": "wiki/runs/2026-07-13-icp-product-surface.md",
       "title": "Wiki Run - ICP Product Surface",
-      "text": "# Wiki Run - ICP Product Surface  Date: 2026-07-13   Status: local/public implementation and board planning complete; production, market, and provider gates remain open  ## Task  Translate the owner ICP vision into ArchFlow's current knowledge architecture, marketing roles, public product story, operator dashboard, guarded Jarvis contract, and future installable-product plan.  ## Durable result  - Current audience knowledge is segmented by cohort, buyer, champion, exclusion, forcing moment, signal, pain, tool, channel, content, style, qualification, and evidence gap. - The marketing role graph binds executable skill packages to research, discovery, positioning, ABM preparation, claims/safety review, owner action, readback, growth evidence, packaging, and knowledge promotion. - The public website now contains only the seven-layer tower story, two service lanes, and a disclosed knowledge/agent planning scenario. - The dashboard now separates overview, architecture, knowledge, agents/skills, runs/evidence, reference, workflow, and plan views. - Jarvis is a separate public UI with public model search and an owner-gated API contract; provider calls and writeback remain zero. - Active re",
+      "text": "# Wiki Run - ICP Product Surface  Date: 2026-07-13 Status: local/public implementation and board planning complete; production, market, and provider gates remain open  ## Task  Translate the owner ICP vision into ArchFlow's current knowledge architecture, marketing roles, public product story, operator dashboard, guarded Jarvis contract, and future installable-product plan.  ## Durable result  - Current audience knowledge is segmented by cohort, buyer, champion, exclusion, forcing moment, signal, pain, tool, channel, content, style, qualification, and evidence gap. - The marketing role graph binds executable skill packages to research, discovery, positioning, ABM preparation, claims/safety review, owner action, readback, growth evidence, packaging, and knowledge promotion. - The public website now contains only the seven-layer tower story, two service lanes, and a disclosed knowledge/agent planning scenario. - The dashboard now separates overview, architecture, knowledge, agents/skills, runs/evidence, reference, workflow, and plan views. - Jarvis is a separate public UI with public model search and an owner-gated API contract; provider calls and writeback remain zero. - Active retr",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "wiki/runs/2026-07-13-icp-production-release.md",
+      "title": "2026-07-13 ICP Product Surface Production Release",
+      "text": "# 2026-07-13 ICP Product Surface Production Release  ## FACT  - The ICP website, dashboard, and guarded Jarvis surface were committed and pushed to the public repository. - Vercel production reached READY and the public alias serves the released surface. - Desktop, mobile, and reduced-motion QA passed with zero console errors, failed requests, or horizontal overflow. - Four required production captures and an updated summary were read back in the established design-sync page. - The task board was read back with E6.1 Proven, E6.2 Review, and E6.3 Planned.  ## INTERPRETATION  The release proves the public/static and guarded review-packet experience. It does not prove provider execution, autonomous actions, customer outcomes, durable writeback, persistence, tenant isolation, or an installable MCP/admin product.  ## GAP  Record one E6.2 approve/deny/export/readback packet fixture. Keep all runtime/productization work behind E5 evidence and E7 gates.  ## Evidence  - Product commit: `68b60f9` - Evidence correction: `ae9cc30` - Run folder: `project/runs/2026-07-13-icp-production-release/`",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1

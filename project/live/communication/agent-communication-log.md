@@ -9382,3 +9382,865 @@ Checks:
 Next:
 
 - Preserve the current proof boundary. Open separate approved lanes for continuous monitoring or durable persistence rather than expanding this static/provider-disabled closeout silently.
+## 2026-07-10 - Codex Obsidian Stack Review - starting
+
+Status: running
+
+Task:
+
+- Review and update the local Obsidian, second-brain, Graphify, and Nexus setup for architectural consistency.
+
+Files likely to change:
+
+- `project/workflows/knowledge-integration.yaml`
+- `project/reports/` and `project/runs/` review artifacts
+- `wiki/` run/log/decision artifacts only if the review produces durable public-safe conclusions
+
+Files claimed:
+
+- This bounded architecture review and its run artifacts; no existing vault content is claimed until the local inventory proves the target.
+
+Expected output:
+
+- Current local inventory, plugin/runtime gap report, minimal restoration set, validation evidence, and explicit remaining gates.
+
+Blockers:
+
+- Obsidian vault location, plugin installation state, and live Nexus readiness require local verification.
+- Installing or writing outside the public repository requires the normal approval gate.
+
+Next:
+
+- Inspect current vaults, `.obsidian` plugin manifests, Graphify outputs, and Nexus configuration before making changes.
+
+## 2026-07-10 - Codex Obsidian Stack Review - complete
+
+Status: complete
+
+Files changed:
+
+- `project/workflows/knowledge-integration.yaml`
+- `project/reports/2026-07-10-obsidian-graphify-nexus-setup-review.md`
+- `project/runs/2026-07-10-obsidian-graphify-nexus-review/agent-handout.md`
+- `wiki/runs/2026-07-10-obsidian-graphify-nexus-review.md`
+- `wiki/decisions/2026-07-10-obsidian-graphify-nexus-boundaries.md`
+- `wiki/log.md`
+- `project/scripts/sanitize-graphify-public-output.py` and refreshed `graphify-out/` artifacts.
+- Local Obsidian vault map, Graphify registry, graph-view scope, and Nexus status notes.
+
+FACT:
+
+- All four canonical AI vaults already contain the required Graph/Canvas and Nexus/graph-view plugin baseline.
+- File/config readiness passes for all four canonical vaults.
+- Real Estate Nexus passes socket and tool-manager checks; Global, Have Website, and Ukraine Dairy Value Chain Thesis remain live-runtime gaps.
+- The ArchFlow repository workspace remains explicitly outside the curated second-brain graph.
+
+Checks:
+
+- Nexus and tool-manager verifiers: partial pass, as recorded in the run report.
+- Graphify orientation query: pass.
+- Deterministic Graphify refresh, artifact sanitization, YAML/JSON checks, diff check, and public-safety scan: pass.
+
+Remaining:
+
+- Reload the three missing Obsidian vault windows and rerun the two Nexus verifiers.
+- The public Graphify code graph and HTML fallback were refreshed incrementally after the latest public documentation changes.
+
+Next:
+
+- Preserve the current scope; do not install plugins into the raw repository workspace without a separate sanitized-vault decision.
+
+## 2026-07-10 20:22 CEST - Codex Evening Skill Hook Review - starting
+
+Status: running
+
+Task:
+
+- Review public ArchFlow skill registries, hook contracts, hook-backed workflow claims, and recent public-safe run evidence for concrete drift.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-10-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-10-evening-skill-hook-review/agent-handout.md`
+- Registry, hook, or skill files only if the audit finds actual public-safe drift.
+
+Files claimed:
+
+- This evening skill and hook review lane and its run artifacts.
+
+Expected output:
+
+- A public-safe drift decision, validation evidence, run summary, and required task handout.
+
+Blockers:
+
+- No blocker identified. Provider activation, deployment, network calls, external writeback, and credential changes remain outside this lane.
+
+Next:
+
+- Audit current registries, hook configuration, hook scripts, governance rules, and recent run evidence before deciding whether any registry or hook edit is justified.
+
+## 2026-07-10 20:49 CEST - Codex Evening Skill Hook Review - complete
+
+Status: complete
+
+Files changed:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-10-evening-skill-hook-review/summary.md`
+- `project/runs/2026-07-10-evening-skill-hook-review/agent-handout.md`
+
+Files intentionally unchanged:
+
+- `project/agents/skills-by-agent.md`
+- `project/agents/agent-roster.yaml`
+- `skills/skills-used.md`
+- `.codex/hooks.json`
+- `project/scripts/task-handout-hook.py`
+- `project/scripts/post-execution-skill-update.py`
+- `.githooks/`
+- Existing skill contracts.
+
+FACT:
+
+- The nine project-local skill contracts match the governance registry.
+- Hook JSON still routes `UserPromptSubmit` to the task-handout reminder script.
+- Recent July 10 run evidence returned `NO_UPDATE` through the conservative post-execution skill-update reviewer.
+- This lane's own post-execution review also returned `NO_UPDATE`.
+
+INTERPRETATION:
+
+- No registry, hook, githook, script, operating-rule, or skill-doc edit is justified today.
+- Recent Jarvis/dashboard, watchdog, and Obsidian/Graphify/Nexus work remains covered by existing skills.
+
+Checks:
+
+- Duplicate-skill audit: pass.
+- Hook JSON parse and command alignment: pass.
+- YAML parse and workflow validation: pass.
+- Hook and guard script compile: pass.
+- Forced task-handout hook probe: pass.
+- Public safety scan: pass.
+- Touched-file ASCII, local-path, and private-URL checks: pass.
+- Ignored local env/runtime check: pass.
+- `git diff --check`: pass.
+- Git status reviewed; unrelated July 10 Obsidian/Graphify/Nexus worktree changes remain outside this lane.
+
+GAP:
+
+- Existing non-ASCII text in other July 10 files was observed by a broad text sweep but was not edited here.
+
+Next:
+
+- Continue this automation as a narrow drift review. Do not create new skills or expand hooks unless repeated public-safe evidence proves a concrete reusable workflow.
+
+## 2026-07-10 23:58 CEST - Codex Evening Skill Hook Review Rerun - starting
+
+Status: running
+
+Task:
+
+- Re-run the public ArchFlow evening skill and hook drift review after the earlier completed 2026-07-10 lane.
+
+Files likely to change:
+
+- `project/live/communication/agent-communication-log.md`
+- `project/runs/2026-07-10-evening-skill-hook-review-rerun/summary.md`
+- `project/runs/2026-07-10-evening-skill-hook-review-rerun/agent-handout.md`
+- Registry, hook, or skill files only if new public-safe drift is proven.
+
+Files claimed:
+
+- This rerun review lane and its separate run artifacts.
+
+Expected output:
+
+- A public-safe drift decision, validation evidence, run summary, required task handout, and automation memory update.
+
+Blockers:
+
+- No blocker identified. Network calls, provider activation, deployment, credential changes, Git push, and external writeback remain outside this lane.
+
+Next:
+
+- Audit the current registries, hook configuration, hook-backed workflow claims, governance policy, recent run evidence, and validation checks without overwriting the earlier completed review.
+
+## 2026-07-11 05:02 CEST - Codex Daily Skill/RAG Retrospective - starting
+
+Status: running
+
+Task:
+
+- Review July 10 public ArchFlow skill usage, RAG/KB state, automation scope, live coordination, run notes, decisions, issues, and durable memory surfaces.
+
+Files likely to change:
+
+- `project/runs/20260710_daily_skill_retrospective.md`
+- `project/runs/20260710_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md`
+- `wiki/memory.md` or `wiki/insights.md` only if a repeated durable conclusion justifies it.
+
+Files claimed:
+
+- This daily retrospective lane and its dated artifacts. The live communication log is append-only; the active evening rerun artifacts are not claimed.
+
+Expected output:
+
+- A concise evidence-led retrospective with FACT / INTERPRETATION / HYPOTHESIS / GAP, plus safe updates to open gaps and durable project knowledge where useful.
+
+Blockers:
+
+- A later evening skill/hook rerun is marked running; this retrospective will not overwrite its run folder and will treat its state as in-progress unless completion evidence appears.
+
+Next:
+
+- Draft the July 10 retrospective from current run reports, TOML state, skill registry evidence, RAG summary, and existing open gaps.
+
+## 2026-07-11 05:08 CEST - Codex Daily Skill/RAG Retrospective - complete
+
+Status: complete
+
+Files changed:
+
+- `project/runs/20260710_daily_skill_retrospective.md`
+- `project/runs/20260710_run_daily_skill_retrospective.md`
+- `project/issues/2026-07-01-daily-retrospective-open-operational-gaps.md`
+- `project/live/communication/agent-communication-log.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+
+FACT:
+
+- The July 10 daily retrospective reviewed the completed watchdog/Jarvis/Obsidian-Nexus/evening-review evidence, current automation TOML status, skill registry surfaces, and approved-corpus RAG summary.
+- No new skill, registry patch, hook edit, automation edit, provider call, deploy, push, crawl, service start, or external writeback was performed by this lane.
+- The completed evening skill/hook review returned `NO_UPDATE`; the later evening rerun remains in-progress until its own closeout artifact appears.
+
+INTERPRETATION:
+
+- July 10 strengthened proof-state separation and Nexus readiness discipline rather than proving a new reusable skill.
+- Nexus readiness is now tracked as a per-vault live runtime gate, not a plugin/config claim.
+
+GAP:
+
+- Provider execution, canonical model-call ledger, vector-default retrieval, continuous monitoring, durable writeback, social publication, buyer proof, and three-vault Nexus live readiness remain gated.
+
+Checks:
+
+- Edited Markdown paths exist: pass.
+- Automation TOML parse: pass.
+- Public safety scan: pass.
+- `git diff --check`: pass.
+
+Next:
+
+- Close or hand off the active evening rerun, then verify the three missing Nexus live-vault sockets before any live-vault action is assumed.
+
+## 2026-07-13 12:12 CEST - Codex Architecture Resetup And Knowledge-System Review - starting
+
+Status: running
+
+Task:
+
+- Audit and refine the ArchFlow self-supporting agent-development architecture, including Loop Engineering, goal contracts, LangGraph/CrewAI role routing, bounded RAG, Obsidian/Graphify/Nexus knowledge layers, third-party safety gates, reusable skill packs, architecture-generation patterns, and the E1-E7 strategic task structure.
+- Research the named external methods and current primary-source ecosystem, then prepare a truthful architecture/performance comparison and a revised external task-board plan.
+- Keep website and dashboard implementation unchanged; document their later editor/documentation work only as a gated next phase.
+
+Files likely to change:
+
+- `project/runs/2026-07-13-architecture-resetup/`
+- `project/reports/2026-07-13-self-supporting-agentic-architecture-review.md`
+- `project/agentic-stack.md`
+- `project/project-plan.md`
+- `project/future-actions-and-parameters.md`
+- `project/agents/agent-roster.yaml`
+- `project/agents/skills-by-agent.md`
+- `skills/skills-used.md`
+- `skills/archflow-architecture-operator/`
+- `wiki/runs/`, `wiki/log.md`, and durable decision/issue files if the review justifies them.
+
+Files claimed:
+
+- The dated architecture-resetup run folder, dated report, new architecture-operator skill folder, and append-only communication/log entries.
+- Shared architecture, plan, and registry files only after a fresh scope update is logged and current contents are rechecked.
+
+Expected output:
+
+- A public-safe architecture audit and decision record; an explicit target architecture and parameter model; a safety-reviewed skill/adoption register; a benchmark plan with evidence labels; a reusable architecture-operator skill; a complete agent handout; and a revised Notion-ready epic/task package.
+
+Blockers:
+
+- Live provider execution, broad ingestion, package installation, production changes, website/dashboard edits, deployment, and unreviewed external writeback remain out of scope.
+- Any external task-board mutation must first inspect the live schema and current records; destructive deletion is not assumed safe merely from a planning request.
+
+Next:
+
+- Inventory the current `/adaptpj` and public architecture surfaces, establish research workstreams, and write the bounded context/task contracts before delegated analysis.
+
+## 2026-07-13 14:05 CEST - Codex Architecture Resetup And Knowledge-System Review - scope update
+
+Status: running
+
+Scope update:
+
+- The current audit confirms that Loop Engineering is present at L1 report-only maturity, while Goal Engineering and destructive-command defense are not yet first-class project contracts.
+- Extend the claimed scope to targeted edits in `project/agentic-stack.md`, `project/agents/agent-roster.yaml`, `project/agents/skills-by-agent.md`, and `skills/skills-used.md` so the new goal, safety, architecture-factory, role-pack, and adoption-gate contracts are discoverable.
+- Add a bounded `project/goals/` contract and an `archflow-architecture-operator` skill; do not install or execute external repositories.
+- External source review informs adopt, trial, defer, and reject decisions only. SkillSpector repository scans did not complete within the bounded review window, so no scanned-safe claim is permitted.
+- The Notion lane uses Terra as the sole writer and Luna agents as read-only auditors. Legacy rows are preserved with an explicit Superseded evidence state rather than deleted or hidden.
+
+Files additionally claimed:
+
+- `project/goals/`
+- Targeted architecture and registry sections named above.
+- Dated decision, issue, report, run, handout, benchmark, and research-register files created by this run.
+
+Expected output:
+
+- A final design baseline with explicit proof gates, not a claim that deferred providers, vector stores, knowledge-graph runtimes, command hooks, or production services are active.
+
+Next:
+
+- Write the bounded contracts and reusable skill, reconcile the Notion mutation report, then run syntax, safety, and diff checks.
+
+## 2026-07-13 16:20 CEST - Codex Architecture Resetup And Knowledge-System Review - complete
+
+Status: complete for the design, planning, and external task-board scope; runtime proof gates remain open.
+
+Files changed:
+
+- `project/agentic-stack.md`
+- `project/agents/agent-roster.yaml`
+- `project/agents/skills-by-agent.md`
+- `project/project-plan.md`
+- `project/proof-ledger.md`
+- `project/strategic-plan-2026-07-13.md`
+- `project/goals/`
+- `project/reports/2026-07-13-self-supporting-agentic-architecture-review.md`
+- `project/runs/2026-07-13-architecture-resetup/`
+- `skills/archflow-architecture-operator/`
+- `skills/skills-used.md`
+- `wiki/index.md`
+- `wiki/log.md`
+- `wiki/memory.md`
+- `wiki/insights.md`
+- `wiki/decisions/2026-07-13-goal-loop-architecture-factory-baseline.md`
+- `wiki/issues/2026-07-13-architecture-runtime-proof-gates.md`
+- `wiki/runs/2026-07-13-architecture-resetup.md`
+- This append-only communication log.
+
+External task-board result:
+
+- Terra remained the sole writer and two Luna agents performed read-only audits.
+- Seven epics were rebased and ten task-contract fields were added.
+- The final board contains 7 Proven/Done outcomes, 22 Planned contracts, and 90 Superseded legacy rows.
+- The 29-row renewed view has complete epic, owner-role, and reviewer-role coverage; the separate legacy view preserves history.
+- True row archival was unavailable through the connector, so no pages were deleted and the archived partition remains empty.
+- Readback and spot checks passed with zero mutation failures.
+
+FACT:
+
+- Loop Engineering existed at L1 before this run. Goal Engineering did not have a first-class project contract.
+- Goal Engineering, the architecture factory, Terra/Luna coordination, proof-ledger routing, tool-adoption gates, and benchmark metrics are now explicit public-safe contracts.
+- The July market package supports a maintained-knowledge and execution-continuity strategy but does not prove buyer demand or willingness to pay.
+
+Checks:
+
+- Skill quick validation: pass from the workspace root.
+- Independent read-only skill forward test: pass; identified ambiguities were repaired.
+- YAML parse: pass.
+- New-file ASCII check: pass.
+- Public safety scan from the public repository root: pass.
+- `git diff --check` from the public repository root: pass.
+- Website/dashboard changed-file check: pass; none changed.
+- External task-board schema and full-row readback: pass.
+
+Checks skipped with reason:
+
+- Dashboard data regeneration was skipped because the user prohibited dashboard changes.
+- Graphify refresh was skipped because its generated files were already dirty and not claimed by this run.
+- Third-party scans did not complete inside the bounded window, so no external repository was installed or labeled scanned-safe.
+- Provider, Cognee, TurboVec, command-hook, media-model, deployment, and remaining Nexus runtime tests stay behind explicit gates.
+
+Remaining gaps:
+
+- Run the model-disabled architecture-factory benchmark.
+- Evaluate external candidates one at a time in disposable sanitized fixtures.
+- Complete all-vault Nexus live tool-call proof.
+- Run primary buyer and payment validation.
+- Start the dashboard/editor documentation implementation only in a separate explicitly authorized run.
+
+Next safe action:
+
+- Execute the model-disabled goal-to-reviewed-artifact fixture from the benchmark contract without changing the dashboard or installing any candidate tool.
+
+## 2026-07-13 13:25 CEST - Codex ICP Product Surface And Operator Dashboard - starting
+
+Status: running
+
+Task:
+
+- Review the owner-supplied ICP document and translate only public-safe conclusions into the product narrative, audience knowledge, marketing-role contracts, and strategic task plan.
+- Rebuild the public website around a scroll-deconstructed seven-layer ArchFlow tower, the retained two-lane service interaction, and a bounded knowledge-work ROI estimator.
+- Rebuild the operator dashboard as an API-documentation-style architecture console with a full-screen workflow surface, parameter explanations, evidence-aware metrics, and a separate Jarvis chat route.
+- Reconcile the external task board only after implementation evidence and acceptance checks exist.
+
+Files likely to change:
+
+- `index.html`, `styles.css`, `main.js`, and tower assets under `assets/`
+- `dashboard.html` plus dashboard-specific assets if separated during implementation
+- `project/dashboard/` only where the existing generated operator surface or data contract must stay aligned
+- `project/agents/`, `project/content/`, `project/reports/`, and `project/strategic-plan-2026-07-13.md`
+- `project/runs/2026-07-13-icp-product-surface/`
+- `wiki/` run, log, memory, insight, decision, or issue records justified by the result
+- This append-only communication log
+
+Files claimed:
+
+- The dated ICP product-surface run folder, dated ICP/audience report, new site/dashboard assets created by this run, and append-only log entries.
+- Root website and dashboard files after their current behavior and ownership are inspected; no unrelated dirty architecture or Graphify files are claimed.
+
+FACT:
+
+- Website and dashboard implementation is explicitly authorized for this run.
+- Provider-backed Jarvis, durable writeback, production promotion, deployment, and Figma sync are not implied by that authorization and remain separately evidenced actions.
+
+INTERPRETATION:
+
+- The visual and documentation surfaces should present ArchFlow as an installable, configurable knowledge-and-agent operating system plus implementation service, while keeping the existing source-to-PRD pack as one execution pack rather than the whole product.
+
+HYPOTHESIS:
+
+- A seven-layer tower is the clearest public model because it maps the current architecture contracts into a memorable progression from governed sources to measurable execution.
+
+GAP:
+
+- The ICP document, current tower images, existing static/runtime behavior, and current documentation benchmarks still require inspection before final copy or interaction contracts are fixed.
+
+Checks:
+
+- Preflight, dirty-worktree inventory, and current communication claims reviewed before edits.
+
+Next:
+
+- Render and inspect the ICP document, audit current UI/assets/runtime boundaries, and dispatch bounded actor/reviewer research lanes before implementation.
+
+## 2026-07-13 13:33 CEST - Codex ICP Product Surface And Operator Dashboard - scope update
+
+Status: running
+
+Scope update:
+
+- The two-page ICP document has been rendered and visually reviewed. It replaces the older broad Series B-D / 50-500 PRD-first story with a narrower 30-75-person product-led B2B SaaS hypothesis and a product-knowledge reliability story.
+- Lead with enterprise questionnaire/RFP and onboarding forcing moments. Treat PRD generation as a downstream execution pack, not the primary hook.
+- Use the existing seven-floor tower master as the visual source of truth. Decompose it with seven exact masks from one master asset so every animated floor remains registered; avoid separately generated floor images that could drift.
+- Collapse the internal eleven-layer engineering contract into seven public product layers while retaining every internal contract in the dashboard documentation.
+- Add a separate Jarvis chat route with server-side-only OpenRouter controls. Model selection must never expose a key in browser code, and each provider request remains an explicit per-message action with budget and runtime checks.
+
+Files now claimed for implementation:
+
+- `index.html`, `site.css`, `site.js`, `hover-depth.js`, and a new optimized tower asset under `assets/tower/`
+- `jarvis.html` and Jarvis-specific dashboard assets
+- `vercel.json`
+- Targeted dashboard/API files after the UI actor returns its read-only audit
+- The dated report/run and ICP/marketing role registry files created or explicitly updated by this run
+
+FACT:
+
+- The existing tower master already contains seven visually separated, matching floors at sufficient resolution.
+- The current static dashboard has draggable nodes, local packet/export behavior, and guarded API contracts, but OpenRouter choice is intentionally disabled in browser code and the workflow canvas is not yet a full-screen documentation-first editor.
+
+INTERPRETATION:
+
+- Reusing one exact tower master with code-native masking is more reliable and lighter than asking an image model to reproduce seven separately aligned floors.
+
+GAP:
+
+- Buyer ownership of the RFP trigger may sit with Product, Security, Sales Engineering, or Revenue Operations; website copy must describe the moment without asserting one universal owner.
+- Provider-backed Jarvis readiness must be proven from health, budget, selected model, and a sanitized test; UI presence alone is not runtime proof.
+
+Next:
+
+- Implement the three-section website and exact seven-layer scroll system, then integrate the dashboard and guarded model-selection work under separate actor/reviewer checks.
+
+## 2026-07-13 13:46 CEST - Sol Dashboard Documentation And Editor - starting
+
+Status: running
+
+Task:
+
+- Reorganize the existing vanilla operator dashboard into a documentation-first control surface without replacing its working local graph editor.
+- Add a source-derived seven-layer overview, architecture/reference documentation, a full-screen workflow mode, compact nodes, a collapsible inspector, and a stage-list alternative.
+- Refresh the visible E1-E7 plan to the July 13 strategic baseline while preserving static/provider/writeback truth boundaries.
+
+Files likely to change and claimed:
+
+- `project/dashboard/index.html`
+- `project/dashboard/styles.css`
+- `project/dashboard/app.js`
+- `project/dashboard/architecture.json` only if a separate static contract proves useful
+- `dashboard.html` only as a compatibility redirect
+- This append-only communication log
+
+Files explicitly not claimed:
+
+- Website files, tower assets, Jarvis page/assets, API/backend files, `vercel.json`, generated `project/dashboard/data.json`, reports, registries, wiki files, and external task boards.
+
+FACT:
+
+- The current dashboard already supports local drag, connect, add, duplicate, delete, zoom, fit, validation, export, and browser persistence.
+- Provider execution and durable writeback remain gated; an API health response is not model-execution proof.
+
+INTERPRETATION:
+
+- This lane should reduce navigation and editor density while keeping the existing functional contracts intact.
+
+GAP:
+
+- Fresh headless screenshot capture is currently blocked by the local environment; source, syntax, static marker, and later integrator browser checks must remain distinct.
+
+Checks planned:
+
+- JavaScript syntax, JSON parsing if a contract file is added, diff hygiene, and a targeted dashboard static smoke when permitted by the environment.
+
+Next:
+
+- Patch the bounded dashboard files, run focused checks, then append a completion or handoff entry for the integrator.
+
+## 2026-07-13 14:08 CEST - Sol Dashboard Documentation And Editor - complete
+
+Status: complete
+
+Files changed:
+
+- `project/dashboard/index.html`
+- `project/dashboard/styles.css`
+- `project/dashboard/app.js`
+- `dashboard.html`
+- This append-only communication log
+
+Outcome:
+
+- Reorganized primary navigation into Overview, Architecture, Knowledge, Agents & Skills, Runs & Evidence, and Reference, with existing detailed tools preserved behind a secondary disclosure and Jarvis routed to its dedicated page.
+- Added a clickable seven-group architecture map derived from the eleven canonical layers, with purpose, inputs, outputs, parameters, effects, failure modes, proof state, approval boundary, and repository-relative sources.
+- Added documentation-first Knowledge, Agents & Skills, Runs & Evidence, and Reference views, including evidence-state semantics and Build / Scale / Govern / Optimize lifecycle guidance.
+- Updated the visible plan to the July 13 E1-E7 baseline and the current 30-75-person product-led B2B SaaS ICP hypothesis with RFP/questionnaire and onboarding forcing moments.
+- Preserved the existing local workflow editor while adding compact 200-220 pixel nodes, Canvas and Stage-list modes, a collapsible inspector, a `100dvh` full-screen mode with Escape exit, mobile Stage-list default, and browser-local persistence.
+- Replaced the duplicate root dashboard shell with a compatibility redirect to the canonical dashboard route.
+- Kept provider execution, durable external writeback, deployment, and production promotion explicitly gated.
+
+Checks:
+
+- JavaScript syntax: passed.
+- Dashboard JSON parse: passed without modifying generated data.
+- Diff hygiene for claimed files: passed.
+- Public safety scan: passed.
+- Secret and absolute-path pattern check for claimed dashboard files: passed with no matches.
+- Targeted rendered smoke: passed for eight routes covering overview, architecture, knowledge, agents, runs, reference, workflow editor, and plan; provider calls and writeback remained disabled.
+- Temporary desktop overview, desktop workflow, and constrained-width overview screenshots were visually inspected; no screenshot was retained in the repository.
+
+Remaining gaps:
+
+- The generated dashboard data timestamp remains source-controlled and older than this UI pass; it was intentionally not regenerated because this lane did not claim `project/dashboard/data.json`.
+- The legacy repository smoke script still contains pre-reset route wording. This lane used a separate temporary rendered smoke and did not edit shared test scripts outside its claim.
+- A visible API health state is not provider-model execution proof. Jarvis model routing, backend authorization, cumulative budget enforcement, and external writes remain separate integrator/runtime work.
+
+Next safe action:
+
+- Integrator reviews these claimed files alongside the separate website and Jarvis lanes, updates shared smoke markers if appropriate, regenerates dashboard data only from the canonical generator, and runs the full closeout gate without promoting production unless separately authorized.
+
+## 2026-07-13 15:06 EEST - Secured Private/Public Agentic Runtime Integration Discovery - starting
+
+Status: discovery only; owner approval required before implementation.
+
+Task:
+
+- Reconstruct the current prompt, LangGraph, LlamaIndex, RAG, TurboVec, runtime, public/private knowledge, and parallel-agent state.
+- Define a secured target architecture in which the public repository remains independently operable and private ArchFlow knowledge stays outside the public corpus.
+- Prepare bounded parallel-lane contracts and an explicit owner approval gate before changing instructions, installing packages, starting persistent services, or moving data.
+
+Files likely to change and claimed:
+
+- `project/runs/2026-07-13-secured-agentic-runtime-discovery/`
+- This append-only communication log.
+
+Files explicitly not claimed:
+
+- Root or public `AGENTS.md`, Claude/Cursor routing files, hooks, shared architecture registries, dashboard, website, Jarvis/API files, generated dashboard data, provider configuration, external task boards, and deployment files.
+
+Expected output:
+
+- A public-safe discovery summary, task contracts, implementation plan, and agent handout that separate proven runtime state from planned activation.
+
+Blockers:
+
+- The private storage location, persistent local-service authority, external coordination-registry writes, and third-party package installation require an explicit owner decision.
+- Active unrelated worktree changes and current agent claims must be preserved.
+
+Next:
+
+- Write the discovery-only packet, run scoped public-safety and diff checks, then hand off the approval question to the owner.
+
+## 2026-07-13 15:18 EEST - Secured Private/Public Agentic Runtime Integration Discovery - handoff
+
+Status: discovery complete; implementation is waiting for owner approval.
+
+Files changed:
+
+- `project/runs/2026-07-13-secured-agentic-runtime-discovery/discovery-summary.md`
+- `project/runs/2026-07-13-secured-agentic-runtime-discovery/task-contracts.md`
+- `project/runs/2026-07-13-secured-agentic-runtime-discovery/implementation-plan.md`
+- `project/runs/2026-07-13-secured-agentic-runtime-discovery/agent-handout.md`
+- This append-only communication log.
+
+Checks:
+
+- Public safety scan: pass.
+- Focused diff hygiene: pass.
+- New run-file ASCII check: pass.
+- Local Jarvis health: pass with provider calls and writeback disabled.
+- Project-local runtime inventory: LangGraph, LlamaIndex, CrewAI, and LangSmith present; TurboVec and Cognee absent.
+
+FACT:
+
+- Existing proof is bounded and provider-disabled. Continuous LangGraph state monitoring, vector-default retrieval, TurboVec, Cognee, and always-on Codex execution are not proven.
+
+INTERPRETATION:
+
+- The safest target is a complete standalone public repository plus a sibling private ArchFlow domain with one-way reviewed promotion of sanitized summaries.
+
+GAP:
+
+- Owner approval is required for the private-domain location, persistent local service, strategic-system coordination writes, and network installation of a pinned TurboVec trial.
+
+Next safe action:
+
+- Obtain the four-part owner approval, then register bounded parallel lanes and begin with a hash-verified snapshot of the current instruction system. Do not edit shared architecture/dashboard files until active claims are rechecked.
+
+## 2026-07-13 15:19 EEST - ICP Audience And Product Surface Integration - progress update
+
+Status: implementation complete in local/public files; integration review and closeout checks are active.
+
+Scope addition and files claimed by the integrator:
+
+- Audience knowledge, marketing role contracts, the current strategic plan, the architecture review status, Jarvis API contracts, smoke scripts, generated dashboard data, run handout, QA report, and public-safe wiki closeout files.
+- The completed dashboard specialist claim is released to the integrator for E1-E8 wording, generated-data refresh, and shared smoke-test integration.
+
+Progress:
+
+- The owner-supplied ICP was summarized through a public-safe source ID; no raw private document content or path was copied.
+- The first cohort is now explicitly a 30-75-person product-led B2B SaaS hypothesis led by enterprise-readiness, onboarding, and departure forcing moments.
+- The website now has the seven-layer tower, two-lane service pack, and disclosed knowledge/agent ROI scenario.
+- The dashboard now has documentation-first architecture, knowledge, roles/skills, runs/evidence, reference, and full-screen workflow views.
+- The separate Jarvis page now has searchable public model metadata and server-side owner, one-call, model-allowlist, budget, and writeback gates.
+- The external task board now includes the ICP summary and planned E8 productization milestone; Proven baselines were preserved.
+
+Truth boundary:
+
+- No production deploy, Figma sync, live provider response, external writeback, outreach, or payment action occurred.
+- Browser and API-contract proof does not establish production availability or validated demand.
+
+Next:
+
+- Complete three independent reviews, refresh canonical generated data, update shared smoke tests, run public-safety/browser/API checks, and write the durable handoff.
+
+## 2026-07-13 15:34 EEST - ICP Product Surface Integration - shared-file closeout claim
+
+Status: final integration is active.
+
+Additional shared files claimed for bounded closeout:
+
+- `README.md`
+- `project/README.md`
+- `project/knowledge/README.md`
+- `project/scripts/dashboard-static-smoke.py`
+- `wiki/index.md`
+- append-only durable entries in `wiki/memory.md`, `wiki/insights.md`, and `wiki/log.md`
+
+Reason:
+
+- These routing, test, and memory files still describe the superseded PRD-first/E1-E7 surface or the legacy dashboard routes.
+- Edits will be narrow and preserve unrelated history.
+
+Next:
+
+- Align the routing text and shared render smoke with the implemented E1-E8 knowledge-continuity surface, then regenerate dashboard data and run final checks.
+
+## 2026-07-13 16:02 EEST - ICP Knowledge-Continuity Product Surface - complete
+
+Status: complete for local/public implementation and external task-board planning; production, provider, market, and writeback gates remain open.
+
+Outcome:
+
+- Reviewed the owner ICP brief into a public-safe, segmented audience node without copying the raw source, path, or private metadata.
+- Replaced the active broad PRD-first route with a 30-75-person product-led B2B SaaS hypothesis under enterprise-readiness, onboarding/hiring, or key-person-departure forcing moments.
+- Synchronized the CAG core, active workflows, content templates/calendars, marketing roles/skills, public E1-E8 contracts, retrieval authority, and external task-board plan.
+- Implemented the three-block website, eight-route documentation/operator dashboard, separate Jarvis UI, aligned API contracts, and exact seven-layer tower treatment.
+- Added the reconstructable run packet, source register, review resolution, QA report, decision, open provider-control issue, WikiLLM run, memory, insight, and log updates.
+
+Primary files and groups changed:
+
+- Website: `index.html`, `site.css`, `site.js`, and `assets/tower/`.
+- Dashboard/Jarvis/API: `project/dashboard/`, `dashboard.html`, `jarvis.html`, `jarvis.css`, `jarvis.js`, `api/`, `services/jarvis-api/`, `vercel.json`, and guarded smoke scripts.
+- ICP/roles/plan: `project/knowledge/audience/`, `project/agents/`, `project/strategic-plan-2026-07-13.md`, and `project/task-contract-index-2026-07-13.md`.
+- Active routing/content: `project/context/cag-core.yaml`, `project/agentic-stack.md`, current workflows, content architecture, templates, operations, mockups, and calendars.
+- Evidence: `project/reports/2026-07-13-icp-audience-product-surface.md`, `project/runs/2026-07-13-icp-product-surface/`, and current WikiLLM decision/issue/run/memory/insight/log files.
+
+Checks:
+
+- Final independent claim re-audit: pass; no blocking path or line.
+- Public safety and diff hygiene: pass.
+- JavaScript/Python syntax, JSON/YAML parsing, and workflow validation: pass.
+- Desktop/mobile/reduced-motion interaction QA: pass; no tested horizontal overflow.
+- Dashboard static smoke: pass on 8 routes with provider calls `0` and writeback `0`.
+- FastAPI contract smoke: 18 endpoints, 5 owner-guard cases, replay blocker and CORS pass, provider calls `0`, writeback `0`.
+- Serverless guard smoke: owner, acknowledgement, allowlist, and durable-control gates pass; provider calls `0`.
+- Lexical retrieval: 589 documents / 4,388 chunks; canonical audience node ranked in 4 of the top 5 results and current strategy ranked third.
+- External task-board readback: 4 Proven baselines and 21 Planned tasks; no dependency cycle, duplicate current title, or status inflation.
+
+Truth boundary:
+
+- No production deploy, Figma synchronization, provider completion, autonomous writeback, outreach, publication, buyer interview, or payment action occurred.
+- Provider execution deliberately fails closed until atomic single-use approval and durable projected/actual spend enforcement are implemented and tested.
+- Existing unrelated worktree and generated Graphify changes were preserved and are not claimed by this closeout.
+
+Next safe action:
+
+- Execute E5.1 as a manually verified account/forcing-moment evidence pack. Keep public signals separate from confirmed urgency and stop before contact or source access without exact owner approval.
+
+## 2026-07-13 15:51 EEST - Secured Agentic Runtime Implementation - starting
+
+Status: owner-approved implementation is active.
+
+Task:
+
+- Preserve an exact restorable instruction snapshot, create the private sibling boundary, prove a model-disabled LangGraph state monitor, run a pinned TurboVec and LlamaIndex trial, and integrate the result through bounded maker-reviewer lanes.
+
+Files likely to change and claimed:
+
+- `project/runs/2026-07-13-secured-agentic-runtime-implementation/`
+- This append-only communication log.
+- Private sibling runtime, history, review, and coordination files outside the public repository.
+- Root routing-only instruction and hook files outside the public repository, after the snapshot exists.
+
+Explicitly not claimed:
+
+- Shared public README, wiki, dashboard, API, generated-data, architecture, agentic-stack, and workflow files owned by the active ICP integration lane.
+
+Expected output:
+
+- Restorable pre-change instruction snapshot with hashes.
+- A private/public boundary with one-way reviewed promotion.
+- Persistent typed LangGraph state with approval interrupts, parallel fan-out and fan-in, heartbeat, status, stop, and uninstall controls.
+- A pinned local TurboVec trial through LlamaIndex with sanitized-corpus benchmark evidence and a reversible fallback.
+- Independent security review, validation evidence, and a public-safe run handout.
+
+Blockers:
+
+- Network and persistent-service steps remain subject to the approved Codex execution controls.
+- Shared public integration files remain unavailable until the active ICP lane releases them.
+
+Next step:
+
+- Register bounded parallel lanes, snapshot the current instruction surface, then implement only the reserved private/runtime areas.
+
+## 2026-07-13 16:32 EEST - ICP Website And Dashboard Production Release - starting
+
+Status: owner-approved production release is active.
+
+Task:
+
+- Revalidate the completed ICP website, operator dashboard, and guarded Jarvis surface across desktop and mobile views.
+- Commit and push the reviewed public repository state.
+- Promote the website/dashboard to Vercel production, verify deployed freshness, synchronize the deployed baseline to Figma, and update the external task board with evidence-backed release status.
+
+Actor and reviewer split:
+
+- Actor: lead integrator owns deterministic validation, commit/push, Vercel promotion, Figma synchronization, task-board mutation, and durable release records.
+- Reviewer: independent read-only release reviewer audits repository scope, public safety, production freshness, browser/design quality, and completion claims. The reviewer does not edit files or mutate external systems.
+
+Files claimed:
+
+- `project/runs/2026-07-13-icp-production-release/`
+- append-only updates to this communication log and the public WikiLLM run/log.
+- deployment/Figma sync state files under the established automation folder.
+- website/dashboard/Jarvis files only if final QA exposes a blocking defect; any such repair will be announced before editing.
+
+Coordination:
+
+- The earlier ICP implementation lane is complete and its shared-file claims are released.
+- The secured runtime lane owns private/runtime areas and explicitly does not claim the public website/dashboard files. This release will not edit its reserved areas.
+
+Expected output:
+
+- Clean public-safety, syntax, workflow, API-guard, browser, responsive, accessibility, and deployed-freshness evidence.
+- One reviewed Git commit and push.
+- Verified Vercel production URL and Figma baseline sync.
+- External task-board release update with unchanged provider/writeback truth boundaries.
+
+Blockers:
+
+- If the worktree contains unrelated or unreviewed changes that cannot be safely separated, commit/push must stop for reconciliation.
+- Any provider completion or autonomous writeback remains out of scope.
+
+Next step:
+
+- Inspect Git/Vercel linkage and worktree provenance, register the read-only reviewer lane, then run the pre-push release suite.
+
+## 2026-07-13 16:44 EEST - ICP Website And Dashboard Production Release - reviewer defect repair
+
+Status: local release gate passed, but independent review found a clean-route production blocker.
+
+Finding:
+
+- The `/dashboard` rewrite served the dashboard HTML at an alias path where relative assets, data, and source links could resolve incorrectly.
+- The dashboard README still described the retired Phase 2 navigation and stale provider assumptions.
+- The root deployment wrapper targets a different Vercel project and is not safe for this public-repository release.
+
+Files newly claimed for bounded repair:
+
+- `vercel.json`
+- `project/dashboard/README.md`
+- `project/scripts/dashboard-static-smoke.py`
+
+Expected output:
+
+- `/dashboard` redirects to the canonical `/project/dashboard/` route.
+- Dashboard documentation matches the current eight-view console and guarded Jarvis boundary.
+- The rendered-route smoke verifies the alias redirect contract in addition to the canonical route.
+
+Next step:
+
+- Apply the route/documentation repair, rerun the complete local matrix, and return the diff to the independent reviewer.
+
+## 2026-07-13 17:02 EEST - ICP Website And Dashboard Production Release - complete
+
+Status: complete for the owner-authorized public/static and guarded review-packet scope.
+
+Changed and delivered:
+
+- Pushed the reviewed ICP website, architecture dashboard, Jarvis surface, public architecture evidence, and bounded claim corrections to `main`.
+- Replaced the broken dashboard rewrite with an asset-safe redirect to the canonical dashboard route.
+- Deployed from the linked public Vercel project and assigned the established production alias.
+- Synchronized the established design page with four fresh editable production captures and a current release summary.
+- Updated and read back the E6 epic and E6.1-E6.3 task states.
+
+Checks:
+
+- Public safety, diff hygiene, syntax, workflow/config, runtime guard, eight-view dashboard smoke, API contract, and serverless owner-guard checks passed.
+- Desktop, mobile, quiz, Jarvis, dashboard, and reduced-motion production checks passed with zero console errors, failed requests, or horizontal overflow.
+- `GET /api/health` returned 200 with provider calls 0 and external writeback 0.
+- Independent review passed the source release and defined the post-deploy acceptance matrix; every required item was subsequently verified.
+
+Remaining gaps:
+
+- E6.2 requires one explicit approve/deny/export/readback packet fixture.
+- Provider execution remains blocked until durable replay-safe nonce and spend controls exist.
+- Durable writeback, persistence, tenant isolation, MCP/admin productization, and customer outcome proof remain gated.
+
+Next safe action:
+
+- Run the E6.2 packet-roundtrip fixture without provider execution or source mutation, then use E5 evidence and E7 release gates before any E6.3 or E8 pilot.
