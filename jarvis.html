@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,550;6..72,650&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="jarvis.css?v=20260713-boundary" />
+    <link rel="stylesheet" href="jarvis.css?v=20260715-operations" />
   </head>
   <body>
     <a class="skip-link" href="#conversation">Skip to conversation</a>
@@ -55,7 +55,7 @@
           <div><span>API</span><strong data-runtime="api">Checking</strong></div>
           <div><span>Provider</span><strong data-runtime="provider">Unknown</strong></div>
           <div><span>Owner auth</span><strong data-runtime="auth">Unknown</strong></div>
-          <div><span>Execution</span><strong data-runtime="execution">No call yet</strong></div>
+          <div><span>Request state</span><strong data-runtime="execution">No request submitted</strong></div>
         </div>
 
         <div class="conversation" id="conversation" data-conversation role="log" aria-live="polite" aria-label="Jarvis conversation" tabindex="-1">
@@ -82,6 +82,7 @@
             placeholder="Ask Jarvis to inspect, explain, plan, or prepare a reviewed knowledge-system action…"
             required
           ></textarea>
+          <p class="field-help"><strong>What:</strong> a public-safe task or question. <strong>Why:</strong> it gives the operator packet a bounded objective. <strong>Example:</strong> “prepare a PRD review plan from the approved source summary.” <strong>Stored:</strong> this browser tab until submitted. <strong>Cannot:</strong> activate a provider, create files, or write externally.</p>
           <div class="composer-controls">
             <label class="select-control">
               <span>Architecture</span>
@@ -89,17 +90,19 @@
                 <option value="control">Agent control</option>
                 <option value="service">Knowledge service</option>
               </select>
+              <small>Choose Knowledge service for source-to-output work, or Agent control for roles, gates, and handoff. It changes packet framing, not runtime authority.</small>
             </label>
             <div class="selected-model" aria-live="polite">
               <span>Selected model</span>
               <strong data-selected-model>GPT-5.6 Luna</strong>
+              <small>A route preference only. A displayed model is not an enabled provider call.</small>
             </div>
             <label class="one-call-approval">
               <input type="checkbox" name="provider_approval" />
-              <span><strong>Acknowledge provider request</strong><small>Not replay protection</small></span>
+              <span><strong>Acknowledge provider request</strong><small>Records an operator acknowledgement; it is not replay protection or authorization.</small></span>
             </label>
             <button class="send-button" type="submit" data-send>
-              <span>Send to guarded API</span><b aria-hidden="true">↗</b>
+              <span>Submit review packet</span><b aria-hidden="true">↗</b>
             </button>
           </div>
           <p class="composer-status" data-composer-status>No request sent. Provider usage and cost have not been verified.</p>
@@ -117,7 +120,7 @@
             <span>API base</span>
             <input type="url" name="api_base" data-api-base inputmode="url" placeholder="Same origin (default)" />
           </label>
-          <p>The owner token is compared server-side and is never stored by this page. It is sent only to this origin or an HTTP loopback address; use a same-origin proxy for any hosted API.</p>
+          <p><strong>Owner token:</strong> only for an approved local or same-origin API; it stays in tab memory and must never be a provider key. <strong>API base:</strong> the guarded API origin, normally same origin. These fields cannot enable a provider, Git, Notion, deployment, or file writeback.</p>
         </section>
 
         <section class="control-section models-section">
@@ -132,7 +135,7 @@
             <input type="search" data-model-search placeholder="Search 300+ model routes…" autocomplete="off" />
             <kbd>/</kbd>
           </label>
-          <p class="catalog-status" data-catalog-status>Loading the live public model catalog…</p>
+          <p class="catalog-status" data-catalog-status>Loading the live public model catalog… Search is discovery only; it does not enable a route.</p>
           <div class="catalog-results" data-catalog-results></div>
         </section>
 
@@ -148,7 +151,7 @@
       </aside>
     </main>
 
-    <script src="jarvis.js?v=20260713-owner-guard" defer></script>
+    <script src="jarvis.js?v=20260715-operations" defer></script>
     <script src="hover-depth.js?v=20260713-owner-guard" defer></script>
   </body>
 </html>

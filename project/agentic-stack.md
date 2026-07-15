@@ -28,11 +28,11 @@ The safety envelope applies across every layer. Platform approvals remain author
 | Hermes | Current label for the planned watchdog/controller/reviewer role. Classifies work, assembles context capsules, writes task contracts, reviews evidence, and stops unsafe or complete work. | Planned controller overlay only. Any compatible watchdog remains non-executing: no edits, deployment, task-board mutation, provider call, or external write. |
 | Goal Engineering | Persistent bounded objective, observable completion, independent verifier, lifecycle, budget, and kill switches. | Active design contract under `project/goals/`; G1 is the new default and G2 remains a fixture target. |
 | CAG context capsules | Controlled Context Assembly Generation before subagent prompting. | Stable context packet under `project/context/`; not durable memory and not broad ingestion. |
-| LangGraph | Path control, state, conditional routing, review gates. | Full Block 1 workflow controller. |
+| LangGraph | Path control, state, conditional routing, review gates. | Public controller contract plus bounded local smoke fixtures; default provider execution is not asserted. |
 | Loop Engineering | State, attempt caps, budget, maker/checker split, stop conditions. | L1 report-only loop contract under `project/loops/`. |
 | CrewAI | Named roles and task execution. | AF Tools, AF Context, AF Research, AF Manager, AF Knowledge, AF Copy, AF Review, AF Publisher. |
 | LlamaIndex | Bounded hybrid retrieval and RAG. | Search only approved public-safe project and sanitized history with source-grounded semantic plus lexical retrieval, stable chunk metadata, and lexical fallback. |
-| turbovec | Future local vector store under LlamaIndex. | Deferred until stable source IDs, chunk IDs, embeddings, metadata, source filters, and the 20-query benchmark pass. |
+| turbovec | Optional local vector-store evaluation under LlamaIndex. | An isolated evaluation path may be reviewed, but the default remains blocked until stable source IDs, chunk IDs, embeddings, metadata, source filters, and the 20-query benchmark pass. |
 | WikiLLM | Canonical curated memory. | Source of truth for approved runs, decisions, memory, insights, and issues. |
 | Cognee | Future operational recall and knowledge graph. | Deferred until E1.3 readback passes; never replaces WikiLLM. |
 | Ollama | Local model serving. | Minor/background tasks only; active model is Qwythos and fallback is `gemma4:e4b`. |
@@ -205,7 +205,7 @@ The dashboard control surface has two screens:
 | Level | Meaning | Current status |
 |---|---|---|
 | Level 1: Configured roles | YAML/config and documentation define roles, responsibilities, tasks, outputs, dashboard fields, and review gates. No LLM execution is claimed. | Active. |
-| Level 2: LangGraph-wrapped role execution | LangGraph selects the lane, owns execution state, calls bounded role worker functions, records artifacts, and stops for AF Review/Jesus approval before any external side effect. Workers may use server-side OpenRouter only after explicit approval, backend/local-bridge proof, ledger proof, and budget gates. | Target architecture for the next implementation contract. |
+| Level 2: LangGraph-wrapped role execution | LangGraph selects the lane, owns execution state, calls bounded role worker functions, records artifacts, and stops for AF Review/integrator approval before any external side effect. Workers may use server-side OpenRouter only after explicit approval, backend/local-bridge proof, ledger proof, and budget gates. | Target architecture for the next implementation contract. |
 | Level 3: CrewAI runtime execution | CrewAI directly executes role/task flows, either directly or through LangGraph, with local proof artifacts and safety checks. | Direct deterministic public-safe fixture proof passed; not default runtime and not provider-backed runtime. |
 
 For now, build toward Level 2 while preserving Level 1 as the source of truth. Describe Level 3 only as proof passed, not as default active runtime.
@@ -230,7 +230,7 @@ Roles:
 - AF Manager creates the PRD structure, milestones, task matrix, and acceptance criteria.
 - AF Copy converts structured product logic into readable PRD/service language.
 - AF Review checks claims, gaps, public safety, completeness, and runtime-boundary wording.
-- Codex/Jesus remains the final local operator and approval boundary.
+- Codex remains the final local operator and approval boundary; the integrator is a functional role, not a named persona.
 
 Route:
 
@@ -262,13 +262,13 @@ Dashboard blocks:
 
 Roles:
 
-- Jesus: lead integrator and final architecture/execution owner.
-- LOL: dashboard workflow and two-screen control-surface owner.
-- Ronaldinho: technical boundary and implementation-risk reviewer.
-- Messi: PM/task-state, Notion update package, review-gate, and handoff reviewer.
-- Ronaldo: product/ICP reviewer for the PRD/ICP service offer.
-- Yushchenko: model-efficiency observer for OpenRouter routing, budget, tokens, and logging gaps.
-- Actor: bounded implementation or review worker for one clearly scoped slice.
+- Integrator: final architecture/execution reconciliation and approved handoff owner.
+- Experience Engineer: dashboard workflow and control-surface owner.
+- Technical Reviewer: runtime boundary and implementation-risk reviewer.
+- Delivery Reviewer: task-state, review-gate, and handoff reviewer.
+- Product Reviewer: product/ICP reviewer for the PRD/ICP service offer.
+- Model-Efficiency Observer: provider routing, budget, token, and logging-gap reviewer.
+- Bounded Executor: implementation or review worker for one clearly scoped slice.
 - AF Tools, AF Knowledge, AF Publisher, and AF Review provide stable functional roles for runtime/source readiness, memory packets, release preparation, and final public-safety checks.
 
 Route:
@@ -318,7 +318,7 @@ The source of truth remains repo YAML and Markdown until a backend endpoint is a
 
 ### Stop Rules
 
-AF Review/Jesus approval is required before any of these actions:
+AF Review/integrator approval is required before any of these actions:
 
 - Notion status Done
 - Git push or production promotion

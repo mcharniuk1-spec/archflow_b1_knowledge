@@ -16,6 +16,8 @@ Canonical routes:
 - `#architecture` — the seven grouped layers and end-to-end contract.
 - `#knowledge` — retrieval cascade, RAG parameters, corpus boundaries, and provenance.
 - `#agents` — role contracts, skill assignments, and governance.
+- `#operations` — Knowledge Service and Agent Control sequence, review-bundle preparation, and handoff gates.
+- `#data` — generated public catalog and read-only SQL-like preview.
 - `#runs` — configuration, execution, review, promotion, and evidence states.
 - `#reference` — editable parameter families, source registry, and operating guidance.
 - `#schema` — full-screen, browser-local workflow editor and review-packet export.
@@ -28,7 +30,7 @@ The separate `/jarvis` page is the text-only review console. It can inspect publ
 From the public repository root:
 
 ```bash
-project/local/venv/bin/python project/scripts/generate-dashboard-data.py
+python3 project/scripts/generate-dashboard-data.py
 python3 -m http.server 8765
 ```
 
@@ -47,18 +49,24 @@ Regenerate `data.json` after changing public workflow, configuration, report, ru
 
 ## Verification
 
+Install the optional workflow-validation dependency first when it is not already available:
+
+```bash
+python3 -m pip install -r project/requirements-dev.txt
+```
+
 Run:
 
 ```bash
 python3 scripts/public_safety_scan.py
 node --check project/dashboard/app.js
-project/local/venv/bin/python project/scripts/validate-workflows.py
-project/local/venv/bin/python project/scripts/dashboard-static-smoke.py --timeout 20 --retries 2
-project/local/venv/bin/python project/scripts/jarvis-api-contract-smoke.py
-project/local/venv/bin/python project/scripts/jarvis-serverless-owner-guard-smoke.py
+python3 project/scripts/validate-workflows.py
+python3 project/scripts/dashboard-static-smoke.py --timeout 20 --retries 2
+python3 project/scripts/jarvis-api-contract-smoke.py
+python3 project/scripts/jarvis-serverless-owner-guard-smoke.py
 ```
 
-The static smoke renders all eight dashboard views and proves no provider call or writeback occurs. Responsive and interaction QA additionally covers desktop, mobile, reduced motion, fullscreen editor access, dialog focus restoration, ROI truth states, Jarvis input behavior, and API-origin blocking.
+The static smoke renders every dashboard view and proves no provider call or writeback occurs. Responsive and interaction QA additionally covers desktop, mobile, reduced motion, fullscreen editor access, dialog focus restoration, browser-local review bundles, Jarvis input behavior, and API-origin blocking.
 
 ## Deployment Boundary
 

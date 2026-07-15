@@ -1,0 +1,257 @@
+{
+  "scope": "public repository skills only",
+  "packaged_count": 10,
+  "outside_inventory_policy": "Private or device-specific skills are not copied into the repository until provenance, license, secret/path safety, and a project use case pass review.",
+  "items": [
+    {
+      "id": "arcagcom",
+      "name": "arcagcom",
+      "description": "ArchFlow public project live-agent communication contract. Use before parallel work, role-based work, Prompt 2.1/Prompt 3 coordination, shared-file edits, Git closeout, or handoff.",
+      "path": "skills/arcagcom/SKILL.md",
+      "category": "coordination",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 5,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "2b69aeb15ff9881fa53d508ae4832f0d542b746ea97b645272f77d49250a1b4b"
+    },
+    {
+      "id": "archflow-architecture-operator",
+      "name": "archflow-architecture-operator",
+      "description": "Design, audit, or revise ArchFlow agentic architectures and role packs. Use when work concerns Goal Engineering, Loop Engineering, LangGraph sequencing, role and skill allocation, RAG or knowledge-layer boundaries, architecture generation, tool adoption, safety gates, architecture benchmarks, or conversion of a business workflow such as PRD, ICP, content, outreach, finance, engineering, or media into a bounded execution system.",
+      "path": "skills/archflow-architecture-operator/SKILL.md",
+      "category": "architecture",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 7,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "c1da8dd2fcb9a70130097d9be89b3b1de1ee173d2ed74460060582a992e7eaa9"
+    },
+    {
+      "id": "archflow-e1-runtime-guard",
+      "name": "archflow-e1-runtime-guard",
+      "description": "Validate the ArchFlow E1 runtime before Git push. Use after setup or before publication to confirm the public safety boundary, workflow YAML, LangGraph smoke path, LlamaIndex readiness, CrewAI readiness, and saved project skills without installing packages during the hook.",
+      "path": "skills/archflow-e1-runtime-guard/SKILL.md",
+      "category": "runtime boundary",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 5,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "b22cf19715d394addeb256fd9e810e8949c0ef33ce31000560177ac6a755cd79"
+    },
+    {
+      "id": "archflow-task-breakdown",
+      "name": "archflow-task-breakdown",
+      "description": "Break ArchFlow epics, tasks, and Notion initiatives into staged subtasks with execution order, gates, acceptance criteria, and public-safe reporting. Use for Block 1 knowledge-base work, LangGraph/CrewAI/LlamaIndex runtime planning, Notion task updates, agent-system architecture, and any ArchFlow task that must be decomposed without installing or changing everything at once.",
+      "path": "skills/archflow-task-breakdown/SKILL.md",
+      "category": "coordination",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 7,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "61d436f4a2a08e53afbcf5c18456b9bcbd589cdba6253840669873a60d6bdac2"
+    },
+    {
+      "id": "archflow1",
+      "name": "archflow1",
+      "description": "Local ArchFlow Jarvis stack operating contract for dashboard, jarvis-api, LangGraph, CrewAI, voice services, OpenRouter budget gates, and later Railway migration.",
+      "path": "skills/archflow1/SKILL.md",
+      "category": "runtime boundary",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 5,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "a3c2d9fe881c01d979ebdb0786ad2bb8dfa517ab1875937f9215d35ebdf4075a"
+    },
+    {
+      "id": "daily-public-project-review",
+      "name": "daily-public-project-review",
+      "description": "Run a daily retrospective over skills, tool usage, RAG retrieval state, and knowledgebase updates so the next cycle carries forward evidence and excludes recurring low-value work.",
+      "path": "skills/daily-public-project-review/SKILL.md",
+      "category": "review and handoff",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 4,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "2e22703109b6f7d732b68237b0cbedfffb104315f6244b42a8ef5f3d9cb887f0"
+    },
+    {
+      "id": "evening-skill-registry-update",
+      "name": "evening-skill-registry-update",
+      "description": "Review and align the public ArchFlow skill registry and handout hook with actual configured agents, skills, and evidence surfaces so recurring maintenance stays stable and low-entropy across days.",
+      "path": "skills/evening-skill-registry-update/SKILL.md",
+      "category": "coordination",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 4,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "21020dffcb48af76cb997416c82f65df59550275b147ed5aa838fcd9180d78fd"
+    },
+    {
+      "id": "outquestions",
+      "name": "outquestions",
+      "description": "Use this skill after each substantial ArchFlow execution, planning pass, Notion task update, GitHub update, dashboard/voice/hosting step, or multi-agent run to produce an execution report with the critical open questions, decisions, owner choices, and next-stage gates needed to move reliably.",
+      "path": "skills/outquestions/SKILL.md",
+      "category": "review and handoff",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 13,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "0d50828b66ea246784a714930d58c37778b24ba4ede8db810d3306cebdadc7ac"
+    },
+    {
+      "id": "priority-task-operator",
+      "name": "priority-task-operator",
+      "description": "Select the highest priority unfinished task by urgency and importance from `project-plan.md`, start the execution handoff as a fresh operator/chat packet, and prepare KB + Notion + GitHub follow-up evidence.",
+      "path": "skills/priority-task-operator/SKILL.md",
+      "category": "coordination",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 3,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "e0b904a504b5f0dd660d798802312547447f2e9b3606844c4acb1b17db1487c6"
+    },
+    {
+      "id": "task-handout",
+      "name": "task-handout",
+      "description": "Create a public-safe execution handout after substantial project work, multi-agent routing, or subtask execution. Use when a prompt hook asks for it, when a run uses one or more agent roles, when one or more subtasks are solved or changed, or when another operator needs a readable human summary plus an agent-ready continuation prompt.",
+      "path": "skills/task-handout/SKILL.md",
+      "category": "review and handoff",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "reference_count": 12,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "27ae9989926a347ad2eb1a6c9efd4ee8579661cb611c0f480e2dd97c536447c0"
+    }
+  ]
+}

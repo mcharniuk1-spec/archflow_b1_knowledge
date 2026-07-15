@@ -1,6 +1,6 @@
 # Model Efficiency Issues
 
-Purpose: open issues the Yushchenko Model Efficiency Observer and other agents should track until resolved.
+Purpose: open issues the Model-Efficiency Observer and other agents should track until resolved.
 
 ## Open Issues
 

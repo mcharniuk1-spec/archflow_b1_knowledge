@@ -2,6 +2,12 @@
 
 This project uses the following skills and methods.
 
+## Public Catalog Boundary
+
+The repository publishes ten reviewed, project-local skill contracts. They are listed in `project/database/skill-catalog.json` and rendered in the dashboard. This count is the public product allowlist, not an inventory of the operator's private installed skills.
+
+Each catalog entry records packaging, portability, permissions, forbidden actions, and a content hash. `verified_invocations` is intentionally `null` until a public-safe execution ledger exists; documentation mentions are never presented as usage counts. Additional skills may be considered only after provenance/license review, path and secret safety checks, a sanitized fixture, independent review, and catalog registration.
+
 ## Used In This Setup
 
 | Skill or Method | Use |

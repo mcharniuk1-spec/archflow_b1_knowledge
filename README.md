@@ -5,6 +5,44 @@ This folder is the clean public-safe project root for the ArchFlow reset.
 All active work after the 2026-06-24 reset belongs under `project/`.
 Prior work is represented only as sanitized English summaries under `history/`.
 
+## Start Here
+
+**ArchFlow turns scattered product knowledge into a reviewable operating system before the next high-stakes handoff.**
+
+Choose the path that fits you:
+
+- **Service buyer:** start with the [Knowledge Reliability Setup](project/agentic-stack.md#service-company-operating-model) and use the repository to understand the governed handoff you receive.
+- **Operator:** open the [dashboard](project/dashboard/) to inspect the Knowledge Service and Agent Control flows, then download a browser-local review bundle for an approved operator.
+- **Self-hosting evaluator:** follow the [quickstart](docs/quickstart.md), review the [architecture](docs/architecture.md), and use only public-safe example data.
+
+The product is intentionally local-first. Its current public implementation explains and validates contracts, generated catalog data, browser-local drafts, and guarded review packets. It does not claim an active hosted agent platform.
+
+## Three-Minute Local Demo
+
+```bash
+python3 project/scripts/generate-dashboard-data.py
+python3 -m http.server 8765
+```
+
+Open `http://127.0.0.1:8765/project/dashboard/`, choose **Operations**, and prepare a review bundle. The animated stage sequence is a browser-local preparation preview. It never creates repository files, launches a subagent, calls a provider, or pushes Git.
+
+## Documentation
+
+- [Quickstart](docs/quickstart.md) — clean-clone local setup and verification.
+- [Architecture](docs/architecture.md) — seven grouped layers and the long-term product path.
+- [Operations](docs/operations.md) — input meanings, stage sequence, review-bundle workflow, and real-action gates.
+- [API contract](docs/api-contract.md) — guarded API shapes and fail-closed behavior.
+- [Security and data boundaries](docs/security-and-data-boundaries.md) — what may be public, local, or gated.
+- [Contributing](CONTRIBUTING.md) and [security reporting](SECURITY.md).
+
+## What Is Gated Or Not Included
+
+- No provider-backed model execution by default.
+- No autonomous files, Git changes, Git push, Notion/Nexus memory writeback, deployment, or external action from the browser.
+- No customer corpus, private source ingestion, credentials, device paths, or public copy of the operator's larger private skill inventory.
+- No live database or arbitrary SQL console. The dashboard Data Lab is a read-only preview over generated public JSON.
+- No production, availability, ROI, demand, or continuous-monitoring claim without current evidence.
+
 ## Public Boundary
 
 This folder is intended to be safe to push to a public Git repository.

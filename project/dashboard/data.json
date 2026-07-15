@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T13:59:38.039620+00:00",
+  "generated_at": "2026-07-15T09:15:23.760762+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -30,12 +30,17 @@
     },
     {
       "label": "WikiLLM files",
-      "value": "72 files",
+      "value": "75 files",
+      "tone": "ok"
+    },
+    {
+      "label": "Public skills",
+      "value": "10 contracts",
       "tone": "ok"
     },
     {
       "label": "Activity files",
-      "value": "506",
+      "value": "519",
       "tone": "ok"
     },
     {
@@ -724,6 +729,97 @@
     }
   ],
   "activity": [
+    {
+      "kind": "wiki_issue",
+      "path": "wiki/issues/2026-07-15-runtime-event-and-ledger-gaps.md",
+      "title": "GAP: live runtime events, skill telemetry, and evidence ledger",
+      "modified": "2026-07-15T09:13:30.426931+00:00",
+      "size": 714
+    },
+    {
+      "kind": "wiki_decision",
+      "path": "wiki/decisions/2026-07-15-public-console-truthful-local-first.md",
+      "title": "Decision: public console remains truthful and local-first",
+      "modified": "2026-07-15T09:13:30.329806+00:00",
+      "size": 1095
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/20260715-public-product-operations-architecture-report.md",
+      "title": "Public Product Operations Architecture Report",
+      "modified": "2026-07-15T09:13:30.233784+00:00",
+      "size": 6494
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260715-public-product-operations-console/agent-handout.md",
+      "title": "Public product operations console handout",
+      "modified": "2026-07-15T09:13:30.135186+00:00",
+      "size": 2429
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260715-public-product-operations-console/task-contract.md",
+      "title": "Public product operations console task contract",
+      "modified": "2026-07-15T08:42:49.686409+00:00",
+      "size": 2312
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260713-secured-runtime-public-closeout/agent-handout.md",
+      "title": "Secured runtime public closeout",
+      "modified": "2026-07-13T21:05:50.239075+00:00",
+      "size": 1447
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/20260713-secured-runtime-architecture-report.pdf",
+      "title": "20260713-secured-runtime-architecture-report.pdf",
+      "modified": "2026-07-13T21:05:29.385672+00:00",
+      "size": 12617
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/20260713-secured-runtime-architecture-report.md",
+      "title": "ArchFlow Secured Agentic Runtime and Public Product Architecture",
+      "modified": "2026-07-13T21:04:18.969739+00:00",
+      "size": 11564
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260713-block1-roi-refinement/agent-handout.md",
+      "title": "Block 1 Architecture And ROI Refinement",
+      "modified": "2026-07-13T19:37:04.874167+00:00",
+      "size": 2652
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260713-seven-layer-tower-integration/agent-handout.md",
+      "title": "Seven Layer Tower Asset Integration",
+      "modified": "2026-07-13T19:01:29.542981+00:00",
+      "size": 1489
+    },
+    {
+      "kind": "wiki_run",
+      "path": "wiki/runs/2026-07-13-cross-block-boundary-release.md",
+      "title": "Cross-Block Boundary Repair And Live Release",
+      "modified": "2026-07-13T15:49:45.719068+00:00",
+      "size": 1339
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260713-cross-block-boundary-release/agent-handout.md",
+      "title": "Cross-Block Boundary Repair And Live Release",
+      "modified": "2026-07-13T15:49:45.578554+00:00",
+      "size": 1599
+    },
+    {
+      "kind": "project_run",
+      "path": "project/runs/20260713-landing-type-calculator-refresh/agent-handout.md",
+      "title": "Landing Typography And Calculator Balance",
+      "modified": "2026-07-13T15:08:08.666358+00:00",
+      "size": 1385
+    },
     {
       "kind": "wiki_run",
       "path": "wiki/runs/2026-07-13-icp-production-release.md",
@@ -4271,7 +4367,7 @@
     "index_path": "wiki/index.md",
     "memory_path": "wiki/memory.md",
     "insights_path": "wiki/insights.md",
-    "file_count": 72,
+    "file_count": 75,
     "files": [
       {
         "path": "wiki/decisions/2026-06-25-codex-ollama-langsmith-boundary.md",
@@ -4324,6 +4420,11 @@
         "excerpt": "# Decision - Lead With Knowledge Continuity Under A Forcing Moment  Date: 2026-07-13 Status: accepted for the current public and planning baseline  ## Context  The owner ICP brief and current market review indicate that generic PRD generation is inexpensive and weakly differentiated. ArchFlow's stronger system is the maintained, source-grounded company brain plus bounded agent execution, verification, memory promotio"
       },
       {
+        "path": "wiki/decisions/2026-07-15-public-console-truthful-local-first.md",
+        "title": "Decision: public console remains truthful and local-first",
+        "excerpt": "# Decision: public console remains truthful and local-first  Date: 2026-07-15  ## Decision  Package ArchFlow publicly as a local-first Knowledge Reliability Setup and reference implementation. The console may demonstrate contracts, generated public data, browser-local drafts, and review-bundle export. It must not simulate or market live autonomous execution, a production database, all private skills, or external acti"
+      },
+      {
         "path": "wiki/index.md",
         "title": "ArchFlow Public WikiLLM",
         "excerpt": "# ArchFlow Public WikiLLM  This is the public WikiLLM layer for the ArchFlow Block 1 knowledge project.  It stores durable public-safe project memory, decisions, run records, issues, insights, and operating rules.  ## Read Order  1. `../README.md` 2. `../AGENTS.md` 3. `../project/README.md` 4. `../project/operating-rules.md` 5. `../project/config/model-routing.yaml` 6. `memory.md` 7. `insights.md` 8. `rules/public-wi"
@@ -4354,9 +4455,14 @@
         "excerpt": "# Issue - Jarvis Durable Execution Controls  Date opened: 2026-07-13 Status: open; provider execution blocked  ## FACT  - Jarvis can search public model metadata and prepare reviewed request packets. - Both API implementations enforce owner token, request acknowledgement, server allowlist, CORS, and writeback-off checks. - Configured daily/run budget values do not track actual consumption. - A replayable request ackn"
       },
       {
+        "path": "wiki/issues/2026-07-15-runtime-event-and-ledger-gaps.md",
+        "title": "GAP: live runtime events, skill telemetry, and evidence ledger",
+        "excerpt": "# GAP: live runtime events, skill telemetry, and evidence ledger  Date: 2026-07-15  ## FACT  The public dashboard has no proven sanitized runtime-event feed, durable skill-usage ledger, or authenticated database. Its stage animation, data catalog, and review bundle are browser-local/static features.  ## IMPACT  The product must not claim live current-node execution, usage counts, production database access, or autono"
+      },
+      {
         "path": "wiki/log.md",
         "title": "Log",
-        "excerpt": "# Log  ## 2026-07-13  - Audited the current self-supporting agent architecture and confirmed Loop Engineering was present at L1 while Goal Engineering was not yet a first-class contract. - Added Goal Engineering state, lifecycle, verifier, budget, stop, and kill-switch contracts under `project/goals/`. - Added the validated `archflow-architecture-operator` skill with architecture layers, role packs, tool-adoption gat"
+        "excerpt": "# Log  ## 2026-07-15  - Repackaged the public product around a local-first Knowledge Reliability Setup today and an installable operating toolkit direction later, without claiming a hosted autonomous-agent platform. - Added explicit Knowledge Service and Agent Control operating views, a browser-local review-bundle stage sequence, Jarvis input help, and a public Data Lab that is limited to generated JSON. - Generated "
       },
       {
         "path": "wiki/memory.md",
@@ -4624,6 +4730,11 @@
         "excerpt": "# Wiki Run - Architecture Resetup  Date: 2026-07-13  Status: design baseline complete; runtime proof gates remain open.  ## Task  Reorganize the ArchFlow agent-development architecture around knowledge continuity, Goal and Loop Engineering, bounded roles/skills, safe knowledge layers, measurable tool adoption, and a renewed strategic plan.  ## Durable result  - Goal Engineering added as G1 above LangGraph and Loop En"
       },
       {
+        "path": "wiki/runs/2026-07-13-cross-block-boundary-release.md",
+        "title": "Cross-Block Boundary Repair And Live Release",
+        "excerpt": "# Cross-Block Boundary Repair And Live Release  Date: 2026-07-13  Status: complete for public website repair and Vercel production release.  ## Facts  - The architecture block now handles short desktop viewports without allowing its sticky content to be covered by the next service block. - Landing typography, layer card, stepper, and calculator work remain browser-local and provider-free. - Jarvis and dashboard mobil"
+      },
+      {
         "path": "wiki/runs/2026-07-13-icp-product-surface.md",
         "title": "Wiki Run - ICP Product Surface",
         "excerpt": "# Wiki Run - ICP Product Surface  Date: 2026-07-13 Status: local/public implementation and board planning complete; production, market, and provider gates remain open  ## Task  Translate the owner ICP vision into ArchFlow's current knowledge architecture, marketing roles, public product story, operator dashboard, guarded Jarvis contract, and future installable-product plan.  ## Durable result  - Current audience know"
@@ -4735,7 +4846,7 @@
     {
       "path": "project/agents/README.md",
       "title": "Agents",
-      "text": "# Agents  This folder defines only the agents and skills used or explicitly set up for the public ArchFlow project.  It does not publish the operator's full private skill library.  ## Agent Team  | Agent | Purpose | |---|---| | AF Tools | Source and tool inventory. | | AF Context | Structured context extraction. | | AF Manager | PRD, backlog, responsibility, and success criteria. | | AF Knowledge | Knowledge-base update packets. | | AF Review | Public-safety and evidence review. | | AF Publisher | Git/public project publishing. | | Yushchenko Model Efficiency Observer | Recurring model/token efficiency review and advice. |  See `skills-by-agent.md` and `agent-roster.yaml`.  Live communication:  - `../live/communication/README.md` - `../live/communication/current-agent-notice.md` - `../live/communication/agent-communication-log.md`  Every agent must read the live communication notice and append a starting update before editing project files.  Workflow contracts:  - `../workflows/langgraph-controller.yaml` - `../workflows/crewai-crew.yaml` - `../workflows/llamaindex-rag.yaml`  Model-efficiency observer:  - `model-efficiency-advice.md` - `model-efficiency-issues.md` - `../automation/y",
+      "text": "# Agents  This folder defines only the agents and skills used or explicitly set up for the public ArchFlow project.  It does not publish the operator's full private skill library.  ## Agent Team  | Agent | Purpose | |---|---| | AF Tools | Source and tool inventory. | | AF Context | Structured context extraction. | | AF Manager | PRD, backlog, responsibility, and success criteria. | | AF Knowledge | Knowledge-base update packets. | | AF Review | Public-safety and evidence review. | | AF Publisher | Git/public project publishing. | | Model-Efficiency Observer | Recurring model/token efficiency review and advice. |  See `skills-by-agent.md` and `agent-roster.yaml`.  Live communication:  - `../live/communication/README.md` - `../live/communication/current-agent-notice.md` - `../live/communication/agent-communication-log.md`  Every agent must read the live communication notice and append a starting update before editing project files.  Workflow contracts:  - `../workflows/langgraph-controller.yaml` - `../workflows/crewai-crew.yaml` - `../workflows/llamaindex-rag.yaml`  Model-efficiency observer:  - `model-efficiency-advice.md` - `model-efficiency-issues.md` - `../automation/yushchenko-m",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -4767,7 +4878,7 @@
     {
       "path": "project/agents/model-efficiency-issues.md",
       "title": "Model Efficiency Issues",
-      "text": "# Model Efficiency Issues  Purpose: open issues the Yushchenko Model Efficiency Observer and other agents should track until resolved.  ## Open Issues  ### MEI-1 - No Canonical Model-Call Ledger Yet  Status: open  FACT: The model-routing plan defines required fields, but the project does not yet have a canonical ledger file or database for model calls. FACT: The 2026-07-01 observer run still found no active OpenRouter runtime evidence in public-safe project files.  Impact: Observer reports can only summarize available run notes and logs. Token/cost efficiency will be incomplete until model calls are logged consistently.  Needed action: create a public-safe model-call ledger schema before activating OpenRouter.  ### MEI-7 - Local Proof Ledger Must Stay Separate From Provider Ledger  Status: open  FACT: The CrewAI direct runtime proof now writes a zero-cost local deterministic ledger. FACT: That proof ledger is useful evidence, but it is not a provider-backed OpenRouter ledger.  Impact: Observer reports can overstate provider readiness if they do not label local proof runs separately from provider-backed runs.  Needed action: keep a distinct schema and reporting label for local deter",
+      "text": "# Model Efficiency Issues  Purpose: open issues the Model-Efficiency Observer and other agents should track until resolved.  ## Open Issues  ### MEI-1 - No Canonical Model-Call Ledger Yet  Status: open  FACT: The model-routing plan defines required fields, but the project does not yet have a canonical ledger file or database for model calls. FACT: The 2026-07-01 observer run still found no active OpenRouter runtime evidence in public-safe project files.  Impact: Observer reports can only summarize available run notes and logs. Token/cost efficiency will be incomplete until model calls are logged consistently.  Needed action: create a public-safe model-call ledger schema before activating OpenRouter.  ### MEI-7 - Local Proof Ledger Must Stay Separate From Provider Ledger  Status: open  FACT: The CrewAI direct runtime proof now writes a zero-cost local deterministic ledger. FACT: That proof ledger is useful evidence, but it is not a provider-backed OpenRouter ledger.  Impact: Observer reports can overstate provider readiness if they do not label local proof runs separately from provider-backed runs.  Needed action: keep a distinct schema and reporting label for local deterministic pr",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -4783,7 +4894,7 @@
     {
       "path": "project/agents/skills-governance.md",
       "title": "Skills Governance",
-      "text": "# Skills Governance  Status: active governance policy.  This file defines how ArchFlow skills are reviewed, mapped, and passed to agents.  ## Core Rule  Do not create a new skill because a method appears once. Add or update a skill only when repeated evidence shows the method is reusable, no existing skill covers the same job, and AF Review can verify the scope.  Hermes, Codex, AF Review, AF Knowledge, and an assigned skills-governance reviewer may inspect all skills. Bounded subagents receive only the role-specific skills needed for their task plus shared coordination rules.  ## Current Contracted Skills  These have project-local `SKILL.md` contracts or are project-recognized skill contracts:  - `arcagcom` - `archflow1` - `archflow-task-breakdown` - `archflow-e1-runtime-guard` - `daily-public-project-review` - `evening-skill-registry-update` - `outquestions` - `priority-task-operator` - `task-handout`  ## Shared Project Skills  - `arcagcom`: live communication, file claims, handoffs, and merge gates. - `archflow1`: dashboard/Jarvis/runtime/provider/Railway boundaries. - `task-handout`: durable run handout and continuation prompt. - `outquestions`: owner decisions, blocked gates, a",
+      "text": "# Skills Governance  Status: active governance policy.  This file defines how ArchFlow skills are reviewed, mapped, and passed to agents.  ## Core Rule  Do not create a new skill because a method appears once. Add or update a skill only when repeated evidence shows the method is reusable, no existing skill covers the same job, and AF Review can verify the scope.  Hermes, Codex, AF Review, AF Knowledge, and an assigned skills-governance reviewer may inspect all skills. Bounded subagents receive only the role-specific skills needed for their task plus shared coordination rules.  ## Current Contracted Skills  These have project-local `SKILL.md` contracts or are project-recognized skill contracts:  - `arcagcom` - `archflow1` - `archflow-task-breakdown` - `archflow-architecture-operator` - `archflow-e1-runtime-guard` - `daily-public-project-review` - `evening-skill-registry-update` - `outquestions` - `priority-task-operator` - `task-handout`  ## Shared Project Skills  - `arcagcom`: live communication, file claims, handoffs, and merge gates. - `archflow1`: dashboard/Jarvis/runtime/provider/Railway boundaries. - `task-handout`: durable run handout and continuation prompt. - `outquestions`",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5095,7 +5206,15 @@
     {
       "path": "project/dashboard/README.md",
       "title": "Architecture Console",
-      "text": "# Architecture Console  The ArchFlow dashboard is a documentation-first, public-safe view of the maintained knowledge and agent architecture. It reads generated project evidence, supports browser-local workflow editing and export, and keeps execution, provider calls, durable writeback, and promotion behind separate gates.  Canonical routes:  ```text /project/dashboard/ /dashboard  -> redirects to /project/dashboard/ /jarvis ```  ## Current Views  - `#overview` \u2014 architecture status, proof, gates, and current activity. - `#architecture` \u2014 the seven grouped layers and end-to-end contract. - `#knowledge` \u2014 retrieval cascade, RAG parameters, corpus boundaries, and provenance. - `#agents` \u2014 role contracts, skill assignments, and governance. - `#runs` \u2014 configuration, execution, review, promotion, and evidence states. - `#reference` \u2014 editable parameter families, source registry, and operating guidance. - `#schema` \u2014 full-screen, browser-local workflow editor and review-packet export. - `#plan` \u2014 current E1-E8 strategic spine and installable product direction.  The separate `/jarvis` page is the text-only review console. It can inspect public-safe state and prepare bounded requests. Serv",
+      "text": "# Architecture Console  The ArchFlow dashboard is a documentation-first, public-safe view of the maintained knowledge and agent architecture. It reads generated project evidence, supports browser-local workflow editing and export, and keeps execution, provider calls, durable writeback, and promotion behind separate gates.  Canonical routes:  ```text /project/dashboard/ /dashboard  -> redirects to /project/dashboard/ /jarvis ```  ## Current Views  - `#overview` \u2014 architecture status, proof, gates, and current activity. - `#architecture` \u2014 the seven grouped layers and end-to-end contract. - `#knowledge` \u2014 retrieval cascade, RAG parameters, corpus boundaries, and provenance. - `#agents` \u2014 role contracts, skill assignments, and governance. - `#operations` \u2014 Knowledge Service and Agent Control sequence, review-bundle preparation, and handoff gates. - `#data` \u2014 generated public catalog and read-only SQL-like preview. - `#runs` \u2014 configuration, execution, review, promotion, and evidence states. - `#reference` \u2014 editable parameter families, source registry, and operating guidance. - `#schema` \u2014 full-screen, browser-local workflow editor and review-packet export. - `#plan` \u2014 current E1-E8 s",
+      "authority_state": "current_or_evidence",
+      "superseded_by": "",
+      "authority_boost": 0
+    },
+    {
+      "path": "project/database/README.md",
+      "title": "Public catalog data model",
+      "text": "# Public catalog data model  ArchFlow currently ships a generated, public-safe JSON catalog. It is not a hosted database and it does not contain customer data, private source text, credentials, run traces, or a connection to an operator device.  The catalog exists so a person evaluating the repository can inspect the public skills, role contracts, workflow nodes, sources, and public-safe run records without having to infer the architecture from page copy.  ## What is stored now  - `skill-catalog.json`: the reviewed skill packages included in this repository. - `skill-catalog.schema.json`: the validated shape for that generated catalog. - `runtime-event.schema.json`: the required sanitized event shape before a future dashboard may claim live workflow state. - `review-bundle.schema.json`: the browser-local export contract for an operator handoff. - `project/dashboard/data.json`: the generated public console index for skills, roles, workflow nodes, sources, and run summaries. - browser-local drafts: workflow edits and review packets saved only in the browser until the operator explicitly downloads them.  `skill-catalog.json` is generated by `project/scripts/generate-dashboard-data.py`",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5631,7 +5750,7 @@
     {
       "path": "skills/skills-used.md",
       "title": "Skills And Methods Used",
-      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, gates, and public-safe execution outputs. | | [`archflow-e1-runtime-guard`](archflow-e1-runtime-guard/SKILL.md) | Validate the E1 runtime spine and connect the saved skill workflow to the Git pre-push hook. | | [`evening-skill-registry-update`](evening-skill-registry-update/SKILL.md) | Keep registry files, handout hook wiring, post-execution skill update decisions, and run-note targets synchronized for recurring maintenance. | | [`daily-public-project-review`](daily-public-project-review/SKILL.md) | Review daily skill use, RAG/KB drift, and recurring inefficiency patterns before the next cycle starts. | | [`priority-task-operator`](priority-task-operator/SKILL.md) | Select highest-priority actionable task by urg",
+      "text": "# Skills And Methods Used  This project uses the following skills and methods.  ## Public Catalog Boundary  The repository publishes ten reviewed, project-local skill contracts. They are listed in `project/database/skill-catalog.json` and rendered in the dashboard. This count is the public product allowlist, not an inventory of the operator's private installed skills.  Each catalog entry records packaging, portability, permissions, forbidden actions, and a content hash. `verified_invocations` is intentionally `null` until a public-safe execution ledger exists; documentation mentions are never presented as usage counts. Additional skills may be considered only after provenance/license review, path and secret safety checks, a sanitized fixture, independent review, and catalog registration.  ## Used In This Setup  | Skill or Method | Use | |---|---| | Notion spec-to-implementation | Read the private project board and convert it into an implementation plan. | | Notion knowledge capture | Extract reusable project knowledge without copying private raw content. | | [`archflow-task-breakdown`](archflow-task-breakdown/SKILL.md) | Break ArchFlow epics and parent tasks into staged subtasks, g",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -5725,6 +5844,14 @@
       "authority_boost": 0
     },
     {
+      "path": "wiki/decisions/2026-07-15-public-console-truthful-local-first.md",
+      "title": "Decision: public console remains truthful and local-first",
+      "text": "# Decision: public console remains truthful and local-first  Date: 2026-07-15  ## Decision  Package ArchFlow publicly as a local-first Knowledge Reliability Setup and reference implementation. The console may demonstrate contracts, generated public data, browser-local drafts, and review-bundle export. It must not simulate or market live autonomous execution, a production database, all private skills, or external actions without current evidence.  ## Rationale  The verified public surface supports explainability and controlled handoff. A live event feed, durable database, skill-usage ledger, and action-specific approvals are distinct capabilities with different security and operational requirements.  ## Consequences  - Stage animation is labelled browser-local preparation until a sanitized event feed exists. - The public skills catalog contains only the reviewed repository allowlist; no private inventory bulk copy. - The Data Lab remains read-only generated JSON preview. - Review-bundle download remains separate from files, commits, push, deployment, provider use, and writeback.",
+      "authority_state": "current_or_evidence",
+      "superseded_by": "",
+      "authority_boost": 0
+    },
+    {
       "path": "wiki/index.md",
       "title": "ArchFlow Public WikiLLM",
       "text": "# ArchFlow Public WikiLLM  This is the public WikiLLM layer for the ArchFlow Block 1 knowledge project.  It stores durable public-safe project memory, decisions, run records, issues, insights, and operating rules.  ## Read Order  1. `../README.md` 2. `../AGENTS.md` 3. `../project/README.md` 4. `../project/operating-rules.md` 5. `../project/config/model-routing.yaml` 6. `memory.md` 7. `insights.md` 8. `rules/public-wikillm-contract.md` 9. latest file in `runs/` 10. open files in `issues/` 11. latest files in `decisions/`  ## Current Architecture Baseline  - `../project/strategic-plan-2026-07-13.md` - knowledge-architecture-first E1-E8 plan and proof gates. - `../project/proof-ledger.md` - canonical evidence routing, state definitions, and narrow current proof boundaries. - `../project/reports/2026-07-13-self-supporting-agentic-architecture-review.md` - current design audit, tool decisions, and remaining runtime gaps. - `../project/reports/2026-07-13-icp-audience-product-surface.md` - ICP translation, audience architecture, website/dashboard/Jarvis implementation, and productization path. - `../project/knowledge/audience/icp-knowledge-continuity.md` - segmented forcing moments, buyer",
@@ -5773,9 +5900,17 @@
       "authority_boost": 0
     },
     {
+      "path": "wiki/issues/2026-07-15-runtime-event-and-ledger-gaps.md",
+      "title": "GAP: live runtime events, skill telemetry, and evidence ledger",
+      "text": "# GAP: live runtime events, skill telemetry, and evidence ledger  Date: 2026-07-15  ## FACT  The public dashboard has no proven sanitized runtime-event feed, durable skill-usage ledger, or authenticated database. Its stage animation, data catalog, and review bundle are browser-local/static features.  ## IMPACT  The product must not claim live current-node execution, usage counts, production database access, or autonomous action.  ## NEXT SAFE ACTION  Design a bounded event adapter conforming to `project/database/runtime-event.schema.json`, then test it against public-safe fixtures. Design a local evidence ledger only after its read-only, audit, recovery, and private-data separation controls are approved.",
+      "authority_state": "current_or_evidence",
+      "superseded_by": "",
+      "authority_boost": 0
+    },
+    {
       "path": "wiki/log.md",
       "title": "Log",
-      "text": "# Log  ## 2026-07-13  - Audited the current self-supporting agent architecture and confirmed Loop Engineering was present at L1 while Goal Engineering was not yet a first-class contract. - Added Goal Engineering state, lifecycle, verifier, budget, stop, and kill-switch contracts under `project/goals/`. - Added the validated `archflow-architecture-operator` skill with architecture layers, role packs, tool-adoption gates, and benchmark metrics. - Updated the architecture and role/skill registries for LangGraph state ownership, Terra/Luna coordination, selective Obsidian methods, and defense-in-depth command safety. - Reviewed the July market package and reframed the strategic center from PRD generation to maintained knowledge and execution continuity, without claiming buyer or payment validation. - Added the renewed E1-E7 strategic plan, architecture report, source register, benchmark contract, decision, issue, run summary, and handout. - Kept website/dashboard implementation, provider calls, deployments, broad ingestion, third-party installs, and live vault mutation out of scope. - Completed a schema-safe external task-board renewal using Terra as sole writer and Luna agents as read",
+      "text": "# Log  ## 2026-07-15  - Repackaged the public product around a local-first Knowledge Reliability Setup today and an installable operating toolkit direction later, without claiming a hosted autonomous-agent platform. - Added explicit Knowledge Service and Agent Control operating views, a browser-local review-bundle stage sequence, Jarvis input help, and a public Data Lab that is limited to generated JSON. - Generated a reviewed ten-skill public catalog and documented why the private installed inventory is not copied or represented as usage telemetry. - Added clean-clone setup, architecture, operations, API/security, contribution, and security-reporting documentation. - Added runtime-event and review-bundle schemas, a decision note, a gap record, and a public product architecture report. - Verified public safety, workflow contracts, guarded Jarvis contracts, JavaScript syntax, and ten rendered dashboard routes with zero provider calls and zero writeback.  ## 2026-07-13  - Audited the current self-supporting agent architecture and confirmed Loop Engineering was present at L1 while Goal Engineering was not yet a first-class contract. - Added Goal Engineering state, lifecycle, verifier,",
       "authority_state": "current_or_evidence",
       "superseded_by": "",
       "authority_boost": 0
@@ -6104,6 +6239,22 @@
       "path": "project/reports/2026-07-13-self-supporting-agentic-architecture-review.md",
       "title": "Self-Supporting Agentic Architecture Review",
       "text": "# Self-Supporting Agentic Architecture Review  Date: 2026-07-13  Status: final design baseline; several runtime capabilities remain gated.  ## Executive conclusion  Loop Engineering was already integrated, but only as an L1 report-first contract. Goal Engineering was not a first-class layer before this review. The architecture now has an explicit goal schema, a clearer layer order, a parameterized architecture-factory skill, Terra/Luna coordination, role packs, adoption gates, and a measurable benchmark contract.  This is the final design baseline for the next implementation stage. It is not proof that Cognee, TurboVec, destructive-command hooks, Google ADK, NVIDIA agent runtime, LTX-2, Omma, vector-default retrieval, or provider-backed agents are installed or production-ready.  ## What the current system already proved  FACT:  - WikiLLM is the canonical public-safe memory layer. - LangGraph, LlamaIndex, CrewAI config/import, deterministic retrieval, safety checks, and provider-disabled workflow fixtures have existing narrow proof. - Loop Engineering has state, retry caps, maker/checker separation, budgets, stop conditions, and handouts at L1. - Graphify exists as generated structu",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/reports/20260713-secured-runtime-architecture-report.md",
+      "title": "ArchFlow Secured Agentic Runtime and Public Product Architecture",
+      "text": "# ArchFlow Secured Agentic Runtime and Public Product Architecture  **Status:** public-safe architecture baseline | 2026-07-13 | evidence-led review  ## Executive summary  ArchFlow is being shaped as a public GitHub repository and a full-solution product for building knowledge bases and bounded agentic workflows. The public repository is the explainable, safe-by-default layer: website, dashboard, architecture contracts, role cards, demo fixtures, reports, and static proof. A private sibling layer holds local runtime state, private corpus manifests, checkpoints, journals, and owner-approved operational controls. Private knowledge is never copied into the public corpus; promotion is one-way, sanitized, and review-gated.  The current design is strong enough for a public architecture release and a controlled local runtime trial. It is not yet evidence for a production hosted agent, autonomous writeback, paid customer ROI, or an always-on service on this host. Those claims remain gated until their proof conditions are met.  ## Evidence vocabulary and authority  - **PROVEN:** a deterministic local test, parser, safety scan, or artifact supports the claim. - **REVIEW:** architecture is do",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/reports/20260715-public-product-operations-architecture-report.md",
+      "title": "Public Product Operations Architecture Report",
+      "text": "# Public Product Operations Architecture Report  Date: 2026-07-15   Scope: public website, dashboard, Jarvis, role/skill presentation, generated catalog, setup documentation, and operational truth boundaries.  ## Executive product position  ArchFlow should be marketed now as a **Knowledge Reliability Setup** for a forcing moment: it turns fragmented product knowledge into a source/owner map, reviewed knowledge spine, governed workflow, and operator handoff. Its long-term direction is a local-first, installable operating toolkit. This is a more credible product path than claiming a hosted autonomous-agent platform before runtime, persistence, and action controls exist.  The public interface therefore prioritizes explainability, controlled handoff, and visible gates. It deliberately distinguishes a configured contract from observed execution.  ## Layer-by-layer architecture  | Layer | Product ability | Current public proof | Required next gate | |---|---|---|---| | Authority and Goal | Bind request to an owner, scope, stop rule, and approval boundary. | Public goal and workflow contracts. | Task-specific operator acceptance. | | Context and Knowledge | Build the smallest source-groun",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1
@@ -8389,6 +8540,62 @@
       "authority_boost": -1
     },
     {
+      "path": "project/runs/20260713-block1-roi-refinement/agent-handout.md",
+      "title": "Block 1 Architecture And ROI Refinement",
+      "text": "# Block 1 Architecture And ROI Refinement  Status: production deployment complete; Figma baseline sync remains pending because external Playwright MCP is unavailable.  ## Objective  Make the seven-layer tower explain the current ArchFlow knowledge-continuity and bounded-agent architecture while making the ROI scenario readable, draggable, bounded, and responsive.  ## Implementation  - Reframed Block 1 around enterprise readiness, onboarding/hiring, and key-person continuity. - Named and sharpened all seven architecture layers: Govern, Connect, Orchestrate, Execute, Verify, Remember, and Measure. - Synchronized layer titles, pain statements, outcomes, methods, status, stepper state, and tower movement. - Kept the supplied transparent tower assets as the visual source and made the complete assembly visible at desktop, tablet, and mobile states. - Replaced numeric ROI text fields with range controls for people, recovery hours, hourly cost, tool surfaces, and setup investment. - Set working ranges to 1-100 people, 0.5-20 recovery hours, EUR20-EUR350 hourly cost, 1-100 tools/surfaces, 0-100% recovery, and EUR2,000-EUR30,000 setup investment. - Added visible live values, range-track prog",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/runs/20260713-cross-block-boundary-release/agent-handout.md",
+      "title": "Cross-Block Boundary Repair And Live Release",
+      "text": "# Cross-Block Boundary Repair And Live Release  Status: public repair and Vercel production release complete; Figma baseline sync is pending an external-capture tool.  ## Scope  - Repair the architecture-to-service transition when the desktop viewport is short enough to expose the sticky frame boundary. - Keep the architecture copy, layer card, stepper, and tower contained in the first block. - Review landing desktop/mobile, quiz result, Jarvis, and dashboard entry views before publication.  ## Changed files  - `index.html` - `site.css` - `project/live/communication/agent-communication-log.md` - `jarvis.html` - `jarvis.css` - `project/dashboard/index.html` - `project/dashboard/styles.css`  ## Boundaries preserved  - No calculator formulas, provider calls, API credentials, writeback, or backend behavior were changed. - Unrelated worktree changes remain untouched.  ## Local checks  - `git diff --check` passed. - `node --check site.js` passed. - HTML parser check passed. - Public safety scan passed. - Landing capture reviewed at 2048x512, 1440x900, and 390x900. - Quiz result capture reviewed at 1440x900. - Jarvis and dashboard production captures reviewed at desktop and 390px mobile s",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/runs/20260713-landing-type-calculator-refresh/agent-handout.md",
+      "title": "Landing Typography And Calculator Balance",
+      "text": "# Landing Typography And Calculator Balance  Status: complete for the bounded local visual refinement.  ## Scope  - Refined the public landing page typography toward the supplied Sandstone reference. - Rewrote the first-screen message for a more precise product value statement. - Increased calculator label, input, result, and explanatory text sizes. - Rebalanced calculator controls for desktop and mobile, including larger horizontal range thumbs and tracks.  ## Files changed  - `index.html` - `site.css`  ## Boundaries preserved  - Calculator formulas and JavaScript behavior were not changed. - No provider calls, external writes, deployment, or publication actions were performed. - Existing unrelated worktree changes remain untouched.  ## Checks  - `git diff --check` passed. - `node --check site.js` passed. - HTML parser check passed for `index.html`. - Public safety scan passed. - Desktop Chrome capture passed for the landing hero at 1440px. - Mobile Chrome capture passed for the landing hero at 390px after a viewport-overflow repair. - Direct ROI anchor capture was incomplete in headless file-mode, so no false full-section visual claim is made; calculator CSS and DOM contract chec",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/runs/20260713-secured-runtime-public-closeout/agent-handout.md",
+      "title": "Secured runtime public closeout",
+      "text": "# Secured runtime public closeout  ## Task  Review the public website, dashboard, public repository, and secured private sibling after the architecture setup; publish a public-safe architecture report and PDF; record proof and gaps.  ## Outputs  - `project/reports/20260713-secured-runtime-architecture-report.md` - `project/reports/20260713-secured-runtime-architecture-report.pdf` - private LangGraph and retrieval trial handoffs remain outside the public corpus  ## Checks  - `scripts/public_safety_scan.py`: passed - dashboard JSON parse: passed - `node --check site.js`: passed - `node --check project/dashboard/app.js`: passed - PDF text extraction: passed, 3 pages - dashboard static smoke: not re-run here; prior sandbox attempt returned `Operation not permitted` - user-level launchd: plist/import/static checks passed, but heartbeat did not refresh; host activation remains a GAP and is not claimed as always-on  ## Product conclusion  ArchFlow is ready to present as a public-safe GitHub architecture and local proof path for knowledge-base and bounded agentic workflow setup. Production providers, autonomous writeback, live Nexus, hosted deployment, customer ROI, and continuous service ",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/runs/20260713-seven-layer-tower-integration/agent-handout.md",
+      "title": "Seven Layer Tower Asset Integration",
+      "text": "# Seven Layer Tower Asset Integration  Status: production deployment complete; Figma baseline sync remains pending because the required external Playwright MCP is unavailable.  ## Scope  - Integrated the supplied `top1.png` and `layer2.png` through `layer7.png` assets into Block 1. - Rebuilt the tower as seven positioned transparent bands with measured overlaps. - Preserved scroll-driven layer progression and synchronized copy changes. - Rebalanced the tower frame for desktop, short desktop, and mobile viewports.  ## Changed files  - `index.html` - `site.css` - `site.js` was inspected; no behavior change was required. - `assets/tower/layers/` - `project/live/communication/agent-communication-log.md`  ## Checks  - Seven source assets copied into the public asset boundary. - Desktop and mobile landing captures reviewed. - Full assembled tower is visible at rest; layer bands remain connected through controlled overlap. - Existing layer text and scroll progression remain active. - `git diff --check`, `node --check site.js`, and public safety scan passed.  ## Boundaries preserved  - No provider, calculator, API, or writeback behavior changed. - The original source assets under `towers/l",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/runs/20260715-public-product-operations-console/agent-handout.md",
+      "title": "Public product operations console handout",
+      "text": "# Public product operations console handout  ## Outcome  The public product now presents ArchFlow as a local-first Knowledge Reliability Setup and an evolving installable operating toolkit. The dashboard makes the Knowledge Service and Agent Control distinction explicit, explains the browser-local stage sequence, exports a review bundle, and exposes a read-only public catalog preview.  ## Files and surfaces changed  - Root and project README paths now provide a clean-clone demo and product navigation. - Dashboard gained Operations and Data Lab views, browser-local review-bundle sequence, public skills catalog, and data-boundary explanation. - Jarvis labels and inline help explain each operator input and avoid implying provider execution. - Public data generator now emits a reviewed ten-skill catalog and dashboard data. - Database schemas document the catalog, future runtime events, and review-bundle shapes. - Architecture, operations, API/security, contribution, and security documentation were added or refreshed.  ## Verified  - dashboard data generation and JSON parsing; - dashboard and Jarvis JavaScript syntax; - public-safety scan; - workflow validation in the existing local run",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
+      "path": "project/runs/20260715-public-product-operations-console/task-contract.md",
+      "title": "Public product operations console task contract",
+      "text": "# Public product operations console task contract  ## Goal  Make the public ArchFlow website, dashboard, Jarvis, documentation, role/skill catalog, and browser-local data model accurately explain and safely demonstrate a knowledge service and bounded agent architecture.  ## Observable done condition  The public dashboard shows a stage-by-stage execution model, clear per-input Jarvis help, explicit agent-control and knowledge-service boundaries, browser-local export/download of a review packet, an inspectable public data schema with read-only SQL-like query examples, and a truthful portable skill catalog. Public docs and README explain personal setup without relying on owner data.  ## Authority boundary  Public-safe static/browser-local implementation only. No private corpus ingestion, provider execution, live database, autonomous file mutation, Nexus/Notion/GitHub writeback, deployment, or Git push is authorized by this task.  ## Evidence states  - Existing dashboard and Jarvis public surfaces: proven static/browser-local. - LangGraph/controller, role, retrieval, and promotion contracts: review/proven only where cited by public artifacts. - Live provider, durable database, writebac",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
       "path": "project/runs/E1.2/2026-06-26-full-test/E1.2_PRD.md",
       "title": "E1.2 PRD - Dialogue-To-PRD Full Test",
       "text": "# E1.2 PRD - Dialogue-To-PRD Full Test  Date: 2026-06-26 Status: approved internal public-safe proof Owner roles: AF Manager with AF Tools, AF Context, AF Knowledge, AF Review, and AF Publisher  ## Product  ArchFlow Block 1 Dialogue-to-PRD Knowledge Engine.  ## Problem  Strategic conversations and setup runs produce useful execution knowledge, but the material is easy to lose, repeat, or publish unsafely. ArchFlow needs a reproducible internal workflow that converts a sanitized source packet into PRD, task division, knowledge-base updates, review evidence, and a handout for the next agent.  ## Goal  Complete one full E1.2 proof package that demonstrates:  - public-safe source intake; - approved-corpus retrieval; - LangGraph-controlled parallel and sequential workflow stages; - role-based CrewAI-style task division; - PRD, streaming report, and system report generation; - WikiLLM writeback; - public-safety and runtime validation; - Git commit and push readiness.  ## Users  | User | Need | |---|---| | Founder/operator | Convert messy planning context into execution assets without repeating discovery. | | Product manager | Get a PRD, task matrix, acceptance criteria, and risks from a ",
@@ -9157,6 +9364,14 @@
       "authority_boost": -1
     },
     {
+      "path": "wiki/runs/2026-07-13-cross-block-boundary-release.md",
+      "title": "Cross-Block Boundary Repair And Live Release",
+      "text": "# Cross-Block Boundary Repair And Live Release  Date: 2026-07-13  Status: complete for public website repair and Vercel production release.  ## Facts  - The architecture block now handles short desktop viewports without allowing its sticky content to be covered by the next service block. - Landing typography, layer card, stepper, and calculator work remain browser-local and provider-free. - Jarvis and dashboard mobile views now constrain headlines, paragraphs, messages, bullets, panels, and controls to the viewport. - The production alias is `https://<protected-preview-host>`. - Syntax checks, diff check, public safety scan, local captures, and production captures passed.  ## Interpretation  The supplied boundary failure was caused by a sticky frame whose minimum height exceeded a shallow desktop viewport. The repair uses a dedicated short-height scale and explicit mobile containment rules so section boundaries remain visually legible across the public views.  ## Gap  Figma baseline sync remains pending because the external-capture workflow requires Playwright MCP and that server was not available in this run. The existing Figma sync state was not falsely updated.  ## Next safe act",
+      "authority_state": "dated_evidence",
+      "superseded_by": "",
+      "authority_boost": -1
+    },
+    {
       "path": "wiki/runs/2026-07-13-icp-product-surface.md",
       "title": "Wiki Run - ICP Product Surface",
       "text": "# Wiki Run - ICP Product Surface  Date: 2026-07-13 Status: local/public implementation and board planning complete; production, market, and provider gates remain open  ## Task  Translate the owner ICP vision into ArchFlow's current knowledge architecture, marketing roles, public product story, operator dashboard, guarded Jarvis contract, and future installable-product plan.  ## Durable result  - Current audience knowledge is segmented by cohort, buyer, champion, exclusion, forcing moment, signal, pain, tool, channel, content, style, qualification, and evidence gap. - The marketing role graph binds executable skill packages to research, discovery, positioning, ABM preparation, claims/safety review, owner action, readback, growth evidence, packaging, and knowledge promotion. - The public website now contains only the seven-layer tower story, two service lanes, and a disclosed knowledge/agent planning scenario. - The dashboard now separates overview, architecture, knowledge, agents/skills, runs/evidence, reference, workflow, and plan views. - Jarvis is a separate public UI with public model search and an owner-gated API contract; provider calls and writeback remain zero. - Active retr",
@@ -9461,6 +9676,333 @@
       "authority_boost": -2
     }
   ],
+  "skill_catalog": {
+    "scope": "public repository skills only",
+    "packaged_count": 10,
+    "outside_inventory_policy": "Private or device-specific skills are not copied into the repository until provenance, license, secret/path safety, and a project use case pass review.",
+    "items": [
+      {
+        "id": "arcagcom",
+        "name": "arcagcom",
+        "description": "ArchFlow public project live-agent communication contract. Use before parallel work, role-based work, Prompt 2.1/Prompt 3 coordination, shared-file edits, Git closeout, or handoff.",
+        "path": "skills/arcagcom/SKILL.md",
+        "category": "coordination",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 5,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "2b69aeb15ff9881fa53d508ae4832f0d542b746ea97b645272f77d49250a1b4b"
+      },
+      {
+        "id": "archflow-architecture-operator",
+        "name": "archflow-architecture-operator",
+        "description": "Design, audit, or revise ArchFlow agentic architectures and role packs. Use when work concerns Goal Engineering, Loop Engineering, LangGraph sequencing, role and skill allocation, RAG or knowledge-layer boundaries, architecture generation, tool adoption, safety gates, architecture benchmarks, or conversion of a business workflow such as PRD, ICP, content, outreach, finance, engineering, or media into a bounded execution system.",
+        "path": "skills/archflow-architecture-operator/SKILL.md",
+        "category": "architecture",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 7,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "c1da8dd2fcb9a70130097d9be89b3b1de1ee173d2ed74460060582a992e7eaa9"
+      },
+      {
+        "id": "archflow-e1-runtime-guard",
+        "name": "archflow-e1-runtime-guard",
+        "description": "Validate the ArchFlow E1 runtime before Git push. Use after setup or before publication to confirm the public safety boundary, workflow YAML, LangGraph smoke path, LlamaIndex readiness, CrewAI readiness, and saved project skills without installing packages during the hook.",
+        "path": "skills/archflow-e1-runtime-guard/SKILL.md",
+        "category": "runtime boundary",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 5,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "b22cf19715d394addeb256fd9e810e8949c0ef33ce31000560177ac6a755cd79"
+      },
+      {
+        "id": "archflow-task-breakdown",
+        "name": "archflow-task-breakdown",
+        "description": "Break ArchFlow epics, tasks, and Notion initiatives into staged subtasks with execution order, gates, acceptance criteria, and public-safe reporting. Use for Block 1 knowledge-base work, LangGraph/CrewAI/LlamaIndex runtime planning, Notion task updates, agent-system architecture, and any ArchFlow task that must be decomposed without installing or changing everything at once.",
+        "path": "skills/archflow-task-breakdown/SKILL.md",
+        "category": "coordination",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 7,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "61d436f4a2a08e53afbcf5c18456b9bcbd589cdba6253840669873a60d6bdac2"
+      },
+      {
+        "id": "archflow1",
+        "name": "archflow1",
+        "description": "Local ArchFlow Jarvis stack operating contract for dashboard, jarvis-api, LangGraph, CrewAI, voice services, OpenRouter budget gates, and later Railway migration.",
+        "path": "skills/archflow1/SKILL.md",
+        "category": "runtime boundary",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 5,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "a3c2d9fe881c01d979ebdb0786ad2bb8dfa517ab1875937f9215d35ebdf4075a"
+      },
+      {
+        "id": "daily-public-project-review",
+        "name": "daily-public-project-review",
+        "description": "Run a daily retrospective over skills, tool usage, RAG retrieval state, and knowledgebase updates so the next cycle carries forward evidence and excludes recurring low-value work.",
+        "path": "skills/daily-public-project-review/SKILL.md",
+        "category": "review and handoff",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 4,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "2e22703109b6f7d732b68237b0cbedfffb104315f6244b42a8ef5f3d9cb887f0"
+      },
+      {
+        "id": "evening-skill-registry-update",
+        "name": "evening-skill-registry-update",
+        "description": "Review and align the public ArchFlow skill registry and handout hook with actual configured agents, skills, and evidence surfaces so recurring maintenance stays stable and low-entropy across days.",
+        "path": "skills/evening-skill-registry-update/SKILL.md",
+        "category": "coordination",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 4,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "21020dffcb48af76cb997416c82f65df59550275b147ed5aa838fcd9180d78fd"
+      },
+      {
+        "id": "outquestions",
+        "name": "outquestions",
+        "description": "Use this skill after each substantial ArchFlow execution, planning pass, Notion task update, GitHub update, dashboard/voice/hosting step, or multi-agent run to produce an execution report with the critical open questions, decisions, owner choices, and next-stage gates needed to move reliably.",
+        "path": "skills/outquestions/SKILL.md",
+        "category": "review and handoff",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 13,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "0d50828b66ea246784a714930d58c37778b24ba4ede8db810d3306cebdadc7ac"
+      },
+      {
+        "id": "priority-task-operator",
+        "name": "priority-task-operator",
+        "description": "Select the highest priority unfinished task by urgency and importance from `project-plan.md`, start the execution handoff as a fresh operator/chat packet, and prepare KB + Notion + GitHub follow-up evidence.",
+        "path": "skills/priority-task-operator/SKILL.md",
+        "category": "coordination",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 3,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "e0b904a504b5f0dd660d798802312547447f2e9b3606844c4acb1b17db1487c6"
+      },
+      {
+        "id": "task-handout",
+        "name": "task-handout",
+        "description": "Create a public-safe execution handout after substantial project work, multi-agent routing, or subtask execution. Use when a prompt hook asks for it, when a run uses one or more agent roles, when one or more subtasks are solved or changed, or when another operator needs a readable human summary plus an agent-ready continuation prompt.",
+        "path": "skills/task-handout/SKILL.md",
+        "category": "review and handoff",
+        "status": "packaged_public_contract",
+        "visibility": "public",
+        "portable": true,
+        "reference_count": 12,
+        "safe_to_share": true,
+        "permissions": [
+          "read public-safe sources",
+          "draft scoped output",
+          "run declared local checks"
+        ],
+        "forbidden_actions": [
+          "provider activation",
+          "external writeback",
+          "secret collection"
+        ],
+        "verified_invocations": null,
+        "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+        "content_sha256": "27ae9989926a347ad2eb1a6c9efd4ee8579661cb611c0f480e2dd97c536447c0"
+      }
+    ]
+  },
+  "public_database": {
+    "kind": "generated_public_json_catalog",
+    "storage": "project/dashboard/data.json",
+    "write_mode": "generator output only; the browser cannot mutate repository data",
+    "query_mode": "read-only SQL-like subset in the browser; not a server database",
+    "tables": [
+      {
+        "name": "skills",
+        "purpose": "Portable skill contracts shipped with this repository.",
+        "columns": [
+          "id",
+          "name",
+          "category",
+          "status",
+          "reference_count",
+          "path",
+          "safe_to_share"
+        ],
+        "rows": 10
+      },
+      {
+        "name": "roles",
+        "purpose": "Configured CrewAI-style roles and their declared goals.",
+        "columns": [
+          "id",
+          "role",
+          "goal",
+          "skills"
+        ],
+        "rows": 12
+      },
+      {
+        "name": "workflow_nodes",
+        "purpose": "LangGraph contract nodes that describe routing and ownership.",
+        "columns": [
+          "id",
+          "owner",
+          "purpose",
+          "output"
+        ],
+        "rows": 14
+      },
+      {
+        "name": "sources",
+        "purpose": "Public documentation references used by the console.",
+        "columns": [
+          "label",
+          "url"
+        ],
+        "rows": 7
+      },
+      {
+        "name": "runs",
+        "purpose": "Public-safe project, report, and WikiLLM activity records.",
+        "columns": [
+          "kind",
+          "path",
+          "title",
+          "modified",
+          "size"
+        ],
+        "rows": 519
+      }
+    ],
+    "supported_examples": [
+      "SELECT id, name, category, reference_count FROM skills LIMIT 20",
+      "SELECT id, role, goal FROM roles LIMIT 20",
+      "SELECT id, owner, purpose FROM workflow_nodes LIMIT 20"
+    ]
+  },
   "sources": [
     {
       "label": "LangGraph overview",

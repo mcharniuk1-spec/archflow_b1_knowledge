@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchFlow browser-local review bundle",
+  "type": "object",
+  "required": ["schema_version", "kind", "created_at", "workflow_kind", "truth_boundary", "suggested_operator_actions"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "kind": {"const": "archflow_browser_local_review_bundle"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "workflow_kind": {"enum": ["service", "control"]},
+    "truth_boundary": {"type": "string"},
+    "suggested_operator_actions": {"type": "array", "items": {"type": "string"}},
+    "workflow_schema": {"type": "object"},
+    "role_configuration": {"type": "array"},
+    "local_packets": {"type": "array"},
+    "sequence": {"type": "object"}
+  },
+  "additionalProperties": true
+}

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Render-smoke the static ArchFlow dashboard routes with headless Chrome.
 
-This test proves the documentation-first operator console can render its seven
-current routes without a live backend:
+This test proves the documentation-first operator console can render its
+current product and reference routes without a live backend:
 
 - overview, architecture, knowledge, agents, runs, reference, and workflow;
 - the ICP-aligned E1-E8 plan.
@@ -43,7 +43,7 @@ ROUTE_MARKERS = {
         "Documentation-first architecture console",
         "Build a maintained company brain",
         "Seven public groups",
-        "Current proof and gate states",
+        "What the architecture can support today",
     ],
     "#architecture": [
         "One operating system, seven grouped layers",
@@ -61,6 +61,19 @@ ROUTE_MARKERS = {
         "Roles are contracts, not personas",
         "Configured specialist roles",
         "Skill governance",
+        "Reviewed public skill catalog",
+    ],
+    "#operations": [
+        "Two clear products, one governed handoff",
+        "Knowledge Service",
+        "Agent Control",
+        "Prepare a review bundle",
+    ],
+    "#data": [
+        "Inspect the public catalog without inventing a production database",
+        "Read-only fixture query lab",
+        "Run public preview",
+        "Gated database roadmap",
     ],
     "#runs": [
         "Separate configuration, execution, review, and promotion",

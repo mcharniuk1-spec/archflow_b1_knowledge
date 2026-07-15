@@ -3,6 +3,8 @@ const primaryTabs = [
   { id: "architecture", label: "Architecture", glyph: "AR" },
   { id: "knowledge", label: "Knowledge", glyph: "KN" },
   { id: "agents", label: "Agents & Skills", glyph: "AS" },
+  { id: "operations", label: "Operations", glyph: "OP" },
+  { id: "data", label: "Data Lab", glyph: "DB" },
   { id: "runs", label: "Runs & Evidence", glyph: "RE" },
   { id: "reference", label: "Reference", glyph: "RF" },
 ];
@@ -160,6 +162,7 @@ const storageKeys = {
   apiBase: "archflow.jarvis.apiBase",
   schemaViewMode: "archflow.dashboard.schemaViewMode",
   schemaInspectorCollapsed: "archflow.dashboard.schemaInspectorCollapsed",
+  executionPreview: "archflow.dashboard.executionPreview",
   architectureLayer: "archflow.dashboard.architectureLayer",
 };
 
@@ -209,6 +212,14 @@ let activeRecognition = null;
 let voiceTimerId = null;
 let voiceStartedAt = null;
 let voiceElapsedSeconds = 0;
+let executionPreviewTimer = null;
+let executionPreview = loadJson(storageKeys.executionPreview, {
+  workflow: "control",
+  state: "idle",
+  stageIndex: -1,
+  packetId: null,
+  updatedAt: null,
+});
 let jarvisApiBase = (localStorage.getItem(storageKeys.apiBase) || defaultJarvisApiBase()).replace(/\/+$/, "");
 let apiHealthTimer = null;
 let jarvisApiState = {
@@ -1429,7 +1440,7 @@ function systemCards(data) {
     { label: "Voice", value: "disabled", note: "Text chat and file transfer only on this dashboard", tone: "warn" },
     { label: "File transfer", value: pendingAttachments.length ? "pending" : "ready", note: pendingAttachments.length ? `${pendingAttachments.length} attachment(s) staged for next chat message` : "Bounded text excerpts or metadata-only packets", tone: pendingAttachments.length ? "ok" : "warn" },
     { label: "Provider keys", value: "server env only", note: "Provider keys are never exposed to static JS; provider calls require API/budget gates", tone: "warn" },
-    { label: "E1.3", value: e13?.derived_status || "unknown", note: e13 ? `${e13.passed_count}/${e13.assertion_count} readback` : "No gate data", tone: e13?.readback_status === "passed" ? "ok" : "warn" },
+    { label: "E1.3", value: e13?.derived_status || "unknown", note: e13 ? "Recorded fixture readback; inspect the evidence ledger for scope and next gate." : "No gate data", tone: e13?.readback_status === "passed" ? "ok" : "warn" },
     { label: "Railway", value: "deferred", note: "Use for backend, SSE, auth, workers, durable writes", tone: "warn" },
   ];
 }
@@ -1600,6 +1611,151 @@ function taskStages() {
   return ["Intake", "Role Assignment", "Active Work", "QA Gate", "Docs/Reports", "Git/Deploy", "Notion/Memory", "Final Decision"];
 }
 
+// This is intentionally a browser-local packet-preparation state machine. It
+// makes the review sequence visible without pretending that a provider, agent,
+// database, or repository write has occurred.
+function executionStages(kind) {
+  return kind === "service"
+    ? [
+      ["Intake", "Classify a supplied, public-safe source summary and its constraints."],
+      ["Context", "Assemble the bounded source references needed for a review packet."],
+      ["Plan", "Choose the smallest PRD/ICP task graph and its role contracts."],
+      ["Evidence", "Mark assumptions, missing evidence, and reviewer questions."],
+      ["Review", "Check the packet for source, claim, and scope problems."],
+      ["Approval", "Stop for an owner decision before any external action."],
+      ["Packet", "Export a local review bundle for an operator to apply."],
+    ]
+    : [
+      ["Request", "Capture the operator request and its authority boundary."],
+      ["Classify", "Choose the task type, risk level, and expected output."],
+      ["Contract", "Define role scope, sources, stop rules, and an independent reviewer."],
+      ["Bounded work", "Prepare the requested local task packet; no agent is launched here."],
+      ["Review", "Require correctness and safety review before a handoff."],
+      ["Approval", "Hold writeback, provider, deployment, and Git actions for explicit approval."],
+      ["Packet", "Export the review bundle for Codex or another approved operator."],
+    ];
+}
+
+function saveExecutionPreview() {
+  localStorage.setItem(storageKeys.executionPreview, JSON.stringify(executionPreview));
+}
+
+function resetExecutionPreview(kind = schemaKindForActiveTab()) {
+  if (executionPreviewTimer) window.clearTimeout(executionPreviewTimer);
+  executionPreviewTimer = null;
+  executionPreview = { workflow: kind, state: "idle", stageIndex: -1, packetId: null, updatedAt: nowIso() };
+  saveExecutionPreview();
+}
+
+function advanceExecutionPreview() {
+  const stages = executionStages(executionPreview.workflow);
+  const nextIndex = executionPreview.stageIndex + 1;
+  if (nextIndex >= stages.length) {
+    const packet = createLocalPacket("session-review-bundle", "browser-local sequence", `Prepared ${executionPreview.workflow} review bundle through ${stages.length} visible stages.`, {
+      extra: {
+        workflow_kind: executionPreview.workflow,
+        stage_sequence: stages.map(([title]) => title),
+        local_schema: blockSchema,
+        status: "review_required_not_executed",
+        execution_boundary: "The sequence prepared a browser-local review bundle. It did not run an agent, modify repository files, query a live database, or write externally.",
+      },
+    });
+    executionPreview = { ...executionPreview, state: "complete", stageIndex: stages.length - 1, packetId: packet.id, updatedAt: nowIso() };
+    saveExecutionPreview();
+    appendEvent("Review bundle prepared", "The visible sequence completed locally. Download the bundle and ask an approved operator to review or apply it.", "ok");
+    render();
+    return;
+  }
+  executionPreview = { ...executionPreview, state: "preparing", stageIndex: nextIndex, updatedAt: nowIso() };
+  saveExecutionPreview();
+  render();
+  executionPreviewTimer = window.setTimeout(advanceExecutionPreview, 700);
+}
+
+function startExecutionPreview(kind = schemaKindForActiveTab()) {
+  if (executionPreview.state === "preparing") return;
+  resetExecutionPreview(kind);
+  executionPreview = { ...executionPreview, state: "preparing", updatedAt: nowIso() };
+  saveExecutionPreview();
+  appendEvent("Local review sequence started", "The browser is preparing a review bundle only; no runtime agent or repository action has started.", "ok");
+  advanceExecutionPreview();
+}
+
+function downloadSessionReviewBundle() {
+  const kind = schemaKindForActiveTab();
+  const bundle = {
+    schema_version: "1.0",
+    kind: "archflow_browser_local_review_bundle",
+    created_at: nowIso(),
+    workflow_kind: kind,
+    truth_boundary: "Browser-local export only. No repository files, provider calls, live database writes, subagent launches, or external writeback occurred.",
+    suggested_operator_actions: [
+      "Review source boundary and requested changes.",
+      "Move approved content into a scoped repository change.",
+      "Run project checks before any Git action.",
+      "Use a separate approval for provider, writeback, deploy, or push actions.",
+    ],
+    workflow_schema: blockSchema,
+    role_configuration: roleConfigs,
+    local_packets: localPackets,
+    sequence: executionPreview,
+  };
+  const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `archflow-${kind}-review-bundle-${new Date().toISOString().slice(0, 10)}.json`;
+  anchor.click();
+  URL.revokeObjectURL(url);
+  appendEvent("Review bundle downloaded", "Downloaded browser-local JSON for operator review; it is not a repository patch or commit.", "ok");
+}
+
+function renderExecutionTimeline(kind) {
+  const stages = executionStages(kind);
+  const isCurrentWorkflow = executionPreview.workflow === kind;
+  const isPreparing = isCurrentWorkflow && executionPreview.state === "preparing";
+  const isComplete = isCurrentWorkflow && executionPreview.state === "complete";
+  return `
+    <section class="execution-timeline" aria-labelledby="execution-timeline-title">
+      <div class="section-header">
+        <div>
+          <span class="eyebrow">Visible request sequence</span>
+          <h3 id="execution-timeline-title">Prepare a review bundle, then hand it to an approved operator.</h3>
+          <p class="muted">This shows the current browser-local packet-preparation step. It becomes live runtime status only when a verified state feed provides a run identifier, node identifier, timestamp, evidence reference, and authority scope.</p>
+        </div>
+        <div class="row-actions">
+          <button class="primary" id="sequenceStart" type="button">Prepare review bundle</button>
+          <button class="button" id="sequenceReset" type="button">Reset sequence</button>
+          <button class="button" id="sequenceDownload" type="button">Download session bundle</button>
+        </div>
+      </div>
+      <ol class="execution-stage-list" aria-live="polite">
+        ${stages.map(([title, description], index) => {
+          const complete = isComplete || (isPreparing && index < executionPreview.stageIndex);
+          const active = isPreparing && index === executionPreview.stageIndex;
+          const state = active ? "preparing locally" : complete ? "prepared" : "idle";
+          return `<li class="execution-stage ${active ? "is-active" : ""} ${complete ? "is-complete" : ""} ${!active && !complete ? "is-idle" : ""}" ${active ? 'aria-current="step"' : ""}>
+            <span class="execution-stage-number">${complete ? "✓" : String(index + 1).padStart(2, "0")}</span>
+            <span><strong>${escapeHtml(title)}</strong><small>${escapeHtml(description)}</small></span>
+            <em>${state}</em>
+          </li>`;
+        }).join("")}
+      </ol>
+      <p class="execution-timeline-note">${isPreparing ? "A local review packet is being assembled. No agent is running outside this browser." : isComplete ? "Local packet sequence complete. Download the bundle, then use an approved operator to create or review repository changes." : "No live execution observed. Start this only to prepare a browser-local review bundle."}</p>
+    </section>
+  `;
+}
+
+function bindExecutionTimelineControls(kind) {
+  view.querySelector("#sequenceStart")?.addEventListener("click", () => startExecutionPreview(kind));
+  view.querySelector("#sequenceReset")?.addEventListener("click", () => {
+    resetExecutionPreview(kind);
+    appendEvent("Local review sequence reset", "The browser-local sequence state was reset. No runtime state was changed.", "warn");
+    render();
+  });
+  view.querySelector("#sequenceDownload")?.addEventListener("click", downloadSessionReviewBundle);
+}
+
 function defaultRoleConfigs() {
   const makeRole = (id, title, objective, responsibility, tools, modelRoute, budgetMode, outputArtifact, reviewGate, status, handoffTarget) => ({
     id,
@@ -1615,19 +1771,19 @@ function defaultRoleConfigs() {
     handoffTarget,
   });
   return [
-    makeRole("jesus", "Jesus", "Lead integration and final acceptance.", "Merge order, final validation, Git push packet, and handout.", "Codex, Git, validation scripts", "Codex operator", "local only", "agent-handout.md", "AF Review plus owner gate", "active", "Owner approval"),
-    makeRole("messi", "Messi", "Close out PM evidence without overclaiming.", "Notion/GitHub/project closeout, E1/E1.3.9 status, report links, task evidence.", "Notion package, wiki log, Git status", "Codex operator", "local only", "notion-update-package.md", "Evidence exists first", "review", "Jesus"),
-    makeRole("lol", "LOL", "Own dashboard UX and block schema surface.", "Screen 1, Screen 2, role panels, composer, voice states, schema controls.", "Dashboard JS/CSS, static smoke", "Codex operator", "local only", "dashboard UI diff", "Browser/static proof", "active", "Jesus"),
-    makeRole("ronaldinho", "Ronaldinho", "Review runtime and backend claims.", "Backend/API, LangGraph, CrewAI, OpenRouter, env, Railway, voice, runtime boundaries.", "FastAPI, YAML, runtime guards", "Codex operator", "no provider spend", "technical review", "Provider disabled check", "review", "Jesus"),
-    makeRole("ronaldo", "Ronaldo", "Protect product and ICP consistency.", "PRD/ICP offer, buyer value, current single ICP lane, demo/report consistency.", "Reports, ICP docs, PRD template", "Codex operator", "local only", "ICP review", "Source support", "review", "Jesus"),
-    makeRole("yushchenko", "Yushchenko", "Keep model budget and ledger discipline.", "OpenRouter ledger, token/cost discipline, 5.00 USD daily cap, 1.99 USD hard stop.", "model-routing.yaml, ledger schema", "OpenRouter gated", "stop before 1.99 USD", "budget verdict", "Ledger required", "gated", "Jesus"),
-    makeRole("theory", "Theory Subagent", "Ground PRD and discovery structure.", "FreePRD, PRD theory, ICP theory, discovery-call theory, missing-info questions.", "PRD/report templates", "Codex operator", "local only", "theory notes", "Source review", "review", "Ronaldo"),
-    makeRole("security", "Security Subagent", "Protect secrets and unsafe write paths.", "Env variables, Telegram migration, secret scan, browser key ban, raw transcript policy.", "public safety scan, env examples", "Codex operator", "local only", "security checklist", "Secret scan", "active", "Ronaldinho"),
-    makeRole("actor", "Actor", "Execute one bounded task slice.", "Implement assigned scope without reverting unrelated changes.", "Scoped editor tools", "Codex operator", "local only", "bounded patch", "Reviewer required", "available", "Jesus"),
-    makeRole("af_tools", "AF Tools", "Verify sources, providers, and tools.", "Readiness checks, source inventory, provider status, runtime boundaries.", "runtime guard, config check", "Codex operator", "local only", "tool readiness", "AF Review", "active", "Jesus"),
-    makeRole("af_knowledge", "AF Knowledge", "Prepare reviewed memory packets.", "WikiLLM, run notes, insights, and public-safe memory candidates.", "wiki files, run notes", "Codex operator", "local only", "KB update packet", "Memory approval", "review", "Messi"),
-    makeRole("af_publisher", "AF Publisher", "Prepare publication only after gates pass.", "Git/deploy/report packet, release notes, blocked send reasons.", "Git, Vercel gated, reports", "Codex operator", "local only", "publication packet", "Owner approval", "gated", "Jesus"),
-    makeRole("af_review", "AF Review", "Approve, revise, or block final output.", "Public safety, claim support, runtime boundary, docs/check evidence.", "safety scan, diff check, smoke", "Codex operator", "local only", "review verdict", "Required before push", "active", "Jesus"),
+    makeRole("integrator", "Integrator", "Lead integration and final acceptance.", "Merge order, final validation, Git-ready packet, and handout.", "Codex, Git, validation scripts", "Codex operator", "local only", "agent-handout.md", "AF Review plus owner gate", "active", "Owner approval"),
+    makeRole("delivery_reviewer", "Delivery Reviewer", "Close out delivery evidence without overclaiming.", "Project closeout, report links, task evidence, and handoff review.", "Run notes, wiki log, Git status", "Codex operator", "local only", "review-package.md", "Evidence exists first", "review", "Integrator"),
+    makeRole("experience_engineer", "Experience Engineer", "Own dashboard UX and workflow control surfaces.", "Knowledge Service, Agent Control, role panels, composer states, and schema controls.", "Dashboard JS/CSS, static smoke", "Codex operator", "local only", "dashboard UI diff", "Browser/static proof", "active", "Integrator"),
+    makeRole("technical_reviewer", "Technical Reviewer", "Review runtime and backend claims.", "Backend/API, LangGraph, CrewAI, provider, environment, hosting, and runtime boundaries.", "FastAPI, YAML, runtime guards", "Codex operator", "no provider spend", "technical review", "Provider disabled check", "review", "Integrator"),
+    makeRole("product_reviewer", "Product Reviewer", "Protect product and ICP consistency.", "PRD/ICP offer, buyer value, current ICP lane, and demo/report consistency.", "Reports, ICP docs, PRD template", "Codex operator", "local only", "ICP review", "Source support", "review", "Integrator"),
+    makeRole("efficiency_observer", "Model-Efficiency Observer", "Keep model budget and ledger discipline.", "Provider route, token/cost discipline, budget cap, and logging gaps.", "model-routing.yaml, ledger schema", "provider gated", "stop before the configured hard cap", "budget verdict", "Ledger required", "gated", "Integrator"),
+    makeRole("research_advisor", "Research Advisor", "Ground PRD and discovery structure.", "PRD theory, ICP theory, discovery-call theory, and missing-information questions.", "PRD/report templates", "Codex operator", "local only", "theory notes", "Source review", "review", "Product Reviewer"),
+    makeRole("safety_reviewer", "Safety Reviewer", "Protect secrets and unsafe write paths.", "Environment variables, secret scans, browser key ban, and raw-source policy.", "public safety scan, env examples", "Codex operator", "local only", "security checklist", "Secret scan", "active", "Technical Reviewer"),
+    makeRole("bounded_executor", "Bounded Executor", "Execute one approved task slice.", "Implement assigned scope without reverting unrelated changes.", "Scoped editor tools", "Codex operator", "local only", "bounded patch", "Reviewer required", "available", "Integrator"),
+    makeRole("af_tools", "AF Tools", "Verify sources, providers, and tools.", "Readiness checks, source inventory, provider status, runtime boundaries.", "runtime guard, config check", "Codex operator", "local only", "tool readiness", "AF Review", "active", "Integrator"),
+    makeRole("af_knowledge", "AF Knowledge", "Prepare reviewed memory packets.", "WikiLLM, run notes, insights, and public-safe memory candidates.", "wiki files, run notes", "Codex operator", "local only", "KB update packet", "Memory approval", "review", "Delivery Reviewer"),
+    makeRole("af_publisher", "AF Publisher", "Prepare publication only after gates pass.", "Git/deploy/report packet, release notes, blocked send reasons.", "Git, hosting gated, reports", "Codex operator", "local only", "publication packet", "Owner approval", "gated", "Integrator"),
+    makeRole("af_review", "AF Review", "Approve, revise, or block final output.", "Public safety, claim support, runtime boundary, docs/check evidence.", "safety scan, diff check, smoke", "Codex operator", "local only", "review verdict", "Required before push", "active", "Integrator"),
     makeRole("crewai_workers", "CrewAI Role Workers", "Represent CrewAI roles without default runtime promotion.", "Configured role/task workers; Level 3 deterministic proof is evidence only.", "crewai-crew.yaml, proof artifacts", "proof_passed_not_default_runtime", "0.00 USD proof spend", "CrewAI proof packet", "Provider/default approval required", "eligible", "LangGraph"),
   ];
 }
@@ -2088,8 +2244,8 @@ function renderJarvis(data) {
       </div>
       <div class="grid cols-3">
         <article class="row proof-command">
-          <span class="row-title">Jesus command state</span>
-          <div class="row-meta">Jesus accepted JDB-10 as review-ready for the static dashboard scope. Continue preserving provider, backend, writeback, voice, Nexus, deploy, and website-source gates.</div>
+          <span class="row-title">Integrator review state</span>
+          <div class="row-meta">The static dashboard scope is review-ready. Continue preserving provider, backend, writeback, voice, Nexus, deploy, and website-source gates.</div>
         </article>
         <article class="row proof-command">
           <span class="row-title">Next product step</span>
@@ -2097,7 +2253,7 @@ function renderJarvis(data) {
         </article>
         <article class="row proof-command">
           <span class="row-title">Next control step</span>
-          <div class="row-meta">Run final validation, preserve the accepted static dashboard boundary, and keep Ronaldo's website closeout separate from dashboard acceptance.</div>
+          <div class="row-meta">Run final validation, preserve the accepted static dashboard boundary, and keep website closeout separate from dashboard acceptance.</div>
         </article>
       </div>
       <div class="proof-grid">
@@ -2553,22 +2709,24 @@ function renderSchema(data) {
           <button class="button" id="schemaInspectorToggle" type="button" aria-pressed="${!schemaInspectorCollapsed}">${schemaInspectorCollapsed ? "Show inspector" : "Hide inspector"}</button>
           <button class="button ${kind === "service" ? "active-soft" : ""}" data-architecture="service" type="button">Screen 1</button>
           <button class="button ${kind === "control" ? "active-soft" : ""}" data-architecture="control" type="button">Screen 2</button>
-          <button class="button schema-add" data-type="agent" type="button">Local agent</button>
-          <button class="button schema-add" data-type="router" type="button">Local router</button>
-          <button class="button schema-add" data-type="parallel" type="button">Local parallel</button>
-          <button class="button schema-add" data-type="approval" type="button">Local approval</button>
+          <button class="button schema-add" data-type="agent" type="button">Draft role contract</button>
+          <button class="button schema-add" data-type="router" type="button">Draft route</button>
+          <button class="button schema-add" data-type="parallel" type="button">Draft parallel scope</button>
+          <button class="button schema-add" data-type="approval" type="button">Draft approval gate</button>
           <button class="button" id="schemaConnect" type="button">${blockSchemaConnectSource ? "Cancel local connect" : "Local connect"}</button>
           <button class="button" id="schemaLayout" type="button">Local layout</button>
           <button class="button" id="schemaZoomOut" type="button">Zoom out</button>
           <button class="button" id="schemaZoomIn" type="button">Zoom in</button>
           <button class="button" id="schemaZoomReset" type="button">Reset zoom</button>
           <button class="button" id="schemaZoomFit" type="button">Fit</button>
-          <button class="button" id="schemaBackendSend" type="button">Send to backend</button>
+          <button class="button" id="schemaBackendSend" type="button">Submit review packet</button>
           <button class="primary" id="schemaExport" type="button">Export review packet</button>
         </div>
       </div>
 
-      <div class="callout" id="schemaBackendStatus">Backend send is provider-disabled and creates a review packet only. Durable writes still require Codex/operator approval.</div>
+      <div class="callout" id="schemaBackendStatus">Review-packet submission is provider-disabled. It may reach a guarded endpoint when available, but cannot launch an agent, write files, push Git, or perform durable writeback.</div>
+
+      ${renderExecutionTimeline(kind)}
 
       <div class="schema-stage-rail" aria-label="Workflow stage rail">
         ${(kind === "service"
@@ -2628,7 +2786,7 @@ function renderSchema(data) {
           ${!validation.errors.length && !validation.warnings.length ? `<li class="ok">OK: graph is ready for review export.</li>` : ""}
         </ul>
         <div class="row-actions">
-          <button class="button" id="schemaQueueSelected" type="button">Queue local node</button>
+          <button class="button" id="schemaQueueSelected" type="button">Draft selected task</button>
           <button class="button" id="schemaReset" type="button">Reset local schema</button>
         </div>
       </section>
@@ -2750,7 +2908,7 @@ function renderNodeControlPanel(node) {
             </div>
             <div class="row-actions">
               <button class="primary" type="submit">Save local node</button>
-              <button class="button" id="nodePanelQueue" type="button">Queue local node</button>
+              <button class="button" id="nodePanelQueue" type="button">Draft task packet</button>
               <button class="button" id="nodePanelClose" type="button">Close</button>
             </div>
           </header>
@@ -3011,6 +3169,7 @@ function bindSchemaEditor() {
 
   view.querySelector("#schemaExport")?.addEventListener("click", exportBlockSchemaPacket);
   view.querySelector("#schemaBackendSend")?.addEventListener("click", sendBlockSchemaToBackend);
+  bindExecutionTimelineControls(schemaKindForActiveTab());
   view.querySelector("#schemaQueueSelected")?.addEventListener("click", queueSelectedSchemaNode);
   view.querySelector("#schemaReset")?.addEventListener("click", () => {
     const kind = schemaKindForActiveTab();
@@ -3630,12 +3789,12 @@ function renderOverview(data) {
 
     <section class="panel proof-state-panel">
       <div class="section-header">
-        <div><span class="eyebrow">Evidence, not marketing percentages</span><h2 class="section-title">Current proof and gate states</h2></div>
+        <div><span class="eyebrow">Current proof boundaries</span><h2 class="section-title">What the architecture can support today</h2></div>
         <a class="button" href="#runs">Open evidence ledger</a>
       </div>
       <div class="proof-state-grid">
         ${card({ label: "Knowledge memory", value: `${data.wiki?.file_count ?? "Unknown"} public files`, note: "WikiLLM is durable public memory; source files remain authoritative", tone: "ok" })}
-        ${card({ label: "Goal readback", value: e13.derived_status || "unknown", note: `${e13.passed_count ?? 0}/${e13.assertion_count ?? 0} recorded assertions in generated data`, tone: e13.readback_status === "passed" ? "ok" : "warn" })}
+        ${card({ label: "Goal readback", value: e13.derived_status || "unknown", note: "A recorded fixture supports this scope only; the evidence ledger names what it does not prove and the next gate.", tone: e13.readback_status === "passed" ? "ok" : "warn" })}
         ${card({ label: "Retrieval", value: data.llamaindex?.status || "unknown", note: "Bounded hybrid contract with deterministic lexical fallback", tone: "warn" })}
         ${card({ label: "Role execution", value: data.crewai?.level_3_status || data.crewai?.status || "unknown", note: "Deterministic fixture is not the default/provider runtime", tone: "warn" })}
         ${card({ label: "Structural graph", value: data.graphify?.status || "unknown", note: "Generated reference, never canonical human synthesis", tone: data.graphify?.status === "available" ? "ok" : "warn" })}
@@ -3711,12 +3870,99 @@ function renderKnowledge(data) {
       ])}</section>
       <section class="panel"><h2 class="section-title">Corpus boundary</h2><h4>Included</h4>${renderStringList(rag.include || ["See workflow contract"])}<h4>Excluded</h4>${renderStringList(rag.exclude || ["See workflow contract"])}<div class="docs-callout warning"><strong>Proof note</strong><p>The browser query view is a lexical preview over generated dashboard data. It is not proof that the full hybrid runtime executed.</p></div></section>
     </div>
+    <section class="panel" style="margin-top:16px"><div class="section-header"><div><span class="eyebrow">Data boundary</span><h2 class="section-title">Four storage layers, four different responsibilities</h2></div><a class="button" href="#data">Open Data Lab</a></div><p>The public generated index makes repository contracts inspectable. Browser-local drafts let an operator assemble a review packet without changing source files. A private runtime store is not represented here and must remain isolated from the public index. A future authenticated database is a separate product milestone, not an implied feature of retrieval.</p>${table(["Layer", "Purpose now", "Write authority"], [
+      ["Public generated index", "Skills, roles, workflow nodes, sources, and run summaries", "Generator output only"],
+      ["Browser-local drafts", "Schema edits, local packet state, and downloadable review bundles", "This browser only"],
+      ["Private runtime store", "Not exposed by this public console", "Gated private operator runtime"],
+      ["Future authenticated database", "Evidence ledger and multi-user controls after operational proof", "Not implemented"],
+    ].map((row) => row.map(escapeHtml)))}</section>
   `;
+}
+
+function renderOperations(data) {
+  const kind = architectureMode === "control" ? "control" : "service";
+  const agentCount = (data.crewai?.agents || []).length;
+  return (view.innerHTML = `
+    <section class="docs-hero compact">
+      <div><span class="eyebrow">Operating model</span><h2>Two clear products, one governed handoff.</h2></div>
+      <p><strong>Knowledge Service</strong> turns an approved source boundary into a reviewed decision or delivery packet. <strong>Agent Control</strong> turns an approved request into explicit roles, task contracts, review gates, and a handoff. Both stop before provider use, file creation, Git, database writes, deployment, or external writeback unless a separately approved operator action occurs.</p>
+    </section>
+    <div class="docs-grid two">
+      <section class="panel"><span class="eyebrow">Knowledge Service</span><h2 class="section-title">Source to reviewed output</h2><p>Use it when a product, research, or customer context must become a clear PRD, ICP, decision brief, backlog, or knowledge update. The operator supplies a bounded source summary, intended output, and review owner. The system produces a review packet with facts, interpretations, hypotheses, gaps, and the next safe action.</p><p class="muted">It cannot ingest arbitrary private folders, treat a retrieval score as truth, or promote a conclusion to durable memory automatically.</p><a class="button" href="#service">Open Knowledge Service workflow</a></section>
+      <section class="panel"><span class="eyebrow">Agent Control</span><h2 class="section-title">Request to governed handoff</h2><p>Use it to decide who may do bounded work, which skills and sources they may use, how parallel branches avoid file conflicts, and who independently verifies the result. It generates role and task contracts; Codex or another approved operator performs any real file work.</p><p class="muted">${agentCount} configured role contracts are represented in the public data. They are not always-running agents or a provider execution claim.</p><a class="button" href="#schema">Open Agent Control workflow</a></section>
+    </div>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Current sequence</span><h2 class="section-title">Make the requested work inspectable before it becomes executable.</h2></div>${architectureSelectorMarkup("operations")}</div>
+      <p class="muted">The animated current stage below is an intentionally local packet-preparation preview. A future live state feed must include a run ID, node ID, state, timestamp, evidence reference, authority scope, and writeback state before this console may represent it as runtime execution.</p>
+      ${renderExecutionTimeline(kind)}
+    </section>
+    <section class="panel" style="margin-top:16px"><h2 class="section-title">Who acts at each stage</h2>${table(["Stage", "Control", "Output", "Gate"], [
+      ["Intake", "Owner defines objective, source boundary, and desired artifact.", "Task contract", "Scope and authority checked"],
+      ["Design", "LangGraph contract routes the smallest viable workflow; CrewAI roles remain bounded workers.", "Node and role contracts", "No overlapping file claim"],
+      ["Knowledge", "LlamaIndex retrieval and CAG assemble approved context; WikiLLM keeps reviewed durable memory.", "Evidence-backed context capsule", "Provenance and corpus boundary"],
+      ["Work", "Approved operator or bounded worker creates a candidate artifact.", "Scoped draft and changed-file proposal", "No external side effect"],
+      ["Review", "Independent reviewer checks correctness, safety, and claims.", "Verdict, gaps, next action", "Maker and reviewer stay separate"],
+      ["Handoff", "Operator may apply an approved repository change or separately request an external action.", "Run handout or review bundle", "Git, provider, deploy, and writeback remain explicit approvals"],
+    ].map((row) => row.map(escapeHtml)))}</section>
+  `);
+  bindArchitectureSelectors(view);
+  bindExecutionTimelineControls(kind);
+}
+
+function dataLabRows(data, tableName) {
+  const rows = {
+    skills: data.skill_catalog?.items || [],
+    roles: (data.crewai?.agents || []).map((agent) => ({ id: agent.id, role: agent.role, goal: agent.goal, skills: (agent.skills || []).join(", ") })),
+    workflow_nodes: data.langgraph?.nodes || [],
+    sources: data.sources || [],
+    runs: data.activity || [],
+  };
+  return rows[tableName] || [];
+}
+
+function runDataLabQuery(query) {
+  const result = view.querySelector("#dataQueryResult");
+  const normalized = String(query || "").trim();
+  const match = normalized.match(/^SELECT\s+([A-Za-z0-9_*,\s]+)\s+FROM\s+(skills|roles|workflow_nodes|sources|runs)(?:\s+LIMIT\s+(\d+))?\s*;?$/i);
+  if (!match) {
+    if (result) result.innerHTML = `<div class="callout">Only read-only examples are accepted: <span class="code">SELECT id, name FROM skills LIMIT 20</span>. WHERE clauses, joins, functions, mutations, and external connections are intentionally unavailable.</div>`;
+    return;
+  }
+  const [, requestedColumns, tableName, rawLimit] = match;
+  const rows = dataLabRows(dashboardData, tableName);
+  const available = Object.keys(rows[0] || {});
+  const columns = requestedColumns.trim() === "*" ? available : requestedColumns.split(",").map((column) => column.trim()).filter(Boolean);
+  const invalid = columns.find((column) => !available.includes(column));
+  if (invalid) {
+    if (result) result.innerHTML = `<div class="callout">Column <strong>${escapeHtml(invalid)}</strong> is not available in <strong>${escapeHtml(tableName)}</strong>. Available: ${escapeHtml(available.join(", ") || "no rows")}.</div>`;
+    return;
+  }
+  const limit = Math.min(Math.max(Number(rawLimit || 20), 1), 50);
+  const displayRows = rows.slice(0, limit).map((row) => columns.map((column) => {
+    const value = Array.isArray(row[column]) ? row[column].join(", ") : row[column];
+    return escapeHtml(value ?? "");
+  }));
+  if (result) result.innerHTML = `<p class="muted">${displayRows.length} public generated row(s). This result is browser-local and read-only.</p>${table(columns, displayRows)}`;
+}
+
+function renderDataLab(data) {
+  const database = data.public_database || {};
+  view.innerHTML = `
+    <section class="docs-hero compact"><div><span class="eyebrow">Data architecture</span><h2>Inspect the public catalog without inventing a production database.</h2></div><p>The dashboard reads generated JSON and browser-local drafts. It does not connect to a customer store, private corpus, or production database. The query lab is deliberately a bounded teaching interface rather than arbitrary SQL.</p></section>
+    <section class="panel"><h2 class="section-title">What is represented today</h2>${table(["Table", "Purpose", "Columns", "Rows"], (database.tables || []).map((item) => [escapeHtml(item.name), escapeHtml(item.purpose), escapeHtml(item.columns.join(", ")), escapeHtml(item.rows ?? "generated at refresh")]))}<p class="muted">Repository data is regenerated by the public data generator. Browser-local drafts stay in local storage until explicitly downloaded as a review bundle. Neither is a live database write path.</p></section>
+    <section class="panel" style="margin-top:16px"><div class="section-header"><div><span class="eyebrow">Read-only fixture query lab</span><h2 class="section-title">SQL-like public catalog preview</h2></div><a class="button" href="../database/README.md">Data boundary</a></div><label class="full-width-label">Query<input id="dataQuery" value="SELECT id, name, category, reference_count FROM skills LIMIT 20" autocomplete="off" /></label><p class="field-help">What: a small public catalog query. Why: inspect the shipped contracts. Example: <span class="code">SELECT id, owner, purpose FROM workflow_nodes LIMIT 20</span>. Stored: nowhere. Cannot: query private data, mutate data, join tables, call a server, or execute arbitrary SQL.</p><div class="row-actions"><button class="primary" id="dataQueryRun" type="button">Run public preview</button><button class="button" id="dataQuerySkills" type="button">Show skills</button><button class="button" id="dataQueryRoles" type="button">Show roles</button></div><div id="dataQueryResult" class="table-scroll" style="margin-top:16px"></div></section>
+    <section class="panel" style="margin-top:16px"><h2 class="section-title">Gated database roadmap</h2><p>A local single-user evidence ledger may use SQLite or DuckDB only after migrations, a read-only query role, row and time limits, audit records, backup/restore proof, and strict separation from private sources. A hosted multi-user database additionally needs tenancy, authentication, RBAC, encryption, retention, and recovery evidence. Those controls are not present in this static console.</p></section>
+  `;
+  view.querySelector("#dataQueryRun")?.addEventListener("click", () => runDataLabQuery(view.querySelector("#dataQuery")?.value));
+  view.querySelector("#dataQuerySkills")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, name, category, reference_count FROM skills LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
+  view.querySelector("#dataQueryRoles")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, role, goal FROM roles LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
+  runDataLabQuery(view.querySelector("#dataQuery")?.value);
 }
 
 function renderAgents(data) {
   const agents = data.crewai?.agents || [];
   const tasks = data.crewai?.tasks || [];
+  const catalog = data.skill_catalog || { items: [], packaged_count: 0 };
   view.innerHTML = `
     <section class="docs-hero compact">
       <div><span class="eyebrow">Agents and skills</span><h2>Roles are contracts, not personas.</h2></div>
@@ -3739,6 +3985,17 @@ function renderAgents(data) {
           </article>
         `).join("") || `<div class="callout">No generated role registry is available.</div>`}
       </div>
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Reviewed public skill catalog</span><h2 class="section-title">${escapeHtml(catalog.packaged_count || 0)} portable contracts shipped with this repository</h2></div><a class="button" href="#data">Inspect catalog data</a></div>
+      <p class="muted">This is the complete public allowlist for the repository—not a copy of the operator’s installed skill library. Documentation references are shown separately from usage. Verified invocation counts remain “not measured” until a public-safe execution ledger exists.</p>
+      ${table(["Skill", "Purpose", "Portability", "Usage"], (catalog.items || []).map((skill) => [
+        `<span class="code">${escapeHtml(skill.id)}</span>`,
+        escapeHtml(skill.description || "Project skill contract"),
+        escapeHtml(skill.portable ? "public-safe portable" : "review required"),
+        escapeHtml(skill.verified_invocations == null ? "not measured" : String(skill.verified_invocations)),
+      ]))}
+      <div class="source-list">${pathLink("project/database/skill-catalog.json")}${pathLink("project/database/skill-catalog.schema.json")}${pathLink("project/agents/skills-governance.md")}</div>
     </section>
     <div class="docs-grid two" style="margin-top:16px">
       <section class="panel"><h2 class="section-title">Task-to-role handoff</h2>${table(["Task", "Role", "Expected artifact"], tasks.map((task) => [escapeHtml(task.id), badge(task.agent), escapeHtml(task.expected_output)]))}</section>
@@ -3763,7 +4020,7 @@ function renderRuns(data) {
     </section>
     <div class="proof-state-grid">
       ${(data.status_cards || []).map((item) => card(item)).join("")}
-      ${card({ label: "E1.3 readback", value: gate.derived_status || "unknown", note: `${gate.passed_count ?? 0}/${gate.assertion_count ?? 0} generated assertions`, tone: gate.readback_status === "passed" ? "ok" : "warn" })}
+      ${card({ label: "E1.3 readback", value: gate.derived_status || "unknown", note: "Fixture evidence is recorded; it does not establish provider, production, or external-write readiness.", tone: gate.readback_status === "passed" ? "ok" : "warn" })}
     </div>
     <div class="docs-grid two" style="margin-top:16px">
       <section class="panel"><h2 class="section-title">Evidence-state vocabulary</h2>${table(["State", "Meaning", "Can advance?"], [
@@ -4090,6 +4347,8 @@ function render() {
   if (activeTab === "architecture") renderArchitecture(data);
   if (activeTab === "knowledge") renderKnowledge(data);
   if (activeTab === "agents") renderAgents(data);
+  if (activeTab === "operations") renderOperations(data);
+  if (activeTab === "data") renderDataLab(data);
   if (activeTab === "runs") renderRuns(data);
   if (activeTab === "reference") renderReference(data);
   if (activeTab === "wikillm") renderWiki(data);

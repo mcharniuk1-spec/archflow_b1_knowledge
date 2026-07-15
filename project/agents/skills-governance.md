@@ -17,6 +17,7 @@ These have project-local `SKILL.md` contracts or are project-recognized skill co
 - `arcagcom`
 - `archflow1`
 - `archflow-task-breakdown`
+- `archflow-architecture-operator`
 - `archflow-e1-runtime-guard`
 - `daily-public-project-review`
 - `evening-skill-registry-update`
@@ -57,9 +58,9 @@ Roles define authority, evidence, and forbidden actions; they do not reserve wor
 - The current Codex operator is the active local executor and final integrator, but that assignment is not an automatic provider/runtime activation.
 - An external-action role is disabled by default and needs action-specific owner approval, target proof, and post-action verification.
 
-## Governance Audit - 2026-07-10
+## Governance Audit - 2026-07-15
 
-Scope: duplicate-skill and hook-governance audit before this Branch A architecture update. Result: the nine discovered project-local `SKILL.md` contracts match the current contracted-skill registry; no duplicate contract or unregistered mandatory hook was identified. No skill or hook file is added, removed, or edited by this branch.
+Scope: public catalog and portability review. Result: the repository publishes ten reviewed project-local `SKILL.md` contracts, including `archflow-architecture-operator`. The much larger private installed inventory is not packaged or advertised: it has duplicate variants, local-environment assumptions, and unreviewed redistribution/safety boundaries. The generated `project/database/skill-catalog.json` is the public allowlist; its `verified_invocations` values remain `null` until a public-safe execution ledger exists.
 
 ## Add-Skill Checklist
 

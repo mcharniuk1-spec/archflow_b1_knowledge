@@ -400,8 +400,8 @@ agents:
       - publication_review
       - release_notes
 
-  yushchenko_model_efficiency_observer:
-    title: Yushchenko Model Efficiency Observer
+  model_efficiency_observer:
+    title: Model-Efficiency Observer
     provider: codex_automation
     local_model: none
     mode: recurring_model_and_token_use_observer
@@ -421,7 +421,7 @@ agents:
       - project/runs/
       - wiki/log.md
     writes:
-      - project/runs/yushchenko-model-efficiency/
+      - project/runs/model-efficiency/
       - project/agents/model-efficiency-advice.md
       - project/agents/model-efficiency-issues.md
       - wiki/log.md

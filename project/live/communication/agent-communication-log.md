@@ -10599,3 +10599,41 @@ Files changed: `project/reports/20260713-secured-runtime-architecture-report.md`
 Checks: public safety scan, dashboard JSON parse, site/dashboard JavaScript syntax, and PDF text extraction passed. Dashboard static smoke remains a sandbox `Operation not permitted` gap. Launchd static/import checks passed, but the host heartbeat did not refresh; always-on activation is not claimed.
 
 Next safe action: after the active shared-file lane releases its claim, reconcile older TurboVec wording, review the full public diff, commit, and push the public repository.
+
+## 2026-07-15 09:15 - Public Product Operations Console - starting
+
+Status: starting
+
+Task: make the public website, dashboard, Jarvis, documentation, agent control, knowledge-service explanation, skill catalog, browser-local export, and data-model explanation accurate, usable, and marketable without crossing public-safety or execution gates.
+
+Files likely to change: `README.md`, `project/README.md`, `project/dashboard/`, `jarvis.html`, `jarvis.css`, `site.js`, `public/skills/`, `project/reports/`, `project/runs/20260715-public-product-operations-console/`, and this append-only log.
+
+Files claimed: the run folder and final integration scope; read-only UI, skill, and documentation review lanes will not edit shared files.
+
+FACT: the existing console is browser-local and provider/writeback-disabled by contract.
+
+INTERPRETATION: the optimal public product is an explainable setup and review system, not a simulated autonomous runtime.
+
+GAP: the current public skill set is smaller than the local inventory and needs a portability audit before any catalog claim.
+
+Checks: architecture contract and public communication preflight read; integration checks pending.
+
+Next: complete independent audits, implement only reconciled public-safe behavior, then run safety and interaction checks.
+
+## 2026-07-15 11:05 - Public Product Operations Console - complete
+
+Status: complete
+
+Task: integrate independent UI, skills-portability, and product-documentation audits into the public product surface.
+
+Files changed: root/project README and public docs; dashboard app, styles, index, generated data, static smoke; Jarvis copy/styles; public role and skill-governance records; generated database catalog and schemas; public product report; run handout; WikiLLM decision, issue, and log.
+
+FACT: the dashboard now distinguishes Knowledge Service from Agent Control, offers a browser-local review-bundle sequence and public data preview, and exposes ten reviewed public skill contracts. Jarvis explains each input and calls its action a review-packet submission.
+
+INTERPRETATION: a truthful local-first console is more useful and marketable than an interface that visually implies unsupported autonomous execution.
+
+GAP: live runtime events, a durable usage ledger, a real database, provider execution, external writeback, and a software-license decision remain separate future gates.
+
+Checks: public safety scan passed; dashboard data and JSON parsed; workflow validation passed in the existing project runtime; dashboard/Jarvis JavaScript syntax passed; guarded Jarvis API and serverless-owner smoke passed; rendered dashboard static smoke passed across ten routes with provider calls and writeback at zero.
+
+Next safe action: review the public diff and request a separate commit/push approval if publication is desired.

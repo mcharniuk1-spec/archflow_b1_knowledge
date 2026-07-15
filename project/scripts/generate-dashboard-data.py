@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import hashlib
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -523,6 +524,110 @@ def graphify_status() -> dict:
     }
 
 
+def skill_catalog() -> dict:
+    """Build the public skill registry from packaged project contracts only.
+
+    The local operator may have a much larger private skill library. This
+    generator deliberately does not inspect, copy, or advertise that library:
+    only skills shipped in this public repository can be installed by a reader.
+    """
+    skills_root = ROOT / "skills"
+    role_docs = [
+        PROJECT / "agents" / "skills-by-agent.md",
+        PROJECT / "agents" / "skills-governance.md",
+        ROOT / "README.md",
+        PROJECT / "README.md",
+    ]
+    role_text = "\n".join(read(path) for path in role_docs if path.exists())
+    items: list[dict] = []
+    for path in sorted(skills_root.rglob("SKILL.md")) if skills_root.exists() else []:
+        text = read(path, 4000)
+        name = first_match(text, r"^name:\s*(.*)$", path.parent.name)
+        description = first_match(text, r"^description:\s*(.*)$", "Project skill contract")
+        slug = path.parent.name
+        if "architecture" in slug:
+            category = "architecture"
+        elif any(token in slug for token in ("handout", "review", "question")):
+            category = "review and handoff"
+        elif any(token in slug for token in ("runtime", "archflow1")):
+            category = "runtime boundary"
+        else:
+            category = "coordination"
+        references = len(re.findall(rf"(?<![A-Za-z0-9_-]){re.escape(slug)}(?![A-Za-z0-9_-])", role_text))
+        items.append(
+            {
+                "id": slug,
+                "name": sanitize_public_text(name),
+                "description": sanitize_public_text(description),
+                "path": rel(path),
+                "category": category,
+                "status": "packaged_public_contract",
+                "visibility": "public",
+                "portable": True,
+                "reference_count": references,
+                "safe_to_share": True,
+                "permissions": ["read public-safe sources", "draft scoped output", "run declared local checks"],
+                "forbidden_actions": ["provider activation", "external writeback", "secret collection"],
+                "verified_invocations": None,
+                "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+                "content_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            }
+        )
+    return {
+        "scope": "public repository skills only",
+        "packaged_count": len(items),
+        "outside_inventory_policy": "Private or device-specific skills are not copied into the repository until provenance, license, secret/path safety, and a project use case pass review.",
+        "items": items,
+    }
+
+
+def public_database_schema(skill_data: dict, langgraph: dict, crewai: dict) -> dict:
+    """Describe the generated JSON catalog used by the browser-local query lab."""
+    return {
+        "kind": "generated_public_json_catalog",
+        "storage": "project/dashboard/data.json",
+        "write_mode": "generator output only; the browser cannot mutate repository data",
+        "query_mode": "read-only SQL-like subset in the browser; not a server database",
+        "tables": [
+            {
+                "name": "skills",
+                "purpose": "Portable skill contracts shipped with this repository.",
+                "columns": ["id", "name", "category", "status", "reference_count", "path", "safe_to_share"],
+                "rows": skill_data["packaged_count"],
+            },
+            {
+                "name": "roles",
+                "purpose": "Configured CrewAI-style roles and their declared goals.",
+                "columns": ["id", "role", "goal", "skills"],
+                "rows": len(crewai.get("agents", [])),
+            },
+            {
+                "name": "workflow_nodes",
+                "purpose": "LangGraph contract nodes that describe routing and ownership.",
+                "columns": ["id", "owner", "purpose", "output"],
+                "rows": len(langgraph.get("nodes", [])),
+            },
+            {
+                "name": "sources",
+                "purpose": "Public documentation references used by the console.",
+                "columns": ["label", "url"],
+                "rows": 7,
+            },
+            {
+                "name": "runs",
+                "purpose": "Public-safe project, report, and WikiLLM activity records.",
+                "columns": ["kind", "path", "title", "modified", "size"],
+                "rows": None,
+            },
+        ],
+        "supported_examples": [
+            "SELECT id, name, category, reference_count FROM skills LIMIT 20",
+            "SELECT id, role, goal FROM roles LIMIT 20",
+            "SELECT id, owner, purpose FROM workflow_nodes LIMIT 20",
+        ],
+    }
+
+
 def corpus() -> list[dict]:
     docs = []
     for base in [PROJECT, ROOT / "history", ROOT / "skills", WIKI]:
@@ -604,6 +709,11 @@ def main() -> None:
     llamaindex = parse_llamaindex()
     e13_gate = e13_gate_status()
     jarvis_api = jarvis_api_status()
+    skills = skill_catalog()
+    activity = activity_items()
+    wiki = wiki_summary()
+    database = public_database_schema(skills, langgraph, crewai)
+    database["tables"][-1]["rows"] = len(activity)
     data = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "project": {
@@ -618,8 +728,9 @@ def main() -> None:
             {"label": "CrewAI", "value": crewai["status"], "tone": "ok"},
             {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "ok"},
             {"label": "Jarvis API", "value": jarvis_api["status"], "tone": "ok" if jarvis_api["status"].endswith("files_present") else "warn"},
-            {"label": "WikiLLM files", "value": f"{wiki_summary()['file_count']} files", "tone": "ok"},
-            {"label": "Activity files", "value": str(len(activity_items())), "tone": "ok"},
+            {"label": "WikiLLM files", "value": f"{wiki['file_count']} files", "tone": "ok"},
+            {"label": "Public skills", "value": f"{skills['packaged_count']} contracts", "tone": "ok"},
+            {"label": "Activity files", "value": str(len(activity)), "tone": "ok"},
             {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},
             {"label": "E1.3 readback", "value": e13_gate["derived_status"], "tone": "ok" if e13_gate["derived_status"] == "readback_passed" else "warn"},
         ],
@@ -630,11 +741,13 @@ def main() -> None:
         "prd_templates": prd_template_status(),
         "env": env_status(),
         "packages": package_status(),
-        "activity": activity_items(),
-        "wiki": wiki_summary(),
+        "activity": activity,
+        "wiki": wiki,
         "graphify": graphify_status(),
         "gates": {"e1_3": e13_gate},
         "corpus": corpus(),
+        "skill_catalog": skills,
+        "public_database": database,
         "sources": [
             {"label": "LangGraph overview", "url": "https://docs.langchain.com/oss/python/langgraph/overview"},
             {"label": "LangGraph Studio / LangSmith Studio", "url": "https://docs.langchain.com/langsmith/studio"},
@@ -646,8 +759,12 @@ def main() -> None:
         ],
     }
     DASHBOARD.mkdir(parents=True, exist_ok=True)
+    database_dir = PROJECT / "database"
+    database_dir.mkdir(parents=True, exist_ok=True)
+    (database_dir / "skill-catalog.json").write_text(json.dumps(skills, indent=2), encoding="utf-8")
     (DASHBOARD / "data.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
     print(f"wrote {rel(DASHBOARD / 'data.json')}")
+    print(f"wrote {rel(database_dir / 'skill-catalog.json')}")
 
 
 if __name__ == "__main__":

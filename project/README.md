@@ -58,3 +58,11 @@ Other local routes:
 - Jarvis: `http://127.0.0.1:8765/jarvis`
 
 Authoritative state remains in repository contracts, reviewed run artifacts, and WikiLLM. Browser-local edits and exports are review candidates only.
+
+## Public Product Navigation
+
+- **Knowledge Service:** turns an approved source boundary into a reviewed PRD, ICP, decision, research, or backlog packet.
+- **Agent Control:** turns an approved request into role contracts, task contracts, review gates, and a handoff for an approved operator.
+- **Data Lab:** exposes only a read-only preview over generated public JSON; it is not a live database or arbitrary SQL console.
+
+Use the root [quickstart](../docs/quickstart.md) for a clean clone, the [operations guide](../docs/operations.md) for every dashboard input and stage, and the [architecture guide](../docs/architecture.md) for the short-term service and long-term toolkit view.

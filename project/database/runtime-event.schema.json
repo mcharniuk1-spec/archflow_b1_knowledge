@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchFlow sanitized runtime event",
+  "description": "A future runtime feed must emit this public-safe shape before the dashboard may show live execution state.",
+  "type": "object",
+  "required": ["run_id", "workflow_kind", "node_id", "state", "observed_at", "evidence_ref", "authority_scope", "writeback_state"],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "workflow_kind": {"enum": ["service", "control"]},
+    "node_id": {"type": "string", "minLength": 1},
+    "state": {"enum": ["queued", "active", "waiting_approval", "blocked", "completed", "failed", "stale", "unavailable"]},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "evidence_ref": {"type": "string", "description": "Public-safe artifact reference; no private URL or raw trace."},
+    "authority_scope": {"type": "string"},
+    "writeback_state": {"enum": ["disabled", "approval_required", "not_requested", "verified"]},
+    "reason": {"type": "string"},
+    "artifact_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

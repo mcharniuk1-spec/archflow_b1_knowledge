@@ -14,7 +14,7 @@ It does not publish the operator's full private skill library.
 | AF Knowledge | Knowledge-base update packets. |
 | AF Review | Public-safety and evidence review. |
 | AF Publisher | Git/public project publishing. |
-| Yushchenko Model Efficiency Observer | Recurring model/token efficiency review and advice. |
+| Model-Efficiency Observer | Recurring model/token efficiency review and advice. |
 
 See `skills-by-agent.md` and `agent-roster.yaml`.
 
@@ -36,6 +36,6 @@ Model-efficiency observer:
 
 - `model-efficiency-advice.md`
 - `model-efficiency-issues.md`
-- `../automation/yushchenko-model-efficiency-observer.md`
+- `../automation/yushchenko-model-efficiency-observer.md` (legacy file name; functional role is Model-Efficiency Observer)
 
-The observer runs on a five-hour cadence through the Codex app automation `yushchenko-model-efficiency-observer`. It reports actual model/token evidence only. If OpenRouter has no active runtime evidence, it must say that plainly instead of estimating usage.
+The observer runs on a five-hour cadence through a Codex app automation. It reports actual model/token evidence only. If OpenRouter has no active runtime evidence, it must say that plainly instead of estimating usage.
