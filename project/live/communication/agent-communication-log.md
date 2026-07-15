@@ -10725,3 +10725,53 @@ Checks: public safety; skill validation; dashboard/Jarvis syntax; generated JSON
 GAP: authentication, individual durable memory, live agent/runtime events, provider execution, durable spend controls, database, private-corpus ingestion, and external writeback remain explicitly gated.
 
 Next safe action: commit and push the approved public changes to `main`; inherited `.env.example` changes remain excluded.
+
+## 2026-07-15 15:35 - Documentation-first dashboard and Jarvis release - starting
+
+Status: starting
+
+Task: reconcile the deployed public Jarvis and dashboard with the current source, expand both into explicit developer documentation without changing the established visual language, then publish and deploy the approved release.
+
+Files likely to change: `jarvis.html`, `jarvis.js`, `jarvis.css`, `project/dashboard/index.html`, `project/dashboard/app.js`, `project/dashboard/styles.css`, shared public navigation/documentation, the dashboard smoke check, the active run handout, and this log.
+
+Files claimed: final integration for the Jarvis, dashboard, release documentation, verification, Git publication, and Vercel deployment. The inherited environment-example edits are excluded.
+
+FACT: the public source already contains browser-local Knowledge Service and Agent Control guidance, while the canonical hosted routes require a current release verification.
+
+INTERPRETATION: the requested improvement is documentation-first presentation and release reconciliation, not a claim of live providers, persistent authentication, private retrieval, or autonomous agents.
+
+GAP: a successful deploy must still be checked at the canonical public routes; the Figma baseline sync remains a distinct post-deploy external write.
+
+Checks: source, public-safety, static interaction, workflow, Git, deployment, and deployed-route checks are planned.
+
+Next: inspect the current rendered source and deployed responses, then make a narrow documentation-first implementation.
+
+## 2026-07-15 15:40 - Documentation-first dashboard and Jarvis release review - starting
+
+Status: starting
+
+Task: independent read-only review of the current Jarvis, dashboard, root navigation, and operating manual against the documentation-first release requirements.
+
+Files claimed: no implementation files. This reviewer will append only this coordination log and the final reviewer status.
+
+Expected output: prioritized findings and an acceptance checklist for the integrator.
+
+Blockers: none; implementation and deployment remain owned by the release integrator.
+
+Next: inspect the rendered source and public documentation, then report gaps without editing product surfaces.
+
+## 2026-07-15 15:50 - Documentation-first dashboard and Jarvis release review - complete
+
+Status: complete — review only.
+
+FACT: the dashboard defaults to the operating manual and documents the two-stage flow, configuration points, retrieval layers, public skills, role contracts, downloads, browser-local Admin/Guest previews, workflow-editor limits, and FAQs. Jarvis explains its required inputs in the form, produces local Markdown/JSON downloads, and keeps provider/writeback actions gated. The sequence animation has active, complete, idle, and reduced-motion states.
+
+FACT: syntax checks passed for `jarvis.js` and `project/dashboard/app.js`. No product files were changed by this reviewer.
+
+INTERPRETATION: the public source is close to the requested documentation-first release, but Jarvis still presents four dense control sub-sections before the reader reaches a concise start-to-finish guide. Consolidating those optional Admin controls while retaining the gates would better match the requested clear-text documentation treatment.
+
+GAP: Dashboard Agent Control allows an Admin preview to prepare a control packet without an in-browser Knowledge Service report, while Jarvis requires a report for both previews. Align the two surfaces by requiring or explicitly selecting a reviewed report before control preparation. The main landing page links to the manual and Jarvis but does not yet explain the three-step documentation path requested for the main website.
+
+Acceptance checklist for the integrator: align the report prerequisite across both surfaces; make the Jarvis stage sequence and input dictionary visible before optional Admin controls; retain the current local-only/provider/writeback wording; add a concise landing-page route into the documentation journey; update asset cache versions when source changes; verify the canonical hosted Jarvis and dashboard routes after deploy.
+
+Next safe action: implement the scoped documentation and sequence corrections, run the public safety/static checks, then verify the deployed routes before release completion.

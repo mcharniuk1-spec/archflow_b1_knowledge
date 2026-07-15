@@ -2,7 +2,7 @@
 
 ## Two operating surfaces
 
-The dashboard and Jarvis share a browser-local activity record. It contains only preview mode and local report/handoff references; it is not authentication, account memory, a database record, or a runtime event feed. In Guest preview, prepare Knowledge Service first and retain a public-safe boundary. In Admin preview, an operator may also reference an existing reviewed local report, but all real actions remain separately gated.
+The dashboard and Jarvis share a browser-local activity record. It contains only preview mode and local report/handoff references; it is not authentication, account memory, a database record, or a runtime event feed. In both Guest and Admin preview, prepare Knowledge Service first and retain a public-safe boundary before Agent Control. Admin additionally exposes guarded-control documentation, but all real actions remain separately gated.
 
 ### Knowledge Service
 

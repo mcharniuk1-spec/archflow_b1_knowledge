@@ -25,7 +25,7 @@ Canonical routes:
 
 The separate `/jarvis` page is the text-only review console. It can inspect public-safe state and prepare bounded requests. Serverless owner guards reject unacknowledged or unallowlisted requests and fail closed until replay-safe durable controls exist. Provider calls and durable writeback remain disabled by default.
 
-The default dashboard view is `#manual`. Start there when joining an active project or a parallel-chat lane. It explains the current Knowledge Service and Agent Control flows, browser-local administrator/guest preview labels, safe review-bundle handoff, and the live communication protocol. These preview labels are not authentication and do not create individual durable memory.
+The default dashboard view is `#manual`. Start there when joining an active project or a parallel-chat lane. It explains the current Knowledge Service and Agent Control flows, browser-local administrator/guest preview labels, safe review-bundle handoff, and the live communication protocol. Both preview modes prepare Knowledge Service before Agent Control; the labels are not authentication and do not create individual durable memory.
 
 For parallel work, use one lead integrator and bounded sidecar chats. Each sidecar must read `project/live/communication/`, claim one exclusive file scope, return exact evidence and gaps, and stop if the scope overlaps or requires provider, private-data, deployment, or external-write authority. The integrator reconciles findings and reruns checks after merge. See [`docs/dashboard-operating-manual.md`](../../docs/dashboard-operating-manual.md) and [`project/live/communication/README.md`](../live/communication/README.md).
 

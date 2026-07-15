@@ -2319,6 +2319,46 @@ button.primary:hover {
 .execution-timeline-note { margin: 0; color: var(--muted); font-size: 12px; }
 .field-help { margin: 10px 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 
+/* The manual is deliberately a continuous document, not a grid of status cards. */
+.manual-chapter {
+  margin-top: 28px;
+  padding: 25px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.manual-start {
+  margin-top: 20px;
+}
+
+.manual-flow-columns {
+  margin-top: 0;
+  gap: 34px;
+}
+
+.manual-flow-columns .manual-chapter {
+  margin-top: 0;
+}
+
+.manual-chapter > p {
+  max-width: 1060px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.manual-chapter .section-header {
+  margin-bottom: 11px;
+}
+
+.manual-chapter .table-scroll,
+.manual-chapter .table {
+  margin-top: 13px;
+}
+
+.manual-chapter .source-list {
+  margin-top: 14px;
+}
+
 @keyframes execution-pulse {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }

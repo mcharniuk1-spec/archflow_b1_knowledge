@@ -658,3 +658,18 @@ GAP:
 # 2026-07-15 — Dashboard operating manual and report-first handoff
 
 Completed the public/static dashboard and Jarvis documentation update. The current flow is Knowledge Service local report first, then Agent Control local handoff. Added browser-local Admin/Guest preview labels, local report/download contracts, full public role catalog, two new public skills, and an independent review report. Validation passed in the documented project runtime; authentication, live runtime events, provider execution, database, private corpus, and external writeback remain gated. See [[runs/2026-07-15-dashboard-operating-manual]] and [[decisions/2026-07-15-local-report-first-contract]].
+
+# 2026-07-15 — Jarvis and Dashboard documentation release
+
+FACT:
+- Consolidated Jarvis into a documented four-stage operating sequence with field guidance, browser-local report/handoff downloads, and advanced controls kept secondary to the workflow.
+- Converted the Dashboard manual from repeated card-like sections into continuous documentation chapters and added a concise documentation cue to the landing page.
+- Required a browser-local Knowledge Service report before Agent Control in both preview modes.
+
+INTERPRETATION:
+- A consistent report-first rule makes the current product easier to operate and prevents UI controls from implying unbounded agent execution.
+
+GAP:
+- Hosted freshness, authentication, durable memory, live agents, providers, private retrieval, database, and writeback still require separate proof and approval.
+
+See [[runs/2026-07-15-jarvis-dashboard-documentation-release]] and [[decisions/2026-07-15-universal-knowledge-report-prerequisite]].

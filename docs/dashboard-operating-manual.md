@@ -43,7 +43,7 @@ The Admin and Guest buttons are browser-local presentation modes. They are not a
 
 | Mode | Intended use | Allowed local preparation | Held or unavailable |
 |---|---|---|---|
-| Admin preview | Operator learning, existing reviewed context, configuration drafting. | Knowledge report or Agent Control handoff. | Still cannot execute, write, or bypass approval. |
+| Admin preview | Operator learning, local report review, configuration drafting. | Knowledge report, then Agent Control from that local report. | Still cannot execute, write, or bypass approval. |
 | Guest preview | Demonstrate the method to a public-repository user without an account. | Knowledge report first; then Agent Control from that local report. | API base/token controls, automatic model-catalog loading, repository fetching/cloning, private input, individual persistent memory. |
 
 Enter either a public repository reference or a non-sensitive project label. A reference is a label for the report; this browser does not fetch, clone, index, inspect, or send it to a provider. Never enter a private link, local path, token, credential, raw private transcript, or customer data.
@@ -95,7 +95,7 @@ LlamaIndex is a retrieval contract, not an instruction to ingest a whole device.
 
 ## Agent Control
 
-Use Agent Control only after Knowledge Service has produced a report you can review and download. The control workflow reuses the report ID and preserves its source boundary rather than copying raw source material into a new agent prompt.
+Use Agent Control only after Knowledge Service has produced a browser-local report you can review and download. This prerequisite applies in both Admin and Guest preview. The control workflow reuses the report ID and preserves its source boundary rather than copying raw source material into a new agent prompt.
 
 ### Required input contract
 

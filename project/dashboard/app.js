@@ -1732,8 +1732,8 @@ function advanceExecutionPreview() {
 
 function startExecutionPreview(kind = schemaKindForActiveTab()) {
   if (executionPreview.state === "preparing") return;
-  if (kind === "control" && viewerMode === "guest" && sharedSession.knowledge?.status !== "prepared_local") {
-    appendEvent("Agent Control held", "Guest preview requires a browser-local Knowledge Service report first. Prepare that report, download it for review, then return to Agent Control.", "warn");
+  if (kind === "control" && sharedSession.knowledge?.status !== "prepared_local") {
+    appendEvent("Agent Control held", "Agent Control requires a browser-local Knowledge Service report first in both Admin and Guest preview. Prepare that report, download it for review, then return to Agent Control.", "warn");
     render();
     return;
   }
@@ -1806,7 +1806,7 @@ function renderExecutionTimeline(kind) {
           </li>`;
         }).join("")}
       </ol>
-      <p class="execution-timeline-note">${isPreparing ? "A local review packet is being assembled. No agent is running outside this browser." : isComplete ? "Local packet sequence complete. Download the bundle, then use an approved operator to create or review repository changes." : kind === "control" && viewerMode === "guest" && sharedSession.knowledge?.status !== "prepared_local" ? "Guest preview is held until Knowledge Service prepares a browser-local report. Admin mode may reference an existing reviewed report, but the static page still cannot execute it." : "No live execution observed. Start this only to prepare a browser-local review bundle."}</p>
+      <p class="execution-timeline-note">${isPreparing ? "A local review packet is being assembled. No agent is running outside this browser." : isComplete ? "Local packet sequence complete. Download the bundle, then use an approved operator to create or review repository changes." : kind === "control" && sharedSession.knowledge?.status !== "prepared_local" ? "Agent Control is held in both Admin and Guest preview until Knowledge Service prepares a browser-local report. The static page cannot execute that report." : "No live execution observed. Start this only to prepare a browser-local review bundle."}</p>
     </section>
   `;
 }
@@ -1914,7 +1914,7 @@ function renderPrdIcpOutputBlocks() {
 
 function renderTaskStages() {
   return `
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter manual-start">
       <div class="section-header">
         <div>
           <h2 class="section-title">Agent Orchestra Stages</h2>
@@ -3712,7 +3712,7 @@ function renderConfig() {
         ["Normal / interview / reviewer prompts", "Frames local assistant and future operator behavior", "When a task contract or review rubric changes", "browser localStorage and exported packet", "Does not update a production system prompt"],
       ].map((row) => row.map(escapeHtml)))}</section>
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter manual-start">
       <h2 class="section-title">Agent Chain Links</h2>
       ${table(["Chain link", "Role", "Persistence"], [
         ["Jarvis intake", "Collect text, file transfer metadata/excerpts, and explicit approval.", "session/local packet"],
@@ -3935,7 +3935,7 @@ function renderOperations(data) {
     </section>
     <section class="panel" style="margin-top:16px">
       <div class="section-header"><div><span class="eyebrow">Activity context</span><h2 class="section-title">${viewerMode === "admin" ? "Administrator preview" : "Guest preview"}: local state, not authentication</h2></div><div class="row-actions"><button class="button ${viewerMode === "admin" ? "active-soft" : ""}" data-operation-viewer="admin" type="button">Admin</button><button class="button ${viewerMode === "guest" ? "active-soft" : ""}" data-operation-viewer="guest" type="button">Guest</button></div></div>
-      <p>${viewerMode === "admin" ? "Administrator preview may prepare either local workflow and may reference an already reviewed knowledge report. It is not login, RBAC, durable user memory, or a bypass for provider/Git/writeback gates." : "Guest preview accepts only a public repository reference or a non-sensitive project summary. It prepares a local Knowledge Service report first. Agent Control remains held until that report exists in this browser; no repository is fetched, cloned, or modified."}</p>
+      <p>${viewerMode === "admin" ? "Administrator preview may prepare browser-local reports and inspect guarded controls, but Agent Control still requires a local Knowledge Service report. It is not login, RBAC, durable user memory, or a bypass for provider/Git/writeback gates." : "Guest preview accepts only a public repository reference or a non-sensitive project summary. It prepares a local Knowledge Service report first. Agent Control remains held until that report exists in this browser; no repository is fetched, cloned, or modified."}</p>
       ${table(["Shared browser-local activity field", "Used by", "Persistence and boundary"], [
         ["viewer mode", "Dashboard and Jarvis", "localStorage; presentation mode only"],
         ["knowledge report ID and classification", "Agent Control handoff", "localStorage; report is review-required, not a KB write"],
@@ -3978,40 +3978,40 @@ function renderManual(data) {
       <div><span class="eyebrow">ArchFlow Dashboard Operating Manual</span><h1>Use the architecture as a documented handoff system.</h1></div>
       <p>This is the developer-facing guide for the current public/static setup. It explains the repository, dashboard, Jarvis, knowledge flow, agent-control flow, configuration points, role and skill contracts, outputs, and boundaries. It intentionally describes what is implemented now; it does not publish a strategic plan or imply a hosted autonomous runtime.</p>
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter manual-start">
       <div class="section-header"><div><span class="eyebrow">Start here</span><h2 class="section-title">The current operating sequence</h2></div><div class="row-actions"><button class="button ${viewerMode === "admin" ? "active-soft" : ""}" data-manual-viewer="admin" type="button">Admin preview</button><button class="button ${viewerMode === "guest" ? "active-soft" : ""}" data-manual-viewer="guest" type="button">Guest preview</button><a class="primary" href="/jarvis">Open Jarvis</a></div></div>
       <p><strong>Step 1 — Knowledge Service.</strong> State the goal, a public-safe project reference or summary, allowed evidence, exclusions, desired output, constraints, and reviewer. Prepare a local architecture report. <strong>Step 2 — Agent Control.</strong> Reuse that report ID to propose roles, skills, tool boundaries, routing, reviewer separation, stop conditions, and proposed files. <strong>Step 3 — Human operator.</strong> Download the report/handoff and decide whether to create a scoped repository change. The static surfaces never make that change themselves.</p>
       ${table(["Visible stage", "Current local state", "What it means", "Next safe action"], [
-        ["Viewer", viewerMode, viewerMode === "admin" ? "Administrator preview may reference an existing reviewed report; it is not authentication." : "Guest preview is limited to non-sensitive public context; it is not an account.", "Choose Admin or Guest locally."],
+        ["Viewer", viewerMode, viewerMode === "admin" ? "Administrator preview exposes optional guarded controls; it is not authentication." : "Guest preview is limited to non-sensitive public context; it is not an account.", "Choose Admin or Guest locally."],
         ["Knowledge Service", sharedSession.knowledge?.status || "not_started", knowledgeReady ? `Local report ${sharedSession.knowledge.report_id || "prepared"} is available to Agent Control.` : "No local knowledge report is prepared.", "Open Knowledge Service and prepare/download a report."],
-        ["Agent Control", sharedSession.agent_control?.status || "locked_pending_knowledge", controlReady ? `Local handoff ${sharedSession.agent_control.report_id || "prepared"} is available for operator review.` : "Held until a report exists in guest mode; still review-only in admin mode.", "Open Agent Control and prepare/download the handoff."],
+        ["Agent Control", sharedSession.agent_control?.status || "locked_pending_knowledge", controlReady ? `Local handoff ${sharedSession.agent_control.report_id || "prepared"} is available for operator review.` : "Held in both Admin and Guest preview until a local Knowledge Service report exists; then remains review-only.", "Open Agent Control and prepare/download the handoff."],
         ["Runtime / writes", "not activated by this UI", "No agent launch, provider call, repository write, database write, deployment, Notion/Nexus write, or Git push is represented as complete here.", "Use a separate approved operator workflow with current checks."],
       ].map((row) => row.map(escapeHtml)))}
     </section>
-    <div class="docs-grid two" style="margin-top:16px">
-      <section class="panel"><span class="eyebrow">Knowledge Service</span><h2 class="section-title">Turn bounded context into a reviewable report</h2><p><strong>Use when:</strong> a repository, product brief, research packet, meeting summary, or approved source set needs a PRD, ICP brief, evidence map, context capsule, decision brief, or knowledge update candidate.</p><p><strong>Required fields:</strong> goal; project reference or safe label; allowed evidence; explicit exclusions; desired output; decision supported; constraints; stop conditions; reviewer. A source reference is only a label in this public browser flow: it is not fetched, cloned, indexed, or sent to a provider.</p><p><strong>Output:</strong> a local architecture report with FACT / INTERPRETATION / HYPOTHESIS / GAP sections, provenance boundary, requested outputs, reviewer questions, and a <span class="code">review_required_not_executed</span> status. Download it before asking an operator to create files or promote memory.</p><a class="button" href="#service">Open detailed Knowledge Service workflow</a></section>
-      <section class="panel"><span class="eyebrow">Agent Control</span><h2 class="section-title">Turn a reviewed report into a bounded work design</h2><p><strong>Use when:</strong> the desired outcome needs roles, skills, tools, source boundaries, a LangGraph-style route, parallel lanes, a maker/reviewer split, approval points, and a clear handoff.</p><p><strong>Required fields:</strong> reviewed knowledge report ID, goal, required roles, allowed skills/tools/sources, expected artifacts, independent reviewer, approval gates, and stop conditions. Do not give two agents ownership of the same write target.</p><p><strong>Output:</strong> a local agent-control handoff with proposed file architecture marked <span class="code">created: false</span> and <span class="code">requires_operator_review: true</span>. It is a design package, not a sub-agent launch.</p><a class="button" href="#schema">Open detailed Agent Control workflow</a></section>
+    <div class="docs-grid two manual-flow-columns">
+      <section class="manual-chapter"><span class="eyebrow">Knowledge Service</span><h2 class="section-title">Turn bounded context into a reviewable report</h2><p><strong>Use when:</strong> a repository, product brief, research packet, meeting summary, or approved source set needs a PRD, ICP brief, evidence map, context capsule, decision brief, or knowledge update candidate.</p><p><strong>Required fields:</strong> goal; project reference or safe label; allowed evidence; explicit exclusions; desired output; decision supported; constraints; stop conditions; reviewer. A source reference is only a label in this public browser flow: it is not fetched, cloned, indexed, or sent to a provider.</p><p><strong>Output:</strong> a local architecture report with FACT / INTERPRETATION / HYPOTHESIS / GAP sections, provenance boundary, requested outputs, reviewer questions, and a <span class="code">review_required_not_executed</span> status. Download it before asking an operator to create files or promote memory.</p><a class="button" href="#service">Open detailed Knowledge Service workflow</a></section>
+      <section class="manual-chapter"><span class="eyebrow">Agent Control</span><h2 class="section-title">Turn a reviewed report into a bounded work design</h2><p><strong>Use when:</strong> the desired outcome needs roles, skills, tools, source boundaries, a LangGraph-style route, parallel lanes, a maker/reviewer split, approval points, and a clear handoff.</p><p><strong>Required fields:</strong> reviewed knowledge report ID, goal, required roles, allowed skills/tools/sources, expected artifacts, independent reviewer, approval gates, and stop conditions. Do not give two agents ownership of the same write target.</p><p><strong>Output:</strong> a local agent-control handoff with proposed file architecture marked <span class="code">created: false</span> and <span class="code">requires_operator_review: true</span>. It is a design package, not a sub-agent launch.</p><a class="button" href="#schema">Open detailed Agent Control workflow</a></section>
     </div>
-    <section class="panel" style="margin-top:16px"><span class="eyebrow">Parallel-chat protocol</span><h2 class="section-title">How separate chats communicate while acting in the project</h2><p>Use one lead integrator and bounded sidecar chats. Each sidecar reads the live communication contract, claims one exclusive file scope, returns evidence and gaps, and stops on overlap or missing authority. The integrator reconciles branch reports and reruns checks after merge.</p>${table(["Before work", "During work", "Handoff"], [["Read the README, current notice, latest log, task contract, and current source report.", "Use one role, output, file scope, reviewer, and stop condition. Announce scope changes before editing.", "Return FACT / INTERPRETATION / HYPOTHESIS / GAP, changed files, checks, blockers, and approve/revise/block recommendation."]])}<div class="source-list">${pathLink("project/live/communication/README.md")}${pathLink("project/live/communication/current-agent-notice.md")}${pathLink("project/runs/20260715-dashboard-operating-manual/task-contract.md")}</div></section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter"><span class="eyebrow">Parallel-chat protocol</span><h2 class="section-title">How separate chats communicate while acting in the project</h2><p>Use one lead integrator and bounded sidecar chats. Each sidecar reads the live communication contract, claims one exclusive file scope, returns evidence and gaps, and stops on overlap or missing authority. The integrator reconciles branch reports and reruns checks after merge.</p>${table(["Before work", "During work", "Handoff"], [["Read the README, current notice, latest log, task contract, and current source report.", "Use one role, output, file scope, reviewer, and stop condition. Announce scope changes before editing.", "Return FACT / INTERPRETATION / HYPOTHESIS / GAP, changed files, checks, blockers, and approve/revise/block recommendation."]])}<div class="source-list">${pathLink("project/live/communication/README.md")}${pathLink("project/live/communication/current-agent-notice.md")}${pathLink("project/runs/20260715-dashboard-operating-manual/task-contract.md")}</div></section>
+    <section class="manual-chapter">
       <div class="section-header"><div><span class="eyebrow">Admin and guest</span><h2 class="section-title">Two local views, one honest boundary</h2></div></div>
       ${table(["Mode", "May enter", "May prepare", "Cannot do"], [
-        ["Admin preview", "Existing reviewed report reference, operator constraints, local prompt candidates", "Knowledge report or Agent Control handoff", "Authenticate, access private material, override gates, launch agents, create files, or write externally"],
+        ["Admin preview", "Existing local knowledge report, operator constraints, local prompt candidates", "Knowledge report; Agent Control handoff only after that report", "Authenticate, access private material, override gates, launch agents, create files, or write externally"],
         ["Guest preview", "Public repository reference or sanitized project summary", "Knowledge report first; Agent Control after that local report", "Fetch/clone a repository, use a token/API base, upload private material, retain an individual account memory, or execute actions"],
       ].map((row) => row.map(escapeHtml)))}
       <p class="field-help">Both modes are saved in browser localStorage on this device. Clear browser storage to remove them. They are not authentication, authorization, tenancy, or a persistent member-memory product.</p>
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter">
       <div class="section-header"><div><span class="eyebrow">Repository and knowledge files</span><h2 class="section-title">Read in this order; promote only after review</h2></div><a class="button" href="#knowledge">Explore knowledge</a></div>
       <p>Routing files select the project and public boundary. CAG supplies stable context. WikiLLM preserves reviewed conclusions. Graphify is generated structure. LlamaIndex is bounded retrieval. Nexus is a separate live-vault bridge when its capability is verified. A score, configuration file, or dashboard card is never proof of an executed external action.</p>
       ${table(["Layer", "File / configuration point", "Purpose in this setup", "How to use it"], knowledge.map((item) => [escapeHtml(item.layer), pathLink(item.path), escapeHtml(item.purpose), item.status === "present" ? "Read before expanding scope; link the result in a review packet." : "Restore or repair before relying on this layer."]))}
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter">
       <div class="section-header"><div><span class="eyebrow">Configuration reference</span><h2 class="section-title">Every editable family and its consequence</h2></div><a class="button" href="#config">Open configuration</a></div>
       ${table(["Area", "Where configured", "Parameters", "Effect and boundary"], configuration.map((item) => [escapeHtml(item.area), pathLink(item.path), escapeHtml((item.parameters || []).join(", ")), `${escapeHtml(item.effect)} Stored: ${escapeHtml(item.where)}.`]))}
       <p class="field-help"><strong>Configuration change rule:</strong> use the browser editor to draft and export, then change versioned YAML/Markdown through a reviewed repository patch. Do not put credentials in public files or browser exports. API base is restricted to same origin or HTTP loopback; owner tokens stay in page memory only and are hidden in Guest preview.</p>
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter">
       <div class="section-header"><div><span class="eyebrow">Packaged skills</span><h2 class="section-title">${skills.length} public skills, explained one by one</h2></div><a class="button" href="#agents">Explore agents and skills</a></div>
       <p>These are the only portable <span class="code">SKILL.md</span> packages shipped by this repository. Names shown only as methods/checklists in a role contract are not silently bundled or redistributed. Documentation-reference counts are not execution counts; public-safe invocation telemetry is not implemented.</p>
       ${table(["Skill", "Use it for", "Recommended roles", "Allowed / forbidden"], skills.map((skill) => [
@@ -4021,7 +4021,7 @@ function renderManual(data) {
         `${escapeHtml((skill.permissions || []).join(", "))}. Never: ${escapeHtml((skill.forbidden_actions || []).join(", "))}.`,
       ]))}
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter">
       <div class="section-header"><div><span class="eyebrow">Agent roles</span><h2 class="section-title">${roles.length} declared role contracts, not a claim of active workers</h2></div><a class="button" href="#data">Query public role catalog</a></div>
       <p>Each role is a reusable responsibility. A compatible runtime may fulfil it only after a bounded task contract assigns the exact sources, packaged skills/method checklists, output, independent reviewer, and stop rule. Tool scope can expand only through a reviewed task contract and the relevant provider/tool adoption gate.</p>
       ${table(["Role", "Mode", "Declared skills", "Expected outputs", "Forbidden actions"], roles.map((role) => [
@@ -4032,7 +4032,7 @@ function renderManual(data) {
         escapeHtml((role.forbidden_actions || []).join(", ") || "see task contract"),
       ]))}
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter">
       <div class="section-header"><div><span class="eyebrow">Jarvis operator guide</span><h2 class="section-title">Prompt it with a contract, not a vague command</h2></div><a class="primary" href="/jarvis">Open Jarvis</a></div>
       <p>Jarvis first produces an architecture report in the conversation and enables a download. Start with Knowledge Service, then use the resulting local report for Agent Control. In Guest preview, no API base or owner-token control is shown and no model catalog is loaded automatically. In Admin preview, guarded API review remains optional and provider execution stays server-gated.</p>
       <pre class="code-block">Goal:
@@ -4045,14 +4045,14 @@ Constraints and stop conditions:
 Independent reviewer:</pre>
       <p>For Agent Control, add: <strong>use knowledge report ID; required roles; allowed skills/tools; allowed sources; expected files/artifacts; approval gates; rollback condition.</strong> Jarvis may propose files, but its downloaded package marks them as proposals only. A separate operator applies any approved change.</p>
     </section>
-    <section class="panel" style="margin-top:16px">
+    <section class="manual-chapter">
       <div class="section-header"><div><span class="eyebrow">Frequently asked questions</span><h2 class="section-title">Operational answers for the current setup</h2></div></div>
       <div class="list">
         ${[
           ["Is this a live autonomous agent system?", "No. The public dashboard and Jarvis prepare browser-local reports and review packets. LangGraph, CrewAI, LlamaIndex, and WikiLLM are documented contracts/knowledge layers with separate proof states."],
           ["Where do I change retrieval behavior?", "Use project/workflows/llamaindex-rag.yaml for include/exclude, chunk size, overlap, retrieval mode, top-k and rerank parameters; test a bounded fixture before treating a new default as proven."],
           ["Where do I change workflow routes or approval logic?", "Use project/workflows/langgraph-controller.yaml for nodes, routes, checkpoints, revision cap, and approval settings. Draft the graph in the Workflow Editor first, then apply a reviewed patch."],
-          ["What do Admin and Guest mean?", "They are browser-local preview modes only. They do not create accounts, individual durable memory, or permissions. Guest begins with Knowledge Service; Admin can reference an existing reviewed report."],
+          ["What do Admin and Guest mean?", "They are browser-local preview modes only. They do not create accounts, individual durable memory, or permissions. Both begin with Knowledge Service before Agent Control; Admin additionally exposes guarded control documentation."],
           ["Can Jarvis use my repository automatically?", "Not in this public/static setup. Provide a public reference or safe summary. Fetching, cloning, indexing, private data use, provider calls, and file changes each require their own approved operator workflow."],
           ["Can I download the work?", "Yes. The current page exports local JSON review bundles; Jarvis exports a readable architecture report and a JSON handoff. Downloads are proposals, not repository patches or commits."],
           ["Why are there skills listed that are not packages?", "The role roster distinguishes shipped public SKILL.md contracts from project methods/checklists. Add a new package only after duplicate, safety, portability, role-mapping, validation, and review checks."],

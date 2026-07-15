@@ -31,6 +31,7 @@ DASHBOARD_DATA = REPO_ROOT / "project" / "dashboard" / "data.json"
 VERCEL_CONFIG = REPO_ROOT / "vercel.json"
 JARVIS_HTML = REPO_ROOT / "jarvis.html"
 JARVIS_JS = REPO_ROOT / "jarvis.js"
+DASHBOARD_JS = REPO_ROOT / "project" / "dashboard" / "app.js"
 
 SECRET_PATTERNS = [
     re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
@@ -218,7 +219,10 @@ def assert_markers(route_hash: str, html: str) -> None:
 
 def validate_jarvis_static_contract(html: str) -> None:
     required_html = [
-        "Prepare the report first",
+        "Knowledge Service — prepare report first",
+        "Jarvis operating documentation",
+        "One documented path from project context",
+        "Human review",
         "Knowledge Service — prepare report first",
         "Guest preview",
         "Download report",
@@ -235,6 +239,7 @@ def validate_jarvis_static_contract(html: str) -> None:
         "data-download-report",
         "data-download-package",
         'if (state.viewerMode === "guest") return;',
+        "data-jarvis-stage",
         "The browser did not send the report body, project reference, source boundary, or chat history",
     ]
     missing_source = [marker for marker in required_source if marker not in source]
@@ -247,9 +252,22 @@ def validate_jarvis_static_contract(html: str) -> None:
         raise AssertionError(f"Jarvis rendered forbidden secret pattern(s): {', '.join(leaked)}")
 
 
+def validate_two_stage_gate() -> None:
+    source = DASHBOARD_JS.read_text(encoding="utf-8")
+    required = [
+        'kind === "control" && sharedSession.knowledge?.status !== "prepared_local"',
+        "Agent Control requires a browser-local Knowledge Service report first in both Admin and Guest preview",
+        "Agent Control is held in both Admin and Guest preview",
+    ]
+    missing = [marker for marker in required if marker not in source]
+    if missing:
+        raise AssertionError(f"dashboard two-stage gate missing: {', '.join(missing)}")
+
+
 def run_smoke(timeout_seconds: int, retries: int) -> None:
     validate_dashboard_data()
     validate_vercel_route_contract()
+    validate_two_stage_gate()
     chrome = find_chrome()
 
     handler = lambda *args, **kwargs: QuietHandler(*args, directory=str(REPO_ROOT), **kwargs)

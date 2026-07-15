@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,550;6..72,650&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="jarvis.css?v=20260715-operations" />
+    <link rel="stylesheet" href="jarvis.css?v=20260715-docs-release-2" />
   </head>
   <body>
     <a class="skip-link" href="#conversation">Skip to conversation</a>
@@ -25,7 +25,7 @@
     <header class="jarvis-header">
       <a class="jarvis-brand" href="/" aria-label="ArchFlow home">
         <img src="assets/archflow-mark.svg" alt="" width="34" height="34" />
-        <span><strong>ArchFlow / Jarvis</strong><small>Public UI / owner-gated API</small></span>
+        <span><strong>ArchFlow / Jarvis</strong><small>Operator guide / guarded API</small></span>
       </a>
       <div class="header-truth" aria-label="Runtime boundaries">
         <span><i class="status-dot" data-status-dot></i><b data-runtime-label>Checking local/API state</b></span>
@@ -33,7 +33,7 @@
         <span>Local report first</span>
       </div>
       <nav aria-label="Jarvis navigation">
-        <a href="/dashboard">Operator docs</a>
+        <a href="/dashboard">Documentation dashboard</a>
         <a href="/">Public surface</a>
       </nav>
     </header>
@@ -42,8 +42,8 @@
       <section class="chat-panel" aria-labelledby="chat-title">
         <header class="chat-heading">
           <div>
-            <p class="eyebrow">Operating manual / Text only</p>
-            <h1 id="chat-title">Prepare the report first. Design the agents second.</h1>
+            <p class="eyebrow">Jarvis operating documentation</p>
+            <h1 id="chat-title">Understand the work first. Prepare the handoff second.</h1>
           </div>
           <div class="conversation-actions">
             <button type="button" data-check-runtime>Check runtime</button>
@@ -51,6 +51,21 @@
             <button type="button" data-clear-activity>Clear local activity</button>
           </div>
         </header>
+
+        <section class="jarvis-guide" aria-labelledby="jarvis-guide-title">
+          <div class="jarvis-guide-copy">
+            <span class="eyebrow">How this page works</span>
+            <h2 id="jarvis-guide-title">One documented path from project context to an operator-ready package.</h2>
+            <p>Jarvis is the entry point for the two linked browser-local workflows. Describe a public-safe objective and evidence boundary, prepare a Knowledge Service report, then use its report ID to design Agent Control. The page can export a readable report and a JSON handoff; it cannot fetch a repository, create its proposed files, launch an agent, or write to an external system.</p>
+          </div>
+          <ol class="jarvis-stage-map" aria-label="Jarvis operating sequence">
+            <li data-jarvis-stage="intake"><span>01</span><div><strong>Define the request</strong><small>Goal, allowed evidence, output, reviewer, and stop conditions.</small></div><em>current form</em></li>
+            <li data-jarvis-stage="knowledge"><span>02</span><div><strong>Knowledge Service</strong><small>Create and download the source-bounded architecture report.</small></div><em>required first</em></li>
+            <li data-jarvis-stage="control"><span>03</span><div><strong>Agent Control</strong><small>Reuse the local report to propose roles, gates, and files.</small></div><em>held for context</em></li>
+            <li data-jarvis-stage="review"><span>04</span><div><strong>Human review</strong><small>Approve a scoped action outside this page, if authority exists.</small></div><em>external gate</em></li>
+          </ol>
+          <p class="jarvis-guide-note">Stage lighting describes the browser-local report state, not a live agent runtime. Idle stages move gently; an active stage is highlighted; completed stages remain marked until local activity is cleared.</p>
+        </section>
 
         <div class="runtime-strip" aria-label="Jarvis runtime state">
           <div><span>API</span><strong data-runtime="api">Checking</strong></div>
@@ -64,12 +79,12 @@
           <article class="message message-system">
             <div class="message-meta"><span>Jarvis contract</span><time>Ready for an operator request</time></div>
             <p>
-              Choose Knowledge Service first to create an architecture report from a public-safe project summary and source boundary. Then choose Agent Control to reuse that report and propose a role architecture. This page works locally before any optional guarded API review; it never fabricates a model response.
+              Start by entering the smallest useful objective and the exact evidence boundary. Knowledge Service turns that request into a local report with facts, interpretations, hypotheses, gaps, output requirements, and review questions. Agent Control can then reuse the report ID to propose roles, skills, review gates, and a file architecture for an approved operator. The initial result is always a browser-local report, never a fabricated model answer or an executed repository change.
             </p>
             <ul>
               <li>Activity context is browser-local and shared with the dashboard on this device; it is not authentication or individual persistent memory.</li>
-              <li>Guest preview hides API/token controls and does not load a model catalog automatically.</li>
-              <li>Git, repository file creation, Notion, memory promotion, deployment, database writes, provider use, and other writeback stay disabled unless separately approved and proven.</li>
+              <li>Guest preview accepts only public-safe context and hides API/token controls. It never loads a model catalog automatically.</li>
+              <li>The report and handoff downloads are proposals. Git, repository file creation, memory promotion, provider use, deployment, database writes, and other external writes remain separate approval gates.</li>
             </ul>
           </article>
         </div>
@@ -136,50 +151,59 @@
         </form>
       </section>
 
-      <aside class="control-panel" aria-label="Jarvis models and access controls">
-        <section class="control-section access-section" data-admin-only>
-          <div class="section-label"><span>01</span><h2>Owner access</h2></div>
-          <label class="field-control">
-            <span>Jarvis owner token</span>
-            <input type="password" name="owner_token" data-owner-token autocomplete="off" spellcheck="false" placeholder="Held in memory for this tab only" />
-          </label>
-          <label class="field-control">
-            <span>API base</span>
-            <input type="url" name="api_base" data-api-base inputmode="url" placeholder="Same origin (default)" />
-          </label>
-          <p><strong>Owner token:</strong> only for an approved local or same-origin API review route; it stays in tab memory and must never be a provider key. <strong>API base:</strong> same origin or HTTP loopback only. These fields cannot enable a provider, Git, Notion, deployment, repository writes, or file writeback.</p>
-        </section>
+      <aside class="control-panel" aria-label="Jarvis documentation and guarded controls">
+        <section class="control-section operator-reference">
+          <div class="section-label"><span>01</span><h2>Setup and execution boundary</h2></div>
+          <p>Use this reference after you understand the request fields. It explains the optional controls without presenting them as an execution path. A visible model, token field, or API response never changes the local report into a completed action.</p>
 
-        <section class="control-section models-section" data-admin-only>
-          <div class="section-label"><span>02</span><h2>Curated routes</h2></div>
-          <div class="model-cards" data-model-cards aria-label="Curated OpenRouter models"></div>
-        </section>
+          <div class="operator-reference-admin" data-admin-only>
+            <h3>Admin-preview settings</h3>
+            <label class="field-control">
+              <span>Jarvis owner token</span>
+              <input type="password" name="owner_token" data-owner-token autocomplete="off" spellcheck="false" placeholder="Held in memory for this tab only" />
+            </label>
+            <label class="field-control">
+              <span>API base</span>
+              <input type="url" name="api_base" data-api-base inputmode="url" placeholder="Same origin (default)" />
+            </label>
+            <p><strong>Owner token:</strong> an optional same-origin or loopback guarded-review credential held only in this tab; never paste a provider key. <strong>API base:</strong> same origin or HTTP loopback only, so this page cannot be pointed at an arbitrary host. Neither control creates authority for providers, Git, Notion, deployment, repository writes, or writeback.</p>
 
-        <section class="control-section catalog-section" data-admin-only>
-          <div class="section-label"><span>03</span><h2>Search OpenRouter</h2></div>
-          <label class="search-control">
-            <span class="sr-only">Search model catalog</span>
-            <input type="search" data-model-search placeholder="Search 300+ model routes…" autocomplete="off" />
-            <kbd>/</kbd>
-          </label>
-          <button type="button" data-load-model-catalog>Load public model catalog</button>
-          <p class="catalog-status" data-catalog-status>Catalog not loaded. Loading is explicit and discovery-only; it does not enable a route.</p>
-          <div class="catalog-results" data-catalog-results></div>
-        </section>
+            <details class="operator-details" open>
+              <summary>Model route candidates — discovery, not execution</summary>
+              <p>Selecting a route changes only the optional guarded-review preference. It does not prove availability, approval, cost authority, or a provider call.</p>
+              <div class="model-cards" data-model-cards aria-label="Curated model-route candidates"></div>
+            </details>
 
-        <section class="control-section boundary-section">
-          <div class="section-label"><span>04</span><h2>Truth boundary</h2></div>
-          <dl>
-            <div><dt>Prepared</dt><dd>Browser-local report or handoff exists and can be downloaded.</dd></div>
-            <div><dt>Reviewed</dt><dd>A human accepts a bounded report; this page does not record that approval.</dd></div>
-            <div><dt>Executed</dt><dd>Not implied. Provider execution remains separately server-gated.</dd></div>
-            <div><dt>Written back</dt><dd>Disabled in this surface.</dd></div>
-          </dl>
+            <details class="operator-details">
+              <summary>Public catalog — load only when you need to compare routes</summary>
+              <p>Loading is explicit and discovery-only. Guest preview never starts this request automatically.</p>
+              <label class="search-control">
+                <span class="sr-only">Search model catalog</span>
+                <input type="search" data-model-search placeholder="Search public model routes…" autocomplete="off" />
+                <kbd>/</kbd>
+              </label>
+              <button type="button" data-load-model-catalog>Load public model catalog</button>
+              <p class="catalog-status" data-catalog-status>Catalog not loaded. Loading is explicit and discovery-only; it does not enable a route.</p>
+              <div class="catalog-results" data-catalog-results></div>
+            </details>
+          </div>
+
+          <div class="truth-sheet">
+            <h3>Read the state labels precisely</h3>
+            <p><strong>Prepared</strong> means a browser-local report or handoff can be downloaded. <strong>Reviewed</strong> means a human accepts a bounded report outside this page. <strong>Executed</strong> is never inferred here; it needs separate runtime evidence. <strong>Written back</strong> is disabled in this public surface.</p>
+          </div>
+
+          <details class="operator-details operator-faq">
+            <summary>Jarvis FAQ</summary>
+            <p><strong>What do I enter?</strong> A goal, allowed evidence and exclusions, requested output, independent reviewer, and stop conditions. The dashboard manual maps each value to its versioned configuration point.</p>
+            <p><strong>What is downloaded?</strong> A Markdown architecture report or JSON handoff that names the browser-local state and proposed file architecture. Neither download changes a repository.</p>
+            <p><strong>What should happen next?</strong> Review the package, then use a separately approved operator workflow to make a scoped change and run its checks.</p>
+          </details>
         </section>
       </aside>
     </main>
 
-    <script src="jarvis.js?v=20260715-operations" defer></script>
+    <script src="jarvis.js?v=20260715-docs-release" defer></script>
     <script src="hover-depth.js?v=20260713-owner-guard" defer></script>
   </body>
 </html>

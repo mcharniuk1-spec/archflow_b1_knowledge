@@ -42,6 +42,7 @@
     ownerToken: document.querySelector("[data-owner-token]"),
     apiBase: document.querySelector("[data-api-base]"),
     viewerMode: document.querySelector("[data-viewer-mode]"),
+    stageSelect: document.querySelector('select[name="architecture"]'),
     modelCards: document.querySelector("[data-model-cards]"),
     modelSearch: document.querySelector("[data-model-search]"),
     catalogStatus: document.querySelector("[data-catalog-status]"),
@@ -122,6 +123,35 @@
         ? `Knowledge report ${knowledge.report_id}`
         : "No report prepared";
     setRuntime("activity", label);
+    updateStageMap();
+  }
+
+  function updateStageMap() {
+    const hasKnowledgeReport = Boolean(state.shared.knowledge?.report_id);
+    const hasAgentControlHandoff = Boolean(state.shared.agent_control?.report_id);
+    const activeStage = hasAgentControlHandoff ? "review" : hasKnowledgeReport ? "control" : "intake";
+    const sequence = ["intake", "knowledge", "control", "review"];
+    const activeIndex = sequence.indexOf(activeStage);
+
+    document.querySelectorAll("[data-jarvis-stage]").forEach((element) => {
+      const index = sequence.indexOf(element.dataset.jarvisStage);
+      const complete = index >= 0 && index < activeIndex;
+      const active = element.dataset.jarvisStage === activeStage;
+      const held = index > activeIndex;
+      element.classList.toggle("is-complete", complete);
+      element.classList.toggle("is-active", active);
+      element.classList.toggle("is-idle", held);
+      element.removeAttribute("aria-current");
+      if (active) element.setAttribute("aria-current", "step");
+      const stateLabel = element.querySelector("em");
+      if (stateLabel) {
+        stateLabel.textContent = complete
+          ? "prepared locally"
+          : active
+            ? activeStage === "review" ? "review required" : "current local stage"
+            : "held for earlier stage";
+      }
+    });
   }
 
   function setViewerMode(mode) {
@@ -511,6 +541,7 @@
   nodes.form?.addEventListener("submit", submitChat);
   nodes.modelSearch?.addEventListener("input", (event) => renderCatalog(event.target.value));
   nodes.viewerMode?.addEventListener("change", (event) => setViewerMode(event.target.value));
+  nodes.stageSelect?.addEventListener("change", updateStageMap);
   nodes.apiBase?.addEventListener("change", () => {
     try {
       trustedApiBase();
