@@ -24,6 +24,11 @@ WIKI = ROOT / "wiki"
 DASHBOARD = PROJECT / "dashboard"
 CANONICAL_AUDIENCE_SOURCE = "project/knowledge/audience/icp-knowledge-continuity.md"
 CANONICAL_STRATEGY_SOURCE = "project/strategic-plan-2026-07-13.md"
+DASHBOARD_EXCLUDED_CORPUS_PATHS = {
+    CANONICAL_STRATEGY_SOURCE,
+    "project/project-plan.md",
+    "project/task-contract-index-2026-07-13.md",
+}
 
 
 def rel(path: Path) -> str:
@@ -39,6 +44,12 @@ def sanitize_public_text(text: str) -> str:
     replacements = {
         "GloomyLord": "Visual Reporting",
         "Codex Jesus": "Architecture Reviewer",
+        "Jesus": "Lead Integrator",
+        "LOL": "Dashboard Workflow Owner",
+        "Ronaldinho": "Technical Reviewer",
+        "Messi": "PM Reviewer",
+        "Ronaldo": "Product/ICP Reviewer",
+        "Yushchenko": "Model-Efficiency Observer",
     }
     for original, replacement in replacements.items():
         text = text.replace(original, replacement)
@@ -52,6 +63,10 @@ def public_excerpt(text: str, limit: int = 1200) -> str:
     for line in text.splitlines():
         line = secret_line.sub(r"\1<not-shown>", line)
         line = protected_preview_url.sub("https://<protected-preview-host>", line)
+        line = line.replace("project/strategic-plan-2026-07-13.md", "internal roadmap (not indexed in dashboard)")
+        line = line.replace("strategic-plan-2026-07-13.md", "internal roadmap (not indexed in dashboard)")
+        line = line.replace("#plan", "legacy dashboard route (removed)")
+        line = re.sub(r"(?i)\bstrategic (?:task )?plan\b", "internal roadmap", line)
         line = sanitize_public_text(line)
         sanitized_lines.append(line)
     return " ".join(sanitized_lines)[:limit]
@@ -564,6 +579,7 @@ def skill_catalog() -> dict:
                 "status": "packaged_public_contract",
                 "visibility": "public",
                 "portable": True,
+                "documentation_reference_count": references,
                 "reference_count": references,
                 "safe_to_share": True,
                 "permissions": ["read public-safe sources", "draft scoped output", "run declared local checks"],
@@ -581,7 +597,93 @@ def skill_catalog() -> dict:
     }
 
 
-def public_database_schema(skill_data: dict, langgraph: dict, crewai: dict) -> dict:
+def parse_agent_roster(public_skill_ids: set[str]) -> dict:
+    """Read the public agent roster without adding a YAML dependency.
+
+    The dashboard needs to distinguish shipped skill packages from plain
+    project methods. This small, indentation-aware reader only exposes public
+    role metadata, declared skills, outputs, and forbidden actions.
+    """
+    path = PROJECT / "agents" / "agent-roster.yaml"
+    text = read(path) if path.exists() else ""
+    roles: list[dict] = []
+    for role_id, raw in parse_mapping_block(text, "agents").items():
+        roles.append(
+            {
+                "id": role_id,
+                "title": str(raw.get("title", role_id.replace("_", " ").title())),
+                "provider": str(raw.get("provider", "not declared")),
+                "mode": str(raw.get("mode", "not declared")),
+                "skills": list(raw.get("skills", [])),
+                "outputs": list(raw.get("outputs", [])),
+                "forbidden_actions": list(raw.get("forbidden_actions", [])),
+            }
+        )
+    for role in roles:
+        role["public_skill_packages"] = [skill for skill in role["skills"] if skill in public_skill_ids]
+        role["method_checklists"] = [skill for skill in role["skills"] if skill not in public_skill_ids]
+    return {
+        "path": rel(path),
+        "scope": "public role declarations only; runtime/model names do not grant authority",
+        "roles": roles,
+    }
+
+
+def knowledge_catalog() -> list[dict]:
+    """Expose the active public knowledge files and their operating purpose."""
+    entries = [
+        ("Project routing", "project/README.md", "Current public mission, folder roles, local surfaces, and product boundary."),
+        ("Operating rules", "project/operating-rules.md", "Authority, public-safety, CAG/RAG, communication, and approval rules."),
+        ("CAG core", "project/context/cag-core.yaml", "Stable context that is assembled before task-specific retrieval."),
+        ("Context guide", "project/context/README.md", "Context-capsule structure, freshness, and source-boundary practice."),
+        ("LangGraph contract", "project/workflows/langgraph-controller.yaml", "Workflow nodes, state, routes, checkpoints, and approval gates."),
+        ("CrewAI contract", "project/workflows/crewai-crew.yaml", "Configured team roles and task handoff; not an execution claim."),
+        ("LlamaIndex contract", "project/workflows/llamaindex-rag.yaml", "Approved corpus, chunking, hybrid retrieval, and lexical fallback."),
+        ("WikiLLM index", "wiki/index.md", "Public memory navigation and current source-of-truth links."),
+        ("WikiLLM memory", "wiki/memory.md", "Stable cross-run operating facts after review and promotion."),
+        ("WikiLLM insights", "wiki/insights.md", "Reusable interpretations and future-run implications."),
+        ("WikiLLM log", "wiki/log.md", "Chronological public-safe record of substantial work."),
+        ("Public WikiLLM rules", "wiki/rules/public-wikillm-contract.md", "What can be promoted, how to classify it, and what must stay out."),
+        ("Skills governance", "project/agents/skills-governance.md", "Public package review, role visibility, and future-skill admission gates."),
+        ("Role and skill map", "project/agents/skills-by-agent.md", "Role-specific methods, outputs, boundaries, and shared contracts."),
+    ]
+    return [
+        {"layer": layer, "path": path, "purpose": purpose, "status": "present" if (ROOT / path).exists() else "missing"}
+        for layer, path, purpose in entries
+    ]
+
+
+def configuration_catalog(langgraph: dict, llamaindex: dict, jarvis: dict) -> list[dict]:
+    """Describe editable parameters and their actual persistence boundaries."""
+    return [
+        {
+            "area": "Browser viewer and session", "path": "project/dashboard/app.js", "parameters": ["viewer_mode", "shared_session", "architecture_mode"],
+            "where": "browser localStorage", "effect": "Changes local preview and handoff context only; never authenticates a user or writes a repository.",
+        },
+        {
+            "area": "Workflow editor", "path": "project/dashboard/app.js", "parameters": ["node owner", "inputs", "outputs", "routes", "approval gate", "model provider", "reviewer", "status"],
+            "where": "browser localStorage and downloaded review bundle", "effect": "Drafts a proposed workflow; an approved operator must apply any repository change.",
+        },
+        {
+            "area": "LangGraph controller", "path": langgraph.get("path", "project/workflows/langgraph-controller.yaml"), "parameters": list(langgraph.get("params", {}).keys()),
+            "where": "versioned YAML", "effect": "Defines routing/checkpoint/revision policy after review and validation.",
+        },
+        {
+            "area": "LlamaIndex retrieval", "path": llamaindex.get("path", "project/workflows/llamaindex-rag.yaml"), "parameters": ["include", "exclude", "chunk_size", "chunk_overlap", "query_mode", "vector_top_k", "lexical_top_k", "rerank_top_k", "fallback_to_lexical"],
+            "where": "versioned YAML", "effect": "Controls approved corpus and candidate selection; a score is not a verified claim.",
+        },
+        {
+            "area": "Jarvis API contract", "path": jarvis.get("path", "services/jarvis-api and api/"), "parameters": ["API base", "owner token", "model allowlist", "provider acknowledgement", "budget values"],
+            "where": "API base is browser-local; tokens and provider values are server/local environment only", "effect": "Creates guarded review packets; no provider or writeback path is active by default.",
+        },
+        {
+            "area": "Role and skill governance", "path": "project/agents/agent-roster.yaml", "parameters": ["role", "skills", "outputs", "forbidden actions", "reviewer", "handoff"],
+            "where": "versioned YAML and Markdown", "effect": "Defines task authority and minimum skills; a role does not launch itself.",
+        },
+    ]
+
+
+def public_database_schema(skill_data: dict, langgraph: dict, crewai: dict, roles: dict) -> dict:
     """Describe the generated JSON catalog used by the browser-local query lab."""
     return {
         "kind": "generated_public_json_catalog",
@@ -592,14 +694,14 @@ def public_database_schema(skill_data: dict, langgraph: dict, crewai: dict) -> d
             {
                 "name": "skills",
                 "purpose": "Portable skill contracts shipped with this repository.",
-                "columns": ["id", "name", "category", "status", "reference_count", "path", "safe_to_share"],
+                "columns": ["id", "name", "category", "status", "documentation_reference_count", "path", "safe_to_share"],
                 "rows": skill_data["packaged_count"],
             },
             {
                 "name": "roles",
-                "purpose": "Configured CrewAI-style roles and their declared goals.",
-                "columns": ["id", "role", "goal", "skills"],
-                "rows": len(crewai.get("agents", [])),
+                "purpose": "Public role contracts: purpose, declared skills, outputs, and boundaries.",
+                "columns": ["id", "title", "mode", "skills", "outputs", "forbidden_actions"],
+                "rows": len(roles.get("roles", [])),
             },
             {
                 "name": "workflow_nodes",
@@ -621,8 +723,8 @@ def public_database_schema(skill_data: dict, langgraph: dict, crewai: dict) -> d
             },
         ],
         "supported_examples": [
-            "SELECT id, name, category, reference_count FROM skills LIMIT 20",
-            "SELECT id, role, goal FROM roles LIMIT 20",
+            "SELECT id, name, category, documentation_reference_count FROM skills LIMIT 20",
+            "SELECT id, title, mode FROM roles LIMIT 20",
             "SELECT id, owner, purpose FROM workflow_nodes LIMIT 20",
         ],
     }
@@ -632,6 +734,8 @@ def corpus() -> list[dict]:
     docs = []
     for base in [PROJECT, ROOT / "history", ROOT / "skills", WIKI]:
         for path in list_files(base, (".md", ".yaml", ".yml")):
+            if rel(path) in DASHBOARD_EXCLUDED_CORPUS_PATHS:
+                continue
             text = read(path, 1600)
             authority_state, superseded_by, authority_boost = corpus_authority(path, text)
             docs.append(
@@ -710,9 +814,16 @@ def main() -> None:
     e13_gate = e13_gate_status()
     jarvis_api = jarvis_api_status()
     skills = skill_catalog()
+    roles = parse_agent_roster({item["id"] for item in skills["items"]})
+    knowledge_files = knowledge_catalog()
+    configuration = configuration_catalog(langgraph, llamaindex, jarvis_api)
     activity = activity_items()
     wiki = wiki_summary()
-    database = public_database_schema(skills, langgraph, crewai)
+    for skill in skills["items"]:
+        skill["recommended_roles"] = [
+            role["title"] for role in roles["roles"] if skill["id"] in role["public_skill_packages"]
+        ]
+    database = public_database_schema(skills, langgraph, crewai, roles)
     database["tables"][-1]["rows"] = len(activity)
     data = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -747,6 +858,9 @@ def main() -> None:
         "gates": {"e1_3": e13_gate},
         "corpus": corpus(),
         "skill_catalog": skills,
+        "role_catalog": roles,
+        "knowledge_catalog": knowledge_files,
+        "configuration_catalog": configuration,
         "public_database": database,
         "sources": [
             {"label": "LangGraph overview", "url": "https://docs.langchain.com/oss/python/langgraph/overview"},
@@ -762,6 +876,7 @@ def main() -> None:
     database_dir = PROJECT / "database"
     database_dir.mkdir(parents=True, exist_ok=True)
     (database_dir / "skill-catalog.json").write_text(json.dumps(skills, indent=2), encoding="utf-8")
+    (database_dir / "role-catalog.json").write_text(json.dumps(roles, indent=2), encoding="utf-8")
     (DASHBOARD / "data.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
     print(f"wrote {rel(DASHBOARD / 'data.json')}")
     print(f"wrote {rel(database_dir / 'skill-catalog.json')}")

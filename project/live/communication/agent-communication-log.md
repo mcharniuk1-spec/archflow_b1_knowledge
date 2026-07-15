@@ -10645,3 +10645,83 @@ Status: complete
 Publication: scoped public commit `c8d9603` (`feat: add truthful public operations console`) pushed to `main` after the repository public-safety and E1 runtime pre-push guards passed.
 
 Scope preserved: the inherited `.env.example` and `services/jarvis-api/.env.example` edits were not staged or published by this release.
+
+## 2026-07-15 12:30 - Dashboard Operating Manual - starting
+
+Status: starting
+
+Task: turn the public dashboard and Jarvis into detailed developer documentation with explicit knowledge/agent flow instructions, configuration guidance, role/skill explanations, browser-local admin/guest preview, and architecture-report download.
+
+Files claimed: `project/runs/20260715-dashboard-operating-manual/`, final integration across `project/dashboard/`, `jarvis.*`, public documentation, public generated data, skill/agent mapping records, and this log. Three reviewers are read-only and will not edit shared files.
+
+FACT: the current interface is static/browser-local and provider/writeback-disabled.
+
+INTERPRETATION: the requested admin/guest flow can be demonstrated as a local UI mode and shared browser session, but not as authentication or durable individual memory.
+
+GAP: live runtime events, real agent launch, persistent guest state, private corpus access, and external actions remain outside this release.
+
+Next: complete independent audits, then implement only public-safe, documentation-first surfaces and validate the rendered console before publication.
+
+## 2026-07-15 13:00 - Current-state architecture and test evidence consolidation - starting
+
+Status: starting
+
+Task: reconcile the latest actual architecture, dashboard operating manual, parallel-chat handoff method, and test evidence into current public reports.
+
+Files likely to change: `project/reports/20260715-public-product-operations-architecture-report.md`, `docs/dashboard-operating-manual.md`, `project/dashboard/README.md`, `project/dashboard/app.js`, `project/scripts/dashboard-static-smoke.py`, `project/reports/20260715-architecture-test-results.md`, `project/reports/20260715-current-state-and-execution-plan.md`, and this log.
+
+Files claimed: the current-state/report and dashboard-documentation surfaces listed above; existing unrelated environment-example changes and other active run artifacts remain untouched.
+
+FACT: the public console is provider-disabled, writeback-disabled, and browser-local by default. Existing local-venv checks prove workflow validation, the guarded Jarvis API contract, the serverless owner guard, and the runtime guard. The current sandbox blocks headless Chrome rendering with `Operation not permitted`.
+
+INTERPRETATION: the architecture is efficient as a bounded static setup and review system, but no provider-token/cost efficiency claim is justified because no canonical provider ledger or live provider run exists.
+
+GAP: the current manual route and static-smoke route markers need reconciliation before the latest dashboard state can be called fully verified.
+
+Next: repair the route/test mismatch, update the current reports with exact evidence and limitations, rerun focused checks, and close out with a completion entry.
+
+## 2026-07-15 14:35 - Current-state architecture and test evidence consolidation - complete
+
+Status: complete for the public static/browser-local documentation and validation scope.
+
+FACT: Updated the active architecture report, current-state/execution-plan report, architecture test-results report, dashboard README, dashboard operating manual, strategic-plan routing note, and dashboard smoke contract.
+
+FACT: Repaired the current `#manual` dashboard route contract and aligned the smoke test with the ten current routes; the final permitted headless smoke passed with `routes=10 provider_calls=0 writeback=0`.
+
+FACT: Final checks passed: public safety scan, dashboard JavaScript syntax, dashboard and skill-catalog JSON parsing, project-venv workflow validation, Jarvis API contract smoke, serverless owner-guard smoke, runtime guard, and `git diff --check`.
+
+INTERPRETATION: The setup is efficient for deterministic public-safe preparation, review, and handoff. It is not provider-efficiency proof, continuous hosted-runtime proof, live subagent proof, or multi-user/database proof.
+
+GAP: The system Python lacks the optional YAML/FastAPI dependencies, while the project virtual environment passes those checks. Provider-backed token/cost efficiency remains unmeasured because the canonical provider ledger is not implemented. Existing environment-example edits and other active manual-lane files remain uncommitted and were preserved.
+
+Files added or updated in this consolidation:
+
+- `project/reports/20260715-public-product-operations-architecture-report.md`
+- `project/reports/20260715-architecture-test-results.md`
+- `project/reports/20260715-current-state-and-execution-plan.md`
+- `docs/dashboard-operating-manual.md`
+- `project/dashboard/README.md`
+- `project/dashboard/app.js`
+- `project/scripts/dashboard-static-smoke.py`
+- `project/dashboard/data.json`
+- `project/database/skill-catalog.json`
+- `project/strategic-plan-2026-07-13.md`
+- `project/runs/20260715-dashboard-operating-manual/agent-handout.md`
+
+Next safe action: review the complete public diff, then request a separate commit/push/deploy approval if publication is desired.
+
+## 2026-07-15 15:10 - Dashboard Operating Manual - complete
+
+Status: complete for the authorized public/static documentation, browser-local report, and Git publication scope.
+
+Files changed: dashboard/Jarvis UI and static smoke; public operating/API/operations documentation; public role/skill governance and two new portable skill contracts; generated skill/role catalogs; public database schemas; current architecture/test/review reports; WikiLLM run/decision/issue/log records; and this communication log.
+
+FACT: The dashboard now defaults to an Operating Manual and no longer exposes a strategic-plan surface. Knowledge Service prepares a browser-local report first; Agent Control reuses local report context and produces a review-required handoff. Jarvis explains every required input, downloads local Markdown/JSON artifacts, uses browser-local Admin/Guest previews, loads model discovery only on explicit Admin request, and does not send local report content to optional guarded API review.
+
+FACT: Independent read-only UI, Jarvis-flow, and skills/roles reviews were reconciled in `project/reports/20260715-dashboard-operating-manual-review.md`.
+
+Checks: public safety; skill validation; dashboard/Jarvis syntax; generated JSON parsing; workflow validation; guarded Jarvis API and serverless-owner guards; runtime guard; diff hygiene; and permitted browser smoke passed. Final browser result: `dashboard_static_smoke=ok routes=10 jarvis_static=ok provider_calls=0 writeback=0`.
+
+GAP: authentication, individual durable memory, live agent/runtime events, provider execution, durable spend controls, database, private-corpus ingestion, and external writeback remain explicitly gated.
+
+Next safe action: commit and push the approved public changes to `main`; inherited `.env.example` changes remain excluded.

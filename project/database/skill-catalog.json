@@ -1,6 +1,6 @@
 {
   "scope": "public repository skills only",
-  "packaged_count": 10,
+  "packaged_count": 12,
   "outside_inventory_policy": "Private or device-specific skills are not copied into the repository until provenance, license, secret/path safety, and a project use case pass review.",
   "items": [
     {
@@ -12,6 +12,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 5,
       "reference_count": 5,
       "safe_to_share": true,
       "permissions": [
@@ -26,7 +27,35 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "2b69aeb15ff9881fa53d508ae4832f0d542b746ea97b645272f77d49250a1b4b"
+      "content_sha256": "2b69aeb15ff9881fa53d508ae4832f0d542b746ea97b645272f77d49250a1b4b",
+      "recommended_roles": []
+    },
+    {
+      "id": "archflow-agent-control",
+      "name": "archflow-agent-control",
+      "description": "Design a bounded ArchFlow agent-control handoff from an approved knowledge report. Use when a project needs a role map, task graph, skills and tool allowlists, shared context, reviewer separation, approval gates, stop conditions, and proposed file architecture without launching agents, editing a repository, enabling providers, or writing externally.",
+      "path": "skills/archflow-agent-control/SKILL.md",
+      "category": "coordination",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "documentation_reference_count": 4,
+      "reference_count": 4,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "537c141ad2b4c062504bd9c302f3e08714993bfaff36a2bff8210e809c1ad4bf",
+      "recommended_roles": []
     },
     {
       "id": "archflow-architecture-operator",
@@ -37,7 +66,8 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
-      "reference_count": 7,
+      "documentation_reference_count": 6,
+      "reference_count": 6,
       "safe_to_share": true,
       "permissions": [
         "read public-safe sources",
@@ -51,7 +81,12 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "c1da8dd2fcb9a70130097d9be89b3b1de1ee173d2ed74460060582a992e7eaa9"
+      "content_sha256": "c1da8dd2fcb9a70130097d9be89b3b1de1ee173d2ed74460060582a992e7eaa9",
+      "recommended_roles": [
+        "Goal Architect",
+        "Terra Integrator",
+        "Architecture Operator"
+      ]
     },
     {
       "id": "archflow-e1-runtime-guard",
@@ -62,6 +97,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 5,
       "reference_count": 5,
       "safe_to_share": true,
       "permissions": [
@@ -76,7 +112,37 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "b22cf19715d394addeb256fd9e810e8949c0ef33ce31000560177ac6a755cd79"
+      "content_sha256": "b22cf19715d394addeb256fd9e810e8949c0ef33ce31000560177ac6a755cd79",
+      "recommended_roles": [
+        "AF Tools"
+      ]
+    },
+    {
+      "id": "archflow-knowledge-service",
+      "name": "archflow-knowledge-service",
+      "description": "Prepare a source-bounded ArchFlow knowledge report before agent design or implementation. Use for a public repository, project brief, approved source summary, PRD/ICP request, or knowledge-base setup that needs facts, interpretations, hypotheses, gaps, provenance, outputs, and an owner review gate without ingesting private material or starting a provider, agent, repository, or external write.",
+      "path": "skills/archflow-knowledge-service/SKILL.md",
+      "category": "coordination",
+      "status": "packaged_public_contract",
+      "visibility": "public",
+      "portable": true,
+      "documentation_reference_count": 4,
+      "reference_count": 4,
+      "safe_to_share": true,
+      "permissions": [
+        "read public-safe sources",
+        "draft scoped output",
+        "run declared local checks"
+      ],
+      "forbidden_actions": [
+        "provider activation",
+        "external writeback",
+        "secret collection"
+      ],
+      "verified_invocations": null,
+      "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
+      "content_sha256": "7b4a4fe29013204c6b99b7736fb46f4992a58efeb0cc8cd6b036d734bc1abb9c",
+      "recommended_roles": []
     },
     {
       "id": "archflow-task-breakdown",
@@ -87,6 +153,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 7,
       "reference_count": 7,
       "safe_to_share": true,
       "permissions": [
@@ -101,7 +168,12 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "61d436f4a2a08e53afbcf5c18456b9bcbd589cdba6253840669873a60d6bdac2"
+      "content_sha256": "61d436f4a2a08e53afbcf5c18456b9bcbd589cdba6253840669873a60d6bdac2",
+      "recommended_roles": [
+        "Terra Integrator",
+        "AF Manager",
+        "AF Task Translator"
+      ]
     },
     {
       "id": "archflow1",
@@ -112,6 +184,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 5,
       "reference_count": 5,
       "safe_to_share": true,
       "permissions": [
@@ -126,7 +199,8 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "a3c2d9fe881c01d979ebdb0786ad2bb8dfa517ab1875937f9215d35ebdf4075a"
+      "content_sha256": "a3c2d9fe881c01d979ebdb0786ad2bb8dfa517ab1875937f9215d35ebdf4075a",
+      "recommended_roles": []
     },
     {
       "id": "daily-public-project-review",
@@ -137,6 +211,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 4,
       "reference_count": 4,
       "safe_to_share": true,
       "permissions": [
@@ -151,7 +226,8 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "2e22703109b6f7d732b68237b0cbedfffb104315f6244b42a8ef5f3d9cb887f0"
+      "content_sha256": "2e22703109b6f7d732b68237b0cbedfffb104315f6244b42a8ef5f3d9cb887f0",
+      "recommended_roles": []
     },
     {
       "id": "evening-skill-registry-update",
@@ -162,6 +238,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 4,
       "reference_count": 4,
       "safe_to_share": true,
       "permissions": [
@@ -176,7 +253,8 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "21020dffcb48af76cb997416c82f65df59550275b147ed5aa838fcd9180d78fd"
+      "content_sha256": "21020dffcb48af76cb997416c82f65df59550275b147ed5aa838fcd9180d78fd",
+      "recommended_roles": []
     },
     {
       "id": "outquestions",
@@ -187,6 +265,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 13,
       "reference_count": 13,
       "safe_to_share": true,
       "permissions": [
@@ -201,7 +280,13 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "0d50828b66ea246784a714930d58c37778b24ba4ede8db810d3306cebdadc7ac"
+      "content_sha256": "0d50828b66ea246784a714930d58c37778b24ba4ede8db810d3306cebdadc7ac",
+      "recommended_roles": [
+        "AF Manager",
+        "AF Knowledge",
+        "AF Review",
+        "AF Publisher"
+      ]
     },
     {
       "id": "priority-task-operator",
@@ -212,6 +297,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 3,
       "reference_count": 3,
       "safe_to_share": true,
       "permissions": [
@@ -226,7 +312,8 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "e0b904a504b5f0dd660d798802312547447f2e9b3606844c4acb1b17db1487c6"
+      "content_sha256": "e0b904a504b5f0dd660d798802312547447f2e9b3606844c4acb1b17db1487c6",
+      "recommended_roles": []
     },
     {
       "id": "task-handout",
@@ -237,6 +324,7 @@
       "status": "packaged_public_contract",
       "visibility": "public",
       "portable": true,
+      "documentation_reference_count": 12,
       "reference_count": 12,
       "safe_to_share": true,
       "permissions": [
@@ -251,7 +339,14 @@
       ],
       "verified_invocations": null,
       "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-      "content_sha256": "27ae9989926a347ad2eb1a6c9efd4ee8579661cb611c0f480e2dd97c536447c0"
+      "content_sha256": "27ae9989926a347ad2eb1a6c9efd4ee8579661cb611c0f480e2dd97c536447c0",
+      "recommended_roles": [
+        "Terra Integrator",
+        "AF Manager",
+        "AF Knowledge",
+        "AF Publisher",
+        "Model-Efficiency Observer"
+      ]
     }
   ]
 }

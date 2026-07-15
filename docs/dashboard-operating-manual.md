@@ -1,209 +1,301 @@
 # ArchFlow Dashboard Operating Manual
 
 Status: local/static dashboard operating document
-Date: 2026-07-03
 
-## Purpose
+## What this product is today
 
-The dashboard is the local control and communication surface for ArchFlow's PRD automation service and internal agent workflow. It has two architectures:
+ArchFlow is a documentation-first, local-first framework for turning bounded project context into a reviewable knowledge report and then a governed agent-work handoff. The public repository can run by itself as a static site and contract library. It does not include a private corpus, credentials, device paths, customer information, a hosted autonomous agent service, or a live multi-user database.
 
-- Architecture 1 - PRD/ICP Service Output: turns approved source material into PRD, task matrix, evidence gaps, ICP logic, reports, and review packets.
-- Architecture 2 - Agent Control System: controls Codex/local execution, LangGraph-style routing, LlamaIndex retrieval, Graphify structure reference, WikiLLM memory candidates, reviews, approvals, run notes, and deployment sequencing.
+The dashboard is an explanatory control surface. Jarvis is a text interface for preparing the same local reports. Neither page can make repository changes, launch a sub-agent, fetch or clone a repository, activate a provider, write a database, push Git, deploy, or write to Notion/Nexus/another external system. Those actions need an approved operator, a scoped task contract, current capability proof, and their own action-specific approval.
 
-The dashboard is still static/browser-local by default. It can create local packets, persist browser-local chat, and use a provider-disabled Jarvis review-packet contract where an approved local or hosted route is available. This document does not assert that any hosted route is currently fresh or reachable. The dashboard does not safely perform provider calls, Railway deployment, Notion writeback, Telegram sends, raw voice storage, or production publication without separate approval and runtime proof.
+Start the dashboard at `/project/dashboard/#manual`. The short `/dashboard` route redirects to it. Jarvis is at `/jarvis`.
 
-## First Screen: Jarvis
+## The operating method
 
-### Architecture Selector
+The product has two deliberately separate workflows:
 
-Use the Architecture selector before giving commands.
+```text
+public-safe project reference or summary
+  -> Knowledge Service local report
+  -> human review / download
+  -> Agent Control local handoff
+  -> human review / download
+  -> approved operator creates a scoped change
+  -> validation and separate external-action approval
+```
 
-| Option | Use For | Effect |
+The split matters. Knowledge Service answers, “What do we know, what is missing, and what decision must this output support?” Agent Control answers, “Which bounded roles may work, with which skills/tools/sources, in which order, and who reviews the result?” Do not skip the first question by designing agents around unreviewed or unbounded context.
+
+### Truth states
+
+| State | Meaning | It does not mean |
 |---|---|---|
-| 1 / Architecture 1 | PRD/ICP service work | Jarvis treats commands as source-to-PRD, discovery synthesis, ICP evidence, backlog, and buyer-output requests. |
-| 2 / Architecture 2 | System/control work | Jarvis treats commands as architecture, workflow, logs, memory, Graphify, LlamaIndex, LangGraph, approval, and durable-output requests. |
+| Configured | A file or browser setting exists. | A runtime ran. |
+| Prepared locally | A browser-local report/packet was assembled. | A file, agent, provider call, or database write exists. |
+| Reviewed | A named human accepts a bounded artifact. | A broader action is authorized. |
+| Executed | A named command or runtime produced evidence. | Production approval. |
+| Proved | A declared check passed within its stated scope. | Continuous availability or future safety. |
+| Gated | Authority, capability, evidence, or safety is missing. | A reason to bypass the gate. |
 
-### Normal Mode
+## Admin and Guest preview
 
-Normal mode waits for a command. The same sentence has different meaning depending on the selected architecture. In Architecture 1, "run a check" creates a PRD/ICP service packet. In Architecture 2, it creates an architecture-control packet with logs, approval gates, and memory/writeback boundaries.
+The Admin and Guest buttons are browser-local presentation modes. They are not authentication, RBAC, tenancy, individual durable memory, or a means to override any gate. The selected mode and local report context are stored only in browser localStorage on the current device and can be cleared by clearing local activity/browser storage.
 
-### Interview Mode
+| Mode | Intended use | Allowed local preparation | Held or unavailable |
+|---|---|---|---|
+| Admin preview | Operator learning, existing reviewed context, configuration drafting. | Knowledge report or Agent Control handoff. | Still cannot execute, write, or bypass approval. |
+| Guest preview | Demonstrate the method to a public-repository user without an account. | Knowledge report first; then Agent Control from that local report. | API base/token controls, automatic model-catalog loading, repository fetching/cloning, private input, individual persistent memory. |
 
-Interview mode is proactive. When selected, Jarvis immediately asks the first question for the active architecture.
+Enter either a public repository reference or a non-sensitive project label. A reference is a label for the report; this browser does not fetch, clone, index, inspect, or send it to a provider. Never enter a private link, local path, token, credential, raw private transcript, or customer data.
 
-Architecture 1 starts by asking which source material should become the next PRD/ICP packet and what buyer/product decision it should support.
+## Knowledge Service
 
-Architecture 2 starts by asking what system-level change, agent workflow, memory/logging decision, or dashboard-control outcome should be structured first.
+Use Knowledge Service first whenever the operator needs a PRD, ICP brief, context capsule, evidence map, decision brief, backlog, research packet, or knowledge-update candidate.
 
-Each answer is stored as a browser-local summary candidate and the next question is shown. Raw transcript persistence remains off by default.
+### Required input contract
 
-### Chat History
+| Field | What to write | Why it is required | Stored / cannot do |
+|---|---|---|---|
+| Goal | One outcome and decision. | Defines a testable scope. | Browser-local report; cannot execute it. |
+| Public reference or safe label | Public URL or non-sensitive name. | Identifies the subject without pretending it was read. | Browser-local report; cannot fetch it. |
+| Allowed evidence | Exact approved summaries/files/categories. | Limits retrieval and claims. | Report boundary; cannot grant access. |
+| Exclusions | Private, raw, stale, or out-of-scope material. | Prevents accidental ingestion. | Report boundary; cannot override a security policy. |
+| Requested output | PRD, report, evidence map, role proposal, and so on. | Makes the handoff reviewable. | Proposal only. |
+| Decision supported | The choice the reviewer must make. | Avoids generic “research” output. | Recorded as a review question. |
+| Constraints and stop conditions | Safety, time, budget, authority, and delivery limits. | Makes escalation explicit. | Does not authorize external action. |
+| Independent reviewer | Role or person accountable for review. | Keeps maker and checker separate. | Does not record a real approval. |
 
-Chat history is persistent in local browser storage. It stays available across page reloads until the user explicitly clears it. Export chat history before it should become a Codex-reviewed packet.
+### Output contract
 
-Clear history removes only the browser-local copy. It does not delete Git, Notion, WikiLLM, or run artifacts.
+The current local report contains a stable report ID, goal, declared repository/project reference, source boundary, requested output, reviewer, constraints, and four classifications:
 
-## Voice And Transcript Controls
+- **FACT** — directly supplied or independently evidenced statement.
+- **INTERPRETATION** — reasoned reading of a fact; not evidence by itself.
+- **HYPOTHESIS** — a testable proposition.
+- **GAP** — missing evidence, authority, freshness, or capability.
 
-Voice mode is disabled in the current dashboard and API contract. Use Jarvis text chat and bounded file attachments instead.
+It also states `review_required_not_executed` and records zero provider calls, agent launches, repository writes, database writes, and external writeback. Download the Markdown report for humans or the JSON handoff for tooling. Neither download is a repository patch.
 
-Manual transcript text can be pasted into Jarvis chat as normal text. It is not treated as an audio capture lane, and it does not approve speech recognition, raw recording, browser speech synthesis, provider transcription, or TTS.
+### Knowledge files and retrieval cascade
 
-Current limits:
+Read the smallest relevant set in this order:
 
-- Raw audio is not stored.
-- Raw transcript persistence is off by default.
-- Browser speech recognition and speaker playback remain off.
-- Provider-backed transcription or TTS is not enabled.
-- Owner approval and storage policy are required before durable voice capture.
-
-## Screen 1: PRD/ICP Flow
-
-Screen 1 is the buyer-output flow. It shows how source material becomes a PRD/ICP service artifact.
-
-Main stages:
-
-1. Client source intake.
-2. PRD builder.
-3. Market evidence fork.
-4. ICP evidence cards.
-5. Customer pain review.
-6. Evidence merge.
-7. ICP synthesis.
-8. Landing/demo package.
-9. Runtime proof branch.
-10. Client-output approval.
-11. Service output packet.
-
-Each stage should define:
-
-- Inputs.
-- Outputs.
-- Owner.
-- Evidence or pending marker.
-- Business objective.
-- Review gate.
-- Runtime boundary.
-
-## Screen 2: Agent Orchestra
-
-Screen 2 is the internal control workflow. It is for local agent coordination, not buyer-facing output.
-
-Main stages:
-
-1. Operator command intake.
-2. Classify request.
-3. Codex development response.
-4. Graph monitor.
-5. Parallel agent fork.
-6. Architecture review.
-7. Safety and source review.
-8. CrewAI Level 3 direct proof.
-9. Integrator merge.
-10. Writeback approval.
-11. Durable output.
-
-## Block-Schema Nodes
-
-### Agent Nodes
-
-Agent nodes represent bounded work owned by a role. Every agent node should have inputs, outputs, files, prompt, system prompt, last run state, possible outputs, and safety requirements.
-
-### Router Nodes
-
-Router nodes classify work before execution. They decide whether a command is PRD/ICP service work, architecture/control work, safety review, provider-gated runtime work, or blocked work.
-
-### Parallel Nodes
-
-Parallel nodes are not decoration. They mean that the integrator may split work into independent branches, such as architecture review, safety review, product review, and technical runtime review. A parallel node must define branch owners, inputs, outputs, merge target, and stop conditions.
-
-### Approval Nodes
-
-Approval nodes protect high-impact actions. They are required before provider calls, raw capture, external sends, Notion/GitHub/WikiLLM writeback, Railway deployment, production promotion, or public claims. Approval outputs should be approved action, revision request, or blocked issue.
-
-### Merge Nodes
-
-Merge nodes combine branch outputs and preserve contradictions as gaps. The merge node does not hide blockers; it makes one accepted handoff after review.
-
-### Output Nodes
-
-Output nodes create durable artifacts: run notes, PRDs, reports, PDFs, issues, decisions, dashboard data refreshes, or Git commits.
-
-## Config Page
-
-The Config page stores browser-local prompt and role settings. These are candidates only. They do not change GitHub, Notion, WikiLLM, provider prompts, or deployed services until Codex reviews and writes the change.
-
-Important config fields:
-
-| Field | Meaning | Risk |
+| Layer | Main configuration / knowledge file | Job |
 |---|---|---|
-| Model policy | Defines allowed provider state | Must stay provider-disabled unless approved |
-| Memory policy | Defines what can be stored | Must exclude raw private source by default |
-| Normal prompt | Reactive command behavior | Should respect selected architecture |
-| Interview prompt | Proactive question behavior | Should ask one question at a time |
-| Review prompt | Safety and evidence gate | Must block unsupported claims |
+| Public rules | `project/operating-rules.md` | Public boundary, approval policy, work communication, and proof semantics. |
+| Stable context | `project/context/cag-core.yaml` and `project/context/README.md` | Reusable context assembled before task-specific material. |
+| Project routing | `project/README.md` | Public mission, folder map, and local surfaces. |
+| Durable memory | `wiki/index.md`, `wiki/memory.md`, `wiki/insights.md`, `wiki/log.md` | Navigation, reviewed facts, reusable interpretations, and chronological record. |
+| Human rules | `wiki/rules/public-wikillm-contract.md` | What may be promoted and what must stay out. |
+| Generated structure | `reference/graphify/` when present | Code/document relationship reference; never final human synthesis. |
+| Bounded retrieval | `project/workflows/llamaindex-rag.yaml` | Approved corpus, chunking, hybrid candidate selection, lexical fallback. |
+| Live-vault bridge | Nexus, when separately verified | Live Obsidian operations only after schema/capability discovery. |
 
-## Local Jarvis API
+LlamaIndex is a retrieval contract, not an instruction to ingest a whole device. The operator configures `include`, `exclude`, `chunk_size`, `chunk_overlap`, `query_mode`, `vector_top_k`, `lexical_top_k`, `rerank_top_k`, and `fallback_to_lexical` in `project/workflows/llamaindex-rag.yaml`. A retrieval score is never a factual claim. TurboVec or another vector acceleration layer remains optional and must be evaluated as a bounded performance experiment, not a source of truth.
 
-The local API lives under `services/jarvis-api`. It is provider-disabled by default.
+## Agent Control
 
-The dashboard header may show `Jarvis API connected` or `Jarvis API disconnected` for the route it can reach in that browser session. Local development defaults to `http://127.0.0.1:8787`. A hosted same-origin route, when separately verified, uses the provider-disabled serverless Jarvis contract under `/health` and `/api/...`; a UI connection label is not hosted-freshness proof.
+Use Agent Control only after Knowledge Service has produced a report you can review and download. The control workflow reuses the report ID and preserves its source boundary rather than copying raw source material into a new agent prompt.
 
-The Vercel API contract is intentionally conservative:
+### Required input contract
 
-- `/health` reports Jarvis availability.
-- `/api/lanes/prd-icp` returns a PRD/ICP review packet.
-- `/api/lanes/agent-orchestra` returns an agent-workflow review packet.
-- `/api/config/roles` returns configured role metadata.
-- `/api/voice/chat` returns a disabled-mode review packet.
-- Provider calls, raw audio storage, durable writeback, and external sends remain disabled.
+| Field | Why it matters |
+|---|---|
+| Knowledge report ID | Establishes the context and provenance handoff. |
+| Goal and expected artifact | Defines a finish condition. |
+| Required roles | Chooses the smallest useful role set. |
+| Allowed packaged skills and methods | Prevents a broad, unreviewed tool load. |
+| Allowed tools and sources | Keeps access bounded. |
+| Parallel lanes and sole writer | Prevents conflicting edits. |
+| Independent reviewer | Stops a maker from self-approving high-risk output. |
+| Approval gates and stop conditions | Holds provider, Git, deployment, database, and external actions for explicit authority. |
+| Proposed files | Makes a future change inspectable; every proposal is `created: false` until a human operator applies it. |
 
-The local FastAPI service keeps the broader endpoint set for development and future Railway migration. The Vercel surface is intentionally smaller so it fits the current hosting plan and supports the dashboard connection path reliably.
+### Local state and stage display
 
-Expected local checks:
+The dashboard displays a sequence such as Intake, Context/Classification, Contract, Bounded Work, Review, Approval, and Packet. An active light/wiggle indicates that this browser is assembling a local review packet. A done mark means the local sequence has completed. It never means an external workflow is running.
 
-- `/health`
-- `/api/config/roles`
-- `/api/lanes/prd-icp`
-- `/api/lanes/agent-orchestra`
-- `/api/test-runs/meeting-prd`
-- `/api/voice/chat` disabled packet
+A live state feed would need a sanitized `run_id`, `node_id`, state, timestamp, evidence reference, authority scope, and writeback state. Until those fields arrive from a verified runtime, the dashboard labels state as browser-local.
 
-The API can return review packets and approval gates. It does not call OpenRouter, write Notion/WikiLLM/GitHub, store raw transcripts, or run full provider-backed PRD cycles without approval, explicit server-side model selection, and budget proof.
+### Agent output and download
 
-## Railway Readiness
+Agent Control produces a proposal with roles, allowed skills, review gate, stop conditions, and suggested files. Suggested files are marked with `created: false` and `requires_operator_review: true`. Download the Markdown report for a reviewer and JSON package for a future tooling integration. A separate approved operator must decide whether to create a run handout, update a role roster, or change a workflow YAML file.
 
-Railway is a future long-running runtime lane. It may later serve durable workers, queues, long-running provider tasks, stronger auth/CORS policy, and always-responding operations, but no always-online claim is current in this document. A Railway deployment-time healthcheck is not continuous monitoring. The lane remains incomplete until all of the following are proven:
+## Workflow Editor
 
-- Only `services/jarvis-api` is deployed.
-- Hosted `/health` is verified.
-- CORS and auth are configured.
-- Provider calls remain disabled first.
-- Dashboard API routing points to the hosted backend only after review.
-- Logs and budget guards exist.
-- Owner approval is recorded before provider activation.
-- Deployment-time healthcheck and post-deploy endpoint evidence are recorded separately from ongoing observability, recovery, and availability evidence.
+The editor is a detailed, browser-local design surface. Use it to make a proposed sequence visible before applying a repository patch.
 
-## Required Operator Checks
+| Field group | Configure | Effect | Persistence and limitation |
+|---|---|---|---|
+| Node identity | title, type, owner | Makes accountability visible. | localStorage only; does not assign a runtime. |
+| Inputs and outputs | allowed sources, expected artifacts | Makes scope and handoff testable. | Downloaded packet; does not read sources. |
+| Routing | condition, checkpoint, retry/revision cap, merge rule | Shows recovery and termination logic. | Draft only; does not start LangGraph. |
+| Role controls | skills, tools, reviewer, output schema | Prevents persona-only agent definitions. | Draft only; does not create a worker. |
+| Provider controls | provider mode, model route, approval gate | Documents a future controlled route. | Default is disabled; no browser secret or provider call. |
+| Persistence and audit | memory target, trace target, run recorder | States intended durable record. | Does not write WikiLLM, database, or external tool. |
 
-Before Git push or Notion status promotion:
+The two detailed screens have different jobs:
 
-- Public safety scan.
-- Workflow validation.
-- Runtime guard.
-- Dashboard JSON parse.
-- JavaScript syntax check.
-- API syntax check.
-- Dashboard browser smoke test at desktop and mobile widths.
-- PDF existence and size check for generated report documents.
+- **Knowledge Service / PRD-ICP Flow:** model the proposal from intake to evidence, review, approval, and client/reviewer output.
+- **Agent Control / Workflow Editor:** model command classification, role contract, bounded work, independent review, merge, approval, and durable handoff.
 
-## Status Rules
+Use **Validate** before export. Export creates a local packet, not a repository change. Use **Submit review packet** only for a separately available guarded API review; that endpoint must still report provider/writeback as disabled unless a later server-side gate is proven.
 
-- Done: bounded output exists, checks pass, and no owner approval remains.
-- Review: artifacts exist but owner acceptance, hosted proof, or final closeout is pending.
-- Blocked: required input, approval, provider gate, or proof is missing.
-- Backlog: planned but not approved or started.
+## Dashboard configuration
 
-## Current Boundaries
+The configuration page exposes browser-local candidates. It is not a secret manager or production configuration system.
 
-The dashboard can guide and stage work locally. Codex remains the operator/editor/reviewer. LangGraph, CrewAI, LlamaIndex, Graphify, WikiLLM, OpenRouter, Railway, Notion, Telegram, and Figma each require their own verified path before claims are promoted.
+| Area | Versioned configuration point | Key parameters | Operational consequence |
+|---|---|---|---|
+| Viewer/activity | browser localStorage | viewer mode, shared report state, selected architecture | Changes only this browser's preview and handoff context. |
+| Prompt candidates | dashboard Configuration page | chain name, model policy, memory policy, normal/interview/reviewer prompts | Export for review; does not change an application prompt. |
+| API base | dashboard/Jarvis localStorage | same-origin or HTTP loopback origin | Can check guarded health/review endpoints; cannot hold a provider key or authorize calls. |
+| LangGraph | `project/workflows/langgraph-controller.yaml` | node owner, route condition, checkpoint, revision cap, approval rule | Defines a reviewed graph contract after YAML validation. |
+| LlamaIndex | `project/workflows/llamaindex-rag.yaml` | corpus boundary, chunking, hybrid retrieval, fallback | Controls candidate selection; not truth or ingestion authority. |
+| CrewAI | `project/workflows/crewai-crew.yaml` | role/task examples, process/memory/cache flags | Documents a role fixture; not proof of a default runtime. |
+| Roles/skills | `project/agents/agent-roster.yaml`, `project/agents/skills-by-agent.md` | role, methods/packages, outputs, forbidden actions | Defines work contracts and visibility, not agent activation. |
+
+Never place a token, secret, personal value, local path, private URL, raw transcript, or customer document in the dashboard configuration or its download. Provider/server values remain local environment or server configuration and need separate ownership and security review.
+
+## Jarvis operating guide
+
+Jarvis is the conversational entry point to the same two-stage flow. Its initial response should be an architecture report in the chat, followed by a Download report or Download handoff option.
+
+1. Choose **Guest preview** for a public demonstration or **Admin preview** for local operator drafting. This is not a login.
+2. Choose **Knowledge Service**.
+3. Complete Goal, public repository reference/safe project label, allowed evidence and exclusions, requested output, independent reviewer, and constraints/stop conditions.
+4. Press **Prepare local report**. Read the report ID, classifications, and runtime boundary in chat.
+5. Download the report. Review it with a human before promoting knowledge or designing implementation.
+6. Choose **Agent Control** and reuse the local report context.
+7. Describe the required roles, allowed skills/tools/sources, expected files/artifacts, independent reviewer, approval gates, and stop conditions.
+8. Download the local handoff and ask an approved operator to perform any real work.
+
+Use this prompt template for Knowledge Service:
+
+```text
+Goal:
+Public repository reference or safe project label:
+Allowed evidence:
+Excluded/private material:
+Requested output:
+Decision this output must support:
+Constraints and stop conditions:
+Independent reviewer:
+```
+
+Use this addition for Agent Control:
+
+```text
+Use knowledge report ID:
+Goal and expected artifact:
+Required roles:
+Allowed packaged skills and project methods:
+Allowed tools and sources:
+Parallel lanes and sole writer:
+Independent reviewer:
+Approval gates and rollback/stop condition:
+Suggested files for operator review:
+```
+
+### Token, API base, model, and provider controls
+
+- **Owner token:** visible only in Admin preview. It is held in tab memory, must never be a provider key, and is sent only to an approved same-origin/loopback guarded API route when an operator explicitly requests that route.
+- **API base:** same origin or an HTTP loopback address only. This restriction prevents a local browser setting from sending packet content to an arbitrary host.
+- **Model cards:** route candidates, not enabled execution. A displayed model does not prove availability, spending authority, or a provider call.
+- **Public catalog:** loads only after the explicit “Load public model catalog” action in Admin preview. Guest preview does not load it automatically.
+- **Provider acknowledgement:** an optional guarded API review acknowledgement, not replay protection or authorization. The optional request sends only a guarded status descriptor, not the local report body, project reference, source boundary, or chat history. Provider execution remains server-gated and must not be inferred from a local report.
+
+## Public skill catalog
+
+The repository packages only the following public skill contracts. It deliberately does not copy an operator's private/global skill inventory. A plain method name in the role roster is a checklist unless a task contract maps it to a reviewed package.
+
+| Packaged skill | Purpose and trigger | Primary users | Boundaries |
+|---|---|---|---|
+| `arcagcom` | Coordinate active public work, claims, handoffs, and merge gates. | All public lanes. | Public-safe log only; no external authority. |
+| `archflow-agent-control` | Build a role/task/gate handoff from a reviewed knowledge report. | Goal Architect, Integrator, Watchdog, dashboard control. | No agent launch, file creation, provider, or external action. |
+| `archflow-architecture-operator` | Design architecture layers, roles, tools, loops, evidence, and adoption gates. | Goal/Architecture roles. | Design does not activate tools/providers. |
+| `archflow-e1-runtime-guard` | Check the declared runtime spine before public Git publication. | AF Tools, publisher. | Evidence check; no deployment authority. |
+| `archflow-knowledge-service` | Produce a source-bounded knowledge report before implementation design. | AF Context, AF Knowledge, PRD role. | No broad ingestion, provider, or automatic memory promotion. |
+| `archflow-task-breakdown` | Turn a bounded outcome into staged tasks, gates, checks, and handoff. | AF Manager, Task Translator. | Does not create external tasks by itself. |
+| `archflow1` | Apply dashboard/Jarvis/provider/Railway boundary rules. | Dashboard/Jarvis lanes. | No live-runtime claim without proof. |
+| `daily-public-project-review` | Run daily public project/skill/RAG retrospective. | Scheduled review lane. | Low-churn review only. |
+| `evening-skill-registry-update` | Check registry/hook drift and update only when justified. | Maintenance lane. | No automatic unsafe skill adoption. |
+| `outquestions` | Capture unresolved decisions, risks, and next-stage gates. | Manager, review, knowledge, publisher. | Questions are not approvals. |
+| `priority-task-operator` | Rank tasks and prepare one priority handoff. | Operator/maintenance lane. | Ranking does not grant execution authority. |
+| `task-handout` | Produce readable continuity handoffs and run-closeout context. | Integrator, manager, knowledge, publisher. | Does not apply files or external updates. |
+
+Documentation-reference counts in the dashboard are not usage counts. Public-safe execution telemetry is not implemented. The generated catalog is `project/database/skill-catalog.json` and the role catalog is `project/database/role-catalog.json`.
+
+## Role contracts
+
+Roles describe responsibility, not a permanently active persona or model. The full machine-readable source is `project/agents/agent-roster.yaml`; the dashboard renders every declared role with its skills, expected outputs, and forbidden actions.
+
+| Role group | Roles | Typical output | Expansion condition |
+|---|---|---|---|
+| Goal and integration | Goal Architect, Terra Integrator, Luna Worker, Architecture Operator | goal contract, integrated architecture, evidence packet, design/benchmark pack | bounded task contract, sole writer, independent reviewer. |
+| Control and tools | Hermes Watchdog, AF Tools, AF Context, AF Manager | risk classification, tool readiness, context digest, PRD/task matrix | no provider/tool activation without current proof. |
+| Product delivery | AF Discovery, AF PRD Architect, AF Task Translator, AF Research, AF Knowledge | discovery packet, PRD, task packet, evidence cards, memory candidate | use only approved sources and role-specific skills. |
+| Communication and market | AF Copy, AF ABM Channel, AF Growth Evidence, AF Product Packaging Engineer | source-grounded copy, reviewed outreach packet, cohort evidence, installability package | no autonomous sending, invented metrics, or productization claim. |
+| Review and publication | GloomyLord, AF Review, AF Publisher, Model-Efficiency Observer | visual proof, verdict, release packet, efficiency report | independent review, public safety, owner approval for release/action. |
+
+Each role may use only the packages and method checklists named in its task contract. It may widen tool access only after a reviewed use case, provenance/license/security assessment, sandbox fixture, rollback path, updated role mapping, and independent AF Review.
+
+## Data Lab and database boundary
+
+The Data Lab queries generated `project/dashboard/data.json` with a deliberately small read-only SQL-like grammar: `SELECT columns FROM skills|roles|workflow_nodes|sources|runs LIMIT n`. It is not SQL, does not connect to a server, cannot join/mutate tables, and cannot access a private corpus.
+
+| Storage layer | What it holds now | Write authority |
+|---|---|---|
+| Generated public catalog | skills, roles, workflow nodes, source links, public run summaries | data generator only. |
+| Browser-local drafts | editor changes, local reports, local review packets | this browser only. |
+| Private runtime store | not exposed in this public console | gated private operator runtime. |
+| Future multi-user database | not implemented | requires authentication, tenancy, RBAC, audit, retention, backup, recovery, and migration proof. |
+
+## FAQ
+
+### Does the dashboard run agents continuously?
+
+No. The animated state is a browser-local packet-preparation preview. A continuous monitor or agent runtime must publish current, verifiable event evidence before the UI may describe it as live.
+
+### Can a guest create a knowledge base for a repository?
+
+A guest can prepare and download a local Knowledge Service report for a public reference/safe summary. The current static page does not fetch, clone, ingest, or persist that repository. A real knowledge-base setup requires a separate approved corpus and operator runtime.
+
+### Can Agent Control create files or sub-agents?
+
+No. It proposes a role/task/file architecture. An approved operator may later create a scoped change after review, communication-file claim, checks, and any needed approval.
+
+### How do I change the RAG setup?
+
+Change the bounded LlamaIndex YAML, run the smallest relevant validation/fixture, record evidence, regenerate dashboard data, and have an independent reviewer assess the change. Do not treat vector search or TurboVec as a substitute for source governance.
+
+### Where do I put my private project information?
+
+Not in the public repository, dashboard, Jarvis download, or static browser configuration. Keep private material in an approved private boundary and create a sanitized, source-bounded handoff if an operator later needs it.
+
+### Is the public skill list the complete local skill library?
+
+No. It is the complete portable public allowlist for this repository. Private/device-specific skills are intentionally excluded until their provenance, license, portability, safety, and project use case are reviewed.
+
+### What must be checked before a public Git push?
+
+Run the public safety scan, workflow validation, JavaScript syntax check, dashboard static smoke, Jarvis contract/owner-guard smoke, generated JSON parse, and runtime guard. Then record the result in a run handout and obtain/confirm the separate Git-push authority.
+
+## Local setup
+
+From the public repository root:
+
+```bash
+python3 project/scripts/generate-dashboard-data.py
+python3 -m http.server 8765
+```
+
+Open `http://127.0.0.1:8765/project/dashboard/#manual`. For the current verification command set, see `project/dashboard/README.md`. Regenerate `project/dashboard/data.json` whenever public workflows, role/skill contracts, reports, runs, or WikiLLM material changes.
+
+## Current limitations
+
+- Authentication and individual member memory are not implemented.
+- Provider execution, durable spend ledger, and real external writeback are not implemented/proven by the static UI.
+- The dashboard does not include a strategic planning page.
+- A route/configuration file or a browser control is not proof of a continuously healthy hosted service.
+- The public catalog intentionally excludes private skills and private knowledge.

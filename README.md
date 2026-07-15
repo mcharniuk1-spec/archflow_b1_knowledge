@@ -12,7 +12,7 @@ Prior work is represented only as sanitized English summaries under `history/`.
 Choose the path that fits you:
 
 - **Service buyer:** start with the [Knowledge Reliability Setup](project/agentic-stack.md#service-company-operating-model) and use the repository to understand the governed handoff you receive.
-- **Operator:** open the [dashboard](project/dashboard/) to inspect the Knowledge Service and Agent Control flows, then download a browser-local review bundle for an approved operator.
+- **Operator:** open the [dashboard operating manual](docs/dashboard-operating-manual.md) and [dashboard](project/dashboard/#manual) to inspect the Knowledge Service and Agent Control flows, then download a browser-local report/handoff for an approved operator.
 - **Self-hosting evaluator:** follow the [quickstart](docs/quickstart.md), review the [architecture](docs/architecture.md), and use only public-safe example data.
 
 The product is intentionally local-first. Its current public implementation explains and validates contracts, generated catalog data, browser-local drafts, and guarded review packets. It does not claim an active hosted agent platform.
@@ -24,11 +24,12 @@ python3 project/scripts/generate-dashboard-data.py
 python3 -m http.server 8765
 ```
 
-Open `http://127.0.0.1:8765/project/dashboard/`, choose **Operations**, and prepare a review bundle. The animated stage sequence is a browser-local preparation preview. It never creates repository files, launches a subagent, calls a provider, or pushes Git.
+Open `http://127.0.0.1:8765/project/dashboard/#manual`, choose **Knowledge Service**, and prepare a local report. Download/review it, then use **Agent Control** to prepare a role handoff. The animated stage sequence is browser-local only. It never creates repository files, launches a subagent, calls a provider, or pushes Git.
 
 ## Documentation
 
 - [Quickstart](docs/quickstart.md) — clean-clone local setup and verification.
+- [Dashboard operating manual](docs/dashboard-operating-manual.md) — two-stage knowledge/agent-control flow, Jarvis prompts, configuration points, skills, roles, outputs, and limits.
 - [Architecture](docs/architecture.md) — seven grouped layers and the long-term product path.
 - [Operations](docs/operations.md) — input meanings, stage sequence, review-bundle workflow, and real-action gates.
 - [API contract](docs/api-contract.md) — guarded API shapes and fail-closed behavior.

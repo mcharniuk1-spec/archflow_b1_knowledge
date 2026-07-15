@@ -80,6 +80,17 @@ Skills set up:
 - [`arcagcom`](../../skills/arcagcom/SKILL.md) - coordinates public project agents through the live communication log, file claims, handoffs, and Prompt 2.1 / Prompt 3 merge gates.
 - [`archflow1`](../../skills/archflow1/SKILL.md) - defines the local Jarvis dashboard stack contract, provider-disabled runtime boundaries, voice path, OpenRouter budget gates, and Railway migration gates.
 
+## Knowledge Service And Agent Control
+
+Purpose: make the public two-stage method explicit. Knowledge Service prepares the source-bounded report first; Agent Control consumes that reviewed report to propose roles, skills, routes, gates, and handoff files.
+
+Skills set up:
+
+- [`archflow-knowledge-service`](../../skills/archflow-knowledge-service/SKILL.md) - collects a bounded objective, evidence boundary, FACT / INTERPRETATION / HYPOTHESIS / GAP classification, requested outputs, reviewer questions, and a local report without hidden ingestion or execution.
+- [`archflow-agent-control`](../../skills/archflow-agent-control/SKILL.md) - turns a reviewed report into a bounded role map, tool/skill allowlists, maker-reviewer split, stop rules, and proposed files marked for operator review.
+
+Boundary: the dashboard and Jarvis can prepare and download local reports. They cannot launch agents, fetch a repository, authenticate a guest, create files, activate a model provider, or write to Git, a database, Notion, Nexus, or a deployment target.
+
 ## AF Context
 
 Purpose: turn approved source material into structured English context.

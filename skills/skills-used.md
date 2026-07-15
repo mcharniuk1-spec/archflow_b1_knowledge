@@ -4,7 +4,7 @@ This project uses the following skills and methods.
 
 ## Public Catalog Boundary
 
-The repository publishes ten reviewed, project-local skill contracts. They are listed in `project/database/skill-catalog.json` and rendered in the dashboard. This count is the public product allowlist, not an inventory of the operator's private installed skills.
+The repository publishes twelve reviewed, project-local skill contracts. They are listed in `project/database/skill-catalog.json` and rendered in the dashboard. This count is the public product allowlist, not an inventory of the operator's private installed skills.
 
 Each catalog entry records packaging, portability, permissions, forbidden actions, and a content hash. `verified_invocations` is intentionally `null` until a public-safe execution ledger exists; documentation mentions are never presented as usage counts. Additional skills may be considered only after provenance/license review, path and secret safety checks, a sanitized fixture, independent review, and catalog registration.
 
@@ -24,6 +24,8 @@ Each catalog entry records packaging, portability, permissions, forbidden action
 | [`arcagcom`](arcagcom/SKILL.md) | Coordinate parallel ArchFlow public project agents through the live communication log, file claims, handoffs, checks, and Prompt 2.1/Prompt 3 merge gates. |
 | [`archflow1`](archflow1/SKILL.md) | Operate and review the local Jarvis dashboard stack, including jarvis-api, LangGraph, CrewAI levels, voice paths, OpenRouter budget gates, and Railway migration gates. |
 | [`archflow-architecture-operator`](archflow-architecture-operator/SKILL.md) | Convert objectives and company workflows into evidence-gated goal contracts, task graphs, role/skill packs, LangGraph and loop contracts, knowledge boundaries, adoption decisions, and benchmarks. |
+| [`archflow-knowledge-service`](archflow-knowledge-service/SKILL.md) | Prepare a source-bounded knowledge report with provenance, FACT / INTERPRETATION / HYPOTHESIS / GAP labels, reviewer questions, and a local report handoff before agent design. |
+| [`archflow-agent-control`](archflow-agent-control/SKILL.md) | Convert a reviewed knowledge report into a bounded role/task/gate/file proposal with maker-reviewer separation and no autonomous launch. |
 | CAG/RAG context capsule method | Assemble stable project context plus bounded retrieval evidence before subagent prompting; schema lives in `project/context/context-capsule.schema.json`. |
 | Hermes watchdog/controller method | Classify tasks, assign contracts, review evidence, and stop or escalate without executing, editing, deploying, or mutating external systems. |
 | Goal Engineering operating contract | Keep one objective persistent but bounded through observable completion, an independent verifier, lifecycle state, budget, and kill switches under `project/goals/`. |

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchFlow public role catalog",
+  "type": "object",
+  "required": ["path", "scope", "roles"],
+  "properties": {
+    "path": {"const": "project/agents/agent-roster.yaml"},
+    "scope": {"type": "string"},
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "mode", "skills", "outputs", "forbidden_actions", "public_skill_packages", "method_checklists"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "title": {"type": "string"},
+          "provider": {"type": "string"},
+          "mode": {"type": "string"},
+          "skills": {"type": "array", "items": {"type": "string"}},
+          "outputs": {"type": "array", "items": {"type": "string"}},
+          "forbidden_actions": {"type": "array", "items": {"type": "string"}},
+          "public_skill_packages": {"type": "array", "items": {"type": "string"}},
+          "method_checklists": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

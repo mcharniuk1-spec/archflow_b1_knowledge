@@ -1,0 +1,670 @@
+{
+  "path": "project/agents/agent-roster.yaml",
+  "scope": "public role declarations only; runtime/model names do not grant authority",
+  "roles": [
+    {
+      "id": "goal_architect",
+      "title": "Goal Architect",
+      "provider": "codex_operator",
+      "mode": "bounded_objective_and_verification_contract",
+      "skills": [
+        "archflow-architecture-operator",
+        "goal-contract-writing",
+        "acceptance-criteria-writing",
+        "budget-and-kill-switch-design"
+      ],
+      "outputs": [
+        "goal_state",
+        "done_conditions",
+        "verifier_assignment",
+        "stop_and_kill_conditions"
+      ],
+      "forbidden_actions": [
+        "broaden_authority",
+        "self_verify_high_risk_output",
+        "continue_after_budget_exhaustion"
+      ],
+      "public_skill_packages": [
+        "archflow-architecture-operator"
+      ],
+      "method_checklists": [
+        "goal-contract-writing",
+        "acceptance-criteria-writing",
+        "budget-and-kill-switch-design"
+      ]
+    },
+    {
+      "id": "terra_integrator",
+      "title": "Terra Integrator",
+      "provider": "compatible_runtime_after_task_contract",
+      "mode": "high_impact_synthesis_and_sole_writer_integration",
+      "skills": [
+        "archflow-architecture-operator",
+        "archflow-task-breakdown",
+        "task-handout",
+        "evidence-reconciliation"
+      ],
+      "outputs": [
+        "integrated_architecture",
+        "reconciled_task_graph",
+        "final_mutation_report",
+        "handoff"
+      ],
+      "forbidden_actions": [
+        "self_approve_high_risk_output",
+        "mutate_outside_claimed_scope",
+        "infer_external_authority"
+      ],
+      "public_skill_packages": [
+        "archflow-architecture-operator",
+        "archflow-task-breakdown",
+        "task-handout"
+      ],
+      "method_checklists": [
+        "evidence-reconciliation"
+      ]
+    },
+    {
+      "id": "luna_worker",
+      "title": "Luna Worker",
+      "provider": "compatible_runtime_after_task_contract",
+      "mode": "bounded_read_only_research_extraction_drafting_or_critique",
+      "skills": [
+        "role_specific_skill_only",
+        "source-boundary-control",
+        "fact-interpretation-hypothesis-gap"
+      ],
+      "outputs": [
+        "bounded_evidence_packet",
+        "draft_or_critique",
+        "gaps"
+      ],
+      "forbidden_actions": [
+        "edit_shared_files_by_default",
+        "mutate_external_systems_by_default",
+        "approve_own_output"
+      ],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "role_specific_skill_only",
+        "source-boundary-control",
+        "fact-interpretation-hypothesis-gap"
+      ]
+    },
+    {
+      "id": "architecture_operator",
+      "title": "Architecture Operator",
+      "provider": "codex_operator",
+      "mode": "parameterized_agent_system_design_and_governance",
+      "skills": [
+        "archflow-architecture-operator",
+        "agent-security-governance",
+        "skill-creator",
+        "decision-mapping"
+      ],
+      "outputs": [
+        "architecture_layers",
+        "role_and_skill_pack",
+        "tool_adoption_register",
+        "benchmark_contract"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "archflow-architecture-operator"
+      ],
+      "method_checklists": [
+        "agent-security-governance",
+        "skill-creator",
+        "decision-mapping"
+      ]
+    },
+    {
+      "id": "hermes_watchdog",
+      "title": "Hermes Watchdog",
+      "provider": "planned_controller",
+      "mode": "watchdog_controller_reviewer_not_executor",
+      "skills": [
+        "execution-type-classification",
+        "cag-core-assembly",
+        "context-capsule-review",
+        "task-contract-writing",
+        "evidence-review",
+        "stop-rule-enforcement"
+      ],
+      "outputs": [
+        "execution_type_and_risk",
+        "context_capsule_path",
+        "task_contracts",
+        "accept_repair_split_escalate_stop_decision"
+      ],
+      "forbidden_actions": [
+        "execute_code",
+        "edit_files",
+        "deploy",
+        "mutate_external_systems",
+        "activate_provider_runtime",
+        "approve_own_high_risk_output"
+      ],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "execution-type-classification",
+        "cag-core-assembly",
+        "context-capsule-review",
+        "task-contract-writing",
+        "evidence-review",
+        "stop-rule-enforcement"
+      ]
+    },
+    {
+      "id": "af_tools",
+      "title": "AF Tools",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "public-source-inventory",
+        "provider-readiness-check",
+        "ollama-local-check",
+        "git-publication-check",
+        "archflow-e1-runtime-guard"
+      ],
+      "outputs": [
+        "source_inventory",
+        "tool_readiness_report",
+        "provider_status"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "archflow-e1-runtime-guard"
+      ],
+      "method_checklists": [
+        "public-source-inventory",
+        "provider-readiness-check",
+        "ollama-local-check",
+        "git-publication-check"
+      ]
+    },
+    {
+      "id": "af_context",
+      "title": "AF Context",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "notion-spec-to-implementation",
+        "notion-knowledge-capture",
+        "english-public-summary",
+        "fact-interpretation-hypothesis-gap",
+        "cag-core-assembly",
+        "bounded-rag-evidence-selection"
+      ],
+      "outputs": [
+        "context_digest",
+        "translated_plan",
+        "gaps"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "notion-spec-to-implementation",
+        "notion-knowledge-capture",
+        "english-public-summary",
+        "fact-interpretation-hypothesis-gap",
+        "cag-core-assembly",
+        "bounded-rag-evidence-selection"
+      ]
+    },
+    {
+      "id": "af_manager",
+      "title": "AF Manager",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "archflow-task-breakdown",
+        "task-handout",
+        "outquestions",
+        "prd-from-dialogue",
+        "responsibility-assignment-extraction",
+        "milestone-planning",
+        "acceptance-criteria-writing"
+      ],
+      "outputs": [
+        "prd",
+        "task_matrix",
+        "milestone_plan"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "archflow-task-breakdown",
+        "task-handout",
+        "outquestions"
+      ],
+      "method_checklists": [
+        "prd-from-dialogue",
+        "responsibility-assignment-extraction",
+        "milestone-planning",
+        "acceptance-criteria-writing"
+      ]
+    },
+    {
+      "id": "af_discovery",
+      "title": "AF Discovery",
+      "provider": "codex_operator",
+      "mode": "founder_meeting_discovery_role",
+      "skills": [
+        "customer-journey-map",
+        "discovery-process",
+        "jtbd-discovery",
+        "ninety-day-story-extraction",
+        "customer-forces-analysis",
+        "five-whys",
+        "source-boundary-control"
+      ],
+      "outputs": [
+        "discovery_digest",
+        "trigger_story_map",
+        "current_alternatives",
+        "evidence_gaps"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "customer-journey-map",
+        "discovery-process",
+        "jtbd-discovery",
+        "ninety-day-story-extraction",
+        "customer-forces-analysis",
+        "five-whys",
+        "source-boundary-control"
+      ]
+    },
+    {
+      "id": "af_prd_architect",
+      "title": "AF PRD Architect",
+      "provider": "codex_operator",
+      "mode": "evidence_backed_prd_role",
+      "skills": [
+        "prd-from-dialogue",
+        "evidence-backed-requirements",
+        "definition-of-done-writing",
+        "acceptance-criteria-writing",
+        "review-gate-preparation"
+      ],
+      "outputs": [
+        "evidence_backed_prd",
+        "definition_of_done",
+        "acceptance_criteria",
+        "review_packet"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "prd-from-dialogue",
+        "evidence-backed-requirements",
+        "definition-of-done-writing",
+        "acceptance-criteria-writing",
+        "review-gate-preparation"
+      ]
+    },
+    {
+      "id": "af_task_translator",
+      "title": "AF Task Translator",
+      "provider": "codex_operator",
+      "mode": "spec_to_tasks_role",
+      "skills": [
+        "archflow-task-breakdown",
+        "spec-to-tasks-logic",
+        "task-packet-writing",
+        "notion-ready-markdown",
+        "blocker-and-approval-gate-writing"
+      ],
+      "outputs": [
+        "task_packet",
+        "checkbox_subtasks",
+        "blocker_list",
+        "owner_decisions"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "archflow-task-breakdown"
+      ],
+      "method_checklists": [
+        "spec-to-tasks-logic",
+        "task-packet-writing",
+        "notion-ready-markdown",
+        "blocker-and-approval-gate-writing"
+      ]
+    },
+    {
+      "id": "af_research",
+      "title": "AF Research",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "company-research",
+        "deep-research",
+        "decision-mapping",
+        "market-structure-analysis",
+        "research-source-triage",
+        "account-evidence-card-writing",
+        "job-signal-analysis",
+        "review-mining",
+        "icp-scoring"
+      ],
+      "outputs": [
+        "account_evidence_cards",
+        "competitor_gap_matrix",
+        "pain_map",
+        "icp_scorecard",
+        "target_shortlist"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "company-research",
+        "deep-research",
+        "decision-mapping",
+        "market-structure-analysis",
+        "research-source-triage",
+        "account-evidence-card-writing",
+        "job-signal-analysis",
+        "review-mining",
+        "icp-scoring"
+      ]
+    },
+    {
+      "id": "af_knowledge",
+      "title": "AF Knowledge",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "knowledge-base-update",
+        "task-handout",
+        "outquestions",
+        "sanitized-history-writing",
+        "source-boundary-control",
+        "agent-memory-candidate-writing"
+      ],
+      "outputs": [
+        "kb_update_packet",
+        "public_history_summary",
+        "memory_candidates"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "task-handout",
+        "outquestions"
+      ],
+      "method_checklists": [
+        "knowledge-base-update",
+        "sanitized-history-writing",
+        "source-boundary-control",
+        "agent-memory-candidate-writing"
+      ]
+    },
+    {
+      "id": "af_copy",
+      "title": "AF Copy",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "content-strategy",
+        "content-research-writer",
+        "copywriting",
+        "copy-editing",
+        "source-grounded-copywriting",
+        "positioning-synthesis",
+        "content-planning",
+        "outreach-message-drafting",
+        "claim-status-check"
+      ],
+      "outputs": [
+        "positioning_variants",
+        "content_angles",
+        "outreach_drafts",
+        "proposal_copy"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "content-strategy",
+        "content-research-writer",
+        "copywriting",
+        "copy-editing",
+        "source-grounded-copywriting",
+        "positioning-synthesis",
+        "content-planning",
+        "outreach-message-drafting",
+        "claim-status-check"
+      ]
+    },
+    {
+      "id": "af_abm_channel",
+      "title": "AF ABM Channel",
+      "provider": "compatible_runtime_after_task_contract",
+      "mode": "reviewed_channel_and_outreach_preparation_no_autonomous_send",
+      "skills": [
+        "acquisition-channel-advisor",
+        "company-research",
+        "customer-journey-map",
+        "cohort-segmentation",
+        "outreach-sequence-design",
+        "crm-hygiene"
+      ],
+      "outputs": [
+        "channel_hypothesis",
+        "warm_intro_request",
+        "reviewed_outreach_sequence",
+        "send_checklist"
+      ],
+      "forbidden_actions": [
+        "autonomous_send",
+        "bulk_personal_data_enrichment",
+        "private_channel_access",
+        "bypass_platform_controls",
+        "mark_contact_or_demand_without_evidence"
+      ],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "acquisition-channel-advisor",
+        "company-research",
+        "customer-journey-map",
+        "cohort-segmentation",
+        "outreach-sequence-design",
+        "crm-hygiene"
+      ]
+    },
+    {
+      "id": "af_growth_evidence",
+      "title": "AF Growth Evidence",
+      "provider": "compatible_runtime_after_task_contract",
+      "mode": "cohort_funnel_and_payment_evidence_analysis",
+      "skills": [
+        "data-analytics-insight",
+        "forecast-validation-and-backtesting",
+        "business-health-diagnostic",
+        "funnel-instrumentation",
+        "roi-scenario-modeling",
+        "payment-stage-classification"
+      ],
+      "outputs": [
+        "cohort_funnel",
+        "objection_register",
+        "modeled_vs_observed_roi",
+        "payment_evidence_state",
+        "pursue_pivot_stop_recommendation"
+      ],
+      "forbidden_actions": [
+        "invent_events_or_denominators",
+        "combine_attention_with_payment_evidence",
+        "claim_causality_from_descriptive_results",
+        "present_modeled_roi_as_observed_savings"
+      ],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "data-analytics-insight",
+        "forecast-validation-and-backtesting",
+        "business-health-diagnostic",
+        "funnel-instrumentation",
+        "roi-scenario-modeling",
+        "payment-stage-classification"
+      ]
+    },
+    {
+      "id": "af_product_packaging",
+      "title": "AF Product Packaging Engineer",
+      "provider": "codex_operator",
+      "mode": "gated_installable_repo_mcp_admin_and_lifecycle_engineering",
+      "skills": [
+        "backend-api-architecture",
+        "codebase-design",
+        "code-clarity-and-docs",
+        "agent-security-governance",
+        "deployment-observability",
+        "debugging-checklist",
+        "browser-qa-performance-a11y"
+      ],
+      "outputs": [
+        "versioned_installable_package",
+        "least_privilege_mcp",
+        "admin_control_plane",
+        "lifecycle_documentation",
+        "sandbox_and_rollback_proof"
+      ],
+      "forbidden_actions": [
+        "start_from_desk_research_alone",
+        "enable_write_tools_by_default",
+        "store_secrets_in_repo_or_config",
+        "claim_installability_without_sandbox_proof",
+        "self_approve_release"
+      ],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "backend-api-architecture",
+        "codebase-design",
+        "code-clarity-and-docs",
+        "agent-security-governance",
+        "deployment-observability",
+        "debugging-checklist",
+        "browser-qa-performance-a11y"
+      ]
+    },
+    {
+      "id": "af_gloomylord",
+      "title": "GloomyLord",
+      "provider": "codex_operator",
+      "mode": "internal_visual_reporting_sidecar",
+      "skills": [
+        "public-reporting-gate",
+        "carousel-structure-design",
+        "evidence-labeling",
+        "dashboard-proof-card-design"
+      ],
+      "outputs": [
+        "reporting_template_pack",
+        "carousel_outline",
+        "visual_proof_cards"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [],
+      "method_checklists": [
+        "public-reporting-gate",
+        "carousel-structure-design",
+        "evidence-labeling",
+        "dashboard-proof-card-design"
+      ]
+    },
+    {
+      "id": "af_review",
+      "title": "AF Review",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "agent-security-governance",
+        "public-safety-review",
+        "secret-and-path-scan",
+        "english-only-check",
+        "claim-status-check",
+        "privacy-and-access-scope-review",
+        "source-freshness-review",
+        "anti-icp-enforcement",
+        "outquestions"
+      ],
+      "outputs": [
+        "approval_status",
+        "blocked_items",
+        "required_edits"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "outquestions"
+      ],
+      "method_checklists": [
+        "agent-security-governance",
+        "public-safety-review",
+        "secret-and-path-scan",
+        "english-only-check",
+        "claim-status-check",
+        "privacy-and-access-scope-review",
+        "source-freshness-review",
+        "anti-icp-enforcement"
+      ]
+    },
+    {
+      "id": "af_publisher",
+      "title": "AF Publisher",
+      "provider": "codex_operator",
+      "mode": "not declared",
+      "skills": [
+        "git-clean-repo-publication",
+        "github-remote-publication",
+        "publication-review-reporting",
+        "task-handout",
+        "outquestions"
+      ],
+      "outputs": [
+        "git_status",
+        "publication_review",
+        "release_notes"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "task-handout",
+        "outquestions"
+      ],
+      "method_checklists": [
+        "git-clean-repo-publication",
+        "github-remote-publication",
+        "publication-review-reporting"
+      ]
+    },
+    {
+      "id": "model_efficiency_observer",
+      "title": "Model-Efficiency Observer",
+      "provider": "codex_automation",
+      "mode": "recurring_model_and_token_use_observer",
+      "skills": [
+        "model-usage-review",
+        "token-efficiency-audit",
+        "openrouter-routing-review",
+        "public-safety-review",
+        "task-handout"
+      ],
+      "outputs": [
+        "model_efficiency_report",
+        "token_usage_summary",
+        "cost_waste_findings",
+        "routing_advice",
+        "open_issues"
+      ],
+      "forbidden_actions": [],
+      "public_skill_packages": [
+        "task-handout"
+      ],
+      "method_checklists": [
+        "model-usage-review",
+        "token-efficiency-audit",
+        "openrouter-routing-review",
+        "public-safety-review"
+      ]
+    }
+  ]
+}

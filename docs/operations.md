@@ -2,6 +2,8 @@
 
 ## Two operating surfaces
 
+The dashboard and Jarvis share a browser-local activity record. It contains only preview mode and local report/handoff references; it is not authentication, account memory, a database record, or a runtime event feed. In Guest preview, prepare Knowledge Service first and retain a public-safe boundary. In Admin preview, an operator may also reference an existing reviewed local report, but all real actions remain separately gated.
+
 ### Knowledge Service
 
 Use this surface when approved product, research, or customer information needs to become a reviewed output: a PRD, ICP, decision brief, backlog, research packet, or knowledge update.
@@ -27,6 +29,12 @@ Inputs mean:
 - **Approval gate:** the action that must pause until an operator authorizes it.
 
 Drafting an agent or node in the browser creates only a local role/task candidate. An approved operator performs actual subagent creation or file changes under the repository contract.
+
+## Jarvis report-first sequence
+
+Jarvis asks for goal, public repository reference or safe label, allowed evidence/exclusions, requested output, independent reviewer, and constraints/stop conditions. It prepares a local Knowledge Service report in chat and can download it as Markdown/JSON. Only then should the operator choose Agent Control, which prepares a proposed role/task/file handoff. The report never fetches or clones the reference, and the handoff never creates the proposed files.
+
+Admin/Guest controls are browser-local preview labels. Guest hides API/token controls and never loads the public model catalog automatically. Admin may explicitly load a public catalog or submit a guarded API review, but a selected model, acknowledgement, or API response still does not prove provider execution, spending authority, or writeback.
 
 ## Stage sequence
 

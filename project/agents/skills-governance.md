@@ -16,9 +16,11 @@ These have project-local `SKILL.md` contracts or are project-recognized skill co
 
 - `arcagcom`
 - `archflow1`
+- `archflow-agent-control`
 - `archflow-task-breakdown`
 - `archflow-architecture-operator`
 - `archflow-e1-runtime-guard`
+- `archflow-knowledge-service`
 - `daily-public-project-review`
 - `evening-skill-registry-update`
 - `outquestions`
@@ -29,6 +31,8 @@ These have project-local `SKILL.md` contracts or are project-recognized skill co
 
 - `arcagcom`: live communication, file claims, handoffs, and merge gates.
 - `archflow1`: dashboard/Jarvis/runtime/provider/Railway boundaries.
+- `archflow-knowledge-service`: bounded source-to-report handoff before a role architecture is designed.
+- `archflow-agent-control`: reviewed-report-to-role/task/gate handoff without autonomous launch.
 - `task-handout`: durable run handout and continuation prompt.
 - `outquestions`: owner decisions, blocked gates, and next-stage questions.
 
@@ -60,7 +64,7 @@ Roles define authority, evidence, and forbidden actions; they do not reserve wor
 
 ## Governance Audit - 2026-07-15
 
-Scope: public catalog and portability review. Result: the repository publishes ten reviewed project-local `SKILL.md` contracts, including `archflow-architecture-operator`. The much larger private installed inventory is not packaged or advertised: it has duplicate variants, local-environment assumptions, and unreviewed redistribution/safety boundaries. The generated `project/database/skill-catalog.json` is the public allowlist; its `verified_invocations` values remain `null` until a public-safe execution ledger exists.
+Scope: public catalog and portability review. Result: the repository publishes twelve reviewed project-local `SKILL.md` contracts, including the Knowledge Service and Agent Control contracts added for the dashboard/Jarvis two-stage flow. The much larger private installed inventory is not packaged or advertised: it has duplicate variants, local-environment assumptions, and unreviewed redistribution/safety boundaries. The generated `project/database/skill-catalog.json` is the public allowlist; its `verified_invocations` values remain `null` until a public-safe execution ledger exists.
 
 ## Add-Skill Checklist
 

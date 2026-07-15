@@ -440,6 +440,35 @@ agents:
       - openrouter_runtime_stays_disabled_without_explicit_approval
 
 project_local_skills:
+  archflow_knowledge_service:
+    title: ArchFlow Knowledge Service
+    purpose: source-bounded knowledge report, classification, provenance, reviewer questions, and local handoff before agent design.
+    scope: browser_local_and_operator_review_contract
+    skill_path: skills/archflow-knowledge-service/SKILL.md
+    used_by:
+      - af_context
+      - af_knowledge
+      - af_prd_architect
+      - dashboard_knowledge_service
+    rules:
+      - do_not_ingest_unbounded_or_private_corpora
+      - preserve_fact_interpretation_hypothesis_gap
+      - require_review_before_memory_promotion_or_agent_control_handoff
+  archflow_agent_control:
+    title: ArchFlow Agent Control
+    purpose: role map, task graph, skill and tool allowlists, independent review, stop rules, and proposed handoff files from a reviewed knowledge report.
+    scope: browser_local_and_operator_review_contract
+    skill_path: skills/archflow-agent-control/SKILL.md
+    used_by:
+      - goal_architect
+      - terra_integrator
+      - architecture_operator
+      - hermes_watchdog
+      - dashboard_agent_control
+    rules:
+      - do_not_launch_agents_or_create_files_from_the_static_surface
+      - require_sole_writer_ownership_for_shared_artifacts
+      - preserve_source_boundary_and_review_gate_from_knowledge_report
   arcagcom:
     title: Arcagcom
     purpose: live communication, file claims, handoffs, and Prompt 2.1 / Prompt 3 merge gates for public project agents.
@@ -473,7 +502,10 @@ skill_governance:
   policy_file: project/agents/skills-governance.md
   contracted_skills:
     - arcagcom
+    - archflow-agent-control
+    - archflow-architecture-operator
     - archflow1
+    - archflow-knowledge-service
     - archflow-task-breakdown
     - archflow-e1-runtime-guard
     - daily-public-project-review

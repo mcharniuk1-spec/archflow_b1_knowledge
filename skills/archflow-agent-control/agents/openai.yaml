@@ -1,0 +1,4 @@
+interface:
+  display_name: "ArchFlow Agent Control"
+  short_description: "Design approval-gated agent handoffs"
+  default_prompt: "Use $archflow-agent-control to design a bounded agent architecture handoff."

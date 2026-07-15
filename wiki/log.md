@@ -4,7 +4,7 @@
 
 - Repackaged the public product around a local-first Knowledge Reliability Setup today and an installable operating toolkit direction later, without claiming a hosted autonomous-agent platform.
 - Added explicit Knowledge Service and Agent Control operating views, a browser-local review-bundle stage sequence, Jarvis input help, and a public Data Lab that is limited to generated JSON.
-- Generated a reviewed ten-skill public catalog and documented why the private installed inventory is not copied or represented as usage telemetry.
+- Generated a reviewed twelve-skill public catalog, including Knowledge Service and Agent Control contracts, and documented why the private installed inventory is not copied or represented as usage telemetry.
 - Added clean-clone setup, architecture, operations, API/security, contribution, and security-reporting documentation.
 - Added runtime-event and review-bundle schemas, a decision note, a gap record, and a public product architecture report.
 - Verified public safety, workflow contracts, guarded Jarvis contracts, JavaScript syntax, and ten rendered dashboard routes with zero provider calls and zero writeback.
@@ -655,3 +655,6 @@ GAP:
 - Corrected `/dashboard` to redirect to the canonical asset-safe route and narrowed runtime claims.
 - Deployed from the public repository, verified desktop/mobile/reduced-motion views, synchronized the design baseline, and updated/read back the E6 task family.
 - Provider calls and writeback stayed at zero; E6.2 remains Review and E6.3 remains Planned.
+# 2026-07-15 — Dashboard operating manual and report-first handoff
+
+Completed the public/static dashboard and Jarvis documentation update. The current flow is Knowledge Service local report first, then Agent Control local handoff. Added browser-local Admin/Guest preview labels, local report/download contracts, full public role catalog, two new public skills, and an independent review report. Validation passed in the documented project runtime; authentication, live runtime events, provider execution, database, private corpus, and external writeback remain gated. See [[runs/2026-07-15-dashboard-operating-manual]] and [[decisions/2026-07-15-local-report-first-contract]].

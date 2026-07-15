@@ -2,6 +2,15 @@
 
 The public API files provide a review-packet contract. They are not evidence of a running hosted service, provider-backed completion, durable spend ledger, or external writeback.
 
+## Browser-local report contract
+
+Before a guarded API route is considered, the dashboard and Jarvis can prepare two browser-local artifacts:
+
+1. **Knowledge Service report** — goal, declared public/safe project reference, source boundary, requested output, reviewer, constraints, FACT / INTERPRETATION / HYPOTHESIS / GAP sections, and a `review_required_not_executed` state.
+2. **Agent Control handoff** — reuses the report ID and proposes roles, packaged skills, method checklists, sources, review gate, stop conditions, and suggested files marked `created: false` and `requires_operator_review: true`.
+
+Those downloads are generated in the browser. They carry no API base, owner token, provider key, repository write, agent launch, or external-write receipt. Guest preview does not show API/token controls or load a model catalog automatically. Admin preview can optionally ask a same-origin/HTTP-loopback guarded route for a contract-status review; that request sends a minimal status descriptor, not the report body, source boundary, project reference, or chat history, and does not turn provider execution or writeback on.
+
 ## Shared response envelope
 
 Every current route returns a JSON envelope with `kind`, `status`, `created_at`, `runtime`, `budget`, and `payload`.

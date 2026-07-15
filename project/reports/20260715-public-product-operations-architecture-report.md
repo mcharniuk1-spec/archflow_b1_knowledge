@@ -1,74 +1,125 @@
-# Public Product Operations Architecture Report
+# ArchFlow Public Product Operations Architecture Report
 
 Date: 2026-07-15
 
-Scope: public website, dashboard, Jarvis, role/skill presentation, generated catalog, setup documentation, and operational truth boundaries.
+Status: active current public architecture baseline
 
-## Executive product position
+Scope: public website, dashboard, Jarvis, generated public data, role/skill presentation, documentation, local review packets, and the evidence/approval boundaries around future runtime work.
 
-ArchFlow should be marketed now as a **Knowledge Reliability Setup** for a forcing moment: it turns fragmented product knowledge into a source/owner map, reviewed knowledge spine, governed workflow, and operator handoff. Its long-term direction is a local-first, installable operating toolkit. This is a more credible product path than claiming a hosted autonomous-agent platform before runtime, persistence, and action controls exist.
+## Executive conclusion
 
-The public interface therefore prioritizes explainability, controlled handoff, and visible gates. It deliberately distinguishes a configured contract from observed execution.
+FACT: The current ArchFlow public product is a documentation-first Knowledge Reliability Setup plus an Agent Control surface. It is implemented as a public-safe, browser-local console with generated JSON, local draft state, review-packet exports, guarded provider-disabled API contracts, and explicit handoff gates.
 
-## Layer-by-layer architecture
+FACT: The current dashboard and Jarvis surface now includes an Operating Manual route, Knowledge Service and Agent Control explanations, browser-local Administrator/Guest preview labels, shared local report context, local Markdown/JSON report downloads, role/skill catalog references, and current report/test links.
 
-| Layer | Product ability | Current public proof | Required next gate |
+FACT: The current verified setup passes public safety, JavaScript syntax, generated-data parsing, local workflow validation, guarded Jarvis API contract checks, serverless owner-guard checks, runtime guard checks, and a ten-route rendered dashboard smoke with `provider_calls=0` and `writeback=0`. Exact commands and environment limitations are recorded in [`20260715-architecture-test-results.md`](20260715-architecture-test-results.md).
+
+INTERPRETATION: This is an efficient bounded preparation, review, and handoff system. It is not yet an always-on autonomous agent runtime, a multi-user application, a live database, or a provider-backed production system.
+
+GAP: No canonical provider-backed model-call ledger exists. The local deterministic CrewAI proof ledger demonstrates local mechanics and zero-cost test execution; it does not prove OpenRouter or other provider efficiency.
+
+## Current architecture
+
+| Layer | Current responsibility | Current proof | Next graduation gate |
 |---|---|---|---|
-| Authority and Goal | Bind request to an owner, scope, stop rule, and approval boundary. | Public goal and workflow contracts. | Task-specific operator acceptance. |
-| Context and Knowledge | Build the smallest source-grounded context capsule. | Public WikiLLM, Graphify reference, LlamaIndex contract, lexical fallback description. | Bounded-corpus and retrieval evaluation for any new corpus. |
-| Plan and Orchestration | Route work through typed LangGraph nodes, checkpoints, and stop conditions. | Controller contract and bounded fixtures. | Sanitized runtime events for live status. |
-| Execution and Roles | Define worker sources, tools, outputs, reviewer, and forbidden actions. | Role registry and ten reviewed public skills. | Approved executor/task contract before file work. |
-| Loop and Verification | Separate maker from reviewer and cap repair. | Public loop and review contracts. | Representative independent fixtures. |
-| Memory and External Gate | Promote reviewed knowledge and hold actions for approval. | WikiLLM/run contracts and browser-local bundle boundary. | Current target proof plus action-specific approval. |
-| Measurement and Optimization | Compare quality, reliability, retrieval, and cost. | Benchmark schema and model-efficiency policies. | A canonical public-safe event/ledger sample. |
+| Authority and goal | Bind objective, owner, scope, stop rule, and approval boundary. | Public task contracts and operating rules. | Operator accepts a task-specific contract. |
+| Context and knowledge | Assemble the smallest source-grounded context capsule and preserve provenance. | Public WikiLLM/Graphify/LlamaIndex contracts and bounded corpus descriptions. | Bounded-corpus benchmark with current evidence. |
+| Plan and orchestration | Represent typed routes, checkpoints, parallel branches, merge, and stop conditions. | LangGraph workflow contract and deterministic smoke fixtures. | Sanitized runtime-event feed for live status. |
+| Execution and roles | Assign role, skills, tools, output schema, reviewer, and forbidden actions. | 21 public role contracts and 12 reviewed public skill packages. | Approved executor under a claimed file scope. |
+| Loop and verification | Separate maker from reviewer and cap retries/repairs. | Review contracts, runtime guard, API owner-guard tests. | Representative independent fixtures and recovery evidence. |
+| Memory and external gate | Promote reviewed conclusions and hold external actions behind approval. | WikiLLM/run/decision contracts and browser-local review bundles. | Current target, schema, idempotency, rollback, approval, and readback proof. |
+| Measurement and optimization | Compare quality, reliability, retrieval, latency, tokens, cost, and human effort. | Measurement policy and local deterministic ledger examples. | Canonical public-safe event/model-call ledger and paired benchmark. |
 
-## Product surfaces
+## Product surfaces and current flow
 
 ### Knowledge Service
 
-This is the buyer-facing source-to-output lane. An operator provides an approved source boundary, outcome, artifact contract, and reviewer. The lane creates a reviewable PRD, ICP, decision, research, backlog, or knowledge packet with facts, interpretations, hypotheses, and gaps kept distinct.
+Use this lane when bounded public-safe context must become a PRD, ICP brief, decision, evidence map, backlog, context capsule, or knowledge-update candidate.
+
+1. State the goal, source boundary, allowed evidence, exclusions, intended output, constraints, reviewer, and stop rule.
+2. Prepare a browser-local review report with `FACT`, `INTERPRETATION`, `HYPOTHESIS`, and `GAP` sections.
+3. Download the report for Codex/operator review.
+4. Do not treat the download as a repository patch, Git commit, provider request, database write, or memory promotion.
 
 ### Agent Control
 
-This is the operator-facing control plane. It defines roles, skill visibility, source/tool allowlists, task contracts, parallel boundaries, review gates, and handoff targets. A browser draft is not a launched subagent. Real file creation remains the responsibility of an approved executor operating under a claimed scope and reviewer separation.
+Use this lane after the desired work needs role assignment, skills/tools, source allowlists, LangGraph-style routing, parallel branches, independent review, approval nodes, and a durable handoff.
 
-### Jarvis
+1. Reference a reviewed Knowledge Service report.
+2. Define the role, skill/source/tool boundary, expected artifacts, reviewer, file claim, approval gate, repair cap, and stop condition.
+3. Give each parallel chat an exclusive scope; do not assign two chats the same write target.
+4. Merge branch evidence through the integrator before any repository or external action.
 
-Jarvis is a guarded review-packet interface. Each input now explains what it is, why it is needed, an example, storage boundary, and capability limit. Submitting a request may reach a guarded endpoint if available, but the current default remains fail-closed: no provider use, no fabricated model response, and no durable writeback.
+### Dashboard and Jarvis
 
-### Dashboard data and export
+- Canonical dashboard: `/project/dashboard/`; `/dashboard` redirects to it.
+- Default view: `#manual`, the current developer-facing operating guide.
+- Main views: `#overview`, `#architecture`, `#knowledge`, `#agents`, `#operations`, `#data`, `#runs`, `#reference`, and `#manual`.
+- Detailed tools: `#service`, `#schema`, `#config`, `#wikillm`, `#graphify`, `#langgraph`, `#llamaindex`, `#crewai`, `#langsmith`, `#env`, and `#gates`.
+- `/jarvis` is a guarded text review console. It prepares a local Knowledge Service report first, then an Agent Control handoff and downloads; provider execution, raw voice storage, and durable writeback remain disabled by default.
+- Administrator/Guest are browser-local preview labels. They are not authentication, authorization, tenancy, or durable per-user memory.
 
-The Data Lab makes the public catalog inspectable through a deliberately limited SQL-like `SELECT ... FROM ... LIMIT ...` preview. It reads generated public JSON only. Browser-local workflow state can be downloaded as a review bundle with a truth boundary; it is not a patch, repository mutation, commit, or deployment artifact.
+The detailed procedure is [`docs/dashboard-operating-manual.md`](../../docs/dashboard-operating-manual.md), and the dashboard route is described in [`project/dashboard/README.md`](../dashboard/README.md).
 
-## Skills and agent packaging
+## Parallel-chat operating model
 
-The repository has ten reviewed project-local skill contracts. They are now generated into a machine-readable catalog with content hashes, portability status, permission boundary, and `verified_invocations: null`. The latter is intentional: no public-safe invocation telemetry exists, and documentation references are not usage metrics.
+FACT: Separate chats can work safely only as bounded sidecar lanes under one integrator.
 
-The local private inventory is not copied into the product. It contains overlapping variants and local-environment assumptions that have not passed redistribution, path, secret, provenance, license, fixture, and reviewer gates. Future skills enter the public catalog only after those gates.
+Before work, every chat reads the live communication README, current notice, latest log, and task contract; states one role, one output, one file scope, one reviewer, one stop condition, and one next action; then appends a public-safe `starting` update.
 
-## Runtime and data truth model
+During work, the chat stays inside its claimed scope, announces scope changes before editing, records exact checks, and stops on file overlap, private-data requirements, provider activation, deployment, or external-write requirements.
 
-The stage animation is an interaction aid for browser-local packet preparation. The console may claim a live workflow stage only after it receives a fresh sanitized event with `run_id`, `workflow_kind`, `node_id`, `state`, `observed_at`, `evidence_ref`, `authority_scope`, and `writeback_state`.
+At handoff, it returns changed files, checks, `FACT / INTERPRETATION / HYPOTHESIS / GAP`, blockers, and an `approve`, `revise`, or `block` recommendation. The integrator compares claims against the current files, preserves contradictions as gaps, reruns checks, updates the run handout/current report, and appends a closing communication entry.
 
-Today the data model has three represented storage layers: generated public JSON, browser-local drafts, and downloaded review bundles. A private runtime store and an authenticated database are not exposed. A future SQLite/DuckDB evidence ledger needs migrations, read-only access, row/time limits, auditing, backup/restore proof, and isolation from private source corpora before it becomes a real feature.
+The coordination contract is [`project/live/communication/README.md`](../live/communication/README.md). The current manual task contract is [`project/runs/20260715-dashboard-operating-manual/task-contract.md`](../runs/20260715-dashboard-operating-manual/task-contract.md).
 
-## Documentation and installability
+## Setup efficiency: what is proved
 
-The public docs now provide a clean-clone path using standard Python, product navigation for service buyers/operators/evaluators, architecture and operations guides, API/security boundaries, contribution rules, and security reporting guidance. The prior instructions that depended on an ignored project-local virtual environment have been removed from the main quickstart.
+The setup is efficient within the bounded public/static scope because one local validation pass covers data shape, workflow shape, API safety, owner gates, runtime guardrails, public safety, and rendered route behavior without activating a provider.
 
-## Verified during this release
+Proved in the current run:
 
-- public dashboard data generated and parsed;
-- public-safety scan passed;
-- workflow contracts validated in the existing local project runtime;
-- dashboard and Jarvis JavaScript syntax passed;
-- guarded Jarvis API and serverless owner-guard contract checks passed with provider calls and writeback at zero;
-- rendered dashboard smoke passed across ten routes with provider calls and writeback at zero.
+- public data parses and remains generated rather than pretending to be a live database;
+- workflow validation covers LangGraph, LlamaIndex, CrewAI, knowledge integration, market research, and model-routing contracts;
+- the guarded Jarvis API checks 18 endpoint cases plus five owner/approval/replay/CORS cases;
+- the serverless owner guard proves owner, acknowledgement, allowlist, durable-control, and replay gates;
+- the runtime guard verifies configured workflow fixtures without provider activation;
+- the current ten dashboard routes plus the Jarvis report/download static contract render with zero provider calls and zero writeback;
+- the public-safety scan and JavaScript syntax checks pass.
 
-## Gaps and recommendations
+Not proved:
 
-1. Build a sanitized event-feed adapter before representing any stage as live runtime state.
-2. Keep the static Data Lab bounded until a local evidence-ledger implementation meets its control requirements.
-3. Record public-safe skill invocation events before publishing usage counts.
-4. Select a software license before representing the repository as ready for third-party redistribution.
-5. Treat Git commit/push, deployment, provider activation, and external writeback as separate owner-approved releases.
+- provider token/cost efficiency or model-quality efficiency;
+- continuous uptime, hosted freshness, real subagent launch, live Nexus/Notion/GitHub writeback, or durable multi-user memory;
+- a production database or live event feed;
+- buyer demand, paid intent, ROI, or customer outcomes.
+
+## Current production truth
+
+| Capability | State | Evidence interpretation |
+|---|---|---|
+| Public website and dashboard source | Implemented and Git-tracked | Local/public source and browser/static proof exist. |
+| Dashboard data | Generated public JSON | Refresh after source/report changes; not a live database. |
+| Jarvis review-packet contract | Guarded and provider-disabled | API contract checks pass; provider execution remains blocked by design. |
+| Local FastAPI contract | Locally testable in project virtual environment | Contract smoke passes; always-on hosting is not inferred. |
+| Railway | Future backend lane | Requires separate service, auth/CORS, logs, budget, health, rollback, and approval proof. |
+| Notion/Nexus/GitHub writeback | Not enabled from the public browser | Requires exact target/schema/idempotency/rollback/readback and owner approval. |
+| Parallel-agent execution | Contracted, not always running | Chats must be explicitly assigned and independently reviewed. |
+| Provider runtime | Disabled | No current provider-backed token/cost ledger exists. |
+
+## Current gaps and next gates
+
+1. Maintain the current manual route and ten-route smoke contract as the dashboard changes.
+2. Add a sanitized runtime-event fixture before showing any live stage or “running” state.
+3. Add a canonical provider/model-call ledger before making efficiency or cost claims.
+4. Keep the public Data Lab bounded until an evidence-ledger design proves migrations, read-only queries, limits, audit, backup, restore, and private-source isolation.
+5. Decide on a software license before claiming redistribution/installability.
+6. Treat commit/push, deploy, provider activation, Notion/Nexus/GitHub writeback, and production promotion as separate owner-approved releases.
+
+## Source-of-truth files
+
+- [`project/reports/20260715-current-state-and-execution-plan.md`](20260715-current-state-and-execution-plan.md) — active implementation state and staged plan.
+- [`project/reports/20260715-architecture-test-results.md`](20260715-architecture-test-results.md) — exact current checks and limitations.
+- [`docs/dashboard-operating-manual.md`](../../docs/dashboard-operating-manual.md) — detailed operator and parallel-chat usage.
+- [`project/dashboard/README.md`](../dashboard/README.md) — quickstart and command reference.
+- [`project/strategic-plan-2026-07-13.md`](../strategic-plan-2026-07-13.md) — strategic E1-E8 spine; use the 2026-07-15 report for current implementation truth.

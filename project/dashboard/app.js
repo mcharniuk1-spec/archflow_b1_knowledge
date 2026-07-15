@@ -1,4 +1,5 @@
 const primaryTabs = [
+  { id: "manual", label: "Operating Manual", glyph: "OM" },
   { id: "overview", label: "Overview", glyph: "OV" },
   { id: "architecture", label: "Architecture", glyph: "AR" },
   { id: "knowledge", label: "Knowledge", glyph: "KN" },
@@ -13,7 +14,6 @@ const secondaryTabs = [
   { id: "service", label: "PRD / ICP Flow", glyph: "P1" },
   { id: "schema", label: "Workflow Editor", glyph: "A2" },
   { id: "config", label: "Configuration", glyph: "CF" },
-  { id: "plan", label: "E1-E8 Plan", glyph: "PL" },
   { id: "wikillm", label: "WikiLLM", glyph: "WK" },
   { id: "graphify", label: "Graphify", glyph: "GF" },
   { id: "langgraph", label: "LangGraph", glyph: "LG" },
@@ -74,7 +74,7 @@ const architectureLayers = [
     proofState: "Controller contract plus bounded smoke fixtures",
     proofTone: "partial",
     approvalBoundary: "A graph can plan gated actions but cannot authorize them; approval nodes remain separate.",
-    sources: ["project/workflows/langgraph-controller.yaml", "project/scripts/langgraph-smoke-run.py", "project/strategic-plan-2026-07-13.md"],
+    sources: ["project/workflows/langgraph-controller.yaml", "project/scripts/langgraph-smoke-run.py", "project/operating-rules.md"],
   },
   {
     id: "execution-roles",
@@ -138,7 +138,7 @@ const architectureLayers = [
     proofState: "Benchmark contract defined; paired results not yet measured",
     proofTone: "gated",
     approvalBoundary: "Optimization is adopted only after representative fixtures and owner-approved thresholds exist.",
-    sources: ["skills/archflow-architecture-operator/references/metrics.md", "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md", "project/strategic-plan-2026-07-13.md"],
+    sources: ["skills/archflow-architecture-operator/references/metrics.md", "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md", "project/operating-rules.md"],
   },
 ];
 
@@ -164,12 +164,14 @@ const storageKeys = {
   schemaInspectorCollapsed: "archflow.dashboard.schemaInspectorCollapsed",
   executionPreview: "archflow.dashboard.executionPreview",
   architectureLayer: "archflow.dashboard.architectureLayer",
+  viewerMode: "archflow.dashboard.viewerMode",
+  sharedSession: "archflow.sharedSession",
 };
 
 const blockSchemaVersion = "0.6";
 
 let dashboardData = null;
-let activeTab = window.location.hash?.replace(/^#/, "") || "overview";
+let activeTab = window.location.hash?.replace(/^#/, "") || "manual";
 let jarvisMode = localStorage.getItem(storageKeys.mode) || "normal";
 let architectureMode = localStorage.getItem(storageKeys.architectureMode) || "service";
 const voiceModeDisabled = true;
@@ -220,7 +222,12 @@ let executionPreview = loadJson(storageKeys.executionPreview, {
   packetId: null,
   updatedAt: null,
 });
-let jarvisApiBase = (localStorage.getItem(storageKeys.apiBase) || defaultJarvisApiBase()).replace(/\/+$/, "");
+let viewerMode = localStorage.getItem(storageKeys.viewerMode) === "guest" ? "guest" : "admin";
+let sharedSession = loadJson(storageKeys.sharedSession, {
+  knowledge: { status: "not_started", report_id: null, updated_at: null },
+  agent_control: { status: "locked_pending_knowledge", report_id: null, updated_at: null },
+});
+let jarvisApiBase = trustedDashboardApiBase(localStorage.getItem(storageKeys.apiBase) || defaultJarvisApiBase());
 let apiHealthTimer = null;
 let jarvisApiState = {
   status: "checking",
@@ -258,7 +265,7 @@ const refreshDataButton = document.querySelector("#refreshData");
 const globalComposer = document.querySelector("#globalComposer");
 const globalInput = document.querySelector("#globalInput");
 
-if (!tabs.some((tab) => tab.id === activeTab)) activeTab = "overview";
+if (!tabs.some((tab) => tab.id === activeTab)) activeTab = "manual";
 if (activeTab === "service") architectureMode = "service";
 if (activeTab === "schema") architectureMode = "control";
 localStorage.setItem(storageKeys.architectureMode, architectureMode);
@@ -294,6 +301,47 @@ function defaultJarvisApiBase() {
   const localHostnames = new Set(["127.0.0.1", "localhost", "0.0.0.0"]);
   if (localHostnames.has(window.location.hostname)) return "http://127.0.0.1:8787";
   return window.location.origin;
+}
+
+// The dashboard may contact only its own origin or a local development API.
+// This keeps a browser-local configuration field from becoming an arbitrary
+// cross-origin request target or a place to send review-packet content.
+function trustedDashboardApiBase(raw) {
+  const value = String(raw || "").trim();
+  if (!value) return defaultJarvisApiBase();
+  const parsed = new URL(value, window.location.origin);
+  const sameOrigin = parsed.origin === window.location.origin;
+  const loopback = parsed.protocol === "http:" && ["127.0.0.1", "localhost"].includes(parsed.hostname);
+  if (!sameOrigin && !loopback) throw new Error("API base must be this origin or an HTTP loopback address.");
+  return parsed.origin;
+}
+
+function saveSharedSession() {
+  saveJson(storageKeys.sharedSession, sharedSession);
+}
+
+function setViewerMode(mode) {
+  viewerMode = mode === "guest" ? "guest" : "admin";
+  localStorage.setItem(storageKeys.viewerMode, viewerMode);
+  appendEvent("Viewer mode changed", `${viewerMode === "admin" ? "Administrator" : "Guest preview"} mode is browser-local only; no authentication or individual durable memory exists.`, "ok");
+  render();
+}
+
+function markKnowledgePrepared(reportId, source = "browser-local review bundle") {
+  sharedSession = {
+    ...sharedSession,
+    knowledge: { status: "prepared_local", report_id: reportId, updated_at: nowIso(), source },
+    agent_control: { ...sharedSession.agent_control, status: "available_from_knowledge" },
+  };
+  saveSharedSession();
+}
+
+function markAgentControlPrepared(reportId) {
+  sharedSession = {
+    ...sharedSession,
+    agent_control: { status: "prepared_local", report_id: reportId, updated_at: nowIso() },
+  };
+  saveSharedSession();
 }
 
 function defaultPromptConfig() {
@@ -1397,6 +1445,11 @@ function renderNav() {
       <span class="glyph">JV</span>
       <span><strong>Jarvis Chat</strong><small>Dedicated operator workspace</small></span>
     </a>
+    <div class="nav-group viewer-mode-switch" aria-label="Browser-local viewer mode">
+      <span class="nav-group-label">Local view</span>
+      <button type="button" class="${viewerMode === "admin" ? "active" : ""}" data-viewer-mode="admin">Admin</button>
+      <button type="button" class="${viewerMode === "guest" ? "active" : ""}" data-viewer-mode="guest">Guest</button>
+    </div>
   `;
 
   nav.querySelectorAll("[data-tab]").forEach((button) => {
@@ -1408,6 +1461,9 @@ function renderNav() {
       window.history.replaceState(null, "", `#${activeTab}`);
       render();
     });
+  });
+  nav.querySelectorAll("[data-viewer-mode]").forEach((button) => {
+    button.addEventListener("click", () => setViewerMode(button.dataset.viewerMode));
   });
 }
 
@@ -1661,6 +1717,8 @@ function advanceExecutionPreview() {
       },
     });
     executionPreview = { ...executionPreview, state: "complete", stageIndex: stages.length - 1, packetId: packet.id, updatedAt: nowIso() };
+    if (executionPreview.workflow === "service") markKnowledgePrepared(packet.id);
+    if (executionPreview.workflow === "control") markAgentControlPrepared(packet.id);
     saveExecutionPreview();
     appendEvent("Review bundle prepared", "The visible sequence completed locally. Download the bundle and ask an approved operator to review or apply it.", "ok");
     render();
@@ -1674,6 +1732,11 @@ function advanceExecutionPreview() {
 
 function startExecutionPreview(kind = schemaKindForActiveTab()) {
   if (executionPreview.state === "preparing") return;
+  if (kind === "control" && viewerMode === "guest" && sharedSession.knowledge?.status !== "prepared_local") {
+    appendEvent("Agent Control held", "Guest preview requires a browser-local Knowledge Service report first. Prepare that report, download it for review, then return to Agent Control.", "warn");
+    render();
+    return;
+  }
   resetExecutionPreview(kind);
   executionPreview = { ...executionPreview, state: "preparing", updatedAt: nowIso() };
   saveExecutionPreview();
@@ -1699,6 +1762,8 @@ function downloadSessionReviewBundle() {
     role_configuration: roleConfigs,
     local_packets: localPackets,
     sequence: executionPreview,
+    viewer_mode: viewerMode,
+    shared_session: sharedSession,
   };
   const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -1724,7 +1789,7 @@ function renderExecutionTimeline(kind) {
           <p class="muted">This shows the current browser-local packet-preparation step. It becomes live runtime status only when a verified state feed provides a run identifier, node identifier, timestamp, evidence reference, and authority scope.</p>
         </div>
         <div class="row-actions">
-          <button class="primary" id="sequenceStart" type="button">Prepare review bundle</button>
+          <button class="primary" id="sequenceStart" type="button">${kind === "service" ? "Prepare knowledge report" : "Prepare agent-control handoff"}</button>
           <button class="button" id="sequenceReset" type="button">Reset sequence</button>
           <button class="button" id="sequenceDownload" type="button">Download session bundle</button>
         </div>
@@ -1741,7 +1806,7 @@ function renderExecutionTimeline(kind) {
           </li>`;
         }).join("")}
       </ol>
-      <p class="execution-timeline-note">${isPreparing ? "A local review packet is being assembled. No agent is running outside this browser." : isComplete ? "Local packet sequence complete. Download the bundle, then use an approved operator to create or review repository changes." : "No live execution observed. Start this only to prepare a browser-local review bundle."}</p>
+      <p class="execution-timeline-note">${isPreparing ? "A local review packet is being assembled. No agent is running outside this browser." : isComplete ? "Local packet sequence complete. Download the bundle, then use an approved operator to create or review repository changes." : kind === "control" && viewerMode === "guest" && sharedSession.knowledge?.status !== "prepared_local" ? "Guest preview is held until Knowledge Service prepares a browser-local report. Admin mode may reference an existing reviewed report, but the static page still cannot execute it." : "No live execution observed. Start this only to prepare a browser-local review bundle."}</p>
     </section>
   `;
 }
@@ -2065,9 +2130,9 @@ function jarvisReply(input, source = "typed command") {
     return "Opening the configuration page. Edits are browser-local and can be exported as a packet for Codex review; they do not change GitHub, Notion, or runtime prompts directly.";
   }
 
-  if (lower.includes("project plan") || lower.includes("plan structure") || lower.includes("prd")) {
-    activeTab = "plan";
-    return "Opening the project plan view. It shows the E1-E8 spine, knowledge-continuity flow, and source links from the committed dashboard data.";
+  if (lower.includes("project plan") || lower.includes("plan structure")) {
+    activeTab = "manual";
+    return "The dashboard deliberately does not expose strategic planning. Opening the operating manual, which explains the current implementation, parameters, boundaries, and safe handoff sequence.";
   }
 
   if (jarvisMode === "interview") {
@@ -2239,7 +2304,7 @@ function renderJarvis(data) {
         </div>
         <div class="row-actions">
           <a class="button" href="../issues/2026-07-01-dashboard-website-improvement-issues.md">Issue backlog</a>
-          <a class="button" href="#plan">Project plan</a>
+          <a class="button" href="#manual">Operating manual</a>
         </div>
       </div>
       <div class="grid cols-3">
@@ -2725,6 +2790,17 @@ function renderSchema(data) {
       </div>
 
       <div class="callout" id="schemaBackendStatus">Review-packet submission is provider-disabled. It may reach a guarded endpoint when available, but cannot launch an agent, write files, push Git, or perform durable writeback.</div>
+
+      <section class="panel" style="margin-top:16px">
+        <div class="section-header"><div><span class="eyebrow">How to use this detailed view</span><h3>${kind === "service" ? "Knowledge Service: explain the evidence before configuring the graph." : "Agent Control: design the handoff before asking any agent to act."}</h3></div><a class="button" href="#manual">Read operating manual</a></div>
+        <p>${kind === "service" ? "Start with the requested decision, public-safe source boundary, intended artifact, exclusions, and reviewer. Use the nodes to express a proposed sequence from intake through evidence and approval. The visual graph is a local draft only: it does not ingest a repository, query private files, call LlamaIndex, or create a knowledge-base entry." : "Start from a reviewed Knowledge Service report. Set role ownership, allowed sources and skills, outputs, review route, approval gate, and stop rule for each node. Give only one role write ownership for a shared output; a separate reviewer must verify high-risk work. This graph does not create a sub-agent, modify files, or start LangGraph/CrewAI."}</p>
+        ${table(["Field group", "What to configure", "Why it matters", "Stored / does not do"], [
+          ["Node identity", "Title, node type, owner", "Shows accountability and route responsibility", "Browser localStorage; does not assign a live runtime"],
+          ["Contract", "Inputs, outputs, source/tool allowlists", "Prevents unbounded retrieval and vague role work", "Downloaded review packet; does not read sources"],
+          ["Control", "Route, retry, review, approval, stop", "Makes recovery and escalation explicit", "Local draft; does not trigger a workflow"],
+          ["Model/provider", "Provider state and model route", "Documents a potential route and safety boundary", "Configuration only; default remains none/disabled"],
+        ].map((row) => row.map(escapeHtml)))}
+      </section>
 
       ${renderExecutionTimeline(kind)}
 
@@ -3587,7 +3663,12 @@ function exportPromptConfig() {
 
 function saveJarvisApiBaseFromForm() {
   const value = (document.querySelector("#cfgApiBase")?.value || "").trim().replace(/\/+$/, "");
-  jarvisApiBase = value || defaultJarvisApiBase();
+  try {
+    jarvisApiBase = trustedDashboardApiBase(value || defaultJarvisApiBase());
+  } catch (error) {
+    appendEvent("Jarvis API base rejected", error.message || "The API base is not an allowed same-origin or loopback address.", "warn");
+    return;
+  }
   localStorage.setItem(storageKeys.apiBase, jarvisApiBase);
   appendEvent("Jarvis API base saved", `API base saved in browser localStorage: ${jarvisApiBase}`, "ok");
   checkJarvisApi("config save", { silent: false });
@@ -3600,7 +3681,7 @@ function renderConfig() {
       <div class="section-header">
         <div>
           <h2 class="section-title">Chain Configuration And Subprompting</h2>
-          <p class="muted">Edit browser-local prompt and API candidates. Export creates a review packet; it does not mutate GitHub, Notion, WikiLLM, or runtime services.</p>
+          <p class="muted">Edit browser-local prompt and API candidates. Export creates a review packet; it does not mutate GitHub, Notion, WikiLLM, or runtime services. Use this page to describe a future configuration change, then apply it through a reviewed repository change.</p>
         </div>
         <div class="row-actions">
           <button class="button" id="cfgApiCheck" type="button">Check API</button>
@@ -3611,8 +3692,9 @@ function renderConfig() {
       </div>
       <div class="callout">
         <strong>Jarvis API base</strong>
-        <p>Use the deployed Railway or Vercel API origin here. This value is saved only in this browser and lets the dashboard check hosted <span class="code">/health</span> and submit guarded review/provider packets.</p>
-        <label>API base URL<input id="cfgApiBase" value="${escapeHtml(jarvisApiBase)}" placeholder="https://example.up.railway.app" /></label>
+        <p>Use only this dashboard's origin or an HTTP loopback address for local development. The value is saved only in this browser. It can check guarded <span class="code">/health</span> and submit a review packet; it cannot turn a provider, database write, repository write, or deployment into an approved action.</p>
+        <label>API base URL<input id="cfgApiBase" value="${escapeHtml(jarvisApiBase)}" placeholder="Same origin or http://127.0.0.1:8787" /></label>
+        <p class="field-help"><strong>What:</strong> guarded API origin. <strong>Why:</strong> prevents a local setting from posting packet content to an arbitrary host. <strong>Example:</strong> leave blank for same origin or use <span class="code">http://127.0.0.1:8787</span> in local development. <strong>Stored:</strong> browser localStorage. <strong>Cannot:</strong> hold an owner token or provider key.</p>
         <p class="muted">Current API state: ${escapeHtml(jarvisApiState.label)} - ${escapeHtml(jarvisApiState.detail)}</p>
       </div>
       <div class="config-grid">
@@ -3623,6 +3705,12 @@ function renderConfig() {
         <label>Interview mode subprompt<textarea id="cfgInterview">${escapeHtml(promptConfig.interview_prompt)}</textarea></label>
         <label>Reviewer subprompt<textarea id="cfgReview">${escapeHtml(promptConfig.review_prompt)}</textarea></label>
       </div>
+      <section class="panel" style="margin-top:16px"><h3>Parameter behavior</h3>${table(["Parameter", "Purpose", "When to change it", "Where it persists", "Limit"], [
+        ["Chain name", "Labels the candidate workflow", "When preparing a distinct reviewed handoff", "browser localStorage", "Does not rename repository services"],
+        ["Model policy", "States provider/model safety rules", "When provider contract changes are reviewed", "browser localStorage and exported packet", "Does not configure a secret or activate a route"],
+        ["Memory policy", "States what may become a candidate memory record", "When retention/sensitivity rules change", "browser localStorage and exported packet", "Does not write WikiLLM or a database"],
+        ["Normal / interview / reviewer prompts", "Frames local assistant and future operator behavior", "When a task contract or review rubric changes", "browser localStorage and exported packet", "Does not update a production system prompt"],
+      ].map((row) => row.map(escapeHtml)))}</section>
     </section>
     <section class="panel" style="margin-top:16px">
       <h2 class="section-title">Agent Chain Links</h2>
@@ -3640,48 +3728,6 @@ function renderConfig() {
   document.querySelector("#cfgApiCheck")?.addEventListener("click", () => checkJarvisApi("manual config check", { silent: false }));
   document.querySelector("#cfgSave")?.addEventListener("click", savePromptConfigFromForm);
   document.querySelector("#cfgExport")?.addEventListener("click", exportPromptConfig);
-}
-
-function renderPlan(data) {
-  const eCards = [
-    ["E1", "Knowledge Architecture & Governance", "Active baseline: authority, provenance, promotion, reconciliation, and drift control."],
-    ["E2", "Loop Engineering & Goal Contracts", "Goal Engineering stays G1 and Loop Engineering L1; the evidence-backed ICP decision-contract fixture is Planned."],
-    ["E3", "Safe Tools, Skills & Agent Architecture Factory", "Adoption is gated by provenance, security, rollback, fixture, benchmark, and independent review."],
-    ["E4", "Bounded RAG & Obsidian / Graphify / Nexus", "Lexical fallback remains required; vector, graph, and live-vault claims need bounded current evidence."],
-    ["E5", "Market-To-Payment Execution Packs", "Validate the narrow cohort, buyer, forcing moment, access willingness, proposal, and payment without status inflation."],
-    ["E6", "Dashboard, Editor & Documentation", "The three-block website, API-doc console, and guarded Jarvis have local/browser review proof; production remains gated."],
-    ["E7", "Safety, Observability & Benchmarking", "Paired baseline/candidate evidence is required before efficiency or reliability improvements are claimed."],
-    ["E8", "Installable Knowledge Continuity Product", "Planned only after buyer, access, paid-start, installability, MCP, admin, rollback, and benchmark gates pass."],
-  ];
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "Current ICP hypothesis", value: "30-75-person product-led B2B SaaS", note: "Lead with RFP/questionnaire and onboarding forcing moments; validate before treating as demand", tone: "warn" })}
-      ${card({ label: "Operating wedge", value: "maintained company brain", note: "Source boundaries, provenance, continuity, review, and measurable reliability", tone: "ok" })}
-      ${card({ label: "Next safe proof", value: "provider-disabled factory fixture", note: "Typed goal, recovery, independent check, and no unapproved side effects", tone: "ok" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">July 13 E1-E8 Strategic Spine</h2>
-          <p class="muted">Every epic separates workflow status from evidence state. “Configured,” “planned,” and “proved” are not interchangeable.</p>
-        </div>
-        <a class="button" href="../strategic-plan-2026-07-13.md">Open source plan</a>
-      </div>
-      ${table(["Epic", "Scope", "Current status"], eCards.map((row) => row.map(escapeHtml)))}
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Recent Source Links</h2>
-      <div class="list">
-        ${(data.activity || []).slice(0, 10).map((item) => `
-          <article class="row">
-            ${badge(item.kind)}
-            <span class="row-title">${escapeHtml(item.title)}</span>
-            <div class="row-meta">${pathLink(item.path)}</div>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-  `;
 }
 
 function selectedArchitectureLayer() {
@@ -3881,11 +3927,21 @@ function renderKnowledge(data) {
 
 function renderOperations(data) {
   const kind = architectureMode === "control" ? "control" : "service";
-  const agentCount = (data.crewai?.agents || []).length;
+  const agentCount = (data.role_catalog?.roles || []).length;
   return (view.innerHTML = `
     <section class="docs-hero compact">
       <div><span class="eyebrow">Operating model</span><h2>Two clear products, one governed handoff.</h2></div>
       <p><strong>Knowledge Service</strong> turns an approved source boundary into a reviewed decision or delivery packet. <strong>Agent Control</strong> turns an approved request into explicit roles, task contracts, review gates, and a handoff. Both stop before provider use, file creation, Git, database writes, deployment, or external writeback unless a separately approved operator action occurs.</p>
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Activity context</span><h2 class="section-title">${viewerMode === "admin" ? "Administrator preview" : "Guest preview"}: local state, not authentication</h2></div><div class="row-actions"><button class="button ${viewerMode === "admin" ? "active-soft" : ""}" data-operation-viewer="admin" type="button">Admin</button><button class="button ${viewerMode === "guest" ? "active-soft" : ""}" data-operation-viewer="guest" type="button">Guest</button></div></div>
+      <p>${viewerMode === "admin" ? "Administrator preview may prepare either local workflow and may reference an already reviewed knowledge report. It is not login, RBAC, durable user memory, or a bypass for provider/Git/writeback gates." : "Guest preview accepts only a public repository reference or a non-sensitive project summary. It prepares a local Knowledge Service report first. Agent Control remains held until that report exists in this browser; no repository is fetched, cloned, or modified."}</p>
+      ${table(["Shared browser-local activity field", "Used by", "Persistence and boundary"], [
+        ["viewer mode", "Dashboard and Jarvis", "localStorage; presentation mode only"],
+        ["knowledge report ID and classification", "Agent Control handoff", "localStorage; report is review-required, not a KB write"],
+        ["agent-control report ID", "download bundle and operator", "localStorage; no agent launch or file creation"],
+        ["selected architecture", "screen and packet framing", "localStorage; no runtime authority"],
+      ].map((row) => row.map(escapeHtml)))}
     </section>
     <div class="docs-grid two">
       <section class="panel"><span class="eyebrow">Knowledge Service</span><h2 class="section-title">Source to reviewed output</h2><p>Use it when a product, research, or customer context must become a clear PRD, ICP, decision brief, backlog, or knowledge update. The operator supplies a bounded source summary, intended output, and review owner. The system produces a review packet with facts, interpretations, hypotheses, gaps, and the next safe action.</p><p class="muted">It cannot ingest arbitrary private folders, treat a retrieval score as truth, or promote a conclusion to durable memory automatically.</p><a class="button" href="#service">Open Knowledge Service workflow</a></section>
@@ -3907,12 +3963,118 @@ function renderOperations(data) {
   `);
   bindArchitectureSelectors(view);
   bindExecutionTimelineControls(kind);
+  view.querySelectorAll("[data-operation-viewer]").forEach((button) => button.addEventListener("click", () => setViewerMode(button.dataset.operationViewer)));
+}
+
+function renderManual(data) {
+  const knowledge = data.knowledge_catalog || [];
+  const configuration = data.configuration_catalog || [];
+  const skills = data.skill_catalog?.items || [];
+  const roles = data.role_catalog?.roles || [];
+  const knowledgeReady = sharedSession.knowledge?.status === "prepared_local";
+  const controlReady = sharedSession.agent_control?.status === "prepared_local";
+  view.innerHTML = `
+    <section class="docs-hero">
+      <div><span class="eyebrow">ArchFlow Dashboard Operating Manual</span><h1>Use the architecture as a documented handoff system.</h1></div>
+      <p>This is the developer-facing guide for the current public/static setup. It explains the repository, dashboard, Jarvis, knowledge flow, agent-control flow, configuration points, role and skill contracts, outputs, and boundaries. It intentionally describes what is implemented now; it does not publish a strategic plan or imply a hosted autonomous runtime.</p>
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Start here</span><h2 class="section-title">The current operating sequence</h2></div><div class="row-actions"><button class="button ${viewerMode === "admin" ? "active-soft" : ""}" data-manual-viewer="admin" type="button">Admin preview</button><button class="button ${viewerMode === "guest" ? "active-soft" : ""}" data-manual-viewer="guest" type="button">Guest preview</button><a class="primary" href="/jarvis">Open Jarvis</a></div></div>
+      <p><strong>Step 1 — Knowledge Service.</strong> State the goal, a public-safe project reference or summary, allowed evidence, exclusions, desired output, constraints, and reviewer. Prepare a local architecture report. <strong>Step 2 — Agent Control.</strong> Reuse that report ID to propose roles, skills, tool boundaries, routing, reviewer separation, stop conditions, and proposed files. <strong>Step 3 — Human operator.</strong> Download the report/handoff and decide whether to create a scoped repository change. The static surfaces never make that change themselves.</p>
+      ${table(["Visible stage", "Current local state", "What it means", "Next safe action"], [
+        ["Viewer", viewerMode, viewerMode === "admin" ? "Administrator preview may reference an existing reviewed report; it is not authentication." : "Guest preview is limited to non-sensitive public context; it is not an account.", "Choose Admin or Guest locally."],
+        ["Knowledge Service", sharedSession.knowledge?.status || "not_started", knowledgeReady ? `Local report ${sharedSession.knowledge.report_id || "prepared"} is available to Agent Control.` : "No local knowledge report is prepared.", "Open Knowledge Service and prepare/download a report."],
+        ["Agent Control", sharedSession.agent_control?.status || "locked_pending_knowledge", controlReady ? `Local handoff ${sharedSession.agent_control.report_id || "prepared"} is available for operator review.` : "Held until a report exists in guest mode; still review-only in admin mode.", "Open Agent Control and prepare/download the handoff."],
+        ["Runtime / writes", "not activated by this UI", "No agent launch, provider call, repository write, database write, deployment, Notion/Nexus write, or Git push is represented as complete here.", "Use a separate approved operator workflow with current checks."],
+      ].map((row) => row.map(escapeHtml)))}
+    </section>
+    <div class="docs-grid two" style="margin-top:16px">
+      <section class="panel"><span class="eyebrow">Knowledge Service</span><h2 class="section-title">Turn bounded context into a reviewable report</h2><p><strong>Use when:</strong> a repository, product brief, research packet, meeting summary, or approved source set needs a PRD, ICP brief, evidence map, context capsule, decision brief, or knowledge update candidate.</p><p><strong>Required fields:</strong> goal; project reference or safe label; allowed evidence; explicit exclusions; desired output; decision supported; constraints; stop conditions; reviewer. A source reference is only a label in this public browser flow: it is not fetched, cloned, indexed, or sent to a provider.</p><p><strong>Output:</strong> a local architecture report with FACT / INTERPRETATION / HYPOTHESIS / GAP sections, provenance boundary, requested outputs, reviewer questions, and a <span class="code">review_required_not_executed</span> status. Download it before asking an operator to create files or promote memory.</p><a class="button" href="#service">Open detailed Knowledge Service workflow</a></section>
+      <section class="panel"><span class="eyebrow">Agent Control</span><h2 class="section-title">Turn a reviewed report into a bounded work design</h2><p><strong>Use when:</strong> the desired outcome needs roles, skills, tools, source boundaries, a LangGraph-style route, parallel lanes, a maker/reviewer split, approval points, and a clear handoff.</p><p><strong>Required fields:</strong> reviewed knowledge report ID, goal, required roles, allowed skills/tools/sources, expected artifacts, independent reviewer, approval gates, and stop conditions. Do not give two agents ownership of the same write target.</p><p><strong>Output:</strong> a local agent-control handoff with proposed file architecture marked <span class="code">created: false</span> and <span class="code">requires_operator_review: true</span>. It is a design package, not a sub-agent launch.</p><a class="button" href="#schema">Open detailed Agent Control workflow</a></section>
+    </div>
+    <section class="panel" style="margin-top:16px"><span class="eyebrow">Parallel-chat protocol</span><h2 class="section-title">How separate chats communicate while acting in the project</h2><p>Use one lead integrator and bounded sidecar chats. Each sidecar reads the live communication contract, claims one exclusive file scope, returns evidence and gaps, and stops on overlap or missing authority. The integrator reconciles branch reports and reruns checks after merge.</p>${table(["Before work", "During work", "Handoff"], [["Read the README, current notice, latest log, task contract, and current source report.", "Use one role, output, file scope, reviewer, and stop condition. Announce scope changes before editing.", "Return FACT / INTERPRETATION / HYPOTHESIS / GAP, changed files, checks, blockers, and approve/revise/block recommendation."]])}<div class="source-list">${pathLink("project/live/communication/README.md")}${pathLink("project/live/communication/current-agent-notice.md")}${pathLink("project/runs/20260715-dashboard-operating-manual/task-contract.md")}</div></section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Admin and guest</span><h2 class="section-title">Two local views, one honest boundary</h2></div></div>
+      ${table(["Mode", "May enter", "May prepare", "Cannot do"], [
+        ["Admin preview", "Existing reviewed report reference, operator constraints, local prompt candidates", "Knowledge report or Agent Control handoff", "Authenticate, access private material, override gates, launch agents, create files, or write externally"],
+        ["Guest preview", "Public repository reference or sanitized project summary", "Knowledge report first; Agent Control after that local report", "Fetch/clone a repository, use a token/API base, upload private material, retain an individual account memory, or execute actions"],
+      ].map((row) => row.map(escapeHtml)))}
+      <p class="field-help">Both modes are saved in browser localStorage on this device. Clear browser storage to remove them. They are not authentication, authorization, tenancy, or a persistent member-memory product.</p>
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Repository and knowledge files</span><h2 class="section-title">Read in this order; promote only after review</h2></div><a class="button" href="#knowledge">Explore knowledge</a></div>
+      <p>Routing files select the project and public boundary. CAG supplies stable context. WikiLLM preserves reviewed conclusions. Graphify is generated structure. LlamaIndex is bounded retrieval. Nexus is a separate live-vault bridge when its capability is verified. A score, configuration file, or dashboard card is never proof of an executed external action.</p>
+      ${table(["Layer", "File / configuration point", "Purpose in this setup", "How to use it"], knowledge.map((item) => [escapeHtml(item.layer), pathLink(item.path), escapeHtml(item.purpose), item.status === "present" ? "Read before expanding scope; link the result in a review packet." : "Restore or repair before relying on this layer."]))}
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Configuration reference</span><h2 class="section-title">Every editable family and its consequence</h2></div><a class="button" href="#config">Open configuration</a></div>
+      ${table(["Area", "Where configured", "Parameters", "Effect and boundary"], configuration.map((item) => [escapeHtml(item.area), pathLink(item.path), escapeHtml((item.parameters || []).join(", ")), `${escapeHtml(item.effect)} Stored: ${escapeHtml(item.where)}.`]))}
+      <p class="field-help"><strong>Configuration change rule:</strong> use the browser editor to draft and export, then change versioned YAML/Markdown through a reviewed repository patch. Do not put credentials in public files or browser exports. API base is restricted to same origin or HTTP loopback; owner tokens stay in page memory only and are hidden in Guest preview.</p>
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Packaged skills</span><h2 class="section-title">${skills.length} public skills, explained one by one</h2></div><a class="button" href="#agents">Explore agents and skills</a></div>
+      <p>These are the only portable <span class="code">SKILL.md</span> packages shipped by this repository. Names shown only as methods/checklists in a role contract are not silently bundled or redistributed. Documentation-reference counts are not execution counts; public-safe invocation telemetry is not implemented.</p>
+      ${table(["Skill", "Use it for", "Recommended roles", "Allowed / forbidden"], skills.map((skill) => [
+        pathLink(skill.path),
+        escapeHtml(skill.description),
+        escapeHtml((skill.recommended_roles || []).join(", ") || "Task-contract selected"),
+        `${escapeHtml((skill.permissions || []).join(", "))}. Never: ${escapeHtml((skill.forbidden_actions || []).join(", "))}.`,
+      ]))}
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Agent roles</span><h2 class="section-title">${roles.length} declared role contracts, not a claim of active workers</h2></div><a class="button" href="#data">Query public role catalog</a></div>
+      <p>Each role is a reusable responsibility. A compatible runtime may fulfil it only after a bounded task contract assigns the exact sources, packaged skills/method checklists, output, independent reviewer, and stop rule. Tool scope can expand only through a reviewed task contract and the relevant provider/tool adoption gate.</p>
+      ${table(["Role", "Mode", "Declared skills", "Expected outputs", "Forbidden actions"], roles.map((role) => [
+        `<span class="code">${escapeHtml(role.id)}</span><br>${escapeHtml(role.title)}`,
+        escapeHtml(role.mode || "not declared"),
+        escapeHtml((role.skills || []).join(", ") || "task-contract selected"),
+        escapeHtml((role.outputs || []).join(", ") || "not declared"),
+        escapeHtml((role.forbidden_actions || []).join(", ") || "see task contract"),
+      ]))}
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Jarvis operator guide</span><h2 class="section-title">Prompt it with a contract, not a vague command</h2></div><a class="primary" href="/jarvis">Open Jarvis</a></div>
+      <p>Jarvis first produces an architecture report in the conversation and enables a download. Start with Knowledge Service, then use the resulting local report for Agent Control. In Guest preview, no API base or owner-token control is shown and no model catalog is loaded automatically. In Admin preview, guarded API review remains optional and provider execution stays server-gated.</p>
+      <pre class="code-block">Goal:
+Public repository reference or safe project label:
+Allowed evidence:
+Excluded / private material:
+Requested output:
+Decision this must support:
+Constraints and stop conditions:
+Independent reviewer:</pre>
+      <p>For Agent Control, add: <strong>use knowledge report ID; required roles; allowed skills/tools; allowed sources; expected files/artifacts; approval gates; rollback condition.</strong> Jarvis may propose files, but its downloaded package marks them as proposals only. A separate operator applies any approved change.</p>
+    </section>
+    <section class="panel" style="margin-top:16px">
+      <div class="section-header"><div><span class="eyebrow">Frequently asked questions</span><h2 class="section-title">Operational answers for the current setup</h2></div></div>
+      <div class="list">
+        ${[
+          ["Is this a live autonomous agent system?", "No. The public dashboard and Jarvis prepare browser-local reports and review packets. LangGraph, CrewAI, LlamaIndex, and WikiLLM are documented contracts/knowledge layers with separate proof states."],
+          ["Where do I change retrieval behavior?", "Use project/workflows/llamaindex-rag.yaml for include/exclude, chunk size, overlap, retrieval mode, top-k and rerank parameters; test a bounded fixture before treating a new default as proven."],
+          ["Where do I change workflow routes or approval logic?", "Use project/workflows/langgraph-controller.yaml for nodes, routes, checkpoints, revision cap, and approval settings. Draft the graph in the Workflow Editor first, then apply a reviewed patch."],
+          ["What do Admin and Guest mean?", "They are browser-local preview modes only. They do not create accounts, individual durable memory, or permissions. Guest begins with Knowledge Service; Admin can reference an existing reviewed report."],
+          ["Can Jarvis use my repository automatically?", "Not in this public/static setup. Provide a public reference or safe summary. Fetching, cloning, indexing, private data use, provider calls, and file changes each require their own approved operator workflow."],
+          ["Can I download the work?", "Yes. The current page exports local JSON review bundles; Jarvis exports a readable architecture report and a JSON handoff. Downloads are proposals, not repository patches or commits."],
+          ["Why are there skills listed that are not packages?", "The role roster distinguishes shipped public SKILL.md contracts from project methods/checklists. Add a new package only after duplicate, safety, portability, role-mapping, validation, and review checks."],
+          ["Where is the database?", "The Data Lab reads generated public JSON and browser-local drafts. It is not a server database. A future multi-user store requires authentication, tenancy, RBAC, audit, retention, backup, and recovery proof."],
+        ].map(([question, answer]) => `<article class="row"><span class="row-title">${escapeHtml(question)}</span><p>${escapeHtml(answer)}</p></article>`).join("")}
+      </div>
+    </section>
+  `;
+  view.querySelectorAll("[data-manual-viewer]").forEach((button) => button.addEventListener("click", () => setViewerMode(button.dataset.manualViewer)));
 }
 
 function dataLabRows(data, tableName) {
   const rows = {
     skills: data.skill_catalog?.items || [],
-    roles: (data.crewai?.agents || []).map((agent) => ({ id: agent.id, role: agent.role, goal: agent.goal, skills: (agent.skills || []).join(", ") })),
+    roles: (data.role_catalog?.roles || []).map((role) => ({
+      id: role.id,
+      title: role.title,
+      mode: role.mode,
+      skills: (role.skills || []).join(", "),
+      outputs: (role.outputs || []).join(", "),
+      forbidden_actions: (role.forbidden_actions || []).join(", "),
+    })),
     workflow_nodes: data.langgraph?.nodes || [],
     sources: data.sources || [],
     runs: data.activity || [],
@@ -3925,7 +4087,7 @@ function runDataLabQuery(query) {
   const normalized = String(query || "").trim();
   const match = normalized.match(/^SELECT\s+([A-Za-z0-9_*,\s]+)\s+FROM\s+(skills|roles|workflow_nodes|sources|runs)(?:\s+LIMIT\s+(\d+))?\s*;?$/i);
   if (!match) {
-    if (result) result.innerHTML = `<div class="callout">Only read-only examples are accepted: <span class="code">SELECT id, name FROM skills LIMIT 20</span>. WHERE clauses, joins, functions, mutations, and external connections are intentionally unavailable.</div>`;
+    if (result) result.innerHTML = `<div class="callout">Only read-only examples are accepted: <span class="code">SELECT id, name FROM skills LIMIT 20</span> or <span class="code">SELECT id, title, mode FROM roles LIMIT 20</span>. WHERE clauses, joins, functions, mutations, and external connections are intentionally unavailable.</div>`;
     return;
   }
   const [, requestedColumns, tableName, rawLimit] = match;
@@ -3950,17 +4112,17 @@ function renderDataLab(data) {
   view.innerHTML = `
     <section class="docs-hero compact"><div><span class="eyebrow">Data architecture</span><h2>Inspect the public catalog without inventing a production database.</h2></div><p>The dashboard reads generated JSON and browser-local drafts. It does not connect to a customer store, private corpus, or production database. The query lab is deliberately a bounded teaching interface rather than arbitrary SQL.</p></section>
     <section class="panel"><h2 class="section-title">What is represented today</h2>${table(["Table", "Purpose", "Columns", "Rows"], (database.tables || []).map((item) => [escapeHtml(item.name), escapeHtml(item.purpose), escapeHtml(item.columns.join(", ")), escapeHtml(item.rows ?? "generated at refresh")]))}<p class="muted">Repository data is regenerated by the public data generator. Browser-local drafts stay in local storage until explicitly downloaded as a review bundle. Neither is a live database write path.</p></section>
-    <section class="panel" style="margin-top:16px"><div class="section-header"><div><span class="eyebrow">Read-only fixture query lab</span><h2 class="section-title">SQL-like public catalog preview</h2></div><a class="button" href="../database/README.md">Data boundary</a></div><label class="full-width-label">Query<input id="dataQuery" value="SELECT id, name, category, reference_count FROM skills LIMIT 20" autocomplete="off" /></label><p class="field-help">What: a small public catalog query. Why: inspect the shipped contracts. Example: <span class="code">SELECT id, owner, purpose FROM workflow_nodes LIMIT 20</span>. Stored: nowhere. Cannot: query private data, mutate data, join tables, call a server, or execute arbitrary SQL.</p><div class="row-actions"><button class="primary" id="dataQueryRun" type="button">Run public preview</button><button class="button" id="dataQuerySkills" type="button">Show skills</button><button class="button" id="dataQueryRoles" type="button">Show roles</button></div><div id="dataQueryResult" class="table-scroll" style="margin-top:16px"></div></section>
+    <section class="panel" style="margin-top:16px"><div class="section-header"><div><span class="eyebrow">Read-only fixture query lab</span><h2 class="section-title">SQL-like public catalog preview</h2></div><a class="button" href="../database/README.md">Data boundary</a></div><label class="full-width-label">Query<input id="dataQuery" value="SELECT id, name, category, documentation_reference_count FROM skills LIMIT 20" autocomplete="off" /></label><p class="field-help">What: a small public catalog query. Why: inspect the shipped contracts. Example: <span class="code">SELECT id, title, mode FROM roles LIMIT 20</span>. Stored: nowhere. Cannot: query private data, mutate data, join tables, call a server, or execute arbitrary SQL.</p><div class="row-actions"><button class="primary" id="dataQueryRun" type="button">Run public preview</button><button class="button" id="dataQuerySkills" type="button">Show skills</button><button class="button" id="dataQueryRoles" type="button">Show roles</button></div><div id="dataQueryResult" class="table-scroll" style="margin-top:16px"></div></section>
     <section class="panel" style="margin-top:16px"><h2 class="section-title">Gated database roadmap</h2><p>A local single-user evidence ledger may use SQLite or DuckDB only after migrations, a read-only query role, row and time limits, audit records, backup/restore proof, and strict separation from private sources. A hosted multi-user database additionally needs tenancy, authentication, RBAC, encryption, retention, and recovery evidence. Those controls are not present in this static console.</p></section>
   `;
   view.querySelector("#dataQueryRun")?.addEventListener("click", () => runDataLabQuery(view.querySelector("#dataQuery")?.value));
-  view.querySelector("#dataQuerySkills")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, name, category, reference_count FROM skills LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
-  view.querySelector("#dataQueryRoles")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, role, goal FROM roles LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
+  view.querySelector("#dataQuerySkills")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, name, category, documentation_reference_count FROM skills LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
+  view.querySelector("#dataQueryRoles")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, title, mode FROM roles LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
   runDataLabQuery(view.querySelector("#dataQuery")?.value);
 }
 
 function renderAgents(data) {
-  const agents = data.crewai?.agents || [];
+  const agents = data.role_catalog?.roles || [];
   const tasks = data.crewai?.tasks || [];
   const catalog = data.skill_catalog || { items: [], packaged_count: 0 };
   view.innerHTML = `
@@ -3969,7 +4131,7 @@ function renderAgents(data) {
       <p>Each role needs an objective, bounded responsibility, allowed sources and tools, a skill set, an output schema, an independent reviewer, and a stop condition.</p>
     </section>
     <div class="proof-state-grid">
-      ${card({ label: "Crew configuration", value: data.crewai?.status || "unknown", note: `${agents.length} roles visible in generated data`, tone: "warn" })}
+      ${card({ label: "Role contracts", value: `${agents.length} declared`, note: "Registry contracts, not always-running agents", tone: "warn" })}
       ${card({ label: "Process", value: data.crewai?.process || "unknown", note: "LangGraph remains the state and routing owner", tone: "ok" })}
       ${card({ label: "Memory", value: data.crewai?.memory || "unknown", note: "Role memory does not replace canonical project memory", tone: "warn" })}
       ${card({ label: "Provider proof", value: data.crewai?.level_3_status || "not recorded", note: "A deterministic fixture is not default runtime", tone: "warn" })}
@@ -3979,9 +4141,10 @@ function renderAgents(data) {
       <div class="agent-doc-grid">
         ${agents.map((agent) => `
           <article class="agent-doc-card">
-            <div class="agent-doc-heading"><span class="glyph">${escapeHtml(agent.id).slice(0, 2).toUpperCase()}</span><div><h3>${escapeHtml(agent.role)}</h3><span class="code">${escapeHtml(agent.id)}</span></div></div>
-            <p>${escapeHtml(agent.goal)}</p>
+            <div class="agent-doc-heading"><span class="glyph">${escapeHtml(agent.id).slice(0, 2).toUpperCase()}</span><div><h3>${escapeHtml(agent.title)}</h3><span class="code">${escapeHtml(agent.id)}</span></div></div>
+            <p><strong>Mode:</strong> ${escapeHtml(agent.mode || "not declared")}</p>
             <div class="skill-chip-list">${(agent.skills || []).map((skill) => `<span>${escapeHtml(skill)}</span>`).join("")}</div>
+            <p class="field-help"><strong>Outputs:</strong> ${escapeHtml((agent.outputs || []).join(", ") || "not declared")}<br><strong>Boundary:</strong> ${escapeHtml((agent.forbidden_actions || []).join(", ") || "defined by task contract")}</p>
           </article>
         `).join("") || `<div class="callout">No generated role registry is available.</div>`}
       </div>
@@ -3993,9 +4156,9 @@ function renderAgents(data) {
         `<span class="code">${escapeHtml(skill.id)}</span>`,
         escapeHtml(skill.description || "Project skill contract"),
         escapeHtml(skill.portable ? "public-safe portable" : "review required"),
-        escapeHtml(skill.verified_invocations == null ? "not measured" : String(skill.verified_invocations)),
+        escapeHtml(skill.verified_invocations == null ? `not measured; ${skill.documentation_reference_count || 0} documentation references` : String(skill.verified_invocations)),
       ]))}
-      <div class="source-list">${pathLink("project/database/skill-catalog.json")}${pathLink("project/database/skill-catalog.schema.json")}${pathLink("project/agents/skills-governance.md")}</div>
+      <div class="source-list">${pathLink("project/database/skill-catalog.json")}${pathLink("project/database/skill-catalog.schema.json")}${pathLink("project/database/role-catalog.json")}${pathLink("project/database/role-catalog.schema.json")}${pathLink("project/agents/skills-governance.md")}</div>
     </section>
     <div class="docs-grid two" style="margin-top:16px">
       <section class="panel"><h2 class="section-title">Task-to-role handoff</h2>${table(["Task", "Role", "Expected artifact"], tasks.map((task) => [escapeHtml(task.id), badge(task.agent), escapeHtml(task.expected_output)]))}</section>
@@ -4342,7 +4505,7 @@ function render() {
   if (activeTab === "service") renderSchema(data);
   if (activeTab === "schema") renderSchema(data);
   if (activeTab === "config") renderConfig(data);
-  if (activeTab === "plan") renderPlan(data);
+  if (activeTab === "manual") renderManual(data);
   if (activeTab === "overview") renderOverview(data);
   if (activeTab === "architecture") renderArchitecture(data);
   if (activeTab === "knowledge") renderKnowledge(data);
@@ -4407,7 +4570,7 @@ document.addEventListener("visibilitychange", () => {
 });
 
 window.addEventListener("hashchange", () => {
-  const nextTab = window.location.hash?.replace(/^#/, "") || "overview";
+  const nextTab = window.location.hash?.replace(/^#/, "") || "manual";
   if (!tabs.some((tab) => tab.id === nextTab)) return;
   activeTab = nextTab;
   if (activeTab === "service") setArchitectureMode("service");

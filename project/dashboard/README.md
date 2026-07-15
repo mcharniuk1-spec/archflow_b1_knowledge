@@ -21,9 +21,13 @@ Canonical routes:
 - `#runs` — configuration, execution, review, promotion, and evidence states.
 - `#reference` — editable parameter families, source registry, and operating guidance.
 - `#schema` — full-screen, browser-local workflow editor and review-packet export.
-- `#plan` — current E1-E8 strategic spine and installable product direction.
+- `#manual` — developer-facing operating guide: inputs, parameters, current boundaries, handoffs, skills, and FAQs.
 
 The separate `/jarvis` page is the text-only review console. It can inspect public-safe state and prepare bounded requests. Serverless owner guards reject unacknowledged or unallowlisted requests and fail closed until replay-safe durable controls exist. Provider calls and durable writeback remain disabled by default.
+
+The default dashboard view is `#manual`. Start there when joining an active project or a parallel-chat lane. It explains the current Knowledge Service and Agent Control flows, browser-local administrator/guest preview labels, safe review-bundle handoff, and the live communication protocol. These preview labels are not authentication and do not create individual durable memory.
+
+For parallel work, use one lead integrator and bounded sidecar chats. Each sidecar must read `project/live/communication/`, claim one exclusive file scope, return exact evidence and gaps, and stop if the scope overlaps or requires provider, private-data, deployment, or external-write authority. The integrator reconciles findings and reruns checks after merge. See [`docs/dashboard-operating-manual.md`](../../docs/dashboard-operating-manual.md) and [`project/live/communication/README.md`](../live/communication/README.md).
 
 ## Run Locally
 
@@ -60,13 +64,14 @@ Run:
 ```bash
 python3 scripts/public_safety_scan.py
 node --check project/dashboard/app.js
-python3 project/scripts/validate-workflows.py
-python3 project/scripts/dashboard-static-smoke.py --timeout 20 --retries 2
-python3 project/scripts/jarvis-api-contract-smoke.py
-python3 project/scripts/jarvis-serverless-owner-guard-smoke.py
+project/local/venv/bin/python project/scripts/validate-workflows.py
+project/local/venv/bin/python project/scripts/dashboard-static-smoke.py --timeout 20 --retries 2
+project/local/venv/bin/python project/scripts/jarvis-api-contract-smoke.py
+project/local/venv/bin/python project/scripts/jarvis-serverless-owner-guard-smoke.py
+python3 project/scripts/pre-push-runtime-guard.py
 ```
 
-The static smoke renders every dashboard view and proves no provider call or writeback occurs. Responsive and interaction QA additionally covers desktop, mobile, reduced motion, fullscreen editor access, dialog focus restoration, browser-local review bundles, Jarvis input behavior, and API-origin blocking.
+The static smoke renders every current dashboard view, including `#manual`, and proves no provider call or writeback occurs. Responsive and interaction QA additionally covers desktop, mobile, reduced motion, fullscreen editor access, dialog focus restoration, browser-local review bundles, Jarvis input behavior, and API-origin blocking. Exact current results and limitations are recorded in [`project/reports/20260715-architecture-test-results.md`](../reports/20260715-architecture-test-results.md).
 
 ## Deployment Boundary
 

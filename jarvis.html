@@ -28,9 +28,9 @@
         <span><strong>ArchFlow / Jarvis</strong><small>Public UI / owner-gated API</small></span>
       </a>
       <div class="header-truth" aria-label="Runtime boundaries">
-        <span><i class="status-dot" data-status-dot></i><b data-runtime-label>Checking API</b></span>
+        <span><i class="status-dot" data-status-dot></i><b data-runtime-label>Checking local/API state</b></span>
         <span>Writeback off</span>
-        <span>Owner token required</span>
+        <span>Local report first</span>
       </div>
       <nav aria-label="Jarvis navigation">
         <a href="/dashboard">Operator docs</a>
@@ -42,12 +42,13 @@
       <section class="chat-panel" aria-labelledby="chat-title">
         <header class="chat-heading">
           <div>
-            <p class="eyebrow">Owner console / Text only</p>
-            <h1 id="chat-title">Work with the architecture, with its limits visible.</h1>
+            <p class="eyebrow">Operating manual / Text only</p>
+            <h1 id="chat-title">Prepare the report first. Design the agents second.</h1>
           </div>
           <div class="conversation-actions">
             <button type="button" data-check-runtime>Check runtime</button>
             <button type="button" data-clear-chat>Clear local chat</button>
+            <button type="button" data-clear-activity>Clear local activity</button>
           </div>
         </header>
 
@@ -56,61 +57,87 @@
           <div><span>Provider</span><strong data-runtime="provider">Unknown</strong></div>
           <div><span>Owner auth</span><strong data-runtime="auth">Unknown</strong></div>
           <div><span>Request state</span><strong data-runtime="execution">No request submitted</strong></div>
+          <div><span>Shared activity</span><strong data-runtime="activity">No report prepared</strong></div>
         </div>
 
         <div class="conversation" id="conversation" data-conversation role="log" aria-live="polite" aria-label="Jarvis conversation" tabindex="-1">
           <article class="message message-system">
             <div class="message-meta"><span>Jarvis contract</span><time>Ready for an operator request</time></div>
             <p>
-              Choose an allowed model and prepare a guarded request. This public UI can create a review packet, but provider execution remains disabled until a server-enforced single-use nonce and durable spend ledger exist; it never fabricates a model response.
+              Choose Knowledge Service first to create an architecture report from a public-safe project summary and source boundary. Then choose Agent Control to reuse that report and propose a role architecture. This page works locally before any optional guarded API review; it never fabricates a model response.
             </p>
             <ul>
-              <li>Conversation stays in this browser tab unless sent.</li>
-              <li>The browser may search OpenRouter's public catalog; it never receives the provider key.</li>
-              <li>Git, Notion, memory, deployment, and other writeback stay disabled.</li>
+              <li>Activity context is browser-local and shared with the dashboard on this device; it is not authentication or individual persistent memory.</li>
+              <li>Guest preview hides API/token controls and does not load a model catalog automatically.</li>
+              <li>Git, repository file creation, Notion, memory promotion, deployment, database writes, provider use, and other writeback stay disabled unless separately approved and proven.</li>
             </ul>
           </article>
         </div>
 
         <form class="composer" data-chat-form>
-          <label for="jarvis-request">Operator request</label>
+          <div class="composer-controls">
+            <label class="select-control">
+              <span>Viewer mode</span>
+              <select name="viewer_mode" data-viewer-mode>
+                <option value="admin">Admin preview</option>
+                <option value="guest">Guest preview</option>
+              </select>
+              <small>Browser-local presentation mode only. It does not authenticate a user or grant execution authority.</small>
+            </label>
+            <label class="select-control">
+              <span>Stage</span>
+              <select name="architecture">
+                <option value="service">Knowledge Service — prepare report first</option>
+                <option value="control">Agent Control — use the report</option>
+              </select>
+              <small>Knowledge Service creates local context/report. Agent Control proposes roles and files from it.</small>
+            </label>
+          </div>
+          <label for="jarvis-request">Goal</label>
           <textarea
             id="jarvis-request"
             name="request"
             rows="3"
             maxlength="12000"
-            placeholder="Ask Jarvis to inspect, explain, plan, or prepare a reviewed knowledge-system action…"
+            placeholder="Example: prepare a knowledge report for an onboarding workflow and list the decision it must support."
             required
           ></textarea>
-          <p class="field-help"><strong>What:</strong> a public-safe task or question. <strong>Why:</strong> it gives the operator packet a bounded objective. <strong>Example:</strong> “prepare a PRD review plan from the approved source summary.” <strong>Stored:</strong> this browser tab until submitted. <strong>Cannot:</strong> activate a provider, create files, or write externally.</p>
+          <p class="field-help"><strong>What:</strong> a bounded objective. <strong>Why:</strong> it names the outcome and decision. <strong>Example:</strong> “prepare a PRD review plan from the approved source summary.” <strong>Stored:</strong> browser-local activity until cleared. <strong>Cannot:</strong> activate a provider, create files, or write externally.</p>
+          <label for="jarvis-project-reference">Public repository reference or safe project label</label>
+          <input id="jarvis-project-reference" name="project_reference" maxlength="500" placeholder="https://github.com/example/project or “Customer onboarding prototype”" />
+          <p class="field-help">What: a non-sensitive label or public reference. Why: lets the report identify its scope. Stored: browser-local report. Cannot: fetch, clone, inspect, or send the reference automatically. Never enter a private URL, local path, token, credential, or raw private material.</p>
+          <label for="jarvis-source-boundary">Allowed evidence and exclusions</label>
+          <textarea id="jarvis-source-boundary" name="source_boundary" rows="3" maxlength="6000" placeholder="Allowed: approved public README and product brief. Excluded: customer files, credentials, private transcripts, unpublished data." required></textarea>
+          <p class="field-help">What: the exact source boundary. Why: prevents accidental broad ingestion or unsafe provider use. Stored: browser-local report. Cannot: grant access to any source.</p>
           <div class="composer-controls">
-            <label class="select-control">
-              <span>Architecture</span>
-              <select name="architecture">
-                <option value="control">Agent control</option>
-                <option value="service">Knowledge service</option>
-              </select>
-              <small>Choose Knowledge service for source-to-output work, or Agent control for roles, gates, and handoff. It changes packet framing, not runtime authority.</small>
-            </label>
-            <div class="selected-model" aria-live="polite">
+            <label class="select-control"><span>Requested output</span><input name="requested_output" maxlength="400" placeholder="Architecture report, PRD brief, role map" required /><small>State the artifact to hand to a reviewer.</small></label>
+            <label class="select-control"><span>Independent reviewer</span><input name="reviewer" maxlength="200" placeholder="Role or team, e.g. AF Review" required /><small>Name a reviewer; do not let the maker self-approve high-risk work.</small></label>
+          </div>
+          <label for="jarvis-constraints">Constraints and stop conditions</label>
+          <textarea id="jarvis-constraints" name="constraints" rows="2" maxlength="2000" placeholder="No provider calls; no external writes; stop if evidence boundary is unclear." required></textarea>
+          <p class="field-help">What: safety, delivery, budget, and authority limits. Why: makes a useful handoff instead of an ambiguous request. Stored: browser-local report and download. Cannot: replace separate approval for Git, deploy, provider, or writeback.</p>
+          <div class="composer-controls">
+            <div class="selected-model" data-admin-only aria-live="polite">
               <span>Selected model</span>
               <strong data-selected-model>GPT-5.6 Luna</strong>
-              <small>A route preference only. A displayed model is not an enabled provider call.</small>
+              <small>A guarded API route preference only. A displayed model is not an enabled provider call.</small>
             </div>
-            <label class="one-call-approval">
+            <label class="one-call-approval" data-admin-only>
               <input type="checkbox" name="provider_approval" />
               <span><strong>Acknowledge provider request</strong><small>Records an operator acknowledgement; it is not replay protection or authorization.</small></span>
             </label>
             <button class="send-button" type="submit" data-send>
-              <span>Submit review packet</span><b aria-hidden="true">↗</b>
+              <span>Prepare local report</span><b aria-hidden="true">↗</b>
             </button>
+            <button type="button" data-download-report>Download report</button>
+            <button type="button" data-download-package>Download handoff</button>
           </div>
           <p class="composer-status" data-composer-status>No request sent. Provider usage and cost have not been verified.</p>
         </form>
       </section>
 
       <aside class="control-panel" aria-label="Jarvis models and access controls">
-        <section class="control-section access-section">
+        <section class="control-section access-section" data-admin-only>
           <div class="section-label"><span>01</span><h2>Owner access</h2></div>
           <label class="field-control">
             <span>Jarvis owner token</span>
@@ -120,31 +147,32 @@
             <span>API base</span>
             <input type="url" name="api_base" data-api-base inputmode="url" placeholder="Same origin (default)" />
           </label>
-          <p><strong>Owner token:</strong> only for an approved local or same-origin API; it stays in tab memory and must never be a provider key. <strong>API base:</strong> the guarded API origin, normally same origin. These fields cannot enable a provider, Git, Notion, deployment, or file writeback.</p>
+          <p><strong>Owner token:</strong> only for an approved local or same-origin API review route; it stays in tab memory and must never be a provider key. <strong>API base:</strong> same origin or HTTP loopback only. These fields cannot enable a provider, Git, Notion, deployment, repository writes, or file writeback.</p>
         </section>
 
-        <section class="control-section models-section">
+        <section class="control-section models-section" data-admin-only>
           <div class="section-label"><span>02</span><h2>Curated routes</h2></div>
           <div class="model-cards" data-model-cards aria-label="Curated OpenRouter models"></div>
         </section>
 
-        <section class="control-section catalog-section">
+        <section class="control-section catalog-section" data-admin-only>
           <div class="section-label"><span>03</span><h2>Search OpenRouter</h2></div>
           <label class="search-control">
             <span class="sr-only">Search model catalog</span>
             <input type="search" data-model-search placeholder="Search 300+ model routes…" autocomplete="off" />
             <kbd>/</kbd>
           </label>
-          <p class="catalog-status" data-catalog-status>Loading the live public model catalog… Search is discovery only; it does not enable a route.</p>
+          <button type="button" data-load-model-catalog>Load public model catalog</button>
+          <p class="catalog-status" data-catalog-status>Catalog not loaded. Loading is explicit and discovery-only; it does not enable a route.</p>
           <div class="catalog-results" data-catalog-results></div>
         </section>
 
         <section class="control-section boundary-section">
           <div class="section-label"><span>04</span><h2>Truth boundary</h2></div>
           <dl>
-            <div><dt>Configured</dt><dd>Server has required environment state.</dd></div>
-            <div><dt>Authorized</dt><dd>Owner token and per-request acknowledgement both pass.</dd></div>
-            <div><dt>Executed</dt><dd>Blocked until single-use nonce and durable spend enforcement exist.</dd></div>
+            <div><dt>Prepared</dt><dd>Browser-local report or handoff exists and can be downloaded.</dd></div>
+            <div><dt>Reviewed</dt><dd>A human accepts a bounded report; this page does not record that approval.</dd></div>
+            <div><dt>Executed</dt><dd>Not implied. Provider execution remains separately server-gated.</dd></div>
             <div><dt>Written back</dt><dd>Disabled in this surface.</dd></div>
           </dl>
         </section>

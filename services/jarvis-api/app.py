@@ -43,15 +43,15 @@ CURATED_MODELS = [
 ]
 
 REQUIRED_ROLE_IDS = [
-    "jesus",
-    "lol",
-    "ronaldinho",
-    "messi",
-    "ronaldo",
-    "yushchenko",
-    "theory",
-    "security",
-    "actor",
+    "lead_integrator",
+    "dashboard_workflow_owner",
+    "technical_reviewer",
+    "pm_reviewer",
+    "product_icp_reviewer",
+    "model_efficiency_observer",
+    "prd_icp_advisor",
+    "safety_reviewer",
+    "bounded_executor",
     "af_tools",
     "af_knowledge",
     "af_publisher",
@@ -117,7 +117,7 @@ class RoleConfig(BaseModel):
     outputArtifact: str = ""
     reviewGate: str = "AF Review"
     status: str = "review"
-    handoffTarget: str = "Jesus"
+    handoffTarget: str = "Lead Integrator"
 
 
 class RoleUpdateRequest(BaseModel):
@@ -365,15 +365,15 @@ def call_openrouter(kind: str, request_model: JarvisRequest | VoiceRequest, owne
 
 def default_roles() -> list[dict[str, str]]:
     titles = {
-        "jesus": "Lead Integrator",
-        "lol": "Dashboard UI/UX",
-        "ronaldinho": "Technical Reviewer",
-        "messi": "PM Closeout",
-        "ronaldo": "Product/ICP Reviewer",
-        "yushchenko": "Budget Reviewer",
-        "theory": "PRD/ICP Theory",
-        "security": "Security Reviewer",
-        "actor": "Bounded Worker",
+        "lead_integrator": "Lead Integrator",
+        "dashboard_workflow_owner": "Dashboard Workflow Owner",
+        "technical_reviewer": "Technical Reviewer",
+        "pm_reviewer": "PM Reviewer",
+        "product_icp_reviewer": "Product/ICP Reviewer",
+        "model_efficiency_observer": "Model-Efficiency Observer",
+        "prd_icp_advisor": "PRD/ICP Advisor",
+        "safety_reviewer": "Safety Reviewer",
+        "bounded_executor": "Bounded Worker",
         "af_tools": "AF Tools",
         "af_knowledge": "AF Knowledge",
         "af_publisher": "AF Publisher",
@@ -387,12 +387,12 @@ def default_roles() -> list[dict[str, str]]:
             "objective": "Operate within the approved static/local dashboard boundary.",
             "responsibility": "Create or review public-safe packets; no provider calls or writeback by default.",
             "tools": "Codex, dashboard packets, validation scripts",
-            "modelRoute": "Codex operator" if role_id != "yushchenko" else "OpenRouter gated",
-            "budgetMode": "local only" if role_id != "yushchenko" else "stop before 1.99 USD",
+            "modelRoute": "Codex operator" if role_id != "model_efficiency_observer" else "OpenRouter gated",
+            "budgetMode": "local only" if role_id != "model_efficiency_observer" else "stop before 1.99 USD",
             "outputArtifact": "review packet",
             "reviewGate": "AF Review",
             "status": "review",
-            "handoffTarget": "Jesus",
+            "handoffTarget": "Lead Integrator",
         }
         for role_id in REQUIRED_ROLE_IDS
     ]

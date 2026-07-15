@@ -1,0 +1,4 @@
+interface:
+  display_name: "ArchFlow Knowledge Service"
+  short_description: "Prepare source-bounded knowledge review packets"
+  default_prompt: "Use $archflow-knowledge-service to prepare a bounded knowledge report for this project."

@@ -4,8 +4,8 @@
 This test proves the documentation-first operator console can render its
 current product and reference routes without a live backend:
 
-- overview, architecture, knowledge, agents, runs, reference, and workflow;
-- the ICP-aligned E1-E8 plan.
+- operating manual, overview, architecture, knowledge, agents, runs,
+  reference, and workflow.
 
 It intentionally does not test provider calls, durable writeback, audio
 capture/playback, or deployment. Those remain gated runtime checks.
@@ -29,6 +29,8 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DASHBOARD_DATA = REPO_ROOT / "project" / "dashboard" / "data.json"
 VERCEL_CONFIG = REPO_ROOT / "vercel.json"
+JARVIS_HTML = REPO_ROOT / "jarvis.html"
+JARVIS_JS = REPO_ROOT / "jarvis.js"
 
 SECRET_PATTERNS = [
     re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
@@ -39,6 +41,13 @@ SECRET_PATTERNS = [
 ]
 
 ROUTE_MARKERS = {
+    "#manual": [
+        "Dashboard Operating Manual",
+        "Knowledge Service",
+        "Agent Control",
+        "Packaged skills",
+        "browser-local",
+    ],
     "#overview": [
         "Documentation-first architecture console",
         "Build a maintained company brain",
@@ -96,11 +105,6 @@ ROUTE_MARKERS = {
         "MODEL PROVIDER none",
         "writeback approval required",
     ],
-    "#plan": [
-        "July 13 E1-E8 Strategic Spine",
-        "30-75-person product-led B2B SaaS",
-        "Installable Knowledge Continuity Product",
-    ],
 }
 
 
@@ -139,6 +143,10 @@ def validate_dashboard_data() -> None:
         "env",
         "packages",
         "gates",
+        "role_catalog",
+        "skill_catalog",
+        "knowledge_catalog",
+        "configuration_catalog",
     ]
     missing = [key for key in required if key not in data]
     if missing:
@@ -160,8 +168,7 @@ def validate_vercel_route_contract() -> None:
             )
 
 
-def render_route(chrome: str, base_url: str, route_hash: str, timeout_seconds: int, retries: int) -> str:
-    url = f"{base_url}/project/dashboard/{route_hash}"
+def render_url(chrome: str, url: str, timeout_seconds: int, retries: int) -> str:
     command = [
         chrome,
         "--headless",
@@ -191,7 +198,11 @@ def render_route(chrome: str, base_url: str, route_hash: str, timeout_seconds: i
             last_error = completed.stderr.strip() or f"exit code {completed.returncode}"
         if attempt < retries:
             time.sleep(1)
-    raise RuntimeError(f"Chrome failed for {route_hash}: {last_error}")
+    raise RuntimeError(f"Chrome failed for {url}: {last_error}")
+
+
+def render_route(chrome: str, base_url: str, route_hash: str, timeout_seconds: int, retries: int) -> str:
+    return render_url(chrome, f"{base_url}/project/dashboard/{route_hash}", timeout_seconds, retries)
 
 
 def assert_markers(route_hash: str, html: str) -> None:
@@ -201,6 +212,39 @@ def assert_markers(route_hash: str, html: str) -> None:
     leaked = [pattern.pattern for pattern in SECRET_PATTERNS if pattern.search(html)]
     if leaked:
         raise AssertionError(f"{route_hash} rendered forbidden secret pattern(s): {', '.join(leaked)}")
+    if "Strategic plan" in html or "#plan" in html:
+        raise AssertionError(f"{route_hash} exposed a removed strategic-plan dashboard surface")
+
+
+def validate_jarvis_static_contract(html: str) -> None:
+    required_html = [
+        "Prepare the report first",
+        "Knowledge Service — prepare report first",
+        "Guest preview",
+        "Download report",
+        "Download handoff",
+        "Load public model catalog",
+        "Local report first",
+    ]
+    missing_html = [marker for marker in required_html if marker not in html]
+    if missing_html:
+        raise AssertionError(f"Jarvis page missing markers: {', '.join(missing_html)}")
+    source = JARVIS_JS.read_text(encoding="utf-8")
+    required_source = [
+        "data-load-model-catalog",
+        "data-download-report",
+        "data-download-package",
+        'if (state.viewerMode === "guest") return;',
+        "The browser did not send the report body, project reference, source boundary, or chat history",
+    ]
+    missing_source = [marker for marker in required_source if marker not in source]
+    if missing_source:
+        raise AssertionError(f"Jarvis source contract missing: {', '.join(missing_source)}")
+    if "loadModels();" in source:
+        raise AssertionError("Jarvis must not auto-load the public model catalog")
+    leaked = [pattern.pattern for pattern in SECRET_PATTERNS if pattern.search(html)]
+    if leaked:
+        raise AssertionError(f"Jarvis rendered forbidden secret pattern(s): {', '.join(leaked)}")
 
 
 def run_smoke(timeout_seconds: int, retries: int) -> None:
@@ -218,11 +262,13 @@ def run_smoke(timeout_seconds: int, retries: int) -> None:
         for route_hash in ROUTE_MARKERS:
             html = render_route(chrome, base_url, route_hash, timeout_seconds, retries)
             assert_markers(route_hash, html)
+        jarvis_html = render_url(chrome, f"{base_url}/jarvis.html", timeout_seconds, retries)
+        validate_jarvis_static_contract(jarvis_html)
     finally:
         server.shutdown()
         server.server_close()
 
-    print(f"dashboard_static_smoke=ok routes={len(ROUTE_MARKERS)} provider_calls=0 writeback=0")
+    print(f"dashboard_static_smoke=ok routes={len(ROUTE_MARKERS)} jarvis_static=ok provider_calls=0 writeback=0")
 
 
 def main() -> int:

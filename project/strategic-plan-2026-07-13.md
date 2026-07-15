@@ -1,6 +1,6 @@
 # ArchFlow Strategic Plan - Knowledge Architecture First
 
-Status: active planning and implementation baseline as of 2026-07-13. The public task-contract index is [`task-contract-index-2026-07-13.md`](task-contract-index-2026-07-13.md); the external task board is a coordination mirror, not the only reconstruction source.
+Status: strategic E1-E8 baseline, refreshed for implementation truth on 2026-07-15. Use [`reports/20260715-current-state-and-execution-plan.md`](reports/20260715-current-state-and-execution-plan.md) for the active current-state and execution plan, and [`reports/20260715-architecture-test-results.md`](reports/20260715-architecture-test-results.md) for current checks. The public task-contract index is [`task-contract-index-2026-07-13.md`](task-contract-index-2026-07-13.md); the external task board is a coordination mirror, not the only reconstruction source.
 
 ## Strategy reset
 
