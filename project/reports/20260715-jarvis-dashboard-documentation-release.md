@@ -2,7 +2,7 @@
 
 Date: 2026-07-15
 
-Status: public/static release evidence; publication result appended after Git and Vercel verification
+Status: source published to `main`; canonical-domain refresh not verified
 
 ## Scope
 
@@ -41,6 +41,12 @@ Resolution: both Dashboard modes now require `prepared_local` Knowledge Service 
 - serverless owner-guard smoke: passed;
 - rendered static smoke: passed for ten dashboard routes and Jarvis with provider calls and writeback at zero;
 - desktop visual inspection: passed for Jarvis and Dashboard layouts.
+
+## Publication and hosted verification
+
+The verified source release was committed and pushed to the public `main` branch. A production deployment reached Ready in the Vercel project available to the current operator session. The requested canonical domain still returned the prior Jarvis artifact during final verification, and the current Vercel session does not have access to that domain mapping. Therefore this report does not claim that the canonical site refreshed.
+
+The required Figma baseline sync was not run. Its contract requires alias verification before capture, and capturing the non-canonical deployment would create a misleading baseline. The safe next action is to restore access to the canonical domain/project mapping, assign the verified release, check the Jarvis and dashboard source markers, then run the documented Figma sync.
 
 ## Known limits
 

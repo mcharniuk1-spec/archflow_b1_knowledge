@@ -2,7 +2,7 @@
 
 Date: 2026-07-15
 
-Status: validation complete; Git publication and hosted verification pending in this handout revision
+Status: source published; canonical hosted verification blocked by domain-mapping access
 
 ## Purpose
 
@@ -52,9 +52,13 @@ Agent Control now requires `sharedSession.knowledge.status === prepared_local` f
 - Rendered static smoke: passed for ten dashboard routes and Jarvis.
 - Local desktop visual checks: passed for Jarvis and Dashboard documentation layouts.
 
+## Publication state
+
+The documentation release was committed and pushed to public `main`. A production deployment reached Ready in the Vercel project available to the current session, but the requested canonical domain continued to return the prior Jarvis artifact. The current session cannot inspect or update that domain mapping. Figma sync is deliberately deferred because its capture contract requires a verified canonical alias.
+
 ## Continuation prompt
 
-Review the current public documentation release before adding runtime behavior. Read `project/operating-rules.md`, the live communication files, this handout, `docs/dashboard-operating-manual.md`, `jarvis.html`, `jarvis.js`, and `project/dashboard/app.js`. Preserve the two-stage prerequisite: Knowledge Service must prepare a browser-local report before Agent Control. Treat all visual stage states as browser-local unless a verified runtime event feed exists. Do not add provider execution, repository writes, authentication, private retrieval, or external writeback without a separate approved task contract, capability proof, validation, and public-safety review.
+Restore access to the canonical Vercel domain/project mapping before attempting another hosted update. Then read `project/operating-rules.md`, the live communication files, this handout, `docs/dashboard-operating-manual.md`, `jarvis.html`, `jarvis.js`, and `project/dashboard/app.js`. Verify the canonical Jarvis and dashboard source markers, run the documented Figma sync only after alias verification, and preserve the two-stage prerequisite: Knowledge Service must prepare a browser-local report before Agent Control. Do not add provider execution, repository writes, authentication, private retrieval, or external writeback without a separate approved task contract, capability proof, validation, and public-safety review.
 
 ## Safety boundary
 

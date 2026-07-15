@@ -11,6 +11,7 @@ Make the public Jarvis, Dashboard, and landing-page documentation path explicit 
 - Agent Control requires a browser-local Knowledge Service report in both Administrator and Guest preview, matching Jarvis and the documented method.
 - The landing page directs users to the system documentation path.
 - Generated dashboard data was refreshed and focused static, safety, workflow, runtime-guard, API-guard, and rendered-browser checks passed.
+- The verified source release was pushed to public `main`. A deployment reached Ready in the Vercel project available to the session, but canonical-domain verification is blocked because the current session cannot access that domain mapping.
 
 ## INTERPRETATION
 
@@ -18,7 +19,7 @@ The public product is easier to evaluate when the workflow is presented as an ex
 
 ## GAP
 
-Authentication, individual durable memory, live agent events, provider execution, private-corpus ingestion, a production database, and external writeback remain separate gates.
+Authentication, individual durable memory, live agent events, provider execution, private-corpus ingestion, a production database, external writeback, and canonical-domain/Figma verification remain separate gates.
 
 ## Artifacts
 

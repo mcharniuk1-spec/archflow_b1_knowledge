@@ -10775,3 +10775,17 @@ GAP: Dashboard Agent Control allows an Admin preview to prepare a control packet
 Acceptance checklist for the integrator: align the report prerequisite across both surfaces; make the Jarvis stage sequence and input dictionary visible before optional Admin controls; retain the current local-only/provider/writeback wording; add a concise landing-page route into the documentation journey; update asset cache versions when source changes; verify the canonical hosted Jarvis and dashboard routes after deploy.
 
 Next safe action: implement the scoped documentation and sequence corrections, run the public safety/static checks, then verify the deployed routes before release completion.
+
+## 2026-07-15 16:00 - Documentation-first dashboard and Jarvis release - complete with hosted verification gap
+
+Status: complete for source, documentation, validation, and Git publication; canonical hosted refresh not verified.
+
+Files changed: Jarvis HTML, CSS, and browser-local state guidance; dashboard manual, workflow prerequisite, cache references, and static smoke; landing-page documentation cue; public documentation, run/report/decision records, generated data, Wiki log/run, and this coordination log.
+
+FACT: Knowledge Service is now the required browser-local prerequisite for Agent Control in both Administrator and Guest preview. Jarvis presents the four-stage sequence before optional controls. The dashboard manual is continuous documentation, and the landing page directs readers to it. The verified release was pushed to public `main`.
+
+FACT: public safety, syntax, workflow, runtime guard, guarded API/serverless guard, rendered static smoke, and local desktop visual checks passed. The rendered smoke covered ten dashboard routes plus Jarvis with provider calls and writeback at zero.
+
+GAP: A production deployment reached Ready in the Vercel project available to the current session, but the requested canonical domain still served the previous Jarvis artifact and its mapping is not accessible to this session. Figma sync is deferred because its contract requires canonical alias verification.
+
+Next: restore canonical-domain/project access, assign the verified main release, check Jarvis and dashboard source markers, then run the required Figma sync.

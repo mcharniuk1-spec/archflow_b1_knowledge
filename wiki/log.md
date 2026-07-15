@@ -670,6 +670,6 @@ INTERPRETATION:
 - A consistent report-first rule makes the current product easier to operate and prevents UI controls from implying unbounded agent execution.
 
 GAP:
-- Hosted freshness, authentication, durable memory, live agents, providers, private retrieval, database, and writeback still require separate proof and approval.
+- Hosted freshness, authentication, durable memory, live agents, providers, private retrieval, database, and writeback still require separate proof and approval. The source release is on `main`, but the canonical domain mapping is unavailable to the current Vercel session, so canonical freshness and Figma sync remain unverified.
 
 See [[runs/2026-07-15-jarvis-dashboard-documentation-release]] and [[decisions/2026-07-15-universal-knowledge-report-prerequisite]].
