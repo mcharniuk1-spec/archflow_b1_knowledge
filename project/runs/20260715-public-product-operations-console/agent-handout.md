@@ -22,6 +22,10 @@ The public product now presents ArchFlow as a local-first Knowledge Reliability 
 - guarded Jarvis API and serverless owner-guard smoke checks;
 - rendered dashboard smoke across ten static routes, with zero provider calls and zero writeback.
 
+## Publication
+
+The scoped public release was committed as `c8d9603` (`feat: add truthful public operations console`) and pushed to the configured `main` branch after the repository public-safety and runtime pre-push guards passed. The two inherited environment-example edits were intentionally excluded.
+
 ## Boundaries that remain true
 
 - The visible stage animation is browser-local packet preparation, not live agent execution.

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T09:15:23.760762+00:00",
+  "generated_at": "2026-07-15T09:17:58.654110+00:00",
   "project": {
     "name": "ArchFlow Block 1 Knowledge",
     "mode": "phase_2_local_dashboard",
@@ -730,6 +730,20 @@
   ],
   "activity": [
     {
+      "kind": "project_run",
+      "path": "project/runs/20260715-public-product-operations-console/agent-handout.md",
+      "title": "Public product operations console handout",
+      "modified": "2026-07-15T09:17:51.379922+00:00",
+      "size": 2735
+    },
+    {
+      "kind": "project_report",
+      "path": "project/reports/20260715-public-product-operations-architecture-report.md",
+      "title": "Public Product Operations Architecture Report",
+      "modified": "2026-07-15T09:17:01.978570+00:00",
+      "size": 6493
+    },
+    {
       "kind": "wiki_issue",
       "path": "wiki/issues/2026-07-15-runtime-event-and-ledger-gaps.md",
       "title": "GAP: live runtime events, skill telemetry, and evidence ledger",
@@ -742,20 +756,6 @@
       "title": "Decision: public console remains truthful and local-first",
       "modified": "2026-07-15T09:13:30.329806+00:00",
       "size": 1095
-    },
-    {
-      "kind": "project_report",
-      "path": "project/reports/20260715-public-product-operations-architecture-report.md",
-      "title": "Public Product Operations Architecture Report",
-      "modified": "2026-07-15T09:13:30.233784+00:00",
-      "size": 6494
-    },
-    {
-      "kind": "project_run",
-      "path": "project/runs/20260715-public-product-operations-console/agent-handout.md",
-      "title": "Public product operations console handout",
-      "modified": "2026-07-15T09:13:30.135186+00:00",
-      "size": 2429
     },
     {
       "kind": "project_run",
@@ -6254,7 +6254,7 @@
     {
       "path": "project/reports/20260715-public-product-operations-architecture-report.md",
       "title": "Public Product Operations Architecture Report",
-      "text": "# Public Product Operations Architecture Report  Date: 2026-07-15   Scope: public website, dashboard, Jarvis, role/skill presentation, generated catalog, setup documentation, and operational truth boundaries.  ## Executive product position  ArchFlow should be marketed now as a **Knowledge Reliability Setup** for a forcing moment: it turns fragmented product knowledge into a source/owner map, reviewed knowledge spine, governed workflow, and operator handoff. Its long-term direction is a local-first, installable operating toolkit. This is a more credible product path than claiming a hosted autonomous-agent platform before runtime, persistence, and action controls exist.  The public interface therefore prioritizes explainability, controlled handoff, and visible gates. It deliberately distinguishes a configured contract from observed execution.  ## Layer-by-layer architecture  | Layer | Product ability | Current public proof | Required next gate | |---|---|---|---| | Authority and Goal | Bind request to an owner, scope, stop rule, and approval boundary. | Public goal and workflow contracts. | Task-specific operator acceptance. | | Context and Knowledge | Build the smallest source-groun",
+      "text": "# Public Product Operations Architecture Report  Date: 2026-07-15  Scope: public website, dashboard, Jarvis, role/skill presentation, generated catalog, setup documentation, and operational truth boundaries.  ## Executive product position  ArchFlow should be marketed now as a **Knowledge Reliability Setup** for a forcing moment: it turns fragmented product knowledge into a source/owner map, reviewed knowledge spine, governed workflow, and operator handoff. Its long-term direction is a local-first, installable operating toolkit. This is a more credible product path than claiming a hosted autonomous-agent platform before runtime, persistence, and action controls exist.  The public interface therefore prioritizes explainability, controlled handoff, and visible gates. It deliberately distinguishes a configured contract from observed execution.  ## Layer-by-layer architecture  | Layer | Product ability | Current public proof | Required next gate | |---|---|---|---| | Authority and Goal | Bind request to an owner, scope, stop rule, and approval boundary. | Public goal and workflow contracts. | Task-specific operator acceptance. | | Context and Knowledge | Build the smallest source-ground",
       "authority_state": "dated_evidence",
       "superseded_by": "",
       "authority_boost": -1

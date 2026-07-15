@@ -10637,3 +10637,11 @@ GAP: live runtime events, a durable usage ledger, a real database, provider exec
 Checks: public safety scan passed; dashboard data and JSON parsed; workflow validation passed in the existing project runtime; dashboard/Jarvis JavaScript syntax passed; guarded Jarvis API and serverless-owner smoke passed; rendered dashboard static smoke passed across ten routes with provider calls and writeback at zero.
 
 Next safe action: review the public diff and request a separate commit/push approval if publication is desired.
+
+## 2026-07-15 12:18 - Public Product Operations Console - publication complete
+
+Status: complete
+
+Publication: scoped public commit `c8d9603` (`feat: add truthful public operations console`) pushed to `main` after the repository public-safety and E1 runtime pre-push guards passed.
+
+Scope preserved: the inherited `.env.example` and `services/jarvis-api/.env.example` edits were not staged or published by this release.
