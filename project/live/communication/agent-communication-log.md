@@ -10819,3 +10819,35 @@ Checks: provider-disabled five-proposal validator PASS; malformed packet rejecti
 Remaining gaps: the referenced Orbit attachment is absent, so product identity remains stated at 0.80 confidence; Obsidian/Cursor client reload and live discovery are pending; Orbit is beta; employee/production proof needs separately approved pilots; dashboard migration remains plan-only.
 
 Next safe action: stage only this run's intended files, scan a clean staged snapshot, inspect the staged diff, commit, and perform the owner-authorized Git push. Preserve every unrelated pre-existing worktree change.
+
+## 2026-08-05 - README architecture visual and public agent call names - starting
+
+Status: starting; provider-disabled documentation admission accepted after two bounded request repairs.
+
+Task: integrate the owner-supplied layered architecture image into the root README, clean the cropped top edge, explain every visual region and connection, and give every canonical role a fictional Ukrainian call name written in English letters.
+
+Files likely to change: `README.md`, one new image under `project/assets/architecture/`, and the bounded run packet under `project/runs/20260805-readme-architecture-visual/`.
+
+Files claimed: only those files plus this append-only update. Dashboard, services, runtime contracts, and unrelated worktree changes remain unclaimed.
+
+Expected output: a GitHub-readable hero image, accessible caption, seven-layer legend, connection semantics, complete human-facing role roster, validation receipt, and owner-authorized Git push.
+
+FACT: stable role IDs remain the machine authority; the Ukrainian names are fictional display call names and grant no permission.
+
+Reviewer: the existing independent architecture reviewer is reserved for a read-only verdict and may edit only the bounded `independent-review.md` artifact.
+
+Next: copy the cleaned visual into the claimed asset path, patch the README and run records, then run image, link, role-coverage, Markdown, and public-safety checks.
+
+## 2026-08-05 - README architecture visual and public agent call names - complete
+
+Status: complete; independent review APPROVE; exact release staging in progress.
+
+Scope update: the existing independent architecture reviewer ran a read-only lane. The reviewer edited only the bounded `independent-review.md` artifact and did not touch shared files.
+
+Files changed: root README, one cleaned architecture PNG, the bounded run packet, one public WikiLLM run note, and exact append-only log entries. Dashboard, runtime, services, deployment, and private knowledge were not changed.
+
+Checks: 21 canonical roles and 21 unique fictional Ukrainian call names matched exactly; README links PASS; PNG integrity and visual readback PASS; architecture fixture PASS with zero actions; whitespace PASS; independent review APPROVE with no repair required.
+
+GAP: the image remains a conceptual overview rather than a literal one-icon-per-role diagram, and reader comprehension has not been measured in an onboarding pilot.
+
+Next safe action: stage only the claimed files and these exact log entries, run the public safety scanner from a clean staged snapshot, inspect the diff, commit, push under the owner's authorization, and read back the remote hash.

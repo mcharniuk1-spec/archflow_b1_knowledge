@@ -673,3 +673,12 @@ GAP:
 - Hosted freshness, authentication, durable memory, live agents, providers, private retrieval, database, and writeback still require separate proof and approval. The source release is on `main`, but the canonical domain mapping is unavailable to the current Vercel session, so canonical freshness and Figma sync remain unverified.
 
 See [[runs/2026-07-15-jarvis-dashboard-documentation-release]] and [[decisions/2026-07-15-universal-knowledge-report-prerequisite]].
+
+## 2026-08-05 — README architecture visual and agent call names
+
+- Integrated a cleaned layered architecture image into the root README.
+- Added captions for every visual region, all seven operating layers, and each connection type.
+- Assigned all 21 canonical roles fictional Ukrainian call names in English letters while preserving stable role IDs as the authority boundary.
+- Kept dashboard, runtime, deployment, and private knowledge outside the change.
+
+See [[runs/2026-08-05-readme-architecture-visual]].
