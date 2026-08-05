@@ -16,3 +16,5 @@ Do not file public issues for credentials, tokens, access-control bypasses, priv
 - Allow time for verification and remediation before public disclosure.
 
 The repository intentionally keeps external actions behind explicit approval gates. A configured-looking surface is not authorization.
+
+Local structural indexes may contain full source text and absolute device paths even when their input repository is public. Keep their databases, manifests, raw results, logs, and corpus mappings outside public Git and outside durable Obsidian/WikiLLM knowledge. Do not expose corpus-changing or unrestricted query tools to an onboarding or maker role.

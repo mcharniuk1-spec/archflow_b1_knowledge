@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "status": "canonical_candidate",
+  "authority": "unified_knowledge_case_controller",
+  "provider_default": "disabled",
+  "writeback_default": "disabled",
+  "legacy_top_level_labels": {
+    "Architecture 1": "legacy_compatibility_only",
+    "Architecture 2": "legacy_compatibility_only"
+  },
+  "interface": [
+    "open_case",
+    "advance_case",
+    "evaluate_proposal",
+    "record_result",
+    "propose_promotion"
+  ],
+  "states": [
+    "request_received",
+    "admission_checked",
+    "context_bound",
+    "evidence_gathering",
+    "evidence_reconciled",
+    "requirements_review",
+    "requirements_approved",
+    "support_ready",
+    "work_planning",
+    "candidate_in_progress",
+    "candidate_review",
+    "proposal_ready",
+    "proposal_validated",
+    "approval_wait",
+    "execution_ready",
+    "executed",
+    "result_verification",
+    "accepted_result",
+    "promotion_review",
+    "promoted",
+    "repair",
+    "answered",
+    "closed_no_promotion",
+    "blocked",
+    "failed",
+    "stopped",
+    "closed"
+  ],
+  "repair_policy": {
+    "maximum_attempts": 3,
+    "maximum_same_failure": 2
+  },
+  "hard_gates": [
+    "source_boundary_valid",
+    "current_requirement_or_explicit_exception",
+    "material_contradictions_resolved",
+    "actor_authorized_for_exact_target",
+    "change_set_reviewable",
+    "verification_and_readback_defined",
+    "side_effects_and_rollback_declared",
+    "independent_review_when_high_risk",
+    "target_specific_approval_when_external_or_high_risk"
+  ],
+  "terminal_rule": "No state may be upgraded to success without its required receipt and readback.",
+  "adapters": {
+    "structural_evidence": ["orbit_local", "graphify"],
+    "prose_retrieval": ["lexical", "llamaindex_allowlisted"],
+    "durable_knowledge": ["public_wikillm", "private_obsidian_reviewed"],
+    "projections": ["cli", "documents", "future_dashboard"],
+    "external_actions": "disabled_until_exact_owner_approval"
+  }
+}

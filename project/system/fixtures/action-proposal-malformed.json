@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "proposal_id": "proposal-malformed",
+  "case_id": "case-onboarding-mini",
+  "actor_role": "implementation_maker",
+  "intent": "Demonstrate nested schema rejection.",
+  "target": {"class": "public_documentation"},
+  "change_set": "Missing target reference and readback.",
+  "requirement_refs": [],
+  "decision_refs": [],
+  "coverage": [],
+  "permission_scope": {"operation": "propose_edit", "target_class": "public_documentation", "status": "invented"},
+  "side_effects": [],
+  "reversibility": "reversible",
+  "rollback": "Restore prior file.",
+  "verification_plan": {"preflight": "Check file.", "postcondition": "Check text."},
+  "review": {"maker_role": "implementation_maker", "reviewer_role": "independent_reviewer", "risk": "low"},
+  "approval": {"required": false, "status": "not_required"}
+}

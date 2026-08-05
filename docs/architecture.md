@@ -10,6 +10,14 @@ ArchFlow is designed as a knowledge-continuity operating system: it preserves th
 
 The second is a product direction. This repository does not present it as a hosted autonomous service today.
 
+## Canonical candidate operating model
+
+The implemented candidate is one **Knowledge Case Controller**, not two top-level architectures. It carries one case from admission and evidence through reviewed requirements, bounded role work, proposal validation, approval when needed, verification, and selective knowledge promotion. It becomes canonical only after the repair review and focused public release receipt pass.
+
+PRD and market research are performed by the bounded `requirements_and_market_research` role. PRDs, ICPs, onboarding maps, outreach packs, and creative briefs are projections of reviewed requirements and decisions. Historic `Architecture 1` and `Architecture 2` labels remain only as compatibility residue until the separately gated dashboard migration is executed.
+
+See the [unified operating architecture](unified-operating-architecture.md) for the state, role, action-validation, and private-adapter contracts.
+
 ## Seven grouped layers
 
 1. **Authority and Goal** — identifies the owner, success test, constraints, budget, and forbidden actions.
@@ -34,6 +42,8 @@ approved request
 ```
 
 LlamaIndex is the bounded retrieval layer, not durable memory. WikiLLM is the curated durable-memory layer. Graphify is generated structural reference, not final business truth. Nexus is a live vault bridge only when its runtime and schemas are proved. TurboVec/Cognee remain optional, gated evaluation candidates rather than defaults.
+
+GitLab Orbit Local is an optional private code-structural evidence adapter. Its local database, absolute paths, full source fields, and raw results are private generated artifacts; only reviewed repository-relative receipts may enter durable knowledge. Orbit never indexes the Obsidian vault or grants action authority.
 
 ## Public console truth boundary
 

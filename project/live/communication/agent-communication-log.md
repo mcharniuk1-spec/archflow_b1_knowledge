@@ -10789,3 +10789,33 @@ FACT: public safety, syntax, workflow, runtime guard, guarded API/serverless gua
 GAP: A production deployment reached Ready in the Vercel project available to the current session, but the requested canonical domain still served the previous Jarvis artifact and its mapping is not accessible to this session. Figma sync is deferred because its contract requires canonical alias verification.
 
 Next: restore canonical-domain/project access, assign the verified main release, check Jarvis and dashboard source markers, then run the required Figma sync.
+
+## 2026-08-05 - unified knowledge-agent and Orbit architecture - starting
+
+Status: starting; deterministic architecture admission accepted with provider execution disabled.
+
+Task: replace numbered architecture tracks with one governed operating workflow; make requirements and market research a bounded role; integrate Orbit privately with Obsidian; publish a reusable public knowledge-agent system; create layered visuals; and plan, but do not implement, dashboard integration.
+
+Files likely to change: the new bounded run folder, new public system architecture and role-contract documentation, public diagrams/assets, private local integration/configuration files, and public-safe wiki/run records. Existing dashboard files are read-only.
+
+Files claimed: new files created by this run plus narrow, announced patches to architecture routing documents. All unrelated pre-existing worktree changes remain unclaimed and must be preserved.
+
+Registered lanes: system architecture engineer; Orbit and knowledge integration engineer; repository research and information architect; Codex integrator/designer; independent reviewer. Each maker has an exclusive lane file under the run folder. The integrator owns shared-file changes and final merge order.
+
+Expected output: one source-grounded employee onboarding/action-support architecture with requirements validation, private/public promotion gates, an operable Orbit adapter, reliable clean-clone documentation, repository visuals, review evidence, and a focused Git push.
+
+Blockers: the owner-referenced Orbit sub-prompt is not present in the current message payload or repository, so the Orbit lane must use verified first-party behavior and local configuration evidence, recording any unresolved identity or setup detail as a GAP.
+
+Next: complete bounded maker audits and first-party repository research, then integrate only after lane handoffs are reviewed.
+
+## 2026-08-05 - unified knowledge-agent and Orbit architecture - handoff
+
+Status: handoff; architecture implementation and independent review complete, exact release staging in progress.
+
+Files changed: the bounded architecture run packet; public system contracts, schemas, validator, and fixtures; architecture/onboarding/Orbit/adaptation/role-trace/dashboard-plan documentation; contribution/security/navigation updates; three architecture visuals; and a public decision record. Private runtime, Obsidian integration, and durable memory were updated behind the public boundary.
+
+Checks: provider-disabled five-proposal validator PASS; malformed packet rejection PASS; exact target/reviewer boundary mutations PASS; isolated copied-system proof PASS; Orbit one-corpus/freshness/map/negative suite PASS; constrained MCP tool boundary PASS; Obsidian config/skill/control-note readback PASS; links/JSON/SVG/visual review PASS; target-only safety PASS; independent review APPROVE.
+
+Remaining gaps: the referenced Orbit attachment is absent, so product identity remains stated at 0.80 confidence; Obsidian/Cursor client reload and live discovery are pending; Orbit is beta; employee/production proof needs separately approved pilots; dashboard migration remains plan-only.
+
+Next safe action: stage only this run's intended files, scan a clean staged snapshot, inspect the staged diff, commit, and perform the owner-authorized Git push. Preserve every unrelated pre-existing worktree change.

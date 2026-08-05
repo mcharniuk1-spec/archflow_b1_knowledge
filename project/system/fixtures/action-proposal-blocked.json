@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "proposal_id": "proposal-onboarding-send",
+  "case_id": "case-onboarding-mini",
+  "actor_role": "implementation_maker",
+  "intent": "Send an onboarding message automatically.",
+  "target": {"class": "external_communication", "ref": "synthetic-recipient"},
+  "change_set": "Send a message without a frozen reviewed payload.",
+  "requirement_refs": ["REQ-ONBOARD-OLD@1"],
+  "decision_refs": [],
+  "coverage": [{"requirement_ref": "REQ-ONBOARD-OLD@1", "status": "satisfied"}],
+  "permission_scope": {"operation": "send", "target_class": "external_communication", "status": "not_allowed"},
+  "side_effects": ["external_message"],
+  "reversibility": "irreversible",
+  "rollback": "No reliable rollback exists.",
+  "verification_plan": {"preflight": "None.", "postcondition": "Message may appear sent.", "readback": "None."},
+  "review": {"maker_role": "implementation_maker", "reviewer_role": "implementation_maker", "risk": "high"},
+  "approval": {"required": true, "status": "missing"}
+}

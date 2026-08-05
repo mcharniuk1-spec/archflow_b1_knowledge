@@ -1,0 +1,48 @@
+{
+  "admission": "accepted_planning_only",
+  "admission_receipt": {
+    "id": "sha256:395aa2711dff1e4a7e9e20de951bbd2d25875f9696012d60374b97d025eaf4ac",
+    "status": "valid_for_planning_only"
+  },
+  "approval": {
+    "execution_authorized": false,
+    "gate": "none_for_planning_only",
+    "status": "not_required_for_planning"
+  },
+  "controller": "langgraph",
+  "dispatch": {
+    "crew_kickoff": false,
+    "external_actions": false,
+    "task_invoked": false,
+    "writes": false
+  },
+  "execution_mode": "executor_local_deterministic",
+  "profile": "architecture",
+  "provider_mode": "disabled",
+  "retrieval": {
+    "backend": "none",
+    "mode": "cag_only",
+    "status": "planned_not_invoked"
+  },
+  "reviewer_separation": {
+    "required": true,
+    "reviewer_role": "independent_reviewer",
+    "self_approval": "forbidden"
+  },
+  "role_minimum": 3,
+  "run_id": "20260805-unified-agent-knowledge-orbit-architecture",
+  "schema": "archflow.run-admission.v1",
+  "state_record": {
+    "checkpoint_write": false,
+    "next_state": "cag_bound",
+    "sequence": [
+      "admission_validated",
+      "cag_bound",
+      "role_plan_composed",
+      "retrieval_plan_bound",
+      "architecture_admission",
+      "independent_architecture_review",
+      "architecture_review_gate"
+    ]
+  }
+}

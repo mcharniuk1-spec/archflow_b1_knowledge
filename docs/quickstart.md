@@ -1,6 +1,6 @@
 # Quickstart
 
-This repository is a local-first reference implementation. It starts a static public site and generated dashboard data; it does not start providers, background agents, external writeback, or a production database.
+This repository is a local-first reference implementation. Its first proof is a provider-disabled Knowledge Case validator; the static site and legacy-compatible dashboard are optional projections. Nothing in this quickstart starts providers, background agents, external writeback, or a production database.
 
 ## Prerequisites
 
@@ -10,11 +10,19 @@ This repository is a local-first reference implementation. It starts a static pu
 
 The generator and static server use the Python standard library. A clean clone does not depend on an ignored virtual environment.
 
-## Run the public console
+## Prove the core knowledge-agent contract
 
 ```bash
 git clone <your-fork-or-repository-url> archflow
 cd archflow
+python3 project/system/validate_system.py
+```
+
+Expected result: one synthetic onboarding documentation proposal is `eligible`; stale, authority-spoof, target-escape, and reviewer-spoof proposals are `blocked`; malformed packets are rejected; every evaluated proposal reports `executed: false`. This proof needs no key, model, vault, private file, network request, or dashboard.
+
+## Run the public console
+
+```bash
 python3 project/scripts/generate-dashboard-data.py
 python3 -m http.server 8765
 ```
@@ -35,6 +43,8 @@ Open these local routes:
 
 The visible stage sequence is a local preparation preview. It does not run a model, create a file, invoke a subagent, write a database record, commit code, or push Git.
 
+The dashboard still exposes transitional Knowledge Service / Agent Control views. They are not separate canonical architectures; see the [plan-only migration](dashboard-integration-plan.md).
+
 ## Verify a checkout
 
 The first three checks use the standard library plus Node for syntax. Workflow validation needs the optional development dependency:
@@ -44,6 +54,7 @@ python3 -m pip install -r project/requirements-dev.txt
 ```
 
 ```bash
+python3 project/system/validate_system.py
 python3 project/scripts/generate-dashboard-data.py
 python3 scripts/public_safety_scan.py
 node --check project/dashboard/app.js

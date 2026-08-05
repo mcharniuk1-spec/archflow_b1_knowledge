@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "selection_rule": "Select roles from case needs; names, models, historic aliases, and skills do not grant authority.",
+  "aliases": {
+    "watchdog": "admission_controller",
+    "retrieval_operator": "source_and_context_operator",
+    "safety_reviewer": "independent_reviewer",
+    "memory_curator": "knowledge_librarian",
+    "executor": "implementation_maker",
+    "AF Manager": "requirements_and_market_research",
+    "AF Discovery": "requirements_and_market_research",
+    "AF PRD Architect": "requirements_and_market_research",
+    "AF Research": "requirements_and_market_research",
+    "AF Review": "independent_reviewer",
+    "AF Knowledge": "knowledge_librarian"
+  },
+  "roles": [
+    {
+      "id": "goal_and_architecture_operator",
+      "owns": ["objective", "done_conditions", "state_design", "role_and_gate_contract"],
+      "forbidden": ["high_risk_self_verification", "external_action", "permission_expansion"]
+    },
+    {
+      "id": "admission_controller",
+      "owns": ["risk_classification", "run_profile", "minimum_roles", "stop_rules"],
+      "forbidden": ["project_edits", "provider_activation", "self_approval"]
+    },
+    {
+      "id": "source_and_context_operator",
+      "owns": ["source_allowlist", "stable_context", "bounded_retrieval", "evidence_capsule"],
+      "forbidden": ["uncontrolled_ingestion", "durable_promotion", "unsupported_synthesis"]
+    },
+    {
+      "id": "requirements_and_market_research",
+      "purpose": "Turn a product, onboarding, operational, or market question into reviewed requirement candidates with source lineage.",
+      "owns": ["problem_evidence", "market_evidence", "requirement_candidates", "acceptance_checks", "non_goals", "contradictions", "prd_and_icp_projections"],
+      "forbidden": ["requirement_approval", "market_signal_as_demand", "execution", "outreach", "publication", "memory_promotion"],
+      "reviewer": "independent_reviewer"
+    },
+    {
+      "id": "onboarding_guide",
+      "purpose": "Give a new employee the smallest role-safe context and propose a validated next action.",
+      "owns": ["role_projection", "source_visible_answer", "first_task_proposal", "escalation"],
+      "forbidden": ["invented_company_truth", "permission_inheritance", "employee_monitoring", "unvalidated_instruction"]
+    },
+    {
+      "id": "task_and_handoff_planner",
+      "owns": ["dependency_graph", "bounded_task_packet", "checks", "owner_questions"],
+      "forbidden": ["unassigned_shared_edits", "status_inflation", "external_action"]
+    },
+    {
+      "id": "positioning_and_copy_maker",
+      "owns": ["evidence_linked_positioning", "message_candidate", "caption_candidate", "claim_table"],
+      "forbidden": ["invented_proof", "claim_approval", "sending", "publishing"]
+    },
+    {
+      "id": "qualification_and_channel_planner",
+      "owns": ["target_currentness", "stage_and_role_check", "channel_packet", "send_checklist"],
+      "forbidden": ["autonomous_send", "bulk_enrichment", "pain_inference_from_signal", "stage_inflation"]
+    },
+    {
+      "id": "designer",
+      "owns": ["visual_brief", "scene_or_interface_grammar", "editable_artifact", "accessibility_evidence", "rollback_safe_maker_output"],
+      "forbidden": ["claim_acceptance", "unsupported_rights_approval", "publication", "self_review"]
+    },
+    {
+      "id": "implementation_maker",
+      "owns": ["claimed_files", "bounded_change", "focused_checks", "assigned_repairs"],
+      "forbidden": ["scope_expansion", "final_review", "unapproved_side_effect"]
+    },
+    {
+      "id": "action_validator",
+      "owns": ["requirement_coverage", "permission_check", "side_effect_check", "rollback_check", "verdict"],
+      "forbidden": ["proposal_execution", "approval_inference", "requirement_rewrite"]
+    },
+    {
+      "id": "verifier",
+      "owns": ["deterministic_checks", "regression_findings", "readback_evidence"],
+      "forbidden": ["silent_maker_repair", "completion_without_evidence"]
+    },
+    {
+      "id": "independent_reviewer",
+      "owns": ["approve_revise_block", "claim_calibration", "privacy_permission_currentness_review", "repair_request"],
+      "forbidden": ["candidate_repair", "self_approval", "external_action"]
+    },
+    {
+      "id": "knowledge_librarian",
+      "owns": ["duplicate_search", "promotion_candidate", "lineage", "supersession", "freshness", "readback"],
+      "forbidden": ["raw_trace_promotion", "secret_storage", "unsupported_claim", "review_bypass"]
+    },
+    {
+      "id": "integrator",
+      "owns": ["lane_registration", "merge_order", "conflict_resolution", "shared_surface_mutation", "final_receipts", "handoff"],
+      "forbidden": ["hidden_blocker", "self_approval", "permission_inference"]
+    },
+    {
+      "id": "external_action_operator",
+      "owns": ["one_exact_approved_action", "preflight", "action_receipt", "readback"],
+      "forbidden": ["approval_reuse", "action_chaining", "credential_logging", "target_expansion"]
+    },
+    {
+      "id": "release_operator",
+      "owns": ["release_preparation", "release_evidence", "owner_approved_git_push"],
+      "forbidden": ["deployment_without_approval", "publication_without_approval", "claim_promotion"]
+    },
+    {
+      "id": "growth_and_outcome_analyst",
+      "owns": ["event_ledger", "denominators", "modeled_vs_observed", "pursue_pivot_stop_recommendation"],
+      "forbidden": ["attention_as_demand", "modeled_roi_as_observed", "invented_event"]
+    },
+    {
+      "id": "observability_and_efficiency_observer",
+      "owns": ["runtime_drift", "usage_evidence", "reproducibility_gap"],
+      "forbidden": ["provider_activation", "invented_cost_or_token_claim", "completion_authority"]
+    },
+    {
+      "id": "surface_projection_operator",
+      "owns": ["read_only_projection", "local_review_packet", "truthful_state_label", "export_handoff_ux"],
+      "forbidden": ["source_of_truth_ownership", "provider_call", "writeback", "action_execution"]
+    },
+    {
+      "id": "product_packaging_engineer",
+      "lifecycle": "planned",
+      "owns": ["clean_clone_package", "least_privilege_adapter", "install_upgrade_uninstall_rollback_proof"],
+      "forbidden": ["productization_without_evidence", "write_by_default_tool", "self_approved_release"]
+    }
+  ]
+}

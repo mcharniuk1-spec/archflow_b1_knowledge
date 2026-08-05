@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "proposal_id": "proposal-target-escape",
+  "case_id": "case-onboarding-mini",
+  "actor_role": "implementation_maker",
+  "intent": "Escape the approved public documentation target boundary.",
+  "target": {"class": "public_documentation", "ref": "../../private/synthetic-secret.md"},
+  "change_set": "Write outside the approved public target.",
+  "requirement_refs": ["REQ-ONBOARD-001@1"],
+  "decision_refs": [],
+  "coverage": [{"requirement_ref": "REQ-ONBOARD-001@1", "status": "satisfied"}],
+  "permission_scope": {"operation": "propose_edit", "target_class": "public_documentation", "status": "allowed"},
+  "side_effects": ["local_candidate_file_change"],
+  "reversibility": "reversible",
+  "rollback": "Restore the prior file version.",
+  "verification_plan": {"preflight": "Confirm target boundary.", "postcondition": "Target stays public.", "readback": "Independent reviewer reads the candidate."},
+  "review": {"maker_role": "implementation_maker", "reviewer_role": "independent_reviewer", "risk": "low"},
+  "approval": {"required": false, "status": "not_required"}
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "case-onboarding-mini",
+  "workflow_state": "requirements_approved",
+  "goal": {
+    "requested_outcome": "Help a new product operator propose a safe first documentation change.",
+    "done_conditions": ["Current requirement is visible", "Proposal is checked before execution"],
+    "non_goals": ["Execute an external action", "Index private data"],
+    "stop_conditions": ["Requirement is stale", "Actor lacks authority", "Material contradiction is unresolved"]
+  },
+  "authority": {
+    "requester_role": "onboarding_guide",
+    "accountable_owner_role": "product_owner",
+    "maker_role": "implementation_maker",
+    "reviewer_role": "independent_reviewer",
+    "allowed_actions": [
+      {
+        "actor_role": "implementation_maker",
+        "operation": "propose_edit",
+        "target_class": "public_documentation",
+        "target_prefixes": ["examples/"],
+        "approval_class": "none"
+      }
+    ],
+    "forbidden_actions": ["deploy", "send_message", "read_private_source"]
+  },
+  "source_boundary": {
+    "allowed_source_classes": ["synthetic_public_fixture"],
+    "excluded_source_classes": ["private", "credentials", "external_accounts"],
+    "status": "valid"
+  },
+  "evidence": [
+    {
+      "id": "evidence-handbook",
+      "source_ref": "fixtures/synthetic-role-handbook.md#action-policy",
+      "state": "current",
+      "claim_status": "fact",
+      "owner_role": "product_owner",
+      "observed_at": "2026-08-05",
+      "review_by": "2026-09-05"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-ONBOARD-001",
+      "version": "1",
+      "state": "approved",
+      "statement": "A proposed action must cite its governing requirement and define readback before execution.",
+      "owner_role": "product_owner",
+      "reviewer_role": "independent_reviewer",
+      "evidence_refs": ["evidence-handbook"],
+      "claim_status": "fact",
+      "acceptance_checks": ["requirement reference present", "readback present"],
+      "review_by": "2026-09-05"
+    },
+    {
+      "id": "REQ-ONBOARD-OLD",
+      "version": "1",
+      "state": "superseded",
+      "statement": "An onboarding suggestion may execute automatically.",
+      "owner_role": "product_owner",
+      "reviewer_role": "independent_reviewer",
+      "evidence_refs": ["evidence-handbook"],
+      "claim_status": "fact",
+      "acceptance_checks": [],
+      "review_by": "2026-08-05",
+      "superseded_by": "REQ-ONBOARD-001"
+    }
+  ],
+  "contradictions": [],
+  "gaps": [],
+  "decisions": [],
+  "approvals": [],
+  "results": [],
+  "review": {"phase": "requirements", "verdict": "approved", "maker_role": "requirements_and_market_research", "reviewer_role": "independent_reviewer"},
+  "knowledge": {"promotion_status": "not_proposed", "freshness_owner": "product_owner"}
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "proposal_id": "proposal-authority-spoof",
+  "case_id": "case-onboarding-mini",
+  "actor_role": "unregistered_sender",
+  "intent": "Send an external message while self-declaring authority.",
+  "target": {"class": "external_communication", "ref": "synthetic-recipient"},
+  "change_set": "Send an unreviewed message.",
+  "requirement_refs": ["REQ-ONBOARD-001@1"],
+  "decision_refs": [],
+  "coverage": [{"requirement_ref": "REQ-ONBOARD-001@1", "status": "satisfied"}],
+  "permission_scope": {"operation": "send", "target_class": "external_communication", "status": "allowed"},
+  "side_effects": ["external_message"],
+  "reversibility": "irreversible",
+  "rollback": "No reliable rollback exists.",
+  "verification_plan": {"preflight": "None.", "postcondition": "Message may appear sent.", "readback": "Message state is read back."},
+  "review": {"maker_role": "unregistered_sender", "reviewer_role": "unregistered_sender", "risk": "low"},
+  "approval": {"required": false, "status": "not_required"}
+}

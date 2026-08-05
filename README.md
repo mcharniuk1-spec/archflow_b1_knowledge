@@ -12,7 +12,7 @@ Prior work is represented only as sanitized English summaries under `history/`.
 Choose the path that fits you:
 
 - **Service buyer:** start with the [Knowledge Reliability Setup](project/agentic-stack.md#service-company-operating-model) and use the repository to understand the governed handoff you receive.
-- **Operator:** open the [dashboard operating manual](docs/dashboard-operating-manual.md) and [dashboard](project/dashboard/#manual) to inspect the Knowledge Service and Agent Control flows, then download a browser-local report/handoff for an approved operator.
+- **Operator or new employee:** start with the [unified operating architecture](docs/unified-operating-architecture.md) and [onboarding knowledge agent](docs/onboarding-knowledge-agent.md); the dashboard remains a legacy-compatible, browser-local projection until its separate migration plan is executed.
 - **Self-hosting evaluator:** follow the [quickstart](docs/quickstart.md), review the [architecture](docs/architecture.md), and use only public-safe example data.
 
 The product is intentionally local-first. Its current public implementation explains and validates contracts, generated catalog data, browser-local drafts, and guarded review packets. It does not claim an active hosted agent platform.
@@ -28,6 +28,13 @@ Open `http://127.0.0.1:8765/project/dashboard/#manual`, choose **Knowledge Servi
 
 ## Documentation
 
+- [Documentation index](docs/index.md) — canonical navigation and status/supersession legend.
+- [Unified operating architecture](docs/unified-operating-architecture.md) — one knowledge case, normalized roles, evidence, validation, review, and promotion.
+- [Onboarding knowledge agent](docs/onboarding-knowledge-agent.md) — role-safe employee support and requirement-validated action proposals.
+- [Executed role and knowledge trace](docs/executed-role-and-knowledge-trace.md) — how research, outreach, creative, design, review, and promotion became role contracts.
+- [Adapt ArchFlow](docs/adapting-archflow.md) — replace the synthetic fixture without weakening boundaries.
+- [Orbit Local adapter](docs/orbit-local-integration.md) — optional code-structural evidence with a strict private runtime seam.
+- [Dashboard integration plan](docs/dashboard-integration-plan.md) — future plan only; no dashboard migration is claimed.
 - [Quickstart](docs/quickstart.md) — clean-clone local setup and verification.
 - [Dashboard operating manual](docs/dashboard-operating-manual.md) — two-stage knowledge/agent-control flow, Jarvis prompts, configuration points, skills, roles, outputs, and limits.
 - [Architecture](docs/architecture.md) — seven grouped layers and the long-term product path.
@@ -78,9 +85,12 @@ PRDs, ICPs, content, outreach, and other execution packs are generated architect
 
 The current public-safe implementation includes:
 
+- a provider-disabled unified knowledge-case contract with synthetic onboarding and action-validation fixtures;
 - a three-block buyer-facing website built around the seven-layer ArchFlow tower, two delivery lanes, and a disclosed planning calculator;
 - a documentation-first operator dashboard for architecture, knowledge, roles, skills, workflow state, runs, and proof;
 - a separate provider-disabled Jarvis surface with owner, model-allowlist, and acknowledgement checks plus a mandatory durable-control execution block;
 - an E1-E8 plan whose final gated milestone is a locally installable repository, least-privilege MCP, administration plane, and lifecycle documentation.
 
 Local implementation proof does not establish production deployment, live provider execution, validated demand, or autonomous writeback.
+
+The two delivery lanes and numbered dashboard labels are compatibility surfaces, not the canonical system architecture. PRDs, ICPs, market research, content, outreach, and creative work are bounded role outputs inside one governed knowledge-case workflow.

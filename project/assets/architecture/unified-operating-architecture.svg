@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-labelledby="title desc">
+  <title id="title">ArchFlow unified seven-layer knowledge-agent architecture</title>
+  <desc id="desc">A seven-layer architectural tower showing authority, context, evidence, requirements, roles, validation, and reviewed knowledge. A public repository sits to the left, a private local boundary to the right, and approval gates separate proposals from actions.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#09131c"/><stop offset="1" stop-color="#111d27"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#b77a2d"/><stop offset=".5" stop-color="#f0c36b"/><stop offset="1" stop-color="#9c6727"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#28404d" stroke-width="1" opacity=".32"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1440" height="980" fill="url(#bg)"/>
+  <rect width="1440" height="980" fill="url(#grid)"/>
+  <text x="90" y="74" fill="#f4eddf" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700">ONE KNOWLEDGE CASE · SEVEN GOVERNED LAYERS</text>
+  <text x="90" y="110" fill="#9eb2bd" font-family="Inter,Arial,sans-serif" font-size="18">Provider-disabled public proof · private adapters stay local · every action is validated</text>
+
+  <g font-family="Inter,Arial,sans-serif">
+    <rect x="80" y="184" width="250" height="612" rx="24" fill="#0d1a23" stroke="#7e9aaa" stroke-width="2"/>
+    <text x="112" y="230" fill="#f4eddf" font-size="22" font-weight="700">PUBLIC SYSTEM</text>
+    <text x="112" y="265" fill="#b8c8cf" font-size="15">Contracts · fixtures · docs</text>
+    <g fill="#132631" stroke="#5d7a89">
+      <rect x="112" y="306" width="186" height="72" rx="10"/><rect x="112" y="398" width="186" height="72" rx="10"/>
+      <rect x="112" y="490" width="186" height="72" rx="10"/><rect x="112" y="582" width="186" height="72" rx="10"/>
+      <rect x="112" y="674" width="186" height="72" rx="10"/>
+    </g>
+    <g fill="#e7ddca" font-size="16" text-anchor="middle">
+      <text x="205" y="338">Synthetic onboarding</text><text x="205" y="359">and adversarial cases</text>
+      <text x="205" y="430">Versioned schemas</text><text x="205" y="451">and role contracts</text>
+      <text x="205" y="522">Deterministic validator</text><text x="205" y="543">no action execution</text>
+      <text x="205" y="614">Lexical retrieval</text><text x="205" y="635">public source reads</text>
+      <text x="205" y="706">Sanitized receipts</text><text x="205" y="727">and durable memory</text>
+    </g>
+
+    <path d="M365 780V310Q365 166 510 166H930Q1075 166 1075 310V780" fill="#0e1b24" stroke="url(#gold)" stroke-width="4" filter="url(#glow)"/>
+    <g stroke="#dba64e" stroke-width="2">
+      <rect x="405" y="220" width="630" height="70" rx="14" fill="#283020"/>
+      <rect x="405" y="306" width="630" height="70" rx="14" fill="#152b35"/>
+      <rect x="405" y="392" width="630" height="70" rx="14" fill="#182d39"/>
+      <rect x="405" y="478" width="630" height="70" rx="14" fill="#312a1d"/>
+      <rect x="405" y="564" width="630" height="70" rx="14" fill="#252638"/>
+      <rect x="405" y="650" width="630" height="70" rx="14" fill="#34231f"/>
+      <rect x="405" y="736" width="630" height="70" rx="14" fill="#15332e"/>
+    </g>
+    <g fill="#f4eddf" font-size="20" font-weight="700">
+      <text x="440" y="250">1 · AUTHORITY &amp; ADMISSION</text><text x="440" y="336">2 · CONTEXT &amp; SOURCE BOUNDARY</text>
+      <text x="440" y="422">3 · EVIDENCE &amp; STRUCTURE</text><text x="440" y="508">4 · REQUIREMENTS &amp; DECISIONS</text>
+      <text x="440" y="594">5 · BOUNDED ROLES &amp; PROPOSALS</text><text x="440" y="680">6 · VALIDATION · REVIEW · ACTION GATE</text>
+      <text x="440" y="766">7 · KNOWLEDGE &amp; MEASUREMENT</text>
+    </g>
+    <g fill="#aebfc6" font-size="14">
+      <text x="440" y="273">Goal · owner · risk · profile · stop conditions</text>
+      <text x="440" y="359">Allowlist · freshness · contradictions · exclusions</text>
+      <text x="440" y="445">LlamaIndex / lexical prose · Orbit / Graphify structure</text>
+      <text x="440" y="531">Reviewed requirement set · PRD and market views</text>
+      <text x="440" y="617">Onboarding · research · outreach · copy · design · implementation</text>
+      <text x="440" y="703">Coverage · permission · rollback · approval · receipt · readback</text>
+      <text x="440" y="789">Promotion · supersession · freshness · measured outcome</text>
+    </g>
+
+    <rect x="1110" y="184" width="250" height="612" rx="24" fill="#0d1a23" stroke="#b8873e" stroke-width="2"/>
+    <text x="1140" y="230" fill="#f4eddf" font-size="22" font-weight="700">PRIVATE · LOCAL</text>
+    <text x="1140" y="265" fill="#b8c8cf" font-size="15">Optional approved adapters</text>
+    <g fill="#1e2525" stroke="#a67b3b">
+      <rect x="1140" y="306" width="190" height="72" rx="10"/><rect x="1140" y="398" width="190" height="72" rx="10"/>
+      <rect x="1140" y="490" width="190" height="72" rx="10"/><rect x="1140" y="582" width="190" height="72" rx="10"/>
+      <rect x="1140" y="674" width="190" height="72" rx="10"/>
+    </g>
+    <g fill="#e7ddca" font-size="16" text-anchor="middle">
+      <text x="1235" y="338">Obsidian / WikiLLM</text><text x="1235" y="359">reviewed knowledge</text>
+      <text x="1235" y="430">Orbit Local DB</text><text x="1235" y="451">public code only</text>
+      <text x="1235" y="522">Private source maps</text><text x="1235" y="543">manifest allowlist</text>
+      <text x="1235" y="614">Raw receipts</text><text x="1235" y="635">ignored and masked</text>
+      <text x="1235" y="706">External adapters</text><text x="1235" y="727">exact approval only</text>
+    </g>
+
+    <path d="M330 425H405" stroke="#4ca6a0" stroke-width="4"/>
+    <path d="M1035 425H1110" stroke="#dba64e" stroke-width="4" stroke-dasharray="8 8"/>
+    <path d="M1035 685H1110" stroke="#cc694c" stroke-width="4" stroke-dasharray="3 8"/>
+    <text x="720" y="866" fill="#f0c36b" font-size="18" font-weight="700" text-anchor="middle">SOLID = PROVED · DASHED = OPTIONAL · DOTTED = APPROVAL-GATED</text>
+    <text x="720" y="908" fill="#aebfc6" font-size="16" text-anchor="middle">Tools provide evidence or execution capability. Requirements, review, and explicit approval provide authority.</text>
+  </g>
+</svg>

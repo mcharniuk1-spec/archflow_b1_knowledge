@@ -18,6 +18,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+BINARY_SUFFIXES = {
+    ".avif", ".gif", ".ico", ".jpeg", ".jpg", ".png", ".webp",
+    ".woff", ".woff2", ".ttf", ".otf", ".mp3", ".mp4", ".mov", ".zip",
+}
 
 
 def git_files() -> list[Path]:
@@ -32,6 +36,8 @@ def git_files() -> list[Path]:
 
 
 def read_text(path: Path) -> str:
+    if path.suffix.lower() in BINARY_SUFFIXES:
+        return ""
     if path.suffix.lower() == ".pdf":
         parts: list[str] = []
         if shutil.which("pdfinfo"):
