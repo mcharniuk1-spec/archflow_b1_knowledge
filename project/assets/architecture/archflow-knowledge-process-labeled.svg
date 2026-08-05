@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2560" height="1600" viewBox="0 0 2560 1600" role="img" aria-labelledby="title desc">
+  <title id="title">ArchFlow knowledge-to-action architecture with seven labeled layers and connection captions</title>
+  <desc id="desc">A central seven-layer knowledge-case tower receives governed source evidence from the left, routes bounded work to specialist roles on the right, stops proposals at a coral validation gate, and delivers accepted knowledge or role-safe employee handoffs. Every layer and connection is labeled in the image.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#f1eee9"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#172b62" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#6659c7" stop-opacity="0.91"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#18275c" flood-opacity="0.14"/>
+    </filter>
+    <marker id="blueArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#3b73d9"/></marker>
+    <marker id="violetArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7967d8"/></marker>
+    <marker id="coralArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#e77d70"/></marker>
+    <marker id="goldArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c79a4d"/></marker>
+    <marker id="returnArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8aa8dc"/></marker>
+  </defs>
+
+  <rect width="2560" height="1600" fill="url(#canvas)"/>
+  <path d="M0 150H2560M0 1195H2560" stroke="#d8deee" stroke-width="2"/>
+  <text x="1280" y="68" text-anchor="middle" fill="#14295f" font-family="Inter,Arial,sans-serif" font-size="44" font-weight="800" letter-spacing="1.2">ARCHFLOW · ONE KNOWLEDGE CASE</text>
+  <text x="1280" y="112" text-anchor="middle" fill="#5e6c8f" font-family="Inter,Arial,sans-serif" font-size="23">Governed evidence → reviewed requirements → bounded work → validation → verified handoff → maintained knowledge</text>
+
+  <rect x="505" y="165" width="1550" height="970" rx="42" fill="#ffffff" stroke="#d9dfef" stroke-width="3" filter="url(#shadow)"/>
+  <image x="520" y="180" width="1520" height="950" preserveAspectRatio="xMidYMid meet" xlink:href="archflow-knowledge-process.png"/>
+
+  <!-- Left connection callouts -->
+  <g font-family="Inter,Arial,sans-serif">
+    <rect x="42" y="205" width="420" height="190" rx="24" fill="#ffffff" stroke="#3b73d9" stroke-width="3" filter="url(#shadow)"/>
+    <rect x="66" y="228" width="114" height="31" rx="15" fill="#e9f0ff"/>
+    <text x="123" y="250" text-anchor="middle" fill="#2c61bd" font-size="16" font-weight="800">INPUT 01</text>
+    <text x="66" y="294" fill="#16295d" font-size="28" font-weight="800">SOURCE BOUNDARY</text>
+    <text x="66" y="329" fill="#53627f" font-size="19">Approved documents, decisions and</text>
+    <text x="66" y="356" fill="#53627f" font-size="19">requirements enter through an allowlist.</text>
+    <text x="66" y="382" fill="#73809b" font-size="16">Connects governed sources → active case.</text>
+    <path d="M462 304C535 304 570 355 655 390" fill="none" stroke="#3b73d9" stroke-width="5" marker-end="url(#blueArrow)"/>
+
+    <rect x="42" y="475" width="420" height="190" rx="24" fill="#ffffff" stroke="#3b73d9" stroke-width="3" filter="url(#shadow)"/>
+    <rect x="66" y="498" width="126" height="31" rx="15" fill="#e9f0ff"/>
+    <text x="129" y="520" text-anchor="middle" fill="#2c61bd" font-size="16" font-weight="800">FLOW 02</text>
+    <text x="66" y="564" fill="#16295d" font-size="28" font-weight="800">EVIDENCE ROUTES</text>
+    <text x="66" y="599" fill="#53627f" font-size="19">Solid blue lines carry cited context,</text>
+    <text x="66" y="626" fill="#53627f" font-size="19">ownership and freshness into the tower.</text>
+    <text x="66" y="652" fill="#73809b" font-size="16">Connects source records → Understand.</text>
+    <path d="M462 574C570 574 745 610 995 646" fill="none" stroke="#3b73d9" stroke-width="5" marker-end="url(#blueArrow)"/>
+
+    <rect x="42" y="745" width="420" height="190" rx="24" fill="#ffffff" stroke="#8aa8dc" stroke-width="3" filter="url(#shadow)"/>
+    <rect x="66" y="768" width="126" height="31" rx="15" fill="#eff4ff"/>
+    <text x="129" y="790" text-anchor="middle" fill="#607fb9" font-size="16" font-weight="800">LOOP 03</text>
+    <text x="66" y="834" fill="#16295d" font-size="28" font-weight="800">LINEAGE LOOP</text>
+    <text x="66" y="869" fill="#53627f" font-size="19">Receipts, contradictions and freshness</text>
+    <text x="66" y="896" fill="#53627f" font-size="19">signals reconnect outcomes to their sources.</text>
+    <text x="66" y="922" fill="#73809b" font-size="16">Connects readback → maintained knowledge.</text>
+    <path d="M462 846C620 846 775 1010 1040 1050" fill="none" stroke="#8aa8dc" stroke-width="5" stroke-dasharray="14 11" marker-end="url(#returnArrow)"/>
+  </g>
+
+  <!-- Right connection callouts -->
+  <g font-family="Inter,Arial,sans-serif">
+    <rect x="2098" y="185" width="420" height="178" rx="24" fill="#ffffff" stroke="#7967d8" stroke-width="3" filter="url(#shadow)"/>
+    <text x="2122" y="229" fill="#5144ad" font-size="27" font-weight="800">ROLE-SAFE WORK</text>
+    <text x="2122" y="265" fill="#53627f" font-size="18">Violet paths give each specialist only</text>
+    <text x="2122" y="291" fill="#53627f" font-size="18">assigned context, tools and targets.</text>
+    <text x="2122" y="327" fill="#73809b" font-size="16">Connects Create → bounded role proposals.</text>
+    <path d="M2098 276C1975 276 1815 390 1575 500" fill="none" stroke="#7967d8" stroke-width="5" marker-end="url(#violetArrow)"/>
+
+    <rect x="2098" y="405" width="420" height="190" rx="24" fill="#ffffff" stroke="#e77d70" stroke-width="3" filter="url(#shadow)"/>
+    <text x="2122" y="451" fill="#c65e52" font-size="27" font-weight="800">VALIDATION GATE</text>
+    <text x="2122" y="487" fill="#53627f" font-size="18">Coral paths stop proposals for coverage,</text>
+    <text x="2122" y="513" fill="#53627f" font-size="18">permission, rollback and reviewer evidence.</text>
+    <text x="2122" y="549" fill="#73809b" font-size="16">Connects candidate work → approve or repair.</text>
+    <path d="M2098 505C1980 505 1880 600 1728 681" fill="none" stroke="#e77d70" stroke-width="5" marker-end="url(#coralArrow)"/>
+
+    <rect x="2098" y="637" width="420" height="190" rx="24" fill="#ffffff" stroke="#c79a4d" stroke-width="3" filter="url(#shadow)"/>
+    <text x="2122" y="683" fill="#9c712d" font-size="27" font-weight="800">GOVERNED KNOWLEDGE</text>
+    <text x="2122" y="719" fill="#53627f" font-size="18">Gold carries accepted artifacts with lineage,</text>
+    <text x="2122" y="745" fill="#53627f" font-size="18">owner, freshness and supersession rules.</text>
+    <text x="2122" y="781" fill="#73809b" font-size="16">Connects Verify → reviewed knowledge.</text>
+    <path d="M2098 737C2015 737 1970 620 1906 542" fill="none" stroke="#c79a4d" stroke-width="5" marker-end="url(#goldArrow)"/>
+
+    <rect x="2098" y="869" width="420" height="190" rx="24" fill="#ffffff" stroke="#8aa8dc" stroke-width="3" filter="url(#shadow)"/>
+    <text x="2122" y="915" fill="#587bbd" font-size="27" font-weight="800">EMPLOYEE HANDOFF</text>
+    <text x="2122" y="951" fill="#53627f" font-size="18">Pale blue delivers a role-safe answer, next</text>
+    <text x="2122" y="977" fill="#53627f" font-size="18">action, source references and escalation path.</text>
+    <text x="2122" y="1013" fill="#73809b" font-size="16">Connects accepted case → employee → readback.</text>
+    <path d="M2098 969C2025 969 1960 934 1893 902" fill="none" stroke="#8aa8dc" stroke-width="5" stroke-dasharray="14 11" marker-end="url(#returnArrow)"/>
+  </g>
+
+  <!-- Seven exact layer labels on the tower -->
+  <g font-family="Inter,Arial,sans-serif">
+    <g transform="translate(1034 370)"><rect width="492" height="64" rx="16" fill="url(#pill)" stroke="#aabcf0" stroke-width="2"/><text x="20" y="27" fill="#ffffff" font-size="22" font-weight="800">1 · GOVERN</text><text x="20" y="50" fill="#dfe7ff" font-size="15">Goal · owner · risk · approval · stop rules</text></g>
+    <g transform="translate(1034 470)"><rect width="492" height="64" rx="16" fill="url(#pill)" stroke="#aabcf0" stroke-width="2"/><text x="20" y="27" fill="#ffffff" font-size="22" font-weight="800">2 · CONNECT</text><text x="20" y="50" fill="#dfe7ff" font-size="15">Allowlist · access · ownership · freshness</text></g>
+    <g transform="translate(1034 570)"><rect width="492" height="64" rx="16" fill="url(#pill)" stroke="#aabcf0" stroke-width="2"/><text x="20" y="27" fill="#ffffff" font-size="22" font-weight="800">3 · UNDERSTAND</text><text x="20" y="50" fill="#dfe7ff" font-size="15">Evidence · structure · conflicts · gaps</text></g>
+    <g transform="translate(1034 670)"><rect width="492" height="64" rx="16" fill="url(#pill)" stroke="#aabcf0" stroke-width="2"/><text x="20" y="27" fill="#ffffff" font-size="22" font-weight="800">4 · DECIDE</text><text x="20" y="50" fill="#dfe7ff" font-size="15">Requirements · non-goals · acceptance</text></g>
+    <g transform="translate(1034 770)"><rect width="492" height="64" rx="16" fill="url(#pill)" stroke="#aabcf0" stroke-width="2"/><text x="20" y="27" fill="#ffffff" font-size="22" font-weight="800">5 · CREATE</text><text x="20" y="50" fill="#dfe7ff" font-size="15">Role-safe proposals · claimed scope · tools</text></g>
+    <g transform="translate(1034 870)"><rect width="492" height="64" rx="16" fill="url(#pill)" stroke="#aabcf0" stroke-width="2"/><text x="20" y="27" fill="#ffffff" font-size="22" font-weight="800">6 · VERIFY</text><text x="20" y="50" fill="#dfe7ff" font-size="15">Permission · review · rollback · receipt</text></g>
+    <g transform="translate(1034 994)"><rect width="492" height="64" rx="16" fill="#14295f" fill-opacity="0.95" stroke="#aabcf0" stroke-width="2"/><text x="20" y="27" fill="#ffffff" font-size="22" font-weight="800">7 · REMEMBER</text><text x="20" y="50" fill="#dfe7ff" font-size="15">Promotion · supersession · outcomes · handoff</text></g>
+  </g>
+
+  <!-- Bottom legend -->
+  <g font-family="Inter,Arial,sans-serif">
+    <text x="1280" y="1253" text-anchor="middle" fill="#14295f" font-size="30" font-weight="800">CONNECTION LANGUAGE</text>
+    <g transform="translate(120 1300)"><path d="M0 20H90" stroke="#3b73d9" stroke-width="7" marker-end="url(#blueArrow)"/><text x="112" y="15" fill="#14295f" font-size="19" font-weight="800">SOURCE → CASE</text><text x="112" y="43" fill="#66728c" font-size="16">Cited evidence enters the admitted workflow.</text></g>
+    <g transform="translate(610 1300)"><path d="M0 20H90" stroke="#7967d8" stroke-width="7" marker-end="url(#violetArrow)"/><text x="112" y="15" fill="#14295f" font-size="19" font-weight="800">CASE → ROLE</text><text x="112" y="43" fill="#66728c" font-size="16">Reviewed context becomes bounded work.</text></g>
+    <g transform="translate(1100 1300)"><path d="M0 20H90" stroke="#e77d70" stroke-width="7" marker-end="url(#coralArrow)"/><text x="112" y="15" fill="#14295f" font-size="19" font-weight="800">PROPOSAL → GATE</text><text x="112" y="43" fill="#66728c" font-size="16">Validate, approve, repair or block.</text></g>
+    <g transform="translate(1590 1300)"><path d="M0 20H90" stroke="#c79a4d" stroke-width="7" marker-end="url(#goldArrow)"/><text x="112" y="15" fill="#14295f" font-size="19" font-weight="800">PASS → KNOWLEDGE</text><text x="112" y="43" fill="#66728c" font-size="16">Accepted output gains durable lineage.</text></g>
+    <g transform="translate(2080 1300)"><path d="M0 20H90" stroke="#8aa8dc" stroke-width="7" stroke-dasharray="13 10" marker-end="url(#returnArrow)"/><text x="112" y="15" fill="#14295f" font-size="19" font-weight="800">RESULT → READBACK</text><text x="112" y="43" fill="#66728c" font-size="16">Evidence and freshness return to the case.</text></g>
+
+    <rect x="120" y="1400" width="2320" height="108" rx="26" fill="#14295f"/>
+    <text x="1280" y="1443" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="800">AUTHORITY NEVER COMES FROM A TOOL CONNECTION</text>
+    <text x="1280" y="1477" text-anchor="middle" fill="#dce5ff" font-size="18">Sources provide evidence · roles provide bounded work · validation and explicit approval provide permission · receipts provide proof</text>
+  </g>
+</svg>

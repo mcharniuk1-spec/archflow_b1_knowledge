@@ -10851,3 +10851,33 @@ Checks: 21 canonical roles and 21 unique fictional Ukrainian call names matched 
 GAP: the image remains a conceptual overview rather than a literal one-icon-per-role diagram, and reader comprehension has not been measured in an onboarding pilot.
 
 Next safe action: stage only the claimed files and these exact log entries, run the public safety scanner from a clean staged snapshot, inspect the diff, commit, push under the owner's authorization, and read back the remote hash.
+
+## 2026-08-05 - README architecture visual - in-image labeling repair starting
+
+Status: repair starting under the accepted documentation admission and existing bounded run.
+
+Task: replace the text-free README hero with a fully annotated architecture image. Every tower layer must carry its title and process caption; left and right connections must have leader lines, direction labels, and small explanations of what moves and what it connects.
+
+Files likely to change: `README.md`, new labeled SVG/PNG siblings under `project/assets/architecture/`, and the existing `project/runs/20260805-readme-architecture-visual/` handout, execution report, and review record.
+
+Files claimed: only those files plus this append-only update. The dashboard, website runtime, services, role catalog, and unrelated worktree changes remain read-only.
+
+Expected output: a wide, source-controlled annotated canvas with exact searchable SVG text, a rendered GitHub PNG, clickable full-resolution README presentation, and independent legibility review.
+
+FACT: the previous image explained layers only in adjacent Markdown; the owner now requires the labels and sub-captions to be embedded in the visual itself.
+
+Next: build the deterministic labeled source over the approved visual base, render the PNG, inspect desktop and scaled readability, then dispatch the existing independent reviewer against the frozen candidate.
+
+## 2026-08-05 - README architecture visual - in-image labeling repair complete
+
+Status: complete; independent repair review APPROVE; exact release staging in progress.
+
+Files changed: root README; new source-controlled labeled SVG and 2560 × 1600 PNG; existing run handout, execution report, independent review, public WikiLLM run note, and exact append-only logs.
+
+Checks: XML PASS; seven layer titles and seven sub-captions exact once; three left and four right callouts exact once; five connection legends exact once; full-resolution and 1200-pixel visual readback PASS; fresh render parity PASS; public-safety target review PASS; independent repair review APPROVE.
+
+FACT: the visual now embeds the complete layer and connection explanation requested by the owner. README prose remains the accessible/mobile fallback.
+
+GAP: fine body copy is intended for full-resolution inspection, and reader comprehension remains unmeasured in a real onboarding pilot.
+
+Next safe action: stage only the labeled-visual repair files and these exact log additions, run the authoritative scanner against a clean staged snapshot, inspect the diff, commit, push under the owner's request, and verify the remote hash.

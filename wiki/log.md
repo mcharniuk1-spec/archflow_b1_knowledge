@@ -682,3 +682,10 @@ See [[runs/2026-07-15-jarvis-dashboard-documentation-release]] and [[decisions/2
 - Kept dashboard, runtime, deployment, and private knowledge outside the change.
 
 See [[runs/2026-08-05-readme-architecture-visual]].
+
+### Labeled visual repair
+
+- Embedded all seven layer titles and process sub-captions directly in the architecture visual.
+- Added three left and four right leader-line callouts plus five direction legends.
+- Preserved the searchable README explanation as the accessible/mobile fallback.
+- Independent repair review APPROVE; no dashboard or runtime change.

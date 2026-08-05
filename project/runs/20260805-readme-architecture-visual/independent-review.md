@@ -69,3 +69,55 @@ The image is linked with a meaningful process-oriented alt description. Detailed
 - Approval covers the reviewed README/visual candidate only. The release operator must still stage the exact intended files, exclude unrelated worktree changes, run the authoritative safety scan against the clean staged snapshot, inspect the staged diff, and use the separately recorded owner authorization before Git push.
 
 No repair is required for the reviewed artifact.
+
+---
+
+## Labeled visual repair review — 2026-08-05
+
+Verdict: **APPROVE**
+
+### Exact text and count checks — PASS
+
+The SVG contains each required item exactly once:
+
+- seven layer titles and seven subcaptions: `GOVERN`, `CONNECT`, `UNDERSTAND`, `DECIDE`, `CREATE`, `VERIFY`, and `REMEMBER` with their declared goal/owner/risk, allowlist/freshness, evidence/conflict, requirement/acceptance, proposal/scope, review/receipt, and promotion/handoff captions;
+- three left callouts: `SOURCE BOUNDARY`, `EVIDENCE ROUTES`, and `LINEAGE LOOP`;
+- four right callouts: `ROLE-SAFE WORK`, `VALIDATION GATE`, `GOVERNED KNOWLEDGE`, and `EMPLOYEE HANDOFF`;
+- five bottom connection legends: `SOURCE → CASE`, `CASE → ROLE`, `PROPOSAL → GATE`, `PASS → KNOWLEDGE`, and `RESULT → READBACK`.
+
+The text matches the README's seven-layer and connection semantics and remains consistent with the canonical operating architecture. The in-image authority statement correctly separates evidence, bounded work, validation/approval, and receipts; it does not grant authority to a tool, role nickname, connector, or visual path.
+
+### Leader lines and color semantics — PASS
+
+- Solid blue source leaders terminate at the shielded source boundary and the evidence-to-tower ingress.
+- The pale-blue dashed lineage leader terminates at the base provenance graph.
+- The violet leader terminates at the bounded specialist-role rail.
+- The coral leader terminates at the validation gate.
+- The gold leader terminates at the governed-knowledge portal.
+- The pale-blue dashed handoff/readback leader terminates at the employee portal.
+
+Arrowheads, stroke colors, solid/dashed styles, callout borders, and the five bottom legend samples agree. No line visually creates a bypass around the coral gate or implies that structural access, specialist assignment, or tool connectivity grants permission.
+
+### Source/render consistency — PASS
+
+The SVG references the versioned base raster through the repo-relative sibling name `archflow-knowledge-process.png`. A fresh headless render produced the same 2560 × 1600 dimensions as the committed labeled PNG. Pixel comparison returned no differing bounding box: the stored PNG is pixel-identical to the reviewed SVG render.
+
+The SVG has an accessible title and description, and the README uses a descriptive alt label plus a link to the full-resolution PNG.
+
+### Layout and readability — PASS
+
+Full-resolution inspection found no clipped text, cropped callout, overlapping label, hidden arrowhead, or collision between the seven layer pills. Callout padding, bottom legends, and the authority banner remain inside the 2560 × 1600 canvas.
+
+At a representative 960 × 600 GitHub content-width render, the architecture title, seven layer names, callout headings, connection headings, color distinctions, and overall flow remain legible. Supporting body copy is necessarily smaller at that scale, but the README explicitly links the image to its full-resolution version and repeats the same process detail as searchable text immediately below it. No essential meaning depends on reading raster-only fine print.
+
+### Public safety and truth boundary — PASS
+
+A focused scan of the labeled SVG/PNG, base PNG, README, canonical architecture document, and task contract returned zero public-safety findings. The image contains no private/local path, credential, private URL, account identifier, real employee identity, or raw private source content. Provider execution, dashboard implementation, deployment, autonomous action, and live-agent operation are not claimed by the visual.
+
+### Remaining gaps
+
+- The SVG is intentionally a composite that depends on the sibling base PNG; both files must remain together if reused outside this repository.
+- Small supporting copy is intended for desktop/full-resolution inspection. The README alt text and adjacent prose remain the accessible/mobile source of exact meaning.
+- Approval covers the frozen labeled visual and README integration only. Exact staging and the clean staged-snapshot public-safety check remain release-operator conditions.
+
+No further visual repair is required.

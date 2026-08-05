@@ -6,7 +6,7 @@ This run integrates the owner-supplied ArchFlow architecture illustration into t
 
 ## Human summary
 
-The root README now uses a cleaned version of the supplied layered architecture image as its visual introduction. The surrounding Markdown explains every region of the illustration, all seven operating layers, and the meaning of the blue, violet, coral, gold, and return connections.
+The root README now uses a cleaned and fully annotated version of the supplied layered architecture image as its visual introduction. The image itself explains every region of the illustration, all seven operating layers, and the meaning of the blue, violet, coral, gold, and return connections. The surrounding Markdown remains the accessible long-form reference.
 
 All 21 canonical roles now have fictional Ukrainian call names written in English letters. The exact technical role ID remains next to each name, and the README states that a display name cannot grant authority or replace the machine contract.
 
@@ -16,6 +16,7 @@ The independent reviewer issued APPROVE after checking the image, captions, role
 
 - Documentation admission accepted with provider execution disabled.
 - Image cleanup used the built-in image editing path; the source composition is preserved and the cropped top-edge artifacts are removed.
+- A deterministic SVG overlay embeds exact layer titles, process sub-captions, connection meanings, leader lines, and a bottom connection legend; a fixed-size browser render produces the README PNG.
 - README integration and independent review are complete.
 - Deterministic role, link, image, architecture-fixture, and whitespace checks pass.
 - Exact staging, staged-snapshot safety, commit, push, and remote readback remain in progress.
@@ -34,7 +35,7 @@ GAP: Reader comprehension has not yet been measured in an employee onboarding pi
 
 ## Decisions
 
-- Keep all labels and captions in Markdown rather than embedding tiny text in the PNG.
+- Keep the complete accessible explanation in Markdown and also embed concise exact labels and sub-captions in the visual, using source-controlled SVG text rather than generated raster text.
 - Use one fictional Ukrainian call name per canonical role.
 - Preserve the catalog IDs and authority contract unchanged.
 - Keep dashboard and runtime implementation out of scope.
@@ -42,13 +43,17 @@ GAP: Reader comprehension has not yet been measured in an employee onboarding pi
 ## Artifacts
 
 - `README.md` — GitHub-facing architecture explanation and roster.
-- `project/assets/architecture/archflow-knowledge-process.png` — cleaned conceptual hero.
+- `project/assets/architecture/archflow-knowledge-process.png` — cleaned conceptual visual base.
+- `project/assets/architecture/archflow-knowledge-process-labeled.svg` — editable, exact-text annotated source.
+- `project/assets/architecture/archflow-knowledge-process-labeled.png` — 2560 × 1600 GitHub README render.
 - `independent-review.md` — read-only APPROVE verdict.
 - `execution-report.md` — execution and validation ledger.
 
 ## Validation
 
-- Image integrity and visual readback: PASS, 1586 × 992 RGB PNG.
+- Base image integrity and visual readback: PASS, 1586 × 992 RGB PNG.
+- Labeled source and render: PASS, 2560 × 1600 PNG with all seven layer labels, seven left/right process callouts, five connection legends, and an authority footer.
+- Independent labeled-visual repair review: APPROVE; no further repair required.
 - Canonical role coverage: PASS, 21 of 21 exactly once.
 - Fictional call-name coverage: PASS, 21 unique Latin-letter names.
 - README relative links: PASS.

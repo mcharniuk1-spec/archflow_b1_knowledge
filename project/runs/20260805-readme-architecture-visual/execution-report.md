@@ -34,13 +34,15 @@ Status: `reviewed`
 
 | Deliverable or check | Path / command | Status | Evidence result |
 |---|---|---|---|
-| Cleaned architecture image | `project/assets/architecture/archflow-knowledge-process.png` | PASS | PNG, 1586 × 992, RGB; visual readback passed. |
+| Cleaned architecture base | `project/assets/architecture/archflow-knowledge-process.png` | PASS | PNG, 1586 × 992, RGB; visual readback passed. |
+| Exact-text labeled source | `project/assets/architecture/archflow-knowledge-process-labeled.svg` | PASS | Seven layer titles/sub-captions, seven left/right callouts, five connection legends, and authority footer are embedded as searchable SVG text. |
+| GitHub visual render | `project/assets/architecture/archflow-knowledge-process-labeled.png` | PASS | PNG, 2560 × 1600; full-width and 960 × 600 review passed; fresh SVG render is pixel-identical. |
 | Role coverage | deterministic README/catalog comparison | PASS | 21 catalog roles, 21 unique fictional call names, every role exactly once. |
 | README relative links | deterministic local link check | PASS | All local README targets exist. |
 | Architecture fixture | `python3 project/system/validate_system.py` | PASS | Provider disabled; no proposal executed. |
 | Whitespace | `git diff --check` over claimed files | PASS | No whitespace errors. |
 | Public safety | exact staged-snapshot scan | PASS | Clean staged snapshot passed after binary-safe scanning. |
-| Independent verdict | `independent-review.md` | PASS | APPROVE; no repair required. |
+| Independent verdict | `independent-review.md` | PASS | Initial candidate APPROVE; labeled-visual repair APPROVE with no further repair required. |
 
 ## Interpretation
 

@@ -19,9 +19,9 @@ The product is intentionally local-first. Its current public implementation expl
 
 ## Architecture At A Glance
 
-![ArchFlow knowledge moves from governed sources through seven layers, bounded roles, review gates, and verified handoffs](project/assets/architecture/archflow-knowledge-process.png)
+[![ArchFlow knowledge moves from governed sources through seven labeled layers, bounded roles, review gates, verified handoffs, and maintained knowledge](project/assets/architecture/archflow-knowledge-process-labeled.png)](project/assets/architecture/archflow-knowledge-process-labeled.png)
 
-*One reviewed knowledge case moves from source evidence to role-safe work. The coral gate prevents a proposal from becoming an action until requirements, permissions, side effects, rollback, and reviewer evidence agree.*
+*Every layer, connection direction, and process meaning is labeled inside the image. Select it to open the full-resolution 2560 × 1600 version. The coral gate prevents a proposal from becoming an action until requirements, permissions, side effects, rollback, and reviewer evidence agree.*
 
 ### What Each Visual Region Means
 

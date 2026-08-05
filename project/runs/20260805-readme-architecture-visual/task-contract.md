@@ -17,8 +17,8 @@ Present the unified ArchFlow workflow in the GitHub README as a searchable and a
 ## Acceptance criteria
 
 1. The cleaned owner-supplied visual is stored at a repo-relative public path and rendered from the README.
-2. The README explains the left evidence vault, central tower, role rail, review gate, output portals, and memory graph.
-3. All seven layers and every line style/color have a plain-English process meaning.
+2. The image itself labels the left evidence vault, central tower, role rail, review gate, output portals, and memory graph with small process captions and leader lines.
+3. All seven tower layers and every connection direction/color have an exact in-image plain-English title and sub-caption.
 4. Every canonical role in `project/system/contracts/role-catalog.json` appears exactly once with a fictional Ukrainian call name.
 5. Display names do not grant authority or replace machine role IDs.
 6. No dashboard or runtime implementation changes are included.
