@@ -1,4588 +1,887 @@
-const primaryTabs = [
-  { id: "manual", label: "Operating Manual", glyph: "OM" },
-  { id: "overview", label: "Overview", glyph: "OV" },
-  { id: "architecture", label: "Architecture", glyph: "AR" },
-  { id: "knowledge", label: "Knowledge", glyph: "KN" },
-  { id: "agents", label: "Agents & Skills", glyph: "AS" },
-  { id: "operations", label: "Operations", glyph: "OP" },
-  { id: "data", label: "Data Lab", glyph: "DB" },
-  { id: "runs", label: "Runs & Evidence", glyph: "RE" },
-  { id: "reference", label: "Reference", glyph: "RF" },
+/* ArchFlow Crew Desk
+ *
+ * A provider-disabled, browser-local projection of the public knowledge-crew
+ * contracts. It prepares review packets; it does not run agents, contact a
+ * model, mutate repository files, or perform an external action.
+ */
+
+const ROUTES = [
+  { id: "today", label: "Today", icon: "01", eyebrow: "Employee knowledge crew", title: "Today", summary: "Your next safe action, its evidence, and its reviewer." },
+  { id: "work", label: "Work", icon: "02", eyebrow: "One case spine", title: "Start and drive work", summary: "Turn a goal into a bounded mission, review route, and readback." },
+  { id: "knowledge", label: "Knowledge", icon: "03", eyebrow: "Source-visible perception", title: "Knowledge ecosystem", summary: "See what each layer contributes, what it cannot decide, and how context stays current." },
+  { id: "team", label: "Team", icon: "04", eyebrow: "Adaptive responsibilities", title: "Roles and workflow packs", summary: "Select the smallest responsible crew and inspect every ownership boundary." },
+  { id: "review", label: "Review", icon: "05", eyebrow: "Requirements before action", title: "Trace, validate, and read back", summary: "Follow evidence through requirements, maker work, independent review, and receipts." },
+  { id: "setup", label: "Set up", icon: "06", eyebrow: "Portable local configuration", title: "Connect your own system", summary: "Configure bounded retrieval and a safe local bridge without exposing private data." },
 ];
 
-const secondaryTabs = [
-  { id: "service", label: "PRD / ICP Flow", glyph: "P1" },
-  { id: "schema", label: "Workflow Editor", glyph: "A2" },
-  { id: "config", label: "Configuration", glyph: "CF" },
-  { id: "wikillm", label: "WikiLLM", glyph: "WK" },
-  { id: "graphify", label: "Graphify", glyph: "GF" },
-  { id: "langgraph", label: "LangGraph", glyph: "LG" },
-  { id: "llamaindex", label: "RAG Query", glyph: "LI" },
-  { id: "crewai", label: "CrewAI", glyph: "CR" },
-  { id: "langsmith", label: "Observability", glyph: "LS" },
-  { id: "env", label: "Runtime Config", glyph: "EN" },
-  { id: "gates", label: "Approval Gates", glyph: "GT" },
-  { id: "history", label: "Legacy Chat History", glyph: "CH" },
-];
+const LEGACY_ROUTES = {
+  manual: "today",
+  overview: "today",
+  architecture: "knowledge",
+  agents: "team",
+  operations: "work",
+  data: "knowledge",
+  runs: "review",
+  reference: "knowledge",
+  service: "work",
+  schema: "work",
+  config: "setup",
+  wikillm: "knowledge",
+  graphify: "knowledge",
+  langgraph: "review",
+  llamaindex: "knowledge",
+  crewai: "team",
+  langsmith: "review",
+  env: "setup",
+  gates: "review",
+  history: "review",
+  jarvis: "today",
+};
 
-const tabs = [...primaryTabs, ...secondaryTabs, { id: "jarvis", label: "Legacy Jarvis", glyph: "JV", hidden: true }];
+const STORE = {
+  caseDraft: "archflow.crewDesk.caseDraft.v2",
+  settings: "archflow.crewDesk.settings.v2",
+  receipts: "archflow.crewDesk.receipts.v2",
+  guide: "archflow.crewDesk.guideDraft.v2",
+};
 
-const architectureLayers = [
+const DEFAULT_CASE = {
+  case_id: "case-local-draft",
+  goal: "",
+  employee_role: "New employee or operator",
+  output: "",
+  evidence_boundary: "Public project contracts and reviewed project knowledge only",
+  reviewer: "Halyna — Independent Reviewer",
+  stop_condition: "Stop when authority, current requirements, or source evidence is missing.",
+  known_gaps: [],
+  risk: "medium",
+  workflow_pack: "employee_onboarding",
+  state: "request_received",
+  updated_at: null,
+};
+
+const DEFAULT_SETTINGS = {
+  bridge_base: "http://127.0.0.1:8787",
+  chunk_size: 800,
+  chunk_overlap: 120,
+  lexical_top_k: 5,
+  vector_top_k: 5,
+  rerank_top_k: 5,
+  final_source_limit: 8,
+  turbovec_candidate: false,
+  checkpointer: "none",
+  allowed_corpus: "project/, skills/, wiki/, sanitized examples/",
+  excluded_corpus: "private/, secrets/, raw/, local runtime, credentials",
+};
+
+const DIAGRAMS = [
   {
-    id: "authority-goal",
-    number: "01",
-    title: "Authority & Goal",
-    canonical: "Layers 0-1: Authority and goal state",
-    purpose: "Bind every run to an owner, scope, measurable finish condition, budget, and approval boundary before orchestration starts.",
-    inputs: ["Owner request", "project operating contract", "goal-state schema", "current plan and constraints"],
-    outputs: ["Validated goal state", "task contract", "scope and stop rules", "approval map"],
-    parameters: ["objective", "success criteria", "budget", "deadline", "allowed actions", "forbidden actions"],
-    effects: ["Reduces scope drift", "makes completion testable", "routes risky actions to explicit gates"],
-    failureModes: ["Vague success criteria", "authority inferred from intent", "budget treated as telemetry rather than a hard boundary"],
-    proofState: "Configured design baseline",
-    proofTone: "configured",
-    approvalBoundary: "External sends, provider calls, destructive operations, deployment, and durable external writes require explicit authority.",
-    sources: ["project/operating-rules.md", "project/goals/goal-state.schema.yaml", "skills/archflow-architecture-operator/references/architecture-layers.md"],
+    file: "knowledge-crew-tower.png",
+    source: "knowledge-crew-tower.svg",
+    title: "Seven-layer knowledge crew",
+    description: "The knowledge and database spine on the left, role-controlled work in the centre, and accountable outputs on the right.",
   },
   {
-    id: "context-knowledge",
-    number: "02",
-    title: "Context & Knowledge",
-    canonical: "Layer 2: Context and retrieval",
-    purpose: "Assemble the smallest source-grounded context capsule from bounded WikiLLM, graph, and retrieval layers.",
-    inputs: ["Approved corpus", "routing indexes", "project memory", "source and freshness rules"],
-    outputs: ["Context capsule", "source ledger", "FACT / INTERPRETATION / HYPOTHESIS / GAP split"],
-    parameters: ["include and exclude paths", "chunk size and overlap", "vector top-k", "lexical top-k", "rerank top-k", "freshness policy"],
-    effects: ["Improves source traceability", "limits context expansion", "keeps lexical fallback available when embeddings are absent"],
-    failureModes: ["Whole-repository ingestion", "stale source used as current proof", "retrieval score presented as truth"],
-    proofState: "Bounded hybrid contract; lexical fallback available",
-    proofTone: "partial",
-    approvalBoundary: "Private or newly expanded corpora require a bounded corpus decision before ingestion or provider use.",
-    sources: ["project/workflows/llamaindex-rag.yaml", "project/scripts/llamaindex-approved-corpus.py", "project/scripts/llamaindex-rag-benchmark.py"],
+    file: "context-input-flow.png",
+    source: "context-input-flow.svg",
+    title: "Input and perception flow",
+    description: "How rules, role responsibility, requirements, retrieved evidence, exact reads, and gaps become one source-visible context capsule.",
   },
   {
-    id: "plan-orchestration",
-    number: "03",
-    title: "Plan & Orchestration",
-    canonical: "Layers 3-4: Planning and orchestration",
-    purpose: "Convert a validated goal and context capsule into a typed, resumable graph with deterministic routes and stop conditions.",
-    inputs: ["Goal state", "context capsule", "task decomposition", "route and retry policy"],
-    outputs: ["Execution graph", "node contracts", "parallel branch scopes", "merge and stop conditions"],
-    parameters: ["node owner", "route condition", "retry cap", "revision loop cap", "checkpoint", "parallel merge policy"],
-    effects: ["Makes sequence inspectable", "supports bounded parallel work", "creates a stable handoff between roles"],
-    failureModes: ["Loops without termination", "parallel agents editing the same file", "router decisions without evidence"],
-    proofState: "Controller contract plus bounded smoke fixtures",
-    proofTone: "partial",
-    approvalBoundary: "A graph can plan gated actions but cannot authorize them; approval nodes remain separate.",
-    sources: ["project/workflows/langgraph-controller.yaml", "project/scripts/langgraph-smoke-run.py", "project/operating-rules.md"],
+    file: "output-receipt-flow.png",
+    source: "output-receipt-flow.svg",
+    title: "Output, validation, and receipts",
+    description: "How candidate work is checked against requirements and authority before one approved action and an exact readback.",
   },
   {
-    id: "execution-roles",
-    number: "04",
-    title: "Execution & Roles",
-    canonical: "Layer 5: Role execution",
-    purpose: "Assign bounded work to role packs with explicit tools, skills, sources, outputs, quality criteria, and escalation rules.",
-    inputs: ["Node contract", "role registry", "skill inventory", "allowed tools and sources"],
-    outputs: ["Role-specific artifact", "evidence links", "review recommendation", "escalation when blocked"],
-    parameters: ["role", "skills", "tool allowlist", "source allowlist", "output schema", "reviewer", "effort tier"],
-    effects: ["Reuses specialist context", "separates execution from review", "keeps tasks parametrically editable"],
-    failureModes: ["Role title without a job contract", "skill collection loaded wholesale", "executor self-approves its output"],
-    proofState: "Role registry configured; deterministic CrewAI fixture recorded",
-    proofTone: "partial",
-    approvalBoundary: "Hosted model execution and new tool installation remain gated even when a role is configured.",
-    sources: ["project/agents/skills-by-agent.md", "project/agents/skills-governance.md", "project/workflows/crewai-crew.yaml"],
-  },
-  {
-    id: "loop-verification",
-    number: "05",
-    title: "Loop & Verification",
-    canonical: "Layers 6-7: Execution loop and verification",
-    purpose: "Run bounded produce-check-revise loops and require independent evidence before an artifact can advance.",
-    inputs: ["Candidate artifact", "acceptance criteria", "test command", "review rubric"],
-    outputs: ["Verified artifact", "failure evidence", "revision packet", "stop or escalation decision"],
-    parameters: ["loop level", "max iterations", "test command", "review threshold", "independent reviewer", "failure budget"],
-    effects: ["Catches regressions before handoff", "turns failure into reusable evidence", "prevents infinite refinement"],
-    failureModes: ["Self-reported success", "retries without new evidence", "tests that do not exercise the claimed behavior"],
-    proofState: "Loop contract defined; paired benchmark evidence pending",
-    proofTone: "gated",
-    approvalBoundary: "A passing local check does not approve production, publication, spend, or external writeback.",
-    sources: ["skills/archflow-architecture-operator/references/metrics.md", "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md", "project/operating-rules.md"],
-  },
-  {
-    id: "memory-external-gate",
-    number: "06",
-    title: "Memory & External Gate",
-    canonical: "Layers 8-9: Durable memory and external action",
-    purpose: "Promote only durable, reusable conclusions to memory and hold every external action behind a reviewable approval packet.",
-    inputs: ["Verified result", "provenance", "memory filter", "requested external action"],
-    outputs: ["Run note", "decision or issue", "memory update candidate", "approved or blocked action"],
-    parameters: ["memory destination", "retention class", "sensitivity", "write target", "approver", "rollback path"],
-    effects: ["Preserves cross-run knowledge", "avoids raw transcript dumping", "makes external actions auditable"],
-    failureModes: ["Chat-only completion", "secrets copied into notes", "configured connector mistaken for a live write path"],
-    proofState: "WikiLLM memory active; external writes separately gated",
-    proofTone: "configured",
-    approvalBoundary: "Nexus, Notion, Git, deployment, and provider write paths require current capability proof plus explicit approval where applicable.",
-    sources: ["project/operating-rules.md", "wiki/index.md", "project/workflows/langgraph-controller.yaml"],
-  },
-  {
-    id: "measurement-optimization",
-    number: "07",
-    title: "Measurement & Optimization",
-    canonical: "Layer 10: Measurement and optimization",
-    purpose: "Compare outcomes using evidence-backed quality, cost, latency, context, reliability, and retrieval measures before changing defaults.",
-    inputs: ["Run traces", "quality rubric", "token and cost telemetry", "retrieval evidence", "failure classifications"],
-    outputs: ["Benchmark record", "regression signal", "optimization proposal", "adoption or rollback decision"],
-    parameters: ["paired fixture", "quality score", "success rate", "latency", "token use", "cost", "retrieval precision", "rollback threshold"],
-    effects: ["Makes trade-offs visible", "prevents unmeasured optimization claims", "supports Build / Scale / Govern / Optimize decisions"],
-    failureModes: ["Invented percentage improvements", "single-run comparison", "quality sacrificed for token savings without a rubric"],
-    proofState: "Benchmark contract defined; paired results not yet measured",
-    proofTone: "gated",
-    approvalBoundary: "Optimization is adopted only after representative fixtures and owner-approved thresholds exist.",
-    sources: ["skills/archflow-architecture-operator/references/metrics.md", "project/runs/2026-07-13-architecture-resetup/benchmark-baseline.md", "project/operating-rules.md"],
+    file: "onboarding-teamwork-flow.png",
+    source: "onboarding-teamwork-flow.svg",
+    title: "Employee onboarding and teamwork",
+    description: "The first mission, contextual support, role handoffs, manager interrupts, review, learning, and maintained knowledge loop.",
   },
 ];
 
-const storageKeys = {
-  mode: "archflow.jarvis.mode",
-  voiceAuthorized: "archflow.jarvis.voiceAuthorized",
-  voiceOutput: "archflow.jarvis.voiceOutput",
-  promptConfig: "archflow.jarvis.promptConfig",
-  chatHistory: "archflow.jarvis.chatHistory",
-  blockSchema: "archflow.jarvis.blockSchema",
-  serviceBlockSchema: "archflow.jarvis.serviceBlockSchema",
-  schemaZoom: "archflow.jarvis.schemaZoom",
-  roleConfig: "archflow.jarvis.roleConfig",
-  prdComposer: "archflow.jarvis.prdComposer",
-  voiceTranscriptPreview: "archflow.jarvis.voiceTranscriptPreview",
-  autoSpeak: "archflow.jarvis.autoSpeak",
-  packets: "archflow.jarvis.localPackets",
-  events: "archflow.jarvis.events",
-  architectureMode: "archflow.jarvis.architectureMode",
-  interviewState: "archflow.jarvis.interviewState",
-  apiBase: "archflow.jarvis.apiBase",
-  schemaViewMode: "archflow.dashboard.schemaViewMode",
-  schemaInspectorCollapsed: "archflow.dashboard.schemaInspectorCollapsed",
-  executionPreview: "archflow.dashboard.executionPreview",
-  architectureLayer: "archflow.dashboard.architectureLayer",
-  viewerMode: "archflow.dashboard.viewerMode",
-  sharedSession: "archflow.sharedSession",
-};
-
-const blockSchemaVersion = "0.6";
-
-let dashboardData = null;
-let activeTab = window.location.hash?.replace(/^#/, "") || "manual";
-let jarvisMode = localStorage.getItem(storageKeys.mode) || "normal";
-let architectureMode = localStorage.getItem(storageKeys.architectureMode) || "service";
-const voiceModeDisabled = true;
-localStorage.removeItem(storageKeys.voiceAuthorized);
-localStorage.removeItem(storageKeys.voiceOutput);
-localStorage.removeItem(storageKeys.autoSpeak);
-localStorage.removeItem(storageKeys.voiceTranscriptPreview);
-let voiceAuthorized = false;
-let voiceOutputEnabled = false;
-let autoSpeakEnabled = false;
-let dataSignature = "";
-let refreshTimer = null;
-let localPackets = loadJson(storageKeys.packets, []);
-let roleConfigs = loadJson(storageKeys.roleConfig, defaultRoleConfigs());
-let prdComposerDraft = localStorage.getItem(storageKeys.prdComposer) || "";
-let blockSchemas = {
-  service: loadBlockSchemaFromStorage(storageKeys.serviceBlockSchema, defaultServiceBlockSchema(), "service"),
-  control: loadBlockSchemaFromStorage(storageKeys.blockSchema, defaultBlockSchema(), "control"),
-};
-let blockSchema = blockSchemas.control;
-let schemaZoom = clamp(Number(localStorage.getItem(storageKeys.schemaZoom) || 1), 0.55, 1.35);
-let schemaFullscreen = false;
-let schemaViewMode = localStorage.getItem(storageKeys.schemaViewMode)
-  || (window.matchMedia("(max-width: 760px)").matches ? "stage" : "canvas");
-const storedInspectorState = localStorage.getItem(storageKeys.schemaInspectorCollapsed);
-let schemaInspectorCollapsed = storedInspectorState === null
-  ? window.matchMedia("(max-width: 760px)").matches
-  : storedInspectorState === "true";
-let selectedArchitectureLayerId = localStorage.getItem(storageKeys.architectureLayer) || architectureLayers[0].id;
-let blockSchemaConnectSource = null;
-let blockSchemaDrag = null;
-let blockSchemaDragMoved = false;
-let nodeControlPanelId = null;
-let initialPanelDeepLinkApplied = false;
-const initialPanelDeepLinkId = new URLSearchParams(window.location.search).get("panel");
-let voiceFallbackDraft = "";
-let voiceTranscriptPreview = "";
-let interviewState = loadJson(storageKeys.interviewState, defaultInterviewState());
-let activeRecognition = null;
-let voiceTimerId = null;
-let voiceStartedAt = null;
-let voiceElapsedSeconds = 0;
-let executionPreviewTimer = null;
-let executionPreview = loadJson(storageKeys.executionPreview, {
-  workflow: "control",
-  state: "idle",
-  stageIndex: -1,
-  packetId: null,
-  updatedAt: null,
-});
-let viewerMode = localStorage.getItem(storageKeys.viewerMode) === "guest" ? "guest" : "admin";
-let sharedSession = loadJson(storageKeys.sharedSession, {
-  knowledge: { status: "not_started", report_id: null, updated_at: null },
-  agent_control: { status: "locked_pending_knowledge", report_id: null, updated_at: null },
-});
-let jarvisApiBase = trustedDashboardApiBase(localStorage.getItem(storageKeys.apiBase) || defaultJarvisApiBase());
-let apiHealthTimer = null;
-let jarvisApiState = {
-  status: "checking",
-  label: "Jarvis API checking",
-  detail: "Local Jarvis API has not been checked yet.",
-  tone: "warn",
-};
-let pendingAttachments = [];
-migratePersistentChatHistory();
-let chatHistory = loadJson(storageKeys.chatHistory, [
-  {
-    id: "welcome",
-    role: "assistant",
-    source: "system",
-    time: new Date().toISOString(),
-    text: "Jarvis is ready in text chat mode. Ask for status, PRD/ICP work, agent orchestration, file review packets, or API checks. Writes stay approval-gated.",
-  },
-]);
-let liveEvents = loadJson(storageKeys.events, [
-  {
-    id: "boot",
-    time: new Date().toISOString(),
-    title: "Dashboard opened",
-    detail: "Static Vercel-ready shell. API and Railway writeback are staged.",
-    tone: "ok",
-  },
-]);
+const PHASES = [
+  ["01", "Orient", "Goal, role, authority"],
+  ["02", "Perceive", "Sources and context"],
+  ["03", "Commit", "Requirements and done"],
+  ["04", "Work", "Smallest responsible crew"],
+  ["05", "Gate", "Validate, review, approve"],
+  ["06", "Learn", "Readback and promotion"],
+];
 
 const view = document.querySelector("#view");
 const nav = document.querySelector("#nav");
-const generatedAt = document.querySelector("#generatedAt");
-const liveStatus = document.querySelector("#liveStatus");
-const apiStatus = document.querySelector("#apiStatus");
-const refreshDataButton = document.querySelector("#refreshData");
-const globalComposer = document.querySelector("#globalComposer");
-const globalInput = document.querySelector("#globalInput");
+const notice = document.querySelector("#notice");
+const pageEyebrow = document.querySelector("#pageEyebrow");
+const pageTitle = document.querySelector("#pageTitle");
+const pageSummary = document.querySelector("#pageSummary");
+const exportHeader = document.querySelector("#exportHeader");
 
-if (!tabs.some((tab) => tab.id === activeTab)) activeTab = "manual";
-if (activeTab === "service") architectureMode = "service";
-if (activeTab === "schema") architectureMode = "control";
-localStorage.setItem(storageKeys.architectureMode, architectureMode);
+let contracts = null;
+let caseDraft = readStored(STORE.caseDraft, DEFAULT_CASE);
+let settings;
+try {
+  settings = normalizeImportedSettings(readStored(STORE.settings, DEFAULT_SETTINGS));
+} catch (_error) {
+  settings = Object.assign({}, DEFAULT_SETTINGS);
+  localStorage.removeItem(STORE.settings);
+}
+let receipts = readStored(STORE.receipts, []);
+let roleFilter = "";
+let packFilter = "all";
+let activeRoute = normalizeRoute(window.location.hash.replace(/^#/, "") || "today");
 
-function storageForKey(key) {
-  return key === storageKeys.packets || key === storageKeys.events ? sessionStorage : localStorage;
+function normalizeRoute(raw) {
+  const candidate = LEGACY_ROUTES[raw] || raw;
+  return ROUTES.some(function (route) { return route.id === candidate; }) ? candidate : "today";
 }
 
-function loadJson(key, fallback) {
+function readStored(key, fallback) {
   try {
-    return JSON.parse(storageForKey(key).getItem(key) || "null") || fallback;
-  } catch {
-    return fallback;
+    const raw = localStorage.getItem(key);
+    return raw ? Object.assign({}, fallback, JSON.parse(raw)) : Object.assign({}, fallback);
+  } catch (_error) {
+    return Object.assign({}, fallback);
   }
 }
 
-function saveJson(key, value) {
-  storageForKey(key).setItem(key, JSON.stringify(value));
-}
-
-function migratePersistentChatHistory() {
-  if (localStorage.getItem(storageKeys.chatHistory)) return;
-  const legacy = sessionStorage.getItem(storageKeys.chatHistory);
-  if (legacy) localStorage.setItem(storageKeys.chatHistory, legacy);
-}
-
-function clamp(value, min, max) {
-  const numeric = Number.isFinite(value) ? value : min;
-  return Math.min(max, Math.max(min, numeric));
-}
-
-function defaultJarvisApiBase() {
-  const localHostnames = new Set(["127.0.0.1", "localhost", "0.0.0.0"]);
-  if (localHostnames.has(window.location.hostname)) return "http://127.0.0.1:8787";
-  return window.location.origin;
-}
-
-// The dashboard may contact only its own origin or a local development API.
-// This keeps a browser-local configuration field from becoming an arbitrary
-// cross-origin request target or a place to send review-packet content.
-function trustedDashboardApiBase(raw) {
-  const value = String(raw || "").trim();
-  if (!value) return defaultJarvisApiBase();
-  const parsed = new URL(value, window.location.origin);
-  const sameOrigin = parsed.origin === window.location.origin;
-  const loopback = parsed.protocol === "http:" && ["127.0.0.1", "localhost"].includes(parsed.hostname);
-  if (!sameOrigin && !loopback) throw new Error("API base must be this origin or an HTTP loopback address.");
-  return parsed.origin;
-}
-
-function saveSharedSession() {
-  saveJson(storageKeys.sharedSession, sharedSession);
-}
-
-function setViewerMode(mode) {
-  viewerMode = mode === "guest" ? "guest" : "admin";
-  localStorage.setItem(storageKeys.viewerMode, viewerMode);
-  appendEvent("Viewer mode changed", `${viewerMode === "admin" ? "Administrator" : "Guest preview"} mode is browser-local only; no authentication or individual durable memory exists.`, "ok");
-  render();
-}
-
-function markKnowledgePrepared(reportId, source = "browser-local review bundle") {
-  sharedSession = {
-    ...sharedSession,
-    knowledge: { status: "prepared_local", report_id: reportId, updated_at: nowIso(), source },
-    agent_control: { ...sharedSession.agent_control, status: "available_from_knowledge" },
-  };
-  saveSharedSession();
-}
-
-function markAgentControlPrepared(reportId) {
-  sharedSession = {
-    ...sharedSession,
-    agent_control: { status: "prepared_local", report_id: reportId, updated_at: nowIso() },
-  };
-  saveSharedSession();
-}
-
-function defaultPromptConfig() {
-  return {
-    chain_name: "PRD-to-ICP dashboard chain",
-    model_policy: "MODEL_PROVIDER=none by default. OpenAI, OpenRouter, or Mistral keys may exist only in ignored local/service env files; static browser code must not read or call provider keys.",
-    memory_policy: "Summaries and candidates only; no raw transcript, raw recording, or private document persistence by default.",
-    normal_prompt: "Answer from verified dashboard state, explain blockers, prepare approval packets, and avoid scope expansion.",
-    interview_prompt: "Ask one question at a time, classify answers as fact, preference, hypothesis, gap, decision, or task candidate.",
-    review_prompt: "Check public/private boundary, source links, owner approval, and whether claims are backed by current files.",
-  };
-}
-
-let promptConfig = loadJson(storageKeys.promptConfig, defaultPromptConfig());
-
-function defaultInterviewState() {
-  return {
-    active: false,
-    questionIndex: 0,
-    lane: "service",
-    answers: [],
-    lastSummary: "",
-  };
-}
-
-function architectureMeta(mode = architectureMode) {
-  return mode === "control"
-    ? {
-        id: "control",
-        short: "Architecture 2",
-        label: "Architecture 2 - Agent Control",
-        tab: "schema",
-        schemaKind: "control",
-        commandBias: "agent orchestra, architecture change, logs, WikiLLM, Graphify, LlamaIndex, LangGraph, approvals, and durable output control",
-        firstInterviewQuestion: "Architecture 2 selected. What system-level change, agent workflow, memory/logging decision, or dashboard-control outcome should Jarvis help structure first?",
-      }
-    : {
-        id: "service",
-        short: "Architecture 1",
-        label: "Architecture 1 - PRD Service",
-        tab: "service",
-        schemaKind: "service",
-        commandBias: "source-to-PRD service output, discovery synthesis, ICP evidence, backlog, and buyer-ready reporting",
-        firstInterviewQuestion: "Architecture 1 selected. What source material should become the next PRD/ICP packet, and what buyer or product-team decision should it support?",
-      };
-}
-
-function setArchitectureMode(mode, options = {}) {
-  architectureMode = mode === "control" ? "control" : "service";
-  localStorage.setItem(storageKeys.architectureMode, architectureMode);
-  const meta = architectureMeta();
-  if (options.switchTab) activeTab = meta.tab;
-  appendEvent("Architecture selected", `${meta.label}. Commands now bias toward ${meta.commandBias}.`, "ok");
-}
-
-const interviewQuestions = {
-  service: [
-    "What source material should become the next PRD/ICP packet, and what buyer or product-team decision should it support?",
-    "Who is the intended reviewer or buyer for this output, and what decision should they be able to make after reading it?",
-    "What evidence is approved for use, and what raw source material must stay excluded from public or provider-backed processing?",
-    "What final outputs are expected: PRD, task matrix, ICP card, evidence map, report, PDF, or backlog?",
-    "What would make the output ready for review rather than still needing owner approval?",
-  ],
-  control: [
-    "What system-level change, agent workflow, memory/logging decision, or dashboard-control outcome should Jarvis help structure first?",
-    "Which architecture layer is affected: Codex operator, LangGraph route, LlamaIndex retrieval, Graphify map, WikiLLM memory, dashboard UI, backend API, or Railway?",
-    "Which durable writes or external actions require approval before execution?",
-    "What logs, run notes, decisions, or proof artifacts must be created so the change is auditable?",
-    "What validation proves the architecture change is controlled and reversible?",
-  ],
-};
-
-function currentInterviewQuestion() {
-  const lane = interviewState.lane === "control" ? "control" : "service";
-  const questions = interviewQuestions[lane];
-  return questions[Math.min(interviewState.questionIndex, questions.length - 1)];
-}
-
-const schemaScreenMeta = {
-  service: {
-    title: "(1) PRD/ICP Service Product Flow",
-    subtitle: "Externally showable product path: source context into PRD, market evidence, ICP profile, demo package, and approval-ready client output.",
-    resetEvent: "Local schema reset to the PRD/ICP service product graph.",
-    packetInput: "Export current PRD/ICP service product graph for Codex review.",
-  },
-  control: {
-    title: "(2) Reliable Agent Orchestra",
-    subtitle: "Local control system: Codex, LangGraph-style routing, WikiLLM, Graphify, safety review, run logs, approvals, and gated backend/provider actions.",
-    resetEvent: "Local schema reset to the reliable agent orchestra graph.",
-    packetInput: "Export current reliable agent orchestra graph for Codex review.",
-  },
-};
-
-function schemaKindForActiveTab() {
-  return architectureMeta().schemaKind;
-}
-
-function setActiveSchema() {
-  const kind = schemaKindForActiveTab();
-  blockSchema = blockSchemas[kind];
-  if (!blockSchema.nodes.some((node) => node.id === nodeControlPanelId)) nodeControlPanelId = null;
-  if (!blockSchema.nodes.some((node) => node.id === blockSchemaConnectSource)) blockSchemaConnectSource = null;
-  return kind;
-}
-
-function applyInitialPanelDeepLink() {
-  if (initialPanelDeepLinkApplied || !initialPanelDeepLinkId) return;
-  initialPanelDeepLinkApplied = true;
-  const node = getSchemaNode(initialPanelDeepLinkId);
-  if (!node) return;
-  blockSchema.selectedNodeId = node.id;
-  nodeControlPanelId = node.id;
-}
-
-function storedSchemaMatchesCurrentDefault(schema, kind) {
-  if (!schema || schema.version !== blockSchemaVersion || !Array.isArray(schema.nodes)) return false;
-  const ids = new Set(schema.nodes.map((node) => node.id));
-  const requiredIds = kind === "service"
-    ? ["svc-intake", "svc-output"]
-    : ["intake", "architecture-review", "output"];
-  return requiredIds.every((id) => ids.has(id));
-}
-
-function loadBlockSchemaFromStorage(key, fallback, kind) {
-  const stored = loadJson(key, null);
-  if (!storedSchemaMatchesCurrentDefault(stored, kind)) return normalizeBlockSchema(fallback, kind);
-  return normalizeBlockSchema(stored, kind);
-}
-
-function configOptions() {
-  return {
-    workflowLayer: ["service product", "control system", "safety review", "knowledge/RAG", "approval gate", "publishing"],
-    modelProvider: ["none", "Codex local operator", "OpenRouter gated", "Mistral gated", "OpenAI disabled", "Ollama local gated", "NVIDIA safety gated"],
-    providerMode: ["disabled", "configured locally", "approval required", "sandbox test only", "blocked"],
-    executionMode: ["manual review", "queued for Codex", "LangGraph planned", "browser local only", "backend required"],
-    approvalGate: ["required before durable write", "required before provider call", "required before external send", "not applicable"],
-    memoryTarget: ["none", "download packet", "run note candidate", "WikiLLM candidate", "Obsidian candidate", "Notion candidate"],
-    retrievalScope: ["approved public files", "project run notes", "dashboard data JSON", "manual user packet", "blocked private raw data"],
-    traceTarget: ["dashboard packet", "LangGraph metadata", "LangSmith trace URL placeholder", "CrewAI handoff", "not traced"],
-    safetyReview: ["public safety scan", "manual source review", "NVIDIA garak planned", "NeMo Guardrails planned", "blocked until approved"],
-    persistence: ["session storage", "localStorage", "download only", "Git after Codex review", "backend database gated"],
-    inputConnector: ["manual command packet", "browser chat", "file metadata only", "approved corpus", "agent handoff", "none"],
-    outputConnector: ["downloadable review packet", "dashboard run note", "PRD artifact", "ICP evidence card", "approval request", "blocked issue"],
-    runRecorder: ["browser session log", "public-safe run note", "LangSmith URL placeholder", "agent handoff", "not recorded"],
-  };
-}
-
-function defaultNodeConfig(type, workflowLayer) {
-  return {
-    workflowLayer,
-    modelProvider: "none",
-    providerMode: "disabled",
-    executionMode: type === "output" ? "queued for Codex" : "manual review",
-    approvalGate: ["approval", "output"].includes(type) ? "required before durable write" : "not applicable",
-    memoryTarget: type === "output" ? "run note candidate" : "download packet",
-    retrievalScope: "approved public files",
-    traceTarget: ["router", "parallel", "merge"].includes(type) ? "LangGraph metadata" : "dashboard packet",
-    safetyReview: "public safety scan",
-    persistence: "download only",
-    inputConnector: "manual command packet",
-    outputConnector: type === "output" ? "dashboard run note" : "downloadable review packet",
-    runRecorder: "browser session log",
-  };
-}
-
-function defaultBlockSchema() {
-  return defaultControlBlockSchema();
-}
-
-function defaultServiceBlockSchema() {
-  return {
-    version: blockSchemaVersion,
-    title: "PRD/ICP Service Product Graph",
-    selectedNodeId: "svc-intake",
-    connectSourceId: null,
-    queue: [],
-    nodes: [
-      schemaNode("svc-intake", "start", "Client source intake", 60, 120, "Jarvis intake", "Capture dialogue, meeting summary, file metadata, product context, and explicit constraints.", "Sanitized source packet for PRD creation.", {
-        workflowLayer: "service product",
-        job: "Turn unstructured product-team context into usable source material.",
-        pain: "Product teams lose decisions and context across meetings, chats, and docs.",
-        evidence: "Current Block 1 proof and E1.3 readback show the source-to-KB path is the first reliable wedge.",
-        businessObjective: "Create an externally showable PRD/ICP service path without exposing private raw material.",
-        inputs: ["typed brief", "meeting summary", "file metadata only", "approved public examples"],
-        outputs: ["sanitized source packet", "missing-context questions"],
-        systemPrompt: "Classify every input as fact, assumption, hypothesis, gap, decision, or task candidate. Do not store raw private transcripts."
-      }),
-      schemaNode("svc-prd", "agent", "PRD builder", 350, 72, "Manager/PRD agent", "Convert accepted context into PRD sections, responsibilities, acceptance criteria, and open questions.", "Draft PRD with source labels and gaps.", {
-        workflowLayer: "service product",
-        job: "Produce a decision-ready PRD faster than a product team can assemble by hand.",
-        pain: "PRDs become inconsistent when product, engineering, and leadership context are scattered.",
-        evidence: "June 24 reset defines dialogue/chat/meeting material into PRD and agent-ready KB as Block 1.",
-        businessObjective: "Prove whether a forcing-moment Knowledge Reliability Setup creates paid value; treat the PRD as one downstream artifact.",
-        inputs: ["sanitized source packet", "product constraints", "acceptance criteria"],
-        outputs: ["PRD draft", "task/responsibility matrix", "gap list"]
-      }),
-      schemaNode("svc-research-fork", "parallel", "Market evidence fork", 650, 100, "Research lead", "Split research into ICP evidence, competitor signals, customer pain, and offer-risk checks.", "Parallel evidence packets with weak claims marked as gaps.", {
-        workflowLayer: "service product",
-        job: "Ground the PRD in market and customer evidence before external positioning.",
-        pain: "Teams often mistake internal enthusiasm or social signals for validated demand.",
-        evidence: "E2 is defined as bounded evidence engine after E1.3 KB/readback.",
-        businessObjective: "Reduce false-positive ICP claims before outreach.",
-        inputs: ["PRD draft", "current ICP lane", "approved research sources"],
-        outputs: ["ICP evidence cards", "competitor notes", "risk flags"]
-      }),
-      schemaNode("svc-evidence", "agent", "ICP evidence cards", 950, 30, "Research/ICP agent", "Create source-labeled account, role, pain, trigger, and disqualifier evidence cards for the one current ICP lane.", "Source-labeled evidence cards.", {
-        workflowLayer: "service product",
-        job: "Prove whether the target buyer and account shape are credible.",
-        pain: "ICP choices become weak when they rely on generic market claims.",
-        evidence: "E2 requires source grades, account evidence cards, and role verification.",
-        businessObjective: "Give the service product a defensible ICP basis.",
-        inputs: ["PRD draft", "approved research sources", "source-grade rules"],
-        outputs: ["evidence cards", "source grades", "disqualifiers"]
-      }),
-      schemaNode("svc-pain", "agent", "Customer pain review", 950, 260, "Product marketing agent", "Translate PRD and market evidence into buyer jobs, pains, objections, proof needs, and demo-message requirements.", "Buyer pain and messaging packet.", {
-        workflowLayer: "service product",
-        job: "Connect the service output to what the buyer needs to decide.",
-        pain: "A technically good PRD pack may still fail if it does not map to buyer urgency.",
-        evidence: "Reviewer instructions require feature recommendations tied to user job, pain, evidence, and business objective.",
-        businessObjective: "Improve conversion readiness before E3/E4/E6.",
-        inputs: ["PRD draft", "evidence cards", "offer-risk checks"],
-        outputs: ["JTBD notes", "objections", "demo requirements"]
-      }),
-      schemaNode("svc-research-merge", "merge", "Evidence merge", 1260, 140, "Lead integrator", "Merge ICP evidence and customer-pain packets, preserving contradictions as gaps.", "Merged market evidence packet.", {
-        workflowLayer: "service product",
-        job: "Make research usable for a decision rather than scattered branch reports.",
-        pain: "Parallel research can produce contradictory claims if no integrator resolves them.",
-        evidence: "The block-schema contract requires merge rules after parallel execution.",
-        businessObjective: "Move only reviewed evidence into ICP synthesis.",
-        inputs: ["evidence cards", "buyer pain packet"],
-        outputs: ["merged evidence packet", "contradiction list"]
-      }),
-      schemaNode("svc-icp", "agent", "ICP synthesis", 1570, 52, "Research/ICP agent", "Turn evidence packets into one current ICP profile, buying job, pains, triggers, and disqualifiers.", "Single ICP profile with confidence and blockers.", {
-        workflowLayer: "service product",
-        job: "Help the marketing/sales path know exactly who the offer is for.",
-        pain: "Multiple ICP lanes dilute the first commercial test.",
-        evidence: "Current strategy keeps one primary ICP unless explicitly widened.",
-        businessObjective: "Focus E3/E4/E6 around a single first lane.",
-        inputs: ["evidence cards", "PRD gaps", "source grades"],
-        outputs: ["ICP profile", "audience language", "open evidence gaps"]
-      }),
-      schemaNode("svc-demo", "agent", "Landing/demo package", 1870, 86, "Product marketing agent", "Create demo flow, landing structure, offer language, proof cards, and content angles from accepted ICP/PRD evidence.", "Externally showable demo package for review.", {
-        workflowLayer: "service product",
-        job: "Show the product-team buyer the outcome, not the internal machinery.",
-        pain: "Early buyers need clear output examples and proof, not architecture diagrams.",
-        evidence: "E3/E4 depend on accepted PRD/ICP evidence before content and positioning.",
-        businessObjective: "Move from internal proof to a firm paid-start conversation.",
-        inputs: ["ICP profile", "PRD draft", "proof cards"],
-        outputs: ["landing outline", "demo script", "content angles"]
-      }),
-      schemaNode("svc-crewai-proof", "agent", "CrewAI Level 3 proof", 2180, 286, "AF Manager + AF Review", "Run one tiny public-safe PRD/ICP fixture through direct CrewAI deterministic local runtime with no provider calls and no writeback.", "Proof packet: proof_passed_not_default_runtime.", {
-        workflowLayer: "runtime proof",
-        job: "Show that direct CrewAI can execute the PRD/ICP fixture without becoming the default runtime.",
-        pain: "Level 3 was blocked by missing proof, not by rejection of CrewAI.",
-        evidence: "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json",
-        businessObjective: "Make the runtime readiness path visible while keeping provider/default promotion gated.",
-        inputs: ["tiny public-safe PRD/ICP fixture", "budget guard", "model-call ledger schema", "CrewAI config"],
-        outputs: ["crew output", "model-call ledger", "budget guard", "AF Review report", "runtime proof"],
-        config: {
-          modelProvider: "local deterministic",
-          providerMode: "OpenRouter disabled",
-          executionMode: "direct CrewAI proof only",
-          persistence: "run artifact only",
-          approvalGate: "proof passed; default/provider runtime still requires owner approval",
-          outputConnector: "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json"
-        },
-        lastRuns: [{
-          time: "2026-07-02",
-          status: "proof_passed_not_default_runtime",
-          summary: "Direct CrewAI fixture run completed with zero provider calls, zero writeback, and 0.00 USD spend."
-        }]
-      }),
-      schemaNode("svc-approval", "approval", "Client-output approval", 2490, 120, "Owner approval", "Approve what can be shown externally and what must remain internal or blocked.", "Approved service output or blocked issue.", {
-        workflowLayer: "approval gate",
-        job: "Prevent unverified claims and private context from reaching external surfaces.",
-        pain: "Public-facing assets can overclaim if generated from partial internal notes.",
-        evidence: "Public-safety gate requires source labels and approved claims.",
-        businessObjective: "Keep demo-ready output credible and safe.",
-        inputs: ["demo package", "CrewAI proof state", "safety review", "source labels"],
-        outputs: ["approval packet", "blocked issue", "revision request"]
-      }),
-      schemaNode("svc-output", "output", "Service output packet", 2800, 120, "Publisher", "Package PRD, ICP, demo, next tasks, and confidence level for review or buyer-facing use.", "Linked service packet with confidence level.", {
-        workflowLayer: "publishing",
-        job: "Create the final artifact the buyer or internal reviewer can inspect.",
-        pain: "Work is not done when it exists only in chat.",
-        evidence: "Run notes and dashboard data make proof retrievable.",
-        businessObjective: "Turn execution into reusable sales and delivery proof.",
-        inputs: ["approved output", "run note", "evidence links"],
-        outputs: ["PRD/ICP packet", "task list", "confidence rating"]
-      })
-    ],
-    edges: [
-      schemaEdge("svc-e1", "svc-intake", "svc-prd", "source packet", "Source context is sanitized and classified.", "normal"),
-      schemaEdge("svc-e2", "svc-prd", "svc-research-fork", "PRD ready", "PRD has enough detail for evidence checks.", "parallel"),
-      schemaEdge("svc-e3", "svc-research-fork", "svc-evidence", "ICP evidence branch", "Research branch checks source-labeled ICP/account evidence.", "parallel"),
-      schemaEdge("svc-e4", "svc-research-fork", "svc-pain", "buyer pain branch", "Research branch checks jobs, pains, objections, and demo proof needs.", "parallel"),
-      schemaEdge("svc-e5", "svc-evidence", "svc-research-merge", "evidence cards", "Evidence branch returns source grades and disqualifiers.", "merge"),
-      schemaEdge("svc-e6", "svc-pain", "svc-research-merge", "pain packet", "Pain branch returns buyer language and objections.", "merge"),
-      schemaEdge("svc-e7", "svc-research-merge", "svc-icp", "merged evidence", "Contradictions are marked as gaps before synthesis.", "normal"),
-      schemaEdge("svc-e8", "svc-icp", "svc-demo", "ICP accepted", "One ICP lane is coherent enough for positioning.", "normal"),
-      schemaEdge("svc-e9", "svc-demo", "svc-crewai-proof", "runtime proof", "Direct CrewAI may prove the fixture but cannot promote itself to default runtime.", "conditional"),
-      schemaEdge("svc-e10", "svc-crewai-proof", "svc-approval", "proof reviewed", "AF Review verifies proof artifacts before owner approval.", "approval"),
-      schemaEdge("svc-e11", "svc-approval", "svc-output", "approved", "Owner approves external-safe output.", "normal")
-    ]
-  };
-}
-
-function defaultControlBlockSchema() {
-  return {
-    version: blockSchemaVersion,
-    title: "Reliable Agent Orchestra Graph",
-    selectedNodeId: "intake",
-    connectSourceId: null,
-    queue: [],
-    nodes: [
-      schemaNode("intake", "start", "Operator command intake", 60, 80, "Owner + Jarvis", "Capture typed command, file attachment summary, correction, or approval.", "One sanitized command packet; audio and raw transcript paths stay off.", {
-        workflowLayer: "control system",
-        job: "Let the owner direct local execution without losing state.",
-        pain: "Agent work becomes unreliable when commands, approvals, and blockers stay only in chat.",
-        evidence: "June 30 dashboard branch proved session-local Jarvis packets and block-schema editing.",
-        businessObjective: "Make the local agentic operating system observable and controllable.",
-        inputs: ["typed command", "file attachment summary", "file metadata", "approval state"],
-        outputs: ["sanitized command packet", "local event log"]
-      }),
-      schemaNode("classify", "router", "Classify request", 350, 80, "Jarvis router", "Separate status, interview, research, config, block-schema, and approval requests.", "Route key plus fact/interpretation/hypothesis/gap label.", {
-        workflowLayer: "control system",
-        job: "Route work to the right local execution lane.",
-        pain: "Dashboards become confusing when product work, code work, memory, and publishing share one screen.",
-        evidence: "Reviewer instructions require an explicit split between PRD/ICP service product and reliable control system.",
-        businessObjective: "Reduce wrong-lane execution and overclaiming.",
-        inputs: ["command packet", "current dashboard state"],
-        outputs: ["route key", "evidence label", "stop condition"]
-      }),
-      schemaNode("codex", "agent", "Codex development response", 650, 54, "Codex operator", "Read current files, edit review branch only, run checks, and report evidence.", "Reviewed branch diff and local run note.", {
-        workflowLayer: "control system",
-        job: "Implement and verify local changes under approval boundaries.",
-        pain: "A web dashboard cannot safely mutate Git, Notion, or memory by itself.",
-        evidence: "Codex remains local operator/editor/reviewer; static Vercel remains read-only.",
-        businessObjective: "Keep code changes reliable without enabling unsafe browser writeback.",
-        inputs: ["route key", "repo files", "agent chat findings"],
-        outputs: ["diff", "checks", "run note"]
-      }),
-      schemaNode("monitor", "agent", "Graph monitor", 650, 270, "LangGraph monitor", "Track state, blockers, approvals, attempts, and branch outputs.", "Trace packet for LangGraph/CrewAI/LangSmith surfaces.", {
-        workflowLayer: "control system",
-        job: "Show what is running, blocked, or waiting for approval.",
-        pain: "Parallel agents are hard to trust when their state is not visible.",
-        evidence: "The coordination contract requires chat files, registry state, run notes, and verifier status.",
-        businessObjective: "Make future LangGraph execution explainable before it is live.",
-        inputs: ["event log", "active route", "validation state"],
-        outputs: ["state packet", "trace placeholder", "blocker list"]
-      }),
-      schemaNode("parallel", "parallel", "Parallel agent fork", 960, 80, "Lead integrator", "Split work across architecture review, safety, stack, product, and delivery lanes.", "Branch reports with contradictions marked as gaps.", {
-        workflowLayer: "control system",
-        job: "Use focused reviewers without losing merge order.",
-        pain: "Uncoordinated agents edit the same surface or approve unsupported claims.",
-        evidence: "Parallel-agent protocol requires one integrator and focused sidecar reviewers.",
-        businessObjective: "Raise reliability before merge, deploy, or memory promotion.",
-        inputs: ["implementation packet", "monitor state"],
-        outputs: ["review branches", "findings", "approval blockers"]
-      }),
-      schemaNode("architecture-review", "agent", "Architecture review", 1260, 40, "Architecture reviewer", "Verify the two-screen architecture, node panel usability, local/offline clarity, and gated provider/writeback boundaries.", "Checker verdict with passed checks and gaps.", {
-        workflowLayer: "control system",
-        job: "Protect dashboard comprehensibility before final integration.",
-        pain: "A powerful graph editor is useless if the operator cannot understand the current layer.",
-        evidence: "Delegated review requirements call for two paradigms and node configuration panels.",
-        businessObjective: "Get reviewer approval before final handoff.",
-        inputs: ["local dashboard route", "diff summary", "safety notes"],
-        outputs: ["approval verdict", "required fixes", "final word when satisfied"]
-      }),
-      schemaNode("safety-review", "agent", "Safety and source review", 1260, 280, "Safety reviewer", "Check public/private boundary, unsupported claims, secrets, third-party repo risk, and source links.", "Safety verdict and required corrections.", {
-        workflowLayer: "safety review",
-        job: "Prevent unsafe tool installation, secret exposure, and unsupported public claims.",
-        pain: "Agent tools can introduce hooks, workers, memory capture, or provider calls.",
-        evidence: "Claude-Mem and Impeccable both add hooks/processes; NVIDIA garak/NeMo are evaluation tools, not installed gates here.",
-        businessObjective: "Use third-party tools only after scoped onboarding and approval.",
-        inputs: ["external repo review", "changed files", "public-safety scan"],
-        outputs: ["risk rating", "blocked items", "safe next step"]
-      }),
-      schemaNode("crewai-proof", "agent", "CrewAI Level 3 direct proof", 1560, 392, "AF Manager + AF Review", "Run or display the direct CrewAI deterministic proof branch; preserve the proof as a runtime-readiness artifact only.", "Reviewed proof packet; not default runtime.", {
-        workflowLayer: "runtime proof",
-        job: "Represent direct CrewAI readiness inside the operator graph without enabling autonomous/provider execution.",
-        pain: "Runtime claims become unsafe when proof, ledger, budget, and review are hidden.",
-        evidence: "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json",
-        businessObjective: "Let the operator see the Level 3 path and remaining gates before promotion.",
-        inputs: ["operator task", "public-safe fixture", "budget guard", "ledger path"],
-        outputs: ["runtime proof", "review report", "dashboard state"],
-        config: {
-          modelProvider: "local deterministic",
-          providerMode: "provider disabled",
-          executionMode: "direct CrewAI proof passed; not default runtime",
-          persistence: "repo run artifact",
-          approvalGate: "owner approval required for provider/default runtime",
-          outputConnector: "project/runs/2026-07-02-crewai-level-3-proof/dashboard-state.md"
-        },
-        lastRuns: [{
-          time: "2026-07-02",
-          status: "proof_passed_not_default_runtime",
-          summary: "Tiny PRD/ICP fixture produced deterministic CrewAI output, ledger, budget guard, and AF Review packet."
-        }]
-      }),
-      schemaNode("merge", "merge", "Integrator merge", 1860, 160, "Lead integrator", "Merge branch outputs, preserve source links, and reject unsupported claims.", "Single accepted handoff with checks.", {
-        workflowLayer: "control system",
-        job: "Turn parallel findings into one coherent result.",
-        pain: "Separate agent reports can contradict each other or bury blockers.",
-        evidence: "The integrator owns merge order, final review, and durable records.",
-        businessObjective: "Finish with a verified dashboard state, not scattered chat output.",
-        inputs: ["review findings", "safety verdict", "CrewAI proof state", "checks"],
-        outputs: ["accepted changes", "remaining gaps", "handoff"]
-      }),
-      schemaNode("approval", "approval", "Writeback approval", 2160, 160, "Owner approval", "Approve or reject Notion, GitHub, WikiLLM, Telegram, model, capture, or backend writeback.", "Approved packet or blocked issue.", {
-        workflowLayer: "approval gate",
-        job: "Keep high-impact actions explicit.",
-        pain: "Static dashboard actions can look executable even when no safe backend exists.",
-        evidence: "Provider calls, raw capture, memory writes, and deploys remain gated.",
-        businessObjective: "Prevent unauthorized external or durable state changes.",
-        inputs: ["handoff packet", "approval request"],
-        outputs: ["approved action", "blocked issue", "revision request"]
-      }),
-      schemaNode("output", "output", "Durable output", 2460, 160, "Publisher", "Create run note, decision, issue, dashboard data update, or review branch.", "Linked artifact and dashboard status.", {
-        workflowLayer: "publishing",
-        job: "Make completed work retrievable for the next run.",
-        pain: "Work is not complete if the result exists only in chat.",
-        evidence: "Public run notes, WikiLLM logs, dashboard data, and handouts are the reliable source layers.",
-        businessObjective: "Reduce repeated discovery and failed handoffs.",
-        inputs: ["approved packet", "check results"],
-        outputs: ["run note", "agent handout", "dashboard data refresh"]
-      })
-    ],
-    edges: [
-      schemaEdge("e1", "intake", "classify", "input", "Always after explicit user action.", "normal"),
-      schemaEdge("e2", "classify", "codex", "development", "Code or dashboard implementation is requested.", "conditional"),
-      schemaEdge("e3", "classify", "monitor", "trace", "Every task emits safe state and blocker metadata.", "conditional"),
-      schemaEdge("e4", "codex", "parallel", "review fork", "Implementation needs checker/safety/product review.", "parallel"),
-      schemaEdge("e5", "monitor", "parallel", "status fork", "State should be visible to each reviewer.", "parallel"),
-      schemaEdge("e6", "parallel", "architecture-review", "architecture branch", "Architecture reviewer validates architecture and UX proof.", "parallel"),
-      schemaEdge("e7", "parallel", "safety-review", "safety branch", "Safety reviewer checks public/private and source boundaries.", "parallel"),
-      schemaEdge("e12", "parallel", "crewai-proof", "runtime proof branch", "CrewAI proof runs only as deterministic local fixture evidence.", "parallel"),
-      schemaEdge("e8", "architecture-review", "merge", "checker verdict", "Architecture reviewer returns facts, gaps, checks, and status.", "merge"),
-      schemaEdge("e9", "safety-review", "merge", "safety verdict", "Safety reviewer returns public-safe corrections.", "merge"),
-      schemaEdge("e13", "crewai-proof", "merge", "proof state", "Integrator receives proof status and remaining provider/default-runtime gates.", "merge"),
-      schemaEdge("e10", "merge", "approval", "needs writeback", "Any durable write, provider, capture, or external send needs approval.", "approval"),
-      schemaEdge("e11", "approval", "output", "approved output", "Approved output is recorded and linked.", "normal")
-    ]
-  };
-}
-
-function schemaNode(id, type, title, x, y, owner, prompt, output, options = {}) {
-  const workflowLayer = options.workflowLayer || "control system";
-  const typeDefaults = schemaNodeTypeDefaults(type, title, output);
-  return {
-    id,
-    type,
-    title,
-    x,
-    y,
-    w: options.w || typeDefaults.w,
-    h: options.h || typeDefaults.h,
-    owner: owner || typeDefaults.owner,
-    status: options.status || typeDefaults.status,
-    workflowLayer,
-    description: options.description || prompt,
-    job: options.job || "Define the job this node helps the operator complete.",
-    pain: options.pain || "Define the pain or failure this node reduces.",
-    evidence: options.evidence || "pending: source evidence assigned during execution",
-    businessObjective: options.businessObjective || "Keep execution reliable, explainable, and approval-gated.",
-    inputs: options.inputs || typeDefaults.inputs,
-    outputs: options.outputs || typeDefaults.outputs,
-    prompt,
-    systemPrompt: options.systemPrompt || prompt,
-    comments: options.comments || typeDefaults.comments,
-    requirements: options.requirements || typeDefaults.requirements,
-    files: options.files || typeDefaults.files,
-    questions: options.questions || typeDefaults.questions,
-    possibleOutputs: options.possibleOutputs || typeDefaults.possibleOutputs,
-    outputLinks: options.outputLinks || ["pending: created after execution"],
-    finalOutput: output,
-    lastRuns: options.lastRuns || [
-      {
-        time: "pending",
-        status: "not run",
-        summary: "This static dashboard records configuration only until a Codex or backend run writes a public-safe result."
-      }
-    ],
-    config: {
-      ...defaultNodeConfig(type, workflowLayer),
-      ...typeDefaults.config,
-      ...(options.config || {})
-    }
-  };
-}
-
-function schemaNodeTypeDefaults(type, title, output) {
-  const base = {
-    w: type === "parallel" || type === "router" ? 220 : 208,
-    h: type === "parallel" || type === "approval" ? 164 : 148,
-    owner: "Unassigned",
-    status: "planned",
-    inputs: ["manual command packet"],
-    outputs: [output || "pending output"],
-    comments: "Draft node. Replace with reviewer/operator notes during execution.",
-    requirements: "No secrets, raw recordings, raw transcripts, private document bodies, or unapproved provider calls.",
-    files: ["pending: assign during execution"],
-    questions: [`What does ${title} need to prove?`, "Which source file or artifact supports it?"],
-    possibleOutputs: ["run_note", "decision", "issue", "review_branch", "dashboard_packet"],
-    config: {},
-  };
-  if (type === "parallel") {
-    return {
-      ...base,
-      owner: "Lead integrator",
-      status: "draft unconnected",
-      inputs: ["accepted source packet", "route key", "review criteria"],
-      outputs: ["architecture branch brief", "safety branch brief", "product/output branch brief", "merge packet"],
-      comments: "Parallel nodes fan out bounded sidecar work. Each branch must return facts, gaps, changed files if any, and a merge recommendation.",
-      requirements: "Every branch needs an owner, a disjoint file scope if editing, a stop condition, and a merge target.",
-      questions: ["Which branches are needed?", "Which files are reserved by each branch?", "Where does the merge happen?"],
-      possibleOutputs: ["branch report", "review finding", "blocked issue", "merge packet"],
-      config: {
-        traceTarget: "LangGraph metadata",
-        approvalGate: "required before durable write",
-        outputConnector: "approval request",
-      },
-    };
-  }
-  if (type === "approval") {
-    return {
-      ...base,
-      owner: "Owner approval",
-      status: "approval gate",
-      inputs: ["handoff packet", "evidence links", "risk list", "requested action"],
-      outputs: ["approved action", "revision request", "blocked issue"],
-      comments: "Approval nodes prevent provider calls, external sends, writeback, deployment, raw capture, or public claims from happening implicitly.",
-      requirements: "Define allowed action, forbidden action, evidence required, rollback path, and expiry of approval.",
-      questions: ["What exact action is being approved?", "What evidence supports it?", "What remains forbidden?"],
-      possibleOutputs: ["approval record", "blocked issue", "revision note", "owner decision"],
-      config: {
-        approvalGate: "required before provider call",
-        persistence: "Git after Codex review",
-        outputConnector: "approval request",
-      },
-    };
-  }
-  if (type === "router") {
-    return {
-      ...base,
-      owner: "Jarvis router",
-      inputs: ["command packet", "current architecture mode", "current task state"],
-      outputs: ["route key", "architecture 1 path", "architecture 2 path", "stop condition"],
-      comments: "Router nodes classify work before Codex, LangGraph, or review branches act.",
-      possibleOutputs: ["route key", "classification", "stop condition"],
-      config: {
-        traceTarget: "LangGraph metadata",
-        outputConnector: "downloadable review packet",
-      },
-    };
-  }
-  return base;
-}
-
-function schemaEdge(id, from, to, label, condition, mode) {
-  return { id, from, to, label, condition, mode };
-}
-
-function normalizeBlockSchema(schema, kind = "control") {
-  const fallback = kind === "service" ? defaultServiceBlockSchema() : defaultBlockSchema();
-  const source = schema && Array.isArray(schema.nodes) && Array.isArray(schema.edges) ? schema : fallback;
-  const alreadyCompact = source.compactLayout === true;
-  return {
-    version: blockSchemaVersion,
-    compactLayout: true,
-    title: source.title || fallback.title,
-    selectedNodeId: source.selectedNodeId || source.nodes?.[0]?.id || null,
-    connectSourceId: null,
-    queue: Array.isArray(source.queue) ? source.queue : [],
-    nodes: source.nodes.map((node) => {
-      const normalized = {
-        ...schemaNode(node.id || makeId("node"), node.type || "agent", node.title || "Untitled node", Number(node.x) || 80, Number(node.y) || 80, node.owner || "Unassigned", node.prompt || "", node.finalOutput || "Pending output", { workflowLayer: kind === "service" ? "service product" : "control system" }),
-        ...node,
-      };
-      normalized.files = Array.isArray(node.files) ? node.files : String(node.files || "pending: assign during execution").split(/\n+/).filter(Boolean);
-      normalized.questions = Array.isArray(node.questions) ? node.questions : String(node.questions || "").split(/\n+/).filter(Boolean);
-      normalized.inputs = Array.isArray(node.inputs) ? node.inputs : String(node.inputs || "manual command packet").split(/\n+/).filter(Boolean);
-      normalized.outputs = Array.isArray(node.outputs) ? node.outputs : String(node.outputs || normalized.finalOutput || "pending output").split(/\n+/).filter(Boolean);
-      normalized.possibleOutputs = Array.isArray(node.possibleOutputs) ? node.possibleOutputs : String(node.possibleOutputs || "").split(/\n+/).filter(Boolean);
-      normalized.outputLinks = Array.isArray(node.outputLinks) ? node.outputLinks : String(node.outputLinks || "").split(/\n+/).filter(Boolean);
-      normalized.lastRuns = Array.isArray(node.lastRuns) ? node.lastRuns : [{ time: "pending", status: "not run", summary: String(node.lastRuns || "No run history recorded.") }];
-      normalized.config = {
-        ...defaultNodeConfig(normalized.type, normalized.workflowLayer || (kind === "service" ? "service product" : "control system")),
-        ...(typeof node.config === "object" && node.config ? node.config : {})
-      };
-      normalized.description = normalized.description || normalized.prompt || "No description configured.";
-      normalized.systemPrompt = normalized.systemPrompt || normalized.prompt || "";
-      normalized.x = Math.round((Number(normalized.x) || 80) * (alreadyCompact ? 1 : 0.78));
-      normalized.y = Math.round((Number(normalized.y) || 80) * (alreadyCompact ? 1 : 0.86));
-      normalized.w = clamp(Number(normalized.w) || 208, 200, 220);
-      normalized.h = clamp(Number(normalized.h) || 148, 144, 164);
-      return normalized;
-    }),
-    edges: source.edges.map((edge) => ({ ...schemaEdge(edge.id || makeId("edge"), edge.from, edge.to, edge.label || "next", edge.condition || "", edge.mode || "normal"), ...edge }))
-  };
-}
-
-function saveBlockSchema() {
-  const kind = schemaKindForActiveTab();
-  blockSchemas[kind] = blockSchema;
-  saveJson(kind === "service" ? storageKeys.serviceBlockSchema : storageKeys.blockSchema, blockSchema);
-}
-
-function getSchemaNode(id) {
-  return blockSchema.nodes.find((node) => node.id === id);
-}
-
-function getSchemaEdge(id) {
-  return blockSchema.edges.find((edge) => edge.id === id);
-}
-
-function outgoingSchemaEdges(id) {
-  return blockSchema.edges.filter((edge) => edge.from === id);
-}
-
-function incomingSchemaEdges(id) {
-  return blockSchema.edges.filter((edge) => edge.to === id);
-}
-
-function listFromTextarea(value) {
-  return String(value || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
-}
-
-function textareaFromList(value) {
-  return Array.isArray(value) ? value.join("\n") : "";
-}
-
-function schemaCenter(node) {
-  return { x: node.x + node.w / 2, y: node.y + node.h / 2 };
-}
-
-function schemaTypeLabel(type) {
-  const labels = {
-    start: "Start",
-    agent: "Agent",
-    router: "Router",
-    parallel: "Parallel",
-    merge: "Merge",
-    approval: "Approval",
-    output: "Output"
-  };
-  return labels[type] || type;
-}
-
-function schemaStageIndex(node) {
-  const typeOrder = {
-    start: 0,
-    router: 1,
-    agent: 2,
-    parallel: 3,
-    merge: 4,
-    approval: 5,
-    output: 6,
-  };
-  return typeOrder[node.type] ?? 2;
-}
-
-function layoutBlockSchemaByStage() {
-  const grouped = new Map();
-  blockSchema.nodes.forEach((node) => {
-    const stage = schemaStageIndex(node);
-    grouped.set(stage, [...(grouped.get(stage) || []), node]);
-  });
-  [...grouped.entries()].forEach(([stage, nodes]) => {
-    nodes.forEach((node, row) => {
-      node.x = 48 + stage * 280;
-      node.y = 64 + row * 200;
-      node.w = node.type === "parallel" || node.type === "router" ? 220 : 208;
-      node.h = node.type === "parallel" || node.type === "approval" ? 164 : 148;
-    });
-  });
-}
-
-function draftSchemaNode(type) {
-  const index = blockSchema.nodes.length + 1;
-  const stage = schemaStageIndex({ type });
-  const sameStage = blockSchema.nodes.filter((node) => schemaStageIndex(node) === stage).length;
-  const title = `${schemaTypeLabel(type)} ${index}`;
-  const defaults = schemaNodeTypeDefaults(type, title, "Pending review output.");
-  return schemaNode(
-    makeId(`schema-${type}`),
-    type,
-    title,
-    48 + stage * 280,
-    64 + sameStage * 200,
-    defaults.owner,
-    `Define the ${schemaTypeLabel(type).toLowerCase()} prompt, evidence, owner, inputs, outputs, and approval boundary.`,
-    defaults.outputs[0] || "Pending review output.",
-    {
-      workflowLayer: architectureMode === "service" ? "service product" : "control system",
-      status: defaults.status,
-      comments: defaults.comments,
-      requirements: defaults.requirements,
-      inputs: defaults.inputs,
-      outputs: defaults.outputs,
-      questions: defaults.questions,
-      possibleOutputs: defaults.possibleOutputs,
-      config: defaults.config,
-      w: defaults.w,
-      h: defaults.h,
-    }
-  );
+function saveStored(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
-function nowIso() {
-  return new Date().toISOString();
+function sentence(value) {
+  return String(value || "").replace(/_/g, " ");
 }
 
-function makeId(prefix) {
-  const stamp = new Date().toISOString().replace(/[-:.TZ]/g, "").slice(0, 14);
-  const suffix = Math.random().toString(36).slice(2, 7);
-  return `${prefix}-${stamp}-${suffix}`;
+function titleCase(value) {
+  return sentence(value).replace(/\b\w/g, function (character) { return character.toUpperCase(); });
 }
 
-function setLiveStatus(text, tone = "ok") {
-  liveStatus.textContent = text;
-  liveStatus.className = `pill live-pill ${tone}`;
+function list(items, className) {
+  const values = Array.isArray(items) ? items : [];
+  return '<div class="' + (className || "token-list") + '">' + values.map(function (item) {
+    return '<span class="token">' + escapeHtml(sentence(item)) + "</span>";
+  }).join("") + "</div>";
 }
 
-function setApiStatus(text, tone = "warn", detail = "") {
-  jarvisApiState = {
-    ...jarvisApiState,
-    label: text,
-    tone,
-    detail: detail || jarvisApiState.detail,
-  };
-  if (apiStatus) {
-    apiStatus.textContent = text;
-    apiStatus.className = `pill live-pill ${tone}`;
-    apiStatus.title = detail || text;
-  }
+function badge(text, tone) {
+  return '<span class="badge ' + escapeHtml(tone || "neutral") + '">' + escapeHtml(text) + "</span>";
 }
 
-function apiEndpoint(path) {
-  const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${jarvisApiBase}${normalized}`;
+function sectionHeading(title, copy, actions) {
+  return '<header class="section-heading"><div><h2>' + escapeHtml(title) + "</h2><p>" + escapeHtml(copy) + '</p></div><div class="section-actions">' + (actions || "") + "</div></header>";
 }
 
-function cloudApprovalRequested(input) {
-  void input;
-  // Static dashboard text is never enough to approve provider execution.
-  return false;
+function downloadJson(filename, value) {
+  const payload = JSON.stringify(value, null, 2);
+  const blob = new Blob([payload], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
 }
 
-function attachmentRequestPayload() {
-  return pendingAttachments.slice(0, 6).map((attachment) => ({
-    id: attachment.id,
-    name: attachment.name,
-    mime_type: attachment.mime_type,
-    size: attachment.size,
-    transfer_mode: attachment.transfer_mode,
-    text_excerpt: attachment.text_excerpt || "",
-  }));
+function showNotice(message, tone) {
+  notice.hidden = false;
+  notice.textContent = message;
+  notice.classList.toggle("warning", tone === "warning");
+  window.setTimeout(function () { notice.hidden = true; }, 5000);
 }
 
-function conversationRequestPayload() {
-  return chatHistory.slice(-8).map((message) => ({
-    role: message.role,
-    source: message.source,
-    time: message.time,
-    text: String(message.text || "").slice(0, 1400),
-  }));
-}
-
-function providerRequestPayload(input, source = "typed command") {
-  const useProvider = cloudApprovalRequested(input);
+function currentPacket() {
+  const pack = workflowById(caseDraft.workflow_pack);
   return {
-    request: String(input || "").slice(0, 12000),
-    lane: "jarvis_chat",
-    architecture: architectureMode,
-    approved_test_input: false,
-    owner_approval: useProvider,
-    provider_approval: useProvider,
-    source_refs: [source, "dashboard chat"],
-    conversation: conversationRequestPayload(),
-    attachments: attachmentRequestPayload(),
+    schema_version: "2.0.0",
+    kind: "archflow_local_review_packet",
+    generated_at: new Date().toISOString(),
+    boundary: {
+      provider_called: false,
+      writeback_performed: false,
+      external_action_performed: false,
+      authority: "browser-local proposal only",
+    },
+    case: caseDraft,
+    selected_workflow: pack,
+    role_task_bindings: materializeRoleTaskBindings(pack),
+    settings: settings,
+    receipt_count: receipts.length,
+    configuration_refs: {
+      crew: "project/system/contracts/knowledge-crew-config.json",
+      roles: "project/system/contracts/role-catalog.json",
+      workflows: "project/system/contracts/role-workflows.json",
+      controller: "project/system/contracts/operating-model.json",
+      role_task_binding_schema: "project/system/schemas/role-task-binding.schema.json",
+      knowledge_case_schema: "project/system/schemas/knowledge-case.schema.json",
+    },
   };
 }
 
-async function sendJarvisCloudCommand(input, source = "typed command") {
-  const endpoint = "/api/chat";
-  await checkJarvisApi("Jarvis command submit", { silent: true, timeoutMs: 4000 });
-  const response = await fetch(apiEndpoint(endpoint), {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(providerRequestPayload(input, source)),
-  });
-  if (!response.ok) throw new Error(`backend returned ${response.status}`);
-  return response.json();
+function workflowById(id) {
+  if (!contracts) return null;
+  return contracts.workflows.packs.find(function (pack) { return pack.id === id; }) || contracts.workflows.packs[0];
 }
 
-function cloudResultText(result) {
-  const provider = result?.payload?.provider_result;
-  const runtime = result?.payload?.architecture_runtime;
-  if (provider?.provider_executed && provider.reply) {
-    return `${runtime?.architecture || "Cloud Jarvis"} returned via ${result.runtime?.model || "OpenRouter"}:\n\n${provider.reply}`;
-  }
-  const fallbackReply = result?.payload?.reply;
-  const attachmentCount = Number(result?.payload?.attachment_count || 0);
-  const attachmentText = attachmentCount ? ` Attachments received: ${attachmentCount}.` : "";
-  const reason = provider?.reason ? ` Provider route: ${provider.reason}.` : "";
-  return `${fallbackReply || `${runtime?.architecture || "Cloud Jarvis"} returned ${result?.status || "a review packet"}.`}${attachmentText}${reason} Writeback remains disabled until review.`;
+function roleByName(name) {
+  if (!contracts) return null;
+  return contracts.roles.roles.find(function (role) { return role.call_name === name; }) || null;
 }
 
-async function checkJarvisApi(reason = "health check", options = {}) {
-  const controller = new AbortController();
-  const timeoutId = window.setTimeout(() => controller.abort(), options.timeoutMs || 2400);
-  try {
-    const response = await fetch(`${apiEndpoint("/health")}?ts=${Date.now()}`, {
-      cache: "no-store",
-      signal: controller.signal,
+function roleForMachineId(id) {
+  if (!contracts) return null;
+  return contracts.roles.roles.find(function (role) { return role.id === id; }) || null;
+}
+
+function roleLabel(id) {
+  const role = roleForMachineId(id);
+  return role ? role.call_name + " — " + role.title : id === "@case_owner" ? "Case owner" : id;
+}
+
+function selectedRoleEntries(pack) {
+  if (!pack) return [];
+  const base = new Set(pack.roles);
+  const selected = new Set(pack.roles);
+  const queue = pack.roles.slice();
+  while (queue.length) {
+    const role = roleForMachineId(queue.shift());
+    if (!role || !role.task_defaults) continue;
+    role.task_defaults.reviewer_route.forEach(function (next) {
+      if (next === "@case_owner" || selected.has(next)) return;
+      selected.add(next);
+      queue.push(next);
     });
-    if (!response.ok) throw new Error(`health returned ${response.status}`);
-    const result = await response.json();
-    jarvisApiState = {
-      status: "connected",
-      label: "Jarvis API connected",
-      detail: `${result.payload?.service || "jarvis-api"} ${result.payload?.version || ""}`.trim(),
-      tone: "ok",
-      payload: result,
-    };
-    setApiStatus(jarvisApiState.label, "ok", jarvisApiState.detail);
-    if (!options.silent) appendEvent("Jarvis API connected", `Health check passed after ${reason}.`, "ok");
-    return jarvisApiState;
-  } catch (error) {
-    const message = error?.name === "AbortError"
-      ? "Local Jarvis API health check timed out."
-      : `Local Jarvis API unavailable: ${error.message || error}.`;
-    jarvisApiState = {
-      status: "disconnected",
-      label: "Jarvis API disconnected",
-      detail: `${message} Start services/jarvis-api on port 8787 or set ${storageKeys.apiBase}.`,
-      tone: "warn",
-      payload: null,
-    };
-    setApiStatus(jarvisApiState.label, "warn", jarvisApiState.detail);
-    if (!options.silent) appendEvent("Jarvis API disconnected", jarvisApiState.detail, "warn");
-    return jarvisApiState;
-  } finally {
-    window.clearTimeout(timeoutId);
   }
+  return Array.from(selected).map(function (id) {
+    return { role: roleForMachineId(id), base_or_closure: base.has(id) ? "base" : "review_closure" };
+  }).filter(function (entry) { return Boolean(entry.role); });
 }
 
-function isEditingControlActive() {
-  const element = document.activeElement;
-  if (!element) return false;
-  return ["INPUT", "TEXTAREA", "SELECT"].includes(element.tagName) || element.isContentEditable;
-}
-
-function appendEvent(title, detail, tone = "ok") {
-  liveEvents = [
-    {
-      id: makeId("event"),
-      time: nowIso(),
-      title,
-      detail,
-      tone,
-    },
-    ...liveEvents,
-  ].slice(0, 30);
-  saveJson(storageKeys.events, liveEvents);
-}
-
-function appendChat(role, text, source = "typed command") {
-  chatHistory = [
-    ...chatHistory,
-    {
-      id: makeId(`chat-${role}`),
-      role,
-      source,
-      time: nowIso(),
-      text: String(text || "").slice(0, 1600),
-    },
-  ];
-  saveJson(storageKeys.chatHistory, chatHistory);
-}
-
-function clearChatHistory() {
-  const confirmed = window.confirm("Clear persistent Jarvis chat history in this browser?");
-  if (!confirmed) return;
-  chatHistory = [];
-  saveJson(storageKeys.chatHistory, chatHistory);
-  appendEvent("Chat history cleared", "Persistent Jarvis chat history was cleared locally by explicit action.", "warn");
-  render();
-}
-
-function exportChatHistory() {
-  const packet = createLocalPacket("jarvis-chat-history-export", "current browser session", "Export current Jarvis chat history for Codex review.", {
-    extra: {
-      chat_history: chatHistory,
-      persistence: "local browser storage until explicit clear; download packet requires Codex review before durable write",
-    },
-  });
-  downloadPacket(packet.id);
-}
-
-function enterInterviewMode(lane = architectureMode, source = "mode selector") {
-  setArchitectureMode(lane);
-  jarvisMode = "interview";
-  localStorage.setItem(storageKeys.mode, jarvisMode);
-  interviewState = {
-    ...defaultInterviewState(),
-    active: true,
-    lane: architectureMode,
-  };
-  saveJson(storageKeys.interviewState, interviewState);
-  const question = architectureMeta().firstInterviewQuestion;
-  appendChat("assistant", question, `Jarvis interview kickoff - ${architectureMeta().short}`);
-  appendEvent("Interview started", `${architectureMeta().label}. Jarvis asked the first question proactively from ${source}.`, "ok");
-  return question;
-}
-
-function advanceInterview(answer, source = "interview answer") {
-  const lane = interviewState.lane === "control" ? "control" : "service";
-  interviewState = {
-    ...interviewState,
-    active: true,
-    lane,
-    answers: [
-      ...(interviewState.answers || []),
-      {
-        time: nowIso(),
-        source,
-        architecture: lane,
-        summary: String(answer || "").slice(0, 900),
+function materializeRoleTaskBindings(pack) {
+  if (!pack) return [];
+  const sourceRefs = [];
+  const requirementRefs = [];
+  const exactTargets = [];
+  return selectedRoleEntries(pack).map(function (entry) {
+    const role = entry.role;
+    const defaults = role.task_defaults;
+    return {
+      binding_id: "binding-" + caseDraft.case_id.replace(/^case-/, "") + "-" + role.id.replace(/_/g, "-"),
+      case_id: caseDraft.case_id,
+      workflow_pack_id: pack.id,
+      base_or_closure: entry.base_or_closure,
+      role_id: role.id,
+      call_name: role.call_name,
+      role_goal: role.goal,
+      inputs: defaults.inputs.slice(),
+      source_refs: sourceRefs.slice(),
+      requirement_refs: requirementRefs.slice(),
+      owned_output: defaults.owned_output,
+      expected_output: caseDraft.output ? caseDraft.output + " — " + sentence(defaults.owned_output) : sentence(defaults.owned_output),
+      allowed_skills: defaults.allowed_skills.slice(),
+      allowed_tools: defaults.allowed_tools.slice(),
+      permission_boundary: {
+        authority_ref: "case.authority",
+        mode: defaults.permission_mode,
+        exact_targets_ref: "binding.exact_targets",
+        forbidden_actions_ref: "role_catalog.roles." + role.id + ".forbidden",
+        rule: "intersection_only_no_authority_expansion",
       },
-    ].slice(-30),
-    questionIndex: Math.min((interviewState.questionIndex || 0) + 1, interviewQuestions[lane].length - 1),
-    lastSummary: String(answer || "").slice(0, 900),
-  };
-  saveJson(storageKeys.interviewState, interviewState);
-  const packet = createLocalPacket(`${lane}-interview-memory-candidate`, source, answer, {
-    extra: {
-      architecture: architectureMeta(lane).label,
-      next_question: currentInterviewQuestion(),
-      memory_policy: "summary candidates only; raw transcript storage is off by default",
-    },
-  });
-  return `Captured for ${architectureMeta(lane).label}: ${packet.id}. Next question: ${currentInterviewQuestion()}`;
-}
-
-function architectureSelectorMarkup(context = "jarvis") {
-  return `
-    <div class="architecture-selector" data-context="${escapeHtml(context)}" aria-label="Jarvis architecture selector">
-      <button class="${architectureMode === "service" ? "active" : ""}" data-architecture="service" type="button">
-        <strong>1</strong>
-        <span>Architecture 1 - PRD/ICP service output</span>
-      </button>
-      <button class="${architectureMode === "control" ? "active" : ""}" data-architecture="control" type="button">
-        <strong>2</strong>
-        <span>Architecture 2 - agent control system</span>
-      </button>
-    </div>
-  `;
-}
-
-function bindArchitectureSelectors(root = document) {
-  root.querySelectorAll("[data-architecture]").forEach((button) => {
-    button.addEventListener("click", () => {
-      setArchitectureMode(button.dataset.architecture, { switchTab: button.closest(".schema-shell") != null });
-      if (jarvisMode === "interview") enterInterviewMode(architectureMode, "architecture selector");
-      render();
-    });
+      forbidden_actions: role.forbidden.slice(),
+      exact_targets: exactTargets.slice(),
+      deterministic_checks: pack.done.slice(),
+      known_gaps: Array.isArray(caseDraft.known_gaps) ? caseDraft.known_gaps.slice() : [],
+      reviewer_route: defaults.reviewer_route.slice(),
+      handoff: {
+        to: defaults.handoff_to,
+        payload: ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"],
+      },
+      stop_conditions: [caseDraft.stop_condition],
+    };
   });
 }
 
-function speechSynthesisAvailable() {
-  return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-}
-
-function speakText(text, options = {}) {
-  if ((!voiceOutputEnabled && !options.force) || !speechSynthesisAvailable()) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(String(text || "").slice(0, 900));
-  utterance.rate = 0.96;
-  utterance.pitch = 1;
-  utterance.volume = 1;
-  const voices = window.speechSynthesis.getVoices?.() || [];
-  const preferred = voices.find((voice) => /en/i.test(voice.lang) && /samantha|ava|alloy|natural|premium|enhanced/i.test(voice.name))
-    || voices.find((voice) => /en/i.test(voice.lang))
-    || voices[0];
-  if (preferred) utterance.voice = preferred;
-  utterance.onstart = () => setLiveStatus("Jarvis speaking", "ok");
-  utterance.onend = () => setLiveStatus("Static polling active", "warn");
-  window.speechSynthesis.speak(utterance);
-}
-
-function stopSpeechPlayback() {
-  if (speechSynthesisAvailable()) window.speechSynthesis.cancel();
-  setLiveStatus("Speech stopped", "warn");
-  appendEvent("Speech playback stopped", "Browser speech synthesis was stopped by the operator.", "warn");
-}
-
-function addPacket(packet) {
-  localPackets = [packet, ...localPackets].slice(0, 20);
-  saveJson(storageKeys.packets, localPackets);
-}
-
-function dashboardSignature(data) {
-  return JSON.stringify({
-    generated_at: data.generated_at,
-    status_cards: data.status_cards,
-    gates: data.gates,
-    activity: (data.activity || []).slice(0, 10).map((item) => [item.path, item.modified, item.title]),
-  });
-}
-
-async function loadDashboardData(reason = "initial load", silent = false) {
-  const response = await fetch(`./data.json?ts=${Date.now()}`, { cache: "no-store" });
-  if (!response.ok) throw new Error(`Unable to load data.json: ${response.status}`);
-  const data = await response.json();
-  const nextSignature = dashboardSignature(data);
-  const changed = nextSignature !== dataSignature;
-  dashboardData = data;
-  dataSignature = nextSignature;
-  if (!silent || changed) {
-    appendEvent(
-      changed ? "Dashboard data refreshed" : "Dashboard data checked",
-      changed ? `Source snapshot changed after ${reason}.` : `No source snapshot change after ${reason}.`,
-      changed ? "ok" : "warn",
-    );
-  }
-  setLiveStatus(changed ? "Static data updated" : "Static polling active", changed ? "ok" : "warn");
-  render();
-}
-
-function startLiveRefresh() {
-  if (refreshTimer) window.clearInterval(refreshTimer);
-  refreshTimer = window.setInterval(() => {
-    if (isEditingControlActive()) {
-      setLiveStatus("Static polling paused while editing", "warn");
-      return;
-    }
-    loadDashboardData("scheduled static poll", true).catch(() => {
-      setLiveStatus("Static data only", "warn");
-    });
-  }, 15000);
-  if (apiHealthTimer) window.clearInterval(apiHealthTimer);
-  apiHealthTimer = window.setInterval(() => {
-    checkJarvisApi("scheduled health check", { silent: true }).catch(() => {});
-  }, 30000);
-}
-
-function badge(status) {
-  const text = String(status || "unknown");
-  const lower = text.toLowerCase();
-  const tone = lower.includes("active") || lower.includes("present") || lower.includes("ok") || lower.includes("tracked") || lower.includes("static") || lower.includes("files") || lower.includes("submitted") || lower.includes("installed") || lower.includes("passed") || lower.includes("available") || lower.includes("approved")
-    ? "ok"
-    : lower.includes("missing") || lower.includes("not_installed") || lower.includes("not_generated") || lower.includes("awaiting") || lower.includes("configured_not_installed") || lower.includes("deferred")
-      ? "warn"
-      : lower.includes("fail") || lower.includes("blocked")
-        ? "block"
-        : "";
-  return `<span class="badge ${tone}">${escapeHtml(text.replaceAll("_", " "))}</span>`;
-}
-
-function pathLink(path) {
-  const cleanPath = String(path || "");
-  const href = cleanPath.startsWith("project/")
-    ? `../${cleanPath.replace(/^project\//, "")}`
-    : `../../${cleanPath}`;
-  return `<a class="code" href="${escapeHtml(href)}">${escapeHtml(cleanPath)}</a>`;
+function bindingReadiness(binding) {
+  const missing = [];
+  if (!binding.source_refs.length) missing.push("exact source refs");
+  if (!binding.requirement_refs.length) missing.push("approved requirement refs");
+  if (["local_mutation_exact_targets", "external_action_exact_approval", "git_action_exact_approval"].includes(binding.permission_boundary.mode) && !binding.exact_targets.length) missing.push("exact targets");
+  return missing;
 }
 
 function renderNav() {
-  const renderTabButtons = (items) => items
-    .map((tab) => `
-      <button type="button" class="${tab.id === activeTab ? "active" : ""}" data-tab="${tab.id}" aria-current="${tab.id === activeTab ? "page" : "false"}">
-        <span class="glyph">${tab.glyph}</span>
-        <span>${tab.label}</span>
-      </button>
-    `)
-    .join("");
-
-  const secondaryIsActive = secondaryTabs.some((tab) => tab.id === activeTab);
-  nav.innerHTML = `
-    <div class="nav-group" aria-label="Primary dashboard sections">
-      <span class="nav-group-label">Explore</span>
-      ${renderTabButtons(primaryTabs)}
-    </div>
-    <details class="nav-details" ${secondaryIsActive ? "open" : ""}>
-      <summary>Tools & detailed views</summary>
-      <div class="nav-group secondary" aria-label="Detailed dashboard views">
-        ${renderTabButtons(secondaryTabs)}
-      </div>
-    </details>
-    <a class="nav-jarvis-link" href="/jarvis">
-      <span class="glyph">JV</span>
-      <span><strong>Jarvis Chat</strong><small>Dedicated operator workspace</small></span>
-    </a>
-    <div class="nav-group viewer-mode-switch" aria-label="Browser-local viewer mode">
-      <span class="nav-group-label">Local view</span>
-      <button type="button" class="${viewerMode === "admin" ? "active" : ""}" data-viewer-mode="admin">Admin</button>
-      <button type="button" class="${viewerMode === "guest" ? "active" : ""}" data-viewer-mode="guest">Guest</button>
-    </div>
-  `;
-
-  nav.querySelectorAll("[data-tab]").forEach((button) => {
-    button.addEventListener("click", () => {
-      activeTab = button.dataset.tab;
-      if (activeTab === "service") setArchitectureMode("service");
-      if (activeTab === "schema") setArchitectureMode("control");
-      if (activeTab !== "service" && activeTab !== "schema") schemaFullscreen = false;
-      window.history.replaceState(null, "", `#${activeTab}`);
-      render();
-    });
-  });
-  nav.querySelectorAll("[data-viewer-mode]").forEach((button) => {
-    button.addEventListener("click", () => setViewerMode(button.dataset.viewerMode));
-  });
-}
-
-function card({ label, value, note, tone }) {
-  return `
-    <article class="card">
-      <div class="card-label">${escapeHtml(label)}</div>
-      <div class="card-value tone-${tone || "ok"}">${escapeHtml(String(value).replaceAll("_", " "))}</div>
-      ${note ? `<div class="card-note">${escapeHtml(note)}</div>` : ""}
-    </article>
-  `;
-}
-
-function table(headers, rows) {
-  return `
-    <table class="table">
-      <thead><tr>${headers.map((h) => `<th>${escapeHtml(h)}</th>`).join("")}</tr></thead>
-      <tbody>${rows.map((row) => `<tr>${row.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody>
-    </table>
-  `;
-}
-
-function systemCards(data) {
-  const e13 = data.gates?.e1_3;
-  return [
-    { label: "Access", value: "hidden link", note: "Google auth planned after Vercel v1", tone: "warn" },
-    { label: "Refresh", value: "static polling", note: "Manual, focus, command, and 15s data checks", tone: "ok" },
-    { label: "Jarvis", value: jarvisMode, note: "Normal or interview command mode", tone: "ok" },
-    { label: "Jarvis API", value: jarvisApiState.status, note: jarvisApiState.detail, tone: jarvisApiState.tone },
-    { label: "Voice", value: "disabled", note: "Text chat and file transfer only on this dashboard", tone: "warn" },
-    { label: "File transfer", value: pendingAttachments.length ? "pending" : "ready", note: pendingAttachments.length ? `${pendingAttachments.length} attachment(s) staged for next chat message` : "Bounded text excerpts or metadata-only packets", tone: pendingAttachments.length ? "ok" : "warn" },
-    { label: "Provider keys", value: "server env only", note: "Provider keys are never exposed to static JS; provider calls require API/budget gates", tone: "warn" },
-    { label: "E1.3", value: e13?.derived_status || "unknown", note: e13 ? "Recorded fixture readback; inspect the evidence ledger for scope and next gate." : "No gate data", tone: e13?.readback_status === "passed" ? "ok" : "warn" },
-    { label: "Railway", value: "deferred", note: "Use for backend, SSE, auth, workers, durable writes", tone: "warn" },
-  ];
-}
-
-function operatingStatusCards(data) {
-  const latestSource = data.activity?.[0]?.title || data.sources?.[0]?.title || "latest public-safe source";
-  return [
-    {
-      label: "Start Here",
-      value: "Jarvis command",
-      note: "Ask, refresh, stage packet, or open interview mode.",
-      tone: "ok",
-    },
-    {
-      label: "Lane 1",
-      value: "PRD/ICP service product",
-      note: "Buyer-facing PRD, ICP, evidence, report, and task outputs.",
-      tone: "ok",
-    },
-    {
-      label: "Lane 2",
-      value: "Reliable agent orchestra",
-      note: "Internal Codex, review, provider gate, memory, and writeback control.",
-      tone: "ok",
-    },
-    {
-      label: "Current Proof",
-      value: "static route smoke",
-      note: `Latest source: ${latestSource}`.slice(0, 82),
-      tone: "warn",
-    },
-    {
-      label: "Blocked Gates",
-      value: "runtime gates",
-      note: "Provider, backend, and writeback stay gated.",
-      tone: "warn",
-    },
-  ];
-}
-
-function proofBacklogItems() {
-  return [
-    {
-      id: "D-1",
-      title: "Jarvis first-screen operating area",
-      status: "proved",
-      proof: "Jarvis text chat, file transfer, packet queue, and operating states render on #jarvis.",
-      next: "Keep voice mode disabled unless a new owner-approved audio lane is opened.",
-    },
-    {
-      id: "D-2",
-      title: "Two-orchestra operating modes",
-      status: "proved",
-      proof: "Operating Switchboard and schema screens separate PRD/ICP service product from reliable agent orchestra.",
-      next: "Keep website copy buyer-facing while dashboard remains internal control proof.",
-    },
-    {
-      id: "D-3",
-      title: "Static/local/provider/writeback clarity",
-      status: "proved",
-      proof: "State badges, runtime gates, and smoke markers show provider disabled and writeback gated.",
-      next: "Do not claim backend/provider runtime until approved bridge exists.",
-    },
-    {
-      id: "D-4",
-      title: "Node control panel hierarchy",
-      status: "proved",
-      proof: "Node panel includes Overview, Inputs, Outputs, Connections, Config, Logs, Prompts, Comments, and Safety.",
-      next: "Add real run artifacts only after Codex/backend writes reviewed outputs.",
-    },
-    {
-      id: "D-5",
-      title: "Long graph and mobile review",
-      status: "partial",
-      proof: "Stage rail and node strip exist; mobile screenshot was inspected temporarily, not retained.",
-      next: "Add durable sanitized screenshot or mobile stage-card acceptance record before merge/deploy claim.",
-    },
-    {
-      id: "D-6",
-      title: "Proof and blocker visibility",
-      status: "proved",
-      proof: "This panel surfaces checks, blockers, backlog IDs, accepted static-scope state, and next commands inside the dashboard.",
-      next: "Keep it aligned with issue/run notes after each dashboard pass and do not merge gated runtime work into static acceptance.",
-    },
-    {
-      id: "D-8",
-      title: "Public-safe sample outputs",
-      status: "proved",
-      proof: "Sanitized source packet, PRD excerpt, evidence card, task matrix, agent node config, and approval log examples now render on the Jarvis first screen.",
-      next: "Replace examples with reviewed E2.0A artifacts only after source-safe proof exists.",
-    },
-  ];
-}
-
-function validationCommandItems() {
-  return [
-    ["JavaScript syntax", "`node --check project/dashboard/app.js`", "passed"],
-    ["Dashboard JSON", "parse `project/dashboard/data.json`", "passed"],
-    ["Rendered route smoke", "`python3 project/scripts/dashboard-static-smoke.py`", "passed"],
-    ["Public safety", "`python3 scripts/public_safety_scan.py`", "passed"],
-    ["Diff hygiene", "`git diff --check`", "passed"],
-    ["Runtime guard", "`python3 project/scripts/pre-push-runtime-guard.py`", "required before branch closeout"],
-    ["Workflow validation", "`project/local/venv/bin/python project/scripts/validate-workflows.py`", "required before branch closeout"],
-  ];
-}
-
-function publicSafeSampleOutputs() {
-  return [
-    {
-      label: "Source packet",
-      title: "Sanitized product-context packet",
-      body: "Situation, goals, known facts, assumptions, open gaps, constraints, and approved source labels. Raw calls, transcripts, documents, customer names, and private links are excluded.",
-      output: "Input for PRD builder and evidence fork.",
-    },
-    {
-      label: "PRD excerpt",
-      title: "Sanitized PRD excerpt",
-      body: "Problem, target user, acceptance criteria, non-goals, dependencies, risks, and reviewer questions. Each claim is tagged as FACT, INTERPRETATION, HYPOTHESIS, or GAP.",
-      output: "Draft section for owner review, not an auto-approved PRD.",
-    },
-    {
-      label: "Evidence card",
-      title: "ICP signal card",
-      body: "Account shape, role hypothesis, pain type, source grade, confidence, contradiction, and next verification action. Public social signals remain hypotheses until triangulated.",
-      output: "E2.0A research packet candidate.",
-    },
-    {
-      label: "Task matrix",
-      title: "Delivery responsibility grid",
-      body: "Task, owner, input artifact, expected output, acceptance criteria, blocker, approval gate, and durable destination. No task is marked done without linked evidence.",
-      output: "Implementation handoff for Codex/reviewer lanes.",
-    },
-    {
-      label: "Agent node config",
-      title: "Approval-gated node contract",
-      body: "Allowed inputs, forbidden inputs, model provider state, persistence mode, retrieval scope, safety review, run recorder, prompt, system prompt, and comments.",
-      output: "Browser-local node packet for Codex review.",
-    },
-    {
-      label: "Approval log",
-      title: "Human review checkpoint",
-      body: "Decision, evidence used, explicit gaps, blocked actions, approved destination, next owner, and confidence level. Provider/backend/writeback claims remain gated.",
-      output: "Public-safe run note or issue update.",
-    },
-  ];
-}
-
-function prdIcpOutputBlocks() {
-  return [
-    ["Meeting Summary", "Decision-ready summary of approved meeting or interview input, with raw transcript storage off by default."],
-    ["Product Context", "Problem, product area, user workflow, constraints, non-goals, and source boundary."],
-    ["Stakeholders", "Decision owner, product owner, engineering partner, reviewer, and follow-up owners."],
-    ["ICP", "Current B2B SaaS product-team lane, account shape, buyer role, triggers, disqualifiers, and confidence."],
-    ["Pains/JTBD", "Buyer pains, jobs to be done, current friction, desired outcome, and evidence grade."],
-    ["Existing Workflow", "Current steps, tools, handoffs, duplicate work, blockers, and decision-memory loss."],
-    ["Proposed Workflow", "Target state, human gates, agent roles, source labels, and review checkpoints."],
-    ["Requirements", "Functional, non-functional, safety, reporting, retrieval, and integration requirements."],
-    ["Decisions", "Accepted decisions, owner, evidence used, confidence, and later review trigger."],
-    ["Questions", "Missing context, contradictions, buyer validation questions, and approval questions."],
-    ["Risks", "Unsupported claims, raw-source risk, provider/runtime risk, cost risk, and delivery risk."],
-    ["Next Tasks", "Role-owned next actions with artifact target, blocker, review gate, and due condition."],
-    ["Backlog", "Suggested Jira/GitLab-ready epics, stories, acceptance criteria, and dependencies."],
-    ["Success Metrics", "Cycle-time, rework, handoff quality, evidence completeness, review latency, and buyer signal metrics."],
-  ];
-}
-
-function taskStages() {
-  return ["Intake", "Role Assignment", "Active Work", "QA Gate", "Docs/Reports", "Git/Deploy", "Notion/Memory", "Final Decision"];
-}
-
-// This is intentionally a browser-local packet-preparation state machine. It
-// makes the review sequence visible without pretending that a provider, agent,
-// database, or repository write has occurred.
-function executionStages(kind) {
-  return kind === "service"
-    ? [
-      ["Intake", "Classify a supplied, public-safe source summary and its constraints."],
-      ["Context", "Assemble the bounded source references needed for a review packet."],
-      ["Plan", "Choose the smallest PRD/ICP task graph and its role contracts."],
-      ["Evidence", "Mark assumptions, missing evidence, and reviewer questions."],
-      ["Review", "Check the packet for source, claim, and scope problems."],
-      ["Approval", "Stop for an owner decision before any external action."],
-      ["Packet", "Export a local review bundle for an operator to apply."],
-    ]
-    : [
-      ["Request", "Capture the operator request and its authority boundary."],
-      ["Classify", "Choose the task type, risk level, and expected output."],
-      ["Contract", "Define role scope, sources, stop rules, and an independent reviewer."],
-      ["Bounded work", "Prepare the requested local task packet; no agent is launched here."],
-      ["Review", "Require correctness and safety review before a handoff."],
-      ["Approval", "Hold writeback, provider, deployment, and Git actions for explicit approval."],
-      ["Packet", "Export the review bundle for Codex or another approved operator."],
-    ];
-}
-
-function saveExecutionPreview() {
-  localStorage.setItem(storageKeys.executionPreview, JSON.stringify(executionPreview));
-}
-
-function resetExecutionPreview(kind = schemaKindForActiveTab()) {
-  if (executionPreviewTimer) window.clearTimeout(executionPreviewTimer);
-  executionPreviewTimer = null;
-  executionPreview = { workflow: kind, state: "idle", stageIndex: -1, packetId: null, updatedAt: nowIso() };
-  saveExecutionPreview();
-}
-
-function advanceExecutionPreview() {
-  const stages = executionStages(executionPreview.workflow);
-  const nextIndex = executionPreview.stageIndex + 1;
-  if (nextIndex >= stages.length) {
-    const packet = createLocalPacket("session-review-bundle", "browser-local sequence", `Prepared ${executionPreview.workflow} review bundle through ${stages.length} visible stages.`, {
-      extra: {
-        workflow_kind: executionPreview.workflow,
-        stage_sequence: stages.map(([title]) => title),
-        local_schema: blockSchema,
-        status: "review_required_not_executed",
-        execution_boundary: "The sequence prepared a browser-local review bundle. It did not run an agent, modify repository files, query a live database, or write externally.",
-      },
-    });
-    executionPreview = { ...executionPreview, state: "complete", stageIndex: stages.length - 1, packetId: packet.id, updatedAt: nowIso() };
-    if (executionPreview.workflow === "service") markKnowledgePrepared(packet.id);
-    if (executionPreview.workflow === "control") markAgentControlPrepared(packet.id);
-    saveExecutionPreview();
-    appendEvent("Review bundle prepared", "The visible sequence completed locally. Download the bundle and ask an approved operator to review or apply it.", "ok");
-    render();
-    return;
-  }
-  executionPreview = { ...executionPreview, state: "preparing", stageIndex: nextIndex, updatedAt: nowIso() };
-  saveExecutionPreview();
-  render();
-  executionPreviewTimer = window.setTimeout(advanceExecutionPreview, 700);
-}
-
-function startExecutionPreview(kind = schemaKindForActiveTab()) {
-  if (executionPreview.state === "preparing") return;
-  if (kind === "control" && sharedSession.knowledge?.status !== "prepared_local") {
-    appendEvent("Agent Control held", "Agent Control requires a browser-local Knowledge Service report first in both Admin and Guest preview. Prepare that report, download it for review, then return to Agent Control.", "warn");
-    render();
-    return;
-  }
-  resetExecutionPreview(kind);
-  executionPreview = { ...executionPreview, state: "preparing", updatedAt: nowIso() };
-  saveExecutionPreview();
-  appendEvent("Local review sequence started", "The browser is preparing a review bundle only; no runtime agent or repository action has started.", "ok");
-  advanceExecutionPreview();
-}
-
-function downloadSessionReviewBundle() {
-  const kind = schemaKindForActiveTab();
-  const bundle = {
-    schema_version: "1.0",
-    kind: "archflow_browser_local_review_bundle",
-    created_at: nowIso(),
-    workflow_kind: kind,
-    truth_boundary: "Browser-local export only. No repository files, provider calls, live database writes, subagent launches, or external writeback occurred.",
-    suggested_operator_actions: [
-      "Review source boundary and requested changes.",
-      "Move approved content into a scoped repository change.",
-      "Run project checks before any Git action.",
-      "Use a separate approval for provider, writeback, deploy, or push actions.",
-    ],
-    workflow_schema: blockSchema,
-    role_configuration: roleConfigs,
-    local_packets: localPackets,
-    sequence: executionPreview,
-    viewer_mode: viewerMode,
-    shared_session: sharedSession,
-  };
-  const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = `archflow-${kind}-review-bundle-${new Date().toISOString().slice(0, 10)}.json`;
-  anchor.click();
-  URL.revokeObjectURL(url);
-  appendEvent("Review bundle downloaded", "Downloaded browser-local JSON for operator review; it is not a repository patch or commit.", "ok");
-}
-
-function renderExecutionTimeline(kind) {
-  const stages = executionStages(kind);
-  const isCurrentWorkflow = executionPreview.workflow === kind;
-  const isPreparing = isCurrentWorkflow && executionPreview.state === "preparing";
-  const isComplete = isCurrentWorkflow && executionPreview.state === "complete";
-  return `
-    <section class="execution-timeline" aria-labelledby="execution-timeline-title">
-      <div class="section-header">
-        <div>
-          <span class="eyebrow">Visible request sequence</span>
-          <h3 id="execution-timeline-title">Prepare a review bundle, then hand it to an approved operator.</h3>
-          <p class="muted">This shows the current browser-local packet-preparation step. It becomes live runtime status only when a verified state feed provides a run identifier, node identifier, timestamp, evidence reference, and authority scope.</p>
-        </div>
-        <div class="row-actions">
-          <button class="primary" id="sequenceStart" type="button">${kind === "service" ? "Prepare knowledge report" : "Prepare agent-control handoff"}</button>
-          <button class="button" id="sequenceReset" type="button">Reset sequence</button>
-          <button class="button" id="sequenceDownload" type="button">Download session bundle</button>
-        </div>
-      </div>
-      <ol class="execution-stage-list" aria-live="polite">
-        ${stages.map(([title, description], index) => {
-          const complete = isComplete || (isPreparing && index < executionPreview.stageIndex);
-          const active = isPreparing && index === executionPreview.stageIndex;
-          const state = active ? "preparing locally" : complete ? "prepared" : "idle";
-          return `<li class="execution-stage ${active ? "is-active" : ""} ${complete ? "is-complete" : ""} ${!active && !complete ? "is-idle" : ""}" ${active ? 'aria-current="step"' : ""}>
-            <span class="execution-stage-number">${complete ? "✓" : String(index + 1).padStart(2, "0")}</span>
-            <span><strong>${escapeHtml(title)}</strong><small>${escapeHtml(description)}</small></span>
-            <em>${state}</em>
-          </li>`;
-        }).join("")}
-      </ol>
-      <p class="execution-timeline-note">${isPreparing ? "A local review packet is being assembled. No agent is running outside this browser." : isComplete ? "Local packet sequence complete. Download the bundle, then use an approved operator to create or review repository changes." : kind === "control" && sharedSession.knowledge?.status !== "prepared_local" ? "Agent Control is held in both Admin and Guest preview until Knowledge Service prepares a browser-local report. The static page cannot execute that report." : "No live execution observed. Start this only to prepare a browser-local review bundle."}</p>
-    </section>
-  `;
-}
-
-function bindExecutionTimelineControls(kind) {
-  view.querySelector("#sequenceStart")?.addEventListener("click", () => startExecutionPreview(kind));
-  view.querySelector("#sequenceReset")?.addEventListener("click", () => {
-    resetExecutionPreview(kind);
-    appendEvent("Local review sequence reset", "The browser-local sequence state was reset. No runtime state was changed.", "warn");
-    render();
-  });
-  view.querySelector("#sequenceDownload")?.addEventListener("click", downloadSessionReviewBundle);
-}
-
-function defaultRoleConfigs() {
-  const makeRole = (id, title, objective, responsibility, tools, modelRoute, budgetMode, outputArtifact, reviewGate, status, handoffTarget) => ({
-    id,
-    title,
-    objective,
-    responsibility,
-    tools,
-    modelRoute,
-    budgetMode,
-    outputArtifact,
-    reviewGate,
-    status,
-    handoffTarget,
-  });
-  return [
-    makeRole("integrator", "Integrator", "Lead integration and final acceptance.", "Merge order, final validation, Git-ready packet, and handout.", "Codex, Git, validation scripts", "Codex operator", "local only", "agent-handout.md", "AF Review plus owner gate", "active", "Owner approval"),
-    makeRole("delivery_reviewer", "Delivery Reviewer", "Close out delivery evidence without overclaiming.", "Project closeout, report links, task evidence, and handoff review.", "Run notes, wiki log, Git status", "Codex operator", "local only", "review-package.md", "Evidence exists first", "review", "Integrator"),
-    makeRole("experience_engineer", "Experience Engineer", "Own dashboard UX and workflow control surfaces.", "Knowledge Service, Agent Control, role panels, composer states, and schema controls.", "Dashboard JS/CSS, static smoke", "Codex operator", "local only", "dashboard UI diff", "Browser/static proof", "active", "Integrator"),
-    makeRole("technical_reviewer", "Technical Reviewer", "Review runtime and backend claims.", "Backend/API, LangGraph, CrewAI, provider, environment, hosting, and runtime boundaries.", "FastAPI, YAML, runtime guards", "Codex operator", "no provider spend", "technical review", "Provider disabled check", "review", "Integrator"),
-    makeRole("product_reviewer", "Product Reviewer", "Protect product and ICP consistency.", "PRD/ICP offer, buyer value, current ICP lane, and demo/report consistency.", "Reports, ICP docs, PRD template", "Codex operator", "local only", "ICP review", "Source support", "review", "Integrator"),
-    makeRole("efficiency_observer", "Model-Efficiency Observer", "Keep model budget and ledger discipline.", "Provider route, token/cost discipline, budget cap, and logging gaps.", "model-routing.yaml, ledger schema", "provider gated", "stop before the configured hard cap", "budget verdict", "Ledger required", "gated", "Integrator"),
-    makeRole("research_advisor", "Research Advisor", "Ground PRD and discovery structure.", "PRD theory, ICP theory, discovery-call theory, and missing-information questions.", "PRD/report templates", "Codex operator", "local only", "theory notes", "Source review", "review", "Product Reviewer"),
-    makeRole("safety_reviewer", "Safety Reviewer", "Protect secrets and unsafe write paths.", "Environment variables, secret scans, browser key ban, and raw-source policy.", "public safety scan, env examples", "Codex operator", "local only", "security checklist", "Secret scan", "active", "Technical Reviewer"),
-    makeRole("bounded_executor", "Bounded Executor", "Execute one approved task slice.", "Implement assigned scope without reverting unrelated changes.", "Scoped editor tools", "Codex operator", "local only", "bounded patch", "Reviewer required", "available", "Integrator"),
-    makeRole("af_tools", "AF Tools", "Verify sources, providers, and tools.", "Readiness checks, source inventory, provider status, runtime boundaries.", "runtime guard, config check", "Codex operator", "local only", "tool readiness", "AF Review", "active", "Integrator"),
-    makeRole("af_knowledge", "AF Knowledge", "Prepare reviewed memory packets.", "WikiLLM, run notes, insights, and public-safe memory candidates.", "wiki files, run notes", "Codex operator", "local only", "KB update packet", "Memory approval", "review", "Delivery Reviewer"),
-    makeRole("af_publisher", "AF Publisher", "Prepare publication only after gates pass.", "Git/deploy/report packet, release notes, blocked send reasons.", "Git, hosting gated, reports", "Codex operator", "local only", "publication packet", "Owner approval", "gated", "Integrator"),
-    makeRole("af_review", "AF Review", "Approve, revise, or block final output.", "Public safety, claim support, runtime boundary, docs/check evidence.", "safety scan, diff check, smoke", "Codex operator", "local only", "review verdict", "Required before push", "active", "Integrator"),
-    makeRole("crewai_workers", "CrewAI Role Workers", "Represent CrewAI roles without default runtime promotion.", "Configured role/task workers; Level 3 deterministic proof is evidence only.", "crewai-crew.yaml, proof artifacts", "proof_passed_not_default_runtime", "0.00 USD proof spend", "CrewAI proof packet", "Provider/default approval required", "eligible", "LangGraph"),
-  ];
-}
-
-function ensureRoleConfigs() {
-  const defaults = defaultRoleConfigs();
-  const byId = new Map((Array.isArray(roleConfigs) ? roleConfigs : []).map((role) => [role.id, role]));
-  roleConfigs = defaults.map((role) => ({ ...role, ...(byId.get(role.id) || {}) }));
-  saveJson(storageKeys.roleConfig, roleConfigs);
-}
-
-function renderPrdIcpRequestSurface() {
-  return `
-    <section class="panel prd-request-panel" style="margin-top:16px">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Direct Jarvis PRD/ICP Request</h2>
-          <p class="muted">Attempts the local backend lane when available; otherwise it stages a browser-local packet for Codex review. OpenRouter stays server-side and disabled until approval and budget guard proof exist.</p>
-        </div>
-        <div class="row-actions">
-          <button class="primary" id="prdSendBackend" type="button">Send to local backend</button>
-          <button class="button" id="prdStagePacket" type="button">Stage packet</button>
-        </div>
-      </div>
-      <label class="full-width-label">Request
-        <textarea id="prdComposerInput" rows="5" placeholder="Turn the approved meeting/interview/research input into a PRD/ICP packet with backlog and missing-info questions.">${escapeHtml(prdComposerDraft)}</textarea>
-      </label>
-      <div class="schema-runtime-gates compact">
-        <span>Test fixture: docs/testmeeting.md after owner approval</span>
-        <span>Discovery source links: approval-gated inputs</span>
-        <span>Output includes Jira/GitLab backlog</span>
-        <span>Missing-info questions required</span>
-      </div>
-      <div id="prdBackendStatus" class="callout compact">Backend status unknown. Static mode will preserve the request as text if the backend is unavailable.</div>
-    </section>
-  `;
-}
-
-function renderPrdIcpOutputBlocks() {
-  return `
-    <section class="panel prd-blocks-panel" style="margin-top:16px">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">PRD/ICP Output Blocks</h2>
-          <p class="muted">The service output follows a product-doc structure: source summary first, then workflow, requirements, decisions, backlog, metrics, and gaps.</p>
-        </div>
-        <div class="row-actions">
-          <a class="button" href="../../docs/prd-icp-output-template.md">PRD template</a>
-          <a class="button" href="../../docs/testmeeting-prd-runbook.md">Test runbook</a>
-        </div>
-      </div>
-      <div class="output-block-grid">
-        ${prdIcpOutputBlocks().map(([title, body]) => `
-          <article class="output-block">
-            <strong>${escapeHtml(title)}</strong>
-            <p>${escapeHtml(body)}</p>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-  `;
-}
-
-function renderTaskStages() {
-  return `
-    <section class="manual-chapter manual-start">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Agent Orchestra Stages</h2>
-          <p class="muted">Operator-facing execution path from intake through final decision, with Git/deploy and Notion/memory as explicit gates.</p>
-        </div>
-      </div>
-      <div class="stage-grid">
-        ${taskStages().map((stage, index) => `
-          <article class="stage-card">
-            <span>${index + 1}</span>
-            <strong>${escapeHtml(stage)}</strong>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-  `;
-}
-
-function renderRoleConfigPanels() {
-  ensureRoleConfigs();
-  return `
-    <section class="panel role-config-panel" style="margin-top:16px">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Role Configuration</h2>
-          <p class="muted">Editable safe fields are stored in browser localStorage and can be exported as a review packet. The browser does not write source YAML.</p>
-        </div>
-        <div class="row-actions">
-          <button class="primary" id="saveRoleConfig" type="button">Save local role config</button>
-          <button class="button" id="exportRoleConfig" type="button">Export role packet</button>
-        </div>
-      </div>
-      <div class="role-card-grid">
-        ${roleConfigs.map((role) => `
-          <article class="role-config-card" data-role-id="${escapeHtml(role.id)}">
-            <header>
-              <strong>${escapeHtml(role.title)}</strong>
-              <span>${escapeHtml(role.status)}</span>
-            </header>
-            <label>Objective<input data-field="objective" value="${escapeHtml(role.objective)}" /></label>
-            <label>Responsibility<textarea data-field="responsibility" rows="2">${escapeHtml(role.responsibility)}</textarea></label>
-            <label>Tools<input data-field="tools" value="${escapeHtml(role.tools)}" /></label>
-            <div class="control-grid compact">
-              <label>Model route<input data-field="modelRoute" value="${escapeHtml(role.modelRoute)}" /></label>
-              <label>Budget mode<input data-field="budgetMode" value="${escapeHtml(role.budgetMode)}" /></label>
-              <label>Output artifact<input data-field="outputArtifact" value="${escapeHtml(role.outputArtifact)}" /></label>
-              <label>Review gate<input data-field="reviewGate" value="${escapeHtml(role.reviewGate)}" /></label>
-              <label>Status<select data-field="status">
-                ${["available", "active", "review", "blocked", "gated", "eligible", "done"].map((status) => `<option value="${status}" ${role.status === status ? "selected" : ""}>${status}</option>`).join("")}
-              </select></label>
-              <label>Handoff target<input data-field="handoffTarget" value="${escapeHtml(role.handoffTarget)}" /></label>
-            </div>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-  `;
-}
-
-function createLocalPacket(kind, source, input, extra = {}) {
-  const id = makeId(kind);
-  const packet = {
-    id,
-    kind,
-    mode: jarvisMode,
-    status: "session_packet_created",
-    created_at: nowIso(),
-    source,
-    input_excerpt: String(input || "").slice(0, 900),
-    target_file: `project/runs/inbox/${id}.md`,
-    kb_update: "requires Codex or future Railway writeback approval",
-    evidence_label: kind.includes("research") ? "HYPOTHESIS" : "INTERPRETATION",
-    one_icp_lane: "30-75-person product-led B2B SaaS product leaders under a verified knowledge-continuity forcing moment",
-    write_gate: "No GitHub, Notion, WikiLLM, or file write occurs from static browser JavaScript. Browser packets are session-only until downloaded by the user.",
-    ...extra,
-  };
-  addPacket(packet);
-  appendEvent("Jarvis packet created", `${packet.kind} packet staged for ${packet.target_file}.`, "ok");
-  return packet;
-}
-
-function markdownPacket(packet) {
-  return `# Jarvis Packet: ${packet.kind}
-
-Created: ${packet.created_at}
-Status: ${packet.status}
-Mode: ${packet.mode}
-Evidence label: ${packet.evidence_label}
-Target file: ${packet.target_file}
-
-## Source
-
-${packet.source}
-
-## Input Excerpt
-
-${packet.input_excerpt}
-
-## Current ICP Lane
-
-${packet.one_icp_lane}
-
-## Write Gate
-
-${packet.write_gate}
-
-## KB Update
-
-${packet.kb_update}
-
-## Extra
-
-${JSON.stringify(packet.extra || {}, null, 2)}
-`;
-}
-
-function downloadPacket(packetId) {
-  const packet = localPackets.find((item) => item.id === packetId);
-  if (!packet) return;
-  const blob = new Blob([markdownPacket(packet)], { type: "text/markdown" });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = `${packet.id}.md`;
-  anchor.click();
-  URL.revokeObjectURL(url);
-}
-
-function jarvisReply(input, source = "typed command") {
-  const text = String(input || "").trim();
-  const lower = text.toLowerCase();
-  const architecture = architectureMeta();
-
-  if (!text) {
-    return `Jarvis is ready in ${architecture.label}. Ask for status, refresh, a PRD/ICP packet, an architecture-control task, or interview mode.`;
-  }
-
-  if (lower === "1" || lower.includes("architecture 1") || lower.includes("arch 1") || lower.includes("prd architecture") || lower.includes("service architecture")) {
-    setArchitectureMode("service", { switchTab: true });
-    return `Architecture 1 is active. Normal commands now bias toward ${architectureMeta().commandBias}.`;
-  }
-
-  if (lower === "2" || lower.includes("architecture 2") || lower.includes("arch 2") || lower.includes("control architecture") || lower.includes("agent architecture")) {
-    setArchitectureMode("control", { switchTab: true });
-    return `Architecture 2 is active. Normal commands now bias toward ${architectureMeta().commandBias}.`;
-  }
-
-  if (lower.includes("refresh") || lower.includes("reload") || lower.includes("update dashboard")) {
-    loadDashboardData("Jarvis refresh command").catch((error) => {
-      appendEvent("Refresh failed", error.message, "block");
-      render();
-    });
-    return "I am refreshing the dashboard data in place. The page will not reload.";
-  }
-
-  if (lower.includes("interview")) {
-    return enterInterviewMode(architectureMode, source);
-  }
-
-  if (lower.includes("normal mode") || lower.includes("status mode")) {
-    jarvisMode = "normal";
-    localStorage.setItem(storageKeys.mode, jarvisMode);
-    interviewState = { ...defaultInterviewState(), lane: architectureMode };
-    saveJson(storageKeys.interviewState, interviewState);
-    appendEvent("Jarvis mode changed", "Normal mode answers status and waits for instructions.", "ok");
-    return `Normal mode is active in ${architectureMeta().label}. I will answer under the selected architecture and ask before durable writes.`;
-  }
-
-  if (lower.includes("research") || lower.includes("check") || lower.includes("file") || lower.includes("analyze")) {
-    const packet = createLocalPacket("research-check", source, text, {
-      extra: {
-        architecture: architecture.label,
-        recommended_agent: "AF Research + AF Review",
-        next_step: "Use Codex or Railway writeback to save the packet and update WikiLLM after review.",
-      },
-    });
-    return `I created a local research/check packet: ${packet.id}. It is staged for ${packet.target_file}; static Vercel cannot write it to the repo without Codex or Railway authority.`;
-  }
-
-  if (lower.includes("content") || lower.includes("carousel") || lower.includes("post")) {
-    const packet = createLocalPacket("content-template-request", source, text, {
-      extra: {
-        architecture: architecture.label,
-        recommended_agent: "AF Copy + Visual Reporting + AF Review",
-        proof_required: "approved artifact, evidence label, no demand claim, AF Review, owner approval",
-      },
-    });
-    return `I staged a content-template packet: ${packet.id}. It should become implementation-focused content only after the proof and review gates pass.`;
-  }
-
-  if (lower.includes("status") || lower.includes("what works") || lower.includes("done")) {
-    const e13 = dashboardData?.gates?.e1_3;
-    return `Current status in ${architecture.label}: E1.3 is ${e13?.derived_status || "unknown"} with ${e13?.passed_count || 0}/${e13?.assertion_count || 0} readback checks. Dashboard keeps local browser packets, while Jarvis API is ${jarvisApiState.status}; OpenRouter execution is server-side only and requires explicit owner/provider approval plus budget guards. Voice is disabled; durable file writes and writeback remain gated.`;
-  }
-
-  if (lower.includes("voice") || lower.includes("speak") || lower.includes("sound")) {
-    activeTab = "jarvis";
-    return "Voice mode is disabled on this dashboard. Use Jarvis text chat and file attachments; raw audio capture, browser speech recognition, speaker playback, and voice API routes stay off.";
-  }
-
-  if (lower.includes("schema") || lower.includes("block") || lower.includes("graph")) {
-    activeTab = "schema";
-    return "Opening the block-schema page. It separates direct operator-to-Codex interaction from the downstream graph, reviewer, memory, and dashboard-monitor structure.";
-  }
-
-  if (lower.includes("icp") || lower.includes("service product") || lower.includes("prd flow")) {
-    activeTab = "service";
-    return "Opening the PRD/ICP service product flow. This screen shows the externally showable path from source intake to PRD, evidence, ICP, demo, approval, and output packet.";
-  }
-
-  if (lower.includes("config") || lower.includes("subprompt") || lower.includes("prompt")) {
-    activeTab = "config";
-    return "Opening the configuration page. Edits are browser-local and can be exported as a packet for Codex review; they do not change GitHub, Notion, or runtime prompts directly.";
-  }
-
-  if (lower.includes("project plan") || lower.includes("plan structure")) {
-    activeTab = "manual";
-    return "The dashboard deliberately does not expose strategic planning. Opening the operating manual, which explains the current implementation, parameters, boundaries, and safe handoff sequence.";
-  }
-
-  if (jarvisMode === "interview") {
-    return advanceInterview(text, source);
-  }
-
-  if (architectureMode === "control") {
-    const packet = createLocalPacket("architecture-control-command", source, text, {
-      extra: {
-        architecture: architecture.label,
-        allowed_scope: "prepare architecture change packet, logs, memory update candidates, and approval gates",
-        forbidden_without_approval: ["provider call", "Railway deploy", "live writeback", "raw transcript storage"],
-      },
-    });
-    return `Architecture 2 command staged: ${packet.id}. I will treat this as a controlled architecture/workflow request with logs, KB/Graphify/LlamaIndex/WikiLLM implications, and approval gates.`;
-  }
-
-  const packet = createLocalPacket("prd-service-command", source, text, {
-    extra: {
-      architecture: architecture.label,
-      expected_outputs: ["PRD section", "task matrix", "evidence gaps", "review packet"],
-    },
-  });
-  return `Architecture 1 command staged: ${packet.id}. I will treat this as a PRD/ICP service-output request and preserve missing information as questions or gaps.`;
-}
-
-async function handleGlobalSubmit(value, source = "typed command") {
-  const input = String(value || "").trim();
-  if (!input) return;
-  const previousTab = activeTab;
-  appendChat("user", input, source);
-  const reply = jarvisReply(input, source);
-  let finalReply = reply;
-  let finalSource = "Jarvis local packet";
-  appendEvent("Jarvis command", input.slice(0, 160), "ok");
-  if (!["refresh", "reload", "update dashboard"].some((phrase) => input.toLowerCase().includes(phrase))) {
-    try {
-      appendEvent("Jarvis cloud route", `Sending ${architectureMeta().label} request to ${jarvisApiBase}.`, "ok");
-      const result = await sendJarvisCloudCommand(input, source);
-      const cloudReply = cloudResultText(result);
-      finalReply = `${reply}\n\nAPI: ${cloudReply}`;
-      finalSource = "Jarvis API + local packet";
-      appendEvent("Jarvis cloud response", `${result.status || "ok"} from ${architectureMeta().label}.`, result.status === "provider_response_created" ? "ok" : "warn");
-      pendingAttachments = [];
-    } catch (error) {
-      appendEvent("Jarvis cloud fallback", `Cloud request unavailable: ${error.message || error}. Local packet preserved.`, "warn");
-    }
-  }
-  appendChat("assistant", finalReply, finalSource);
-  if (activeTab === previousTab && activeTab !== "jarvis") activeTab = "jarvis";
-  window.history.replaceState(null, "", `#${activeTab}`);
-  render();
-}
-
-function renderJarvis(data) {
-  const latestPacket = localPackets[0];
-  const recentMessages = chatHistory.slice(-24);
-  view.innerHTML = `
-    <div class="jarvis-chat-layout">
-      <section class="panel jarvis-chat-panel" aria-label="Jarvis chat">
-        <div class="jarvis-chat-header">
-          <div>
-            <div class="jarvis-title-row">
-              <div class="jarvis-avatar" aria-hidden="true">JV</div>
-              <div>
-                <h2>Jarvis Chat</h2>
-                <p>${escapeHtml(architectureMeta().label)} - ${escapeHtml(jarvisApiState.label)} - text only</p>
-              </div>
-            </div>
-          </div>
-          <div class="jarvis-header-actions">
-            <button class="button" id="jarvisRefresh" type="button">Refresh data</button>
-            <button class="button" id="exportChat" type="button">Export chat packet</button>
-            <button class="button" id="clearChat" type="button">Clear history</button>
-          </div>
-        </div>
-        ${architectureSelectorMarkup("jarvis")}
-        <div class="mode-bar inline" aria-label="Jarvis mode">
-          <button class="${jarvisMode === "normal" ? "active" : ""}" data-mode="normal" type="button">Normal</button>
-          <button class="${jarvisMode === "interview" ? "active" : ""}" data-mode="interview" type="button">Interview</button>
-        </div>
-        <div class="operator-strip chat-strip" aria-label="Dashboard operating states">
-          <span>${escapeHtml(architectureMeta().short)}</span>
-          <span>/api/chat</span>
-          <span>File transfer</span>
-          <span>Voice disabled</span>
-          <span>Provider gated</span>
-          <span>Writeback gated</span>
-        </div>
-        <div class="chat-thread main-chat" id="chatThread" aria-live="polite">
-          ${recentMessages.length ? recentMessages.map((message) => `
-            <article class="chat-message ${escapeHtml(message.role)}">
-              <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleTimeString()}</div>
-              <p>${escapeHtml(message.text)}</p>
-            </article>
-          `).join("") : `<div class="callout">No local chat history in this browser.</div>`}
-        </div>
-        <div class="attachment-tray" id="attachmentTray">
-          ${pendingAttachments.length ? pendingAttachments.map((attachment) => `
-            <span class="attachment-chip">
-              ${escapeHtml(attachment.name)} <small>${escapeHtml(formatFileSize(attachment.size))}</small>
-              <button type="button" data-remove-attachment="${escapeHtml(attachment.id)}" aria-label="Remove ${escapeHtml(attachment.name)}">x</button>
-            </span>
-          `).join("") : `<span class="muted">No files attached.</span>`}
-        </div>
-        <form class="jarvis-chat-form" id="jarvisChatForm" aria-label="Send message to Jarvis">
-          <label class="button icon-file-button" title="Attach files for this Jarvis message">
-            Attach
-            <input id="jarvisFileInput" type="file" multiple />
-          </label>
-          <textarea id="jarvisMessageInput" rows="3" aria-label="Jarvis message" placeholder="Message Jarvis about PRD/ICP work, agent orchestration, API checks, attached files, or current blockers."></textarea>
-          <button class="primary" type="submit">Send</button>
-        </form>
-        <div class="callout compact">API: ${escapeHtml(jarvisApiState.detail)} Base: ${escapeHtml(jarvisApiBase)}.</div>
-      </section>
-
-      <aside class="panel jarvis-side-panel">
-        <h2 class="section-title">Context</h2>
-        <div class="list">
-          <div class="row"><span class="row-title">Dashboard</span><div class="row-meta">Static Vercel view with API-backed review packets when available.</div></div>
-          <div class="row"><span class="row-title">Jarvis actions</span><div class="row-meta">Chat can stage packets, use /api/chat, and include file excerpts without durable writeback.</div></div>
-          <div class="row"><span class="row-title">Voice</span><div class="row-meta">Disabled on this dashboard. Use text chat and attachments only.</div></div>
-          <div class="row"><span class="row-title">ICP</span><div class="row-meta">Primary lane remains B2B SaaS product-team PRD workflow quality.</div></div>
-        </div>
-        <div class="row-actions compact-actions">
-          <a class="button active-soft" href="#service">PRD/ICP Flow</a>
-          <a class="button active-soft" href="#schema">Agent Orchestra</a>
-          <a class="button" href="#gates">Gates</a>
-          <a class="button" href="#history">History</a>
-        </div>
-      </aside>
-    </div>
-
-    <section class="panel operating-switchboard" style="margin-top:16px">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Operating Switchboard</h2>
-          <p class="muted">Choose the buyer-output flow or the internal control flow. The dashboard shows proof and blockers before any durable action.</p>
-        </div>
-        <div class="row-actions">
-          <a class="button active-soft" href="#service">Open PRD/ICP Flow</a>
-          <a class="button active-soft" href="#schema">Open Agent Orchestra</a>
-          <a class="button" href="#gates">Review Gates</a>
-        </div>
-      </div>
-      <div class="grid cols-3">
-        <article class="row">
-          <span class="row-title">PRD/ICP service product</span>
-          <div class="row-meta">Source packet -> PRD -> evidence -> ICP -> demo package -> approval -> service output.</div>
-        </article>
-        <article class="row">
-          <span class="row-title">Reliable agent orchestra</span>
-          <div class="row-meta">Command -> route -> Codex work -> parallel review -> merge -> owner approval -> durable output.</div>
-        </article>
-        <article class="row">
-          <span class="row-title">Proof and issue queue</span>
-          <div class="row-meta">Static route smoke, public-safety checks, local packets, and blocked gates stay visible before any writeback.</div>
-        </article>
-      </div>
-    </section>
-
-    <div class="grid cols-6" style="margin-top:16px">${operatingStatusCards(data).map((item) => card(item)).join("")}</div>
-
-    <section class="panel proof-backlog" style="margin-top:16px" id="proofBacklog">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Proof And Backlog Drawer</h2>
-          <p class="muted">Current dashboard acceptance state from the project plan, issue backlog, communication history, and latest run checks.</p>
-        </div>
-        <div class="row-actions">
-          <a class="button" href="../issues/2026-07-01-dashboard-website-improvement-issues.md">Issue backlog</a>
-          <a class="button" href="#manual">Operating manual</a>
-        </div>
-      </div>
-      <div class="grid cols-3">
-        <article class="row proof-command">
-          <span class="row-title">Integrator review state</span>
-          <div class="row-meta">The static dashboard scope is review-ready. Continue preserving provider, backend, writeback, voice, Nexus, deploy, and website-source gates.</div>
-        </article>
-        <article class="row proof-command">
-          <span class="row-title">Next product step</span>
-          <div class="row-meta">E2.0A dry run should produce evidence-card schema, source grades, ICP profile outline, executive decision, and next tasks.</div>
-        </article>
-        <article class="row proof-command">
-          <span class="row-title">Next control step</span>
-          <div class="row-meta">Run final validation, preserve the accepted static dashboard boundary, and keep website closeout separate from dashboard acceptance.</div>
-        </article>
-      </div>
-      <div class="proof-grid">
-        <div>
-          <h3>Dashboard Issue State</h3>
-          <div class="list">
-            ${proofBacklogItems().map((item) => `
-              <article class="proof-item ${escapeHtml(item.status)}">
-                <div>
-                  <strong>${escapeHtml(item.id)} ${escapeHtml(item.title)}</strong>
-                  <p>${escapeHtml(item.proof)}</p>
-                  <span>${escapeHtml(item.next)}</span>
-                </div>
-                ${badge(item.status)}
-              </article>
-            `).join("")}
-          </div>
-        </div>
-        <div>
-          <h3>Validation Commands</h3>
-          <div class="list">
-            ${validationCommandItems().map(([label, command, status]) => `
-              <article class="proof-check">
-                <strong>${escapeHtml(label)}</strong>
-                <code>${escapeHtml(command)}</code>
-                <span>${escapeHtml(status)}</span>
-              </article>
-            `).join("")}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel sample-output-gallery" style="margin-top:16px">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Public-Safe Sample Outputs</h2>
-          <p class="muted">Sanitized examples show what the service and agent orchestra produce without private screenshots, raw transcripts, customer data, or validated-demand claims.</p>
-        </div>
-        <div class="row-actions">
-          <a class="button" href="#service">Service flow</a>
-          <a class="button" href="#schema">Agent config</a>
-        </div>
-      </div>
-      <div class="sample-grid">
-        ${publicSafeSampleOutputs().map((item) => `
-          <article class="sample-card">
-            <span>${escapeHtml(item.label)}</span>
-            <strong>${escapeHtml(item.title)}</strong>
-            <p>${escapeHtml(item.body)}</p>
-            <em>${escapeHtml(item.output)}</em>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-
-    <div class="grid cols-6" style="margin-top:16px">${systemCards(data).map((item) => card(item)).join("")}</div>
-
-    <div class="split" style="margin-top:16px">
-      <section class="panel">
-        <h2 class="section-title">Session Event Stream</h2>
-        <div class="list">
-          ${liveEvents.slice(0, 8).map((event) => `
-            <article class="row event-row">
-              ${badge(event.tone)}
-              <span class="row-title">${escapeHtml(event.title)}</span>
-              <div class="row-meta">${new Date(event.time).toLocaleString()}</div>
-              <p>${escapeHtml(event.detail)}</p>
-            </article>
-          `).join("")}
-        </div>
-      </section>
-      <section class="panel">
-        <h2 class="section-title">Local Packets</h2>
-        ${latestPacket ? `
-          <div class="list">
-            ${localPackets.slice(0, 5).map((packet) => `
-              <article class="row">
-                <span class="row-title">${escapeHtml(packet.kind)} - ${escapeHtml(packet.id)}</span>
-                <div class="row-meta">${escapeHtml(packet.status)} - ${escapeHtml(packet.target_file)}</div>
-                <p>${escapeHtml(packet.input_excerpt || "No excerpt").slice(0, 220)}</p>
-                <div class="row-actions">
-                  <button class="button packet-download" type="button" data-packet="${escapeHtml(packet.id)}">Download packet</button>
-                </div>
-              </article>
-            `).join("")}
-          </div>
-        ` : `<div class="callout">No local packets yet. Ask Jarvis to run a research/check or content task.</div>`}
-      </section>
-    </div>
-  `;
-
-  view.querySelectorAll("[data-mode]").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (button.dataset.mode === "interview") {
-        enterInterviewMode(architectureMode, "mode button");
-      } else {
-        jarvisMode = "normal";
-        localStorage.setItem(storageKeys.mode, jarvisMode);
-        interviewState = { ...defaultInterviewState(), lane: architectureMode };
-        saveJson(storageKeys.interviewState, interviewState);
-        appendEvent("Jarvis mode changed", "Normal mode selected.", "ok");
-      }
-      render();
-    });
-  });
-  bindArchitectureSelectors(view);
-
-  document.querySelector("#jarvisRefresh")?.addEventListener("click", () => {
-    loadDashboardData("manual Jarvis button").catch((error) => {
-      appendEvent("Refresh failed", error.message, "block");
-      render();
-    });
-  });
-  const chatForm = view.querySelector("#jarvisChatForm");
-  const chatInput = view.querySelector("#jarvisMessageInput");
-  chatForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const value = chatInput?.value || "";
-    chatInput.value = "";
-    handleGlobalSubmit(value, pendingAttachments.length ? "Jarvis chat with file transfer" : "Jarvis chat");
-  });
-  chatInput?.addEventListener("keydown", (event) => {
-    if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
-      event.preventDefault();
-      chatForm?.requestSubmit();
-    }
-  });
-  view.querySelector("#jarvisFileInput")?.addEventListener("change", handleFiles);
-  view.querySelectorAll("[data-remove-attachment]").forEach((button) => {
-    button.addEventListener("click", () => {
-      pendingAttachments = pendingAttachments.filter((attachment) => attachment.id !== button.dataset.removeAttachment);
-      appendEvent("Attachment removed", "Pending Jarvis attachment was removed before send.", "warn");
-      render();
-    });
-  });
-  document.querySelector("#exportChat")?.addEventListener("click", exportChatHistory);
-  document.querySelector("#clearChat")?.addEventListener("click", clearChatHistory);
-  view.querySelectorAll(".packet-download").forEach((button) => {
-    button.addEventListener("click", () => downloadPacket(button.dataset.packet));
-  });
-}
-
-function submitVoiceFallback() {
-  const input = view.querySelector("#voiceTranscriptPreview");
-  const transcript = (input?.value || voiceTranscriptPreview || voiceFallbackDraft).trim();
-  if (!transcript) return;
-  appendEvent("Manual transcript submitted", "Manual fallback used the Jarvis chat processing path.", "ok");
-  handleGlobalSubmit(transcript, "manual transcript fallback");
-  voiceFallbackDraft = "";
-  voiceTranscriptPreview = "";
-  localStorage.removeItem(storageKeys.voiceTranscriptPreview);
-  if (input) input.value = "";
-}
-
-function startVoice() {
-  if (voiceModeDisabled) {
-    appendEvent("Voice disabled", "Voice mode is disabled for this dashboard. Use text chat and file attachments.", "warn");
-    return;
-  }
-  const state = document.querySelector("#voiceState");
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    state.textContent = "Speech recognition is not available in this browser. Use the manual transcript fallback or the bottom input field.";
-    appendEvent("Voice unavailable", "Browser speech recognition API is not available.", "warn");
-    return;
-  }
-
-  const recognition = new SpeechRecognition();
-  recognition.lang = "en-US";
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 1;
-  activeRecognition = recognition;
-  state.textContent = "Requesting browser microphone permission. If blocked, use manual transcript fallback.";
-  recognition.onstart = () => {
-    voiceAuthorized = true;
-    localStorage.setItem(storageKeys.voiceAuthorized, "true");
-    setLiveStatus("Jarvis listening", "ok");
-    startVoiceTimer();
-    state.textContent = "Transcribing. Speak one command or one interview answer, then review the editable preview.";
-    appendEvent("Voice listening started", "Browser speech recognition started. This proves the browser accepted the listening request for this session.", "ok");
-  };
-  recognition.onresult = (event) => {
-    const transcript = event.results?.[0]?.[0]?.transcript || "";
-    voiceTranscriptPreview = transcript;
-    voiceFallbackDraft = transcript;
-    localStorage.setItem(storageKeys.voiceTranscriptPreview, transcript);
-    const preview = document.querySelector("#voiceTranscriptPreview");
-    if (preview) preview.value = transcript;
-    state.textContent = "Transcript captured. Edit the preview, then send transcript.";
-    appendEvent("Voice transcript captured", "Authorized browser transcript is waiting for review in the editable preview.", "ok");
-  };
-  recognition.onnomatch = () => {
-    state.textContent = "No clear speech was detected. Use manual transcript fallback or try again.";
-    appendEvent("Voice no match", "Speech recognition ended without a confident transcript.", "warn");
-  };
-  recognition.onerror = (event) => {
-    const message = voiceErrorMessage(event.error);
-    activeRecognition = null;
-    stopVoiceTimer();
-    if (event.error === "not-allowed" || event.error === "service-not-allowed") {
-      voiceAuthorized = false;
-      localStorage.removeItem(storageKeys.voiceAuthorized);
-    }
-    state.textContent = message;
-    setLiveStatus("Voice fallback ready", "warn");
-    appendEvent("Voice fallback ready", message, "warn");
-  };
-  recognition.onend = () => {
-    stopVoiceTimer();
-    activeRecognition = null;
-    if (state.textContent === "Transcribing. Speak one command or one interview answer, then review the editable preview.") {
-      state.textContent = "Voice stopped without a transcript. Use manual transcript fallback or try again.";
-    }
-    setLiveStatus("Static polling active", "warn");
-  };
-  try {
-    recognition.start();
-  } catch (error) {
-    const message = voiceErrorMessage(error?.message || "start failed");
-    state.textContent = message;
-    setLiveStatus("Voice fallback ready", "warn");
-    appendEvent("Voice start failed", message, "warn");
-  }
-}
-
-function voiceErrorMessage(errorCode) {
-  const code = String(errorCode || "unknown");
-  const messages = {
-    network: "Voice recognition network service is unavailable in this browser. Use manual transcript fallback now; no audio was stored.",
-    "not-allowed": "Microphone permission was denied. Enable browser microphone access or use manual transcript fallback.",
-    "service-not-allowed": "The browser blocked the speech recognition service. Use manual transcript fallback or an approved local/provider voice runtime later.",
-    "audio-capture": "No microphone input was captured. Check the selected device or use manual transcript fallback.",
-    "no-speech": "No speech was detected. Try again or type the transcript manually.",
-    aborted: "Voice recognition was stopped. Use manual transcript fallback if this was unintended."
-  };
-  return messages[code] || `Voice recognition failed (${code}). Use manual transcript fallback or text input; no raw audio is stored.`;
-}
-
-function formatVoiceTimer(seconds = voiceElapsedSeconds) {
-  const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
-  const secs = String(seconds % 60).padStart(2, "0");
-  return `${mins}:${secs}`;
-}
-
-function startVoiceTimer() {
-  stopVoiceTimer(false);
-  voiceStartedAt = Date.now();
-  voiceElapsedSeconds = 0;
-  const update = () => {
-    voiceElapsedSeconds = Math.floor((Date.now() - voiceStartedAt) / 1000);
-    const timer = document.querySelector("#voiceTimer");
-    if (timer) timer.textContent = formatVoiceTimer();
-  };
-  update();
-  voiceTimerId = window.setInterval(update, 1000);
-}
-
-function stopVoiceTimer(reset = false) {
-  if (voiceTimerId) window.clearInterval(voiceTimerId);
-  voiceTimerId = null;
-  if (reset) {
-    voiceStartedAt = null;
-    voiceElapsedSeconds = 0;
-  }
-  const timer = document.querySelector("#voiceTimer");
-  if (timer) timer.textContent = formatVoiceTimer();
-}
-
-function stopVoiceRecognition(reason = "Voice recognition stopped") {
-  if (activeRecognition) {
-    try {
-      activeRecognition.stop();
-    } catch {
-      // Browser recognition can throw after it has already ended.
-    }
-  }
-  activeRecognition = null;
-  stopVoiceTimer();
-  setLiveStatus("Voice stopped", "warn");
-  appendEvent("Voice stopped", reason, "warn");
-  const state = document.querySelector("#voiceState");
-  if (state) state.textContent = reason;
-}
-
-function cancelVoiceTranscript() {
-  stopVoiceRecognition("Voice capture canceled. Transcript preview cleared.");
-  voiceTranscriptPreview = "";
-  voiceFallbackDraft = "";
-  localStorage.removeItem(storageKeys.voiceTranscriptPreview);
-  const input = document.querySelector("#voiceTranscriptPreview");
-  if (input) input.value = "";
-}
-
-function fileLooksText(file) {
-  const name = String(file.name || "").toLowerCase();
-  return Boolean(
-    (file.type || "").startsWith("text/")
-    || [
-      ".md", ".txt", ".csv", ".json", ".yaml", ".yml", ".xml", ".html", ".css", ".js", ".ts", ".tsx", ".jsx", ".py", ".toml", ".log"
-    ].some((extension) => name.endsWith(extension))
-  );
-}
-
-function readFileTextExcerpt(file, maxChars = 6000) {
-  if (!fileLooksText(file)) {
-    return Promise.resolve("");
-  }
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    const blob = file.slice(0, Math.min(file.size, maxChars * 4));
-    reader.onload = () => resolve(String(reader.result || "").slice(0, maxChars));
-    reader.onerror = () => resolve("");
-    reader.readAsText(blob);
-  });
-}
-
-function formatFileSize(size) {
-  const bytes = Number(size || 0);
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-}
-
-async function handleFiles(event) {
-  const files = Array.from(event.target.files || []);
-  for (const file of files.slice(0, 6)) {
-    const textExcerpt = await readFileTextExcerpt(file);
-    const attachment = {
-      id: makeId("attachment"),
-      name: file.name || "unnamed file",
-      mime_type: file.type || "unknown",
-      size: file.size,
-      transfer_mode: textExcerpt ? "text_excerpt" : "metadata_only",
-      text_excerpt: textExcerpt,
-    };
-    pendingAttachments = [attachment, ...pendingAttachments].slice(0, 6);
-    const packet = createLocalPacket(
-      "file-transfer-check",
-      "local browser file transfer",
-      textExcerpt
-        ? "File selected for Jarvis chat. The dashboard prepared a bounded text excerpt for the next API message and did not write it durably."
-        : "File selected for Jarvis chat. The dashboard prepared metadata only for the next API message.",
-      {
-        extra: {
-          file_name: attachment.name,
-          file_type: attachment.mime_type,
-          file_size: attachment.size,
-          transfer_mode: attachment.transfer_mode,
-          privacy: "session attachment only; no durable dashboard writeback",
-        },
-      },
-    );
-    appendEvent("File transfer prepared", `${attachment.name} staged as ${packet.id}.`, "ok");
-  }
-  render();
-  event.target.value = "";
-}
-
-function renderHistory() {
-  view.innerHTML = `
-    <section class="panel">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Chat History</h2>
-          <p class="muted">Full persistent browser-local conversation with Jarvis. Export before turning it into a Codex-reviewed packet. Clear only removes the local browser copy.</p>
-        </div>
-        <div class="row-actions">
-          <button class="primary" id="historyExport" type="button">Export chat packet</button>
-          <button class="button" id="historyClear" type="button">Clear persistent history</button>
-        </div>
-      </div>
-      <div class="chat-thread expanded">
-        ${chatHistory.length ? chatHistory.map((message) => `
-          <article class="chat-message ${escapeHtml(message.role)}">
-            <div class="chat-meta">${escapeHtml(message.role)} - ${escapeHtml(message.source)} - ${new Date(message.time).toLocaleString()}</div>
-            <p>${escapeHtml(message.text)}</p>
-          </article>
-        `).join("") : `<div class="callout">No persistent chat history in this browser.</div>`}
-      </div>
-    </section>
-  `;
-  document.querySelector("#historyExport")?.addEventListener("click", exportChatHistory);
-  document.querySelector("#historyClear")?.addEventListener("click", clearChatHistory);
-}
-
-function renderSchemaStageList(selectedId) {
-  const orderedNodes = [...blockSchema.nodes].sort((a, b) => {
-    const stageDifference = schemaStageIndex(a) - schemaStageIndex(b);
-    return stageDifference || a.y - b.y || a.x - b.x;
-  });
-  return `
-    <div class="schema-stage-list" aria-label="Workflow stage list">
-      ${orderedNodes.map((node, index) => `
-        <button class="schema-stage-card ${node.id === selectedId ? "active" : ""}" type="button" data-stage-node="${escapeHtml(node.id)}">
-          <span class="stage-sequence">${String(index + 1).padStart(2, "0")}</span>
-          <span class="stage-card-copy">
-            <strong>${escapeHtml(node.title)}</strong>
-            <span>${escapeHtml(schemaTypeLabel(node.type))} · ${escapeHtml(node.owner || "Unassigned")}</span>
-            <small>${escapeHtml(node.description || node.prompt || "No description configured.").slice(0, 180)}</small>
-          </span>
-          <span class="stage-card-proof">
-            ${badge(node.status || "planned")}
-            <small>${(node.inputs || []).length} inputs · ${(node.outputs || []).length} outputs</small>
-          </span>
-        </button>
-      `).join("")}
-    </div>
-  `;
-}
-
-function renderSchema(data) {
-  const kind = setActiveSchema();
-  applyInitialPanelDeepLink();
-  const meta = schemaScreenMeta[kind];
-  const selected = getSchemaNode(blockSchema.selectedNodeId) || blockSchema.nodes[0];
-  if (selected && blockSchema.selectedNodeId !== selected.id) blockSchema.selectedNodeId = selected.id;
-  const validation = validateBlockSchema();
-  const canvasWidth = Math.max(1760, ...blockSchema.nodes.map((node) => node.x + node.w + 80));
-  const canvasHeight = Math.max(780, ...blockSchema.nodes.map((node) => node.y + node.h + 80));
-  const edgeSvg = renderBlockSchemaEdges(canvasWidth, canvasHeight);
-  const inspectorMarkup = schemaInspectorCollapsed
-    ? ""
-    : `<aside class="schema-inspector">
-        <div class="schema-tabs">
-          <button class="active" type="button">Node</button>
-          <button type="button" id="schemaValidateFocus">Validation</button>
-          <button type="button" id="schemaLangSmithFocus">Tracing</button>
-        </div>
-        ${selected ? renderSchemaInspector(selected) : `<div class="callout">Select or add a block to edit it.</div>`}
-      </aside>`;
-  const schemaSurface = schemaViewMode === "stage"
-    ? renderSchemaStageList(selected?.id)
-    : `<div class="schema-canvas-wrap">
-        <div class="schema-canvas" id="schemaCanvas" style="width:${canvasWidth}px;height:${canvasHeight}px;transform:scale(${schemaZoom});transform-origin:top left;">
-          <svg class="schema-edge-layer" width="${canvasWidth}" height="${canvasHeight}" viewBox="0 0 ${canvasWidth} ${canvasHeight}" aria-hidden="true">${edgeSvg}</svg>
-          ${blockSchema.nodes.map((node) => renderSchemaNode(node)).join("")}
-        </div>
-      </div>`;
-
-  view.innerHTML = `
-    <section class="panel schema-shell ${schemaFullscreen ? "is-fullscreen" : ""}">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">${escapeHtml(meta.title)}</h2>
-          <p class="muted">${escapeHtml(meta.subtitle)} Click a node to open its full control panel; drag blocks, connect routes, validate the graph, and export a review packet.</p>
-          ${architectureSelectorMarkup("schema")}
-        </div>
-        <div class="row-actions">
-          <button class="button" id="schemaFullscreen" type="button" aria-pressed="${schemaFullscreen}">${schemaFullscreen ? "Exit full screen" : "Full-screen workflow"}</button>
-          <button class="button ${schemaViewMode === "canvas" ? "active-soft" : ""}" id="schemaViewCanvas" type="button" aria-pressed="${schemaViewMode === "canvas"}">Canvas</button>
-          <button class="button ${schemaViewMode === "stage" ? "active-soft" : ""}" id="schemaViewStage" type="button" aria-pressed="${schemaViewMode === "stage"}">Stage list</button>
-          <button class="button" id="schemaInspectorToggle" type="button" aria-pressed="${!schemaInspectorCollapsed}">${schemaInspectorCollapsed ? "Show inspector" : "Hide inspector"}</button>
-          <button class="button ${kind === "service" ? "active-soft" : ""}" data-architecture="service" type="button">Screen 1</button>
-          <button class="button ${kind === "control" ? "active-soft" : ""}" data-architecture="control" type="button">Screen 2</button>
-          <button class="button schema-add" data-type="agent" type="button">Draft role contract</button>
-          <button class="button schema-add" data-type="router" type="button">Draft route</button>
-          <button class="button schema-add" data-type="parallel" type="button">Draft parallel scope</button>
-          <button class="button schema-add" data-type="approval" type="button">Draft approval gate</button>
-          <button class="button" id="schemaConnect" type="button">${blockSchemaConnectSource ? "Cancel local connect" : "Local connect"}</button>
-          <button class="button" id="schemaLayout" type="button">Local layout</button>
-          <button class="button" id="schemaZoomOut" type="button">Zoom out</button>
-          <button class="button" id="schemaZoomIn" type="button">Zoom in</button>
-          <button class="button" id="schemaZoomReset" type="button">Reset zoom</button>
-          <button class="button" id="schemaZoomFit" type="button">Fit</button>
-          <button class="button" id="schemaBackendSend" type="button">Submit review packet</button>
-          <button class="primary" id="schemaExport" type="button">Export review packet</button>
-        </div>
-      </div>
-
-      <div class="callout" id="schemaBackendStatus">Review-packet submission is provider-disabled. It may reach a guarded endpoint when available, but cannot launch an agent, write files, push Git, or perform durable writeback.</div>
-
-      <section class="panel" style="margin-top:16px">
-        <div class="section-header"><div><span class="eyebrow">How to use this detailed view</span><h3>${kind === "service" ? "Knowledge Service: explain the evidence before configuring the graph." : "Agent Control: design the handoff before asking any agent to act."}</h3></div><a class="button" href="#manual">Read operating manual</a></div>
-        <p>${kind === "service" ? "Start with the requested decision, public-safe source boundary, intended artifact, exclusions, and reviewer. Use the nodes to express a proposed sequence from intake through evidence and approval. The visual graph is a local draft only: it does not ingest a repository, query private files, call LlamaIndex, or create a knowledge-base entry." : "Start from a reviewed Knowledge Service report. Set role ownership, allowed sources and skills, outputs, review route, approval gate, and stop rule for each node. Give only one role write ownership for a shared output; a separate reviewer must verify high-risk work. This graph does not create a sub-agent, modify files, or start LangGraph/CrewAI."}</p>
-        ${table(["Field group", "What to configure", "Why it matters", "Stored / does not do"], [
-          ["Node identity", "Title, node type, owner", "Shows accountability and route responsibility", "Browser localStorage; does not assign a live runtime"],
-          ["Contract", "Inputs, outputs, source/tool allowlists", "Prevents unbounded retrieval and vague role work", "Downloaded review packet; does not read sources"],
-          ["Control", "Route, retry, review, approval, stop", "Makes recovery and escalation explicit", "Local draft; does not trigger a workflow"],
-          ["Model/provider", "Provider state and model route", "Documents a potential route and safety boundary", "Configuration only; default remains none/disabled"],
-        ].map((row) => row.map(escapeHtml)))}
-      </section>
-
-      ${renderExecutionTimeline(kind)}
-
-      <div class="schema-stage-rail" aria-label="Workflow stage rail">
-        ${(kind === "service"
-          ? ["Intake", "PRD", "Evidence", "ICP", "Demo", "CrewAI Proof", "Approval", "Output"]
-          : ["Command", "Route", "Develop", "Review", "CrewAI Proof", "Merge", "Approval", "Record"]
-        ).map((stage, index) => `<span><strong>${index + 1}</strong>${escapeHtml(stage)}</span>`).join("")}
-      </div>
-
-      <div class="schema-status">
-        <span>${badge(validation.errors.length ? "blocked" : validation.warnings.length ? "needs review" : "valid")}</span>
-        <span>${badge("static browser local")}</span>
-        <span>${badge("browser-local edits only")}</span>
-        <span>${badge("MODEL_PROVIDER none")}</span>
-        <span>${badge(`${schemaViewMode} view`)}</span>
-        <span>${badge(`zoom ${Math.round(schemaZoom * 100)}%`)}</span>
-        <span>${escapeHtml(blockSchemaConnectSource ? `Connect mode: source is ${getSchemaNode(blockSchemaConnectSource)?.title || "unknown"}. Choose target.` : "Click a block to open its control panel. Drag selected blocks to reposition.")}</span>
-      </div>
-
-      <div class="schema-layer-brief">
-        ${[
-          ["Job", kind === "service" ? "Make PRD/ICP output understandable and buyer-reviewable." : "Make local agent work observable, configurable, and approval-gated."],
-          ["Pain", kind === "service" ? "Product evidence and ICP decisions get mixed with internal agent machinery." : "Parallel agents, providers, memory, and writes become unsafe when hidden behind one vague action."],
-          ["Boundary", "Static UI creates local review packets only. No secrets, raw transcripts, provider calls, backend writes, or deployment actions run here."],
-          ["Confidence", validation.errors.length ? "Medium: schema still has blocking validation errors." : validation.warnings.length ? "Medium-high: warnings need reviewer attention." : "High for static review UI; runtime execution remains gated."]
-        ].map(([label, value]) => `<div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`).join("")}
-      </div>
-
-      <div class="schema-runtime-gates">
-        <span>Runtime gate: provider disabled</span>
-        <span>Runtime gate: backend absent</span>
-        <span>Runtime gate: CrewAI Level 3 proof passed, not default runtime</span>
-        <span>Runtime gate: writeback approval required</span>
-        <span>Runtime gate: public-safe sources only</span>
-      </div>
-
-      <div class="schema-node-strip" aria-label="Node index">
-        ${blockSchema.nodes.map((node) => `
-          <button class="schema-node-jump ${node.id === blockSchema.selectedNodeId ? "active" : ""}" type="button" data-node-jump="${escapeHtml(node.id)}">
-            <strong>${escapeHtml(node.title)}</strong>
-            <span>${escapeHtml(schemaTypeLabel(node.type))} - ${escapeHtml(node.config?.modelProvider || "none")}</span>
-          </button>
-        `).join("")}
-      </div>
-
-      <div class="schema-workspace ${schemaInspectorCollapsed ? "inspector-collapsed" : ""} ${schemaViewMode === "stage" ? "stage-mode" : "canvas-mode"}">
-        ${schemaSurface}
-        ${inspectorMarkup}
-      </div>
-    </section>
-
-    <div class="grid cols-2" style="margin-top:16px">
-      <section class="panel">
-        <h2 class="section-title">Validation And Review Queue</h2>
-        <ul class="schema-validation" id="schemaValidation">
-          ${validation.errors.map((item) => `<li class="blocker">ERROR: ${escapeHtml(item)}</li>`).join("")}
-          ${validation.warnings.map((item) => `<li>WARNING: ${escapeHtml(item)}</li>`).join("")}
-          ${!validation.errors.length && !validation.warnings.length ? `<li class="ok">OK: graph is ready for review export.</li>` : ""}
-        </ul>
-        <div class="row-actions">
-          <button class="button" id="schemaQueueSelected" type="button">Draft selected task</button>
-          <button class="button" id="schemaReset" type="button">Reset local schema</button>
-        </div>
-      </section>
-      <section class="panel">
-        <h2 class="section-title">LangGraph / CrewAI / LangSmith Trace Prep</h2>
-        ${table(["Layer", "Traceable state", "Boundary"], [
-          ["LangGraph", "node id, route key, approval state, blocker, output link", "No raw private prompts or recordings"],
-          ["CrewAI", "agent role, task, proof status, ledger path, handoff file, reviewer verdict", "Level 3 proof passed; not default/provider runtime; no autonomous writeback"],
-          ["LangSmith", "sanitized run metadata, node names, trace URL placeholder", "LANGSMITH_API_KEY not exposed or activated here"],
-          ["Codex", "review branch, changed files, checks, run note", "Local operator/editor only"],
-        ].map((row) => row.map(escapeHtml)))}
-      </section>
-    </div>
-    ${kind === "service" ? renderPrdIcpRequestSurface() + renderPrdIcpOutputBlocks() : renderTaskStages() + renderRoleConfigPanels()}
-    ${nodeControlPanelId ? renderNodeControlPanel(getSchemaNode(nodeControlPanelId)) : ""}
-  `;
-
-  bindSchemaEditor();
-  bindArchitectureSelectors(view);
-}
-
-function renderBlockSchemaEdges(width, height) {
-  const defs = `
-    <defs>
-      <marker id="schemaArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6673"></path>
-      </marker>
-    </defs>
-  `;
-  const paths = blockSchema.edges.map((edge) => {
-    const from = getSchemaNode(edge.from);
-    const to = getSchemaNode(edge.to);
-    if (!from || !to) return "";
-    const a = schemaCenter(from);
-    const b = schemaCenter(to);
-    const mid = (a.x + b.x) / 2;
-    const d = `M ${a.x} ${a.y} C ${mid} ${a.y}, ${mid} ${b.y}, ${b.x} ${b.y}`;
-    const labelX = mid;
-    const labelY = (a.y + b.y) / 2 - 8;
-    return `
-      <path d="${d}" fill="none" stroke="#5b6673" stroke-width="2.2" marker-end="url(#schemaArrow)"></path>
-      <text x="${labelX}" y="${labelY}" text-anchor="middle" class="schema-edge-label">${escapeHtml(edge.label || edge.mode || "route")}</text>
-    `;
-  }).join("");
-  return `${defs}<rect width="${width}" height="${height}" fill="transparent"></rect>${paths}`;
-}
-
-function renderSchemaNode(node) {
-  const selected = node.id === blockSchema.selectedNodeId;
-  const inCount = incomingSchemaEdges(node.id).length;
-  const outCount = outgoingSchemaEdges(node.id).length;
-  const config = node.config || {};
-  return `
-    <article class="schema-node ${escapeHtml(node.type)} ${selected ? "selected" : ""}" role="button" tabindex="0" aria-label="Open ${escapeHtml(node.title)} control panel" data-node-id="${escapeHtml(node.id)}" style="transform:translate(${node.x}px, ${node.y}px);width:${node.w}px;height:${node.h}px">
-      <div class="schema-node-head">
-        <strong>${escapeHtml(node.title)}</strong>
-        <span>${escapeHtml(schemaTypeLabel(node.type))}</span>
-      </div>
-      <p>${escapeHtml(node.prompt || "No prompt configured.").slice(0, 150)}</p>
-      <div class="schema-node-meta">
-        <span>${escapeHtml(node.owner || "Unassigned")}</span>
-        <span>${escapeHtml(node.status || "planned")}</span>
-      </div>
-      <div class="schema-node-output">${inCount}/${outCount} routes · ${(node.inputs || []).length}/${(node.outputs || []).length} ports · ${escapeHtml(node.finalOutput || "Pending output").slice(0, 68)}</div>
-    </article>
-  `;
-}
-
-function renderSchemaInspector(node) {
-  const incoming = incomingSchemaEdges(node.id);
-  const outgoing = outgoingSchemaEdges(node.id);
-  return `
-    <div class="schema-summary">
-      <h3>${escapeHtml(node.title)}</h3>
-      <p>${escapeHtml(node.description || node.prompt || "No description configured.")}</p>
-      <dl>
-        <div><dt>Layer</dt><dd>${escapeHtml(node.workflowLayer || "not set")}</dd></div>
-        <div><dt>Owner</dt><dd>${escapeHtml(node.owner || "Unassigned")}</dd></div>
-        <div><dt>Status</dt><dd>${escapeHtml(node.status || "planned")}</dd></div>
-        <div><dt>Provider</dt><dd>${escapeHtml(node.config?.modelProvider || "none")}</dd></div>
-        <div><dt>Inputs</dt><dd>${incoming.length} connections, ${(node.inputs || []).length} ports</dd></div>
-        <div><dt>Outputs</dt><dd>${outgoing.length} connections, ${(node.outputs || []).length} ports</dd></div>
-      </dl>
-      <div class="schema-move-controls" aria-label="Move selected node">
-        <button class="button schema-move" type="button" data-dx="0" data-dy="-40">Up</button>
-        <button class="button schema-move" type="button" data-dx="-40" data-dy="0">Left</button>
-        <button class="button schema-move" type="button" data-dx="40" data-dy="0">Right</button>
-        <button class="button schema-move" type="button" data-dx="0" data-dy="40">Down</button>
-      </div>
-      <div class="row-actions">
-        <button class="primary" id="nodePanelOpen" type="button">Open control panel</button>
-        <button class="button" id="schemaDuplicateNode" type="button">Duplicate local</button>
-        <button class="button" id="schemaDeleteNode" type="button">Delete local draft</button>
-      </div>
-    </div>
-  `;
-}
-
-function renderNodeControlPanel(node) {
-  const incoming = incomingSchemaEdges(node.id);
-  const outgoing = outgoingSchemaEdges(node.id);
-  const tabs = ["Overview", "Inputs", "Outputs", "Connections", "Config", "Logs", "Prompts", "Comments", "Safety"];
-  return `
-    <div class="node-panel-backdrop" role="presentation">
-      <section class="node-panel" role="dialog" aria-modal="true" aria-labelledby="nodePanelTitle">
-        <form id="nodeControlPanelForm">
-          <header class="node-panel-header">
-            <div>
-              <div class="panel-eyebrow">${escapeHtml(blockSchema.title)}</div>
-              <h2 id="nodePanelTitle">${escapeHtml(node.title)}</h2>
-              <p>${escapeHtml(node.job || "Configure this node for the selected workflow layer.")}</p>
-              <div class="node-panel-quick-facts" aria-label="Node operating facts">
-                <span>${escapeHtml(node.workflowLayer || "workflow layer unset")}</span>
-                <span>${escapeHtml(incoming.length)} inputs</span>
-                <span>${escapeHtml(outgoing.length)} outputs</span>
-                <span>MODEL PROVIDER ${escapeHtml(node.config?.modelProvider || "none")}</span>
-                <span>${escapeHtml(node.config?.approvalGate || "approval gate unset")}</span>
-              </div>
-            </div>
-            <div class="row-actions">
-              <button class="primary" type="submit">Save local node</button>
-              <button class="button" id="nodePanelQueue" type="button">Draft task packet</button>
-              <button class="button" id="nodePanelClose" type="button">Close</button>
-            </div>
-          </header>
-          <nav class="node-panel-tabs" aria-label="Node control panel sections">
-            ${tabs.map((tab) => `<button class="node-panel-tab" type="button" data-panel-target="nodePanel${tab}">${tab}</button>`).join("")}
-          </nav>
-          <div class="node-panel-body">
-            <section class="node-panel-section node-panel-overview" id="nodePanelOverview">
-              <h3>Overview</h3>
-              <div class="grid cols-3">
-                <div class="row"><span class="row-title">Job</span><div class="row-meta">${escapeHtml(node.job || "No job defined.")}</div></div>
-                <div class="row"><span class="row-title">Pain Reduced</span><div class="row-meta">${escapeHtml(node.pain || "No risk defined.")}</div></div>
-                <div class="row"><span class="row-title">Evidence</span><div class="row-meta">${escapeHtml(node.evidence || "Evidence pending.")}</div></div>
-              </div>
-              <div class="schema-runtime-gates compact">
-                <span>Provider calls require approval</span>
-                <span>Raw capture blocked</span>
-                <span>Writeback requires approval</span>
-                <span>Export creates local packet</span>
-              </div>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelInputs">
-              <h3>Inputs</h3>
-              <div class="control-grid">
-                <label>Title<input id="nodeTitleInput" value="${escapeHtml(node.title)}" /></label>
-                <label>Type<select id="nodeTypeInput">
-                  ${["start", "agent", "router", "parallel", "merge", "approval", "output"].map((type) => `<option value="${type}" ${node.type === type ? "selected" : ""}>${schemaTypeLabel(type)}</option>`).join("")}
-                </select></label>
-                <label>Owner / agent<input id="nodeOwnerInput" value="${escapeHtml(node.owner || "")}" /></label>
-                <label>Status<select id="nodeStatusInput">
-                  ${["planned", "active", "waiting", "blocked", "done"].map((status) => `<option value="${status}" ${node.status === status ? "selected" : ""}>${status}</option>`).join("")}
-                </select></label>
-              </div>
-              <label>Input ports<textarea id="nodeInputsInput" rows="5">${escapeHtml(textareaFromList(node.inputs))}</textarea></label>
-              <div class="connection-list">
-                ${incoming.length ? incoming.map((edge) => `<div><strong>${escapeHtml(getSchemaNode(edge.from)?.title || edge.from)}</strong><span>${escapeHtml(edge.label || "input")} - ${escapeHtml(edge.condition || "no condition")}</span></div>`).join("") : `<div><span>No incoming connections yet.</span></div>`}
-              </div>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelOutputs">
-              <h3>Outputs</h3>
-              <label>Final output<textarea id="nodeFinalOutputInput" rows="3">${escapeHtml(node.finalOutput || "")}</textarea></label>
-              <label>Output ports<textarea id="nodeOutputsInput" rows="5">${escapeHtml(textareaFromList(node.outputs))}</textarea></label>
-              <label>Possible outputs<textarea id="nodePossibleOutputsInput" rows="4">${escapeHtml(textareaFromList(node.possibleOutputs))}</textarea></label>
-              <label>Output links<textarea id="nodeOutputLinksInput" rows="3">${escapeHtml(textareaFromList(node.outputLinks))}</textarea></label>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelConnections">
-              <h3>Connections</h3>
-              <p class="muted">Connection settings stay browser-local until exported. Use Connect blocks on the canvas to add routes.</p>
-              <div class="edge-editor-list">
-                ${[...incoming, ...outgoing].length ? [...incoming, ...outgoing].map((edge) => renderEdgeEditor(edge, edge.to === node.id ? "input" : "output")).join("") : `<div class="callout">No route connected to this node yet.</div>`}
-              </div>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelConfig">
-              <h3>Configuration</h3>
-              <div class="control-grid">
-                ${renderConfigDropdowns(node)}
-              </div>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelLogs">
-              <h3>Last Runs</h3>
-              <label>Interpreted run log<textarea id="nodeLastRunsInput" rows="7">${escapeHtml((node.lastRuns || []).map((run) => `${run.time} | ${run.status} | ${run.summary}`).join("\n"))}</textarea></label>
-              <div class="callout compact">Static mode records interpreted summaries only. Raw transcripts, recordings, private document bodies, and provider traces are not persisted here.</div>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelPrompts">
-              <h3>Prompts</h3>
-              <label>Operating prompt<textarea id="nodePromptInput" rows="5">${escapeHtml(node.prompt || "")}</textarea></label>
-              <label>System prompt<textarea id="nodeSystemPromptInput" rows="6">${escapeHtml(node.systemPrompt || "")}</textarea></label>
-              <label>Requirements<textarea id="nodeRequirementsInput" rows="4">${escapeHtml(node.requirements || "")}</textarea></label>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelComments">
-              <h3>Comments</h3>
-              <label>Description<textarea id="nodeDescriptionInput" rows="4">${escapeHtml(node.description || "")}</textarea></label>
-              <label>Developer comments<textarea id="nodeCommentsInput" rows="5">${escapeHtml(node.comments || "")}</textarea></label>
-              <label>Files owned/touched<textarea id="nodeFilesInput" rows="4">${escapeHtml(textareaFromList(node.files))}</textarea></label>
-              <label>Questions covered<textarea id="nodeQuestionsInput" rows="4">${escapeHtml(textareaFromList(node.questions))}</textarea></label>
-            </section>
-
-            <section class="node-panel-section" id="nodePanelSafety">
-              <h3>Safety And Business Fit</h3>
-              <label>Job to be done<textarea id="nodeJobInput" rows="3">${escapeHtml(node.job || "")}</textarea></label>
-              <label>Pain / risk reduced<textarea id="nodePainInput" rows="3">${escapeHtml(node.pain || "")}</textarea></label>
-              <label>Evidence<textarea id="nodeEvidenceInput" rows="4">${escapeHtml(node.evidence || "")}</textarea></label>
-              <label>Business objective<textarea id="nodeBusinessObjectiveInput" rows="3">${escapeHtml(node.businessObjective || "")}</textarea></label>
-              <div class="callout compact">Provider calls, writeback, deployment, raw capture, and third-party tool installation require explicit approval and verification before execution.</div>
-            </section>
-          </div>
-        </form>
-      </section>
-    </div>
-  `;
-}
-
-function renderConfigDropdowns(node) {
-  const options = configOptions();
-  return Object.entries(options).map(([key, values]) => {
-    const current = node.config?.[key] || defaultNodeConfig(node.type, node.workflowLayer)[key] || values[0];
-    return `
-      <label>${escapeHtml(key.replace(/([A-Z])/g, " $1").toLowerCase())}
-        <select class="node-config-select" data-config-key="${escapeHtml(key)}">
-          ${values.map((value) => `<option value="${escapeHtml(value)}" ${current === value ? "selected" : ""}>${escapeHtml(value)}</option>`).join("")}
-        </select>
-      </label>
-    `;
+  nav.innerHTML = ROUTES.map(function (route) {
+    const active = route.id === activeRoute;
+    return '<a href="#' + route.id + '" class="' + (active ? "active" : "") + '"' + (active ? ' aria-current="page"' : "") + '><span class="nav-icon" aria-hidden="true">' + route.icon + "</span><span>" + route.label + "</span></a>";
   }).join("");
 }
 
-function renderEdgeEditor(edge, direction) {
-  const from = getSchemaNode(edge.from);
-  const to = getSchemaNode(edge.to);
-  return `
-    <fieldset class="edge-editor" data-edge-id="${escapeHtml(edge.id)}">
-      <legend>${escapeHtml(direction)}: ${escapeHtml(from?.title || edge.from)} -> ${escapeHtml(to?.title || edge.to)}</legend>
-      <label>Label<input class="edge-label-input" value="${escapeHtml(edge.label || "")}" /></label>
-      <label>Mode<select class="edge-mode-input">
-        ${["normal", "conditional", "parallel", "merge", "approval"].map((mode) => `<option value="${mode}" ${edge.mode === mode ? "selected" : ""}>${mode}</option>`).join("")}
-      </select></label>
-      <label>Condition<textarea class="edge-condition-input" rows="2">${escapeHtml(edge.condition || "")}</textarea></label>
-    </fieldset>
-  `;
+function renderHeader() {
+  const route = ROUTES.find(function (item) { return item.id === activeRoute; }) || ROUTES[0];
+  pageEyebrow.textContent = route.eyebrow;
+  pageTitle.textContent = route.title;
+  pageSummary.textContent = route.summary;
 }
 
-function bindSchemaEditor() {
-  const activateSchemaNode = (nodeId) => {
-    const node = getSchemaNode(nodeId);
-    if (!node) return;
-    if (blockSchemaConnectSource && blockSchemaConnectSource !== node.id) {
-      blockSchema.edges.push(schemaEdge(makeId("schema-edge"), blockSchemaConnectSource, node.id, "next", "Selected in dashboard editor.", "normal"));
-      blockSchemaConnectSource = null;
-      appendEvent("Schema blocks connected", "A local block-schema connection was added.", "ok");
-    } else if (blockSchemaConnectSource === node.id) {
-      blockSchemaConnectSource = null;
+function phaseRail(activeIndex) {
+  return '<div class="progress-rail" aria-label="Case progress">' + PHASES.map(function (phase, index) {
+    const className = index < activeIndex ? "done" : index === activeIndex ? "active" : "";
+    return '<div class="progress-step ' + className + '"><span>' + phase[0] + "</span><strong>" + phase[1] + "</strong><small>" + phase[2] + "</small></div>";
+  }).join("") + "</div>";
+}
+
+function renderToday() {
+  const pack = workflowById(caseDraft.workflow_pack);
+  const missionTitle = caseDraft.goal || "Turn one reviewed requirement into one safe, reviewable action.";
+  const nextAction = caseDraft.goal
+    ? "Confirm the evidence boundary and requirement owner, then prepare the role-safe packet."
+    : "Start a case with the goal, role, evidence boundary, reviewer, and stop condition.";
+  return [
+    '<section class="hero-grid">',
+      '<article class="panel mission-card">',
+        '<div class="mission-meta">',
+          badge("Browser-local draft", "green"),
+          badge(pack ? pack.label : "Employee onboarding", ""),
+          badge("Provider disabled", "coral"),
+        "</div>",
+        '<h2>' + escapeHtml(missionTitle) + "</h2>",
+        '<p class="mission-lead">ArchFlow keeps the employee, evidence, responsibility, requirements, review, and outcome on one case spine. It prepares the next safe action; it does not silently execute it.</p>',
+        '<div class="mission-actions"><a class="primary-button" href="#work">Start or update this work</a><a class="secondary-button" href="#knowledge">See the evidence route</a></div>',
+        '<div class="mission-facts">',
+          '<div class="mission-fact"><span>Role</span><strong>' + escapeHtml(caseDraft.employee_role) + "</strong></div>",
+          '<div class="mission-fact"><span>Evidence</span><strong>' + escapeHtml(caseDraft.evidence_boundary) + "</strong></div>",
+          '<div class="mission-fact"><span>Reviewer</span><strong>' + escapeHtml(caseDraft.reviewer) + "</strong></div>",
+          '<div class="mission-fact"><span>Next safe action</span><strong>' + escapeHtml(nextAction) + "</strong></div>",
+        "</div>",
+      "</article>",
+      '<aside class="card guide-card" aria-labelledby="taras-title">',
+        '<div class="guide-person"><span class="avatar" aria-hidden="true">TA</span><div><h2 id="taras-title">Ask Taras</h2><div class="role-id">Contextual onboarding guide · deterministic local guidance</div></div></div>',
+        '<p>Describe what you need to do or what is unclear. Taras will point to a workflow and the questions that must be answered before work—not generate company truth or call a model.</p>',
+        '<form class="guide-question" id="guideForm"><label class="field"><span>Your question</span><textarea id="guideInput" maxlength="1600" placeholder="Example: I need to research a new customer problem and turn it into requirements.">' + escapeHtml(localStorage.getItem(STORE.guide) || "") + '</textarea></label><button class="primary-button" type="submit">Prepare guidance</button></form>',
+        '<div class="guide-result" id="guideResult">Start with the role, decision, approved sources, expected output, reviewer, and the condition that should stop the work.</div>',
+      "</aside>",
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("One responsive operating flow", "Every role sees the same case at the right resolution. LangGraph controls state; responsibilities and evidence control the content."),
+      phaseRail(caseDraft.goal ? 1 : 0),
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("System at a glance", "Counts come from the public contracts, not a live runtime claim."),
+      '<div class="metric-grid">',
+        '<div class="metric"><span>Layer contracts</span><strong>' + contracts.crew.layers.length + '</strong><small>Authority through maintained knowledge</small></div>',
+        '<div class="metric"><span>Named roles</span><strong>' + contracts.roles.roles.length + '</strong><small>Ukrainian call names in English letters</small></div>',
+        '<div class="metric"><span>Workflow packs</span><strong>' + contracts.workflows.packs.length + '</strong><small>Onboarding, research, outreach, design, delivery, and more</small></div>',
+        '<div class="metric"><span>External actions</span><strong>0</strong><small>This public dashboard prepares packets only</small></div>',
+      "</div>",
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("First 30 minutes", "A new employee learns the source, responsibility, smallest safe task, and review route before being asked to deliver."),
+      '<div class="three-col">',
+        '<article class="card"><span class="eyebrow">0–10 minutes</span><h3>Orient to the role</h3><p>Read the role purpose, owned outputs, forbidden actions, evidence boundary, and manager/reviewer route.</p></article>',
+        '<article class="card"><span class="eyebrow">10–20 minutes</span><h3>Trace one real requirement</h3><p>Open the current source, identify its owner and freshness, and distinguish a fact from an interpretation or gap.</p></article>',
+        '<article class="card"><span class="eyebrow">20–30 minutes</span><h3>Complete one safe mission</h3><p>Prepare a reviewable artifact, run the defined check, send it to a different reviewer, and record the readback.</p></article>',
+      "</div>",
+    "</section>",
+  ].join("");
+}
+
+function renderWork() {
+  const pack = workflowById(caseDraft.workflow_pack);
+  const bindings = materializeRoleTaskBindings(pack);
+  const packOptions = contracts.workflows.packs.map(function (item) {
+    return '<option value="' + escapeHtml(item.id) + '"' + (item.id === caseDraft.workflow_pack ? " selected" : "") + ">" + escapeHtml(item.label) + "</option>";
+  }).join("");
+  const roleCards = bindings.map(function (binding, index) {
+    const missing = bindingReadiness(binding);
+    const route = binding.reviewer_route.map(roleLabel).join(" → ");
+    return '<article class="trace-item role-binding" data-step="' + String(index + 1).padStart(2, "0") + '"><div class="binding-title"><div><h3>' + escapeHtml(binding.call_name + " — " + roleForMachineId(binding.role_id).title) + '</h3><span class="machine-id">' + escapeHtml(binding.role_id) + '</span></div>' + badge(binding.base_or_closure === "base" ? "Selected pack" : "Review closure", binding.base_or_closure === "base" ? "green" : "") + '</div><p>' + escapeHtml(binding.role_goal) + '</p><dl class="binding-grid"><div><dt>Owned output</dt><dd>' + escapeHtml(sentence(binding.owned_output)) + '</dd></div><div><dt>Permission</dt><dd>' + escapeHtml(sentence(binding.permission_boundary.mode)) + '</dd></div><div><dt>Inputs</dt><dd>' + escapeHtml(binding.inputs.map(sentence).join(" · ")) + '</dd></div><div><dt>Skills</dt><dd>' + escapeHtml(binding.allowed_skills.length ? binding.allowed_skills.join(" · ") : "No reviewed public skill assigned") + '</dd></div><div><dt>Tool ceiling</dt><dd>' + escapeHtml(binding.allowed_tools.map(sentence).join(" · ")) + '</dd></div><div><dt>Reviewer route</dt><dd>' + escapeHtml(route) + '</dd></div><div><dt>Handoff</dt><dd>' + escapeHtml(roleLabel(binding.handoff.to)) + ' · fixed evidence payload</dd></div><div><dt>Readiness gaps</dt><dd>' + escapeHtml(missing.length ? missing.join(" · ") : "No contract gaps") + '</dd></div></dl><p class="contract-rule">Authority = case authority ∩ role ceiling ∩ available capabilities ∩ exact targets − denials.</p></article>';
+  }).join("");
+  return [
+    '<section class="panel">',
+      sectionHeading("Create one mission card", "Required fields make the work reviewable. Drafts stay in this browser until exported.", '<button class="secondary-button" id="resetCase" type="button">Reset local draft</button>'),
+      '<div id="caseErrors" class="error-summary" hidden></div>',
+      '<form id="caseForm">',
+        '<div class="field-grid">',
+          '<label class="field full"><span>Goal and decision</span><textarea name="goal" maxlength="1600" required placeholder="What must change, for whom, and what decision will this support?">' + escapeHtml(caseDraft.goal) + '<\/textarea><small>Use one observable outcome. Do not include credentials or raw private material.</small></label>',
+          '<label class="field"><span>Employee or actor role</span><input name="employee_role" maxlength="180" required value="' + escapeHtml(caseDraft.employee_role) + '"><small>The responsibility being supported—not an identity or permission grant.</small></label>',
+          '<label class="field"><span>Expected output</span><input name="output" maxlength="240" required value="' + escapeHtml(caseDraft.output) + '" placeholder="Example: evidence-backed requirement brief"><small>Name the reviewable artifact.</small></label>',
+          '<label class="field full"><span>Allowed evidence boundary</span><textarea name="evidence_boundary" maxlength="1000" required>' + escapeHtml(caseDraft.evidence_boundary) + '<\/textarea><small>Exact source classes and exclusions; retrieval does not expand this boundary.</small></label>',
+          '<label class="field"><span>Workflow pack</span><select name="workflow_pack">' + packOptions + '</select><small>The smallest pack can be changed after review.</small></label>',
+          '<label class="field"><span>Risk</span><select name="risk"><option value="low"' + (caseDraft.risk === "low" ? " selected" : "") + '>Low — local reversible draft</option><option value="medium"' + (caseDraft.risk === "medium" ? " selected" : "") + '>Medium — shared or consequential</option><option value="high"' + (caseDraft.risk === "high" ? " selected" : "") + '>High — external, private, or irreversible</option></select></label>',
+          '<label class="field"><span>Independent reviewer</span><input name="reviewer" maxlength="180" required value="' + escapeHtml(caseDraft.reviewer) + '"><small>The maker must not be the final reviewer.</small></label>',
+          '<label class="field"><span>Stop condition</span><textarea name="stop_condition" maxlength="300" required>' + escapeHtml(caseDraft.stop_condition) + '<\/textarea><small>Name the missing authority, evidence, or risk that stops work.</small></label>',
+        "</div>",
+        '<div class="form-actions"><button class="primary-button" type="submit">Save browser-local mission</button><button class="secondary-button" type="button" id="preparePacket">Export review packet</button></div>',
+      "</form>",
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Selected crew and handoff order", pack ? pack.trigger : "Choose a workflow pack."),
+      '<div class="trace-layout"><div class="trace-chain">' + roleCards + '</div><aside class="card trace-aside"><h3>' + escapeHtml(pack ? pack.label : "No pack") + '</h3><dl><div><dt>Methods</dt><dd>' + escapeHtml(pack ? pack.methods.map(sentence).join(" · ") : "") + '</dd></div><div><dt>Outputs</dt><dd>' + escapeHtml(pack ? pack.outputs.map(sentence).join(" · ") : "") + '</dd></div><div><dt>Done when</dt><dd>' + escapeHtml(pack ? pack.done.join(" · ") : "") + '</dd></div></dl></aside></div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Case state", "The display is a projection of typed LangGraph states. Saving a browser draft does not advance a live graph."),
+      phaseRail(caseDraft.goal ? 1 : 0),
+      '<div class="callout warning" style="margin-top:16px"><strong>Execution boundary:</strong> this screen can structure and export a mission. A real worker/controller must re-admit the packet, retrieve exact sources, validate authority, checkpoint the case, and create an execution receipt.</div>',
+    "</section>",
+  ].join("");
+}
+
+function frameworkRows() {
+  const order = ["wikillm", "obsidian", "llamaindex", "turbovec", "orbit_and_graphify", "crewai", "langgraph", "dashboard"];
+  return order.map(function (id) {
+    const tool = contracts.crew.frameworks[id];
+    let parameters = "";
+    if (id === "llamaindex") {
+      parameters = "800 / 120 chunks · lexical 5 · vector 5 · rerank 5 · exact read required";
+    } else if (id === "turbovec") {
+      parameters = "4-bit candidate · 20-query promotion gate · lexical fallback · optional trial";
+    } else if (id === "crewai") {
+      parameters = "sequential default · memory off · cache on · planning off · parallel max 3";
+    } else if (id === "langgraph") {
+      parameters = "typed reducers · thread_id = case_id · per-invocation subgraphs · interrupts";
     } else {
-      blockSchema.selectedNodeId = node.id;
-      nodeControlPanelId = node.id;
+      parameters = tool.authority || "Projection only";
     }
-    saveBlockSchema();
-    render();
-  };
-
-  view.querySelectorAll(".schema-node").forEach((element) => {
-    element.addEventListener("pointerdown", (event) => {
-      const node = getSchemaNode(element.dataset.nodeId);
-      if (!node) return;
-      blockSchema.selectedNodeId = node.id;
-      blockSchemaDrag = {
-        id: node.id,
-        startX: event.clientX,
-        startY: event.clientY,
-        nodeX: node.x,
-        nodeY: node.y,
-        moved: false
-      };
-      element.setPointerCapture?.(event.pointerId);
-    });
-    element.addEventListener("click", () => {
-      if (blockSchemaDragMoved) {
-        blockSchemaDragMoved = false;
-        return;
-      }
-      activateSchemaNode(element.dataset.nodeId);
-    });
-    element.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" && event.key !== " ") return;
-      event.preventDefault();
-      activateSchemaNode(element.dataset.nodeId);
-    });
-  });
-
-  view.querySelectorAll("[data-stage-node]").forEach((element) => {
-    element.addEventListener("click", () => activateSchemaNode(element.dataset.stageNode));
-  });
-
-  view.querySelector("#schemaFullscreen")?.addEventListener("click", () => {
-    schemaFullscreen = !schemaFullscreen;
-    render();
-  });
-  view.querySelector("#schemaViewCanvas")?.addEventListener("click", () => {
-    schemaViewMode = "canvas";
-    localStorage.setItem(storageKeys.schemaViewMode, schemaViewMode);
-    render();
-  });
-  view.querySelector("#schemaViewStage")?.addEventListener("click", () => {
-    schemaViewMode = "stage";
-    localStorage.setItem(storageKeys.schemaViewMode, schemaViewMode);
-    render();
-  });
-  view.querySelector("#schemaInspectorToggle")?.addEventListener("click", () => {
-    schemaInspectorCollapsed = !schemaInspectorCollapsed;
-    localStorage.setItem(storageKeys.schemaInspectorCollapsed, String(schemaInspectorCollapsed));
-    render();
-  });
-
-  window.onpointermove = (event) => {
-    if (!blockSchemaDrag) return;
-    const node = getSchemaNode(blockSchemaDrag.id);
-    if (!node) return;
-    const dx = event.clientX - blockSchemaDrag.startX;
-    const dy = event.clientY - blockSchemaDrag.startY;
-    blockSchemaDrag.moved = Math.abs(dx) + Math.abs(dy) > 2;
-    if (blockSchemaDrag.moved) blockSchemaDragMoved = true;
-    node.x = Math.max(0, blockSchemaDrag.nodeX + dx);
-    node.y = Math.max(0, blockSchemaDrag.nodeY + dy);
-    const block = view.querySelector(`[data-node-id="${CSS.escape(node.id)}"]`);
-    if (block) block.style.transform = `translate(${node.x}px, ${node.y}px)`;
-  };
-
-  window.onpointerup = () => {
-    if (!blockSchemaDrag) return;
-    if (blockSchemaDrag.moved) blockSchemaDragMoved = true;
-    saveBlockSchema();
-    blockSchemaDrag = null;
-    render();
-  };
-
-  view.querySelectorAll(".schema-add").forEach((button) => {
-    button.addEventListener("click", () => {
-      const type = button.dataset.type || "agent";
-      const node = draftSchemaNode(type);
-      blockSchema.nodes.push(node);
-      blockSchema.selectedNodeId = node.id;
-      saveBlockSchema();
-      render();
-    });
-  });
-
-  view.querySelectorAll(".schema-node-jump").forEach((button) => {
-    button.addEventListener("click", () => {
-      const node = getSchemaNode(button.dataset.nodeJump);
-      if (!node) return;
-      blockSchema.selectedNodeId = node.id;
-      nodeControlPanelId = node.id;
-      saveBlockSchema();
-      render();
-    });
-  });
-
-  view.querySelector("#schemaConnect")?.addEventListener("click", () => {
-    blockSchemaConnectSource = blockSchemaConnectSource ? null : blockSchema.selectedNodeId;
-    render();
-  });
-
-  view.querySelector("#schemaLayout")?.addEventListener("click", () => {
-    layoutBlockSchemaByStage();
-    saveBlockSchema();
-    render();
-  });
-  view.querySelector("#schemaZoomOut")?.addEventListener("click", () => setSchemaZoom(schemaZoom - 0.1));
-  view.querySelector("#schemaZoomIn")?.addEventListener("click", () => setSchemaZoom(schemaZoom + 0.1));
-  view.querySelector("#schemaZoomReset")?.addEventListener("click", () => setSchemaZoom(1));
-  view.querySelector("#schemaZoomFit")?.addEventListener("click", () => setSchemaZoom(0.72));
-
-  view.querySelector("#schemaExport")?.addEventListener("click", exportBlockSchemaPacket);
-  view.querySelector("#schemaBackendSend")?.addEventListener("click", sendBlockSchemaToBackend);
-  bindExecutionTimelineControls(schemaKindForActiveTab());
-  view.querySelector("#schemaQueueSelected")?.addEventListener("click", queueSelectedSchemaNode);
-  view.querySelector("#schemaReset")?.addEventListener("click", () => {
-    const kind = schemaKindForActiveTab();
-    blockSchema = normalizeBlockSchema(kind === "service" ? defaultServiceBlockSchema() : defaultBlockSchema(), kind);
-    blockSchemas[kind] = blockSchema;
-    nodeControlPanelId = null;
-    saveBlockSchema();
-    appendEvent("Block schema reset", schemaScreenMeta[kind].resetEvent, "warn");
-    render();
-  });
-
-  view.querySelectorAll(".schema-move").forEach((button) => {
-    button.addEventListener("click", () => {
-      moveSelectedSchemaNode(Number(button.dataset.dx || 0), Number(button.dataset.dy || 0));
-    });
-  });
-  view.querySelector("#nodePanelOpen")?.addEventListener("click", () => {
-    nodeControlPanelId = blockSchema.selectedNodeId;
-    render();
-  });
-  view.querySelector("#schemaDuplicateNode")?.addEventListener("click", duplicateSchemaNode);
-  view.querySelector("#schemaDeleteNode")?.addEventListener("click", deleteSchemaNode);
-  view.querySelector("#schemaValidateFocus")?.addEventListener("click", () => view.querySelector("#schemaValidation")?.scrollIntoView({ behavior: "smooth", block: "center" }));
-  view.querySelector("#schemaLangSmithFocus")?.addEventListener("click", () => handleGlobalSubmit("Explain LangSmith trace setup for this block schema", "schema trace button"));
-  bindPrdIcpRequestSurface();
-  bindRoleConfigPanels();
-  bindNodeControlPanel();
+    return '<tr><td data-label="System"><strong>' + escapeHtml(titleCase(id)) + '</strong></td><td data-label="Exact job">' + escapeHtml(tool.job) + '</td><td data-label="Public parameters">' + escapeHtml(parameters) + '</td></tr>';
+  }).join("");
 }
 
-function setSchemaZoom(value) {
-  schemaZoom = clamp(value, 0.55, 1.35);
-  localStorage.setItem(storageKeys.schemaZoom, String(schemaZoom));
-  appendEvent("Schema zoom changed", `Block schema zoom is now ${Math.round(schemaZoom * 100)}%.`, "ok");
-  render();
+function renderKnowledge() {
+  const layers = contracts.crew.layers.map(function (layer) {
+    const roles = layer.primary_roles.map(function (id) {
+      const role = roleForMachineId(id);
+      return role ? role.call_name : id;
+    });
+    return '<article class="layer-card"><div class="layer-id">' + escapeHtml(layer.id) + '</div><div><h3>' + escapeHtml(layer.name) + '</h3><p>' + escapeHtml(layer.purpose) + '</p>' + list(roles) + '</div><div class="layer-output"><strong>Delivers</strong><br>' + escapeHtml(layer.outputs.join(" · ")) + '</div></article>';
+  }).join("");
+  const diagrams = DIAGRAMS.map(function (diagram) {
+    return '<article class="card diagram-card"><a href="../assets/architecture/' + diagram.source + '" target="_blank" rel="noreferrer"><img src="../assets/architecture/' + diagram.file + '" alt="' + escapeHtml(diagram.title + ". " + diagram.description) + '"></a><div class="diagram-copy"><h3>' + escapeHtml(diagram.title) + '</h3><p>' + escapeHtml(diagram.description) + '</p><p><a href="../assets/architecture/' + diagram.source + '" target="_blank" rel="noreferrer">Open editable labeled SVG</a></p></div></article>';
+  }).join("");
+  const budgets = contracts.crew.perception_capsule.sections.map(function (section) {
+    return '<div class="list-row"><div><h3>' + escapeHtml(titleCase(section.id)) + '</h3><p>' + escapeHtml(section.content) + '</p></div><span class="truth-label configured">' + section.budget.toLocaleString() + ' tokens</span></div>';
+  }).join("");
+  const methods = contracts.crew.research_methods.map(function (method) {
+    return '<article class="card"><span class="eyebrow">' + escapeHtml(titleCase(method.id)) + '</span><p>' + escapeHtml(method.use) + '</p></article>';
+  }).join("");
+  return [
+    '<section class="panel">',
+      sectionHeading("Seven connected layers", "Databases and tools do not become a new architecture. Each performs one bounded job inside the same employee case."),
+      '<div class="layer-stack">' + layers + '</div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("What each system actually does", "Connectivity is not authority. Every retrieved or generated result remains candidate evidence until exact-source and requirement checks pass."),
+      '<div style="overflow-x:auto"><table class="tool-table"><thead><tr><th>System</th><th>Exact job</th><th>Public parameters</th></tr></thead><tbody>' + frameworkRows() + '</tbody></table></div>',
+      '<div class="callout" style="margin-top:16px"><strong>Whole-project perception:</strong> stable CAG carries rules and role responsibility; LlamaIndex returns allowlisted nodes with metadata; TurboVec may accelerate the vector-candidate step after its benchmark gate; Orbit and Graphify point to structural entry points; exact source reads preserve authority and provenance. TurboVec never replaces the knowledge base or citations.</div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Context capsule budget", "The 12,000-token ceiling compresses summaries, never provenance or current requirements."),
+      '<div class="split"><div class="card list">' + budgets + '</div><div class="card"><h3>Overflow order</h3><p>Drop duplicate snippets → replace low-authority excerpts with citations → summarize prior receipts → ask to narrow scope → stop before dropping current requirements.</p><h3>Required lineage</h3><p>Every material claim keeps source reference, authority state, observed date, review date, and exact-read status.</p><h3>Retrieval fallback</h3><p>Deterministic lexical retrieval remains available when embeddings or TurboVec are absent, stale, or ineligible.</p></div></div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Architecture views", "Each view uses exact text overlays on an editable SVG. The source artwork remains separate for future visual changes."),
+      '<div class="diagram-grid">' + diagrams + '</div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Research methods built into role work", "Requirements, market analysis, outreach, copy, design, and reports share evidence discipline but use different specialist methods."),
+      '<div class="card-grid">' + methods + '</div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Skill cleaning and updates", "A skill is discovered, quarantined, inspected, deduplicated, normalized, fixture-tested, reviewed, allowlisted, assigned, observed, updated, deprecated, then removed."),
+      '<div class="split"><article class="card"><h3>Skill Spectre</h3><p>' + escapeHtml(contracts.crew.skill_lifecycle.skill_spectre.job) + '</p><p><strong>Current evidence:</strong> ' + escapeHtml(contracts.crew.skill_lifecycle.skill_spectre.current_evidence) + '. Semantic scanning is not proved.</p></article><article class="card"><h3>Video Spectre pattern</h3><p>' + escapeHtml(contracts.crew.skill_lifecycle.video_spectre_pattern.job) + '</p><p><strong>Current evidence:</strong> pattern only; no public tool execution record is claimed.</p></article></div>',
+    "</section>",
+  ].join("");
 }
 
-function bindPrdIcpRequestSurface() {
-  const input = view.querySelector("#prdComposerInput");
-  const status = view.querySelector("#prdBackendStatus");
-  if (!input) return;
-  input.addEventListener("input", () => {
-    prdComposerDraft = input.value;
-    localStorage.setItem(storageKeys.prdComposer, prdComposerDraft);
-  });
-  view.querySelector("#prdStagePacket")?.addEventListener("click", () => {
-    const packet = createLocalPacket("prd-icp-request", "Screen 1 PRD/ICP composer", input.value, {
-      extra: {
-        lane: "prd_icp_flow",
-        required_blocks: prdIcpOutputBlocks().map(([title]) => title),
-        backlog_required: true,
-        missing_questions_required: true,
-        test_fixture: "docs/testmeeting.md after owner approval",
-      },
-    });
-    if (status) status.textContent = `Local packet staged: ${packet.id}.`;
-    render();
-  });
-  view.querySelector("#prdSendBackend")?.addEventListener("click", async () => {
-    const payload = {
-      request: input.value,
-      lane: "prd_icp_flow",
-      architecture: architectureMode,
-      approved_test_input: false,
-      owner_approval: cloudApprovalRequested(input.value),
-      provider_approval: cloudApprovalRequested(input.value),
-      source_refs: ["sanitized E1.2.8 source packet", "approved discovery summary labels"],
-    };
-    if (status) status.textContent = "Sending to local backend if available...";
-    try {
-      await checkJarvisApi("PRD/ICP backend send", { silent: true });
-      const response = await fetch(apiEndpoint("/api/lanes/prd-icp"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) throw new Error(`backend returned ${response.status}`);
-      const result = await response.json();
-      appendEvent("PRD/ICP backend response", result.status || "Backend returned a lane packet.", "ok");
-      if (status) status.textContent = `Backend response: ${result.status || "ok"}.`;
-    } catch (error) {
-      const packet = createLocalPacket("prd-icp-request-backend-unavailable", "Screen 1 PRD/ICP composer", input.value, {
-        extra: {
-          backend_error: String(error.message || error),
-          fallback: "preserved as browser-local review packet",
-          provider_state: "disabled_until_owner_approval_and_budget_guard",
-        },
-      });
-      if (status) status.textContent = `Backend unavailable; local packet staged: ${packet.id}.`;
-      appendEvent("PRD/ICP backend unavailable", "Request preserved as a local review packet.", "warn");
-      render();
-    }
-  });
+function renderRoleCard(role) {
+  const defaults = role.task_defaults;
+  return '<article class="card role-card" data-role-name="' + escapeHtml((role.call_name + " " + role.title + " " + role.id).toLowerCase()) + '"><header><span class="avatar" aria-hidden="true">' + escapeHtml(role.call_name.slice(0, 2).toUpperCase()) + '</span><div><h3>' + escapeHtml(role.call_name + " — " + role.title) + '</h3><div class="machine-id">' + escapeHtml(role.id) + '</div></div></header><p><strong>Goal:</strong> ' + escapeHtml(role.goal) + '</p><p>' + escapeHtml(role.purpose) + '</p><dl class="binding-grid compact"><div><dt>Owned output</dt><dd>' + escapeHtml(sentence(defaults.owned_output)) + '</dd></div><div><dt>Permission</dt><dd>' + escapeHtml(sentence(defaults.permission_mode)) + '</dd></div><div><dt>Required inputs</dt><dd>' + escapeHtml(defaults.inputs.map(sentence).join(" · ")) + '</dd></div><div><dt>Skills</dt><dd>' + escapeHtml(defaults.allowed_skills.length ? defaults.allowed_skills.join(" · ") : "No reviewed public skill assigned") + '</dd></div><div><dt>Tool ceiling</dt><dd>' + escapeHtml(defaults.allowed_tools.map(sentence).join(" · ")) + '</dd></div><div><dt>Reviewer route</dt><dd>' + escapeHtml(defaults.reviewer_route.map(roleLabel).join(" → ")) + '</dd></div><div><dt>Handoff</dt><dd>' + escapeHtml(roleLabel(defaults.handoff_to)) + '</dd></div></dl><div class="role-section"><strong>Owns</strong>' + list(role.owns) + '</div><div class="role-section"><strong>Must not</strong><div class="token-list">' + role.forbidden.map(function (item) { return '<span class="token forbidden">' + escapeHtml(sentence(item)) + '</span>'; }).join("") + '</div></div><p class="contract-rule">Capability ceiling only; never a permission grant.</p></article>';
 }
 
-function bindRoleConfigPanels() {
-  if (!view.querySelector(".role-config-panel")) return;
-  view.querySelector("#saveRoleConfig")?.addEventListener("click", () => {
-    roleConfigs = Array.from(view.querySelectorAll(".role-config-card")).map((card) => {
-      const existing = roleConfigs.find((role) => role.id === card.dataset.roleId) || {};
-      const next = { ...existing };
-      card.querySelectorAll("[data-field]").forEach((input) => {
-        next[input.dataset.field] = input.value;
-      });
-      return next;
-    });
-    saveJson(storageKeys.roleConfig, roleConfigs);
-    appendEvent("Role config saved locally", "Agent Orchestra role configuration was saved in browser localStorage only.", "ok");
-    render();
+function renderTeam() {
+  const visibleRoles = contracts.roles.roles.filter(function (role) {
+    const textMatch = !roleFilter || (role.call_name + " " + role.title + " " + role.id + " " + role.owns.join(" ")).toLowerCase().includes(roleFilter.toLowerCase());
+    const pack = packFilter === "all" ? null : workflowById(packFilter);
+    const packMatch = !pack || selectedRoleEntries(pack).some(function (entry) { return entry.role.id === role.id; });
+    return textMatch && packMatch;
   });
-  view.querySelector("#exportRoleConfig")?.addEventListener("click", () => {
-    const packet = createLocalPacket("agent-orchestra-role-config", "Screen 2 role configuration", "Export browser-local role config for Codex review.", {
-      extra: {
-        roles: roleConfigs,
-        editable_fields: ["role objective", "responsibility", "tools", "model route", "budget mode", "output artifact", "review gate", "status", "handoff target"],
-        write_policy: "browser cannot write raw files; backend or Codex review required",
-      },
-    });
-    downloadPacket(packet.id);
-  });
+  const packButtons = ['<button class="chip-button ' + (packFilter === "all" ? "active" : "") + '" data-pack-filter="all" type="button">All roles</button>'].concat(contracts.workflows.packs.map(function (pack) {
+    return '<button class="chip-button ' + (packFilter === pack.id ? "active" : "") + '" data-pack-filter="' + escapeHtml(pack.id) + '" type="button">' + escapeHtml(pack.label) + '</button>';
+  })).join("");
+  const packDetails = contracts.workflows.packs.map(function (pack) {
+    const baseRoles = pack.roles.map(roleLabel).join(" → ");
+    const closureRoles = selectedRoleEntries(pack).filter(function (entry) { return entry.base_or_closure === "review_closure"; }).map(function (entry) { return roleLabel(entry.role.id); }).join(" → ");
+    return '<details' + (pack.id === caseDraft.workflow_pack ? " open" : "") + '><summary>' + escapeHtml(pack.label) + '</summary><div class="details-body"><p><strong>Trigger:</strong> ' + escapeHtml(pack.trigger) + '</p><p><strong>Base roles:</strong> ' + escapeHtml(baseRoles) + '</p><p><strong>Review closure:</strong> ' + escapeHtml(closureRoles || "Already contained in the base pack") + '</p><p><strong>Methods:</strong> ' + escapeHtml(pack.methods.map(sentence).join(" · ")) + '</p><p><strong>Outputs:</strong> ' + escapeHtml(pack.outputs.map(sentence).join(" · ")) + '</p><p><strong>Done:</strong> ' + escapeHtml(pack.done.join(" · ")) + '</p></div></details>';
+  }).join("");
+  return [
+    '<section class="panel">',
+      sectionHeading("Responsive role crew", "Roles are durable responsibility contracts, not personas and not permanent runtime authority."),
+      '<div class="role-toolbar"><label class="field" style="flex:1 1 260px"><span>Find a responsibility</span><input id="roleSearch" type="search" value="' + escapeHtml(roleFilter) + '" placeholder="Search Oksana, design, outreach, verification…"></label><span class="truth-label configured">' + visibleRoles.length + ' of ' + contracts.roles.roles.length + ' roles</span></div>',
+      '<div class="filter-row" style="margin:14px 0 18px">' + packButtons + '</div>',
+      '<div class="card-grid" id="roleGrid">' + visibleRoles.map(renderRoleCard).join("") + '</div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Adaptive workflow packs", "The controller selects the smallest pack that owns the required outputs, check, approval, or handoff. A pack is a starting contract, not a fixed crew."),
+      packDetails,
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Communication protocol", "Every handoff carries the same minimum evidence so employees and agents can continue without reconstructing hidden context."),
+      '<div class="three-col"><article class="card"><h3>Maker handoff</h3><p>Case ID, goal, role, requirement versions, source refs, exact files, candidate artifact, checks, known gaps, and stop conditions.</p></article><article class="card"><h3>Reviewer verdict</h3><p>Approve, revise, or block; exact finding; violated requirement or boundary; evidence; and the smallest repair request.</p></article><article class="card"><h3>Learning handoff</h3><p>Exact result, readback, reusable meaning, lineage, owner, freshness date, supersession, and retrieval regression check.</p></article></div>',
+    "</section>",
+  ].join("");
 }
 
-function bindNodeControlPanel() {
-  const panel = view.querySelector("#nodeControlPanelForm");
-  const closePanel = () => {
-    const returnNodeId = nodeControlPanelId;
-    nodeControlPanelId = null;
-    render();
-    window.requestAnimationFrame(() => {
-      view.querySelector(`[data-node-id="${CSS.escape(returnNodeId || "")}"]`)?.focus()
-        || view.querySelector(`[data-stage-node="${CSS.escape(returnNodeId || "")}"]`)?.focus();
-    });
+function traceItems() {
+  const requirementState = caseDraft.goal ? "Draft mission prepared; exact requirements still require retrieval and owner confirmation." : "No goal has been captured.";
+  return [
+    ["01", "Request and authority", caseDraft.goal || "Capture one bounded goal.", caseDraft.employee_role],
+    ["02", "Source boundary", caseDraft.evidence_boundary, "LlamaIndex allowlist + exact reads"],
+    ["03", "Requirement versions", requirementState, "Oksana prepares · requirement owner approves"],
+    ["04", "Role work", caseDraft.output || "Expected output not yet named.", workflowById(caseDraft.workflow_pack)?.label || "Pack not selected"],
+    ["05", "Action validation", "Iryna checks requirement coverage, permissions, side effects, rollback, verification, and readback.", "No execution from dashboard"],
+    ["06", "Independent review", "Halyna reviews the frozen candidate; the maker applies any repair.", caseDraft.reviewer],
+    ["07", "Receipt and knowledge", "Record the exact result and readback. Larysa may propose durable meaning with lineage and freshness.", receipts.length + " browser-local receipt(s)"],
+  ];
+}
+
+function renderReview() {
+  const trace = traceItems().map(function (item) {
+    return '<div class="trace-item" data-step="' + item[0] + '"><h3>' + escapeHtml(item[1]) + '</h3><p>' + escapeHtml(item[2]) + '</p><div class="token-list" style="margin-top:8px"><span class="token">' + escapeHtml(item[3]) + '</span></div></div>';
+  }).join("");
+  const receiptRows = receipts.length ? receipts.map(function (receipt) {
+    return '<div class="list-row"><div><h3>' + escapeHtml(receipt.id) + '</h3><p>' + escapeHtml(receipt.summary) + '</p></div><span class="truth-label tested">' + escapeHtml(receipt.created_at.slice(0, 10)) + '</span></div>';
+  }).join("") : '<p>No local receipt has been recorded. A packet export is not an execution receipt.</p>';
+  return [
+    '<section class="panel">',
+      sectionHeading("End-to-end trace", "The same case ID links the employee request, sources, requirement versions, role work, verdict, approval, action, readback, and knowledge candidate.", '<button class="secondary-button" id="downloadReview" type="button">Download review packet</button>'),
+      '<div class="trace-layout"><div class="trace-chain">' + trace + '</div><aside class="card trace-aside"><h3>Current truth state</h3><dl><div><dt>Case</dt><dd>' + escapeHtml(caseDraft.case_id) + '</dd></div><div><dt>Provider</dt><dd>Disabled</dd></div><div><dt>Writeback</dt><dd>Disabled</dd></div><div><dt>Execution</dt><dd>Not performed</dd></div><div><dt>Review</dt><dd>' + escapeHtml(caseDraft.goal ? "Packet can be prepared" : "Missing goal/output") + '</dd></div></dl></aside></div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Fail-closed review gates", "A graph transition may control sequence, but it cannot turn missing evidence or permission into truth."),
+      '<div class="status-table">',
+        '<div class="status-row"><strong>Source boundary</strong><p>Every source class is allowlisted; private matches are refused; material action requires an exact read.</p><span class="truth-label configured">required</span></div>',
+        '<div class="status-row"><strong>Requirement coverage</strong><p>All applicable approved requirement versions are covered or an owner-approved exception is recorded.</p><span class="truth-label configured">required</span></div>',
+        '<div class="status-row"><strong>Maker / reviewer</strong><p>The person or agent producing a consequential candidate cannot provide its final independent verdict.</p><span class="truth-label configured">separate</span></div>',
+        '<div class="status-row"><strong>Approval interrupt</strong><p>External, private, irreversible, or otherwise high-risk actions pause with a JSON-safe summary and exact target.</p><span class="truth-label gated">owner gate</span></div>',
+        '<div class="status-row"><strong>Idempotent action</strong><p>Side effects occur after the interrupt and use an action ID so resumed nodes cannot repeat them silently.</p><span class="truth-label configured">required</span></div>',
+        '<div class="status-row"><strong>Readback</strong><p>Command success is not the result. The target state is read back and attached to the receipt.</p><span class="truth-label configured">required</span></div>',
+      "</div>",
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Browser-local receipt notebook", "This notebook is only a UX fixture. Durable receipts belong to the controller/checkpointer and run record."),
+      '<div class="split"><form class="card" id="receiptForm"><label class="field"><span>Verified result summary</span><textarea name="summary" maxlength="800" required placeholder="Record only a public-safe result that was independently verified."></textarea></label><div class="form-actions"><button class="secondary-button" type="submit">Add local example receipt</button><button class="danger-button" id="clearReceipts" type="button">Clear local receipts</button></div></form><div class="card list" id="receiptList">' + receiptRows + '</div></div>',
+    "</section>",
+  ].join("");
+}
+
+function renderSetup() {
+  const configPreview = {
+    boundary: "public browser-local proposal",
+    llamaindex: {
+      chunk_size: settings.chunk_size,
+      chunk_overlap: settings.chunk_overlap,
+      lexical_top_k: settings.lexical_top_k,
+      vector_top_k: settings.vector_top_k,
+      rerank_top_k: settings.rerank_top_k,
+      final_source_limit: settings.final_source_limit,
+      require_source_paths: true,
+      require_exact_read_for_action: true,
+      fallback_to_lexical: true,
+    },
+    turbovec: {
+      requested_candidate: settings.turbovec_candidate,
+      effective_status: settings.turbovec_candidate ? "requested_but_runtime_must_pass_gate" : "off",
+      bit_width: 4,
+      default_backend_changed: false,
+    },
+    langgraph: {
+      requested_checkpointer: settings.checkpointer,
+      effective_public_demo: "none",
+      thread_id: "case_id",
+    },
+    crewai: {
+      process: "sequential",
+      memory: false,
+      cache: true,
+      planning: false,
+      maximum_parallel_tasks: 3,
+    },
   };
-  view.querySelector("#nodePanelClose")?.addEventListener("click", closePanel);
-  view.querySelector(".node-panel-backdrop")?.addEventListener("click", (event) => {
-    if (event.target === event.currentTarget) closePanel();
+  return [
+    '<section class="panel">',
+      sectionHeading("Portable installation boundary", "The public repository runs as a static local dashboard. Runtime adapters stay optional, least-privilege, and outside Git.", '<label class="secondary-button">Import configuration<input id="importConfigFile" type="file" accept="application/json,.json" hidden></label><button class="secondary-button" id="exportConfig" type="button">Export local configuration</button>'),
+      '<div class="split"><article class="card"><h3>1. Serve the public project locally</h3><p>From the repository root, run a static server and open the Crew Desk route.</p><pre class="config-code">python3 -m http.server 4173\n\nhttp://127.0.0.1:4173/project/dashboard/#today</pre></article><article class="card"><h3>2. Connect an optional local bridge</h3><p>The dashboard accepts only its own origin or plain HTTP loopback. The browser still does not activate providers or write to the bridge.</p><pre class="config-code">http://127.0.0.1:8787\nhttp://localhost:8787</pre></article></div>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Retrieval and state configuration", "These browser settings produce a review proposal. The real runtime must validate, benchmark, migrate, and read back its own configuration."),
+      '<form id="settingsForm">',
+        '<div class="settings-group"><h3>Local bridge</h3><p>Never put tokens, credentials, private URLs, or account identifiers in this field.</p><div class="field-grid"><label class="field full"><span>Bridge base</span><input name="bridge_base" value="' + escapeHtml(settings.bridge_base) + '" required><small>Same origin or HTTP 127.0.0.1 / localhost only.</small></label><label class="field full"><span>Allowed corpus</span><textarea name="allowed_corpus" required>' + escapeHtml(settings.allowed_corpus) + '<\/textarea></label><label class="field full"><span>Excluded corpus</span><textarea name="excluded_corpus" required>' + escapeHtml(settings.excluded_corpus) + '<\/textarea></label></div></div>',
+        '<div class="settings-group"><h3>LlamaIndex perception</h3><p>Document/node identities and metadata remain authoritative; rankings are candidate evidence.</p><div class="field-grid three"><label class="field"><span>Chunk size</span><input type="number" name="chunk_size" min="256" max="2000" value="' + settings.chunk_size + '"></label><label class="field"><span>Chunk overlap</span><input type="number" name="chunk_overlap" min="0" max="400" value="' + settings.chunk_overlap + '"></label><label class="field"><span>Final source limit</span><input type="number" name="final_source_limit" min="1" max="20" value="' + settings.final_source_limit + '"></label><label class="field"><span>Lexical top-k</span><input type="number" name="lexical_top_k" min="1" max="20" value="' + settings.lexical_top_k + '"></label><label class="field"><span>Vector top-k</span><input type="number" name="vector_top_k" min="1" max="20" value="' + settings.vector_top_k + '"></label><label class="field"><span>Rerank top-k</span><input type="number" name="rerank_top_k" min="1" max="20" value="' + settings.rerank_top_k + '"></label></div></div>',
+        '<div class="settings-group"><h3>Optional TurboVec candidate</h3><p>TurboVec sits behind the LlamaIndex vector-store adapter. It does not store authority or replace lexical fallback, node metadata, citations, or exact reads.</p><label class="checkbox-row"><input type="checkbox" name="turbovec_candidate"' + (settings.turbovec_candidate ? " checked" : "") + '><span><strong>Request the 4-bit candidate for a qualifying local runtime.</strong><br>The runtime must still pass the fixed 20-query recall, citation, metadata-filter, persistence-parity, and independent-review gate.</span></label></div>',
+        '<div class="settings-group"><h3>LangGraph checkpoint proposal</h3><p>The public demo has no checkpointer. SQLite requires local migration/recovery proof; PostgreSQL requires team tenancy, backup, and recovery proof.</p><label class="field"><span>Requested runtime mode</span><select name="checkpointer"><option value="none"' + (settings.checkpointer === "none" ? " selected" : "") + '>None — public/static default</option><option value="sqlite"' + (settings.checkpointer === "sqlite" ? " selected" : "") + '>SQLite — proposed local single-user</option><option value="postgresql"' + (settings.checkpointer === "postgresql" ? " selected" : "") + '>PostgreSQL — proposed team runtime</option></select></label></div>',
+        '<div class="form-actions"><button class="primary-button" type="submit">Save browser-local proposal</button><button class="danger-button" id="resetSettings" type="button">Reset local settings</button></div>',
+      "</form>",
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Effective public contract", "Provider and writeback stay disabled regardless of browser selections."),
+      '<pre class="config-code" id="configPreview">' + escapeHtml(JSON.stringify(configPreview, null, 2)) + '</pre>',
+    "</section>",
+    '<section class="panel section">',
+      sectionHeading("Obsidian, WikiLLM, Orbit, and Graphify", "The portable repository remains useful without any private vault. Local adapters add bounded capabilities without copying private knowledge into Git."),
+      '<div class="card-grid"><article class="card"><h3>WikiLLM</h3><p>Portable reviewed memory: indexes, run summaries, decisions, issues, insights, and append-only lineage.</p></article><article class="card"><h3>Obsidian</h3><p>Optional human semantic workspace. Community plugins are privileged local code: review, pin, back up, and keep restricted-mode fallback.</p></article><article class="card"><h3>Orbit</h3><p>Optional local structural adapter for an allowlisted corpus. Its results point to exact files; they never decide requirements or permission.</p></article><article class="card"><h3>Graphify</h3><p>Generated relationship reference for definitions, paths, dependencies, and likely blast radius. Regenerate when its source commit is stale.</p></article></div>',
+    "</section>",
+  ].join("");
+}
+
+function guideAdvice(query) {
+  const text = query.toLowerCase();
+  let pack = contracts.workflows.packs.find(function (item) { return item.id === "employee_onboarding"; });
+  if (/research|market|requirement|customer|pain|prd|icp/.test(text)) pack = workflowById("requirements_research");
+  else if (/outreach|message|contact|lead|channel/.test(text)) pack = workflowById("outreach");
+  else if (/design|visual|interface|image|layout/.test(text)) pack = workflowById("design");
+  else if (/write|copy|content|caption/.test(text)) pack = workflowById("content_and_copy");
+  else if (/code|implement|fix|build|test/.test(text)) pack = workflowById("implementation");
+  else if (/report|metric|analysis|decision/.test(text)) pack = workflowById("reporting");
+  else if (/publish|deploy|send|push|external/.test(text)) pack = workflowById("release_and_external_action");
+  else if (/task|plan|daily|handoff/.test(text)) pack = workflowById("task_planning");
+  return "Suggested pack: " + pack.label + ". Start by confirming: decision owner; approved and excluded sources; current requirement; exact output; maker; different reviewer; stop condition; and whether any private, external, or irreversible action requires an interrupt. Suggested roles: " + pack.roles.map(roleLabel).join(" → ") + ".";
+}
+
+function validateBridge(value) {
+  let parsed;
+  try {
+    parsed = new URL(String(value || "").trim(), window.location.origin);
+  } catch (_error) {
+    throw new Error("Enter a valid same-origin or loopback URL.");
+  }
+  const sameOrigin = parsed.origin === window.location.origin;
+  const loopback = parsed.protocol === "http:" && (parsed.hostname === "127.0.0.1" || parsed.hostname === "localhost");
+  if (!sameOrigin && !loopback) throw new Error("Bridge base must be this origin or HTTP 127.0.0.1 / localhost.");
+  return parsed.origin;
+}
+
+function normalizeImportedSettings(payload) {
+  const source = payload && typeof payload === "object" && payload.settings && typeof payload.settings === "object"
+    ? payload.settings
+    : payload;
+  if (!source || typeof source !== "object" || Array.isArray(source)) throw new Error("Configuration must be a JSON object.");
+  const allowed = new Set(Object.keys(DEFAULT_SETTINGS));
+  const unknown = Object.keys(source).filter(function (key) { return !allowed.has(key); });
+  if (unknown.length) throw new Error("Unknown configuration fields: " + unknown.join(", ") + ".");
+  if (Object.prototype.hasOwnProperty.call(source, "turbovec_candidate") && typeof source.turbovec_candidate !== "boolean") {
+    throw new Error("turbovec_candidate must be a JSON boolean.");
+  }
+  const next = Object.assign({}, DEFAULT_SETTINGS, source);
+  next.bridge_base = validateBridge(next.bridge_base);
+  ["chunk_size", "chunk_overlap", "lexical_top_k", "vector_top_k", "rerank_top_k", "final_source_limit"].forEach(function (key) {
+    next[key] = Number(next[key]);
+    if (!Number.isInteger(next[key])) throw new Error(key + " must be an integer.");
   });
-  view.querySelector(".node-panel")?.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      event.preventDefault();
-      closePanel();
+  if (next.chunk_size < 256 || next.chunk_size > 2000) throw new Error("chunk_size must be between 256 and 2000.");
+  if (next.chunk_overlap < 0 || next.chunk_overlap >= next.chunk_size) throw new Error("chunk_overlap must be non-negative and smaller than chunk_size.");
+  ["lexical_top_k", "vector_top_k", "rerank_top_k", "final_source_limit"].forEach(function (key) {
+    if (next[key] < 1 || next[key] > 20) throw new Error(key + " must be between 1 and 20.");
+  });
+  if (!["none", "sqlite", "postgresql"].includes(next.checkpointer)) throw new Error("Unknown checkpointer proposal.");
+  if (typeof next.turbovec_candidate !== "boolean") throw new Error("turbovec_candidate must be a JSON boolean.");
+  next.allowed_corpus = String(next.allowed_corpus || "").slice(0, 2000);
+  next.excluded_corpus = String(next.excluded_corpus || "").slice(0, 2000);
+  if (!next.allowed_corpus || !next.excluded_corpus) throw new Error("Allowed and excluded corpus fields are required.");
+  return next;
+}
+
+function bindEvents() {
+  const guideForm = document.querySelector("#guideForm");
+  if (guideForm) guideForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const input = document.querySelector("#guideInput");
+    const query = input.value.trim();
+    localStorage.setItem(STORE.guide, query);
+    document.querySelector("#guideResult").textContent = query ? guideAdvice(query) : "Describe the task or uncertainty first.";
+  });
+
+  const caseForm = document.querySelector("#caseForm");
+  if (caseForm) caseForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(caseForm).entries());
+    const missing = ["goal", "employee_role", "output", "evidence_boundary", "reviewer", "stop_condition"].filter(function (key) { return !String(data[key] || "").trim(); });
+    const errors = document.querySelector("#caseErrors");
+    if (missing.length) {
+      errors.hidden = false;
+      errors.textContent = "Complete the required fields: " + missing.map(titleCase).join(", ") + ".";
       return;
     }
-    if (event.key !== "Tab") return;
-    const focusable = Array.from(view.querySelectorAll(
-      ".node-panel a[href], .node-panel button:not([disabled]), .node-panel input:not([disabled]), .node-panel select:not([disabled]), .node-panel textarea:not([disabled]), .node-panel [tabindex]:not([tabindex='-1'])"
-    )).filter((element) => !element.hidden && element.getClientRects().length > 0);
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
+    errors.hidden = true;
+    caseDraft = Object.assign({}, caseDraft, data, { updated_at: new Date().toISOString(), state: "context_bound" });
+    saveStored(STORE.caseDraft, caseDraft);
+    showNotice("Mission saved in this browser. No provider or external system was contacted.");
+    render();
+  });
+
+  const preparePacket = document.querySelector("#preparePacket");
+  if (preparePacket) preparePacket.addEventListener("click", function () { downloadJson("archflow-case-review-packet.json", currentPacket()); });
+  const resetCase = document.querySelector("#resetCase");
+  if (resetCase) resetCase.addEventListener("click", function () {
+    localStorage.removeItem(STORE.caseDraft);
+    caseDraft = Object.assign({}, DEFAULT_CASE);
+    showNotice("The browser-local mission draft was reset.");
+    render();
+  });
+
+  const roleSearch = document.querySelector("#roleSearch");
+  if (roleSearch) roleSearch.addEventListener("input", function () {
+    roleFilter = roleSearch.value;
+    render();
+    const next = document.querySelector("#roleSearch");
+    if (next) {
+      next.focus();
+      next.setSelectionRange(roleFilter.length, roleFilter.length);
     }
   });
-  view.querySelector("#nodePanelClose")?.focus();
-  view.querySelector("#nodePanelQueue")?.addEventListener("click", () => {
-    saveNodeControlPanel({ renderAfter: false });
-    queueSelectedSchemaNode();
-  });
-  view.querySelectorAll(".node-panel-tab").forEach((button) => {
-    button.addEventListener("click", () => {
-      const target = view.querySelector(`#${CSS.escape(button.dataset.panelTarget || "")}`);
-      target?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-  panel?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    saveNodeControlPanel();
-  });
-}
-
-function parseLastRuns(value) {
-  return listFromTextarea(value).map((line) => {
-    const [time = "manual", status = "noted", ...rest] = line.split("|").map((part) => part.trim());
-    return { time, status, summary: rest.join(" | ") || line };
-  });
-}
-
-function saveNodeControlPanel({ renderAfter = true } = {}) {
-  const node = getSchemaNode(nodeControlPanelId || blockSchema.selectedNodeId);
-  if (!node) return null;
-  node.title = view.querySelector("#nodeTitleInput")?.value.trim() || node.title;
-  node.type = view.querySelector("#nodeTypeInput")?.value || node.type;
-  node.owner = view.querySelector("#nodeOwnerInput")?.value.trim() || "Unassigned";
-  node.status = view.querySelector("#nodeStatusInput")?.value || "planned";
-  node.inputs = listFromTextarea(view.querySelector("#nodeInputsInput")?.value);
-  node.finalOutput = view.querySelector("#nodeFinalOutputInput")?.value.trim() || "";
-  node.outputs = listFromTextarea(view.querySelector("#nodeOutputsInput")?.value);
-  node.possibleOutputs = listFromTextarea(view.querySelector("#nodePossibleOutputsInput")?.value);
-  node.outputLinks = listFromTextarea(view.querySelector("#nodeOutputLinksInput")?.value);
-  node.lastRuns = parseLastRuns(view.querySelector("#nodeLastRunsInput")?.value);
-  node.prompt = view.querySelector("#nodePromptInput")?.value.trim() || "";
-  node.systemPrompt = view.querySelector("#nodeSystemPromptInput")?.value.trim() || "";
-  node.requirements = view.querySelector("#nodeRequirementsInput")?.value.trim() || "";
-  node.description = view.querySelector("#nodeDescriptionInput")?.value.trim() || "";
-  node.comments = view.querySelector("#nodeCommentsInput")?.value.trim() || "";
-  node.files = listFromTextarea(view.querySelector("#nodeFilesInput")?.value);
-  node.questions = listFromTextarea(view.querySelector("#nodeQuestionsInput")?.value);
-  node.job = view.querySelector("#nodeJobInput")?.value.trim() || "";
-  node.pain = view.querySelector("#nodePainInput")?.value.trim() || "";
-  node.evidence = view.querySelector("#nodeEvidenceInput")?.value.trim() || "";
-  node.businessObjective = view.querySelector("#nodeBusinessObjectiveInput")?.value.trim() || "";
-  node.config = { ...(node.config || {}) };
-  view.querySelectorAll(".node-config-select").forEach((select) => {
-    node.config[select.dataset.configKey] = select.value;
-  });
-  node.workflowLayer = node.config.workflowLayer || node.workflowLayer;
-  view.querySelectorAll(".edge-editor").forEach((editor) => {
-    const edge = getSchemaEdge(editor.dataset.edgeId);
-    if (!edge) return;
-    edge.label = editor.querySelector(".edge-label-input")?.value.trim() || edge.label;
-    edge.mode = editor.querySelector(".edge-mode-input")?.value || edge.mode;
-    edge.condition = editor.querySelector(".edge-condition-input")?.value.trim() || "";
-  });
-  saveBlockSchema();
-  appendEvent("Node control panel saved", `${node.title} configuration was saved in browser storage.`, "ok");
-  if (renderAfter) render();
-  return node;
-}
-
-function moveSelectedSchemaNode(dx, dy) {
-  const node = getSchemaNode(blockSchema.selectedNodeId);
-  if (!node) return;
-  node.x = Math.max(0, node.x + dx);
-  node.y = Math.max(0, node.y + dy);
-  saveBlockSchema();
-  appendEvent("Schema node moved", `${node.title} moved to x=${node.x}, y=${node.y}.`, "ok");
-  render();
-}
-
-function duplicateSchemaNode() {
-  const node = getSchemaNode(blockSchema.selectedNodeId);
-  if (!node) return;
-  const copy = JSON.parse(JSON.stringify(node));
-  copy.id = makeId("schema-copy");
-  copy.title = `${node.title} copy`;
-  copy.x += 40;
-  copy.y += 40;
-  blockSchema.nodes.push(copy);
-  blockSchema.selectedNodeId = copy.id;
-  saveBlockSchema();
-  render();
-}
-
-function deleteSchemaNode() {
-  const node = getSchemaNode(blockSchema.selectedNodeId);
-  if (!node) return;
-  blockSchema.nodes = blockSchema.nodes.filter((item) => item.id !== node.id);
-  blockSchema.edges = blockSchema.edges.filter((edge) => edge.from !== node.id && edge.to !== node.id);
-  blockSchema.selectedNodeId = blockSchema.nodes[0]?.id || null;
-  saveBlockSchema();
-  render();
-}
-
-function validateBlockSchema() {
-  const errors = [];
-  const warnings = [];
-  const ids = new Set(blockSchema.nodes.map((node) => node.id));
-  if (!blockSchema.nodes.some((node) => node.type === "start")) errors.push("At least one Start block is required.");
-  if (!blockSchema.nodes.some((node) => node.type === "approval")) warnings.push("Add an Approval block before writeback or provider actions.");
-  blockSchema.edges.forEach((edge) => {
-    if (!ids.has(edge.from)) errors.push(`Edge ${edge.label || edge.id} has missing source.`);
-    if (!ids.has(edge.to)) errors.push(`Edge ${edge.label || edge.id} has missing target.`);
-  });
-  blockSchema.nodes.forEach((node) => {
-    if (!node.title?.trim()) errors.push(`${node.id} needs a title.`);
-    if (!node.owner?.trim()) warnings.push(`${node.title} needs an owner/agent.`);
-    if (!node.description?.trim()) warnings.push(`${node.title} needs a description.`);
-    if (!node.job?.trim()) warnings.push(`${node.title} needs a user job.`);
-    if (!node.pain?.trim()) warnings.push(`${node.title} needs a pain/risk statement.`);
-    if (!node.evidence?.trim()) warnings.push(`${node.title} needs evidence or an explicit pending marker.`);
-    if (!node.businessObjective?.trim()) warnings.push(`${node.title} needs a business objective.`);
-    if (!node.prompt?.trim()) errors.push(`${node.title} needs a prompt.`);
-    if (!node.systemPrompt?.trim()) warnings.push(`${node.title} needs a system prompt.`);
-    if (!node.comments?.trim()) warnings.push(`${node.title} has no reviewer/operator comments yet.`);
-    if (!node.finalOutput?.trim()) errors.push(`${node.title} needs a final output contract.`);
-    if (!node.inputs?.length) warnings.push(`${node.title} needs input ports.`);
-    if (!node.outputs?.length) warnings.push(`${node.title} needs output ports.`);
-    if (!node.files?.length) warnings.push(`${node.title} needs owned/touched files or an explicit pending marker.`);
-    if (!node.questions?.length) warnings.push(`${node.title} needs questions covered.`);
-    if (!node.possibleOutputs?.length) warnings.push(`${node.title} needs possible outputs.`);
-    if (!node.config?.modelProvider) warnings.push(`${node.title} needs model/provider dropdown config.`);
-    if (!node.config?.approvalGate) warnings.push(`${node.title} needs approval-gate dropdown config.`);
-    if (node.type !== "start" && incomingSchemaEdges(node.id).length === 0) warnings.push(`${node.title} has no incoming route.`);
-    if (!["output", "approval"].includes(node.type) && outgoingSchemaEdges(node.id).length === 0) warnings.push(`${node.title} has no outgoing route.`);
-    if (node.type === "parallel" && outgoingSchemaEdges(node.id).length < 2) errors.push(`${node.title} needs at least two outgoing branch routes.`);
-    if (node.type === "merge" && incomingSchemaEdges(node.id).length < 2) errors.push(`${node.title} should merge at least two incoming routes.`);
-  });
-  return { errors, warnings };
-}
-
-function queueSelectedSchemaNode() {
-  const node = getSchemaNode(blockSchema.selectedNodeId);
-  if (!node) return;
-  blockSchema.queue = [
-    {
-      id: makeId("schema-queue"),
-      created_at: nowIso(),
-      node_id: node.id,
-      node_title: node.title,
-      owner: node.owner,
-      workflow_layer: node.workflowLayer,
-      description: node.description,
-      job: node.job,
-      pain: node.pain,
-      evidence: node.evidence,
-      business_objective: node.businessObjective,
-      inputs: node.inputs,
-      outputs: node.outputs,
-      prompt: node.prompt,
-      system_prompt: node.systemPrompt,
-      comments: node.comments,
-      files: node.files,
-      requirements: node.requirements,
-      final_output: node.finalOutput,
-      possible_outputs: node.possibleOutputs,
-      output_links: node.outputLinks,
-      last_runs: node.lastRuns,
-      incoming_connections: incomingSchemaEdges(node.id),
-      outgoing_connections: outgoingSchemaEdges(node.id),
-      config: node.config,
-      write_gate: "Codex review required before any durable writeback."
-    },
-    ...(blockSchema.queue || [])
-  ].slice(0, 20);
-  saveBlockSchema();
-  appendEvent("Schema node queued", `${node.title} queued for Codex review packet export.`, "ok");
-  render();
-}
-
-function exportBlockSchemaPacket() {
-  const validation = validateBlockSchema();
-  const meta = schemaScreenMeta[schemaKindForActiveTab()];
-  const packet = createLocalPacket("block-schema-review-packet", "dashboard block-schema editor", meta.packetInput, {
-    extra: {
-      block_schema: blockSchema,
-      validation,
-      langsmith_preparation: {
-        enabled_now: false,
-        next_step: "Add sanitized LangGraph run metadata and trace URLs after LANGSMITH_TRACING/LANGSMITH_API_KEY policy is approved.",
-        blocked_data: ["raw transcripts", "raw recordings", "secrets", "private document bodies"]
-      }
-    }
-  });
-  downloadPacket(packet.id);
-}
-
-async function sendBlockSchemaToBackend() {
-  const kind = schemaKindForActiveTab();
-  const meta = schemaScreenMeta[kind];
-  const status = view.querySelector("#schemaBackendStatus");
-  const endpoint = kind === "service" ? "/api/lanes/prd-icp" : "/api/lanes/agent-orchestra";
-  const payload = {
-    request: `${meta.packetInput}\n\n${blockSchema.title}`,
-    lane: kind === "service" ? "prd_icp_flow" : "agent_orchestra",
-    architecture: kind,
-    approved_test_input: false,
-    owner_approval: false,
-    provider_approval: false,
-    source_refs: ["dashboard block-schema editor", "browser-local schema candidate"],
-  };
-  if (status) status.textContent = "Sending provider-disabled schema packet to backend if available...";
-  try {
-    await checkJarvisApi("block schema backend send", { silent: true });
-    const response = await fetch(apiEndpoint(endpoint), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    if (!response.ok) throw new Error(`backend returned ${response.status}`);
-    const result = await response.json();
-    appendEvent("Schema backend response", `${kind} backend returned ${result.status || "ok"}.`, "ok");
-    if (status) status.textContent = `Backend response: ${result.status || "ok"}. Provider calls and writeback remain disabled.`;
-  } catch (error) {
-    const packet = createLocalPacket(`${kind}-schema-backend-unavailable`, "dashboard block-schema editor", meta.packetInput, {
-      extra: {
-        architecture: kind,
-        backend_error: String(error.message || error),
-        block_schema: blockSchema,
-        fallback: "preserved as browser-local review packet",
-      },
-    });
-    appendEvent("Schema backend unavailable", `${packet.id} staged locally for Codex review.`, "warn");
-    if (status) status.textContent = `Backend unavailable; local packet staged: ${packet.id}.`;
-  }
-}
-
-function savePromptConfigFromForm() {
-  promptConfig = {
-    chain_name: document.querySelector("#cfgChain")?.value || "",
-    model_policy: document.querySelector("#cfgModel")?.value || "",
-    memory_policy: document.querySelector("#cfgMemory")?.value || "",
-    normal_prompt: document.querySelector("#cfgNormal")?.value || "",
-    interview_prompt: document.querySelector("#cfgInterview")?.value || "",
-    review_prompt: document.querySelector("#cfgReview")?.value || "",
-  };
-  saveJson(storageKeys.promptConfig, promptConfig);
-  appendEvent("Config saved locally", "Prompt/subprompt configuration was saved in browser localStorage only.", "ok");
-  render();
-}
-
-function exportPromptConfig() {
-  const packet = createLocalPacket("jarvis-subprompt-config-candidate", "dashboard config page", "Export browser-local Jarvis chain and subprompt config for Codex review.", {
-    extra: {
-      prompt_config: promptConfig,
-      jarvis_api_base: jarvisApiBase,
-      persistence: "localStorage only until exported and reviewed",
-    },
-  });
-  downloadPacket(packet.id);
-}
-
-function saveJarvisApiBaseFromForm() {
-  const value = (document.querySelector("#cfgApiBase")?.value || "").trim().replace(/\/+$/, "");
-  try {
-    jarvisApiBase = trustedDashboardApiBase(value || defaultJarvisApiBase());
-  } catch (error) {
-    appendEvent("Jarvis API base rejected", error.message || "The API base is not an allowed same-origin or loopback address.", "warn");
-    return;
-  }
-  localStorage.setItem(storageKeys.apiBase, jarvisApiBase);
-  appendEvent("Jarvis API base saved", `API base saved in browser localStorage: ${jarvisApiBase}`, "ok");
-  checkJarvisApi("config save", { silent: false });
-  render();
-}
-
-function renderConfig() {
-  view.innerHTML = `
-    <section class="panel">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Chain Configuration And Subprompting</h2>
-          <p class="muted">Edit browser-local prompt and API candidates. Export creates a review packet; it does not mutate GitHub, Notion, WikiLLM, or runtime services. Use this page to describe a future configuration change, then apply it through a reviewed repository change.</p>
-        </div>
-        <div class="row-actions">
-          <button class="button" id="cfgApiCheck" type="button">Check API</button>
-          <button class="button" id="cfgApiSave" type="button">Save API base</button>
-          <button class="primary" id="cfgSave" type="button">Save locally</button>
-          <button class="button" id="cfgExport" type="button">Export config packet</button>
-        </div>
-      </div>
-      <div class="callout">
-        <strong>Jarvis API base</strong>
-        <p>Use only this dashboard's origin or an HTTP loopback address for local development. The value is saved only in this browser. It can check guarded <span class="code">/health</span> and submit a review packet; it cannot turn a provider, database write, repository write, or deployment into an approved action.</p>
-        <label>API base URL<input id="cfgApiBase" value="${escapeHtml(jarvisApiBase)}" placeholder="Same origin or http://127.0.0.1:8787" /></label>
-        <p class="field-help"><strong>What:</strong> guarded API origin. <strong>Why:</strong> prevents a local setting from posting packet content to an arbitrary host. <strong>Example:</strong> leave blank for same origin or use <span class="code">http://127.0.0.1:8787</span> in local development. <strong>Stored:</strong> browser localStorage. <strong>Cannot:</strong> hold an owner token or provider key.</p>
-        <p class="muted">Current API state: ${escapeHtml(jarvisApiState.label)} - ${escapeHtml(jarvisApiState.detail)}</p>
-      </div>
-      <div class="config-grid">
-        <label>Chain name<input id="cfgChain" value="${escapeHtml(promptConfig.chain_name)}" /></label>
-        <label>Model policy<textarea id="cfgModel">${escapeHtml(promptConfig.model_policy)}</textarea></label>
-        <label>Memory policy<textarea id="cfgMemory">${escapeHtml(promptConfig.memory_policy)}</textarea></label>
-        <label>Normal mode subprompt<textarea id="cfgNormal">${escapeHtml(promptConfig.normal_prompt)}</textarea></label>
-        <label>Interview mode subprompt<textarea id="cfgInterview">${escapeHtml(promptConfig.interview_prompt)}</textarea></label>
-        <label>Reviewer subprompt<textarea id="cfgReview">${escapeHtml(promptConfig.review_prompt)}</textarea></label>
-      </div>
-      <section class="panel" style="margin-top:16px"><h3>Parameter behavior</h3>${table(["Parameter", "Purpose", "When to change it", "Where it persists", "Limit"], [
-        ["Chain name", "Labels the candidate workflow", "When preparing a distinct reviewed handoff", "browser localStorage", "Does not rename repository services"],
-        ["Model policy", "States provider/model safety rules", "When provider contract changes are reviewed", "browser localStorage and exported packet", "Does not configure a secret or activate a route"],
-        ["Memory policy", "States what may become a candidate memory record", "When retention/sensitivity rules change", "browser localStorage and exported packet", "Does not write WikiLLM or a database"],
-        ["Normal / interview / reviewer prompts", "Frames local assistant and future operator behavior", "When a task contract or review rubric changes", "browser localStorage and exported packet", "Does not update a production system prompt"],
-      ].map((row) => row.map(escapeHtml)))}</section>
-    </section>
-    <section class="manual-chapter manual-start">
-      <h2 class="section-title">Agent Chain Links</h2>
-      ${table(["Chain link", "Role", "Persistence"], [
-        ["Jarvis intake", "Collect text, file transfer metadata/excerpts, and explicit approval.", "session/local packet"],
-        ["Context analyzer", "Summarize and classify fact, interpretation, hypothesis, gap, decision, task.", "review packet"],
-        ["Research/ICP agent", "Create source-backed evidence cards and market questions.", "run note after review"],
-        ["Manager/PRD agent", "Convert accepted context into tasks, owners, PRD deltas, deadlines.", "Notion candidates"],
-        ["Knowledge/RAG agent", "Promote reviewed summaries into Project Desire, WikiLLM, Obsidian.", "approval-gated"],
-        ["Reviewer/integrator", "Verify safety, source links, status claims, and merge order.", "decision/run/issue"],
-      ].map((row) => row.map(escapeHtml)))}
-    </section>
-  `;
-  document.querySelector("#cfgApiSave")?.addEventListener("click", saveJarvisApiBaseFromForm);
-  document.querySelector("#cfgApiCheck")?.addEventListener("click", () => checkJarvisApi("manual config check", { silent: false }));
-  document.querySelector("#cfgSave")?.addEventListener("click", savePromptConfigFromForm);
-  document.querySelector("#cfgExport")?.addEventListener("click", exportPromptConfig);
-}
-
-function selectedArchitectureLayer() {
-  return architectureLayers.find((layer) => layer.id === selectedArchitectureLayerId) || architectureLayers[0];
-}
-
-function renderStringList(items, className = "docs-list") {
-  return `<ul class="${className}">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
-}
-
-function renderArchitectureLayerStack() {
-  return `
-    <div class="architecture-stack" aria-label="Seven grouped architecture layers">
-      ${architectureLayers.map((layer) => `
-        <button class="layer-stack-button ${layer.id === selectedArchitectureLayerId ? "active" : ""}" type="button" data-layer-id="${layer.id}" aria-pressed="${layer.id === selectedArchitectureLayerId}">
-          <span class="layer-number">${layer.number}</span>
-          <span class="layer-stack-copy"><strong>${escapeHtml(layer.title)}</strong><small>${escapeHtml(layer.canonical)}</small></span>
-          <span class="proof-chip ${escapeHtml(layer.proofTone)}">${escapeHtml(layer.proofState)}</span>
-        </button>
-      `).join("")}
-    </div>
-  `;
-}
-
-function renderArchitectureLayerDetail(layer, options = {}) {
-  const detailed = options.detailed === true;
-  return `
-    <article class="layer-detail" aria-labelledby="layer-detail-title">
-      <div class="layer-detail-heading">
-        <div><span class="eyebrow">Grouped layer ${layer.number}</span><h3 id="layer-detail-title" tabindex="-1">${escapeHtml(layer.title)}</h3></div>
-        <span class="proof-chip ${escapeHtml(layer.proofTone)}">${escapeHtml(layer.proofState)}</span>
-      </div>
-      <p class="layer-purpose">${escapeHtml(layer.purpose)}</p>
-      <div class="docs-callout approval"><strong>Approval boundary</strong><p>${escapeHtml(layer.approvalBoundary)}</p></div>
-      <div class="layer-detail-grid">
-        <section><h4>Inputs</h4>${renderStringList(layer.inputs)}</section>
-        <section><h4>Outputs</h4>${renderStringList(layer.outputs)}</section>
-        <section><h4>Parameters</h4>${renderStringList(layer.parameters)}</section>
-        <section><h4>Effects</h4>${renderStringList(layer.effects)}</section>
-      </div>
-      ${detailed ? `
-        <div class="docs-grid two">
-          <section class="docs-section danger-zone"><h4>Failure modes</h4>${renderStringList(layer.failureModes)}</section>
-          <section class="docs-section"><h4>Repository sources</h4><div class="source-list">${layer.sources.map((source) => pathLink(source)).join("")}</div></section>
-        </div>
-        <div class="table-scroll">
-          ${table(["Parameter", "What it influences", "Required review"], layer.parameters.map((parameter, index) => [
-            `<span class="code">${escapeHtml(parameter)}</span>`,
-            escapeHtml(layer.effects[index % layer.effects.length]),
-            escapeHtml(layer.approvalBoundary),
-          ]))}
-        </div>
-      ` : `<a class="text-link" href="#architecture">Open full layer reference →</a>`}
-    </article>
-  `;
-}
-
-function bindArchitectureLayerNavigation() {
-  view.querySelectorAll("[data-layer-id]").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedArchitectureLayerId = button.dataset.layerId;
-      localStorage.setItem(storageKeys.architectureLayer, selectedArchitectureLayerId);
-      if (activeTab === "reference") {
-        activeTab = "architecture";
-        window.history.replaceState(null, "", "#architecture");
-      }
+  document.querySelectorAll("[data-pack-filter]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      packFilter = button.getAttribute("data-pack-filter") || "all";
       render();
-      view.querySelector("#layer-detail-title")?.focus?.();
     });
   });
-}
 
-function renderOverview(data) {
-  const layer = selectedArchitectureLayer();
-  const e13 = data.gates?.e1_3 || {};
-  view.innerHTML = `
-    <section class="overview-hero">
-      <div>
-        <span class="eyebrow">Documentation-first architecture console</span>
-        <h2>Build a maintained company brain, then give every agent a bounded way to use it.</h2>
-        <p>ArchFlow connects authority, retrieval, orchestration, specialist roles, verification, memory, external gates, and measurement. This console explains what is configured, what has evidence, and what still requires approval.</p>
-        <div class="hero-actions">
-          <a class="primary" href="#architecture">Inspect architecture</a>
-          <a class="button" href="#schema">Open workflow editor</a>
-          <a class="button" href="/jarvis">Open Jarvis chat</a>
-        </div>
-      </div>
-      <div class="hero-boundary">
-        <span class="eyebrow">Current operating boundary</span>
-        <strong>Static source view + browser-local editor</strong>
-        <p>Provider execution, durable external writeback, deployment, and publication are not implied by a visible control.</p>
-      </div>
-    </section>
-
-    <section class="docs-layout architecture-overview-grid">
-      <div class="panel architecture-map-panel">
-        <div class="section-header">
-          <div><span class="eyebrow">Seven public groups · eleven canonical layers</span><h2 class="section-title">Architecture map</h2></div>
-          <a class="button" href="#reference">Parameter reference</a>
-        </div>
-        ${renderArchitectureLayerStack()}
-      </div>
-      ${renderArchitectureLayerDetail(layer)}
-    </section>
-
-    <section class="panel proof-state-panel">
-      <div class="section-header">
-        <div><span class="eyebrow">Current proof boundaries</span><h2 class="section-title">What the architecture can support today</h2></div>
-        <a class="button" href="#runs">Open evidence ledger</a>
-      </div>
-      <div class="proof-state-grid">
-        ${card({ label: "Knowledge memory", value: `${data.wiki?.file_count ?? "Unknown"} public files`, note: "WikiLLM is durable public memory; source files remain authoritative", tone: "ok" })}
-        ${card({ label: "Goal readback", value: e13.derived_status || "unknown", note: "A recorded fixture supports this scope only; the evidence ledger names what it does not prove and the next gate.", tone: e13.readback_status === "passed" ? "ok" : "warn" })}
-        ${card({ label: "Retrieval", value: data.llamaindex?.status || "unknown", note: "Bounded hybrid contract with deterministic lexical fallback", tone: "warn" })}
-        ${card({ label: "Role execution", value: data.crewai?.level_3_status || data.crewai?.status || "unknown", note: "Deterministic fixture is not the default/provider runtime", tone: "warn" })}
-        ${card({ label: "Structural graph", value: data.graphify?.status || "unknown", note: "Generated reference, never canonical human synthesis", tone: data.graphify?.status === "available" ? "ok" : "warn" })}
-        ${card({ label: "Provider and writes", value: "approval gated", note: "MODEL_PROVIDER=none is the safe baseline", tone: "warn" })}
-      </div>
-    </section>
-  `;
-  bindArchitectureLayerNavigation();
-}
-
-function renderArchitecture(data) {
-  const layer = selectedArchitectureLayer();
-  view.innerHTML = `
-    <section class="docs-hero compact">
-      <div><span class="eyebrow">Architecture reference</span><h2>One operating system, seven grouped layers, explicit proof boundaries.</h2></div>
-      <p>The public groups make the system easier to navigate. The canonical architecture still keeps its eleven layers from authority through measurement, so implementation detail is not lost.</p>
-    </section>
-    <section class="docs-layout architecture-reference-layout">
-      <aside class="panel architecture-index">
-        <h2 class="section-title">Layer index</h2>
-        <p class="muted">Select a layer to inspect its contract. Selection is saved only in this browser.</p>
-        ${renderArchitectureLayerStack()}
-      </aside>
-      ${renderArchitectureLayerDetail(layer, { detailed: true })}
-    </section>
-    <section class="panel architecture-sequence-panel">
-      <h2 class="section-title">End-to-end contract</h2>
-      <div class="sequence-rail" aria-label="Architecture execution sequence">
-        ${architectureLayers.map((item, index) => `
-          <button type="button" data-layer-id="${item.id}" aria-label="Open ${escapeHtml(item.title)}">
-            <span>${item.number}</span><strong>${escapeHtml(item.title)}</strong>${index < architectureLayers.length - 1 ? "<i aria-hidden=\"true\">→</i>" : ""}
-          </button>
-        `).join("")}
-      </div>
-      <div class="docs-callout"><strong>Source-of-truth rule</strong><p>The console is an explanatory and browser-local editing surface. Repository contracts, validated run artifacts, and reviewed memory remain authoritative.</p></div>
-    </section>
-  `;
-  bindArchitectureLayerNavigation();
-}
-
-function renderKnowledge(data) {
-  const rag = data.llamaindex || {};
-  const wiki = data.wiki || {};
-  view.innerHTML = `
-    <section class="docs-hero compact">
-      <div><span class="eyebrow">Knowledge system</span><h2>Retrieve narrowly, preserve provenance, promote conclusions deliberately.</h2></div>
-      <p>ArchFlow uses a cascade rather than one undifferentiated database: routes and source files, WikiLLM memory, human-readable notes, generated structure, and bounded retrieval each have distinct jobs.</p>
-    </section>
-    <div class="proof-state-grid">
-      ${card({ label: "WikiLLM", value: `${wiki.file_count ?? "Unknown"} files`, note: "Durable public cross-run memory", tone: "ok" })}
-      ${card({ label: "Graphify", value: data.graphify?.status || "unknown", note: "Generated structural relationships", tone: data.graphify?.status === "available" ? "ok" : "warn" })}
-      ${card({ label: "Retrieval", value: rag.status || "unknown", note: rag.query_engine || "Bounded approved corpus", tone: "warn" })}
-      ${card({ label: "Nexus / live vault", value: "not asserted here", note: "Config, activation, socket, schema, and real calls require separate proof", tone: "warn" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header"><div><span class="eyebrow">Retrieval cascade</span><h2 class="section-title">Responsibilities and boundaries</h2></div><a class="button" href="#llamaindex">Open local query preview</a></div>
-      ${table(["Layer", "Use it for", "Do not use it for", "Primary source"], [
-        ["Routing and source zones", "Identify authority, project, corpus, and safety boundary", "Uncontrolled whole-repository ingestion", pathLink("project/operating-rules.md")],
-        ["WikiLLM", "Stable memory, runs, issues, decisions, insights", "Raw transcript or secret storage", pathLink(wiki.index_path || "wiki/index.md")],
-        ["Graphify", "Generated file and relationship reference", "Final human synthesis or business truth", pathLink("project/reports/2026-07-10-obsidian-graphify-nexus-setup-review.md")],
-        ["LlamaIndex contract", "Bounded hybrid retrieval with provenance and fallback", "Treating a similarity score as a verified claim", pathLink(rag.path || "project/workflows/llamaindex-rag.yaml")],
-        ["Nexus", "Live Obsidian search and actions after schema discovery", "Assuming configured means reachable or writable", pathLink("project/reports/2026-07-10-obsidian-graphify-nexus-setup-review.md")],
-      ])}
-    </section>
-    <div class="docs-grid two" style="margin-top:16px">
-      <section class="panel"><h2 class="section-title">RAG parameters</h2>${table(["Parameter", "Current contract", "Influence"], [
-        ["query mode", escapeHtml(rag.query_mode || "hybrid"), "Candidate-generation strategy"],
-        ["chunk size / overlap", `${escapeHtml(rag.chunk_size || "unset")} / ${escapeHtml(rag.chunk_overlap || "unset")}`, "Granularity and context continuity"],
-        ["vector top-k", escapeHtml(rag.vector_top_k || "unset"), "Semantic candidate breadth"],
-        ["lexical top-k", escapeHtml(rag.lexical_top_k || "unset"), "Deterministic keyword fallback breadth"],
-        ["rerank top-k", escapeHtml(rag.rerank_top_k || "unset"), "Final context size before synthesis"],
-        ["fallback", escapeHtml(rag.fallback_to_lexical || "unset"), "Availability when embeddings or vector services are absent"],
-      ])}</section>
-      <section class="panel"><h2 class="section-title">Corpus boundary</h2><h4>Included</h4>${renderStringList(rag.include || ["See workflow contract"])}<h4>Excluded</h4>${renderStringList(rag.exclude || ["See workflow contract"])}<div class="docs-callout warning"><strong>Proof note</strong><p>The browser query view is a lexical preview over generated dashboard data. It is not proof that the full hybrid runtime executed.</p></div></section>
-    </div>
-    <section class="panel" style="margin-top:16px"><div class="section-header"><div><span class="eyebrow">Data boundary</span><h2 class="section-title">Four storage layers, four different responsibilities</h2></div><a class="button" href="#data">Open Data Lab</a></div><p>The public generated index makes repository contracts inspectable. Browser-local drafts let an operator assemble a review packet without changing source files. A private runtime store is not represented here and must remain isolated from the public index. A future authenticated database is a separate product milestone, not an implied feature of retrieval.</p>${table(["Layer", "Purpose now", "Write authority"], [
-      ["Public generated index", "Skills, roles, workflow nodes, sources, and run summaries", "Generator output only"],
-      ["Browser-local drafts", "Schema edits, local packet state, and downloadable review bundles", "This browser only"],
-      ["Private runtime store", "Not exposed by this public console", "Gated private operator runtime"],
-      ["Future authenticated database", "Evidence ledger and multi-user controls after operational proof", "Not implemented"],
-    ].map((row) => row.map(escapeHtml)))}</section>
-  `;
-}
-
-function renderOperations(data) {
-  const kind = architectureMode === "control" ? "control" : "service";
-  const agentCount = (data.role_catalog?.roles || []).length;
-  return (view.innerHTML = `
-    <section class="docs-hero compact">
-      <div><span class="eyebrow">Operating model</span><h2>Two clear products, one governed handoff.</h2></div>
-      <p><strong>Knowledge Service</strong> turns an approved source boundary into a reviewed decision or delivery packet. <strong>Agent Control</strong> turns an approved request into explicit roles, task contracts, review gates, and a handoff. Both stop before provider use, file creation, Git, database writes, deployment, or external writeback unless a separately approved operator action occurs.</p>
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header"><div><span class="eyebrow">Activity context</span><h2 class="section-title">${viewerMode === "admin" ? "Administrator preview" : "Guest preview"}: local state, not authentication</h2></div><div class="row-actions"><button class="button ${viewerMode === "admin" ? "active-soft" : ""}" data-operation-viewer="admin" type="button">Admin</button><button class="button ${viewerMode === "guest" ? "active-soft" : ""}" data-operation-viewer="guest" type="button">Guest</button></div></div>
-      <p>${viewerMode === "admin" ? "Administrator preview may prepare browser-local reports and inspect guarded controls, but Agent Control still requires a local Knowledge Service report. It is not login, RBAC, durable user memory, or a bypass for provider/Git/writeback gates." : "Guest preview accepts only a public repository reference or a non-sensitive project summary. It prepares a local Knowledge Service report first. Agent Control remains held until that report exists in this browser; no repository is fetched, cloned, or modified."}</p>
-      ${table(["Shared browser-local activity field", "Used by", "Persistence and boundary"], [
-        ["viewer mode", "Dashboard and Jarvis", "localStorage; presentation mode only"],
-        ["knowledge report ID and classification", "Agent Control handoff", "localStorage; report is review-required, not a KB write"],
-        ["agent-control report ID", "download bundle and operator", "localStorage; no agent launch or file creation"],
-        ["selected architecture", "screen and packet framing", "localStorage; no runtime authority"],
-      ].map((row) => row.map(escapeHtml)))}
-    </section>
-    <div class="docs-grid two">
-      <section class="panel"><span class="eyebrow">Knowledge Service</span><h2 class="section-title">Source to reviewed output</h2><p>Use it when a product, research, or customer context must become a clear PRD, ICP, decision brief, backlog, or knowledge update. The operator supplies a bounded source summary, intended output, and review owner. The system produces a review packet with facts, interpretations, hypotheses, gaps, and the next safe action.</p><p class="muted">It cannot ingest arbitrary private folders, treat a retrieval score as truth, or promote a conclusion to durable memory automatically.</p><a class="button" href="#service">Open Knowledge Service workflow</a></section>
-      <section class="panel"><span class="eyebrow">Agent Control</span><h2 class="section-title">Request to governed handoff</h2><p>Use it to decide who may do bounded work, which skills and sources they may use, how parallel branches avoid file conflicts, and who independently verifies the result. It generates role and task contracts; Codex or another approved operator performs any real file work.</p><p class="muted">${agentCount} configured role contracts are represented in the public data. They are not always-running agents or a provider execution claim.</p><a class="button" href="#schema">Open Agent Control workflow</a></section>
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header"><div><span class="eyebrow">Current sequence</span><h2 class="section-title">Make the requested work inspectable before it becomes executable.</h2></div>${architectureSelectorMarkup("operations")}</div>
-      <p class="muted">The animated current stage below is an intentionally local packet-preparation preview. A future live state feed must include a run ID, node ID, state, timestamp, evidence reference, authority scope, and writeback state before this console may represent it as runtime execution.</p>
-      ${renderExecutionTimeline(kind)}
-    </section>
-    <section class="panel" style="margin-top:16px"><h2 class="section-title">Who acts at each stage</h2>${table(["Stage", "Control", "Output", "Gate"], [
-      ["Intake", "Owner defines objective, source boundary, and desired artifact.", "Task contract", "Scope and authority checked"],
-      ["Design", "LangGraph contract routes the smallest viable workflow; CrewAI roles remain bounded workers.", "Node and role contracts", "No overlapping file claim"],
-      ["Knowledge", "LlamaIndex retrieval and CAG assemble approved context; WikiLLM keeps reviewed durable memory.", "Evidence-backed context capsule", "Provenance and corpus boundary"],
-      ["Work", "Approved operator or bounded worker creates a candidate artifact.", "Scoped draft and changed-file proposal", "No external side effect"],
-      ["Review", "Independent reviewer checks correctness, safety, and claims.", "Verdict, gaps, next action", "Maker and reviewer stay separate"],
-      ["Handoff", "Operator may apply an approved repository change or separately request an external action.", "Run handout or review bundle", "Git, provider, deploy, and writeback remain explicit approvals"],
-    ].map((row) => row.map(escapeHtml)))}</section>
-  `);
-  bindArchitectureSelectors(view);
-  bindExecutionTimelineControls(kind);
-  view.querySelectorAll("[data-operation-viewer]").forEach((button) => button.addEventListener("click", () => setViewerMode(button.dataset.operationViewer)));
-}
-
-function renderManual(data) {
-  const knowledge = data.knowledge_catalog || [];
-  const configuration = data.configuration_catalog || [];
-  const skills = data.skill_catalog?.items || [];
-  const roles = data.role_catalog?.roles || [];
-  const knowledgeReady = sharedSession.knowledge?.status === "prepared_local";
-  const controlReady = sharedSession.agent_control?.status === "prepared_local";
-  view.innerHTML = `
-    <section class="docs-hero">
-      <div><span class="eyebrow">ArchFlow Dashboard Operating Manual</span><h1>Use the architecture as a documented handoff system.</h1></div>
-      <p>This is the developer-facing guide for the current public/static setup. It explains the repository, dashboard, Jarvis, knowledge flow, agent-control flow, configuration points, role and skill contracts, outputs, and boundaries. It intentionally describes what is implemented now; it does not publish a strategic plan or imply a hosted autonomous runtime.</p>
-    </section>
-    <section class="manual-chapter manual-start">
-      <div class="section-header"><div><span class="eyebrow">Start here</span><h2 class="section-title">The current operating sequence</h2></div><div class="row-actions"><button class="button ${viewerMode === "admin" ? "active-soft" : ""}" data-manual-viewer="admin" type="button">Admin preview</button><button class="button ${viewerMode === "guest" ? "active-soft" : ""}" data-manual-viewer="guest" type="button">Guest preview</button><a class="primary" href="/jarvis">Open Jarvis</a></div></div>
-      <p><strong>Step 1 — Knowledge Service.</strong> State the goal, a public-safe project reference or summary, allowed evidence, exclusions, desired output, constraints, and reviewer. Prepare a local architecture report. <strong>Step 2 — Agent Control.</strong> Reuse that report ID to propose roles, skills, tool boundaries, routing, reviewer separation, stop conditions, and proposed files. <strong>Step 3 — Human operator.</strong> Download the report/handoff and decide whether to create a scoped repository change. The static surfaces never make that change themselves.</p>
-      ${table(["Visible stage", "Current local state", "What it means", "Next safe action"], [
-        ["Viewer", viewerMode, viewerMode === "admin" ? "Administrator preview exposes optional guarded controls; it is not authentication." : "Guest preview is limited to non-sensitive public context; it is not an account.", "Choose Admin or Guest locally."],
-        ["Knowledge Service", sharedSession.knowledge?.status || "not_started", knowledgeReady ? `Local report ${sharedSession.knowledge.report_id || "prepared"} is available to Agent Control.` : "No local knowledge report is prepared.", "Open Knowledge Service and prepare/download a report."],
-        ["Agent Control", sharedSession.agent_control?.status || "locked_pending_knowledge", controlReady ? `Local handoff ${sharedSession.agent_control.report_id || "prepared"} is available for operator review.` : "Held in both Admin and Guest preview until a local Knowledge Service report exists; then remains review-only.", "Open Agent Control and prepare/download the handoff."],
-        ["Runtime / writes", "not activated by this UI", "No agent launch, provider call, repository write, database write, deployment, Notion/Nexus write, or Git push is represented as complete here.", "Use a separate approved operator workflow with current checks."],
-      ].map((row) => row.map(escapeHtml)))}
-    </section>
-    <div class="docs-grid two manual-flow-columns">
-      <section class="manual-chapter"><span class="eyebrow">Knowledge Service</span><h2 class="section-title">Turn bounded context into a reviewable report</h2><p><strong>Use when:</strong> a repository, product brief, research packet, meeting summary, or approved source set needs a PRD, ICP brief, evidence map, context capsule, decision brief, or knowledge update candidate.</p><p><strong>Required fields:</strong> goal; project reference or safe label; allowed evidence; explicit exclusions; desired output; decision supported; constraints; stop conditions; reviewer. A source reference is only a label in this public browser flow: it is not fetched, cloned, indexed, or sent to a provider.</p><p><strong>Output:</strong> a local architecture report with FACT / INTERPRETATION / HYPOTHESIS / GAP sections, provenance boundary, requested outputs, reviewer questions, and a <span class="code">review_required_not_executed</span> status. Download it before asking an operator to create files or promote memory.</p><a class="button" href="#service">Open detailed Knowledge Service workflow</a></section>
-      <section class="manual-chapter"><span class="eyebrow">Agent Control</span><h2 class="section-title">Turn a reviewed report into a bounded work design</h2><p><strong>Use when:</strong> the desired outcome needs roles, skills, tools, source boundaries, a LangGraph-style route, parallel lanes, a maker/reviewer split, approval points, and a clear handoff.</p><p><strong>Required fields:</strong> reviewed knowledge report ID, goal, required roles, allowed skills/tools/sources, expected artifacts, independent reviewer, approval gates, and stop conditions. Do not give two agents ownership of the same write target.</p><p><strong>Output:</strong> a local agent-control handoff with proposed file architecture marked <span class="code">created: false</span> and <span class="code">requires_operator_review: true</span>. It is a design package, not a sub-agent launch.</p><a class="button" href="#schema">Open detailed Agent Control workflow</a></section>
-    </div>
-    <section class="manual-chapter"><span class="eyebrow">Parallel-chat protocol</span><h2 class="section-title">How separate chats communicate while acting in the project</h2><p>Use one lead integrator and bounded sidecar chats. Each sidecar reads the live communication contract, claims one exclusive file scope, returns evidence and gaps, and stops on overlap or missing authority. The integrator reconciles branch reports and reruns checks after merge.</p>${table(["Before work", "During work", "Handoff"], [["Read the README, current notice, latest log, task contract, and current source report.", "Use one role, output, file scope, reviewer, and stop condition. Announce scope changes before editing.", "Return FACT / INTERPRETATION / HYPOTHESIS / GAP, changed files, checks, blockers, and approve/revise/block recommendation."]])}<div class="source-list">${pathLink("project/live/communication/README.md")}${pathLink("project/live/communication/current-agent-notice.md")}${pathLink("project/runs/20260715-dashboard-operating-manual/task-contract.md")}</div></section>
-    <section class="manual-chapter">
-      <div class="section-header"><div><span class="eyebrow">Admin and guest</span><h2 class="section-title">Two local views, one honest boundary</h2></div></div>
-      ${table(["Mode", "May enter", "May prepare", "Cannot do"], [
-        ["Admin preview", "Existing local knowledge report, operator constraints, local prompt candidates", "Knowledge report; Agent Control handoff only after that report", "Authenticate, access private material, override gates, launch agents, create files, or write externally"],
-        ["Guest preview", "Public repository reference or sanitized project summary", "Knowledge report first; Agent Control after that local report", "Fetch/clone a repository, use a token/API base, upload private material, retain an individual account memory, or execute actions"],
-      ].map((row) => row.map(escapeHtml)))}
-      <p class="field-help">Both modes are saved in browser localStorage on this device. Clear browser storage to remove them. They are not authentication, authorization, tenancy, or a persistent member-memory product.</p>
-    </section>
-    <section class="manual-chapter">
-      <div class="section-header"><div><span class="eyebrow">Repository and knowledge files</span><h2 class="section-title">Read in this order; promote only after review</h2></div><a class="button" href="#knowledge">Explore knowledge</a></div>
-      <p>Routing files select the project and public boundary. CAG supplies stable context. WikiLLM preserves reviewed conclusions. Graphify is generated structure. LlamaIndex is bounded retrieval. Nexus is a separate live-vault bridge when its capability is verified. A score, configuration file, or dashboard card is never proof of an executed external action.</p>
-      ${table(["Layer", "File / configuration point", "Purpose in this setup", "How to use it"], knowledge.map((item) => [escapeHtml(item.layer), pathLink(item.path), escapeHtml(item.purpose), item.status === "present" ? "Read before expanding scope; link the result in a review packet." : "Restore or repair before relying on this layer."]))}
-    </section>
-    <section class="manual-chapter">
-      <div class="section-header"><div><span class="eyebrow">Configuration reference</span><h2 class="section-title">Every editable family and its consequence</h2></div><a class="button" href="#config">Open configuration</a></div>
-      ${table(["Area", "Where configured", "Parameters", "Effect and boundary"], configuration.map((item) => [escapeHtml(item.area), pathLink(item.path), escapeHtml((item.parameters || []).join(", ")), `${escapeHtml(item.effect)} Stored: ${escapeHtml(item.where)}.`]))}
-      <p class="field-help"><strong>Configuration change rule:</strong> use the browser editor to draft and export, then change versioned YAML/Markdown through a reviewed repository patch. Do not put credentials in public files or browser exports. API base is restricted to same origin or HTTP loopback; owner tokens stay in page memory only and are hidden in Guest preview.</p>
-    </section>
-    <section class="manual-chapter">
-      <div class="section-header"><div><span class="eyebrow">Packaged skills</span><h2 class="section-title">${skills.length} public skills, explained one by one</h2></div><a class="button" href="#agents">Explore agents and skills</a></div>
-      <p>These are the only portable <span class="code">SKILL.md</span> packages shipped by this repository. Names shown only as methods/checklists in a role contract are not silently bundled or redistributed. Documentation-reference counts are not execution counts; public-safe invocation telemetry is not implemented.</p>
-      ${table(["Skill", "Use it for", "Recommended roles", "Allowed / forbidden"], skills.map((skill) => [
-        pathLink(skill.path),
-        escapeHtml(skill.description),
-        escapeHtml((skill.recommended_roles || []).join(", ") || "Task-contract selected"),
-        `${escapeHtml((skill.permissions || []).join(", "))}. Never: ${escapeHtml((skill.forbidden_actions || []).join(", "))}.`,
-      ]))}
-    </section>
-    <section class="manual-chapter">
-      <div class="section-header"><div><span class="eyebrow">Agent roles</span><h2 class="section-title">${roles.length} declared role contracts, not a claim of active workers</h2></div><a class="button" href="#data">Query public role catalog</a></div>
-      <p>Each role is a reusable responsibility. A compatible runtime may fulfil it only after a bounded task contract assigns the exact sources, packaged skills/method checklists, output, independent reviewer, and stop rule. Tool scope can expand only through a reviewed task contract and the relevant provider/tool adoption gate.</p>
-      ${table(["Role", "Mode", "Declared skills", "Expected outputs", "Forbidden actions"], roles.map((role) => [
-        `<span class="code">${escapeHtml(role.id)}</span><br>${escapeHtml(role.title)}`,
-        escapeHtml(role.mode || "not declared"),
-        escapeHtml((role.skills || []).join(", ") || "task-contract selected"),
-        escapeHtml((role.outputs || []).join(", ") || "not declared"),
-        escapeHtml((role.forbidden_actions || []).join(", ") || "see task contract"),
-      ]))}
-    </section>
-    <section class="manual-chapter">
-      <div class="section-header"><div><span class="eyebrow">Jarvis operator guide</span><h2 class="section-title">Prompt it with a contract, not a vague command</h2></div><a class="primary" href="/jarvis">Open Jarvis</a></div>
-      <p>Jarvis first produces an architecture report in the conversation and enables a download. Start with Knowledge Service, then use the resulting local report for Agent Control. In Guest preview, no API base or owner-token control is shown and no model catalog is loaded automatically. In Admin preview, guarded API review remains optional and provider execution stays server-gated.</p>
-      <pre class="code-block">Goal:
-Public repository reference or safe project label:
-Allowed evidence:
-Excluded / private material:
-Requested output:
-Decision this must support:
-Constraints and stop conditions:
-Independent reviewer:</pre>
-      <p>For Agent Control, add: <strong>use knowledge report ID; required roles; allowed skills/tools; allowed sources; expected files/artifacts; approval gates; rollback condition.</strong> Jarvis may propose files, but its downloaded package marks them as proposals only. A separate operator applies any approved change.</p>
-    </section>
-    <section class="manual-chapter">
-      <div class="section-header"><div><span class="eyebrow">Frequently asked questions</span><h2 class="section-title">Operational answers for the current setup</h2></div></div>
-      <div class="list">
-        ${[
-          ["Is this a live autonomous agent system?", "No. The public dashboard and Jarvis prepare browser-local reports and review packets. LangGraph, CrewAI, LlamaIndex, and WikiLLM are documented contracts/knowledge layers with separate proof states."],
-          ["Where do I change retrieval behavior?", "Use project/workflows/llamaindex-rag.yaml for include/exclude, chunk size, overlap, retrieval mode, top-k and rerank parameters; test a bounded fixture before treating a new default as proven."],
-          ["Where do I change workflow routes or approval logic?", "Use project/workflows/langgraph-controller.yaml for nodes, routes, checkpoints, revision cap, and approval settings. Draft the graph in the Workflow Editor first, then apply a reviewed patch."],
-          ["What do Admin and Guest mean?", "They are browser-local preview modes only. They do not create accounts, individual durable memory, or permissions. Both begin with Knowledge Service before Agent Control; Admin additionally exposes guarded control documentation."],
-          ["Can Jarvis use my repository automatically?", "Not in this public/static setup. Provide a public reference or safe summary. Fetching, cloning, indexing, private data use, provider calls, and file changes each require their own approved operator workflow."],
-          ["Can I download the work?", "Yes. The current page exports local JSON review bundles; Jarvis exports a readable architecture report and a JSON handoff. Downloads are proposals, not repository patches or commits."],
-          ["Why are there skills listed that are not packages?", "The role roster distinguishes shipped public SKILL.md contracts from project methods/checklists. Add a new package only after duplicate, safety, portability, role-mapping, validation, and review checks."],
-          ["Where is the database?", "The Data Lab reads generated public JSON and browser-local drafts. It is not a server database. A future multi-user store requires authentication, tenancy, RBAC, audit, retention, backup, and recovery proof."],
-        ].map(([question, answer]) => `<article class="row"><span class="row-title">${escapeHtml(question)}</span><p>${escapeHtml(answer)}</p></article>`).join("")}
-      </div>
-    </section>
-  `;
-  view.querySelectorAll("[data-manual-viewer]").forEach((button) => button.addEventListener("click", () => setViewerMode(button.dataset.manualViewer)));
-}
-
-function dataLabRows(data, tableName) {
-  const rows = {
-    skills: data.skill_catalog?.items || [],
-    roles: (data.role_catalog?.roles || []).map((role) => ({
-      id: role.id,
-      title: role.title,
-      mode: role.mode,
-      skills: (role.skills || []).join(", "),
-      outputs: (role.outputs || []).join(", "),
-      forbidden_actions: (role.forbidden_actions || []).join(", "),
-    })),
-    workflow_nodes: data.langgraph?.nodes || [],
-    sources: data.sources || [],
-    runs: data.activity || [],
-  };
-  return rows[tableName] || [];
-}
-
-function runDataLabQuery(query) {
-  const result = view.querySelector("#dataQueryResult");
-  const normalized = String(query || "").trim();
-  const match = normalized.match(/^SELECT\s+([A-Za-z0-9_*,\s]+)\s+FROM\s+(skills|roles|workflow_nodes|sources|runs)(?:\s+LIMIT\s+(\d+))?\s*;?$/i);
-  if (!match) {
-    if (result) result.innerHTML = `<div class="callout">Only read-only examples are accepted: <span class="code">SELECT id, name FROM skills LIMIT 20</span> or <span class="code">SELECT id, title, mode FROM roles LIMIT 20</span>. WHERE clauses, joins, functions, mutations, and external connections are intentionally unavailable.</div>`;
-    return;
-  }
-  const [, requestedColumns, tableName, rawLimit] = match;
-  const rows = dataLabRows(dashboardData, tableName);
-  const available = Object.keys(rows[0] || {});
-  const columns = requestedColumns.trim() === "*" ? available : requestedColumns.split(",").map((column) => column.trim()).filter(Boolean);
-  const invalid = columns.find((column) => !available.includes(column));
-  if (invalid) {
-    if (result) result.innerHTML = `<div class="callout">Column <strong>${escapeHtml(invalid)}</strong> is not available in <strong>${escapeHtml(tableName)}</strong>. Available: ${escapeHtml(available.join(", ") || "no rows")}.</div>`;
-    return;
-  }
-  const limit = Math.min(Math.max(Number(rawLimit || 20), 1), 50);
-  const displayRows = rows.slice(0, limit).map((row) => columns.map((column) => {
-    const value = Array.isArray(row[column]) ? row[column].join(", ") : row[column];
-    return escapeHtml(value ?? "");
-  }));
-  if (result) result.innerHTML = `<p class="muted">${displayRows.length} public generated row(s). This result is browser-local and read-only.</p>${table(columns, displayRows)}`;
-}
-
-function renderDataLab(data) {
-  const database = data.public_database || {};
-  view.innerHTML = `
-    <section class="docs-hero compact"><div><span class="eyebrow">Data architecture</span><h2>Inspect the public catalog without inventing a production database.</h2></div><p>The dashboard reads generated JSON and browser-local drafts. It does not connect to a customer store, private corpus, or production database. The query lab is deliberately a bounded teaching interface rather than arbitrary SQL.</p></section>
-    <section class="panel"><h2 class="section-title">What is represented today</h2>${table(["Table", "Purpose", "Columns", "Rows"], (database.tables || []).map((item) => [escapeHtml(item.name), escapeHtml(item.purpose), escapeHtml(item.columns.join(", ")), escapeHtml(item.rows ?? "generated at refresh")]))}<p class="muted">Repository data is regenerated by the public data generator. Browser-local drafts stay in local storage until explicitly downloaded as a review bundle. Neither is a live database write path.</p></section>
-    <section class="panel" style="margin-top:16px"><div class="section-header"><div><span class="eyebrow">Read-only fixture query lab</span><h2 class="section-title">SQL-like public catalog preview</h2></div><a class="button" href="../database/README.md">Data boundary</a></div><label class="full-width-label">Query<input id="dataQuery" value="SELECT id, name, category, documentation_reference_count FROM skills LIMIT 20" autocomplete="off" /></label><p class="field-help">What: a small public catalog query. Why: inspect the shipped contracts. Example: <span class="code">SELECT id, title, mode FROM roles LIMIT 20</span>. Stored: nowhere. Cannot: query private data, mutate data, join tables, call a server, or execute arbitrary SQL.</p><div class="row-actions"><button class="primary" id="dataQueryRun" type="button">Run public preview</button><button class="button" id="dataQuerySkills" type="button">Show skills</button><button class="button" id="dataQueryRoles" type="button">Show roles</button></div><div id="dataQueryResult" class="table-scroll" style="margin-top:16px"></div></section>
-    <section class="panel" style="margin-top:16px"><h2 class="section-title">Gated database roadmap</h2><p>A local single-user evidence ledger may use SQLite or DuckDB only after migrations, a read-only query role, row and time limits, audit records, backup/restore proof, and strict separation from private sources. A hosted multi-user database additionally needs tenancy, authentication, RBAC, encryption, retention, and recovery evidence. Those controls are not present in this static console.</p></section>
-  `;
-  view.querySelector("#dataQueryRun")?.addEventListener("click", () => runDataLabQuery(view.querySelector("#dataQuery")?.value));
-  view.querySelector("#dataQuerySkills")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, name, category, documentation_reference_count FROM skills LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
-  view.querySelector("#dataQueryRoles")?.addEventListener("click", () => { view.querySelector("#dataQuery").value = "SELECT id, title, mode FROM roles LIMIT 20"; runDataLabQuery(view.querySelector("#dataQuery").value); });
-  runDataLabQuery(view.querySelector("#dataQuery")?.value);
-}
-
-function renderAgents(data) {
-  const agents = data.role_catalog?.roles || [];
-  const tasks = data.crewai?.tasks || [];
-  const catalog = data.skill_catalog || { items: [], packaged_count: 0 };
-  view.innerHTML = `
-    <section class="docs-hero compact">
-      <div><span class="eyebrow">Agents and skills</span><h2>Roles are contracts, not personas.</h2></div>
-      <p>Each role needs an objective, bounded responsibility, allowed sources and tools, a skill set, an output schema, an independent reviewer, and a stop condition.</p>
-    </section>
-    <div class="proof-state-grid">
-      ${card({ label: "Role contracts", value: `${agents.length} declared`, note: "Registry contracts, not always-running agents", tone: "warn" })}
-      ${card({ label: "Process", value: data.crewai?.process || "unknown", note: "LangGraph remains the state and routing owner", tone: "ok" })}
-      ${card({ label: "Memory", value: data.crewai?.memory || "unknown", note: "Role memory does not replace canonical project memory", tone: "warn" })}
-      ${card({ label: "Provider proof", value: data.crewai?.level_3_status || "not recorded", note: "A deterministic fixture is not default runtime", tone: "warn" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header"><div><span class="eyebrow">Role registry</span><h2 class="section-title">Configured specialist roles</h2></div><a class="button" href="#schema">Edit workflow roles</a></div>
-      <div class="agent-doc-grid">
-        ${agents.map((agent) => `
-          <article class="agent-doc-card">
-            <div class="agent-doc-heading"><span class="glyph">${escapeHtml(agent.id).slice(0, 2).toUpperCase()}</span><div><h3>${escapeHtml(agent.title)}</h3><span class="code">${escapeHtml(agent.id)}</span></div></div>
-            <p><strong>Mode:</strong> ${escapeHtml(agent.mode || "not declared")}</p>
-            <div class="skill-chip-list">${(agent.skills || []).map((skill) => `<span>${escapeHtml(skill)}</span>`).join("")}</div>
-            <p class="field-help"><strong>Outputs:</strong> ${escapeHtml((agent.outputs || []).join(", ") || "not declared")}<br><strong>Boundary:</strong> ${escapeHtml((agent.forbidden_actions || []).join(", ") || "defined by task contract")}</p>
-          </article>
-        `).join("") || `<div class="callout">No generated role registry is available.</div>`}
-      </div>
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header"><div><span class="eyebrow">Reviewed public skill catalog</span><h2 class="section-title">${escapeHtml(catalog.packaged_count || 0)} portable contracts shipped with this repository</h2></div><a class="button" href="#data">Inspect catalog data</a></div>
-      <p class="muted">This is the complete public allowlist for the repository—not a copy of the operator’s installed skill library. Documentation references are shown separately from usage. Verified invocation counts remain “not measured” until a public-safe execution ledger exists.</p>
-      ${table(["Skill", "Purpose", "Portability", "Usage"], (catalog.items || []).map((skill) => [
-        `<span class="code">${escapeHtml(skill.id)}</span>`,
-        escapeHtml(skill.description || "Project skill contract"),
-        escapeHtml(skill.portable ? "public-safe portable" : "review required"),
-        escapeHtml(skill.verified_invocations == null ? `not measured; ${skill.documentation_reference_count || 0} documentation references` : String(skill.verified_invocations)),
-      ]))}
-      <div class="source-list">${pathLink("project/database/skill-catalog.json")}${pathLink("project/database/skill-catalog.schema.json")}${pathLink("project/database/role-catalog.json")}${pathLink("project/database/role-catalog.schema.json")}${pathLink("project/agents/skills-governance.md")}</div>
-    </section>
-    <div class="docs-grid two" style="margin-top:16px">
-      <section class="panel"><h2 class="section-title">Task-to-role handoff</h2>${table(["Task", "Role", "Expected artifact"], tasks.map((task) => [escapeHtml(task.id), badge(task.agent), escapeHtml(task.expected_output)]))}</section>
-      <section class="panel"><h2 class="section-title">Skill governance</h2><div class="list">
-        <div class="row"><span class="row-title">Discover</span><div class="row-meta">Find the smallest skill set that matches a bounded responsibility.</div></div>
-        <div class="row"><span class="row-title">Inspect</span><div class="row-meta">Check provenance, permissions, hooks, network behavior, license, and rollback before use.</div></div>
-        <div class="row"><span class="row-title">Prove</span><div class="row-meta">Run a sanitized fixture and independent review before a tool becomes default.</div></div>
-        <div class="row"><span class="row-title">Evolve</span><div class="row-meta">Update a skill only when repeated evidence justifies durable guidance.</div></div>
-      </div><div class="source-list">${pathLink("project/agents/skills-by-agent.md")}${pathLink("project/agents/skills-governance.md")}${pathLink("skills/skills-used.md")}</div></section>
-    </div>
-  `;
-}
-
-function renderRuns(data) {
-  const activity = data.activity || [];
-  const gate = data.gates?.e1_3 || {};
-  const backlog = proofBacklogItems();
-  view.innerHTML = `
-    <section class="docs-hero compact">
-      <div><span class="eyebrow">Runs and evidence</span><h2>Separate configuration, execution, review, and promotion.</h2></div>
-      <p>A visible route or configured tool is not runtime proof. A passing fixture is not a production approval. This ledger keeps those states legible.</p>
-    </section>
-    <div class="proof-state-grid">
-      ${(data.status_cards || []).map((item) => card(item)).join("")}
-      ${card({ label: "E1.3 readback", value: gate.derived_status || "unknown", note: "Fixture evidence is recorded; it does not establish provider, production, or external-write readiness.", tone: gate.readback_status === "passed" ? "ok" : "warn" })}
-    </div>
-    <div class="docs-grid two" style="margin-top:16px">
-      <section class="panel"><h2 class="section-title">Evidence-state vocabulary</h2>${table(["State", "Meaning", "Can advance?"], [
-        [badge("configured"), "Contract or setting exists and parses.", "Only to a bounded fixture."],
-        [badge("executed"), "A declared command ran against a named fixture.", "Only to independent review."],
-        [badge("proved"), "Expected behavior and evidence passed the declared check.", "Only within the proved scope."],
-        [badge("gated"), "Authority, runtime, safety, or evidence is still missing.", "No; prepare the next bounded artifact."],
-        [badge("approved"), "Named approver accepted a specific action and boundary.", "Yes, only for that action."],
-      ])}</section>
-      <section class="panel"><h2 class="section-title">UI acceptance ledger</h2><div class="list">${backlog.map((item) => `<article class="row"><div>${badge(item.status)} <strong>${escapeHtml(item.id)} · ${escapeHtml(item.title)}</strong></div><p>${escapeHtml(item.proof)}</p><div class="row-meta">Next: ${escapeHtml(item.next)}</div></article>`).join("")}</div></section>
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <div class="section-header"><div><span class="eyebrow">Generated source index</span><h2 class="section-title">Recent public-safe activity</h2></div><span class="pill">Generated ${escapeHtml(new Date(data.generated_at).toLocaleString())}</span></div>
-      ${table(["Kind", "Title", "Repository path"], activity.slice(0, 18).map((item) => [badge(item.kind), escapeHtml(item.title), pathLink(item.path)]))}
-    </section>
-    <section class="panel" style="margin-top:16px"><h2 class="section-title">Check registry</h2><p class="muted">These are documented commands and prior registry states. Rerun relevant checks for the current change before making a fresh completion claim.</p>${table(["Check", "Command", "Registry state"], validationCommandItems().map(([label, command, status]) => [escapeHtml(label), `<span class="code">${escapeHtml(command)}</span>`, badge(status)]))}</section>
-  `;
-}
-
-function renderReference(data) {
-  const lifecycle = [
-    ["Build", "Define authority, goal, context, graph, roles, outputs, and checks.", "A provider-disabled fixture with source-linked artifacts."],
-    ["Scale", "Add parallel branches, reusable role packs, checkpoints, queues, and budget controls.", "Representative fixtures without file conflicts or unbounded context."],
-    ["Govern", "Enforce approvals, provenance, memory promotion, sensitivity, observability, and rollback.", "No critical safety or source-boundary regression."],
-    ["Optimize", "Compare quality, reliability, context, tokens, latency, cost, retrieval, and human effort.", "Paired evidence shows a declared benefit without quality loss."],
-  ];
-  view.innerHTML = `
-    <section class="docs-hero compact">
-      <div><span class="eyebrow">Operator reference</span><h2>Configure the architecture without hiding its consequences.</h2></div>
-      <p>Parameters influence retrieval breadth, loop behavior, cost, risk, and output quality. Defaults are hypotheses until tested on the intended workload.</p>
-    </section>
-    <section class="panel lifecycle-panel">
-      <h2 class="section-title">Build · Scale · Govern · Optimize</h2>
-      <div class="lifecycle-grid">${lifecycle.map(([title, purpose, gate], index) => `<article><span>${String(index + 1).padStart(2, "0")}</span><h3>${title}</h3><p>${purpose}</p><small>Graduation gate: ${gate}</small></article>`).join("")}</div>
-    </section>
-    <div class="docs-grid two" style="margin-top:16px">
-      <section class="panel"><h2 class="section-title">Parameter families</h2>${table(["Family", "Examples", "Primary effect", "Failure signal"], [
-        ["Goal", "success criteria, budget, deadline, stop rule", "Defines done and bounded authority", "Work expands without a testable finish"],
-        ["Retrieval", "include/exclude, chunking, top-k, rerank", "Controls source and context breadth", "Missing provenance or irrelevant context"],
-        ["Orchestration", "routes, retries, checkpoints, merge", "Controls sequence and recovery", "Infinite loop or conflicting writes"],
-        ["Role", "skills, tools, source allowlist, output schema", "Controls specialization", "Persona language without bounded output"],
-        ["Verification", "test, rubric, reviewer, loop cap", "Controls reliability", "Self-reported success or no new evidence"],
-        ["Memory", "destination, retention, sensitivity, promotion", "Controls durable learning", "Raw/private content becomes canonical"],
-        ["Optimization", "tokens, cost, latency, quality, retrieval", "Controls trade-off decisions", "Unpaired or invented improvement claim"],
-      ])}</section>
-      <section class="panel"><h2 class="section-title">Status semantics</h2><div class="list">
-        <div class="row"><span class="row-title">FACT</span><div class="row-meta">Directly supported by a current source or observed check.</div></div>
-        <div class="row"><span class="row-title">INTERPRETATION</span><div class="row-meta">A reasoned reading of facts; useful but not the source itself.</div></div>
-        <div class="row"><span class="row-title">HYPOTHESIS</span><div class="row-meta">A testable proposition, including the current ICP lane and forcing-moment assumptions.</div></div>
-        <div class="row"><span class="row-title">GAP</span><div class="row-meta">Missing capability, evidence, authority, or freshness.</div></div>
-      </div><div class="docs-callout warning"><strong>Safe default</strong><p>MODEL_PROVIDER=none. Browser-local edits and exports are review candidates, not external writes.</p></div></section>
-    </div>
-    <section class="panel" style="margin-top:16px"><h2 class="section-title">Canonical architecture sources</h2>${table(["Grouped layer", "Canonical mapping", "Proof state", "Sources"], architectureLayers.map((layer) => [
-      `<button class="text-button" type="button" data-layer-id="${layer.id}">${layer.number} · ${escapeHtml(layer.title)}</button>`,
-      escapeHtml(layer.canonical),
-      `<span class="proof-chip ${escapeHtml(layer.proofTone)}">${escapeHtml(layer.proofState)}</span>`,
-      `<div class="source-list compact">${layer.sources.map((source) => pathLink(source)).join("")}</div>`,
-    ]))}</section>
-  `;
-  bindArchitectureLayerNavigation();
-}
-
-function renderWiki(data) {
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "Wiki files", value: data.wiki.file_count, note: "Public durable memory layer", tone: "ok" })}
-      ${card({ label: "Memory", value: data.wiki.memory_path, note: "Current stable project facts", tone: "ok" })}
-      ${card({ label: "Insights", value: data.wiki.insights_path, note: "Reusable reasoning layer", tone: "ok" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">WikiLLM Files</h2>
-      <div class="list">
-        ${data.wiki.files.map((file) => `
-          <article class="row">
-            <span class="row-title">${escapeHtml(file.title)}</span>
-            <div class="row-meta">${pathLink(file.path)}</div>
-            <p>${escapeHtml(file.excerpt)}</p>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-  `;
-}
-
-function renderGraphify(data) {
-  const hasGraph = data.graphify.status === "available";
-  view.innerHTML = `
-    <div class="grid cols-2">
-      ${card({ label: "Graphify status", value: data.graphify.status, note: "Generated structure reference", tone: hasGraph ? "ok" : "warn" })}
-      ${card({ label: "Recommended next", value: "After code changes", note: data.graphify.recommended_next, tone: hasGraph ? "ok" : "warn" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Graphify Links</h2>
-      ${hasGraph
-        ? `<div class="list">${data.graphify.paths.map((p) => `<div class="row">${pathLink(p)}</div>`).join("")}</div>`
-        : `<div class="callout">No Graphify output is present in this public project yet. Generate it after runtime code exists so the graph reflects the real implementation.</div>`
-      }
-    </section>
-  `;
-}
-
-function renderLangGraph(data) {
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "Status", value: data.langgraph.status, tone: "warn" })}
-      ${card({ label: "Runtime", value: data.langgraph.runtime, tone: "warn" })}
-      ${card({ label: "Revision loop limit", value: data.langgraph.params.max_revision_loops || "unset", tone: "ok" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Configured Nodes</h2>
-      <p class="muted">These are contract nodes from the YAML config, not completed runtime executions.</p>
-      ${table(["Node", "Owner", "Purpose", "Output"], data.langgraph.nodes.map((node) => [
-        `<strong>${escapeHtml(node.id)}</strong>`,
-        badge(node.owner),
-        escapeHtml(node.purpose),
-        Array.isArray(node.output) ? node.output.map(escapeHtml).join("<br>") : escapeHtml(node.output),
-      ]))}
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Routing And Stop Logic</h2>
-      ${table(["From", "To", "Condition"], data.langgraph.edges.map((edge) => [
-        escapeHtml(edge.from),
-        escapeHtml(edge.to || ""),
-        escapeHtml(edge.condition || "always"),
-      ]))}
-    </section>
-  `;
-}
-
-function scoreResult(query, doc) {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  const text = `${doc.title} ${doc.path} ${doc.text}`.toLowerCase();
-  const lexicalScore = terms.reduce((sum, term) => sum + (text.includes(term) ? 1 : 0), 0);
-  return lexicalScore > 0 ? Math.max(0, lexicalScore + Number(doc.authority_boost || 0)) : 0;
-}
-
-function renderLlamaIndex(data) {
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "Status", value: data.llamaindex.status, tone: "warn" })}
-      ${card({ label: "Approved corpus", value: data.llamaindex.include.join(", "), tone: "ok" })}
-      ${card({ label: "Mode", value: data.llamaindex.query_mode || "hybrid", note: data.llamaindex.query_engine || "approved corpus", tone: "ok" })}
-      ${card({ label: "Vector top K", value: data.llamaindex.vector_top_k || "5", note: "Semantic candidates when local embedder is available", tone: "ok" })}
-      ${card({ label: "Lexical top K", value: data.llamaindex.lexical_top_k || "5", note: "Deterministic fallback and traceability path", tone: "ok" })}
-      ${card({ label: "Rerank top K", value: data.llamaindex.rerank_top_k || "5", note: `Fallback to lexical: ${data.llamaindex.fallback_to_lexical || "true"}`, tone: "ok" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Local Query Test</h2>
-      <p class="muted">This browser preview is lexical over generated dashboard data. The repo LlamaIndex script owns bounded hybrid retrieval, stable source/chunk provenance, and lexical fallback.</p>
-      <div class="query-box">
-        <input type="search" id="queryInput" value="LangGraph CrewAI WikiLLM" aria-label="Search approved corpus" />
-        <button class="primary" id="queryButton">Search</button>
-      </div>
-      <div id="queryResults"></div>
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Corpus Boundary</h2>
-      ${table(["Include", "Exclude"], [[
-        data.llamaindex.include.map(escapeHtml).join("<br>"),
-        data.llamaindex.exclude.map(escapeHtml).join("<br>"),
-      ]])}
-    </section>
-  `;
-
-  const input = document.querySelector("#queryInput");
-  const button = document.querySelector("#queryButton");
-  const results = document.querySelector("#queryResults");
-  const runQuery = () => {
-    const query = input.value.trim();
-    const scored = data.corpus
-      .map((doc) => ({ ...doc, score: scoreResult(query, doc) }))
-      .filter((doc) => doc.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 8);
-    results.innerHTML = scored.length
-      ? `<div class="list">${scored.map((doc) => `
-          <article class="row">
-            <span class="row-title">${escapeHtml(doc.title)}</span>
-            <div class="row-meta">${pathLink(doc.path)} - score ${doc.score} - ${escapeHtml(doc.authority_state || "current_or_evidence")}${doc.superseded_by ? ` - superseded by ${pathLink(doc.superseded_by)}` : ""}</div>
-            <p>${escapeHtml(doc.text.slice(0, 360))}</p>
-          </article>
-        `).join("")}</div>`
-      : `<div class="callout">No local matches. Try terms like WikiLLM, LangSmith, CrewAI, LangGraph, dashboard, or source.</div>`;
-  };
-  button.addEventListener("click", runQuery);
-  input.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") runQuery();
+  const downloadReview = document.querySelector("#downloadReview");
+  if (downloadReview) downloadReview.addEventListener("click", function () { downloadJson("archflow-review-packet.json", currentPacket()); });
+  const receiptForm = document.querySelector("#receiptForm");
+  if (receiptForm) receiptForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const summary = String(new FormData(receiptForm).get("summary") || "").trim();
+    if (!summary) return;
+    receipts = Array.isArray(receipts) ? receipts : [];
+    receipts.unshift({ id: "local-receipt-" + Date.now(), summary: summary, created_at: new Date().toISOString(), durable: false });
+    saveStored(STORE.receipts, receipts);
+    showNotice("Example receipt stored in this browser only.");
+    render();
   });
-  runQuery();
-}
+  const clearReceipts = document.querySelector("#clearReceipts");
+  if (clearReceipts) clearReceipts.addEventListener("click", function () {
+    receipts = [];
+    localStorage.removeItem(STORE.receipts);
+    showNotice("Browser-local example receipts were cleared.");
+    render();
+  });
 
-function renderCrew(data) {
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "Status", value: data.crewai.status, tone: "warn" })}
-      ${card({ label: "Process", value: data.crewai.process, tone: "ok" })}
-      ${card({ label: "Memory", value: data.crewai.memory, note: "Disabled until boundaries are proven", tone: "warn" })}
-    </div>
-    <div class="grid cols-3" style="margin-top:16px">
-      ${card({ label: "Level 3", value: data.crewai.level_3_status || "unknown", note: "Direct CrewAI deterministic proof; not default/provider runtime", tone: data.crewai.level_3_status === "proof_passed_not_default_runtime" ? "ok" : "warn" })}
-      ${card({ label: "Proof ledger", value: data.crewai.level_3_ledger || "not recorded", note: "Public-safe proof ledger for deterministic fixture", tone: data.crewai.level_3_ledger ? "ok" : "warn" })}
-      ${card({ label: "Proof cost", value: data.crewai.level_3_cost || "unknown", note: "OpenRouter remains disabled", tone: data.crewai.level_3_cost === "0.00 USD" ? "ok" : "warn" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Agent Roles</h2>
-      ${table(["Agent", "Role", "Goal", "Skills"], data.crewai.agents.map((agent) => [
-        `<strong>${escapeHtml(agent.id)}</strong>`,
-        escapeHtml(agent.role),
-        escapeHtml(agent.goal),
-        Array.isArray(agent.skills) ? agent.skills.map(escapeHtml).join("<br>") : "",
-      ]))}
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Expected Task Outputs</h2>
-      ${table(["Task", "Agent", "Expected output"], data.crewai.tasks.map((task) => [
-        escapeHtml(task.id),
-        badge(task.agent),
-        escapeHtml(task.expected_output),
-      ]))}
-    </section>
-  `;
-}
-
-function renderLangSmith(data) {
-  const langsmith = data.env.find((item) => item.name === "Local LangSmith env");
-  const sdkStatus = data.packages.find((p) => p.module === "langsmith")?.status || "unknown";
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "Trace status", value: langsmith?.status || "unknown", tone: langsmith?.status === "key_present_ignored" ? "ok" : "warn" })}
-      ${card({ label: "SDK", value: sdkStatus, tone: sdkStatus === "installed" ? "ok" : "warn" })}
-      ${card({ label: "Mode", value: "observability only", note: "Not a model provider", tone: "ok" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Trace Rules</h2>
-      <div class="list">
-        <div class="row"><span class="row-title">Allowed</span><div class="row-meta">Sanitized run metadata, node names, public-safe source packet IDs, approval status, trace links.</div></div>
-        <div class="row"><span class="row-title">Blocked</span><div class="row-meta">Raw private dialogue, real secrets, private workspace links, local-only paths, unapproved source text.</div></div>
-        <div class="row"><span class="row-title">Next check</span><div class="row-meta">Use the existing local runtime for sanitized traces only. Hosted provider calls require approval and budget proof.</div></div>
-      </div>
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Official References</h2>
-      <div class="chips">${data.sources.map((s) => `<a class="badge" href="${escapeHtml(s.url)}">${escapeHtml(s.label)}</a>`).join("")}</div>
-    </section>
-  `;
-}
-
-function renderEnv(data) {
-  const jarvisStatus = data.jarvis_api?.status || "unknown";
-  const jarvisTone = jarvisStatus.includes("provider_disabled") || jarvisStatus.includes("guarded_openrouter") ? "ok" : "warn";
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "Jarvis API", value: jarvisStatus, note: data.jarvis_api?.path || "services/jarvis-api", tone: jarvisTone })}
-      ${card({ label: "Provider runtime", value: data.jarvis_api?.provider_runtime || "disabled", note: "OpenRouter server-side only after approval", tone: "warn" })}
-      ${card({ label: "Run hard stop", value: `${data.jarvis_api?.openrouter_budget?.run_hard_stop_usd || "1.99"} USD`, note: "Stop and ask approval above cap", tone: "ok" })}
-    </div>
-    <div class="grid cols-2">
-      <section class="panel">
-        <h2 class="section-title">Env And Config Status</h2>
-        ${table(["Name", "Path", "Status"], data.env.map((item) => [
-          escapeHtml(item.name),
-          `<span class="code">${escapeHtml(item.path)}</span>`,
-          badge(item.status),
-        ]))}
-      </section>
-      <section class="panel">
-        <h2 class="section-title">Runtime Package Status</h2>
-        ${table(["Package", "Module", "Status"], data.packages.map((item) => [
-          escapeHtml(item.label),
-          `<span class="code">${escapeHtml(item.module)}</span>`,
-          badge(item.status),
-        ]))}
-      </section>
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Jarvis API Required Endpoints</h2>
-      <div class="chips">${(data.jarvis_api?.endpoints || []).map((endpoint) => `<span class="badge">${escapeHtml(endpoint)}</span>`).join("")}</div>
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Operating Rule</h2>
-      <div class="callout">Use Codex direct prompting first, then CLI proof scripts, then this dashboard. Write actions wait for Railway/auth/writeback gates.</div>
-    </section>
-  `;
-}
-
-function renderGates(data) {
-  const gate = data.gates.e1_3;
-  view.innerHTML = `
-    <div class="grid cols-3">
-      ${card({ label: "E1.3 derived status", value: gate.derived_status, note: "Read-only status from artifacts", tone: gate.derived_status === "readback_passed" ? "ok" : "warn" })}
-      ${card({ label: "Readback", value: `${gate.passed_count}/${gate.assertion_count}`, note: gate.readback_status, tone: gate.readback_status === "passed" ? "ok" : "warn" })}
-      ${card({ label: "Source", value: gate.source, note: "Authority remains in project files", tone: "ok" })}
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Required Evidence</h2>
-      ${table(["Path", "Status"], gate.required_evidence.map((item) => [
-        pathLink(item.path),
-        badge(item.status),
-      ]))}
-    </section>
-    <section class="panel" style="margin-top:16px">
-      <h2 class="section-title">Readback Assertions</h2>
-      <div class="chips">${gate.readback_assertions.map((item) => `<span class="badge ok">${escapeHtml(item)}</span>`).join("")}</div>
-      <div class="callout" style="margin-top:14px">This gate is display-only. Update source files and rerun the dashboard generator or use the future Railway live bridge to change status.</div>
-    </section>
-  `;
+  const settingsForm = document.querySelector("#settingsForm");
+  if (settingsForm) settingsForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(settingsForm).entries());
+    try {
+      data.bridge_base = validateBridge(data.bridge_base);
+    } catch (error) {
+      showNotice(error.message, "warning");
+      return;
+    }
+    ["chunk_size", "chunk_overlap", "lexical_top_k", "vector_top_k", "rerank_top_k", "final_source_limit"].forEach(function (key) {
+      data[key] = Number(data[key]);
+    });
+    data.turbovec_candidate = new FormData(settingsForm).has("turbovec_candidate");
+    if (data.chunk_overlap >= data.chunk_size) {
+      showNotice("Chunk overlap must be smaller than chunk size.", "warning");
+      return;
+    }
+    settings = Object.assign({}, DEFAULT_SETTINGS, data);
+    saveStored(STORE.settings, settings);
+    showNotice("Configuration proposal saved in this browser. Runtime defaults were not changed.");
+    render();
+  });
+  const exportConfig = document.querySelector("#exportConfig");
+  if (exportConfig) exportConfig.addEventListener("click", function () {
+    downloadJson("archflow-local-configuration-proposal.json", { schema_version: "1.0.0", settings: settings, provider: "disabled", writeback: "disabled" });
+  });
+  const importConfigFile = document.querySelector("#importConfigFile");
+  if (importConfigFile) importConfigFile.addEventListener("change", async function () {
+    const file = importConfigFile.files && importConfigFile.files[0];
+    if (!file) return;
+    if (file.size > 65536) {
+      showNotice("Configuration files must be 64 KB or smaller.", "warning");
+      importConfigFile.value = "";
+      return;
+    }
+    try {
+      settings = normalizeImportedSettings(JSON.parse(await file.text()));
+      saveStored(STORE.settings, settings);
+      showNotice("Validated configuration imported into this browser. Runtime defaults were not changed.");
+      render();
+    } catch (error) {
+      showNotice("Import rejected: " + error.message, "warning");
+      importConfigFile.value = "";
+    }
+  });
+  const resetSettings = document.querySelector("#resetSettings");
+  if (resetSettings) resetSettings.addEventListener("click", function () {
+    settings = Object.assign({}, DEFAULT_SETTINGS);
+    localStorage.removeItem(STORE.settings);
+    showNotice("Browser-local configuration was reset.");
+    render();
+  });
 }
 
 function render() {
-  if (!dashboardData) return;
-  document.body.dataset.activeTab = activeTab;
-  document.body.classList.toggle("schema-editor-fullscreen", schemaFullscreen && (activeTab === "schema" || activeTab === "service"));
   renderNav();
-  const data = dashboardData;
-  generatedAt.textContent = `Generated ${new Date(data.generated_at).toLocaleString()}`;
-  if (globalInput) globalInput.placeholder = `${architectureMeta().short}: ask Jarvis, run a check, or type refresh`;
-  if (activeTab === "jarvis") renderJarvis(data);
-  if (activeTab === "history") renderHistory(data);
-  if (activeTab === "service") renderSchema(data);
-  if (activeTab === "schema") renderSchema(data);
-  if (activeTab === "config") renderConfig(data);
-  if (activeTab === "manual") renderManual(data);
-  if (activeTab === "overview") renderOverview(data);
-  if (activeTab === "architecture") renderArchitecture(data);
-  if (activeTab === "knowledge") renderKnowledge(data);
-  if (activeTab === "agents") renderAgents(data);
-  if (activeTab === "operations") renderOperations(data);
-  if (activeTab === "data") renderDataLab(data);
-  if (activeTab === "runs") renderRuns(data);
-  if (activeTab === "reference") renderReference(data);
-  if (activeTab === "wikillm") renderWiki(data);
-  if (activeTab === "graphify") renderGraphify(data);
-  if (activeTab === "langgraph") renderLangGraph(data);
-  if (activeTab === "llamaindex") renderLlamaIndex(data);
-  if (activeTab === "crewai") renderCrew(data);
-  if (activeTab === "langsmith") renderLangSmith(data);
-  if (activeTab === "env") renderEnv(data);
-  if (activeTab === "gates") renderGates(data);
+  renderHeader();
+  const renderers = {
+    today: renderToday,
+    work: renderWork,
+    knowledge: renderKnowledge,
+    team: renderTeam,
+    review: renderReview,
+    setup: renderSetup,
+  };
+  view.innerHTML = renderers[activeRoute]();
+  bindEvents();
+  document.title = ROUTES.find(function (route) { return route.id === activeRoute; }).title + " | ArchFlow Crew Desk";
 }
 
-refreshDataButton.addEventListener("click", () => {
-  loadDashboardData("manual refresh button").catch((error) => {
-    appendEvent("Refresh failed", error.message, "block");
+async function loadContracts() {
+  view.innerHTML = document.querySelector("#loadingTemplate").innerHTML;
+  const paths = [
+    "../system/contracts/knowledge-crew-config.json",
+    "../system/contracts/role-catalog.json",
+    "../system/contracts/role-workflows.json",
+    "../system/contracts/operating-model.json",
+    "./data.json",
+  ];
+  const values = await Promise.all(paths.map(async function (path) {
+    const response = await fetch(path, { cache: "no-store" });
+    if (!response.ok) throw new Error(path + " returned " + response.status);
+    return response.json();
+  }));
+  contracts = { crew: values[0], roles: values[1], workflows: values[2], controller: values[3], snapshot: values[4] };
+}
+
+window.addEventListener("hashchange", function () {
+  activeRoute = normalizeRoute(window.location.hash.replace(/^#/, ""));
+  if (window.location.hash !== "#" + activeRoute) history.replaceState(null, "", "#" + activeRoute);
+  render();
+  view.focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+exportHeader.addEventListener("click", function () {
+  downloadJson("archflow-local-review-packet.json", currentPacket());
+});
+
+loadContracts()
+  .then(function () {
+    if (window.location.hash !== "#" + activeRoute) history.replaceState(null, "", "#" + activeRoute);
     render();
-  });
-});
-
-globalComposer?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  handleGlobalSubmit(globalInput?.value || "", "bottom command input");
-  if (globalInput) globalInput.value = "";
-});
-
-window.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape" || !schemaFullscreen || nodeControlPanelId) return;
-  schemaFullscreen = false;
-  render();
-});
-
-window.addEventListener("focus", () => {
-  window.setTimeout(() => {
-    if (isEditingControlActive()) {
-      setLiveStatus("Static polling paused while editing", "warn");
-      return;
-    }
-    loadDashboardData("window focus").catch(() => {
-      setLiveStatus("Static data only", "warn");
-    });
-  }, 250);
-});
-
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) {
-    window.setTimeout(() => {
-      if (isEditingControlActive()) {
-        setLiveStatus("Static polling paused while editing", "warn");
-        return;
-      }
-      loadDashboardData("tab visible").catch(() => {
-        setLiveStatus("Static data only", "warn");
-      });
-    }, 250);
-  }
-});
-
-window.addEventListener("hashchange", () => {
-  const nextTab = window.location.hash?.replace(/^#/, "") || "manual";
-  if (!tabs.some((tab) => tab.id === nextTab)) return;
-  activeTab = nextTab;
-  if (activeTab === "service") setArchitectureMode("service");
-  if (activeTab === "schema") setArchitectureMode("control");
-  if (activeTab !== "service" && activeTab !== "schema") schemaFullscreen = false;
-  render();
-});
-
-loadDashboardData("initial load")
-  .then(() => checkJarvisApi("initial load", { silent: true }))
-  .then(startLiveRefresh)
-  .catch((error) => {
-    setLiveStatus("Data error", "block");
-    view.innerHTML = `<section class="panel"><h2 class="section-title">Dashboard data error</h2><p>${escapeHtml(error.message)}</p></section>`;
+  })
+  .catch(function (error) {
+    view.innerHTML = '<section class="panel"><span class="eyebrow">Contracts unavailable</span><h2>Serve the repository locally, then reload.</h2><p>The Crew Desk loads JSON contracts with browser fetch. Opening the HTML as a local file may block those requests.</p><pre class="config-code">python3 -m http.server 4173\n\nhttp://127.0.0.1:4173/project/dashboard/#today</pre><p class="callout warning"><strong>Load error:</strong> ' + escapeHtml(error.message) + '</p></section>';
   });

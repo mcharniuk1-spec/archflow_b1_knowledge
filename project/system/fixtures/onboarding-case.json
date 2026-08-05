@@ -1,7 +1,9 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "3.0.0",
+  "case_version": "1",
   "case_id": "case-onboarding-mini",
   "workflow_state": "requirements_approved",
+  "display_phase": "commit",
   "goal": {
     "requested_outcome": "Help a new product operator propose a safe first documentation change.",
     "done_conditions": ["Current requirement is visible", "Proposal is checked before execution"],
@@ -10,68 +12,76 @@
   },
   "authority": {
     "requester_role": "onboarding_guide",
-    "accountable_owner_role": "product_owner",
+    "accountable_owner_role": "@case_owner",
     "maker_role": "implementation_maker",
     "reviewer_role": "independent_reviewer",
-    "allowed_actions": [
-      {
-        "actor_role": "implementation_maker",
-        "operation": "propose_edit",
-        "target_class": "public_documentation",
-        "target_prefixes": ["examples/"],
-        "approval_class": "none"
-      }
-    ],
+    "allowed_actions": [{"actor_role": "implementation_maker", "operation": "propose_edit", "target_class": "public_documentation", "target_prefixes": ["examples/"], "approval_class": "none"}],
     "forbidden_actions": ["deploy", "send_message", "read_private_source"]
   },
-  "source_boundary": {
-    "allowed_source_classes": ["synthetic_public_fixture"],
-    "excluded_source_classes": ["private", "credentials", "external_accounts"],
-    "status": "valid"
-  },
-  "evidence": [
-    {
-      "id": "evidence-handbook",
-      "source_ref": "fixtures/synthetic-role-handbook.md#action-policy",
-      "state": "current",
-      "claim_status": "fact",
-      "owner_role": "product_owner",
-      "observed_at": "2026-08-05",
-      "review_by": "2026-09-05"
-    }
-  ],
+  "source_boundary": {"allowed_source_classes": ["synthetic_public_fixture"], "excluded_source_classes": ["private", "credentials", "external_accounts"], "status": "valid"},
+  "evidence": [{"id": "evidence-handbook", "source_ref": "fixtures/synthetic-role-handbook.md#action-policy", "state": "current", "claim_status": "fact", "owner_role": "@case_owner", "observed_at": "2026-08-05", "review_by": "2026-09-05", "exact_read": true}],
+  "claims": [{"id": "CLAIM-ONBOARD-001", "statement": "The fixture handbook requires a governing requirement and readback before execution.", "status": "fact", "evidence_refs": ["evidence-handbook"], "counter_evidence_refs": [], "owner_role": "@case_owner", "allowed_use": "synthetic public onboarding fixture"}],
   "requirements": [
-    {
-      "id": "REQ-ONBOARD-001",
-      "version": "1",
-      "state": "approved",
-      "statement": "A proposed action must cite its governing requirement and define readback before execution.",
-      "owner_role": "product_owner",
-      "reviewer_role": "independent_reviewer",
-      "evidence_refs": ["evidence-handbook"],
-      "claim_status": "fact",
-      "acceptance_checks": ["requirement reference present", "readback present"],
-      "review_by": "2026-09-05"
-    },
-    {
-      "id": "REQ-ONBOARD-OLD",
-      "version": "1",
-      "state": "superseded",
-      "statement": "An onboarding suggestion may execute automatically.",
-      "owner_role": "product_owner",
-      "reviewer_role": "independent_reviewer",
-      "evidence_refs": ["evidence-handbook"],
-      "claim_status": "fact",
-      "acceptance_checks": [],
-      "review_by": "2026-08-05",
-      "superseded_by": "REQ-ONBOARD-001"
-    }
+    {"id": "REQ-ONBOARD-001", "version": "1", "state": "approved", "statement": "A proposed action must cite its governing requirement and define readback before execution.", "owner_role": "@case_owner", "reviewer_role": "independent_reviewer", "evidence_refs": ["evidence-handbook"], "claim_status": "fact", "acceptance_checks": ["requirement reference present", "readback present"], "review_by": "2026-09-05"},
+    {"id": "REQ-ONBOARD-OLD", "version": "1", "state": "superseded", "statement": "An onboarding suggestion may execute automatically.", "owner_role": "@case_owner", "reviewer_role": "independent_reviewer", "evidence_refs": ["evidence-handbook"], "claim_status": "fact", "acceptance_checks": [], "review_by": "2026-08-05", "superseded_by": "REQ-ONBOARD-001"}
   ],
   "contradictions": [],
   "gaps": [],
+  "tasks": [{"id": "TASK-ONBOARD-001", "state": "ready", "owner_role": "implementation_maker", "reviewer_role": "independent_reviewer", "requirement_refs": ["REQ-ONBOARD-001@1"], "output_ref": "examples/onboarding-safe-action.md", "readback": "Open the exact target and verify the governing requirement and readback are present."}],
+  "role_task_bindings": [
+    {
+      "binding_id": "binding-onboarding-taras", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "base", "role_id": "onboarding_guide", "call_name": "Taras", "role_goal": "Give an employee role-safe context, explain why the work matters, and propose a validated first action.",
+      "inputs": ["case.goal", "case.authority.requester_role", "case.requirements", "case.evidence", "case.gaps"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "employee_mission_card", "expected_output": "A source-visible first mission with an explicit escalation path.",
+      "allowed_skills": ["archflow-knowledge-service"], "allowed_tools": ["read_contracts", "read_allowlisted_sources", "query_bounded_retrieval", "draft_local_artifact"], "permission_boundary": {"authority_ref": "case.authority", "mode": "read_draft_only", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.onboarding_guide.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["invented_company_truth", "permission_inheritance", "employee_monitoring", "unvalidated_instruction"], "exact_targets": [], "deterministic_checks": ["requirement reference present", "reviewer route terminates"], "known_gaps": [], "reviewer_route": ["action_validator", "independent_reviewer", "@case_owner"], "handoff": {"to": "action_validator", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["current requirement missing", "source boundary invalid", "authority unresolved"]
+    },
+    {
+      "binding_id": "binding-onboarding-solomiia", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "base", "role_id": "source_and_context_operator", "call_name": "Solomiia", "role_goal": "Build the allowlist, stable CAG context, bounded retrieval plan, and source-visible perception capsule.",
+      "inputs": ["case.goal", "case.source_boundary", "case.requirements", "case.decisions", "case.gaps"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "perception_capsule", "expected_output": "A bounded capsule with citations and exact-read requirements.",
+      "allowed_skills": ["archflow-knowledge-service"], "allowed_tools": ["read_contracts", "read_allowlisted_sources", "query_bounded_retrieval", "query_structural_index", "draft_local_artifact"], "permission_boundary": {"authority_ref": "case.authority", "mode": "read_draft_only", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.source_and_context_operator.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["uncontrolled_ingestion", "durable_promotion", "unsupported_synthesis"], "exact_targets": [], "deterministic_checks": ["sources remain inside allowlist", "every material claim has a path"], "known_gaps": [], "reviewer_route": ["independent_reviewer", "@case_owner"], "handoff": {"to": "independent_reviewer", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["source outside boundary", "capsule exceeds budget", "current requirement would be dropped"]
+    },
+    {
+      "binding_id": "binding-onboarding-danylo", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "base", "role_id": "task_and_handoff_planner", "call_name": "Danylo", "role_goal": "Create dependencies, bounded task packets, exact checks, stop rules, and owner questions.",
+      "inputs": ["case.goal", "case.requirements", "case.authority", "case.tasks", "case.gaps"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "bounded_task_and_handoff_packet", "expected_output": "One owner, exact target, checks, stop rules, and review route.",
+      "allowed_skills": ["archflow-task-breakdown", "task-handout"], "allowed_tools": ["read_contracts", "draft_local_artifact"], "permission_boundary": {"authority_ref": "case.authority", "mode": "read_draft_only", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.task_and_handoff_planner.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["unassigned_shared_edits", "status_inflation", "external_action"], "exact_targets": ["examples/onboarding-safe-action.md"], "deterministic_checks": ["one output owner", "maker and reviewer differ", "readback declared"], "known_gaps": [], "reviewer_route": ["action_validator", "independent_reviewer", "@case_owner"], "handoff": {"to": "action_validator", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["target not exact", "requirement unapproved", "reviewer missing"]
+    },
+    {
+      "binding_id": "binding-onboarding-dmytro", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "review_closure", "role_id": "implementation_maker", "call_name": "Dmytro", "role_goal": "Change only claimed files and produce focused checks, rollback evidence, and assigned repairs.",
+      "inputs": ["case.goal", "case.requirements", "case.authority", "case.tasks"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "bounded_change_candidate", "expected_output": "A local candidate at the exact target with focused check evidence.",
+      "allowed_skills": ["arcagcom"], "allowed_tools": ["read_contracts", "edit_claimed_targets", "run_deterministic_checks"], "permission_boundary": {"authority_ref": "case.authority", "mode": "local_mutation_exact_targets", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.implementation_maker.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["scope_expansion", "final_review", "unapproved_side_effect"], "exact_targets": ["examples/onboarding-safe-action.md"], "deterministic_checks": ["governing requirement present", "readback present"], "known_gaps": [], "reviewer_route": ["action_validator", "verifier", "independent_reviewer", "@case_owner"], "handoff": {"to": "action_validator", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["target leaves allowed prefix", "requirement stale", "side effect discovered"]
+    },
+    {
+      "binding_id": "binding-onboarding-iryna", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "base", "role_id": "action_validator", "call_name": "Iryna", "role_goal": "Check requirements, permission, side effects, rollback, verification, and readback before execution.",
+      "inputs": ["case.authority", "case.requirements", "case.decisions", "case.tasks", "case.results"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "action_eligibility_verdict", "expected_output": "An eligibility, repair, approval-wait, or blocked verdict.",
+      "allowed_skills": ["archflow-agent-control", "outquestions"], "allowed_tools": ["read_contracts", "run_deterministic_checks", "write_review_verdict"], "permission_boundary": {"authority_ref": "case.authority", "mode": "review_only_frozen_candidate", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.action_validator.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["proposal_execution", "approval_inference", "requirement_rewrite"], "exact_targets": ["examples/onboarding-safe-action.md"], "deterministic_checks": ["permission intersection valid", "rollback and readback present"], "known_gaps": [], "reviewer_route": ["independent_reviewer", "@case_owner"], "handoff": {"to": "independent_reviewer", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["authority mismatch", "missing coverage", "approval required but absent"]
+    },
+    {
+      "binding_id": "binding-onboarding-mykola", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "review_closure", "role_id": "verifier", "call_name": "Mykola", "role_goal": "Run deterministic checks and produce reproducible regression and exact-readback evidence.",
+      "inputs": ["case.requirements", "case.tasks", "case.results", "case.receipts"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "verification_and_readback_receipt", "expected_output": "Deterministic verification results and an exact-target readback.",
+      "allowed_skills": ["archflow-e1-runtime-guard"], "allowed_tools": ["read_contracts", "run_deterministic_checks", "run_browser_qa", "readback_exact_target"], "permission_boundary": {"authority_ref": "case.authority", "mode": "verification_only_no_repair", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.verifier.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["silent_maker_repair", "completion_without_evidence"], "exact_targets": ["examples/onboarding-safe-action.md"], "deterministic_checks": ["requirement reference present", "readback matches target"], "known_gaps": [], "reviewer_route": ["independent_reviewer", "@case_owner"], "handoff": {"to": "independent_reviewer", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["check not reproducible", "target unavailable", "repair would be required"]
+    },
+    {
+      "binding_id": "binding-onboarding-halyna", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "base", "role_id": "independent_reviewer", "call_name": "Halyna", "role_goal": "Approve, revise, or block a frozen candidate with calibrated claims and exact repair requests.",
+      "inputs": ["case.authority", "case.evidence", "case.requirements", "case.decisions", "case.contradictions", "case.gaps", "case.results", "case.receipts"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "independent_review_verdict", "expected_output": "Approve, revise, or block with exact evidence and the smallest repair request.",
+      "allowed_skills": ["outquestions"], "allowed_tools": ["read_contracts", "read_allowlisted_sources", "run_deterministic_checks", "run_browser_qa", "write_review_verdict"], "permission_boundary": {"authority_ref": "case.authority", "mode": "review_only_frozen_candidate", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.independent_reviewer.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["candidate_repair", "self_approval", "external_action"], "exact_targets": ["examples/onboarding-safe-action.md"], "deterministic_checks": ["maker differs from reviewer", "claim and permission boundaries hold"], "known_gaps": [], "reviewer_route": ["@case_owner"], "handoff": {"to": "@case_owner", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["candidate not frozen", "material evidence missing", "self-review detected"]
+    },
+    {
+      "binding_id": "binding-onboarding-larysa", "case_id": "case-onboarding-mini", "workflow_pack_id": "employee_onboarding", "base_or_closure": "base", "role_id": "knowledge_librarian", "call_name": "Larysa", "role_goal": "Search duplicates and propose lineage, supersession, freshness, and retrieval-safe knowledge promotion.",
+      "inputs": ["case.evidence", "case.decisions", "case.results", "case.receipts", "case.review", "case.gaps"], "source_refs": ["fixtures/synthetic-role-handbook.md#action-policy"], "requirement_refs": ["REQ-ONBOARD-001@1"], "owned_output": "knowledge_promotion_candidate", "expected_output": "A future-useful knowledge candidate with lineage, freshness, and supersession.",
+      "allowed_skills": ["daily-public-project-review", "task-handout"], "allowed_tools": ["read_contracts", "read_allowlisted_sources", "propose_knowledge_candidate", "readback_exact_target"], "permission_boundary": {"authority_ref": "case.authority", "mode": "knowledge_candidate_only", "exact_targets_ref": "binding.exact_targets", "forbidden_actions_ref": "role_catalog.roles.knowledge_librarian.forbidden", "rule": "intersection_only_no_authority_expansion"},
+      "forbidden_actions": ["raw_trace_promotion", "secret_storage", "unsupported_claim", "review_bypass"], "exact_targets": [], "deterministic_checks": ["duplicate search recorded", "lineage and freshness present"], "known_gaps": [], "reviewer_route": ["independent_reviewer", "@case_owner"], "handoff": {"to": "independent_reviewer", "payload": ["case_id", "binding_id", "role_id", "owned_output", "source_refs", "requirement_refs", "exact_targets", "deterministic_checks", "known_gaps", "stop_conditions"]}, "stop_conditions": ["result not accepted", "lineage missing", "private trace present"]
+    }
+  ],
   "decisions": [],
   "approvals": [],
   "results": [],
+  "receipts": [],
   "review": {"phase": "requirements", "verdict": "approved", "maker_role": "requirements_and_market_research", "reviewer_role": "independent_reviewer"},
-  "knowledge": {"promotion_status": "not_proposed", "freshness_owner": "product_owner"}
+  "knowledge": {"promotion_status": "not_proposed", "freshness_owner": "@case_owner"}
 }

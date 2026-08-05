@@ -10881,3 +10881,175 @@ FACT: the visual now embeds the complete layer and connection explanation reques
 GAP: fine body copy is intended for full-resolution inspection, and reader comprehension remains unmeasured in a real onboarding pilot.
 
 Next safe action: stage only the labeled-visual repair files and these exact log additions, run the authoritative scanner against a clean staged snapshot, inspect the diff, commit, push under the owner's request, and verify the remote hash.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - starting
+
+Status: starting in an isolated clean worktree; provider-disabled architecture and operator-surface admissions pending.
+
+Task: replace the simplified layered story with one role-responsive knowledge-crew architecture; specify the WikiLLM, Obsidian, LlamaIndex, TurboVec, Orbit, CrewAI, and LangGraph seams; publish four precise workflow visuals; and implement the dashboard as the primary non-technical local operating surface.
+
+State and risk: architecture/research plus public dashboard implementation. Risk is medium because shared contracts, documentation, visuals, and browser behavior change; deployment, production promotion, provider execution, private-corpus ingestion, and external writeback remain excluded.
+
+Files likely to change: a new bounded run under `project/runs/20260805-responsive-knowledge-crew-dashboard/`; `README.md`; focused architecture and operator documentation; new public system/config contracts and fixtures; `project/dashboard/`; focused validation scripts; four new architecture assets; public WikiLLM run/log records; and this append-only communication log.
+
+Files claimed: the new run and new assets/contracts/docs; the clean-worktree versions of `README.md`, `project/dashboard/`, focused system validator/config files, docs indexes, and public WikiLLM append-only records. The buyer website, booking flow, provider services, private runtime, deployments, and unrelated source files remain read-only.
+
+Parallel roles: Solomiia owns the context-spine alternative, Taras owns the employee-first alternative, Kateryna owns the configurable operator alternative, Codex owns integration and implementation, and Iryna will independently review the frozen candidate. Design lanes may edit only their exclusive lane reports.
+
+FACT: an isolated branch protects the owner's unrelated unfinished checkout changes from this release.
+
+INTERPRETATION: TurboVec can be a preferred local candidate behind LlamaIndex only with lexical fallback and benchmark receipts; it cannot truthfully be presented as durable memory or unconditional authority.
+
+GAP: the existing TurboVec trial is small and provider-disabled, so production-scale and private-corpus claims remain blocked.
+
+Next: emit both deterministic admission receipts, create bounded task contracts, dispatch three alternative design lanes, then implement only after evidence reconciliation.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - verification scope update
+
+Status: candidate implementation complete; final verification and independent review in progress.
+
+Scope update: Solomiia's context-boundary audit exposed two active release-guard inconsistencies: the historical LangGraph smoke still modeled the retired PRD-only route and could submit a trace when local credentials existed, while CrewAI isolation repurposed the process home directory. The integrator is updating those focused verification scripts, development requirements, public run records, and WikiLLM supersession notes before freezing the candidate for Iryna.
+
+Files additionally claimed: `project/scripts/langgraph-smoke-run.py`, `project/scripts/crewai-config-check.py`, `project/scripts/pre-push-runtime-guard.py`, `project/requirements-dev.txt`, `project/execution-reporting/`, the current run handout/report, and focused public WikiLLM run/memory/insight/log additions.
+
+Expected output: a provider-disabled one-case LangGraph proof, project-local CrewAI storage without changing the system home variable, reproducible YAML/Pydantic verification dependencies, complete role-by-role execution evidence, and a frozen candidate for read-only independent review.
+
+Next: apply the bounded guard corrections, rerun the full deterministic and browser suite, then dispatch Iryna against the frozen candidate.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - Iryna review repair starting
+
+Status: independent pre-release audit returned REVISE; one bounded maker repair pass is starting.
+
+Reviewer evidence: Iryna wrote only `project/runs/20260805-responsive-knowledge-crew-dashboard/independent-review.md`. Core/adversarial validation, all six browser routes, responsive containment, configuration boundaries, four visuals, and public safety passed. No P0 defect or private-data leak was found.
+
+Confirmed repairs: restore the canonical mapping of Iryna to action validation and Halyna to independent review; make the optional LangGraph smoke consume canonical states, roles, and fixture identifiers; align the canonical dashboard projection to six shipped routes; remove unmatched TurboVec trial numbers while retaining the honest optional-trial verdict; mark the old Jarvis manual superseded; align the landing tower to the same L1-L7 vocabulary; resolve the missing license link without inferring a license; remove whitespace defects; and tighten redirected Jarvis/dashboard route policy.
+
+Files additionally claimed: `site.js`, the focused landing tower block in `index.html`, `docs/dashboard-local-jarvis-stack-manual.md`, `vercel.json`, `jarvis.html`, and the already claimed contract/run/wiki files. Iryna's review file is read-only. Halyna owns only the later final-review artifact.
+
+Next: implement the exact repair set, rerun the complete evidence matrix, freeze, and dispatch Halyna for review-only acceptance.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - repaired candidate frozen
+
+Status: Iryna's bounded repair packet is resolved; repaired candidate frozen for Halyna review.
+
+Repairs completed: canonical Iryna/Halyna role binding; canonical LangGraph state/role/fixture consumption; six-route dashboard contract; receipt-backed TurboVec evidence; explicit no-license status; superseded legacy Jarvis manual; canonical landing tower vocabulary; clean diff hygiene; and generator alignment with the calibrated evidence contract.
+
+Checks: deterministic core/adversarial PASS; dashboard generation PASS with zero private inputs; 24 dashboard route/viewport checks PASS; six-route browser render PASS; 28 landing layer/viewport copy checks PASS; configuration import/rejection PASS; JSON, SVG, image, Markdown-link, YAML, and Pydantic workflow validation PASS; public-safety and diff-hygiene PASS. Provider calls, checkpoint writes, and external actions remained zero.
+
+GAP: the inherited optional LangGraph environment stalled while importing its LangSmith dependency chain and was interrupted after the bounded wait. The rewritten smoke is statically canonical but dependency-backed execution is not claimed. No provider, trace, checkpoint, or writeback occurred.
+
+Files frozen: all maker artifacts in this release candidate. Halyna may edit only `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review.md` and must not repair maker output.
+
+Next: Halyna independently checks each Iryna finding, the acceptance criteria, current Git diff, visual/browser receipts, framework boundaries, and release readiness; Maksym resumes only after her APPROVE, REVISE, or BLOCK verdict.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - Halyna repair pass starting
+
+Status: Halyna independent review returned REVISE with five bounded findings; maker repair pass two is starting.
+
+Reviewer evidence: `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review.md` is immutable review evidence. Halyna changed no maker artifact. Independent core, six-route browser, 24 dashboard viewport/route, 28 landing layer/viewport, visual, link, format, public-safety, and diff checks passed.
+
+Repair scope: canonicalize admission profile roles/states against the 21-role catalog and one Knowledge Case registry; close the July admission contract; add cross-contract validation; calibrate the LlamaIndex TurboVec block; materialize per-role input/output/skills/tools/reviewer/handoff bindings; reject non-boolean TurboVec imports; and align the context capsule with Maksym and the exact WikiLLM files.
+
+Parallel roles: Bohdan performs analysis-only admission mapping; Danylo performs analysis-only adaptive role-task mapping; Maksym owns all shared-file edits and tests; Halyna remains reserved for a fresh review-only iteration.
+
+Files additionally claimed: the focused profile/matrix/July contract, role catalog and workflow bindings, schema/validator, CrewAI YAML, dashboard Team/Work/config-import code, context capsule, current run handout/report, public WikiLLM run/log, and this append-only communication log. Review files remain read-only.
+
+Next: reconcile the two analysis packets, apply one bounded maker patch, rerun the complete evidence matrix including negative boolean fixtures, freeze, and request Halyna re-review.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - repair pass two frozen
+
+Status: all five Halyna findings repaired; candidate frozen for a fresh independent iteration.
+
+Repairs completed: one canonical role/state plane across the Knowledge Case and admission policy; namespaced `admission.*` envelope with canonical workflow projection; superseded July task contract; exact state-enum and profile invariants; calibrated LlamaIndex/TurboVec projection; 21 schema-v3 role contracts with stable IDs, inputs, one output, skills/tools, permission modes, reviewer routes, and handoffs; ten stable-ID workflow packs; eight materialized onboarding bindings; strict transactional TurboVec booleans; and admitted WikiLLM memory/insight scope.
+
+Agent evidence: Bohdan delivered the read-only admission mapping; Danylo delivered the read-only role-task contract; Maksym applied and verified all shared edits; Halyna's first report remained immutable. The provider-disabled local admission compatibility seam emitted canonical v2 receipts with Ukrainian call names and zero dispatch.
+
+Checks: core/adversarial and five new role/state negatives PASS; eight-profile E1-E8 admission fixture PASS; architecture and dashboard admission receipts regenerated; CrewAI/LlamaIndex/TurboVec cross-contract validation PASS; six rendered routes PASS; 24 route/viewport checks PASS; seven non-boolean imports rejected without mutation; literal booleans accepted; role-binding export PASS; three fresh role-layout screenshots and four architecture diagrams visually inspected; JSON/YAML/SVG/JavaScript/diff checks PASS. Providers, tasks, checkpoints, queues, writeback, deployment, and external actions remained zero.
+
+Files frozen: all maker artifacts. Halyna may write only `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review-iteration-2.md` and must not repair the candidate.
+
+Next: Halyna rechecks the five findings, current contracts, dashboard export/import behavior, diagrams, documentation, public safety, and release gates; only an APPROVE verdict permits exact staging and Git release.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - durable memory synchronization
+
+Status: repair pass two remains frozen; Maksym is synchronizing only the public WikiLLM run, memory, insight, and log records before independent review iteration two.
+
+Files claimed: `wiki/runs/2026-08-05-responsive-knowledge-crew-dashboard.md`, `wiki/memory.md`, `wiki/insights.md`, `wiki/log.md`, and this append-only communication log. Architecture, dashboard, reviewer evidence, and all other maker files remain frozen.
+
+Expected output: the durable record names Bohdan's canonical admission/state contribution, Danylo's schema-backed role-task bindings, the eight materialized fixture bindings, strict permission intersection, and Halyna's correct iteration-two review path without upgrading any unproved runtime claim.
+
+Next: apply the bounded WikiLLM additions, rerun the entire public-core and interface evidence suite, then dispatch Halyna with sole ownership of the iteration-two review artifact.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - Halyna iteration two dispatched
+
+Status: WikiLLM synchronization and the final maker verification pass are complete; the candidate is frozen for independent release review iteration two.
+
+Checks: core/adversarial PASS with 21 roles, ten packs, eight materialized bindings, and five role/state negatives; workflow and retrieval projection PASS; six rendered routes PASS; 24 route/viewport checks PASS; 28 landing layer/viewport checks PASS; seven non-boolean TurboVec attacks rejected without mutation; role-binding export PASS; public safety, clean-clone guard, JavaScript, JSON, SVG, image, link, and diff checks PASS. Provider calls and external actions remained zero.
+
+File ownership: Halyna alone may create `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review-iteration-2.md`. All maker files and prior reviewer reports are read-only until her verdict.
+
+Next: Halyna verifies the five prior findings, full user acceptance criteria, diagrams, dashboard behavior, documentation, public boundary, and Git-release readiness; only APPROVE permits staging.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - Halyna iteration two repair starting
+
+Status: Halyna returned REVISE with two P1 contract-integrity findings; bounded maker repair pass three is starting.
+
+Reviewer evidence: `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review-iteration-2.md` is immutable. Visuals, six-route dashboard, responsive/accessibility behavior, calibrated framework claims, strict TurboVec import, public safety, and diff hygiene passed. Halyna changed no maker artifact.
+
+Repair scope: align the context capsule CAG and allowed release paths with the exact candidate; add a deterministic changed-path admission check and negative probe; materialize typed `known_gaps` references in every role binding; reject unknown handoff payload names; align CrewAI, dashboard export, schemas, fixture, validation, and focused documentation.
+
+Files claimed: the context capsule, context/binding/case schemas, onboarding fixture, core/workflow/release validators, CrewAI projection, dashboard binding materializer, focused role/API/architecture documentation, run handout/report/WikiLLM closeout records, and this log. Both prior Halyna reports remain read-only.
+
+Next: apply only the two repair seams, rerun the complete evidence matrix, freeze, and request Halyna iteration three; no staging is permitted without APPROVE.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - repair pass three frozen
+
+Status: both Halyna iteration-two P1 findings are repaired; candidate frozen for iteration three.
+
+Repairs completed: the context capsule now matches the six canonical admission CAG references and admits every current release file/prefix; the standard-library push guard inventories unstaged, staged, and untracked paths and rejects any path outside that packet; every role binding now materializes typed `GAP-*` references; every handoff payload name resolves to a schema field; unknown payload names are rejected by a dedicated negative fixture.
+
+Checks: context capsule Draft 2020-12 schema PASS; 78 current changed paths admitted and one unadmitted-path probe rejected; core/adversarial PASS with eight bindings and six role/state/handoff negatives; workflow/CrewAI projection PASS; six rendered routes PASS; 24 route/viewport interaction checks PASS; all exported handoff fields resolve; seven non-boolean TurboVec attacks reject transactionally; 28 landing checks PASS; safety, JSON, SVG, images, links, JavaScript, and diff hygiene PASS. Provider and external action counts remain zero.
+
+Files frozen: all maker artifacts and prior reviews. Halyna alone may create `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review-iteration-3.md`.
+
+Next: Halyna rechecks only the two iteration-two findings plus release integrity; APPROVE is required before staging.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - Halyna iteration three repair starting
+
+Status: Halyna iteration three confirmed both previous P1 repairs and returned REVISE for one newly exposed projection mismatch.
+
+Reviewer evidence: immutable `final-independent-review-iteration-3.md`. The CrewAI task field list omits schema-required `base_or_closure` while claiming exact equality, its validator duplicates the incomplete set instead of deriving it from the schema, and the API example is not a complete schema-valid binding. No maker, browser, visual, safety, or private-boundary regression was found.
+
+Repair scope: add the missing discriminator; derive exact CrewAI field equality directly from the role-binding schema; publish one complete valid binding example with all payload fields present; rerun bounded validation. No architecture, dashboard interaction, visual, runtime, or external scope changes.
+
+Next: apply the exact projection/documentation patch, verify field-set equality and the full release suite, then freeze for Halyna iteration four.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - repair pass four frozen
+
+Status: Halyna iteration-three projection finding repaired; candidate frozen for iteration four.
+
+Repairs completed: CrewAI now declares `base_or_closure` and all 22 canonical role-binding fields; workflow validation derives the exact required/property set from `role-task-binding.schema.json` instead of duplicating it; the API manual now contains a complete schema-valid Taras binding whose canonical reviewer route, handoff target, and every payload field resolve.
+
+Checks: CrewAI/schema equality PASS `22 = 22`; API example schema PASS with payload closure; core/adversarial PASS; 79 current changed paths admitted and negative path rejected; workflow, capsule schema, static dashboard, public safety, JSON/SVG/image/link, JavaScript, and diff checks PASS. The prior 24 dashboard and 28 landing browser matrices remain the latest behavior receipts because this repair changed no dashboard or landing code.
+
+Files frozen: all maker artifacts and previous reports. Halyna alone may create `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review-iteration-4.md`.
+
+Next: one final bounded independent projection/release review; APPROVE is required before staging.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - Halyna iteration four APPROVE
+
+Status: independent release review APPROVE; exact staging and the owner-authorized Git push to `main` are permitted after staged checks.
+
+Reviewer evidence: `project/runs/20260805-responsive-knowledge-crew-dashboard/final-independent-review-iteration-4.md`. Halyna independently confirmed CrewAI/schema/property equality at 22 fields, schema-derived validation, the complete canonical Taras example, six-source CAG equality, typed handoff closure, 80 admitted final paths, negative-path rejection, core/static/safety/link/JavaScript/diff integrity, and the calibrated optional-runtime GAP.
+
+Agent boundary: Halyna changed only her verdict file; Maksym owns exact staging, staged checks, commit, push, and remote readback. Deployment, providers, private ingestion, live Obsidian/Orbit activation, TurboVec promotion, production promotion, and other external writeback remain excluded.
+
+Next: finalize public run status, stage only admitted files, rerun the staged suite, commit, push to `main`, and read back the remote hash.
+
+## 2026-08-05 - responsive knowledge crew and operator dashboard - staged whitespace repair
+
+Status: exact staging contains 80 admitted paths and no unstaged/untracked path, but the first `git diff --cached --check` exposed trailing spaces in nine Markdown files that were previously untracked and therefore absent from unstaged diff checks.
+
+Scope: formatting-only removal of the reported line-end spaces. No wording, finding, verdict, contract, dashboard, diagram, runtime, or boundary changes are authorized. Reviewer report content remains text-identical apart from line-end whitespace.
+
+Next: strip only the reported whitespace, restage, rerun all staged checks and the clean index snapshot, then request Halyna post-staging confirmation before commit.

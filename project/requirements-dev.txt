@@ -1,3 +1,4 @@
 # Optional local verification dependencies. The static demo itself uses only
 # the Python standard library.
 PyYAML>=6,<7
+pydantic>=2,<3

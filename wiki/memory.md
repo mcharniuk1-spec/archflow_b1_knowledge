@@ -326,6 +326,18 @@ ArchFlow Block 1 is the first public solution:
 - Jarvis chat/config may persist in browser `localStorage`, while transient packets/events use `sessionStorage`. Neither proves durable server, database, Notion, WikiLLM, or cross-device persistence.
 - The approved Telegram file sender accepts reviewed public-repository artifacts only. Broader-workspace files without stable public links remain local-only even when their extracted text passes the public-safety pattern scan.
 
+## Responsive Knowledge Crew Baseline - 2026-08-05
+
+- This baseline supersedes older `Architecture 1` / `Architecture 2` routing and the separate Jarvis UI as current operating concepts. PRD/market research and specialist execution are adaptive role packs inside one typed Knowledge Case.
+- The Crew Desk is the primary non-technical local projection. `/jarvis` is compatibility-only; employee guidance is contextual and cannot become a second source of truth.
+- The canonical public baseline is seven layers, 21 role contracts, ten workflow packs, and a 12,000-token perception budget with stable CAG, bounded LlamaIndex retrieval, optional TurboVec candidates, structure pointers, exact reads, requirements, and role memory.
+- TurboVec remains `optional_trial_not_default`. Its promotion gate requires at least 20 fixed representative queries, no recall regression, full citation retention, allowlist/filter proof, persistence parity, lexical fallback, and independent review.
+- The default push guard proves the standard-library public core. Optional LangGraph/LlamaIndex/CrewAI runtime checks require an explicit environment flag and must report missing, stale, or timed-out environments as GAPs rather than blocking or inflating public-core claims.
+- Live Obsidian, Orbit, Graphify, provider, checkpointer, private retrieval, and writeback readiness remain environment-specific proof states.
+- Admission mechanics use namespaced `admission.*` states and project onto, but never replace, the canonical 27-state Knowledge Case workflow. Public profiles must reference stable role IDs and display the corresponding Ukrainian call names.
+- A role becomes executable only through a materialized `role_task_binding`: case authority intersected with the role ceiling, available runtime capabilities, and exact targets, minus explicit denials. CrewAI and the dashboard project that binding; neither may copy or invent authority actions.
+- A binding handoff must carry typed case gap references and may name only fields defined by the binding schema. Release staging must likewise remain inside the current context capsule's exact files and approved prefixes; the push guard fails closed on any unadmitted path.
+
 ## Obsidian Graphify Nexus Boundary Memory - 2026-07-10
 
 - Obsidian plugin/config readiness, vault activation, live Nexus socket readiness, and successful Nexus tool calls are separate proof states.

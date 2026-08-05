@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
-"""Render-smoke the static ArchFlow dashboard routes with headless Chrome.
+"""Static and render smoke test for the ArchFlow Crew Desk.
 
-This test proves the documentation-first operator console can render its
-current product and reference routes without a live backend:
-
-- operating manual, overview, architecture, knowledge, agents, runs,
-  reference, and workflow.
-
-It intentionally does not test provider calls, durable writeback, audio
-capture/playback, or deployment. Those remain gated runtime checks.
+The test serves the repository locally, renders every primary route in
+headless Chrome, checks route-specific content and public-safety markers, and
+validates the contract/visual/compatibility surface. It does not activate a
+provider, write externally, or claim a live agent runtime.
 """
 
 from __future__ import annotations
@@ -19,99 +15,45 @@ import os
 import re
 import shutil
 import subprocess
-import sys
-import time
 import threading
+import time
+import xml.etree.ElementTree as ET
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-DASHBOARD_DATA = REPO_ROOT / "project" / "dashboard" / "data.json"
-VERCEL_CONFIG = REPO_ROOT / "vercel.json"
-JARVIS_HTML = REPO_ROOT / "jarvis.html"
-JARVIS_JS = REPO_ROOT / "jarvis.js"
-DASHBOARD_JS = REPO_ROOT / "project" / "dashboard" / "app.js"
+ROOT = Path(__file__).resolve().parents[2]
+DASHBOARD = ROOT / "project" / "dashboard"
+ASSETS = ROOT / "project" / "assets" / "architecture"
+CONTRACTS = ROOT / "project" / "system" / "contracts"
+
+ROUTE_MARKERS = {
+    "#today": ["One responsive operating flow", "Ask Taras", "First 30 minutes", "Provider disabled"],
+    "#work": ["Create one mission card", "Selected crew and handoff order", "Execution boundary", "Save browser-local mission"],
+    "#knowledge": ["Seven connected layers", "LlamaIndex", "TurboVec", "Skill Spectre", "Architecture views"],
+    "#team": ["Responsive role crew", "Adaptive workflow packs", "Communication protocol", "Oksana"],
+    "#review": ["End-to-end trace", "Fail-closed review gates", "Browser-local receipt notebook", "Idempotent action"],
+    "#setup": ["Portable installation boundary", "Retrieval and state configuration", "Obsidian", "Orbit", "Provider and writeback stay disabled"],
+}
 
 SECRET_PATTERNS = [
     re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
-    re.compile(r"mstrl_[A-Za-z0-9_-]+"),
-    re.compile(r"OPENROUTER_API_KEY\s*="),
-    re.compile(r"MISTRAL_API_KEY\s*="),
-    re.compile(r"OPENAI_API_KEY\s*="),
+    re.compile(r"(?i)(?:api[_-]?key|token|password|secret)\s*[:=]\s*['\"][^<\s]{12,}"),
+    re.compile("/" + "Users/"),
 ]
-
-ROUTE_MARKERS = {
-    "#manual": [
-        "Dashboard Operating Manual",
-        "Knowledge Service",
-        "Agent Control",
-        "Packaged skills",
-        "browser-local",
-    ],
-    "#overview": [
-        "Documentation-first architecture console",
-        "Build a maintained company brain",
-        "Seven public groups",
-        "What the architecture can support today",
-    ],
-    "#architecture": [
-        "One operating system, seven grouped layers",
-        "Layer index",
-        "End-to-end contract",
-        "Source-of-truth rule",
-    ],
-    "#knowledge": [
-        "Retrieve narrowly, preserve provenance",
-        "Retrieval cascade",
-        "RAG parameters",
-        "Corpus boundary",
-    ],
-    "#agents": [
-        "Roles are contracts, not personas",
-        "Configured specialist roles",
-        "Skill governance",
-        "Reviewed public skill catalog",
-    ],
-    "#operations": [
-        "Two clear products, one governed handoff",
-        "Knowledge Service",
-        "Agent Control",
-        "Prepare a review bundle",
-    ],
-    "#data": [
-        "Inspect the public catalog without inventing a production database",
-        "Read-only fixture query lab",
-        "Run public preview",
-        "Gated database roadmap",
-    ],
-    "#runs": [
-        "Separate configuration, execution, review, and promotion",
-        "Evidence-state vocabulary",
-        "Recent public-safe activity",
-        "Check registry",
-    ],
-    "#reference": [
-        "Configure the architecture",
-        "Build · Scale · Govern · Optimize",
-        "Parameter families",
-        "Status semantics",
-        "Canonical architecture sources",
-    ],
-    "#schema": [
-        "Full-screen workflow",
-        "Canvas",
-        "Stage list",
-        "Export review packet",
-        "MODEL PROVIDER none",
-        "writeback approval required",
-    ],
-}
 
 
 class QuietHandler(SimpleHTTPRequestHandler):
     def log_message(self, format: str, *args: object) -> None:  # noqa: A002
         return
+
+
+def load_json(path: Path) -> dict:
+    with path.open(encoding="utf-8") as handle:
+        value = json.load(handle)
+    if not isinstance(value, dict):
+        raise AssertionError(f"{path.relative_to(ROOT)} must contain an object")
+    return value
 
 
 def find_chrome() -> str:
@@ -120,56 +62,113 @@ def find_chrome() -> str:
         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
         "/Applications/Chromium.app/Contents/MacOS/Chromium",
         shutil.which("google-chrome"),
-        shutil.which("google-chrome-stable"),
         shutil.which("chromium"),
-        shutil.which("chromium-browser"),
     ]
     for candidate in candidates:
         if candidate and Path(candidate).exists():
             return candidate
-    raise RuntimeError("Headless Chrome/Chromium was not found. Set CHROME_PATH to run this smoke test.")
+    raise RuntimeError("Headless Chrome/Chromium not found. Set CHROME_PATH.")
 
 
-def validate_dashboard_data() -> None:
-    with DASHBOARD_DATA.open("r", encoding="utf-8") as handle:
-        data = json.load(handle)
-    required = [
-        "project",
-        "status_cards",
-        "activity",
-        "sources",
-        "wiki",
-        "langgraph",
-        "crewai",
-        "env",
-        "packages",
-        "gates",
-        "role_catalog",
-        "skill_catalog",
-        "knowledge_catalog",
-        "configuration_catalog",
+def validate_contracts() -> None:
+    data = load_json(DASHBOARD / "data.json")
+    crew = load_json(CONTRACTS / "knowledge-crew-config.json")
+    roles = load_json(CONTRACTS / "role-catalog.json")
+    workflows = load_json(CONTRACTS / "role-workflows.json")
+    controller = load_json(CONTRACTS / "operating-model.json")
+    if data.get("schema_version") != "2.0.0":
+        raise AssertionError("dashboard data schema must be 2.0.0")
+    if data["counts"] != {
+        "layers": 7,
+        "roles": 21,
+        "workflow_packs": 10,
+        "research_methods": 10,
+        "context_token_ceiling": 12000,
+    }:
+        raise AssertionError(f"dashboard counts drifted: {data['counts']}")
+    call_names = [role["call_name"] for role in roles["roles"]]
+    if len(call_names) != 21 or len(set(call_names)) != 21:
+        raise AssertionError("role call names must be 21 unique values")
+    if any(re.fullmatch(r"[A-Za-z]+", name) is None for name in call_names):
+        raise AssertionError("role call names must contain English letters only")
+    if [layer["id"] for layer in crew["layers"]] != [f"L{i}" for i in range(1, 8)]:
+        raise AssertionError("knowledge layers must be ordered L1-L7")
+    if len(workflows["packs"]) != 10:
+        raise AssertionError("expected ten adaptive workflow packs")
+    role_ids = {role["id"] for role in roles["roles"]}
+    required_defaults = {"inputs", "owned_output", "allowed_skills", "allowed_tools", "permission_mode", "reviewer_route", "handoff_to"}
+    for role in roles["roles"]:
+        if not required_defaults.issubset(role.get("task_defaults", {})):
+            raise AssertionError(f"role task contract incomplete: {role['id']}")
+    for pack in workflows["packs"]:
+        if not set(pack["roles"]).issubset(role_ids):
+            raise AssertionError(f"workflow pack uses a noncanonical role ID: {pack['id']}")
+    if controller["provider_default"] != "disabled" or controller["writeback_default"] != "disabled":
+        raise AssertionError("controller public defaults must stay disabled")
+
+
+def validate_visuals() -> None:
+    stems = [
+        "knowledge-crew-tower",
+        "context-input-flow",
+        "output-receipt-flow",
+        "onboarding-teamwork-flow",
     ]
-    missing = [key for key in required if key not in data]
-    if missing:
-        raise AssertionError(f"dashboard data missing required keys: {', '.join(missing)}")
-
-
-def validate_vercel_route_contract() -> None:
-    with VERCEL_CONFIG.open("r", encoding="utf-8") as handle:
-        config = json.load(handle)
-    redirects = {
-        item.get("source"): item.get("destination")
-        for item in config.get("redirects", [])
-        if isinstance(item, dict)
+    required_text = {
+        "knowledge-crew-tower": ["CASE AUTHORITY", "LLAMAINDEX", "TURBOVEC", "LANGGRAPH", "ACCOUNTABLE OUTPUTS"],
+        "context-input-flow": ["STABLE CAG", "LLAMAINDEX ROUTER", "EXACT-READ GATE", "ROLE-SAFE CAPSULE"],
+        "output-receipt-flow": ["REQUIREMENT COVERAGE", "INDEPENDENT REVIEW", "RESULT RECEIPT", "MAINTAINED KNOWLEDGE"],
+        "onboarding-teamwork-flow": ["FIRST MISSION", "TEAM WORK", "MANAGER / OWNER INTERRUPT", "EMPLOYEE OUTCOME"],
     }
+    for stem in stems:
+        svg = ASSETS / f"{stem}.svg"
+        png = ASSETS / f"{stem}.png"
+        if not svg.exists() or not png.exists() or png.stat().st_size < 100_000:
+            raise AssertionError(f"missing or empty visual pair: {stem}")
+        ET.parse(svg)
+        text = svg.read_text(encoding="utf-8").upper()
+        missing = [marker for marker in required_text[stem] if marker not in text]
+        if missing:
+            raise AssertionError(f"{stem} missing labels: {missing}")
+
+
+def validate_compatibility() -> None:
+    config = load_json(ROOT / "vercel.json")
+    redirects = {item.get("source"): item.get("destination") for item in config.get("redirects", [])}
     for source in ("/dashboard", "/dashboard/"):
         if redirects.get(source) != "/project/dashboard/":
-            raise AssertionError(
-                f"{source} must redirect to canonical /project/dashboard/ so relative assets and data stay valid"
-            )
+            raise AssertionError(f"{source} must redirect to the Crew Desk")
+    for source in ("/jarvis", "/jarvis/"):
+        if redirects.get(source) != "/project/dashboard/#today":
+            raise AssertionError(f"{source} must redirect to embedded Crew Desk guidance")
+    jarvis_html = (ROOT / "jarvis.html").read_text(encoding="utf-8")
+    if "project/dashboard/#today" not in jarvis_html or "Guarded operator chat" in jarvis_html:
+        raise AssertionError("legacy Jarvis page must be a compatibility redirect, not a second operator surface")
 
 
-def render_url(chrome: str, url: str, timeout_seconds: int, retries: int) -> str:
+def validate_source_boundary() -> None:
+    source = (DASHBOARD / "app.js").read_text(encoding="utf-8")
+    required = [
+        "provider_called: false",
+        "writeback_performed: false",
+        "external_action_performed: false",
+        "validateBridge",
+        "materializeRoleTaskBindings",
+        "role_task_bindings",
+        "intersection_only_no_authority_expansion",
+        'Object.prototype.hasOwnProperty.call(source, "turbovec_candidate")',
+        'parsed.hostname === "127.0.0.1"',
+        'parsed.hostname === "localhost"',
+        "archflow_local_review_packet",
+    ]
+    missing = [marker for marker in required if marker not in source]
+    if missing:
+        raise AssertionError(f"dashboard source boundary missing: {missing}")
+    if re.search(r"fetch\(\s*(?!path\b)", source):
+        raise AssertionError("dashboard may fetch only its fixed local contract path variable")
+
+
+def render(chrome: str, url: str, timeout: int) -> str:
     command = [
         chrome,
         "--headless",
@@ -180,125 +179,64 @@ def render_url(chrome: str, url: str, timeout_seconds: int, retries: int) -> str
         "--disable-background-networking",
         "--disable-sync",
         "--no-first-run",
-        "--no-default-browser-check",
         "--hide-scrollbars",
         "--run-all-compositor-stages-before-draw",
-        "--virtual-time-budget=2000",
+        "--virtual-time-budget=1800",
         "--dump-dom",
         url,
     ]
-    last_error = ""
-    for attempt in range(retries + 1):
-        try:
-            completed = subprocess.run(command, check=False, text=True, capture_output=True, timeout=timeout_seconds)
-        except subprocess.TimeoutExpired as error:
-            last_error = f"timed out after {timeout_seconds} seconds"
-        else:
-            if completed.returncode == 0:
-                return completed.stdout
-            last_error = completed.stderr.strip() or f"exit code {completed.returncode}"
-        if attempt < retries:
-            time.sleep(1)
-    raise RuntimeError(f"Chrome failed for {url}: {last_error}")
+    completed = subprocess.run(command, text=True, capture_output=True, timeout=timeout, check=False)
+    if completed.returncode != 0:
+        raise RuntimeError(completed.stderr.strip() or f"Chrome exited {completed.returncode}")
+    return completed.stdout
 
 
-def render_route(chrome: str, base_url: str, route_hash: str, timeout_seconds: int, retries: int) -> str:
-    return render_url(chrome, f"{base_url}/project/dashboard/{route_hash}", timeout_seconds, retries)
-
-
-def assert_markers(route_hash: str, html: str) -> None:
-    missing = [marker for marker in ROUTE_MARKERS[route_hash] if marker not in html]
+def assert_route(route: str, html: str) -> None:
+    missing = [marker for marker in ROUTE_MARKERS[route] if marker not in html]
     if missing:
-        raise AssertionError(f"{route_hash} missing markers: {', '.join(missing)}")
-    leaked = [pattern.pattern for pattern in SECRET_PATTERNS if pattern.search(html)]
-    if leaked:
-        raise AssertionError(f"{route_hash} rendered forbidden secret pattern(s): {', '.join(leaked)}")
-    if "Strategic plan" in html or "#plan" in html:
-        raise AssertionError(f"{route_hash} exposed a removed strategic-plan dashboard surface")
-
-
-def validate_jarvis_static_contract(html: str) -> None:
-    required_html = [
-        "Knowledge Service — prepare report first",
-        "Jarvis operating documentation",
-        "One documented path from project context",
-        "Human review",
-        "Knowledge Service — prepare report first",
-        "Guest preview",
-        "Download report",
-        "Download handoff",
-        "Load public model catalog",
-        "Local report first",
-    ]
-    missing_html = [marker for marker in required_html if marker not in html]
-    if missing_html:
-        raise AssertionError(f"Jarvis page missing markers: {', '.join(missing_html)}")
-    source = JARVIS_JS.read_text(encoding="utf-8")
-    required_source = [
-        "data-load-model-catalog",
-        "data-download-report",
-        "data-download-package",
-        'if (state.viewerMode === "guest") return;',
-        "data-jarvis-stage",
-        "The browser did not send the report body, project reference, source boundary, or chat history",
-    ]
-    missing_source = [marker for marker in required_source if marker not in source]
-    if missing_source:
-        raise AssertionError(f"Jarvis source contract missing: {', '.join(missing_source)}")
-    if "loadModels();" in source:
-        raise AssertionError("Jarvis must not auto-load the public model catalog")
-    leaked = [pattern.pattern for pattern in SECRET_PATTERNS if pattern.search(html)]
-    if leaked:
-        raise AssertionError(f"Jarvis rendered forbidden secret pattern(s): {', '.join(leaked)}")
-
-
-def validate_two_stage_gate() -> None:
-    source = DASHBOARD_JS.read_text(encoding="utf-8")
-    required = [
-        'kind === "control" && sharedSession.knowledge?.status !== "prepared_local"',
-        "Agent Control requires a browser-local Knowledge Service report first in both Admin and Guest preview",
-        "Agent Control is held in both Admin and Guest preview",
-    ]
-    missing = [marker for marker in required if marker not in source]
-    if missing:
-        raise AssertionError(f"dashboard two-stage gate missing: {', '.join(missing)}")
-
-
-def run_smoke(timeout_seconds: int, retries: int) -> None:
-    validate_dashboard_data()
-    validate_vercel_route_contract()
-    validate_two_stage_gate()
-    chrome = find_chrome()
-
-    handler = lambda *args, **kwargs: QuietHandler(*args, directory=str(REPO_ROOT), **kwargs)
-    server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
-    thread = threading.Thread(target=server.serve_forever, daemon=True)
-    thread.start()
-    base_url = f"http://127.0.0.1:{server.server_port}"
-
-    try:
-        for route_hash in ROUTE_MARKERS:
-            html = render_route(chrome, base_url, route_hash, timeout_seconds, retries)
-            assert_markers(route_hash, html)
-        jarvis_html = render_url(chrome, f"{base_url}/jarvis.html", timeout_seconds, retries)
-        validate_jarvis_static_contract(jarvis_html)
-    finally:
-        server.shutdown()
-        server.server_close()
-
-    print(f"dashboard_static_smoke=ok routes={len(ROUTE_MARKERS)} jarvis_static=ok provider_calls=0 writeback=0")
+        raise AssertionError(f"{route} missing markers: {missing}")
+    if "Architecture 1" in html or "Architecture 2" in html:
+        raise AssertionError(f"{route} exposed removed top-level architecture labels")
+    leaks = [pattern.pattern for pattern in SECRET_PATTERNS if pattern.search(html)]
+    if leaks:
+        raise AssertionError(f"{route} exposed blocked patterns: {leaks}")
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Smoke-test the static ArchFlow dashboard routes.")
-    parser.add_argument("--timeout", type=int, default=60, help="Per-route headless Chrome timeout in seconds.")
-    parser.add_argument("--retries", type=int, default=2, help="Per-route retry count for local Chrome startup timing.")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--port", type=int, default=0)
+    parser.add_argument("--timeout", type=int, default=20)
+    parser.add_argument("--skip-browser", action="store_true")
     args = parser.parse_args()
+
+    validate_contracts()
+    validate_visuals()
+    validate_compatibility()
+    validate_source_boundary()
+    print("dashboard_static_contract=ok")
+
+    if args.skip_browser:
+        print("browser_render=skipped")
+        return 0
+
+    chrome = find_chrome()
+    server = ThreadingHTTPServer(("127.0.0.1", args.port), QuietHandler)
+    port = server.server_address[1]
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    previous = Path.cwd()
     try:
-        run_smoke(args.timeout, args.retries)
-    except Exception as error:  # noqa: BLE001 - command-line verifier should print direct failure.
-        print(f"dashboard_static_smoke=failed reason={error}", file=sys.stderr)
-        return 1
+        os.chdir(ROOT)
+        thread.start()
+        time.sleep(0.15)
+        base = f"http://127.0.0.1:{port}/project/dashboard/"
+        for route in ROUTE_MARKERS:
+            assert_route(route, render(chrome, base + route, args.timeout))
+            print(f"route={route}:ok")
+    finally:
+        server.shutdown()
+        server.server_close()
+        os.chdir(previous)
+    print("dashboard_render_smoke=ok")
     return 0
 
 

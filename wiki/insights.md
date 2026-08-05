@@ -215,3 +215,27 @@ ArchFlow now needs decision-question closeouts because tasks span workflow desig
 - Why it matters: a durable company brain must preserve why decisions changed while preventing stale plans from silently steering agents.
 - Where applicable: LlamaIndex ranking, dashboard search, WikiLLM promotion, audience updates, role briefs, and future Obsidian/Graphify views.
 - Limitation: authority weighting improves routing but does not replace source freshness review or primary evidence.
+
+## Insight - Responsibility Must Survive Framework Replacement
+
+- Observation: LlamaIndex, TurboVec, WikiLLM, Obsidian, Orbit/Graphify, CrewAI, and LangGraph solve different retrieval, memory, structure, coordination, and state problems, but none can own the employee's business decision by itself.
+- Interpretation: role responsibility, current requirements, source authority, permission, reviewer separation, and result criteria must live in the Knowledge Case contract above any framework adapter.
+- Why it matters: a team can change retrieval or orchestration technology without losing who may act, what evidence is current, who reviews, or how success is read back.
+- Where applicable: employee onboarding, daily tasks, research, PRDs, outreach, design, implementation, reporting, knowledge promotion, and runtime migration.
+- Limitation: a strong contract still needs representative employee pilots and environment-specific runtime proof.
+
+## Insight - Compact Perception Is A Candidate Layer, Not Durable Memory
+
+- Observation: vector compression can improve candidate retrieval while hiding omitted sources, stale authority, or metadata loss if it is treated as the whole project memory.
+- Interpretation: TurboVec belongs behind LlamaIndex as an optional candidate generator. Stable CAG, lexical fallback, source paths, exact reads, requirement versions, and reviewed WikiLLM promotion preserve the authority chain.
+- Why it matters: compact context can improve efficiency without allowing a similarity score or compressed representation to rewrite organizational truth.
+- Where applicable: role-specific task capsules, large project repositories, onboarding questions, and bounded research.
+- Limitation: the public receipt supports only an isolated 10-query synthetic result; it does not publish the fixture document count or lexical baseline. A fixed 20-query benchmark and independent verdict remain required.
+
+## Insight - Adaptive Roles Need Materialized Contracts, Not Prompt Labels
+
+- Observation: a role name and prose responsibility do not determine which sources, targets, tools, reviewer, or handoff are valid for a particular employee task.
+- Interpretation: each selected role must be materialized against the active Knowledge Case as a schema-validated binding with explicit inputs, one owned output, allowlisted skills and tool capabilities, exact targets, a permission intersection, reviewer closure, typed gap references, a field-resolvable fixed handoff, checks, and stop conditions.
+- Why it matters: the same 21-role catalog can adapt to onboarding, research, requirements, outreach, writing, design, implementation, reporting, and knowledge maintenance without creating a second authority model in CrewAI or the dashboard.
+- Where applicable: LangGraph state entry, CrewAI task projection, dashboard Work and Team views, exported case packets, review routing, and execution receipts.
+- Limitation: materialized contracts make authority inspectable; they do not activate a provider, prove runtime capability, or authorize an external action.

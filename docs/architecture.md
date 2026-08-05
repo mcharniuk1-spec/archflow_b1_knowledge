@@ -1,52 +1,49 @@
 # Architecture
 
-ArchFlow is designed as a knowledge-continuity operating system: it preserves the context needed to make decisions, then gives bounded workers a reviewable way to act on that context.
+ArchFlow is a knowledge-continuity operating system: it preserves current decision context, gives employees the smallest responsible role/task contract, validates proposed effects, and records exact outcomes for future reuse.
 
-## Product view
+The canonical model is one Knowledge Case Controller with seven layers:
 
-**Short term:** a scoped Knowledge Reliability Setup for a real forcing moment—an ownership change, product handoff, enterprise-readiness push, onboarding problem, or key-person departure. The result is a source/owner map, reviewed knowledge spine, governed workflow, and operator handoff.
+1. Case authority and employee scope.
+2. Reviewed knowledge and source spine.
+3. Bounded context perception.
+4. Adaptive role crew.
+5. Specialist research and delivery.
+6. Graph control, validation, and review.
+7. Receipts, outcomes, and maintained knowledge.
 
-**Long term:** an installable local-first operating toolkit that can run approved role/task workflows against a bounded corpus with explicit evidence, approval, safety, and recovery controls.
+PRDs, ICPs, market studies, onboarding maps, outreach packets, copy, designs, implementations, and reports are role outputs. Historical numbered architectures remain historical/compatibility evidence only.
 
-The second is a product direction. This repository does not present it as a hosted autonomous service today.
-
-## Canonical candidate operating model
-
-The implemented candidate is one **Knowledge Case Controller**, not two top-level architectures. It carries one case from admission and evidence through reviewed requirements, bounded role work, proposal validation, approval when needed, verification, and selective knowledge promotion. It becomes canonical only after the repair review and focused public release receipt pass.
-
-PRD and market research are performed by the bounded `requirements_and_market_research` role. PRDs, ICPs, onboarding maps, outreach packs, and creative briefs are projections of reviewed requirements and decisions. Historic `Architecture 1` and `Architecture 2` labels remain only as compatibility residue until the separately gated dashboard migration is executed.
-
-See the [unified operating architecture](unified-operating-architecture.md) for the state, role, action-validation, and private-adapter contracts.
-
-## Seven grouped layers
-
-1. **Authority and Goal** — identifies the owner, success test, constraints, budget, and forbidden actions.
-2. **Context and Knowledge** — assembles an approved context capsule through routing rules, WikiLLM, Graphify, and bounded LlamaIndex retrieval.
-3. **Plan and Orchestration** — uses LangGraph contracts for typed routing, checkpoints, review nodes, and stop conditions.
-4. **Execution and Roles** — gives CrewAI-style roles and other workers a bounded source/tool/output contract; the role name is not execution authority.
-5. **Loop and Verification** — separates the maker from an independent reviewer and stops repair loops within declared limits.
-6. **Memory and External Gate** — promotes reviewed knowledge deliberately and keeps Git, deployment, providers, and external writeback behind explicit approval.
-7. **Measurement and Optimization** — compares quality, reliability, retrieval, latency, cost, and recovery only on declared fixtures.
-
-## How the layers work together
+## Runtime composition
 
 ```text
-approved request
-  -> authority and task contract
-  -> bounded context capsule
-  -> LangGraph route and role contracts
-  -> candidate artifact
-  -> independent review
-  -> approved handoff or blocked next action
-  -> reviewed memory candidate and measured improvement proposal
+WikiLLM public reviewed memory
+  + optional private Obsidian semantic workspace
+  + stable CAG rules and responsibility
+  + LlamaIndex allowlisted retrieval
+  + optional TurboVec vector candidates
+  + Orbit/Graphify structural pointers
+  + exact reads
+        ↓
+role-safe perception capsule
+        ↓
+CrewAI-compatible role/task contracts
+        ↓
+LangGraph typed case, routes, interrupts, repair, receipts
+        ↓
+Crew Desk projection and approved operator handoff
 ```
 
-LlamaIndex is the bounded retrieval layer, not durable memory. WikiLLM is the curated durable-memory layer. Graphify is generated structural reference, not final business truth. Nexus is a live vault bridge only when its runtime and schemas are proved. TurboVec/Cognee remain optional, gated evaluation candidates rather than defaults.
+No component is allowed to absorb another component's authority. Retrieval is not truth; role assignment is not permission; graph transition is not approval; command success is not result; storage is not reviewed knowledge.
 
-GitLab Orbit Local is an optional private code-structural evidence adapter. Its local database, absolute paths, full source fields, and raw results are private generated artifacts; only reviewed repository-relative receipts may enter durable knowledge. Orbit never indexes the Obsidian vault or grants action authority.
+## Public default
 
-## Public console truth boundary
+- provider disabled;
+- writeback disabled;
+- checkpointer none;
+- browser drafts only;
+- synthetic fixtures;
+- optional local adapters;
+- exact owner approval for external/private/irreversible work.
 
-The dashboard can explain contracts, edit browser-local drafts, preview public catalog data, and download review bundles. It cannot prove a runtime event without a fresh state record containing a run ID, node ID, state, timestamp, evidence reference, authority scope, and writeback state. It cannot create repository files or act on external systems by itself.
-
-See the [operations guide](operations.md) for the stage-by-stage operator flow.
+Read [Responsive Knowledge Crew Architecture](responsive-knowledge-crew-architecture.md) for parameters, roles, methods, dashboard behavior, and proof.

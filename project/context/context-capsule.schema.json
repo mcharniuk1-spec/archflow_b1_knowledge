@@ -134,6 +134,12 @@
     "allowed_files": {
       "$ref": "#/$defs/path_list"
     },
+    "memory_write_basis": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "forbidden_actions": {
       "$ref": "#/$defs/string_list"
     },
@@ -145,6 +151,7 @@
         "required": ["role", "scope", "output"],
         "properties": {
           "role": {"type": "string"},
+          "role_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
           "scope": {"type": "string"},
           "output": {"type": "string"}
         }

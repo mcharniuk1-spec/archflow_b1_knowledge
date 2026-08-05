@@ -15,10 +15,9 @@ CONFIG = PROJECT / "workflows" / "crewai-crew.yaml"
 
 
 def configure_local_crewai_runtime() -> None:
-    local_home = PROJECT / "local" / "home"
-    local_home.mkdir(parents=True, exist_ok=True)
-    os.environ["HOME"] = str(local_home)
-    os.environ["CREWAI_STORAGE_DIR"] = "archflow_e1"
+    storage_dir = PROJECT / "local" / "crewai-storage"
+    storage_dir.mkdir(parents=True, exist_ok=True)
+    os.environ["CREWAI_STORAGE_DIR"] = str(storage_dir)
     os.environ["CREWAI_DISABLE_TELEMETRY"] = "true"
     os.environ["CREWAI_DISABLE_TRACKING"] = "true"
     os.environ["OTEL_SDK_DISABLED"] = "true"
@@ -44,7 +43,7 @@ def main() -> int:
     print("crewai_config=ok")
     print(f"agent_count={len(agents)}")
     print(f"task_count={len(tasks)}")
-    print("storage_boundary=project/local/home")
+    print("storage_boundary=project/local/crewai-storage")
     print("llm_execution=not_run")
     return 0
 

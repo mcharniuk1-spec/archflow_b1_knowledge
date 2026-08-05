@@ -4,66 +4,66 @@
   const layers = [
     {
       number: "Layer 07",
-      short: "Measure",
-      title: "Measure & evolve",
-      pain: "You cannot improve what you cannot baseline.",
+      short: "Outcomes",
+      title: "Receipts, outcomes, and maintained knowledge",
+      pain: "A successful command is not a verified result or reusable company knowledge.",
       outcome:
-        "We pair baseline and candidate traces across quality, retrieval, cost, safety, recovery, and human effort before a change is promoted.",
-      methods: ["Benchmark", "Trace ledger", "Promotion gate"]
+        "Record exact readback, employee outcomes, promotion decisions, lineage, supersession, and freshness.",
+      methods: ["Readback", "WikiLLM", "Promotion"]
     },
     {
       number: "Layer 06",
-      short: "Remember",
-      title: "Remember & act safely",
-      pain: "Decisions disappear when nobody owns the memory after delivery.",
+      short: "Control",
+      title: "Graph control, validation, and review",
+      pain: "Work cannot advance safely when state, requirements, verification, and approval are implicit.",
       outcome:
-        "We promote reviewed deltas into durable memory, refresh navigation, and gate every external action with approval, rollback, and readback.",
-      methods: ["WikiLLM", "Obsidian", "Graphify", "Readback"]
+        "LangGraph controls typed transitions, reducers, interrupts, repair bounds, checks, independent review, and terminal receipts.",
+      methods: ["LangGraph", "Validation", "Review"]
     },
     {
       number: "Layer 05",
-      short: "Verify",
-      title: "Verify & protect",
-      pain: "Enterprise answers cannot rest on unchecked agent confidence.",
+      short: "Delivery",
+      title: "Specialist research and delivery",
+      pain: "Generic agents lose the methods and quality bar of the work being performed.",
       outcome:
-        "We run deterministic checks, independent review, provenance, and safety gates before a claim, memory update, or client handoff.",
-      methods: ["Source proof", "Maker-checker", "Safety gate"]
+        "Role-owned research, outreach, copy, design, implementation, reporting, and onboarding produce bounded reviewable candidates.",
+      methods: ["Research", "Design", "Delivery"]
     },
     {
       number: "Layer 04",
-      short: "Execute",
-      title: "Execute & repair",
-      pain: "Agents drift when roles, skills, and limits are vague.",
+      short: "Crew",
+      title: "Adaptive role crew",
+      pain: "Responsibility disappears when role ownership, prohibitions, reviewers, and handoffs are vague.",
       outcome:
-        "We give each role the right skills and bounded repair loops with attempt, token, time, cost, and stop limits.",
-      methods: ["Role packs", "Skills", "Repair caps"]
+        "Select the smallest responsible crew with explicit tasks, tools, skills, forbidden actions, reviewer routes, and communication contracts.",
+      methods: ["CrewAI", "Role packs", "Handoffs"]
     },
     {
       number: "Layer 03",
-      short: "Orchestrate",
-      title: "Orchestrate & approve",
-      pain: "Parallel work breaks when state, dependencies, and approval have no owner.",
+      short: "Perception",
+      title: "Bounded context perception",
+      pain: "Loading everything loses authority, freshness, provenance, and the current requirement.",
       outcome:
-        "LangGraph owns transitions and checkpoints; role teams execute inside the graph; humans approve irreversible edges.",
-      methods: ["LangGraph", "Checkpoints", "Human gates"]
+        "Combine stable CAG, bounded LlamaIndex retrieval, optional TurboVec candidates, structural pointers, exact reads, and role memory.",
+      methods: ["LlamaIndex", "TurboVec", "Exact reads"]
     },
     {
       number: "Layer 02",
-      short: "Connect",
-      title: "Connect the company brain",
-      pain: "Truth scattered across tools and people cannot be reliably retrieved.",
+      short: "Knowledge",
+      title: "Reviewed knowledge and source spine",
+      pain: "Sources cannot guide work when authority, ownership, freshness, and supersession are unknown.",
       outcome:
-        "We assemble stable context first, retrieve only from approved sources, and keep each answer linked to source IDs and freshness.",
-      methods: ["CAG", "Bounded RAG", "Source IDs", "Freshness"]
+        "Maintain public WikiLLM and optional private Obsidian knowledge with allowlists, lineage, currentness, exclusions, and structural maps.",
+      methods: ["WikiLLM", "Obsidian", "Orbit", "Graphify"]
     },
     {
       number: "Layer 01",
-      short: "Govern",
-      title: "Govern goals & sources",
-      pain: "No safe automation starts without authority and a shared definition of done.",
+      short: "Authority",
+      title: "Case authority and employee scope",
+      pain: "No reliable work begins without a bounded outcome, role, permission, reviewer, and stop rule.",
       outcome:
-        "We define allowed sources, permissions, one observable goal, budgets, stop conditions, and the verifier before an agent acts.",
-      methods: ["Goal contract", "Permissions", "Budgets", "Stop rules"]
+        "Bind the employee goal, data class, allowed sources, exact authority, risk, done conditions, reviewer, and stop conditions.",
+      methods: ["Goal", "Authority", "Risk", "Stop rules"]
     }
   ];
 

@@ -689,3 +689,25 @@ See [[runs/2026-08-05-readme-architecture-visual]].
 - Added three left and four right leader-line callouts plus five direction legends.
 - Preserved the searchable README explanation as the accessible/mobile fallback.
 - Independent repair review APPROVE; no dashboard or runtime change.
+
+## 2026-08-05 — Responsive knowledge crew and Crew Desk candidate
+
+FACT:
+- Unified employee onboarding, requirements/market research, specialist delivery, action validation, reporting, and knowledge maintenance under one typed Knowledge Case.
+- Added seven-layer configuration, 21 named roles, ten adaptive packs, explicit framework contracts, four labeled diagrams, and the six-route browser-local Crew Desk.
+- Deterministic, adversarial, browser, responsive, accessibility, import/rejection, parsing, and public-safety checks pass.
+
+INTERPRETATION:
+- PRD/market research and agent control are role workflows rather than competing architectures. Jarvis is contextual guidance, not a second brain.
+
+GAP:
+- Halyna's iteration-four verdict is APPROVE; only staged checks, commit, push, and remote readback remain. Iryna's review and Halyna's first three reviews remain immutable REVISE evidence, preserving the full repair lineage.
+- Optional local LangGraph/LlamaIndex imports timed out and are not runtime proof; no provider, private ingestion, deployment, or writeback occurred.
+
+REPAIR EVIDENCE:
+- Bohdan's read-only mapping produced one namespaced admission plane over the canonical Knowledge Case registry; Danylo's read-only mapping produced schema-backed role-task bindings rather than a new authority source.
+- The repaired fixture contains eight materialized bindings, the dashboard exports canonical bindings, and non-boolean TurboVec configuration forms are rejected transactionally without state mutation.
+- The scope guard admits all 80 final candidate paths and rejects an unadmitted probe. Role bindings carry typed gap references; every handoff payload name resolves to the schema, and an unknown name is rejected.
+- CrewAI now projects all 22 schema-derived role-binding fields, and the API manual's complete Taras example validates with canonical review and handoff closure.
+
+See [[runs/2026-08-05-responsive-knowledge-crew-dashboard]].

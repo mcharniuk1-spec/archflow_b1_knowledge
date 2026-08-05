@@ -1,0 +1,107 @@
+{
+  "schema_version": "3.0.0",
+  "role_reference": "canonical_machine_id",
+  "selection_rule": "Select the smallest workflow pack that covers the case. Add a role only when it owns a required output, check, approval, or handoff.",
+  "packs": [
+    {
+      "id": "employee_onboarding",
+      "label": "Onboard and support an employee",
+      "trigger": "A person is joining, changing role, taking ownership, or needs a source-grounded next action.",
+      "roles": ["onboarding_guide", "source_and_context_operator", "task_and_handoff_planner", "action_validator", "independent_reviewer", "knowledge_librarian"],
+      "methods": ["role projection", "first-30-minute orientation", "smallest safe task", "requirement check", "manager interrupt", "learning readback"],
+      "inputs": ["role assignment", "current objective", "approved handbook or requirements", "manager/reviewer"],
+      "outputs": ["orientation card", "first mission", "source-visible answer", "escalation", "learning candidate"],
+      "done": ["employee can explain why", "employee finds sources", "first action is validated", "review and readback are assigned"]
+    },
+    {
+      "id": "requirements_research",
+      "label": "Research and define requirements",
+      "trigger": "A product, operational, onboarding, or market decision lacks current evidence and acceptance criteria.",
+      "roles": ["requirements_and_market_research", "source_and_context_operator", "goal_and_architecture_operator", "independent_reviewer", "knowledge_librarian"],
+      "methods": ["source authority triage", "JTBD", "forcing moment", "five whys", "customer forces", "ninety-day story", "triangulation", "disconfirmation", "claim table", "requirements-to-acceptance"],
+      "inputs": ["decision question", "approved sources", "market boundary", "current requirements"],
+      "outputs": ["evidence cards", "pain chain", "market boundary", "requirement candidates", "PRD/ICP projection", "acceptance checks", "gaps"],
+      "done": ["material claims are sourced", "counter-evidence is recorded", "signals are not called demand", "requirements have owner and freshness"]
+    },
+    {
+      "id": "task_planning",
+      "label": "Plan and drive daily work",
+      "trigger": "A reviewed objective must become a bounded task with responsibilities and checks.",
+      "roles": ["task_and_handoff_planner", "integrator", "action_validator", "verifier"],
+      "methods": ["dependency mapping", "definition of done", "task contract", "sole-writer claim", "risk and stop rules", "readback design"],
+      "inputs": ["approved requirement", "constraints", "candidate files or targets", "available roles"],
+      "outputs": ["mission card", "task packet", "dependency graph", "review route", "blocked questions"],
+      "done": ["one owner per output", "maker and reviewer differ", "side effects and rollback are visible", "readback exists"]
+    },
+    {
+      "id": "outreach",
+      "label": "Qualify and prepare outreach",
+      "trigger": "A reviewed offer needs a current target, responsible contact, channel decision, and source-grounded message candidate.",
+      "roles": ["qualification_and_channel_planner", "requirements_and_market_research", "positioning_and_copy_maker", "independent_reviewer", "external_action_operator"],
+      "methods": ["company fit", "person-role currentness", "stage reconciliation", "public evidence grade", "pain-to-mechanism-to-question", "humanization review", "exact send approval"],
+      "inputs": ["approved ICP", "target evidence", "contact evidence", "claim table", "channel policy"],
+      "outputs": ["qualification verdict", "channel packet", "message candidate", "send checklist", "no-send reason"],
+      "done": ["company and person gates are separate", "message claims trace to evidence", "sending remains an exact approved action"]
+    },
+    {
+      "id": "content_and_copy",
+      "label": "Create evidence-grounded content",
+      "trigger": "A reviewed pain, mechanism, result, or method should become a public-safe written artifact.",
+      "roles": ["positioning_and_copy_maker", "requirements_and_market_research", "designer", "independent_reviewer", "release_operator"],
+      "methods": ["claim table", "pain-mechanism-outcome", "channel adaptation", "humanization", "rights/source review", "phone-scale review"],
+      "inputs": ["reviewed evidence", "audience", "content job", "channel constraint", "rights boundary"],
+      "outputs": ["copy candidate", "caption", "creative brief", "claim/rights table", "release packet"],
+      "done": ["no invented proof", "copy and design share one brief", "publication remains separately approved"]
+    },
+    {
+      "id": "design",
+      "label": "Design a visual or interface",
+      "trigger": "A reviewed communication or product requirement needs an accessible, recoverable visual artifact.",
+      "roles": ["designer", "surface_projection_operator", "implementation_maker", "verifier", "independent_reviewer"],
+      "methods": ["content hierarchy", "scene grammar", "design tokens", "three alternatives", "responsive layout", "keyboard and contrast review", "editable source", "visual regression"],
+      "inputs": ["visual job", "approved copy", "brand rules", "breakpoints", "rights boundary"],
+      "outputs": ["design direction", "editable artifact", "responsive implementation", "accessibility evidence", "rollback"],
+      "done": ["text fits at target sizes", "forms and perimeter spacing align", "visual has editable source", "maker does not self-review"]
+    },
+    {
+      "id": "implementation",
+      "label": "Implement a bounded change",
+      "trigger": "A reviewed requirement and task contract authorize exact local files or targets.",
+      "roles": ["implementation_maker", "integrator", "action_validator", "verifier", "independent_reviewer"],
+      "methods": ["exact file claim", "small patch", "focused tests", "adversarial fixture", "visual readback", "rollback", "independent review"],
+      "inputs": ["task contract", "requirement refs", "exact targets", "verification and rollback"],
+      "outputs": ["candidate change", "test evidence", "readback", "repair record", "review verdict"],
+      "done": ["target scope is exact", "checks are reproducible", "results are not inferred from command success"]
+    },
+    {
+      "id": "reporting",
+      "label": "Deliver a decision-ready report",
+      "trigger": "Research or execution evidence must be synthesized for an owner, employee, reviewer, or handoff.",
+      "roles": ["growth_and_outcome_analyst", "observability_and_efficiency_observer", "positioning_and_copy_maker", "independent_reviewer", "knowledge_librarian"],
+      "methods": ["fact-interpretation-hypothesis-gap", "observed-versus-modeled", "denominator check", "claim status", "decision memo", "next-safe-action"],
+      "inputs": ["evidence register", "metrics", "receipts", "open gaps", "decision owner"],
+      "outputs": ["executive summary", "evidence table", "verdict", "gaps", "pursue-pivot-stop recommendation", "memory candidate"],
+      "done": ["metrics have denominators", "currentness is visible", "decision and remaining gap are explicit"]
+    },
+    {
+      "id": "knowledge_maintenance",
+      "label": "Maintain reviewed knowledge",
+      "trigger": "An accepted result may change what future employees and agents should know.",
+      "roles": ["knowledge_librarian", "source_and_context_operator", "independent_reviewer", "observability_and_efficiency_observer"],
+      "methods": ["duplicate search", "promotion filter", "lineage", "supersession", "freshness trigger", "readback", "retrieval regression"],
+      "inputs": ["accepted result", "sources", "decision and requirement refs", "owner", "review date"],
+      "outputs": ["promotion candidate", "updated index", "supersession link", "freshness task", "readback receipt"],
+      "done": ["raw traces are excluded", "future-useful meaning is retained", "old knowledge is superseded rather than silently erased"]
+    },
+    {
+      "id": "release_and_external_action",
+      "label": "Release or perform one approved action",
+      "trigger": "A verified candidate has exact owner approval for one Git, deployment, message, publication, or writeback target.",
+      "roles": ["external_action_operator", "release_operator", "action_validator", "verifier", "independent_reviewer"],
+      "methods": ["target preflight", "approval binding", "idempotency key", "rollback", "action receipt", "readback"],
+      "inputs": ["approved action packet", "exact target", "current capability proof", "rollback"],
+      "outputs": ["one action", "receipt", "readback", "blocked record when any gate fails"],
+      "done": ["approval matches exact target and action", "no action chaining", "post-action state is read back"]
+    }
+  ]
+}

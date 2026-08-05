@@ -1,66 +1,84 @@
 # Operations Guide
 
-## Two operating surfaces
+Status: current Crew Desk workflow
 
-The dashboard and Jarvis share a browser-local activity record. It contains only preview mode and local report/handoff references; it is not authentication, account memory, a database record, or a runtime event feed. In both Guest and Admin preview, prepare Knowledge Service first and retain a public-safe boundary before Agent Control. Admin additionally exposes guarded-control documentation, but all real actions remain separately gated.
+## One operating surface
 
-### Knowledge Service
+The Crew Desk projects one Knowledge Case. Browser-local drafts are not authentication, durable memory, runtime events, or execution receipts.
 
-Use this surface when approved product, research, or customer information needs to become a reviewed output: a PRD, ICP, decision brief, backlog, research packet, or knowledge update.
+Use:
 
-Inputs mean:
+- **Today** to understand the current mission and ask Taras for deterministic workflow guidance.
+- **Work** to define the goal, role, output, evidence boundary, workflow pack, risk, reviewer, and stop condition.
+- **Knowledge** to understand sources, framework parameters, diagrams, research methods, and skill governance.
+- **Team** to inspect role responsibilities and select the smallest workflow pack.
+- **Review** to follow evidence → requirement → maker → validator → independent reviewer → receipt → promotion.
+- **Set up** to prepare a bounded local configuration proposal.
 
-- **Request:** the outcome needed and its forcing moment.
-- **Source boundary:** the approved summaries, paths, or references that may support the packet.
-- **Output contract:** the artifact shape, reviewer, and decision it must support.
-- **Approval gate:** the named operator who may advance a reviewed packet.
+## Mission sequence
 
-The result is a source-grounded packet that separates facts, interpretations, hypotheses, and gaps. It cannot ingest broad private storage or promote memory automatically.
+1. Orient the case and authority.
+2. Assemble stable CAG plus task-specific evidence.
+3. Reconcile facts, interpretations, hypotheses, contradictions, and gaps.
+4. Approve current requirement versions and acceptance checks.
+5. Select the smallest responsible crew.
+6. Produce a reviewable candidate and verification plan.
+7. Validate requirements, authority, effects, rollback, and readback.
+8. Run deterministic checks and independent review.
+9. Interrupt for target-specific approval when required.
+10. Perform at most one approved action.
+11. Read back the exact target.
+12. Propose reusable meaning for reviewed promotion.
 
-### Agent Control
+## Review-packet handoff
 
-Use this surface to specify how bounded work should be governed.
-
-Inputs mean:
-
-- **Task contract:** objective, constraints, expected artifact, owner, and stop rule.
-- **Role contract:** allowed tools, skills, sources, output, reviewer, and handoff target.
-- **Route:** dependency, retry/stop condition, and merge policy.
-- **Approval gate:** the action that must pause until an operator authorizes it.
-
-Drafting an agent or node in the browser creates only a local role/task candidate. An approved operator performs actual subagent creation or file changes under the repository contract.
-
-## Jarvis report-first sequence
-
-Jarvis asks for goal, public repository reference or safe label, allowed evidence/exclusions, requested output, independent reviewer, and constraints/stop conditions. It prepares a local Knowledge Service report in chat and can download it as Markdown/JSON. Only then should the operator choose Agent Control, which prepares a proposed role/task/file handoff. The report never fetches or clones the reference, and the handoff never creates the proposed files.
-
-Admin/Guest controls are browser-local preview labels. Guest hides API/token controls and never loads the public model catalog automatically. Admin may explicitly load a public catalog or submit a guarded API review, but a selected model, acknowledgement, or API response still does not prove provider execution, spending authority, or writeback.
-
-## Stage sequence
-
-The console can animate a quiet browser-local preparation sequence:
-
-1. capture the request and authority boundary;
-2. classify the risk, task type, and required sources;
-3. assemble a task/role contract;
-4. prepare a bounded candidate packet;
-5. review source, safety, and claim boundaries;
-6. stop for approval; and
-7. export a review bundle.
-
-An active stage in this local sequence means only that the browser is assembling a review bundle. A real runtime display requires a sanitized event containing `run_id`, `node_id`, `state`, `observed_at`, `evidence_ref`, `authority_scope`, and `writeback_state`.
-
-## Review-bundle handoff
-
-The download contains local workflow schema, role configuration, local packets, sequence state, and a truth boundary. It is not a Git patch, commit, changed repository file, provider invocation, or writeback receipt.
-
-The safe handoff sequence is:
+The browser export includes the case, selected workflow pack, local configuration proposal, and explicit zero-action boundary.
 
 ```text
-browser-local draft -> review bundle -> approved operator review
--> scoped repository change -> validation -> separate Git/deploy/provider/writeback approval
+browser-local mission
+  -> JSON review packet
+  -> approved controller/operator admission
+  -> exact retrieval and requirement validation
+  -> scoped maker work
+  -> deterministic verification
+  -> independent review
+  -> optional exact approval/action
+  -> readback and receipt
 ```
 
-## Data Lab
+The packet is not a Git patch, changed file, model response, database row, approval, or action receipt.
 
-The Data Lab reads generated public JSON. Its small SQL-like preview supports simple `SELECT columns FROM table LIMIT n` queries for skills, roles, workflow nodes, sources, and run summaries. It does not support arbitrary SQL, server connections, private data, joins, mutations, or external calls. See [the public data model](../project/database/README.md).
+## Real runtime event
+
+A live projection requires at least:
+
+- case/run ID;
+- node and state;
+- observed timestamp;
+- evidence/requirement references;
+- actor and authority scope;
+- provider and writeback state;
+- receipt/readback reference.
+
+Without this state, the UI must say configured, browser-local, gated, or unknown—not live.
+
+## Manager/owner interrupts
+
+Stop for:
+
+- missing requirement owner;
+- material contradiction;
+- stale or private source without authority;
+- external communication;
+- private-data provider use;
+- irreversible/destructive change;
+- production/deployment/release;
+- credentials, spend, or durable external writeback.
+
+Resume only with a JSON-safe exact decision. Side effects occur after the interrupt and use an idempotent action ID.
+
+## Knowledge update
+
+After an accepted result, Larysa searches for duplicates and prepares a promotion candidate with source, requirement, decision, result, owner, review date, and supersession. Raw traces and secrets are excluded.
+
+See [Crew Desk manual](dashboard-operating-manual.md) and [responsive architecture](responsive-knowledge-crew-architecture.md).

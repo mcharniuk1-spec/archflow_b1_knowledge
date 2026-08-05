@@ -1,10 +1,12 @@
-# Dashboard Local Jarvis Stack Manual
+# Dashboard Local Jarvis Stack Manual — Historical
 
-Status: Prompt 2.1 local operating manual
+Status: historical — superseded by the six-route Crew Desk
+
+> Do not use this document as the current operating model. It preserves the July 2026 Screen 1 / Screen 2 / standalone Jarvis proposal for audit history. Use the [current Crew Desk operating manual](dashboard-operating-manual.md), where PRD/ICP research and agent coordination are adaptive workflows inside one Knowledge Case.
 
 ## Purpose
 
-This manual explains how the ArchFlow dashboard relates to local Jarvis runtime pieces before any Railway migration or provider-backed activation.
+This historical manual explained how an earlier ArchFlow dashboard related to local Jarvis runtime pieces before the unified Knowledge Case and Crew Desk replaced that projection.
 
 ## What Works Now
 

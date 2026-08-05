@@ -1,54 +1,64 @@
-# Employee Onboarding Knowledge Agent
+# Onboarding Knowledge Agent
 
-Status: public contract and synthetic fixture
-Last verified: 2026-08-05
-Execution default: provider-disabled and writeback-disabled
+Status: implemented public contract and browser-local guidance
+Role: Taras — `onboarding_guide`
 
-The onboarding agent helps a new employee understand current company knowledge, propose the smallest useful next action, and validate that action against reviewed requirements before work begins.
+Taras helps a new or changing employee understand the role, find the governing source, prepare the first safe mission, and escalate missing authority or evidence.
 
-## Interaction contract
+Taras is one role in the unified case. It is not a separate model, memory, employee monitor, or permission system.
 
-1. Bind the employee to an approved role, manager/reviewer, task, corpus, and allowed actions.
-2. Retrieve only the current requirement, decision, rationale, owner, freshness, contradiction, and source fields needed for the question.
-3. Answer with visible status: fact, interpretation, hypothesis, or gap.
-4. Convert “What should I do?” into an action proposal, not an automatic instruction.
-5. Validate requirement coverage, decision currentness, role authority, source boundary, side effects, rollback, review, approval, and readback.
-6. Escalate stale knowledge, contradictions, missing authority, or manager decisions.
-7. Record accepted outcomes and promote only future-useful reviewed knowledge.
+![Onboarding and teamwork flow](../project/assets/architecture/onboarding-teamwork-flow.png)
 
-![Onboarding and validation flow](../project/assets/architecture/onboarding-action-validation-flow.svg)
+## First 30 minutes
 
-## What the employee sees
+1. **Orient:** role purpose, owned outputs, forbidden actions, source boundary, manager/reviewer route.
+2. **Trace:** one current requirement to exact source, owner, freshness, and acceptance.
+3. **Deliver:** one reversible mission with a different reviewer and exact readback.
 
-- the current requirement and why it exists;
-- who owns and reviewed it;
-- the source and freshness state;
-- contradictions and gaps that affect the task;
-- allowed and forbidden actions for the role;
-- a proposed first task with acceptance and readback;
-- whether the proposal is eligible, needs repair/approval, or is blocked.
+## Answer contract
 
-The agent does not imitate a former employee, monitor workers, hide uncertainty, infer broader permission from source access, or convert a single successful task into company policy.
+An onboarding answer contains:
+
+- the employee's role and responsibility;
+- the decision/task;
+- a source-visible fact/interpretation/hypothesis/gap split;
+- current requirement and owner;
+- proposed next safe action;
+- expected output and done check;
+- reviewer;
+- stop/escalation condition.
+
+If the source is stale, contradictory, private without authority, or missing, Taras returns a gap and owner question.
+
+## Daily support
+
+The mission card keeps:
+
+- why;
+- one observable output;
+- evidence boundary;
+- exact requirement version;
+- owner, maker, reviewer;
+- allowed files/targets;
+- checks and rollback;
+- blocker and next handoff.
+
+The case moves through Orient, Perceive, Commit, Work, Gate, and Learn. Taras can explain the current phase; LangGraph controls state and validation/review controls advancement.
+
+## Outcome measures
+
+- employee can explain why;
+- employee can find the source;
+- employee distinguishes fact from gap;
+- employee completes the safe action;
+- employee escalates uncertainty;
+- review/readback is recorded;
+- reusable learning is reviewed before promotion.
+
+## Browser behavior
+
+Ask Taras in `#today` uses deterministic keyword routing to recommend a workflow pack and required questions. It calls no provider and creates no company answer. A future approved model runtime must receive only the role-safe perception capsule and preserve the same prohibitions.
 
 ## Requirements validation
 
-Every proposed effect must link to an approved current requirement or a declared incident/maintenance exception. The proposal must also specify exact target, human-reviewable change, decision references, side effects, reversibility, rollback, preflight, postcondition, readback, reviewer, and approval class.
-
-An external communication, deployment, private-data provider call, production promotion, destructive action, credential write, or live memory writeback waits for target-specific owner approval even if the tool is connected.
-
-## Try the safe fixture
-
-```bash
-python3 project/system/validate_system.py
-```
-
-Expected result: one proposal is `eligible`; stale, unknown-authority, target-escape, and reviewer-spoof proposals are `blocked`; malformed packets are rejected before execution. Nothing is executed.
-
-## Adaptation checklist
-
-- Replace only the synthetic source manifest, never the validation rules first.
-- Define role scope and a different reviewer for material work.
-- Create stable requirement IDs and mark historical records `superseded` rather than deleting them.
-- Add an adversarial stale or contradictory case before adding a live connector.
-- Keep private sources behind a local allowlist and return sanitized evidence references.
-- Prove readback and rollback before enabling any write adapter.
+Every proposed effect links to a current approved requirement or explicit exception, exact target, permission scope, side effects, rollback, verification, readback, and a different reviewer. External/private/irreversible work pauses for target-specific owner approval.

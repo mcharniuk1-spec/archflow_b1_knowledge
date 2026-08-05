@@ -1,886 +1,176 @@
 #!/usr/bin/env python3
-"""Generate public-safe dashboard data from the ArchFlow repository.
+"""Generate the compact, public-safe Crew Desk snapshot.
 
-This script intentionally uses only the Python standard library. It reads
-tracked public project files plus ignored local env/runtime file presence, but
-never emits secret values or raw local paths.
+The dashboard reads canonical JSON contracts directly. This snapshot supplies
+only repository status, counts, public source links, and calibrated gaps.
+It never reads private folders, environment files, credentials, or raw vaults.
 """
 
 from __future__ import annotations
 
 import json
-import os
-import re
-import hashlib
 import subprocess
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[2]
 PROJECT = ROOT / "project"
-WIKI = ROOT / "wiki"
-DASHBOARD = PROJECT / "dashboard"
-CANONICAL_AUDIENCE_SOURCE = "project/knowledge/audience/icp-knowledge-continuity.md"
-CANONICAL_STRATEGY_SOURCE = "project/strategic-plan-2026-07-13.md"
-DASHBOARD_EXCLUDED_CORPUS_PATHS = {
-    CANONICAL_STRATEGY_SOURCE,
-    "project/project-plan.md",
-    "project/task-contract-index-2026-07-13.md",
-}
+CONTRACTS = PROJECT / "system" / "contracts"
+OUTPUT = PROJECT / "dashboard" / "data.json"
 
 
-def rel(path: Path) -> str:
-    return path.relative_to(ROOT).as_posix()
+def load(path: Path) -> dict[str, Any]:
+    with path.open(encoding="utf-8") as handle:
+        value = json.load(handle)
+    if not isinstance(value, dict):
+        raise ValueError(f"{path.relative_to(ROOT)} must contain an object")
+    return value
 
 
-def read(path: Path, limit: int | None = None) -> str:
-    text = path.read_text(encoding="utf-8", errors="replace")
-    return text if limit is None else text[:limit]
+def git_value(*args: str) -> str:
+    completed = subprocess.run(
+        ["git", *args],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return completed.stdout.strip() if completed.returncode == 0 else "unavailable"
 
 
-def sanitize_public_text(text: str) -> str:
-    replacements = {
-        "GloomyLord": "Visual Reporting",
-        "Codex Jesus": "Architecture Reviewer",
-        "Jesus": "Lead Integrator",
-        "LOL": "Dashboard Workflow Owner",
-        "Ronaldinho": "Technical Reviewer",
-        "Messi": "PM Reviewer",
-        "Ronaldo": "Product/ICP Reviewer",
-        "Yushchenko": "Model-Efficiency Observer",
-    }
-    for original, replacement in replacements.items():
-        text = text.replace(original, replacement)
-    return text
+def main() -> int:
+    crew = load(CONTRACTS / "knowledge-crew-config.json")
+    roles = load(CONTRACTS / "role-catalog.json")
+    workflows = load(CONTRACTS / "role-workflows.json")
+    controller = load(CONTRACTS / "operating-model.json")
+    turbovec = crew["frameworks"]["turbovec"]
 
-
-def public_excerpt(text: str, limit: int = 1200) -> str:
-    sanitized_lines = []
-    secret_line = re.compile(r"^(\s*[A-Z0-9_]*(?:KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*\s*=\s*)(.+)$")
-    protected_preview_url = re.compile(r"https://[^\s`\"')]+(?:vercel\.app|vercel\.sh)[^\s`\"')]*")
-    for line in text.splitlines():
-        line = secret_line.sub(r"\1<not-shown>", line)
-        line = protected_preview_url.sub("https://<protected-preview-host>", line)
-        line = line.replace("project/strategic-plan-2026-07-13.md", "internal roadmap (not indexed in dashboard)")
-        line = line.replace("strategic-plan-2026-07-13.md", "internal roadmap (not indexed in dashboard)")
-        line = line.replace("#plan", "legacy dashboard route (removed)")
-        line = re.sub(r"(?i)\bstrategic (?:task )?plan\b", "internal roadmap", line)
-        line = sanitize_public_text(line)
-        sanitized_lines.append(line)
-    return " ".join(sanitized_lines)[:limit]
-
-
-def corpus_authority(path: Path, text: str) -> tuple[str, str, int]:
-    source_path = rel(path)
-    if source_path in {CANONICAL_AUDIENCE_SOURCE, CANONICAL_STRATEGY_SOURCE}:
-        return "canonical_current", "", 3
-    if re.search(r"(?m)^status:\s*historical_superseded\s*$", text[:900]):
-        return "historical_superseded", CANONICAL_AUDIENCE_SOURCE, -2
-    dated_evidence_prefixes = ("project/reports/", "project/runs/", "wiki/runs/", "history/")
-    if source_path.startswith(dated_evidence_prefixes):
-        stale_icp = re.search(r"50-500|Series B-D|Product Discovery-to-Production PRD Pack", text, re.IGNORECASE)
-        is_current_run = "2026-07-13" in source_path
-        if stale_icp and not is_current_run:
-            return "historical_superseded_icp", CANONICAL_AUDIENCE_SOURCE, -2
-        return "dated_evidence", "", -1
-    if source_path.startswith("project/knowledge/collaborator/") and re.search(
-        r"50-500|Series B-D|Product Discovery-to-Production PRD Pack", text, re.IGNORECASE
-    ):
-        return "historical_superseded_icp", CANONICAL_AUDIENCE_SOURCE, -2
-    return "current_or_evidence", "", 0
-
-
-def title_for(path: Path) -> str:
-    if not path.exists():
-        return path.name
-    for line in read(path, 1200).splitlines():
-        line = line.strip()
-        if line.startswith("# "):
-            return sanitize_public_text(line[2:].strip())
-    return sanitize_public_text(path.name)
-
-
-def first_match(text: str, pattern: str, default: str = "") -> str:
-    match = re.search(pattern, text, re.MULTILINE)
-    return match.group(1).strip() if match else default
-
-
-def list_files(base: Path, suffixes: tuple[str, ...] = (".md", ".yaml", ".yml")) -> list[Path]:
-    if not base.exists():
-        return []
-    skip_parts = {".git", "local", "__pycache__"}
-    result: list[Path] = []
-    for path in sorted(base.rglob("*")):
-        if not path.is_file() or path.suffix not in suffixes:
-            continue
-        rel_parts = path.relative_to(ROOT).parts
-        if skip_parts.intersection(rel_parts):
-            continue
-        if rel_parts == ("project", "live", "communication", "agent-communication-log.md"):
-            continue
-        if path.name.startswith(".env"):
-            continue
-        result.append(path)
-    return result
-
-
-def parse_section_items(text: str, section_name: str) -> list[str]:
-    lines = text.splitlines()
-    capture = False
-    items: list[str] = []
-    for line in lines:
-        if re.match(rf"^{section_name}:\s*$", line):
-            capture = True
-            continue
-        if capture and re.match(r"^[a-zA-Z0-9_]+:\s*", line) and not line.startswith((" ", "-")):
-            break
-        if capture:
-            m = re.match(r"^\s{2}([a-zA-Z0-9_]+):\s*$", line)
-            if m:
-                items.append(m.group(1))
-    return items
-
-
-def parse_mapping_block(text: str, section_name: str) -> dict[str, dict[str, str | list[str]]]:
-    lines = text.splitlines()
-    capture = False
-    current: str | None = None
-    block: dict[str, dict[str, str | list[str]]] = {}
-    current_list_key: str | None = None
-    for line in lines:
-        if re.match(rf"^{section_name}:\s*$", line):
-            capture = True
-            continue
-        if capture and re.match(r"^[a-zA-Z0-9_]+:\s*", line) and not line.startswith((" ", "-")):
-            break
-        if not capture:
-            continue
-        m_current = re.match(r"^\s{2}([a-zA-Z0-9_]+):\s*$", line)
-        if m_current:
-            current = m_current.group(1)
-            block[current] = {}
-            current_list_key = None
-            continue
-        if current is None:
-            continue
-        m_key = re.match(r"^\s{4}([a-zA-Z0-9_]+):\s*(.*)$", line)
-        if m_key:
-            key, value = m_key.groups()
-            value = value.strip().strip('"')
-            if value:
-                block[current][key] = value
-                current_list_key = None
-            else:
-                block[current][key] = []
-                current_list_key = key
-            continue
-        m_list = re.match(r"^\s{6}-\s*(.*)$", line)
-        if m_list and current_list_key:
-            value = m_list.group(1).strip()
-            target = block[current].setdefault(current_list_key, [])
-            if isinstance(target, list):
-                target.append(value)
-    return block
-
-
-def parse_langgraph() -> dict:
-    path = PROJECT / "workflows" / "langgraph-controller.yaml"
-    text = read(path) if path.exists() else ""
-    nodes = []
-    node_blocks = parse_mapping_block(text, "nodes")
-    for node_id, data in node_blocks.items():
-        nodes.append(
-            {
-                "id": node_id,
-                "owner": str(data.get("owner_agent", "")),
-                "purpose": str(data.get("purpose", "")),
-                "output": data.get("output", ""),
-            }
-        )
-    edges = []
-    edge: dict[str, str] = {}
-    in_edges = False
-    for line in text.splitlines():
-        if line.startswith("edges:"):
-            in_edges = True
-            continue
-        if in_edges and re.match(r"^[a-zA-Z0-9_]+:", line):
-            break
-        if not in_edges:
-            continue
-        m_start = re.match(r"^\s{2}-\s+from:\s*(.*)$", line)
-        if m_start:
-            if edge:
-                edges.append(edge)
-            edge = {"from": m_start.group(1).strip()}
-            continue
-        m_key = re.match(r"^\s{4}(to|condition):\s*(.*)$", line)
-        if m_key:
-            edge[m_key.group(1)] = m_key.group(2).strip()
-    if edge:
-        edges.append(edge)
-    return {
-        "path": rel(path),
-        "status": first_match(text, r"^status:\s*(.*)$", "missing"),
-        "runtime": first_match(text, r"^runtime:\s*(.*)$", "unknown"),
-        "purpose": first_match(text, r"purpose:\s*>\n\s*(.*)$", ""),
-        "nodes": nodes,
-        "edges": edges,
-        "params": {
-            "checkpointer": first_match(text, r"^\s{2}checkpointer:\s*(.*)$"),
-            "observability": first_match(text, r"^\s{2}observability:\s*(.*)$"),
-            "max_revision_loops": first_match(text, r"^\s{2}max_revision_loops:\s*(.*)$"),
-            "human_approval_required_before_publication": first_match(
-                text, r"^\s{2}human_approval_required_before_publication:\s*(.*)$"
-            ),
-        },
-    }
-
-
-def parse_crewai() -> dict:
-    path = PROJECT / "workflows" / "crewai-crew.yaml"
-    text = read(path) if path.exists() else ""
-    level_3_text = ""
-    if "level_3_direct_crewai_runtime:" in text:
-        level_3_text = text.split("level_3_direct_crewai_runtime:", 1)[1].split("\ntask_execution_policy:", 1)[0]
-    level_3_ledger = "project/runs/2026-07-02-crewai-level-3-proof/model-call-ledger.jsonl"
-    level_3_budget = PROJECT / "runs" / "2026-07-02-crewai-level-3-proof" / "budget-guard.json"
-    level_3_cost = ""
-    if level_3_budget.exists():
-        try:
-            budget_data = json.loads(read(level_3_budget))
-            actual_cost = budget_data.get("actual_spend_usd")
-            if actual_cost is not None:
-                level_3_cost = f"{float(actual_cost):.2f} USD"
-        except (TypeError, ValueError, json.JSONDecodeError):
-            level_3_cost = ""
-    agents = []
-    for agent_id, data in parse_mapping_block(text, "agents").items():
-        agents.append(
-            {
-                "id": agent_id,
-                "role": str(data.get("role", "")),
-                "goal": str(data.get("goal", "")),
-                "skills": data.get("skills", []),
-            }
-        )
-    tasks = []
-    task: dict[str, str] = {}
-    in_tasks = False
-    for line in text.splitlines():
-        if line.startswith("tasks:"):
-            in_tasks = True
-            continue
-        if in_tasks and re.match(r"^[a-zA-Z0-9_]+:", line):
-            break
-        if not in_tasks:
-            continue
-        m_start = re.match(r"^\s{2}-\s+id:\s*(.*)$", line)
-        if m_start:
-            if task:
-                tasks.append(task)
-            task = {"id": m_start.group(1).strip()}
-            continue
-        m_key = re.match(r"^\s{4}(agent|expected_output):\s*(.*)$", line)
-        if m_key:
-            task[m_key.group(1)] = m_key.group(2).strip()
-    if task:
-        tasks.append(task)
-    return {
-        "path": rel(path),
-        "status": first_match(text, r"^status:\s*(.*)$", "missing"),
-        "runtime": first_match(text, r"^runtime:\s*(.*)$", "unknown"),
-        "process": first_match(text, r"^process:\s*(.*)$", "unknown"),
-        "memory": first_match(text, r"^memory:\s*(.*)$", "unknown"),
-        "cache": first_match(text, r"^cache:\s*(.*)$", "unknown"),
-        "planning": first_match(text, r"^planning:\s*(.*)$", "unknown"),
-        "level_3_status": first_match(level_3_text, r"^\s{4}status:\s*(.*)$", "unknown"),
-        "level_3_ledger": level_3_ledger if (ROOT / level_3_ledger).exists() else "",
-        "level_3_cost": level_3_cost,
-        "level_3_proof": "project/runs/2026-07-02-crewai-level-3-proof/runtime-proof.json"
-        if (PROJECT / "runs" / "2026-07-02-crewai-level-3-proof" / "runtime-proof.json").exists()
-        else "",
-        "agents": agents,
-        "tasks": tasks,
-        "limitations": re.findall(r"^\s{2}-\s*(.*)$", text.split("current_limitations:", 1)[-1], re.MULTILINE)
-        if "current_limitations:" in text
-        else [],
-    }
-
-
-def parse_llamaindex() -> dict:
-    path = PROJECT / "workflows" / "llamaindex-rag.yaml"
-    text = read(path) if path.exists() else ""
-    include = re.findall(r"^\s{4}-\s*(.*)$", text.split("include:", 1)[-1].split("exclude:", 1)[0], re.MULTILINE) if "include:" in text else []
-    exclude = re.findall(r"^\s{4}-\s*(.*)$", text.split("exclude:", 1)[-1].split("indexing_parameters:", 1)[0], re.MULTILINE) if "exclude:" in text else []
-    return {
-        "path": rel(path),
-        "status": first_match(text, r"^status:\s*(.*)$", "missing"),
-        "runtime": first_match(text, r"^runtime:\s*(.*)$", "unknown"),
-        "include": include,
-        "exclude": exclude,
-        "chunk_size": first_match(text, r"^\s{2}chunk_size:\s*(.*)$"),
-        "chunk_overlap": first_match(text, r"^\s{2}chunk_overlap:\s*(.*)$"),
-        "query_mode": first_match(text, r"^\s{2}query_mode:\s*(.*)$", "keyword"),
-        "query_engine": first_match(text, r"^\s{2}query_engine:\s*(.*)$", "unknown"),
-        "vector_top_k": first_match(text, r"^\s{2}vector_top_k:\s*(.*)$"),
-        "lexical_top_k": first_match(text, r"^\s{2}lexical_top_k:\s*(.*)$"),
-        "rerank_top_k": first_match(text, r"^\s{2}rerank_top_k:\s*(.*)$"),
-        "fallback_to_lexical": first_match(text, r"^\s{2}fallback_to_lexical:\s*(.*)$", "true"),
-        "similarity_top_k": first_match(text, r"^\s{2}similarity_top_k:\s*(.*)$"),
-        "persist_dir": first_match(text, r"^\s{2}persist_dir:\s*(.*)$"),
-        "limitations": re.findall(r"^\s{2}-\s*(.*)$", text.split("current_limitations:", 1)[-1], re.MULTILINE)
-        if "current_limitations:" in text
-        else [],
-    }
-
-
-def env_status() -> list[dict]:
-    local_env = PROJECT / ".env.local"
-    local_langsmith = PROJECT / ".env.langsmith.local"
-    langsmith_key_present = False
-    if local_langsmith.exists():
-        for line in read(local_langsmith).splitlines():
-            if line.startswith("LANGSMITH_API_KEY=") and line.split("=", 1)[1].strip():
-                langsmith_key_present = True
-    return [
-        {"name": "Root env example", "path": ".env.example", "status": "tracked_placeholder" if (ROOT / ".env.example").exists() else "missing"},
-        {
-            "name": "Jarvis API env example",
-            "path": "services/jarvis-api/.env.example",
-            "status": "tracked_placeholder" if (ROOT / "services" / "jarvis-api" / ".env.example").exists() else "missing",
-        },
-        {"name": "Provider example", "path": "project/config/providers.env.example", "status": "tracked_example"},
-        {"name": "LangSmith example", "path": "project/config/langsmith.env.example", "status": "tracked_example"},
-        {"name": "Local provider env", "path": "project/.env.local", "status": "present_ignored" if local_env.exists() else "missing"},
-        {
-            "name": "Local LangSmith env",
-            "path": "project/.env.langsmith.local",
-            "status": "key_present_ignored" if langsmith_key_present else ("present_key_missing" if local_langsmith.exists() else "missing"),
-        },
-        {
-            "name": "Runtime package project",
-            "path": "project/pyproject.toml",
-            "status": "missing_not_installed" if not (PROJECT / "pyproject.toml").exists() else "present",
-        },
-        {
-            "name": "Local RAG index",
-            "path": "project/local/rag_index",
-            "status": "present_ignored" if (PROJECT / "local" / "rag_index").exists() else "not_generated",
-        },
-    ]
-
-
-def jarvis_api_status() -> dict:
-    service_root = ROOT / "services" / "jarvis-api"
-    local_required = [
-        service_root / "app.py",
-        service_root / "README.md",
-        service_root / "requirements.txt",
-        service_root / ".env.example",
-    ]
-    vercel_required = [
-        ROOT / "api" / "_jarvis_contract.py",
-        ROOT / "api" / "health.py",
-        ROOT / "api" / "chat.py",
-        ROOT / "api" / "lanes" / "prd-icp.py",
-        ROOT / "api" / "lanes" / "agent-orchestra.py",
-        ROOT / "api" / "voice" / "chat.py",
-    ]
-    required = local_required + vercel_required
-    endpoints = [
-        "/health",
-        "/api/chat",
-        "/api/config/roles",
-        "/api/lanes/prd-icp",
-        "/api/lanes/agent-orchestra",
-        "/api/voice/chat",
-    ]
-    return {
-        "status": "guarded_review_contract_files_present" if all(path.exists() for path in required) else "missing_or_partial",
-        "path": "services/jarvis-api and api/",
-        "runtime": "vercel_serverless_plus_local_fastapi_contract",
-        "provider_runtime": "openrouter_route_approval_gated_contract_not_live_proof",
-        "writeback_runtime": "disabled",
-        "hosting": {
-            "static_dashboard": "vercel",
-            "hosted_api": "vercel_and_railway_contract_targets_live_check_required",
-            "hosted_api_scope": "core_health_chat_prd_agent_voice_review_packet",
-            "local_api": "fastapi_local_development",
-            "railway": "historical_provider_disabled_baseline_not_continuous_monitoring",
-        },
-        "openrouter_budget": {
-            "daily_budget_usd": 5.00,
-            "run_hard_stop_usd": 1.99,
-            "over_cap_behavior": "stop_and_request_owner_approval",
-        },
-        "endpoints": endpoints,
-        "required_files": [{"path": rel(path), "status": "present" if path.exists() else "missing"} for path in required],
-    }
-
-
-def prd_template_status() -> dict:
-    paths = [
-        ROOT / "docs" / "prd-icp-output-template.md",
-        ROOT / "docs" / "reporting-daily-weekly-template.md",
-        ROOT / "docs" / "testmeeting-prd-runbook.md",
-        ROOT / "docs" / "dashboard-role-configuration.md",
-        ROOT / "docs" / "crewai-langgraph-operations.md",
-    ]
-    return {
-        "status": "present" if all(path.exists() for path in paths) else "missing_or_partial",
-        "paths": [{"path": rel(path), "status": "present" if path.exists() else "missing"} for path in paths],
-        "output_blocks": [
-            "Meeting Summary",
-            "Product Context",
-            "Stakeholders",
-            "ICP",
-            "Pains/JTBD",
-            "Existing Workflow",
-            "Proposed Workflow",
-            "Requirements",
-            "Decisions",
-            "Questions",
-            "Risks",
-            "Next Tasks",
-            "Backlog",
-            "Success Metrics",
-        ],
-    }
-
-
-def package_status() -> list[dict]:
-    runtime_python = PROJECT / "local" / "venv" / "bin" / "python"
-    python_bin = runtime_python if runtime_python.exists() else Path(sys.executable)
-    checks = {
-        "langgraph": "LangGraph runtime",
-        "crewai": "CrewAI runtime",
-        "llama_index": "LlamaIndex runtime",
-        "langsmith": "LangSmith SDK",
-        "streamlit": "Streamlit dashboard runtime",
-        "fastapi": "FastAPI dashboard runtime",
-    }
-    results = []
-    for module, label in checks.items():
-        probe = subprocess.run(
-            [str(python_bin), "-c", f"import {module}"],
-            text=True,
-            capture_output=True,
-            cwd=ROOT,
-        )
-        status = "installed" if probe.returncode == 0 else "not_installed"
-        results.append(
-            {
-                "module": module,
-                "label": label,
-                "status": status,
-                "runtime": "project_local_venv" if runtime_python.exists() else "current_python",
-            }
-        )
-    return results
-
-
-def activity_items() -> list[dict]:
-    files = []
-    for base, kind in [
-        (PROJECT / "runs", "project_run"),
-        (PROJECT / "reports", "project_report"),
-        (WIKI / "runs", "wiki_run"),
-        (WIKI / "decisions", "wiki_decision"),
-        (WIKI / "issues", "wiki_issue"),
-    ]:
-        for path in list_files(base, (".md", ".pdf")):
-            files.append(
-                {
-                    "kind": kind,
-                    "path": rel(path),
-                    "title": title_for(path) if path.suffix == ".md" else path.name,
-                    "modified": datetime.fromtimestamp(path.stat().st_mtime, timezone.utc).isoformat(),
-                    "size": path.stat().st_size,
-                }
-            )
-    return sorted(files, key=lambda x: x["modified"], reverse=True)
-
-
-def wiki_summary() -> dict:
-    files = []
-    for path in list_files(WIKI, (".md",)):
-            files.append(
-                {
-                    "path": rel(path),
-                    "title": title_for(path),
-                    "excerpt": public_excerpt(read(path, 900), 420),
-                }
-            )
-    return {
-        "index_path": "wiki/index.md",
-        "memory_path": "wiki/memory.md",
-        "insights_path": "wiki/insights.md",
-        "file_count": len(files),
-        "files": files,
-    }
-
-
-def graphify_status() -> dict:
-    candidates = [
-        ROOT / "reference" / "graphify",
-        ROOT / "graphify-out",
-        PROJECT / "reference" / "graphify",
-    ]
-    existing = [rel(p) for p in candidates if p.exists()]
-    return {
-        "status": "available" if existing else "planned_not_generated",
-        "paths": existing,
-        "recommended_next": "Regenerate Graphify after code or workflow changes."
-        if existing
-        else "Generate Graphify after runtime code exists, then link the graph report here.",
-    }
-
-
-def skill_catalog() -> dict:
-    """Build the public skill registry from packaged project contracts only.
-
-    The local operator may have a much larger private skill library. This
-    generator deliberately does not inspect, copy, or advertise that library:
-    only skills shipped in this public repository can be installed by a reader.
-    """
-    skills_root = ROOT / "skills"
-    role_docs = [
-        PROJECT / "agents" / "skills-by-agent.md",
-        PROJECT / "agents" / "skills-governance.md",
-        ROOT / "README.md",
-        PROJECT / "README.md",
-    ]
-    role_text = "\n".join(read(path) for path in role_docs if path.exists())
-    items: list[dict] = []
-    for path in sorted(skills_root.rglob("SKILL.md")) if skills_root.exists() else []:
-        text = read(path, 4000)
-        name = first_match(text, r"^name:\s*(.*)$", path.parent.name)
-        description = first_match(text, r"^description:\s*(.*)$", "Project skill contract")
-        slug = path.parent.name
-        if "architecture" in slug:
-            category = "architecture"
-        elif any(token in slug for token in ("handout", "review", "question")):
-            category = "review and handoff"
-        elif any(token in slug for token in ("runtime", "archflow1")):
-            category = "runtime boundary"
-        else:
-            category = "coordination"
-        references = len(re.findall(rf"(?<![A-Za-z0-9_-]){re.escape(slug)}(?![A-Za-z0-9_-])", role_text))
-        items.append(
-            {
-                "id": slug,
-                "name": sanitize_public_text(name),
-                "description": sanitize_public_text(description),
-                "path": rel(path),
-                "category": category,
-                "status": "packaged_public_contract",
-                "visibility": "public",
-                "portable": True,
-                "documentation_reference_count": references,
-                "reference_count": references,
-                "safe_to_share": True,
-                "permissions": ["read public-safe sources", "draft scoped output", "run declared local checks"],
-                "forbidden_actions": ["provider activation", "external writeback", "secret collection"],
-                "verified_invocations": None,
-                "usage_note": "No public runtime invocation telemetry is available. Documentation references are shown separately and are not usage counts.",
-                "content_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
-            }
-        )
-    return {
-        "scope": "public repository skills only",
-        "packaged_count": len(items),
-        "outside_inventory_policy": "Private or device-specific skills are not copied into the repository until provenance, license, secret/path safety, and a project use case pass review.",
-        "items": items,
-    }
-
-
-def parse_agent_roster(public_skill_ids: set[str]) -> dict:
-    """Read the public agent roster without adding a YAML dependency.
-
-    The dashboard needs to distinguish shipped skill packages from plain
-    project methods. This small, indentation-aware reader only exposes public
-    role metadata, declared skills, outputs, and forbidden actions.
-    """
-    path = PROJECT / "agents" / "agent-roster.yaml"
-    text = read(path) if path.exists() else ""
-    roles: list[dict] = []
-    for role_id, raw in parse_mapping_block(text, "agents").items():
-        roles.append(
-            {
-                "id": role_id,
-                "title": str(raw.get("title", role_id.replace("_", " ").title())),
-                "provider": str(raw.get("provider", "not declared")),
-                "mode": str(raw.get("mode", "not declared")),
-                "skills": list(raw.get("skills", [])),
-                "outputs": list(raw.get("outputs", [])),
-                "forbidden_actions": list(raw.get("forbidden_actions", [])),
-            }
-        )
-    for role in roles:
-        role["public_skill_packages"] = [skill for skill in role["skills"] if skill in public_skill_ids]
-        role["method_checklists"] = [skill for skill in role["skills"] if skill not in public_skill_ids]
-    return {
-        "path": rel(path),
-        "scope": "public role declarations only; runtime/model names do not grant authority",
-        "roles": roles,
-    }
-
-
-def knowledge_catalog() -> list[dict]:
-    """Expose the active public knowledge files and their operating purpose."""
-    entries = [
-        ("Project routing", "project/README.md", "Current public mission, folder roles, local surfaces, and product boundary."),
-        ("Operating rules", "project/operating-rules.md", "Authority, public-safety, CAG/RAG, communication, and approval rules."),
-        ("CAG core", "project/context/cag-core.yaml", "Stable context that is assembled before task-specific retrieval."),
-        ("Context guide", "project/context/README.md", "Context-capsule structure, freshness, and source-boundary practice."),
-        ("LangGraph contract", "project/workflows/langgraph-controller.yaml", "Workflow nodes, state, routes, checkpoints, and approval gates."),
-        ("CrewAI contract", "project/workflows/crewai-crew.yaml", "Configured team roles and task handoff; not an execution claim."),
-        ("LlamaIndex contract", "project/workflows/llamaindex-rag.yaml", "Approved corpus, chunking, hybrid retrieval, and lexical fallback."),
-        ("WikiLLM index", "wiki/index.md", "Public memory navigation and current source-of-truth links."),
-        ("WikiLLM memory", "wiki/memory.md", "Stable cross-run operating facts after review and promotion."),
-        ("WikiLLM insights", "wiki/insights.md", "Reusable interpretations and future-run implications."),
-        ("WikiLLM log", "wiki/log.md", "Chronological public-safe record of substantial work."),
-        ("Public WikiLLM rules", "wiki/rules/public-wikillm-contract.md", "What can be promoted, how to classify it, and what must stay out."),
-        ("Skills governance", "project/agents/skills-governance.md", "Public package review, role visibility, and future-skill admission gates."),
-        ("Role and skill map", "project/agents/skills-by-agent.md", "Role-specific methods, outputs, boundaries, and shared contracts."),
-    ]
-    return [
-        {"layer": layer, "path": path, "purpose": purpose, "status": "present" if (ROOT / path).exists() else "missing"}
-        for layer, path, purpose in entries
-    ]
-
-
-def configuration_catalog(langgraph: dict, llamaindex: dict, jarvis: dict) -> list[dict]:
-    """Describe editable parameters and their actual persistence boundaries."""
-    return [
-        {
-            "area": "Browser viewer and session", "path": "project/dashboard/app.js", "parameters": ["viewer_mode", "shared_session", "architecture_mode"],
-            "where": "browser localStorage", "effect": "Changes local preview and handoff context only; never authenticates a user or writes a repository.",
-        },
-        {
-            "area": "Workflow editor", "path": "project/dashboard/app.js", "parameters": ["node owner", "inputs", "outputs", "routes", "approval gate", "model provider", "reviewer", "status"],
-            "where": "browser localStorage and downloaded review bundle", "effect": "Drafts a proposed workflow; an approved operator must apply any repository change.",
-        },
-        {
-            "area": "LangGraph controller", "path": langgraph.get("path", "project/workflows/langgraph-controller.yaml"), "parameters": list(langgraph.get("params", {}).keys()),
-            "where": "versioned YAML", "effect": "Defines routing/checkpoint/revision policy after review and validation.",
-        },
-        {
-            "area": "LlamaIndex retrieval", "path": llamaindex.get("path", "project/workflows/llamaindex-rag.yaml"), "parameters": ["include", "exclude", "chunk_size", "chunk_overlap", "query_mode", "vector_top_k", "lexical_top_k", "rerank_top_k", "fallback_to_lexical"],
-            "where": "versioned YAML", "effect": "Controls approved corpus and candidate selection; a score is not a verified claim.",
-        },
-        {
-            "area": "Jarvis API contract", "path": jarvis.get("path", "services/jarvis-api and api/"), "parameters": ["API base", "owner token", "model allowlist", "provider acknowledgement", "budget values"],
-            "where": "API base is browser-local; tokens and provider values are server/local environment only", "effect": "Creates guarded review packets; no provider or writeback path is active by default.",
-        },
-        {
-            "area": "Role and skill governance", "path": "project/agents/agent-roster.yaml", "parameters": ["role", "skills", "outputs", "forbidden actions", "reviewer", "handoff"],
-            "where": "versioned YAML and Markdown", "effect": "Defines task authority and minimum skills; a role does not launch itself.",
-        },
-    ]
-
-
-def public_database_schema(skill_data: dict, langgraph: dict, crewai: dict, roles: dict) -> dict:
-    """Describe the generated JSON catalog used by the browser-local query lab."""
-    return {
-        "kind": "generated_public_json_catalog",
-        "storage": "project/dashboard/data.json",
-        "write_mode": "generator output only; the browser cannot mutate repository data",
-        "query_mode": "read-only SQL-like subset in the browser; not a server database",
-        "tables": [
-            {
-                "name": "skills",
-                "purpose": "Portable skill contracts shipped with this repository.",
-                "columns": ["id", "name", "category", "status", "documentation_reference_count", "path", "safe_to_share"],
-                "rows": skill_data["packaged_count"],
-            },
-            {
-                "name": "roles",
-                "purpose": "Public role contracts: purpose, declared skills, outputs, and boundaries.",
-                "columns": ["id", "title", "mode", "skills", "outputs", "forbidden_actions"],
-                "rows": len(roles.get("roles", [])),
-            },
-            {
-                "name": "workflow_nodes",
-                "purpose": "LangGraph contract nodes that describe routing and ownership.",
-                "columns": ["id", "owner", "purpose", "output"],
-                "rows": len(langgraph.get("nodes", [])),
-            },
-            {
-                "name": "sources",
-                "purpose": "Public documentation references used by the console.",
-                "columns": ["label", "url"],
-                "rows": 7,
-            },
-            {
-                "name": "runs",
-                "purpose": "Public-safe project, report, and WikiLLM activity records.",
-                "columns": ["kind", "path", "title", "modified", "size"],
-                "rows": None,
-            },
-        ],
-        "supported_examples": [
-            "SELECT id, name, category, documentation_reference_count FROM skills LIMIT 20",
-            "SELECT id, title, mode FROM roles LIMIT 20",
-            "SELECT id, owner, purpose FROM workflow_nodes LIMIT 20",
-        ],
-    }
-
-
-def corpus() -> list[dict]:
-    docs = []
-    for base in [PROJECT, ROOT / "history", ROOT / "skills", WIKI]:
-        for path in list_files(base, (".md", ".yaml", ".yml")):
-            if rel(path) in DASHBOARD_EXCLUDED_CORPUS_PATHS:
-                continue
-            text = read(path, 1600)
-            authority_state, superseded_by, authority_boost = corpus_authority(path, text)
-            docs.append(
-                {
-                    "path": rel(path),
-                    "title": title_for(path),
-                    "text": public_excerpt(text, 1200),
-                    "authority_state": authority_state,
-                    "superseded_by": superseded_by,
-                    "authority_boost": authority_boost,
-                }
-            )
-    return sorted(docs, key=lambda item: (-int(item["authority_boost"]), item["path"]))
-
-
-
-def e13_gate_status() -> dict:
-    run_dir = PROJECT / "runs" / "E1.3" / "2026-06-30-kb-readback"
-    required = [
-        run_dir / "source-registry.md",
-        run_dir / "kb-writeback-report.md",
-        run_dir / "kb-readback-report.md",
-        run_dir / "review-report.md",
-        run_dir / "run-summary.md",
-        run_dir / "agent-handout.md",
-        run_dir / "e1_3_readback_results.json",
-        WIKI / "runs" / "2026-06-30-e1-3-kb-readback.md",
-    ]
-    evidence = [{"path": rel(path), "status": "present" if path.exists() else "missing"} for path in required]
-    results_path = run_dir / "e1_3_readback_results.json"
-    result_status = "missing"
-    passed_count = 0
-    assertion_count = 0
-    if results_path.exists():
-        try:
-            loaded = json.loads(read(results_path))
-            result_status = str(loaded.get("status", "unknown"))
-            passed_count = int(loaded.get("passed_count", 0))
-            assertion_count = int(loaded.get("assertion_count", 0))
-        except (json.JSONDecodeError, ValueError):
-            result_status = "invalid_json"
-    if all(item["status"] == "present" for item in evidence) and result_status == "passed":
-        derived = "readback_passed"
-    elif any(item["status"] == "present" for item in evidence):
-        derived = "in_progress"
-    else:
-        derived = "not_started"
-    return {
-        "label": "E1.3 KB writeback/readback",
-        "source": "project/project-plan.md",
-        "planned_status": "Review" if derived == "readback_passed" else "To Do",
-        "derived_status": derived,
-        "readback_status": result_status,
-        "passed_count": passed_count,
-        "assertion_count": assertion_count,
-        "required_evidence": evidence,
-        "readback_assertions": [
-            "current mission",
-            "next step",
-            "forbidden actions",
-            "existing outputs",
-            "open gaps",
-            "agent roles",
-            "LangGraph route",
-            "ICP boundary",
-            "dashboard and voice gate",
-            "public reporting gate",
-        ],
-    }
-
-
-def main() -> None:
-    langgraph = parse_langgraph()
-    crewai = parse_crewai()
-    llamaindex = parse_llamaindex()
-    e13_gate = e13_gate_status()
-    jarvis_api = jarvis_api_status()
-    skills = skill_catalog()
-    roles = parse_agent_roster({item["id"] for item in skills["items"]})
-    knowledge_files = knowledge_catalog()
-    configuration = configuration_catalog(langgraph, llamaindex, jarvis_api)
-    activity = activity_items()
-    wiki = wiki_summary()
-    for skill in skills["items"]:
-        skill["recommended_roles"] = [
-            role["title"] for role in roles["roles"] if skill["id"] in role["public_skill_packages"]
-        ]
-    database = public_database_schema(skills, langgraph, crewai, roles)
-    database["tables"][-1]["rows"] = len(activity)
     data = {
+        "schema_version": "2.0.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_commit": git_value("rev-parse", "--short=12", "HEAD"),
         "project": {
-            "name": "ArchFlow Block 1 Knowledge",
-            "mode": "phase_2_local_dashboard",
-            "operator": "Codex",
-            "memory_layer": "WikiLLM files",
-            "dashboard_rule": "control panel, not primary brain",
+            "name": "ArchFlow Responsive Knowledge Crew",
+            "goal": crew["product_goal"],
+            "status": crew["status"],
+            "controller": controller["authority"],
+            "dashboard": "primary_non_technical_browser_local_projection",
         },
-        "status_cards": [
-            {"label": "LangGraph", "value": langgraph["status"], "tone": "ok"},
-            {"label": "CrewAI", "value": crewai["status"], "tone": "ok"},
-            {"label": "LlamaIndex", "value": llamaindex["status"], "tone": "ok"},
-            {"label": "Jarvis API", "value": jarvis_api["status"], "tone": "ok" if jarvis_api["status"].endswith("files_present") else "warn"},
-            {"label": "WikiLLM files", "value": f"{wiki['file_count']} files", "tone": "ok"},
-            {"label": "Public skills", "value": f"{skills['packaged_count']} contracts", "tone": "ok"},
-            {"label": "Activity files", "value": str(len(activity)), "tone": "ok"},
-            {"label": "Local dashboard", "value": "static_read_only", "tone": "ok"},
-            {"label": "E1.3 readback", "value": e13_gate["derived_status"], "tone": "ok" if e13_gate["derived_status"] == "readback_passed" else "warn"},
+        "truth_state": {
+            "provider_runtime": "disabled",
+            "writeback": "disabled",
+            "external_actions": "disabled_until_exact_owner_approval",
+            "public_checkpointer": crew["frameworks"]["langgraph"]["checkpointer"]["public_demo"],
+            "turbovec": turbovec["current_evidence"]["verdict"],
+            "obsidian": "optional_local_human_workspace",
+            "orbit": "optional_private_local_structural_adapter",
+        },
+        "counts": {
+            "layers": len(crew["layers"]),
+            "roles": len(roles["roles"]),
+            "workflow_packs": len(workflows["packs"]),
+            "research_methods": len(crew["research_methods"]),
+            "context_token_ceiling": crew["perception_capsule"]["maximum_tokens"],
+        },
+        "layers": [
+            {
+                "id": layer["id"],
+                "name": layer["name"],
+                "outputs": layer["outputs"],
+            }
+            for layer in crew["layers"]
         ],
-        "langgraph": langgraph,
-        "crewai": crewai,
-        "llamaindex": llamaindex,
-        "jarvis_api": jarvis_api,
-        "prd_templates": prd_template_status(),
-        "env": env_status(),
-        "packages": package_status(),
-        "activity": activity,
-        "wiki": wiki,
-        "graphify": graphify_status(),
-        "gates": {"e1_3": e13_gate},
-        "corpus": corpus(),
-        "skill_catalog": skills,
-        "role_catalog": roles,
-        "knowledge_catalog": knowledge_files,
-        "configuration_catalog": configuration,
-        "public_database": database,
-        "sources": [
-            {"label": "LangGraph overview", "url": "https://docs.langchain.com/oss/python/langgraph/overview"},
-            {"label": "LangGraph Studio / LangSmith Studio", "url": "https://docs.langchain.com/langsmith/studio"},
-            {"label": "LangSmith observability", "url": "https://docs.langchain.com/langsmith/observability"},
-            {"label": "CrewAI crews", "url": "https://docs.crewai.com/en/concepts/crews"},
-            {"label": "LlamaIndex concepts", "url": "https://developers.llamaindex.ai/python/framework/getting_started/concepts/"},
-            {"label": "Ollama API", "url": "https://docs.ollama.com/api/introduction"},
-            {"label": "NVIDIA NeMo Agent Toolkit", "url": "https://docs.nvidia.com/nemo/agent-toolkit/latest/index.html"},
+        "roles": [
+            {
+                "id": role["id"],
+                "call_name": role["call_name"],
+                "title": role["title"],
+                "owns": role["owns"],
+            }
+            for role in roles["roles"]
         ],
+        "workflow_packs": [
+            {
+                "id": pack["id"],
+                "label": pack["label"],
+                "roles": pack["roles"],
+                "outputs": pack["outputs"],
+            }
+            for pack in workflows["packs"]
+        ],
+        "retrieval_baseline": {
+            "chunk_size": crew["frameworks"]["llamaindex"]["ingestion"]["chunk_size"],
+            "chunk_overlap": crew["frameworks"]["llamaindex"]["ingestion"]["chunk_overlap"],
+            **crew["frameworks"]["llamaindex"]["retrieval"],
+        },
+        "turbovec_evidence": {
+            "version": turbovec["version_evidence"],
+            "bit_width": turbovec["bit_width"],
+            "public_receipt": turbovec["current_evidence"]["public_receipt"],
+            "queries": turbovec["current_evidence"]["queries"],
+            "checks": turbovec["current_evidence"]["checks"],
+            "candidate_recall_at_3": turbovec["current_evidence"]["candidate_recall_at_3"],
+            "candidate_mrr": turbovec["current_evidence"]["candidate_mrr"],
+            "lexical_baseline": turbovec["current_evidence"]["lexical_baseline"],
+            "verdict": turbovec["current_evidence"]["verdict"],
+            "promotion_gate": turbovec["promotion_gate"],
+        },
+        "public_sources": [
+            {
+                "name": "LangGraph persistence",
+                "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+            },
+            {
+                "name": "LangGraph interrupts",
+                "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+            },
+            {
+                "name": "LlamaIndex ingestion pipeline",
+                "url": "https://docs.llamaindex.ai/en/v0.10.17/module_guides/loading/ingestion_pipeline/root.html",
+            },
+            {
+                "name": "LlamaIndex documents and nodes",
+                "url": "https://docs.llamaindex.ai/en/v0.10.19/module_guides/loading/documents_and_nodes/root.html",
+            },
+            {
+                "name": "CrewAI documentation",
+                "url": "https://docs.crewai.com/",
+            },
+            {
+                "name": "Obsidian plugin security",
+                "url": "https://obsidian.md/help/plugin-security",
+            },
+            {
+                "name": "TurboVec repository",
+                "url": "https://github.com/RyanCodrai/turbovec",
+            },
+        ],
+        "gaps": [
+            "TurboVec evidence is a small synthetic isolated trial; it is not the public default.",
+            "The public dashboard has no live provider, writeback, or checkpointer.",
+            "SQLite and PostgreSQL persistence require migration, backup, and recovery proof in their target environment.",
+            "Orbit and Obsidian are optional local integrations; the portable repository cannot claim their live state.",
+            "Graphify output must be regenerated whenever its recorded source commit is stale.",
+            "Skill Spectre semantic scanning and a public Video Spectre execution are not proved.",
+        ],
+        "configuration_refs": {
+            "crew": "project/system/contracts/knowledge-crew-config.json",
+            "roles": "project/system/contracts/role-catalog.json",
+            "workflows": "project/system/contracts/role-workflows.json",
+            "controller": "project/system/contracts/operating-model.json",
+            "case_schema": "project/system/schemas/knowledge-case.schema.json",
+        },
     }
-    DASHBOARD.mkdir(parents=True, exist_ok=True)
-    database_dir = PROJECT / "database"
-    database_dir.mkdir(parents=True, exist_ok=True)
-    (database_dir / "skill-catalog.json").write_text(json.dumps(skills, indent=2), encoding="utf-8")
-    (database_dir / "role-catalog.json").write_text(json.dumps(roles, indent=2), encoding="utf-8")
-    (DASHBOARD / "data.json").write_text(json.dumps(data, indent=2), encoding="utf-8")
-    print(f"wrote {rel(DASHBOARD / 'data.json')}")
-    print(f"wrote {rel(database_dir / 'skill-catalog.json')}")
+    OUTPUT.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    print(f"dashboard_data={OUTPUT.relative_to(ROOT)}")
+    print(f"layers={data['counts']['layers']}")
+    print(f"roles={data['counts']['roles']}")
+    print(f"workflow_packs={data['counts']['workflow_packs']}")
+    print("private_inputs=0")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

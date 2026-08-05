@@ -1,0 +1,295 @@
+{
+  "schema": "archflow.run-profiles.v2",
+  "status": "active_provider_disabled_canonical_projection",
+  "format_note": "This JSON document is valid YAML and intentionally needs no YAML dependency.",
+  "canonical_role_catalog": "project/system/contracts/role-catalog.json",
+  "canonical_state_model": "project/system/contracts/operating-model.json",
+  "controller_role": "admission_controller",
+  "required_cag_references": [
+    "project/context/cag-core.yaml",
+    "project/operating-rules.md",
+    "project/strategic-plan-2026-07-13.md",
+    "project/system/contracts/operating-model.json",
+    "project/system/contracts/role-catalog.json",
+    "project/architecture/e1-e8-role-state-matrix.md"
+  ],
+  "allowed_retrieval_roots": ["project/", "history/", "skills/", "wiki/"],
+  "admission_envelope": {
+    "namespace": "admission.",
+    "not_a_workflow_state": true,
+    "receipt_kind": "admission",
+    "states": [
+      {"id": "admission.validated", "workflow_state": "admission_checked"},
+      {"id": "admission.cag_bound", "workflow_state": "context_bound"},
+      {"id": "admission.role_plan_composed", "workflow_state": "context_bound"},
+      {"id": "admission.retrieval_plan_bound", "workflow_state": "context_bound"},
+      {"id": "admission.approval_interrupt", "workflow_state": "approval_wait"},
+      {"id": "admission.accepted_planning_only", "workflow_state": "context_bound"}
+    ]
+  },
+  "global_stop_rules": [
+    "stop_on_provider_or_model_execution_request",
+    "stop_on_source_outside_allowlisted_public_corpus",
+    "stop_on_missing_cag_reference_set",
+    "stop_on_missing_independent_reviewer",
+    "stop_after_three_repair_attempts",
+    "stop_when_the_same_error_appears_twice",
+    "stop_after_declared_acceptance_criteria_are_met"
+  ],
+  "roles": {
+    "goal_and_architecture_operator": {
+      "call_name": "Yaromyr",
+      "title": "Goal and Architecture Operator",
+      "lane": "maker",
+      "authority": ["objective", "done_conditions", "state_design", "role_and_gate_contract"],
+      "forbidden": ["high_risk_self_verification", "external_action", "permission_expansion"]
+    },
+    "admission_controller": {
+      "call_name": "Bohdan",
+      "title": "Admission Controller",
+      "lane": "controller",
+      "authority": ["risk_classification", "run_profile", "minimum_roles", "stop_rules"],
+      "forbidden": ["project_edits", "provider_activation", "self_approval"]
+    },
+    "source_and_context_operator": {
+      "call_name": "Solomiia",
+      "title": "Source and Context Operator",
+      "lane": "maker",
+      "authority": ["source_allowlist", "stable_context", "bounded_retrieval", "evidence_capsule"],
+      "forbidden": ["uncontrolled_ingestion", "durable_promotion", "unsupported_synthesis"]
+    },
+    "requirements_and_market_research": {
+      "call_name": "Oksana",
+      "title": "Requirements and Market Research",
+      "lane": "maker",
+      "authority": ["problem_evidence", "market_evidence", "requirement_candidates", "acceptance_checks", "non_goals", "contradictions", "prd_and_icp_projections"],
+      "forbidden": ["requirement_approval", "market_signal_as_demand", "execution", "outreach", "publication", "memory_promotion"]
+    },
+    "positioning_and_copy_maker": {
+      "call_name": "Olena",
+      "title": "Positioning and Copy Maker",
+      "lane": "maker",
+      "authority": ["evidence_linked_positioning", "message_candidate", "caption_candidate", "claim_table"],
+      "forbidden": ["invented_proof", "claim_approval", "sending", "publishing"]
+    },
+    "designer": {
+      "call_name": "Kateryna",
+      "title": "Designer",
+      "lane": "maker",
+      "authority": ["visual_brief", "scene_or_interface_grammar", "editable_artifact", "accessibility_evidence", "rollback_safe_maker_output"],
+      "forbidden": ["claim_acceptance", "unsupported_rights_approval", "publication", "self_review"]
+    },
+    "implementation_maker": {
+      "call_name": "Dmytro",
+      "title": "Implementation Maker",
+      "lane": "maker",
+      "authority": ["claimed_files", "bounded_change", "focused_checks", "assigned_repairs"],
+      "forbidden": ["scope_expansion", "final_review", "unapproved_side_effect"]
+    },
+    "action_validator": {
+      "call_name": "Iryna",
+      "title": "Action Validator",
+      "lane": "validator",
+      "authority": ["requirement_coverage", "permission_check", "side_effect_check", "rollback_check", "verdict"],
+      "forbidden": ["proposal_execution", "approval_inference", "requirement_rewrite"]
+    },
+    "verifier": {
+      "call_name": "Mykola",
+      "title": "Verifier",
+      "lane": "verifier",
+      "authority": ["deterministic_checks", "regression_findings", "readback_evidence"],
+      "forbidden": ["silent_maker_repair", "completion_without_evidence"]
+    },
+    "independent_reviewer": {
+      "call_name": "Halyna",
+      "title": "Independent Reviewer",
+      "lane": "reviewer",
+      "authority": ["approve_revise_block", "claim_calibration", "privacy_permission_currentness_review", "repair_request"],
+      "forbidden": ["candidate_repair", "self_approval", "external_action"]
+    },
+    "knowledge_librarian": {
+      "call_name": "Larysa",
+      "title": "Knowledge Librarian",
+      "lane": "maker",
+      "authority": ["duplicate_search", "promotion_candidate", "lineage", "supersession", "freshness", "readback"],
+      "forbidden": ["raw_trace_promotion", "secret_storage", "unsupported_claim", "review_bypass"]
+    },
+    "integrator": {
+      "call_name": "Maksym",
+      "title": "Integrator",
+      "lane": "integrator",
+      "authority": ["lane_registration", "merge_order", "conflict_resolution", "shared_surface_mutation", "final_receipts", "handoff"],
+      "forbidden": ["hidden_blocker", "self_approval", "permission_inference"]
+    },
+    "external_action_operator": {
+      "call_name": "Pavlo",
+      "title": "External Action Operator",
+      "lane": "maker",
+      "authority": ["one_exact_approved_action", "preflight", "action_receipt", "readback"],
+      "forbidden": ["approval_reuse", "action_chaining", "credential_logging", "target_expansion"]
+    },
+    "release_operator": {
+      "call_name": "Nazar",
+      "title": "Release Operator",
+      "lane": "maker",
+      "authority": ["release_preparation", "release_evidence", "owner_approved_git_push"],
+      "forbidden": ["deployment_without_approval", "publication_without_approval", "claim_promotion"]
+    },
+    "observability_and_efficiency_observer": {
+      "call_name": "Ostap",
+      "title": "Observability and Efficiency Observer",
+      "lane": "observer",
+      "authority": ["runtime_drift", "usage_evidence", "reproducibility_gap"],
+      "forbidden": ["provider_activation", "invented_cost_or_token_claim", "completion_authority"]
+    },
+    "surface_projection_operator": {
+      "call_name": "Marta",
+      "title": "Surface Projection Operator",
+      "lane": "maker",
+      "authority": ["read_only_projection", "local_review_packet", "truthful_state_label", "export_handoff_ux"],
+      "forbidden": ["source_of_truth_ownership", "provider_call", "writeback", "action_execution"]
+    }
+  },
+  "epics": {
+    "E1": {"entry_state": "context_bound", "terminal_evidence": "reviewed authority_provenance_and_boundary_receipt", "retrieval_mode": "cag_only_or_allowlisted_lexical", "stop_rule": "stop_on_competing_authority_or_public_private_boundary_failure", "approval_gate": "independent_review_required"},
+    "E2": {"entry_state": "requirements_review", "terminal_evidence": "provider_disabled_goal_loop_fixture_or_accurate_blocked_record", "retrieval_mode": "cag_only", "stop_rule": "stop_on_unbounded_loop_or_missing_maker_checker_split", "approval_gate": "independent_review_required"},
+    "E3": {"entry_state": "work_planning", "terminal_evidence": "deterministic_role_tool_and_recovery_evidence", "retrieval_mode": "allowlisted_lexical", "stop_rule": "stop_on_unapproved_tool_or_default_autonomy_claim", "approval_gate": "independent_review_required"},
+    "E4": {"entry_state": "evidence_gathering", "terminal_evidence": "source_path_filter_and_lexical_fallback_evidence", "retrieval_mode": "allowlisted_lexical", "stop_rule": "stop_on_missing_provenance_or_unbounded_corpus", "approval_gate": "independent_review_required"},
+    "E5": {"entry_state": "evidence_gathering", "terminal_evidence": "reviewed_evidence_pack_or_explicit_no_demand_verdict", "retrieval_mode": "allowlisted_lexical", "stop_rule": "stop_on_private_channel_access_or_unapproved_external_action", "approval_gate": "owner_approval_for_external_action"},
+    "E6": {"entry_state": "work_planning", "terminal_evidence": "reviewed_public_safe_surface_or_documentation_receipt", "retrieval_mode": "cag_only_or_allowlisted_lexical", "stop_rule": "stop_on_deployment_or_production_promotion_request", "approval_gate": "owner_approval_for_deployment_or_figma_sync"},
+    "E7": {"entry_state": "evidence_gathering", "terminal_evidence": "paired_fixture_or_benchmark_receipt_with_independent_verdict", "retrieval_mode": "allowlisted_lexical", "stop_rule": "stop_on_unsupported_runtime_or_performance_claim", "approval_gate": "independent_review_required"},
+    "E8": {"entry_state": "proposal_ready", "terminal_evidence": "installability_safety_and_buyer_gate_receipt", "retrieval_mode": "allowlisted_lexical", "stop_rule": "stop_on_missing_E5_E7_prerequisites_or_unapproved_writeback", "approval_gate": "owner_approval_for_pilot_or_external_writeback"}
+  },
+  "profiles": {
+    "documentation": {
+      "capability_label": "public-safe documentation and surface projection",
+      "allowed_epics": ["E1", "E6"],
+      "allowed_execution_modes": ["executor_local_deterministic"],
+      "entry_state": "work_planning",
+      "review_gate": "candidate_review",
+      "terminal_state": "answered",
+      "terminal_evidence": "public_safe_documentation_and_independent_review_receipt",
+      "retrieval": {"mode": "cag_only", "backend": "none", "requires_paths": false},
+      "role_pack": ["surface_projection_operator", "independent_reviewer", "integrator"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 3,
+      "approval_gate": "none_for_planning_only",
+      "evidence_requirements": ["source_paths_when_retrieval_is_used", "public_safety_review", "independent_verdict"],
+      "stop_rules": ["stop_on_unverified_currentness_claim"]
+    },
+    "research": {
+      "capability_label": "requirements and market evidence research",
+      "allowed_epics": ["E4", "E5", "E7"],
+      "allowed_execution_modes": ["executor_local_deterministic"],
+      "entry_state": "evidence_gathering",
+      "review_gate": "candidate_review",
+      "terminal_state": "answered",
+      "terminal_evidence": "allowlisted_source_register_and_independent_evidence_review",
+      "retrieval": {"mode": "allowlisted_lexical", "backend": "llamaindex_lexical_fallback", "requires_paths": true},
+      "role_pack": ["requirements_and_market_research", "source_and_context_operator", "knowledge_librarian", "independent_reviewer", "integrator"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 5,
+      "approval_gate": "none_for_planning_only",
+      "evidence_requirements": ["repo_relative_source_paths", "freshness_status", "claim_status", "independent_verdict"],
+      "stop_rules": ["stop_on_private_source_or_missing_citation"]
+    },
+    "architecture": {
+      "capability_label": "knowledge-case architecture design",
+      "allowed_epics": ["E1", "E2", "E3", "E4", "E7", "E8"],
+      "allowed_execution_modes": ["executor_local_deterministic"],
+      "entry_state": "work_planning",
+      "review_gate": "candidate_review",
+      "terminal_state": "answered",
+      "terminal_evidence": "deterministic_state_role_retrieval_and_gate_record",
+      "retrieval": {"mode": "cag_only", "backend": "none", "requires_paths": false},
+      "role_pack": ["goal_and_architecture_operator", "admission_controller", "independent_reviewer", "integrator"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 4,
+      "approval_gate": "none_for_planning_only",
+      "evidence_requirements": ["state_record", "role_plan", "approval_gate_map", "independent_verdict"],
+      "stop_rules": ["stop_on_role_authority_confusion_or_self_approval"]
+    },
+    "runtime": {
+      "capability_label": "provider-disabled runtime verification",
+      "allowed_epics": ["E2", "E7"],
+      "allowed_execution_modes": ["executor_local_deterministic", "monitor_only"],
+      "entry_state": "evidence_gathering",
+      "review_gate": "result_verification",
+      "terminal_state": "answered",
+      "terminal_evidence": "local_fixture_or_accurate_blocked_readiness_record",
+      "retrieval": {"mode": "cag_only", "backend": "none", "requires_paths": false},
+      "role_pack": ["implementation_maker", "verifier", "independent_reviewer", "integrator"],
+      "monitor_role_pack": ["observability_and_efficiency_observer", "independent_reviewer"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 2,
+      "local_minimum_roles": 4,
+      "approval_gate": "none_for_planning_only",
+      "evidence_requirements": ["configured_vs_tested_state", "local_fixture", "independent_verdict"],
+      "stop_rules": ["stop_on_service_lifecycle_queue_or_checkpoint_mutation"]
+    },
+    "retrieval": {
+      "capability_label": "allowlisted retrieval evaluation",
+      "allowed_epics": ["E3", "E4", "E7"],
+      "allowed_execution_modes": ["executor_local_deterministic"],
+      "entry_state": "evidence_gathering",
+      "review_gate": "result_verification",
+      "terminal_state": "answered",
+      "terminal_evidence": "lexical_baseline_and_candidate_gate_receipt",
+      "retrieval": {"mode": "allowlisted_lexical", "backend": "llamaindex_lexical_fallback", "requires_paths": true},
+      "role_pack": ["source_and_context_operator", "verifier", "independent_reviewer", "integrator"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 4,
+      "approval_gate": "none_for_planning_only",
+      "evidence_requirements": ["stable_source_paths", "lexical_comparison", "candidate_status", "independent_verdict"],
+      "stop_rules": ["stop_on_turbovec_promotion_without_paired_benchmark"]
+    },
+    "content": {
+      "capability_label": "evidence-grounded copy and design",
+      "allowed_epics": ["E5", "E6"],
+      "allowed_execution_modes": ["executor_local_deterministic"],
+      "entry_state": "work_planning",
+      "review_gate": "candidate_review",
+      "terminal_state": "answered",
+      "terminal_evidence": "public_safe_draft_packet_and_independent_review",
+      "retrieval": {"mode": "allowlisted_lexical", "backend": "llamaindex_lexical_fallback", "requires_paths": true},
+      "role_pack": ["positioning_and_copy_maker", "designer", "independent_reviewer", "integrator"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 4,
+      "approval_gate": "owner_approval_for_publication_or_outreach",
+      "evidence_requirements": ["source_paths", "claim_status", "owner_pending_marker", "independent_verdict"],
+      "stop_rules": ["stop_on_publication_scheduling_or_outreach"]
+    },
+    "review": {
+      "capability_label": "independent frozen-candidate review",
+      "allowed_epics": ["E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8"],
+      "allowed_execution_modes": ["executor_local_deterministic"],
+      "entry_state": "proposal_ready",
+      "review_gate": "candidate_review",
+      "terminal_state": "answered",
+      "terminal_evidence": "approve_revise_or_block_verdict_with_remaining_gaps",
+      "retrieval": {"mode": "allowlisted_lexical", "backend": "llamaindex_lexical_fallback", "requires_paths": true},
+      "role_pack": ["independent_reviewer", "integrator"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 2,
+      "approval_gate": "none_for_planning_only",
+      "evidence_requirements": ["maker_artifact_reference", "review_checklist", "verdict", "gaps"],
+      "stop_rules": ["stop_on_reviewer_repairing_or_approving_its_own_output"]
+    },
+    "external_action": {
+      "capability_label": "one exact owner-approved external action",
+      "allowed_epics": ["E5", "E6", "E8"],
+      "allowed_execution_modes": ["executor_local_deterministic"],
+      "entry_state": "proposal_ready",
+      "review_gate": "proposal_validated",
+      "terminal_state": "approval_wait",
+      "terminal_evidence": "owner_approval_record_and_external_action_receipt_or_block",
+      "retrieval": {"mode": "allowlisted_lexical", "backend": "llamaindex_lexical_fallback", "requires_paths": true},
+      "role_pack": ["external_action_operator", "action_validator", "verifier", "independent_reviewer", "release_operator", "integrator"],
+      "reviewer_role": "independent_reviewer",
+      "minimum_roles": 6,
+      "approval_gate": "explicit_owner_approval_before_any_external_action",
+      "evidence_requirements": ["public_safe_action_packet", "owner_approval_record", "independent_safety_verdict", "post_action_receipt"],
+      "stop_rules": ["stop_on_missing_owner_approval_or_any_direct_external_write"]
+    }
+  }
+}

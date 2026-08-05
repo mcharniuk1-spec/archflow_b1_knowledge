@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/archflow/role-task-binding.schema.json",
+  "title": "ArchFlow Role Task Binding",
+  "type": "object",
+  "required": ["binding_id", "case_id", "workflow_pack_id", "base_or_closure", "role_id", "call_name", "role_goal", "inputs", "source_refs", "requirement_refs", "owned_output", "expected_output", "allowed_skills", "allowed_tools", "permission_boundary", "forbidden_actions", "exact_targets", "deterministic_checks", "known_gaps", "reviewer_route", "handoff", "stop_conditions"],
+  "properties": {
+    "binding_id": {"type": "string", "pattern": "^binding-[a-z0-9-]+$"},
+    "case_id": {"type": "string", "pattern": "^case-[a-z0-9-]+$"},
+    "workflow_pack_id": {"type": "string", "minLength": 1},
+    "base_or_closure": {"enum": ["base", "review_closure"]},
+    "role_id": {"type": "string", "minLength": 1},
+    "call_name": {"type": "string", "pattern": "^[A-Za-z]+$"},
+    "role_goal": {"type": "string", "minLength": 1},
+    "inputs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "source_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "requirement_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "owned_output": {"type": "string", "minLength": 1},
+    "expected_output": {"type": "string", "minLength": 1},
+    "allowed_skills": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "allowed_tools": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "permission_boundary": {
+      "type": "object",
+      "required": ["authority_ref", "mode", "exact_targets_ref", "forbidden_actions_ref", "rule"],
+      "properties": {
+        "authority_ref": {"const": "case.authority"},
+        "mode": {"enum": ["read_draft_only", "local_mutation_exact_targets", "review_only_frozen_candidate", "verification_only_no_repair", "knowledge_candidate_only", "browser_local_only", "observation_only", "external_action_exact_approval", "git_action_exact_approval"]},
+        "exact_targets_ref": {"const": "binding.exact_targets"},
+        "forbidden_actions_ref": {"type": "string", "pattern": "^role_catalog\\.roles\\.[a-z0-9_]+\\.forbidden$"},
+        "rule": {"const": "intersection_only_no_authority_expansion"}
+      },
+      "additionalProperties": false
+    },
+    "forbidden_actions": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "exact_targets": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "deterministic_checks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "known_gaps": {"type": "array", "items": {"type": "string", "pattern": "^GAP-[A-Z0-9-]+$"}},
+    "reviewer_route": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "handoff": {
+      "type": "object",
+      "required": ["to", "payload"],
+      "properties": {
+        "to": {"type": "string", "minLength": 1},
+        "payload": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    },
+    "stop_conditions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "additionalProperties": false
+}

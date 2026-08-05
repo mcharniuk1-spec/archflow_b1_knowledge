@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1586 992" role="img" aria-labelledby="title desc">
+  <title id="title">ArchFlow input and context perception flow</title>
+  <desc id="desc">Six bounded input classes pass through authority, document identity, hybrid retrieval, optional compact vector candidates, exact-read validation, and a role-safe context capsule.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#17334a" flood-opacity=".14"/></filter>
+    <style>
+      .title{font:850 28px Inter,Arial,sans-serif;fill:#122838}.sub{font:500 14px Inter,Arial,sans-serif;fill:#52666f}
+      .stage{fill:#fffdf9;fill-opacity:.94;stroke:#c8d4dc;stroke-width:1.3;rx:13;filter:url(#shadow)}.stagehead{font:850 13px Inter,Arial,sans-serif;fill:#122838}.stagecopy{font:550 10px Inter,Arial,sans-serif;fill:#52666f}
+      .label{fill:#fffdf9;fill-opacity:.95;stroke:#cbd6dc;stroke-width:1.1;rx:10}.labelhead{font:800 11px Inter,Arial,sans-serif;fill:#315ecf}.labelcopy{font:550 8.8px Inter,Arial,sans-serif;fill:#53666e}
+      .capsule{fill:#122838;fill-opacity:.94;rx:13}.whitehead{font:850 12px Inter,Arial,sans-serif;fill:#fff}.whitecopy{font:550 9px Inter,Arial,sans-serif;fill:#d8e5e9}
+      .note{fill:#fff4ed;stroke:#d9aa91;rx:12}.notetxt{font:650 10px Inter,Arial,sans-serif;fill:#824d3e}
+    </style>
+  </defs>
+  <image x="0" y="0" width="1586" height="992" xlink:href="context-input-flow-base.png"/>
+  <rect x="38" y="34" width="1510" height="83" rx="18" fill="#fffdf9" fill-opacity=".92"/>
+  <text class="title" x="60" y="69">Input flow — whole-project perception without losing provenance</text>
+  <text class="sub" x="60" y="94">Stable context is reused; task evidence is retrieved narrowly; TurboVec is only an optional candidate; exact reads remain mandatory for action.</text>
+
+  <g>
+    <rect class="label" x="42" y="149" width="170" height="72"/><text class="labelhead" x="56" y="172">STABLE CAG</text><text class="labelcopy" x="56" y="190"><tspan x="56">rules · architecture ·</tspan><tspan x="56" dy="13">project identity · safety</tspan></text>
+    <rect class="label" x="42" y="252" width="170" height="72"/><text class="labelhead" x="56" y="275">ROLE RESPONSIBILITY</text><text class="labelcopy" x="56" y="293"><tspan x="56">goal · inputs · outputs ·</tspan><tspan x="56" dy="13">tools · forbidden · reviewer</tspan></text>
+    <rect class="label" x="42" y="355" width="170" height="72"/><text class="labelhead" x="56" y="378">REQUIREMENTS</text><text class="labelcopy" x="56" y="396"><tspan x="56">approved versions · decisions ·</tspan><tspan x="56" dy="13">acceptance · contradictions</tspan></text>
+    <rect class="label" x="42" y="458" width="170" height="72"/><text class="labelhead" x="56" y="481">TASK QUERY</text><text class="labelcopy" x="56" y="499"><tspan x="56">decision question · output ·</tspan><tspan x="56" dy="13">source boundary · freshness</tspan></text>
+    <rect class="label" x="42" y="561" width="170" height="72"/><text class="labelhead" x="56" y="584">PRIOR RECEIPTS</text><text class="labelcopy" x="56" y="602"><tspan x="56">verified results · repairs ·</tspan><tspan x="56" dy="13">supersession · readback</tspan></text>
+    <rect class="label" x="42" y="664" width="170" height="72"/><text class="labelhead" x="56" y="687">GAPS &amp; QUESTIONS</text><text class="labelcopy" x="56" y="705"><tspan x="56">unknowns · stale items ·</tspan><tspan x="56" dy="13">owner questions · stop triggers</tspan></text>
+  </g>
+
+  <g>
+    <rect class="stage" x="318" y="730" width="190" height="100"/>
+    <text class="stagehead" x="413" y="757" text-anchor="middle">L1 · ADMISSION</text>
+    <text class="stagecopy" x="413" y="779" text-anchor="middle"><tspan x="413">Allowlist source classes;</tspan><tspan x="413" dy="15">refuse private or missing authority;</tspan><tspan x="413" dy="15">bind goal, role, risk, and stop.</tspan></text>
+
+    <rect class="stage" x="526" y="730" width="210" height="100"/>
+    <text class="stagehead" x="631" y="757" text-anchor="middle">L2 · DOCUMENT IDENTITY</text>
+    <text class="stagecopy" x="631" y="779" text-anchor="middle"><tspan x="631">doc_id + document hash + path;</tspan><tspan x="631" dy="15">chunk_id + ref_doc_id;</tspan><tspan x="631" dy="15">owner, authority, freshness metadata.</tspan></text>
+
+    <rect class="stage" x="756" y="730" width="285" height="100"/>
+    <text class="stagehead" x="898" y="757" text-anchor="middle">L3 · LLAMAINDEX ROUTER</text>
+    <text class="stagecopy" x="898" y="779" text-anchor="middle"><tspan x="898">lexical top-k 5 + vector top-k 5;</tspan><tspan x="898" dy="15">optional 4-bit TurboVec candidate;</tspan><tspan x="898" dy="15">rerank 5 · final sources ≤ 8.</tspan></text>
+
+    <rect class="stage" x="1062" y="730" width="202" height="100"/>
+    <text class="stagehead" x="1163" y="757" text-anchor="middle">EXACT-READ GATE</text>
+    <text class="stagecopy" x="1163" y="779" text-anchor="middle"><tspan x="1163">Open exact source for action;</tspan><tspan x="1163" dy="15">check claim, owner, version,</tspan><tspan x="1163" dy="15">counter-evidence, and allowed use.</tspan></text>
+
+    <rect class="capsule" x="1283" y="730" width="247" height="100"/>
+    <text class="whitehead" x="1407" y="757" text-anchor="middle">ROLE-SAFE CAPSULE · 12K MAX</text>
+    <text class="whitecopy" x="1407" y="779" text-anchor="middle"><tspan x="1407">facts · interpretations · hypotheses · gaps</tspan><tspan x="1407" dy="15">citations · exact-read status · role projection</tspan><tspan x="1407" dy="15">compressed summaries, intact provenance</tspan></text>
+  </g>
+
+  <rect class="note" x="474" y="862" width="640" height="58"/>
+  <text class="notetxt" x="794" y="886" text-anchor="middle"><tspan x="794">TurboVec does not “perceive the whole project” alone.</tspan><tspan x="794" dy="16">Whole-project perception = stable CAG + bounded hybrid retrieval + structural pointers + exact reads + lineage.</tspan></text>
+  <rect class="note" x="1133" y="862" width="397" height="58"/>
+  <text class="notetxt" x="1331" y="886" text-anchor="middle"><tspan x="1331">If embeddings, filters, freshness, or benchmark proof fail,</tspan><tspan x="1331" dy="16">use deterministic lexical retrieval and return a GAP.</tspan></text>
+</svg>

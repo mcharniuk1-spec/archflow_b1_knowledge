@@ -1,46 +1,29 @@
-# ArchFlow Unified Knowledge Agent
+# ArchFlow Responsive Knowledge Crew
 
-Status: implemented and independently approved
-Authority: `project/strategic-plan-2026-07-13.md` plus the admitted 2026-08-05 run
-Last verified: 2026-08-05
+Status: canonical provider-disabled public core
 Supersedes: numbered `Architecture 1` / `Architecture 2` as top-level architecture labels
 
-ArchFlow runs one governed knowledge case from question to evidence, reviewed requirements, role-safe work, action validation, result verification, and selective knowledge promotion.
+## Contracts
 
-PRDs, ICPs, market reports, onboarding maps, outreach packs, and creative briefs are projections of the same reviewed case. They are not separate architectures or independent sources of truth.
+- `contracts/operating-model.json` — controller operations, states, gates, repair, adapters.
+- `contracts/knowledge-crew-config.json` — seven layers, framework parameters, context budget, research, skills, dashboard.
+- `contracts/role-catalog.json` — twenty-one stable roles, Ukrainian call names in English letters, and canonical task defaults.
+- `contracts/role-workflows.json` — ten adaptive workflow packs using stable role IDs.
+- `schemas/knowledge-case.schema.json` — typed shared case with materialized role bindings.
+- `schemas/role-task-binding.schema.json` — per-role inputs, output, skill/tool ceiling, permission boundary, typed gap references, review route, resolvable handoff payload, and stops.
+- `schemas/action-proposal.schema.json` — action validation packet.
+- `fixtures/` — synthetic eligible and adversarial examples.
 
-## What is runnable now
-
-The public proof is local, deterministic, synthetic, and provider-disabled:
+## Validate
 
 ```bash
 python3 project/system/validate_system.py
 ```
 
-The command checks and applies the versioned schemas, cross-checks the role catalog and controller states, evaluates five action proposals, and rejects malformed and target-escape packets at the schema boundary. One proposal must be eligible; stale/unknown-authority, target-escape, and reviewer-spoof proposals must be blocked.
+The validator checks schema definitions and instances, exact state-registry equality, role names/defaults, workflow/review closure, role task bindings, admission projections, layer order, context budget, LlamaIndex parameters, TurboVec calibration/promotion gate, CrewAI defaults, LangGraph interrupts/idempotency, and eligible/blocked/adversarial behavior.
 
-The validator does not invoke a model, index private data, change project files, use Obsidian, start a service, or execute either proposal.
+The test performs no provider call, writeback, or action.
 
-## Canonical public contracts
+## Architecture
 
-- `contracts/operating-model.json` — one state machine and its fail-closed gates.
-- `contracts/role-catalog.json` — normalized role authority, including requirements/market research, onboarding support, design, outreach, review, and promotion.
-- `schemas/knowledge-case.schema.json` — shared case packet.
-- `schemas/action-proposal.schema.json` — proposal-to-requirement validation packet.
-- `fixtures/` — synthetic onboarding and adversarial examples.
-- `validate_system.py` — standard-library validation and verdict proof.
-
-## Authority model
-
-The controller owns transitions. Roles produce bounded candidates. Requirements and decisions authorize intent. Tools prove only connectivity. A maker cannot approve its own high-risk output. Orbit and Graphify provide generated structural evidence, LlamaIndex retrieves bounded prose, and Obsidian/WikiLLM retain reviewed durable knowledge.
-
-## Private seam
-
-The public project does not require a private vault, private runtime, absolute device path, credential, or personal configuration. A private installation may implement adapters behind these contracts, but only sanitized reviewed conclusions may cross into public Git.
-
-## Current limits
-
-- The dashboard is not migrated in this architecture run.
-- GitLab Orbit Local is a beta structural adapter and is optional.
-- The fixture proves contract behavior, not production autonomy, model quality, live Obsidian access, or external action.
-- Legacy dashboard/report labels remain compatibility residue until the plan in `docs/dashboard-integration-plan.md` is separately approved and executed.
+Read [Responsive Knowledge Crew Architecture](../../docs/responsive-knowledge-crew-architecture.md).

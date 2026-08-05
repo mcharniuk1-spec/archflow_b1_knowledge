@@ -1,43 +1,61 @@
-name: archflow_block1_rag
-status: runtime_installed_bounded_hybrid_retrieval_available
+name: archflow_responsive_context_perception
+status: provider_disabled_public_contract_with_optional_local_runtime
 runtime: llamaindex_python
-official_docs_checked:
-  - https://developers.llamaindex.ai/python/framework/getting_started/concepts/
-
 purpose: >
-  Connect agents and LLMs to approved project data. LlamaIndex owns bounded
-  loading, indexing, retrieval, and source-grounded answers.
+  Build a bounded, source-visible context capsule for one admitted case.
+  LlamaIndex owns allowlisted loading, document/node identity, metadata
+  filtering, retrieval routing, ranking, and source-node return. It never
+  owns knowledge truth, requirements, permission, approval, or promotion.
+
+canonical_contract: project/system/contracts/knowledge-crew-config.json
+case_schema: project/system/schemas/knowledge-case.schema.json
+context_capsule_schema: project/context/context-capsule.schema.json
+source_boundary_policy: project/context/retrieval/source-boundary-policy.yaml
 
 context_method:
-  cag_role: >
-    CAG is Controlled Context Assembly Generation. It assembles stable project
-    rules, role/skill governance, architecture boundaries, E1-E8 state, and
-    gated claims before task-specific retrieval.
-  rag_role: >
-    RAG is task-specific evidence retrieval into a context capsule. It must
-    return source paths and metadata or the result is not accepted as evidence.
-  capsule_schema: project/context/context-capsule.schema.json
-  source_boundary_policy: project/context/retrieval/source-boundary-policy.yaml
-  audience_source_routing: project/knowledge/audience/source-routing.yaml
+  stable_cag:
+    job: reuse project identity, architecture, safety, role responsibility, and source rules
+    budget_tokens: 2400
+  task_rag:
+    job: retrieve only evidence relevant to the current role, task, requirement, and decision
+    authority: candidate_evidence_only
+  exact_read:
+    job: open the exact source before a material claim or action can advance
+    required_for_action: true
+  compression:
+    rule: compress summaries_never_provenance_or_current_requirements
+    maximum_capsule_tokens: 12000
 
 approved_corpus:
   include:
     - project/
-    - history/
     - skills/
     - wiki/
+    - history/summary-only/
   exclude:
     - .git/
-    - project/.env.local
-    - project/local/
+    - private/
+    - secrets/
     - raw/
     - source_exports/
-    - secrets/
-    - private/
+    - project/local/
+    - project/.env.local
     - tmp/
 
+document_identity:
+  document:
+    - doc_id
+    - document_hash
+    - source_path
+  node:
+    - chunk_id
+    - ref_doc_id
+  deduplicate_by:
+    - doc_id
+    - document_hash
+
 indexing_parameters:
-  loader: simple_directory_reader
+  loader: allowlisted_file_reader
   document_language: english
   chunk_size: 800
   chunk_overlap: 120
@@ -45,70 +63,87 @@ indexing_parameters:
     - source_path
     - document_type
     - public_safety_status
-    - updated_at
     - authority_state
+    - updated_at
+    - owner
+    - review_by
     - superseded_by
+  transformation_cache: ignored_local_runtime
   persist_dir: project/local/rag_index
   persist_dir_git_status: ignored
 
 retrieval_parameters:
-  query_engine: approved_corpus_hybrid
-  query_mode: hybrid
-  vector_top_k: 5
+  query_engine: adaptive_allowlisted_hybrid
+  query_mode: adaptive_hybrid
   lexical_top_k: 5
+  vector_top_k: 5
   rerank_top_k: 5
-  fallback_to_lexical: true
-  similarity_top_k: 5
-  response_mode: compact
+  final_source_limit: 8
   require_source_paths: true
-  refuse_on_private_source: true
-  deterministic_smoke_mode: lexical
-  no_source_path_means_no_evidence: true
+  require_exact_read_for_action: true
+  refuse_private_match: true
+  fallback_to_lexical: true
   canonical_source_boost: true
   superseded_source_penalty: true
   contradictory_current_claim: return_gap_and_request_reconciliation
+  no_source_path_means_no_evidence: true
 
-model_routing:
-  primary_operator: codex_operator
-  local_background_llm: hf.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M
-  fallback_local_llm: gemma4:e4b
-  embedding_model: nomic-embed-text
-  cloud_llm: not_configured
-  observability: langsmith_configured_key_present_local_ignored_smoke_trace_submitted
+vector_candidate:
+  adapter: turbovec_llamaindex_vector_store
+  mode: optional_when_available_and_benchmark_eligible
+  current_verdict: optional_trial_not_default
+  version_evidence: "0.8.0"
+  bit_width: 4
+  embedding_dimension: must_match_pinned_embedder
+  id_strategy: stable_uint64_sidecar_to_doc_and_chunk_ids
+  allowlist_filter: required
+  persistence: binary_index_plus_node_sidecar_moved_atomically
+  known_limit: no_native_mmr_or_hybrid_after_full_precision_vectors_are_discarded
+  fallback: deterministic_lexical
+  isolated_evidence:
+    public_receipt: project/reports/20260713-secured-runtime-architecture-report.md
+    queries: 10
+    checks: 9_of_9_passed
+    candidate_recall_at_3: 1.0
+    candidate_mrr: 0.8167
+    lexical_baseline: not_published_in_public_receipt
+    verdict: optional_trial_not_default
+    interpretation: promising_small_synthetic_fixture_not_production_proof
+  promotion_gate:
+    fixed_query_count: 20
+    minimum_recall_at_k: 0.70
+    no_regression_against_lexical: true
+    citation_retention: 1.0
+    metadata_filter_pass: true
+    persistence_reload_parity: true
+    independent_review: true
+
+structural_evidence:
+  orbit:
+    status: optional_private_local_adapter
+    job: definitions_references_paths_and_entry_points_for_one_allowlisted_corpus
+  graphify:
+    status: generated_reference
+    job: repository_relationships_and_likely_blast_radius
+  rule: generated_structure_must_be_followed_by_exact_file_reads
 
 outputs:
   retrieval_log: project/outputs/templates/retrieval-log.md
   source_inventory: project/outputs/templates/source-inventory.md
   context_digest: project/outputs/templates/context-digest.md
-  smoke_summary_local: project/local/rag_index/approved-corpus-summary.json
-  smoke_script: project/scripts/llamaindex-approved-corpus.py
-  benchmark_script: project/scripts/llamaindex-rag-benchmark.py
-  benchmark_summary_local: project/local/rag_index/approved-corpus-benchmark.json
   context_capsule: project/context/capsules/<run-id>.json
+  local_index: project/local/rag_index
 
-current_limitations:
-  - Vector embeddings run only when the configured local embedder is already available.
-  - Deterministic lexical retrieval remains the required fallback and smoke path.
-  - Only sanitized public files are approved for indexing by default.
-  - Full vector defaulting requires a passing 20-query retrieval benchmark.
-  - Retrieval does not create durable memory. Reviewed conclusions must be promoted through WikiLLM rules.
-  - Retrieval must not include private raw source, secrets, ignored local runtime files, account IDs, deployment IDs, screenshots, or absolute local paths.
+fail_closed_when:
+  - source_boundary_is_missing_or_invalid
+  - private_or_prohibited_source_matches
+  - current_and_superseded_claims_conflict
+  - exact_source_cannot_be_read_for_action
+  - required_metadata_or_source_path_is_missing
+  - context_budget_would_drop_current_requirements
 
-benchmark_requirements:
-  fixed_query_count: 20
-  minimum_hybrid_recall_at_k: 0.70
-  no_regression_against_lexical: true
-  source_path_filtering_required: true
-  pass_required_before_full_vector_default: true
-
-future_vector_store:
-  candidate: turbovec
-  integration_rule: use_under_llamaindex_adapter_only
-  status: deferred_until_benchmark_stable_ids_embeddings_metadata_and_filters_pass
-  required_before_pilot:
-    - stable_source_id_doc_id_chunk_id
-    - fixed_embedding_model_and_dimensions
-    - public_private_allowlist_filters
-    - twenty_query_retrieval_benchmark
-    - ignored_local_persist_dir
-  fallback: existing_llamaindex_store
+official_primary_sources:
+  - https://docs.llamaindex.ai/en/v0.10.17/module_guides/loading/ingestion_pipeline/root.html
+  - https://docs.llamaindex.ai/en/v0.10.19/module_guides/loading/documents_and_nodes/root.html
+  - https://docs.llamaindex.ai/en/stable/api_reference/retrievers/router/
+  - https://github.com/RyanCodrai/turbovec

@@ -4,53 +4,51 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
-    <meta name="theme-color" content="#0f1c22" />
-    <title>ArchFlow Documentation Console</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5f66'/%3E%3Ctext x='32' y='41' font-size='24' text-anchor='middle' fill='%23f7f1e7' font-family='Arial'%3EAF%3C/text%3E%3C/svg%3E" />
-    <link rel="stylesheet" href="./styles.css?v=20260715-docs-release" />
+    <meta name="theme-color" content="#122838" />
+    <meta name="description" content="A local-first operator dashboard for role-safe employee onboarding, daily work, research, review, and maintained knowledge." />
+    <title>ArchFlow Crew Desk</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23122838'/%3E%3Cpath d='M17 43 31 14l16 29h-8l-3-7H25l-3 7z' fill='%23f4ede2'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css?v=20260805-crew-desk" />
   </head>
   <body>
-    <a class="skip-link" href="#view">Skip to dashboard content</a>
-    <div class="app-shell">
-      <aside class="sidebar" aria-label="Dashboard navigation">
-        <div class="brand">
-          <div class="brand-mark">AF</div>
-          <div>
-            <div class="brand-title">ArchFlow</div>
-            <div class="brand-subtitle">Operating documentation</div>
-          </div>
-        </div>
-        <nav class="nav" id="nav"></nav>
-        <div class="sidebar-status">
-          <div class="status-dot"></div>
-          <div>
-            <strong>Public-safe source view</strong>
-            <span>Static and browser-local until a gate proves otherwise.</span>
-          </div>
-        </div>
+    <a class="skip-link" href="#view">Skip to current work</a>
+    <div class="shell">
+      <aside class="sidebar" aria-label="Crew Desk navigation">
+        <a class="brand" href="#today" aria-label="ArchFlow Crew Desk home">
+          <span class="brand-mark" aria-hidden="true">AF</span>
+          <span><strong>ArchFlow</strong><small>Crew Desk</small></span>
+        </a>
+        <nav class="nav" id="nav" aria-label="Primary"></nav>
+        <section class="boundary-card" aria-label="Runtime boundary">
+          <span class="status-light" aria-hidden="true"></span>
+          <div><strong>Local preparation</strong><small>No provider · no writeback</small></div>
+        </section>
       </aside>
 
       <main class="workspace">
         <header class="topbar">
-          <div>
-            <p class="topbar-kicker">Knowledge and agent operating system</p>
-            <h1>Architecture Documentation</h1>
-            <p><span>Read the current system, then inspect the workflow, knowledge boundary, roles, skills, proof, and editable parameters.</span> <span>Provider execution and durable writeback remain separately gated.</span></p>
+          <div class="topbar-copy">
+            <p class="eyebrow" id="pageEyebrow">Employee knowledge crew</p>
+            <h1 id="pageTitle">Today</h1>
+            <p id="pageSummary">Your next safe action, its evidence, and its reviewer.</p>
           </div>
-          <div class="topbar-actions">
-            <span class="pill live-pill" id="liveStatus">Static data starting</span>
-            <span class="pill live-pill warn" id="apiStatus">Jarvis API checking</span>
-            <span class="pill" id="generatedAt">Loading data</span>
-            <button class="button" id="refreshData" type="button">Refresh</button>
-            <a class="button" href="#manual">Operating manual</a>
-            <a class="primary topbar-jarvis" href="/jarvis">Open Jarvis</a>
+          <div class="truth-strip" aria-label="System truth state">
+            <span><i class="dot ok" aria-hidden="true"></i>Public contracts loaded</span>
+            <span><i class="dot" aria-hidden="true"></i>Provider disabled</span>
+            <span><i class="dot" aria-hidden="true"></i>Writeback disabled</span>
+            <button class="quiet-button" id="exportHeader" type="button">Export local packet</button>
           </div>
         </header>
 
+        <section id="notice" class="notice" role="status" aria-live="polite" hidden></section>
         <section id="view" class="view" tabindex="-1" aria-live="polite"></section>
       </main>
     </div>
 
-    <script src="./app.js?v=20260715-docs-release"></script>
+    <template id="loadingTemplate">
+      <section class="empty-state"><span class="spinner" aria-hidden="true"></span><h2>Loading the public crew contracts</h2><p>No private source or provider is contacted.</p></section>
+    </template>
+
+    <script src="./app.js?v=20260805-crew-desk"></script>
   </body>
 </html>

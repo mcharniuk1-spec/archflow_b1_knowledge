@@ -1,0 +1,256 @@
+{
+  "schema_version": "2.0.0",
+  "status": "public_portable_provider_disabled",
+  "product_goal": "Help an employee orient, plan, perform, verify, and learn from daily work using one reviewed knowledge spine and role-bounded agents.",
+  "controller": {
+    "id": "knowledge_crew_controller",
+    "case_key": "case_id",
+    "employee_key": "role_assignment_id",
+    "requirement_key": "requirement_id@version",
+    "thread_key": "case_id",
+    "operations": [
+      "orient_case",
+      "assemble_perception",
+      "plan_role_work",
+      "evaluate_action",
+      "record_result",
+      "propose_knowledge_update"
+    ],
+    "provider_default": "disabled",
+    "writeback_default": "disabled",
+    "maximum_parallel_role_branches": 3,
+    "maximum_repairs_per_finding": 3,
+    "stop_after_same_failure": 2
+  },
+  "layers": [
+    {
+      "id": "L1",
+      "name": "Case authority and employee scope",
+      "purpose": "Bind the goal, role, data class, permissions, risks, done conditions, reviewer, and stop rules before retrieval.",
+      "inputs": ["request", "role assignment", "owner policy"],
+      "outputs": ["admitted case", "authority map", "stop conditions"],
+      "primary_roles": ["goal_and_architecture_operator", "admission_controller"]
+    },
+    {
+      "id": "L2",
+      "name": "Reviewed knowledge and source spine",
+      "purpose": "Resolve current, stale, superseded, private, generated, and prohibited sources without turning connectivity into authority.",
+      "inputs": ["WikiLLM", "Obsidian", "source registry", "requirements", "exact files"],
+      "outputs": ["source manifest", "owner and freshness map", "retrieval allowlist"],
+      "primary_roles": ["source_and_context_operator", "knowledge_librarian"]
+    },
+    {
+      "id": "L3",
+      "name": "Bounded context perception",
+      "purpose": "Combine stable CAG, LlamaIndex retrieval, optional TurboVec candidate results, structural evidence, and exact reads into one compact source-visible capsule.",
+      "inputs": ["stable context", "role query", "task query", "source metadata"],
+      "outputs": ["perception capsule", "citations", "contradictions", "gaps"],
+      "primary_roles": ["source_and_context_operator"]
+    },
+    {
+      "id": "L4",
+      "name": "Adaptive role crew",
+      "purpose": "Select the smallest responsible role set and give each role only its goal, context projection, allowed skills, tools, output, reviewer, and handoff.",
+      "inputs": ["perception capsule", "role catalog", "skill allowlist"],
+      "outputs": ["CrewAI-compatible role plan", "bounded task contracts", "communication routes"],
+      "primary_roles": ["task_and_handoff_planner", "integrator"]
+    },
+    {
+      "id": "L5",
+      "name": "Specialist research and delivery",
+      "purpose": "Create evidence-linked requirements, research, tasks, copy, outreach, designs, implementations, reports, or onboarding answers without expanding authority.",
+      "inputs": ["role task", "requirements", "approved evidence"],
+      "outputs": ["reviewable candidate artifact", "claim table", "verification plan"],
+      "primary_roles": ["requirements_and_market_research", "onboarding_guide", "positioning_and_copy_maker", "qualification_and_channel_planner", "designer", "implementation_maker"]
+    },
+    {
+      "id": "L6",
+      "name": "Graph control, validation, and review",
+      "purpose": "Use LangGraph state, reducers, checkpoints, interrupts, repair routes, requirement validation, deterministic checks, and independent review to control what may advance.",
+      "inputs": ["candidate artifact", "case state", "requirements", "permission scope"],
+      "outputs": ["eligible", "repair", "approval wait", "blocked", "verified"],
+      "primary_roles": ["action_validator", "verifier", "independent_reviewer"]
+    },
+    {
+      "id": "L7",
+      "name": "Receipts, outcomes, and maintained knowledge",
+      "purpose": "Record exact results and readback, measure onboarding/work outcomes, and promote only reviewed reusable meaning with lineage and freshness.",
+      "inputs": ["verification receipt", "employee feedback", "outcome evidence"],
+      "outputs": ["handoff", "result receipt", "knowledge candidate", "freshness trigger"],
+      "primary_roles": ["knowledge_librarian", "growth_and_outcome_analyst", "observability_and_efficiency_observer", "release_operator"]
+    }
+  ],
+  "frameworks": {
+    "wikillm": {
+      "job": "Portable durable reviewed memory: indexes, memory, insights, runs, issues, decisions, and append-only log.",
+      "authority": "reviewed knowledge after promotion",
+      "stores": ["durable constraints", "reusable conclusions", "decision lineage", "run summaries"],
+      "never_stores": ["credentials", "raw private source", "provider traces", "unreviewed retrieval output"]
+    },
+    "obsidian": {
+      "job": "Optional local human knowledge workspace for semantic notes, maps, sources, and review queues.",
+      "authority": "human-readable projection governed by the same promotion rules",
+      "portable_default": false,
+      "security": "Community plugins are privileged local code and require trust, pinning, review, backup, and restricted-mode fallback."
+    },
+    "llamaindex": {
+      "job": "Allowlisted ingestion, document/node metadata, retrieval routing, filters, ranking, and source-node return.",
+      "authority": "candidate evidence only",
+      "document_identity": ["doc_id", "document_hash", "source_path"],
+      "node_identity": ["chunk_id", "ref_doc_id"],
+      "required_metadata": ["source_path", "document_type", "public_safety_status", "authority_state", "updated_at", "owner", "review_by", "superseded_by"],
+      "ingestion": {
+        "reader": "allowlisted_file_reader",
+        "chunk_size": 800,
+        "chunk_overlap": 120,
+        "deduplicate_by": ["doc_id", "document_hash"],
+        "persist_location": "ignored_local_runtime"
+      },
+      "retrieval": {
+        "lexical_top_k": 5,
+        "vector_top_k": 5,
+        "rerank_top_k": 5,
+        "final_source_limit": 8,
+        "query_mode": "adaptive_hybrid",
+        "require_source_paths": true,
+        "require_exact_read_for_action": true,
+        "canonical_source_boost": true,
+        "superseded_source_penalty": true,
+        "refuse_private_match": true,
+        "fallback_to_lexical": true
+      }
+    },
+    "turbovec": {
+      "job": "Optional compact local vector candidate behind the LlamaIndex vector-store adapter; it accelerates candidate selection but never compresses away authority, citations, or exact source reads.",
+      "authority": "none",
+      "mode": "preferred_when_available_and_benchmark_eligible",
+      "default_backend_changed": false,
+      "version_evidence": "0.8.0 isolated trial",
+      "bit_width": 4,
+      "embedding_dimension": "must_match_pinned_embedder",
+      "id_strategy": "stable_uint64_sidecar_to_doc_and_chunk_ids",
+      "search_filter": "allowlisted_ids_required",
+      "persistence": "binary_index_plus_node_sidecar_moved_atomically",
+      "known_limit": "no native LlamaIndex MMR or native hybrid mode after full-precision vectors are discarded",
+      "fallback": "deterministic lexical retrieval",
+      "promotion_gate": {
+        "fixed_query_count": 20,
+        "minimum_recall_at_k": 0.7,
+        "no_regression_against_lexical": true,
+        "citation_retention": 1.0,
+        "metadata_filter_pass": true,
+        "persistence_reload_parity": true,
+        "independent_review": true
+      },
+      "current_evidence": {
+        "public_receipt": "project/reports/20260713-secured-runtime-architecture-report.md",
+        "queries": 10,
+        "checks": "9_of_9_passed",
+        "candidate_recall_at_3": 1.0,
+        "candidate_mrr": 0.8167,
+        "lexical_baseline": "not_published_in_public_receipt",
+        "verdict": "optional_trial_not_default"
+      }
+    },
+    "orbit_and_graphify": {
+      "job": "Generated code/file structure, definitions, references, paths, and likely impact for exact-source follow-up.",
+      "authority": "generated structural evidence only",
+      "orbit": "optional private local code adapter with one clean allowlisted corpus and freshness checks",
+      "graphify": "generated repository relationship reference queried before broad structural reads",
+      "never_decides": ["requirements", "business truth", "permission", "approval", "knowledge promotion"]
+    },
+    "crewai": {
+      "job": "Express role, goal, task, tool, knowledge-source, expected-output, delegation, and handoff contracts for the selected crew.",
+      "authority": "none beyond each injected role contract",
+      "process": "sequential_by_default_with_bounded_parallel_extraction",
+      "memory": false,
+      "cache": true,
+      "planning": false,
+      "delegation_default": false,
+      "maximum_parallel_tasks": 3,
+      "knowledge_input": "role-safe perception capsule only",
+      "runtime_status": "deterministic_fixture_proved_not_default_provider_runtime"
+    },
+    "langgraph": {
+      "job": "Own case state, conditional routes, bounded parallel branches, reducers, checkpoints, interrupts, repair loops, and terminal states.",
+      "authority": "transition control, not knowledge truth",
+      "state_schema": "KnowledgeCaseState",
+      "reducers": {
+        "evidence_refs": "append_unique",
+        "artifacts": "append_unique",
+        "gaps": "append_unique",
+        "receipts": "append_only",
+        "workflow_state": "replace_after_valid_transition"
+      },
+      "checkpointer": {
+        "public_demo": "none",
+        "local_single_user": "SQLite after approval and migration proof",
+        "team_runtime": "PostgreSQL after tenancy, backup, and recovery proof",
+        "thread_id": "case_id"
+      },
+      "subgraph_persistence": "per_invocation_by_default",
+      "interrupts": ["requirement_owner_decision", "external_action_approval", "private_source_request", "irreversible_change", "material_contradiction"],
+      "interrupt_payload": "JSON_serializable_summary_without_secrets",
+      "idempotency": "all side effects occur after interrupt and use action_id replay protection",
+      "current_runtime": "provider_disabled_contract_and_fixture"
+    },
+    "dashboard": {
+      "job": "Primary non-technical case, task, knowledge, crew, review, receipt, and configuration projection.",
+      "authority": "browser-local proposal and read-only projection",
+      "storage": "browser localStorage for drafts only",
+      "jarvis": "embedded contextual operator guidance, not a separate brain or authority",
+      "external_actions": "export a review packet only"
+    }
+  },
+  "perception_capsule": {
+    "maximum_tokens": 12000,
+    "sections": [
+      {"id": "stable_cag", "budget": 2400, "content": "rules, authority, project identity, source boundary"},
+      {"id": "role_responsibility", "budget": 1400, "content": "role goal, inputs, outputs, tools, forbidden actions, reviewer"},
+      {"id": "current_requirements", "budget": 2600, "content": "approved requirements, decisions, acceptance, contradictions"},
+      {"id": "task_evidence", "budget": 3200, "content": "retrieved nodes plus exact source excerpts and structural entry points"},
+      {"id": "prior_receipts", "budget": 1200, "content": "relevant verified outcomes, repairs, and supersession"},
+      {"id": "gaps_and_questions", "budget": 1200, "content": "unknowns, stale items, owner questions, stop triggers"}
+    ],
+    "compression_rule": "Compress summaries, never provenance. Every material claim retains source_ref, authority_state, observed_at, review_by, and exact-read status.",
+    "overflow_order": ["drop_duplicate_snippets", "replace_low_authority_snippets_with_citations", "summarize_prior_receipts", "ask_to_narrow_scope", "stop_before_dropping_current_requirements"]
+  },
+  "research_methods": [
+    {"id": "source_authority_triage", "use": "Grade primary/current/reviewed versus secondary/historical/unverified evidence before synthesis."},
+    {"id": "fact_interpretation_hypothesis_gap", "use": "Keep observation, reasoning, testable belief, and missing evidence distinct."},
+    {"id": "triangulation_and_disconfirmation", "use": "Require independent support and actively search for counter-evidence for material claims."},
+    {"id": "jtbd_and_forcing_moment", "use": "Define the situation, progress sought, trigger, current alternative, push, pull, habit, and anxiety."},
+    {"id": "five_whys_and_pain_chain", "use": "Trace symptom to mechanism and decision impact without treating a public signal as confirmed pain."},
+    {"id": "ninety_day_story", "use": "Translate a target outcome into observable milestones, responsibilities, and evidence."},
+    {"id": "market_and_account_evidence", "use": "Separate universe, company fit, person-role currentness, trigger evidence, and demand proof."},
+    {"id": "claim_table", "use": "Attach source, status, owner, freshness, counter-evidence, and allowed use to each public claim."},
+    {"id": "requirements_to_acceptance", "use": "Convert evidence into versioned requirements, non-goals, exceptions, and objective acceptance/readback checks."},
+    {"id": "maker_reviewer_readback", "use": "Freeze the maker candidate, review independently, repair through the maker, and verify the exact result."}
+  ],
+  "skill_lifecycle": {
+    "states": ["discovered", "quarantined", "inspected", "deduplicated", "normalized", "fixture_tested", "reviewed", "allowlisted", "assigned", "observed", "updated", "deprecated", "removed"],
+    "required_checks": ["identity_and_provenance", "license", "static_risk_scan", "instruction_injection_review", "secret_and_path_scan", "duplicate_scope", "role_fit", "sandbox_fixture", "failure_and_rollback", "version_pin", "independent_review"],
+    "skill_spectre": {
+      "job": "Static skill package risk inspection before allowlisting.",
+      "current_evidence": "low-risk static scans recorded for two ArchFlow skills",
+      "semantic_scan": "not_proved",
+      "rule": "A clean static result is one input to review, never automatic installation or trust."
+    },
+    "video_spectre_pattern": {
+      "job": "Reuse the inspection pattern—inventory, isolate, scan, normalize, fixture-test, compare, approve, and roll back—for media or large generated-skill packs.",
+      "current_evidence": "pattern_only_no_public_tool_execution_record",
+      "rule": "Do not claim a named scanner executed unless a public receipt records it."
+    },
+    "update_trigger": "repeated_use_or_failure_or_upstream_version_change",
+    "automatic_install": false,
+    "automatic_rewrite": false
+  },
+  "dashboard_sections": [
+    {"id": "today", "label": "Today", "job": "Show the employee mission, role, evidence boundary, reviewer, next action, guidance, phases, and first-thirty-minute path."},
+    {"id": "work", "label": "Work", "job": "Orient one case and drive its research or specialist mission through evidence, requirements, maker, review, stop condition, and readback."},
+    {"id": "knowledge", "label": "Knowledge", "job": "Inspect source classes, retrieval route, freshness, gaps, and exact-source requirements."},
+    {"id": "team", "label": "Team", "job": "Inspect all roles, selected workflow packs, responsibilities, methods, skills, prohibitions, reviewer routes, and handoffs."},
+    {"id": "review", "label": "Review", "job": "Trace evidence, requirement versions, validator results, independent decisions, repairs, approval interrupts, receipts, readback, and promotion."},
+    {"id": "setup", "label": "Set up", "job": "Configure and export portable source, retrieval, role, state, checkpointer, and loopback-bridge proposals without activating them."}
+  ]
+}

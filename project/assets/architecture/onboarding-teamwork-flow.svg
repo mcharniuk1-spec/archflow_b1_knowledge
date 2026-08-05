@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1586 992" role="img" aria-labelledby="title desc">
+  <title id="title">ArchFlow employee onboarding and teamwork flow</title>
+  <desc id="desc">An employee moves from role orientation through first mission, contextual support, adaptive teamwork, validation, and learning while specialist roles contribute bounded outputs and manager interrupts protect risky decisions.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#17334a" flood-opacity=".13"/></filter>
+    <style>
+      .title{font:850 26px Inter,Arial,sans-serif;fill:#122838}.sub{font:500 13.5px Inter,Arial,sans-serif;fill:#52666f}
+      .phase{fill:#fffdf9;fill-opacity:.96;stroke:#c9d5dc;stroke-width:1.2;rx:12;filter:url(#shadow)}.phaseid{font:900 10px Inter,Arial,sans-serif;fill:#315ecf}.phasehead{font:850 11px Inter,Arial,sans-serif;fill:#122838}.phasecopy{font:550 8.4px Inter,Arial,sans-serif;fill:#52666f}
+      .role{fill:#fffdf9;fill-opacity:.94;stroke:#cbd6dc;stroke-width:1.1;rx:11;filter:url(#shadow)}.rolehead{font:850 10.5px Inter,Arial,sans-serif;fill:#122838}.rolecopy{font:550 8px Inter,Arial,sans-serif;fill:#52666f}
+      .interrupt{fill:#fff0eb;fill-opacity:.96;stroke:#d47b65;rx:12}.interrupthead{font:850 11px Inter,Arial,sans-serif;fill:#9a4637}.interruptcopy{font:600 8.5px Inter,Arial,sans-serif;fill:#7b5149}
+      .learn{fill:#fff8e7;fill-opacity:.97;stroke:#c59d56;rx:12}.learnhead{font:850 11px Inter,Arial,sans-serif;fill:#795a28}.learncopy{font:550 8.5px Inter,Arial,sans-serif;fill:#675e4c}
+    </style>
+  </defs>
+  <image x="0" y="0" width="1586" height="992" xlink:href="onboarding-teamwork-flow-base.png"/>
+  <rect x="38" y="22" width="1510" height="78" rx="18" fill="#fffdf9" fill-opacity=".93"/>
+  <text class="title" x="58" y="55">Onboarding and teamwork — one mission spine, adaptive responsibilities</text>
+  <text class="sub" x="58" y="80">The employee gets the smallest useful context and daily task; specialist roles join only when they own an output, check, approval, or handoff.</text>
+
+  <g>
+    <rect class="phase" x="42" y="102" width="232" height="74"/>
+    <text class="phaseid" x="58" y="124">01 · ORIENT</text><text class="phasehead" x="58" y="143">Role, why, source, safety</text><text class="phasecopy" x="58" y="159">Taras shows responsibility and escalation.</text>
+    <rect class="phase" x="294" y="102" width="232" height="74"/>
+    <text class="phaseid" x="310" y="124">02 · FIRST MISSION</text><text class="phasehead" x="310" y="143">One observable output</text><text class="phasecopy" x="310" y="159">Goal · evidence · reviewer · done · stop.</text>
+    <rect class="phase" x="546" y="102" width="232" height="74"/>
+    <text class="phaseid" x="562" y="124">03 · PERCEIVE</text><text class="phasehead" x="562" y="143">Role-safe context capsule</text><text class="phasecopy" x="562" y="159">Stable rules + retrieval + exact reads.</text>
+    <rect class="phase" x="798" y="102" width="232" height="74"/>
+    <text class="phaseid" x="814" y="124">04 · TEAM WORK</text><text class="phasehead" x="814" y="143">Smallest responsible crew</text><text class="phasecopy" x="814" y="159">One owner per output; bounded handoffs.</text>
+    <rect class="phase" x="1050" y="102" width="232" height="74"/>
+    <text class="phaseid" x="1066" y="124">05 · REVIEW</text><text class="phasehead" x="1066" y="143">Requirements before action</text><text class="phasecopy" x="1066" y="159">Maker check · validator · different reviewer.</text>
+    <rect class="phase" x="1302" y="102" width="232" height="74"/>
+    <text class="phaseid" x="1318" y="124">06 · LEARN</text><text class="phasehead" x="1318" y="143">Receipt and maintained knowledge</text><text class="phasecopy" x="1318" y="159">Readback · feedback · reusable meaning.</text>
+  </g>
+
+  <g>
+    <rect class="role" x="52" y="579" width="168" height="72"/><text class="rolehead" x="67" y="602">OKSANA · RESEARCH</text><text class="rolecopy" x="67" y="621"><tspan x="67">evidence · pain chain · requirements</tspan><tspan x="67" dy="13">never approves her own requirement</tspan></text>
+    <rect class="role" x="235" y="579" width="168" height="72"/><text class="rolehead" x="250" y="602">DANYLO · TASKS</text><text class="rolecopy" x="250" y="621"><tspan x="250">dependencies · owners · checks</tspan><tspan x="250" dy="13">no shared file without sole writer</tspan></text>
+    <rect class="role" x="418" y="579" width="168" height="72"/><text class="rolehead" x="433" y="602">ANDRII · OUTREACH</text><text class="rolecopy" x="433" y="621"><tspan x="433">company/person fit · channel packet</tspan><tspan x="433" dy="13">never infers pain or sends</tspan></text>
+    <rect class="role" x="601" y="579" width="168" height="72"/><text class="rolehead" x="616" y="602">OLENA · COPY</text><text class="rolecopy" x="616" y="621"><tspan x="616">positioning · message · claim table</tspan><tspan x="616" dy="13">never invents proof or publishes</tspan></text>
+    <rect class="role" x="784" y="579" width="168" height="72"/><text class="rolehead" x="799" y="602">KATERYNA · DESIGN</text><text class="rolecopy" x="799" y="621"><tspan x="799">hierarchy · editable source · a11y</tspan><tspan x="799" dy="13">maker output, not self-review</tspan></text>
+    <rect class="role" x="967" y="579" width="168" height="72"/><text class="rolehead" x="982" y="602">DMYTRO · BUILD</text><text class="rolecopy" x="982" y="621"><tspan x="982">exact files · bounded change · tests</tspan><tspan x="982" dy="13">no scope or side-effect expansion</tspan></text>
+    <rect class="role" x="1150" y="579" width="168" height="72"/><text class="rolehead" x="1165" y="602">IRYNA + MYKOLA</text><text class="rolecopy" x="1165" y="621"><tspan x="1165">authority verdict · deterministic checks</tspan><tspan x="1165" dy="13">never convert missing proof to pass</tspan></text>
+    <rect class="role" x="1333" y="579" width="202" height="72"/><text class="rolehead" x="1348" y="602">HALYNA + LARYSA</text><text class="rolecopy" x="1348" y="621"><tspan x="1348">independent verdict · promotion review</tspan><tspan x="1348" dy="13">lineage, supersession, freshness</tspan></text>
+  </g>
+
+  <g>
+    <rect class="phase" x="61" y="893" width="276" height="67"/>
+    <text class="phasehead" x="77" y="918">DAILY TASK CONTROL</text><text class="phasecopy" x="77" y="937"><tspan x="77">Today shows role, evidence freshness, next action,</tspan><tspan x="77" dy="13">reviewer, blocker, and the exact Definition of Done.</tspan></text>
+    <rect class="interrupt" x="376" y="893" width="276" height="67"/>
+    <text class="interrupthead" x="392" y="918">MANAGER / OWNER INTERRUPT</text><text class="interruptcopy" x="392" y="937"><tspan x="392">Pause on missing requirements, material contradiction,</tspan><tspan x="392" dy="13">private data, external action, or irreversible change.</tspan></text>
+    <rect class="phase" x="691" y="893" width="276" height="67"/>
+    <text class="phasehead" x="707" y="918">MAKER → REVIEWER → MAKER</text><text class="phasecopy" x="707" y="937"><tspan x="707">Freeze candidate; reviewer reports findings; maker repairs;</tspan><tspan x="707" dy="13">reviewer verifies the exact repaired result.</tspan></text>
+    <rect class="learn" x="1006" y="893" width="529" height="67"/>
+    <text class="learnhead" x="1022" y="918">EMPLOYEE OUTCOME + KNOWLEDGE LOOP</text><text class="learncopy" x="1022" y="937"><tspan x="1022">Employee can explain why, find the source, perform the safe action, and escalate uncertainty.</tspan><tspan x="1022" dy="13">Only reviewed reusable meaning enters WikiLLM/Obsidian with owner, lineage, review date, and supersession.</tspan></text>
+  </g>
+</svg>

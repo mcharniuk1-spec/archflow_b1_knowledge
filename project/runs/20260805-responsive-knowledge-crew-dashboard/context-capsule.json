@@ -1,0 +1,128 @@
+{
+  "capsule_version": "v2",
+  "run_id": "2026-08-05-responsive-knowledge-crew-dashboard",
+  "generated_at": "2026-08-05T15:10:30Z",
+  "created_by": "Maksym / integrator",
+  "workspace_scope": "public_project",
+  "user_goal": "Implement one role-responsive employee knowledge crew and its primary non-technical local dashboard.",
+  "execution_type": "Implementation",
+  "risk_level": "medium",
+  "source_boundary_status": "pass",
+  "cag_core_version": "2026-07-13-knowledge-continuity-icp",
+  "cag_core_hash": "sha256:81b8360af0e0965c77ba87f66735db4feda7d4e221d7b87fc92f4e77b79affb5",
+  "cag_core_refs": [
+    {"source_path": "project/context/cag-core.yaml", "purpose": "stable public operating context"},
+    {"source_path": "project/operating-rules.md", "purpose": "public safety, retrieval, coordination, and approval rules"},
+    {"source_path": "project/strategic-plan-2026-07-13.md", "purpose": "current project strategy"},
+    {"source_path": "project/system/contracts/operating-model.json", "purpose": "controller states and hard gates"},
+    {"source_path": "project/system/contracts/role-catalog.json", "purpose": "canonical role responsibility and capability ceilings"},
+    {"source_path": "project/architecture/e1-e8-role-state-matrix.md", "purpose": "current admission profile and canonical state projection"}
+  ],
+  "approved_corpus_refs": ["project/", "history/", "skills/", "wiki/"],
+  "retrieval_required": false,
+  "rag_queries": [],
+  "retrieved_context_refs": [],
+  "facts": [
+    "The public repository already has one unified Knowledge Case Controller and twenty-one bounded roles.",
+    "The committed dashboard is browser-local and provider-disabled but still foregrounds legacy workflow concepts.",
+    "The isolated TurboVec trial is promising but too small for default or production claims.",
+    "The owner explicitly authorized public dashboard implementation, documentation, visuals, validation, and Git push."
+  ],
+  "interpretations": [
+    "The dashboard should project one case and role mission rather than expose frameworks as competing products.",
+    "Whole-project perception should mean stable context plus bounded retrieval, exact reads, and compact source-visible summaries, not loading every source into every prompt."
+  ],
+  "hypotheses": [
+    "A mission-first default with optional trace and setup views will reduce employee orientation time while preserving evidence visibility."
+  ],
+  "gaps": [
+    "No real employee pilot proves onboarding outcomes.",
+    "No production-scale TurboVec benchmark or private-corpus authorization exists.",
+    "The public dashboard has no durable multi-user state or authenticated local bridge."
+  ],
+  "allowed_files": [
+    "README.md",
+    "index.html",
+    "site.js",
+    "jarvis.html",
+    "vercel.json",
+    "docs/",
+    "project/architecture/",
+    "project/assets/architecture/",
+    "project/dashboard/",
+    "project/context/context-capsule.schema.json",
+    "project/system/",
+    "project/workflows/",
+    "project/execution-reporting/",
+    "project/requirements-dev.txt",
+    "project/scripts/",
+    "project/live/communication/agent-communication-log.md",
+    "project/runs/20260729-architecture-enforcement/",
+    "project/runs/20260805-responsive-knowledge-crew-dashboard/",
+    "wiki/runs/",
+    "wiki/log.md",
+    "wiki/memory.md",
+    "wiki/insights.md"
+  ],
+  "memory_write_basis": {
+    "wiki/memory.md": "Records the corrected reusable constraint that role/state projections and framework evidence must remain synchronized across active contracts.",
+    "wiki/insights.md": "Records reusable analytical meaning about one-case role projection and bounded whole-project perception; it excludes raw traces and private source text."
+  },
+  "forbidden_actions": [
+    "provider or model execution",
+    "private source ingestion",
+    "deployment or production promotion",
+    "Figma sync",
+    "outreach or publication",
+    "external writeback",
+    "unrelated checkout mutation"
+  ],
+  "role_assignment": [
+    {"role": "Solomiia", "scope": "context-spine architecture alternative", "output": "lanes/solomiia-context-spine.md"},
+    {"role": "Taras", "scope": "employee mission experience alternative", "output": "lanes/taras-employee-mission.md"},
+    {"role": "Kateryna", "scope": "configurable crew studio alternative", "output": "lanes/kateryna-crew-studio.md"},
+    {"role": "Maksym", "role_id": "integrator", "scope": "reconciliation, implementation, tests, and release", "output": "reviewed branch"},
+    {"role": "Iryna", "scope": "action and contract validation audit", "output": "independent-review.md"},
+    {"role": "Halyna", "scope": "independent repaired-candidate review", "output": "final-independent-review-iteration-4.md"},
+    {"role": "Bohdan", "role_id": "admission_controller", "scope": "read-only canonical admission role and state mapping", "output": "canonical mapping applied by Maksym"},
+    {"role": "Danylo", "role_id": "task_and_handoff_planner", "scope": "read-only canonical role-task binding design", "output": "schema and dashboard projection applied by Maksym"}
+  ],
+  "acceptance_criteria": [
+    "One case spine and role-responsive workflow replace Architecture 1 and Architecture 2.",
+    "Tool jobs and parameters are explicit and non-overlapping.",
+    "Four labeled source-controlled visuals are integrated.",
+    "The dashboard is the responsive non-technical local interface.",
+    "Provider-disabled system, browser, accessibility, and safety checks pass.",
+    "An independent reviewer approves or records exact remaining gaps."
+  ],
+  "evidence_required": [
+    "official framework documentation for current technical behavior",
+    "repo-relative contract and run sources",
+    "machine validation receipts",
+    "desktop, tablet, and mobile visual readback",
+    "independent reviewer verdict",
+    "remote Git commit readback"
+  ],
+  "validation_checks": [
+    "JSON and schema validation",
+    "provider-disabled controller fixtures",
+    "dashboard JavaScript syntax and route smoke",
+    "responsive layout and accessibility review",
+    "SVG text and image integrity",
+    "public safety scan",
+    "exact Git diff review"
+  ],
+  "stop_conditions": [
+    "private or secret data would enter public Git",
+    "a framework is presented as business authority",
+    "TurboVec would become the sole route without promotion proof",
+    "maker and reviewer are the same",
+    "the same failure repeats twice",
+    "deployment, provider execution, or external writeback becomes necessary"
+  ],
+  "review_gate": "Halyna iteration-four independent review after exact CrewAI and API binding projection is frozen",
+  "review_decision": "approved",
+  "provider_policy": "disabled_until_explicit_approval",
+  "external_side_effects_policy": "blocked_without_explicit_owner_approval",
+  "linear_policy": "not_required_optional_free_only"
+}

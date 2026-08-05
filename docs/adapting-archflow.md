@@ -13,9 +13,10 @@ Start with a bounded onboarding decision, not a whole-company ingestion. The saf
 4. Replace synthetic evidence with allowlisted sources and stable repository-relative or opaque private references.
 5. Write requirements with stable IDs, state, evidence, acceptance, non-goals, conflicts, and review trigger.
 6. Test one eligible local proposal plus adversarial stale, conflicting, self-reviewed, unapproved, and unverifiable proposals.
-7. Add read-only lexical retrieval. Add LlamaIndex or Orbit only when the simpler proof passes.
-8. Add Obsidian as reviewed durable memory, not as an unbounded ingestion target.
-9. Add write or external adapters only after exact approval, rollback, receipt, and readback behavior is proven.
+7. Add read-only lexical retrieval, then LlamaIndex document/node identity and metadata routing.
+8. Evaluate TurboVec only behind the LlamaIndex adapter, with lexical fallback and the fixed promotion benchmark.
+9. Add Obsidian as an optional human semantic workspace and Orbit/Graphify as structural evidence—not as unbounded ingestion or business authority.
+10. Add write or external adapters only after exact approval, rollback, receipt, and readback behavior is proven.
 
 ## Configuration layers
 

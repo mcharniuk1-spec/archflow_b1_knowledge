@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0.0",
-  "status": "canonical_candidate",
+  "schema_version": "2.0.0",
+  "status": "canonical_public_operator_model",
   "authority": "unified_knowledge_case_controller",
   "provider_default": "disabled",
   "writeback_default": "disabled",
@@ -9,12 +9,19 @@
     "Architecture 2": "legacy_compatibility_only"
   },
   "interface": [
-    "open_case",
-    "advance_case",
-    "evaluate_proposal",
+    "orient_case",
+    "assemble_perception",
+    "plan_role_work",
+    "evaluate_action",
     "record_result",
-    "propose_promotion"
+    "propose_knowledge_update"
   ],
+  "compatibility_interface": {
+    "open_case": "orient_case",
+    "advance_case": "assemble_perception_or_plan_role_work",
+    "evaluate_proposal": "evaluate_action",
+    "propose_promotion": "propose_knowledge_update"
+  },
   "states": [
     "request_received",
     "admission_checked",
@@ -60,11 +67,24 @@
     "target_specific_approval_when_external_or_high_risk"
   ],
   "terminal_rule": "No state may be upgraded to success without its required receipt and readback.",
+  "display_phases": {
+    "orient": ["request_received", "admission_checked", "context_bound"],
+    "perceive": ["evidence_gathering", "evidence_reconciled"],
+    "commit": ["requirements_review", "requirements_approved", "support_ready"],
+    "work": ["work_planning", "candidate_in_progress", "candidate_review"],
+    "gate": ["proposal_ready", "proposal_validated", "approval_wait", "execution_ready", "repair", "blocked", "failed", "stopped"],
+    "learn": ["executed", "result_verification", "accepted_result", "promotion_review", "promoted", "answered", "closed_no_promotion", "closed"]
+  },
   "adapters": {
     "structural_evidence": ["orbit_local", "graphify"],
-    "prose_retrieval": ["lexical", "llamaindex_allowlisted"],
+    "prose_retrieval": ["lexical", "llamaindex_allowlisted", "turbovec_optional_candidate"],
     "durable_knowledge": ["public_wikillm", "private_obsidian_reviewed"],
-    "projections": ["cli", "documents", "future_dashboard"],
+    "projections": ["cli", "documents", "operator_dashboard"],
     "external_actions": "disabled_until_exact_owner_approval"
+  },
+  "configuration_refs": {
+    "knowledge_crew": "project/system/contracts/knowledge-crew-config.json",
+    "role_workflows": "project/system/contracts/role-workflows.json",
+    "roles": "project/system/contracts/role-catalog.json"
   }
 }
