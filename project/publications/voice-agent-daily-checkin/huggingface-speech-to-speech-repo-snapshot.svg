@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+  <rect width="1400" height="760" fill="#0D1117"/>
+  <rect width="1400" height="62" fill="#161B22"/>
+  <circle cx="27" cy="29" r="7" fill="#FF5F57"/><circle cx="55" cy="29" r="7" fill="#FEBB2E"/><circle cx="83" cy="29" r="7" fill="#28C840"/>
+  <rect x="115" y="13" width="805" height="36" rx="12" fill="#0D1117" stroke="#30363D"/>
+  <g font-family="Inter,Arial,sans-serif">
+    <text x="140" y="37" fill="#C9D1D9" font-size="20">github.com/huggingface/speech-to-speech</text>
+    <rect y="62" width="1400" height="58" fill="#010409"/>
+    <rect x="22" y="76" width="42" height="32" rx="8" fill="#F0F6FC"/><text x="43" y="98" fill="#0D1117" font-size="14" font-weight="900" text-anchor="middle">GH</text>
+    <text x="86" y="100" fill="#F0F6FC" font-size="18" font-weight="700">Product  Solutions  Open Source  Pricing</text>
+    <text x="40" y="177" fill="#58A6FF" font-size="25">huggingface /</text><text x="195" y="177" fill="#58A6FF" font-size="29" font-weight="800">speech-to-speech</text>
+    <rect x="448" y="151" width="62" height="30" rx="15" fill="#21262D" stroke="#30363D"/><text x="479" y="171" fill="#8B949E" font-size="14" text-anchor="middle">Public</text>
+    <text x="40" y="230" fill="#F0F6FC" font-size="17" font-weight="700">Code</text><text x="120" y="230" fill="#8B949E" font-size="17">Issues</text><text x="210" y="230" fill="#8B949E" font-size="17">Pull requests</text><text x="350" y="230" fill="#8B949E" font-size="17">Actions</text>
+    <line x1="40" y1="246" x2="80" y2="246" stroke="#F78166" stroke-width="3"/>
+    <rect x="38" y="280" width="982" height="430" rx="10" fill="#0D1117" stroke="#30363D"/>
+    <rect x="39" y="281" width="980" height="53" fill="#161B22"/>
+    <rect x="55" y="294" width="125" height="28" rx="7" fill="#238636"/><text x="117" y="314" fill="#FFFFFF" font-size="15" font-weight="700" text-anchor="middle">main</text>
+    <text x="70" y="418" fill="#F0F6FC" font-size="48" font-weight="900">Speech To Speech</text>
+    <text x="70" y="468" fill="#C9D1D9" font-size="28" font-weight="700">Build voice agents with open-source models</text>
+    <text x="70" y="520" fill="#C9D1D9" font-size="22">A low-latency, fully modular voice-agent pipeline exposed through an OpenAI</text>
+    <text x="70" y="552" fill="#C9D1D9" font-size="22">Realtime-compatible API. Every component is swappable.</text>
+    <g font-size="20" font-weight="900" text-anchor="middle">
+      <rect x="70" y="600" width="150" height="54" rx="10" fill="#161B22" stroke="#30D8E7" stroke-width="2"/><text x="145" y="634" fill="#30D8E7">VAD</text>
+      <text x="245" y="634" fill="#8B949E">→</text>
+      <rect x="270" y="600" width="150" height="54" rx="10" fill="#161B22" stroke="#D4AA55" stroke-width="2"/><text x="345" y="634" fill="#D4AA55">STT</text>
+      <text x="445" y="634" fill="#8B949E">→</text>
+      <rect x="470" y="600" width="150" height="54" rx="10" fill="#161B22" stroke="#FE6F5E" stroke-width="2"/><text x="545" y="634" fill="#FE6F5E">LLM</text>
+      <text x="645" y="634" fill="#8B949E">→</text>
+      <rect x="670" y="600" width="150" height="54" rx="10" fill="#161B22" stroke="#68CFB2" stroke-width="2"/><text x="745" y="634" fill="#68CFB2">TTS</text>
+    </g>
+    <rect x="1050" y="280" width="310" height="430" rx="10" fill="#0D1117" stroke="#30363D"/>
+    <text x="1080" y="338" fill="#F0F6FC" font-size="21" font-weight="800">About</text>
+    <text x="1080" y="385" fill="#C9D1D9" font-size="18">Build local voice agents with</text><text x="1080" y="410" fill="#C9D1D9" font-size="18">open-source models.</text>
+    <g font-size="15" fill="#58A6FF">
+      <rect x="1080" y="455" width="255" height="34" rx="17" fill="#13233A"/><text x="1096" y="478">OpenAI Realtime</text>
+      <rect x="1080" y="499" width="255" height="34" rx="17" fill="#13233A"/><text x="1096" y="522">WebSocket / WebRTC</text>
+      <rect x="1080" y="543" width="255" height="34" rx="17" fill="#13233A"/><text x="1096" y="566">Python</text>
+      <rect x="1080" y="587" width="255" height="34" rx="17" fill="#13233A"/><text x="1096" y="610">Apache 2.0</text>
+    </g>
+  </g>
+</svg>
