@@ -1,0 +1,36 @@
+{
+  "schema_version": "3.0",
+  "proposal_id": "proposal-malformed",
+  "case_id": "case-team-onboarding",
+  "actor_role": "source_and_context_operator",
+  "intent": "Demonstrate fail-closed nested schema validation.",
+  "target": {
+    "class": "local_review_packet"
+  },
+  "change_set": "Omit required target and readback fields.",
+  "requirement_refs": [],
+  "decision_refs": [],
+  "coverage": [],
+  "permission_scope": {
+    "operation": "prepare_candidate",
+    "target_class": "local_review_packet",
+    "status": "invented"
+  },
+  "side_effects": [],
+  "execute": false,
+  "reversibility": "reversible",
+  "rollback": "Discard the malformed candidate.",
+  "verification_plan": {
+    "preflight": "Check the local path.",
+    "postcondition": "Check the packet fields."
+  },
+  "review": {
+    "maker_role": "source_and_context_operator",
+    "reviewer_role": "independent_reviewer",
+    "risk": "low"
+  },
+  "approval": {
+    "required": false,
+    "status": "not_required"
+  }
+}

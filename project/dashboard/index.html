@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0f1c22" />
+    <title>ArchFlow Knowledge Operator</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5f66'/%3E%3Ctext x='32' y='41' font-size='24' text-anchor='middle' fill='%23f7f1e7' font-family='Arial'%3EAF%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css?v=20260811-knowledge-operator-v3-2" />
+  </head>
+  <body>
+    <a class="skip-link" href="#view">Skip to dashboard content</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Dashboard navigation">
+        <div class="brand">
+          <div class="brand-mark">AF</div>
+          <div>
+            <div class="brand-title">ArchFlow</div>
+            <div class="brand-subtitle">Knowledge Operator</div>
+          </div>
+        </div>
+        <nav class="nav" id="nav"></nav>
+        <div class="sidebar-status">
+          <div class="status-dot"></div>
+          <div>
+            <strong>Public-safe source view</strong>
+            <span>Static and browser-local until a gate proves otherwise.</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="topbar-kicker" id="pageKicker">Knowledge continuity workspace</p>
+            <h1 id="pageTitle">Start with the problem</h1>
+            <p id="pageDescription"><span>Turn scattered project context into a source-grounded plan that people and AI agents can review, execute, and remember.</span></p>
+          </div>
+          <div class="topbar-actions">
+            <span class="pill live-pill" id="liveStatus">Static data starting</span>
+            <span class="pill" id="generatedAt">Loading data</span>
+            <button class="button" id="refreshData" type="button">Refresh</button>
+            <a class="button github-action" id="githubLink" href="https://github.com/mcharniuk1-spec/archflow_b1_knowledge" target="_blank" rel="noopener noreferrer" aria-label="Open the ArchFlow public repository on GitHub">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.6 22c.6.1.8-.2.8-.5v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.8.5A11.3 11.3 0 0 0 12 .7Z" /></svg>
+              <span>GitHub</span>
+            </a>
+            <button class="button" id="adminAccess" type="button">Admin access</button>
+            <a class="primary topbar-jarvis" id="jarvisLink" href="../../jarvis.html">Open Jarvis</a>
+          </div>
+        </header>
+
+        <section id="view" class="view" tabindex="-1" aria-label="Dashboard content"></section>
+      </main>
+    </div>
+
+    <script src="./data.js?v=20260811-knowledge-operator-v3-2"></script>
+    <script src="./app.js?v=20260811-knowledge-operator-v3-2"></script>
+  </body>
+</html>

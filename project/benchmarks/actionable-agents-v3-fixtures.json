@@ -1,0 +1,118 @@
+{
+  "schema_version": "3.0",
+  "fixture_id": "actionable-agents-v3-public-core",
+  "retrieval": [
+    {
+      "id": "R01",
+      "query": "manifest_entries_only unlisted_path_policy require_source_path require_chunk_hash deterministic_lexical_default",
+      "expected_source": "project/context/retrieval/source-boundary-policy.yaml"
+    },
+    {
+      "id": "R02",
+      "query": "state_revision parent_event_id source_manifest_hash candidate_refs rollback_plan terminal_reason",
+      "expected_source": "project/database/run-envelope.schema.json"
+    },
+    {
+      "id": "R03",
+      "query": "smallest declared role pack independent reviewer maker handoff",
+      "expected_source": "project/agents/actionable-role-packs.json"
+    },
+    {
+      "id": "R04",
+      "query": "built_in_default documented_optional_adapter observability_only no provider execution path",
+      "expected_source": "project/config/provider-registry.json"
+    }
+  ],
+  "role_activation": [
+    "research_to_decision",
+    "definition_to_task_graph",
+    "responsive_product_change",
+    "reviewed_memory_update"
+  ],
+  "semantic_gates": [
+    {
+      "id": "G01",
+      "expected": "accept",
+      "packet": {
+        "objective": "Prepare a public setup review",
+        "requested_output": "Decision-ready setup report",
+        "reviewer": "Independent reviewer",
+        "maker": "Implementation operator",
+        "public_reference": "public-tool",
+        "allowed_evidence": "Approved public documentation",
+        "external_action": false,
+        "external_approval": false
+      }
+    },
+    {
+      "id": "G02",
+      "expected": "reject",
+      "packet": {
+        "objective": "",
+        "requested_output": "Report",
+        "reviewer": "Independent reviewer"
+      }
+    },
+    {
+      "id": "G03",
+      "expected": "reject",
+      "packet": {
+        "objective": "Review architecture",
+        "requested_output": "",
+        "reviewer": "Independent reviewer"
+      }
+    },
+    {
+      "id": "G04",
+      "expected": "reject",
+      "packet": {
+        "objective": "Review architecture",
+        "requested_output": "Report",
+        "reviewer": "Independent reviewer",
+        "synthetic_email_parts": ["person", "example.com"]
+      }
+    },
+    {
+      "id": "G05",
+      "expected": "reject",
+      "packet": {
+        "objective": "Review architecture",
+        "requested_output": "Report",
+        "reviewer": "Independent reviewer",
+        "synthetic_secret_parts": ["API", "KEY", "not-a-real-value"]
+      }
+    },
+    {
+      "id": "G06",
+      "expected": "reject",
+      "packet": {
+        "objective": "Review architecture",
+        "requested_output": "Report",
+        "reviewer": "",
+        "maker": "Implementation operator"
+      }
+    },
+    {
+      "id": "G07",
+      "expected": "reject",
+      "packet": {
+        "objective": "Review architecture",
+        "requested_output": "Report",
+        "reviewer": "Implementation operator",
+        "maker": "Implementation operator"
+      }
+    },
+    {
+      "id": "G08",
+      "expected": "reject",
+      "packet": {
+        "objective": "Publish the artifact",
+        "requested_output": "Publication",
+        "reviewer": "Independent reviewer",
+        "maker": "Implementation operator",
+        "external_action": true,
+        "external_approval": false
+      }
+    }
+  ]
+}

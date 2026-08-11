@@ -1,0 +1,85 @@
+name: archflow_approved_corpus_retrieval
+status: configured_provider_disabled_public_core
+runtime: python_standard_library_with_optional_llamaindex_import
+official_docs_checked:
+  - https://developers.llamaindex.ai/python/framework/getting_started/concepts/
+
+purpose: >
+  Retrieve compact, source-linked context from the exact public corpus manifest.
+  The default path is deterministic lexical retrieval. It neither expands a
+  directory nor starts, probes, or calls a model or vector service.
+
+context_method:
+  cag_role: Assemble stable rules, role contracts, schemas, and stop conditions before task-specific retrieval.
+  rag_role: Select task-specific chunks from the approved manifest and return their source paths and content hashes.
+  capsule_schema: project/context/context-capsule.schema.json
+  source_boundary_policy: project/context/retrieval/source-boundary-policy.yaml
+
+approved_corpus:
+  manifest: project/dashboard/corpus-manifest.json
+  manifest_schema_version: "3.0"
+  selection: manifest_entries_only
+  exclude:
+    - .git/
+    - private/
+    - history/
+    - wiki/
+    - project/local/
+    - project/runs/
+    - project/reports/
+    - project/live/
+    - project/qa/
+    - raw/
+    - secrets/
+    - source_exports/
+
+indexing_parameters:
+  loader: exact_manifest_file_loader
+  document_language: english
+  chunk_size: 800
+  chunk_overlap: 120
+  metadata_fields:
+    - source_path
+    - document_type
+    - public_safety_status
+    - doc_id
+    - chunk_id
+    - chunk_hash
+    - authority_state
+  persist_dir: project/local/rag_index
+  persist_dir_git_status: ignored
+
+retrieval_parameters:
+  query_engine: deterministic_lexical
+  query_mode: lexical
+  lexical_top_k: 5
+  rerank_top_k: 5
+  require_source_paths: true
+  require_chunk_hashes: true
+  refuse_on_unlisted_source: true
+  provider_calls: 0
+  external_writes: 0
+  no_source_path_means_no_evidence: true
+
+optional_framework_check:
+  package: llama-index-core
+  command: python project/scripts/llamaindex-approved-corpus.py --mode lexical --deep-import
+  effect: import_verification_only
+  may_change_retrieval_result: false
+  may_call_provider: false
+
+outputs:
+  smoke_summary_local: project/local/rag_index/approved-corpus-summary.json
+  smoke_script: project/scripts/llamaindex-approved-corpus.py
+  context_capsule: project/local/context-capsules/<case-id>.json
+
+current_limitations:
+  - Lexical source-hit fixtures do not measure answer quality, latency, billed tokens, or durable-memory size.
+  - Optional semantic retrieval needs a separately implemented adapter, fixed fixtures, source filters, and explicit activation approval.
+  - Retrieval never creates durable memory; a reviewed solution-memory or action-receipt record is required.
+  - Private input, credentials, identity values, local paths, and unlisted files are outside the default corpus.
+
+future_semantic_adapter:
+  status: not_implemented
+  activation_gate: separate_adapter_contract_tests_budget_input_approval_and_independent_review
+  fallback: deterministic_lexical

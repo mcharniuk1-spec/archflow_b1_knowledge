@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta name="theme-color" content="#07111f" />
+    <title>ArchFlow Jarvis | Work packet intake</title>
+    <meta
+      name="description"
+      content="Turn a public-safe issue into a bounded browser-local work packet for the ArchFlow Knowledge Operator communication center."
+    />
+    <link rel="icon" type="image/png" href="assets/favicon-32.png" />
+    <link rel="stylesheet" href="jarvis.css?v=20260811-v3-2" />
+  </head>
+  <body>
+    <a class="skip-link" href="#packet-form">Skip to work packet</a>
+
+    <header class="site-header">
+      <a class="brand" href="project/dashboard/index.html#communication" data-dashboard-link aria-label="Open ArchFlow Knowledge Operator">
+        <span class="brand-mark"><img src="assets/archflow-mark.svg" alt="" width="32" height="32" /></span>
+        <span class="brand-copy">
+          <strong>ArchFlow / Jarvis</strong>
+          <small>Public work packet intake</small>
+        </span>
+      </a>
+
+      <nav class="header-actions" aria-label="Primary navigation">
+        <a class="text-action" href="project/dashboard/index.html#communication" data-dashboard-link>Knowledge Operator</a>
+        <a
+          class="icon-action"
+          href="https://github.com/mcharniuk1-spec/archflow_b1_knowledge"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open the ArchFlow public repository on GitHub"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .7a11.3 11.3 0 0 0-3.6 22c.6.1.8-.2.8-.5v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.8.5A11.3 11.3 0 0 0 12 .7Z" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a class="admin-action" href="https://www.arch-flow.dev/api/auth/google/start?return=jarvis" data-admin-action>
+          <span>Administrator sign-in</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9h-2V7.4L5.7 15.7l-1.4-1.4L12.6 6H7V4Z" /></svg>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>Jarvis / Intake</span><b>Browser-local by design</b></p>
+          <h1 id="page-title">Turn a loose issue into a bounded work packet.</h1>
+          <p class="hero-lede">
+            Capture the decision, evidence boundary, expected output, and review owner in one clear packet. Jarvis validates the request in this tab, then hands it to the Knowledge Operator communication center for human review.
+          </p>
+          <div class="truth-row" aria-label="Jarvis operating boundaries">
+            <span><i></i>Public-safe intake</span>
+            <span><i></i>No provider call</span>
+            <span><i></i>No external writeback</span>
+          </div>
+        </div>
+
+        <div class="route-map" aria-label="Work packet route">
+          <div class="route-map-head">
+            <span>AF / WORK PACKET V3</span>
+            <small>Review before action</small>
+          </div>
+          <ol>
+            <li class="active"><span>01</span><div><strong>Frame</strong><small>Name the decision and evidence boundary.</small></div></li>
+            <li><span>02</span><div><strong>Validate</strong><small>Reject private material and incomplete scope.</small></div></li>
+            <li><span>03</span><div><strong>Communicate</strong><small>Transfer inside this browser tab.</small></div></li>
+            <li><span>04</span><div><strong>Review</strong><small>A human decides the next safe action.</small></div></li>
+          </ol>
+          <p>Action is never inferred from submission. Authentication, provider use, Git, deployment, and writeback keep separate server-side gates.</p>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Jarvis packet workspace">
+        <form class="packet-panel" id="packet-form" data-packet-form novalidate>
+          <header class="panel-heading">
+            <div>
+              <p class="eyebrow">01 / Define the issue</p>
+              <h2>Prepare a reviewable request</h2>
+            </div>
+            <span class="version-chip">Schema 3.0</span>
+          </header>
+
+          <label class="field" for="packet-objective">
+            <span class="field-label">Objective <b>Required</b></span>
+            <textarea
+              id="packet-objective"
+              name="objective"
+              rows="5"
+              maxlength="1200"
+              placeholder="What outcome is needed, who will use it, and what would make the result useful?"
+              required
+            ></textarea>
+            <small><span>State the smallest useful outcome. Do not paste private source text.</span><span data-count-for="packet-objective">0 / 1200</span></small>
+          </label>
+
+          <label class="field" for="packet-decision">
+            <span class="field-label">Decision supported <em>Optional</em></span>
+            <textarea
+              id="packet-decision"
+              name="decision"
+              rows="3"
+              maxlength="1200"
+              placeholder="Which decision should this work help a reviewer make?"
+            ></textarea>
+            <small><span>Describe the decision without adding personal or customer context.</span><span data-count-for="packet-decision">0 / 1200</span></small>
+          </label>
+
+          <label class="field" for="packet-reference">
+            <span class="field-label">Public reference or safe label <em>Optional</em></span>
+            <input
+              id="packet-reference"
+              name="public_reference"
+              type="text"
+              maxlength="500"
+              placeholder="Public HTTPS URL or a generic label such as Onboarding workflow"
+              autocomplete="off"
+            />
+            <small><span>Never enter a private URL, local path, account identifier, or credential.</span><span data-count-for="packet-reference">0 / 500</span></small>
+          </label>
+
+          <div class="field-row">
+            <label class="field" for="packet-evidence">
+              <span class="field-label">Allowed evidence <em>Optional</em></span>
+              <textarea
+                id="packet-evidence"
+                name="allowed_evidence"
+                rows="4"
+                maxlength="1800"
+                placeholder="Approved public documentation and reviewed source summaries."
+              ></textarea>
+              <small><span>Name the exact source boundary.</span><span data-count-for="packet-evidence">0 / 1800</span></small>
+            </label>
+            <label class="field" for="packet-exclusions">
+              <span class="field-label">Exclusions <em>Optional</em></span>
+              <textarea
+                id="packet-exclusions"
+                name="exclusions"
+                rows="4"
+                maxlength="1800"
+                placeholder="Credentials, customer material, private transcripts, and unpublished data."
+              ></textarea>
+              <small><span>Make the out-of-scope boundary explicit.</span><span data-count-for="packet-exclusions">0 / 1800</span></small>
+            </label>
+          </div>
+
+          <div class="field-row">
+            <label class="field" for="packet-output">
+              <span class="field-label">Requested output <b>Required</b></span>
+              <textarea
+                id="packet-output"
+                name="requested_output"
+                rows="3"
+                maxlength="1000"
+                placeholder="A source-linked architecture brief with open questions and a recommendation."
+                required
+              ></textarea>
+              <small><span>Name the artifact and its acceptance shape.</span><span data-count-for="packet-output">0 / 1000</span></small>
+            </label>
+            <label class="field" for="packet-constraints">
+              <span class="field-label">Constraints and stop rules <em>Optional</em></span>
+              <textarea
+                id="packet-constraints"
+                name="constraints"
+                rows="3"
+                maxlength="1800"
+                placeholder="No provider calls or external writes. Stop if the evidence boundary is unclear."
+              ></textarea>
+              <small><span>Include authority, risk, budget, or delivery limits.</span><span data-count-for="packet-constraints">0 / 1800</span></small>
+            </label>
+          </div>
+
+          <label class="field" for="packet-reviewer">
+            <span class="field-label">Independent reviewer role <em>Optional</em></span>
+            <input
+              id="packet-reviewer"
+              name="reviewer"
+              type="text"
+              maxlength="300"
+              placeholder="Example: Delivery Reviewer or Security Reviewer"
+              autocomplete="off"
+            />
+            <small><span>Use a functional role, not a personal identity.</span><span data-count-for="packet-reviewer">0 / 300</span></small>
+          </label>
+
+          <label class="safety-confirmation">
+            <input type="checkbox" name="public_safe_confirmation" required />
+            <span>
+              <strong>I have removed private and identifying material.</strong>
+              <small>This confirms input hygiene only. It is not administrator, provider, Git, deployment, or writeback approval.</small>
+            </span>
+          </label>
+
+          <div class="submit-row">
+            <div class="submit-copy">
+              <strong>Same-tab handoff</strong>
+              <span>Packet content stays out of the URL and is cleared by the dashboard after import.</span>
+            </div>
+            <button class="primary-action" type="submit" data-submit-packet>
+              <span>Send to Communication Center</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 9h8.2L9 5.8 10.4 4l6 6-6 6L9 14.2l3.2-3.2H4V9Z" /></svg>
+            </button>
+          </div>
+
+          <p class="form-status" data-form-status data-state="idle" role="status" aria-live="polite">
+            Nothing has been stored or sent.
+          </p>
+        </form>
+
+        <aside class="context-rail" aria-label="Work packet guidance">
+          <section class="rail-card rail-card-dark">
+            <p class="eyebrow">02 / What happens next</p>
+            <h2>The dashboard receives context, not authority.</h2>
+            <ol class="handoff-steps">
+              <li><span>1</span><p><strong>Validate</strong>Jarvis checks the version, fields, lengths, and public-safety patterns.</p></li>
+              <li><span>2</span><p><strong>Transfer</strong>The packet enters session storage for this browser tab only.</p></li>
+              <li><span>3</span><p><strong>Review</strong>The Communication Center imports it as unreviewed and browser-local.</p></li>
+            </ol>
+          </section>
+
+          <section class="rail-card boundary-card">
+            <p class="eyebrow">Public boundary</p>
+            <h3>Use the form for structure, not source storage.</h3>
+            <div class="boundary-list">
+              <div><span>Include</span><p>Generic goals, public references, evidence rules, expected artifacts, functional review roles.</p></div>
+              <div><span>Keep out</span><p>Credentials, personal identifiers, local paths, private URLs, customer records, raw transcripts, unpublished data.</p></div>
+            </div>
+          </section>
+
+          <section class="rail-card auth-card">
+            <div class="auth-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-3 9v2H7a2 2 0 0 0-2 2v5h14v-5a2 2 0 0 0-2-2h-2v-2a5 5 0 0 0-3-9Zm0 2a3 3 0 0 1 1 5.8V13h-2V9.8A3 3 0 0 1 12 4Z" /></svg>
+            </div>
+            <div>
+              <p class="eyebrow">Administrator boundary</p>
+              <h3>Sign-in starts on the server.</h3>
+              <p>This page never decides who is an administrator. The sign-in action begins the server-controlled flow and grants no authority before a verified session returns.</p>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>ArchFlow Knowledge Operator</span>
+      <p>Research. Define. Review. Act through explicit gates.</p>
+      <a href="https://github.com/mcharniuk1-spec/archflow_b1_knowledge" target="_blank" rel="noopener noreferrer">Public repository</a>
+    </footer>
+
+    <script src="jarvis.js?v=20260811-v3-2" defer></script>
+  </body>
+</html>

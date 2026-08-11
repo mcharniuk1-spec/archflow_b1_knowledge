@@ -1,0 +1,99 @@
+{
+  "schema_version": "3.0",
+  "catalog_source": "project/system/contracts/role-catalog.json",
+  "selection_rule": "Select the smallest declared pack that covers control, making, independent review, and integration. A pack is a task contract, not an always-running crew.",
+  "workspace_modes": [
+    {
+      "id": "individual",
+      "label": "Individual workspace",
+      "binding": "One operator may coordinate several role contracts, but a high-risk maker contract and its reviewer contract remain separate.",
+      "parallel_branch_cap": 1,
+      "state_store": "browser-local draft plus downloaded review packet"
+    },
+    {
+      "id": "team",
+      "label": "Team handoff workspace",
+      "binding": "Different people or approved runtimes may hold different role contracts. Shared work moves through versioned packets, review, approved action, and readback.",
+      "parallel_branch_cap": 3,
+      "state_store": "versioned run envelope and reviewed handoff"
+    }
+  ],
+  "packs": [
+    {
+      "id": "research_to_decision",
+      "label": "Research to decision",
+      "stage": "research",
+      "role_ids": [
+        "admission_controller",
+        "requirements_and_market_research",
+        "source_and_context_operator",
+        "independent_reviewer",
+        "integrator"
+      ],
+      "maker_role_ids": [
+        "requirements_and_market_research",
+        "source_and_context_operator"
+      ],
+      "reviewer_role_id": "independent_reviewer",
+      "output": "source-linked research receipt with facts, interpretations, hypotheses, gaps, and the decision it supports",
+      "stop": "the source boundary fails, required evidence is missing, the reviewer becomes a maker, or the same evidence gap repeats twice"
+    },
+    {
+      "id": "definition_to_task_graph",
+      "label": "Definition to task graph",
+      "stage": "define",
+      "role_ids": [
+        "admission_controller",
+        "goal_and_architecture_operator",
+        "task_and_handoff_planner",
+        "action_validator",
+        "independent_reviewer",
+        "integrator"
+      ],
+      "maker_role_ids": [
+        "goal_and_architecture_operator",
+        "task_and_handoff_planner"
+      ],
+      "reviewer_role_id": "independent_reviewer",
+      "output": "observable goal, bounded task graph, sole-writer ownership, skills, attempts, gates, and acceptance checks",
+      "stop": "the goal is not testable, a target has no sole writer, an approval boundary is missing, or attempt and budget caps are absent"
+    },
+    {
+      "id": "responsive_product_change",
+      "label": "Responsive product change",
+      "stage": "act",
+      "role_ids": [
+        "admission_controller",
+        "product_packaging_engineer",
+        "implementation_maker",
+        "verifier",
+        "independent_reviewer",
+        "integrator"
+      ],
+      "maker_role_ids": [
+        "product_packaging_engineer",
+        "implementation_maker"
+      ],
+      "reviewer_role_id": "independent_reviewer",
+      "output": "bounded implementation, deterministic checks, responsive evidence, review verdict, and release handoff",
+      "stop": "a file conflict, hidden overflow, unsupported claim, failed safety gate, or changed release authority is detected"
+    },
+    {
+      "id": "reviewed_memory_update",
+      "label": "Reviewed memory update",
+      "stage": "remember",
+      "role_ids": [
+        "admission_controller",
+        "knowledge_librarian",
+        "independent_reviewer",
+        "integrator"
+      ],
+      "maker_role_ids": [
+        "knowledge_librarian"
+      ],
+      "reviewer_role_id": "independent_reviewer",
+      "output": "solution or action-memory candidate with provenance, reuse boundary, review, freshness, and supersession decision",
+      "stop": "the candidate contains raw personal input, a credential, unsupported model output, missing provenance, or no independent review"
+    }
+  ]
+}

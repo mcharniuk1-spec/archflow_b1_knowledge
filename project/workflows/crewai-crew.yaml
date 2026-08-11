@@ -1,0 +1,172 @@
+name: archflow_actionable_agents_crew
+status: portable_provider_disabled_contract
+runtime: crewai_optional_local_runtime
+
+purpose: >
+  Declare a bounded subset of the canonical ArchFlow roles for the
+  Research-to-Define-to-Act path. The file describes responsibilities, task
+  order, outputs, and review separation. It does not launch agents, select a
+  model, call a provider, use the network, or write to an external system.
+
+process: sequential_contract
+memory: false
+cache: false
+planning: false
+
+role_separation:
+  controller: admission_controller
+  maker: implementation_maker
+  verifier: verifier
+  independent_reviewer: independent_reviewer
+  integrator: integrator
+  external_action_preparer: release_operator
+  rule: the_maker_cannot_approve_its_own_substantial_output
+
+agents:
+  admission_controller:
+    role: Non-executing state and stop-rule controller
+    goal: Classify scope, monitor evidence and attempt limits, then accept, repair, split, escalate, or stop.
+    forbidden_actions:
+      - edit_artifacts
+      - call_providers
+      - write_externally
+
+  action_validator:
+    role: Source and tool boundary analyst
+    goal: Verify approved inputs, declared tools, provider-disabled state, and execution authority before work begins.
+
+  requirements_and_market_research:
+    role: Evidence framer
+    goal: Frame the decision, research questions, required evidence, and unresolved gaps.
+
+  source_and_context_operator:
+    role: Evidence grounding analyst
+    goal: Retrieve exact-manifest sources and separate facts, interpretations, hypotheses, conflicts, and gaps.
+
+  goal_and_architecture_operator:
+    role: Goal contract designer
+    goal: Define the observable outcome, acceptance criteria, verifier, budget, and kill conditions.
+
+  task_and_handoff_planner:
+    role: Task graph designer
+    goal: Turn the accepted goal into ordered tasks, ownership, dependencies, and completion checks.
+
+  product_packaging_engineer:
+    role: Product change contract designer
+    goal: Translate the accepted design into a bounded, testable product-change packet.
+
+  implementation_maker:
+    role: Scoped artifact maker
+    goal: Produce only the local artifact authorized by the accepted task contract.
+    forbidden_actions:
+      - expand_scope
+      - approve_own_output
+      - call_providers
+      - write_externally
+
+  verifier:
+    role: Deterministic result verifier
+    goal: Run declared acceptance, responsiveness, boundary, and completion checks independently from the maker.
+
+  independent_reviewer:
+    role: Independent evidence and safety reviewer
+    goal: Approve, revise, or block after reading the maker artifact and verifier evidence.
+
+  knowledge_librarian:
+    role: Reviewed memory maintainer
+    goal: Prepare reusable solution memory or an exact action receipt only after independent approval.
+
+  integrator:
+    role: Sole-writer integrator
+    goal: Reconcile accepted artifacts and prepare the final internal completion packet.
+
+  release_operator:
+    role: External-action packet preparer
+    goal: Prepare a reviewable release or writeback packet without performing the external action.
+    forbidden_actions:
+      - publish_without_separate_approval
+      - expose_credentials
+
+tasks:
+  - id: classify_execution
+    stage: intake
+    agent: admission_controller
+    expected_output: project/local/run-packets/<run-id>/classification.json
+  - id: validate_inputs
+    stage: intake
+    agent: action_validator
+    expected_output: project/local/run-packets/<run-id>/source-boundary.json
+  - id: frame_objective
+    stage: Frame
+    agent: requirements_and_market_research
+    expected_output: project/local/run-packets/<run-id>/frame.json
+  - id: ground_evidence
+    stage: Ground
+    agent: source_and_context_operator
+    expected_output: project/local/run-packets/<run-id>/evidence.json
+  - id: define_goal
+    stage: Design
+    agent: goal_and_architecture_operator
+    expected_output: project/local/run-packets/<run-id>/goal-contract.json
+  - id: design_task_graph
+    stage: Design
+    agent: task_and_handoff_planner
+    expected_output: project/local/run-packets/<run-id>/task-graph.json
+  - id: design_product_change
+    stage: Design
+    agent: product_packaging_engineer
+    expected_output: project/local/run-packets/<run-id>/product-change-contract.json
+  - id: execute_bounded_action
+    stage: Execute
+    agent: implementation_maker
+    expected_output: project/local/run-packets/<run-id>/artifact.json
+  - id: verify_result
+    stage: Verify
+    agent: verifier
+    expected_output: project/local/run-packets/<run-id>/verification.json
+  - id: independent_review
+    stage: Verify
+    agent: independent_reviewer
+    expected_output: project/local/run-packets/<run-id>/review.json
+  - id: prepare_memory_candidate
+    stage: Remember
+    agent: knowledge_librarian
+    expected_output: project/local/run-packets/<run-id>/memory-candidate.json
+  - id: integrate_result
+    stage: handoff
+    agent: integrator
+    expected_output: project/local/run-packets/<run-id>/handout.json
+  - id: prepare_optional_external_action
+    stage: handoff
+    agent: release_operator
+    expected_output: project/local/run-packets/<run-id>/external-action-request.json
+
+execution_policy:
+  default_mode: contract_only_no_automatic_execution
+  provider_mode: disabled
+  network_calls: 0
+  external_writes: 0
+  state_root: project/local/run-packets
+  canonical_role_catalog: project/database/role-catalog.json
+  role_pack_registry: project/agents/actionable-role-packs.json
+  exact_retrieval_manifest: project/dashboard/corpus-manifest.json
+  exact_retrieval_manifest_schema: "3.0"
+  activation_requires:
+    - explicit_operator_action
+    - isolated_dependency_install
+    - public_fixture_pass
+    - bounded_task_contract
+    - provider_disabled_runtime
+    - independent_review
+  external_effect_requires:
+    - separate_target_specific_approval
+    - rollback_plan
+    - post_action_readback
+
+stop_conditions:
+  - source_boundary_fails
+  - role_or_file_ownership_conflicts
+  - maker_reviewer_separation_is_missing
+  - required_evidence_is_missing
+  - attempt_or_revision_cap_is_reached
+  - provider_network_or_external_write_is_requested

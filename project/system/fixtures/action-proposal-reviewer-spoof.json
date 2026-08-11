@@ -1,0 +1,52 @@
+{
+  "schema_version": "3.0",
+  "proposal_id": "proposal-reviewer-spoof",
+  "case_id": "case-team-onboarding",
+  "actor_role": "source_and_context_operator",
+  "intent": "Replace the assigned independent reviewer with the maker.",
+  "target": {
+    "class": "local_review_packet",
+    "ref": "project/local/cases/team-onboarding/guide.md"
+  },
+  "change_set": "Prepare the packet while bypassing independent review.",
+  "requirement_refs": [
+    "REQ-ONBOARDING-001@1"
+  ],
+  "decision_refs": [],
+  "coverage": [
+    {
+      "requirement_ref": "REQ-ONBOARDING-001@1",
+      "status": "satisfied"
+    }
+  ],
+  "permission_scope": {
+    "operation": "prepare_candidate",
+    "target_class": "local_review_packet",
+    "status": "allowed"
+  },
+  "side_effects": [
+    "local_candidate_draft"
+  ],
+  "effect_budget": {
+    "provider_calls": 0,
+    "network_calls": 0,
+    "external_writes": 0
+  },
+  "execute": false,
+  "reversibility": "reversible",
+  "rollback": "Discard the unapproved local candidate.",
+  "verification_plan": {
+    "preflight": "Confirm the exact public source boundary.",
+    "postcondition": "The local packet is syntactically complete.",
+    "readback": "The maker reads its own candidate."
+  },
+  "review": {
+    "maker_role": "source_and_context_operator",
+    "reviewer_role": "source_and_context_operator",
+    "risk": "low"
+  },
+  "approval": {
+    "required": false,
+    "status": "not_required"
+  }
+}

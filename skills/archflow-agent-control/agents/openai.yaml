@@ -1,0 +1,4 @@
+interface:
+  display_name: "ArchFlow Agent Control"
+  short_description: "Design bounded, review-gated work packets"
+  default_prompt: "Use $archflow-agent-control to turn this approved evidence packet into a bounded role and review contract."

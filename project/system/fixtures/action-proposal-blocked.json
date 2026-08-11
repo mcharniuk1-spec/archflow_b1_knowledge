@@ -1,0 +1,52 @@
+{
+  "schema_version": "3.0",
+  "proposal_id": "proposal-onboarding-send",
+  "case_id": "case-team-onboarding",
+  "actor_role": "source_and_context_operator",
+  "intent": "Send an onboarding message without a reviewed packet or approval.",
+  "target": {
+    "class": "external_communication",
+    "ref": "synthetic-recipient"
+  },
+  "change_set": "Send an external message from a stale requirement.",
+  "requirement_refs": [
+    "REQ-ONBOARDING-OLD@1"
+  ],
+  "decision_refs": [],
+  "coverage": [
+    {
+      "requirement_ref": "REQ-ONBOARDING-OLD@1",
+      "status": "satisfied"
+    }
+  ],
+  "permission_scope": {
+    "operation": "send",
+    "target_class": "external_communication",
+    "status": "not_allowed"
+  },
+  "side_effects": [
+    "external_message"
+  ],
+  "effect_budget": {
+    "provider_calls": 0,
+    "network_calls": 0,
+    "external_writes": 0
+  },
+  "execute": false,
+  "reversibility": "irreversible",
+  "rollback": "No reliable rollback exists.",
+  "verification_plan": {
+    "preflight": "No valid preflight is available.",
+    "postcondition": "The unapproved message would leave the local boundary.",
+    "readback": "None."
+  },
+  "review": {
+    "maker_role": "source_and_context_operator",
+    "reviewer_role": "source_and_context_operator",
+    "risk": "high"
+  },
+  "approval": {
+    "required": true,
+    "status": "missing"
+  }
+}

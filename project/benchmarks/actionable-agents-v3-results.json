@@ -1,0 +1,187 @@
+{
+  "context_input": {
+    "baseline_bytes": 1055632,
+    "candidate_bytes": 15001,
+    "fixture_count": 4,
+    "hits_at_5": 4,
+    "reduction": 0.9857895554511421,
+    "results": [
+      {
+        "baseline_bytes": 263908,
+        "candidate_bytes": 3127,
+        "expected_source": "project/context/retrieval/source-boundary-policy.yaml",
+        "expected_source_hit_at_5": true,
+        "id": "R01",
+        "source_paths": [
+          "project/context/retrieval/source-boundary-policy.yaml",
+          "project/system/contracts/knowledge-crew-config.json",
+          "project/context/cag-core.yaml",
+          "project/workflows/llamaindex-rag.yaml"
+        ]
+      },
+      {
+        "baseline_bytes": 263908,
+        "candidate_bytes": 3955,
+        "expected_source": "project/database/run-envelope.schema.json",
+        "expected_source_hit_at_5": true,
+        "id": "R02",
+        "source_paths": [
+          "project/database/run-envelope.schema.json",
+          "project/database/run-envelope.schema.json",
+          "project/loops/loop-state.schema.yaml",
+          "project/database/runtime-event.schema.json",
+          "project/database/run-envelope.schema.json"
+        ]
+      },
+      {
+        "baseline_bytes": 263908,
+        "candidate_bytes": 3967,
+        "expected_source": "project/agents/actionable-role-packs.json",
+        "expected_source_hit_at_5": true,
+        "id": "R03",
+        "source_paths": [
+          "project/agents/actionable-role-packs.json",
+          "project/agents/skills-by-agent.md",
+          "project/workflows/crewai-crew.yaml",
+          "project/agents/README.md",
+          "project/system/contracts/knowledge-crew-config.json"
+        ]
+      },
+      {
+        "baseline_bytes": 263908,
+        "candidate_bytes": 3952,
+        "expected_source": "project/config/provider-registry.json",
+        "expected_source_hit_at_5": true,
+        "id": "R04",
+        "source_paths": [
+          "project/config/provider-registry.json",
+          "project/config/provider-registry.json",
+          "project/config/provider-registry.json",
+          "project/config/provider-registry.json",
+          "project/config/provider-registry.json"
+        ]
+      }
+    ]
+  },
+  "external_writes": 0,
+  "fixture_id": "actionable-agents-v3-public-core",
+  "fixture_sha256": "c16813af5cdb8eb67757f67836b4a262b99c5e8d18cd04c6dc56d0c6793185dc",
+  "limitations": [
+    "No provider was called and no external system was written.",
+    "The context comparator deliberately uses a full-manifest packet and is not a claim about a prior release.",
+    "All percentages are fixture-specific and must be rerun when the manifest, roles, fixtures, or selection logic changes."
+  ],
+  "measured_at": "2026-08-11T19:56:55+00:00",
+  "provider_calls": 0,
+  "publication_metrics": [
+    {
+      "comparator": "Top-five lexical context chunks versus all 4 full-manifest packets; 15,001 vs 1,055,632 UTF-8 bytes.",
+      "label": "Context input",
+      "limitation": "Input-byte measurement on fixed synthetic tasks; not model-exact tokens, billed tokens, durable-memory size, latency, or answer quality.",
+      "value": "98.6% lower"
+    },
+    {
+      "comparator": "Smallest declared role packs versus all-role fan-out; 21 vs 84 role slots across 4 tasks.",
+      "label": "Role activation",
+      "limitation": "Contract selection measurement; not wall-clock speed, labor savings, or production throughput.",
+      "value": "75.0% fewer"
+    },
+    {
+      "comparator": "Expected canonical source present in the deterministic lexical top five for each fixed query.",
+      "label": "Source recall",
+      "limitation": "Source-hit fixture only; not semantic answer accuracy or representative production recall.",
+      "value": "4/4"
+    },
+    {
+      "comparator": "Expected accept/reject decision for one valid and seven unsafe or incomplete packets.",
+      "label": "Semantic gates",
+      "limitation": "Bounded abuse fixtures; not a real-world safety rate or proof against unknown attacks.",
+      "value": "8/8"
+    }
+  ],
+  "role_activation": {
+    "baseline_role_slots": 84,
+    "candidate_role_slots": 21,
+    "fixture_count": 4,
+    "reduction": 0.75,
+    "results": [
+      {
+        "baseline_role_slots": 21,
+        "candidate_role_slots": 5,
+        "pack_id": "research_to_decision"
+      },
+      {
+        "baseline_role_slots": 21,
+        "candidate_role_slots": 6,
+        "pack_id": "definition_to_task_graph"
+      },
+      {
+        "baseline_role_slots": 21,
+        "candidate_role_slots": 6,
+        "pack_id": "responsive_product_change"
+      },
+      {
+        "baseline_role_slots": 21,
+        "candidate_role_slots": 4,
+        "pack_id": "reviewed_memory_update"
+      }
+    ],
+    "role_catalog_count": 21
+  },
+  "schema_version": "3.0",
+  "semantic_gates": {
+    "fixture_count": 8,
+    "passed": 8,
+    "results": [
+      {
+        "expected": "accept",
+        "id": "G01",
+        "observed": "accept",
+        "pass": true
+      },
+      {
+        "expected": "reject",
+        "id": "G02",
+        "observed": "reject",
+        "pass": true
+      },
+      {
+        "expected": "reject",
+        "id": "G03",
+        "observed": "reject",
+        "pass": true
+      },
+      {
+        "expected": "reject",
+        "id": "G04",
+        "observed": "reject",
+        "pass": true
+      },
+      {
+        "expected": "reject",
+        "id": "G05",
+        "observed": "reject",
+        "pass": true
+      },
+      {
+        "expected": "reject",
+        "id": "G06",
+        "observed": "reject",
+        "pass": true
+      },
+      {
+        "expected": "reject",
+        "id": "G07",
+        "observed": "reject",
+        "pass": true
+      },
+      {
+        "expected": "reject",
+        "id": "G08",
+        "observed": "reject",
+        "pass": true
+      }
+    ]
+  },
+  "status": "pass"
+}

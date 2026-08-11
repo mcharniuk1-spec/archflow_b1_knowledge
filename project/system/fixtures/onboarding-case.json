@@ -1,0 +1,198 @@
+{
+  "schema_version": "3.0",
+  "case_id": "case-team-onboarding",
+  "workspace_mode": "team",
+  "objective": "Prepare a source-linked first-task guide for a new contributor.",
+  "decision_supported": "Whether the first task is ready for independent review.",
+  "workflow_state": "design",
+  "state_revision": "1",
+  "source_boundary": {
+    "manifest": "project/dashboard/corpus-manifest.json",
+    "allowed_sources": [
+      "docs/onboarding-knowledge-agent.md",
+      "project/agents/actionable-role-packs.json"
+    ],
+    "excluded_classes": [
+      "credentials",
+      "identity_values",
+      "private_material",
+      "unlisted_files"
+    ],
+    "status": "pass"
+  },
+  "role_pack_id": "research_to_decision",
+  "roles": {
+    "makers": [
+      "requirements_and_market_research",
+      "source_and_context_operator"
+    ],
+    "reviewer": "independent_reviewer",
+    "integrator": "integrator"
+  },
+  "authority": {
+    "allowed_actions": [
+      {
+        "actor_role": "source_and_context_operator",
+        "operation": "prepare_candidate",
+        "target_class": "local_review_packet",
+        "target_prefixes": [
+          "project/local/cases/team-onboarding/"
+        ],
+        "approval_required": false
+      }
+    ],
+    "forbidden_operations": [
+      "deploy",
+      "external_write",
+      "provider_call",
+      "send"
+    ]
+  },
+  "requirements": [
+    {
+      "id": "REQ-ONBOARDING-001",
+      "version": "1",
+      "state": "approved",
+      "statement": "The guide names its approved sources, first output, reviewer, checks, and escalation path.",
+      "acceptance_checks": [
+        "source paths visible",
+        "maker differs from reviewer",
+        "next safe action explicit"
+      ],
+      "evidence_refs": [
+        "docs/onboarding-knowledge-agent.md"
+      ]
+    }
+  ],
+  "role_task_bindings": [
+    {
+      "schema_version": "3.0",
+      "binding_id": "binding-admission-controller",
+      "case_id": "case-team-onboarding",
+      "role_pack_id": "research_to_decision",
+      "role_id": "admission_controller",
+      "owned_output": "admission_receipt",
+      "allowed_skills": [
+        "archflow-agent-control"
+      ],
+      "allowed_tools": [
+        "read_contracts",
+        "run_deterministic_checks",
+        "draft_local_artifact"
+      ],
+      "permission_mode": "read_draft_only",
+      "reviewer_role_id": "independent_reviewer",
+      "exact_targets": [],
+      "stop_conditions": [
+        "source boundary or authority is not explicit"
+      ]
+    },
+    {
+      "schema_version": "3.0",
+      "binding_id": "binding-requirements-and-market-research",
+      "case_id": "case-team-onboarding",
+      "role_pack_id": "research_to_decision",
+      "role_id": "requirements_and_market_research",
+      "owned_output": "evidence_requirement_packet",
+      "allowed_skills": [
+        "archflow-knowledge-service"
+      ],
+      "allowed_tools": [
+        "read_contracts",
+        "read_allowlisted_sources",
+        "query_bounded_retrieval",
+        "draft_local_artifact"
+      ],
+      "permission_mode": "read_draft_only",
+      "reviewer_role_id": "independent_reviewer",
+      "exact_targets": [],
+      "stop_conditions": [
+        "required public evidence is missing or contradictory"
+      ]
+    },
+    {
+      "schema_version": "3.0",
+      "binding_id": "binding-source-and-context-operator",
+      "case_id": "case-team-onboarding",
+      "role_pack_id": "research_to_decision",
+      "role_id": "source_and_context_operator",
+      "owned_output": "perception_capsule",
+      "allowed_skills": [
+        "archflow-knowledge-service"
+      ],
+      "allowed_tools": [
+        "read_contracts",
+        "read_allowlisted_sources",
+        "query_bounded_retrieval",
+        "query_structural_index",
+        "draft_local_artifact"
+      ],
+      "permission_mode": "read_draft_only",
+      "reviewer_role_id": "independent_reviewer",
+      "exact_targets": [],
+      "stop_conditions": [
+        "a source is outside the exact manifest"
+      ]
+    },
+    {
+      "schema_version": "3.0",
+      "binding_id": "binding-independent-reviewer",
+      "case_id": "case-team-onboarding",
+      "role_pack_id": "research_to_decision",
+      "role_id": "independent_reviewer",
+      "owned_output": "independent_review_verdict",
+      "allowed_skills": [
+        "outquestions"
+      ],
+      "allowed_tools": [
+        "read_contracts",
+        "read_allowlisted_sources",
+        "run_deterministic_checks",
+        "run_browser_qa",
+        "write_review_verdict"
+      ],
+      "permission_mode": "review_only_frozen_candidate",
+      "reviewer_role_id": "@case_owner",
+      "exact_targets": [],
+      "stop_conditions": [
+        "the reviewer becomes a maker"
+      ]
+    },
+    {
+      "schema_version": "3.0",
+      "binding_id": "binding-integrator",
+      "case_id": "case-team-onboarding",
+      "role_pack_id": "research_to_decision",
+      "role_id": "integrator",
+      "owned_output": "integrated_case_handoff",
+      "allowed_skills": [
+        "arcagcom",
+        "archflow-agent-control",
+        "task-handout"
+      ],
+      "allowed_tools": [
+        "read_contracts",
+        "edit_claimed_targets",
+        "run_deterministic_checks",
+        "write_run_receipt"
+      ],
+      "permission_mode": "local_mutation_exact_targets",
+      "reviewer_role_id": "independent_reviewer",
+      "exact_targets": [
+        "project/local/cases/team-onboarding/review-packet.json"
+      ],
+      "stop_conditions": [
+        "a claimed target conflicts or the review verdict is missing"
+      ]
+    }
+  ],
+  "gaps": [],
+  "receipts": [
+    {
+      "kind": "admission",
+      "artifact_ref": "project/local/cases/team-onboarding/admission.json",
+      "status": "planned"
+    }
+  ],
+  "memory_decision": "working_only"
+}

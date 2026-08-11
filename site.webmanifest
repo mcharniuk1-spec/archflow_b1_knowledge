@@ -1,0 +1,21 @@
+{
+  "name": "ArchFlow",
+  "short_name": "ArchFlow",
+  "description": "A local-first knowledge and agent operating kit for source-grounded work, independent review, exact receipts, and maintained memory.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf3ef",
+  "theme_color": "#151211",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

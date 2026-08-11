@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 72" role="img" aria-labelledby="title">
+  <title id="title">ArchFlow mark</title>
+  <path d="M12 68V32C12 16.536 24.536 4 40 4s28 12.536 28 28v36" fill="none" stroke="#A03535" stroke-width="10" stroke-linecap="butt" stroke-linejoin="round"/>
+  <path d="M49 68V41c0-10.493 8.507-19 19-19s19 8.507 19 19v27" fill="none" stroke="#0D0606" stroke-width="8" stroke-linecap="butt" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,114 @@
+{
+  "schema_version": "3.0",
+  "default_provider": "none",
+  "default_observability": "off",
+  "credential_policy": "Only empty server-side environment-variable names are public. Values and presence are never returned by health routes, stored in browser state, exported, logged, or committed.",
+  "truth_states": [
+    "built_in_default",
+    "documented_optional_adapter",
+    "observability_only"
+  ],
+  "adapters": [
+    {
+      "id": "none",
+      "label": "No model provider",
+      "state": "built_in_default",
+      "purpose": "Zero-key validation, dashboard generation, exact-manifest retrieval, review packets, and deterministic checks.",
+      "secret_names": [],
+      "browser_access": false,
+      "activation_requirements": [],
+      "implementation": "public core",
+      "documentation_url": "docs/quickstart.md"
+    },
+    {
+      "id": "ollama",
+      "label": "Ollama local",
+      "state": "documented_optional_adapter",
+      "purpose": "Possible loopback model adapter after an endpoint, model, privacy, fallback, and task-specific approval check.",
+      "secret_names": [],
+      "browser_access": false,
+      "activation_requirements": [
+        "separate adapter implementation",
+        "loopback-only endpoint proof",
+        "approved local model and input boundary",
+        "provider-disabled fallback",
+        "contract tests and independent review"
+      ],
+      "implementation": "not implemented in the public core",
+      "documentation_url": "https://docs.ollama.com/api/introduction"
+    },
+    {
+      "id": "openrouter",
+      "label": "OpenRouter",
+      "state": "documented_optional_adapter",
+      "purpose": "Possible server-side routing adapter; no provider execution path ships in the public core.",
+      "secret_names": ["OPENROUTER_API_KEY"],
+      "browser_access": false,
+      "activation_requirements": [
+        "separate adapter implementation",
+        "authenticated administrator session",
+        "single-use request authorization",
+        "provider-enforced or durable budget control",
+        "approved input and output boundary",
+        "contract tests and independent review"
+      ],
+      "implementation": "not implemented",
+      "documentation_url": "https://openrouter.ai/docs/cookbook/get-started/quickstart"
+    },
+    {
+      "id": "openai",
+      "label": "OpenAI direct",
+      "state": "documented_optional_adapter",
+      "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+      "secret_names": ["OPENAI_API_KEY"],
+      "browser_access": false,
+      "activation_requirements": ["separate adapter implementation", "input and budget gates", "contract tests", "independent review"],
+      "implementation": "not implemented",
+      "documentation_url": "https://platform.openai.com/docs/quickstart/make-your-first-api-request"
+    },
+    {
+      "id": "anthropic",
+      "label": "Anthropic direct",
+      "state": "documented_optional_adapter",
+      "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+      "secret_names": ["ANTHROPIC_API_KEY"],
+      "browser_access": false,
+      "activation_requirements": ["separate adapter implementation", "input and budget gates", "contract tests", "independent review"],
+      "implementation": "not implemented",
+      "documentation_url": "https://platform.claude.com/docs/en/get-started"
+    },
+    {
+      "id": "gemini",
+      "label": "Google Gemini direct",
+      "state": "documented_optional_adapter",
+      "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+      "secret_names": ["GEMINI_API_KEY"],
+      "browser_access": false,
+      "activation_requirements": ["separate adapter implementation", "restricted server-side key", "input and budget gates", "contract tests", "independent review"],
+      "implementation": "not implemented",
+      "documentation_url": "https://ai.google.dev/gemini-api/docs/api-key"
+    },
+    {
+      "id": "mistral",
+      "label": "Mistral direct",
+      "state": "documented_optional_adapter",
+      "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+      "secret_names": ["MISTRAL_API_KEY"],
+      "browser_access": false,
+      "activation_requirements": ["separate adapter implementation", "input and budget gates", "contract tests", "independent review"],
+      "implementation": "not implemented",
+      "documentation_url": "https://docs.mistral.ai/getting-started/quickstarts/developer/first-api-request"
+    },
+    {
+      "id": "langsmith",
+      "label": "LangSmith observability",
+      "state": "observability_only",
+      "purpose": "Possible tracing for an approved sanitized runtime; it is not a model provider.",
+      "secret_names": ["LANGSMITH_API_KEY"],
+      "browser_access": false,
+      "activation_requirements": ["explicit tracing flag", "sanitized trace contract", "workspace and retention review"],
+      "implementation": "off by default",
+      "documentation_url": "https://docs.langchain.com/langsmith/create-account-api-key"
+    }
+  ]
+}

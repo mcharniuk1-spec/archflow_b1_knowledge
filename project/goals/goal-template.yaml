@@ -1,0 +1,42 @@
+goal_id: replace_with_stable_goal_id
+objective: Replace with one observable outcome and the decision it supports.
+done_condition:
+  - Replace with a measurable acceptance statement.
+evidence_state: planned
+lifecycle_state: draft
+accountable_owner_role: lead_integrator
+independent_verifier_role: independent_reviewer
+authority_boundary:
+  - exact_caller_approved_targets_only
+forbidden_actions:
+  - provider_calls_without_separate_activation
+  - external_write_without_exact_target_authority_and_readback
+allowed_corpus:
+  - project/dashboard/corpus-manifest.json
+task_graph_ref: project/local/cases/CASE_ID/task-graph.json
+artifacts_required:
+  - run_envelope
+  - verification_packet
+  - review_handoff
+acceptance_checks:
+  - public_safety_scan
+  - deterministic_contract_checks
+  - independent_review
+max_attempts_per_item: 3
+max_revision_loops: 2
+max_parallel_branches: 3
+token_budget: unset
+time_budget_minutes: unset
+cost_budget: 0
+stop_conditions:
+  - no_new_evidence_after_two_repairs
+  - source_or_authority_boundary_unclear
+kill_conditions:
+  - destructive_or_unapproved_external_side_effect
+  - objective_superseded
+rollback_or_recovery: Restore the last reviewed checkpoint without deleting user work.
+last_checkpoint_ref: unset
+proof_refs: []
+gaps: []
+next_action: Complete admission and move the lifecycle state to ready.
+updated_at: "1970-01-01T00:00:00Z"

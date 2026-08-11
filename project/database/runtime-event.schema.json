@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchFlow sanitized runtime event",
+  "description": "A public-safe append-only projection of one canonical run envelope. A runtime feed must emit this shape before the dashboard may show live execution state.",
+  "type": "object",
+  "required": ["schema_version", "event_id", "run_id", "run_envelope_hash", "state_revision", "phase", "workflow_kind", "node_id", "state", "observed_at", "evidence_ref", "authority_scope", "writeback_state"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "event_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "parent_event_id": {"type": "string"},
+    "run_envelope_hash": {"type": "string", "minLength": 1},
+    "state_revision": {"type": "integer", "minimum": 0},
+    "phase": {"enum": ["intake", "research", "define", "act", "verify", "remember", "handoff"]},
+    "workflow_kind": {"enum": ["service", "control"]},
+    "node_id": {"type": "string", "minLength": 1},
+    "state": {"enum": ["queued", "active", "waiting_approval", "blocked", "completed", "failed", "stale", "unavailable"]},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "evidence_ref": {"type": "string", "description": "Public-safe artifact reference; no private URL or raw trace."},
+    "authority_scope": {"type": "string"},
+    "writeback_state": {"enum": ["disabled", "approval_required", "not_requested", "verified"]},
+    "reason": {"type": "string"},
+    "artifact_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

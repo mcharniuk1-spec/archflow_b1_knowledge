@@ -1,0 +1,8 @@
+# Python 3.12 candidate resolution verified on 2026-08-11.
+# Use through: python3 project/scripts/setup-local.py --profile validation --locked --install --verify
+annotated-types==0.7.0
+pydantic==2.12.5
+pydantic-core==2.41.5
+pyyaml==6.0.3
+typing-extensions==4.15.0
+typing-inspection==0.4.2

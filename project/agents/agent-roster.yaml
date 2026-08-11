@@ -1,0 +1,200 @@
+schema_version: "3.0"
+status: canonical_role_projection
+catalog_source: project/system/contracts/role-catalog.json
+role_pack_source: project/agents/actionable-role-packs.json
+
+authority:
+  rule: role_assignment_does_not_grant_authority
+  effective_authority: case_authority_intersected_with_role_ceiling_runtime_capability_exact_targets_and_denials
+  provider_default: disabled
+  external_action_default: disabled
+  self_approval: forbidden_for_high_risk_work
+
+skill_packages:
+  source: skills/*/SKILL.md
+  distinction: listed_names_are_portable_packages_plain_capability_phrases_are_methods_only
+  ids:
+    - arcagcom
+    - archflow-agent-control
+    - archflow-architecture-operator
+    - archflow-e1-runtime-guard
+    - archflow-knowledge-service
+    - archflow-task-breakdown
+    - humanize-writing
+    - outquestions
+    - priority-task-operator
+    - task-handout
+
+agents:
+  goal_and_architecture_operator:
+    title: Goal and Architecture Operator
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [archflow-architecture-operator]
+    role_pack_ids: [definition_to_task_graph]
+    handoff_to: independent_reviewer
+
+  admission_controller:
+    title: Admission Controller
+    lane: controller
+    permission_mode: read_draft_only
+    skill_packages: [archflow-agent-control]
+    role_pack_ids: [research_to_decision, definition_to_task_graph, responsive_product_change, reviewed_memory_update]
+    handoff_to: action_validator
+
+  source_and_context_operator:
+    title: Source and Context Operator
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [archflow-knowledge-service]
+    role_pack_ids: [research_to_decision]
+    handoff_to: independent_reviewer
+
+  requirements_and_market_research:
+    title: Requirements and Market Research
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [archflow-knowledge-service]
+    role_pack_ids: [research_to_decision]
+    handoff_to: independent_reviewer
+
+  onboarding_guide:
+    title: Onboarding Guide
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [archflow-knowledge-service]
+    role_pack_ids: []
+    handoff_to: action_validator
+
+  task_and_handoff_planner:
+    title: Task and Handoff Planner
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [archflow-task-breakdown, priority-task-operator, task-handout]
+    role_pack_ids: [definition_to_task_graph]
+    handoff_to: action_validator
+
+  positioning_and_copy_maker:
+    title: Positioning and Copy Maker
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [archflow-knowledge-service, humanize-writing]
+    role_pack_ids: []
+    handoff_to: independent_reviewer
+
+  qualification_and_channel_planner:
+    title: Qualification and Channel Planner
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [archflow-knowledge-service]
+    role_pack_ids: []
+    handoff_to: action_validator
+
+  designer:
+    title: Designer
+    lane: maker
+    permission_mode: local_mutation_exact_targets
+    skill_packages: []
+    role_pack_ids: []
+    handoff_to: verifier
+
+  implementation_maker:
+    title: Implementation Maker
+    lane: maker
+    permission_mode: local_mutation_exact_targets
+    skill_packages: [arcagcom]
+    role_pack_ids: [responsive_product_change]
+    handoff_to: action_validator
+
+  action_validator:
+    title: Action Validator
+    lane: validator
+    permission_mode: review_only_frozen_candidate
+    skill_packages: [archflow-agent-control, outquestions]
+    role_pack_ids: [definition_to_task_graph]
+    handoff_to: independent_reviewer
+
+  verifier:
+    title: Verifier
+    lane: verifier
+    permission_mode: verification_only_no_repair
+    skill_packages: [archflow-e1-runtime-guard]
+    role_pack_ids: [responsive_product_change]
+    handoff_to: independent_reviewer
+
+  independent_reviewer:
+    title: Independent Reviewer
+    lane: reviewer
+    permission_mode: review_only_frozen_candidate
+    skill_packages: [outquestions]
+    role_pack_ids: [research_to_decision, definition_to_task_graph, responsive_product_change, reviewed_memory_update]
+    handoff_to: "@case_owner"
+
+  knowledge_librarian:
+    title: Knowledge Librarian
+    lane: maker
+    permission_mode: knowledge_candidate_only
+    skill_packages: [archflow-knowledge-service, task-handout]
+    role_pack_ids: [reviewed_memory_update]
+    handoff_to: independent_reviewer
+
+  integrator:
+    title: Integrator
+    lane: integrator
+    permission_mode: local_mutation_exact_targets
+    skill_packages: [arcagcom, archflow-agent-control, task-handout]
+    role_pack_ids: [research_to_decision, definition_to_task_graph, responsive_product_change, reviewed_memory_update]
+    handoff_to: independent_reviewer
+
+  external_action_operator:
+    title: External Action Operator
+    lane: maker
+    permission_mode: external_action_exact_approval
+    skill_packages: [outquestions]
+    role_pack_ids: []
+    handoff_to: verifier
+
+  release_operator:
+    title: Release Operator
+    lane: maker
+    permission_mode: git_action_exact_approval
+    skill_packages: [archflow-e1-runtime-guard, task-handout]
+    role_pack_ids: []
+    handoff_to: action_validator
+
+  growth_and_outcome_analyst:
+    title: Growth and Outcome Analyst
+    lane: maker
+    permission_mode: read_draft_only
+    skill_packages: [outquestions]
+    role_pack_ids: []
+    handoff_to: independent_reviewer
+
+  observability_and_efficiency_observer:
+    title: Observability and Efficiency Observer
+    lane: observer
+    permission_mode: observation_only
+    skill_packages: [archflow-e1-runtime-guard, outquestions]
+    role_pack_ids: []
+    handoff_to: independent_reviewer
+
+  surface_projection_operator:
+    title: Surface Projection Operator
+    lane: maker
+    permission_mode: browser_local_only
+    skill_packages: [archflow-knowledge-service]
+    role_pack_ids: []
+    handoff_to: verifier
+
+  product_packaging_engineer:
+    title: Product Packaging Engineer
+    lane: maker
+    permission_mode: local_mutation_exact_targets
+    skill_packages: [archflow-architecture-operator, archflow-e1-runtime-guard]
+    role_pack_ids: [responsive_product_change]
+    handoff_to: action_validator
+
+selection:
+  rule: activate_the_smallest_role_pack_or_custom_role_set_that_covers_ownership_review_and_integration
+  individual: one_operator_may_coordinate_multiple_contracts_but_not_self_approve_high_risk_work
+  team: assign_one_writer_per_shared_target_and_version_each_handoff

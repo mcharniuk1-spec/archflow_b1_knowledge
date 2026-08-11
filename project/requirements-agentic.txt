@@ -1,0 +1,7 @@
+# Optional provider-disabled engineering runtime observed and reviewed on Python 3.12.
+# The static dashboard does not require these packages. Recheck and relock before upgrades.
+-r requirements-dev.txt
+langgraph==1.2.6
+crewai==1.15.0
+llama-index-core==0.14.23
+langsmith==0.9.2

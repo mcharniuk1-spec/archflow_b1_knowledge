@@ -1,0 +1,114 @@
+{
+  "schema_version": "3.0",
+  "status": "public_portable_provider_disabled",
+  "product_goal": "Help an individual or team turn approved evidence into a bounded decision, reviewed action, exact receipt, and maintained reusable knowledge.",
+  "controller": {
+    "case_key": "case_id",
+    "state_source": "project/system/contracts/operating-model.json",
+    "role_source": "project/system/contracts/role-catalog.json",
+    "role_pack_source": "project/agents/actionable-role-packs.json",
+    "provider_default": "none",
+    "writeback_default": "disabled",
+    "maximum_parallel_role_branches": 3,
+    "maximum_repairs_per_item": 2,
+    "stop_after_same_failure_without_new_evidence": 2
+  },
+  "layers": [
+    {
+      "id": "L1",
+      "name": "Case authority and scope",
+      "purpose": "Bind the objective, decision, authority, risks, done conditions, reviewer, and stop rules before retrieval.",
+      "primary_roles": ["goal_and_architecture_operator", "admission_controller"],
+      "output": "admitted_case"
+    },
+    {
+      "id": "L2",
+      "name": "Approved source spine",
+      "purpose": "Admit exact current public sources and exclude unlisted, private, identifying, or credential-bearing material.",
+      "primary_roles": ["source_and_context_operator", "knowledge_librarian"],
+      "output": "source_manifest_and_freshness_map"
+    },
+    {
+      "id": "L3",
+      "name": "Bounded context perception",
+      "purpose": "Combine controlled context, deterministic lexical retrieval, exact reads, contradictions, and gaps into one source-visible capsule.",
+      "primary_roles": ["source_and_context_operator"],
+      "output": "perception_capsule"
+    },
+    {
+      "id": "L4",
+      "name": "Adaptive role crew",
+      "purpose": "Select the smallest responsible role pack and bind each role to one output, capability ceiling, reviewer, and handoff.",
+      "primary_roles": ["task_and_handoff_planner", "integrator"],
+      "output": "role_and_handoff_plan"
+    },
+    {
+      "id": "L5",
+      "name": "Specialist research and delivery",
+      "purpose": "Produce a source-linked candidate without expanding authority or representing a draft as an action.",
+      "primary_roles": ["requirements_and_market_research", "positioning_and_copy_maker", "designer", "implementation_maker"],
+      "output": "reviewable_candidate"
+    },
+    {
+      "id": "L6",
+      "name": "State control, validation, and review",
+      "purpose": "Apply state transitions, attempt caps, deterministic checks, repair routes, interrupts, verification, and independent review.",
+      "primary_roles": ["action_validator", "verifier", "independent_reviewer"],
+      "output": "verdict_or_approval_wait"
+    },
+    {
+      "id": "L7",
+      "name": "Receipts, outcomes, and maintained knowledge",
+      "purpose": "Record exact results and readback, then promote only reviewed reusable meaning with lineage, freshness, and supersession.",
+      "primary_roles": ["knowledge_librarian", "growth_and_outcome_analyst", "observability_and_efficiency_observer", "release_operator"],
+      "output": "handoff_receipt_and_memory_decision"
+    }
+  ],
+  "frameworks": {
+    "langgraph": {
+      "role": "optional state-machine runtime for the canonical transitions",
+      "default": "provider_disabled",
+      "checkpointer": "none",
+      "interrupts": ["authority_change", "external_action", "irreversible_change", "material_contradiction"]
+    },
+    "crewai": {
+      "role": "optional materialization of the selected role and task contracts",
+      "default": "contract_only",
+      "memory": false,
+      "planning": false,
+      "delegation": false,
+      "maximum_parallel_tasks": 3
+    },
+    "llamaindex": {
+      "role": "optional framework import around the exact-manifest retrieval contract",
+      "default": "deterministic_lexical",
+      "manifest": "project/dashboard/corpus-manifest.json",
+      "chunk_size": 800,
+      "chunk_overlap": 120,
+      "top_k": 5,
+      "require_source_path": true,
+      "require_chunk_hash": true
+    },
+    "jarvis": {
+      "role": "browser work-packet composer",
+      "default": "provider_disabled",
+      "destination": "project/dashboard/index.html#communication",
+      "packet_in_url": false
+    }
+  },
+  "memory": {
+    "working_state": "browser_session_or_project_local_run_envelope",
+    "solution_schema": "project/database/solution-memory-record.schema.json",
+    "action_schema": "project/database/action-receipt.schema.json",
+    "promotion_rule": "reviewed_lineage_reuse_conditions_freshness_and_supersession_required",
+    "never_store": ["credentials", "identity_values", "raw_prompts", "unreviewed_transcripts", "provider_outputs_without_review"]
+  },
+  "dashboard_distribution": [
+    {"view": "Documentation", "job": "Explain the problem, loop, boundaries, and four schemas."},
+    {"view": "Project", "job": "Prepare one bounded case and review packet."},
+    {"view": "Roles & Skills", "job": "Select functional contracts and portable packages."},
+    {"view": "Setup", "job": "Separate zero-key core from optional gated integrations."},
+    {"view": "Evidence", "job": "Show fixtures, exact comparators, limitations, verdicts, and receipts."},
+    {"view": "Communication Center", "job": "Review and consume one Jarvis handoff without URL payloads."}
+  ]
+}

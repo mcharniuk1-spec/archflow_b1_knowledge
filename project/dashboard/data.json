@@ -1,0 +1,1857 @@
+{
+  "actionable_role_packs": {
+    "catalog_source": "project/system/contracts/role-catalog.json",
+    "packs": [
+      {
+        "id": "research_to_decision",
+        "label": "Research to decision",
+        "maker_role_ids": [
+          "requirements_and_market_research",
+          "source_and_context_operator"
+        ],
+        "output": "source-linked research receipt with facts, interpretations, hypotheses, gaps, and the decision it supports",
+        "reviewer_role_id": "independent_reviewer",
+        "role_ids": [
+          "admission_controller",
+          "requirements_and_market_research",
+          "source_and_context_operator",
+          "independent_reviewer",
+          "integrator"
+        ],
+        "stage": "research",
+        "stop": "the source boundary fails, required evidence is missing, the reviewer becomes a maker, or the same evidence gap repeats twice"
+      },
+      {
+        "id": "definition_to_task_graph",
+        "label": "Definition to task graph",
+        "maker_role_ids": [
+          "goal_and_architecture_operator",
+          "task_and_handoff_planner"
+        ],
+        "output": "observable goal, bounded task graph, sole-writer ownership, skills, attempts, gates, and acceptance checks",
+        "reviewer_role_id": "independent_reviewer",
+        "role_ids": [
+          "admission_controller",
+          "goal_and_architecture_operator",
+          "task_and_handoff_planner",
+          "action_validator",
+          "independent_reviewer",
+          "integrator"
+        ],
+        "stage": "define",
+        "stop": "the goal is not testable, a target has no sole writer, an approval boundary is missing, or attempt and budget caps are absent"
+      },
+      {
+        "id": "responsive_product_change",
+        "label": "Responsive product change",
+        "maker_role_ids": [
+          "product_packaging_engineer",
+          "implementation_maker"
+        ],
+        "output": "bounded implementation, deterministic checks, responsive evidence, review verdict, and release handoff",
+        "reviewer_role_id": "independent_reviewer",
+        "role_ids": [
+          "admission_controller",
+          "product_packaging_engineer",
+          "implementation_maker",
+          "verifier",
+          "independent_reviewer",
+          "integrator"
+        ],
+        "stage": "act",
+        "stop": "a file conflict, hidden overflow, unsupported claim, failed safety gate, or changed release authority is detected"
+      },
+      {
+        "id": "reviewed_memory_update",
+        "label": "Reviewed memory update",
+        "maker_role_ids": [
+          "knowledge_librarian"
+        ],
+        "output": "solution or action-memory candidate with provenance, reuse boundary, review, freshness, and supersession decision",
+        "reviewer_role_id": "independent_reviewer",
+        "role_ids": [
+          "admission_controller",
+          "knowledge_librarian",
+          "independent_reviewer",
+          "integrator"
+        ],
+        "stage": "remember",
+        "stop": "the candidate contains raw personal input, a credential, unsupported model output, missing provenance, or no independent review"
+      }
+    ],
+    "schema_version": "3.0",
+    "selection_rule": "Select the smallest declared pack that covers control, making, independent review, and integration. A pack is a task contract, not an always-running crew.",
+    "workspace_modes": [
+      {
+        "binding": "One operator may coordinate several role contracts, but a high-risk maker contract and its reviewer contract remain separate.",
+        "id": "individual",
+        "label": "Individual workspace",
+        "parallel_branch_cap": 1,
+        "state_store": "browser-local draft plus downloaded review packet"
+      },
+      {
+        "binding": "Different people or approved runtimes may hold different role contracts. Shared work moves through versioned packets, review, approved action, and readback.",
+        "id": "team",
+        "label": "Team handoff workspace",
+        "parallel_branch_cap": 3,
+        "state_store": "versioned run envelope and reviewed handoff"
+      }
+    ]
+  },
+  "boundaries": {
+    "browser_identity_storage": false,
+    "credential_presence_serialized": false,
+    "credential_values_serialized": false,
+    "external_writes": 0,
+    "personal_memory_indexed": false,
+    "project_runs_indexed": false,
+    "provider_calls": 0
+  },
+  "corpus": {
+    "document_count": 55,
+    "items": [
+      {
+        "bytes": 13855,
+        "path": "README.md",
+        "sha256": "22d99bc7c48e776161a56e5737aaeefeca44f8b26b33042a8b47134b3d9bf965",
+        "title": "ArchFlow Knowledge Operator"
+      },
+      {
+        "bytes": 1421,
+        "path": "SECURITY.md",
+        "sha256": "f84665dac0aa66634adc0861fb8f3c2686136b286d33c8242793a4ca99928759",
+        "title": "Security Policy"
+      },
+      {
+        "bytes": 8981,
+        "path": "docs/quickstart.md",
+        "sha256": "051bd878995a692da3e9e97785b4c13d582808cb57bd8f0ecca8abfe26124d69",
+        "title": "Quickstart"
+      },
+      {
+        "bytes": 10419,
+        "path": "docs/dashboard-operating-manual.md",
+        "sha256": "80c4c372bfd2a4d054c1cfee56b30f94fd3bd6f4802c730a2373797332009b29",
+        "title": "Knowledge Operator Dashboard Manual"
+      },
+      {
+        "bytes": 4772,
+        "path": "docs/operations.md",
+        "sha256": "ff3722d9ac7b58615836969f84880ff481a5660f03f8f7537eab92757ce325b5",
+        "title": "Operations Guide"
+      },
+      {
+        "bytes": 13154,
+        "path": "docs/responsive-knowledge-crew-architecture.md",
+        "sha256": "8764ab457d5f988e2c39ccc1ff59c46d5edebc2183b3ae9da6dfb45b3840c766",
+        "title": "Responsive Knowledge Crew Architecture"
+      },
+      {
+        "bytes": 2852,
+        "path": "docs/onboarding-knowledge-agent.md",
+        "sha256": "f22f2de26cb3c42ec881160e20cdc93a6006508dfa4b3d43d9174ea3246029d2",
+        "title": "Onboarding Knowledge Role"
+      },
+      {
+        "bytes": 3254,
+        "path": "docs/unified-operating-architecture.md",
+        "sha256": "7aa8fa1a9039bde8bfe5278643cc733ee58d52c03089be19bc676017f7aa77ba",
+        "title": "Unified Operating Architecture"
+      },
+      {
+        "bytes": 4585,
+        "path": "project/README.md",
+        "sha256": "a7e3934eced7feaceb756b469c8db0a7cfc22d8af01ba8b7aab0f7196b10bdf4",
+        "title": "ArchFlow Public Tool"
+      },
+      {
+        "bytes": 5008,
+        "path": "project/operating-rules.md",
+        "sha256": "2cf31dfc9859c48733dd9b1e4c3c78c0798772d599b1e8c513b25b0e3a08fec0",
+        "title": "Operating Rules"
+      },
+      {
+        "bytes": 3608,
+        "path": "project/provider-setup.md",
+        "sha256": "1ce49d03cc754008d3b6e230e51d1815793f8bbf2b2919921383538be2518ec6",
+        "title": "Provider and local setup"
+      },
+      {
+        "bytes": 2763,
+        "path": "project/agents/README.md",
+        "sha256": "02bf50beae57f18c800515b8ade470ab6b3acf59ad91cb9dfd880e5add14c26f",
+        "title": "Functional Roles and Portable Skills"
+      },
+      {
+        "bytes": 6475,
+        "path": "project/agents/agent-roster.yaml",
+        "sha256": "7acf7e2868fe6df9501526f302aa92bb602007bc9631450d30f29cc6d8bb18e5",
+        "title": "Agent Roster"
+      },
+      {
+        "bytes": 3901,
+        "path": "project/agents/actionable-role-packs.json",
+        "sha256": "c4ece576a636f97cc9582976bf6c1f64adfc4f13c9bd90aaeefd7dff59c5cd1e",
+        "title": "Actionable Role Packs"
+      },
+      {
+        "bytes": 4170,
+        "path": "project/agents/skills-by-agent.md",
+        "sha256": "eb403f988ab653e8e60b1e09f812e7c6351048c00208e26939b35ceaadf6589d",
+        "title": "Skill Packages by Functional Role"
+      },
+      {
+        "bytes": 3793,
+        "path": "project/agents/skills-governance.md",
+        "sha256": "17afbd5b852e58100fda2aa4f17fe19bc1a1352b41bc885c07ca6463fc0e62ba",
+        "title": "Skills Governance"
+      },
+      {
+        "bytes": 5154,
+        "path": "project/config/provider-registry.json",
+        "sha256": "e49490dbe28bdde028045fc5a3e662dfc6cd9764437c4c3a1b737400551faa18",
+        "title": "Provider Registry"
+      },
+      {
+        "bytes": 1228,
+        "path": "project/context/README.md",
+        "sha256": "4eb74a2b37e88a971367ffc3aed9ee373939f67fa24159db8bce469afe50ca7d",
+        "title": "Context Layer"
+      },
+      {
+        "bytes": 2905,
+        "path": "project/context/cag-core.yaml",
+        "sha256": "082c1b5e2870c3257e6721aaae2780710e47ce47535b708ad7b8b0148230704e",
+        "title": "Cag Core"
+      },
+      {
+        "bytes": 5589,
+        "path": "project/context/context-capsule.schema.json",
+        "sha256": "fed6114c21f3e046cd92a0685a96ebbdb3dfeb3f770f9fd252e4d0f651dc96ba",
+        "title": "Context Capsule.Schema"
+      },
+      {
+        "bytes": 1317,
+        "path": "project/context/retrieval/source-boundary-policy.yaml",
+        "sha256": "e58b84bf0e35461a0b7c6cced1e7907feb0d47e167af14e5e0f29db876f31f2f",
+        "title": "Source Boundary Policy"
+      },
+      {
+        "bytes": 1754,
+        "path": "project/database/action-receipt.schema.json",
+        "sha256": "ca98f4f375a9e402a2b0b980b6b8d42c96b9bcd628cca415f33adbf23b2d65d8",
+        "title": "Action Receipt.Schema"
+      },
+      {
+        "bytes": 1213,
+        "path": "project/database/review-bundle.schema.json",
+        "sha256": "e4414ecf81e7f104f1ef309327dfbef197e4262985100ab599337d1690c0736a",
+        "title": "Review Bundle.Schema"
+      },
+      {
+        "bytes": 27619,
+        "path": "project/database/role-catalog.json",
+        "sha256": "c1724ca790af213576c0abd8004f7300a4f4e58b836387075f9ba58318610187",
+        "title": "Role Catalog"
+      },
+      {
+        "bytes": 1115,
+        "path": "project/database/role-catalog.schema.json",
+        "sha256": "f274efe50f9c11d4e998f21969f132c15f3c3ea4c81f3ccdc3d731d94ca3f75f",
+        "title": "Role Catalog.Schema"
+      },
+      {
+        "bytes": 4977,
+        "path": "project/database/run-envelope.schema.json",
+        "sha256": "2567b61eedb1b411bc924db95204617eb4cb4a2ebd4d98e32cf6cdfcf98208c0",
+        "title": "Run Envelope.Schema"
+      },
+      {
+        "bytes": 1625,
+        "path": "project/database/runtime-event.schema.json",
+        "sha256": "f609ccce2df4ef73beba1054585a843635b31b5393eba2c22b0fee272443e0e6",
+        "title": "Runtime Event.Schema"
+      },
+      {
+        "bytes": 1456,
+        "path": "project/database/solution-memory-record.schema.json",
+        "sha256": "077822ef3be844a2fe19ab40c99642d3580930dd10e645f9f09c4acc7d5f25e7",
+        "title": "Solution Memory Record.Schema"
+      },
+      {
+        "bytes": 1946,
+        "path": "project/goals/README.md",
+        "sha256": "c34a6106055f0f5497a61fca9be964b45ca6beac87abb76732debfc5f2273d13",
+        "title": "Goal Engineering Contract"
+      },
+      {
+        "bytes": 1410,
+        "path": "project/goals/goal-state.schema.yaml",
+        "sha256": "b9e15b7c9d6337fe8cf7c895a923a5dd47e36aeef4e7dbc6c61ba2f5e8744b28",
+        "title": "Goal State.Schema"
+      },
+      {
+        "bytes": 1370,
+        "path": "project/goals/goal-template.yaml",
+        "sha256": "741ebc2be19ad0ea83e36aafff05d4d0ea877d1c8c06531bdce71f2806d820c1",
+        "title": "Goal Template"
+      },
+      {
+        "bytes": 2411,
+        "path": "project/loops/LOOP.md",
+        "sha256": "411ccbcedbd3ecea57f79c911b8851aae763a5ed234bf59b37efdc224b5d8fd5",
+        "title": "Bounded Loop Contract"
+      },
+      {
+        "bytes": 1868,
+        "path": "project/loops/loop-state.schema.yaml",
+        "sha256": "35fc78d06c9ac7ea7f31756b1c0025d98af3a63c9852960e697b16c65555f1a2",
+        "title": "Loop State.Schema"
+      },
+      {
+        "bytes": 869,
+        "path": "project/system/README.md",
+        "sha256": "e8cd2ed5db3730335c2bc9f71568a09a94e6539de8eb01b3d575e1ae07532906",
+        "title": "Deterministic public system core"
+      },
+      {
+        "bytes": 5323,
+        "path": "project/system/contracts/knowledge-crew-config.json",
+        "sha256": "519cb600f5e9793af3c983b1d53ef2e65d80cde30c68f3c6dcf6300fb9d92652",
+        "title": "Knowledge Crew Config"
+      },
+      {
+        "bytes": 2195,
+        "path": "project/system/contracts/operating-model.json",
+        "sha256": "96a615b4aabf9e051d823ef4a40a371cc5d4e0488e764520c9c4af0299cc8f27",
+        "title": "Operating Model"
+      },
+      {
+        "bytes": 26624,
+        "path": "project/system/contracts/role-catalog.json",
+        "sha256": "cfb1ff8e5cc0648bcdd3478448a80b34979b4689fbd79a9f90e5c311b4c7a6ad",
+        "title": "Role Catalog"
+      },
+      {
+        "bytes": 5791,
+        "path": "project/system/fixtures/onboarding-case.json",
+        "sha256": "d1185dcf50821eaba89eaf32d6e853dcf5680f1b2f39d1cecd53067245e87ef9",
+        "title": "Onboarding Case"
+      },
+      {
+        "bytes": 4031,
+        "path": "project/system/schemas/action-proposal.schema.json",
+        "sha256": "6c74e04651cd5b9bf3dac48be8d96bd601d935aba37085e99c02d746d7b453b9",
+        "title": "Action Proposal.Schema"
+      },
+      {
+        "bytes": 5232,
+        "path": "project/system/schemas/knowledge-case.schema.json",
+        "sha256": "0d07e94fd9f5e3fa8bc032314b2c918e1faf128ff08a53949356ee3c0bd56b17",
+        "title": "Knowledge Case.Schema"
+      },
+      {
+        "bytes": 1926,
+        "path": "project/system/schemas/role-task-binding.schema.json",
+        "sha256": "177ff32b0c5c20ca157ef5fe8629b1686e0e88eb02588e0c4e9041607e741b84",
+        "title": "Role Task Binding.Schema"
+      },
+      {
+        "bytes": 6190,
+        "path": "project/workflows/crewai-crew.yaml",
+        "sha256": "b183e1b40af10c1942c65049d849be92c67035f418830f183b213083b97d5fe6",
+        "title": "Crewai Crew"
+      },
+      {
+        "bytes": 4017,
+        "path": "project/workflows/knowledge-integration.yaml",
+        "sha256": "517f2433f7ec257328aee281d0247077f209bf5bbb22cf1de9005c816c5ee317",
+        "title": "Knowledge Integration"
+      },
+      {
+        "bytes": 6870,
+        "path": "project/workflows/langgraph-controller.yaml",
+        "sha256": "9899a1fd2c1dcb3dbb6810dcdd141710fb6a16bd374dcc2da1dd4cde0f3d362f",
+        "title": "Langgraph Controller"
+      },
+      {
+        "bytes": 3015,
+        "path": "project/workflows/llamaindex-rag.yaml",
+        "sha256": "76d69eb3b24ea564560161ca81bc3c244ecf67ab99ef989ef5ca907cb40b3d29",
+        "title": "Llamaindex Rag"
+      },
+      {
+        "bytes": 3569,
+        "path": "skills/arcagcom/SKILL.md",
+        "sha256": "bb3e555484dbea1c9ba4c64d209439faa608b292037d4593b880c82d0cbe67d5",
+        "title": "Arcagcom"
+      },
+      {
+        "bytes": 2664,
+        "path": "skills/archflow-agent-control/SKILL.md",
+        "sha256": "8ae1e14ec7f8a8ac2d55c3d8ddd2a3b8de19a1c56fba21fc1789bb01b65848cc",
+        "title": "ArchFlow Agent Control"
+      },
+      {
+        "bytes": 4752,
+        "path": "skills/archflow-architecture-operator/SKILL.md",
+        "sha256": "15218f2f6b370eec71f0810e72e1899cf833c0418a7ecec7ec97e0e57507fc37",
+        "title": "ArchFlow Architecture Operator"
+      },
+      {
+        "bytes": 4226,
+        "path": "skills/archflow-e1-runtime-guard/SKILL.md",
+        "sha256": "a78c547f9ad75ba276d52dd3966962b2b4e2176fe0014b5a2bcd9d842c6eded1",
+        "title": "ArchFlow Runtime Guard"
+      },
+      {
+        "bytes": 3637,
+        "path": "skills/archflow-knowledge-service/SKILL.md",
+        "sha256": "528a08c38e8d0fb8dec1b4f796b2af21a5f5137de8fae1177310c4527f701a90",
+        "title": "ArchFlow Knowledge Service"
+      },
+      {
+        "bytes": 2532,
+        "path": "skills/archflow-task-breakdown/SKILL.md",
+        "sha256": "00deae5d5b267f9ea990805f371b931d9fb9d6e35cb799f1ff6b3b3119f16b81",
+        "title": "ArchFlow Task Breakdown"
+      },
+      {
+        "bytes": 2498,
+        "path": "skills/humanize-writing/SKILL.md",
+        "sha256": "cfb37722693159e320f253e9909a6a616c0368c237e232567fd4a8a050ea3ae7",
+        "title": "Humanize Writing"
+      },
+      {
+        "bytes": 2165,
+        "path": "skills/outquestions/SKILL.md",
+        "sha256": "c3e7bbd911580cc67246fec652fb7b369b6a764a56a98df6394a5923c009bd4a",
+        "title": "Outquestions"
+      },
+      {
+        "bytes": 3672,
+        "path": "skills/priority-task-operator/SKILL.md",
+        "sha256": "a0adb7c587e233dce288aac4a5f1733844a0bc5255f7333bc90d9ee8c9da6e08",
+        "title": "Priority Task Operator"
+      },
+      {
+        "bytes": 4142,
+        "path": "skills/task-handout/SKILL.md",
+        "sha256": "d711a68df5112a4a693b7905ca984a744140d3b6932c49a9dc1d220cda7af41c",
+        "title": "Task Handout"
+      }
+    ],
+    "manifest": "project/dashboard/corpus-manifest.json"
+  },
+  "generated_at": "2026-08-11T19:59:07+00:00",
+  "performance_evidence": {
+    "content_sha256": "5cf4c203ef544f550b6a01bb056bee829b157d320c743e39f259c52c9779fbfb",
+    "external_writes": 0,
+    "fixture_id": "actionable-agents-v3-public-core",
+    "limitations": [
+      "No provider was called and no external system was written.",
+      "The context comparator deliberately uses a full-manifest packet and is not a claim about a prior release.",
+      "All percentages are fixture-specific and must be rerun when the manifest, roles, fixtures, or selection logic changes."
+    ],
+    "measured_at": "2026-08-11T19:56:55+00:00",
+    "metrics": [
+      {
+        "comparator": "Top-five lexical context chunks versus all 4 full-manifest packets; 15,001 vs 1,055,632 UTF-8 bytes.",
+        "label": "Context input",
+        "limitation": "Input-byte measurement on fixed synthetic tasks; not model-exact tokens, billed tokens, durable-memory size, latency, or answer quality.",
+        "value": "98.6% lower"
+      },
+      {
+        "comparator": "Smallest declared role packs versus all-role fan-out; 21 vs 84 role slots across 4 tasks.",
+        "label": "Role activation",
+        "limitation": "Contract selection measurement; not wall-clock speed, labor savings, or production throughput.",
+        "value": "75.0% fewer"
+      },
+      {
+        "comparator": "Expected canonical source present in the deterministic lexical top five for each fixed query.",
+        "label": "Source recall",
+        "limitation": "Source-hit fixture only; not semantic answer accuracy or representative production recall.",
+        "value": "4/4"
+      },
+      {
+        "comparator": "Expected accept/reject decision for one valid and seven unsafe or incomplete packets.",
+        "label": "Semantic gates",
+        "limitation": "Bounded abuse fixtures; not a real-world safety rate or proof against unknown attacks.",
+        "value": "8/8"
+      }
+    ],
+    "path": "project/benchmarks/actionable-agents-v3-results.json",
+    "provider_calls": 0,
+    "status": "pass"
+  },
+  "product": {
+    "audience": "Founders, operators, product teams, researchers, and small delivery teams that need repeatable AI-assisted work without hidden state, uncontrolled context, or personal project memory in the public tool.",
+    "category": "Knowledge continuity and agent operations",
+    "description": "ArchFlow is a public, local-first operating kit for turning a bounded objective and approved evidence into an inspectable plan, a role-safe execution path, independent review, and maintained knowledge. It gives an individual operator or a small team one shared structure for research, definition, action, validation, handoff, and learning. The static core works without an API key; authentication, model providers, observability, deployment, and external writeback remain separate server-side extensions with explicit proof, budget, approval, rollback, and readback gates.",
+    "pains": [
+      {
+        "description": "Teams repeatedly reconstruct background because current decisions, sources, and superseded assumptions are mixed together.",
+        "title": "Context resets"
+      },
+      {
+        "description": "An agent name or long prompt does not define who owns the output, who reviews it, or when work must stop.",
+        "title": "Unclear ownership"
+      },
+      {
+        "description": "A convincing response can look complete even when no artifact, check, approval, action, or readback exists.",
+        "title": "Invisible execution"
+      },
+      {
+        "description": "Providers and automations are often added before their data boundary, budget, failure mode, and rollback are understood.",
+        "title": "Tool sprawl"
+      },
+      {
+        "description": "Raw history grows while current, reusable guidance becomes harder to find, verify, and supersede.",
+        "title": "Unmaintained memory"
+      }
+    ]
+  },
+  "provider_registry": {
+    "adapters": [
+      {
+        "activation_requirements": [],
+        "browser_access": false,
+        "documentation_url": "docs/quickstart.md",
+        "id": "none",
+        "implementation": "public core",
+        "label": "No model provider",
+        "purpose": "Zero-key validation, dashboard generation, exact-manifest retrieval, review packets, and deterministic checks.",
+        "secret_names": [],
+        "state": "built_in_default"
+      },
+      {
+        "activation_requirements": [
+          "separate adapter implementation",
+          "loopback-only endpoint proof",
+          "approved local model and input boundary",
+          "provider-disabled fallback",
+          "contract tests and independent review"
+        ],
+        "browser_access": false,
+        "documentation_url": "https://docs.ollama.com/api/introduction",
+        "id": "ollama",
+        "implementation": "not implemented in the public core",
+        "label": "Ollama local",
+        "purpose": "Possible loopback model adapter after an endpoint, model, privacy, fallback, and task-specific approval check.",
+        "secret_names": [],
+        "state": "documented_optional_adapter"
+      },
+      {
+        "activation_requirements": [
+          "separate adapter implementation",
+          "authenticated administrator session",
+          "single-use request authorization",
+          "provider-enforced or durable budget control",
+          "approved input and output boundary",
+          "contract tests and independent review"
+        ],
+        "browser_access": false,
+        "documentation_url": "https://openrouter.ai/docs/cookbook/get-started/quickstart",
+        "id": "openrouter",
+        "implementation": "not implemented",
+        "label": "OpenRouter",
+        "purpose": "Possible server-side routing adapter; no provider execution path ships in the public core.",
+        "secret_names": [
+          "OPENROUTER_API_KEY"
+        ],
+        "state": "documented_optional_adapter"
+      },
+      {
+        "activation_requirements": [
+          "separate adapter implementation",
+          "input and budget gates",
+          "contract tests",
+          "independent review"
+        ],
+        "browser_access": false,
+        "documentation_url": "https://platform.openai.com/docs/quickstart/make-your-first-api-request",
+        "id": "openai",
+        "implementation": "not implemented",
+        "label": "OpenAI direct",
+        "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+        "secret_names": [
+          "OPENAI_API_KEY"
+        ],
+        "state": "documented_optional_adapter"
+      },
+      {
+        "activation_requirements": [
+          "separate adapter implementation",
+          "input and budget gates",
+          "contract tests",
+          "independent review"
+        ],
+        "browser_access": false,
+        "documentation_url": "https://platform.claude.com/docs/en/get-started",
+        "id": "anthropic",
+        "implementation": "not implemented",
+        "label": "Anthropic direct",
+        "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+        "secret_names": [
+          "ANTHROPIC_API_KEY"
+        ],
+        "state": "documented_optional_adapter"
+      },
+      {
+        "activation_requirements": [
+          "separate adapter implementation",
+          "restricted server-side key",
+          "input and budget gates",
+          "contract tests",
+          "independent review"
+        ],
+        "browser_access": false,
+        "documentation_url": "https://ai.google.dev/gemini-api/docs/api-key",
+        "id": "gemini",
+        "implementation": "not implemented",
+        "label": "Google Gemini direct",
+        "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+        "secret_names": [
+          "GEMINI_API_KEY"
+        ],
+        "state": "documented_optional_adapter"
+      },
+      {
+        "activation_requirements": [
+          "separate adapter implementation",
+          "input and budget gates",
+          "contract tests",
+          "independent review"
+        ],
+        "browser_access": false,
+        "documentation_url": "https://docs.mistral.ai/getting-started/quickstarts/developer/first-api-request",
+        "id": "mistral",
+        "implementation": "not implemented",
+        "label": "Mistral direct",
+        "purpose": "Possible direct server-side adapter; no provider execution path ships in the public core.",
+        "secret_names": [
+          "MISTRAL_API_KEY"
+        ],
+        "state": "documented_optional_adapter"
+      },
+      {
+        "activation_requirements": [
+          "explicit tracing flag",
+          "sanitized trace contract",
+          "workspace and retention review"
+        ],
+        "browser_access": false,
+        "documentation_url": "https://docs.langchain.com/langsmith/create-account-api-key",
+        "id": "langsmith",
+        "implementation": "off by default",
+        "label": "LangSmith observability",
+        "purpose": "Possible tracing for an approved sanitized runtime; it is not a model provider.",
+        "secret_names": [
+          "LANGSMITH_API_KEY"
+        ],
+        "state": "observability_only"
+      }
+    ],
+    "credential_policy": "Only empty server-side environment-variable names are public. Values and presence are never returned by health routes, stored in browser state, exported, logged, or committed.",
+    "credential_presence_serialized": false,
+    "credential_values_serialized": false,
+    "default_observability": "off",
+    "default_provider": "none",
+    "schema_version": "3.0"
+  },
+  "role_catalog": {
+    "roles": [
+      {
+        "forbidden_actions": [
+          "high_risk_self_verification",
+          "external_action",
+          "permission_expansion"
+        ],
+        "goal": "Bind the objective, done conditions, state design, and gate contract without expanding authority.",
+        "id": "goal_and_architecture_operator",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "objective",
+          "done_conditions",
+          "state_design",
+          "role_and_gate_contract"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-architecture-operator"
+        ],
+        "purpose": "Convert an ambiguous request into one bounded case and explicit architectural gates.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-architecture-operator",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "title": "Goal and Architecture Operator"
+      },
+      {
+        "forbidden_actions": [
+          "project_edits",
+          "provider_activation",
+          "self_approval"
+        ],
+        "goal": "Classify risk, select the approved profile and minimum roles, and stop work that fails admission.",
+        "id": "admission_controller",
+        "lane": "controller",
+        "method_checklists": [
+          "read_contracts",
+          "run_deterministic_checks",
+          "draft_local_artifact"
+        ],
+        "mode": "controller_role_contract",
+        "outputs": [
+          "risk_classification",
+          "run_profile",
+          "minimum_roles",
+          "stop_rules"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-agent-control"
+        ],
+        "purpose": "Produce a deterministic planning-only admission receipt before role work begins.",
+        "reviewer_route": [
+          "action_validator",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-agent-control",
+          "read_contracts",
+          "run_deterministic_checks",
+          "draft_local_artifact"
+        ],
+        "title": "Admission Controller"
+      },
+      {
+        "forbidden_actions": [
+          "uncontrolled_ingestion",
+          "durable_promotion",
+          "unsupported_synthesis"
+        ],
+        "goal": "Build the allowlist, stable CAG context, bounded retrieval plan, and source-visible perception capsule.",
+        "id": "source_and_context_operator",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "query_bounded_retrieval",
+          "query_structural_index",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "source_allowlist",
+          "stable_context",
+          "bounded_retrieval",
+          "evidence_capsule"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-knowledge-service"
+        ],
+        "purpose": "Give each role the smallest sufficient context while retaining project-wide perception through citations and retrieval routes.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-knowledge-service",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "query_bounded_retrieval",
+          "query_structural_index",
+          "draft_local_artifact"
+        ],
+        "title": "Source and Context Operator"
+      },
+      {
+        "forbidden_actions": [
+          "requirement_approval",
+          "market_signal_as_demand",
+          "execution",
+          "outreach",
+          "publication",
+          "memory_promotion"
+        ],
+        "goal": "Turn reviewed evidence into requirement candidates, market boundaries, disconfirmation, and acceptance checks.",
+        "id": "requirements_and_market_research",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "query_bounded_retrieval",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "problem_evidence",
+          "market_evidence",
+          "requirement_candidates",
+          "acceptance_checks",
+          "non_goals",
+          "contradictions",
+          "prd_and_icp_projections"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-knowledge-service"
+        ],
+        "purpose": "Separate observed pain and market evidence from hypotheses, demand claims, and owner-approved requirements.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-knowledge-service",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "query_bounded_retrieval",
+          "draft_local_artifact"
+        ],
+        "title": "Requirements and Market Research"
+      },
+      {
+        "forbidden_actions": [
+          "invented_organizational_truth",
+          "permission_inheritance",
+          "contributor_monitoring",
+          "unvalidated_instruction"
+        ],
+        "goal": "Give a contributor role-safe context, explain why the work matters, and propose a validated first action.",
+        "id": "onboarding_guide",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "query_bounded_retrieval",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "role_projection",
+          "source_visible_answer",
+          "first_task_proposal",
+          "escalation"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-knowledge-service"
+        ],
+        "purpose": "Turn governed knowledge into a comprehensible first contribution without inventing organizational truth or authority.",
+        "reviewer_route": [
+          "action_validator",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-knowledge-service",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "query_bounded_retrieval",
+          "draft_local_artifact"
+        ],
+        "title": "Onboarding Guide"
+      },
+      {
+        "forbidden_actions": [
+          "unassigned_shared_edits",
+          "status_inflation",
+          "external_action"
+        ],
+        "goal": "Create dependencies, bounded task packets, exact checks, stop rules, and owner questions.",
+        "id": "task_and_handoff_planner",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "dependency_graph",
+          "bounded_task_packet",
+          "checks",
+          "owner_questions"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-task-breakdown",
+          "priority-task-operator",
+          "task-handout"
+        ],
+        "purpose": "Translate reviewed requirements into daily work with one output owner and an explicit review route.",
+        "reviewer_route": [
+          "action_validator",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-task-breakdown",
+          "priority-task-operator",
+          "task-handout",
+          "read_contracts",
+          "draft_local_artifact"
+        ],
+        "title": "Task and Handoff Planner"
+      },
+      {
+        "forbidden_actions": [
+          "invented_proof",
+          "claim_approval",
+          "sending",
+          "publishing"
+        ],
+        "goal": "Create evidence-linked copy, positioning, and claim tables without sending or publishing.",
+        "id": "positioning_and_copy_maker",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "evidence_linked_positioning",
+          "message_candidate",
+          "caption_candidate",
+          "claim_table"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-knowledge-service",
+          "humanize-writing"
+        ],
+        "purpose": "Translate a reviewed pain-mechanism-outcome chain into channel-appropriate candidate language.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-knowledge-service",
+          "humanize-writing",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "title": "Positioning and Copy Maker"
+      },
+      {
+        "forbidden_actions": [
+          "autonomous_send",
+          "bulk_enrichment",
+          "pain_inference_from_signal",
+          "stage_inflation"
+        ],
+        "goal": "Separate company fit, person currentness, stage, channel, and exact-send readiness.",
+        "id": "qualification_and_channel_planner",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "target_currentness",
+          "stage_and_role_check",
+          "channel_packet",
+          "send_checklist"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-knowledge-service"
+        ],
+        "purpose": "Qualify outreach with current public evidence before any message candidate reaches an action gate.",
+        "reviewer_route": [
+          "action_validator",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-knowledge-service",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "title": "Qualification and Channel Planner"
+      },
+      {
+        "forbidden_actions": [
+          "claim_acceptance",
+          "unsupported_rights_approval",
+          "publication",
+          "self_review"
+        ],
+        "goal": "Make editable, responsive, accessible visuals or interfaces from approved content and exact target constraints.",
+        "id": "designer",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "draft_local_artifact",
+          "edit_claimed_targets",
+          "run_browser_qa"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "visual_brief",
+          "scene_or_interface_grammar",
+          "editable_artifact",
+          "accessibility_evidence",
+          "rollback_safe_maker_output"
+        ],
+        "permission_mode": "local_mutation_exact_targets",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [],
+        "purpose": "Own visual hierarchy, interface grammar, accessibility evidence, editable sources, and rollback-safe implementation.",
+        "reviewer_route": [
+          "verifier",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "read_contracts",
+          "draft_local_artifact",
+          "edit_claimed_targets",
+          "run_browser_qa"
+        ],
+        "title": "Designer"
+      },
+      {
+        "forbidden_actions": [
+          "scope_expansion",
+          "final_review",
+          "unapproved_side_effect"
+        ],
+        "goal": "Change only claimed files and produce focused checks, rollback evidence, and assigned repairs.",
+        "id": "implementation_maker",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "edit_claimed_targets",
+          "run_deterministic_checks"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "claimed_files",
+          "bounded_change",
+          "focused_checks",
+          "assigned_repairs"
+        ],
+        "permission_mode": "local_mutation_exact_targets",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "arcagcom"
+        ],
+        "purpose": "Implement a reviewed requirement within an exact local target boundary.",
+        "reviewer_route": [
+          "action_validator",
+          "verifier",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "arcagcom",
+          "read_contracts",
+          "edit_claimed_targets",
+          "run_deterministic_checks"
+        ],
+        "title": "Implementation Maker"
+      },
+      {
+        "forbidden_actions": [
+          "proposal_execution",
+          "approval_inference",
+          "requirement_rewrite"
+        ],
+        "goal": "Check requirements, permission, side effects, rollback, verification, and readback before execution.",
+        "id": "action_validator",
+        "lane": "validator",
+        "method_checklists": [
+          "read_contracts",
+          "run_deterministic_checks",
+          "write_review_verdict"
+        ],
+        "mode": "validator_role_contract",
+        "outputs": [
+          "requirement_coverage",
+          "permission_check",
+          "side_effect_check",
+          "rollback_check",
+          "verdict"
+        ],
+        "permission_mode": "review_only_frozen_candidate",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-agent-control",
+          "outquestions"
+        ],
+        "purpose": "Issue eligibility, repair, approval-wait, or blocked verdicts without executing the proposal.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-agent-control",
+          "outquestions",
+          "read_contracts",
+          "run_deterministic_checks",
+          "write_review_verdict"
+        ],
+        "title": "Action Validator"
+      },
+      {
+        "forbidden_actions": [
+          "silent_maker_repair",
+          "completion_without_evidence"
+        ],
+        "goal": "Run deterministic checks and produce reproducible regression and exact-readback evidence.",
+        "id": "verifier",
+        "lane": "verifier",
+        "method_checklists": [
+          "read_contracts",
+          "run_deterministic_checks",
+          "run_browser_qa",
+          "readback_exact_target"
+        ],
+        "mode": "verifier_role_contract",
+        "outputs": [
+          "deterministic_checks",
+          "regression_findings",
+          "readback_evidence"
+        ],
+        "permission_mode": "verification_only_no_repair",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-e1-runtime-guard"
+        ],
+        "purpose": "Verify the frozen result independently without silently becoming its repair maker.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-e1-runtime-guard",
+          "read_contracts",
+          "run_deterministic_checks",
+          "run_browser_qa",
+          "readback_exact_target"
+        ],
+        "title": "Verifier"
+      },
+      {
+        "forbidden_actions": [
+          "candidate_repair",
+          "self_approval",
+          "external_action"
+        ],
+        "goal": "Approve, revise, or block a frozen candidate with calibrated claims and exact repair requests.",
+        "id": "independent_reviewer",
+        "lane": "reviewer",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "run_deterministic_checks",
+          "run_browser_qa",
+          "write_review_verdict"
+        ],
+        "mode": "reviewer_role_contract",
+        "outputs": [
+          "approve_revise_block",
+          "claim_calibration",
+          "privacy_permission_currentness_review",
+          "repair_request"
+        ],
+        "permission_mode": "review_only_frozen_candidate",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "outquestions"
+        ],
+        "purpose": "Preserve maker-reviewer separation across architecture, evidence, action, knowledge, and release gates.",
+        "reviewer_route": [
+          "@case_owner"
+        ],
+        "skills": [
+          "outquestions",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "run_deterministic_checks",
+          "run_browser_qa",
+          "write_review_verdict"
+        ],
+        "title": "Independent Reviewer"
+      },
+      {
+        "forbidden_actions": [
+          "raw_trace_promotion",
+          "secret_storage",
+          "unsupported_claim",
+          "review_bypass"
+        ],
+        "goal": "Search duplicates and propose lineage, supersession, freshness, and retrieval-safe knowledge promotion.",
+        "id": "knowledge_librarian",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "propose_knowledge_candidate",
+          "readback_exact_target"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "duplicate_search",
+          "promotion_candidate",
+          "lineage",
+          "supersession",
+          "freshness",
+          "readback"
+        ],
+        "permission_mode": "knowledge_candidate_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-knowledge-service",
+          "task-handout"
+        ],
+        "purpose": "Retain future-useful meaning after acceptance while excluding raw traces, secrets, and unsupported claims.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-knowledge-service",
+          "task-handout",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "propose_knowledge_candidate",
+          "readback_exact_target"
+        ],
+        "title": "Knowledge Librarian"
+      },
+      {
+        "forbidden_actions": [
+          "hidden_blocker",
+          "self_approval",
+          "permission_inference"
+        ],
+        "goal": "Register lanes, resolve conflicts, merge approved work in order, and deliver final receipts and handoff.",
+        "id": "integrator",
+        "lane": "integrator",
+        "method_checklists": [
+          "read_contracts",
+          "edit_claimed_targets",
+          "run_deterministic_checks",
+          "write_run_receipt"
+        ],
+        "mode": "integrator_role_contract",
+        "outputs": [
+          "lane_registration",
+          "merge_order",
+          "conflict_resolution",
+          "shared_surface_mutation",
+          "final_receipts",
+          "handoff"
+        ],
+        "permission_mode": "local_mutation_exact_targets",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "arcagcom",
+          "archflow-agent-control",
+          "task-handout"
+        ],
+        "purpose": "Own shared surfaces and final integration without replacing independent review or inferring permission.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "arcagcom",
+          "archflow-agent-control",
+          "task-handout",
+          "read_contracts",
+          "edit_claimed_targets",
+          "run_deterministic_checks",
+          "write_run_receipt"
+        ],
+        "title": "Integrator"
+      },
+      {
+        "forbidden_actions": [
+          "approval_reuse",
+          "action_chaining",
+          "credential_logging",
+          "target_expansion"
+        ],
+        "goal": "Perform one exact approved external action with preflight, idempotency, receipt, and readback.",
+        "id": "external_action_operator",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "perform_exact_external_action",
+          "readback_exact_target"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "one_exact_approved_action",
+          "preflight",
+          "action_receipt",
+          "readback"
+        ],
+        "permission_mode": "external_action_exact_approval",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "outquestions"
+        ],
+        "purpose": "Keep sending, publication, deployment, and writeback outside ordinary maker authority.",
+        "reviewer_route": [
+          "verifier",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "outquestions",
+          "read_contracts",
+          "perform_exact_external_action",
+          "readback_exact_target"
+        ],
+        "title": "External Action Operator"
+      },
+      {
+        "forbidden_actions": [
+          "deployment_without_approval",
+          "publication_without_approval",
+          "claim_promotion"
+        ],
+        "goal": "Prepare a release and perform only an exact owner-approved Git action with proof and readback.",
+        "id": "release_operator",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "run_deterministic_checks",
+          "perform_owner_approved_git_action",
+          "readback_exact_target"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "release_preparation",
+          "release_evidence",
+          "owner_approved_git_push"
+        ],
+        "permission_mode": "git_action_exact_approval",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-e1-runtime-guard",
+          "task-handout"
+        ],
+        "purpose": "Keep packaging, release readiness, and Git publication evidence distinct from production deployment.",
+        "reviewer_route": [
+          "action_validator",
+          "verifier",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-e1-runtime-guard",
+          "task-handout",
+          "read_contracts",
+          "run_deterministic_checks",
+          "perform_owner_approved_git_action",
+          "readback_exact_target"
+        ],
+        "title": "Release Operator"
+      },
+      {
+        "forbidden_actions": [
+          "attention_as_demand",
+          "modeled_roi_as_observed",
+          "invented_event"
+        ],
+        "goal": "Preserve event denominators and separate observed outcomes from modeled recommendations.",
+        "id": "growth_and_outcome_analyst",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "event_ledger",
+          "denominators",
+          "modeled_vs_observed",
+          "pursue_pivot_stop_recommendation"
+        ],
+        "permission_mode": "read_draft_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "outquestions"
+        ],
+        "purpose": "Turn evidence and receipts into pursue, pivot, or stop recommendations without inflating signals.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "outquestions",
+          "read_contracts",
+          "read_allowlisted_sources",
+          "draft_local_artifact"
+        ],
+        "title": "Growth and Outcome Analyst"
+      },
+      {
+        "forbidden_actions": [
+          "provider_activation",
+          "invented_cost_or_token_claim",
+          "completion_authority"
+        ],
+        "goal": "Report runtime drift, usage evidence, and reproducibility gaps without activating or mutating the runtime.",
+        "id": "observability_and_efficiency_observer",
+        "lane": "observer",
+        "method_checklists": [
+          "read_contracts",
+          "observe_runtime",
+          "draft_local_artifact"
+        ],
+        "mode": "observer_role_contract",
+        "outputs": [
+          "runtime_drift",
+          "usage_evidence",
+          "reproducibility_gap"
+        ],
+        "permission_mode": "observation_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-e1-runtime-guard",
+          "outquestions"
+        ],
+        "purpose": "Make configured, tested, observed, and blocked runtime states explicit.",
+        "reviewer_route": [
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-e1-runtime-guard",
+          "outquestions",
+          "read_contracts",
+          "observe_runtime",
+          "draft_local_artifact"
+        ],
+        "title": "Observability and Efficiency Observer"
+      },
+      {
+        "forbidden_actions": [
+          "source_of_truth_ownership",
+          "provider_call",
+          "writeback",
+          "action_execution"
+        ],
+        "goal": "Project truthful read-only state and export browser-local review packets without becoming a source of truth.",
+        "id": "surface_projection_operator",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "run_browser_qa",
+          "export_browser_packet"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "read_only_projection",
+          "local_review_packet",
+          "truthful_state_label",
+          "export_handoff_ux"
+        ],
+        "permission_mode": "browser_local_only",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-knowledge-service"
+        ],
+        "purpose": "Keep the dashboard useful to individual contributors and teams while provider and writeback remain disabled.",
+        "reviewer_route": [
+          "verifier",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-knowledge-service",
+          "read_contracts",
+          "run_browser_qa",
+          "export_browser_packet"
+        ],
+        "title": "Surface Projection Operator"
+      },
+      {
+        "forbidden_actions": [
+          "productization_without_evidence",
+          "write_by_default_tool",
+          "self_approved_release"
+        ],
+        "goal": "Prove clean-clone setup, least privilege, upgrade, uninstall, and rollback for a portable package.",
+        "id": "product_packaging_engineer",
+        "lane": "maker",
+        "method_checklists": [
+          "read_contracts",
+          "edit_claimed_targets",
+          "run_deterministic_checks",
+          "run_browser_qa",
+          "readback_exact_target"
+        ],
+        "mode": "maker_role_contract",
+        "outputs": [
+          "clean_clone_package",
+          "least_privilege_adapter",
+          "install_upgrade_uninstall_rollback_proof"
+        ],
+        "permission_mode": "local_mutation_exact_targets",
+        "provider": "compatible_runtime_after_task_contract",
+        "public_skill_packages": [
+          "archflow-architecture-operator",
+          "archflow-e1-runtime-guard"
+        ],
+        "purpose": "Turn the reviewed public project into adaptable installation evidence without claiming unproved productization.",
+        "reviewer_route": [
+          "action_validator",
+          "verifier",
+          "independent_reviewer",
+          "@case_owner"
+        ],
+        "skills": [
+          "archflow-architecture-operator",
+          "archflow-e1-runtime-guard",
+          "read_contracts",
+          "edit_claimed_targets",
+          "run_deterministic_checks",
+          "run_browser_qa",
+          "readback_exact_target"
+        ],
+        "title": "Product Packaging Engineer"
+      }
+    ],
+    "scope": "One canonical 21-role capability and authority catalog projected for the public dashboard."
+  },
+  "schema_version": "3.0",
+  "skill_catalog": {
+    "items": [
+      {
+        "content_sha256": "bb3e555484dbea1c9ba4c64d209439faa608b292037d4593b880c82d0cbe67d5",
+        "description": "Coordinate parallel or role-based ArchFlow work with public-safe file claims, state updates, handoffs, and conflict stops. Use before shared-file edits, multi-agent execution, reviewer handoff, integration, Git closeout, or any task that needs the dashboard Communication Center or a portable local coordination packet.",
+        "expected_output": "public-safe file claim, live update, and handoff",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "arcagcom",
+        "name": "Arcagcom",
+        "path": "skills/arcagcom/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "implementation_maker",
+          "integrator"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "coordinate"
+      },
+      {
+        "content_sha256": "8ae1e14ec7f8a8ac2d55c3d8ddd2a3b8de19a1c56fba21fc1789bb01b65848cc",
+        "description": "Convert a caller-supplied, approved evidence report into a bounded role, task, permission, review, and stop contract. Use when an individual or team needs to select the smallest canonical role pack and prepare an inspectable work handoff without launching a provider, changing files, or writing externally.",
+        "expected_output": "bounded role, task, gate, and proposed-artifact handoff",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "archflow-agent-control",
+        "name": "ArchFlow Agent Control",
+        "path": "skills/archflow-agent-control/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "action_validator",
+          "admission_controller",
+          "integrator"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "define"
+      },
+      {
+        "content_sha256": "15218f2f6b370eec71f0810e72e1899cf833c0418a7ecec7ec97e0e57507fc37",
+        "description": "Design, audit, or revise ArchFlow agentic architectures and role packs. Use when work concerns Goal Engineering, Loop Engineering, LangGraph sequencing, role and skill allocation, RAG or knowledge-layer boundaries, architecture generation, tool adoption, safety gates, architecture benchmarks, or conversion of a business workflow such as PRD, ICP, content, outreach, finance, engineering, or media into a bounded execution system.",
+        "expected_output": "architecture, role, retrieval, verification, memory, and benchmark contracts",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "archflow-architecture-operator",
+        "name": "ArchFlow Architecture Operator",
+        "path": "skills/archflow-architecture-operator/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "goal_and_architecture_operator",
+          "product_packaging_engineer"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "define"
+      },
+      {
+        "content_sha256": "a78c547f9ad75ba276d52dd3966962b2b4e2176fe0014b5a2bcd9d842c6eded1",
+        "description": "Validate the portable ArchFlow runtime before integration or Git publication. Use after changing workflows, role or skill contracts, provider configuration, retrieval boundaries, dashboard data, or runtime code to run provider-disabled safety, schema, import, and smoke checks without installing packages or activating services.",
+        "expected_output": "provider-disabled runtime and public-safety validation report",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "archflow-e1-runtime-guard",
+        "name": "ArchFlow Runtime Guard",
+        "path": "skills/archflow-e1-runtime-guard/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "observability_and_efficiency_observer",
+          "product_packaging_engineer",
+          "release_operator",
+          "verifier"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "review"
+      },
+      {
+        "content_sha256": "528a08c38e8d0fb8dec1b4f796b2af21a5f5137de8fae1177310c4527f701a90",
+        "description": "Prepare a source-bounded ArchFlow knowledge review packet before agent design or implementation. Use for a public repository, project brief, approved source summary, research request, or knowledge setup that needs facts, interpretations, hypotheses, gaps, provenance, reviewer questions, and an optional reviewed solution-memory candidate without ingesting private material or starting a provider, agent, repository action, or external write.",
+        "expected_output": "source-bounded report with facts, interpretations, hypotheses, and gaps",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "archflow-knowledge-service",
+        "name": "ArchFlow Knowledge Service",
+        "path": "skills/archflow-knowledge-service/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "knowledge_librarian",
+          "onboarding_guide",
+          "positioning_and_copy_maker",
+          "qualification_and_channel_planner",
+          "requirements_and_market_research",
+          "source_and_context_operator",
+          "surface_projection_operator"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "research"
+      },
+      {
+        "content_sha256": "00deae5d5b267f9ea990805f371b931d9fb9d6e35cb799f1ff6b3b3119f16b81",
+        "description": "Turn a caller-supplied approved objective into ordered, verifiable task packets with dependencies, sole-writer ownership, acceptance checks, approval gates, and handoffs. Use when an individual or team needs a portable research, definition, action, review, or knowledge-maintenance plan without relying on a task board, scheduler, provider, or private workspace.",
+        "expected_output": "ordered task packets with dependencies, gates, and acceptance checks",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "archflow-task-breakdown",
+        "name": "ArchFlow Task Breakdown",
+        "path": "skills/archflow-task-breakdown/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "task_and_handoff_planner"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "define"
+      },
+      {
+        "content_sha256": "cfb37722693159e320f253e9909a6a616c0368c237e232567fd4a8a050ea3ae7",
+        "description": "Polish caller-supplied, approved user-facing prose while preserving facts, citations, links, technical values, and claim limits. Use for product copy, posts, proposals, documentation, or final responses that should sound clear and natural; use full mode only when the caller explicitly requests a deeper humanized rewrite.",
+        "expected_output": "fact-preserving natural public copy",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "humanize-writing",
+        "name": "Humanize Writing",
+        "path": "skills/humanize-writing/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "positioning_and_copy_maker"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "publish"
+      },
+      {
+        "content_sha256": "c3e7bbd911580cc67246fec652fb7b369b6a764a56a98df6394a5923c009bd4a",
+        "description": "Turn caller-supplied execution evidence into a concise outcome summary, blocking decisions, actionable gaps, and the next safe gate. Use after bounded planning, implementation, review, observation, release preparation, or an approved external action when another person must decide what can happen next.",
+        "expected_output": "critical decisions, blocking questions, risks, and next-stage gate",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "outquestions",
+        "name": "Outquestions",
+        "path": "skills/outquestions/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "action_validator",
+          "external_action_operator",
+          "growth_and_outcome_analyst",
+          "independent_reviewer",
+          "observability_and_efficiency_observer"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "review"
+      },
+      {
+        "content_sha256": "a0adb7c587e233dce288aac4a5f1733844a0bc5255f7333bc90d9ee8c9da6e08",
+        "description": "Select the highest-priority actionable task from a caller-supplied plan and prepare a bounded execution handoff. Use when an individual or team needs deterministic urgency-and-importance ranking, dependency and blocker filtering, transparent rationale, stop conditions, and local review artifacts without relying on a dated project plan, scheduler, task-board connector, tracked run archive, or external write.",
+        "expected_output": "highest-priority bounded operator handoff",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "priority-task-operator",
+        "name": "Priority Task Operator",
+        "path": "skills/priority-task-operator/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "task_and_handoff_planner"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "act"
+      },
+      {
+        "content_sha256": "d711a68df5112a4a693b7905ca984a744140d3b6932c49a9dc1d220cda7af41c",
+        "description": "Create a public-safe execution handout after substantial work, multi-agent routing, subtask execution, review, or a requested continuation. Use when another operator needs a readable human summary plus an agent-ready continuation prompt grounded in changed files, decisions, validation evidence, open gaps, authority limits, and the next safe action.",
+        "expected_output": "durable completion, checks, blockers, and next safe action",
+        "forbidden_actions": [
+          "infer authority",
+          "store secrets",
+          "self-approve high-risk work",
+          "write externally without a separate gate"
+        ],
+        "id": "task-handout",
+        "name": "Task Handout",
+        "path": "skills/task-handout/SKILL.md",
+        "permissions": [
+          "read approved sources",
+          "prepare bounded artifacts",
+          "report evidence and gaps"
+        ],
+        "portable": true,
+        "recommended_role_ids": [
+          "integrator",
+          "knowledge_librarian",
+          "release_operator",
+          "task_and_handoff_planner"
+        ],
+        "safe_to_share": true,
+        "workflow_stage": "remember"
+      }
+    ],
+    "packaged_count": 10
+  },
+  "source_revision": "sha256:09e16d4767b17cbd3f25c2adff9ff2a88fc71d04b298f87369e372164791de0b",
+  "workflow": [
+    {
+      "description": "Admit a bounded source set, retrieve evidence, verify exact passages, and preserve provenance and gaps.",
+      "step": "01",
+      "title": "Research"
+    },
+    {
+      "description": "State the decision, acceptance criteria, authority, roles, outputs, reviewer, and stop conditions.",
+      "step": "02",
+      "title": "Define"
+    },
+    {
+      "description": "Run the smallest responsible route and hold external effects behind a separate approval gate.",
+      "step": "03",
+      "title": "Act"
+    },
+    {
+      "description": "Freeze the candidate and verify it independently against requirements and deterministic checks.",
+      "step": "04",
+      "title": "Review"
+    },
+    {
+      "description": "Promote only reusable conclusions with source lineage, ownership, freshness, and supersession.",
+      "step": "05",
+      "title": "Remember"
+    }
+  ]
+}

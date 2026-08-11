@@ -1,0 +1,102 @@
+name: archflow_knowledge_operator
+status: configured_provider_disabled_public_core
+
+purpose: >
+  Connect bounded working state, approved retrieval, role contracts, review
+  gates, solution memory, action receipts, and the dashboard Communication
+  Center without importing a user's private workspace or project history.
+
+operator:
+  primary: integrator
+  responsibilities:
+    - frame_the_case_and_source_boundary
+    - select_the_smallest_role_pack
+    - preserve_maker_reviewer_separation
+    - verify_claims_and_stop_conditions
+    - promote_only_reviewed_reusable_meaning
+
+knowledge_layers:
+  working_state:
+    status: active_contract
+    root: browser_session_or_project_local_run_envelope
+    role: short_lived_case_state_open_gaps_and_pending_approvals
+    rule: clearable_and_never_promoted_automatically
+
+  controlled_context:
+    status: active_contract
+    root: project/context/cag-core.yaml
+    role: stable_rules_roles_schemas_and_authority_limits
+    rule: combine_with_only_task_relevant_retrieval_chunks
+
+  approved_retrieval:
+    status: active_contract
+    root: project/dashboard/corpus-manifest.json
+    role: exact_manifest_source_linked_context
+    rule: no_directory_expansion_and_no_source_path_means_no_evidence
+
+  solution_memory:
+    status: active_schema
+    schema: project/database/solution-memory-record.schema.json
+    role: reviewed_reusable_problem_solution_pattern
+    rule: require_provenance_reuse_conditions_anti_conditions_freshness_review_and_supersession
+
+  action_memory:
+    status: active_schema
+    schema: project/database/action-receipt.schema.json
+    role: append_only_receipt_for_one_bounded_action
+    rule: require_authority_artifacts_checks_rollback_readback_and_independent_verdict
+
+  communication_center:
+    status: browser_local_review_surface
+    route: project/dashboard/index.html#communication
+    role: accept_one_schema_validated_jarvis_work_packet_for_human_review
+    rule: consume_once_remove_transit_packet_and_never_put_packet_content_in_the_url
+
+runtime_layers:
+  langgraph:
+    status: configured_contract_optional_runtime
+    role: state_transitions_attempt_caps_interrupts_and_review_loops
+    config: project/workflows/langgraph-controller.yaml
+
+  llamaindex:
+    status: deterministic_lexical_core_optional_import_check
+    role: exact_manifest_retrieval_with_source_paths_and_chunk_hashes
+    config: project/workflows/llamaindex-rag.yaml
+
+  crewai:
+    status: role_contract_only_by_default
+    role: map_tasks_to_the_canonical_role_subset_without_starting_agents
+    config: project/workflows/crewai-crew.yaml
+
+  jarvis:
+    status: packet_composer_provider_disabled
+    role: frame_a_work_packet_and_return_it_to_the_communication_center
+    external_execution: false
+
+  providers:
+    status: none_by_default
+    registry: project/config/provider-registry.json
+    activation_rule: server_side_adapter_contract_tests_budget_input_authority_and_independent_review
+
+  observability:
+    status: off_by_default
+    activation_rule: explicit_sanitized_trace_approval_only
+
+execution_path:
+  - research_frame_source_boundary_and_retrieve_exact_manifest_context
+  - define_goal_role_pack_outputs_gates_attempt_caps_and_reviewer
+  - act_only_with_required_authority_and_side_effect_approval
+  - verify_evidence_claims_state_transition_and_readback
+  - remember_only_as_reviewed_solution_memory_or_action_receipt
+  - handoff_through_a_schema_validated_packet_with_open_gaps
+
+hard_rules:
+  - no_credentials_identity_values_or_credential_presence_in_public_output
+  - no_private_workspace_or_broad_device_ingestion
+  - no_provider_call_service_start_or_external_write_in_the_default_core
+  - no_client_side_role_escalation
+  - no_maker_self_approval_for_high_risk_output
+  - no_unlisted_source_is_evidence
+  - no_raw_prompt_unreviewed_transcript_or_personal_preference_becomes_memory
+  - no_percentage_claim_without_a_reproducible_fixture_denominator_and_limitation
+  - every_external_action_requires_separate_authority_and_post_action_readback

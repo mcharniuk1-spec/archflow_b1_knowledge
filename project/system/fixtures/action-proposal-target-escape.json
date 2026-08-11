@@ -1,0 +1,52 @@
+{
+  "schema_version": "3.0",
+  "proposal_id": "proposal-target-escape",
+  "case_id": "case-team-onboarding",
+  "actor_role": "source_and_context_operator",
+  "intent": "Escape the approved local review-packet target boundary.",
+  "target": {
+    "class": "local_review_packet",
+    "ref": "../../private/synthetic-secret.md"
+  },
+  "change_set": "Write outside the approved local target prefix.",
+  "requirement_refs": [
+    "REQ-ONBOARDING-001@1"
+  ],
+  "decision_refs": [],
+  "coverage": [
+    {
+      "requirement_ref": "REQ-ONBOARDING-001@1",
+      "status": "satisfied"
+    }
+  ],
+  "permission_scope": {
+    "operation": "prepare_candidate",
+    "target_class": "local_review_packet",
+    "status": "allowed"
+  },
+  "side_effects": [
+    "local_candidate_draft"
+  ],
+  "effect_budget": {
+    "provider_calls": 0,
+    "network_calls": 0,
+    "external_writes": 0
+  },
+  "execute": false,
+  "reversibility": "reversible",
+  "rollback": "Discard the escaped candidate.",
+  "verification_plan": {
+    "preflight": "Confirm the exact local target prefix.",
+    "postcondition": "The candidate remains under the case directory.",
+    "readback": "The independent reviewer reads the candidate."
+  },
+  "review": {
+    "maker_role": "source_and_context_operator",
+    "reviewer_role": "independent_reviewer",
+    "risk": "low"
+  },
+  "approval": {
+    "required": false,
+    "status": "not_required"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/archflow/knowledge-case.schema.json",
+  "title": "ArchFlow Knowledge Case V3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "workspace_mode",
+    "objective",
+    "decision_supported",
+    "workflow_state",
+    "state_revision",
+    "source_boundary",
+    "role_pack_id",
+    "roles",
+    "authority",
+    "requirements",
+    "role_task_bindings",
+    "gaps",
+    "receipts",
+    "memory_decision"
+  ],
+  "properties": {
+    "schema_version": {"const": "3.0"},
+    "case_id": {"type": "string", "pattern": "^case-[a-z0-9-]+$"},
+    "workspace_mode": {"enum": ["individual", "team"]},
+    "objective": {"type": "string", "minLength": 1},
+    "decision_supported": {"type": "string", "minLength": 1},
+    "workflow_state": {"enum": ["frame", "ground", "design", "execute", "verify", "remember", "handoff"]},
+    "state_revision": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+    "source_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["manifest", "allowed_sources", "excluded_classes", "status"],
+      "properties": {
+        "manifest": {"const": "project/dashboard/corpus-manifest.json"},
+        "allowed_sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "pattern": "^(README\\.md|SECURITY\\.md|docs/|project/|skills/)"}
+        },
+        "excluded_classes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+        },
+        "status": {"enum": ["pass", "revise", "blocked"]}
+      }
+    },
+    "role_pack_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["makers", "reviewer", "integrator"],
+      "properties": {
+        "makers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+        },
+        "reviewer": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "integrator": {"const": "integrator"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_actions", "forbidden_operations"],
+      "properties": {
+        "allowed_actions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["actor_role", "operation", "target_class", "target_prefixes", "approval_required"],
+            "properties": {
+              "actor_role": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+              "operation": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+              "target_class": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+              "target_prefixes": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*\\.\\.)(?!.*\\\\)[A-Za-z0-9._/-]+$"}
+              },
+              "approval_required": {"type": "boolean"}
+            }
+          }
+        },
+        "forbidden_operations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+        }
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "version", "state", "statement", "acceptance_checks", "evidence_refs"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^REQ-[A-Z0-9-]+$"},
+          "version": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+          "state": {"enum": ["proposed", "approved", "superseded"]},
+          "statement": {"type": "string", "minLength": 1},
+          "acceptance_checks": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "role_task_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "role-task-binding.schema.json"}
+    },
+    "gaps": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "artifact_ref", "status"],
+        "properties": {
+          "kind": {"enum": ["admission", "retrieval", "verification", "review", "action", "readback", "memory"]},
+          "artifact_ref": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*\\.\\.)(?!.*\\\\)[A-Za-z0-9._/-]+$"},
+          "status": {"enum": ["planned", "recorded", "verified", "blocked"]}
+        }
+      }
+    },
+    "memory_decision": {"enum": ["exclude", "working_only", "solution_candidate", "action_receipt", "promoted"]}
+  }
+}

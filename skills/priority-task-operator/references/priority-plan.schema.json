@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arch-flow.dev/schemas/priority-plan.schema.json",
+  "title": "ArchFlow caller-supplied priority plan",
+  "type": "object",
+  "required": ["schema_version", "plan_id", "decision_horizon", "reviewer_role_id", "tasks"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "plan_id": {"type": "string", "minLength": 1},
+    "decision_horizon": {"type": "string", "minLength": 1},
+    "reviewer_role_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "ranking_policy": {"type": "string"},
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "task_id",
+          "title",
+          "status",
+          "importance",
+          "urgency",
+          "dependencies",
+          "blockers",
+          "risk_level",
+          "allowed_actions",
+          "forbidden_actions",
+          "expected_artifact",
+          "validation_checks",
+          "stop_conditions"
+        ],
+        "properties": {
+          "task_id": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "status": {"enum": ["backlog", "todo", "in_progress", "review", "blocked", "done", "cancelled"]},
+          "importance": {"type": "integer", "minimum": 1, "maximum": 5},
+          "urgency": {"type": "integer", "minimum": 1, "maximum": 5},
+          "due_at": {"type": "string", "format": "date-time"},
+          "dependencies": {"$ref": "#/$defs/strings"},
+          "blockers": {"$ref": "#/$defs/strings"},
+          "risk_level": {"enum": ["low", "medium", "high"]},
+          "allowed_actions": {"$ref": "#/$defs/strings"},
+          "forbidden_actions": {"$ref": "#/$defs/strings"},
+          "expected_artifact": {"type": "string", "minLength": 1},
+          "validation_checks": {"$ref": "#/$defs/strings"},
+          "stop_conditions": {"$ref": "#/$defs/strings"},
+          "evidence_refs": {"$ref": "#/$defs/repo_paths"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "strings": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "repo_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "not": {"pattern": "^(?:/|[A-Za-z]:[\\\\/]|file:)"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

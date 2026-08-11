@@ -1,0 +1,54 @@
+{
+  "schema_version": "3.0",
+  "status": "canonical_public_operator_model",
+  "provider_default": "none",
+  "writeback_default": "disabled",
+  "experience_projection": {
+    "research": ["frame", "ground"],
+    "define": ["design"],
+    "act": ["execute", "verify", "remember"],
+    "handoff": ["handoff"]
+  },
+  "states": [
+    "frame",
+    "ground",
+    "design",
+    "execute",
+    "verify",
+    "remember",
+    "handoff"
+  ],
+  "transitions": [
+    {"from": "frame", "to": "ground", "gate": "objective_authority_and_source_boundary_admitted"},
+    {"from": "ground", "to": "design", "gate": "source_linked_context_and_gaps_recorded"},
+    {"from": "design", "to": "execute", "gate": "goal_role_output_checks_reviewer_and_stop_rules_bound"},
+    {"from": "execute", "to": "verify", "gate": "candidate_frozen_and_required_checks_complete"},
+    {"from": "verify", "to": "remember", "gate": "independent_verdict_and_exact_readback_pass"},
+    {"from": "remember", "to": "handoff", "gate": "memory_decision_and_next_safe_action_recorded"}
+  ],
+  "repair_policy": {
+    "maximum_item_attempts": 3,
+    "maximum_revision_loops": 2,
+    "stop_after_same_failure_without_new_evidence": 2,
+    "maximum_parallel_branches": 3
+  },
+  "hard_gates": [
+    "exact_source_boundary",
+    "one_owner_per_output",
+    "maker_and_reviewer_differ_for_high_risk_work",
+    "provider_and_external_actions_disabled_by_default",
+    "exact_target_authority_before_side_effect",
+    "rollback_or_idempotency_before_external_action",
+    "post_action_readback",
+    "reviewed_lineage_before_memory_promotion"
+  ],
+  "terminal_rule": "A case cannot be represented as complete without its required artifact, checks, independent verdict, memory decision, and next safe action.",
+  "configuration_refs": {
+    "knowledge_crew": "project/system/contracts/knowledge-crew-config.json",
+    "roles": "project/system/contracts/role-catalog.json",
+    "role_packs": "project/agents/actionable-role-packs.json",
+    "run_envelope": "project/database/run-envelope.schema.json",
+    "solution_memory": "project/database/solution-memory-record.schema.json",
+    "action_memory": "project/database/action-receipt.schema.json"
+  }
+}

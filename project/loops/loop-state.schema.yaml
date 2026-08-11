@@ -1,0 +1,53 @@
+name: archflow_loop_state_schema
+status: active_contract
+purpose: >
+  Task-local projection of the canonical run envelope for ArchFlow report-only
+  and assisted loops. LangGraph remains the state owner.
+
+canonical_schema: project/database/run-envelope.schema.json
+
+required_fields:
+  run_id: string
+  task_id: string
+  source_ids: list
+  corpus_boundary: string
+  experience_phase: research_define_act_verify_remember_or_handoff
+  lifecycle_state: draft_ready_active_waiting_review_waiting_approval_blocked_completed_or_cancelled
+  state_revision: integer
+  parent_event_id: string
+  immutable_contract_hashes: list
+  attempt_number: integer
+  max_attempts_per_item: integer
+  max_revision_loops: integer
+  maker_agent: string
+  verifier_agent: string
+  verifier_same_as_maker: boolean
+  last_failure_signature: string
+  repeated_failure_count: integer
+  evidence_delta_refs: list
+  files_read: list
+  files_written: list
+  unsupported_claims: list
+  gaps: list
+  approval_status: not_required_required_approved_denied_or_expired
+  review_verdict: pending_approve_revise_or_block
+  memory_decision: pending_exclude_working_only_solution_candidate_action_receipt_or_promoted
+  blocked_reason: string
+  next_human_action: string
+  last_run_at: iso_datetime
+  prune_status: completed_or_skipped_with_reason
+
+defaults:
+  max_attempts_per_item: 3
+  max_revision_loops: 2
+  verifier_same_as_maker: false
+  state_revision: 0
+  repeated_failure_count: 0
+
+terminal_states:
+  completed: approved output, run log, handout, and memory decision exist
+  blocked: blocked reason and next human action are written
+  cancelled: authority was withdrawn or the operator cancelled the bounded run
+
+resume_rule: immutable contract hashes must match; otherwise create a new run revision
+repeated_failure_rule: stop when the same failure signature occurs twice without a new evidence delta

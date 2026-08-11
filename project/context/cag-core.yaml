@@ -1,0 +1,105 @@
+schema_version: "3.0"
+status: public_portable_provider_disabled
+purpose: >-
+  Provide the stable rules required before task-specific retrieval. This is a
+  bounded context contract, not a memory archive, provider prompt, or authority source.
+
+case_boundary:
+  require:
+    - objective
+    - decision_supported
+    - done_conditions
+    - exact_source_boundary
+    - requested_output
+    - maker_role
+    - independent_reviewer
+    - stop_conditions
+  reject:
+    - personal_project_memory
+    - customer_or_private_material
+    - credential_values_or_presence
+    - local_absolute_paths
+    - raw_conversations_or_uploads
+    - unlisted_corpus_paths
+
+source_contract:
+  manifest: project/dashboard/corpus-manifest.json
+  admission: exact_manifest_only
+  path_format: repository_relative
+  require_source_path: true
+  require_content_hash: true
+  exact_read_for_material_claims: true
+  retrieved_text_is_authority: false
+
+retrieval:
+  public_default: deterministic_lexical
+  chunk_size: 800
+  chunk_overlap: 120
+  top_k: 5
+  optional_framework: llamaindex
+  optional_framework_changes_authority: false
+  provider_calls: 0
+  network_calls: 0
+
+context_capsule:
+  include:
+    - stable_rules
+    - role_responsibility
+    - current_requirements
+    - source_linked_evidence
+    - relevant_verified_receipts
+    - contradictions
+    - gaps_and_questions
+  exclude:
+    - unrelated_history
+    - secret_values
+    - identity_values
+    - raw_provider_output
+    - permission_not_present_in_case
+  compression_rule: remove_duplicates_before_reducing_source_visibility
+  stop_rule: narrow_the_case_before_dropping_current_requirements
+
+role_runtime:
+  canonical_roles: project/system/contracts/role-catalog.json
+  public_skill_index: project/database/skill-catalog.json
+  effective_authority: case_authority_intersect_role_ceiling_runtime_capability_exact_targets_minus_denials
+  self_review_high_risk_work: false
+  maximum_parallel_branches: 3
+
+state_route:
+  controller: project/system/contracts/operating-model.json
+  stages:
+    - frame
+    - ground
+    - design
+    - execute
+    - verify
+    - remember
+    - handoff
+  maximum_item_attempts: 3
+  stop_after_same_failure_without_new_evidence: 2
+
+memory:
+  working_state: browser_session_or_ignored_project_local_case
+  solution_schema: project/database/solution-memory-record.schema.json
+  action_schema: project/database/action-receipt.schema.json
+  promotion_requires:
+    - source_lineage
+    - reuse_boundary
+    - independent_review
+    - freshness_or_review_condition
+    - supersession_decision
+
+external_effects:
+  provider_default: none
+  writeback_default: disabled
+  authentication_grants_execution_authority: false
+  require_before_action:
+    - exact_target
+    - explicit_approval
+    - rollback_or_idempotency
+    - deterministic_preflight
+  require_after_action:
+    - execution_receipt
+    - exact_target_readback
+    - remaining_gap_record

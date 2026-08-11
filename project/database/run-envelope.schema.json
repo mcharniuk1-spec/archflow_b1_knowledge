@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arch-flow.dev/schemas/run-envelope.schema.json",
+  "title": "ArchFlow canonical run envelope",
+  "description": "Provider-neutral state shared by LangGraph, Jarvis packets, browser projections, execution reports, review bundles, and handoffs.",
+  "type": "object",
+  "required": ["schema_version", "run_id", "workspace_mode", "phase", "lifecycle_state", "state_revision", "contracts", "authority", "assignments", "review", "memory", "recovery"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_id": {"type": "string", "minLength": 1},
+    "profile_id": {"type": "string"},
+    "workspace_mode": {"enum": ["individual", "team"]},
+    "phase": {"enum": ["intake", "research", "define", "act", "verify", "remember", "handoff"]},
+    "node_id": {"type": "string"},
+    "lifecycle_state": {"enum": ["draft", "ready", "active", "waiting_review", "waiting_approval", "blocked", "completed", "cancelled"]},
+    "state_revision": {"type": "integer", "minimum": 0},
+    "parent_event_id": {"type": "string"},
+    "attempt": {"type": "integer", "minimum": 0},
+    "max_attempts": {"type": "integer", "minimum": 1},
+    "contracts": {
+      "type": "object",
+      "required": ["goal_hash", "task_contract_hash", "role_catalog_hash", "skill_catalog_hash", "source_manifest_hash"],
+      "properties": {
+        "goal_ref": {"type": "string"},
+        "goal_hash": {"type": "string"},
+        "task_contract_ref": {"type": "string"},
+        "task_contract_hash": {"type": "string"},
+        "role_catalog_hash": {"type": "string"},
+        "skill_catalog_hash": {"type": "string"},
+        "source_manifest_ref": {"type": "string"},
+        "source_manifest_hash": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "authority": {
+      "type": "object",
+      "required": ["risk_level", "allowed_actions", "forbidden_actions", "approval_state", "external_action_requested"],
+      "properties": {
+        "risk_level": {"enum": ["low", "medium", "high"]},
+        "allowed_actions": {"type": "array", "items": {"type": "string"}},
+        "forbidden_actions": {"type": "array", "items": {"type": "string"}},
+        "approval_state": {"enum": ["not_required", "required", "approved", "denied", "expired"]},
+        "approval_ref": {"type": "string"},
+        "external_action_requested": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "retrieval": {
+      "type": "object",
+      "properties": {
+        "receipt_ref": {"type": "string"},
+        "mode_requested": {"type": "string"},
+        "mode_used": {"type": "string"},
+        "source_refs": {"type": "array", "items": {"type": "string"}},
+        "chunk_refs": {"type": "array", "items": {"type": "string"}},
+        "fallback_reason": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "assignments": {
+      "type": "object",
+      "required": ["role_ids", "skill_ids", "claimed_files"],
+      "properties": {
+        "role_ids": {"type": "array", "items": {"type": "string"}},
+        "skill_ids": {"type": "array", "items": {"type": "string"}},
+        "claimed_files": {"type": "array", "items": {"type": "string"}},
+        "artifact_refs": {"type": "array", "items": {"type": "string"}},
+        "artifact_hashes": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "required": ["maker_role_ids", "reviewer_role_id", "verdict"],
+      "properties": {
+        "maker_role_ids": {"type": "array", "items": {"type": "string"}},
+        "reviewer_role_id": {"type": "string"},
+        "verdict": {"enum": ["pending", "approve", "revise", "block"]},
+        "review_ref": {"type": "string"},
+        "unsupported_claims": {"type": "array", "items": {"type": "string"}},
+        "gaps": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "memory": {
+      "type": "object",
+      "required": ["decision"],
+      "properties": {
+        "candidate_refs": {"type": "array", "items": {"type": "string"}},
+        "decision": {"enum": ["pending", "exclude", "working_only", "solution_candidate", "action_receipt", "promoted"]},
+        "promotion_ref": {"type": "string"},
+        "supersedes": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "recovery": {
+      "type": "object",
+      "required": ["rollback_plan", "readback_result", "terminal_reason", "next_safe_action"],
+      "properties": {
+        "checkpoint_ref": {"type": "string"},
+        "rollback_plan": {"type": "string"},
+        "readback_result": {"enum": ["not_required", "pending", "pass", "fail"]},
+        "terminal_reason": {"type": "string"},
+        "next_safe_action": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

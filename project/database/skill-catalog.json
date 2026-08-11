@@ -1,0 +1,275 @@
+{
+  "items": [
+    {
+      "content_sha256": "bb3e555484dbea1c9ba4c64d209439faa608b292037d4593b880c82d0cbe67d5",
+      "description": "Coordinate parallel or role-based ArchFlow work with public-safe file claims, state updates, handoffs, and conflict stops. Use before shared-file edits, multi-agent execution, reviewer handoff, integration, Git closeout, or any task that needs the dashboard Communication Center or a portable local coordination packet.",
+      "expected_output": "public-safe file claim, live update, and handoff",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "arcagcom",
+      "name": "Arcagcom",
+      "path": "skills/arcagcom/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "implementation_maker",
+        "integrator"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "coordinate"
+    },
+    {
+      "content_sha256": "8ae1e14ec7f8a8ac2d55c3d8ddd2a3b8de19a1c56fba21fc1789bb01b65848cc",
+      "description": "Convert a caller-supplied, approved evidence report into a bounded role, task, permission, review, and stop contract. Use when an individual or team needs to select the smallest canonical role pack and prepare an inspectable work handoff without launching a provider, changing files, or writing externally.",
+      "expected_output": "bounded role, task, gate, and proposed-artifact handoff",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "archflow-agent-control",
+      "name": "ArchFlow Agent Control",
+      "path": "skills/archflow-agent-control/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "action_validator",
+        "admission_controller",
+        "integrator"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "define"
+    },
+    {
+      "content_sha256": "15218f2f6b370eec71f0810e72e1899cf833c0418a7ecec7ec97e0e57507fc37",
+      "description": "Design, audit, or revise ArchFlow agentic architectures and role packs. Use when work concerns Goal Engineering, Loop Engineering, LangGraph sequencing, role and skill allocation, RAG or knowledge-layer boundaries, architecture generation, tool adoption, safety gates, architecture benchmarks, or conversion of a business workflow such as PRD, ICP, content, outreach, finance, engineering, or media into a bounded execution system.",
+      "expected_output": "architecture, role, retrieval, verification, memory, and benchmark contracts",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "archflow-architecture-operator",
+      "name": "ArchFlow Architecture Operator",
+      "path": "skills/archflow-architecture-operator/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "goal_and_architecture_operator",
+        "product_packaging_engineer"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "define"
+    },
+    {
+      "content_sha256": "a78c547f9ad75ba276d52dd3966962b2b4e2176fe0014b5a2bcd9d842c6eded1",
+      "description": "Validate the portable ArchFlow runtime before integration or Git publication. Use after changing workflows, role or skill contracts, provider configuration, retrieval boundaries, dashboard data, or runtime code to run provider-disabled safety, schema, import, and smoke checks without installing packages or activating services.",
+      "expected_output": "provider-disabled runtime and public-safety validation report",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "archflow-e1-runtime-guard",
+      "name": "ArchFlow Runtime Guard",
+      "path": "skills/archflow-e1-runtime-guard/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "observability_and_efficiency_observer",
+        "product_packaging_engineer",
+        "release_operator",
+        "verifier"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "review"
+    },
+    {
+      "content_sha256": "528a08c38e8d0fb8dec1b4f796b2af21a5f5137de8fae1177310c4527f701a90",
+      "description": "Prepare a source-bounded ArchFlow knowledge review packet before agent design or implementation. Use for a public repository, project brief, approved source summary, research request, or knowledge setup that needs facts, interpretations, hypotheses, gaps, provenance, reviewer questions, and an optional reviewed solution-memory candidate without ingesting private material or starting a provider, agent, repository action, or external write.",
+      "expected_output": "source-bounded report with facts, interpretations, hypotheses, and gaps",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "archflow-knowledge-service",
+      "name": "ArchFlow Knowledge Service",
+      "path": "skills/archflow-knowledge-service/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "knowledge_librarian",
+        "onboarding_guide",
+        "positioning_and_copy_maker",
+        "qualification_and_channel_planner",
+        "requirements_and_market_research",
+        "source_and_context_operator",
+        "surface_projection_operator"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "research"
+    },
+    {
+      "content_sha256": "00deae5d5b267f9ea990805f371b931d9fb9d6e35cb799f1ff6b3b3119f16b81",
+      "description": "Turn a caller-supplied approved objective into ordered, verifiable task packets with dependencies, sole-writer ownership, acceptance checks, approval gates, and handoffs. Use when an individual or team needs a portable research, definition, action, review, or knowledge-maintenance plan without relying on a task board, scheduler, provider, or private workspace.",
+      "expected_output": "ordered task packets with dependencies, gates, and acceptance checks",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "archflow-task-breakdown",
+      "name": "ArchFlow Task Breakdown",
+      "path": "skills/archflow-task-breakdown/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "task_and_handoff_planner"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "define"
+    },
+    {
+      "content_sha256": "cfb37722693159e320f253e9909a6a616c0368c237e232567fd4a8a050ea3ae7",
+      "description": "Polish caller-supplied, approved user-facing prose while preserving facts, citations, links, technical values, and claim limits. Use for product copy, posts, proposals, documentation, or final responses that should sound clear and natural; use full mode only when the caller explicitly requests a deeper humanized rewrite.",
+      "expected_output": "fact-preserving natural public copy",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "humanize-writing",
+      "name": "Humanize Writing",
+      "path": "skills/humanize-writing/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "positioning_and_copy_maker"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "publish"
+    },
+    {
+      "content_sha256": "c3e7bbd911580cc67246fec652fb7b369b6a764a56a98df6394a5923c009bd4a",
+      "description": "Turn caller-supplied execution evidence into a concise outcome summary, blocking decisions, actionable gaps, and the next safe gate. Use after bounded planning, implementation, review, observation, release preparation, or an approved external action when another person must decide what can happen next.",
+      "expected_output": "critical decisions, blocking questions, risks, and next-stage gate",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "outquestions",
+      "name": "Outquestions",
+      "path": "skills/outquestions/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "action_validator",
+        "external_action_operator",
+        "growth_and_outcome_analyst",
+        "independent_reviewer",
+        "observability_and_efficiency_observer"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "review"
+    },
+    {
+      "content_sha256": "a0adb7c587e233dce288aac4a5f1733844a0bc5255f7333bc90d9ee8c9da6e08",
+      "description": "Select the highest-priority actionable task from a caller-supplied plan and prepare a bounded execution handoff. Use when an individual or team needs deterministic urgency-and-importance ranking, dependency and blocker filtering, transparent rationale, stop conditions, and local review artifacts without relying on a dated project plan, scheduler, task-board connector, tracked run archive, or external write.",
+      "expected_output": "highest-priority bounded operator handoff",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "priority-task-operator",
+      "name": "Priority Task Operator",
+      "path": "skills/priority-task-operator/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "task_and_handoff_planner"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "act"
+    },
+    {
+      "content_sha256": "d711a68df5112a4a693b7905ca984a744140d3b6932c49a9dc1d220cda7af41c",
+      "description": "Create a public-safe execution handout after substantial work, multi-agent routing, subtask execution, review, or a requested continuation. Use when another operator needs a readable human summary plus an agent-ready continuation prompt grounded in changed files, decisions, validation evidence, open gaps, authority limits, and the next safe action.",
+      "expected_output": "durable completion, checks, blockers, and next safe action",
+      "forbidden_actions": [
+        "infer authority",
+        "store secrets",
+        "self-approve high-risk work",
+        "write externally without a separate gate"
+      ],
+      "id": "task-handout",
+      "name": "Task Handout",
+      "path": "skills/task-handout/SKILL.md",
+      "permissions": [
+        "read approved sources",
+        "prepare bounded artifacts",
+        "report evidence and gaps"
+      ],
+      "portable": true,
+      "recommended_role_ids": [
+        "integrator",
+        "knowledge_librarian",
+        "release_operator",
+        "task_and_handoff_planner"
+      ],
+      "safe_to_share": true,
+      "workflow_stage": "remember"
+    }
+  ],
+  "packaged_count": 10
+}

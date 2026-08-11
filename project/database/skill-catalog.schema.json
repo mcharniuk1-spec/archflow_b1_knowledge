@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchFlow public skill catalog",
+  "type": "object",
+  "required": ["scope", "packaged_count", "outside_inventory_policy", "items"],
+  "properties": {
+    "scope": {"type": "string"},
+    "packaged_count": {"type": "integer", "minimum": 0},
+    "outside_inventory_policy": {"type": "string"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "path", "category", "workflow_stage", "expected_output", "status", "portable", "safe_to_share", "permissions", "forbidden_actions", "verified_invocations", "content_sha256", "recommended_role_ids"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "description": {"type": "string"},
+          "path": {"type": "string", "pattern": "^skills/"},
+          "category": {"type": "string"},
+          "workflow_stage": {"type": "string"},
+          "expected_output": {"type": "string"},
+          "status": {"type": "string"},
+          "visibility": {"const": "public"},
+          "portable": {"type": "boolean"},
+          "safe_to_share": {"type": "boolean"},
+          "permissions": {"type": "array", "items": {"type": "string"}},
+          "forbidden_actions": {"type": "array", "items": {"type": "string"}},
+          "verified_invocations": {"type": ["integer", "null"]},
+          "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "recommended_role_ids": {"type": "array", "items": {"type": "string"}},
+          "recommended_roles": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

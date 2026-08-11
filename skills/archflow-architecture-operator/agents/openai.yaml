@@ -1,0 +1,4 @@
+interface:
+  display_name: "ArchFlow Architecture Operator"
+  short_description: "Design and govern bounded agent systems"
+  default_prompt: "Use $archflow-architecture-operator to audit or design an evidence-gated ArchFlow agent architecture."

@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.arch-flow.dev/schemas/context-capsule.schema.json",
+  "title": "ArchFlow Context Capsule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "capsule_version",
+    "run_id",
+    "generated_at",
+    "created_by",
+    "workspace_scope",
+    "user_goal",
+    "execution_type",
+    "risk_level",
+    "source_boundary_status",
+    "cag_core_version",
+    "cag_core_hash",
+    "cag_core_refs",
+    "approved_corpus_refs",
+    "retrieval_required",
+    "rag_queries",
+    "retrieved_context_refs",
+    "facts",
+    "interpretations",
+    "hypotheses",
+    "gaps",
+    "allowed_files",
+    "forbidden_actions",
+    "role_assignment",
+    "acceptance_criteria",
+    "evidence_required",
+    "validation_checks",
+    "stop_conditions",
+    "review_gate",
+    "review_decision",
+    "provider_policy",
+    "external_side_effects_policy"
+  ],
+  "properties": {
+    "capsule_version": {
+      "type": "string",
+      "const": "v3"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{2,80}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "workspace_scope": {
+      "type": "string",
+      "enum": ["individual", "team"]
+    },
+    "user_goal": {
+      "type": "string"
+    },
+    "execution_type": {
+      "type": "string",
+      "enum": [
+        "research",
+        "definition",
+        "implementation",
+        "repair",
+        "verification",
+        "documentation",
+        "release",
+        "monitoring"
+      ]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "source_boundary_status": {
+      "type": "string",
+      "enum": ["pass", "needs_review", "fail"]
+    },
+    "cag_core_version": {
+      "type": "string"
+    },
+    "cag_core_hash": {
+      "type": "string"
+    },
+    "cag_core_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source_ref"
+      }
+    },
+    "approved_corpus_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(docs|project|skills)/"
+      }
+    },
+    "retrieval_required": {
+      "type": "boolean"
+    },
+    "rag_queries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "retrieved_context_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/retrieved_ref"
+      }
+    },
+    "facts": {
+      "$ref": "#/$defs/string_list"
+    },
+    "interpretations": {
+      "$ref": "#/$defs/string_list"
+    },
+    "hypotheses": {
+      "$ref": "#/$defs/string_list"
+    },
+    "gaps": {
+      "$ref": "#/$defs/string_list"
+    },
+    "allowed_files": {
+      "$ref": "#/$defs/path_list"
+    },
+    "memory_write_basis": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "forbidden_actions": {
+      "$ref": "#/$defs/string_list"
+    },
+    "role_assignment": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "scope", "output"],
+        "properties": {
+          "role": {"type": "string"},
+          "role_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "scope": {"type": "string"},
+          "output": {"type": "string"}
+        }
+      }
+    },
+    "acceptance_criteria": {
+      "$ref": "#/$defs/string_list"
+    },
+    "evidence_required": {
+      "$ref": "#/$defs/string_list"
+    },
+    "validation_checks": {
+      "$ref": "#/$defs/string_list"
+    },
+    "stop_conditions": {
+      "$ref": "#/$defs/string_list"
+    },
+    "review_gate": {
+      "type": "string"
+    },
+    "review_decision": {
+      "type": "string",
+      "enum": ["pending", "approved", "revise", "blocked"]
+    },
+    "provider_policy": {
+      "type": "string",
+      "enum": ["disabled_by_default_separate_activation_required"]
+    },
+    "external_side_effects_policy": {
+      "type": "string",
+      "enum": ["blocked_without_exact_target_authority_and_readback"]
+    }
+  },
+  "$defs": {
+    "string_list": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "path_list": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "not": {
+          "pattern": "^/"
+        }
+      }
+    },
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_path", "purpose"],
+      "properties": {
+        "source_path": {
+          "type": "string",
+          "not": {
+            "pattern": "^/"
+          }
+        },
+        "purpose": {
+          "type": "string"
+        }
+      }
+    },
+    "retrieved_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_path",
+        "doc_id",
+        "chunk_id",
+        "retrieval_mode",
+        "score",
+        "public_safety_status"
+      ],
+      "properties": {
+        "source_path": {
+          "type": "string",
+          "not": {
+            "pattern": "^/"
+          }
+        },
+        "doc_id": {
+          "type": "string"
+        },
+        "chunk_id": {
+          "type": "string"
+        },
+        "retrieval_mode": {
+          "type": "string",
+          "enum": ["lexical", "manual_read"]
+        },
+        "score": {
+          "type": "number"
+        },
+        "public_safety_status": {
+          "type": "string",
+          "enum": ["pass", "needs_review", "fail"]
+        }
+      }
+    }
+  }
+}

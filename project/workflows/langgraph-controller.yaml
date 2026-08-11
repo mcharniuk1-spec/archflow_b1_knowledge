@@ -1,0 +1,204 @@
+name: archflow_actionable_agents_controller
+status: portable_provider_disabled_contract
+runtime: langgraph_optional_local_runtime
+
+purpose: >
+  Control one bounded objective from approved input through evidence framing,
+  grounded definition, safe execution, independent verification, reviewed
+  memory, and a readable handoff. The contract is useful to one operator or a
+  small team and does not activate a provider, network call, or external write.
+
+state_schema:
+  canonical_schema: project/database/run-envelope.schema.json
+  event_schema: project/database/runtime-event.schema.json
+  solution_memory_schema: project/database/solution-memory-record.schema.json
+  action_receipt_schema: project/database/action-receipt.schema.json
+  fields:
+    - run_id
+    - objective
+    - decision_supported
+    - approved_sources
+    - source_boundary_status
+    - evidence_refs
+    - role_pack_id
+    - maker_role_ids
+    - reviewer_role_id
+    - authority_state
+    - lifecycle_state
+    - revision_count
+    - stop_reason
+    - artifact_refs
+    - review_verdict
+    - memory_decision
+    - next_safe_action
+
+experience_projection:
+  research:
+    internal_stages:
+      - Frame
+      - Ground
+    nodes:
+      - frame_objective
+      - retrieve_context
+      - ground_evidence
+    output: source_linked_evidence_packet
+  define:
+    internal_stages:
+      - Design
+    nodes:
+      - design_execution
+    output: bounded_task_and_review_contract
+  act:
+    internal_stages:
+      - Execute
+      - Verify
+      - Remember
+    nodes:
+      - execute_bounded_action
+      - verify_result
+      - review_gate
+      - remember_result
+      - route_outcome
+    output: reviewed_artifact_action_receipt_and_handoff
+
+nodes:
+  classify_execution:
+    owner_agent: admission_controller
+    stage: intake
+    purpose: Classify the objective, risk, authority, required evidence, and stop conditions without executing work.
+    output: project/local/run-packets/<run-id>/classification.json
+
+  intake_validate:
+    owner_agent: action_validator
+    stage: intake
+    purpose: Validate the public source boundary, requested output, authority, and prohibited inputs.
+    output: source_boundary_status
+
+  frame_objective:
+    owner_agent: requirements_and_market_research
+    stage: Frame
+    purpose: State the decision to support, the known facts, the open questions, and the evidence needed.
+    output: project/local/run-packets/<run-id>/frame.json
+
+  retrieve_context:
+    owner_agent: source_and_context_operator
+    stage: Ground
+    purpose: Retrieve only exact-manifest public sources and return source paths with deterministic lexical evidence.
+    output: project/local/run-packets/<run-id>/retrieval.json
+
+  ground_evidence:
+    owner_agent: source_and_context_operator
+    stage: Ground
+    purpose: Separate facts, interpretations, hypotheses, gaps, conflicts, and freshness limits.
+    output: project/local/run-packets/<run-id>/evidence.json
+
+  design_execution:
+    owner_agent: goal_and_architecture_operator
+    stage: Design
+    purpose: Select the smallest declared role pack and define ownership, allowed tools, acceptance checks, attempts, approvals, and stop rules.
+    output: project/local/run-packets/<run-id>/task-contract.json
+
+  execute_bounded_action:
+    owner_agent: implementation_maker
+    stage: Execute
+    purpose: Produce the scoped local artifact allowed by the accepted task contract; external effects remain prohibited.
+    output: project/local/run-packets/<run-id>/artifact.json
+
+  verify_result:
+    owner_agent: verifier
+    stage: Verify
+    purpose: Run deterministic acceptance, boundary, provenance, and completion checks independently from the maker.
+    output: project/local/run-packets/<run-id>/verification.json
+
+  review_gate:
+    owner_agent: independent_reviewer
+    stage: Verify
+    purpose: Return approve, revise, or block with evidence and the next safe action.
+    output: review_verdict
+
+  remember_result:
+    owner_agent: knowledge_librarian
+    stage: Remember
+    purpose: Promote only a reviewed reusable conclusion or exact action receipt; discard raw personal input and unreviewed drafts.
+    output: project/local/run-packets/<run-id>/memory-candidate.json
+
+  route_outcome:
+    owner_agent: admission_controller
+    stage: handoff
+    purpose: Decide accept, repair, split, escalate, or stop after reading the independent verdict; this node does not execute the decision.
+    output: next_safe_action
+
+  write_task_handout:
+    owner_agent: integrator
+    stage: handoff
+    purpose: Produce a concise completion or blocker packet with artifacts, checks, gaps, and the next safe action.
+    output: project/local/run-packets/<run-id>/handout.json
+
+edges:
+  - from: START
+    to: classify_execution
+  - from: classify_execution
+    to: intake_validate
+  - from: intake_validate
+    to: frame_objective
+    condition: source_boundary_status == pass
+  - from: intake_validate
+    to: write_task_handout
+    condition: source_boundary_status == fail
+  - from: frame_objective
+    to: retrieve_context
+  - from: retrieve_context
+    to: ground_evidence
+  - from: ground_evidence
+    to: design_execution
+  - from: design_execution
+    to: execute_bounded_action
+    condition: authority_state == approved_for_local_execution
+  - from: design_execution
+    to: write_task_handout
+    condition: authority_state != approved_for_local_execution
+  - from: execute_bounded_action
+    to: verify_result
+  - from: verify_result
+    to: review_gate
+  - from: review_gate
+    to: remember_result
+    condition: review_verdict == approve
+  - from: review_gate
+    to: design_execution
+    condition: review_verdict == revise and revision_count < 2
+  - from: review_gate
+    to: write_task_handout
+    condition: review_verdict == block or revision_count >= 2
+  - from: remember_result
+    to: route_outcome
+  - from: route_outcome
+    to: write_task_handout
+  - from: write_task_handout
+    to: END
+
+current_parameters:
+  provider_mode: disabled
+  network_calls: 0
+  external_writes: 0
+  browser_state_is_durable_memory: false
+  checkpointer: none_by_default
+  runtime_packets_root: project/local/run-packets
+  maximum_revision_loops: 2
+  maximum_attempts_per_item: 3
+  maker_reviewer_separation_required: true
+  human_approval_required_for_external_effects: true
+  retrieval_manifest: project/dashboard/corpus-manifest.json
+  retrieval_manifest_schema: "3.0"
+  role_catalog: project/database/role-catalog.json
+  role_pack_registry: project/agents/actionable-role-packs.json
+  smoke_script: project/scripts/langgraph-smoke-run.py
+
+stop_conditions:
+  - source_boundary_fails
+  - authority_is_missing_or_changes
+  - immutable_contract_changes
+  - maker_and_reviewer_are_the_same_for_substantial_work
+  - required_evidence_is_missing
+  - attempt_or_revision_cap_is_reached
+  - a_provider_network_call_or_external_write_is_requested

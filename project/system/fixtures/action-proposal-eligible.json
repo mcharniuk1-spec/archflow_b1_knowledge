@@ -1,0 +1,52 @@
+{
+  "schema_version": "3.0",
+  "proposal_id": "proposal-onboarding-packet",
+  "case_id": "case-team-onboarding",
+  "actor_role": "source_and_context_operator",
+  "intent": "Prepare a source-linked onboarding review packet without external execution.",
+  "target": {
+    "class": "local_review_packet",
+    "ref": "project/local/cases/team-onboarding/guide.md"
+  },
+  "change_set": "Draft the approved requirement, source references, checks, reviewer, and next safe action.",
+  "requirement_refs": [
+    "REQ-ONBOARDING-001@1"
+  ],
+  "decision_refs": [],
+  "coverage": [
+    {
+      "requirement_ref": "REQ-ONBOARDING-001@1",
+      "status": "satisfied"
+    }
+  ],
+  "permission_scope": {
+    "operation": "prepare_candidate",
+    "target_class": "local_review_packet",
+    "status": "allowed"
+  },
+  "side_effects": [
+    "local_candidate_draft"
+  ],
+  "effect_budget": {
+    "provider_calls": 0,
+    "network_calls": 0,
+    "external_writes": 0
+  },
+  "execute": false,
+  "reversibility": "reversible",
+  "rollback": "Discard the unapproved local candidate.",
+  "verification_plan": {
+    "preflight": "Confirm the source paths occur in the exact public manifest.",
+    "postcondition": "The packet includes the requirement, checks, reviewer, and next safe action.",
+    "readback": "The independent reviewer reads the frozen local candidate."
+  },
+  "review": {
+    "maker_role": "source_and_context_operator",
+    "reviewer_role": "independent_reviewer",
+    "risk": "low"
+  },
+  "approval": {
+    "required": false,
+    "status": "not_required"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Humanize Writing"
+  short_description: "Fact-preserving editorial polish for natural client-facing prose"
+  default_prompt: "Use $humanize-writing in light mode to polish this approved draft while preserving every fact and link."

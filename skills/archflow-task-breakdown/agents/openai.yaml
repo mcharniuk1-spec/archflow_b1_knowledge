@@ -1,0 +1,4 @@
+interface:
+  display_name: "ArchFlow Task Breakdown"
+  short_description: "Build ordered, reviewable task packets"
+  default_prompt: "Use $archflow-task-breakdown to turn this approved objective into bounded tasks, checks, gates, and handoffs."
