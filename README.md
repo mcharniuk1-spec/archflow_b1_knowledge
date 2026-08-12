@@ -77,6 +77,20 @@ The four SVGs are both a complete gallery and distributed explanations inside th
 | [Output, validation, and receipts](project/assets/architecture/output-receipt-flow.svg) | Evidence | How a candidate passes requirement, authority, maker-check, independent-review, action, readback, and promotion gates |
 | [Onboarding and teamwork](project/assets/architecture/onboarding-teamwork-flow.svg) | Roles & Communication | Who joins, what they own, how handoffs work, and when the system must interrupt or escalate |
 
+### Architecture visual set
+
+These four schemas are the public operating model. Each preview links to its
+editable SVG source. They describe contracts and gates; the public core is
+provider-disabled and writes nothing externally.
+
+[![Knowledge crew tower — sources, roles, state, validation, review, and learning](project/assets/architecture/knowledge-crew-tower.png)](project/assets/architecture/knowledge-crew-tower.svg)
+
+[![Context input flow — bounded inputs become source-visible context with provenance](project/assets/architecture/context-input-flow.png)](project/assets/architecture/context-input-flow.svg)
+
+[![Output receipt flow — requirements move through validation, approval, action, and readback](project/assets/architecture/output-receipt-flow.png)](project/assets/architecture/output-receipt-flow.svg)
+
+[![Onboarding teamwork flow — one person or team adds the smallest responsible roles](project/assets/architecture/onboarding-teamwork-flow.png)](project/assets/architecture/onboarding-teamwork-flow.svg)
+
 Every labeled role is functional. The diagrams contain no personal call names. Configuration numbers shown inside a schema are defaults or bounded examples—not universal performance claims.
 
 ## Verified Fixture Metrics
@@ -85,7 +99,7 @@ The current V3 benchmark uses four fixed public synthetic tasks and deliberately
 
 | Measure | Result | Exact comparator | Limitation |
 |---|---:|---|---|
-| Context input | **98.6% lower** | Top-five lexical context chunks versus four full-manifest packets: 15,001 vs 1,055,632 UTF-8 bytes | Input bytes, not model-exact tokens, billed tokens, durable-memory size, latency, or answer quality |
+| Context input | **98.6% lower** | Top-five lexical context chunks versus four full-manifest packets: 15,001 vs 1,059,756 UTF-8 bytes | Input bytes, not model-exact tokens, billed tokens, durable-memory size, latency, or answer quality |
 | Role activation | **75.0% fewer** | Smallest declared role packs versus all-role fan-out: 21 vs 84 role slots | Contract selection, not wall-clock speed, labor saved, or throughput |
 | Expected source recall | **4 / 4** | Expected canonical source appears in deterministic lexical top five | Source-hit fixture, not semantic answer accuracy or representative production recall |
 | Semantic gates | **8 / 8** | One valid and seven unsafe or incomplete packets match expected accept/reject decisions | Bounded abuse fixtures, not a real-world safety rate |

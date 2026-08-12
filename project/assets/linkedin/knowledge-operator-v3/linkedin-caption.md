@@ -1,41 +1,51 @@
 # LinkedIn Caption
 
-Most agent systems do not break at the model call. They break at the handoff.
+Agent work usually breaks between a source and the next action. ArchFlow makes
+that handoff inspectable: a bounded case moves through **Research → Define →
+Act → Review → Remember**, with provenance, typed state, role ownership,
+validation, and a receipt at each important boundary.
 
-ArchFlow Knowledge Operator makes that handoff visible. It gives a person or team one practical path from source material to a safe next action:
+The public repository includes four visual operating schemas:
 
-**Research → Define → Act → Review → Remember**
+**01 · Knowledge Crew Tower** — reviewed sources, functional roles, typed state,
+validation, review, and maintained learning.
 
-The repository includes four visual operating schemas:
+**02 · Context Input Flow** — Docs, Tasks, Code, and Decisions become bounded,
+source-visible context without losing provenance.
 
-**01 · Knowledge crew** — how reviewed sources, functional roles, typed state, and learning connect.
+**03 · Output Receipt Flow** — requirements move through authority, maker
+checks, independent review, approved action, readback, and a receipt.
 
-**02 · Context flow** — how bounded inputs become source-visible context without losing provenance.
+**04 · Onboarding Teamwork Flow** — one person or a small team adds only the
+smallest responsible role set, without chaotic agent fan-out.
 
-**03 · Output receipts** — how artifacts, checks, approvals, and next-safe-action handoffs are recorded.
+The dashboard turns the model into a practical Knowledge Operator and
+Communication Center. It shows what is in scope, who owns the output, what must
+be reviewed, which state the work is in, and the next safe action. The public
+core runs without an API key and does not silently call providers or write
+externally.
 
-**04 · Individual and team onboarding** — how a small mission grows into reusable operating knowledge.
+Four fixed public fixtures report:
 
-The dashboard turns those ideas into a usable communication center for everyday work. It helps teams answer the questions that usually stay hidden: Which source is in scope? Who owns the output? What must be reviewed? What is allowed to happen next?
+**01 · 98.6% lower UTF-8 input bytes** — 15,001 vs 1,059,756.
 
-Four fixed engineering fixtures make the design concrete:
+**02 · 75.0% fewer selected role slots** — 21 vs 84.
 
-**01 · 98.6%** lower UTF-8 input bytes — 15,001 vs 1,055,632
+**03 · 4 / 4 expected-source hits** — deterministic lexical top-five retrieval.
 
-**02 · 75.0%** fewer selected role slots — 21 vs 84
+**04 · 8 / 8 expected semantic gate decisions** — fixed accept/reject fixtures.
 
-**03 · 4 / 4** expected-source hits in lexical top-five retrieval
+The same checks recorded **0 provider calls** and **0 external writes**. These
+are bounded comparators, not claims about billed-token or memory savings,
+speed, ROI, answer quality, or production reliability.
 
-**04 · 8 / 8** expected semantic gate decisions
+Website: https://www.arch-flow.dev/
 
-The same checks recorded **0 provider calls** and **0 external writes**. These are bounded fixture measurements, not claims about billed-token savings, memory savings, speed, ROI, answer quality, or production reliability.
+Dashboard: https://www.arch-flow.dev/project/dashboard/#architecture
 
-Explore the website: https://www.arch-flow.dev/
+Repository: https://github.com/mcharniuk1-spec/archflow_b1_knowledge
 
-Open the dashboard: https://www.arch-flow.dev/project/dashboard/#architecture
+Which boundary matters most in your agent workflow: source freshness,
+permissions, review, or the handoff?
 
-Read the repository: https://github.com/mcharniuk1-spec/archflow_b1_knowledge
-
-If your team already uses agents, where does trust break first: source freshness, permissions, review, or the handoff?
-
-#AIAgents #KnowledgeManagement #ProductOperations #DeveloperTools
+#AIAgents #KnowledgeManagement #DeveloperTools #ProductOperations

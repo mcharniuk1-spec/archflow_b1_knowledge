@@ -111,9 +111,9 @@
     "document_count": 55,
     "items": [
       {
-        "bytes": 13855,
+        "bytes": 14886,
         "path": "README.md",
-        "sha256": "22d99bc7c48e776161a56e5737aaeefeca44f8b26b33042a8b47134b3d9bf965",
+        "sha256": "e3b18bca1a1c69488e34ded62543692ee0a2388984a0a90795eb5daab69c725f",
         "title": "ArchFlow Knowledge Operator"
       },
       {
@@ -443,9 +443,9 @@
     ],
     "manifest": "project/dashboard/corpus-manifest.json"
   },
-  "generated_at": "2026-08-11T19:59:07+00:00",
+  "generated_at": "2026-08-12T11:30:31+00:00",
   "performance_evidence": {
-    "content_sha256": "5cf4c203ef544f550b6a01bb056bee829b157d320c743e39f259c52c9779fbfb",
+    "content_sha256": "f8d30780534adcf3b0754cce68f8fe09665335a51b0a80f4fe37706e5635d13f",
     "external_writes": 0,
     "fixture_id": "actionable-agents-v3-public-core",
     "limitations": [
@@ -453,10 +453,10 @@
       "The context comparator deliberately uses a full-manifest packet and is not a claim about a prior release.",
       "All percentages are fixture-specific and must be rerun when the manifest, roles, fixtures, or selection logic changes."
     ],
-    "measured_at": "2026-08-11T19:56:55+00:00",
+    "measured_at": "2026-08-12T11:28:29+00:00",
     "metrics": [
       {
-        "comparator": "Top-five lexical context chunks versus all 4 full-manifest packets; 15,001 vs 1,055,632 UTF-8 bytes.",
+        "comparator": "Top-five lexical context chunks versus all 4 full-manifest packets; 15,001 vs 1,059,756 UTF-8 bytes.",
         "label": "Context input",
         "limitation": "Input-byte measurement on fixed synthetic tasks; not model-exact tokens, billed tokens, durable-memory size, latency, or answer quality.",
         "value": "98.6% lower"
@@ -1826,7 +1826,7 @@
     ],
     "packaged_count": 10
   },
-  "source_revision": "sha256:09e16d4767b17cbd3f25c2adff9ff2a88fc71d04b298f87369e372164791de0b",
+  "source_revision": "sha256:930db5cdf82e9c408fdca0045c91a3767dc98b1905679a60413afb9ffe9d4bf4",
   "workflow": [
     {
       "description": "Admit a bounded source set, retrieve evidence, verify exact passages, and preserve provenance and gaps.",

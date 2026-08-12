@@ -1,13 +1,13 @@
 {
   "context_input": {
-    "baseline_bytes": 1055632,
+    "baseline_bytes": 1059756,
     "candidate_bytes": 15001,
     "fixture_count": 4,
     "hits_at_5": 4,
-    "reduction": 0.9857895554511421,
+    "reduction": 0.9858448548533814,
     "results": [
       {
-        "baseline_bytes": 263908,
+        "baseline_bytes": 264939,
         "candidate_bytes": 3127,
         "expected_source": "project/context/retrieval/source-boundary-policy.yaml",
         "expected_source_hit_at_5": true,
@@ -20,7 +20,7 @@
         ]
       },
       {
-        "baseline_bytes": 263908,
+        "baseline_bytes": 264939,
         "candidate_bytes": 3955,
         "expected_source": "project/database/run-envelope.schema.json",
         "expected_source_hit_at_5": true,
@@ -34,7 +34,7 @@
         ]
       },
       {
-        "baseline_bytes": 263908,
+        "baseline_bytes": 264939,
         "candidate_bytes": 3967,
         "expected_source": "project/agents/actionable-role-packs.json",
         "expected_source_hit_at_5": true,
@@ -48,7 +48,7 @@
         ]
       },
       {
-        "baseline_bytes": 263908,
+        "baseline_bytes": 264939,
         "candidate_bytes": 3952,
         "expected_source": "project/config/provider-registry.json",
         "expected_source_hit_at_5": true,
@@ -71,11 +71,11 @@
     "The context comparator deliberately uses a full-manifest packet and is not a claim about a prior release.",
     "All percentages are fixture-specific and must be rerun when the manifest, roles, fixtures, or selection logic changes."
   ],
-  "measured_at": "2026-08-11T19:56:55+00:00",
+  "measured_at": "2026-08-12T11:28:29+00:00",
   "provider_calls": 0,
   "publication_metrics": [
     {
-      "comparator": "Top-five lexical context chunks versus all 4 full-manifest packets; 15,001 vs 1,055,632 UTF-8 bytes.",
+      "comparator": "Top-five lexical context chunks versus all 4 full-manifest packets; 15,001 vs 1,059,756 UTF-8 bytes.",
       "label": "Context input",
       "limitation": "Input-byte measurement on fixed synthetic tasks; not model-exact tokens, billed tokens, durable-memory size, latency, or answer quality.",
       "value": "98.6% lower"

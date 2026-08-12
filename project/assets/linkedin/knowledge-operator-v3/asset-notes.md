@@ -2,9 +2,9 @@
 
 Status: final release asset
 
-Evidence result SHA-256: `5cf4c203ef544f550b6a01bb056bee829b157d320c743e39f259c52c9779fbfb`
+Evidence result SHA-256: `f8d30780534adcf3b0754cce68f8fe09665335a51b0a80f4fe37706e5635d13f`
 
-Final PNG SHA-256: `141d34d28d1d57313f4cbebc40b3c3644275cd8eeb3102ff4d0594ba8d0cfb05`
+Final PNG SHA-256: `acf5537a1f2970cae89b2737ae07fdc888ffe1fd2bae937aec3c6c8916cc2d1e`
 
 The final 1080 × 1350 RGB poster keeps the ivory-and-ink ArchFlow grid and spectral prism, then gives the evidence a cleaner editorial hierarchy: a short operating-model headline, a four-view visual promise, and four numbered measures with consistent color-coded markers. The poster intentionally avoids internal release labels and implementation jargon.
 
@@ -25,7 +25,7 @@ These are the visual source set for the Architecture and Knowledge views in the 
 
 ## Verified Visible Claims
 
-- 98.6% lower UTF-8 input bytes: 15,001 versus 1,055,632.
+- 98.6% lower UTF-8 input bytes: 15,001 versus 1,059,756.
 - 75.0% fewer selected role slots: 21 versus 84.
 - 4/4 expected-source hits in lexical top-five retrieval.
 - 8/8 expected semantic gate decisions.
@@ -39,6 +39,6 @@ Vertical ArchFlow Knowledge Operator poster on a warm ivory technical grid. Four
 
 ## Generation Record
 
-The central prism and block-flow art preserve the ArchFlow Evidence Prism Grid direction. The updated header, four numbered evidence cards, and footer were typeset deterministically in SVG and rasterized to the final RGB PNG so that every label and number remains exact. The export contains only the final raster needed for publication.
+The central prism and block-flow art preserve the ArchFlow Evidence Prism Grid direction. The updated header, four numbered evidence cards, and footer were typeset deterministically in SVG and rasterized to the final RGB PNG so that every label and number remains exact. The first card reports the current README-inclusive fixture comparator: 15,001 versus 1,059,756 UTF-8 bytes. The export contains only the final raster needed for publication.
 
 Use the PNG as native LinkedIn media and paste the caption and alt text in the composer. Verify the mobile crop before publishing.
